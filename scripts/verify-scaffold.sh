@@ -14,7 +14,11 @@ grep -q "v4.0.0" README.md
 grep -q "FreyCurveExists" README.md
 grep -q "LevelLowering_26" README.md
 
-if grep -RInE '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)|:[[:space:]]*True[[:space:]]*:=' \
+if grep -RInE \
+  --exclude-dir=.git \
+  --exclude-dir=.lake \
+  --exclude-dir=.cache \
+  '^[[:space:]]*(axiom|sorry|admit)([[:space:]]|$)|:[[:space:]]*True[[:space:]]*:=' \
   --include='*.lean' .; then
   echo "FAIL: unfinished or vacuous Lean declaration found"
   exit 1
