@@ -7,4 +7,5 @@ package beal_level_26_foundations where
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4.git" @ "v4.12.0"
 
-lean_lib BealLevel26Foundations
+lean_lib BealLevel26Foundations where
+  srcDir := "lean"
