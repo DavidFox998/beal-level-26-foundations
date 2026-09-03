@@ -1,4 +1,3 @@
-[![v1.0.0-computable DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272383.svg)](https://doi.org/10.5281/zenodo.22272383)
 [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 [![CI](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml/badge.svg)](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml)
 
@@ -39,7 +38,7 @@ theorem and its mathematical interpretation boundaries.
 
 The staged plan follows four releases.
 
-### v1.0.0 — Computable level-26 foundations
+### v1.x — Computable level-26 foundations
 
 The explicit `M₃`, level-26 coefficient ledger, and complete finite bad-prime
 audit are reproducible kernel-checked computations in
@@ -48,6 +47,10 @@ audit are reproducible kernel-checked computations in
 audit retains all eight S-unit indices, so it is not mislabeled as a singleton
 2-Selmer calculation. The comparison with the genuine cohomological 2-Selmer
 group and the Abel--Jacobi cotangent compatibility remain future mathematics.
+
+The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
+equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
+that dimension; the accompanying strong-Hensel replay was already signed.
 
 ### v2.0.0 — Frey discriminant foundations
 
@@ -109,7 +112,7 @@ lake build BealLevel26Foundations
 bash scripts/verify-scaffold.sh
 ```
 
-The v1.0.0-computable release uses Lean 4.12.0 to match the parent Beal project. The
+The corrected v1.0.1-computable release uses Lean 4.12.0 to match the parent Beal project. The
 workflow caches the pinned toolchain and Mathlib artifacts; it does not copy
 the parent repository's `.lake` directory or silently import its theorem
 boundaries.
@@ -131,10 +134,10 @@ changing the interpretation of the already-released conditional theorem.
 
 ## Citation
 
-For this exact release, cite the version DOI
-[`10.5281/zenodo.22272383`](https://doi.org/10.5281/zenodo.22272383).
+For reproducible use, cite the corrected version DOI recorded in
+[`CITATION.cff`](CITATION.cff).
 The stable DOI for the evolving Foundations project is
 [`10.5281/zenodo.22272382`](https://doi.org/10.5281/zenodo.22272382).
 Citation metadata is in [`CITATION.cff`](CITATION.cff), and the exact v1 claims
 are recorded in
-[`docs/releases/v1.0.0-computable.md`](docs/releases/v1.0.0-computable.md).
+[`docs/releases/v1.0.1-computable.md`](docs/releases/v1.0.1-computable.md).

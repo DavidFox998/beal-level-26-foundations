@@ -1,15 +1,13 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite the archived v1.0.0-computable release."
+message: "If you use this software, please cite the corrected v1.0.1-computable release."
 title: "Computable Level-26 Foundations for a Formal Beal-Conjecture Endgame"
 type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "1.0.0-computable"
+version: "1.0.1-computable"
 date-released: "2026-09-03"
-doi: "10.5281/zenodo.22272383"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
-url: "https://doi.org/10.5281/zenodo.22272383"
 license: MIT
 keywords:
   - Lean 4
