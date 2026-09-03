@@ -10,6 +10,10 @@ test -f lean/BealLevel26Foundations/FiniteEvidence.lean
 test -f lean/BealLevel26Foundations/CoefficientLedger_26.lean
 test -f lean/BealLevel26Foundations/M3_Explicit.lean
 test -f lean/BealLevel26Foundations/FiniteChecks_26.lean
+test -f lean/BealLevel26Foundations/Scaffold.lean
+test -f lean/BealLevel26Foundations/Frey/FreyConductorData_26.lean
+test -f lean/BealLevel26Foundations/Mazur/Genus_26_Scaffold.lean
+test -f lean/BealLevel26Foundations/Mazur/QExpansionCotangent_Scaffold_26.lean
 test -f CITATION.cff
 test -f LICENSE
 test -f docs/releases/v1.0.1-computable.md
@@ -49,6 +53,9 @@ grep -q "theorem det_ledgerM3_ne_zero" \
   lean/BealLevel26Foundations/M3_Explicit.lean
 grep -q "theorem finite_checks_at_2_and_13" \
   lean/BealLevel26Foundations/FiniteChecks_26.lean
+
+grep -q 'roots := #\[`BealLevel26Foundations\]' lakefile.lean
+grep -q 'roots := #\[`BealLevel26Foundations.Scaffold\]' lakefile.lean
 
 python3 scripts/verify_coefficient_ledger.py
 python3 scripts/replay_level26_hensel.py

@@ -52,6 +52,15 @@ cotangent compatibility remain future mathematics.
 This is an unconditional statement about the computations themselves. It is
 not an unconditional proof of the level-26 endgame.
 
+### Explicit bridge scaffold
+
+`BealLevel26Foundations.Scaffold` gathers three premise-bearing structures for
+the mathematics that remains: Frey-conductor data, the geometric
+Riemann--Hurwitz interpretation at level 26, and the Abel--Jacobi/q-expansion
+cotangent comparison. These modules introduce no global axiom and make no
+unconditional endgame claim; their theorems conclude only from supplied
+bridge data.
+
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
 that dimension; the accompanying strong-Hensel replay was already signed.
