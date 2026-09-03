@@ -7,6 +7,9 @@ test -f lean-toolchain
 test -f lakefile.lean
 test -f lean/BealLevel26Foundations.lean
 test -f lean/BealLevel26Foundations/FiniteEvidence.lean
+test -f lean/BealLevel26Foundations/CoefficientLedger_26.lean
+test -f lean/BealLevel26Foundations/M3_Explicit.lean
+test -f lean/BealLevel26Foundations/FiniteChecks_26.lean
 test -f CITATION.cff
 test -f LICENSE
 test -f docs/releases/v1.0.1-computable.md
@@ -40,6 +43,12 @@ grep -q "theorem all_80_bad_prime_checks_pass" \
   lean/BealLevel26Foundations/FiniteEvidence.lean
 grep -q "theorem finiteCandidateAudit_not_singleton" \
   lean/BealLevel26Foundations/FiniteEvidence.lean
+grep -q "theorem ledger_byteForByte" \
+  lean/BealLevel26Foundations/CoefficientLedger_26.lean
+grep -q "theorem det_ledgerM3_ne_zero" \
+  lean/BealLevel26Foundations/M3_Explicit.lean
+grep -q "theorem finite_checks_at_2_and_13" \
+  lean/BealLevel26Foundations/FiniteChecks_26.lean
 
 python3 scripts/verify_coefficient_ledger.py
 python3 scripts/replay_level26_hensel.py
