@@ -1,3 +1,4 @@
+[![v1.0.1-computable DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272714.svg)](https://doi.org/10.5281/zenodo.22272714)
 [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 [![CI](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml/badge.svg)](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml)
 
@@ -134,8 +135,8 @@ changing the interpretation of the already-released conditional theorem.
 
 ## Citation
 
-For reproducible use, cite the corrected version DOI recorded in
-[`CITATION.cff`](CITATION.cff).
+For reproducible use, cite the corrected version DOI
+[`10.5281/zenodo.22272714`](https://doi.org/10.5281/zenodo.22272714).
 The stable DOI for the evolving Foundations project is
 [`10.5281/zenodo.22272382`](https://doi.org/10.5281/zenodo.22272382).
 Citation metadata is in [`CITATION.cff`](CITATION.cff), and the exact v1 claims

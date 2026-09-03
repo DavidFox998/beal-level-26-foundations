@@ -7,7 +7,9 @@ authors:
     given-names: David
 version: "1.0.1-computable"
 date-released: "2026-09-03"
+doi: "10.5281/zenodo.22272714"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
+url: "https://doi.org/10.5281/zenodo.22272714"
 license: MIT
 keywords:
   - Lean 4
