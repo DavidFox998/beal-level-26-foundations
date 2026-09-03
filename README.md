@@ -72,12 +72,13 @@ Tate-conductor theorem, geometric Riemann--Hurwitz identification, and
 Picard/Abel--Jacobi cotangent identification remain named boundaries; none is
 replaced by `decide`.
 
-## Releases
+## DOI / Citation — versioned audit trail
 
-| Release | Tag | DOI | Scope |
-|---|---|---|---|
-| v1.1.0 arithmetic frey genus qexpansion matrix | `v1.1.0-arithmetic-frey-genus-qexpansion-matrix` | [`10.5281/zenodo.22284436`](https://doi.org/10.5281/zenodo.22284436) | arithmetic Δ identities via `ring`, index 42 / cusp 4 / ν₂=2 / ν₃=0 / genus 2 via `decide`, `M₃ = [[1,1],[0,2]]` via the ledger, Picard bridge isolated |
-| v1.0.1 computable | `v1.0.1-computable` | [`10.5281/zenodo.22272714`](https://doi.org/10.5281/zenodo.22272714) | Corrected unconditional finite computations and complete signed S-unit audit |
+| Version | Git Tag / Commit | Zenodo DOI | Audit / Notes |
+| :--- | :--- | :--- | :--- |
+| v1.0.0 unconditional computable foundations | `v1.0.0-unconditional-computable-foundations` / `main` | [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382) (concept) | 2315/2315 passed, 0 axiom/sorry/admit, ledger 101 coeff SHA-256 audited, 160 Hensel witnesses, finite checks not called genuine Selmer |
+| v1.1.0 arithmetic frey genus qexpansion matrix | `v1.1.0-arithmetic-frey-genus-qexpansion-matrix` / `c670d1c` | [10.5281/zenodo.22284436](https://doi.org/10.5281/zenodo.22284436) | 2315 isolated + 2319 real green, arithmetic Frey c4/c6/Δ via `ring` with no `frey_conductor_data`, arithmetic genus index 42 divisors `[1,2,13,26]`, cusp 4, ν2=2, ν3=0, certificate 2 via `decide`; ledger-derived `M3 = [[1,1],[0,2]]`, det=2 via `decide`; Picard bridge isolated as `PicardAbelJacobiIdentification_26` |
+| v1.1.1 choice-clean representation | `v1.1.1-choice-clean-representation-dependency` / `1c2c52b` | [10.5281/zenodo.22285575](https://doi.org/10.5281/zenodo.22285575) | Full parent integration: explicit `ledgerM3` has footprint `[propext, Classical.choice, Quot.sound]`; even `fun _ _ => 0 : Matrix (Fin 2) (Fin 2) (ZMod 3)` has the same footprint in Mathlib 4.12. This is a representation dependency, not a domain axiom. Focused point checks at 2 and 13 audit to the genuinely choice-free two-item footprint `[propext, Quot.sound]`. Quartic ledgers under the `Beal17Mazur.Jacobian` namespace are fixed. The formal-immersion certificate was regenerated because its source now imports `ledgerM3` instead of duplicating a literal: source hash and checksum changed, while matrix, determinant, level, and prime did not. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
