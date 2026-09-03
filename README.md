@@ -16,10 +16,10 @@ mathematical bridge is named instead of hidden behind an axiom.
 
 ## Starting point
 
-The companion Beal assembly compiles
-`Beal.Final.ConditionalBealTheorem` from a small, explicit premise ledger.
-Its v11 release is being prepared separately; this repository does not silently
-change the status of that theorem.
+The companion Beal v11.0.0 assembly compiles
+`Beal.Final.ConditionalBealTheorem` from five explicit theorem arguments. It
+is conditionally complete: this repository does not silently change the
+status of that theorem.
 
 1. `J0DecompositionSoundness_26 J0_26`;
 2. `MwrankCertificateSoundness_26`;
@@ -39,15 +39,18 @@ theorem and its mathematical interpretation boundaries.
 
 The staged plan follows four releases.
 
-### v1.x — Computable level-26 foundations
+### v1.x — Unconditional computable foundations
 
-The explicit `M₃`, level-26 coefficient ledger, and complete finite bad-prime
-audit are reproducible kernel-checked computations in
-`BealLevel26Foundations.FiniteEvidence`. The matrix is derived as
-`basisChange * coefficientMatrix`, not entered as a differential table. The
-audit retains all eight S-unit indices, so it is not mislabeled as a singleton
-2-Selmer calculation. The comparison with the genuine cohomological 2-Selmer
-group and the Abel--Jacobi cotangent compatibility remain future mathematics.
+The 101-coefficient level-26 ledger, explicit `M₃`, and complete finite checks
+at 2 and 13 are reproducible, kernel-checked computations. The matrix is
+derived as `basisChange * coefficientMatrix`, not entered as a differential
+table. The audit retains all eight S-unit indices and is proved not to be
+singleton, so it is not mislabeled as a genuine 2-Selmer calculation. The
+comparison with the genuine cohomological 2-Selmer group and the Abel--Jacobi
+cotangent compatibility remain future mathematics.
+
+This is an unconditional statement about the computations themselves. It is
+not an unconditional proof of the level-26 endgame.
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
@@ -123,7 +126,8 @@ boundaries.
 The repositories are companion works with different purposes:
 
 - `beal-conjecture` keeps the conditionally complete theorem assembly and its
-  exact premise audit;
+  exact five-premise audit in the archived v11.0.0 companion release
+  ([DOI 10.5281/zenodo.22281075](https://doi.org/10.5281/zenodo.22281075));
 - this repository independently checks the finite matrix and ledger evidence,
   then develops the missing cohomological and geometric comparisons in staged
   releases;
@@ -132,6 +136,9 @@ The repositories are companion works with different purposes:
 
 This separation prevents an unfinished unconditionalization effort from
 changing the interpretation of the already-released conditional theorem.
+Foundations v1 is unconditional computable foundations, archived separately
+as a Zenodo companion. It does not claim that `decide` proves a genuine Selmer
+singleton, and it does not claim an unconditional proof of the endgame.
 
 ## Citation
 
