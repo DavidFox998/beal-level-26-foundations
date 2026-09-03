@@ -29,7 +29,7 @@ boundaries. v4 composes the resulting constructive chain.
 
 ## Staged milestones
 
-### v1.0.0 — Computable certificate foundations
+### v1.x — Computable certificate foundations
 
 **Scope**
 

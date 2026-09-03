@@ -103,27 +103,16 @@ def BinaryQuartic.evalMod
     (q.d : ZMod p) * x * z ^ 3 +
     (q.e : ZMod p) * z ^ 4
 
-/-- Exhaustive finite-field point search on the displayed homogeneous row. -/
-def BinaryQuartic.hasFpPoint
-    (q : BinaryQuartic) (p : Nat) [NeZero p] : Bool :=
+/-- Exhaustive finite-field point search for the signed twist
+`d * y² = q(x,z)` on the displayed homogeneous row. -/
+def BinaryQuartic.hasFpPointForTwist
+    (q : BinaryQuartic) (d : Int) (p : Nat) [NeZero p] : Bool :=
   (List.range p).any fun x =>
     (List.range p).any fun z =>
       (decide (x ≠ 0 ∨ z ≠ 0)) &&
         (List.range p).any fun y =>
-          decide ((y : ZMod p) ^ 2 =
+          decide ((d : ZMod p) * (y : ZMod p) ^ 2 =
             q.evalMod (x : ZMod p) (z : ZMod p))
-
-def ledgerFp2Results : List Bool :=
-  ledger.map fun q => q.hasFpPoint 2
-
-def ledgerFp13Results : List Bool :=
-  ledger.map fun q => q.hasFpPoint 13
-
-theorem ledgerFp2Results_checked :
-    ledgerFp2Results = List.replicate 10 true := by decide
-
-theorem ledgerFp13Results_checked :
-    ledgerFp13Results = List.replicate 10 true := by decide
 
 /-- The exact `8 × 10` finite search grid. -/
 abbrev LedgerEntry := SUnitIndex × Fin ledger.length
@@ -131,19 +120,13 @@ abbrev LedgerEntry := SUnitIndex × Fin ledger.length
 theorem ledgerEntry_card : Fintype.card LedgerEntry = 80 := by decide
 
 def passesBadPrimeChecks (entry : LedgerEntry) : Bool :=
-  (ledgerFp2Results.getD entry.2.val false) &&
-    ledgerFp13Results.getD entry.2.val false
+  let d := sUnits[entry.1]
+  let q := ledger[entry.2]
+  q.hasFpPointForTwist d 2 &&
+    q.hasFpPointForTwist d 13
 
 theorem all_80_bad_prime_checks_pass :
-    ∀ entry : LedgerEntry, passesBadPrimeChecks entry = true := by
-  rintro ⟨_sUnit, row⟩
-  have hRowLtTen : row.val < 10 := by
-    simpa [ledger_length] using row.isLt
-  rw [passesBadPrimeChecks, ledgerFp2Results_checked,
-    ledgerFp13Results_checked]
-  simp [List.getD, hRowLtTen]
-  change (List.replicate 10 true)[row.val] = true
-  exact List.getElem_replicate true (by simpa using hRowLtTen)
+    ∀ entry : LedgerEntry, passesBadPrimeChecks entry = true := by decide
 
 /-- The available finite checks retain every S-unit index. -/
 def finiteCandidateAudit : Finset SUnitIndex :=
