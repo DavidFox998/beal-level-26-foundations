@@ -7,10 +7,11 @@ The goal is not to relabel the v10.0.0 conditional theorem. The goal is to
 replace its theorem-valued boundaries one at a time with actual Lean
 constructions and proofs.
 
-The current parent project,
+The companion project,
 [`beal-conjecture`](https://github.com/DavidFox998/beal-conjecture), remains
-the source of truth for the released v9.2–v10.0 evidence and the active
-tasks. This repository starts with scaffolding only.
+the source of truth for the conditional theorem assembly. This repository
+develops independently checked foundations and never changes the companion
+theorem's status merely by reproducing finite evidence.
 
 ## Premise ledger
 
@@ -32,9 +33,11 @@ boundaries. v4 composes the resulting constructive chain.
 
 **Scope**
 
-- Import or independently reproduce the explicit level-26 `M₃` witness.
+- Derive the explicit level-26 `M₃` witness from the normalized eigenform
+  coefficients and displayed basis change.
 - Make the coefficient ledger finite, typed, and replayable.
-- Formalize the singleton 2-Selmer result and its relation to the ledger.
+- Record the computed eight-candidate outcome without calling it a singleton
+  2-Selmer result.
 - Preserve transcript hashes and source provenance without treating them as
   proofs of their own semantics.
 - Add focused CI checks for every finite witness.
@@ -42,13 +45,16 @@ boundaries. v4 composes the resulting constructive chain.
 **Acceptance gates**
 
 - Exact matrix shape and rank are checked in Lean.
-- Every ledger row has a typed local-status result.
-- The singleton statement is derived from the complete typed ledger, not a
-  hard-coded proposition.
+- Every ledger row has a typed finite-field status result at `2` and `13`.
+- The complete finite audit is proved to retain all eight S-unit indices.
 - No `axiom`, `sorry`, `admit`, or vacuous `True` declaration is introduced.
 - The README identifies which interpretation premises remain.
 
-**Dependency:** none beyond the scaffold and the imported parent evidence.
+**Current status:** the coefficient matrix, basis change, derived `M₃`,
+determinant, typed ledger, cardinalities, and all eighty finite checks are
+complete. A standard-library producer separately replays all 160 strong-Hensel
+witnesses at `2` and `13`. The cohomological Selmer, Sha, Mordell--Weil, and
+Abel--Jacobi interpretation layers remain explicit later milestones.
 
 ### v2.0.0 — Frey discriminant theorem
 
@@ -104,20 +110,13 @@ boundaries. v4 composes the resulting constructive chain.
 
 **Dependency:** v1, v2, v3, and genuine scheme/Jacobian geometry.
 
-## Work split
+## Roadmap status
 
-The following work stays in `beal-conjecture` while this foundations repository
-is staged:
-
-- the current v10.0.0 conditional assembly;
-- exhaustive 2-Selmer ledger work;
-- the formal rank theorem;
-- the replacement of the formal-immersion soundness premise;
-- release and historical evidence for v9.2–v10.0.0.
-
-This repository may consume released evidence as input, but it must not rewrite
-the parent project's history or imply that a future foundation milestone has
-already merged back.
+The v2--v4 headings are planning markers, not claims that those mathematical
+bridges have been completed. The genuine Selmer comparison, Mordell--Weil
+interpretation, Jacobian geometry, q-expansion/cotangent compatibility, Frey
+construction, and level lowering remain future work until their actual Lean
+theorems pass the corresponding acceptance gates.
 
 ## Release discipline
 

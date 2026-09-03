@@ -1,9 +1,9 @@
 # Beal Level-26 Foundations
 
 This repository is the foundations chamber for moving the level-26 Beal route
-from an explicit conditional assembly toward an unconditional theorem. It is a
-new, deliberately smaller repository: the active conditional development and
-its remaining tasks stay in
+from an explicit conditional assembly toward a theorem whose remaining
+mathematical bridges are constructed one by one. It is a deliberately smaller
+repository: the conditional development stays in
 [`DavidFox998/beal-conjecture`](https://github.com/DavidFox998/beal-conjecture).
 
 The governing principle is the same as the parent project: a checked
@@ -12,8 +12,10 @@ mathematical bridge is named instead of hidden behind an axiom.
 
 ## Starting point
 
-The v10.0.0 Beal assembly already compiles
-`Beal.Final.ConditionalBealTheorem` from five explicit premises:
+The companion Beal assembly compiles
+`Beal.Final.ConditionalBealTheorem` from a small, explicit premise ledger.
+Its v11 release is being prepared separately; this repository does not silently
+change the status of that theorem.
 
 1. `J0DecompositionSoundness_26 J0_26`;
 2. `MwrankCertificateSoundness_26`;
@@ -22,23 +24,26 @@ The v10.0.0 Beal assembly already compiles
 5. `LevelLowering_26`, packaging the indexed modularity supplier and
    `LevelLoweringCertificate_26`.
 
-This repository does not claim those five premises are already discharged.
-Its first release is a staging area for turning the finite level-26 evidence
-into constructive Lean foundations. The parent repository remains the
-canonical home for the current certificates, conditional theorem, and open
-tasks.
+This repository does not claim those premises are already discharged. Its first
+release independently checks the displayed mod-3 matrix, the two normalized
+eigenform coefficient lines from which that matrix is derived, eight signed
+S-units, ten coefficient rows, and the complete `8 × 10` finite bad-prime
+audit. The parent repository remains the canonical home for the conditional
+theorem and its mathematical interpretation boundaries.
 
-## Tentative unconditionalization plan
+## Staged foundation plan
 
 The staged plan follows four releases.
 
 ### v1.0.0 — Computable level-26 foundations
 
-Formalize the explicit `M₃`, the level-26 coefficient ledger, and the singleton
-2-Selmer result as reproducible, kernel-checked computations. The target is to
-discharge three of the five v10 premises to computable checks, while preserving
-the exact interpretation boundaries until their mathematical bridges are
-constructed.
+The explicit `M₃`, level-26 coefficient ledger, and complete finite bad-prime
+audit are reproducible kernel-checked computations in
+`BealLevel26Foundations.FiniteEvidence`. The matrix is derived as
+`basisChange * coefficientMatrix`, not entered as a differential table. The
+audit retains all eight S-unit indices, so it is not mislabeled as a singleton
+2-Selmer calculation. The comparison with the genuine cohomological 2-Selmer
+group and the Abel--Jacobi cotangent compatibility remain future mathematics.
 
 ### v2.0.0 — Frey discriminant foundations
 
@@ -100,20 +105,30 @@ lake build BealLevel26Foundations
 bash scripts/verify-scaffold.sh
 ```
 
-The current scaffold uses Lean 4.12.0 to match the parent Beal project. The
+The v1.0.0-computable release uses Lean 4.12.0 to match the parent Beal project. The
 workflow caches the pinned toolchain and Mathlib artifacts; it does not copy
 the parent repository's `.lake` directory or silently import its theorem
 boundaries.
 
 ## Relationship to `beal-conjecture`
 
-Work remains split intentionally:
+The repositories are companion works with different purposes:
 
-- `beal-conjecture` keeps the v10.0.0 conditional assembly and the active
-  level-26 tasks, including the full 2-Selmer and formal-geometry work;
-- this repository develops the replacement foundations in staged releases;
+- `beal-conjecture` keeps the conditionally complete theorem assembly and its
+  exact premise audit;
+- this repository independently checks the finite matrix and ledger evidence,
+  then develops the missing cohomological and geometric comparisons in staged
+  releases;
 - migration back to the parent project is a later, explicit decision after a
   foundation is independently checked.
 
 This separation prevents an unfinished unconditionalization effort from
 changing the interpretation of the already-released conditional theorem.
+
+## Citation
+
+Please cite the version-specific Zenodo DOI for reproducible use of a release.
+The DOI fields will be added only after Zenodo mints them; no identifier is
+predicted or invented. Citation metadata is in [`CITATION.cff`](CITATION.cff),
+and the exact v1 claims are recorded in
+[`docs/releases/v1.0.0-computable.md`](docs/releases/v1.0.0-computable.md).
