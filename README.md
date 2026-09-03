@@ -1,3 +1,7 @@
+[![v1.0.0-computable DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272383.svg)](https://doi.org/10.5281/zenodo.22272383)
+[![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
+[![CI](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml/badge.svg)](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml)
+
 # Beal Level-26 Foundations
 
 This repository is the foundations chamber for moving the level-26 Beal route
@@ -127,8 +131,10 @@ changing the interpretation of the already-released conditional theorem.
 
 ## Citation
 
-Please cite the version-specific Zenodo DOI for reproducible use of a release.
-The DOI fields will be added only after Zenodo mints them; no identifier is
-predicted or invented. Citation metadata is in [`CITATION.cff`](CITATION.cff),
-and the exact v1 claims are recorded in
+For this exact release, cite the version DOI
+[`10.5281/zenodo.22272383`](https://doi.org/10.5281/zenodo.22272383).
+The stable DOI for the evolving Foundations project is
+[`10.5281/zenodo.22272382`](https://doi.org/10.5281/zenodo.22272382).
+Citation metadata is in [`CITATION.cff`](CITATION.cff), and the exact v1 claims
+are recorded in
 [`docs/releases/v1.0.0-computable.md`](docs/releases/v1.0.0-computable.md).
