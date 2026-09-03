@@ -74,10 +74,15 @@ fi
 
 grep -q "theorem oddPrimeMultiplicativeValuationInput26_values" \
   lean/BealLevel26Foundations/Frey/Conductor_26_Unconditional.lean
-grep -q "theorem picardAbelJacobiIdentification_26" \
+grep -q "def PicardAbelJacobiIdentification_26" \
   lean/BealLevel26Foundations/Mazur/QExpansionCotangent_Real_26.lean
-grep -q "theorem qExpansion_cotangent_compatibility_at_infinity_26" \
+grep -q "theorem qExpansion_cotangent_compatibility_of_picard_bridge" \
   lean/BealLevel26Foundations/Mazur/QExpansionCotangent_Real_26.lean
+if grep -q "theorem picardAbelJacobiIdentification_26" \
+    lean/BealLevel26Foundations/Mazur/QExpansionCotangent_Real_26.lean; then
+  echo "FAIL: formal-coordinate model must not discharge the geometric Picard boundary"
+  exit 1
+fi
 
 python3 scripts/verify_coefficient_ledger.py
 python3 scripts/replay_level26_hensel.py

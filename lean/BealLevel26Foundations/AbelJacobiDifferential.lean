@@ -6,7 +6,7 @@ import Mathlib.Tactic.NormNum
 namespace BealLevel26Foundations.AbelJacobiDifferential
 
 /-!
-# The level-26 Abel--Jacobi differential at infinity
+# A formal-coordinate level-26 differential calculation at infinity
 
 At the double cusp `2∞`, use symmetric-square parameters
 `s₁ = q₁ + q₂` and `s₂ = -q₁q₂`.  A differential with jet

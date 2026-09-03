@@ -47,8 +47,9 @@ derived as `basisChange * coefficientMatrix`, not entered as a differential
 table. The audit retains all eight S-unit indices and is proved not to be
 singleton, so it is not mislabeled as a genuine 2-Selmer calculation. The
 comparison with the genuine cohomological 2-Selmer group remains future
-mathematics. The formal symmetric-square cusp-chart calculation of the
-Abel--Jacobi cotangent map is now kernel-checked.
+mathematics. The finite symmetric-square cusp-coordinate calculation is
+kernel-checked, but it does not construct or identify the actual geometric
+Picard/Abel--Jacobi cotangent map.
 
 This is an unconditional statement about the computations themselves. It is
 not an unconditional proof of the level-26 endgame.
@@ -81,7 +82,7 @@ by `decide`.
 | v1.0.0 unconditional computable foundations | `v1.0.0-computable` / `6aa613c` | [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382) (concept) | 2315/2315 passed, 0 axiom/sorry/admit, ledger 101 coeff SHA-256 audited, 160 Hensel witnesses, finite checks not called genuine Selmer |
 | v1.1.0 arithmetic frey genus qexpansion matrix | `v1.1.0-arithmetic-frey-genus-qexpansion-matrix` / `c670d1c` | [10.5281/zenodo.22284436](https://doi.org/10.5281/zenodo.22284436) | 2315 isolated + 2319 real green, arithmetic Frey c4/c6/Δ via `ring` with no `frey_conductor_data`, arithmetic genus index 42 divisors `[1,2,13,26]`, cusp 4, ν2=2, ν3=0, certificate 2 via `decide`; ledger-derived `M3 = [[1,1],[0,2]]`, det=2 via `decide`; Picard bridge isolated as `PicardAbelJacobiIdentification_26` |
 | v1.1.1 choice-clean representation | `v1.1.1-choice-clean-representation-dependency` / `1c2c52b` | [10.5281/zenodo.22285575](https://doi.org/10.5281/zenodo.22285575) | Full parent integration: explicit `ledgerM3` has footprint `[propext, Classical.choice, Quot.sound]`; even `fun _ _ => 0 : Matrix (Fin 2) (Fin 2) (ZMod 3)` has the same footprint in Mathlib 4.12. This is a representation dependency, not a domain axiom. Focused point checks at 2 and 13 audit to the genuinely choice-free two-item footprint `[propext, Quot.sound]`. Quartic ledgers under the `Beal17Mazur.Jacobian` namespace are fixed. The formal-immersion certificate was regenerated because its source now imports `ledgerM3` instead of duplicating a literal: source hash and checksum changed, while matrix, determinant, level, and prime did not. |
-| v1.2.0 Abel--Jacobi differential and valuation input | `v1.2.0-abel-jacobi-differential-closed-valuation-input` / `ed74e3b` | [10.5281/zenodo.22286222](https://doi.org/10.5281/zenodo.22286222) | Formal symmetric-square cusp chart `s₁=q₁+q₂`, `s₂=-q₁q₂`, Abel primitive, and cotangent linearization derive `[[1,1],[0,2]]`; odd-prime input proves `vₚ(c₄)=0` and `vₚ(Δ)>0` without `frey_conductor_data`. The `[propext, Classical.choice, Quot.sound]` footprint is a representation dependency, not a domain axiom. `N=2^e rad(ABC)` remains reserved for a genuine Tate/Kodaira/conductor classification. Archive SHA-256 `9ea2b4f7d95460315736fb9f926678d57b39af5b682b168849173ea6cbd891fa`. |
+| v1.2.0 formal-coordinate matrix and valuation input | `v1.2.0-abel-jacobi-differential-closed-valuation-input` / `ed74e3b` | [10.5281/zenodo.22286222](https://doi.org/10.5281/zenodo.22286222) | A finite model in coordinates `s₁=q₁+q₂`, `s₂=-q₁q₂` derives `[[1,1],[0,2]]`; it does **not** construct or identify an actual Picard/Abel--Jacobi cotangent map. Odd-prime input proves `vₚ(c₄)=0` and `vₚ(Δ)>0` without `frey_conductor_data`. The `[propext, Classical.choice, Quot.sound]` footprint is representational. Both geometric compatibility and Tate/Kodaira conductor classification remain explicit. Archive SHA-256 `9ea2b4f7d95460315736fb9f926678d57b39af5b682b168849173ea6cbd891fa`. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
@@ -177,7 +178,8 @@ singleton, and it does not claim an unconditional proof of the endgame.
 
 ## Citation
 
-For the closed Abel--Jacobi differential and unconditional valuation input,
+For the finite formal-coordinate matrix calculation and unconditional
+valuation input,
 cite version DOI
 [`10.5281/zenodo.22286222`](https://doi.org/10.5281/zenodo.22286222).
 For the corrected finite-only release, cite
