@@ -1,4 +1,4 @@
-[![v1.0.1-computable DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272714.svg)](https://doi.org/10.5281/zenodo.22272714)
+[![v1.1.0 arithmetic DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22284436.svg)](https://doi.org/10.5281/zenodo.22284436)
 [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 [![CI](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml/badge.svg)](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml)
 
@@ -71,6 +71,13 @@ the displayed cotangent matrix from q-expansion coefficients. The local
 Tate-conductor theorem, geometric Riemann--Hurwitz identification, and
 Picard/Abel--Jacobi cotangent identification remain named boundaries; none is
 replaced by `decide`.
+
+## Releases
+
+| Release | Scope | Version DOI |
+|---|---|---|
+| `v1.1.0-arithmetic-frey-genus-qexpansion-matrix` | Frey invariant and discriminant algebra, level-26 arithmetic genus certificate, and ledger-derived `M₃`; the local conductor, geometric genus, and Picard/Abel--Jacobi bridges remain explicit | [`10.5281/zenodo.22284436`](https://doi.org/10.5281/zenodo.22284436) |
+| `v1.0.1-computable` | Corrected unconditional finite computations and complete signed S-unit audit | [`10.5281/zenodo.22272714`](https://doi.org/10.5281/zenodo.22272714) |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
@@ -162,7 +169,9 @@ singleton, and it does not claim an unconditional proof of the endgame.
 
 ## Citation
 
-For reproducible use, cite the corrected version DOI
+For the real-arithmetic extension, cite version DOI
+[`10.5281/zenodo.22284436`](https://doi.org/10.5281/zenodo.22284436).
+For the corrected finite-only release, cite
 [`10.5281/zenodo.22272714`](https://doi.org/10.5281/zenodo.22272714).
 The stable DOI for the evolving Foundations project is
 [`10.5281/zenodo.22272382`](https://doi.org/10.5281/zenodo.22272382).
