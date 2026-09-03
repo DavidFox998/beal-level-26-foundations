@@ -46,8 +46,9 @@ at 2 and 13 are reproducible, kernel-checked computations. The matrix is
 derived as `basisChange * coefficientMatrix`, not entered as a differential
 table. The audit retains all eight S-unit indices and is proved not to be
 singleton, so it is not mislabeled as a genuine 2-Selmer calculation. The
-comparison with the genuine cohomological 2-Selmer group and the Abel--Jacobi
-cotangent compatibility remain future mathematics.
+comparison with the genuine cohomological 2-Selmer group remains future
+mathematics. The formal symmetric-square cusp-chart calculation of the
+Abel--Jacobi cotangent map is now kernel-checked.
 
 This is an unconditional statement about the computations themselves. It is
 not an unconditional proof of the level-26 endgame.
@@ -67,10 +68,11 @@ bridge data.
 4.12 permits: it defines the Frey Weierstrass model and proves its invariant
 and discriminant identities, exhaustively computes the level-26 cusp and
 elliptic correction data, verifies the cleared genus equation, and derives
-the displayed cotangent matrix from q-expansion coefficients. The local
-Tate-conductor theorem, geometric Riemann--Hurwitz identification, and
-Picard/Abel--Jacobi cotangent identification remain named boundaries; none is
-replaced by `decide`.
+the displayed cotangent matrix from q-expansion coefficients and from the
+cotangent linearization of the formal Abel integral on the symmetric-square
+cusp chart. The local Tate-conductor classification and geometric
+Riemann--Hurwitz identification remain named boundaries; neither is replaced
+by `decide`.
 
 ## DOI / Citation — versioned audit trail
 
@@ -86,9 +88,13 @@ that dimension; the accompanying strong-Hensel replay was already signed.
 
 ### v2.0.0 — Frey discriminant foundations
 
-Formalize the Frey-curve discriminant argument in Lean. The target is to
-replace `FreyCurveExists` with a theorem constructing the required curve and
-proving the discriminant/conductor properties used by the level-26 route.
+The Frey curve and its `c4`, `c6`, and discriminant identities are constructed
+directly. `Conductor_26_Unconditional.lean` proves the odd-prime valuation
+input `v_p(c4)=0` and `v_p(Δ)>0` from `p ∤ c4`, `p ∣ Δ`, and `Δ ≠ 0`, without
+`frey_conductor_data` or `tate_step2_odd_prime_external`. Mathlib 4.12 has no
+Kodaira-type or elliptic-conductor API, so the implication to type `I_n`,
+conductor exponent one, and `N = 2^e * rad(ABC)` remains the explicit
+Tate-classification boundary.
 
 ### v3.0.0 — Ribet level lowering
 

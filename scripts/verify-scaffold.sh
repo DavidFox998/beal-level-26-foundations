@@ -16,6 +16,8 @@ test -f lean/BealLevel26Foundations/Mazur/Genus_26_Scaffold.lean
 test -f lean/BealLevel26Foundations/Mazur/QExpansionCotangent_Scaffold_26.lean
 test -f lean/BealLevel26Foundations/Real.lean
 test -f lean/BealLevel26Foundations/Frey/FreyConductorUnconditional_26.lean
+test -f lean/BealLevel26Foundations/Frey/Conductor_26_Unconditional.lean
+test -f lean/BealLevel26Foundations/AbelJacobiDifferential.lean
 test -f lean/BealLevel26Foundations/Mazur/Genus_26_Real.lean
 test -f lean/BealLevel26Foundations/Mazur/QExpansionCotangent_Real_26.lean
 test -f CITATION.cff
@@ -64,10 +66,18 @@ grep -q 'roots := #\[`BealLevel26Foundations.Real\]' lakefile.lean
 
 if grep -RInE \
   'frey_conductor_data|tate_step2_odd_prime_external' \
-  lean/BealLevel26Foundations/Frey/FreyConductorUnconditional_26.lean; then
+  lean/BealLevel26Foundations/Frey/FreyConductorUnconditional_26.lean \
+  lean/BealLevel26Foundations/Frey/Conductor_26_Unconditional.lean; then
   echo "FAIL: parent conductor axioms leaked into the real arithmetic module"
   exit 1
 fi
+
+grep -q "theorem oddPrimeMultiplicativeValuationInput26_values" \
+  lean/BealLevel26Foundations/Frey/Conductor_26_Unconditional.lean
+grep -q "theorem picardAbelJacobiIdentification_26" \
+  lean/BealLevel26Foundations/Mazur/QExpansionCotangent_Real_26.lean
+grep -q "theorem qExpansion_cotangent_compatibility_at_infinity_26" \
+  lean/BealLevel26Foundations/Mazur/QExpansionCotangent_Real_26.lean
 
 python3 scripts/verify_coefficient_ledger.py
 python3 scripts/replay_level26_hensel.py
