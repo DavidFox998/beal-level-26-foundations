@@ -43,7 +43,7 @@ def PicardAbelJacobiIdentification_26
     (actual_dAJ_at_infinity : Matrix (Fin 2) (Fin 2) (ZMod 3)) : Prop :=
   actual_dAJ_at_infinity = qExpansionCotangentMatrix26
 
-theorem qExpansion_compatibility_of_picard_bridge
+theorem qExpansion_cotangent_compatibility_of_picard_bridge
     {actual_dAJ_at_infinity : Matrix (Fin 2) (Fin 2) (ZMod 3)}
     (hPicard :
       PicardAbelJacobiIdentification_26 actual_dAJ_at_infinity) :
@@ -51,8 +51,15 @@ theorem qExpansion_compatibility_of_picard_bridge
   rw [hPicard]
   exact qExpansionCotangentMatrix26_eq_M3
 
+theorem qExpansion_compatibility_of_picard_bridge
+    {actual_dAJ_at_infinity : Matrix (Fin 2) (Fin 2) (ZMod 3)}
+    (hPicard :
+      PicardAbelJacobiIdentification_26 actual_dAJ_at_infinity) :
+    actual_dAJ_at_infinity = ledgerM3 :=
+  qExpansion_cotangent_compatibility_of_picard_bridge hPicard
+
 #print axioms qExpansionCoefficientMatrix26_eq
 #print axioms qExpansionCotangentMatrix26_explicit
-#print axioms qExpansion_compatibility_of_picard_bridge
+#print axioms qExpansion_cotangent_compatibility_of_picard_bridge
 
 end BealLevel26Foundations.Mazur.QExpansionCotangentReal26
