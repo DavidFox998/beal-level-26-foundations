@@ -31,8 +31,11 @@ jobs:
         if: steps.lean-cache.outputs.cache-hit != 'true'
         run: lake exe cache get
 
-      - name: Build foundations finite evidence
-        run: lake build BealLevel26Foundations
+      - name: Build finite foundations and explicit extensions
+        run: |
+          lake build BealLevel26Foundations
+          lake build BealLevel26FoundationsScaffold
+          lake build BealLevel26FoundationsReal
 
       - name: Verify declarations, evidence, and release surface
         run: bash scripts/verify-scaffold.sh

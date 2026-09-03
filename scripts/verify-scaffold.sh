@@ -14,6 +14,10 @@ test -f lean/BealLevel26Foundations/Scaffold.lean
 test -f lean/BealLevel26Foundations/Frey/FreyConductorData_26.lean
 test -f lean/BealLevel26Foundations/Mazur/Genus_26_Scaffold.lean
 test -f lean/BealLevel26Foundations/Mazur/QExpansionCotangent_Scaffold_26.lean
+test -f lean/BealLevel26Foundations/Real.lean
+test -f lean/BealLevel26Foundations/Frey/FreyConductorUnconditional_26.lean
+test -f lean/BealLevel26Foundations/Mazur/Genus_26_Real.lean
+test -f lean/BealLevel26Foundations/Mazur/QExpansionCotangent_Real_26.lean
 test -f CITATION.cff
 test -f LICENSE
 test -f docs/releases/v1.0.1-computable.md
@@ -56,6 +60,14 @@ grep -q "theorem finite_checks_at_2_and_13" \
 
 grep -q 'roots := #\[`BealLevel26Foundations\]' lakefile.lean
 grep -q 'roots := #\[`BealLevel26Foundations.Scaffold\]' lakefile.lean
+grep -q 'roots := #\[`BealLevel26Foundations.Real\]' lakefile.lean
+
+if grep -RInE \
+  'frey_conductor_data|tate_step2_odd_prime_external' \
+  lean/BealLevel26Foundations/Frey/FreyConductorUnconditional_26.lean; then
+  echo "FAIL: parent conductor axioms leaked into the real arithmetic module"
+  exit 1
+fi
 
 python3 scripts/verify_coefficient_ledger.py
 python3 scripts/replay_level26_hensel.py

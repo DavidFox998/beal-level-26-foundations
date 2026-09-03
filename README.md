@@ -61,6 +61,17 @@ cotangent comparison. These modules introduce no global axiom and make no
 unconditional endgame claim; their theorems conclude only from supplied
 bridge data.
 
+### Real arithmetic extension
+
+`BealLevel26Foundations.Real` goes beyond the bridge structures where Mathlib
+4.12 permits: it defines the Frey Weierstrass model and proves its invariant
+and discriminant identities, exhaustively computes the level-26 cusp and
+elliptic correction data, verifies the cleared genus equation, and derives
+the displayed cotangent matrix from q-expansion coefficients. The local
+Tate-conductor theorem, geometric Riemann--Hurwitz identification, and
+Picard/Abel--Jacobi cotangent identification remain named boundaries; none is
+replaced by `decide`.
+
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
 that dimension; the accompanying strong-Hensel replay was already signed.

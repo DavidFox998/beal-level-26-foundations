@@ -14,3 +14,7 @@ lean_lib BealLevel26Foundations where
 lean_lib BealLevel26FoundationsScaffold where
   srcDir := "lean"
   roots := #[`BealLevel26Foundations.Scaffold]
+
+lean_lib BealLevel26FoundationsReal where
+  srcDir := "lean"
+  roots := #[`BealLevel26Foundations.Real]
