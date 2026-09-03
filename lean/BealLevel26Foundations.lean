@@ -9,10 +9,10 @@ claim is represented here as an axiom or placeholder proof.
 -/
 
 def release : String :=
-  "v1.0.0-scaffold"
+  "v1.0.0-computable"
 
-theorem release_is_scaffold :
-    release = "v1.0.0-scaffold" := by
+theorem release_is_computable :
+    release = "v1.0.0-computable" := by
   rfl
 
 end BealLevel26Foundations

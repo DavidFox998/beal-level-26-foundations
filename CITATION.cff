@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the archived v1.0.0-computable release."
+title: "Computable Level-26 Foundations for a Formal Beal-Conjecture Endgame"
+type: software
+authors:
+  - family-names: Fox
+    given-names: David
+version: "1.0.0-computable"
+date-released: "2026-09-03"
+repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
+license: MIT
+keywords:
+  - Lean 4
+  - formal mathematics
+  - modular curves
+  - level 26
+  - finite certificates
+abstract: >-
+  Kernel-checked computable evidence for the level-26 route in a conditional
+  formal Beal-conjecture endgame. The release derives the finite mod-3 matrix
+  from normalized eigenform coefficients and an explicit basis change, checks
+  its determinant, and replays the finite descent ledger without claiming the
+  still-missing cohomological Selmer or Abel-Jacobi comparison theorems.
