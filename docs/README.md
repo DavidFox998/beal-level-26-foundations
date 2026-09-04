@@ -3,8 +3,10 @@
 Versioned release notes for
 [beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations).
 
-**Current as of** tag `v4.0.5-nofrey-point` (version DOI pending
-mint after the tag). Prior tags
+**Current as of** tag `v4.0.5-nofrey-point` (commit `5b29092`,
+version DOI
+[10.5281/zenodo.22313407](https://doi.org/10.5281/zenodo.22313407)).
+Prior tags
 [`v4.0.4-x026-rational-points`](releases/v4.0.4-x026-rational-points.md)
 (commit `4619a5d`, version DOI
 [10.5281/zenodo.22313318](https://doi.org/10.5281/zenodo.22313318)) and
