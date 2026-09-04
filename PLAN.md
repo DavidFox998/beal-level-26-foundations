@@ -121,6 +121,16 @@ supplier.
 - The final theorem has no domain-specific axioms or suppliers.
 - A full CI run checks the complete chain and a transitive axiom audit.
 
+**Current status:** v4.0.0-mazur adds `BealLevel26Foundations.Mazur.EndgameScaffold`
+with four typed premises (`J0_26_Q_RankZero26`, `FormalImmersionAtTwo26`,
+`X0_26_RationalPoints26`, `NoFreyPoint26`) and
+`BealTheoremFromMazurChain26`, which concludes `BealTheorem` only from
+those structures plus v2 Frey Weierstrass and v3 `LevelLowering_26`.
+It does not construct a Jacobian, prove Mordell--Weil rank, prove formal
+immersion, identify `X₀(26)(ℚ)` with four cusps by `decide`, or claim an
+unconditional `BealTheorem`. The PLAN.md acceptance gates above remain
+open.
+
 **Dependency:** v1, v2, v3, and genuine scheme/Jacobian geometry.
 
 ## Roadmap status

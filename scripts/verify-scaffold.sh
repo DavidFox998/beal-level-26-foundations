@@ -29,6 +29,9 @@ test -f docs/releases/v1.3.0.md
 test -f docs/releases/v1.4.0.md
 test -f docs/releases/v2.0.0-frey.md
 test -f docs/releases/v3.0.0-ribet.md
+test -f docs/releases/v4.0.0-mazur.md
+test -f lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
+test -f lean/Beal/Foundations/EndgameScaffold.lean
 test -f lean/BealLevel26Foundations/Ribet/LevelLowering_26.lean
 test -f lean/BealLevel26Foundations/Real/LevelLowering_26.lean
 test -f lean/Beal/Foundations/LevelLowering_26.lean
@@ -54,6 +57,7 @@ grep -q "v2.0.0-frey" README.md
 grep -q "v3.0.0" README.md
 grep -q "v3.0.0-ribet" README.md
 grep -q "v4.0.0" README.md
+grep -q "v4.0.0-mazur" README.md
 grep -q "FreyCurveExists" README.md
 grep -q "LevelLowering_26" README.md
 grep -q "v1.0.1-computable" CITATION.cff
@@ -146,6 +150,29 @@ grep -q "structure RibetTheoremBoundary26" \
 if grep -q "def LevelLowering_26 : Prop" \
     lean/BealLevel26Foundations/Ribet/LevelLowering_26.lean; then
   echo "FAIL: LevelLowering_26 must be typed certificate data, not an opaque Prop"
+  exit 1
+fi
+grep -q "structure J0_26_Q_RankZero26" \
+  lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
+grep -q "structure FormalImmersionAtTwo26" \
+  lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
+grep -q "structure X0_26_RationalPoints26" \
+  lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
+grep -q "structure NoFreyPoint26" \
+  lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
+grep -q "theorem FormalImmersionAtTwo26.input_certificate" \
+  lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
+grep -q "theorem BealTheoremFromMazurChain26" \
+  lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
+if grep -nE '^[[:space:]]*theorem BealTheorem[[:space:]]' \
+    lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean; then
+  echo "FAIL: unconditional BealTheorem is not allowed"
+  exit 1
+fi
+if grep -nE 'decide' \
+    lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean |
+    grep -E 'rankZero|rationalPointsAreFourCusps|R[[:space:]]*=[[:space:]]*T'; then
+  echo "FAIL: rank, cusps, or R=T must not be decided"
   exit 1
 fi
 grep -q "def PicardAbelJacobiIdentification_26" \
