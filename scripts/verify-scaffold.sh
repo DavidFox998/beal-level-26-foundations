@@ -28,6 +28,10 @@ test -f docs/releases/v1.0.1-computable.md
 test -f docs/releases/v1.3.0.md
 test -f docs/releases/v1.4.0.md
 test -f docs/releases/v2.0.0-frey.md
+test -f docs/releases/v3.0.0-ribet.md
+test -f lean/BealLevel26Foundations/Ribet/LevelLowering_26.lean
+test -f lean/BealLevel26Foundations/Real/LevelLowering_26.lean
+test -f lean/Beal/Foundations/LevelLowering_26.lean
 test -f sagemath/level_26_ledger.json
 test -f sagemath/foundations_doi_manifest.json
 test -f sagemath/certs/j0_26_decomposition.json
@@ -48,6 +52,7 @@ grep -q "v1.4.0" README.md
 grep -q "v2.0.0" README.md
 grep -q "v2.0.0-frey" README.md
 grep -q "v3.0.0" README.md
+grep -q "v3.0.0-ribet" README.md
 grep -q "v4.0.0" README.md
 grep -q "FreyCurveExists" README.md
 grep -q "LevelLowering_26" README.md
@@ -126,6 +131,23 @@ grep -q "theorem freyDiscriminantValuation26_pos" \
   lean/BealLevel26Foundations/Frey/Conductor_26_Unconditional.lean
 grep -q "structure TateKodairaBoundary26" \
   lean/BealLevel26Foundations/Frey/Conductor_26_Unconditional.lean
+grep -q "structure LevelLowering_26" \
+  lean/BealLevel26Foundations/Ribet/LevelLowering_26.lean
+grep -q "theorem LevelLowering_26.representation_data" \
+  lean/BealLevel26Foundations/Ribet/LevelLowering_26.lean
+grep -q "theorem LevelLowering_26.level_data" \
+  lean/BealLevel26Foundations/Ribet/LevelLowering_26.lean
+grep -q "theorem LevelLowering_26.lowering_relation" \
+  lean/BealLevel26Foundations/Ribet/LevelLowering_26.lean
+grep -q "theorem exactDivides_mul_self_of_not_dvd" \
+  lean/BealLevel26Foundations/Ribet/LevelLowering_26.lean
+grep -q "structure RibetTheoremBoundary26" \
+  lean/BealLevel26Foundations/Ribet/LevelLowering_26.lean
+if grep -q "def LevelLowering_26 : Prop" \
+    lean/BealLevel26Foundations/Ribet/LevelLowering_26.lean; then
+  echo "FAIL: LevelLowering_26 must be typed certificate data, not an opaque Prop"
+  exit 1
+fi
 grep -q "def PicardAbelJacobiIdentification_26" \
   lean/BealLevel26Foundations/Mazur/QExpansionCotangent_Real_26.lean
 grep -q "theorem qExpansion_cotangent_compatibility_of_picard_bridge" \

@@ -79,8 +79,10 @@ and discriminant identities, exhaustively computes the level-26 cusp and
 elliptic correction data, verifies the cleared genus equation, and derives
 the displayed cotangent matrix from q-expansion coefficients and from the
 cotangent linearization of the formal Abel integral on the symmetric-square
-cusp chart. The local Tate-conductor classification and geometric
-Riemann--Hurwitz identification remain named boundaries; neither is replaced
+cusp chart. v3.0.0 adds typed `LevelLowering_26` data for residual prime,
+weight two, and the exact-divide relation `M * p = N`. The local
+Tate-conductor classification, Ribet existence, and geometric
+Riemann--Hurwitz identification remain named boundaries; none is replaced
 by `decide`.
 
 ## DOI / Citation — versioned audit trail
@@ -95,6 +97,7 @@ by `decide`.
 | v1.3.0 J0(26) decomposition and M3 certificates | `v1.3.0` / `e657d15` | [10.5281/zenodo.22310313](https://doi.org/10.5281/zenodo.22310313) | SageMath 10.7 certificates for `J₀(26)` dim 2 = `26a × 26b` and rank-2 `M₃=[[1,1],[0,2]]` over `𝐅₃`. Lean 4.12 proves Weierstrass `c₄,c₆,Δ` for the two Cremona models and ledger agreement. Not a Jacobian, Mordell--Weil, or formal-immersion theorem. Ledger SHA-256 `9671052435714618d8106b25ed3f04fd7b87d5332ebccf76f949f768276c6875`. Archive SHA-256 `b748a2bfd30037ad1c1b2aeb8cf26795b2f8ca56f57d3e3f5137cc41ab9690da`. |
 | v1.4.0 FormalImmersionM3 ledger match | `v1.4.0` / `bfcd70d` | [10.5281/zenodo.22310574](https://doi.org/10.5281/zenodo.22310574) | Lean 4.12 `Beal.Foundations.FormalImmersionM3` reads `sagemath/certs/formal_immersion_M3.json` and proves `M₃=[[1,1],[0,2]]`, `det=2` over `ZMod 3` by `decide`, matching `ledgerM3`. Not a Jacobian, Mordell--Weil, or Picard theorem. Ledger SHA-256 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `09bee85fea4154c0db0db0863f0655dfec5400c8f67f0cf37795dcf919767a4a`. |
 | v2.0.0-frey Weierstrass model and valuation input | `v2.0.0-frey` / `517449f` | [10.5281/zenodo.22310825](https://doi.org/10.5281/zenodo.22310825) | `BealLevel26Foundations.Real.FreyWeierstrass` defines the parent integral Frey model and proves `c₄,c₆,Δ` by `ring`. `Conductor_26_Unconditional` proves `vₚ(c₄)=0` and `vₚ(Δ)>0` from `p ∤ c₄`, `p ∣ Δ`, `Δ ≠ 0`, with no `frey_conductor_data` or `tate_step2_odd_prime_external`. Tate/Kodaira classification remains an explicit boundary. Archive SHA-256 `7ef05ce1d5b9e47115a5225292cce7b0153d9c0c4018b8bdeaca5cd1886f9532`. |
+| v3.0.0-ribet typed LevelLowering_26 certificate | `v3.0.0-ribet` | Zenodo version DOI minted by this git tag | `LevelLowering_26` is indexed certificate data for residual prime `ℓ`, weight 2, and the exact-divide step `M * p = N` with `vₚ(N)=1`. Proves `vₚ(26 p)=1` from `p ∤ 26` and the factorization `26 = 2 * 13`. Not a Ribet, modularity, or Galois-representation theorem. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
@@ -112,10 +115,12 @@ Tate-classification boundary.
 
 ### v3.0.0 — Ribet level lowering
 
-Formalize the Ribet level-lowering certificate as Lean
-`LevelLowering_26` without a supplier. This milestone depends on the required
-Mathlib modular-forms infrastructure and should expose each representation,
-level, and lowering relation as typed data rather than a single opaque claim.
+`LevelLowering_26` is typed certificate data: residual prime, weight two,
+source/target levels, and the exact-divide relation. The arithmetic
+`v_p(26 p) = 1` from `p ∤ 26` is proved in Mathlib 4.12. Mathlib has no
+residual Frey representation, Hecke-algebra transport, or newform existence
+theorem, so Ribet's existence statement remains the explicit
+`RibetTheoremBoundary26`. This does not replace the parent supplier.
 
 ### v4.0.0 — Mazur endgame
 

@@ -56,10 +56,12 @@ complete. A standard-library producer separately replays all 160 strong-Hensel
 witnesses at `2` and `13`. v1.3.0--v1.4.0 add SageMath 10.7 certificates and
 the Lean 4.12 bridges `J0_26_Decomp` and `FormalImmersionM3`. v2.0.0-frey
 defines the parent integral Frey Weierstrass model and proves `c₄,c₆,Δ` by
-`ring`, plus the odd-prime valuation input `vₚ(c₄)=0`, `vₚ(Δ)>0`. Tate/Kodaira
-classification, Jacobian geometry, Selmer, and Abel--Jacobi remain explicit
-later milestones. It does not yet replace the parent `FreyCurveExists`
-supplier.
+`ring`, plus the odd-prime valuation input `vₚ(c₄)=0`, `vₚ(Δ)>0`. v3.0.0-ribet
+adds typed `LevelLowering_26` certificate data (representation, level, and
+the exact-divide relation) and the arithmetic `vₚ(26 p)=1` from `p ∤ 26`.
+Tate/Kodaira classification, Ribet existence, Jacobian geometry, Selmer, and
+Abel--Jacobi remain explicit later milestones. It does not replace the parent
+`FreyCurveExists` or `LevelLowering_26` suppliers.
 
 ### v2.0.0 — Frey discriminant theorem
 
@@ -93,6 +95,12 @@ supplier.
 - The lowering theorem is indexed by the representation, weight, and levels.
 - No global modularity or level-lowering axiom is smuggled into a wrapper.
 - The output is directly consumable by the level-26 Frey-to-curve bridge.
+
+**Current status:** v3.0.0-ribet exposes `LevelLowering_26` as indexed
+certificate data and proves the exact-divide arithmetic available in
+Mathlib 4.12. It does not construct residual Galois representations, Hecke
+algebras, or a realizing newform, and it does not replace the parent
+supplier.
 
 **Dependency:** v2 and the required Mathlib modular-forms foundations.
 
