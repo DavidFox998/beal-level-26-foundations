@@ -1,7 +1,8 @@
 # lean/BealLevel26Foundations/Mazur/
 
 Genus certificates, q-expansion cotangent calculations, and the v4.0.0
-endgame scaffold. **Current as of** `v4.0.5-nofrey-point`.
+endgame scaffold. **Current as of** `v4.0.5-nofrey-point`
+(includes `v4.0.4-x026-rational-points`).
 
 | File | What it is | What it is not |
 |---|---|---|
