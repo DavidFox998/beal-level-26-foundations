@@ -1,4 +1,4 @@
-[![v4.0.4-x026-rational-points](https://img.shields.io/badge/tag-v4.0.4--x026--rational--points-blue)](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.4-x026-rational-points)
+[![v4.0.4-x026-rational-points DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22313318.svg)](https://doi.org/10.5281/zenodo.22313318)
 [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 [![CI](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml/badge.svg)](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml)
 
@@ -16,7 +16,8 @@ mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
 [`v4.0.4-x026-rational-points`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.4-x026-rational-points)
-(version DOI pending mint after the tag).
+(commit `4619a5d`, version DOI
+[10.5281/zenodo.22313318](https://doi.org/10.5281/zenodo.22313318)).
 The coefficient ledger is still
 [`sagemath/level_26_ledger.json`](sagemath/level_26_ledger.json) **v1.4.0**,
 SHA-256 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`.
@@ -121,7 +122,7 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.0.1-jacobian-skeleton finite J0 product and Picard Prop | `v4.0.1-jacobian-skeleton` / `235a0bc` | [10.5281/zenodo.22312844](https://doi.org/10.5281/zenodo.22312844) | `Jacobian/J0_26_DecompActual` loads the v1.4.0 ledger and certs, defines `s₁=q₁+q₂`, `s₂=-q₁q₂`, and proves the certified `26a × 26b` distinction `a₂=-1` versus `1` plus `M₃=[[1,1],[0,2]]`, `det=2` by `decide`. `PicardAbelJacobiIdentification_26` is a standalone `Prop`. Not a Mathlib Jacobian. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `4a47641e072e945ce02f1b9fef273b52e63d0ff70f3bdadfdf87f5449df7d87d`. |
 | v4.0.2-selmer S-unit audit versus genuine 2-Selmer | `v4.0.2-selmer` / `c2f829d` | [10.5281/zenodo.22313148](https://doi.org/10.5281/zenodo.22313148) | `Jacobian/TwoSelmer_vs_SUnits_26` audits the eight S-unit indices from the v1.4.0 decomposition cert, proves the finite audit retains all eight and is not a singleton, and therefore is not genuine cohomological 2-Selmer. `MwrankCertificateSoundness_26` packages Sage `certified_mwrank = 0` for `26a` and `26b` with the `s₁,s₂` model and `a₂ = -1` versus `1`. Not a Mathlib Jacobian or MW theorem. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `c7585189484c0cdaed1d6739dabf17b83d424efae5b44382c7085ed69fe9f6b6`. |
 | v4.0.3-formal-immersion q-expansion cotangent injectivity | `v4.0.3-formal-immersion` / `75c533d` | [10.5281/zenodo.22313241](https://doi.org/10.5281/zenodo.22313241) | `Jacobian/FormalImmersionActual_26` proves `M₃` injective (`det = 2 ≠ 0`) and inhabits `FormalImmersionAtTwo26.of_qExpansion` from q-expansion data and `PicardAbelJacobiIdentification_26`. Not a scheme-theoretic formal immersion. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `8fb5e22ba5a72604b025b1a8bf8af3f5e745f4186afdf54ede49640e13148ad8`. |
-| v4.0.4-x026-rational-points displayed four cusps | `v4.0.4-x026-rational-points` | pending mint | `Mazur/X026RationalPointsActual_26` inhabits `X0_26_RationalPoints26.of_qExpansion` from displayed cusps `[1,2,13,26]`, already-decided `a₂` / `MwrankCertificateSoundness_26` / `FormalImmersionAtTwo26.of_qExpansion`. Not a Mathlib `X₀(26)(ℚ)` theorem. `NoFreyPoint26` stays supplied. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
+| v4.0.4-x026-rational-points displayed four cusps | `v4.0.4-x026-rational-points` / `4619a5d` | [10.5281/zenodo.22313318](https://doi.org/10.5281/zenodo.22313318) | `Mazur/X026RationalPointsActual_26` inhabits `X0_26_RationalPoints26.of_qExpansion` from displayed cusps `[1,2,13,26]`, already-decided `a₂` / `MwrankCertificateSoundness_26` / `FormalImmersionAtTwo26.of_qExpansion`. Not a Mathlib `X₀(26)(ℚ)` theorem. `NoFreyPoint26` stays supplied. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `d9449a352f4b1e580330a076f89256e754194433c8c00eefa5784517f14f5e04`. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
@@ -273,9 +274,8 @@ singleton, and it does not claim an unconditional proof of the endgame.
 ## Citation
 
 For the displayed four-cusp package,
-cite tag
-[`v4.0.4-x026-rational-points`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.4-x026-rational-points)
-(version DOI pending mint).
+cite version DOI
+[`10.5281/zenodo.22313318`](https://doi.org/10.5281/zenodo.22313318).
 For q-expansion formal-immersion input,
 cite version DOI
 [`10.5281/zenodo.22313241`](https://doi.org/10.5281/zenodo.22313241).

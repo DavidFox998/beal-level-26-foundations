@@ -12,7 +12,7 @@ The ledger version is **v1.4.0** and has been unchanged since tag
 | File | Role |
 |---|---|
 | `level_26_ledger.json` | 101 coefficients for `26a1` and `26b1`; lists the two certs |
-| `foundations_doi_manifest.json` | v1.4.0 cert-bridge DOI, plus `latest_foundations_release` (tag `v4.0.4-x026-rational-points`; DOI pending mint) |
+| `foundations_doi_manifest.json` | v1.4.0 cert-bridge DOI, plus `latest_foundations_release` (now `v4.0.4-x026-rational-points`) |
 | `j0_26_decomp_foundation.sage` | Generator for the decomposition cert |
 | `j0_26_decomp_foundations.sage` | Companion generator |
 | `formal_immersion_M3.sage` | Generator for the `M₃` cert |

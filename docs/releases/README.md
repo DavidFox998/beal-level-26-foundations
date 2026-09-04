@@ -18,7 +18,7 @@ not an unconditional `BealTheorem`.
 | [v4.0.1-jacobian-skeleton.md](v4.0.1-jacobian-skeleton.md) | `v4.0.1-jacobian-skeleton` / `235a0bc` | [10.5281/zenodo.22312844](https://doi.org/10.5281/zenodo.22312844) |
 | [v4.0.2-selmer.md](v4.0.2-selmer.md) | `v4.0.2-selmer` / `c2f829d` | [10.5281/zenodo.22313148](https://doi.org/10.5281/zenodo.22313148) |
 | [v4.0.3-formal-immersion.md](v4.0.3-formal-immersion.md) | `v4.0.3-formal-immersion` / `75c533d` | [10.5281/zenodo.22313241](https://doi.org/10.5281/zenodo.22313241) |
-| [v4.0.4-x026-rational-points.md](v4.0.4-x026-rational-points.md) | `v4.0.4-x026-rational-points` | pending mint |
+| [v4.0.4-x026-rational-points.md](v4.0.4-x026-rational-points.md) | `v4.0.4-x026-rational-points` / `4619a5d` | [10.5281/zenodo.22313318](https://doi.org/10.5281/zenodo.22313318) |
 
 Concept DOI for the evolving project:
 [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).

@@ -3,8 +3,10 @@
 Versioned release notes for
 [beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations).
 
-**Current as of** tag `v4.0.4-x026-rational-points` (version DOI pending
-mint after the tag). Prior tag
+**Current as of** tag `v4.0.4-x026-rational-points` (commit `4619a5d`,
+version DOI
+[10.5281/zenodo.22313318](https://doi.org/10.5281/zenodo.22313318)).
+Prior tag
 [`v4.0.3-formal-immersion`](releases/v4.0.3-formal-immersion.md)
 (commit `75c533d`, version DOI
 [10.5281/zenodo.22313241](https://doi.org/10.5281/zenodo.22313241)).
