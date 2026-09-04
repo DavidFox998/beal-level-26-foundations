@@ -4,6 +4,8 @@ import Beal.Foundations.FormalImmersionM3
 import Beal.Foundations.FormalImmersionM3Certificate
 import Beal.Foundations.LevelLowering_26
 import Beal.Foundations.EndgameScaffold
+import BealLevel26Foundations.Jacobian.J0_26_DecompActual
+import BealLevel26Foundations.Jacobian.PicardAbelJacobiIdentification_26
 
 namespace Beal.Foundations
 

@@ -1,12 +1,14 @@
 import BealLevel26Foundations.CoefficientLedger_26
 import BealLevel26Foundations.M3_Explicit
 import BealLevel26Foundations.AbelJacobiDifferential
+import BealLevel26Foundations.Jacobian.PicardAbelJacobiIdentification_26
 
 namespace BealLevel26Foundations.Mazur.QExpansionCotangentReal26
 
 open BealLevel26Foundations.CoefficientLedger26
 open BealLevel26Foundations.M3Explicit
 open BealLevel26Foundations.AbelJacobiDifferential
+open BealLevel26Foundations.Jacobian.PicardAbelJacobiIdentification26
 
 /-!
 # Real q-expansion coefficient calculation at level 26
@@ -37,20 +39,14 @@ theorem qExpansionCotangentMatrix26_explicit :
     qExpansionCotangentMatrix26 = !![1, 1; 0, 2] := by
   exact ledgerM3_eq
 
-/-- Narrow remaining geometric statement: the actual Abel--Jacobi
-differential, represented in the chosen cotangent bases, agrees with the
-matrix computed from q-expansion coefficients. -/
-def PicardAbelJacobiIdentification_26
-    (actual_dAJ_at_infinity : Matrix (Fin 2) (Fin 2) (ZMod 3)) : Prop :=
-  actual_dAJ_at_infinity = qExpansionCotangentMatrix26
-
+/-- Compatibility uses the standalone Picard `Prop` from
+`BealLevel26Foundations.Jacobian.PicardAbelJacobiIdentification_26`. -/
 theorem qExpansion_cotangent_compatibility_of_picard_bridge
     {actual_dAJ_at_infinity : Matrix (Fin 2) (Fin 2) (ZMod 3)}
     (hPicard :
       PicardAbelJacobiIdentification_26 actual_dAJ_at_infinity) :
-    actual_dAJ_at_infinity = ledgerM3 := by
-  rw [hPicard]
-  exact qExpansionCotangentMatrix26_eq_M3
+    actual_dAJ_at_infinity = ledgerM3 :=
+  PicardAbelJacobiIdentification_26.eq_ledgerM3 hPicard
 
 theorem qExpansion_compatibility_of_picard_bridge
     {actual_dAJ_at_infinity : Matrix (Fin 2) (Fin 2) (ZMod 3)}

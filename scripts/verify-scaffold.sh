@@ -30,8 +30,11 @@ test -f docs/releases/v1.4.0.md
 test -f docs/releases/v2.0.0-frey.md
 test -f docs/releases/v3.0.0-ribet.md
 test -f docs/releases/v4.0.0-mazur.md
+test -f docs/releases/v4.0.1-jacobian-skeleton.md
 test -f lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
 test -f lean/Beal/Foundations/EndgameScaffold.lean
+test -f lean/BealLevel26Foundations/Jacobian/J0_26_DecompActual.lean
+test -f lean/BealLevel26Foundations/Jacobian/PicardAbelJacobiIdentification_26.lean
 test -f lean/BealLevel26Foundations/Ribet/LevelLowering_26.lean
 test -f lean/BealLevel26Foundations/Real/LevelLowering_26.lean
 test -f lean/Beal/Foundations/LevelLowering_26.lean
@@ -58,6 +61,7 @@ grep -q "v3.0.0" README.md
 grep -q "v3.0.0-ribet" README.md
 grep -q "v4.0.0" README.md
 grep -q "v4.0.0-mazur" README.md
+grep -q "v4.0.1-jacobian-skeleton" README.md
 grep -q "FreyCurveExists" README.md
 grep -q "LevelLowering_26" README.md
 grep -q "v1.0.1-computable" CITATION.cff
@@ -176,14 +180,30 @@ if grep -nE 'decide' \
   exit 1
 fi
 grep -q "def PicardAbelJacobiIdentification_26" \
-  lean/BealLevel26Foundations/Mazur/QExpansionCotangent_Real_26.lean
+  lean/BealLevel26Foundations/Jacobian/PicardAbelJacobiIdentification_26.lean
 grep -q "theorem qExpansion_cotangent_compatibility_of_picard_bridge" \
   lean/BealLevel26Foundations/Mazur/QExpansionCotangent_Real_26.lean
-if grep -q "theorem picardAbelJacobiIdentification_26" \
+if grep -q "def PicardAbelJacobiIdentification_26" \
     lean/BealLevel26Foundations/Mazur/QExpansionCotangent_Real_26.lean; then
+  echo "FAIL: PicardAbelJacobiIdentification_26 must live in Jacobian/, not QExpansionCotangent_Real_26"
+  exit 1
+fi
+if grep -q "theorem picardAbelJacobiIdentification_26" \
+    lean/BealLevel26Foundations/Mazur/QExpansionCotangent_Real_26.lean \
+    lean/BealLevel26Foundations/Jacobian/PicardAbelJacobiIdentification_26.lean; then
   echo "FAIL: formal-coordinate model must not discharge the geometric Picard boundary"
   exit 1
 fi
+grep -q "def s1" lean/BealLevel26Foundations/Jacobian/J0_26_DecompActual.lean
+grep -q "def s2" lean/BealLevel26Foundations/Jacobian/J0_26_DecompActual.lean
+grep -q "theorem certifiedJ0_26_eq_26a_times_26b" \
+  lean/BealLevel26Foundations/Jacobian/J0_26_DecompActual.lean
+grep -q "theorem certifiedM3_eq" \
+  lean/BealLevel26Foundations/Jacobian/J0_26_DecompActual.lean
+grep -q "theorem certifiedM3_det" \
+  lean/BealLevel26Foundations/Jacobian/J0_26_DecompActual.lean
+grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
+  lean/BealLevel26Foundations/Jacobian/J0_26_DecompActual.lean
 
 python3 scripts/verify_coefficient_ledger.py
 python3 scripts/verify_v1_3_0_certs.py

@@ -126,10 +126,14 @@ with four typed premises (`J0_26_Q_RankZero26`, `FormalImmersionAtTwo26`,
 `X0_26_RationalPoints26`, `NoFreyPoint26`) and
 `BealTheoremFromMazurChain26`, which concludes `BealTheorem` only from
 those structures plus v2 Frey Weierstrass and v3 `LevelLowering_26`.
-It does not construct a Jacobian, prove Mordell--Weil rank, prove formal
-immersion, identify `X₀(26)(ℚ)` with four cusps by `decide`, or claim an
-unconditional `BealTheorem`. The PLAN.md acceptance gates above remain
-open.
+v4.0.1-jacobian-skeleton adds `Jacobian/J0_26_DecompActual` (finite
+`s₁=q₁+q₂`, `s₂=-q₁q₂` model and the certified `26a × 26b` distinction
+`a₂=-1` versus `1`, plus `M₃` by `decide`) and moves
+`PicardAbelJacobiIdentification_26` to a standalone Jacobian file.
+It does not construct a Mathlib Jacobian, prove Mordell--Weil rank, prove
+formal immersion, identify `X₀(26)(ℚ)` with four cusps by `decide`, or
+claim an unconditional `BealTheorem`. The PLAN.md acceptance gates above
+remain open.
 
 **Dependency:** v1, v2, v3, and genuine scheme/Jacobian geometry.
 

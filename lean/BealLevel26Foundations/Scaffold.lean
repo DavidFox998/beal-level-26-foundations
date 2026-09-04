@@ -3,6 +3,8 @@ import BealLevel26Foundations.Mazur.Genus_26_Scaffold
 import BealLevel26Foundations.Mazur.QExpansionCotangent_Scaffold_26
 import BealLevel26Foundations.Ribet.LevelLowering_26
 import BealLevel26Foundations.Mazur.EndgameScaffold
+import BealLevel26Foundations.Jacobian.J0_26_DecompActual
+import BealLevel26Foundations.Jacobian.PicardAbelJacobiIdentification_26
 
 namespace BealLevel26Foundations.Scaffold
 
