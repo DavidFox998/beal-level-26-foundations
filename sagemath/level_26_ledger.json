@@ -1,11 +1,12 @@
 {
-  "version": "v1.3.0",
-  "previous": "v1.2.1",
+  "version": "v1.4.0",
+  "previous": "v1.3.0",
   "level": 26,
   "dim": 2,
   "certs": [
     "sagemath/certs/j0_26_decomposition.json",
-    "sagemath/certs/formal_immersion_M3.json"
+    "sagemath/certs/formal_immersion_M3.json",
+    "lean/Beal/Foundations/FormalImmersionM3.lean"
   ],
   "forms": [
     {

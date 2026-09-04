@@ -8,7 +8,7 @@ namespace BealLevel26Foundations.CoefficientLedger26
 These are the 101 coefficients `a₀,…,a₁₀₀` archived in
 `sagemath/level_26_ledger.json` for the LMFDB eigenlines `26a1` and `26b1`.
 The repository audit pins that source file by SHA-256
-(`9671052435714618d8106b25ed3f04fd7b87d5332ebccf76f949f768276c6875`).
+(`0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`).
 This module promotes the same arrays into Lean without assigning them a
 geometric interpretation.
 -/

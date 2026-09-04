@@ -24,6 +24,7 @@ test -f CITATION.cff
 test -f LICENSE
 test -f docs/releases/v1.0.1-computable.md
 test -f docs/releases/v1.3.0.md
+test -f docs/releases/v1.4.0.md
 test -f sagemath/level_26_ledger.json
 test -f sagemath/foundations_doi_manifest.json
 test -f sagemath/certs/j0_26_decomposition.json
@@ -35,10 +36,12 @@ test -f lean/Beal/Foundations.lean
 test -f lean/Beal.lean
 test -f lean/Beal/Foundations/J0_26_Decomp.lean
 test -f lean/Beal/Foundations/J0DecompositionCertificate.lean
+test -f lean/Beal/Foundations/FormalImmersionM3.lean
 test -f lean/Beal/Foundations/FormalImmersionM3Certificate.lean
 
 grep -q "v1.0.1" README.md
 grep -q "v1.3.0" README.md
+grep -q "v1.4.0" README.md
 grep -q "v2.0.0" README.md
 grep -q "v3.0.0" README.md
 grep -q "v4.0.0" README.md
@@ -82,6 +85,12 @@ grep -q "theorem qexp26b1_prefix_eq_ledger" \
   lean/Beal/Foundations/J0_26_Decomp.lean
 grep -q "theorem certifiedJ0Dimension26_eq_two" \
   lean/Beal/Foundations/J0DecompositionCertificate.lean
+grep -q "theorem certifiedM3_eq" \
+  lean/Beal/Foundations/FormalImmersionM3.lean
+grep -q "theorem certifiedM3_det" \
+  lean/Beal/Foundations/FormalImmersionM3.lean
+grep -q "theorem certifiedM3_eq_ledgerM3" \
+  lean/Beal/Foundations/FormalImmersionM3.lean
 grep -q "theorem certifiedM3_eq_ledgerM3" \
   lean/Beal/Foundations/FormalImmersionM3Certificate.lean
 grep -q "theorem certifiedM3_det_nonzero" \

@@ -122,8 +122,8 @@
       "qexp_preview": "q + q^2 - 3*q^3 + q^4 - q^5 + O(q^6)"
     }
   ],
-  "previous": "v1.2.1",
+  "previous": "v1.3.0",
   "sagemath_version": "10.7",
-  "version": "v1.3.0",
+  "version": "v1.4.0",
   "weight": 2
 }

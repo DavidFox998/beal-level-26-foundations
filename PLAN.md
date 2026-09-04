@@ -56,8 +56,10 @@ complete. A standard-library producer separately replays all 160 strong-Hensel
 witnesses at `2` and `13`. v1.3.0 adds SageMath 10.7 certificates for the
 `J₀(26) = 26a × 26b` decomposition and rank-2 `M₃`, promoted into
 `Beal.Foundations.J0_26_Decomp` (q-expansions of `26a1` and `26b1`,
-typed dimension `1+1=2`) without claiming a scheme-theoretic Jacobian, a
-Mordell--Weil theorem, or a geometric formal immersion. The cohomological
+typed dimension `1+1=2`) and `Beal.Foundations.FormalImmersionM3`
+(`M₃=[[1,1],[0,2]]`, `det=2` over `ZMod 3`) without claiming a
+scheme-theoretic Jacobian, a Mordell--Weil theorem, or a geometric formal
+immersion. The cohomological
 Selmer, Sha, Mordell--Weil, and Abel--Jacobi interpretation layers remain
 explicit later milestones.
 

@@ -1,21 +1,20 @@
 {
-  "version": "v1.3.0",
-  "previous": "v1.2.1",
+  "version": "v1.4.0",
+  "previous": "v1.3.0",
   "sagemath_version": "10.7",
   "certs": [
     "sagemath/certs/j0_26_decomposition.json",
-    "sagemath/certs/formal_immersion_M3.json"
+    "sagemath/certs/formal_immersion_M3.json",
+    "lean/Beal/Foundations/FormalImmersionM3.lean"
   ],
   "generators": [
     "sagemath/j0_26_decomp_foundation.sage",
     "sagemath/j0_26_decomp_foundations.sage",
     "sagemath/formal_immersion_M3.sage"
   ],
-  "expected": "J0(26) dim 2 = 26a x 26b, M3 rank 2 evidence",
-  "doi": "10.5281/zenodo.22310313",
+  "expected": "M3 = [[1, 1], [0, 2]] over ZMod 3, det = 2, matches ledger",
+  "doi": null,
   "concept_doi": "10.5281/zenodo.22272382",
-  "record": "https://zenodo.org/records/22310313",
-  "git_tag": "v1.3.0",
-  "git_commit": "e657d15c17dd2e05b043dd33e105a94be5157128",
-  "archive_sha256": "b748a2bfd30037ad1c1b2aeb8cf26795b2f8ca56f57d3e3f5137cc41ab9690da"
+  "git_tag": "v1.4.0",
+  "note": "Tag v1.4.0 on the public GitHub archive so Zenodo can mint the version DOI. This file does not invent a DOI."
 }
