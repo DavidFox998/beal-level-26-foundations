@@ -6,6 +6,7 @@ import Beal.Foundations.LevelLowering_26
 import Beal.Foundations.EndgameScaffold
 import BealLevel26Foundations.Jacobian.J0_26_DecompActual
 import BealLevel26Foundations.Jacobian.PicardAbelJacobiIdentification_26
+import BealLevel26Foundations.Jacobian.TwoSelmer_vs_SUnits_26
 
 namespace Beal.Foundations
 
@@ -17,9 +18,11 @@ Certificate bridge for the SageMath J₀(26) decomposition and finite M₃ data.
 `ZMod 3` against the ledger. `LevelLowering_26` is typed certificate data
 for representation, level, and the exact-divide relation; it is not a
 Ribet theorem. The Mazur endgame scaffold concludes `BealTheorem` only
-from four named structures plus v2 Frey and v3 lowering. No domain axiom
-is introduced. Geometric Jacobian, Selmer, Picard, Tate, Ribet existence,
-and an unconditional `BealTheorem` remain named later milestones.
+from four named structures plus v2 Frey and v3 lowering. The v4.0.2
+S-unit audit retains all eight indices and is not genuine 2-Selmer.
+No domain axiom is introduced. Geometric Jacobian, genuine
+cohomological Selmer, Picard, Tate, Ribet existence, and an
+unconditional `BealTheorem` remain named later milestones.
 -/
 
 def release : String :=

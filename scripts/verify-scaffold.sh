@@ -31,6 +31,7 @@ test -f docs/releases/v2.0.0-frey.md
 test -f docs/releases/v3.0.0-ribet.md
 test -f docs/releases/v4.0.0-mazur.md
 test -f docs/releases/v4.0.1-jacobian-skeleton.md
+test -f docs/releases/v4.0.2-selmer.md
 test -f lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
 test -f lean/Beal/Foundations/EndgameScaffold.lean
 test -f lean/BealLevel26Foundations/Jacobian/J0_26_DecompActual.lean
@@ -62,6 +63,7 @@ grep -q "v3.0.0-ribet" README.md
 grep -q "v4.0.0" README.md
 grep -q "v4.0.0-mazur" README.md
 grep -q "v4.0.1-jacobian-skeleton" README.md
+grep -q "v4.0.2-selmer" README.md
 grep -q "FreyCurveExists" README.md
 grep -q "LevelLowering_26" README.md
 grep -q "v1.0.1-computable" CITATION.cff
@@ -204,6 +206,29 @@ grep -q "theorem certifiedM3_det" \
   lean/BealLevel26Foundations/Jacobian/J0_26_DecompActual.lean
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   lean/BealLevel26Foundations/Jacobian/J0_26_DecompActual.lean
+test -f lean/BealLevel26Foundations/Jacobian/TwoSelmer_vs_SUnits_26.lean
+grep -q "def sUnitsFromDecomposition" \
+  lean/BealLevel26Foundations/Jacobian/TwoSelmer_vs_SUnits_26.lean
+grep -q "theorem sUnitAudit26_retains_all_eight" \
+  lean/BealLevel26Foundations/Jacobian/TwoSelmer_vs_SUnits_26.lean
+grep -q "theorem sUnitAudit26_not_singleton" \
+  lean/BealLevel26Foundations/Jacobian/TwoSelmer_vs_SUnits_26.lean
+grep -q "theorem sUnitAudit26_is_not_genuine_2Selmer" \
+  lean/BealLevel26Foundations/Jacobian/TwoSelmer_vs_SUnits_26.lean
+grep -q "def MwrankCertificateSoundness_26" \
+  lean/BealLevel26Foundations/Jacobian/TwoSelmer_vs_SUnits_26.lean
+grep -q "theorem MwrankCertificateSoundness_26.certified" \
+  lean/BealLevel26Foundations/Jacobian/TwoSelmer_vs_SUnits_26.lean
+grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
+  lean/BealLevel26Foundations/Jacobian/TwoSelmer_vs_SUnits_26.lean
+grep -q "remains future" \
+  lean/BealLevel26Foundations/Jacobian/TwoSelmer_vs_SUnits_26.lean
+if grep -nE \
+    'theorem[[:space:]]+(genuineCohomological2Selmer|twoSelmerIdentification|SelmerGroup_eq)' \
+    lean/BealLevel26Foundations/Jacobian/TwoSelmer_vs_SUnits_26.lean; then
+  echo "FAIL: must not identify the S-unit audit with genuine 2-Selmer"
+  exit 1
+fi
 
 python3 scripts/verify_coefficient_ledger.py
 python3 scripts/verify_v1_3_0_certs.py

@@ -130,10 +130,16 @@ v4.0.1-jacobian-skeleton adds `Jacobian/J0_26_DecompActual` (finite
 `s₁=q₁+q₂`, `s₂=-q₁q₂` model and the certified `26a × 26b` distinction
 `a₂=-1` versus `1`, plus `M₃` by `decide`) and moves
 `PicardAbelJacobiIdentification_26` to a standalone Jacobian file.
-It does not construct a Mathlib Jacobian, prove Mordell--Weil rank, prove
-formal immersion, identify `X₀(26)(ℚ)` with four cusps by `decide`, or
-claim an unconditional `BealTheorem`. The PLAN.md acceptance gates above
-remain open.
+v4.0.2-selmer adds `Jacobian/TwoSelmer_vs_SUnits_26`: the eight S-unit
+indices are audited, proved to retain all eight and not to be a
+singleton, and therefore not mislabeled as genuine cohomological
+2-Selmer. `MwrankCertificateSoundness_26` packages Sage
+`certified_mwrank = 0` for `26a` and `26b` with that audit and the
+already-decided `s₁,s₂` / `a₂` data. It does not construct a Mathlib
+Jacobian, prove Mordell--Weil rank, identify the audit with
+`Sel₂(J₀(26)/ℚ)`, prove formal immersion, identify `X₀(26)(ℚ)` with
+four cusps by `decide`, or claim an unconditional `BealTheorem`. The
+PLAN.md acceptance gates above remain open.
 
 **Dependency:** v1, v2, v3, and genuine scheme/Jacobian geometry.
 
