@@ -1,0 +1,6 @@
+{
+  "version": "v1.2.1 -> v1.3.0",
+  "sagemath_version": "10.5",
+  "certs": ["j0_26_decomp_foundation.sage", "formal_immersion_M3.sage"],
+  "expected": "J0(26) dim 2 = 26a x 26b, M3 rank 2 evidence"
+}
