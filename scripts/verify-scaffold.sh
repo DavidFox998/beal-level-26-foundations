@@ -33,6 +33,7 @@ test -f sagemath/j0_26_decomp_foundations.sage
 test -f sagemath/formal_immersion_M3.sage
 test -f lean/Beal/Foundations.lean
 test -f lean/Beal.lean
+test -f lean/Beal/Foundations/J0_26_Decomp.lean
 test -f lean/Beal/Foundations/J0DecompositionCertificate.lean
 test -f lean/Beal/Foundations/FormalImmersionM3Certificate.lean
 
@@ -71,6 +72,14 @@ grep -q "theorem det_ledgerM3_ne_zero" \
   lean/BealLevel26Foundations/M3_Explicit.lean
 grep -q "theorem finite_checks_at_2_and_13" \
   lean/BealLevel26Foundations/FiniteChecks_26.lean
+grep -q "theorem certifiedDecompositionDimension_eq_two" \
+  lean/Beal/Foundations/J0_26_Decomp.lean
+grep -q "theorem certifiedDecomposition_two_distinct_newforms" \
+  lean/Beal/Foundations/J0_26_Decomp.lean
+grep -q "theorem qexp26a1_prefix_eq_ledger" \
+  lean/Beal/Foundations/J0_26_Decomp.lean
+grep -q "theorem qexp26b1_prefix_eq_ledger" \
+  lean/Beal/Foundations/J0_26_Decomp.lean
 grep -q "theorem certifiedJ0Dimension26_eq_two" \
   lean/Beal/Foundations/J0DecompositionCertificate.lean
 grep -q "theorem certifiedM3_eq_ledgerM3" \

@@ -1,3 +1,4 @@
+import Beal.Foundations.J0_26_Decomp
 import Beal.Foundations.J0DecompositionCertificate
 import Beal.Foundations.FormalImmersionM3Certificate
 
