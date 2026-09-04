@@ -3,6 +3,7 @@ import BealLevel26Foundations.Jacobian.J0_26_DecompActual
 import BealLevel26Foundations.Jacobian.TwoSelmer_vs_SUnits_26
 import BealLevel26Foundations.Mazur.EndgameScaffold
 import BealLevel26Foundations.Mazur.X026RationalPointsActual_26
+import BealLevel26Foundations.Real.FreyWeierstrass
 import BealLevel26Foundations.Ribet.LevelLowering_26
 import Mathlib.Tactic
 
@@ -13,6 +14,7 @@ open BealLevel26Foundations.Jacobian.J0_26_DecompActual
 open BealLevel26Foundations.Jacobian.TwoSelmer_vs_SUnits_26
 open BealLevel26Foundations.Mazur.EndgameScaffold
 open BealLevel26Foundations.Mazur.X026RationalPointsActual26
+open BealLevel26Foundations.Real.FreyWeierstrass
 open BealLevel26Foundations.Ribet.LevelLowering26
 
 /-!
@@ -101,8 +103,8 @@ def NoFreyPoint26.of_qExpansion : NoFreyPoint26 where
   noNoncuspidalFrey := ribetExistenceFromQExpansion
   ofFourCusps := fun _hPts _hCusps =>
     ribetExistenceFromQExpansion.certified
-  ofBealFreyLowering := fun _cex hLower _hΔ =>
-    ⟨⟨hLower.targetLevel, rfl⟩⟩
+  ofBealFreyLowering := fun _cex {_ℓ _N _p} _hLower _hΔ =>
+    displayedFreyWitness26_exists
 
 theorem NoFreyPoint26.of_qExpansion_replaces_premise :
     NoFreyPoint26.of_qExpansion.displayedTargetLevel = 26 ∧
