@@ -306,7 +306,7 @@ grep -q "theorem X0_26_RationalPoints26.of_qExpansion_replaces_premise" \
   lean/BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   lean/BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean
-grep -q "not a modular-curve" \
+grep -q "Not a modular-curve" \
   lean/BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean
 if grep -nE '^[[:space:]]*theorem BealTheorem[[:space:]]' \
     lean/BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean; then
