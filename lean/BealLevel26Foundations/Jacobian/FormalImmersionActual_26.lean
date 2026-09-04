@@ -48,10 +48,16 @@ theorem qExpansionM3_eq_certified :
     qExpansionM3 = !![1, 1; 0, 2] :=
   qExpansionM3_eq
 
+theorem certifiedM3_det_by_ring :
+    Matrix.det (!![1, 1; 0, 2] : Matrix (Fin 2) (Fin 2) (ZMod 3)) = 2 := by
+  rw [Matrix.det_fin_two]
+  simp
+  ring
+
 theorem qExpansionM3_det_by_ring :
     Matrix.det qExpansionM3 = 2 := by
-  rw [qExpansionM3_eq, Matrix.det_fin_two]
-  ring
+  rw [qExpansionM3_eq]
+  exact certifiedM3_det_by_ring
 
 theorem qExpansionM3_det_ne_zero :
     Matrix.det qExpansionM3 ≠ 0 := by
@@ -62,10 +68,34 @@ theorem qExpansionM3_eq_certifiedM3 :
     qExpansionM3 = certifiedM3 := by
   rw [qExpansionM3_eq, certifiedM3_eq]
 
+theorem certifiedM3_mulVec (v : Fin 2 → ZMod 3) :
+    (!![1, 1; 0, 2] : Matrix (Fin 2) (Fin 2) (ZMod 3)).mulVec v =
+      ![v 0 + v 1, 2 * v 1] := by
+  ext i
+  fin_cases i <;> simp [Matrix.mulVec, Fin.sum_univ_two]
+
+theorem certifiedM3_cotangent_injective :
+    cotangentInjective (!![1, 1; 0, 2]) := by
+  intro v hv
+  rw [certifiedM3_mulVec] at hv
+  have hv1 : v 1 = 0 := by
+    have h1 : 2 * v 1 = 0 := by
+      simpa using congrArg (fun w => w 1) hv
+    revert h1
+    fin_cases (v 1) <;> decide
+  have hv0 : v 0 = 0 := by
+    have h0 : v 0 + v 1 = 0 := by
+      simpa using congrArg (fun w => w 0) hv
+    simp [hv1] at h0
+    exact h0
+  ext i
+  fin_cases i <;> simp [hv0, hv1]
+
 /-- Q-expansion cotangent map is injective over `ZMod 3`. -/
 theorem qExpansionM3_cotangent_injective :
     cotangentInjective qExpansionM3 := by
-  decide
+  rw [qExpansionM3_eq]
+  exact certifiedM3_cotangent_injective
 
 /-- Formal-immersion-at-2 criterion from q-expansion data: the
 cotangent map is injective. -/
