@@ -1,6 +1,12 @@
 {
+  "version": "v1.3.0",
+  "previous": "v1.2.1",
   "level": 26,
   "dim": 2,
+  "certs": [
+    "sagemath/certs/j0_26_decomposition.json",
+    "sagemath/certs/formal_immersion_M3.json"
+  ],
   "forms": [
     {
       "label": "26a1",

@@ -54,6 +54,12 @@ Picard/Abel--Jacobi cotangent map.
 This is an unconditional statement about the computations themselves. It is
 not an unconditional proof of the level-26 endgame.
 
+v1.3.0 adds SageMath 10.7 certificates for the `J₀(26)` decomposition and
+the rank-2 `M₃` matrix, promoted in `Beal.Foundations`. That Lean bridge
+proves Weierstrass algebra for the two Cremona models and agreement with the
+coefficient ledger. It does not construct a Mathlib Jacobian or a formal
+immersion.
+
 ### Explicit bridge scaffold
 
 `BealLevel26Foundations.Scaffold` gathers three premise-bearing structures for
@@ -84,6 +90,7 @@ by `decide`.
 | v1.1.1 choice-clean representation | `v1.1.1-choice-clean-representation-dependency` / `1c2c52b` | [10.5281/zenodo.22285575](https://doi.org/10.5281/zenodo.22285575) | Full parent integration: explicit `ledgerM3` has footprint `[propext, Classical.choice, Quot.sound]`; even `fun _ _ => 0 : Matrix (Fin 2) (Fin 2) (ZMod 3)` has the same footprint in Mathlib 4.12. This is a representation dependency, not a domain axiom. Focused point checks at 2 and 13 audit to the genuinely choice-free two-item footprint `[propext, Quot.sound]`. Quartic ledgers under the `Beal17Mazur.Jacobian` namespace are fixed. The formal-immersion certificate was regenerated because its source now imports `ledgerM3` instead of duplicating a literal: source hash and checksum changed, while matrix, determinant, level, and prime did not. |
 | v1.2.0 formal-coordinate matrix and valuation input | `v1.2.0-abel-jacobi-differential-closed-valuation-input` / `ed74e3b` | [10.5281/zenodo.22286222](https://doi.org/10.5281/zenodo.22286222) | A finite model in coordinates `s₁=q₁+q₂`, `s₂=-q₁q₂` derives `[[1,1],[0,2]]`; it does **not** construct or identify an actual Picard/Abel--Jacobi cotangent map. Odd-prime input proves `vₚ(c₄)=0` and `vₚ(Δ)>0` without `frey_conductor_data`. The `[propext, Classical.choice, Quot.sound]` footprint is representational. Both geometric compatibility and Tate/Kodaira conductor classification remain explicit. Archive SHA-256 `9ea2b4f7d95460315736fb9f926678d57b39af5b682b168849173ea6cbd891fa`. |
 | v1.2.1 corrected formal-coordinate boundary | `v1.2.1-formal-coordinate-boundary-corrected` / `05b8159` | [10.5281/zenodo.22286630](https://doi.org/10.5281/zenodo.22286630) | Corrective immutable release: the finite model remains, but `PicardAbelJacobiIdentification_26` is premise-bearing and no theorem identifies it with an actual geometric cotangent map. Archive SHA-256 `001d43aa7d02a93ab75122c58c8bf99e9e1395957a4e6657ce32e75b53b5e9e5`. |
+| v1.3.0 J0(26) decomposition and M3 certificates | `v1.3.0` | Zenodo version DOI minted by this git tag | SageMath 10.7 certificates for `J₀(26)` dim 2 = `26a × 26b` and rank-2 `M₃=[[1,1],[0,2]]` over `𝐅₃`. Lean 4.12 proves Weierstrass `c₄,c₆,Δ` for the two Cremona models and ledger agreement. Not a Jacobian, Mordell--Weil, or formal-immersion theorem. Ledger SHA-256 `9671052435714618d8106b25ed3f04fd7b87d5332ebccf76f949f768276c6875`. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
@@ -131,12 +138,15 @@ The detailed milestones, acceptance gates, and dependency order are in
 ```text
 .
 ├── .github/workflows/main.yml   # reproducible Lean and scaffold checks
+├── DOCKERFILE                   # Elan + Lean 4.12.0 + Mathlib verification image
 ├── docs/                        # design notes and evidence maps
-├── lean/                        # minimal Lean entrypoint
+├── lean/                        # Lean entrypoints (computable, scaffold, real, Beal.Foundations)
+├── sagemath/                    # coefficient ledger and SageMath certificates
+│   └── certs/                   # v1.3.0 J₀(26) and M₃ JSON archives
 ├── scripts/                     # deterministic repository checks
 ├── PLAN.md                      # v1–v4 unconditionalization plan
 ├── lakefile.lean                # Lean package definition
-└── lean-toolchain               # pinned Lean version
+└── lean-toolchain               # pinned Lean 4.12.0
 ```
 
 The initial Lean entrypoint intentionally contains no `sorry`, `admit`, or
@@ -150,6 +160,8 @@ The workflow runs on pushes and pull requests:
 ```sh
 lake exe cache get
 lake build BealLevel26Foundations
+lake build BealLevel26FoundationsScaffold
+lake build BealLevel26FoundationsReal
 bash scripts/verify-scaffold.sh
 ```
 
@@ -157,6 +169,15 @@ The corrected v1.0.1-computable release uses Lean 4.12.0 to match the parent Bea
 workflow caches the pinned toolchain and Mathlib artifacts; it does not copy
 the parent repository's `.lake` directory or silently import its theorem
 boundaries.
+
+A containerized replay of the same three Lake targets is in `DOCKERFILE`.
+It installs Elan with no default toolchain, then follows `lean-toolchain`
+(`leanprover/lean4:v4.12.0`) and Mathlib `v4.12.0`. Build with:
+
+```sh
+docker build -f DOCKERFILE -t beal-level-26-foundations .
+docker run --rm beal-level-26-foundations
+```
 
 ## Relationship to `beal-conjecture`
 

@@ -23,9 +23,21 @@ test -f lean/BealLevel26Foundations/Mazur/QExpansionCotangent_Real_26.lean
 test -f CITATION.cff
 test -f LICENSE
 test -f docs/releases/v1.0.1-computable.md
+test -f docs/releases/v1.3.0.md
 test -f sagemath/level_26_ledger.json
+test -f sagemath/foundations_doi_manifest.json
+test -f sagemath/certs/j0_26_decomposition.json
+test -f sagemath/certs/formal_immersion_M3.json
+test -f sagemath/j0_26_decomp_foundation.sage
+test -f sagemath/j0_26_decomp_foundations.sage
+test -f sagemath/formal_immersion_M3.sage
+test -f lean/Beal/Foundations.lean
+test -f lean/Beal.lean
+test -f lean/Beal/Foundations/J0DecompositionCertificate.lean
+test -f lean/Beal/Foundations/FormalImmersionM3Certificate.lean
 
 grep -q "v1.0.1" README.md
+grep -q "v1.3.0" README.md
 grep -q "v2.0.0" README.md
 grep -q "v3.0.0" README.md
 grep -q "v4.0.0" README.md
@@ -59,8 +71,14 @@ grep -q "theorem det_ledgerM3_ne_zero" \
   lean/BealLevel26Foundations/M3_Explicit.lean
 grep -q "theorem finite_checks_at_2_and_13" \
   lean/BealLevel26Foundations/FiniteChecks_26.lean
+grep -q "theorem certifiedJ0Dimension26_eq_two" \
+  lean/Beal/Foundations/J0DecompositionCertificate.lean
+grep -q "theorem certifiedM3_eq_ledgerM3" \
+  lean/Beal/Foundations/FormalImmersionM3Certificate.lean
+grep -q "theorem certifiedM3_det_nonzero" \
+  lean/Beal/Foundations/FormalImmersionM3Certificate.lean
 
-grep -q 'roots := #\[`BealLevel26Foundations\]' lakefile.lean
+grep -q 'roots := #\[`BealLevel26Foundations, `Beal\]' lakefile.lean
 grep -q 'roots := #\[`BealLevel26Foundations.Scaffold\]' lakefile.lean
 grep -q 'roots := #\[`BealLevel26Foundations.Real\]' lakefile.lean
 
@@ -85,6 +103,7 @@ if grep -q "theorem picardAbelJacobiIdentification_26" \
 fi
 
 python3 scripts/verify_coefficient_ledger.py
+python3 scripts/verify_v1_3_0_certs.py
 python3 scripts/replay_level26_hensel.py
 
 echo "OK: Beal Level-26 Foundations computable release is internally consistent"

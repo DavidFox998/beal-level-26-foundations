@@ -53,8 +53,12 @@ boundaries. v4 composes the resulting constructive chain.
 **Current status:** the coefficient matrix, basis change, derived `M₃`,
 determinant, typed ledger, cardinalities, and all eighty finite checks are
 complete. A standard-library producer separately replays all 160 strong-Hensel
-witnesses at `2` and `13`. The cohomological Selmer, Sha, Mordell--Weil, and
-Abel--Jacobi interpretation layers remain explicit later milestones.
+witnesses at `2` and `13`. v1.3.0 adds SageMath 10.7 certificates for the
+`J₀(26) = 26a × 26b` decomposition and rank-2 `M₃`, promoted into
+`Beal.Foundations` without claiming a scheme-theoretic Jacobian, a
+Mordell--Weil theorem, or a geometric formal immersion. The cohomological
+Selmer, Sha, Mordell--Weil, and Abel--Jacobi interpretation layers remain
+explicit later milestones.
 
 ### v2.0.0 — Frey discriminant theorem
 

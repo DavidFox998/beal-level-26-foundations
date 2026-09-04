@@ -1,8 +1,25 @@
+# Development/verification image for Beal Level-26 Foundations.
+# The toolchain is pinned by lean-toolchain (leanprover/lean4:v4.12.0),
+# matching the parent beal-conjecture project. Do not hardcode a newer Lean.
 FROM ubuntu:22.04
-RUN apt-get update && apt-get install -y curl git unzip
-RUN curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
-ENV PATH="/root/.elan/bin:/root/.cargo/bin:/root/.elan/toolchains/leanprover--lean4---v4.20.0/bin:${PATH}"
-WORKDIR /app
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    ELAN_HOME=/root/.elan \
+    PATH=/root/.elan/bin:${PATH}
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      ca-certificates curl git python3 \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+      | sh -s -- -y --default-toolchain none
+
+WORKDIR /src
 COPY . .
-RUN /root/.elan/bin/lake exe cache get || true
-RUN /root/.elan/bin/lake build
+
+RUN lake exe cache get \
+ && lake build BealLevel26Foundations \
+ && lake build BealLevel26FoundationsScaffold \
+ && lake build BealLevel26FoundationsReal
+
+CMD ["bash", "scripts/verify-scaffold.sh"]

@@ -9,7 +9,7 @@ require mathlib from git
 
 lean_lib BealLevel26Foundations where
   srcDir := "lean"
-  roots := #[`BealLevel26Foundations]
+  roots := #[`BealLevel26Foundations, `Beal]
 
 lean_lib BealLevel26FoundationsScaffold where
   srcDir := "lean"

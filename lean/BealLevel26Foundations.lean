@@ -1,6 +1,7 @@
 import BealLevel26Foundations.CoefficientLedger_26
 import BealLevel26Foundations.M3_Explicit
 import BealLevel26Foundations.FiniteChecks_26
+import Beal.Foundations
 
 namespace BealLevel26Foundations
 
@@ -14,10 +15,10 @@ placeholder proof.
 -/
 
 def release : String :=
-  "v1.0.1-computable"
+  "v1.3.0"
 
 theorem release_is_computable :
-    release = "v1.0.1-computable" := by
+    release = "v1.3.0" := by
   rfl
 
 end BealLevel26Foundations
