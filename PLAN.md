@@ -139,10 +139,19 @@ already-decided `s₁,s₂` / `a₂` data. v4.0.3-formal-immersion adds
 `Jacobian/FormalImmersionActual_26`: q-expansion `M₃` is injective
 (`det = 2 ≠ 0`) and inhabits `FormalImmersionAtTwo26.of_qExpansion`.
 That replaces the formal-immersion *input* premise by finite cotangent
-injectivity. It does not construct a Mathlib Jacobian, prove
+injectivity. v4.0.4-x026-rational-points adds
+`Mazur/X026RationalPointsActual_26`: displayed four cusps
+`[1, 2, 13, 26]` (`= divisors26`, length `4 = cuspCount26`) plus
+already-decided `a₂` / `MwrankCertificateSoundness_26` /
+`FormalImmersionAtTwo26.of_qExpansion`.
+`X0_26_RationalPoints26.of_qExpansion` is a finite package that can
+replace the `X0_26_RationalPoints26` premise;
+`ofRankZeroAndImmersion` returns that package and does not read
+geometric rank. It does not construct a Mathlib Jacobian, prove
 Mordell--Weil rank, identify the audit with `Sel₂(J₀(26)/ℚ)`, prove a
-scheme-theoretic formal immersion, identify `X₀(26)(ℚ)` with four
-cusps by `decide`, or claim an unconditional `BealTheorem`. The
+scheme-theoretic formal immersion, inhabit `J0_26_Q_RankZero26` as
+`True`/`trivial`, inhabit `NoFreyPoint26`, prove a Mathlib
+`X₀(26)(ℚ)` theorem, or claim an unconditional `BealTheorem`. The
 PLAN.md acceptance gates above remain open.
 
 **Dependency:** v1, v2, v3, and genuine scheme/Jacobian geometry.

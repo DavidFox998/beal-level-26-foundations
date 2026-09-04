@@ -9,6 +9,7 @@ import BealLevel26Foundations.Jacobian.J0_26_DecompActual
 import BealLevel26Foundations.Jacobian.PicardAbelJacobiIdentification_26
 import BealLevel26Foundations.Jacobian.TwoSelmer_vs_SUnits_26
 import BealLevel26Foundations.Jacobian.FormalImmersionActual_26
+import BealLevel26Foundations.Mazur.X026RationalPointsActual_26
 
 namespace BealLevel26Foundations.Real
 
@@ -27,7 +28,9 @@ inhabits `FormalImmersionAtTwo26` by q-expansion cotangent injectivity.
 It does not claim a Mathlib Jacobian, Ribet transport, Tate/Kodaira
 conductor classification, modular-curve Riemann--Hurwitz, a discharged
 Picard/Abel--Jacobi comparison, a genuine 2-Selmer identification, a
-scheme-theoretic formal immersion, or `X₀(26)(ℚ) = four cusps`.
+scheme-theoretic formal immersion, or a Mathlib `X₀(26)(ℚ)` theorem.
+v4.0.4 inhabits `X0_26_RationalPoints26` by the displayed four-cusp
+finite package; `NoFreyPoint26` remains supplied.
 -/
 
 end BealLevel26Foundations.Real

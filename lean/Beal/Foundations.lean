@@ -8,6 +8,7 @@ import BealLevel26Foundations.Jacobian.J0_26_DecompActual
 import BealLevel26Foundations.Jacobian.PicardAbelJacobiIdentification_26
 import BealLevel26Foundations.Jacobian.TwoSelmer_vs_SUnits_26
 import BealLevel26Foundations.Jacobian.FormalImmersionActual_26
+import BealLevel26Foundations.Mazur.X026RationalPointsActual_26
 
 namespace Beal.Foundations
 
@@ -22,11 +23,12 @@ Ribet theorem. The Mazur endgame scaffold concludes `BealTheorem` only
 from four named structures plus v2 Frey and v3 lowering. The v4.0.2
 S-unit audit retains all eight indices and is not genuine 2-Selmer.
 v4.0.3 inhabits `FormalImmersionAtTwo26` from q-expansion cotangent
-injectivity; that is not a scheme-theoretic immersion.
+injectivity; that is not a scheme-theoretic immersion. v4.0.4 inhabits
+`X0_26_RationalPoints26` from the displayed four-cusp package; that is
+not a Mathlib `X₀(26)(ℚ)` theorem. `NoFreyPoint26` remains supplied.
 No domain axiom is introduced. Geometric Jacobian, genuine
-cohomological Selmer, Picard, Tate, Ribet existence,
-`X₀(26)(ℚ) = four cusps`, and an unconditional `BealTheorem` remain
-named later milestones.
+cohomological Selmer, Picard, Tate, Ribet existence, and an
+unconditional `BealTheorem` remain named later milestones.
 -/
 
 def release : String :=

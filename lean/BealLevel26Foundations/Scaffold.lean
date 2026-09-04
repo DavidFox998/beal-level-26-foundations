@@ -7,6 +7,7 @@ import BealLevel26Foundations.Jacobian.J0_26_DecompActual
 import BealLevel26Foundations.Jacobian.PicardAbelJacobiIdentification_26
 import BealLevel26Foundations.Jacobian.TwoSelmer_vs_SUnits_26
 import BealLevel26Foundations.Jacobian.FormalImmersionActual_26
+import BealLevel26Foundations.Mazur.X026RationalPointsActual_26
 
 namespace BealLevel26Foundations.Scaffold
 
@@ -14,8 +15,9 @@ namespace BealLevel26Foundations.Scaffold
 # Explicit bridge scaffold
 
 This entrypoint gathers the named Frey-conductor, genus,
-Abel--Jacobi/q-expansion, and Mazur-endgame boundaries. It is separate
-from the unconditional computable v1 entrypoint. Every mathematical
+Abel--Jacobi/q-expansion, and Mazur-endgame boundaries, including the
+v4.0.4 displayed four-cusp package. It is separate from the
+unconditional computable v1 entrypoint. Every remaining mathematical
 bridge is supplied as structure data to a theorem; none is installed as
 a global axiom. There is no unconditional `BealTheorem` here.
 -/

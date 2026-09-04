@@ -48,6 +48,7 @@ test -f docs/releases/v4.0.0-mazur.md
 test -f docs/releases/v4.0.1-jacobian-skeleton.md
 test -f docs/releases/v4.0.2-selmer.md
 test -f docs/releases/v4.0.3-formal-immersion.md
+test -f docs/releases/v4.0.4-x026-rational-points.md
 test -f lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
 test -f lean/Beal/Foundations/EndgameScaffold.lean
 test -f lean/BealLevel26Foundations/Jacobian/J0_26_DecompActual.lean
@@ -81,10 +82,15 @@ grep -q "v4.0.0-mazur" README.md
 grep -q "v4.0.1-jacobian-skeleton" README.md
 grep -q "v4.0.2-selmer" README.md
 grep -q "v4.0.3-formal-immersion" README.md
+grep -q "v4.0.4-x026-rational-points" README.md
 grep -q "v4.0.3-formal-immersion" docs/README.md
+grep -q "v4.0.4-x026-rational-points" docs/README.md
 grep -q "v4.0.3-formal-immersion" docs/releases/README.md
+grep -q "v4.0.4-x026-rational-points" docs/releases/README.md
 grep -q "v4.0.3-formal-immersion" lean/README.md
+grep -q "v4.0.4-x026-rational-points" lean/README.md
 grep -q "v4.0.3-formal-immersion" lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "v4.0.4-x026-rational-points" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md
 grep -qi "genuine cohomological 2-Selmer" \
@@ -285,6 +291,42 @@ if grep -nE 'decide' \
     lean/BealLevel26Foundations/Jacobian/FormalImmersionActual_26.lean |
     grep -E 'rationalPointsAreFourCusps|X0_26'; then
   echo "FAIL: X0(26)(Q) must not be decided"
+  exit 1
+fi
+test -f lean/BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean
+grep -q "def displayedCusps26" \
+  lean/BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean
+grep -q "def fourCuspsFromQExpansion" \
+  lean/BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean
+grep -q "theorem fourCuspsFromQExpansion.certified" \
+  lean/BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean
+grep -q "def X0_26_RationalPoints26.of_qExpansion" \
+  lean/BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean
+grep -q "theorem X0_26_RationalPoints26.of_qExpansion_replaces_premise" \
+  lean/BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean
+grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
+  lean/BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean
+grep -q "not a modular-curve" \
+  lean/BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean
+if grep -nE '^[[:space:]]*theorem BealTheorem[[:space:]]' \
+    lean/BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean; then
+  echo "FAIL: unconditional BealTheorem is not allowed"
+  exit 1
+fi
+if grep -nE 'decide' \
+    lean/BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean |
+    grep -E 'rationalPointsAreFourCusps|X0_26'; then
+  echo "FAIL: X0(26)(Q) must not be decided"
+  exit 1
+fi
+if grep -nE 'NoFreyPoint26[[:space:]]*(where|:|=)' \
+    lean/BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean; then
+  echo "FAIL: NoFreyPoint26 must remain supplied"
+  exit 1
+fi
+if grep -nE 'J0_26_Q_RankZero26[[:space:]]*(where|:|=)|rankZero[[:space:]]*:=[[:space:]]*True|⟨[[:space:]]*True[[:space:]]*,[[:space:]]*trivial[[:space:]]*⟩' \
+    lean/BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean; then
+  echo "FAIL: must not inhabit J0_26_Q_RankZero26 as True/trivial"
   exit 1
 fi
 

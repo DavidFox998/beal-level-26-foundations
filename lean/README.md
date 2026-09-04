@@ -1,6 +1,7 @@
 # lean/
 
-Lean 4.12.0 + Mathlib v4.12.0 sources. **Current as of** `v4.0.3-formal-immersion`.
+Lean 4.12.0 + Mathlib v4.12.0 sources. **Current as of**
+`v4.0.4-x026-rational-points` (prior `v4.0.3-formal-immersion`).
 
 Three Lake targets, defined in [`../lakefile.lean`](../lakefile.lean):
 

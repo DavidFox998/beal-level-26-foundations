@@ -1,7 +1,7 @@
 # lean/BealLevel26Foundations/Mazur/
 
 Genus certificates, q-expansion cotangent calculations, and the v4.0.0
-endgame scaffold. **Current as of** `v4.0.3-formal-immersion`.
+endgame scaffold. **Current as of** `v4.0.4-x026-rational-points`.
 
 | File | What it is | What it is not |
 |---|---|---|
@@ -10,13 +10,14 @@ endgame scaffold. **Current as of** `v4.0.3-formal-immersion`.
 | `QExpansionCotangent_Scaffold_26.lean` | Premise-bearing cotangent comparison | Not a Picard map |
 | `QExpansionCotangent_Real_26.lean` | Coefficient matrix and `M₃` from the ledger | Does not define `PicardAbelJacobiIdentification_26` (that lives in [`../Jacobian/`](../Jacobian/README.md)) |
 | `EndgameScaffold.lean` | Four typed premises plus `BealTheoremFromMazurChain26` | Not an unconditional `BealTheorem` |
+| `X026RationalPointsActual_26.lean` | Displayed four cusps `[1,2,13,26]`; `X0_26_RationalPoints26.of_qExpansion` inhabits the Mazur premise | Not a Mathlib `X₀(26)(ℚ)` theorem |
 
-The four premises remain supplied structures:
+The four premises of the scaffold remain:
 
-1. `J0_26_Q_RankZero26`
+1. `J0_26_Q_RankZero26` (still supplied; do not inhabit as `True`/`trivial`)
 2. `FormalImmersionAtTwo26` (v4.0.3 inhabits the input by q-expansion injectivity; not a scheme-theoretic immersion)
-3. `X0_26_RationalPoints26`
-4. `NoFreyPoint26`
+3. `X0_26_RationalPoints26` (v4.0.4 inhabits the finite four-cusp package; not a modular-curve rational-point theorem)
+4. `NoFreyPoint26` (still supplied; Ribet existence)
 
-Rank, actual formal immersion, `X₀(26)(ℚ) = four cusps`, and `R = T`
-are not discharged by `decide`.
+Rank, scheme-theoretic immersion, a Mathlib `X₀(26)(ℚ)` theorem, and
+`R = T` are not discharged by `decide`. The scaffold is not collapsed.

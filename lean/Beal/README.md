@@ -1,7 +1,7 @@
 # lean/Beal/
 
 Parent-facing `Beal.Foundations` namespace. **Current as of**
-`v4.0.3-formal-immersion`.
+`v4.0.4-x026-rational-points`.
 
 [`Foundations.lean`](Foundations.lean) is the entrypoint. Its `release`
 string is still `"v1.4.0"`: that is the **certificate-bridge / ledger**
@@ -10,11 +10,12 @@ version, not the latest Foundations git tag. The ledger SHA is
 
 See [`Foundations/`](Foundations/README.md) for the individual modules
 (J₀(26) Weierstrass bridge, FormalImmersionM3, typed `LevelLowering_26`,
-Mazur endgame re-export). Jacobian skeleton and the S-unit audit live
-under
+Mazur endgame re-export). `Foundations.lean` also imports the Jacobian
+skeleton and S-unit audit from
 [`../BealLevel26Foundations/Jacobian/`](../BealLevel26Foundations/Jacobian/README.md)
-(including v4.0.3 `FormalImmersionActual_26`) and are imported from
-`Foundations.lean`.
+(including v4.0.3 `FormalImmersionActual_26`) and the v4.0.4
+four-cusp package
+[`../BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean`](../BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean).
 
 This directory does not replace
 [`DavidFox998/beal-conjecture`](https://github.com/DavidFox998/beal-conjecture)

@@ -112,8 +112,10 @@ theorem FormalImmersionAtTwo26.input_eq_ledgerM3
   rw [h.input_eq_v1_4_M3, certifiedM3_eq_ledgerM3]
 
 /-- Four displayed cusps, premise-bearing.  The arithmetic count `4` is
-the v1 genus certificate.  Identifying `X₀(26)(ℚ)` with those cusps is
-supplied, not decided. -/
+the v1 genus certificate.  v4.0.4 inhabits this structure from
+q-expansion data (`X0_26_RationalPoints26.of_qExpansion`) as that
+finite four-cusp package.  Mathlib 4.12 has no `X₀(N)(ℚ)` API, so
+this is not a modular-curve rational-point theorem. -/
 structure X0_26_RationalPoints26 where
   displayedCuspCount : Nat
   displayedCuspCount_eq_four : displayedCuspCount = 4

@@ -1,6 +1,6 @@
 # scripts/
 
-Deterministic repository checks. **Current as of** `v4.0.3-formal-immersion`.
+Deterministic repository checks. **Current as of** `v4.0.4-x026-rational-points`.
 
 | Script | What it checks |
 |---|---|
