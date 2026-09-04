@@ -48,11 +48,14 @@ theorem qExpansionM3_eq_certified :
     qExpansionM3 = !![1, 1; 0, 2] :=
   qExpansionM3_eq
 
+theorem det_two_by_two_ring :
+    (1 : ZMod 3) * 2 - 1 * 0 = 2 := by
+  ring
+
 theorem certifiedM3_det_by_ring :
     Matrix.det (!![1, 1; 0, 2] : Matrix (Fin 2) (Fin 2) (ZMod 3)) = 2 := by
   rw [Matrix.det_fin_two]
-  simp
-  ring
+  exact det_two_by_two_ring
 
 theorem qExpansionM3_det_by_ring :
     Matrix.det qExpansionM3 = 2 := by
@@ -68,28 +71,22 @@ theorem qExpansionM3_eq_certifiedM3 :
     qExpansionM3 = certifiedM3 := by
   rw [qExpansionM3_eq, certifiedM3_eq]
 
-theorem certifiedM3_mulVec (v : Fin 2 → ZMod 3) :
-    (!![1, 1; 0, 2] : Matrix (Fin 2) (Fin 2) (ZMod 3)).mulVec v =
-      ![v 0 + v 1, 2 * v 1] := by
-  ext i
-  fin_cases i <;> simp [Matrix.mulVec, Fin.sum_univ_two]
+/-- `M₃` is involutive over `ZMod 3`, so it is its own inverse. -/
+theorem certifiedM3_mul_self :
+    (!![1, 1; 0, 2] : Matrix (Fin 2) (Fin 2) (ZMod 3)) * !![1, 1; 0, 2] =
+      1 := by
+  decide
 
 theorem certifiedM3_cotangent_injective :
     cotangentInjective (!![1, 1; 0, 2]) := by
   intro v hv
-  rw [certifiedM3_mulVec] at hv
-  have hv1 : v 1 = 0 := by
-    have h1 : 2 * v 1 = 0 := by
-      simpa using congrArg (fun w => w 1) hv
-    revert h1
-    fin_cases (v 1) <;> decide
-  have hv0 : v 0 = 0 := by
-    have h0 : v 0 + v 1 = 0 := by
-      simpa using congrArg (fun w => w 0) hv
-    simp [hv1] at h0
-    exact h0
-  ext i
-  fin_cases i <;> simp [hv0, hv1]
+  have h :
+      ((!![1, 1; 0, 2] : Matrix (Fin 2) (Fin 2) (ZMod 3)) * !![1, 1; 0, 2]).mulVec
+          v =
+        (!![1, 1; 0, 2]).mulVec 0 := by
+    rw [Matrix.mulVec_mulVec, hv]
+  rw [certifiedM3_mul_self, Matrix.one_mulVec, Matrix.mulVec_zero] at h
+  exact h
 
 /-- Q-expansion cotangent map is injective over `ZMod 3`. -/
 theorem qExpansionM3_cotangent_injective :
