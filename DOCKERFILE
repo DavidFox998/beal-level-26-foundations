@@ -1,0 +1,8 @@
+FROM ubuntu:22.04
+RUN apt-get update && apt-get install -y curl git unzip
+RUN curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+ENV PATH="/root/.elan/bin:/root/.cargo/bin:/root/.elan/toolchains/leanprover--lean4---v4.20.0/bin:${PATH}"
+WORKDIR /app
+COPY . .
+RUN /root/.elan/bin/lake exe cache get || true
+RUN /root/.elan/bin/lake build
