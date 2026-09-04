@@ -16,8 +16,8 @@ This is the integral Frey model used by
 
 The `c₄`, `c₆`, and `Δ` identities are proved by `ring` from Mathlib 4.12
 Weierstrass algebra.  The module returns the curve data itself.  It does
-not import `frey_conductor_data` or `tate_step2_odd_prime_external`, and
-it does not classify Kodaira types.
+not import the parent conductor-data structure or the Tate step-2
+external premise, and it does not classify Kodaira types.
 -/
 
 /-- The integral Frey model `Y² = X (X - Aˣ) (X + Bʸ)`. -/

@@ -14,11 +14,10 @@ is available unconditionally:
 
 from `p ∤ c₄`, `p ∣ Δ`, and `Δ ≠ 0`, conclude `vₚ(c₄)=0` and `vₚ(Δ)>0`.
 
-It does not import `frey_conductor_data` or
-`tate_step2_odd_prime_external`.  The Tate/Kodaira classification
-implication (type `Iₙ`, local conductor exponent one,
-`N = 2^e * rad(ABC)`) remains an explicit boundary and is not discharged
-by `decide`.
+It does not import the parent conductor-data structure or the Tate
+step-2 external premise.  The Tate/Kodaira classification implication
+(type `Iₙ`, local conductor exponent one, `N = 2^e * rad(ABC)`) remains
+an explicit boundary and is not discharged by `decide`.
 -/
 
 def freyC4Valuation26
