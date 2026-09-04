@@ -47,6 +47,7 @@ test -f docs/releases/v3.0.0-ribet.md
 test -f docs/releases/v4.0.0-mazur.md
 test -f docs/releases/v4.0.1-jacobian-skeleton.md
 test -f docs/releases/v4.0.2-selmer.md
+test -f docs/releases/v4.0.3-formal-immersion.md
 test -f lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
 test -f lean/Beal/Foundations/EndgameScaffold.lean
 test -f lean/BealLevel26Foundations/Jacobian/J0_26_DecompActual.lean
@@ -79,10 +80,11 @@ grep -q "v4.0.0" README.md
 grep -q "v4.0.0-mazur" README.md
 grep -q "v4.0.1-jacobian-skeleton" README.md
 grep -q "v4.0.2-selmer" README.md
-grep -q "v4.0.2-selmer" docs/README.md
-grep -q "v4.0.2-selmer" docs/releases/README.md
-grep -q "v4.0.2-selmer" lean/README.md
-grep -q "v4.0.2-selmer" lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "v4.0.3-formal-immersion" README.md
+grep -q "v4.0.3-formal-immersion" docs/README.md
+grep -q "v4.0.3-formal-immersion" docs/releases/README.md
+grep -q "v4.0.3-formal-immersion" lean/README.md
+grep -q "v4.0.3-formal-immersion" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md
 grep -qi "genuine cohomological 2-Selmer" \
@@ -253,6 +255,36 @@ if grep -nE \
     'theorem[[:space:]]+(genuineCohomological2Selmer|twoSelmerIdentification|SelmerGroup_eq)' \
     lean/BealLevel26Foundations/Jacobian/TwoSelmer_vs_SUnits_26.lean; then
   echo "FAIL: must not identify the S-unit audit with genuine 2-Selmer"
+  exit 1
+fi
+test -f lean/BealLevel26Foundations/Jacobian/FormalImmersionActual_26.lean
+grep -q "def cotangentInjective" \
+  lean/BealLevel26Foundations/Jacobian/FormalImmersionActual_26.lean
+grep -q "theorem qExpansionM3_det_by_ring" \
+  lean/BealLevel26Foundations/Jacobian/FormalImmersionActual_26.lean
+grep -q "theorem qExpansionM3_cotangent_injective" \
+  lean/BealLevel26Foundations/Jacobian/FormalImmersionActual_26.lean
+grep -q "theorem cotangentMap_injective_at_two" \
+  lean/BealLevel26Foundations/Jacobian/FormalImmersionActual_26.lean
+grep -q "theorem cotangentInjective_of_picard" \
+  lean/BealLevel26Foundations/Jacobian/FormalImmersionActual_26.lean
+grep -q "def FormalImmersionAtTwo26.of_qExpansion" \
+  lean/BealLevel26Foundations/Jacobian/FormalImmersionActual_26.lean
+grep -q "theorem FormalImmersionAtTwo26.of_qExpansion_replaces_premise" \
+  lean/BealLevel26Foundations/Jacobian/FormalImmersionActual_26.lean
+grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
+  lean/BealLevel26Foundations/Jacobian/FormalImmersionActual_26.lean
+grep -q "scheme-theoretic" \
+  lean/BealLevel26Foundations/Jacobian/FormalImmersionActual_26.lean
+if grep -nE '^[[:space:]]*theorem BealTheorem[[:space:]]' \
+    lean/BealLevel26Foundations/Jacobian/FormalImmersionActual_26.lean; then
+  echo "FAIL: unconditional BealTheorem is not allowed"
+  exit 1
+fi
+if grep -nE 'decide' \
+    lean/BealLevel26Foundations/Jacobian/FormalImmersionActual_26.lean |
+    grep -E 'rationalPointsAreFourCusps|X0_26'; then
+  echo "FAIL: X0(26)(Q) must not be decided"
   exit 1
 fi
 

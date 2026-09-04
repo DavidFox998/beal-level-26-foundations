@@ -1,7 +1,7 @@
 # lean/BealLevel26Foundations/Ribet/
 
 Typed `LevelLowering_26` certificate data from `v3.0.0-ribet`.
-**Current as of** `v4.0.2-selmer`.
+**Current as of** `v4.0.3-formal-immersion`.
 
 [`LevelLowering_26.lean`](LevelLowering_26.lean) is a **structure**, not
 an opaque `Prop`. It is indexed by residual prime `ℓ`, source/target

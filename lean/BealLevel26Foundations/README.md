@@ -1,6 +1,6 @@
 # lean/BealLevel26Foundations/
 
-Main foundations library. **Current as of** `v4.0.2-selmer`.
+Main foundations library. **Current as of** `v4.0.3-formal-immersion`.
 
 Top-level computable files:
 
@@ -17,7 +17,7 @@ Top-level computable files:
 | Directory | Current contents |
 |---|---|
 | [`Frey/`](Frey/README.md) | Conductor *data* and odd-prime valuation input |
-| [`Jacobian/`](Jacobian/README.md) | v4.0.1 finite product + Picard `Prop`; v4.0.2 S-unit audit |
+| [`Jacobian/`](Jacobian/README.md) | v4.0.1 finite product + Picard `Prop`; v4.0.2 S-unit audit; v4.0.3 formal-immersion input |
 | [`Mazur/`](Mazur/README.md) | Genus certificates and four-premise endgame scaffold |
 | [`Real/`](Real/README.md) | Frey Weierstrass model and re-exported lowering |
 | [`Ribet/`](Ribet/README.md) | Typed `LevelLowering_26` certificate data |

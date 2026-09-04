@@ -1,7 +1,7 @@
 # sagemath/certs/
 
 The only two SageMath 10.7 JSON archives. **No new cert since v1.3.0 /
-v1.4.0.** Current Foundations tag `v4.0.2-selmer` does not add a file
+v1.4.0.** Current Foundations tag `v4.0.3-formal-immersion` does not add a file
 here.
 
 | File | Contents | SHA-256 pinned by `scripts/verify_v1_3_0_certs.py` |

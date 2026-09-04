@@ -1,7 +1,7 @@
 # docs/releases/
 
 Immutable notes for each published Foundations tag. **Current latest
-note:** [`v4.0.2-selmer.md`](v4.0.2-selmer.md).
+note:** [`v4.0.3-formal-immersion.md`](v4.0.3-formal-immersion.md).
 
 A green Lake build is a Lean/Mathlib check. It is not a DOI and it is
 not an unconditional `BealTheorem`.
@@ -17,6 +17,7 @@ not an unconditional `BealTheorem`.
 | [v4.0.0-mazur.md](v4.0.0-mazur.md) | `v4.0.0-mazur` / `aa4e4e6` | [10.5281/zenodo.22311182](https://doi.org/10.5281/zenodo.22311182) |
 | [v4.0.1-jacobian-skeleton.md](v4.0.1-jacobian-skeleton.md) | `v4.0.1-jacobian-skeleton` / `235a0bc` | [10.5281/zenodo.22312844](https://doi.org/10.5281/zenodo.22312844) |
 | [v4.0.2-selmer.md](v4.0.2-selmer.md) | `v4.0.2-selmer` / `c2f829d` | [10.5281/zenodo.22313148](https://doi.org/10.5281/zenodo.22313148) |
+| [v4.0.3-formal-immersion.md](v4.0.3-formal-immersion.md) | `v4.0.3-formal-immersion` | pending version DOI |
 
 Concept DOI for the evolving project:
 [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).

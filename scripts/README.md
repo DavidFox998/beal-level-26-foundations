@@ -1,6 +1,6 @@
 # scripts/
 
-Deterministic repository checks. **Current as of** `v4.0.2-selmer`.
+Deterministic repository checks. **Current as of** `v4.0.3-formal-immersion`.
 
 | Script | What it checks |
 |---|---|

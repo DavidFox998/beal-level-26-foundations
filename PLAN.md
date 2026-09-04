@@ -135,10 +135,14 @@ indices are audited, proved to retain all eight and not to be a
 singleton, and therefore not mislabeled as genuine cohomological
 2-Selmer. `MwrankCertificateSoundness_26` packages Sage
 `certified_mwrank = 0` for `26a` and `26b` with that audit and the
-already-decided `s₁,s₂` / `a₂` data. It does not construct a Mathlib
-Jacobian, prove Mordell--Weil rank, identify the audit with
-`Sel₂(J₀(26)/ℚ)`, prove formal immersion, identify `X₀(26)(ℚ)` with
-four cusps by `decide`, or claim an unconditional `BealTheorem`. The
+already-decided `s₁,s₂` / `a₂` data. v4.0.3-formal-immersion adds
+`Jacobian/FormalImmersionActual_26`: q-expansion `M₃` is injective
+(`det = 2 ≠ 0`) and inhabits `FormalImmersionAtTwo26.of_qExpansion`.
+That replaces the formal-immersion *input* premise by finite cotangent
+injectivity. It does not construct a Mathlib Jacobian, prove
+Mordell--Weil rank, identify the audit with `Sel₂(J₀(26)/ℚ)`, prove a
+scheme-theoretic formal immersion, identify `X₀(26)(ℚ)` with four
+cusps by `decide`, or claim an unconditional `BealTheorem`. The
 PLAN.md acceptance gates above remain open.
 
 **Dependency:** v1, v2, v3, and genuine scheme/Jacobian geometry.

@@ -1,7 +1,7 @@
 # lean/BealLevel26Foundations/Mazur/
 
 Genus certificates, q-expansion cotangent calculations, and the v4.0.0
-endgame scaffold. **Current as of** `v4.0.2-selmer`.
+endgame scaffold. **Current as of** `v4.0.3-formal-immersion`.
 
 | File | What it is | What it is not |
 |---|---|---|
@@ -14,7 +14,7 @@ endgame scaffold. **Current as of** `v4.0.2-selmer`.
 The four premises remain supplied structures:
 
 1. `J0_26_Q_RankZero26`
-2. `FormalImmersionAtTwo26` (carries v1.4 `M₃`; does not prove immersion)
+2. `FormalImmersionAtTwo26` (v4.0.3 inhabits the input by q-expansion injectivity; not a scheme-theoretic immersion)
 3. `X0_26_RationalPoints26`
 4. `NoFreyPoint26`
 

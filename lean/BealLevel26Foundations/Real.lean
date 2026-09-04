@@ -8,6 +8,7 @@ import BealLevel26Foundations.Mazur.QExpansionCotangent_Real_26
 import BealLevel26Foundations.Jacobian.J0_26_DecompActual
 import BealLevel26Foundations.Jacobian.PicardAbelJacobiIdentification_26
 import BealLevel26Foundations.Jacobian.TwoSelmer_vs_SUnits_26
+import BealLevel26Foundations.Jacobian.FormalImmersionActual_26
 
 namespace BealLevel26Foundations.Real
 
@@ -21,10 +22,12 @@ the q-expansion matrix calculation. v3.0.0 adds the typed
 exact-divide relation `M * p = N` with `vₚ(N) = 1`. v4.0.1 adds the Jacobian skeleton: the finite `s₁,s₂` model and certified
 `26a × 26b` distinction, plus the standalone Picard `Prop`. v4.0.2
 audits the eight S-unit indices against genuine cohomological 2-Selmer
-and packages Sage `certified_mwrank = 0` for `26a` and `26b`. It does
-not claim a Mathlib Jacobian, Ribet transport, Tate/Kodaira conductor
-classification, modular-curve Riemann--Hurwitz, a discharged
-Picard/Abel--Jacobi comparison, or a genuine 2-Selmer identification.
+and packages Sage `certified_mwrank = 0` for `26a` and `26b`. v4.0.3
+inhabits `FormalImmersionAtTwo26` by q-expansion cotangent injectivity.
+It does not claim a Mathlib Jacobian, Ribet transport, Tate/Kodaira
+conductor classification, modular-curve Riemann--Hurwitz, a discharged
+Picard/Abel--Jacobi comparison, a genuine 2-Selmer identification, a
+scheme-theoretic formal immersion, or `X₀(26)(ℚ) = four cusps`.
 -/
 
 end BealLevel26Foundations.Real

@@ -84,8 +84,11 @@ structure J0_26_Q_RankZero26 where
   rankZero_witness : rankZero
 
 /-- Formal-immersion-at-2 *input*.  Carries the v1.4 certificate
-`M₃ = [[1, 1], [0, 2]]`, `det = 2`.  The actual geometric immersion
-statement is a supplied field and is not obtained by `decide`. -/
+`M₃ = [[1, 1], [0, 2]]`, `det = 2`.  v4.0.3 constructs an inhabitant
+from q-expansion cotangent injectivity
+(`FormalImmersionAtTwo26.of_qExpansion`).  That inhabitant is finite
+matrix injectivity, not a scheme-theoretic immersion of `X₀(26)` in
+`J₀(26)`.  Identifying `X₀(26)(ℚ)` with four cusps remains supplied. -/
 structure FormalImmersionAtTwo26 where
   input : Matrix (Fin 2) (Fin 2) (ZMod 3)
   input_eq : input = !![1, 1; 0, 2]
