@@ -2,6 +2,21 @@
 set -euo pipefail
 
 test -f README.md
+test -f docs/README.md
+test -f docs/releases/README.md
+test -f lean/README.md
+test -f lean/Beal/README.md
+test -f lean/Beal/Foundations/README.md
+test -f lean/BealLevel26Foundations/README.md
+test -f lean/BealLevel26Foundations/Frey/README.md
+test -f lean/BealLevel26Foundations/Jacobian/README.md
+test -f lean/BealLevel26Foundations/Mazur/README.md
+test -f lean/BealLevel26Foundations/Real/README.md
+test -f lean/BealLevel26Foundations/Ribet/README.md
+test -f sagemath/README.md
+test -f sagemath/certs/README.md
+test -f scripts/README.md
+test -f .github/README.md
 test -f PLAN.md
 test -f lean-toolchain
 test -f lakefile.lean
@@ -64,6 +79,17 @@ grep -q "v4.0.0" README.md
 grep -q "v4.0.0-mazur" README.md
 grep -q "v4.0.1-jacobian-skeleton" README.md
 grep -q "v4.0.2-selmer" README.md
+grep -q "v4.0.2-selmer" docs/README.md
+grep -q "v4.0.2-selmer" docs/releases/README.md
+grep -q "v4.0.2-selmer" lean/README.md
+grep -q "v4.0.2-selmer" lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
+  sagemath/README.md
+grep -qi "genuine cohomological 2-Selmer" \
+  lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "scheme-theoretic" \
+  lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "Jacobian/" README.md
 grep -q "FreyCurveExists" README.md
 grep -q "LevelLowering_26" README.md
 grep -q "v1.0.1-computable" CITATION.cff

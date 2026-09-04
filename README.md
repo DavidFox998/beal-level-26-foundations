@@ -14,6 +14,20 @@ The governing principle is the same as the parent project: a checked
 calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
+**Current public surface:** tag
+[`v4.0.2-selmer`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.2-selmer)
+(commit `c2f829d`, version DOI
+[10.5281/zenodo.22313148](https://doi.org/10.5281/zenodo.22313148)).
+The coefficient ledger is still
+[`sagemath/level_26_ledger.json`](sagemath/level_26_ledger.json) **v1.4.0**,
+SHA-256 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`.
+There is no `axiom`, `sorry`, or `admit`. This is **not** an unconditional
+`BealTheorem`, a Mathlib Jacobian, a genuine cohomological 2-Selmer group,
+or a Mordell--Weil rank theorem.
+
+Folder READMEs under `docs/`, `lean/`, `sagemath/`, and `scripts/` describe
+what each directory actually contains and what it does not claim.
+
 ## Starting point
 
 The companion Beal v11.0.0 assembly compiles
@@ -64,12 +78,14 @@ geometric formal immersion.
 
 ### Explicit bridge scaffold
 
-`BealLevel26Foundations.Scaffold` gathers three premise-bearing structures for
-the mathematics that remains: Frey-conductor data, the geometric
-Riemann--Hurwitz interpretation at level 26, and the Abel--Jacobi/q-expansion
-cotangent comparison. These modules introduce no global axiom and make no
-unconditional endgame claim; their theorems conclude only from supplied
-bridge data.
+`BealLevel26Foundations.Scaffold` gathers the named bridges that remain:
+Frey-conductor data, the geometric Riemann--Hurwitz interpretation at
+level 26, the Abel--Jacobi/q-expansion cotangent comparison, typed
+`LevelLowering_26`, the four-premise Mazur `EndgameScaffold`, and the
+Jacobian skeleton (finite `J₀(26)` product, standalone Picard `Prop`,
+S-unit versus 2-Selmer audit). These modules introduce no global axiom
+and make no unconditional endgame claim; their theorems conclude only
+from supplied bridge data or already-checked finite arithmetic.
 
 ### Real arithmetic extension
 
@@ -83,7 +99,9 @@ cusp chart. v3.0.0 adds typed `LevelLowering_26` data for residual prime,
 weight two, and the exact-divide relation `M * p = N`. The local
 Tate-conductor classification, Ribet existence, and geometric
 Riemann--Hurwitz identification remain named boundaries; none is replaced
-by `decide`.
+by `decide`. v4.0.1--v4.0.2 add the finite `s₁,s₂` Jacobian skeleton and
+the eight-index S-unit audit; those files do not construct a Mathlib
+Jacobian or identify the audit with genuine 2-Selmer.
 
 ## DOI / Citation — versioned audit trail
 
@@ -145,6 +163,11 @@ formal-immersion API, so rank, actual immersion, `X₀(26)(ℚ) = four cusps`,
 and `R = T` remain explicit boundaries. A green scaffold build is not an
 unconditional `BealTheorem`.
 
+v4.0.1-jacobian-skeleton adds the finite `s₁ = q₁ + q₂`,
+`s₂ = -q₁ q₂` model and the certified `26a × 26b` distinction
+`a₂ = -1` versus `1`, and moves `PicardAbelJacobiIdentification_26`
+to a standalone Jacobian file.
+
 v4.0.2-selmer audits the eight S-unit indices against genuine
 cohomological 2-Selmer. The finite audit retains all eight and is not
 a singleton, so it is not mislabeled as a genuine 2-Selmer
@@ -158,21 +181,33 @@ The detailed milestones, acceptance gates, and dependency order are in
 
 ```text
 .
-├── .github/workflows/main.yml   # reproducible Lean and scaffold checks
+├── README.md                    # this file: status, DOI trail, how to build
+├── PLAN.md                      # v1–v4 unconditionalization plan and open gates
+├── CITATION.cff                 # v1.0.1-computable citation record
+├── .github/workflows/main.yml   # lake + verify-scaffold on github.com main
 ├── DOCKERFILE                   # Elan + Lean 4.12.0 + Mathlib verification image
-├── docs/                        # design notes and evidence maps
-├── lean/                        # Lean entrypoints (computable, scaffold, real, Beal.Foundations)
-├── sagemath/                    # coefficient ledger and SageMath certificates
-│   └── certs/                   # v1.3.0 J₀(26) and M₃ JSON archives
-├── scripts/                     # deterministic repository checks
-├── PLAN.md                      # v1–v4 unconditionalization plan
-├── lakefile.lean                # Lean package definition
-└── lean-toolchain               # pinned Lean 4.12.0
+├── docs/                        # versioned release notes (see docs/README.md)
+│   └── releases/
+├── lean/                        # Lean 4.12 sources (see lean/README.md)
+│   ├── Beal/                    # Beal.Foundations certificate re-exports
+│   └── BealLevel26Foundations/  # computable, scaffold, and real modules
+│       ├── Frey/
+│       ├── Jacobian/            # v4.0.1 skeleton + v4.0.2 S-unit audit
+│       ├── Mazur/
+│       ├── Real/
+│       └── Ribet/
+├── sagemath/                    # v1.4.0 ledger + SageMath 10.7 certs
+│   └── certs/                   # j0_26_decomposition.json, formal_immersion_M3.json
+├── scripts/                     # ledger, cert, Hensel, and scaffold checks
+├── lakefile.lean                # three lake targets
+└── lean-toolchain               # pinned leanprover/lean4:v4.12.0
 ```
 
-The initial Lean entrypoint intentionally contains no `sorry`, `admit`, or
-domain axiom. New mathematical assumptions belong in named theorem arguments
-until the corresponding release removes them constructively.
+Each of those directories has a `README.md` stating current contents and
+the interpretation boundary. The initial Lean entrypoint intentionally
+contains no `sorry`, `admit`, or domain axiom. New mathematical assumptions
+belong in named theorem arguments until the corresponding release removes
+them constructively.
 
 ## Verification
 

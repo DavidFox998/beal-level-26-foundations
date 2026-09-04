@@ -1,0 +1,27 @@
+# lean/BealLevel26Foundations/Jacobian/
+
+Finite Jacobian *skeleton* and S-unit audit. **Current as of**
+`v4.0.2-selmer`.
+
+Mathlib 4.12 has no modular-curve Jacobian, Picard scheme, Abel--Jacobi
+map, Galois cohomology, or Mordell--Weil group. Nothing in this folder
+constructs those objects.
+
+Sources are the already-promoted Lean data from
+
+* [`sagemath/level_26_ledger.json`](../../../sagemath/level_26_ledger.json)
+  v1.4.0 SHA-256
+  `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`;
+* [`sagemath/certs/j0_26_decomposition.json`](../../../sagemath/certs/j0_26_decomposition.json);
+* [`sagemath/certs/formal_immersion_M3.json`](../../../sagemath/certs/formal_immersion_M3.json).
+
+No new certificate is added here.
+
+| File | What it proves | What it is not |
+|---|---|---|
+| `J0_26_DecompActual.lean` | Finite model `s₁=q₁+q₂`, `s₂=-q₁q₂`; certified `26a × 26b` via q-expansion `a₂=-1` versus `1`; `M₃=[[1,1],[0,2]]`, `det=2` by `decide` | Not a scheme-theoretic `J₀(26)` isogeny |
+| `PicardAbelJacobiIdentification_26.lean` | Standalone `Prop`: supplied matrix `= qExpansionM3` | Does not discharge the geometric Picard map |
+| `TwoSelmer_vs_SUnits_26.lean` | Eight S-unit indices retained; audit is not a singleton; finite `MwrankCertificateSoundness_26` for Sage `certified_mwrank = 0` on `26a` and `26b` | Not genuine cohomological 2-Selmer; comparison remains future |
+
+The v1.0 README boundary still holds: the finite audit is not
+mislabeled as a genuine 2-Selmer calculation.
