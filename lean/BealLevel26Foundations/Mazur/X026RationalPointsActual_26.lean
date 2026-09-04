@@ -48,6 +48,7 @@ def displayedCusps26 : List Nat :=
 theorem displayedCusps26_eq_divisors :
     displayedCusps26 = divisors26 := by
   rw [divisors26_eq]
+  rfl
 
 theorem displayedCusps26_length :
     displayedCusps26.length = 4 := by
