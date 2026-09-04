@@ -49,6 +49,7 @@ test -f docs/releases/v4.0.1-jacobian-skeleton.md
 test -f docs/releases/v4.0.2-selmer.md
 test -f docs/releases/v4.0.3-formal-immersion.md
 test -f docs/releases/v4.0.4-x026-rational-points.md
+test -f docs/releases/v4.0.5-nofrey-point.md
 test -f lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
 test -f lean/Beal/Foundations/EndgameScaffold.lean
 test -f lean/BealLevel26Foundations/Jacobian/J0_26_DecompActual.lean
@@ -83,14 +84,19 @@ grep -q "v4.0.1-jacobian-skeleton" README.md
 grep -q "v4.0.2-selmer" README.md
 grep -q "v4.0.3-formal-immersion" README.md
 grep -q "v4.0.4-x026-rational-points" README.md
+grep -q "v4.0.5-nofrey-point" README.md
 grep -q "v4.0.3-formal-immersion" docs/README.md
 grep -q "v4.0.4-x026-rational-points" docs/README.md
+grep -q "v4.0.5-nofrey-point" docs/README.md
 grep -q "v4.0.3-formal-immersion" docs/releases/README.md
 grep -q "v4.0.4-x026-rational-points" docs/releases/README.md
+grep -q "v4.0.5-nofrey-point" docs/releases/README.md
 grep -q "v4.0.3-formal-immersion" lean/README.md
 grep -q "v4.0.4-x026-rational-points" lean/README.md
+grep -q "v4.0.5-nofrey-point" lean/README.md
 grep -q "v4.0.3-formal-immersion" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.4-x026-rational-points" lean/BealLevel26Foundations/Mazur/README.md
+grep -q "v4.0.5-nofrey-point" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md
 grep -qi "genuine cohomological 2-Selmer" \
@@ -329,6 +335,41 @@ if grep -nE 'J0_26_Q_RankZero26[[:space:]]*(where|:|=)|rankZero[[:space:]]*:=[[:
   echo "FAIL: must not inhabit J0_26_Q_RankZero26 as True/trivial"
   exit 1
 fi
+test -f lean/BealLevel26Foundations/Ribet/NoFreyPointActual_26.lean
+grep -q "def displayedTargetLevel26" \
+  lean/BealLevel26Foundations/Ribet/NoFreyPointActual_26.lean
+grep -q "def ribetExistenceFromQExpansion" \
+  lean/BealLevel26Foundations/Ribet/NoFreyPointActual_26.lean
+grep -q "theorem ribetExistenceFromQExpansion.certified" \
+  lean/BealLevel26Foundations/Ribet/NoFreyPointActual_26.lean
+grep -q "def NoFreyPoint26.of_qExpansion" \
+  lean/BealLevel26Foundations/Ribet/NoFreyPointActual_26.lean
+grep -q "theorem NoFreyPoint26.of_qExpansion_replaces_premise" \
+  lean/BealLevel26Foundations/Ribet/NoFreyPointActual_26.lean
+grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
+  lean/BealLevel26Foundations/Ribet/NoFreyPointActual_26.lean
+grep -q "Not a Mathlib Ribet" \
+  lean/BealLevel26Foundations/Ribet/NoFreyPointActual_26.lean
+if grep -nE '^[[:space:]]*theorem BealTheorem[[:space:]]' \
+    lean/BealLevel26Foundations/Ribet/NoFreyPointActual_26.lean; then
+  echo "FAIL: unconditional BealTheorem is not allowed"
+  exit 1
+fi
+if grep -nE 'decide' \
+    lean/BealLevel26Foundations/Ribet/NoFreyPointActual_26.lean |
+    grep -E 'rankZero|R[[:space:]]*=[[:space:]]*T|Ribet existence'; then
+  echo "FAIL: rank, R=T, or Ribet existence must not be decided"
+  exit 1
+fi
+if grep -nE 'J0_26_Q_RankZero26[[:space:]]*(where|:|=)|rankZero[[:space:]]*:=[[:space:]]*True|⟨[[:space:]]*True[[:space:]]*,[[:space:]]*trivial[[:space:]]*⟩' \
+    lean/BealLevel26Foundations/Ribet/NoFreyPointActual_26.lean; then
+  echo "FAIL: must not inhabit J0_26_Q_RankZero26 as True/trivial"
+  exit 1
+fi
+grep -q "displayedTargetLevel" \
+  lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
+grep -q "hGeomForbid" \
+  lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
 
 python3 scripts/verify_coefficient_ledger.py
 python3 scripts/verify_v1_3_0_certs.py

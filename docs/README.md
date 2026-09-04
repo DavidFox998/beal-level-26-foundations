@@ -3,10 +3,11 @@
 Versioned release notes for
 [beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations).
 
-**Current as of** tag `v4.0.4-x026-rational-points` (commit `4619a5d`,
-version DOI
-[10.5281/zenodo.22313318](https://doi.org/10.5281/zenodo.22313318)).
-Prior tag
+**Current as of** tag `v4.0.5-nofrey-point` (version DOI pending
+mint after the tag). Prior tags
+[`v4.0.4-x026-rational-points`](releases/v4.0.4-x026-rational-points.md)
+(commit `4619a5d`, version DOI
+[10.5281/zenodo.22313318](https://doi.org/10.5281/zenodo.22313318)) and
 [`v4.0.3-formal-immersion`](releases/v4.0.3-formal-immersion.md)
 (commit `75c533d`, version DOI
 [10.5281/zenodo.22313241](https://doi.org/10.5281/zenodo.22313241)).
@@ -17,7 +18,7 @@ these notes only record what each tag claimed.
 
 | Path | Contents |
 |---|---|
-| [`releases/`](releases/README.md) | One note per tagged Foundations release, from `v1.0.0-computable` through `v4.0.4-x026-rational-points` |
+| [`releases/`](releases/README.md) | One note per tagged Foundations release, from `v1.0.0-computable` through `v4.0.5-nofrey-point` |
 
 The staged plan and open acceptance gates live in [`../PLAN.md`](../PLAN.md).
 The public DOI trail is in [`../README.md`](../README.md).

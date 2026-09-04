@@ -1,7 +1,7 @@
 # lean/Beal/
 
 Parent-facing `Beal.Foundations` namespace. **Current as of**
-`v4.0.4-x026-rational-points`.
+`v4.0.5-nofrey-point`.
 
 [`Foundations.lean`](Foundations.lean) is the entrypoint. Its `release`
 string is still `"v1.4.0"`: that is the **certificate-bridge / ledger**

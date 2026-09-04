@@ -1,6 +1,6 @@
 # scripts/
 
-Deterministic repository checks. **Current as of** `v4.0.4-x026-rational-points`.
+Deterministic repository checks. **Current as of** `v4.0.5-nofrey-point`.
 
 | Script | What it checks |
 |---|---|

@@ -1,8 +1,8 @@
 # lean/BealLevel26Foundations/Jacobian/
 
 Finite Jacobian *skeleton*, S-unit audit, and formal-immersion input.
-**Current as of** `v4.0.4-x026-rational-points`
-(includes `v4.0.3-formal-immersion`).
+**Current as of** `v4.0.5-nofrey-point`
+(includes `v4.0.4-x026-rational-points`, `v4.0.3-formal-immersion`).
 
 Mathlib 4.12 has no modular-curve Jacobian, Picard scheme, Abel--Jacobi
 map, Galois cohomology, or Mordell--Weil group. Nothing in this folder

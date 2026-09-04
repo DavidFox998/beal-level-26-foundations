@@ -10,6 +10,7 @@ import BealLevel26Foundations.Jacobian.PicardAbelJacobiIdentification_26
 import BealLevel26Foundations.Jacobian.TwoSelmer_vs_SUnits_26
 import BealLevel26Foundations.Jacobian.FormalImmersionActual_26
 import BealLevel26Foundations.Mazur.X026RationalPointsActual_26
+import BealLevel26Foundations.Ribet.NoFreyPointActual_26
 
 namespace BealLevel26Foundations.Real
 
@@ -30,7 +31,8 @@ conductor classification, modular-curve Riemann--Hurwitz, a discharged
 Picard/Abel--Jacobi comparison, a genuine 2-Selmer identification, a
 scheme-theoretic formal immersion, or a Mathlib `X₀(26)(ℚ)` theorem.
 v4.0.4 inhabits `X0_26_RationalPoints26` by the displayed four-cusp
-finite package; `NoFreyPoint26` remains supplied.
+finite package. v4.0.5 inhabits `NoFreyPoint26` by the displayed
+Ribet-existence package; `J0_26_Q_RankZero26` remains supplied.
 -/
 
 end BealLevel26Foundations.Real

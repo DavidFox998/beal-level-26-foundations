@@ -147,12 +147,22 @@ already-decided `a₂` / `MwrankCertificateSoundness_26` /
 `X0_26_RationalPoints26.of_qExpansion` is a finite package that can
 replace the `X0_26_RationalPoints26` premise;
 `ofRankZeroAndImmersion` returns that package and does not read
-geometric rank. It does not construct a Mathlib Jacobian, prove
-Mordell--Weil rank, identify the audit with `Sel₂(J₀(26)/ℚ)`, prove a
-scheme-theoretic formal immersion, inhabit `J0_26_Q_RankZero26` as
-`True`/`trivial`, inhabit `NoFreyPoint26`, prove a Mathlib
-`X₀(26)(ℚ)` theorem, or claim an unconditional `BealTheorem`. The
-PLAN.md acceptance gates above remain open.
+geometric rank. v4.0.5-nofrey-point adds
+`Ribet/NoFreyPointActual_26`: displayed target `26` plus
+already-decided `a₂` / `MwrankCertificateSoundness_26` /
+`FormalImmersionAtTwo26.of_qExpansion` /
+`X0_26_RationalPoints26.of_qExpansion`.
+`NoFreyPoint26.of_qExpansion` is a finite package that can replace
+the `NoFreyPoint26` premise; `ofFourCusps` returns that package and
+`ofBealFreyLowering` produces the displayed witness
+`loweredLevel = 26`. The geometric forbid `hGeomForbid` stays
+supplied on `BealTheoremFromMazurChain26`. It does not construct a
+Mathlib Jacobian, prove Mordell--Weil rank, identify the audit with
+`Sel₂(J₀(26)/ℚ)`, prove a scheme-theoretic formal immersion, inhabit
+`J0_26_Q_RankZero26` as `True`/`trivial`, prove a Mathlib Ribet
+theorem, prove a Mathlib `X₀(26)(ℚ)` theorem, or claim an
+unconditional `BealTheorem`. The PLAN.md acceptance gates above
+remain open.
 
 **Dependency:** v1, v2, v3, and genuine scheme/Jacobian geometry.
 

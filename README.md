@@ -1,4 +1,4 @@
-[![v4.0.4-x026-rational-points DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22313318.svg)](https://doi.org/10.5281/zenodo.22313318)
+[![v4.0.5-nofrey-point](https://img.shields.io/badge/tag-v4.0.5--nofrey--point-blue)](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.5-nofrey-point)
 [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 [![CI](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml/badge.svg)](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml)
 
@@ -15,17 +15,17 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
-[`v4.0.4-x026-rational-points`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.4-x026-rational-points)
-(commit `4619a5d`, version DOI
-[10.5281/zenodo.22313318](https://doi.org/10.5281/zenodo.22313318)).
+[`v4.0.5-nofrey-point`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.5-nofrey-point)
+(version DOI pending mint after the tag).
 The coefficient ledger is still
 [`sagemath/level_26_ledger.json`](sagemath/level_26_ledger.json) **v1.4.0**,
 SHA-256 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`.
 There is no `axiom`, `sorry`, or `admit`. This is **not** an unconditional
 `BealTheorem`, a Mathlib Jacobian, a genuine cohomological 2-Selmer group,
-a Mordell--Weil rank theorem, a scheme-theoretic formal immersion, or a
-Mathlib `X₀(26)(ℚ)` theorem. The displayed four-cusp package can replace
-the `X0_26_RationalPoints26` premise; `NoFreyPoint26` stays supplied.
+a Mordell--Weil rank theorem, a scheme-theoretic formal immersion, a
+Mathlib `X₀(26)(ℚ)` theorem, or a Mathlib Ribet theorem. The displayed
+Ribet-existence package can replace the `NoFreyPoint26` premise;
+`J0_26_Q_RankZero26` and `hGeomForbid` stay supplied.
 
 Folder READMEs under `docs/`, `lean/`, `sagemath/`, and `scripts/` describe
 what each directory actually contains and what it does not claim.
@@ -122,7 +122,8 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.0.1-jacobian-skeleton finite J0 product and Picard Prop | `v4.0.1-jacobian-skeleton` / `235a0bc` | [10.5281/zenodo.22312844](https://doi.org/10.5281/zenodo.22312844) | `Jacobian/J0_26_DecompActual` loads the v1.4.0 ledger and certs, defines `s₁=q₁+q₂`, `s₂=-q₁q₂`, and proves the certified `26a × 26b` distinction `a₂=-1` versus `1` plus `M₃=[[1,1],[0,2]]`, `det=2` by `decide`. `PicardAbelJacobiIdentification_26` is a standalone `Prop`. Not a Mathlib Jacobian. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `4a47641e072e945ce02f1b9fef273b52e63d0ff70f3bdadfdf87f5449df7d87d`. |
 | v4.0.2-selmer S-unit audit versus genuine 2-Selmer | `v4.0.2-selmer` / `c2f829d` | [10.5281/zenodo.22313148](https://doi.org/10.5281/zenodo.22313148) | `Jacobian/TwoSelmer_vs_SUnits_26` audits the eight S-unit indices from the v1.4.0 decomposition cert, proves the finite audit retains all eight and is not a singleton, and therefore is not genuine cohomological 2-Selmer. `MwrankCertificateSoundness_26` packages Sage `certified_mwrank = 0` for `26a` and `26b` with the `s₁,s₂` model and `a₂ = -1` versus `1`. Not a Mathlib Jacobian or MW theorem. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `c7585189484c0cdaed1d6739dabf17b83d424efae5b44382c7085ed69fe9f6b6`. |
 | v4.0.3-formal-immersion q-expansion cotangent injectivity | `v4.0.3-formal-immersion` / `75c533d` | [10.5281/zenodo.22313241](https://doi.org/10.5281/zenodo.22313241) | `Jacobian/FormalImmersionActual_26` proves `M₃` injective (`det = 2 ≠ 0`) and inhabits `FormalImmersionAtTwo26.of_qExpansion` from q-expansion data and `PicardAbelJacobiIdentification_26`. Not a scheme-theoretic formal immersion. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `8fb5e22ba5a72604b025b1a8bf8af3f5e745f4186afdf54ede49640e13148ad8`. |
-| v4.0.4-x026-rational-points displayed four cusps | `v4.0.4-x026-rational-points` / `4619a5d` | [10.5281/zenodo.22313318](https://doi.org/10.5281/zenodo.22313318) | `Mazur/X026RationalPointsActual_26` inhabits `X0_26_RationalPoints26.of_qExpansion` from displayed cusps `[1,2,13,26]`, already-decided `a₂` / `MwrankCertificateSoundness_26` / `FormalImmersionAtTwo26.of_qExpansion`. Not a Mathlib `X₀(26)(ℚ)` theorem. `NoFreyPoint26` stays supplied. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `d9449a352f4b1e580330a076f89256e754194433c8c00eefa5784517f14f5e04`. |
+| v4.0.4-x026-rational-points displayed four cusps | `v4.0.4-x026-rational-points` / `4619a5d` | [10.5281/zenodo.22313318](https://doi.org/10.5281/zenodo.22313318) | `Mazur/X026RationalPointsActual_26` inhabits `X0_26_RationalPoints26.of_qExpansion` from displayed cusps `[1,2,13,26]`, already-decided `a₂` / `MwrankCertificateSoundness_26` / `FormalImmersionAtTwo26.of_qExpansion`. Not a Mathlib `X₀(26)(ℚ)` theorem. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `d9449a352f4b1e580330a076f89256e754194433c8c00eefa5784517f14f5e04`. |
+| v4.0.5-nofrey-point displayed Ribet existence | `v4.0.5-nofrey-point` | pending mint | `Ribet/NoFreyPointActual_26` inhabits `NoFreyPoint26.of_qExpansion` from displayed target `26` plus the v4.0.1–v4.0.4 q-expansion chain. Not a Mathlib Ribet theorem. `J0_26_Q_RankZero26` and `hGeomForbid` stay supplied. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
@@ -188,8 +189,17 @@ v4.0.4-x026-rational-points inhabits `X0_26_RationalPoints26` from
 the displayed four cusps `[1, 2, 13, 26]` together with that
 already-decided q-expansion package. `ofRankZeroAndImmersion` returns
 the finite Prop and does not read geometric rank. It is not a Mathlib
-`X₀(26)(ℚ)` theorem. `NoFreyPoint26` (Ribet existence) stays supplied,
-and the scaffold is not collapsed.
+`X₀(26)(ℚ)` theorem.
+
+v4.0.5-nofrey-point inhabits `NoFreyPoint26` from the displayed
+lowering target `26` together with the v4.0.1 (`235a0bc`) → v4.0.2
+(`c2f829d` / [10.5281/zenodo.22313148](https://doi.org/10.5281/zenodo.22313148))
+→ v4.0.3 (`75c533d` / [10.5281/zenodo.22313241](https://doi.org/10.5281/zenodo.22313241))
+→ v4.0.4 (`4619a5d` / [10.5281/zenodo.22313318](https://doi.org/10.5281/zenodo.22313318))
+q-expansion chain. `ofBealFreyLowering` produces the displayed
+witness `loweredLevel = 26`. It is not a Mathlib Ribet theorem.
+`J0_26_Q_RankZero26` and `hGeomForbid` stay supplied, and the
+scaffold is not collapsed.
 
 The detailed milestones, acceptance gates, and dependency order are in
 [`PLAN.md`](PLAN.md).
@@ -212,7 +222,7 @@ The detailed milestones, acceptance gates, and dependency order are in
 │       ├── Jacobian/            # v4.0.1–v4.0.3 skeleton, Selmer audit, immersion input
 │       ├── Mazur/               # genus arithmetic, endgame scaffold, v4.0.4 four-cusp package
 │       ├── Real/
-│       └── Ribet/
+│       └── Ribet/               # typed lowering + v4.0.5 Ribet-existence package
 ├── sagemath/                    # v1.4.0 ledger + SageMath 10.7 certs
 │   └── certs/                   # j0_26_decomposition.json, formal_immersion_M3.json
 ├── scripts/                     # ledger, cert, Hensel, and scaffold checks
@@ -273,6 +283,10 @@ singleton, and it does not claim an unconditional proof of the endgame.
 
 ## Citation
 
+For the displayed Ribet-existence package,
+cite tag
+[`v4.0.5-nofrey-point`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.5-nofrey-point)
+(version DOI pending mint).
 For the displayed four-cusp package,
 cite version DOI
 [`10.5281/zenodo.22313318`](https://doi.org/10.5281/zenodo.22313318).

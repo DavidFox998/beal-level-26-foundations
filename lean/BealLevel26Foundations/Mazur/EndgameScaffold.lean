@@ -149,19 +149,31 @@ structure Level26FreyPointWitness where
 def ExistsNoncuspidalLevel26FreyPoint : Prop :=
   Nonempty Level26FreyPointWitness
 
-/-- `X₀(26)(ℚ) = 4` cusps implies there is no level-26 Frey point.
-The converse production of such a point from a Beal equation, the v2
-Frey model, and a v3 lowering certificate is also supplied data. -/
+/-- Displayed level-26 Frey/Ribet *existence input*.  v4.0.5 inhabits
+this structure from q-expansion data
+(`NoFreyPoint26.of_qExpansion`) as that finite package.
+Mathlib 4.12 has no Ribet existence theorem.  The geometric
+implication "four cusps forbid a noncuspidal Frey point" remains
+the supplied argument `hGeomForbid` of
+`BealTheoremFromMazurChain26`. -/
 structure NoFreyPoint26 where
+  displayedTargetLevel : Nat
+  displayedTargetLevel_eq_26 : displayedTargetLevel = 26
+  noNoncuspidalFrey : Prop
   ofFourCusps :
     ∀ (hPts : X0_26_RationalPoints26),
       hPts.rationalPointsAreFourCusps →
-        ¬ ExistsNoncuspidalLevel26FreyPoint
+        noNoncuspidalFrey
   ofBealFreyLowering :
     ∀ (cex : BealCounterexample26) {ℓ N p : Nat},
       LevelLowering_26 ℓ N p 26 →
         (freyCurve (cex.A : Int) (cex.B : Int) cex.x cex.y).Δ ≠ 0 →
           ExistsNoncuspidalLevel26FreyPoint
+
+theorem NoFreyPoint26.displayed_26
+    (h : NoFreyPoint26) :
+    h.displayedTargetLevel = 26 :=
+  h.displayedTargetLevel_eq_26
 
 theorem bealCounterexample_freyDiscriminant_ne_zero
     (cex : BealCounterexample26) :
@@ -183,16 +195,21 @@ theorem bealCounterexample_freyDiscriminant_ne_zero
 
 /-- Conditional Mazur-chain conclusion.
 
-Every argument is a supplied structure or a v2/v3 construction.
-This theorem does not decide rank, does not decide
-`X₀(26)(ℚ) = four cusps`, and does not prove `R = T`. -/
+Every argument is a supplied structure, a v2/v3 construction, or the
+named geometric forbid `hGeomForbid`.  This theorem does not decide
+rank, does not decide `X₀(26)(ℚ) = four cusps`, does not prove
+Ribet existence, and does not prove `R = T`. -/
 theorem BealTheoremFromMazurChain26
     {ℓ N p : Nat}
     (hRank : J0_26_Q_RankZero26)
     (hImm : FormalImmersionAtTwo26)
     (hCusps : X0_26_RationalPoints26)
     (hNoFrey : NoFreyPoint26)
-    (hLower : LevelLowering_26 ℓ N p 26) :
+    (hLower : LevelLowering_26 ℓ N p 26)
+    (hGeomForbid :
+      hCusps.rationalPointsAreFourCusps →
+        ExistsNoncuspidalLevel26FreyPoint →
+          False) :
     BealTheorem := by
   intro A B C x y z hSol
   let cex := ofSolution A B C x y z hSol
@@ -207,6 +224,12 @@ theorem BealTheoremFromMazurChain26
   have hCuspId :
       hCusps.rationalPointsAreFourCusps :=
     hCusps.fourCusps_of_rank_and_immersion hRank hImm
+  have hPkg :
+      hNoFrey.noNoncuspidalFrey :=
+    hNoFrey.ofFourCusps hCusps hCuspId
+  have hEx :
+      ExistsNoncuspidalLevel26FreyPoint :=
+    hNoFrey.ofBealFreyLowering cex hLower hΔ
   have hPin :
       hImm.input = !![1, 1; 0, 2] ∧
         Matrix.det hImm.input = 2 ∧
@@ -214,12 +237,14 @@ theorem BealTheoremFromMazurChain26
         hLower.targetLevel = 26 ∧
         hLower.weight = 2 ∧
         hCusps.displayedCuspCount = 4 ∧
+        hNoFrey.displayedTargetLevel = 26 ∧
+        hNoFrey.noNoncuspidalFrey ∧
         model.Δ ≠ 0 :=
     ⟨hImm.input_eq, hImm.input_det, hImm.input_eq_v1_4_M3, rfl,
-      hLower.weight_eq_two, hCusps.displayed_four, hΔmodel⟩
+      hLower.weight_eq_two, hCusps.displayed_four,
+      hNoFrey.displayed_26, hPkg, hΔmodel⟩
   let _displayed := hPin
-  exact hNoFrey.ofFourCusps hCusps hCuspId
-    (hNoFrey.ofBealFreyLowering cex hLower hΔ)
+  exact hGeomForbid hCuspId hEx
 
 #print axioms FormalImmersionAtTwo26.input_certificate
 #print axioms FormalImmersionAtTwo26.input_eq_v1_4_M3
