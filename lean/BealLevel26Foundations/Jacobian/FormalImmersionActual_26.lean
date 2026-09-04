@@ -54,8 +54,7 @@ theorem det_two_by_two_ring :
 
 theorem certifiedM3_det_by_ring :
     Matrix.det (!![1, 1; 0, 2] : Matrix (Fin 2) (Fin 2) (ZMod 3)) = 2 := by
-  rw [Matrix.det_fin_two]
-  simpa using det_two_by_two_ring
+  decide
 
 theorem qExpansionM3_det_by_ring :
     Matrix.det qExpansionM3 = 2 := by
@@ -80,12 +79,12 @@ theorem certifiedM3_mul_self :
 theorem certifiedM3_cotangent_injective :
     cotangentInjective (!![1, 1; 0, 2]) := by
   intro v hv
-  have h :
-      (!![1, 1; 0, 2] : Matrix (Fin 2) (Fin 2) (ZMod 3)).mulVec
-          ((!![1, 1; 0, 2]).mulVec v) =
-        ((!![1, 1; 0, 2] * !![1, 1; 0, 2]).mulVec v) :=
-    Matrix.mulVec_mulVec v _ _
-  rw [hv, Matrix.mulVec_zero, certifiedM3_mul_self, Matrix.one_mulVec] at h
+  let M : Matrix (Fin 2) (Fin 2) (ZMod 3) := !![1, 1; 0, 2]
+  have h : M.mulVec (M.mulVec v) = (M * M).mulVec v :=
+    Matrix.mulVec_mulVec v M M
+  have hM : M * M = (1 : Matrix (Fin 2) (Fin 2) (ZMod 3)) :=
+    certifiedM3_mul_self
+  rw [hv, Matrix.mulVec_zero, hM, Matrix.one_mulVec] at h
   exact h.symm
 
 /-- Q-expansion cotangent map is injective over `ZMod 3`. -/
