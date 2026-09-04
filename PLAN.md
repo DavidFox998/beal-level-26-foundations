@@ -53,15 +53,13 @@ boundaries. v4 composes the resulting constructive chain.
 **Current status:** the coefficient matrix, basis change, derived `M₃`,
 determinant, typed ledger, cardinalities, and all eighty finite checks are
 complete. A standard-library producer separately replays all 160 strong-Hensel
-witnesses at `2` and `13`. v1.3.0 adds SageMath 10.7 certificates for the
-`J₀(26) = 26a × 26b` decomposition and rank-2 `M₃`, promoted into
-`Beal.Foundations.J0_26_Decomp` (q-expansions of `26a1` and `26b1`,
-typed dimension `1+1=2`) and `Beal.Foundations.FormalImmersionM3`
-(`M₃=[[1,1],[0,2]]`, `det=2` over `ZMod 3`) without claiming a
-scheme-theoretic Jacobian, a Mordell--Weil theorem, or a geometric formal
-immersion. The cohomological
-Selmer, Sha, Mordell--Weil, and Abel--Jacobi interpretation layers remain
-explicit later milestones.
+witnesses at `2` and `13`. v1.3.0--v1.4.0 add SageMath 10.7 certificates and
+the Lean 4.12 bridges `J0_26_Decomp` and `FormalImmersionM3`. v2.0.0-frey
+defines the parent integral Frey Weierstrass model and proves `c₄,c₆,Δ` by
+`ring`, plus the odd-prime valuation input `vₚ(c₄)=0`, `vₚ(Δ)>0`. Tate/Kodaira
+classification, Jacobian geometry, Selmer, and Abel--Jacobi remain explicit
+later milestones. It does not yet replace the parent `FreyCurveExists`
+supplier.
 
 ### v2.0.0 — Frey discriminant theorem
 

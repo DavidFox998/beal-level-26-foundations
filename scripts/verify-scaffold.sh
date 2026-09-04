@@ -15,6 +15,8 @@ test -f lean/BealLevel26Foundations/Frey/FreyConductorData_26.lean
 test -f lean/BealLevel26Foundations/Mazur/Genus_26_Scaffold.lean
 test -f lean/BealLevel26Foundations/Mazur/QExpansionCotangent_Scaffold_26.lean
 test -f lean/BealLevel26Foundations/Real.lean
+test -f lean/BealLevel26Foundations/Real/FreyWeierstrass.lean
+test -f lean/BealLevel26Foundations/Real/Conductor_26_Unconditional.lean
 test -f lean/BealLevel26Foundations/Frey/FreyConductorUnconditional_26.lean
 test -f lean/BealLevel26Foundations/Frey/Conductor_26_Unconditional.lean
 test -f lean/BealLevel26Foundations/AbelJacobiDifferential.lean
@@ -25,6 +27,7 @@ test -f LICENSE
 test -f docs/releases/v1.0.1-computable.md
 test -f docs/releases/v1.3.0.md
 test -f docs/releases/v1.4.0.md
+test -f docs/releases/v2.0.0-frey.md
 test -f sagemath/level_26_ledger.json
 test -f sagemath/foundations_doi_manifest.json
 test -f sagemath/certs/j0_26_decomposition.json
@@ -43,6 +46,7 @@ grep -q "v1.0.1" README.md
 grep -q "v1.3.0" README.md
 grep -q "v1.4.0" README.md
 grep -q "v2.0.0" README.md
+grep -q "v2.0.0-frey" README.md
 grep -q "v3.0.0" README.md
 grep -q "v4.0.0" README.md
 grep -q "FreyCurveExists" README.md
@@ -102,13 +106,25 @@ grep -q 'roots := #\[`BealLevel26Foundations.Real\]' lakefile.lean
 
 if grep -RInE \
   'frey_conductor_data|tate_step2_odd_prime_external' \
+  lean/BealLevel26Foundations/Real/FreyWeierstrass.lean \
+  lean/BealLevel26Foundations/Real/Conductor_26_Unconditional.lean \
   lean/BealLevel26Foundations/Frey/FreyConductorUnconditional_26.lean \
   lean/BealLevel26Foundations/Frey/Conductor_26_Unconditional.lean; then
   echo "FAIL: parent conductor axioms leaked into the real arithmetic module"
   exit 1
 fi
 
+grep -q "theorem freyCurve_c4" \
+  lean/BealLevel26Foundations/Real/FreyWeierstrass.lean
+grep -q "theorem freyCurve_c6" \
+  lean/BealLevel26Foundations/Real/FreyWeierstrass.lean
+grep -q "theorem freyCurve_discriminant" \
+  lean/BealLevel26Foundations/Real/FreyWeierstrass.lean
 grep -q "theorem oddPrimeMultiplicativeValuationInput26_values" \
+  lean/BealLevel26Foundations/Frey/Conductor_26_Unconditional.lean
+grep -q "theorem freyDiscriminantValuation26_pos" \
+  lean/BealLevel26Foundations/Frey/Conductor_26_Unconditional.lean
+grep -q "structure TateKodairaBoundary26" \
   lean/BealLevel26Foundations/Frey/Conductor_26_Unconditional.lean
 grep -q "def PicardAbelJacobiIdentification_26" \
   lean/BealLevel26Foundations/Mazur/QExpansionCotangent_Real_26.lean
