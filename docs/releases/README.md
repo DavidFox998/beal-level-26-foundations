@@ -17,7 +17,7 @@ not an unconditional `BealTheorem`.
 | [v4.0.0-mazur.md](v4.0.0-mazur.md) | `v4.0.0-mazur` / `aa4e4e6` | [10.5281/zenodo.22311182](https://doi.org/10.5281/zenodo.22311182) |
 | [v4.0.1-jacobian-skeleton.md](v4.0.1-jacobian-skeleton.md) | `v4.0.1-jacobian-skeleton` / `235a0bc` | [10.5281/zenodo.22312844](https://doi.org/10.5281/zenodo.22312844) |
 | [v4.0.2-selmer.md](v4.0.2-selmer.md) | `v4.0.2-selmer` / `c2f829d` | [10.5281/zenodo.22313148](https://doi.org/10.5281/zenodo.22313148) |
-| [v4.0.3-formal-immersion.md](v4.0.3-formal-immersion.md) | `v4.0.3-formal-immersion` | pending version DOI |
+| [v4.0.3-formal-immersion.md](v4.0.3-formal-immersion.md) | `v4.0.3-formal-immersion` / `75c533d` | [10.5281/zenodo.22313241](https://doi.org/10.5281/zenodo.22313241) |
 
 Concept DOI for the evolving project:
 [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).

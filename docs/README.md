@@ -3,7 +3,8 @@
 Versioned release notes for
 [beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations).
 
-**Current as of** tag `v4.0.3-formal-immersion` (version DOI pending).
+**Current as of** tag `v4.0.3-formal-immersion` (commit `75c533d`, version DOI
+[10.5281/zenodo.22313241](https://doi.org/10.5281/zenodo.22313241)).
 
 This folder is the release-note archive. It is not a second theorem
 statement. The Lean sources and the v1.4.0 ledger remain the evidence;
