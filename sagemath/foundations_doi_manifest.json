@@ -12,6 +12,10 @@
     "sagemath/formal_immersion_M3.sage"
   ],
   "expected": "J0(26) dim 2 = 26a x 26b, M3 rank 2 evidence",
-  "doi": null,
-  "note": "Tag v1.3.0 on the public GitHub archive so Zenodo can mint the version DOI. This file does not invent a DOI."
+  "doi": "10.5281/zenodo.22310313",
+  "concept_doi": "10.5281/zenodo.22272382",
+  "record": "https://zenodo.org/records/22310313",
+  "git_tag": "v1.3.0",
+  "git_commit": "e657d15c17dd2e05b043dd33e105a94be5157128",
+  "archive_sha256": "b748a2bfd30037ad1c1b2aeb8cf26795b2f8ca56f57d3e3f5137cc41ab9690da"
 }
