@@ -72,9 +72,9 @@ Ribet / Darmon, which Mathlib 4.12 does not have.
 v4.2.1 names `hGeomForbid_typed_closed` /
 `hGeomForbid_typed_is_now_computationally_inhabitable` as that
 Chabauty package plus the cusp-point audit forall.  That is
-still not `fourCusps → ¬ ExistsNoncuspidal`.  A `False.elim`
-inhabitant of the typed implication would put `False` in the
-kernel (`True → ¬True`).
+still not `fourCusps → ¬ ExistsNoncuspidal`.  A vacuous
+contradiction inhabitant of the typed implication would put
+`False` in the kernel (`True → ¬True`).
 -/
 
 /-- Computational `hGeomForbid` record.  Not

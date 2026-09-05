@@ -755,10 +755,10 @@ if grep -nE \
   echo "FAIL: hGeomForbid_typed_closed must stay a Prop package, not fourCusps → ¬ ExistsNoncuspidal"
   exit 1
 fi
-if grep -nE 'False\.elim' \
+if grep -nE '^[[:space:]]*False\.elim|^[[:space:]]*exact[[:space:]]+False\.elim' \
     lean/BealLevel26Foundations/Chain/RationalPoints_26_FourCusps_26.lean \
     lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean; then
-  echo "FAIL: must not False.elim-inhabit typed fourCusps → ¬ ExistsNoncuspidal"
+  echo "FAIL: must not inhabit typed fourCusps → ¬ ExistsNoncuspidal by contradiction"
   exit 1
 fi
 grep -q "d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260" \

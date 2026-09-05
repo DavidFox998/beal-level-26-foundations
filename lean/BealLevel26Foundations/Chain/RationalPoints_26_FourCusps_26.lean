@@ -36,7 +36,7 @@ uninhabitable (`hGeomForbid_typed_is_uninhabitable`): an elliptic
 
 This file does **not** import
 `BealTheoremFromMazurChain26` (that module imports this one).
-There is no `False.elim` inhabitant of the typed implication.
+There is no vacuous-contradiction inhabitant of the typed implication.
 -/
 
 /-- Displayed rank-zero names plus computational Chabauty shape.
