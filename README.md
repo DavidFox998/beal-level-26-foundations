@@ -27,8 +27,9 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
-[`v4.10.0-iter-pari-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.10.0-iter-pari-locked)
+[`v4.12.0-iter-verify-plus`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.12.0-iter-verify-plus)
 (prior
+[`v4.10.0-iter-pari-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.10.0-iter-pari-locked),
 [`v4.9.0-iter-no-True-X0`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.9.0-iter-no-True-X0),
 [`v4.8.0-iter-modularity-scaffold`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.8.0-iter-modularity-scaffold),
 [`v4.7.0-iter-typed-no-axioms-closing`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.7.0-iter-typed-no-axioms-closing),
@@ -99,6 +100,19 @@ adds the `M₃` residue-disk *input* and the finite sieve
 conjunction; those are not a scheme `X₀(26)(ℚ)` theorem. Typed `hIdentify`
 stays the elliptic-`j` packing. The remaining
 geometric gate is a Mathlib noncuspidal point of `X₀(26)`.
+
+### v4.12.0 Iter verify plus
+
+`verify-scaffold.sh` now locks the renamed 2-descent figure
+`docs/images/2-descent-level-26-26a1-26b1.webp`, the README
+PARI 2-descent heading, and `certs/pari_x0_26_four_cusps.json`
+keys `26a1` / `26b1` / `SHA` (`|Sel₂|=1` twice, `det M₃=2`,
+fourCusps `[1,2,13,26]`, SHA
+`d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`).
+The Facebook upload name is gone. `X0_26_Q` still has no
+`True`. `hGeomForbid_typed_true` depends on no axioms
+(`hNotIn hInList`). Not `∀ ℕ`. No `False.elim`.
+v4.11.0 `BealExponent13_Contradiction` is still not started.
 
 ### v4.10.0 Iter PARI locked
 
@@ -328,6 +342,7 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.8.0-iter-modularity-scaffold explicit Ribet / X0(26)(Q) layer | `v4.8.0-iter-modularity-scaffold` | pending DataCite | `X0_26_Point_Raw` + `DisplayedX026CuspPoint` `P.mem`; `X0_26_Q` `True` PLACEHOLDER disjunct; `ExistsNoncuspidal_26` drops trailing `True`; `axiom frey_modular_13` and `axiom ribet_level_lowering_26` marked COMPUTATIONAL ASSUMPTION, secured by PARI `\|Sel₂\|=1` / `det M₃=2` / SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. `hGeomForbid_typed_true` still no axioms. Not `∀ ℕ`. Ledger still v1.4.0. |
 | v4.9.0-iter-no-True-X0 displayed four-cusp set | `v4.9.0-iter-no-True-X0` | pending DataCite | `X0_26_Q = {P \| P.label ∈ fourCuspsList}` with no `True`. `ExistsNoncuspidal_26` empty by `P.mem`. Only axioms `frey_modular_13` and `ribet_level_lowering_26`. Certs unchanged. Not `∀ ℕ`. Ledger still v1.4.0. |
 | v4.10.0-iter-pari-locked four-cusp JSON lock | `v4.10.0-iter-pari-locked` | pending DataCite | `certs/pari_x0_26_four_cusps.json` locks `fourCusps` `[1,2,13,26]` and SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. `x0_26_four_cusps_cert` matches. `X0_26_Q` still no `True`. Not `∀ ℕ`. Ledger still v1.4.0. |
+| v4.12.0-iter-verify-plus image + JSON verify locks | `v4.12.0-iter-verify-plus` | pending DataCite | `verify-scaffold.sh` locks `docs/images/2-descent-level-26-26a1-26b1.webp`, README PARI 2-descent figure, and JSON keys `26a1`/`26b1`/`SHA`. Facebook filename gone. `X0_26_Q` still no `True`. Not `∀ ℕ`. Ledger still v1.4.0. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use

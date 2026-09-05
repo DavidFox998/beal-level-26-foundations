@@ -13,3 +13,4 @@ This file records trigger commits that do not change Lean.
 # v4.8.0-iter-modularity-scaffold — X0_26_Point + FreyModularity_13 + RibetLevelLowering_26 axioms
 # v4.9.0-iter-no-True-X0 — X0_26_Q = {P | P.label ∈ fourCuspsList}, no True
 # v4.10.0-iter-pari-locked — certs/pari_x0_26_four_cusps.json locks fourCusps + SHA
+# v4.12.0-iter-verify-plus — verify-scaffold locks 2-descent image + JSON keys 26a1/26b1/SHA

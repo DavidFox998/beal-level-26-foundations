@@ -76,6 +76,8 @@ test -f docs/releases/v4.7.0-iter-typed-no-axioms-closing.md
 test -f docs/releases/v4.8.0-iter-modularity-scaffold.md
 test -f docs/releases/v4.9.0-iter-no-True-X0.md
 test -f docs/releases/v4.10.0-iter-pari-locked.md
+test -f docs/releases/v4.12.0-iter-verify-plus.md
+test -f docs/images/2-descent-level-26-26a1-26b1.webp
 test -f certs/pari_x0_26_four_cusps.json
 test -f docs/NEXT_STEPS.md
 test -f lean/BealLevel26Foundations/Chain/X0_26_Point.lean
@@ -172,6 +174,7 @@ grep -q "v4.7.0-iter-typed-no-axioms-closing" README.md
 grep -q "v4.8.0-iter-modularity-scaffold" README.md
 grep -q "v4.9.0-iter-no-True-X0" README.md
 grep -q "v4.10.0-iter-pari-locked" README.md
+grep -q "v4.12.0-iter-verify-plus" README.md
 grep -q "v4.0.3-formal-immersion" docs/README.md
 grep -q "v4.0.4-x026-rational-points" docs/README.md
 grep -q "v4.0.5-nofrey-point" docs/README.md
@@ -201,6 +204,7 @@ grep -q "v4.7.0-iter-typed-no-axioms-closing" docs/README.md
 grep -q "v4.8.0-iter-modularity-scaffold" docs/README.md
 grep -q "v4.9.0-iter-no-True-X0" docs/README.md
 grep -q "v4.10.0-iter-pari-locked" docs/README.md
+grep -q "v4.12.0-iter-verify-plus" docs/README.md
 grep -q "v4.0.3-formal-immersion" docs/releases/README.md
 grep -q "v4.0.4-x026-rational-points" docs/releases/README.md
 grep -q "v4.0.5-nofrey-point" docs/releases/README.md
@@ -230,6 +234,7 @@ grep -q "v4.7.0-iter-typed-no-axioms-closing" docs/releases/README.md
 grep -q "v4.8.0-iter-modularity-scaffold" docs/releases/README.md
 grep -q "v4.9.0-iter-no-True-X0" docs/releases/README.md
 grep -q "v4.10.0-iter-pari-locked" docs/releases/README.md
+grep -q "v4.12.0-iter-verify-plus" docs/releases/README.md
 grep -q "v4.0.3-formal-immersion" lean/README.md
 grep -q "v4.0.4-x026-rational-points" lean/README.md
 grep -q "v4.0.5-nofrey-point" lean/README.md
@@ -259,6 +264,7 @@ grep -q "v4.7.0-iter-typed-no-axioms-closing" lean/README.md
 grep -q "v4.8.0-iter-modularity-scaffold" lean/README.md
 grep -q "v4.9.0-iter-no-True-X0" lean/README.md
 grep -q "v4.10.0-iter-pari-locked" lean/README.md
+grep -q "v4.12.0-iter-verify-plus" lean/README.md
 grep -q "v4.0.3-formal-immersion" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Jacobian/README.md
@@ -286,6 +292,7 @@ grep -q "v4.7.0-iter-typed-no-axioms-closing" lean/BealLevel26Foundations/Jacobi
 grep -q "v4.8.0-iter-modularity-scaffold" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.9.0-iter-no-True-X0" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.10.0-iter-pari-locked" lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "v4.12.0-iter-verify-plus" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.4-x026-rational-points" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Mazur/README.md
@@ -313,6 +320,7 @@ grep -q "v4.7.0-iter-typed-no-axioms-closing" lean/BealLevel26Foundations/Mazur/
 grep -q "v4.8.0-iter-modularity-scaffold" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.9.0-iter-no-True-X0" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.10.0-iter-pari-locked" lean/BealLevel26Foundations/Mazur/README.md
+grep -q "v4.12.0-iter-verify-plus" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.5-nofrey-point" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Ribet/README.md
@@ -340,6 +348,7 @@ grep -q "v4.7.0-iter-typed-no-axioms-closing" lean/BealLevel26Foundations/Ribet/
 grep -q "v4.8.0-iter-modularity-scaffold" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.9.0-iter-no-True-X0" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.10.0-iter-pari-locked" lean/BealLevel26Foundations/Ribet/README.md
+grep -q "v4.12.0-iter-verify-plus" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" sagemath/README.md
 grep -q "v4.0.7-hIdentify" sagemath/README.md
 grep -q "v4.0.7-hIdentify-j" sagemath/README.md
@@ -366,6 +375,7 @@ grep -q "v4.7.0-iter-typed-no-axioms-closing" sagemath/README.md
 grep -q "v4.8.0-iter-modularity-scaffold" sagemath/README.md
 grep -q "v4.9.0-iter-no-True-X0" sagemath/README.md
 grep -q "v4.10.0-iter-pari-locked" sagemath/README.md
+grep -q "v4.12.0-iter-verify-plus" sagemath/README.md
 for readme in \
   README.md \
   docs/README.md \
@@ -381,6 +391,7 @@ do
   grep -q "v4.8.0-iter-modularity-scaffold" "$readme"
   grep -q "v4.9.0-iter-no-True-X0" "$readme"
   grep -q "v4.10.0-iter-pari-locked" "$readme"
+  grep -q "v4.12.0-iter-verify-plus" "$readme"
   grep -q "BealExponent13_Iter_Package" "$readme"
   grep -q "d3cf8a7" "$readme"
   grep -q "1d0044e" "$readme"
@@ -1029,12 +1040,39 @@ if j.get("26a1", {}).get("ainv") != [1, 0, 1, -5, -8] or j.get("26a1", {}).get("
     raise SystemExit(f"FAIL: 26a1 {j.get('26a1')!r}")
 if j.get("26b1", {}).get("ainv") != [1, -1, 1, -3, 3] or j.get("26b1", {}).get("disc") != -1664:
     raise SystemExit(f"FAIL: 26b1 {j.get('26b1')!r}")
+if "SHA_cert" in j or "curve_26a1" in j or "curve_26b1" in j:
+    raise SystemExit("FAIL: lock JSON must use keys 26a1/26b1/SHA")
+for key in ("26a1", "26b1"):
+    if j[key].get("sel2") != 1:
+        raise SystemExit(f"FAIL: {key} sel2 {j[key].get('sel2')!r} != 1")
+    if j[key].get("rank") != 0:
+        raise SystemExit(f"FAIL: {key} rank {j[key].get('rank')!r} != 0")
+img = Path("docs/images/2-descent-level-26-26a1-26b1.webp")
+if not img.is_file():
+    raise SystemExit("FAIL: missing docs/images/2-descent-level-26-26a1-26b1.webp")
+if img.stat().st_size < 300000:
+    raise SystemExit(f"FAIL: 2-descent image too small ({img.stat().st_size} bytes)")
 print("verified pari_x0_26_four_cusps.json SHA + fourCuspsList")
+print("verified v4.12.0-iter-verify-plus image + JSON keys + Sel2")
 PY
 grep -q "d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260" \
   certs/pari_x0_26_four_cusps.json
 grep -qE '"fourCusps":[[:space:]]*\[1,[[:space:]]*2,[[:space:]]*13,[[:space:]]*26\]' \
   certs/pari_x0_26_four_cusps.json
+test ! -e docs/images/797726399_1063690106418837_5544926896290683567_n.webp
+grep -q "PARI 2-Descent Certificates — X0(26) Four Cusps" README.md
+grep -q "docs/images/2-descent-level-26-26a1-26b1.webp" README.md
+grep -q "2-descent-level-26-26a1-26b1.webp" docs/README.md
+grep -q "2-descent-level-26-26a1-26b1.webp" \
+  lean/BealLevel26Foundations/Chain/X0_26_Point.lean
+if grep -nE 'SHA_cert|curve_26a1|curve_26b1' certs/pari_x0_26_four_cusps.json; then
+  echo "FAIL: lock JSON must not use SHA_cert or curve_26a1/curve_26b1"
+  exit 1
+fi
+if grep -nE -- '-1216|-1831858856' certs/pari_x0_26_four_cusps.json; then
+  echo "FAIL: lock JSON must use certified discriminants -17576/-1664"
+  exit 1
+fi
 if grep -nE '∨[[:space:]]*True|or[[:space:]]+True' \
     lean/BealLevel26Foundations/Chain/X0_26_Point.lean; then
   echo "FAIL: X0_26_Q must not use a True disjunct"
@@ -1117,6 +1155,7 @@ grep -q "BealExponent13_Contradiction" docs/NEXT_STEPS.md
 grep -q "v4.8.0" docs/NEXT_STEPS.md
 grep -q "v4.9.0" docs/NEXT_STEPS.md
 grep -q "v4.10.0" docs/NEXT_STEPS.md
+grep -q "v4.12.0" docs/NEXT_STEPS.md
 grep -q "no True" docs/NEXT_STEPS.md
 grep -q "pari_x0_26_four_cusps.json" docs/NEXT_STEPS.md
 grep -qi "waiting" docs/NEXT_STEPS.md
