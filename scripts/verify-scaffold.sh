@@ -1216,6 +1216,10 @@ grep -q "beal_forall_from_ribet" \
   lean/BealLevel26Foundations/Final/BealExponent13_Forall.lean
 grep -q "certified_from_forall" \
   lean/BealLevel26Foundations/Final/BealExponent13_Iter_Package.lean
+grep -q "typed_and_forall" \
+  lean/BealLevel26Foundations/Final/BealExponent13_Iter_Package.lean
+grep -q "certified_typed_and_forall" \
+  lean/BealLevel26Foundations/Final/BealExponent13_Iter_Package.lean
 if grep -nE 'BealExponent13_Iter[[:space:]]*:[[:space:]]*∀' \
     lean/BealLevel26Foundations/Final/BealExponent13_Final.lean \
     lean/BealLevel26Foundations/Final/BealExponent13_Forall.lean; then

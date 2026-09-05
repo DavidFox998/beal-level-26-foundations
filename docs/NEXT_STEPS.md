@@ -38,6 +38,13 @@ and `certs/pari_x0_26_four_cusps.json` keys `26a1` /
 `-1664`, `|Sel₂|=1` twice, `det M₃=2`, SHA-256
 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 
+## v4.18.0 Iter typed forall package locked
+
+`typed_and_forall` / `certified_typed_and_forall` are
+`Typed ∧ Typed` with no axioms. The Iter conjunction
+`Typed ∧ Iter_Package` is unchanged. Still not
+`∀ A B C : ℕ`.
+
 ## v4.17.0 Iter forall bridge locked
 
 `beal_forall_from_ribet` is the typed inhabitant from

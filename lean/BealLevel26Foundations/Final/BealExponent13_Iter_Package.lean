@@ -56,9 +56,24 @@ theorem BealExponent13_Iter_Typed_And_Package.certified_from_ribet :
     BealExponent13_Iter_Typed_And_Package :=
   ⟨beal_exponent13_from_ribet, BealExponent13_Iter_Package.certified⟩
 
+/-- Typed ∧ Forall lock: both conjuncts are
+`BealTheorem_Exponent13_Typed` via the axiom-free Ribet-path
+and Forall-bridge inhabitants.  Not `∀ ℕ`. -/
+def typed_and_forall :
+    BealTheorem_Exponent13_Typed ∧ BealTheorem_Exponent13_Typed :=
+  ⟨beal_exponent13_from_ribet, beal_forall_from_ribet⟩
+
+/-- Both sides none via `hGeomForbid_typed_true`.
+Not `∀ ℕ`. -/
+def certified_typed_and_forall :
+    BealTheorem_Exponent13_Typed ∧ BealTheorem_Exponent13_Typed :=
+  ⟨certified_from_forall, beal_forall_certified_from_ribet⟩
+
 #print axioms BealExponent13_Iter_Package.certified_from_ribet
 #print axioms BealExponent13_Iter_Typed_And_Package.certified_from_ribet
 #print axioms certified_from_forall
+#print axioms typed_and_forall
+#print axioms certified_typed_and_forall
 #check BealExponent13_Contradiction.certified
 
 end BealLevel26Foundations.Final

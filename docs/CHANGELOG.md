@@ -20,3 +20,4 @@ This file records trigger commits that do not change Lean.
 # v4.15.0-iter-typed-forall-bridge — beal_forall_from_ribet := beal_exponent13_from_ribet
 # v4.16.0-iter-readme-about-locked — README theorem table + GitHub About
 # v4.17.0-iter-forall-bridge-locked — certified_from_forall none via Forall bridge
+# v4.18.0-iter-typed-forall-package-locked — typed_and_forall / certified_typed_and_forall none

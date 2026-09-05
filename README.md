@@ -10,6 +10,7 @@
 |---|---|
 | beal_forall_from_ribet | none |
 | beal_forall_certified_from_ribet / certified_from_forall | none |
+| typed_and_forall / certified_typed_and_forall | none |
 | beal_exponent13_from_ribet / certified_from_ribet | none (hGeomForbid_typed_true via hNotIn hInList) |
 | contradiction_from_ribet | ribet_level_lowering_26 only |
 | BealExponent13_Contradiction.certified | frey_modular_13 + ribet_level_lowering_26 |
@@ -39,8 +40,9 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
-[`v4.17.0-iter-forall-bridge-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.17.0-iter-forall-bridge-locked)
+[`v4.18.0-iter-typed-forall-package-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.18.0-iter-typed-forall-package-locked)
 (prior
+[`v4.17.0-iter-forall-bridge-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.17.0-iter-forall-bridge-locked),
 [`v4.16.0-iter-readme-about-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.16.0-iter-readme-about-locked),
 [`v4.15.0-iter-typed-forall-bridge`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.15.0-iter-typed-forall-bridge),
 [`v4.14.0-iter-citation-contradiction-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.14.0-iter-citation-contradiction-locked),
@@ -118,6 +120,12 @@ adds the `M₃` residue-disk *input* and the finite sieve
 conjunction; those are not a scheme `X₀(26)(ℚ)` theorem. Typed `hIdentify`
 stays the elliptic-`j` packing. The remaining
 geometric gate is a Mathlib noncuspidal point of `X₀(26)`.
+
+### v4.18.0 Iter typed forall package locked
+
+`typed_and_forall` / `certified_typed_and_forall` are
+`Typed ∧ Typed` via the axiom-free Forall bridge. Still not
+`∀ ℕ`. No `False.elim`.
 
 ### v4.17.0 Iter forall bridge locked
 
@@ -421,6 +429,7 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.15.0-iter-typed-forall-bridge Typed → Forall | `v4.15.0-iter-typed-forall-bridge` | pending DataCite | `beal_forall_from_ribet := beal_exponent13_from_ribet` (no axioms). Forall file still not `∀ ℕ`. Ledger still v1.4.0. |
 | v4.16.0-iter-readme-about-locked README + About | `v4.16.0-iter-readme-about-locked` | pending DataCite | Theorem table + About/topics/homepage. Image locked. Not `∀ ℕ`. Ledger still v1.4.0. |
 | v4.17.0-iter-forall-bridge-locked Forall package lock | `v4.17.0-iter-forall-bridge-locked` | pending DataCite | `beal_forall_from_ribet` / `certified_from_forall` none. Not `∀ ℕ`. Ledger still v1.4.0. |
+| v4.18.0-iter-typed-forall-package-locked Typed ∧ Typed | `v4.18.0-iter-typed-forall-package-locked` | pending DataCite | `typed_and_forall` / `certified_typed_and_forall` none. Not `∀ ℕ`. Ledger still v1.4.0. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
