@@ -4,18 +4,18 @@
 
 # Beal Level 26 Foundations — Exponent 13 Full Package (Computational Boundary)
 
-## v4.15.0 Bridge — Forall from Ribet
+## v4.18.0 Typed ∧ Forall Lock — Axiom-Free Cert
 
 | Theorem | Axioms |
 |---|---|
-| beal_forall_from_ribet | none |
-| beal_forall_certified_from_ribet / certified_from_forall | none |
-| typed_and_forall / certified_typed_and_forall | none |
+| typed_and_forall | none ⟨beal_exponent13_from_ribet, beal_forall_from_ribet⟩ |
+| certified_typed_and_forall | none ⟨certified_from_forall, beal_forall_certified_from_ribet⟩ |
+| beal_forall_from_ribet / beal_forall_certified_from_ribet / certified_from_forall | none |
 | beal_exponent13_from_ribet / certified_from_ribet | none (hGeomForbid_typed_true via hNotIn hInList) |
 | contradiction_from_ribet | ribet_level_lowering_26 only |
 | BealExponent13_Contradiction.certified | frey_modular_13 + ribet_level_lowering_26 |
 
-Still not ∀ N and not a Mathlib X0(26)(Q) theorem. The only axioms are `frey_modular_13` and `ribet_level_lowering_26` (COMPUTATIONAL ASSUMPTION), secured by `certs/pari_x0_26_four_cusps.json`. Not `∀ ℕ`. No `False.elim`.
+Typed ∧ Forall lock: both conjuncts are `BealTheorem_Exponent13_Typed` via axiom-free `hGeomForbid`. Not ∀ N. Still not a Mathlib X0(26)(Q) theorem. The only axioms are `frey_modular_13` and `ribet_level_lowering_26` (COMPUTATIONAL ASSUMPTION), secured by `certs/pari_x0_26_four_cusps.json`. Not `∀ ℕ`. No `False.elim`.
 
 ## Geometry: X₀(26) Level 26
 
@@ -40,8 +40,9 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
-[`v4.18.0-iter-typed-forall-package-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.18.0-iter-typed-forall-package-locked)
+[`v4.19.0-iter-readme-typed-forall-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.19.0-iter-readme-typed-forall-locked)
 (prior
+[`v4.18.0-iter-typed-forall-package-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.18.0-iter-typed-forall-package-locked),
 [`v4.17.0-iter-forall-bridge-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.17.0-iter-forall-bridge-locked),
 [`v4.16.0-iter-readme-about-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.16.0-iter-readme-about-locked),
 [`v4.15.0-iter-typed-forall-bridge`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.15.0-iter-typed-forall-bridge),
@@ -120,6 +121,12 @@ adds the `M₃` residue-disk *input* and the finite sieve
 conjunction; those are not a scheme `X₀(26)(ℚ)` theorem. Typed `hIdentify`
 stays the elliptic-`j` packing. The remaining
 geometric gate is a Mathlib noncuspidal point of `X₀(26)`.
+
+### v4.19.0 Iter readme typed forall locked
+
+README theorem table locks `typed_and_forall` /
+`certified_typed_and_forall` as none. Still not `∀ ℕ`. No
+`False.elim`.
 
 ### v4.18.0 Iter typed forall package locked
 
@@ -430,6 +437,7 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.16.0-iter-readme-about-locked README + About | `v4.16.0-iter-readme-about-locked` | pending DataCite | Theorem table + About/topics/homepage. Image locked. Not `∀ ℕ`. Ledger still v1.4.0. |
 | v4.17.0-iter-forall-bridge-locked Forall package lock | `v4.17.0-iter-forall-bridge-locked` | pending DataCite | `beal_forall_from_ribet` / `certified_from_forall` none. Not `∀ ℕ`. Ledger still v1.4.0. |
 | v4.18.0-iter-typed-forall-package-locked Typed ∧ Typed | `v4.18.0-iter-typed-forall-package-locked` | pending DataCite | `typed_and_forall` / `certified_typed_and_forall` none. Not `∀ ℕ`. Ledger still v1.4.0. |
+| v4.19.0-iter-readme-typed-forall-locked README table | `v4.19.0-iter-readme-typed-forall-locked` | pending DataCite | README / About lock the v4.18.0 Typed ∧ Forall none table. Not `∀ ℕ`. Ledger still v1.4.0. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
