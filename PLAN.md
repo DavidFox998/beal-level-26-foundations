@@ -237,6 +237,10 @@ v4.4.0-typed-refactor-true-close inhabits
 That is not the old elliptic-`j` implication
 (`True → ¬True`), not `∀ A B C, ¬ A^13 + B^13 = C^13`, not
 Ribet, and not a Mathlib `X₀(26)(ℚ)` theorem.
+v4.5.0-forall-real names
+`BealTheorem_Exponent13_Forall_Computational` as
+`BealTheorem_Exponent13_Typed ∧ BealExponent13_Final_Package`.
+That is still not `∀ A B C, ¬ A^13 + B^13 = C^13`.
 The PLAN.md acceptance gates above
 remain open.
 

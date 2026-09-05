@@ -1,7 +1,7 @@
 # sagemath/
 
 Pinned coefficient ledger and SageMath 10.7 certificate generators.
-**Current as of** `v4.4.0-typed-refactor-true-close` / `v4.3.0-final-forall-package` / `v4.2.2-zenodo-trigger` / `v4.2.1-chabauty-closes-typed` / `v4.2.0-full-chain`.
+**Current as of** `v4.5.0-forall-real` / `v4.4.0-typed-refactor-true-close` / `v4.3.0-final-forall-package` / `v4.2.2-zenodo-trigger` / `v4.2.1-chabauty-closes-typed` / `v4.2.0-full-chain`.
 
 The ledger version is **v1.4.0** and has been unchanged since tag
 `v1.4.0`:
@@ -56,3 +56,6 @@ it is not `∀ A B C` and does not change the ledger.
 `hGeomForbid_typed_true` on the displayed cusp-label type
 without `False.elim`; the old elliptic-`j` implication stays
 uninhabitable. It does not change the ledger.
+`v4.5.0-forall-real` names
+`BealTheorem_Exponent13_Forall_Computational`; it is not
+`∀ A B C` and does not change the ledger.

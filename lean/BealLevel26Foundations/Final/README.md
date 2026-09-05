@@ -1,6 +1,6 @@
-# v4.4.0 Typed True Close + Final package (computational boundary)
+# v4.5.0 ∀ Real + typed close (computational boundary)
 
-**Current as of** `v4.4.0-typed-refactor-true-close`.
+**Current as of** `v4.5.0-forall-real`.
 
 This folder names the exponent-13 conjunction. It is not
 `∀ A B C, ¬ A^13 + B^13 = C^13`.
@@ -34,6 +34,9 @@ The old elliptic-`j` implication stays uninhabitable.
 
 `BealTheorem_Exponent13_Typed` is that implication plus
 `FreyLevel26`.
+`BealTheorem_Exponent13_Forall_Computational` is
+`BealTheorem_Exponent13_Typed ∧ BealExponent13_Final_Package`
+(not `∀ A B C`).
 `BealExponent13_Final_Package = X0_26_Q_four ∧ FreyLevel26 ∧ fourCuspsForallCuspPoints`,
 `BealExponent13_Final_Package.certified`.
 `BealTheorem_Exponent13_Full_package` is the same conjunction
@@ -47,4 +50,4 @@ Checks: `lake build` of the three roots plus Final,
 Releases: `v4.2.0-full-chain` `62d0e13`,
 `v4.2.1-chabauty-closes-typed` `eed5170`,
 `v4.2.2-zenodo-trigger` fresh, `v4.3.0-final-forall-package`,
-`v4.4.0-typed-refactor-true-close`.
+`v4.4.0-typed-refactor-true-close`, `v4.5.0-forall-real`.

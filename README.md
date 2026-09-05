@@ -21,8 +21,9 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
-[`v4.4.0-typed-refactor-true-close`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.4.0-typed-refactor-true-close)
+[`v4.5.0-forall-real`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.5.0-forall-real)
 (prior
+[`v4.4.0-typed-refactor-true-close`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.4.0-typed-refactor-true-close),
 [`v4.3.0-final-forall-package`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.3.0-final-forall-package),
 [`v4.2.2-zenodo-trigger`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.2.2-zenodo-trigger),
 [`v4.2.1-chabauty-closes-typed`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.2.1-chabauty-closes-typed),
@@ -86,7 +87,7 @@ conjunction; those are not a scheme `X₀(26)(ℚ)` theorem. Typed `hIdentify`
 stays the elliptic-`j` packing. The remaining
 geometric gate is a Mathlib noncuspidal point of `X₀(26)`.
 
-### v4.4.0 Typed True Close (displayed cusp-label encoding)
+### v4.5.0 ∀ Real (computational package)
 
 Certified Cremona models and the PARI 2.17.2 archive
 [`lean/BealLevel26Foundations/Certs/Descent_26.json`](lean/BealLevel26Foundations/Certs/Descent_26.json)
@@ -114,6 +115,9 @@ Lean names on that archive:
   elliptic-`j` implication.
 * `BealTheorem_Exponent13_Typed` is that implication plus
   `FreyLevel26`.
+* `BealTheorem_Exponent13_Forall_Computational` is
+  `BealTheorem_Exponent13_Typed ∧ BealExponent13_Final_Package`.
+  That is a named conjunction, not `∀ A B C`.
 * `BealExponent13_Final_Package` is
   `X0_26_Q_four ∧ FreyLevel26 ∧ fourCuspsForallCuspPoints`.
   `BealTheorem_Exponent13_Full_package` is the same conjunction
@@ -248,6 +252,7 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.2.2-zenodo-trigger changelog-only ingest | `v4.2.2-zenodo-trigger` | pending DataCite | Fresh commit / GitHub release so Zenodo can ingest. No Lean change. |
 | v4.3.0-final-forall-package Final ∀ package | `v4.3.0-final-forall-package` | pending DataCite | `BealExponent13_Final_Package` is `X0_26_Q_four ∧ FreyLevel26 ∧ fourCuspsForallCuspPoints`. Not `∀ A B C`. Typed implication stays uninhabitable. Ledger still v1.4.0. Descent SHA-256 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. |
 | v4.4.0-typed-refactor-true-close displayed-label close | `v4.4.0-typed-refactor-true-close` | pending DataCite | `ExistsNoncuspidal_26` over `DisplayedX026CuspPoint` `[1,2,13,26]` is empty by `P.mem`. `hGeomForbid_typed_true` is `fourCuspsForallCuspPoints → ¬ ExistsNoncuspidal_26` without `False.elim`. Not the old elliptic-`j` implication (`True → ¬True`). Not `∀ A B C`. Ledger still v1.4.0. Descent SHA-256 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. |
+| v4.5.0-forall-real computational ∀ package | `v4.5.0-forall-real` | pending DataCite | `BealTheorem_Exponent13_Forall_Computational` is `BealTheorem_Exponent13_Typed ∧ BealExponent13_Final_Package`. Not `∀ A B C`. Typed close via `P.mem` without `False.elim`. Ledger still v1.4.0. Descent SHA-256 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
@@ -405,7 +410,7 @@ The detailed milestones, acceptance gates, and dependency order are in
 │       ├── Certs/               # v4.0.15 LMFDB display; v4.1.1 Descent_26.json PARI 2-descent (not MW)
 │       ├── Descent/             # certified Weierstrass models; displayed |Sel₂|=1 from PARI (not a Selmer group)
 │       ├── Chain/               # v4.2.0 FreyLevel26 (2*13=26) and X0_26_Q_four (not Ribet / not X₀(26)(ℚ))
-│       ├── Final/               # v4.4.0 Typed + v4.3.0 BealExponent13_Final_Package (not ∀ A B C)
+│       ├── Final/               # v4.5.0 Forall_Computational + v4.4.0 Typed (not ∀ A B C)
 │       ├── Mazur/               # genus arithmetic, endgame scaffold, v4.0.4 four-cusp package, v4.0.8 typed hGeomForbid, v4.0.9 cusp-point forall, v4.0.10 Chabauty0 package
 │       ├── Real/
 │       └── Ribet/               # typed lowering; v4.0.6 split; v4.0.7-j finite j-invariant hIdentify

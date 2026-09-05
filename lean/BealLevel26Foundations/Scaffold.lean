@@ -26,6 +26,7 @@ import BealLevel26Foundations.Certs.LMFDBCert_26
 import BealLevel26Foundations.Descent.Selmer_26
 import BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26
 import BealLevel26Foundations.Final.BealExponent13_Final
+import BealLevel26Foundations.Final.BealExponent13_Forall
 import BealLevel26Foundations.Chain.FreyCurve_13_26
 import BealLevel26Foundations.Chain.RationalPoints_26_FourCusps_26
 

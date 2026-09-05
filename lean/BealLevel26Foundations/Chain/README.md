@@ -1,7 +1,7 @@
-# v4.4.0 Typed True Close (displayed cusp-label encoding)
+# v4.5.0 ∀ Real (computational package)
 
 Named Frey / four-cusp *packages* for the exponent-13 route.
-**Current as of** `v4.4.0-typed-refactor-true-close`.
+**Current as of** `v4.5.0-forall-real`.
 
 Certified: 26a1 `[1,0,1,-5,-8]` Δ `-17576` conductor 26 torsion 3;
 26b1 `[1,-1,1,-3,3]` Δ `-1664` conductor 26 torsion 7.
@@ -32,6 +32,9 @@ The old elliptic-`j` implication stays uninhabitable.
 
 `BealTheorem_Exponent13_Typed` is that implication plus
 `FreyLevel26`.
+`BealTheorem_Exponent13_Forall_Computational` is
+`BealTheorem_Exponent13_Typed ∧ BealExponent13_Final_Package`
+(not `∀ A B C`).
 `BealExponent13_Final_Package = X0_26_Q_four ∧ FreyLevel26 ∧ fourCuspsForallCuspPoints`,
 `BealExponent13_Final_Package.certified`.
 `BealTheorem_Exponent13_Full_package` is the same conjunction
@@ -45,7 +48,7 @@ Checks: `lake build` of the three roots plus Final,
 Releases: `v4.2.0-full-chain` `62d0e13`,
 `v4.2.1-chabauty-closes-typed` `eed5170`,
 `v4.2.2-zenodo-trigger` fresh, `v4.3.0-final-forall-package`,
-`v4.4.0-typed-refactor-true-close`.
+`v4.4.0-typed-refactor-true-close`, `v4.5.0-forall-real`.
 
 Mathlib 4.12 has no modularity, no Ribet, no `X₀(26)(ℚ)`, no
 `SelmerGroup`, and no `MordellWeil.rank`. Nothing here is the
