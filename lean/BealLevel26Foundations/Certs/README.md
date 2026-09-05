@@ -1,7 +1,7 @@
 # lean/BealLevel26Foundations/Certs/
 
 Archived LMFDB *display* data and PARI 2-descent display for `26a1`
-and `26b1`. **Current as of** `v4.1.1-descent-compute`.
+and `26b1`. **Current as of** `v4.1.2-beal-13-endgame`.
 
 | File | What it is | What it is not |
 |---|---|---|

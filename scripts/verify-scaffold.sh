@@ -63,6 +63,7 @@ test -f docs/releases/v4.0.14-coleman-integral-no-doi.md
 test -f docs/releases/v4.0.15-lmfdb-certs-no-doi.md
 test -f docs/releases/v4.1.0-descent-start.md
 test -f docs/releases/v4.1.1-descent-compute.md
+test -f docs/releases/v4.1.2-beal-13-endgame.md
 test -f lean/BealLevel26Foundations/Certs/Descent_26.json
 test -f scripts/verify_descent_26.py
 test -f lean/BealLevel26Foundations/Descent/README.md
@@ -132,6 +133,7 @@ grep -q "v4.0.14-coleman-integral-no-doi" README.md
 grep -q "v4.0.15-lmfdb-certs-no-doi" README.md
 grep -q "v4.1.0-descent-start" README.md
 grep -q "v4.1.1-descent-compute" README.md
+grep -q "v4.1.2-beal-13-endgame" README.md
 grep -q "v4.0.3-formal-immersion" docs/README.md
 grep -q "v4.0.4-x026-rational-points" docs/README.md
 grep -q "v4.0.5-nofrey-point" docs/README.md
@@ -148,6 +150,7 @@ grep -q "v4.0.14-coleman-integral-no-doi" docs/README.md
 grep -q "v4.0.15-lmfdb-certs-no-doi" docs/README.md
 grep -q "v4.1.0-descent-start" docs/README.md
 grep -q "v4.1.1-descent-compute" docs/README.md
+grep -q "v4.1.2-beal-13-endgame" docs/README.md
 grep -q "v4.0.3-formal-immersion" docs/releases/README.md
 grep -q "v4.0.4-x026-rational-points" docs/releases/README.md
 grep -q "v4.0.5-nofrey-point" docs/releases/README.md
@@ -164,6 +167,7 @@ grep -q "v4.0.14-coleman-integral-no-doi" docs/releases/README.md
 grep -q "v4.0.15-lmfdb-certs-no-doi" docs/releases/README.md
 grep -q "v4.1.0-descent-start" docs/releases/README.md
 grep -q "v4.1.1-descent-compute" docs/releases/README.md
+grep -q "v4.1.2-beal-13-endgame" docs/releases/README.md
 grep -q "v4.0.3-formal-immersion" lean/README.md
 grep -q "v4.0.4-x026-rational-points" lean/README.md
 grep -q "v4.0.5-nofrey-point" lean/README.md
@@ -180,6 +184,7 @@ grep -q "v4.0.14-coleman-integral-no-doi" lean/README.md
 grep -q "v4.0.15-lmfdb-certs-no-doi" lean/README.md
 grep -q "v4.1.0-descent-start" lean/README.md
 grep -q "v4.1.1-descent-compute" lean/README.md
+grep -q "v4.1.2-beal-13-endgame" lean/README.md
 grep -q "v4.0.3-formal-immersion" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Jacobian/README.md
@@ -194,6 +199,7 @@ grep -q "v4.0.14-coleman-integral-no-doi" lean/BealLevel26Foundations/Jacobian/R
 grep -q "v4.0.15-lmfdb-certs-no-doi" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.1.0-descent-start" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.1.1-descent-compute" lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "v4.1.2-beal-13-endgame" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.4-x026-rational-points" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Mazur/README.md
@@ -208,6 +214,7 @@ grep -q "v4.0.14-coleman-integral-no-doi" lean/BealLevel26Foundations/Mazur/READ
 grep -q "v4.0.15-lmfdb-certs-no-doi" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.1.0-descent-start" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.1.1-descent-compute" lean/BealLevel26Foundations/Mazur/README.md
+grep -q "v4.1.2-beal-13-endgame" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.5-nofrey-point" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Ribet/README.md
@@ -222,6 +229,7 @@ grep -q "v4.0.14-coleman-integral-no-doi" lean/BealLevel26Foundations/Ribet/READ
 grep -q "v4.0.15-lmfdb-certs-no-doi" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.1.0-descent-start" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.1.1-descent-compute" lean/BealLevel26Foundations/Ribet/README.md
+grep -q "v4.1.2-beal-13-endgame" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" sagemath/README.md
 grep -q "v4.0.7-hIdentify" sagemath/README.md
 grep -q "v4.0.7-hIdentify-j" sagemath/README.md
@@ -235,6 +243,7 @@ grep -q "v4.0.14-coleman-integral-no-doi" sagemath/README.md
 grep -q "v4.0.15-lmfdb-certs-no-doi" sagemath/README.md
 grep -q "v4.1.0-descent-start" sagemath/README.md
 grep -q "v4.1.1-descent-compute" sagemath/README.md
+grep -q "v4.1.2-beal-13-endgame" sagemath/README.md
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md
 grep -qi "genuine cohomological 2-Selmer" \
@@ -594,6 +603,35 @@ grep -q "fourCuspsForallAllKinds_is_false" \
   lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
 grep -q "DisplayedX026CuspPoint" \
   lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
+grep -q "import BealLevel26Foundations.Descent.Selmer_26" \
+  lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
+grep -q "def rankZero_unconditional" \
+  lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
+grep -q "theorem rankZero_unconditional.certified" \
+  lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
+grep -q "d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260" \
+  lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
+grep -q "X026RationalPointsActual_26" \
+  lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
+grep -q "computational boundary" \
+  lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
+grep -q "def hGeomForbid : Option Prop" \
+  lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
+grep -q "Mathlib has no \`SelmerGroup\`" \
+  lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
+grep -q "not a Lean Mordell--Weil theorem" \
+  lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
+if grep -q "import BealLevel26Foundations.Jacobian.ColemanNonVanishing_26" \
+    lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean; then
+  echo "FAIL: EndgameScaffold must not import ColemanNonVanishing_26 (cycle)"
+  exit 1
+fi
+if grep -nE \
+    'def[[:space:]]+hGeomForbid[[:space:]]*:[[:space:]]*Prop[[:space:]]*:=' \
+    lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean; then
+  echo "FAIL: Option hGeomForbid must remain Option Prop, not the typed implication"
+  exit 1
+fi
 grep -q "fourCuspsForallCuspPoints" \
   lean/BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean
 grep -q "fourCuspsForallCuspPoints" \

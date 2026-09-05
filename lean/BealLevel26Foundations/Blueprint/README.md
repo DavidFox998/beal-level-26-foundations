@@ -73,7 +73,8 @@ evidence is not a Mordell--Weil theorem.
 ## Track E — Descent start
 
 Status: **PARI 2-descent display shipped**
-(`v4.1.1-descent-compute`; prior `v4.1.0-descent-start`).
+(`v4.1.2-beal-13-endgame`; prior `v4.1.1-descent-compute`,
+`v4.1.0-descent-start`).
 
 | File | What it is | What it is not |
 |---|---|---|
@@ -82,5 +83,7 @@ Status: **PARI 2-descent display shipped**
 | [`../Descent/Selmer_26.lean`](../Descent/Selmer_26.lean) | `1 = 1` under Sha / rank-zero names | Not Sha[2] triviality; not a Mordell--Weil theorem |
 | [`../Certs/Descent_26.json`](../Certs/Descent_26.json) | PARI `ellrank`/`ell2cover`/`elltors` archive | Not a Mathlib MW theorem |
 
-Remaining: a Mathlib Selmer group and an unconditional Mordell--Weil
-theorem. Do not treat `1 = 1` as unconditional rank zero.
+`EndgameScaffold` now names `rankZero_unconditional` from those
+equalities and an `Option` `hGeomForbid`. Remaining: a Mathlib
+Selmer group and an unconditional Mordell--Weil theorem. Do not
+treat `1 = 1` as unconditional rank zero.

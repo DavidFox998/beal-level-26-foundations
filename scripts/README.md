@@ -1,6 +1,6 @@
 # scripts/
 
-Deterministic repository checks. **Current as of** `v4.1.1-descent-compute`.
+Deterministic repository checks. **Current as of** `v4.1.2-beal-13-endgame`.
 
 | Script | What it checks |
 |---|---|

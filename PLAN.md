@@ -211,6 +211,11 @@ Mordell--Weil.
 v4.1.1-descent-compute archives PARI `ellrank` / `ell2cover`
 with displayed `|Sel₂| = 1`; Lean `SelmerBound_*` are `1 = 1`,
 still not a Selmer group and not unconditional Mordell--Weil.
+v4.1.2-beal-13-endgame records `rankZero_unconditional` from
+those equalities and an `Option` `hGeomForbid` as that plus
+`det M₃ ≠ 0`.  That is a computational boundary, not typed
+`fourCusps → ¬ ExistsNoncuspidal` and not a Lean
+Mordell--Weil theorem.
 The PLAN.md acceptance gates above
 remain open.
 

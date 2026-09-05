@@ -1,6 +1,6 @@
 # lean/BealLevel26Foundations/
 
-Main foundations library. **Current as of** `v4.1.1-descent-compute`.
+Main foundations library. **Current as of** `v4.1.2-beal-13-endgame`.
 
 Top-level computable files:
 

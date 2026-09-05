@@ -1,8 +1,8 @@
 # lean/BealLevel26Foundations/Mazur/
 
 Genus certificates, q-expansion cotangent calculations, and the v4.0.0
-endgame scaffold. **Current as of** `v4.1.1-descent-compute`
-(includes `v4.1.0-descent-start`, `v4.0.15-lmfdb-certs-no-doi`, `v4.0.14-coleman-integral-no-doi`, `v4.0.13-formal-immersion-proof-no-doi`, `v4.0.12-scheme-stub-no-doi`, `v4.0.11-residue-disks-no-doi`, `v4.0.10-chabauty0-no-doi`, `v4.0.9-fourCusps-forall`, `v4.0.8-geom-forbid`, `v4.0.7-hIdentify-j`, `v4.0.7-hIdentify`, `v4.0.6-rank-zero-fixed`, `v4.0.5-nofrey-point`,
+endgame scaffold. **Current as of** `v4.1.2-beal-13-endgame`
+(includes `v4.1.1-descent-compute`, `v4.1.0-descent-start`, `v4.0.15-lmfdb-certs-no-doi`, `v4.0.14-coleman-integral-no-doi`, `v4.0.13-formal-immersion-proof-no-doi`, `v4.0.12-scheme-stub-no-doi`, `v4.0.11-residue-disks-no-doi`, `v4.0.10-chabauty0-no-doi`, `v4.0.9-fourCusps-forall`, `v4.0.8-geom-forbid`, `v4.0.7-hIdentify-j`, `v4.0.7-hIdentify`, `v4.0.6-rank-zero-fixed`, `v4.0.5-nofrey-point`,
 `v4.0.4-x026-rational-points`).
 
 | File | What it is | What it is not |
@@ -11,7 +11,7 @@ endgame scaffold. **Current as of** `v4.1.1-descent-compute`
 | `Genus_26_Real.lean` | Arithmetic genus index, cusp count `4`, `ν₂=2`, `ν₃=0` by `decide` | Not an identification of `X₀(26)(ℚ)` |
 | `QExpansionCotangent_Scaffold_26.lean` | Premise-bearing cotangent comparison | Not a Picard map |
 | `QExpansionCotangent_Real_26.lean` | Coefficient matrix and `M₃` from the ledger | Does not define `PicardAbelJacobiIdentification_26` (that lives in [`../Jacobian/`](../Jacobian/README.md)) |
-| `EndgameScaffold.lean` | Four typed premises plus `BealTheoremFromMazurChain26`; Frey `j` as `ellipticJ`; `fourCuspsForallCuspPoints` | Not an unconditional `BealTheorem` |
+| `EndgameScaffold.lean` | Four typed premises plus `BealTheoremFromMazurChain26`; Frey `j` as `ellipticJ`; `fourCuspsForallCuspPoints`; v4.1.2 computational `Option` `hGeomForbid` from PARI `|Sel₂|=1` plus `det ≠ 0` | Not an unconditional `BealTheorem`; not typed `fourCusps → ¬ ExistsNoncuspidal`; not a Lean Mordell--Weil theorem |
 | `X026RationalPointsActual_26.lean` | Displayed four cusps `[1,2,13,26]`; last conjunct `fourCuspsForallCuspPoints`; `X0_26_RationalPoints26.of_qExpansion` inhabits the Mazur premise | Not a Mathlib `X₀(26)(ℚ)` theorem |
 | `HGeomForbidActual_26.lean` | Constructor inequality `ellipticJ ≠ cuspDivisor`; cusp-point forall; `hGeomForbid_typed_is_uninhabitable` | Not `fourCusps → ¬ ExistsNoncuspidal`; not `BealTheorem` |
 | `Chabauty0Actual_26.lean` | Finite rank-zero + `M₃` + cusp-point forall + eight S-units | Not Chabauty--Coleman; not typed `hGeomForbid`; not `BealTheorem` |
@@ -36,7 +36,9 @@ negating it. v4.0.9 adds `fourCuspsForallCuspPoints` over
 cusp-labeled points; that forall does not range over `ellipticJ`.
 v4.0.10 adds [`Chabauty0Actual_26.lean`](Chabauty0Actual_26.lean)
 as that finite package; it coexists with `ExistsNoncuspidal`.
-There is no unconditional `BealTheorem`. Rank,
+v4.1.2 records a computational `Option` `hGeomForbid` from
+PARI `|Sel₂|=1` plus `det M₃ ≠ 0`; that is not the typed
+implication. There is no unconditional `BealTheorem`. Rank,
 scheme-theoretic immersion, a Mathlib `X₀(26)(ℚ)` theorem,
 Mathlib Ribet existence, and `R = T` are not discharged by
 `decide`.

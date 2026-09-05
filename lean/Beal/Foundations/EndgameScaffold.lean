@@ -15,7 +15,11 @@ point, not as `26 ∉ [1, 2, 13, 26]`.  Typed `hGeomForbid`
 (`fourCusps → ¬ ExistsNoncuspidal`) is uninhabitable:
 constructor inequality does not negate an elliptic `j`.
 v4.0.9's cusp-point forall does not range over `ellipticJ`.
-This is not an unconditional `BealTheorem`.
+v4.1.2 records a computational `Option` `hGeomForbid`
+(`rankZero_unconditional` from PARI `|Sel₂|=1` plus
+`det M₃ ≠ 0`).  That is not the typed implication and not a
+Lean Mordell--Weil theorem.  This is not an unconditional
+`BealTheorem`.
 -/
 
 export BealLevel26Foundations.Mazur.EndgameScaffold

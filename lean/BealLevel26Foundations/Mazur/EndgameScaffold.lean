@@ -1,4 +1,6 @@
 import Beal.Foundations.FormalImmersionM3
+import BealLevel26Foundations.Descent.Selmer_26
+import BealLevel26Foundations.Descent.TwoDescent_26a1_26
 import BealLevel26Foundations.Mazur.Genus_26_Real
 import BealLevel26Foundations.Real.FreyWeierstrass
 import BealLevel26Foundations.Ribet.LevelLowering_26
@@ -10,6 +12,8 @@ import Mathlib.Tactic
 namespace BealLevel26Foundations.Mazur.EndgameScaffold
 
 open Beal.Foundations.FormalImmersionM3
+open BealLevel26Foundations.Descent.Selmer26
+open BealLevel26Foundations.Descent.TwoDescent26
 open BealLevel26Foundations.Mazur.Genus26Real
 open BealLevel26Foundations.Real.FreyWeierstrass
 open BealLevel26Foundations.Ribet.LevelLowering26
@@ -43,6 +47,25 @@ counterexample).  Typed `hGeomForbid` remains uninhabitable:
 the inhabited forall does not range over elliptic `j`, so it
 does not Lean-negate `ExistsNoncuspidal`.  This is not an
 unconditional `BealTheorem`.
+
+v4.1.2 records a *computational* `hGeomForbid` boundary:
+`rankZero_unconditional` is
+`RankZero_26a1_from_Selmer ∧ RankZero_26b1_from_Selmer`, i.e.
+`SelmerBound = 1` twice (`1 = 1`), from PARI `ellrank` +
+`ell2cover` + `elltors` archived in `Certs/Descent_26.json`
+(SHA-256
+`d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`).
+That is not a Lean Mordell--Weil theorem.  Mathlib 4.12 has no
+`SelmerGroup`.  The named `Chabauty0ForcesCusp` conjunction is
+rank-zero plus `det ≠ 0`; this file cannot import
+`ColemanNonVanishing_26` (it depends on
+`J0_26_Q_RankZeroActual_26`, which imports this scaffold).
+The computational `hGeomForbid` is `Option.some` of
+`rankZero_unconditional ∧ det certifiedM3 ≠ 0`.  It is not
+`fourCusps → ¬ ExistsNoncuspidal`.  Typed `hGeomForbid` in
+`BealTheoremFromMazurChain26` stays uninhabitable.
+The four-cusp *audit* remains
+`Mazur/X026RationalPointsActual_26` and is not edited here.
 -/
 
 /-- Primitive Beal counterexample in the exponent range of the level-26
@@ -319,18 +342,59 @@ def existsFreyWitness_of_beal_frey_lowering
      loweredLevel_eq_26 := rfl
      Δ_ne := hΔ }⟩
 
+/-- Displayed PARI `|Sel₂| = 1` on both factors (`1 = 1` ∧ `1 = 1`).
+Computational evidence from `Descent_26.json` (SHA-256
+`d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`):
+PARI `ellrank` + `ell2cover` + `elltors`.  This is
+not a Lean Mordell--Weil theorem.  Mathlib has no `SelmerGroup`.
+The name `unconditional` is the v4.1.2 tag name; the Prop is
+still two Nat equalities. -/
+def rankZero_unconditional : Prop :=
+  RankZero_26a1_from_Selmer ∧ RankZero_26b1_from_Selmer
+
+theorem rankZero_unconditional.certified : rankZero_unconditional :=
+  ⟨SelmerBound_26a1_certified, SelmerBound_26b1_certified⟩
+
+/-- Same shape as `Chabauty0ForcesCusp`: displayed rank-zero names
+plus `det M₃ ≠ 0`.  Not a Chabauty--Coleman theorem. -/
+def Chabauty0ForcesCusp_computational : Prop :=
+  rankZero_unconditional ∧ Matrix.det certifiedM3 ≠ 0
+
+theorem Chabauty0ForcesCusp_computational.certified :
+    Chabauty0ForcesCusp_computational :=
+  ⟨rankZero_unconditional.certified, certifiedM3_det_nonzero⟩
+
+/-- Computational `hGeomForbid` boundary:
+`Option.some (rankZero_unconditional ∧ det ≠ 0)`.
+Not `fourCusps → ¬ ExistsNoncuspidal`.  The four-cusp audit is
+`X026RationalPointsActual_26`. -/
+def hGeomForbid : Option Prop :=
+  some (rankZero_unconditional ∧ Chabauty0ForcesCusp_computational)
+
+theorem hGeomForbid_is_computational_some :
+    hGeomForbid =
+      some (rankZero_unconditional ∧ Chabauty0ForcesCusp_computational) :=
+  rfl
+
+theorem hGeomForbid_computational.certified :
+    rankZero_unconditional ∧ Chabauty0ForcesCusp_computational :=
+  ⟨rankZero_unconditional.certified,
+    Chabauty0ForcesCusp_computational.certified⟩
+
 /-- Conditional Mazur-chain conclusion.
 
-`hGeomForbid` is the four-cusp *negation*
-`fourCusps → ¬ ExistsNoncuspidalLevel26FreyPoint`.  A Beal
-counterexample plus v3 lowering produces `ExistsFreyWitness`.
-Those two propositions are different.  Typed `hIdentify` is
-inhabited by the finite `j`-packing.  Typed `hGeomForbid` remains
-the named uninhabitable gate: four cusp labels do not Lean-negate
-an elliptic `j`.  This theorem does not decide a
-Mathlib Jacobian rank, does not prove `X₀(26)(ℚ) = four cusps`
-as a scheme, does not prove Ribet existence, and does not prove
-`R = T`. -/
+The *typed* `hGeomForbid` hypothesis remains the four-cusp
+*negation* `fourCusps → ¬ ExistsNoncuspidalLevel26FreyPoint`.
+That implication stays uninhabitable.  The `Option` value
+`hGeomForbid` above is a computational boundary
+(`rankZero_unconditional` + `det ≠ 0`), not that implication.
+A Beal counterexample plus v3 lowering produces
+`ExistsFreyWitness`.  Those two propositions are different.
+Typed `hIdentify` is inhabited by the finite `j`-packing.
+This theorem does not decide a Mathlib Jacobian rank, does not
+prove `X₀(26)(ℚ) = four cusps` as a scheme, does not prove
+Ribet existence, and does not prove `R = T`.
+There is no `theorem BealTheorem`. -/
 theorem BealTheoremFromMazurChain26
     {ℓ N p : Nat}
     (hRank : J0_26_Q_RankZero26)
@@ -389,6 +453,8 @@ theorem BealTheoremFromMazurChain26
 #print axioms bealCounterexample_freyDiscriminant_ne_zero
 #print axioms fourCuspsForallCuspPoints.certified
 #print axioms fourCuspsForallAllKinds_is_false
+#print axioms rankZero_unconditional.certified
+#print axioms hGeomForbid_computational.certified
 #print axioms BealTheoremFromMazurChain26
 
 end BealLevel26Foundations.Mazur.EndgameScaffold

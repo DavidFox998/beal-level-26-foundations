@@ -1,8 +1,9 @@
 # docs/releases/
 
 Immutable notes for each published Foundations tag. **Current latest
-note:** [`v4.1.1-descent-compute.md`](v4.1.1-descent-compute.md)
-(prior [`v4.1.0-descent-start.md`](v4.1.0-descent-start.md),
+note:** [`v4.1.2-beal-13-endgame.md`](v4.1.2-beal-13-endgame.md)
+(prior [`v4.1.1-descent-compute.md`](v4.1.1-descent-compute.md),
+[`v4.1.0-descent-start.md`](v4.1.0-descent-start.md),
 [`v4.0.15-lmfdb-certs-no-doi.md`](v4.0.15-lmfdb-certs-no-doi.md),
 [`v4.0.14-coleman-integral-no-doi.md`](v4.0.14-coleman-integral-no-doi.md),
 [`v4.0.13-formal-immersion-proof-no-doi.md`](v4.0.13-formal-immersion-proof-no-doi.md),
@@ -43,6 +44,7 @@ not an unconditional `BealTheorem`.
 | [v4.0.15-lmfdb-certs-no-doi.md](v4.0.15-lmfdb-certs-no-doi.md) | `v4.0.15-lmfdb-certs-no-doi` | none (git tag only) |
 | [v4.1.0-descent-start.md](v4.1.0-descent-start.md) | `v4.1.0-descent-start` | none (git tag only) |
 | [v4.1.1-descent-compute.md](v4.1.1-descent-compute.md) | `v4.1.1-descent-compute` | none (git tag only) |
+| [v4.1.2-beal-13-endgame.md](v4.1.2-beal-13-endgame.md) | `v4.1.2-beal-13-endgame` | none (git tag only) |
 
 Concept DOI for the evolving project:
 [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).

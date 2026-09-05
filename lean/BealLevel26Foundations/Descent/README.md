@@ -1,7 +1,8 @@
 # lean/BealLevel26Foundations/Descent/
 
 Certified Weierstrass models and displayed PARI 2-descent for
-Cremona `26a1` / `26b1`. **Current as of** `v4.1.1-descent-compute`.
+Cremona `26a1` / `26b1`. **Current as of** `v4.1.2-beal-13-endgame`
+(prior `v4.1.1-descent-compute`).
 
 Mathlib 4.12 has `WeierstrassCurve` but no LMFDB lookup, no
 `SelmerGroup`, and no two-descent. Nothing here is a Mordell--Weil
@@ -16,6 +17,11 @@ theorem, a Selmer group, Sha[2] triviality, or unconditional
 
 `J0_26_Q_RankZeroActual_26.rankZero` stays the certified product
 package. The Selmer names do not replace it.
+
+`EndgameScaffold` uses these Selmer names as
+`rankZero_unconditional` (`1 = 1` ∧ `1 = 1`) and an `Option`
+`hGeomForbid`. That is a computational boundary, not typed
+`fourCusps → ¬ ExistsNoncuspidal`.
 
 `X026RationalPointsActual_26` is unchanged. There is no
 `theorem BealTheorem`. The v1.4.0 ledger SHA-256

@@ -1,6 +1,6 @@
 # lean/BealLevel26Foundations/Real/
 
-Arithmetic that Mathlib 4.12 permits. **Current as of** `v4.1.1-descent-compute`.
+Arithmetic that Mathlib 4.12 permits. **Current as of** `v4.1.2-beal-13-endgame`.
 
 | File | What it is | What it is not |
 |---|---|---|
@@ -19,7 +19,8 @@ the v4.0.12 scheme boundary, the v4.0.13 named `det ≠ 0`
 immersion, the v4.0.14 named Coleman/Chabauty packages, and the
 v4.0.15 LMFDB display data, the
 v4.1.0-descent-start certified models, and the
-v4.1.1-descent-compute displayed `|Sel₂|=1`.
+v4.1.1-descent-compute displayed `|Sel₂|=1`, and the
+v4.1.2-beal-13-endgame computational `Option` `hGeomForbid`.
 These
 files must not mention `frey_conductor_data` or
 `tate_step2_odd_prime_external`.
