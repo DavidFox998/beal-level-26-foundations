@@ -19,6 +19,8 @@ import BealLevel26Foundations.Mazur.Chabauty0Actual_26
 import BealLevel26Foundations.Jacobian.ResidueDisks_26
 import BealLevel26Foundations.Jacobian.MordellWeilSieve_26
 import BealLevel26Foundations.Mazur.X026RationalPointsScheme_26
+import BealLevel26Foundations.Jacobian.J0_26_Scheme_26
+import BealLevel26Foundations.Jacobian.AbelJacobi_26
 
 namespace BealLevel26Foundations.Real
 
@@ -55,8 +57,10 @@ stays uninhabitable. v4.0.10 packages that finite Chabauty-0
 input; it coexists with `ExistsNoncuspidal` and is not
 Chabauty--Coleman. v4.0.11 adds the residue-disk / sieve
 *input* packages; those are finite `M₃` conjunctions, not a
-scheme `X₀(26)(ℚ)` theorem. That is not genuine `Sel₂`, not a
-Mathlib `X₀(26)` point, and not an unconditional `BealTheorem`.
+scheme `X₀(26)(ℚ)` theorem. v4.0.12 adds Jacobian-as-scheme and
+Abel--Jacobi named boundaries; those are not a Mathlib Jacobian.
+That is not genuine `Sel₂`, not a Mathlib `X₀(26)` point, and not
+an unconditional `BealTheorem`.
 -/
 
 end BealLevel26Foundations.Real

@@ -189,6 +189,9 @@ Chabauty--Coleman and does not inhabit typed `hGeomForbid`.
 v4.0.11-residue-disks-no-doi adds `ResidueDisks_26` and
 `MordellWeilSieve_26` as finite `M₃` conjunctions, not a
 scheme-theoretic `X₀(26)(ℚ)` theorem.
+v4.0.12-scheme-stub-no-doi adds Jacobian-as-scheme and
+Abel--Jacobi named boundaries; Mathlib 4.12 has no Jacobian
+and those files are not inhabited.
 The PLAN.md acceptance gates above
 remain open.
 

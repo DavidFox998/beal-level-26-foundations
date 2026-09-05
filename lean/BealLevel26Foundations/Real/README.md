@@ -1,6 +1,6 @@
 # lean/BealLevel26Foundations/Real/
 
-Arithmetic that Mathlib 4.12 permits. **Current as of** `v4.0.11-residue-disks-no-doi`.
+Arithmetic that Mathlib 4.12 permits. **Current as of** `v4.0.12-scheme-stub-no-doi`.
 
 | File | What it is | What it is not |
 |---|---|---|

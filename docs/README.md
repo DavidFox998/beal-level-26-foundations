@@ -3,8 +3,10 @@
 Versioned release notes for
 [beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations).
 
-**Current as of** tag `v4.0.11-residue-disks-no-doi` (git tag only; no
+**Current as of** tag `v4.0.12-scheme-stub-no-doi` (git tag only; no
 version DOI). Prior tag
+[`v4.0.11-residue-disks-no-doi`](releases/v4.0.11-residue-disks-no-doi.md).
+Prior tag
 [`v4.0.10-chabauty0-no-doi`](releases/v4.0.10-chabauty0-no-doi.md).
 Prior published tag
 [`v4.0.9-fourCusps-forall`](releases/v4.0.9-fourCusps-forall.md)
@@ -42,7 +44,7 @@ these notes only record what each tag claimed.
 
 | Path | Contents |
 |---|---|
-| [`releases/`](releases/README.md) | One note per tagged Foundations release, from `v1.0.0-computable` through `v4.0.11-residue-disks-no-doi` |
+| [`releases/`](releases/README.md) | One note per tagged Foundations release, from `v1.0.0-computable` through `v4.0.12-scheme-stub-no-doi` |
 
 The staged plan and open acceptance gates live in [`../PLAN.md`](../PLAN.md).
 The public DOI trail is in [`../README.md`](../README.md).

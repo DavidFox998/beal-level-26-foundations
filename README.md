@@ -15,8 +15,10 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
-[`v4.0.11-residue-disks-no-doi`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.11-residue-disks-no-doi)
+[`v4.0.12-scheme-stub-no-doi`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.12-scheme-stub-no-doi)
 (git tag only; no version DOI; prior
+[`v4.0.11-residue-disks-no-doi`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.11-residue-disks-no-doi);
+prior
 [`v4.0.10-chabauty0-no-doi`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.10-chabauty0-no-doi);
 prior published
 [`v4.0.9-fourCusps-forall`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.9-fourCusps-forall),
@@ -161,6 +163,7 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.0.9-fourCusps-forall cusp-point forall | `v4.0.9-fourCusps-forall` / `2281aad` | [10.5281/zenodo.22322627](https://doi.org/10.5281/zenodo.22322627) | Retypes four cusps as `fourCuspsForallCuspPoints` over `DisplayedX026CuspPoint`. That forall is true and does not quantify over `ellipticJ`. `fourCuspsForallAllKinds_is_false` records the same-type forall is false. Typed `hGeomForbid` remains `True → ¬True`. Does not inhabit that implication and does not add `theorem BealTheorem`. Remaining geometric gate: Mathlib `X₀(26)` noncuspidal point. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `c58219380fd559d49e2d813a7c642e1708221c35d2ea9f828bf852afa07fa056`. |
 | v4.0.10-chabauty0-no-doi Chabauty-0 finite package | `v4.0.10-chabauty0-no-doi` | none (git tag only) | `Mazur/Chabauty0Actual_26` packages rank-zero product, `M₃` input, `fourCuspsForallCuspPoints`, `¬ fourCuspsForallAllKinds`, and eight S-units. Not Chabauty--Coleman. Typed `hIdentify` stays the elliptic-`j` packing (not `True`/`trivial`). Audits `HGeomForbidActual_26` and `X026RationalPointsActual_26` unchanged. Typed `hGeomForbid` remains uninhabitable. No `theorem BealTheorem`. No version DOI. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
 | v4.0.11-residue-disks-no-doi `M₃` residue-disk input | `v4.0.11-residue-disks-no-doi` | none (git tag only) | `ResidueDisks_26` is `M₃` plus `det ≠ 0`. `MordellWeilSieve_26` conjoins that with `chabauty0Package` under the name `X0_26_Q_EqualsFourCuspsAsScheme`; that is a finite conjunction, not a scheme `X₀(26)(ℚ)` theorem. `X026RationalPointsScheme_26` inhabits the Mazur premise from that package. The four-cusp audit is unchanged. No `theorem BealTheorem`. No version DOI. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
+| v4.0.12-scheme-stub-no-doi Jacobian-as-scheme boundary | `v4.0.12-scheme-stub-no-doi` | none (git tag only) | Phase 3 Track A. `J0_26_Scheme_26` and `AbelJacobi_26` are premise-bearing named boundaries. Mathlib 4.12 has no Jacobian. Not `sorry`, not `26a × 26b`, not inhabited as `True`. `X026RationalPointsActual_26` unchanged. No `theorem BealTheorem`. No version DOI. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
@@ -263,7 +266,9 @@ v4.0.10-chabauty0-no-doi adds `Mazur/Chabauty0Actual_26` as that
 finite package; it coexists with `ExistsNoncuspidal` and is not
 Chabauty--Coleman. v4.0.11-residue-disks-no-doi adds the `M₃`
 residue-disk *input* and finite sieve conjunction; those are not
-a scheme-theoretic `X₀(26)(ℚ)` theorem. There is no unconditional
+a scheme-theoretic `X₀(26)(ℚ)` theorem. v4.0.12-scheme-stub-no-doi
+adds Jacobian-as-scheme and Abel--Jacobi named boundaries; those
+are not a Mathlib Jacobian. There is no unconditional
 `BealTheorem`.
 
 The detailed milestones, acceptance gates, and dependency order are in
@@ -284,7 +289,7 @@ The detailed milestones, acceptance gates, and dependency order are in
 │   ├── Beal/                    # Beal.Foundations certificate re-exports
 │   └── BealLevel26Foundations/  # computable, scaffold, and real modules
 │       ├── Frey/
-│       ├── Jacobian/            # v4.0.1–v4.0.3 skeleton, Selmer audit, immersion input, v4.0.6 rank-zero product, v4.0.11 residue-disk input
+│       ├── Jacobian/            # v4.0.1–v4.0.3 skeleton, Selmer audit, immersion input, v4.0.6 rank-zero product, v4.0.11 residue-disk input, v4.0.12 scheme boundary
 │       ├── Mazur/               # genus arithmetic, endgame scaffold, v4.0.4 four-cusp package, v4.0.8 typed hGeomForbid, v4.0.9 cusp-point forall, v4.0.10 Chabauty0 package
 │       ├── Real/
 │       └── Ribet/               # typed lowering; v4.0.6 split; v4.0.7-j finite j-invariant hIdentify

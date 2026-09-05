@@ -1,6 +1,6 @@
 # scripts/
 
-Deterministic repository checks. **Current as of** `v4.0.11-residue-disks-no-doi`.
+Deterministic repository checks. **Current as of** `v4.0.12-scheme-stub-no-doi`.
 
 | Script | What it checks |
 |---|---|
