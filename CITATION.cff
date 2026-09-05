@@ -1,37 +1,42 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite the corrected v1.0.1-computable release and the v4.13.0-iter-contradiction-start computational boundary (commit c2c47db)."
-title: "Beal Level-26 Foundations — Exponent 13 Computational Boundary"
+message: "If you use this software, please cite the corrected v1.0.1-computable release (10.5281/zenodo.22272714) and this v4.21.0-iter-zenodo-mint package under concept DOI 10.5281/zenodo.22272382."
+title: "Beal Level 26 Foundations — v4.20.0 Typed ∧ Forall Axiom-Free Cert (Iter Package Locked)"
 type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v4.13.0-iter-contradiction-start"
+version: "v4.21.0-iter-zenodo-mint"
 date-released: "2026-09-05"
-doi: "10.5281/zenodo.22272714"
+doi: "10.5281/zenodo.22272382"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
-url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.13.0-iter-contradiction-start"
+url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.21.0-iter-zenodo-mint"
 license: MIT
 keywords:
-  - Lean 4
-  - formal mathematics
-  - modular curves
-  - level 26
-  - finite certificates
-  - four cusps
+  - beal-conjecture
+  - x0-26
+  - frey-curve
+  - ribet-level-lowering
+  - lean4
+  - pari-gp
   - 2-descent
+  - axiom-free
 abstract: >-
-  Beal Level 26 Foundations Exponent 13 Full Package Computational
-  Boundary. X0(26) four cusps [1,2,13,26], PARI |Sel2|=1 twice,
-  det M3=2, Descent SHA-256
-  d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260,
-  Frey 2*13=26, 26a1 [1,0,1,-5,-8] Δ -17576, 26b1 [1,-1,1,-3,3]
-  Δ -1664. Displayed X0_26_Q is the four-label set (no True).
-  contradiction_from_ribet uses ribet_level_lowering_26;
-  beal_exponent13_from_ribet / certified_from_ribet uses
-  axiom-free hGeomForbid_typed_true. Not forall N and not a
-  Mathlib X0(26)(Q) theorem. Commit c2c47db. The v1.0.1-computable
-  citation DOI remains 10.5281/zenodo.22272714.
+  Typed ∧ Forall lock: typed_and_forall ⟨beal_exponent13_from_ribet,
+  beal_forall_from_ribet⟩ none, certified_typed_and_forall
+  ⟨certified_from_forall, beal_forall_certified_from_ribet⟩ none via
+  hGeomForbid_typed_true hNotIn hInList, beal_forall_from_ribet =
+  Contradiction.beal_exponent13_from_ribet BRIDGE none,
+  contradiction_from_ribet ribet_level_lowering_26 only,
+  Contradiction.certified frey_modular_13+ribet_level_lowering_26,
+  X0_26_Q rfl [1,2,13,26] P.mem, Frey 2*13=26 rfl, PARI 2-descent
+  26a1 -17576 26b1 -1664 |Sel2|=1 det M3=2 SHA
+  d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260
+  docs/images/2-descent-level-26-26a1-26b1.webp ≥300KB, still not
+  forall N / Mathlib X0(26)(Q)
 identifiers:
-  - type: other
-    value: c2c47db
-    description: git commit v4.13.0-iter-contradiction-start
+  - type: doi
+    value: 10.5281/zenodo.22272382
+    description: Zenodo concept DOI (this mint is a new version of that record)
+  - type: doi
+    value: 10.5281/zenodo.22272714
+    description: v1.0.1-computable citation DOI

@@ -1,8 +1,10 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 [![v4.0.9-fourCusps-forall DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22322627.svg)](https://doi.org/10.5281/zenodo.22322627)
-[![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 [![CI](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml/badge.svg)](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml)
 
 # Beal Level 26 Foundations — Exponent 13 Full Package (Computational Boundary)
+
+This repo: v4.20.0 → v4.21.0 Typed ∧ Forall none — see docs/BealExponent13_Iter_Package.md
 
 ## v4.18.0 Typed ∧ Forall Lock — Axiom-Free Cert
 
@@ -40,8 +42,9 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
-[`v4.20.0-iter-package-none-docs-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.20.0-iter-package-none-docs-locked)
+[`v4.21.0-iter-zenodo-mint`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.21.0-iter-zenodo-mint)
 (prior
+[`v4.20.0-iter-package-none-docs-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.20.0-iter-package-none-docs-locked),
 [`v4.19.0-iter-readme-typed-forall-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.19.0-iter-readme-typed-forall-locked),
 [`v4.18.0-iter-typed-forall-package-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.18.0-iter-typed-forall-package-locked),
 [`v4.17.0-iter-forall-bridge-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.17.0-iter-forall-bridge-locked),
@@ -445,6 +448,7 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.18.0-iter-typed-forall-package-locked Typed ∧ Typed | `v4.18.0-iter-typed-forall-package-locked` | pending DataCite | `typed_and_forall` / `certified_typed_and_forall` none. Not `∀ ℕ`. Ledger still v1.4.0. |
 | v4.19.0-iter-readme-typed-forall-locked README table | `v4.19.0-iter-readme-typed-forall-locked` | pending DataCite | README / About lock the v4.18.0 Typed ∧ Forall none table. Not `∀ ℕ`. Ledger still v1.4.0. |
 | v4.20.0-iter-package-none-docs-locked package docs | `v4.20.0-iter-package-none-docs-locked` | pending DataCite | `docs/BealExponent13_Iter_Package.md` locks none table. Not `∀ ℕ`. Ledger still v1.4.0. |
+| v4.21.0-iter-zenodo-mint Typed ∧ Forall Zenodo mint | `v4.21.0-iter-zenodo-mint` | pending DataCite (concept [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)) | `CITATION.cff` / `.zenodo.json` lock the Typed ∧ Forall none abstract for a new version of the concept record. Version DOI recorded after DataCite `state: findable`. Not `∀ ℕ`. Ledger still v1.4.0. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
