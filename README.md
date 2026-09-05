@@ -21,8 +21,10 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
-[`v4.2.1-chabauty-closes-typed`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.2.1-chabauty-closes-typed)
+[`v4.3.0-final-forall-package`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.3.0-final-forall-package)
 (prior
+[`v4.2.2-zenodo-trigger`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.2.2-zenodo-trigger),
+[`v4.2.1-chabauty-closes-typed`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.2.1-chabauty-closes-typed),
 [`v4.2.0-full-chain`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.2.0-full-chain);
 GitHub release; version DOI recorded after DataCite `state: findable`; prior
 [`v4.1.3-beal-13-theorem`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.1.3-beal-13-theorem);
@@ -83,7 +85,7 @@ conjunction; those are not a scheme `X₀(26)(ℚ)` theorem. Typed `hIdentify`
 stays the elliptic-`j` packing. The remaining
 geometric gate is a Mathlib noncuspidal point of `X₀(26)`.
 
-### Current computational package (`v4.2.1-chabauty-closes-typed`)
+### v4.3.0 Final ∀ Package Exponent 13 (computational boundary)
 
 Certified Cremona models and the PARI 2.17.2 archive
 [`lean/BealLevel26Foundations/Certs/Descent_26.json`](lean/BealLevel26Foundations/Certs/Descent_26.json)
@@ -101,9 +103,11 @@ Lean names on that archive:
 * `Chabauty0ForcesCusp_computational` is `rankZero_unconditional ∧ det ≠ 0`.
 * `FreyLevel26` is `2 * 13 = 26` (`rfl`). Mathlib 4.12 has no Ribet / modularity; this is the displayed level only.
 * `X0_26_Q_four` is `rankZero_unconditional ∧ Chabauty0ForcesCusp_computational`.
-* `BealTheorem_Exponent13_Full_package` is `X0_26_Q_four ∧ FreyLevel26`.
-  `BealTheorem_Exponent13_Full` aliases that Prop. There is no
-  `∀ A B C, ¬ A^13+B^13=C^13` proof and no `False.elim` placeholder.
+* `BealExponent13_Final_Package` is
+  `X0_26_Q_four ∧ FreyLevel26 ∧ fourCuspsForallCuspPoints`.
+  `BealTheorem_Exponent13_Full_package` aliases it. There is no
+  `∀ A B C, ¬ A^13+B^13=C^13` proof and no vacuous-contradiction
+  placeholder.
 * `fourCuspsList_complete_computational` is the audit forall over
   `DisplayedX026CuspPoint` (`P.mem`). `hGeomForbid_typed_closed` is
   `X0_26_Q_four ∧ fourCuspsForallCuspPoints`. That is not
@@ -229,6 +233,8 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.1.3-beal-13-theorem computational `BealTheorem_Exponent13` | `v4.1.3-beal-13-theorem` | none (git tag only) | `hGeomForbid_computational` packages the four-cusp audit, PARI `|Sel₂|=1`, and `det M₃ ≠ 0`. `BealTheorem_Exponent13` is that structure (level `26 = 2×13`). Not the Beal conjecture. Full `theorem BealTheorem` stays guarded. Typed `fourCusps → ¬ ExistsNoncuspidal` stays uninhabitable. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
 | v4.2.0-full-chain named Frey + four-cusp packages | `v4.2.0-full-chain` | pending DataCite | `26a1` `[1,0,1,-5,-8]` Δ `-17576`; `26b1` `[1,-1,1,-3,3]` Δ `-1664`. PARI 2.17.2 `ellrank [0,0]`, empty `ell2cover`, `|Sel₂|=1` twice (`1=1`), `det M₃=2`. `FreyLevel26` is `2*13=26`. `X0_26_Q_four` and `BealTheorem_Exponent13_Full_package` are that conjunction. Not Ribet, not `X₀(26)(ℚ)`, not `∀ A B C`. Typed implication stays uninhabitable. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Descent SHA-256 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. |
 | v4.2.1-chabauty-closes-typed Chabauty completeness package | `v4.2.1-chabauty-closes-typed` | none (git tag / GitHub release) | `fourCuspsList_complete_computational` is `∀ P : DisplayedX026CuspPoint, P.label ∈ [1,2,13,26]`. `hGeomForbid_typed_closed` is `X0_26_Q_four ∧ fourCuspsForallCuspPoints`. Not `fourCusps → ¬ ExistsNoncuspidal`. Typed implication stays uninhabitable. No `False.elim`. Ledger still v1.4.0. Descent SHA-256 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. |
+| v4.2.2-zenodo-trigger changelog-only ingest | `v4.2.2-zenodo-trigger` | pending DataCite | Fresh commit / GitHub release so Zenodo can ingest. No Lean change. |
+| v4.3.0-final-forall-package Final ∀ package | `v4.3.0-final-forall-package` | pending DataCite | `BealExponent13_Final_Package` is `X0_26_Q_four ∧ FreyLevel26 ∧ fourCuspsForallCuspPoints`. Not `∀ A B C`. Typed implication stays uninhabitable. Ledger still v1.4.0. Descent SHA-256 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
@@ -386,6 +392,7 @@ The detailed milestones, acceptance gates, and dependency order are in
 │       ├── Certs/               # v4.0.15 LMFDB display; v4.1.1 Descent_26.json PARI 2-descent (not MW)
 │       ├── Descent/             # certified Weierstrass models; displayed |Sel₂|=1 from PARI (not a Selmer group)
 │       ├── Chain/               # v4.2.0 FreyLevel26 (2*13=26) and X0_26_Q_four (not Ribet / not X₀(26)(ℚ))
+│       ├── Final/               # v4.3.0 BealExponent13_Final_Package (not ∀ A B C)
 │       ├── Mazur/               # genus arithmetic, endgame scaffold, v4.0.4 four-cusp package, v4.0.8 typed hGeomForbid, v4.0.9 cusp-point forall, v4.0.10 Chabauty0 package
 │       ├── Real/
 │       └── Ribet/               # typed lowering; v4.0.6 split; v4.0.7-j finite j-invariant hIdentify

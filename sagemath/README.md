@@ -1,7 +1,7 @@
 # sagemath/
 
 Pinned coefficient ledger and SageMath 10.7 certificate generators.
-**Current as of** `v4.2.1-chabauty-closes-typed` / `v4.2.0-full-chain`.
+**Current as of** `v4.3.0-final-forall-package` / `v4.2.2-zenodo-trigger` / `v4.2.1-chabauty-closes-typed` / `v4.2.0-full-chain`.
 
 The ledger version is **v1.4.0** and has been unchanged since tag
 `v1.4.0`:
@@ -49,3 +49,6 @@ recorded in `latest_foundations_release` only after DataCite
 `v4.2.1-chabauty-closes-typed` is a GitHub release of the
 Chabauty completeness *package*; it does not inhabit typed
 `fourCusps → ¬ ExistsNoncuspidal` and does not change the ledger.
+`v4.2.2-zenodo-trigger` is a changelog-only ingest commit.
+`v4.3.0-final-forall-package` names `BealExponent13_Final_Package`;
+it is not `∀ A B C` and does not change the ledger.

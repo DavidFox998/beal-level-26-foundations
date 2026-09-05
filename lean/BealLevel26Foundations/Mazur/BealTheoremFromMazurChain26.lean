@@ -1,6 +1,7 @@
 import Beal.Foundations.FormalImmersionM3
 import BealLevel26Foundations.Chain.FreyCurve_13_26
 import BealLevel26Foundations.Chain.RationalPoints_26_FourCusps_26
+import BealLevel26Foundations.Final.BealExponent13_Final
 import BealLevel26Foundations.Jacobian.FormalImmersionActual_26
 import BealLevel26Foundations.Jacobian.J0_26_Q_RankZeroActual_26
 import BealLevel26Foundations.Mazur.EndgameScaffold
@@ -16,6 +17,7 @@ namespace BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26
 open Beal.Foundations.FormalImmersionM3
 open BealLevel26Foundations.Chain.Frey13
 open BealLevel26Foundations.Chain.X0_26_FourCusps
+open BealLevel26Foundations.Final
 open BealLevel26Foundations.Jacobian.FormalImmersionActual26
 open BealLevel26Foundations.Jacobian.J0_26_Q_RankZeroActual26
 open BealLevel26Foundations.Mazur.EndgameScaffold hiding hGeomForbid BealTheorem
@@ -147,15 +149,15 @@ theorem hGeomForbid_typed_is_now_computationally_inhabitable :
     hGeomForbid_typed_closed :=
   hGeomForbid_typed_closed.certified
 
-/-- Computational full-chain package.  Not
+/-- Alias of `BealExponent13_Final_Package`.  Not
 `∀ A B C, ¬ A^13 + B^13 = C^13`.  That forall needs Ribet /
 Darmon, which Mathlib 4.12 does not have. -/
 def BealTheorem_Exponent13_Full_package : Prop :=
-  X0_26_Q_four ∧ FreyLevel26
+  BealExponent13_Final_Package
 
 theorem BealTheorem_Exponent13_Full_package.certified :
     BealTheorem_Exponent13_Full_package :=
-  ⟨X0_26_Q_four.certified, freyLevel26_computational⟩
+  BealExponent13_Final_Package.certified
 
 /-- Alias of the package.  Not the Beal / Fermat statement.
 A `∀ A B C` form would need Ribet / Darmon, which Mathlib 4.12

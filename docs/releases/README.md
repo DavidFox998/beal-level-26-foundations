@@ -1,8 +1,10 @@
 # docs/releases/
 
 Immutable notes for each published Foundations tag. **Current latest
-note:** [`v4.2.1-chabauty-closes-typed.md`](v4.2.1-chabauty-closes-typed.md)
-(prior [`v4.2.0-full-chain.md`](v4.2.0-full-chain.md),
+note:** [`v4.3.0-final-forall-package.md`](v4.3.0-final-forall-package.md)
+(prior [`v4.2.2-zenodo-trigger.md`](v4.2.2-zenodo-trigger.md),
+[`v4.2.1-chabauty-closes-typed.md`](v4.2.1-chabauty-closes-typed.md),
+[`v4.2.0-full-chain.md`](v4.2.0-full-chain.md),
 [`v4.1.3-beal-13-theorem.md`](v4.1.3-beal-13-theorem.md),
 [`v4.1.2-beal-13-endgame.md`](v4.1.2-beal-13-endgame.md),
 [`v4.1.1-descent-compute.md`](v4.1.1-descent-compute.md),
@@ -51,6 +53,8 @@ not an unconditional `BealTheorem`.
 | [v4.1.3-beal-13-theorem.md](v4.1.3-beal-13-theorem.md) | `v4.1.3-beal-13-theorem` | none (git tag only) |
 | [v4.2.0-full-chain.md](v4.2.0-full-chain.md) | `v4.2.0-full-chain` | pending DataCite |
 | [v4.2.1-chabauty-closes-typed.md](v4.2.1-chabauty-closes-typed.md) | `v4.2.1-chabauty-closes-typed` | none (git tag / GitHub release) |
+| [v4.2.2-zenodo-trigger.md](v4.2.2-zenodo-trigger.md) | `v4.2.2-zenodo-trigger` | pending DataCite |
+| [v4.3.0-final-forall-package.md](v4.3.0-final-forall-package.md) | `v4.3.0-final-forall-package` | pending DataCite |
 
 Concept DOI for the evolving project:
 [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).

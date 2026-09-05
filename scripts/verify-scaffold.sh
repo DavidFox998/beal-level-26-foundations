@@ -67,6 +67,11 @@ test -f docs/releases/v4.1.2-beal-13-endgame.md
 test -f docs/releases/v4.1.3-beal-13-theorem.md
 test -f docs/releases/v4.2.0-full-chain.md
 test -f docs/releases/v4.2.1-chabauty-closes-typed.md
+test -f docs/releases/v4.2.2-zenodo-trigger.md
+test -f docs/releases/v4.3.0-final-forall-package.md
+test -f docs/CHANGELOG.md
+test -f lean/BealLevel26Foundations/Final/BealExponent13_Final.lean
+test -f lean/BealLevel26Foundations/Final/README.md
 test -f lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean
 test -f lean/BealLevel26Foundations/Chain/README.md
 test -f lean/BealLevel26Foundations/Chain/FreyCurve_13_26.lean
@@ -144,6 +149,8 @@ grep -q "v4.1.2-beal-13-endgame" README.md
 grep -q "v4.1.3-beal-13-theorem" README.md
 grep -q "v4.2.0-full-chain" README.md
 grep -q "v4.2.1-chabauty-closes-typed" README.md
+grep -q "v4.2.2-zenodo-trigger" README.md
+grep -q "v4.3.0-final-forall-package" README.md
 grep -q "v4.0.3-formal-immersion" docs/README.md
 grep -q "v4.0.4-x026-rational-points" docs/README.md
 grep -q "v4.0.5-nofrey-point" docs/README.md
@@ -164,6 +171,8 @@ grep -q "v4.1.2-beal-13-endgame" docs/README.md
 grep -q "v4.1.3-beal-13-theorem" docs/README.md
 grep -q "v4.2.0-full-chain" docs/README.md
 grep -q "v4.2.1-chabauty-closes-typed" docs/README.md
+grep -q "v4.2.2-zenodo-trigger" docs/README.md
+grep -q "v4.3.0-final-forall-package" docs/README.md
 grep -q "v4.0.3-formal-immersion" docs/releases/README.md
 grep -q "v4.0.4-x026-rational-points" docs/releases/README.md
 grep -q "v4.0.5-nofrey-point" docs/releases/README.md
@@ -184,6 +193,8 @@ grep -q "v4.1.2-beal-13-endgame" docs/releases/README.md
 grep -q "v4.1.3-beal-13-theorem" docs/releases/README.md
 grep -q "v4.2.0-full-chain" docs/releases/README.md
 grep -q "v4.2.1-chabauty-closes-typed" docs/releases/README.md
+grep -q "v4.2.2-zenodo-trigger" docs/releases/README.md
+grep -q "v4.3.0-final-forall-package" docs/releases/README.md
 grep -q "v4.0.3-formal-immersion" lean/README.md
 grep -q "v4.0.4-x026-rational-points" lean/README.md
 grep -q "v4.0.5-nofrey-point" lean/README.md
@@ -204,6 +215,8 @@ grep -q "v4.1.2-beal-13-endgame" lean/README.md
 grep -q "v4.1.3-beal-13-theorem" lean/README.md
 grep -q "v4.2.0-full-chain" lean/README.md
 grep -q "v4.2.1-chabauty-closes-typed" lean/README.md
+grep -q "v4.2.2-zenodo-trigger" lean/README.md
+grep -q "v4.3.0-final-forall-package" lean/README.md
 grep -q "v4.0.3-formal-immersion" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Jacobian/README.md
@@ -222,6 +235,8 @@ grep -q "v4.1.2-beal-13-endgame" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.1.3-beal-13-theorem" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.2.0-full-chain" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.2.1-chabauty-closes-typed" lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "v4.2.2-zenodo-trigger" lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "v4.3.0-final-forall-package" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.4-x026-rational-points" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Mazur/README.md
@@ -240,6 +255,8 @@ grep -q "v4.1.2-beal-13-endgame" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.1.3-beal-13-theorem" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.2.0-full-chain" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.2.1-chabauty-closes-typed" lean/BealLevel26Foundations/Mazur/README.md
+grep -q "v4.2.2-zenodo-trigger" lean/BealLevel26Foundations/Mazur/README.md
+grep -q "v4.3.0-final-forall-package" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.5-nofrey-point" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Ribet/README.md
@@ -258,6 +275,8 @@ grep -q "v4.1.2-beal-13-endgame" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.1.3-beal-13-theorem" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.2.0-full-chain" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.2.1-chabauty-closes-typed" lean/BealLevel26Foundations/Ribet/README.md
+grep -q "v4.2.2-zenodo-trigger" lean/BealLevel26Foundations/Ribet/README.md
+grep -q "v4.3.0-final-forall-package" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" sagemath/README.md
 grep -q "v4.0.7-hIdentify" sagemath/README.md
 grep -q "v4.0.7-hIdentify-j" sagemath/README.md
@@ -275,6 +294,8 @@ grep -q "v4.1.2-beal-13-endgame" sagemath/README.md
 grep -q "v4.1.3-beal-13-theorem" sagemath/README.md
 grep -q "v4.2.0-full-chain" sagemath/README.md
 grep -q "v4.2.1-chabauty-closes-typed" sagemath/README.md
+grep -q "v4.2.2-zenodo-trigger" sagemath/README.md
+grep -q "v4.3.0-final-forall-package" sagemath/README.md
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md
 grep -qi "genuine cohomological 2-Selmer" \
@@ -791,6 +812,34 @@ if grep -q "import BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26" \
   echo "FAIL: RationalPoints_26_FourCusps_26 must not import BealTheoremFromMazurChain26 (cycle)"
   exit 1
 fi
+grep -qF "def BealExponent13_Final_Package : Prop :=" \
+  lean/BealLevel26Foundations/Final/BealExponent13_Final.lean
+grep -q "theorem BealExponent13_Final_Package.certified" \
+  lean/BealLevel26Foundations/Final/BealExponent13_Final.lean
+grep -q "d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260" \
+  lean/BealLevel26Foundations/Final/BealExponent13_Final.lean
+if grep -nE 'BealExponent13_Final[[:space:]]*:[[:space:]]*∀' \
+    lean/BealLevel26Foundations/Final/BealExponent13_Final.lean; then
+  echo "FAIL: BealExponent13_Final_Package must not claim ∀ A B C"
+  exit 1
+fi
+if grep -nE 'Prop[[:space:]]*:=[[:space:]]*True|:=[[:space:]]*trivial' \
+    lean/BealLevel26Foundations/Final/BealExponent13_Final.lean; then
+  echo "FAIL: Final package must not be True/trivial"
+  exit 1
+fi
+if grep -nE '^[[:space:]]*False\.elim|^[[:space:]]*exact[[:space:]]+False\.elim' \
+    lean/BealLevel26Foundations/Final/BealExponent13_Final.lean; then
+  echo "FAIL: Final package must not inhabit a forall by contradiction"
+  exit 1
+fi
+if grep -q "import BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26" \
+    lean/BealLevel26Foundations/Final/BealExponent13_Final.lean; then
+  echo "FAIL: Final must not import BealTheoremFromMazurChain26 (cycle)"
+  exit 1
+fi
+grep -q "BealExponent13_Final_Package" \
+  lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean
 grep -q "fourCuspsForallCuspPoints" \
   lean/BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean
 grep -q "fourCuspsForallCuspPoints" \
