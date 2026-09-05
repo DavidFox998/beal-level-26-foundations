@@ -72,15 +72,15 @@ evidence is not a Mordell--Weil theorem.
 
 ## Track E — Descent start
 
-Status: **named Weierstrass / displayed Selmer bounds shipped**
-(`v4.1.0-descent-start`).
+Status: **PARI 2-descent display shipped**
+(`v4.1.1-descent-compute`; prior `v4.1.0-descent-start`).
 
 | File | What it is | What it is not |
 |---|---|---|
 | [`../Descent/EllipticCurve_26a1_26b1_26.lean`](../Descent/EllipticCurve_26a1_26b1_26.lean) | Certified `[1,0,1,-5,-8]` / `[1,-1,1,-3,3]`, `Δ = -17576` / `-1664` | Not an LMFDB lookup |
-| [`../Descent/TwoDescent_26a1_26.lean`](../Descent/TwoDescent_26a1_26.lean) | Displayed LMFDB rows plus torsion-order Nats `3` and `7` | Not a two-descent; not `|Sel₂|`; not a Selmer group |
-| [`../Descent/Selmer_26.lean`](../Descent/Selmer_26.lean) | `3 = 3` / `7 = 7` under Sha / rank-zero names | Not Sha[2] triviality; not a Mordell--Weil theorem |
+| [`../Descent/TwoDescent_26a1_26.lean`](../Descent/TwoDescent_26a1_26.lean) | `TorsionOrder_*` `3`/`7`; `SelmerBound_*` displayed `|Sel₂|=1` from `Descent_26.json` | Not a two-descent; not a Selmer group |
+| [`../Descent/Selmer_26.lean`](../Descent/Selmer_26.lean) | `1 = 1` under Sha / rank-zero names | Not Sha[2] triviality; not a Mordell--Weil theorem |
+| [`../Certs/Descent_26.json`](../Certs/Descent_26.json) | PARI `ellrank`/`ell2cover`/`elltors` archive | Not a Mathlib MW theorem |
 
-Remaining: actual 2-coverings and a genuine Selmer computation.
-Mathlib 4.12 has no `SelmerGroup`. Do not treat `3 = 3` as
-unconditional rank zero.
+Remaining: a Mathlib Selmer group and an unconditional Mordell--Weil
+theorem. Do not treat `1 = 1` as unconditional rank zero.

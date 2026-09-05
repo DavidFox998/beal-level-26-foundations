@@ -208,6 +208,9 @@ v4.1.0-descent-start records certified Weierstrass models and
 displayed Selmer-bound Nats `3` and `7`; those names are
 `3 = 3` / `7 = 7`, not a Selmer group and not unconditional
 Mordell--Weil.
+v4.1.1-descent-compute archives PARI `ellrank` / `ell2cover`
+with displayed `|Sel₂| = 1`; Lean `SelmerBound_*` are `1 = 1`,
+still not a Selmer group and not unconditional Mordell--Weil.
 The PLAN.md acceptance gates above
 remain open.
 

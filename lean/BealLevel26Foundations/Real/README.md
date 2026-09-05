@@ -1,6 +1,6 @@
 # lean/BealLevel26Foundations/Real/
 
-Arithmetic that Mathlib 4.12 permits. **Current as of** `v4.1.0-descent-start`.
+Arithmetic that Mathlib 4.12 permits. **Current as of** `v4.1.1-descent-compute`.
 
 | File | What it is | What it is not |
 |---|---|---|
@@ -17,8 +17,9 @@ typed `hGeomForbid` record, the v4.0.9 cusp-point forall, and
 the v4.0.10 Chabauty-0 package, the v4.0.11 residue-disk input,
 the v4.0.12 scheme boundary, the v4.0.13 named `det ≠ 0`
 immersion, the v4.0.14 named Coleman/Chabauty packages, and the
-v4.0.15 LMFDB display data, and the
-v4.1.0-descent-start displayed Selmer-bound names.
+v4.0.15 LMFDB display data, the
+v4.1.0-descent-start certified models, and the
+v4.1.1-descent-compute displayed `|Sel₂|=1`.
 These
 files must not mention `frey_conductor_data` or
 `tate_step2_odd_prime_external`.

@@ -62,6 +62,9 @@ test -f docs/releases/v4.0.13-formal-immersion-proof-no-doi.md
 test -f docs/releases/v4.0.14-coleman-integral-no-doi.md
 test -f docs/releases/v4.0.15-lmfdb-certs-no-doi.md
 test -f docs/releases/v4.1.0-descent-start.md
+test -f docs/releases/v4.1.1-descent-compute.md
+test -f lean/BealLevel26Foundations/Certs/Descent_26.json
+test -f scripts/verify_descent_26.py
 test -f lean/BealLevel26Foundations/Descent/README.md
 test -f lean/BealLevel26Foundations/Descent/EllipticCurve_26a1_26b1_26.lean
 test -f lean/BealLevel26Foundations/Descent/TwoDescent_26a1_26.lean
@@ -128,6 +131,7 @@ grep -q "v4.0.13-formal-immersion-proof-no-doi" README.md
 grep -q "v4.0.14-coleman-integral-no-doi" README.md
 grep -q "v4.0.15-lmfdb-certs-no-doi" README.md
 grep -q "v4.1.0-descent-start" README.md
+grep -q "v4.1.1-descent-compute" README.md
 grep -q "v4.0.3-formal-immersion" docs/README.md
 grep -q "v4.0.4-x026-rational-points" docs/README.md
 grep -q "v4.0.5-nofrey-point" docs/README.md
@@ -143,6 +147,7 @@ grep -q "v4.0.13-formal-immersion-proof-no-doi" docs/README.md
 grep -q "v4.0.14-coleman-integral-no-doi" docs/README.md
 grep -q "v4.0.15-lmfdb-certs-no-doi" docs/README.md
 grep -q "v4.1.0-descent-start" docs/README.md
+grep -q "v4.1.1-descent-compute" docs/README.md
 grep -q "v4.0.3-formal-immersion" docs/releases/README.md
 grep -q "v4.0.4-x026-rational-points" docs/releases/README.md
 grep -q "v4.0.5-nofrey-point" docs/releases/README.md
@@ -158,6 +163,7 @@ grep -q "v4.0.13-formal-immersion-proof-no-doi" docs/releases/README.md
 grep -q "v4.0.14-coleman-integral-no-doi" docs/releases/README.md
 grep -q "v4.0.15-lmfdb-certs-no-doi" docs/releases/README.md
 grep -q "v4.1.0-descent-start" docs/releases/README.md
+grep -q "v4.1.1-descent-compute" docs/releases/README.md
 grep -q "v4.0.3-formal-immersion" lean/README.md
 grep -q "v4.0.4-x026-rational-points" lean/README.md
 grep -q "v4.0.5-nofrey-point" lean/README.md
@@ -173,6 +179,7 @@ grep -q "v4.0.13-formal-immersion-proof-no-doi" lean/README.md
 grep -q "v4.0.14-coleman-integral-no-doi" lean/README.md
 grep -q "v4.0.15-lmfdb-certs-no-doi" lean/README.md
 grep -q "v4.1.0-descent-start" lean/README.md
+grep -q "v4.1.1-descent-compute" lean/README.md
 grep -q "v4.0.3-formal-immersion" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Jacobian/README.md
@@ -186,6 +193,7 @@ grep -q "v4.0.13-formal-immersion-proof-no-doi" lean/BealLevel26Foundations/Jaco
 grep -q "v4.0.14-coleman-integral-no-doi" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.15-lmfdb-certs-no-doi" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.1.0-descent-start" lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "v4.1.1-descent-compute" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.4-x026-rational-points" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Mazur/README.md
@@ -199,6 +207,7 @@ grep -q "v4.0.13-formal-immersion-proof-no-doi" lean/BealLevel26Foundations/Mazu
 grep -q "v4.0.14-coleman-integral-no-doi" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.15-lmfdb-certs-no-doi" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.1.0-descent-start" lean/BealLevel26Foundations/Mazur/README.md
+grep -q "v4.1.1-descent-compute" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.5-nofrey-point" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Ribet/README.md
@@ -212,6 +221,7 @@ grep -q "v4.0.13-formal-immersion-proof-no-doi" lean/BealLevel26Foundations/Ribe
 grep -q "v4.0.14-coleman-integral-no-doi" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.15-lmfdb-certs-no-doi" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.1.0-descent-start" lean/BealLevel26Foundations/Ribet/README.md
+grep -q "v4.1.1-descent-compute" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" sagemath/README.md
 grep -q "v4.0.7-hIdentify" sagemath/README.md
 grep -q "v4.0.7-hIdentify-j" sagemath/README.md
@@ -224,6 +234,7 @@ grep -q "v4.0.13-formal-immersion-proof-no-doi" sagemath/README.md
 grep -q "v4.0.14-coleman-integral-no-doi" sagemath/README.md
 grep -q "v4.0.15-lmfdb-certs-no-doi" sagemath/README.md
 grep -q "v4.1.0-descent-start" sagemath/README.md
+grep -q "v4.1.1-descent-compute" sagemath/README.md
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md
 grep -qi "genuine cohomological 2-Selmer" \
@@ -863,6 +874,16 @@ grep -q "def SelmerBound_26a1" \
   lean/BealLevel26Foundations/Descent/TwoDescent_26a1_26.lean
 grep -q "def SelmerBound_26b1" \
   lean/BealLevel26Foundations/Descent/TwoDescent_26a1_26.lean
+grep -q "def TorsionOrder_26a1" \
+  lean/BealLevel26Foundations/Descent/TwoDescent_26a1_26.lean
+grep -q "def TorsionOrder_26b1" \
+  lean/BealLevel26Foundations/Descent/TwoDescent_26a1_26.lean
+grep -q "SelmerBound_26a1 : ℕ := 1" \
+  lean/BealLevel26Foundations/Descent/TwoDescent_26a1_26.lean
+grep -q "TorsionOrder_26a1 : ℕ := 3" \
+  lean/BealLevel26Foundations/Descent/TwoDescent_26a1_26.lean
+grep -q "d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260" \
+  lean/BealLevel26Foundations/Descent/TwoDescent_26a1_26.lean
 grep -q "Not a Selmer" \
   lean/BealLevel26Foundations/Descent/TwoDescent_26a1_26.lean
 grep -q "Not a two-descent" \
@@ -921,5 +942,6 @@ python3 scripts/verify_coefficient_ledger.py
 python3 scripts/verify_v1_3_0_certs.py
 python3 scripts/replay_level26_hensel.py
 python3 scripts/verify_lmfdb_26.py
+python3 scripts/verify_descent_26.py
 
 echo "OK: Beal Level-26 Foundations computable release is internally consistent"

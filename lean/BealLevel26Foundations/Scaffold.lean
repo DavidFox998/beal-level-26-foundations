@@ -44,8 +44,8 @@ v4.0.12 Jacobian-as-scheme / Abel--Jacobi *boundaries*, and the
 v4.0.13 named `det ≠ 0` formal-immersion / disk-equality
 aliases, and the v4.0.14 named rank-zero / `det ≠ 0`
 Chabauty-0 conjunction, and the v4.0.15 LMFDB *display*
-package, and the v4.1.0 Descent Weierstrass / displayed
-Selmer-bound names. It is
+package, and the v4.1.0 / v4.1.1 Descent Weierstrass and
+displayed PARI `|Sel₂| = 1` names. It is
 separate from the unconditional computable v1 entrypoint.
 Typed `hIdentify` packs a Frey `j` as an elliptic displayed
 point, not as `26 ∉ [1, 2, 13, 26]`. Constructor inequality

@@ -46,10 +46,10 @@ SHA-256 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`
 and the two existing Sage certificates.  No new certificate is
 added.
 
-v4.1.0 links the product `rankZero` name to the Descent Selmer
+v4.1.1 links the product `rankZero` name to the Descent Selmer
 names only as a comment.  `RankZero_26a1_from_Selmer` /
-`RankZero_26b1_from_Selmer` are `3 = 3` / `7 = 7` on displayed
-torsion-order Nats.  They do not replace `rankZero`.  Not a Selmer
+`RankZero_26b1_from_Selmer` are `1 = 1` on the displayed `|Sel₂|`
+Nats from `Descent_26.json`.  They do not replace `rankZero`.  Not a Selmer
 group and not a Mordell--Weil theorem.
 -/
 

@@ -68,8 +68,8 @@ plus `det ≠ 0`; that is not a Coleman integral and not a
 Chabauty--Coleman theorem.
 v4.0.15 records LMFDB display fields for `26a1` and `26b1`; that
 is extra computational evidence, not unconditional rank zero.
-v4.1.0 records certified Weierstrass models and displayed
-Selmer-bound Nats `3` and `7`; those names are `3 = 3` / `7 = 7`,
+v4.1.0 records certified Weierstrass models.
+v4.1.1 archives PARI `|Sel₂| = 1`; those Lean names are `1 = 1`,
 not a Selmer group and not unconditional Mordell--Weil.
 No domain axiom is introduced. Geometric Jacobian, genuine
 cohomological Selmer, Picard, Tate, scheme-theoretic Ribet

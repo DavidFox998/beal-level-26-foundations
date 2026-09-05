@@ -13,5 +13,5 @@ requests to **`main`**:
 
 A green CI run is a Lean 4.12 / Mathlib 4.12 build plus the scaffold
 script. It is not a DOI and not an unconditional `BealTheorem`.
-Current Foundations tag `v4.1.0-descent-start` does not change this
+Current Foundations tag `v4.1.1-descent-compute` does not change this
 workflow.

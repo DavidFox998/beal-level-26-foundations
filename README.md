@@ -21,8 +21,10 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
-[`v4.1.0-descent-start`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.1.0-descent-start)
+[`v4.1.1-descent-compute`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.1.1-descent-compute)
 (git tag only; no version DOI; prior
+[`v4.1.0-descent-start`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.1.0-descent-start);
+prior
 [`v4.0.15-lmfdb-certs-no-doi`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.15-lmfdb-certs-no-doi);
 prior
 [`v4.0.14-coleman-integral-no-doi`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.14-coleman-integral-no-doi);
@@ -182,6 +184,7 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.0.14-coleman-integral-no-doi named rank-zero / `det ≠ 0` Chabauty | `v4.0.14-coleman-integral-no-doi` | none (git tag only) | Phase 3 Track C. `ColemanVanishesOnRankZero` is the product rank-zero package. `DifferentialNonZeroOnDisk` is `det ≠ 0`. `Chabauty0ForcesCusp` is those two conjoined. Not a Coleman integral and not a Chabauty--Coleman theorem. Track D not started. No `theorem BealTheorem`. No version DOI. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
 | v4.0.15-lmfdb-certs-no-doi archived LMFDB display data | `v4.0.15-lmfdb-certs-no-doi` | none (git tag only) | Phase 3 Track D. `LMFDB_26.json` / `LMFDBCert_26` record displayed rank `0` and `a₂` for `26a1`/`26b1`. Extra computational evidence, not a Mordell--Weil theorem and not unconditional `rankZero`. Not `True`/`trivial`. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
 | v4.1.0-descent-start certified models and displayed Selmer bounds | `v4.1.0-descent-start` | none (git tag only) | Descent start. Certified `26a1`/`26b1` Weierstrass models `[1,0,1,-5,-8]` / `[1,-1,1,-3,3]`. `SelmerBound_*` are torsion-order Nats `3` and `7`; `RankZero_*_from_Selmer` is `3 = 3` / `7 = 7`. Not a Selmer group, not `|Sel₂|`, not unconditional MW. `rankZero` unchanged. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
+| v4.1.1-descent-compute PARI 2-descent display | `v4.1.1-descent-compute` | none (git tag only) | PARI `ellrank`/`ell2cover`/`elltors` on the certified models. `Descent_26.json` has rank `0`, torsion `3`/`7`, `|Sel₂|=1`, JSON `sha2_trivial: true`. Lean `SelmerBound_*` are now `1`; torsion stays `TorsionOrder_*`. `RankZero_*_from_Selmer` is `1 = 1`. Computational, not a Mordell--Weil theorem. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
@@ -296,8 +299,9 @@ v4.0.14-coleman-integral-no-doi names the rank-zero product as
 Chabauty--Coleman theorem. v4.0.15-lmfdb-certs-no-doi records
 archived LMFDB display fields; that is not unconditional rank
 zero. v4.1.0-descent-start records certified Weierstrass
-models and displayed Selmer-bound Nats `3` and `7`; those names
-are `3 = 3` / `7 = 7`, not a Selmer group and not unconditional
+models. v4.1.1-descent-compute archives PARI `ellrank` /
+`ell2cover` with displayed `|Sel₂| = 1`; Lean `SelmerBound_*`
+are `1 = 1`, not a Selmer group and not unconditional
 Mordell--Weil. There is no unconditional
 `BealTheorem`.
 
@@ -320,8 +324,8 @@ The detailed milestones, acceptance gates, and dependency order are in
 │   └── BealLevel26Foundations/  # computable, scaffold, and real modules
 │       ├── Frey/
 │       ├── Jacobian/            # v4.0.1–v4.0.3 skeleton, Selmer audit, immersion input, v4.0.6 rank-zero product, v4.0.11 residue-disk input, v4.0.12 scheme boundary, v4.0.13 named det≠0 immersion, v4.0.14 named Coleman/Chabauty packages
-│       ├── Certs/               # v4.0.15 archived LMFDB display data (not MW)
-│       ├── Descent/             # v4.1.0 certified Weierstrass models; displayed Selmer-bound Nats (not |Sel₂|)
+│       ├── Certs/               # v4.0.15 LMFDB display; v4.1.1 Descent_26.json PARI 2-descent (not MW)
+│       ├── Descent/             # certified Weierstrass models; displayed |Sel₂|=1 from PARI (not a Selmer group)
 │       ├── Mazur/               # genus arithmetic, endgame scaffold, v4.0.4 four-cusp package, v4.0.8 typed hGeomForbid, v4.0.9 cusp-point forall, v4.0.10 Chabauty0 package
 │       ├── Real/
 │       └── Ribet/               # typed lowering; v4.0.6 split; v4.0.7-j finite j-invariant hIdentify
