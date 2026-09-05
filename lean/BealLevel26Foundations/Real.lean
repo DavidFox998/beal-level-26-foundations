@@ -21,6 +21,7 @@ import BealLevel26Foundations.Jacobian.MordellWeilSieve_26
 import BealLevel26Foundations.Mazur.X026RationalPointsScheme_26
 import BealLevel26Foundations.Jacobian.J0_26_Scheme_26
 import BealLevel26Foundations.Jacobian.AbelJacobi_26
+import BealLevel26Foundations.Jacobian.ResidueDisksProof_26
 
 namespace BealLevel26Foundations.Real
 
@@ -59,6 +60,9 @@ Chabauty--Coleman. v4.0.11 adds the residue-disk / sieve
 *input* packages; those are finite `M₃` conjunctions, not a
 scheme `X₀(26)(ℚ)` theorem. v4.0.12 adds Jacobian-as-scheme and
 Abel--Jacobi named boundaries; those are not a Mathlib Jacobian.
+v4.0.13 names `formalImmersion_at_2_surjective_from_M3` as
+`det ≠ 0` and aliases it as `diskEqualityFromImmersion`; that is
+not surjectivity of a map of completed local rings.
 That is not genuine `Sel₂`, not a Mathlib `X₀(26)` point, and not
 an unconditional `BealTheorem`.
 -/

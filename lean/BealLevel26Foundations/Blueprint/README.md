@@ -27,9 +27,19 @@ of `X₀(N)`.
 
 ## Track B — Formal immersion at 2
 
-Status: **not started.** Remaining: completed local rings / q-expansion
-at `∞`, and a residue-disk implication from rank zero plus immersion.
-Do not treat `M₃` injectivity as scheme-theoretic immersion.
+Status: **named `det ≠ 0` package shipped**
+(`v4.0.13-formal-immersion-proof-no-doi`).
+
+| File | What it is | What it is not |
+|---|---|---|
+| [`../Jacobian/FormalImmersionActual_26.lean`](../Jacobian/FormalImmersionActual_26.lean) | `formalImmersion_at_2_surjective_from_M3` is `of_qExpansion.input.det ≠ 0` | Not surjectivity of a map of completed local rings |
+| [`../Jacobian/ResidueDisksProof_26.lean`](../Jacobian/ResidueDisksProof_26.lean) | Alias `diskEqualityFromImmersion` of that same `det ≠ 0` | Not a residue-disk theorem |
+
+Remaining: completed local rings / q-expansion at `∞`, and a genuine
+residue-disk implication from rank zero plus immersion. Do not treat
+`M₃` injectivity as scheme-theoretic immersion.
+
+Reference (not imported, not discharged): Mazur 1978 Prop III.3.2.
 
 ## Track C — Mordell--Weil sieve / Chabauty--Coleman
 

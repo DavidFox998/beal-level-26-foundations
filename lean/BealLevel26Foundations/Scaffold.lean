@@ -19,6 +19,7 @@ import BealLevel26Foundations.Jacobian.MordellWeilSieve_26
 import BealLevel26Foundations.Mazur.X026RationalPointsScheme_26
 import BealLevel26Foundations.Jacobian.J0_26_Scheme_26
 import BealLevel26Foundations.Jacobian.AbelJacobi_26
+import BealLevel26Foundations.Jacobian.ResidueDisksProof_26
 
 namespace BealLevel26Foundations.Scaffold
 
@@ -34,8 +35,10 @@ finite `j`-invariant encoding of typed `hIdentify`, the
 v4.0.8 record that typed `hGeomForbid` is uninhabitable, and the
 v4.0.9 cusp-point forall `fourCuspsForallCuspPoints`, and the
 v4.0.10 Chabauty-0 finite package, and the
-v4.0.11 residue-disk / sieve *input* packages, and the
-v4.0.12 Jacobian-as-scheme / Abel--Jacobi *boundaries*. It is
+v4.0.11 residue-disk / sieve *input* packages, the
+v4.0.12 Jacobian-as-scheme / Abel--Jacobi *boundaries*, and the
+v4.0.13 named `det ≠ 0` formal-immersion / disk-equality
+aliases. It is
 separate from the unconditional computable v1 entrypoint.
 Typed `hIdentify` packs a Frey `j` as an elliptic displayed
 point, not as `26 ∉ [1, 2, 13, 26]`. Constructor inequality

@@ -20,6 +20,7 @@ import BealLevel26Foundations.Jacobian.MordellWeilSieve_26
 import BealLevel26Foundations.Mazur.X026RationalPointsScheme_26
 import BealLevel26Foundations.Jacobian.J0_26_Scheme_26
 import BealLevel26Foundations.Jacobian.AbelJacobi_26
+import BealLevel26Foundations.Jacobian.ResidueDisksProof_26
 
 namespace Beal.Foundations
 
@@ -54,6 +55,9 @@ not a scheme-theoretic `X₀(26)(ℚ)` theorem.
 v4.0.12 adds Jacobian-as-scheme and Abel--Jacobi named
 boundaries; those are not a Mathlib Jacobian and are not
 inhabited.
+v4.0.13 names `formalImmersion_at_2_surjective_from_M3` as
+`det ≠ 0` and aliases it as `diskEqualityFromImmersion`; that is
+not surjectivity of a map of completed local rings.
 No domain axiom is introduced. Geometric Jacobian, genuine
 cohomological Selmer, Picard, Tate, scheme-theoretic Ribet
 existence, a Mathlib `X₀(26)` point, and an unconditional

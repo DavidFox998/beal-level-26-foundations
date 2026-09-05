@@ -2,7 +2,7 @@
 
 Typed certificate bridges promoted from
 [`sagemath/certs/`](../../../sagemath/certs/README.md) and the v1.4.0
-ledger. **Current as of** `v4.0.12-scheme-stub-no-doi`.
+ledger. **Current as of** `v4.0.13-formal-immersion-proof-no-doi`.
 
 | File | What it checks | What it is not |
 |---|---|---|
@@ -13,7 +13,7 @@ ledger. **Current as of** `v4.0.12-scheme-stub-no-doi`.
 | `LevelLowering_26.lean` | Re-export of typed `(ℓ, N, p, M)` data | Not a Ribet theorem |
 | `EndgameScaffold.lean` | Re-export of the four Mazur premises | Not an unconditional `BealTheorem` |
 
-`Beal.Foundations.release` remains `"v1.4.0"`. Later tags (v2--v4.0.12)
+`Beal.Foundations.release` remains `"v1.4.0"`. Later tags (v2--v4.0.13)
 add modules elsewhere; they do not bump this cert-bridge version or
 change the ledger SHA
 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`.

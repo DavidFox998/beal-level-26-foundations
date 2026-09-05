@@ -38,6 +38,13 @@ scaffold premise.  It replaces that premise by finite matrix
 injectivity.  Mathlib 4.12 has no Jacobian and no formal-immersion API.
 This is not a scheme-theoretic immersion of `X₀(26)` in `J₀(26)`, and
 it does not identify `X₀(26)(ℚ)` with four cusps.
+
+v4.0.13 names `formalImmersion_at_2_surjective_from_M3` as
+`of_qExpansion.input.det ≠ 0`.  Blueprint citation: Mazur 1978
+Prop III.3.2 checks formal immersion at `p = 2` via the
+q-expansion matrix modulo 3.  The Lean `Prop` is that determinant
+check over `ZMod 3`.  It is not surjectivity of a map of
+completed local rings.
 -/
 
 /-- Cotangent-map injectivity: trivial kernel of `mulVec`. -/
@@ -135,10 +142,26 @@ theorem FormalImmersionAtTwo26.of_qExpansion_eq_certifiedM3 :
     FormalImmersionAtTwo26.of_qExpansion.input = certifiedM3 :=
   qExpansionM3_eq_certifiedM3
 
+/-- Named `det ≠ 0` package.  Blueprint citation: Mazur 1978
+Prop III.3.2, formal immersion at `p = 2` checked via the
+q-expansion matrix modulo 3.  This `Prop` is
+`FormalImmersionAtTwo26.of_qExpansion.input.det ≠ 0` over
+`ZMod 3`.  It is not surjectivity of a map of completed local
+rings. -/
+def formalImmersion_at_2_surjective_from_M3 : Prop :=
+  FormalImmersionAtTwo26.of_qExpansion.input.det ≠ 0
+
+/-- `input.det = 2` over `ZMod 3`; `2 ≠ 0` by `decide`. -/
+theorem formalImmersion_at_2_surjective_from_M3.certified :
+    formalImmersion_at_2_surjective_from_M3 := by
+  rw [FormalImmersionAtTwo26.of_qExpansion.input_det]
+  decide
+
 #print axioms qExpansionM3_det_by_ring
 #print axioms qExpansionM3_cotangent_injective
 #print axioms cotangentMap_injective_at_two
 #print axioms cotangentInjective_of_picard
 #print axioms FormalImmersionAtTwo26.of_qExpansion_replaces_premise
+#print axioms formalImmersion_at_2_surjective_from_M3.certified
 
 end BealLevel26Foundations.Jacobian.FormalImmersionActual26

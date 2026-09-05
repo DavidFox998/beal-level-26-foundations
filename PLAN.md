@@ -192,6 +192,10 @@ scheme-theoretic `X₀(26)(ℚ)` theorem.
 v4.0.12-scheme-stub-no-doi adds Jacobian-as-scheme and
 Abel--Jacobi named boundaries; Mathlib 4.12 has no Jacobian
 and those files are not inhabited.
+v4.0.13-formal-immersion-proof-no-doi names
+`formalImmersion_at_2_surjective_from_M3` as `det ≠ 0` and
+aliases it as `diskEqualityFromImmersion`; that is not
+surjectivity of a map of completed local rings.
 The PLAN.md acceptance gates above
 remain open.
 
