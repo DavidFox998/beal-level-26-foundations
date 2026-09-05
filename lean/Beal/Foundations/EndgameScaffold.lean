@@ -11,9 +11,10 @@ structures plus v2 Frey, v3 `LevelLowering_26`, the four-cusp
 negation `hGeomForbid`, and the j-invariant identification
 `hIdentify : ExistsFreyWitness → ExistsNoncuspidal`.  Typed
 `hIdentify` packs a Frey `j`-ratio as an elliptic displayed
-point, not as `26 ∉ [1, 2, 13, 26]`.  `hGeomForbid` remains
-the named geometric gate.  This is not an unconditional
-`BealTheorem`.
+point, not as `26 ∉ [1, 2, 13, 26]`.  Typed `hGeomForbid`
+(`fourCusps → ¬ ExistsNoncuspidal`) is uninhabitable:
+constructor inequality does not negate an elliptic `j`.
+This is not an unconditional `BealTheorem`.
 -/
 
 export BealLevel26Foundations.Mazur.EndgameScaffold

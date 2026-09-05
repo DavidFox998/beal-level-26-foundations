@@ -4,8 +4,8 @@ Typed `LevelLowering_26` certificate data from `v3.0.0-ribet`, the
 v4.0.5 displayed Ribet-existence package, the v4.0.6 split
 between existence and the four-cusp list, and the v4.0.7-j
 finite `j`-invariant `hIdentify`.
-**Current as of** `v4.0.7-hIdentify-j`
-(includes `v4.0.7-hIdentify`, `v4.0.6-rank-zero-fixed`,
+**Current as of** `v4.0.8-geom-forbid`
+(includes `v4.0.7-hIdentify-j`, `v4.0.7-hIdentify`, `v4.0.6-rank-zero-fixed`,
 `v4.0.5-nofrey-point`).
 
 | File | What it is | What it is not |
@@ -24,5 +24,6 @@ proves `vₚ(26 p) = 1` from `p ∤ 26` and the factorization `26 = 2 * 13`.
 residual Galois representation, a Hecke algebra, or a realizing
 newform, and it does not replace the parent
 `LevelLowering_26` supplier. Typed `hIdentify` is the finite
-`j`-packing. The remaining geometric gate `hGeomForbid` is four
-cusp labels versus a Mathlib noncuspidal `X₀(26)` point.
+`j`-packing. v4.0.8 records typed `hGeomForbid` as uninhabitable
+in [`../Mazur/HGeomForbidActual_26.lean`](../Mazur/HGeomForbidActual_26.lean).
+The remaining geometric gate is a Mathlib noncuspidal `X₀(26)` point.

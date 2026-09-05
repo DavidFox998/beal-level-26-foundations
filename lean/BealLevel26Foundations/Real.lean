@@ -14,6 +14,7 @@ import BealLevel26Foundations.Mazur.X026RationalPointsActual_26
 import BealLevel26Foundations.Ribet.RibetLoweringActual_26
 import BealLevel26Foundations.Ribet.NoFreyPointActual_26
 import BealLevel26Foundations.Ribet.HIdentifyActual_26
+import BealLevel26Foundations.Mazur.HGeomForbidActual_26
 
 namespace BealLevel26Foundations.Real
 
@@ -40,9 +41,11 @@ splits that existence (`ExistsFreyWitness`, a Frey model with
 `J0_26_Q_RankZero26` as the product of two Sage-certified
 rank-zero factors. v4.0.7-hIdentify-j packs a Frey `j`-ratio as
 an elliptic displayed point (`hIdentify`); the four-cusp list
-`[1, 2, 13, 26]` stays as cusps. That is not genuine `Sel₂`,
-not a Mathlib `X₀(26)` point, and not an unconditional
-`BealTheorem`.
+`[1, 2, 13, 26]` stays as cusps. v4.0.8 records that typed
+`hGeomForbid` (`fourCusps → ¬ ExistsNoncuspidal`) is
+uninhabitable: constructor inequality does not negate an
+elliptic `j`. That is not genuine `Sel₂`, not a Mathlib
+`X₀(26)` point, and not an unconditional `BealTheorem`.
 -/
 
 end BealLevel26Foundations.Real

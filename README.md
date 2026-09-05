@@ -14,13 +14,11 @@ The governing principle is the same as the parent project: a checked
 calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
-**Current public surface:** tag
-[`v4.0.7-hIdentify-j`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.7-hIdentify-j)
-(commit `ade01a2`, version DOI
-[10.5281/zenodo.22314212](https://doi.org/10.5281/zenodo.22314212);
-prior [`v4.0.7-hIdentify`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.7-hIdentify),
-commit `a4143fc`, version DOI
-[10.5281/zenodo.22314092](https://doi.org/10.5281/zenodo.22314092)).
+**Current public surface:** tag `v4.0.8-geom-forbid` (prior published
+tag
+[`v4.0.7-hIdentify-j`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.7-hIdentify-j),
+commit `ade01a2`, version DOI
+[10.5281/zenodo.22314212](https://doi.org/10.5281/zenodo.22314212)).
 The coefficient ledger is still
 [`sagemath/level_26_ledger.json`](sagemath/level_26_ledger.json) **v1.4.0**,
 SHA-256 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`.
@@ -33,9 +31,12 @@ v4.0.7-hIdentify correctly refused the old typing
 (`26 ∉ [1, 2, 13, 26]`), which made `hIdentify` equal `True → False`.
 v4.0.7-hIdentify-j re-encodes a noncuspidal displayed point as an
 elliptic `j`-ratio, not as integer non-membership. Typed `hIdentify`
-packs that `j`. Four cusp labels stay as cusps. The remaining
-geometric gate is still `hGeomForbid`: a Frey `j` is not a Mathlib
-noncuspidal point of `X₀(26)`.
+packs that `j`. Four cusp labels stay as cusps. v4.0.8-geom-forbid
+proves typed `hGeomForbid` (`fourCusps → ¬ ExistsNoncuspidal`)
+uninhabitable: `ellipticJ ≠ cuspDivisor` as a point kind is how a
+Frey `j` is shown *not* to be a cusp label, so it inhabits
+`ExistsNoncuspidal` rather than negating it. The remaining
+geometric gate is a Mathlib noncuspidal point of `X₀(26)`.
 
 Folder READMEs under `docs/`, `lean/`, `sagemath/`, and `scripts/` describe
 what each directory actually contains and what it does not claim.
@@ -137,6 +138,7 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.0.6-rank-zero-fixed split existence from absence | `v4.0.6-rank-zero-fixed` / `2290809` | [10.5281/zenodo.22313955](https://doi.org/10.5281/zenodo.22313955) | Splits Ribet existence (`RibetLoweringActual_26` / `ExistsFreyWitness`, `loweredLevel=26`) from four-cusp absence (`NoFreyPointActual_26` / `¬ ExistsNoncuspidal` from divisors `[1,2,13,26]`). Inhabits `J0_26_Q_RankZero26` as the product of certified `26a×26b` with Sage `certified_mwrank=0` on both; not genuine `Sel₂`. `hGeomForbid` is `fourCusps → ¬ ExistsNoncuspidal`. Remaining named gate: `hIdentify`. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `3597879ae2492dbd48ef3b8d7755bd742c14373988ff9af0469fd89060313570`. |
 | v4.0.7-hIdentify typed implication uninhabitable | `v4.0.7-hIdentify` / `a4143fc` | [10.5281/zenodo.22314092](https://doi.org/10.5281/zenodo.22314092) | `Ribet/HIdentifyActual_26` proves `hIdentify_typed_is_uninhabitable`: `ExistsFreyWitness → ExistsNoncuspidal` is `True → False` because `26` is a displayed cusp. Does not inhabit that implication and does not add `theorem BealTheorem`. Remaining geometric gate: Frey curve from a Beal counterexample. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `df6ff673d4661ae736ff726f7b03f3271493483895910fb97267808bd785e41a`. |
 | v4.0.7-hIdentify-j finite `j`-invariant encoding | `v4.0.7-hIdentify-j` / `ade01a2` | [10.5281/zenodo.22314212](https://doi.org/10.5281/zenodo.22314212) | Redefines `ExistsNoncuspidal` as an elliptic `j`-ratio `(c₄³ : Δ)`, not `26 ∉ [1,2,13,26]`. `HIdentify26.of_qExpansion` inhabits typed `hIdentify` from q-expansion `26a × 26b`, `MwrankCertificateSoundness_26`, and the four-cusp package. `NoFreyPoint26` keeps the cusp list and does not Lean-negate the elliptic `j`. `hGeomForbid` remains. No `theorem BealTheorem`. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `0a93c94fc19aa64ca8a57a76b1106a8991be4b29ba7ac1bc33839b81ba590e45`. |
+| v4.0.8-geom-forbid typed `hGeomForbid` uninhabitable | `v4.0.8-geom-forbid` | (version DOI after publish) | `Mazur/HGeomForbidActual_26` proves `hGeomForbid_typed_is_uninhabitable`: `fourCusps → ¬ ExistsNoncuspidal` is `True → ¬True` because constructor inequality `ellipticJ ≠ cuspDivisor` inhabits `ExistsNoncuspidal`. Finite package from formal immersion, rank-zero product, and four-cusp list. Does not inhabit that implication and does not add `theorem BealTheorem`. Remaining geometric gate: Mathlib `X₀(26)` noncuspidal point. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
@@ -229,8 +231,10 @@ elliptic `j`, so typed `hIdentify` is the constructor packing
 `HIdentify26.of_qExpansion`. Four cusp labels stay as cusps.
 `hGeomForbid` (`fourCusps → ¬ ExistsNoncuspidal`) remains the
 named geometric gate: that implication would put `False` in the
-kernel if inhabited together with the new `hIdentify`. There is
-no unconditional `BealTheorem`.
+kernel if inhabited together with the new `hIdentify`.
+v4.0.8-geom-forbid records that fact as
+`hGeomForbid_typed_is_uninhabitable`. There is no unconditional
+`BealTheorem`.
 
 The detailed milestones, acceptance gates, and dependency order are in
 [`PLAN.md`](PLAN.md).
@@ -251,7 +255,7 @@ The detailed milestones, acceptance gates, and dependency order are in
 │   └── BealLevel26Foundations/  # computable, scaffold, and real modules
 │       ├── Frey/
 │       ├── Jacobian/            # v4.0.1–v4.0.3 skeleton, Selmer audit, immersion input, v4.0.6 rank-zero product
-│       ├── Mazur/               # genus arithmetic, endgame scaffold, v4.0.4 four-cusp package
+│       ├── Mazur/               # genus arithmetic, endgame scaffold, v4.0.4 four-cusp package, v4.0.8 typed hGeomForbid
 │       ├── Real/
 │       └── Ribet/               # typed lowering; v4.0.6 split; v4.0.7-j finite j-invariant hIdentify
 ├── sagemath/                    # v1.4.0 ledger + SageMath 10.7 certs

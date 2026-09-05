@@ -169,7 +169,10 @@ implication (`26 ∉ [1, 2, 13, 26]`) is uninhabitable because `26`
 is a displayed cusp. v4.0.7-hIdentify-j retypes
 `ExistsNoncuspidal` as an elliptic `j`-ratio and inhabits typed
 `hIdentify` from that packing. Four cusp labels stay as cusps.
-`hGeomForbid` remains the named geometric gate. It does
+`hGeomForbid` remains the named geometric gate.
+v4.0.8-geom-forbid adds `Mazur/HGeomForbidActual_26`: typed
+`fourCusps → ¬ ExistsNoncuspidal` is uninhabitable because
+constructor inequality inhabits `ExistsNoncuspidal`. It does
 not construct a Mathlib Jacobian, prove Mordell--Weil rank,
 identify the audit with `Sel₂(J₀(26)/ℚ)`, prove a
 scheme-theoretic formal immersion, inhabit

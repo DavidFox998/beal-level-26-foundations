@@ -1,8 +1,8 @@
 # docs/releases/
 
 Immutable notes for each published Foundations tag. **Current latest
-note:** [`v4.0.7-hIdentify-j.md`](v4.0.7-hIdentify-j.md)
-(prior [`v4.0.7-hIdentify.md`](v4.0.7-hIdentify.md)).
+note:** [`v4.0.8-geom-forbid.md`](v4.0.8-geom-forbid.md)
+(prior [`v4.0.7-hIdentify-j.md`](v4.0.7-hIdentify-j.md)).
 
 A green Lake build is a Lean/Mathlib check. It is not a DOI and it is
 not an unconditional `BealTheorem`.
@@ -24,6 +24,7 @@ not an unconditional `BealTheorem`.
 | [v4.0.6-rank-zero-fixed.md](v4.0.6-rank-zero-fixed.md) | `v4.0.6-rank-zero-fixed` / `2290809` | [10.5281/zenodo.22313955](https://doi.org/10.5281/zenodo.22313955) |
 | [v4.0.7-hIdentify.md](v4.0.7-hIdentify.md) | `v4.0.7-hIdentify` / `a4143fc` | [10.5281/zenodo.22314092](https://doi.org/10.5281/zenodo.22314092) |
 | [v4.0.7-hIdentify-j.md](v4.0.7-hIdentify-j.md) | `v4.0.7-hIdentify-j` / `ade01a2` | [10.5281/zenodo.22314212](https://doi.org/10.5281/zenodo.22314212) |
+| [v4.0.8-geom-forbid.md](v4.0.8-geom-forbid.md) | `v4.0.8-geom-forbid` | (version DOI after publish) |
 
 Concept DOI for the evolving project:
 [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).

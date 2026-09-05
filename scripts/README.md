@@ -1,6 +1,6 @@
 # scripts/
 
-Deterministic repository checks. **Current as of** `v4.0.7-hIdentify-j`.
+Deterministic repository checks. **Current as of** `v4.0.8-geom-forbid`.
 
 | Script | What it checks |
 |---|---|

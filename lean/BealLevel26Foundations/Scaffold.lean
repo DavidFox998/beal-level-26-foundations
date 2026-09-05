@@ -12,6 +12,7 @@ import BealLevel26Foundations.Mazur.X026RationalPointsActual_26
 import BealLevel26Foundations.Ribet.RibetLoweringActual_26
 import BealLevel26Foundations.Ribet.NoFreyPointActual_26
 import BealLevel26Foundations.Ribet.HIdentifyActual_26
+import BealLevel26Foundations.Mazur.HGeomForbidActual_26
 
 namespace BealLevel26Foundations.Scaffold
 
@@ -23,12 +24,14 @@ Abel--Jacobi/q-expansion, and Mazur-endgame boundaries, including the
 v4.0.4 displayed four-cusp package, the v4.0.5/v4.0.6 split
 between Ribet existence (`ExistsFreyWitness`) and the four-cusp
 list, the v4.0.6 product rank-zero package, and the v4.0.7-j
-finite `j`-invariant encoding of typed `hIdentify`. It is
+finite `j`-invariant encoding of typed `hIdentify`, and the
+v4.0.8 record that typed `hGeomForbid` is uninhabitable. It is
 separate from the unconditional computable v1 entrypoint.
 Typed `hIdentify` packs a Frey `j` as an elliptic displayed
-point, not as `26 ∉ [1, 2, 13, 26]`. Four cusp labels do not
-Lean-negate that elliptic kind; `hGeomForbid` remains the named
-geometric gate. There is no unconditional `BealTheorem` here.
+point, not as `26 ∉ [1, 2, 13, 26]`. Constructor inequality
+`ellipticJ ≠ cuspDivisor` does not Lean-negate
+`ExistsNoncuspidal`. Typed `hGeomForbid` remains uninhabitable.
+There is no unconditional `BealTheorem` here.
 -/
 
 def status : String :=

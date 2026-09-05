@@ -1,7 +1,7 @@
 # lean/Beal/
 
 Parent-facing `Beal.Foundations` namespace. **Current as of**
-`v4.0.7-hIdentify-j`.
+`v4.0.8-geom-forbid`.
 
 [`Foundations.lean`](Foundations.lean) is the entrypoint. Its `release`
 string is still `"v1.4.0"`: that is the **certificate-bridge / ledger**
@@ -17,7 +17,8 @@ skeleton and S-unit audit from
 `J0_26_Q_RankZeroActual_26`) and the v4.0.4
 four-cusp package
 [`../BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean`](../BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean)
-and the v4.0.7-j finite `j`-invariant `hIdentify`.
+and the v4.0.7-j finite `j`-invariant `hIdentify` plus v4.0.8
+typed `hGeomForbid`.
 
 This directory does not replace
 [`DavidFox998/beal-conjecture`](https://github.com/DavidFox998/beal-conjecture)

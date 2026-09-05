@@ -37,9 +37,12 @@ constructor from the four cusp-divisor labels `[1, 2, 13, 26]`.
 That is not `26 ∉ [1, 2, 13, 26]` as integer membership.
 
 `hIdentify` packs a Frey `j` as that elliptic kind.  It does not
-construct a point of a Mathlib modular curve.  `hGeomForbid`
-(`fourCusps → ¬ ExistsNoncuspidal`) remains the named geometric
-gate: four cusp *labels* do not Lean-negate an elliptic `j`.
+construct a point of a Mathlib modular curve.  v4.0.8 records that
+typed `hGeomForbid` (`fourCusps → ¬ ExistsNoncuspidal`) is
+uninhabitable: constructor inequality `ellipticJ ≠ cuspDivisor`
+is how a Frey `j` is shown *not* to be a cusp label, so it
+inhabits `ExistsNoncuspidal` rather than negating it.  The
+remaining geometric gate is a Mathlib noncuspidal `X₀(26)` point.
 This is not an unconditional `BealTheorem`.
 -/
 
@@ -280,9 +283,10 @@ def existsFreyWitness_of_beal_frey_lowering
 `hGeomForbid` is the four-cusp *negation*
 `fourCusps → ¬ ExistsNoncuspidalLevel26FreyPoint`.  A Beal
 counterexample plus v3 lowering produces `ExistsFreyWitness`.
-Those two propositions are different: identifying a displayed
-level-26 target with a noncuspidal `X₀(26)` point is the named
-remaining gate `hIdentify`.  This theorem does not decide a
+Those two propositions are different.  Typed `hIdentify` is
+inhabited by the finite `j`-packing.  Typed `hGeomForbid` remains
+the named uninhabitable gate: four cusp labels do not Lean-negate
+an elliptic `j`.  This theorem does not decide a
 Mathlib Jacobian rank, does not prove `X₀(26)(ℚ) = four cusps`
 as a scheme, does not prove Ribet existence, and does not prove
 `R = T`. -/
