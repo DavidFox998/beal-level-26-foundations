@@ -20,6 +20,8 @@ import BealLevel26Foundations.Mazur.X026RationalPointsScheme_26
 import BealLevel26Foundations.Jacobian.J0_26_Scheme_26
 import BealLevel26Foundations.Jacobian.AbelJacobi_26
 import BealLevel26Foundations.Jacobian.ResidueDisksProof_26
+import BealLevel26Foundations.Jacobian.ColemanIntegral_26
+import BealLevel26Foundations.Jacobian.ColemanNonVanishing_26
 
 namespace BealLevel26Foundations.Scaffold
 
@@ -38,7 +40,8 @@ v4.0.10 Chabauty-0 finite package, and the
 v4.0.11 residue-disk / sieve *input* packages, the
 v4.0.12 Jacobian-as-scheme / Abel--Jacobi *boundaries*, and the
 v4.0.13 named `det ≠ 0` formal-immersion / disk-equality
-aliases. It is
+aliases, and the v4.0.14 named rank-zero / `det ≠ 0`
+Chabauty-0 conjunction. It is
 separate from the unconditional computable v1 entrypoint.
 Typed `hIdentify` packs a Frey `j` as an elliptic displayed
 point, not as `26 ∉ [1, 2, 13, 26]`. Constructor inequality

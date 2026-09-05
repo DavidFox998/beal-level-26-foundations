@@ -43,8 +43,19 @@ Reference (not imported, not discharged): Mazur 1978 Prop III.3.2.
 
 ## Track C — Mordell--Weil sieve / Chabauty--Coleman
 
-Status: **not started.** Remaining: Coleman integrals and a genuine
-`∀ P : X₀(26)(ℚ), P ∈ {cusps}`. Mathlib 4.12 has no such point type.
+Status: **named rank-zero / `det ≠ 0` packages shipped**
+(`v4.0.14-coleman-integral-no-doi`).
+
+| File | What it is | What it is not |
+|---|---|---|
+| [`../Jacobian/ColemanIntegral_26.lean`](../Jacobian/ColemanIntegral_26.lean) | `ColemanVanishesOnRankZero` is `of_qExpansion.rankZero` | Not a Coleman integral |
+| [`../Jacobian/ColemanNonVanishing_26.lean`](../Jacobian/ColemanNonVanishing_26.lean) | `Chabauty0ForcesCusp` is rank-zero product ∧ `det ≠ 0` | Not a Chabauty--Coleman theorem; not `∀ P : X₀(26)(ℚ)` |
+
+Remaining: a genuine Coleman integral and
+`∀ P : X₀(26)(ℚ), P ∈ {cusps}`. Mathlib 4.12 has no such point
+type.
+
+Reference (not imported, not discharged): Coleman 1985.
 
 ## Track D — LMFDB certificates
 

@@ -59,8 +59,11 @@ test -f docs/releases/v4.0.10-chabauty0-no-doi.md
 test -f docs/releases/v4.0.11-residue-disks-no-doi.md
 test -f docs/releases/v4.0.12-scheme-stub-no-doi.md
 test -f docs/releases/v4.0.13-formal-immersion-proof-no-doi.md
+test -f docs/releases/v4.0.14-coleman-integral-no-doi.md
 test -f lean/BealLevel26Foundations/Blueprint/README.md
 test -f lean/BealLevel26Foundations/Jacobian/ResidueDisksProof_26.lean
+test -f lean/BealLevel26Foundations/Jacobian/ColemanIntegral_26.lean
+test -f lean/BealLevel26Foundations/Jacobian/ColemanNonVanishing_26.lean
 test -f lean/BealLevel26Foundations/Jacobian/J0_26_Scheme_26.lean
 test -f lean/BealLevel26Foundations/Jacobian/AbelJacobi_26.lean
 test -f lean/BealLevel26Foundations/Jacobian/ResidueDisks_26.lean
@@ -112,6 +115,7 @@ grep -q "v4.0.10-chabauty0-no-doi" README.md
 grep -q "v4.0.11-residue-disks-no-doi" README.md
 grep -q "v4.0.12-scheme-stub-no-doi" README.md
 grep -q "v4.0.13-formal-immersion-proof-no-doi" README.md
+grep -q "v4.0.14-coleman-integral-no-doi" README.md
 grep -q "v4.0.3-formal-immersion" docs/README.md
 grep -q "v4.0.4-x026-rational-points" docs/README.md
 grep -q "v4.0.5-nofrey-point" docs/README.md
@@ -124,6 +128,7 @@ grep -q "v4.0.10-chabauty0-no-doi" docs/README.md
 grep -q "v4.0.11-residue-disks-no-doi" docs/README.md
 grep -q "v4.0.12-scheme-stub-no-doi" docs/README.md
 grep -q "v4.0.13-formal-immersion-proof-no-doi" docs/README.md
+grep -q "v4.0.14-coleman-integral-no-doi" docs/README.md
 grep -q "v4.0.3-formal-immersion" docs/releases/README.md
 grep -q "v4.0.4-x026-rational-points" docs/releases/README.md
 grep -q "v4.0.5-nofrey-point" docs/releases/README.md
@@ -136,6 +141,7 @@ grep -q "v4.0.10-chabauty0-no-doi" docs/releases/README.md
 grep -q "v4.0.11-residue-disks-no-doi" docs/releases/README.md
 grep -q "v4.0.12-scheme-stub-no-doi" docs/releases/README.md
 grep -q "v4.0.13-formal-immersion-proof-no-doi" docs/releases/README.md
+grep -q "v4.0.14-coleman-integral-no-doi" docs/releases/README.md
 grep -q "v4.0.3-formal-immersion" lean/README.md
 grep -q "v4.0.4-x026-rational-points" lean/README.md
 grep -q "v4.0.5-nofrey-point" lean/README.md
@@ -148,6 +154,7 @@ grep -q "v4.0.10-chabauty0-no-doi" lean/README.md
 grep -q "v4.0.11-residue-disks-no-doi" lean/README.md
 grep -q "v4.0.12-scheme-stub-no-doi" lean/README.md
 grep -q "v4.0.13-formal-immersion-proof-no-doi" lean/README.md
+grep -q "v4.0.14-coleman-integral-no-doi" lean/README.md
 grep -q "v4.0.3-formal-immersion" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Jacobian/README.md
@@ -158,6 +165,7 @@ grep -q "v4.0.10-chabauty0-no-doi" lean/BealLevel26Foundations/Jacobian/README.m
 grep -q "v4.0.11-residue-disks-no-doi" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.12-scheme-stub-no-doi" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.13-formal-immersion-proof-no-doi" lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "v4.0.14-coleman-integral-no-doi" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.4-x026-rational-points" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Mazur/README.md
@@ -168,6 +176,7 @@ grep -q "v4.0.10-chabauty0-no-doi" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.11-residue-disks-no-doi" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.12-scheme-stub-no-doi" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.13-formal-immersion-proof-no-doi" lean/BealLevel26Foundations/Mazur/README.md
+grep -q "v4.0.14-coleman-integral-no-doi" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.5-nofrey-point" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Ribet/README.md
@@ -178,6 +187,7 @@ grep -q "v4.0.10-chabauty0-no-doi" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.11-residue-disks-no-doi" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.12-scheme-stub-no-doi" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.13-formal-immersion-proof-no-doi" lean/BealLevel26Foundations/Ribet/README.md
+grep -q "v4.0.14-coleman-integral-no-doi" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" sagemath/README.md
 grep -q "v4.0.7-hIdentify" sagemath/README.md
 grep -q "v4.0.7-hIdentify-j" sagemath/README.md
@@ -187,6 +197,7 @@ grep -q "v4.0.10-chabauty0-no-doi" sagemath/README.md
 grep -q "v4.0.11-residue-disks-no-doi" sagemath/README.md
 grep -q "v4.0.12-scheme-stub-no-doi" sagemath/README.md
 grep -q "v4.0.13-formal-immersion-proof-no-doi" sagemath/README.md
+grep -q "v4.0.14-coleman-integral-no-doi" sagemath/README.md
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md
 grep -qi "genuine cohomological 2-Selmer" \
@@ -742,6 +753,37 @@ fi
 if grep -nE \
     '^[[:space:]]*(def|theorem)[[:space:]]+hGeomForbid[[:space:]]' \
     lean/BealLevel26Foundations/Jacobian/ResidueDisksProof_26.lean; then
+  echo "FAIL: must not inhabit typed hGeomForbid fourCusps → ¬ ExistsNoncuspidal"
+  exit 1
+fi
+test -f lean/BealLevel26Foundations/Jacobian/ColemanIntegral_26.lean
+grep -q "def ColemanVanishesOnRankZero" \
+  lean/BealLevel26Foundations/Jacobian/ColemanIntegral_26.lean
+grep -q "theorem ColemanVanishesOnRankZero.certified" \
+  lean/BealLevel26Foundations/Jacobian/ColemanIntegral_26.lean
+grep -q "Not a Coleman integral" \
+  lean/BealLevel26Foundations/Jacobian/ColemanIntegral_26.lean
+grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
+  lean/BealLevel26Foundations/Jacobian/ColemanIntegral_26.lean
+test -f lean/BealLevel26Foundations/Jacobian/ColemanNonVanishing_26.lean
+grep -q "def DifferentialNonZeroOnDisk" \
+  lean/BealLevel26Foundations/Jacobian/ColemanNonVanishing_26.lean
+grep -q "def Chabauty0ForcesCusp" \
+  lean/BealLevel26Foundations/Jacobian/ColemanNonVanishing_26.lean
+grep -q "Not a Chabauty" \
+  lean/BealLevel26Foundations/Jacobian/ColemanNonVanishing_26.lean
+grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
+  lean/BealLevel26Foundations/Jacobian/ColemanNonVanishing_26.lean
+if grep -nE '^[[:space:]]*theorem BealTheorem[[:space:]]' \
+    lean/BealLevel26Foundations/Jacobian/ColemanIntegral_26.lean \
+    lean/BealLevel26Foundations/Jacobian/ColemanNonVanishing_26.lean; then
+  echo "FAIL: unconditional BealTheorem is not allowed"
+  exit 1
+fi
+if grep -nE \
+    '^[[:space:]]*(def|theorem)[[:space:]]+hGeomForbid[[:space:]]' \
+    lean/BealLevel26Foundations/Jacobian/ColemanIntegral_26.lean \
+    lean/BealLevel26Foundations/Jacobian/ColemanNonVanishing_26.lean; then
   echo "FAIL: must not inhabit typed hGeomForbid fourCusps → ¬ ExistsNoncuspidal"
   exit 1
 fi

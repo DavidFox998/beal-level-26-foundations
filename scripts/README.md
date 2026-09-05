@@ -1,6 +1,6 @@
 # scripts/
 
-Deterministic repository checks. **Current as of** `v4.0.13-formal-immersion-proof-no-doi`.
+Deterministic repository checks. **Current as of** `v4.0.14-coleman-integral-no-doi`.
 
 | Script | What it checks |
 |---|---|

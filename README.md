@@ -21,8 +21,10 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
-[`v4.0.13-formal-immersion-proof-no-doi`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.13-formal-immersion-proof-no-doi)
+[`v4.0.14-coleman-integral-no-doi`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.14-coleman-integral-no-doi)
 (git tag only; no version DOI; prior
+[`v4.0.13-formal-immersion-proof-no-doi`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.13-formal-immersion-proof-no-doi);
+prior
 [`v4.0.12-scheme-stub-no-doi`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.12-scheme-stub-no-doi);
 prior
 [`v4.0.11-residue-disks-no-doi`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.11-residue-disks-no-doi);
@@ -173,6 +175,7 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.0.11-residue-disks-no-doi `M₃` residue-disk input | `v4.0.11-residue-disks-no-doi` | none (git tag only) | `ResidueDisks_26` is `M₃` plus `det ≠ 0`. `MordellWeilSieve_26` conjoins that with `chabauty0Package` under the name `X0_26_Q_EqualsFourCuspsAsScheme`; that is a finite conjunction, not a scheme `X₀(26)(ℚ)` theorem. `X026RationalPointsScheme_26` inhabits the Mazur premise from that package. The four-cusp audit is unchanged. No `theorem BealTheorem`. No version DOI. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
 | v4.0.12-scheme-stub-no-doi Jacobian-as-scheme boundary | `v4.0.12-scheme-stub-no-doi` | none (git tag only) | Phase 3 Track A. `J0_26_Scheme_26` and `AbelJacobi_26` are premise-bearing named boundaries. Mathlib 4.12 has no Jacobian. Not `sorry`, not `26a × 26b`, not inhabited as `True`. `X026RationalPointsActual_26` unchanged. No `theorem BealTheorem`. No version DOI. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
 | v4.0.13-formal-immersion-proof-no-doi named `det ≠ 0` immersion | `v4.0.13-formal-immersion-proof-no-doi` | none (git tag only) | Phase 3 Track B. `formalImmersion_at_2_surjective_from_M3` is `of_qExpansion.input.det ≠ 0`. `diskEqualityFromImmersion` aliases that same `det ≠ 0`. Not surjectivity of completed local rings and not a residue-disk theorem. Tracks C and D not started. No `theorem BealTheorem`. No version DOI. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
+| v4.0.14-coleman-integral-no-doi named rank-zero / `det ≠ 0` Chabauty | `v4.0.14-coleman-integral-no-doi` | none (git tag only) | Phase 3 Track C. `ColemanVanishesOnRankZero` is the product rank-zero package. `DifferentialNonZeroOnDisk` is `det ≠ 0`. `Chabauty0ForcesCusp` is those two conjoined. Not a Coleman integral and not a Chabauty--Coleman theorem. Track D not started. No `theorem BealTheorem`. No version DOI. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
@@ -280,8 +283,12 @@ adds Jacobian-as-scheme and Abel--Jacobi named boundaries; those
 are not a Mathlib Jacobian. v4.0.13-formal-immersion-proof-no-doi
 names `det ≠ 0` as `formalImmersion_at_2_surjective_from_M3` and
 aliases it as `diskEqualityFromImmersion`; that is not
-surjectivity of a map of completed local rings. There is no
-unconditional `BealTheorem`.
+surjectivity of a map of completed local rings.
+v4.0.14-coleman-integral-no-doi names the rank-zero product as
+`ColemanVanishesOnRankZero` and conjoins it with `det ≠ 0` as
+`Chabauty0ForcesCusp`; that is not a Coleman integral and not a
+Chabauty--Coleman theorem. There is no unconditional
+`BealTheorem`.
 
 The detailed milestones, acceptance gates, and dependency order are in
 [`PLAN.md`](PLAN.md).
@@ -301,7 +308,7 @@ The detailed milestones, acceptance gates, and dependency order are in
 │   ├── Beal/                    # Beal.Foundations certificate re-exports
 │   └── BealLevel26Foundations/  # computable, scaffold, and real modules
 │       ├── Frey/
-│       ├── Jacobian/            # v4.0.1–v4.0.3 skeleton, Selmer audit, immersion input, v4.0.6 rank-zero product, v4.0.11 residue-disk input, v4.0.12 scheme boundary, v4.0.13 named det≠0 immersion
+│       ├── Jacobian/            # v4.0.1–v4.0.3 skeleton, Selmer audit, immersion input, v4.0.6 rank-zero product, v4.0.11 residue-disk input, v4.0.12 scheme boundary, v4.0.13 named det≠0 immersion, v4.0.14 named Coleman/Chabauty packages
 │       ├── Mazur/               # genus arithmetic, endgame scaffold, v4.0.4 four-cusp package, v4.0.8 typed hGeomForbid, v4.0.9 cusp-point forall, v4.0.10 Chabauty0 package
 │       ├── Real/
 │       └── Ribet/               # typed lowering; v4.0.6 split; v4.0.7-j finite j-invariant hIdentify

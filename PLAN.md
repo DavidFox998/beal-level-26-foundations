@@ -196,6 +196,10 @@ v4.0.13-formal-immersion-proof-no-doi names
 `formalImmersion_at_2_surjective_from_M3` as `det ≠ 0` and
 aliases it as `diskEqualityFromImmersion`; that is not
 surjectivity of a map of completed local rings.
+v4.0.14-coleman-integral-no-doi names
+`ColemanVanishesOnRankZero` as the product rank-zero package
+and `Chabauty0ForcesCusp` as that package plus `det ≠ 0`; that
+is not a Coleman integral and not a Chabauty--Coleman theorem.
 The PLAN.md acceptance gates above
 remain open.
 

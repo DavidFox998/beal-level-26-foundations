@@ -1,8 +1,8 @@
 # lean/BealLevel26Foundations/Jacobian/
 
 Finite Jacobian *skeleton*, S-unit audit, and formal-immersion input.
-**Current as of** `v4.0.13-formal-immersion-proof-no-doi`
-(includes `v4.0.12-scheme-stub-no-doi`, `v4.0.11-residue-disks-no-doi`, `v4.0.10-chabauty0-no-doi`, `v4.0.9-fourCusps-forall`, `v4.0.8-geom-forbid`, `v4.0.7-hIdentify-j`, `v4.0.7-hIdentify`, `v4.0.6-rank-zero-fixed`, `v4.0.5-nofrey-point`,
+**Current as of** `v4.0.14-coleman-integral-no-doi`
+(includes `v4.0.13-formal-immersion-proof-no-doi`, `v4.0.12-scheme-stub-no-doi`, `v4.0.11-residue-disks-no-doi`, `v4.0.10-chabauty0-no-doi`, `v4.0.9-fourCusps-forall`, `v4.0.8-geom-forbid`, `v4.0.7-hIdentify-j`, `v4.0.7-hIdentify`, `v4.0.6-rank-zero-fixed`, `v4.0.5-nofrey-point`,
 `v4.0.4-x026-rational-points`, `v4.0.3-formal-immersion`).
 
 Mathlib 4.12 has no modular-curve Jacobian, Picard scheme, Abel--Jacobi
@@ -28,6 +28,8 @@ No new certificate is added here.
 | `J0_26_Q_RankZeroActual_26.lean` | Product of certified `26a × 26b` with Sage `certified_mwrank = 0` on both; inhabits `J0_26_Q_RankZero26.of_qExpansion` | Not a Mathlib Mordell--Weil theorem; not genuine `Sel₂` |
 | `ResidueDisks_26.lean` | `M₃` input and `det ≠ 0`; rank-zero plus that input | Not a residue-disk theorem |
 | `ResidueDisksProof_26.lean` | Alias `diskEqualityFromImmersion` of `formalImmersion_at_2_surjective_from_M3` | Not a residue-disk theorem |
+| `ColemanIntegral_26.lean` | `ColemanVanishesOnRankZero` is the product rank-zero package | Not a Coleman integral |
+| `ColemanNonVanishing_26.lean` | `Chabauty0ForcesCusp` is rank-zero product ∧ `det ≠ 0` | Not a Chabauty--Coleman theorem |
 | `MordellWeilSieve_26.lean` | Finite conjunction `chabauty0Package ∧ ResidueDiskAt2ContainsOnlyCusp` | Not a scheme-theoretic `X₀(26)(ℚ)` theorem |
 | `J0_26_Scheme_26.lean` | Premise-bearing Jacobian-as-scheme boundary; displayed dimension 2 | Not a Mathlib Jacobian; not inhabited |
 | `AbelJacobi_26.lean` | Premise-bearing Abel--Jacobi data | Not a map `X₀(26) → J₀(26)` |

@@ -1,7 +1,7 @@
 # sagemath/
 
 Pinned coefficient ledger and SageMath 10.7 certificate generators.
-**Current as of** `v4.0.13-formal-immersion-proof-no-doi`.
+**Current as of** `v4.0.14-coleman-integral-no-doi`.
 
 The ledger version is **v1.4.0** and has been unchanged since tag
 `v1.4.0`:
@@ -22,11 +22,13 @@ Later Foundations tags (v2.0.0-frey through `v4.0.6-rank-zero-fixed`,
 `v4.0.7-hIdentify`, `v4.0.7-hIdentify-j`, `v4.0.8-geom-forbid`,
 `v4.0.9-fourCusps-forall`, `v4.0.10-chabauty0-no-doi`, and
 `v4.0.11-residue-disks-no-doi`, `v4.0.12-scheme-stub-no-doi`, and
-`v4.0.13-formal-immersion-proof-no-doi`) do **not**
+`v4.0.13-formal-immersion-proof-no-doi`, and
+`v4.0.14-coleman-integral-no-doi`) do **not**
 add a new cert and do **not** change the ledger SHA. The
 `foundations_doi_manifest.json` top-level `version` field stays
 `v1.4.0`. `latest_foundations_release` stays at the last
 DataCite-findable version (`v4.0.9-fourCusps-forall`);
 `v4.0.10-chabauty0-no-doi`, `v4.0.11-residue-disks-no-doi`,
-`v4.0.12-scheme-stub-no-doi`, and
-`v4.0.13-formal-immersion-proof-no-doi` are git tags only.
+`v4.0.12-scheme-stub-no-doi`,
+`v4.0.13-formal-immersion-proof-no-doi`, and
+`v4.0.14-coleman-integral-no-doi` are git tags only.

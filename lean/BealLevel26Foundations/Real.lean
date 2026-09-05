@@ -22,6 +22,8 @@ import BealLevel26Foundations.Mazur.X026RationalPointsScheme_26
 import BealLevel26Foundations.Jacobian.J0_26_Scheme_26
 import BealLevel26Foundations.Jacobian.AbelJacobi_26
 import BealLevel26Foundations.Jacobian.ResidueDisksProof_26
+import BealLevel26Foundations.Jacobian.ColemanIntegral_26
+import BealLevel26Foundations.Jacobian.ColemanNonVanishing_26
 
 namespace BealLevel26Foundations.Real
 
@@ -63,6 +65,10 @@ Abel--Jacobi named boundaries; those are not a Mathlib Jacobian.
 v4.0.13 names `formalImmersion_at_2_surjective_from_M3` as
 `det ≠ 0` and aliases it as `diskEqualityFromImmersion`; that is
 not surjectivity of a map of completed local rings.
+v4.0.14 names `ColemanVanishesOnRankZero` as the product
+rank-zero package and `Chabauty0ForcesCusp` as that package
+plus `det ≠ 0`; that is not a Coleman integral and not a
+Chabauty--Coleman theorem.
 That is not genuine `Sel₂`, not a Mathlib `X₀(26)` point, and not
 an unconditional `BealTheorem`.
 -/
