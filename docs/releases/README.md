@@ -1,8 +1,9 @@
 # docs/releases/
 
 Immutable notes for each published Foundations tag. **Current latest
-note:** [`v4.9.0-iter-no-True-X0.md`](v4.9.0-iter-no-True-X0.md)
-(prior [`v4.8.0-iter-modularity-scaffold.md`](v4.8.0-iter-modularity-scaffold.md),
+note:** [`v4.10.0-iter-pari-locked.md`](v4.10.0-iter-pari-locked.md)
+(prior [`v4.9.0-iter-no-True-X0.md`](v4.9.0-iter-no-True-X0.md),
+[`v4.8.0-iter-modularity-scaffold.md`](v4.8.0-iter-modularity-scaffold.md),
 [`v4.7.0-iter-typed-no-axioms-closing.md`](v4.7.0-iter-typed-no-axioms-closing.md),
 [`v4.2.2-zenodo-trigger.md`](v4.2.2-zenodo-trigger.md),
 [`v4.2.1-chabauty-closes-typed.md`](v4.2.1-chabauty-closes-typed.md),
@@ -63,6 +64,7 @@ not an unconditional `BealTheorem`.
 | [v4.7.0-iter-typed-no-axioms-closing.md](v4.7.0-iter-typed-no-axioms-closing.md) | `v4.7.0-iter-typed-no-axioms-closing` | pending DataCite |
 | [v4.8.0-iter-modularity-scaffold.md](v4.8.0-iter-modularity-scaffold.md) | `v4.8.0-iter-modularity-scaffold` | pending DataCite |
 | [v4.9.0-iter-no-True-X0.md](v4.9.0-iter-no-True-X0.md) | `v4.9.0-iter-no-True-X0` | pending DataCite |
+| [v4.10.0-iter-pari-locked.md](v4.10.0-iter-pari-locked.md) | `v4.10.0-iter-pari-locked` | pending DataCite |
 
 Concept DOI for the evolving project:
 [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).

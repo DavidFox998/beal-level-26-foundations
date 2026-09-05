@@ -12,3 +12,4 @@ This file records trigger commits that do not change Lean.
 # v4.7.0-iter-typed-no-axioms-closing — Iter_Package / Iter_Typed_And_Package (no final word)
 # v4.8.0-iter-modularity-scaffold — X0_26_Point + FreyModularity_13 + RibetLevelLowering_26 axioms
 # v4.9.0-iter-no-True-X0 — X0_26_Q = {P | P.label ∈ fourCuspsList}, no True
+# v4.10.0-iter-pari-locked — certs/pari_x0_26_four_cusps.json locks fourCusps + SHA

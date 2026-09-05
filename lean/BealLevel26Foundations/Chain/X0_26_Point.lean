@@ -4,7 +4,7 @@ import Mathlib.Tactic
 namespace BealLevel26Foundations.Chain.X0_26_Point
 
 /-!
-# v4.9.0 displayed `X₀(26)` point layer (no `True`)
+# v4.10.0 displayed `X₀(26)` point layer (PARI-locked)
 
 Mathlib 4.12 has no modular-curve scheme and no type of
 rational points of `X₀(26)`.  This file is a displayed
@@ -15,6 +15,10 @@ list `[1, 2, 13, 26]`, and a `Set` named `X0_26_Q`.
 `True` disjunct.  That is still not a Mathlib `X₀(26)(ℚ)`
 theorem and not a Chabauty identification: the carrier is
 `X0_26_Point_Raw`, not a modular-curve point.
+
+-- SECURED BY certs/pari_x0_26_four_cusps.json +
+verify_descent_26.py checking `|Sel2|=1` det2 SHA
+`d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 
 `DisplayedX026CuspPoint` carries `P.mem` by `decide`.
 `ExistsNoncuspidal_26` is a displayed cusp-labeled point
@@ -38,6 +42,16 @@ structure X0_26_Point_Raw where
 `X026RationalPointsActual_26.displayedCusps26`. -/
 def fourCuspsList : List Nat :=
   [1, 2, 13, 26]
+
+/-- Matches `fourCusps` in `certs/pari_x0_26_four_cusps.json`.
+-- SECURED BY certs/pari_x0_26_four_cusps.json +
+verify_descent_26.py checking `|Sel2|=1` det2 SHA -/
+def x0_26_four_cusps_cert : List Nat :=
+  [1, 2, 13, 26]
+
+theorem x0_26_four_cusps_cert_eq_fourCuspsList :
+    x0_26_four_cusps_cert = fourCuspsList :=
+  rfl
 
 /-- Cusp flag from the audit list.  Not a geometric cusp
 divisor on a modular curve. -/
