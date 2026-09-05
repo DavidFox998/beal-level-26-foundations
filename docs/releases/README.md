@@ -1,8 +1,9 @@
 # docs/releases/
 
 Immutable notes for each published Foundations tag. **Current latest
-note:** [`v4.13.1-iter-unstick.md`](v4.13.1-iter-unstick.md)
-(prior [`v4.13.0-iter-contradiction-start.md`](v4.13.0-iter-contradiction-start.md),
+note:** [`v4.14.0-iter-citation-contradiction-locked.md`](v4.14.0-iter-citation-contradiction-locked.md)
+(prior [`v4.13.1-iter-unstick.md`](v4.13.1-iter-unstick.md),
+[`v4.13.0-iter-contradiction-start.md`](v4.13.0-iter-contradiction-start.md),
 [`v4.12.0-iter-verify-plus.md`](v4.12.0-iter-verify-plus.md),
 [`v4.10.0-iter-pari-locked.md`](v4.10.0-iter-pari-locked.md),
 [`v4.9.0-iter-no-True-X0.md`](v4.9.0-iter-no-True-X0.md),
@@ -71,6 +72,7 @@ not an unconditional `BealTheorem`.
 | [v4.12.0-iter-verify-plus.md](v4.12.0-iter-verify-plus.md) | `v4.12.0-iter-verify-plus` | pending DataCite |
 | [v4.13.0-iter-contradiction-start.md](v4.13.0-iter-contradiction-start.md) | `v4.13.0-iter-contradiction-start` | pending DataCite |
 | [v4.13.1-iter-unstick.md](v4.13.1-iter-unstick.md) | `v4.13.1-iter-unstick` | pending DataCite |
+| [v4.14.0-iter-citation-contradiction-locked.md](v4.14.0-iter-citation-contradiction-locked.md) | `v4.14.0-iter-citation-contradiction-locked` | pending DataCite |
 
 Concept DOI for the evolving project:
 [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).

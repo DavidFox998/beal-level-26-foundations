@@ -31,10 +31,13 @@ theorem.
 -/
 
 /-- Alternative typed inhabitant from the contradiction-start
-wiring.  Same `Prop` as `BealTheorem_Exponent13_Typed`. -/
+export `certified_from_ribet`.  Same `Prop` as
+`BealTheorem_Exponent13_Typed`.
+-- SECURED BY certs/pari_x0_26_four_cusps.json +
+-- docs/images/2-descent-level-26-26a1-26b1.webp -/
 theorem BealExponent13_Iter_Package.certified_from_ribet :
     BealTheorem_Exponent13_Typed :=
-  beal_exponent13_from_ribet
+  BealLevel26Foundations.Mazur.BealExponent13_Contradiction.certified_from_ribet
 
 /-- The Iter typed-and-package remains `Typed ∧ Iter_Package`. -/
 theorem BealExponent13_Iter_Typed_And_Package_eq :

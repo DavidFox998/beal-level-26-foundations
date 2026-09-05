@@ -1,15 +1,15 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite the corrected v1.0.1-computable release."
-title: "Computable Level-26 Foundations for a Formal Beal-Conjecture Endgame"
+message: "If you use this software, please cite the corrected v1.0.1-computable release and the v4.13.0-iter-contradiction-start computational boundary (commit c2c47db)."
+title: "Beal Level-26 Foundations — Exponent 13 Computational Boundary"
 type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "1.0.1-computable"
-date-released: "2026-09-03"
+version: "v4.13.0-iter-contradiction-start"
+date-released: "2026-09-05"
 doi: "10.5281/zenodo.22272714"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
-url: "https://doi.org/10.5281/zenodo.22272714"
+url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.13.0-iter-contradiction-start"
 license: MIT
 keywords:
   - Lean 4
@@ -17,9 +17,21 @@ keywords:
   - modular curves
   - level 26
   - finite certificates
+  - four cusps
+  - 2-descent
 abstract: >-
-  Kernel-checked computable evidence for the level-26 route in a conditional
-  formal Beal-conjecture endgame. The release derives the finite mod-3 matrix
-  from normalized eigenform coefficients and an explicit basis change, checks
-  its determinant, and replays the finite descent ledger without claiming the
-  still-missing cohomological Selmer or Abel-Jacobi comparison theorems.
+  Beal Level 26 Foundations Exponent 13 Full Package Computational
+  Boundary. X0(26) four cusps [1,2,13,26], PARI |Sel2|=1 twice,
+  det M3=2, Descent SHA-256
+  d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260,
+  Frey 2*13=26, 26a1 [1,0,1,-5,-8] Δ -17576, 26b1 [1,-1,1,-3,3]
+  Δ -1664. Displayed X0_26_Q is the four-label set (no True).
+  contradiction_from_ribet uses ribet_level_lowering_26;
+  beal_exponent13_from_ribet / certified_from_ribet uses
+  axiom-free hGeomForbid_typed_true. Not forall N and not a
+  Mathlib X0(26)(Q) theorem. Commit c2c47db. The v1.0.1-computable
+  citation DOI remains 10.5281/zenodo.22272714.
+identifiers:
+  - type: other
+    value: c2c47db
+    description: git commit v4.13.0-iter-contradiction-start

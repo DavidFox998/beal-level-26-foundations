@@ -16,3 +16,4 @@ This file records trigger commits that do not change Lean.
 # v4.12.0-iter-verify-plus — verify-scaffold locks 2-descent image + JSON keys 26a1/26b1/SHA
 # v4.13.0-iter-contradiction-start — wire X0_26_Q + Frey + Ribet → contradiction_from_ribet
 # v4.13.1-iter-unstick — verify locks image/JSON/contradiction; no Zenodo DOI greps
+# v4.14.0-iter-citation-contradiction-locked — CITATION.cff c2c47db + certified_from_ribet

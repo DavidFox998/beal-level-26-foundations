@@ -27,8 +27,9 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
-[`v4.13.1-iter-unstick`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.13.1-iter-unstick)
+[`v4.14.0-iter-citation-contradiction-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.14.0-iter-citation-contradiction-locked)
 (prior
+[`v4.13.1-iter-unstick`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.13.1-iter-unstick),
 [`v4.13.0-iter-contradiction-start`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.13.0-iter-contradiction-start),
 [`v4.12.0-iter-verify-plus`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.12.0-iter-verify-plus),
 [`v4.10.0-iter-pari-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.10.0-iter-pari-locked),
@@ -102,6 +103,19 @@ adds the `M₃` residue-disk *input* and the finite sieve
 conjunction; those are not a scheme `X₀(26)(ℚ)` theorem. Typed `hIdentify`
 stays the elliptic-`j` packing. The remaining
 geometric gate is a Mathlib noncuspidal point of `X₀(26)`.
+
+### v4.14.0 Iter citation contradiction locked
+
+`CITATION.cff` locks `v4.13.0-iter-contradiction-start`
+commit `c2c47db` and the computational-boundary abstract
+(X0(26) four cusps `[1,2,13,26]`, `|Sel₂|=1` twice, `det M₃=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`,
+Frey `2*13=26`, 26a1 `[1,0,1,-5,-8]` Δ `-17576`, 26b1
+`[1,-1,1,-3,3]` Δ `-1664`). `certified_from_ribet` is
+exported from Contradiction into the Iter package.
+`-- SECURED BY certs/pari_x0_26_four_cusps.json +
+docs/images/2-descent-level-26-26a1-26b1.webp`. Still not
+`∀ ℕ`. No `False.elim`.
 
 ### v4.13.1 Iter unstick
 
@@ -365,6 +379,7 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.12.0-iter-verify-plus image + JSON verify locks | `v4.12.0-iter-verify-plus` | pending DataCite | `verify-scaffold.sh` locks `docs/images/2-descent-level-26-26a1-26b1.webp`, README PARI 2-descent figure, and JSON keys `26a1`/`26b1`/`SHA`. Facebook filename gone. `X0_26_Q` still no `True`. Not `∀ ℕ`. Ledger still v1.4.0. |
 | v4.13.0-iter-contradiction-start displayed Ribet-path close | `v4.13.0-iter-contradiction-start` | pending DataCite | `contradiction_from_ribet` is `ExistsNoncuspidal_26 → False` via the Ribet axiom. `beal_exponent13_from_ribet` is the typed close. Not `∀ ℕ`. Not a Mathlib `X₀(26)(ℚ)` theorem. Ledger still v1.4.0. |
 | v4.13.1-iter-unstick verify without DOI greps | `v4.13.1-iter-unstick` | pending DataCite | `verify-scaffold.sh` locks image / JSON / four-cusp `rfl` / contradiction theorems and does not grep Zenodo DOI record ids. Not `∀ ℕ`. Ledger still v1.4.0. |
+| v4.14.0-iter-citation-contradiction-locked CITATION + Iter export | `v4.14.0-iter-citation-contradiction-locked` | pending DataCite | `CITATION.cff` locks `c2c47db` / four-cusp abstract. `certified_from_ribet` exported into Iter. Image ≥300 KB. Not `∀ ℕ`. Ledger still v1.4.0. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use

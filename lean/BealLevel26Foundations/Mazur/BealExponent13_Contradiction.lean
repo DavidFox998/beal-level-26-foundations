@@ -35,9 +35,10 @@ package via axiom-free `hGeomForbid_typed_true`
 (`hNotIn hInList`) plus `FreyLevel26`.
 
 -- STILL NOT ∀ N, computational boundary frey_modular_13 +
--- ribet_level_lowering_26, secured by
--- certs/pari_x0_26_four_cusps.json SHA
--- d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260
+-- ribet_level_lowering_26.
+-- SECURED BY certs/pari_x0_26_four_cusps.json +
+-- docs/images/2-descent-level-26-26a1-26b1.webp
+-- SHA d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260
 
 This is **not** `∀ A B C : ℕ`, not
 `¬ A^13 + B^13 = C^13`, and not a Mathlib `X₀(26)(ℚ)`
@@ -75,8 +76,17 @@ theorem BealExponent13_Contradiction.certified :
   ⟨contradiction_from_ribet, beal_exponent13_from_ribet,
     frey_modular_13, X0_26_Q_four_cusps⟩
 
+/-- Exported typed inhabitant for the Iter package citation
+lock.  Same as `beal_exponent13_from_ribet`.
+-- SECURED BY certs/pari_x0_26_four_cusps.json +
+-- docs/images/2-descent-level-26-26a1-26b1.webp -/
+theorem certified_from_ribet :
+    BealTheoremFromMazurChain26.BealTheorem_Exponent13_Typed :=
+  beal_exponent13_from_ribet
+
 #print axioms contradiction_from_ribet
 #print axioms beal_exponent13_from_ribet
+#print axioms certified_from_ribet
 #print axioms BealExponent13_Contradiction.certified
 #check X0_26_Q_four_cusps
 #check frey_modular_13

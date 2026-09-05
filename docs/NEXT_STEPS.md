@@ -38,6 +38,17 @@ and `certs/pari_x0_26_four_cusps.json` keys `26a1` /
 `-1664`, `|Sel₂|=1` twice, `det M₃=2`, SHA-256
 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 
+## v4.14.0 Iter citation contradiction locked
+
+`CITATION.cff` locks version `v4.13.0-iter-contradiction-start`
+commit `c2c47db` and the computational-boundary abstract
+(four cusps `[1,2,13,26]`, `|Sel₂|=1` twice, `det M₃=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`,
+Frey `2*13=26`, 26a1 Δ `-17576`, 26b1 Δ `-1664`).
+`certified_from_ribet` is exported from Contradiction and
+wired into `BealExponent13_Iter_Package`. Still not
+`∀ A B C : ℕ`.
+
 ## v4.13.1 Iter unstick
 
 `verify-scaffold.sh` locks the 2-descent image, Facebook
