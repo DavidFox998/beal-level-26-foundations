@@ -84,8 +84,11 @@ theorem exponent13_in_four_cusp_audit :
 /-- First named `BealTheorem` for the exponent-13 / level-26
 computational boundary.  Uses `hGeomForbid_computational`.
 Not the Beal conjecture. -/
-theorem BealTheorem_Exponent13 : hGeomForbid :=
-  hGeomForbid_computational
+theorem BealTheorem_Exponent13 :
+    fourCuspsFromQExpansion ∧ rankZero_unconditional ∧
+      Chabauty0ForcesCusp_computational ∧ 2 * 13 = 26 :=
+  let h := hGeomForbid_computational
+  ⟨h.fourCuspsAudit, h.rankZero, h.chabauty, exponent13_level26⟩
 
 /-- Full `EndgameScaffold.BealTheorem` remains guarded: the
 four-cusp audit does not inhabit
