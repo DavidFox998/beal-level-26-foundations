@@ -186,6 +186,9 @@ theorem, prove a Mathlib `X₀(26)(ℚ)` theorem, or claim an
 unconditional `BealTheorem`. v4.0.10-chabauty0-no-doi adds
 `Mazur/Chabauty0Actual_26` as that finite package; it is not
 Chabauty--Coleman and does not inhabit typed `hGeomForbid`.
+v4.0.11-residue-disks-no-doi adds `ResidueDisks_26` and
+`MordellWeilSieve_26` as finite `M₃` conjunctions, not a
+scheme-theoretic `X₀(26)(ℚ)` theorem.
 The PLAN.md acceptance gates above
 remain open.
 

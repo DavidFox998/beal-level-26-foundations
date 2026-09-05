@@ -15,6 +15,9 @@ import BealLevel26Foundations.Ribet.NoFreyPointActual_26
 import BealLevel26Foundations.Ribet.HIdentifyActual_26
 import BealLevel26Foundations.Mazur.HGeomForbidActual_26
 import BealLevel26Foundations.Mazur.Chabauty0Actual_26
+import BealLevel26Foundations.Jacobian.ResidueDisks_26
+import BealLevel26Foundations.Jacobian.MordellWeilSieve_26
+import BealLevel26Foundations.Mazur.X026RationalPointsScheme_26
 
 namespace Beal.Foundations
 
@@ -44,6 +47,8 @@ cusp-labeled points; a forall over all displayed kinds is
 false. Typed `hGeomForbid` stays uninhabitable.
 v4.0.10 adds the Chabauty-0 finite package; it is not
 Chabauty--Coleman and does not inhabit typed `hGeomForbid`.
+v4.0.11 adds residue-disk / sieve *input* packages; those are
+not a scheme-theoretic `X₀(26)(ℚ)` theorem.
 No domain axiom is introduced. Geometric Jacobian, genuine
 cohomological Selmer, Picard, Tate, scheme-theoretic Ribet
 existence, a Mathlib `X₀(26)` point, and an unconditional

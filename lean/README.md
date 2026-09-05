@@ -1,7 +1,7 @@
 # lean/
 
 Lean 4.12.0 + Mathlib v4.12.0 sources. **Current as of**
-`v4.0.10-chabauty0-no-doi` (prior `v4.0.9-fourCusps-forall`, `v4.0.8-geom-forbid`, `v4.0.7-hIdentify-j`, `v4.0.7-hIdentify`, `v4.0.6-rank-zero-fixed`,
+`v4.0.11-residue-disks-no-doi` (prior `v4.0.10-chabauty0-no-doi`, `v4.0.9-fourCusps-forall`, `v4.0.8-geom-forbid`, `v4.0.7-hIdentify-j`, `v4.0.7-hIdentify`, `v4.0.6-rank-zero-fixed`,
 `v4.0.5-nofrey-point`, `v4.0.4-x026-rational-points`,
 `v4.0.3-formal-immersion`).
 

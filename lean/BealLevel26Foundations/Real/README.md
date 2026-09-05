@@ -1,6 +1,6 @@
 # lean/BealLevel26Foundations/Real/
 
-Arithmetic that Mathlib 4.12 permits. **Current as of** `v4.0.10-chabauty0-no-doi`.
+Arithmetic that Mathlib 4.12 permits. **Current as of** `v4.0.11-residue-disks-no-doi`.
 
 | File | What it is | What it is not |
 |---|---|---|
@@ -14,7 +14,7 @@ skeleton, the S-unit audit, v4.0.3 formal-immersion input, the
 v4.0.4 four-cusp package, the v4.0.6 rank-zero / Ribet split,
 the v4.0.7-j finite `j`-invariant `hIdentify`, the v4.0.8
 typed `hGeomForbid` record, the v4.0.9 cusp-point forall, and
-the v4.0.10 Chabauty-0 package.
+the v4.0.10 Chabauty-0 package, and the v4.0.11 residue-disk input.
 These
 files must not mention `frey_conductor_data` or
 `tate_step2_odd_prime_external`.

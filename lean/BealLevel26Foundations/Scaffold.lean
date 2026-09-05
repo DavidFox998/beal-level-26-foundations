@@ -14,6 +14,9 @@ import BealLevel26Foundations.Ribet.NoFreyPointActual_26
 import BealLevel26Foundations.Ribet.HIdentifyActual_26
 import BealLevel26Foundations.Mazur.HGeomForbidActual_26
 import BealLevel26Foundations.Mazur.Chabauty0Actual_26
+import BealLevel26Foundations.Jacobian.ResidueDisks_26
+import BealLevel26Foundations.Jacobian.MordellWeilSieve_26
+import BealLevel26Foundations.Mazur.X026RationalPointsScheme_26
 
 namespace BealLevel26Foundations.Scaffold
 
@@ -28,7 +31,8 @@ list, the v4.0.6 product rank-zero package, and the v4.0.7-j
 finite `j`-invariant encoding of typed `hIdentify`, the
 v4.0.8 record that typed `hGeomForbid` is uninhabitable, and the
 v4.0.9 cusp-point forall `fourCuspsForallCuspPoints`, and the
-v4.0.10 Chabauty-0 finite package. It is
+v4.0.10 Chabauty-0 finite package, and the
+v4.0.11 residue-disk / sieve *input* packages. It is
 separate from the unconditional computable v1 entrypoint.
 Typed `hIdentify` packs a Frey `j` as an elliptic displayed
 point, not as `26 ∉ [1, 2, 13, 26]`. Constructor inequality
