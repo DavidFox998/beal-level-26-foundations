@@ -71,6 +71,7 @@ test -f docs/releases/v4.2.2-zenodo-trigger.md
 test -f docs/releases/v4.3.0-final-forall-package.md
 test -f docs/releases/v4.4.0-typed-refactor-true-close.md
 test -f docs/releases/v4.5.0-forall-real.md
+test -f docs/releases/v4.6.0-readmes-about.md
 test -f docs/CHANGELOG.md
 test -f lean/BealLevel26Foundations/Final/BealExponent13_Final.lean
 test -f lean/BealLevel26Foundations/Final/BealExponent13_Forall.lean
@@ -156,6 +157,7 @@ grep -q "v4.2.2-zenodo-trigger" README.md
 grep -q "v4.3.0-final-forall-package" README.md
 grep -q "v4.4.0-typed-refactor-true-close" README.md
 grep -q "v4.5.0-forall-real" README.md
+grep -q "v4.6.0-readmes-about" README.md
 grep -q "v4.0.3-formal-immersion" docs/README.md
 grep -q "v4.0.4-x026-rational-points" docs/README.md
 grep -q "v4.0.5-nofrey-point" docs/README.md
@@ -180,6 +182,7 @@ grep -q "v4.2.2-zenodo-trigger" docs/README.md
 grep -q "v4.3.0-final-forall-package" docs/README.md
 grep -q "v4.4.0-typed-refactor-true-close" docs/README.md
 grep -q "v4.5.0-forall-real" docs/README.md
+grep -q "v4.6.0-readmes-about" docs/README.md
 grep -q "v4.0.3-formal-immersion" docs/releases/README.md
 grep -q "v4.0.4-x026-rational-points" docs/releases/README.md
 grep -q "v4.0.5-nofrey-point" docs/releases/README.md
@@ -204,6 +207,7 @@ grep -q "v4.2.2-zenodo-trigger" docs/releases/README.md
 grep -q "v4.3.0-final-forall-package" docs/releases/README.md
 grep -q "v4.4.0-typed-refactor-true-close" docs/releases/README.md
 grep -q "v4.5.0-forall-real" docs/releases/README.md
+grep -q "v4.6.0-readmes-about" docs/releases/README.md
 grep -q "v4.0.3-formal-immersion" lean/README.md
 grep -q "v4.0.4-x026-rational-points" lean/README.md
 grep -q "v4.0.5-nofrey-point" lean/README.md
@@ -228,6 +232,7 @@ grep -q "v4.2.2-zenodo-trigger" lean/README.md
 grep -q "v4.3.0-final-forall-package" lean/README.md
 grep -q "v4.4.0-typed-refactor-true-close" lean/README.md
 grep -q "v4.5.0-forall-real" lean/README.md
+grep -q "v4.6.0-readmes-about" lean/README.md
 grep -q "v4.0.3-formal-immersion" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Jacobian/README.md
@@ -250,6 +255,7 @@ grep -q "v4.2.2-zenodo-trigger" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.3.0-final-forall-package" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.4.0-typed-refactor-true-close" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.5.0-forall-real" lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "v4.6.0-readmes-about" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.4-x026-rational-points" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Mazur/README.md
@@ -272,6 +278,7 @@ grep -q "v4.2.2-zenodo-trigger" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.3.0-final-forall-package" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.4.0-typed-refactor-true-close" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.5.0-forall-real" lean/BealLevel26Foundations/Mazur/README.md
+grep -q "v4.6.0-readmes-about" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.5-nofrey-point" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Ribet/README.md
@@ -294,6 +301,7 @@ grep -q "v4.2.2-zenodo-trigger" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.3.0-final-forall-package" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.4.0-typed-refactor-true-close" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.5.0-forall-real" lean/BealLevel26Foundations/Ribet/README.md
+grep -q "v4.6.0-readmes-about" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" sagemath/README.md
 grep -q "v4.0.7-hIdentify" sagemath/README.md
 grep -q "v4.0.7-hIdentify-j" sagemath/README.md
@@ -315,6 +323,25 @@ grep -q "v4.2.2-zenodo-trigger" sagemath/README.md
 grep -q "v4.3.0-final-forall-package" sagemath/README.md
 grep -q "v4.4.0-typed-refactor-true-close" sagemath/README.md
 grep -q "v4.5.0-forall-real" sagemath/README.md
+grep -q "v4.6.0-readmes-about" sagemath/README.md
+for readme in \
+  README.md \
+  docs/README.md \
+  lean/README.md \
+  lean/BealLevel26Foundations/README.md \
+  lean/BealLevel26Foundations/Chain/README.md \
+  lean/BealLevel26Foundations/Final/README.md \
+  lean/BealLevel26Foundations/Mazur/README.md \
+  lean/BealLevel26Foundations/Certs/README.md
+do
+  grep -q "v4.6.0-readmes-about" "$readme"
+  grep -q "d3cf8a7" "$readme"
+  grep -q "1d0044e" "$readme"
+  grep -q "hNotIn hInList" "$readme"
+  grep -q "depends on no axioms" "$readme"
+  grep -q "not \`∀ ℕ\`" "$readme"
+  grep -q "no \`False.elim\`" "$readme"
+done
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md
 grep -qi "genuine cohomological 2-Selmer" \

@@ -241,7 +241,10 @@ v4.5.0-forall-real names
 `BealTheorem_Exponent13_Forall_Computational` as
 `BealTheorem_Exponent13_Typed ∧ BealExponent13_Final_Package`.
 That is still not `∀ A B C, ¬ A^13 + B^13 = C^13`.
-The PLAN.md acceptance gates above
+v4.6.0-readmes-about documents `d3cf8a7` / `1d0044e`:
+`hGeomForbid_typed_true` depends on no axioms via
+`hNotIn hInList`; the Forall name is a conjunction, not
+`∀ ℕ`. The PLAN.md acceptance gates above
 remain open.
 
 **Dependency:** v1, v2, v3, and genuine scheme/Jacobian geometry.

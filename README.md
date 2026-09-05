@@ -21,8 +21,9 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
-[`v4.5.0-forall-real`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.5.0-forall-real)
+[`v4.6.0-readmes-about`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.6.0-readmes-about)
 (prior
+[`v4.5.0-forall-real`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.5.0-forall-real),
 [`v4.4.0-typed-refactor-true-close`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.4.0-typed-refactor-true-close),
 [`v4.3.0-final-forall-package`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.3.0-final-forall-package),
 [`v4.2.2-zenodo-trigger`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.2.2-zenodo-trigger),
@@ -87,7 +88,7 @@ conjunction; those are not a scheme `X₀(26)(ℚ)` theorem. Typed `hIdentify`
 stays the elliptic-`j` packing. The remaining
 geometric gate is a Mathlib noncuspidal point of `X₀(26)`.
 
-### v4.5.0 ∀ Real (computational package)
+### v4.6.0 READMEs / About (typed no axioms)
 
 Certified Cremona models and the PARI 2.17.2 archive
 [`lean/BealLevel26Foundations/Certs/Descent_26.json`](lean/BealLevel26Foundations/Certs/Descent_26.json)
@@ -105,19 +106,21 @@ Lean names on that archive:
 * `Chabauty0ForcesCusp_computational` is `rankZero_unconditional ∧ det ≠ 0`.
 * `FreyLevel26` is `2 * 13 = 26` (`rfl`). Mathlib 4.12 has no Ribet / modularity; this is the displayed level only.
 * `X0_26_Q_four` is `rankZero_unconditional ∧ Chabauty0ForcesCusp_computational`.
-* `ExistsNoncuspidal_26` is existence of a `DisplayedX026CuspPoint`
-  whose label is not on `fourCuspsList = [1,2,13,26]`. Every such
-  point already has `P.mem`, so the existential is empty by type.
-  The trailing `True` is a placeholder for `P ∈ X0_26_Q`.
+* v4.4.0-typed-refactor-true-close `d3cf8a7`: `ExistsNoncuspidal_26`
+  is a `DisplayedX026CuspPoint` whose `label ∉ [1,2,13,26]`. Every
+  such `P` has `P.mem`, so the existential is empty by type. The
+  trailing `True` is a placeholder for `P ∈ X0_26_Q`; Mathlib 4.12
+  has no `X0_26_Point`.
 * `hGeomForbid_typed_true` is
   `fourCuspsForallCuspPoints → ¬ ExistsNoncuspidal_26`, proved by
-  `hNotIn hInList` without `False.elim`. That is not the old
-  elliptic-`j` implication.
+  `hNotIn hInList`. It depends on no axioms. That is not the old
+  elliptic-`j` implication (`True → ¬True`).
 * `BealTheorem_Exponent13_Typed` is that implication plus
   `FreyLevel26`.
-* `BealTheorem_Exponent13_Forall_Computational` is
+* v4.5.0-forall-real `1d0044e`:
+  `BealTheorem_Exponent13_Forall_Computational` is
   `BealTheorem_Exponent13_Typed ∧ BealExponent13_Final_Package`.
-  That is a named conjunction, not `∀ A B C`.
+  That is a named conjunction, not `∀ ℕ` and not `∀ A B C`.
 * `BealExponent13_Final_Package` is
   `X0_26_Q_four ∧ FreyLevel26 ∧ fourCuspsForallCuspPoints`.
   `BealTheorem_Exponent13_Full_package` is the same conjunction
@@ -128,9 +131,14 @@ Lean names on that archive:
   `DisplayedX026CuspPoint` (`P.mem`). `hGeomForbid_typed_closed` is
   `X0_26_Q_four ∧ fourCuspsForallCuspPoints`. That is not the old
   elliptic-`j` `fourCusps → ¬ ExistsNoncuspidal`.
-* Old typed `fourCusps → ¬ ExistsNoncuspidal` stays uninhabitable
-  (`#check hGeomForbid_typed_is_uninhabitable`).
+* Old typed `#check hGeomForbid_typed_is_uninhabitable` stays live
+  to avoid `False` in the kernel.
 * `X026RationalPointsActual_26` remains the four-cusp audit.
+
+Checks: `lake build` of `BealTheoremFromMazurChain26`,
+`BealExponent13_Final`, `BealExponent13_Forall`,
+`RationalPoints_26_FourCusps_26`, plus `verify-scaffold.sh` and
+`verify_descent_26.py`, green. No `sorry`, no `False.elim`.
 
 This is a computational boundary. Mathlib 4.12 has no `SelmerGroup`,
 `MordellWeil.rank`, or Ribet. Green `lake` / CI is a Lean build, not a DOI.
@@ -253,6 +261,7 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.3.0-final-forall-package Final ∀ package | `v4.3.0-final-forall-package` | pending DataCite | `BealExponent13_Final_Package` is `X0_26_Q_four ∧ FreyLevel26 ∧ fourCuspsForallCuspPoints`. Not `∀ A B C`. Typed implication stays uninhabitable. Ledger still v1.4.0. Descent SHA-256 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. |
 | v4.4.0-typed-refactor-true-close displayed-label close | `v4.4.0-typed-refactor-true-close` | pending DataCite | `ExistsNoncuspidal_26` over `DisplayedX026CuspPoint` `[1,2,13,26]` is empty by `P.mem`. `hGeomForbid_typed_true` is `fourCuspsForallCuspPoints → ¬ ExistsNoncuspidal_26` without `False.elim`. Not the old elliptic-`j` implication (`True → ¬True`). Not `∀ A B C`. Ledger still v1.4.0. Descent SHA-256 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. |
 | v4.5.0-forall-real computational ∀ package | `v4.5.0-forall-real` | pending DataCite | `BealTheorem_Exponent13_Forall_Computational` is `BealTheorem_Exponent13_Typed ∧ BealExponent13_Final_Package`. Not `∀ A B C`. Typed close via `P.mem` without `False.elim`. Ledger still v1.4.0. Descent SHA-256 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. |
+| v4.6.0-readmes-about typed no-axioms docs | `v4.6.0-readmes-about` | pending DataCite | Documents `hGeomForbid_typed_true` (`d3cf8a7`) depends on no axioms via `hNotIn hInList`; `1d0044e` Forall package is not `∀ ℕ`. CHANGELOG Zenodo ingest line. Latest minted Zenodo version remains v4.0.9. Ledger still v1.4.0. Descent SHA-256 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
