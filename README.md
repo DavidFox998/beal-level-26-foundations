@@ -2,7 +2,18 @@
 [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 [![CI](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml/badge.svg)](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml)
 
-# Beal Level-26 Foundations
+# Beal Level 26 Foundations — Exponent 13 Full Package (Computational Boundary)
+
+## v4.15.0 Bridge — Forall from Ribet
+
+| Theorem | Axioms |
+|---|---|
+| beal_forall_from_ribet | none |
+| beal_exponent13_from_ribet / certified_from_ribet | none (hGeomForbid_typed_true via hNotIn hInList) |
+| contradiction_from_ribet | ribet_level_lowering_26 only |
+| BealExponent13_Contradiction.certified | frey_modular_13 + ribet_level_lowering_26 |
+
+Still not ∀ N and not a Mathlib X0(26)(Q) theorem. The only axioms are `frey_modular_13` and `ribet_level_lowering_26` (COMPUTATIONAL ASSUMPTION), secured by `certs/pari_x0_26_four_cusps.json`. Not `∀ ℕ`. No `False.elim`.
 
 ## Geometry: X₀(26) Level 26
 
@@ -27,8 +38,9 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
-[`v4.15.0-iter-typed-forall-bridge`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.15.0-iter-typed-forall-bridge)
+[`v4.16.0-iter-readme-about-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.16.0-iter-readme-about-locked)
 (prior
+[`v4.15.0-iter-typed-forall-bridge`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.15.0-iter-typed-forall-bridge),
 [`v4.14.0-iter-citation-contradiction-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.14.0-iter-citation-contradiction-locked),
 [`v4.13.1-iter-unstick`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.13.1-iter-unstick),
 [`v4.13.0-iter-contradiction-start`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.13.0-iter-contradiction-start),
@@ -104,6 +116,12 @@ adds the `M₃` residue-disk *input* and the finite sieve
 conjunction; those are not a scheme `X₀(26)(ℚ)` theorem. Typed `hIdentify`
 stays the elliptic-`j` packing. The remaining
 geometric gate is a Mathlib noncuspidal point of `X₀(26)`.
+
+### v4.16.0 Iter readme about locked
+
+README theorem table and GitHub About lock the v4.15.0
+bridge. Image `docs/images/2-descent-level-26-26a1-26b1.webp`
+stays ≥300 KB. Still not `∀ ℕ`. No `False.elim`.
 
 ### v4.15.0 Iter typed forall bridge
 
@@ -391,6 +409,7 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.13.1-iter-unstick verify without DOI greps | `v4.13.1-iter-unstick` | pending DataCite | `verify-scaffold.sh` locks image / JSON / four-cusp `rfl` / contradiction theorems and does not grep Zenodo DOI record ids. Not `∀ ℕ`. Ledger still v1.4.0. |
 | v4.14.0-iter-citation-contradiction-locked CITATION + Iter export | `v4.14.0-iter-citation-contradiction-locked` | pending DataCite | `CITATION.cff` locks `c2c47db` / four-cusp abstract. `certified_from_ribet` exported into Iter. Image ≥300 KB. Not `∀ ℕ`. Ledger still v1.4.0. |
 | v4.15.0-iter-typed-forall-bridge Typed → Forall | `v4.15.0-iter-typed-forall-bridge` | pending DataCite | `beal_forall_from_ribet := beal_exponent13_from_ribet` (no axioms). Forall file still not `∀ ℕ`. Ledger still v1.4.0. |
+| v4.16.0-iter-readme-about-locked README + About | `v4.16.0-iter-readme-about-locked` | pending DataCite | Theorem table + About/topics/homepage. Image locked. Not `∀ ℕ`. Ledger still v1.4.0. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use

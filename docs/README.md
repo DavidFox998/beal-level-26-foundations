@@ -1,4 +1,15 @@
-# v4.7.0 Iter typed no axioms
+# Beal Level 26 Foundations — Exponent 13 Full Package (Computational Boundary)
+
+## v4.15.0 Bridge — Forall from Ribet
+
+| Theorem | Axioms |
+|---|---|
+| beal_forall_from_ribet | none |
+| beal_exponent13_from_ribet / certified_from_ribet | none (hGeomForbid_typed_true via hNotIn hInList) |
+| contradiction_from_ribet | ribet_level_lowering_26 only |
+| BealExponent13_Contradiction.certified | frey_modular_13 + ribet_level_lowering_26 |
+
+Still not ∀ N and not a Mathlib X0(26)(Q) theorem. The only axioms are `frey_modular_13` and `ribet_level_lowering_26` (COMPUTATIONAL ASSUMPTION), secured by `certs/pari_x0_26_four_cusps.json`. Not `∀ ℕ`. No `False.elim`.
 
 ## PARI 2-Descent Certificates — X0(26) Four Cusps
 
@@ -9,7 +20,7 @@ PARI 2-descent certificates for the Jacobian factors of \(J_0(26)\). Certified W
 Versioned release notes for
 [beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations).
 
-**Current as of** tag `v4.7.0-iter-typed-no-axioms-closing` / `v4.8.0-iter-modularity-scaffold` / `v4.9.0-iter-no-True-X0` / `v4.10.0-iter-pari-locked` / `v4.12.0-iter-verify-plus` / `v4.13.0-iter-contradiction-start` / `v4.13.1-iter-unstick` / `v4.14.0-iter-citation-contradiction-locked` (prior
+**Current as of** tag `v4.7.0-iter-typed-no-axioms-closing` / `v4.8.0-iter-modularity-scaffold` / `v4.9.0-iter-no-True-X0` / `v4.10.0-iter-pari-locked` / `v4.12.0-iter-verify-plus` / `v4.13.0-iter-contradiction-start` / `v4.13.1-iter-unstick` / `v4.14.0-iter-citation-contradiction-locked` / `v4.15.0-iter-typed-forall-bridge` / `v4.16.0-iter-readme-about-locked` (prior
 `v4.6.0-readmes-about`,
 `v4.5.0-forall-real`,
 `v4.4.0-typed-refactor-true-close`,
@@ -160,3 +171,7 @@ v4.13.0-iter-contradiction-start: wires `X0_26_Point` `X0_26_Q_four_cusps` `[1,2
 v4.13.1-iter-unstick: `verify-scaffold.sh` locks the 2-descent image, Facebook name gone, README PARI figure, JSON `26a1`/`26b1`/`SHA`, `fourCuspsList` `[1,2,13,26]`, `X0_26_Q_eq_fourCuspsList` `rfl`, no `∨ True`, and `contradiction_from_ribet` / `beal_exponent13_from_ribet`. Does not grep Zenodo DOI record ids. `hGeomForbid_typed_true` depends on no axioms (`hNotIn hInList`). Not `∀ ℕ` and no `False.elim`.
 
 v4.14.0-iter-citation-contradiction-locked: `CITATION.cff` locks `c2c47db` / four-cusp abstract. `certified_from_ribet` is exported into `BealExponent13_Iter_Package`. `-- SECURED BY certs/pari_x0_26_four_cusps.json + docs/images/2-descent-level-26-26a1-26b1.webp`. `hGeomForbid_typed_true` depends on no axioms (`hNotIn hInList`). Not `∀ ℕ` and no `False.elim`.
+
+v4.15.0-iter-typed-forall-bridge: `beal_forall_from_ribet := beal_exponent13_from_ribet`. `certified_from_ribet` none via `hGeomForbid_typed_true`. `hGeomForbid_typed_true` depends on no axioms (`hNotIn hInList`). Not `∀ ℕ` and no `False.elim`.
+
+v4.16.0-iter-readme-about-locked: README theorem table + GitHub About. Image `docs/images/2-descent-level-26-26a1-26b1.webp` locked. `hGeomForbid_typed_true` depends on no axioms (`hNotIn hInList`). Not `∀ ℕ` and no `False.elim`.
