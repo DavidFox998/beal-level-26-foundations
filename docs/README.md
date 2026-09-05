@@ -3,8 +3,9 @@
 Versioned release notes for
 [beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations).
 
-**Current as of** tag `v4.0.9-fourCusps-forall`
-(DOI recorded after DataCite `findable`).
+**Current as of** tag `v4.0.9-fourCusps-forall` (commit `2281aad`,
+version DOI
+[10.5281/zenodo.22322627](https://doi.org/10.5281/zenodo.22322627)).
 Prior published tag
 [`v4.0.8-geom-forbid`](releases/v4.0.8-geom-forbid.md) (commit `916f696`,
 version DOI

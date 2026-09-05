@@ -26,7 +26,7 @@ not an unconditional `BealTheorem`.
 | [v4.0.7-hIdentify.md](v4.0.7-hIdentify.md) | `v4.0.7-hIdentify` / `a4143fc` | [10.5281/zenodo.22314092](https://doi.org/10.5281/zenodo.22314092) |
 | [v4.0.7-hIdentify-j.md](v4.0.7-hIdentify-j.md) | `v4.0.7-hIdentify-j` / `ade01a2` | [10.5281/zenodo.22314212](https://doi.org/10.5281/zenodo.22314212) |
 | [v4.0.8-geom-forbid.md](v4.0.8-geom-forbid.md) | `v4.0.8-geom-forbid` / `916f696` | [10.5281/zenodo.22314435](https://doi.org/10.5281/zenodo.22314435) |
-| [v4.0.9-fourCusps-forall.md](v4.0.9-fourCusps-forall.md) | `v4.0.9-fourCusps-forall` | recorded after DataCite `findable` |
+| [v4.0.9-fourCusps-forall.md](v4.0.9-fourCusps-forall.md) | `v4.0.9-fourCusps-forall` / `2281aad` | [10.5281/zenodo.22322627](https://doi.org/10.5281/zenodo.22322627) |
 
 Concept DOI for the evolving project:
 [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).
