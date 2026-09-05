@@ -1,0 +1,6 @@
+# Changelog
+
+Tagged Foundations notes live in [`releases/`](releases/README.md).
+This file records trigger commits that do not change Lean.
+
+# v4.2.2 trigger 2026-09-05T17:59:00Z - PARI |Sel2|=1 det2 fourCusps [1,2,13,26]
