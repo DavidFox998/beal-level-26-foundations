@@ -24,6 +24,7 @@ import BealLevel26Foundations.Jacobian.ColemanIntegral_26
 import BealLevel26Foundations.Jacobian.ColemanNonVanishing_26
 import BealLevel26Foundations.Certs.LMFDBCert_26
 import BealLevel26Foundations.Descent.Selmer_26
+import BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26
 
 namespace BealLevel26Foundations.Scaffold
 
@@ -45,14 +46,19 @@ v4.0.13 named `det ≠ 0` formal-immersion / disk-equality
 aliases, and the v4.0.14 named rank-zero / `det ≠ 0`
 Chabauty-0 conjunction, and the v4.0.15 LMFDB *display*
 package, and the v4.1.0 / v4.1.1 Descent Weierstrass and
-displayed PARI `|Sel₂| = 1` names. It is
+displayed PARI `|Sel₂| = 1` names, and the v4.1.3
+computational `hGeomForbid` structure plus
+`BealTheorem_Exponent13`. It is
 separate from the unconditional computable v1 entrypoint.
 Typed `hIdentify` packs a Frey `j` as an elliptic displayed
 point, not as `26 ∉ [1, 2, 13, 26]`. Constructor inequality
 `ellipticJ ≠ cuspDivisor` does not Lean-negate
 `ExistsNoncuspidal`. The inhabited forall ranges over
-cusp-labeled points, not over `ellipticJ`. Typed `hGeomForbid`
-remains uninhabitable. The Chabauty-0 package coexists with
+cusp-labeled points, not over `ellipticJ`. Typed
+`fourCusps → ¬ ExistsNoncuspidal` remains uninhabitable.
+`BealTheorem_Exponent13` is the computational package, not the
+Beal conjecture. The full `theorem BealTheorem` stays guarded.
+The Chabauty-0 package coexists with
 `ExistsNoncuspidal`; it is not Chabauty--Coleman. There is no
 unconditional `BealTheorem` here.
 -/

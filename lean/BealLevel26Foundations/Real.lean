@@ -26,6 +26,7 @@ import BealLevel26Foundations.Jacobian.ColemanIntegral_26
 import BealLevel26Foundations.Jacobian.ColemanNonVanishing_26
 import BealLevel26Foundations.Certs.LMFDBCert_26
 import BealLevel26Foundations.Descent.Selmer_26
+import BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26
 
 namespace BealLevel26Foundations.Real
 
@@ -76,6 +77,12 @@ is extra computational evidence, not unconditional rank zero.
 v4.1.0 records certified Weierstrass models.
 v4.1.1 archives PARI `|Sel₂| = 1`; those Lean names are `1 = 1`,
 not a Selmer group and not unconditional Mordell--Weil.
+v4.1.2 records an `Option` `hGeomForbid` from those equalities
+plus `det ≠ 0`.
+v4.1.3 inhabits a computational `hGeomForbid` structure and
+`BealTheorem_Exponent13`; that is not the Beal conjecture.
+The full `theorem BealTheorem` stays guarded. Typed
+`fourCusps → ¬ ExistsNoncuspidal` remains uninhabitable.
 That is not genuine `Sel₂`, not a Mathlib `X₀(26)` point, and not
 an unconditional `BealTheorem`.
 -/

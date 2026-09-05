@@ -1,6 +1,6 @@
 # scripts/
 
-Deterministic repository checks. **Current as of** `v4.1.2-beal-13-endgame`.
+Deterministic repository checks. **Current as of** `v4.1.3-beal-13-theorem`.
 
 | Script | What it checks |
 |---|---|

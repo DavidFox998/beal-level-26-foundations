@@ -73,8 +73,8 @@ evidence is not a Mordell--Weil theorem.
 ## Track E — Descent start
 
 Status: **PARI 2-descent display shipped**
-(`v4.1.2-beal-13-endgame`; prior `v4.1.1-descent-compute`,
-`v4.1.0-descent-start`).
+(`v4.1.3-beal-13-theorem`; prior `v4.1.2-beal-13-endgame`,
+`v4.1.1-descent-compute`, `v4.1.0-descent-start`).
 
 | File | What it is | What it is not |
 |---|---|---|
@@ -84,6 +84,9 @@ Status: **PARI 2-descent display shipped**
 | [`../Certs/Descent_26.json`](../Certs/Descent_26.json) | PARI `ellrank`/`ell2cover`/`elltors` archive | Not a Mathlib MW theorem |
 
 `EndgameScaffold` now names `rankZero_unconditional` from those
-equalities and an `Option` `hGeomForbid`. Remaining: a Mathlib
-Selmer group and an unconditional Mordell--Weil theorem. Do not
-treat `1 = 1` as unconditional rank zero.
+equalities and an `Option` `hGeomForbid`.
+`BealTheoremFromMazurChain26` inhabits a computational
+`hGeomForbid` structure and `BealTheorem_Exponent13`. Remaining:
+a Mathlib Selmer group and an unconditional Mordell--Weil
+theorem. Do not treat `1 = 1` as unconditional rank zero. The
+typed implication stays uninhabitable.

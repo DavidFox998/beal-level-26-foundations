@@ -2,7 +2,7 @@
 
 Typed certificate bridges promoted from
 [`sagemath/certs/`](../../../sagemath/certs/README.md) and the v1.4.0
-ledger. **Current as of** `v4.1.2-beal-13-endgame`.
+ledger. **Current as of** `v4.1.3-beal-13-theorem`.
 
 | File | What it checks | What it is not |
 |---|---|---|

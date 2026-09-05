@@ -3,8 +3,10 @@
 Versioned release notes for
 [beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations).
 
-**Current as of** tag `v4.1.2-beal-13-endgame` (git tag
+**Current as of** tag `v4.1.3-beal-13-theorem` (git tag
 only; no version DOI). Prior tag
+[`v4.1.2-beal-13-endgame`](releases/v4.1.2-beal-13-endgame.md).
+Prior tag
 [`v4.1.1-descent-compute`](releases/v4.1.1-descent-compute.md).
 Prior tag
 [`v4.1.0-descent-start`](releases/v4.1.0-descent-start.md).
@@ -56,7 +58,7 @@ these notes only record what each tag claimed.
 
 | Path | Contents |
 |---|---|
-| [`releases/`](releases/README.md) | One note per tagged Foundations release, from `v1.0.0-computable` through `v4.1.2-beal-13-endgame` |
+| [`releases/`](releases/README.md) | One note per tagged Foundations release, from `v1.0.0-computable` through `v4.1.3-beal-13-theorem` |
 
 The staged plan and open acceptance gates live in [`../PLAN.md`](../PLAN.md).
 The public DOI trail is in [`../README.md`](../README.md).

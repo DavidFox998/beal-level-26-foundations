@@ -216,6 +216,11 @@ those equalities and an `Option` `hGeomForbid` as that plus
 `det M₃ ≠ 0`.  That is a computational boundary, not typed
 `fourCusps → ¬ ExistsNoncuspidal` and not a Lean
 Mordell--Weil theorem.
+v4.1.3-beal-13-theorem inhabits a computational `hGeomForbid`
+structure and names `BealTheorem_Exponent13` for the
+`2 × 13` package.  That is not the Beal conjecture.  Full
+`theorem BealTheorem` stays guarded.  Typed
+`fourCusps → ¬ ExistsNoncuspidal` remains uninhabitable.
 The PLAN.md acceptance gates above
 remain open.
 

@@ -1,6 +1,6 @@
 # lean/BealLevel26Foundations/
 
-Main foundations library. **Current as of** `v4.1.2-beal-13-endgame`.
+Main foundations library. **Current as of** `v4.1.3-beal-13-theorem`.
 
 Top-level computable files:
 
