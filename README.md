@@ -21,8 +21,9 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
-[`v4.8.0-iter-modularity-scaffold`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.8.0-iter-modularity-scaffold)
+[`v4.9.0-iter-no-True-X0`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.9.0-iter-no-True-X0)
 (prior
+[`v4.8.0-iter-modularity-scaffold`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.8.0-iter-modularity-scaffold),
 [`v4.7.0-iter-typed-no-axioms-closing`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.7.0-iter-typed-no-axioms-closing),
 [`v4.6.0-readmes-about`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.6.0-readmes-about),
 [`v4.5.0-forall-real`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.5.0-forall-real),
@@ -91,6 +92,19 @@ adds the `M₃` residue-disk *input* and the finite sieve
 conjunction; those are not a scheme `X₀(26)(ℚ)` theorem. Typed `hIdentify`
 stays the elliptic-`j` packing. The remaining
 geometric gate is a Mathlib noncuspidal point of `X₀(26)`.
+
+### v4.9.0 Iter no True X0
+
+`X0_26_Q` is `{P | P.label ∈ fourCuspsList}` with no `True`
+disjunct. `ExistsNoncuspidal_26` stays empty by `P.mem`.
+`hGeomForbid_typed_true` still depends on no axioms
+(`hNotIn hInList`). The only axioms are `frey_modular_13`
+and `ribet_level_lowering_26`, both COMPUTATIONAL ASSUMPTION,
+secured by 26a1 `[1,0,1,-5,-8]` Δ `-17576`, 26b1
+`[1,-1,1,-3,3]` Δ `-1664`, PARI `|Sel₂|=1` twice, `det M₃=2`,
+SHA-256
+`d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`,
+`FreyLevel26` `2 * 13 = 26`. Not `∀ ℕ`. No `False.elim`.
 
 ### v4.8.0 Iter modularity scaffold
 
@@ -294,6 +308,7 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.6.0-readmes-about typed no-axioms docs | `v4.6.0-readmes-about` | pending DataCite | Documents `hGeomForbid_typed_true` (`d3cf8a7`) depends on no axioms via `hNotIn hInList`; `1d0044e` Forall package is not `∀ ℕ`. CHANGELOG Zenodo ingest line. Latest minted Zenodo version remains v4.0.9. Ledger still v1.4.0. Descent SHA-256 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. |
 | v4.7.0-iter-typed-no-axioms-closing Iter rename | `v4.7.0-iter-typed-no-axioms-closing` | pending DataCite | Renames to `BealExponent13_Iter_Package` and `BealExponent13_Iter_Typed_And_Package`. Old names stay as deprecated aliases. Not `∀ ℕ`. No word final until `∀ A B C : ℕ` without `False.elim`. Ledger still v1.4.0. Descent SHA-256 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. |
 | v4.8.0-iter-modularity-scaffold explicit Ribet / X0(26)(Q) layer | `v4.8.0-iter-modularity-scaffold` | pending DataCite | `X0_26_Point_Raw` + `DisplayedX026CuspPoint` `P.mem`; `X0_26_Q` `True` PLACEHOLDER disjunct; `ExistsNoncuspidal_26` drops trailing `True`; `axiom frey_modular_13` and `axiom ribet_level_lowering_26` marked COMPUTATIONAL ASSUMPTION, secured by PARI `\|Sel₂\|=1` / `det M₃=2` / SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. `hGeomForbid_typed_true` still no axioms. Not `∀ ℕ`. Ledger still v1.4.0. |
+| v4.9.0-iter-no-True-X0 displayed four-cusp set | `v4.9.0-iter-no-True-X0` | pending DataCite | `X0_26_Q = {P \| P.label ∈ fourCuspsList}` with no `True`. `ExistsNoncuspidal_26` empty by `P.mem`. Only axioms `frey_modular_13` and `ribet_level_lowering_26`. Certs unchanged. Not `∀ ℕ`. Ledger still v1.4.0. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use

@@ -22,10 +22,11 @@ That is a typed close on the displayed cusp-label type
 `DisplayedX026CuspPoint` with `fourCuspsList = [1, 2, 13, 26]`.
 It is not the old elliptic-`j` implication
 (`True → ¬True`, still `hGeomForbid_typed_is_uninhabitable`)
-and not a Mathlib `X₀(26)(ℚ)` theorem.  v4.8.0 records
-`P ∈ X0_26_Q` on `Chain.X0_26_Point.X0_26_Q` (`∨ True`
-PLACEHOLDER) and names `frey_modular_13` /
-`ribet_level_lowering_26` as computational assumptions.
+and not a Mathlib `X₀(26)(ℚ)` theorem.  v4.9.0 sets
+`Chain.X0_26_Point.X0_26_Q` to
+`{P | P.label ∈ fourCuspsList}` with no `True`.
+`frey_modular_13` / `ribet_level_lowering_26` remain the
+only computational-assumption axioms.
 
 `BealExponent13_Iter_Package` is
 

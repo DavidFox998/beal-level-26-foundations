@@ -74,6 +74,7 @@ test -f docs/releases/v4.5.0-forall-real.md
 test -f docs/releases/v4.6.0-readmes-about.md
 test -f docs/releases/v4.7.0-iter-typed-no-axioms-closing.md
 test -f docs/releases/v4.8.0-iter-modularity-scaffold.md
+test -f docs/releases/v4.9.0-iter-no-True-X0.md
 test -f docs/NEXT_STEPS.md
 test -f lean/BealLevel26Foundations/Chain/X0_26_Point.lean
 test -f lean/BealLevel26Foundations/Modularity/FreyModularity_13.lean
@@ -167,6 +168,7 @@ grep -q "v4.5.0-forall-real" README.md
 grep -q "v4.6.0-readmes-about" README.md
 grep -q "v4.7.0-iter-typed-no-axioms-closing" README.md
 grep -q "v4.8.0-iter-modularity-scaffold" README.md
+grep -q "v4.9.0-iter-no-True-X0" README.md
 grep -q "v4.0.3-formal-immersion" docs/README.md
 grep -q "v4.0.4-x026-rational-points" docs/README.md
 grep -q "v4.0.5-nofrey-point" docs/README.md
@@ -194,6 +196,7 @@ grep -q "v4.5.0-forall-real" docs/README.md
 grep -q "v4.6.0-readmes-about" docs/README.md
 grep -q "v4.7.0-iter-typed-no-axioms-closing" docs/README.md
 grep -q "v4.8.0-iter-modularity-scaffold" docs/README.md
+grep -q "v4.9.0-iter-no-True-X0" docs/README.md
 grep -q "v4.0.3-formal-immersion" docs/releases/README.md
 grep -q "v4.0.4-x026-rational-points" docs/releases/README.md
 grep -q "v4.0.5-nofrey-point" docs/releases/README.md
@@ -221,6 +224,7 @@ grep -q "v4.5.0-forall-real" docs/releases/README.md
 grep -q "v4.6.0-readmes-about" docs/releases/README.md
 grep -q "v4.7.0-iter-typed-no-axioms-closing" docs/releases/README.md
 grep -q "v4.8.0-iter-modularity-scaffold" docs/releases/README.md
+grep -q "v4.9.0-iter-no-True-X0" docs/releases/README.md
 grep -q "v4.0.3-formal-immersion" lean/README.md
 grep -q "v4.0.4-x026-rational-points" lean/README.md
 grep -q "v4.0.5-nofrey-point" lean/README.md
@@ -248,6 +252,7 @@ grep -q "v4.5.0-forall-real" lean/README.md
 grep -q "v4.6.0-readmes-about" lean/README.md
 grep -q "v4.7.0-iter-typed-no-axioms-closing" lean/README.md
 grep -q "v4.8.0-iter-modularity-scaffold" lean/README.md
+grep -q "v4.9.0-iter-no-True-X0" lean/README.md
 grep -q "v4.0.3-formal-immersion" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Jacobian/README.md
@@ -273,6 +278,7 @@ grep -q "v4.5.0-forall-real" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.6.0-readmes-about" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.7.0-iter-typed-no-axioms-closing" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.8.0-iter-modularity-scaffold" lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "v4.9.0-iter-no-True-X0" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.4-x026-rational-points" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Mazur/README.md
@@ -298,6 +304,7 @@ grep -q "v4.5.0-forall-real" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.6.0-readmes-about" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.7.0-iter-typed-no-axioms-closing" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.8.0-iter-modularity-scaffold" lean/BealLevel26Foundations/Mazur/README.md
+grep -q "v4.9.0-iter-no-True-X0" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.5-nofrey-point" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Ribet/README.md
@@ -323,6 +330,7 @@ grep -q "v4.5.0-forall-real" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.6.0-readmes-about" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.7.0-iter-typed-no-axioms-closing" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.8.0-iter-modularity-scaffold" lean/BealLevel26Foundations/Ribet/README.md
+grep -q "v4.9.0-iter-no-True-X0" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" sagemath/README.md
 grep -q "v4.0.7-hIdentify" sagemath/README.md
 grep -q "v4.0.7-hIdentify-j" sagemath/README.md
@@ -347,6 +355,7 @@ grep -q "v4.5.0-forall-real" sagemath/README.md
 grep -q "v4.6.0-readmes-about" sagemath/README.md
 grep -q "v4.7.0-iter-typed-no-axioms-closing" sagemath/README.md
 grep -q "v4.8.0-iter-modularity-scaffold" sagemath/README.md
+grep -q "v4.9.0-iter-no-True-X0" sagemath/README.md
 for readme in \
   README.md \
   docs/README.md \
@@ -360,6 +369,7 @@ do
   grep -q "v4.6.0-readmes-about" "$readme"
   grep -q "v4.7.0-iter-typed-no-axioms-closing" "$readme"
   grep -q "v4.8.0-iter-modularity-scaffold" "$readme"
+  grep -q "v4.9.0-iter-no-True-X0" "$readme"
   grep -q "BealExponent13_Iter_Package" "$readme"
   grep -q "d3cf8a7" "$readme"
   grep -q "1d0044e" "$readme"
@@ -977,10 +987,17 @@ grep -q "def isCuspPoint" \
   lean/BealLevel26Foundations/Chain/X0_26_Point.lean
 grep -q "def X0_26_Q" \
   lean/BealLevel26Foundations/Chain/X0_26_Point.lean
-grep -q "PLACEHOLDER" \
+grep -qF "{P | P.label ∈ fourCuspsList}" \
+  lean/BealLevel26Foundations/Chain/X0_26_Point.lean
+grep -q "theorem X0_26_Q_eq_fourCuspsList" \
   lean/BealLevel26Foundations/Chain/X0_26_Point.lean
 grep -q "theorem X0_26_Q_four_cusps" \
   lean/BealLevel26Foundations/Chain/X0_26_Point.lean
+if grep -nE '∨[[:space:]]*True|or[[:space:]]+True' \
+    lean/BealLevel26Foundations/Chain/X0_26_Point.lean; then
+  echo "FAIL: X0_26_Q must not use a True disjunct"
+  exit 1
+fi
 grep -q "def ExistsNoncuspidal_26" \
   lean/BealLevel26Foundations/Chain/X0_26_Point.lean
 grep -q "structure FreyCurve13" \
@@ -1056,6 +1073,8 @@ fi
 grep -q "We do not use the word final" docs/NEXT_STEPS.md
 grep -q "BealExponent13_Contradiction" docs/NEXT_STEPS.md
 grep -q "v4.8.0" docs/NEXT_STEPS.md
+grep -q "v4.9.0" docs/NEXT_STEPS.md
+grep -q "no True" docs/NEXT_STEPS.md
 grep -qi "waiting" docs/NEXT_STEPS.md
 grep -q "d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260" \
   lean/BealLevel26Foundations/Final/BealExponent13_Forall.lean

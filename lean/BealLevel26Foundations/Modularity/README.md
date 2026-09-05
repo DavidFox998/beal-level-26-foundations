@@ -15,8 +15,8 @@ The only axioms in the tree are `frey_modular_13` and
 `ribet_level_lowering_26`, each marked
 `COMPUTATIONAL ASSUMPTION`. Mazur imports both plus
 `Chain/X0_26_Point.lean` (`X0_26_Point_Raw`,
-`DisplayedX026CuspPoint` with `P.mem`, `X0_26_Q` with an
-explicit `True` PLACEHOLDER disjunct).
+`DisplayedX026CuspPoint` with `P.mem`, `X0_26_Q` the
+four-label set with no `True`).
 
 `hGeomForbid_typed_true` stays axiom-free (`hNotIn hInList`).
 `ExistsNoncuspidal_26` is empty by type. Old

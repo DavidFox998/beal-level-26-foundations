@@ -1,7 +1,7 @@
 # v4.7.0 Iter typed no axioms
 
 Named Frey / four-cusp *packages* for the exponent-13 route.
-**Current as of** `v4.7.0-iter-typed-no-axioms-closing` / `v4.8.0-iter-modularity-scaffold`.
+**Current as of** `v4.7.0-iter-typed-no-axioms-closing` / `v4.8.0-iter-modularity-scaffold` / `v4.9.0-iter-no-True-X0`.
 
 Certified: 26a1 `[1,0,1,-5,-8]` Δ `-17576` conductor 26 torsion 3;
 26b1 `[1,-1,1,-3,3]` Δ `-1664` conductor 26 torsion 7.
@@ -91,7 +91,7 @@ Certified models behind the four-cusp *name* (PARI 2.17.2;
 |---|---|---|
 | `FreyCurve_13_26.lean` | `FreyLevel26 := 2 * 13 = 26`; `FreyToX0_26 := 26 = 2 * 13` | Not a Frey curve; not Ribet; not `True`/`trivial` |
 | `RationalPoints_26_FourCusps_26.lean` | `X0_26_Q_four`; `fourCuspsList_complete_computational` over `DisplayedX026CuspPoint`; `hGeomForbid_typed_closed` package | Not a Mathlib `X₀(26)(ℚ)` theorem; not `fourCusps → ¬ ExistsNoncuspidal` |
-| `X0_26_Point.lean` | `X0_26_Point_Raw`; `DisplayedX026CuspPoint` with `P.mem`; `X0_26_Q` with `True` PLACEHOLDER disjunct; `ExistsNoncuspidal_26` | Not a Mathlib `X₀(26)(ℚ)` theorem |
+| `X0_26_Point.lean` | `X0_26_Point_Raw`; `DisplayedX026CuspPoint` with `P.mem`; `X0_26_Q = {P \| P.label ∈ fourCuspsList}` (no `True`); `ExistsNoncuspidal_26` | Not a Mathlib `X₀(26)(ℚ)` theorem |
 
 `BealTheorem_Exponent13_Full_package` (in Mazur) is
 `X0_26_Q_four ∧ FreyLevel26`. `X026RationalPointsActual_26` is
@@ -101,3 +101,5 @@ ledger SHA-256
 is unchanged.
 
 v4.8.0-iter-modularity-scaffold: `X0_26_Point_Raw` + `DisplayedX026CuspPoint` `[1,2,13,26]` `P.mem`; `X0_26_Q` keeps a `True` PLACEHOLDER disjunct; `ExistsNoncuspidal_26` drops trailing `True`; `axiom frey_modular_13` and `axiom ribet_level_lowering_26` are COMPUTATIONAL ASSUMPTION placeholders secured by PARI `|Sel₂|=1` twice, `det M₃=2`, SHA-256 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. `hGeomForbid_typed_true` still depends on no axioms (`hNotIn hInList`). Old `#check hGeomForbid_typed_is_uninhabitable` stays live. Not `∀ ℕ` and no `False.elim`.
+
+v4.9.0-iter-no-True-X0: `X0_26_Q = {P | P.label ∈ fourCuspsList}` with no `True`. `ExistsNoncuspidal_26` empty by `P.mem` `[1,2,13,26]`. `hGeomForbid_typed_true` depends on no axioms (`hNotIn hInList`). Only axioms `frey_modular_13` and `ribet_level_lowering_26` (COMPUTATIONAL ASSUMPTION), secured by 26a1 `[1,0,1,-5,-8]` Δ `-17576`, 26b1 `[1,-1,1,-3,3]` Δ `-1664`, PARI `|Sel₂|=1` twice, `det M₃=2`, SHA-256 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`, `FreyLevel26` `2 * 13 = 26`. Not `∀ ℕ` and no `False.elim`.

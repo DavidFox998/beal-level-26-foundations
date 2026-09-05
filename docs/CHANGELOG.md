@@ -11,3 +11,4 @@ This file records trigger commits that do not change Lean.
 # zenodo fix Sat Sep  5 06:21:24 PM UTC 2026
 # v4.7.0-iter-typed-no-axioms-closing — Iter_Package / Iter_Typed_And_Package (no final word)
 # v4.8.0-iter-modularity-scaffold — X0_26_Point + FreyModularity_13 + RibetLevelLowering_26 axioms
+# v4.9.0-iter-no-True-X0 — X0_26_Q = {P | P.label ∈ fourCuspsList}, no True

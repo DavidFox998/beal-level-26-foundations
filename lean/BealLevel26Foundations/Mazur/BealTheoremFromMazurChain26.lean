@@ -99,9 +99,9 @@ old elliptic-`j` implication
 (`True → ¬True`, still `#check hGeomForbid_typed_is_uninhabitable`)
 and not a Mathlib `X₀(26)(ℚ)` theorem.
 
-v4.8.0 moves the remaining `P ∈ X0_26_Q` placeholder onto
-`Chain.X0_26_Point.X0_26_Q` (`∨ True` disjunct, marked
-PLACEHOLDER).  `ExistsNoncuspidal_26` is now
+v4.9.0 sets `Chain.X0_26_Point.X0_26_Q` to
+`{P | P.label ∈ fourCuspsList}` with no `True` disjunct.
+`ExistsNoncuspidal_26` is
 `∃ P, P.label ∉ fourCuspsList` with no trailing `True`.
 The Mazur chain imports `frey_modular_13`,
 `freyLevel26_computational`, `ribet_level_lowering_26`, and
@@ -211,8 +211,8 @@ implication is `True → ¬True`.
 
 `ExistsNoncuspidal_26` is a *different* encoding: a displayed
 cusp-labeled point whose label is not on `fourCuspsList`.
-The `P ∈ X0_26_Q` placeholder is the `∨ True` disjunct on
-`X0_26_Point.X0_26_Q`, not a trailing conjunct here.
+`X0_26_Q` is the displayed four-label set (no `True`).
+This existential has no trailing conjunct.
 Every `DisplayedX026CuspPoint` already has `P.mem`, so this
 existential is empty by type.  It is not “a noncuspidal
 rational point of `X₀(26)`”. -/
