@@ -227,6 +227,9 @@ as that computational conjunction.
 v4.2.1-chabauty-closes-typed names `hGeomForbid_typed_closed`
 as the Chabauty package plus the cusp-point audit forall.
 That is not `fourCusps → ¬ ExistsNoncuspidal`.
+v4.3.0-final-forall-package names `BealExponent13_Final_Package`
+as `X0_26_Q_four ∧ FreyLevel26 ∧ fourCuspsForallCuspPoints`.
+That is not `∀ A B C, ¬ A^13 + B^13 = C^13`.
 That is not `∀ A B C, ¬ A^13 + B^13 = C^13`, not Ribet, and
 not a Mathlib `X₀(26)(ℚ)` theorem.
 The PLAN.md acceptance gates above
