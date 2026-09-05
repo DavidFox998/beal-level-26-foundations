@@ -1,5 +1,11 @@
 # v4.7.0 Iter typed no axioms
 
+## PARI 2-Descent Certificates — X0(26) Four Cusps
+
+![2-Descent for Level 26: 26a1 & 26b1 — Sel2=1 Sha[2]=0 J0(26)~26a1×26b1 det M3=2 fourCusps [1,2,13,26]](images/2-descent-level-26-26a1-26b1.webp)
+
+PARI 2-descent certificates for the Jacobian factors of \(J_0(26)\). Certified Weierstrass models are 26a1 `[1,0,1,-5,-8]` Δ `-17576` and 26b1 `[1,-1,1,-3,3]` Δ `-1664`. PARI reports `|Sel₂|=1` twice, `det M₃=2`, and Descent SHA-256 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. `FreyLevel26` is `2*13=26` (`rfl`). `hGeomForbid_typed_true` is proved by `hNotIn hInList` with no axioms. `ExistsNoncuspidal_26` is empty by `P.mem`. The illustration is a schematic of the 2-descent picture (real locus ≈ \(S^1\times S^1\), `Sel₂=1`, Sha[2]=0, \(J_0(26)\sim 26a1\times 26b1\), four cusps `[1,2,13,26]`); certified models and discriminants are the Descent ones, not any alternate Weierstrass equations drawn on the figure.
+
 Versioned release notes for
 [beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations).
 
