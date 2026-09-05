@@ -38,8 +38,9 @@ package `fourCuspsFromQExpansion`.
 `ofRankZeroAndImmersion` returns that finite package and does not
 read a rank-zero witness.  Mathlib 4.12 has no `X₀(N)(ℚ)` API.
 This is not a theorem that the modular curve `X₀(26)(ℚ)` equals
-four cusps.  v4.0.5 inhabits `NoFreyPoint26` by a separate finite
-package; `J0_26_Q_RankZero26` remains supplied.
+four cusps.  v4.0.6 inhabits `J0_26_Q_RankZero26` and the
+four-cusp *absence* `¬ ExistsNoncuspidal` in separate files.
+This file does not inhabit those structures.
 -/
 
 /-- The four displayed cusps, one per positive divisor of `26`. -/

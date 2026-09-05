@@ -1,8 +1,9 @@
 # lean/BealLevel26Foundations/Jacobian/
 
 Finite Jacobian *skeleton*, S-unit audit, and formal-immersion input.
-**Current as of** `v4.0.5-nofrey-point`
-(includes `v4.0.4-x026-rational-points`, `v4.0.3-formal-immersion`).
+**Current as of** `v4.0.6-rank-zero-fixed`
+(includes `v4.0.5-nofrey-point`, `v4.0.4-x026-rational-points`,
+`v4.0.3-formal-immersion`).
 
 Mathlib 4.12 has no modular-curve Jacobian, Picard scheme, Abel--Jacobi
 map, Galois cohomology, or Mordell--Weil group. Nothing in this folder
@@ -24,6 +25,7 @@ No new certificate is added here.
 | `PicardAbelJacobiIdentification_26.lean` | Standalone `Prop`: supplied matrix `= qExpansionM3` | Does not discharge the geometric Picard map |
 | `TwoSelmer_vs_SUnits_26.lean` | Eight S-unit indices retained; audit is not a singleton; finite `MwrankCertificateSoundness_26` for Sage `certified_mwrank = 0` on `26a` and `26b` | Not genuine cohomological 2-Selmer; comparison remains future |
 | `FormalImmersionActual_26.lean` | `M₃` injective (`det = 2 ≠ 0`); `FormalImmersionAtTwo26.of_qExpansion` inhabits the Mazur input premise | Not a scheme-theoretic formal immersion |
+| `J0_26_Q_RankZeroActual_26.lean` | Product of certified `26a × 26b` with Sage `certified_mwrank = 0` on both; inhabits `J0_26_Q_RankZero26.of_qExpansion` | Not a Mathlib Mordell--Weil theorem; not genuine `Sel₂` |
 
 The displayed four-cusp package that can replace
 `X0_26_RationalPoints26` lives in

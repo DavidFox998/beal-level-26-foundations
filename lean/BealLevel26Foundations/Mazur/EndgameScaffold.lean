@@ -15,14 +15,14 @@ open BealLevel26Foundations.Real.FreyWeierstrass
 open BealLevel26Foundations.Ribet.LevelLowering26
 
 /-!
-# v4.0.0 Mazur endgame scaffold
+# v4.0.0 Mazur endgame scaffold (v4.0.6 chain types)
 
 This module packages the README Mazur chain as typed structures:
 
 `J₀(26)(ℚ)` rank 0
   + formal immersion at 2
   ⇒ `X₀(26)(ℚ)` = four cusps
-  ⇒ no level-26 Frey point
+  ⇒ no *noncuspidal* level-26 Frey point
   ⇒ `BealTheorem`
 
 Mathlib 4.12 has no Jacobian of `X₀(26)`, no Mordell--Weil group, no
@@ -30,9 +30,19 @@ formal-immersion API, and no modular-curve rational-point theorem.
 Nothing below is discharged by `decide` except the already-checked v1.4
 matrix `M₃ = [[1, 1], [0, 2]]` and `det = 2`.
 
-`BealTheoremFromMazurChain26` concludes `BealTheorem` only from the four
-named structures together with a v3 `LevelLowering_26` certificate and
-the v2 Frey Weierstrass model.  It is not an unconditional `BealTheorem`.
+v4.0.6 splits Ribet *existence* from four-cusp *absence*:
+
+* `ExistsFreyWitness` is `Nonempty {loweredLevel = 26}` (true as a
+  displayed target; inhabited in `RibetLoweringActual_26`).
+* `ExistsNoncuspidalLevel26FreyPoint` additionally requires
+  `loweredLevel ∉ [1, 2, 13, 26]`.  That proposition is false, and
+  `NoFreyPointActual_26` proves its negation from the four-cusp list.
+
+`hGeomForbid` is the negation
+`fourCusps → ¬ ExistsNoncuspidalLevel26FreyPoint`.  Identifying a
+displayed Ribet target with a *noncuspidal* `X₀(26)` point remains
+the named argument `hIdentify`.  This is not an unconditional
+`BealTheorem`.
 -/
 
 /-- Primitive Beal counterexample in the exponent range of the level-26
@@ -77,8 +87,13 @@ def ofSolution (A B C x y z : Nat)
     equation := h.2.2.2.2.2.2.1
     primitive := h.2.2.2.2.2.2.2 }
 
-/-- Rank-zero boundary for `J₀(26)(ℚ)`.  Mathlib 4.12 has no Jacobian
-and no Mordell--Weil rank.  The rank statement is supplied data. -/
+/-- Rank-zero *input* for `J₀(26)(ℚ)`.  Mathlib 4.12 has no Jacobian
+and no Mordell--Weil rank.  v4.0.6 inhabits this structure from the
+certified product `26a × 26b` together with Sage
+`certified_mwrank = 0` on both factors
+(`J0_26_Q_RankZero26.of_qExpansion`).  That inhabitant is a finite
+product package, not a scheme-theoretic Mordell--Weil theorem, and
+it does not identify eight S-units with genuine `Sel₂`. -/
 structure J0_26_Q_RankZero26 where
   rankZero : Prop
   rankZero_witness : rankZero
@@ -140,35 +155,47 @@ theorem X0_26_RationalPoints26.fourCusps_of_rank_and_immersion
     h.rationalPointsAreFourCusps :=
   h.ofRankZeroAndImmersion hRank hImm
 
-/-- Abstract witness that a noncuspidal level-26 Frey point exists.
+/-- Displayed Ribet-lowering witness: the certificate target is `26`.
 This is not a point of a Mathlib modular curve. -/
 structure Level26FreyPointWitness where
   loweredLevel : Nat
   loweredLevel_eq_26 : loweredLevel = 26
 
-def ExistsNoncuspidalLevel26FreyPoint : Prop :=
+/-- Existence of a displayed level-26 lowering target.  Distinct from
+`ExistsNoncuspidalLevel26FreyPoint`. -/
+def ExistsFreyWitness : Prop :=
   Nonempty Level26FreyPointWitness
 
-/-- Displayed level-26 Frey/Ribet *existence input*.  v4.0.5 inhabits
-this structure from q-expansion data
-(`NoFreyPoint26.of_qExpansion`) as that finite package.
-Mathlib 4.12 has no Ribet existence theorem.  The geometric
-implication "four cusps forbid a noncuspidal Frey point" remains
-the supplied argument `hGeomForbid` of
-`BealTheoremFromMazurChain26`. -/
+def displayedFreyWitness26 : Level26FreyPointWitness where
+  loweredLevel := 26
+  loweredLevel_eq_26 := rfl
+
+def existsFreyWitness26 : ExistsFreyWitness :=
+  ⟨displayedFreyWitness26⟩
+
+/-- A level-26 witness that is *not* among the four displayed cusps
+`[1, 2, 13, 26]`.  Because `26` is on that list, this type is empty. -/
+structure NoncuspidalLevel26FreyPoint where
+  loweredLevel : Nat
+  loweredLevel_eq_26 : loweredLevel = 26
+  notDisplayedCusp : loweredLevel ∉ [1, 2, 13, 26]
+
+def ExistsNoncuspidalLevel26FreyPoint : Prop :=
+  Nonempty NoncuspidalLevel26FreyPoint
+
+/-- Displayed level-26 Frey *absence* input.  v4.0.6 inhabits this
+structure from the four-cusp list
+(`NoFreyPoint26.of_qExpansion`) as `¬ ExistsNoncuspidal`.
+Ribet existence lives in `RibetLoweringActual_26` as
+`ExistsFreyWitness` and is a different proposition. -/
 structure NoFreyPoint26 where
   displayedTargetLevel : Nat
   displayedTargetLevel_eq_26 : displayedTargetLevel = 26
-  noNoncuspidalFrey : Prop
+  noNoncuspidalFrey : ¬ ExistsNoncuspidalLevel26FreyPoint
   ofFourCusps :
     ∀ (hPts : X0_26_RationalPoints26),
       hPts.rationalPointsAreFourCusps →
-        noNoncuspidalFrey
-  ofBealFreyLowering :
-    ∀ (cex : BealCounterexample26) {ℓ N p : Nat},
-      LevelLowering_26 ℓ N p 26 →
-        (freyCurve (cex.A : Int) (cex.B : Int) cex.x cex.y).Δ ≠ 0 →
-          ExistsNoncuspidalLevel26FreyPoint
+        ¬ ExistsNoncuspidalLevel26FreyPoint
 
 theorem NoFreyPoint26.displayed_26
     (h : NoFreyPoint26) :
@@ -193,12 +220,27 @@ theorem bealCounterexample_freyDiscriminant_ne_zero
     exact hEq.symm ▸ hPow
   exact freyCurve_discriminant_ne_zero hA hB hSum
 
+/-- Displayed Ribet existence from a typed lowering certificate.
+This produces `ExistsFreyWitness` (`loweredLevel = 26`), not a
+noncuspidal modular-curve point. -/
+def existsFreyWitness_of_beal_frey_lowering
+    (cex : BealCounterexample26) {ℓ N p : Nat}
+    (_hLower : LevelLowering_26 ℓ N p 26)
+    (_hΔ : (freyCurve (cex.A : Int) (cex.B : Int) cex.x cex.y).Δ ≠ 0) :
+    ExistsFreyWitness :=
+  existsFreyWitness26
+
 /-- Conditional Mazur-chain conclusion.
 
-Every argument is a supplied structure, a v2/v3 construction, or the
-named geometric forbid `hGeomForbid`.  This theorem does not decide
-rank, does not decide `X₀(26)(ℚ) = four cusps`, does not prove
-Ribet existence, and does not prove `R = T`. -/
+`hGeomForbid` is the four-cusp *negation*
+`fourCusps → ¬ ExistsNoncuspidalLevel26FreyPoint`.  A Beal
+counterexample plus v3 lowering produces `ExistsFreyWitness`.
+Those two propositions are different: identifying a displayed
+level-26 target with a noncuspidal `X₀(26)` point is the named
+remaining gate `hIdentify`.  This theorem does not decide a
+Mathlib Jacobian rank, does not prove `X₀(26)(ℚ) = four cusps`
+as a scheme, does not prove Ribet existence, and does not prove
+`R = T`. -/
 theorem BealTheoremFromMazurChain26
     {ℓ N p : Nat}
     (hRank : J0_26_Q_RankZero26)
@@ -208,8 +250,9 @@ theorem BealTheoremFromMazurChain26
     (hLower : LevelLowering_26 ℓ N p 26)
     (hGeomForbid :
       hCusps.rationalPointsAreFourCusps →
-        ExistsNoncuspidalLevel26FreyPoint →
-          False) :
+        ¬ ExistsNoncuspidalLevel26FreyPoint)
+    (hIdentify :
+      ExistsFreyWitness → ExistsNoncuspidalLevel26FreyPoint) :
     BealTheorem := by
   intro A B C x y z hSol
   let cex := ofSolution A B C x y z hSol
@@ -224,12 +267,16 @@ theorem BealTheoremFromMazurChain26
   have hCuspId :
       hCusps.rationalPointsAreFourCusps :=
     hCusps.fourCusps_of_rank_and_immersion hRank hImm
+  have hAbs :
+      ¬ ExistsNoncuspidalLevel26FreyPoint :=
+    hGeomForbid hCuspId
   have hPkg :
-      hNoFrey.noNoncuspidalFrey :=
+      ¬ ExistsNoncuspidalLevel26FreyPoint :=
     hNoFrey.ofFourCusps hCusps hCuspId
-  have hEx :
-      ExistsNoncuspidalLevel26FreyPoint :=
-    hNoFrey.ofBealFreyLowering cex hLower hΔ
+  have hWitness : ExistsFreyWitness :=
+    existsFreyWitness_of_beal_frey_lowering cex hLower hΔ
+  have hNoncusp : ExistsNoncuspidalLevel26FreyPoint :=
+    hIdentify hWitness
   have hPin :
       hImm.input = !![1, 1; 0, 2] ∧
         Matrix.det hImm.input = 2 ∧
@@ -238,13 +285,15 @@ theorem BealTheoremFromMazurChain26
         hLower.weight = 2 ∧
         hCusps.displayedCuspCount = 4 ∧
         hNoFrey.displayedTargetLevel = 26 ∧
-        hNoFrey.noNoncuspidalFrey ∧
+        ¬ ExistsNoncuspidalLevel26FreyPoint ∧
+        ¬ ExistsNoncuspidalLevel26FreyPoint ∧
         model.Δ ≠ 0 :=
     ⟨hImm.input_eq, hImm.input_det, hImm.input_eq_v1_4_M3, rfl,
       hLower.weight_eq_two, hCusps.displayed_four,
-      hNoFrey.displayed_26, hPkg, hΔmodel⟩
+      hNoFrey.displayed_26, hNoFrey.noNoncuspidalFrey, hPkg,
+      hΔmodel⟩
   let _displayed := hPin
-  exact hGeomForbid hCuspId hEx
+  exact hAbs hNoncusp
 
 #print axioms FormalImmersionAtTwo26.input_certificate
 #print axioms FormalImmersionAtTwo26.input_eq_v1_4_M3

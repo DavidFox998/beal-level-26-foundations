@@ -1,6 +1,6 @@
 # lean/BealLevel26Foundations/
 
-Main foundations library. **Current as of** `v4.0.5-nofrey-point`.
+Main foundations library. **Current as of** `v4.0.6-rank-zero-fixed`.
 
 Top-level computable files:
 
@@ -17,10 +17,10 @@ Top-level computable files:
 | Directory | Current contents |
 |---|---|
 | [`Frey/`](Frey/README.md) | Conductor *data* and odd-prime valuation input |
-| [`Jacobian/`](Jacobian/README.md) | v4.0.1 finite product + Picard `Prop`; v4.0.2 S-unit audit; v4.0.3 formal-immersion input |
+| [`Jacobian/`](Jacobian/README.md) | v4.0.1 finite product + Picard `Prop`; v4.0.2 S-unit audit; v4.0.3 formal-immersion input; v4.0.6 product rank-zero package |
 | [`Mazur/`](Mazur/README.md) | Genus certificates, four-premise endgame scaffold, v4.0.4 four-cusp package |
 | [`Real/`](Real/README.md) | Frey Weierstrass model and re-exported lowering |
-| [`Ribet/`](Ribet/README.md) | Typed `LevelLowering_26` certificate data; v4.0.5 Ribet-existence package |
+| [`Ribet/`](Ribet/README.md) | Typed `LevelLowering_26`; v4.0.6 split of `ExistsFreyWitness` from `¬ ExistsNoncuspidal` |
 
 The parent premises
 `J0DecompositionSoundness_26`, geometric

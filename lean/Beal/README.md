@@ -1,7 +1,7 @@
 # lean/Beal/
 
 Parent-facing `Beal.Foundations` namespace. **Current as of**
-`v4.0.5-nofrey-point`.
+`v4.0.6-rank-zero-fixed`.
 
 [`Foundations.lean`](Foundations.lean) is the entrypoint. Its `release`
 string is still `"v1.4.0"`: that is the **certificate-bridge / ledger**
@@ -13,7 +13,8 @@ See [`Foundations/`](Foundations/README.md) for the individual modules
 Mazur endgame re-export). `Foundations.lean` also imports the Jacobian
 skeleton and S-unit audit from
 [`../BealLevel26Foundations/Jacobian/`](../BealLevel26Foundations/Jacobian/README.md)
-(including v4.0.3 `FormalImmersionActual_26`) and the v4.0.4
+(including v4.0.3 `FormalImmersionActual_26` and v4.0.6
+`J0_26_Q_RankZeroActual_26`) and the v4.0.4
 four-cusp package
 [`../BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean`](../BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean).
 

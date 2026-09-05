@@ -152,13 +152,21 @@ geometric rank. v4.0.5-nofrey-point adds
 already-decided `a₂` / `MwrankCertificateSoundness_26` /
 `FormalImmersionAtTwo26.of_qExpansion` /
 `X0_26_RationalPoints26.of_qExpansion`.
-`NoFreyPoint26.of_qExpansion` is a finite package that can replace
-the `NoFreyPoint26` premise; `ofFourCusps` returns that package and
-`ofBealFreyLowering` produces the displayed witness
-`loweredLevel = 26`. The geometric forbid `hGeomForbid` stays
-supplied on `BealTheoremFromMazurChain26`. It does not construct a
-Mathlib Jacobian, prove Mordell--Weil rank, identify the audit with
-`Sel₂(J₀(26)/ℚ)`, prove a scheme-theoretic formal immersion, inhabit
+That combined existence with the `NoFreyPoint26` premise and left
+`hGeomForbid` as `True → True → False`.
+v4.0.6-rank-zero-fixed splits the file:
+`RibetLoweringActual_26` keeps `ExistsFreyWitness`
+(`loweredLevel = 26`); `NoFreyPointActual_26` proves
+`¬ ExistsNoncuspidal` from the four-cusp list;
+`J0_26_Q_RankZeroActual_26` inhabits rank zero as the product of
+two Sage-certified rank-zero factors without identifying the
+eight-index audit with genuine `Sel₂`. `hGeomForbid` is
+`fourCusps → ¬ ExistsNoncuspidal`. Identifying a displayed
+level-26 target with a noncuspidal `X₀(26)` point remains the
+named gate `hIdentify` on `BealTheoremFromMazurChain26`. It does
+not construct a Mathlib Jacobian, prove Mordell--Weil rank,
+identify the audit with `Sel₂(J₀(26)/ℚ)`, prove a
+scheme-theoretic formal immersion, inhabit
 `J0_26_Q_RankZero26` as `True`/`trivial`, prove a Mathlib Ribet
 theorem, prove a Mathlib `X₀(26)(ℚ)` theorem, or claim an
 unconditional `BealTheorem`. The PLAN.md acceptance gates above

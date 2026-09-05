@@ -15,8 +15,8 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
-[`v4.0.5-nofrey-point`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.5-nofrey-point)
-(commit `5b29092`, version DOI
+[`v4.0.6-rank-zero-fixed`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.6-rank-zero-fixed)
+(DOI pending mint from parent
 [10.5281/zenodo.22313407](https://doi.org/10.5281/zenodo.22313407)).
 The coefficient ledger is still
 [`sagemath/level_26_ledger.json`](sagemath/level_26_ledger.json) **v1.4.0**,
@@ -24,9 +24,11 @@ SHA-256 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`.
 There is no `axiom`, `sorry`, or `admit`. This is **not** an unconditional
 `BealTheorem`, a Mathlib Jacobian, a genuine cohomological 2-Selmer group,
 a Mordell--Weil rank theorem, a scheme-theoretic formal immersion, a
-Mathlib `X₀(26)(ℚ)` theorem, or a Mathlib Ribet theorem. The displayed
-Ribet-existence package can replace the `NoFreyPoint26` premise;
-`J0_26_Q_RankZero26` and `hGeomForbid` stay supplied.
+Mathlib `X₀(26)(ℚ)` theorem, or a Mathlib Ribet theorem. v4.0.6 splits
+displayed Ribet existence (`ExistsFreyWitness`) from four-cusp absence
+(`¬ ExistsNoncuspidal`) and inhabits `J0_26_Q_RankZero26` as the
+product of two Sage-certified rank-zero factors. Identifying those two
+Frey propositions remains the named gate `hIdentify`.
 
 Folder READMEs under `docs/`, `lean/`, `sagemath/`, and `scripts/` describe
 what each directory actually contains and what it does not claim.
@@ -125,6 +127,7 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.0.3-formal-immersion q-expansion cotangent injectivity | `v4.0.3-formal-immersion` / `75c533d` | [10.5281/zenodo.22313241](https://doi.org/10.5281/zenodo.22313241) | `Jacobian/FormalImmersionActual_26` proves `M₃` injective (`det = 2 ≠ 0`) and inhabits `FormalImmersionAtTwo26.of_qExpansion` from q-expansion data and `PicardAbelJacobiIdentification_26`. Not a scheme-theoretic formal immersion. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `8fb5e22ba5a72604b025b1a8bf8af3f5e745f4186afdf54ede49640e13148ad8`. |
 | v4.0.4-x026-rational-points displayed four cusps | `v4.0.4-x026-rational-points` / `4619a5d` | [10.5281/zenodo.22313318](https://doi.org/10.5281/zenodo.22313318) | `Mazur/X026RationalPointsActual_26` inhabits `X0_26_RationalPoints26.of_qExpansion` from displayed cusps `[1,2,13,26]`, already-decided `a₂` / `MwrankCertificateSoundness_26` / `FormalImmersionAtTwo26.of_qExpansion`. Not a Mathlib `X₀(26)(ℚ)` theorem. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `d9449a352f4b1e580330a076f89256e754194433c8c00eefa5784517f14f5e04`. |
 | v4.0.5-nofrey-point displayed Ribet existence | `v4.0.5-nofrey-point` / `5b29092` | [10.5281/zenodo.22313407](https://doi.org/10.5281/zenodo.22313407) | `Ribet/NoFreyPointActual_26` inhabits `NoFreyPoint26.of_qExpansion` from displayed target `26` plus the v4.0.1–v4.0.4 q-expansion chain. Not a Mathlib Ribet theorem. `J0_26_Q_RankZero26` and `hGeomForbid` stay supplied. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `02094d6dc522603fed7478500f5ee1f9c7ab3ddc0530d16262003ff866f5f942`. |
+| v4.0.6-rank-zero-fixed split existence from absence | `v4.0.6-rank-zero-fixed` | pending mint from 22313407 | Splits Ribet existence (`RibetLoweringActual_26` / `ExistsFreyWitness`, `loweredLevel=26`) from four-cusp absence (`NoFreyPointActual_26` / `¬ ExistsNoncuspidal` from divisors `[1,2,13,26]`). Inhabits `J0_26_Q_RankZero26` as the product of certified `26a×26b` with Sage `certified_mwrank=0` on both; not genuine `Sel₂`. `hGeomForbid` is `fourCusps → ¬ ExistsNoncuspidal`. Remaining named gate: `hIdentify`. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
@@ -192,15 +195,25 @@ already-decided q-expansion package. `ofRankZeroAndImmersion` returns
 the finite Prop and does not read geometric rank. It is not a Mathlib
 `X₀(26)(ℚ)` theorem.
 
-v4.0.5-nofrey-point inhabits `NoFreyPoint26` from the displayed
+v4.0.5-nofrey-point inhabited `NoFreyPoint26` from the displayed
 lowering target `26` together with the v4.0.1 (`235a0bc`) → v4.0.2
 (`c2f829d` / [10.5281/zenodo.22313148](https://doi.org/10.5281/zenodo.22313148))
 → v4.0.3 (`75c533d` / [10.5281/zenodo.22313241](https://doi.org/10.5281/zenodo.22313241))
 → v4.0.4 (`4619a5d` / [10.5281/zenodo.22313318](https://doi.org/10.5281/zenodo.22313318))
-q-expansion chain. `ofBealFreyLowering` produces the displayed
-witness `loweredLevel = 26`. It is not a Mathlib Ribet theorem.
-`J0_26_Q_RankZero26` and `hGeomForbid` stay supplied, and the
-scaffold is not collapsed.
+q-expansion chain. That made `hGeomForbid` the uninhabitable
+`True → True → False`.
+
+v4.0.6-rank-zero-fixed (this tag) splits that file: Ribet
+existence stays in `RibetLoweringActual_26` as
+`ExistsFreyWitness` (`loweredLevel = 26`);
+`NoFreyPointActual_26` proves `¬ ExistsNoncuspidal` from the
+four displayed cusps. `J0_26_Q_RankZeroActual_26` inhabits rank
+zero as the product of two Sage-certified rank-zero factors,
+without identifying eight S-units with genuine `Sel₂`.
+`hGeomForbid` is now `fourCusps → ¬ ExistsNoncuspidal`.
+`BealTheoremFromMazurChain26` still needs the named identification
+`hIdentify : ExistsFreyWitness → ExistsNoncuspidal`. There is no
+unconditional `BealTheorem`.
 
 The detailed milestones, acceptance gates, and dependency order are in
 [`PLAN.md`](PLAN.md).
@@ -220,10 +233,10 @@ The detailed milestones, acceptance gates, and dependency order are in
 │   ├── Beal/                    # Beal.Foundations certificate re-exports
 │   └── BealLevel26Foundations/  # computable, scaffold, and real modules
 │       ├── Frey/
-│       ├── Jacobian/            # v4.0.1–v4.0.3 skeleton, Selmer audit, immersion input
+│       ├── Jacobian/            # v4.0.1–v4.0.3 skeleton, Selmer audit, immersion input, v4.0.6 rank-zero product
 │       ├── Mazur/               # genus arithmetic, endgame scaffold, v4.0.4 four-cusp package
 │       ├── Real/
-│       └── Ribet/               # typed lowering + v4.0.5 Ribet-existence package
+│       └── Ribet/               # typed lowering; v4.0.6 existence / absence split
 ├── sagemath/                    # v1.4.0 ledger + SageMath 10.7 certs
 │   └── certs/                   # j0_26_decomposition.json, formal_immersion_M3.json
 ├── scripts/                     # ledger, cert, Hensel, and scaffold checks
@@ -284,6 +297,9 @@ singleton, and it does not claim an unconditional proof of the endgame.
 
 ## Citation
 
+For the v4.0.6 existence/absence split and product rank-zero
+package, cite the version DOI recorded after mint (parent
+[`10.5281/zenodo.22313407`](https://doi.org/10.5281/zenodo.22313407)).
 For the displayed Ribet-existence package,
 cite version DOI
 [`10.5281/zenodo.22313407`](https://doi.org/10.5281/zenodo.22313407).

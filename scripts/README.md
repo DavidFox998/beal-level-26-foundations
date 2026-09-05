@@ -1,6 +1,6 @@
 # scripts/
 
-Deterministic repository checks. **Current as of** `v4.0.5-nofrey-point`.
+Deterministic repository checks. **Current as of** `v4.0.6-rank-zero-fixed`.
 
 | Script | What it checks |
 |---|---|

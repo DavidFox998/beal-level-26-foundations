@@ -1,6 +1,6 @@
 # lean/BealLevel26Foundations/Real/
 
-Arithmetic that Mathlib 4.12 permits. **Current as of** `v4.0.5-nofrey-point`.
+Arithmetic that Mathlib 4.12 permits. **Current as of** `v4.0.6-rank-zero-fixed`.
 
 | File | What it is | What it is not |
 |---|---|---|
@@ -10,7 +10,8 @@ Arithmetic that Mathlib 4.12 permits. **Current as of** `v4.0.5-nofrey-point`.
 
 The folder entrypoint is
 [`../Real.lean`](../Real.lean), which also imports the Jacobian
-skeleton, the S-unit audit, v4.0.3 formal-immersion input, and the
-v4.0.4 four-cusp package. These
+skeleton, the S-unit audit, v4.0.3 formal-immersion input, the
+v4.0.4 four-cusp package, and the v4.0.6 rank-zero / Ribet split.
+These
 files must not mention `frey_conductor_data` or
 `tate_step2_odd_prime_external`.
