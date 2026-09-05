@@ -3,8 +3,9 @@
 Versioned release notes for
 [beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations).
 
-**Current as of** tag `v4.0.7-hIdentify` (DOI pending mint from
-parent [10.5281/zenodo.22313955](https://doi.org/10.5281/zenodo.22313955)).
+**Current as of** tag `v4.0.7-hIdentify` (commit `a4143fc`,
+version DOI
+[10.5281/zenodo.22314092](https://doi.org/10.5281/zenodo.22314092)).
 Prior tags
 [`v4.0.6-rank-zero-fixed`](releases/v4.0.6-rank-zero-fixed.md)
 (commit `2290809`, version DOI
