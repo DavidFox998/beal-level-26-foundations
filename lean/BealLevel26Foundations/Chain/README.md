@@ -1,7 +1,7 @@
 # lean/BealLevel26Foundations/Chain/
 
 Named Frey / four-cusp *packages* for the exponent-13 route.
-**Current as of** `v4.2.0-full-chain`.
+**Current as of** `v4.2.1-chabauty-closes-typed`.
 
 Mathlib 4.12 has no modularity, no Ribet, no `X₀(26)(ℚ)`, no
 `SelmerGroup`, and no `MordellWeil.rank`. Nothing here is the
@@ -22,7 +22,7 @@ Certified models behind the four-cusp *name* (PARI 2.17.2;
 | File | What it is | What it is not |
 |---|---|---|
 | `FreyCurve_13_26.lean` | `FreyLevel26 := 2 * 13 = 26`; `FreyToX0_26 := 26 = 2 * 13` | Not a Frey curve; not Ribet; not `True`/`trivial` |
-| `RationalPoints_26_FourCusps_26.lean` | `X0_26_Q_four := rankZero_unconditional ∧ Chabauty0ForcesCusp_computational` | Not a Mathlib `X₀(26)(ℚ)` theorem; not the typed implication |
+| `RationalPoints_26_FourCusps_26.lean` | `X0_26_Q_four`; `fourCuspsList_complete_computational` over `DisplayedX026CuspPoint`; `hGeomForbid_typed_closed` package | Not a Mathlib `X₀(26)(ℚ)` theorem; not `fourCusps → ¬ ExistsNoncuspidal` |
 
 `BealTheorem_Exponent13_Full_package` (in Mazur) is
 `X0_26_Q_four ∧ FreyLevel26`. `X026RationalPointsActual_26` is

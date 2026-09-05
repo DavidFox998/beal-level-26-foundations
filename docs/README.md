@@ -3,7 +3,8 @@
 Versioned release notes for
 [beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations).
 
-**Current as of** tag `v4.2.0-full-chain` (GitHub release;
+**Current as of** tag `v4.2.1-chabauty-closes-typed` (prior
+`v4.2.0-full-chain`; GitHub release;
 version DOI recorded after DataCite `state: findable`).
 Certified models: `26a1` `[1,0,1,-5,-8]` Δ `-17576`,
 `26b1` `[1,-1,1,-3,3]` Δ `-1664`, PARI `|Sel₂|=1` twice,
@@ -63,7 +64,7 @@ these notes only record what each tag claimed.
 
 | Path | Contents |
 |---|---|
-| [`releases/`](releases/README.md) | One note per tagged Foundations release, from `v1.0.0-computable` through `v4.2.0-full-chain` |
+| [`releases/`](releases/README.md) | One note per tagged Foundations release, from `v1.0.0-computable` through `v4.2.1-chabauty-closes-typed` |
 
 The staged plan and open acceptance gates live in [`../PLAN.md`](../PLAN.md).
 The public DOI trail is in [`../README.md`](../README.md).

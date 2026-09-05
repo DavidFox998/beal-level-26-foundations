@@ -1,6 +1,6 @@
 # lean/BealLevel26Foundations/
 
-Main foundations library. **Current as of** `v4.2.0-full-chain`.
+Main foundations library. **Current as of** `v4.2.1-chabauty-closes-typed`.
 
 Top-level computable files:
 

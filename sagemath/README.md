@@ -1,7 +1,7 @@
 # sagemath/
 
 Pinned coefficient ledger and SageMath 10.7 certificate generators.
-**Current as of** `v4.2.0-full-chain`.
+**Current as of** `v4.2.1-chabauty-closes-typed` / `v4.2.0-full-chain`.
 
 The ledger version is **v1.4.0** and has been unchanged since tag
 `v1.4.0`:
@@ -46,3 +46,6 @@ DataCite-findable version (`v4.0.9-fourCusps-forall`);
 `v4.2.0-full-chain` is a GitHub release; its version DOI is
 recorded in `latest_foundations_release` only after DataCite
 `state: findable`.
+`v4.2.1-chabauty-closes-typed` is a GitHub release of the
+Chabauty completeness *package*; it does not inhabit typed
+`fourCusps → ¬ ExistsNoncuspidal` and does not change the ledger.

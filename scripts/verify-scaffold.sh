@@ -66,6 +66,7 @@ test -f docs/releases/v4.1.1-descent-compute.md
 test -f docs/releases/v4.1.2-beal-13-endgame.md
 test -f docs/releases/v4.1.3-beal-13-theorem.md
 test -f docs/releases/v4.2.0-full-chain.md
+test -f docs/releases/v4.2.1-chabauty-closes-typed.md
 test -f lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean
 test -f lean/BealLevel26Foundations/Chain/README.md
 test -f lean/BealLevel26Foundations/Chain/FreyCurve_13_26.lean
@@ -142,6 +143,7 @@ grep -q "v4.1.1-descent-compute" README.md
 grep -q "v4.1.2-beal-13-endgame" README.md
 grep -q "v4.1.3-beal-13-theorem" README.md
 grep -q "v4.2.0-full-chain" README.md
+grep -q "v4.2.1-chabauty-closes-typed" README.md
 grep -q "v4.0.3-formal-immersion" docs/README.md
 grep -q "v4.0.4-x026-rational-points" docs/README.md
 grep -q "v4.0.5-nofrey-point" docs/README.md
@@ -161,6 +163,7 @@ grep -q "v4.1.1-descent-compute" docs/README.md
 grep -q "v4.1.2-beal-13-endgame" docs/README.md
 grep -q "v4.1.3-beal-13-theorem" docs/README.md
 grep -q "v4.2.0-full-chain" docs/README.md
+grep -q "v4.2.1-chabauty-closes-typed" docs/README.md
 grep -q "v4.0.3-formal-immersion" docs/releases/README.md
 grep -q "v4.0.4-x026-rational-points" docs/releases/README.md
 grep -q "v4.0.5-nofrey-point" docs/releases/README.md
@@ -180,6 +183,7 @@ grep -q "v4.1.1-descent-compute" docs/releases/README.md
 grep -q "v4.1.2-beal-13-endgame" docs/releases/README.md
 grep -q "v4.1.3-beal-13-theorem" docs/releases/README.md
 grep -q "v4.2.0-full-chain" docs/releases/README.md
+grep -q "v4.2.1-chabauty-closes-typed" docs/releases/README.md
 grep -q "v4.0.3-formal-immersion" lean/README.md
 grep -q "v4.0.4-x026-rational-points" lean/README.md
 grep -q "v4.0.5-nofrey-point" lean/README.md
@@ -199,6 +203,7 @@ grep -q "v4.1.1-descent-compute" lean/README.md
 grep -q "v4.1.2-beal-13-endgame" lean/README.md
 grep -q "v4.1.3-beal-13-theorem" lean/README.md
 grep -q "v4.2.0-full-chain" lean/README.md
+grep -q "v4.2.1-chabauty-closes-typed" lean/README.md
 grep -q "v4.0.3-formal-immersion" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Jacobian/README.md
@@ -216,6 +221,7 @@ grep -q "v4.1.1-descent-compute" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.1.2-beal-13-endgame" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.1.3-beal-13-theorem" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.2.0-full-chain" lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "v4.2.1-chabauty-closes-typed" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.4-x026-rational-points" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Mazur/README.md
@@ -233,6 +239,7 @@ grep -q "v4.1.1-descent-compute" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.1.2-beal-13-endgame" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.1.3-beal-13-theorem" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.2.0-full-chain" lean/BealLevel26Foundations/Mazur/README.md
+grep -q "v4.2.1-chabauty-closes-typed" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.5-nofrey-point" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Ribet/README.md
@@ -250,6 +257,7 @@ grep -q "v4.1.1-descent-compute" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.1.2-beal-13-endgame" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.1.3-beal-13-theorem" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.2.0-full-chain" lean/BealLevel26Foundations/Ribet/README.md
+grep -q "v4.2.1-chabauty-closes-typed" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" sagemath/README.md
 grep -q "v4.0.7-hIdentify" sagemath/README.md
 grep -q "v4.0.7-hIdentify-j" sagemath/README.md
@@ -266,6 +274,7 @@ grep -q "v4.1.1-descent-compute" sagemath/README.md
 grep -q "v4.1.2-beal-13-endgame" sagemath/README.md
 grep -q "v4.1.3-beal-13-theorem" sagemath/README.md
 grep -q "v4.2.0-full-chain" sagemath/README.md
+grep -q "v4.2.1-chabauty-closes-typed" sagemath/README.md
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md
 grep -qi "genuine cohomological 2-Selmer" \
@@ -731,6 +740,27 @@ grep -q "def X0_26_Q_four" \
   lean/BealLevel26Foundations/Chain/RationalPoints_26_FourCusps_26.lean
 grep -q "def X0_26_Q_eq_fourCusps" \
   lean/BealLevel26Foundations/Chain/RationalPoints_26_FourCusps_26.lean
+grep -q "def fourCuspsList" \
+  lean/BealLevel26Foundations/Chain/RationalPoints_26_FourCusps_26.lean
+grep -q "theorem fourCuspsList_complete_computational" \
+  lean/BealLevel26Foundations/Chain/RationalPoints_26_FourCusps_26.lean
+grep -q "def hGeomForbid_typed_closed : Prop" \
+  lean/BealLevel26Foundations/Chain/RationalPoints_26_FourCusps_26.lean
+grep -q "theorem hGeomForbid_typed_is_now_computationally_inhabitable" \
+  lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean
+if grep -nE \
+    'hGeomForbid_typed_closed[[:space:]]*:[[:space:]]*\(?fourCusps[[:space:]]*→' \
+    lean/BealLevel26Foundations/Chain/RationalPoints_26_FourCusps_26.lean \
+    lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean; then
+  echo "FAIL: hGeomForbid_typed_closed must stay a Prop package, not fourCusps → ¬ ExistsNoncuspidal"
+  exit 1
+fi
+if grep -nE 'False\.elim' \
+    lean/BealLevel26Foundations/Chain/RationalPoints_26_FourCusps_26.lean \
+    lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean; then
+  echo "FAIL: must not False.elim-inhabit typed fourCusps → ¬ ExistsNoncuspidal"
+  exit 1
+fi
 grep -q "d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260" \
   lean/BealLevel26Foundations/Chain/RationalPoints_26_FourCusps_26.lean
 grep -q "Not \`X₀(26)(ℚ)" \

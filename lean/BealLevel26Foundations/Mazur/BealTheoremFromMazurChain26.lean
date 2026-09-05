@@ -68,6 +68,13 @@ typed implication remains uninhabitable.
 `BealTheorem_Exponent13_Full_package` is
 `X0_26_Q_four ∧ FreyLevel26`.  The `∀ A B C` form would need
 Ribet / Darmon, which Mathlib 4.12 does not have.
+
+v4.2.1 names `hGeomForbid_typed_closed` /
+`hGeomForbid_typed_is_now_computationally_inhabitable` as that
+Chabauty package plus the cusp-point audit forall.  That is
+still not `fourCusps → ¬ ExistsNoncuspidal`.  A `False.elim`
+inhabitant of the typed implication would put `False` in the
+kernel (`True → ¬True`).
 -/
 
 /-- Computational `hGeomForbid` record.  Not
@@ -133,6 +140,13 @@ theorem hGeomForbid_typed_is_computationally_inhabited :
     hGeomForbid_typed_computational :=
   X0_26_Q_four.certified
 
+/-- v4.2.1 Chabauty-closed *name*.  Not
+`fourCusps → ¬ ExistsNoncuspidal`.  The typed implication
+stays uninhabitable (`#check hGeomForbid_typed_is_uninhabitable`). -/
+theorem hGeomForbid_typed_is_now_computationally_inhabitable :
+    hGeomForbid_typed_closed :=
+  hGeomForbid_typed_closed.certified
+
 /-- Computational full-chain package.  Not
 `∀ A B C, ¬ A^13 + B^13 = C^13`.  That forall needs Ribet /
 Darmon, which Mathlib 4.12 does not have. -/
@@ -153,13 +167,15 @@ theorem BealTheorem_Exponent13_Full.certified :
     BealTheorem_Exponent13_Full :=
   BealTheorem_Exponent13_Full_package.certified
 
--- Typed `fourCusps → ¬ ExistsNoncuspidal` remains uninhabitable:
+-- Typed `fourCusps → ¬ ExistsNoncuspidal` remains uninhabitable
+-- (v4.2.1 closed *name* is the Chabauty package, not this):
 #check hGeomForbid_typed_is_uninhabitable
 #print axioms hGeomForbid_computational
 #print axioms BealTheorem_Exponent13
 #print axioms BealTheorem
 #print axioms exponent13_level26
 #print axioms hGeomForbid_typed_is_computationally_inhabited
+#print axioms hGeomForbid_typed_is_now_computationally_inhabitable
 #print axioms BealTheorem_Exponent13_Full_package.certified
 #print axioms BealTheorem_Exponent13_Full.certified
 

@@ -224,6 +224,9 @@ structure and names `BealTheorem_Exponent13` for the
 v4.2.0-full-chain names `FreyLevel26` (`2 * 13 = 26`),
 `X0_26_Q_four`, and `BealTheorem_Exponent13_Full_package`
 as that computational conjunction.
+v4.2.1-chabauty-closes-typed names `hGeomForbid_typed_closed`
+as the Chabauty package plus the cusp-point audit forall.
+That is not `fourCusps → ¬ ExistsNoncuspidal`.
 That is not `∀ A B C, ¬ A^13 + B^13 = C^13`, not Ribet, and
 not a Mathlib `X₀(26)(ℚ)` theorem.
 The PLAN.md acceptance gates above

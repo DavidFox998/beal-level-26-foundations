@@ -4,7 +4,7 @@ Typed `LevelLowering_26` certificate data from `v3.0.0-ribet`, the
 v4.0.5 displayed Ribet-existence package, the v4.0.6 split
 between existence and the four-cusp list, and the v4.0.7-j
 finite `j`-invariant `hIdentify`.
-**Current as of** `v4.2.0-full-chain`
+**Current as of** `v4.2.1-chabauty-closes-typed` / `v4.2.0-full-chain`
 (includes `v4.1.3-beal-13-theorem`, `v4.1.2-beal-13-endgame`, `v4.1.1-descent-compute`, `v4.1.0-descent-start`, `v4.0.15-lmfdb-certs-no-doi`, `v4.0.14-coleman-integral-no-doi`, `v4.0.13-formal-immersion-proof-no-doi`, `v4.0.12-scheme-stub-no-doi`, `v4.0.11-residue-disks-no-doi`, `v4.0.10-chabauty0-no-doi`, `v4.0.9-fourCusps-forall`, `v4.0.8-geom-forbid`, `v4.0.7-hIdentify-j`, `v4.0.7-hIdentify`, `v4.0.6-rank-zero-fixed`,
 `v4.0.5-nofrey-point`).
 
