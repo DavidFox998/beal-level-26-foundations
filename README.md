@@ -21,8 +21,10 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
-[`v4.1.3-beal-13-theorem`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.1.3-beal-13-theorem)
+[`v4.2.0-full-chain`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.2.0-full-chain)
 (git tag only; no version DOI; prior
+[`v4.1.3-beal-13-theorem`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.1.3-beal-13-theorem);
+prior
 [`v4.1.2-beal-13-endgame`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.1.2-beal-13-endgame);
 prior
 [`v4.1.1-descent-compute`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.1.1-descent-compute);
@@ -191,6 +193,7 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.1.1-descent-compute PARI 2-descent display | `v4.1.1-descent-compute` | none (git tag only) | PARI `ellrank`/`ell2cover`/`elltors` on the certified models. `Descent_26.json` has rank `0`, torsion `3`/`7`, `|Sel₂|=1`, JSON `sha2_trivial: true`. Lean `SelmerBound_*` are now `1`; torsion stays `TorsionOrder_*`. `RankZero_*_from_Selmer` is `1 = 1`. Computational, not a Mordell--Weil theorem. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
 | v4.1.2-beal-13-endgame computational `hGeomForbid` Option | `v4.1.2-beal-13-endgame` | none (git tag only) | `rankZero_unconditional` is PARI `|Sel₂|=1` twice (`1 = 1`). Computational `hGeomForbid` is `Option.some` of that plus `det M₃ ≠ 0`. Not a Lean Mordell--Weil theorem; Mathlib has no `SelmerGroup`. Typed `hGeomForbid` stays uninhabitable. No `theorem BealTheorem`. Four-cusp audit `X026RationalPointsActual_26` unchanged. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
 | v4.1.3-beal-13-theorem computational `BealTheorem_Exponent13` | `v4.1.3-beal-13-theorem` | none (git tag only) | `hGeomForbid_computational` packages the four-cusp audit, PARI `|Sel₂|=1`, and `det M₃ ≠ 0`. `BealTheorem_Exponent13` is that structure (level `26 = 2×13`). Not the Beal conjecture. Full `theorem BealTheorem` stays guarded. Typed `fourCusps → ¬ ExistsNoncuspidal` stays uninhabitable. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
+| v4.2.0-full-chain named Frey + four-cusp packages | `v4.2.0-full-chain` | none (git tag only) | `FreyConductorDivides26` / `FreyToX0_26` are `26 = 2×13`. `X0_26_Q_eq_fourCusps` is PARI `|Sel₂|=1` plus `det ≠ 0`. `BealTheorem_Exponent13_Full` is that conjunction. Not Ribet, not `X₀(26)(ℚ)`, not `∀ A B C, ¬ A^13+B^13=C^13`. Typed implication stays uninhabitable. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
@@ -317,7 +320,10 @@ Mordell--Weil theorem. v4.1.3-beal-13-theorem inhabits a
 computational `hGeomForbid` structure and names
 `BealTheorem_Exponent13` for the `2 × 13` package; that is
 not the Beal conjecture. Full `theorem BealTheorem` stays
-guarded behind the four-cusp audit. There is no unconditional
+guarded behind the four-cusp audit. v4.2.0-full-chain names
+the Frey `26 = 2 × 13` package and `BealTheorem_Exponent13_Full`
+as the computational conjunction; that is not
+`∀ A B C, ¬ A^13+B^13=C^13`. There is no unconditional
 `BealTheorem`.
 
 The detailed milestones, acceptance gates, and dependency order are in

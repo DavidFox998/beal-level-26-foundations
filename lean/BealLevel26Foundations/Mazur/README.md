@@ -1,8 +1,8 @@
 # lean/BealLevel26Foundations/Mazur/
 
 Genus certificates, q-expansion cotangent calculations, and the v4.0.0
-endgame scaffold. **Current as of** `v4.1.3-beal-13-theorem`
-(includes `v4.1.2-beal-13-endgame`, `v4.1.1-descent-compute`, `v4.1.0-descent-start`, `v4.0.15-lmfdb-certs-no-doi`, `v4.0.14-coleman-integral-no-doi`, `v4.0.13-formal-immersion-proof-no-doi`, `v4.0.12-scheme-stub-no-doi`, `v4.0.11-residue-disks-no-doi`, `v4.0.10-chabauty0-no-doi`, `v4.0.9-fourCusps-forall`, `v4.0.8-geom-forbid`, `v4.0.7-hIdentify-j`, `v4.0.7-hIdentify`, `v4.0.6-rank-zero-fixed`, `v4.0.5-nofrey-point`,
+endgame scaffold. **Current as of** `v4.2.0-full-chain`
+(includes `v4.1.3-beal-13-theorem`, `v4.1.2-beal-13-endgame`, `v4.1.1-descent-compute`, `v4.1.0-descent-start`, `v4.0.15-lmfdb-certs-no-doi`, `v4.0.14-coleman-integral-no-doi`, `v4.0.13-formal-immersion-proof-no-doi`, `v4.0.12-scheme-stub-no-doi`, `v4.0.11-residue-disks-no-doi`, `v4.0.10-chabauty0-no-doi`, `v4.0.9-fourCusps-forall`, `v4.0.8-geom-forbid`, `v4.0.7-hIdentify-j`, `v4.0.7-hIdentify`, `v4.0.6-rank-zero-fixed`, `v4.0.5-nofrey-point`,
 `v4.0.4-x026-rational-points`).
 
 | File | What it is | What it is not |
@@ -16,7 +16,7 @@ endgame scaffold. **Current as of** `v4.1.3-beal-13-theorem`
 | `HGeomForbidActual_26.lean` | Constructor inequality `ellipticJ ≠ cuspDivisor`; cusp-point forall; `hGeomForbid_typed_is_uninhabitable` | Not `fourCusps → ¬ ExistsNoncuspidal`; not `BealTheorem` |
 | `Chabauty0Actual_26.lean` | Finite rank-zero + `M₃` + cusp-point forall + eight S-units | Not Chabauty--Coleman; not typed `hGeomForbid`; not `BealTheorem` |
 | `X026RationalPointsScheme_26.lean` | Second Mazur-premise inhabitant from the finite sieve conjunction | Not a scheme-theoretic `X₀(26)(ℚ)` theorem |
-| `BealTheoremFromMazurChain26.lean` | Computational `hGeomForbid` structure; `BealTheorem_Exponent13`; guarded full `theorem BealTheorem` | Not typed `fourCusps → ¬ ExistsNoncuspidal`; not the Beal conjecture; not a Lean Mordell--Weil theorem |
+| `BealTheoremFromMazurChain26.lean` | Computational `hGeomForbid` structure; `BealTheorem_Exponent13`; `BealTheorem_Exponent13_Full` as Frey + four-cusp names; guarded full `theorem BealTheorem` | Not typed `fourCusps → ¬ ExistsNoncuspidal`; not `∀ A B C, ¬ A^13+B^13=C^13`; not a Lean Mordell--Weil theorem |
 
 The four premises of the scaffold:
 
@@ -41,7 +41,9 @@ v4.1.2 records a computational `Option` `hGeomForbid` from
 PARI `|Sel₂|=1` plus `det M₃ ≠ 0`; that is not the typed
 implication. v4.1.3 inhabits a computational `hGeomForbid`
 structure and `BealTheorem_Exponent13`; the full
-`theorem BealTheorem` stays guarded. There is no unconditional `BealTheorem`. Rank,
+`theorem BealTheorem` stays guarded. v4.2.0 names
+`BealTheorem_Exponent13_Full` as the Frey + four-cusp
+computational conjunction. There is no unconditional `BealTheorem`. Rank,
 scheme-theoretic immersion, a Mathlib `X₀(26)(ℚ)` theorem,
 Mathlib Ribet existence, and `R = T` are not discharged by
 `decide`.

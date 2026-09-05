@@ -1,7 +1,7 @@
 # sagemath/
 
 Pinned coefficient ledger and SageMath 10.7 certificate generators.
-**Current as of** `v4.1.3-beal-13-theorem`.
+**Current as of** `v4.2.0-full-chain`.
 
 The ledger version is **v1.4.0** and has been unchanged since tag
 `v1.4.0`:
@@ -27,8 +27,9 @@ Later Foundations tags (v2.0.0-frey through `v4.0.6-rank-zero-fixed`,
 `v4.0.15-lmfdb-certs-no-doi`,
 `v4.1.0-descent-start`,
 `v4.1.1-descent-compute`,
-`v4.1.2-beal-13-endgame`, and
-`v4.1.3-beal-13-theorem`) do **not**
+`v4.1.2-beal-13-endgame`,
+`v4.1.3-beal-13-theorem`, and
+`v4.2.0-full-chain`) do **not**
 add a new cert and do **not** change the ledger SHA. The
 `foundations_doi_manifest.json` top-level `version` field stays
 `v1.4.0`. `latest_foundations_release` stays at the last
@@ -40,5 +41,6 @@ DataCite-findable version (`v4.0.9-fourCusps-forall`);
 `v4.0.15-lmfdb-certs-no-doi`,
 `v4.1.0-descent-start`,
 `v4.1.1-descent-compute`,
-`v4.1.2-beal-13-endgame`, and
-`v4.1.3-beal-13-theorem` are git tags only.
+`v4.1.2-beal-13-endgame`,
+`v4.1.3-beal-13-theorem`, and
+`v4.2.0-full-chain` are git tags only.

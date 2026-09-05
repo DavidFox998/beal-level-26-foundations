@@ -1,8 +1,8 @@
 # lean/BealLevel26Foundations/Descent/
 
 Certified Weierstrass models and displayed PARI 2-descent for
-Cremona `26a1` / `26b1`. **Current as of** `v4.1.3-beal-13-theorem`
-(prior `v4.1.2-beal-13-endgame`, `v4.1.1-descent-compute`).
+Cremona `26a1` / `26b1`. **Current as of** `v4.2.0-full-chain`
+(prior `v4.1.3-beal-13-theorem`, `v4.1.2-beal-13-endgame`, `v4.1.1-descent-compute`).
 
 Mathlib 4.12 has `WeierstrassCurve` but no LMFDB lookup, no
 `SelmerGroup`, and no two-descent. Nothing here is a Mordell--Weil

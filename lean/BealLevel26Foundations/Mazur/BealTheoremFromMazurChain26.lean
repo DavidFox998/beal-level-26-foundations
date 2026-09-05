@@ -1,4 +1,6 @@
 import Beal.Foundations.FormalImmersionM3
+import BealLevel26Foundations.Chain.FreyCurve_13_26
+import BealLevel26Foundations.Chain.RationalPoints_26_FourCusps_26
 import BealLevel26Foundations.Jacobian.FormalImmersionActual_26
 import BealLevel26Foundations.Jacobian.J0_26_Q_RankZeroActual_26
 import BealLevel26Foundations.Mazur.EndgameScaffold
@@ -12,6 +14,8 @@ import Mathlib.Tactic
 namespace BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26
 
 open Beal.Foundations.FormalImmersionM3
+open BealLevel26Foundations.Chain.Frey13
+open BealLevel26Foundations.Chain.X0_26_FourCusps
 open BealLevel26Foundations.Jacobian.FormalImmersionActual26
 open BealLevel26Foundations.Jacobian.J0_26_Q_RankZeroActual26
 open BealLevel26Foundations.Mazur.EndgameScaffold hiding hGeomForbid BealTheorem
@@ -52,8 +56,17 @@ conjecture.
 
 The full `theorem BealTheorem` stays guarded behind the typed
 four-cusp negation.  `X026RationalPointsActual_26` is the audit
-and does not supply that implication.  Only the exponent-13
-computational package is claimed.
+and does not supply that implication.
+
+v4.2.0 adds the Chain packages: displayed Frey `26 = 2 × 13`
+and `X0_26_Q_eq_fourCusps` (`1 = 1` twice plus `det ≠ 0`).
+`hGeomForbid_typed_computational` aliases that four-cusp
+package.  It is not `fourCusps → ¬ ExistsNoncuspidal`.
+`#check hGeomForbid_typed_is_uninhabitable` is kept: the
+typed implication remains uninhabitable.
+`BealTheorem_Exponent13_Full` is the Frey + four-cusp
+computational conjunction, not
+`∀ A B C, ¬ A^13 + B^13 = C^13`.
 -/
 
 /-- Computational `hGeomForbid` record.  Not
@@ -109,10 +122,32 @@ theorem BealTheorem
     hGeomForbid_typed
     hIdentify
 
+/-- Computational stand-in for typed `hGeomForbid`.
+Not `fourCusps → ¬ ExistsNoncuspidal`.  The typed implication
+stays uninhabitable (`hGeomForbid_typed_is_uninhabitable`). -/
+def hGeomForbid_typed_computational : Prop :=
+  X0_26_Q_eq_fourCusps
+
+theorem hGeomForbid_typed_is_computationally_inhabited :
+    hGeomForbid_typed_computational :=
+  X0_26_Q_eq_fourCusps.certified
+
+/-- Named full-chain package for exponent 13: displayed Frey
+`26 = 2 × 13` plus the PARI / `det ≠ 0` four-cusp name.
+Not `∀ A B C, ¬ A^13 + B^13 = C^13` and not the Beal conjecture. -/
+theorem BealTheorem_Exponent13_Full :
+    FreyConductorDivides26 ∧ FreyToX0_26 ∧ X0_26_Q_eq_fourCusps :=
+  ⟨freyToX0_26_computational.1,
+    freyToX0_26_computational.2,
+    X0_26_Q_eq_fourCusps.certified⟩
+
+-- Typed `fourCusps → ¬ ExistsNoncuspidal` remains uninhabitable:
 #check hGeomForbid_typed_is_uninhabitable
 #print axioms hGeomForbid_computational
 #print axioms BealTheorem_Exponent13
 #print axioms BealTheorem
 #print axioms exponent13_level26
+#print axioms hGeomForbid_typed_is_computationally_inhabited
+#print axioms BealTheorem_Exponent13_Full
 
 end BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26

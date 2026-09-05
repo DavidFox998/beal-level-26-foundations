@@ -1,8 +1,9 @@
 # docs/releases/
 
 Immutable notes for each published Foundations tag. **Current latest
-note:** [`v4.1.3-beal-13-theorem.md`](v4.1.3-beal-13-theorem.md)
-(prior [`v4.1.2-beal-13-endgame.md`](v4.1.2-beal-13-endgame.md),
+note:** [`v4.2.0-full-chain.md`](v4.2.0-full-chain.md)
+(prior [`v4.1.3-beal-13-theorem.md`](v4.1.3-beal-13-theorem.md),
+[`v4.1.2-beal-13-endgame.md`](v4.1.2-beal-13-endgame.md),
 [`v4.1.1-descent-compute.md`](v4.1.1-descent-compute.md),
 [`v4.1.0-descent-start.md`](v4.1.0-descent-start.md),
 [`v4.0.15-lmfdb-certs-no-doi.md`](v4.0.15-lmfdb-certs-no-doi.md),
@@ -47,6 +48,7 @@ not an unconditional `BealTheorem`.
 | [v4.1.1-descent-compute.md](v4.1.1-descent-compute.md) | `v4.1.1-descent-compute` | none (git tag only) |
 | [v4.1.2-beal-13-endgame.md](v4.1.2-beal-13-endgame.md) | `v4.1.2-beal-13-endgame` | none (git tag only) |
 | [v4.1.3-beal-13-theorem.md](v4.1.3-beal-13-theorem.md) | `v4.1.3-beal-13-theorem` | none (git tag only) |
+| [v4.2.0-full-chain.md](v4.2.0-full-chain.md) | `v4.2.0-full-chain` | none (git tag only) |
 
 Concept DOI for the evolving project:
 [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).

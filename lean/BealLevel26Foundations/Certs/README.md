@@ -1,7 +1,7 @@
 # lean/BealLevel26Foundations/Certs/
 
 Archived LMFDB *display* data and PARI 2-descent display for `26a1`
-and `26b1`. **Current as of** `v4.1.3-beal-13-theorem`.
+and `26b1`. **Current as of** `v4.2.0-full-chain`.
 
 | File | What it is | What it is not |
 |---|---|---|

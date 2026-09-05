@@ -25,6 +25,8 @@ import BealLevel26Foundations.Jacobian.ColemanNonVanishing_26
 import BealLevel26Foundations.Certs.LMFDBCert_26
 import BealLevel26Foundations.Descent.Selmer_26
 import BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26
+import BealLevel26Foundations.Chain.FreyCurve_13_26
+import BealLevel26Foundations.Chain.RationalPoints_26_FourCusps_26
 
 namespace BealLevel26Foundations.Scaffold
 
@@ -58,6 +60,9 @@ cusp-labeled points, not over `ellipticJ`. Typed
 `fourCusps → ¬ ExistsNoncuspidal` remains uninhabitable.
 `BealTheorem_Exponent13` is the computational package, not the
 Beal conjecture. The full `theorem BealTheorem` stays guarded.
+v4.2.0 adds Chain Frey / four-cusp *names* and
+`BealTheorem_Exponent13_Full` as that conjunction, not
+`∀ A B C, ¬ A^13+B^13=C^13`.
 The Chabauty-0 package coexists with
 `ExistsNoncuspidal`; it is not Chabauty--Coleman. There is no
 unconditional `BealTheorem` here.

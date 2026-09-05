@@ -1,6 +1,6 @@
 # lean/BealLevel26Foundations/
 
-Main foundations library. **Current as of** `v4.1.3-beal-13-theorem`.
+Main foundations library. **Current as of** `v4.2.0-full-chain`.
 
 Top-level computable files:
 
@@ -22,6 +22,7 @@ Top-level computable files:
 | [`Descent/`](Descent/README.md) | certified Weierstrass models; v4.1.1 displayed `|Sel₂|=1` from PARI; not a Selmer group |
 | [`Blueprint/`](Blueprint/README.md) | Phase 3 track board; no `sorry` |
 | [`Mazur/`](Mazur/README.md) | Genus certificates, four-premise endgame scaffold, v4.0.4 four-cusp package, v4.0.8 typed `hGeomForbid`, v4.0.9 cusp-point forall, v4.0.10 Chabauty-0 package |
+| [`Chain/`](Chain/README.md) | v4.2.0 Frey `26 = 2 × 13` names and `X0_26_Q_eq_fourCusps`; not Ribet and not `X₀(26)(ℚ)` |
 | [`Real/`](Real/README.md) | Frey Weierstrass model and re-exported lowering |
 | [`Ribet/`](Ribet/README.md) | Typed `LevelLowering_26`; v4.0.6 split; v4.0.7-j finite `j`-invariant `hIdentify` |
 

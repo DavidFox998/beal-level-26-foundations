@@ -1,7 +1,7 @@
 # lean/BealLevel26Foundations/Frey/
 
 Frey-conductor *data* and the v2 odd-prime valuation input. **Current
-as of** `v4.1.3-beal-13-theorem` / `v2.0.0-frey`.
+as of** `v4.2.0-full-chain` / `v2.0.0-frey`.
 
 | File | What it is | What it is not |
 |---|---|---|
