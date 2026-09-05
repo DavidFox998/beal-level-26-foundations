@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite the corrected v1.0.1-computable release (10.5281/zenodo.22272714) and this v4.21.0-iter-zenodo-mint package under concept DOI 10.5281/zenodo.22272382."
+message: "If you use this software, please cite the corrected v1.0.1-computable release (10.5281/zenodo.22272714) and this v4.21.0-iter-zenodo-mint package at 10.5281/zenodo.22406482 (concept 10.5281/zenodo.22272382)."
 title: "Beal Level 26 Foundations — v4.20.0 Typed ∧ Forall Axiom-Free Cert (Iter Package Locked)"
 type: software
 authors:
@@ -7,7 +7,7 @@ authors:
     given-names: David
 version: "v4.21.0-iter-zenodo-mint"
 date-released: "2026-09-05"
-doi: "10.5281/zenodo.22272382"
+doi: "10.5281/zenodo.22406482"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
 url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.21.0-iter-zenodo-mint"
 license: MIT
@@ -35,8 +35,11 @@ abstract: >-
   forall N / Mathlib X0(26)(Q)
 identifiers:
   - type: doi
+    value: 10.5281/zenodo.22406482
+    description: v4.21.0-iter-zenodo-mint version DOI (DataCite state findable)
+  - type: doi
     value: 10.5281/zenodo.22272382
-    description: Zenodo concept DOI (this mint is a new version of that record)
+    description: Original Zenodo concept DOI (DataCite IsVersionOf)
   - type: doi
     value: 10.5281/zenodo.22272714
     description: v1.0.1-computable citation DOI
