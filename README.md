@@ -27,8 +27,9 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
-[`v4.14.0-iter-citation-contradiction-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.14.0-iter-citation-contradiction-locked)
+[`v4.15.0-iter-typed-forall-bridge`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.15.0-iter-typed-forall-bridge)
 (prior
+[`v4.14.0-iter-citation-contradiction-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.14.0-iter-citation-contradiction-locked),
 [`v4.13.1-iter-unstick`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.13.1-iter-unstick),
 [`v4.13.0-iter-contradiction-start`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.13.0-iter-contradiction-start),
 [`v4.12.0-iter-verify-plus`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.12.0-iter-verify-plus),
@@ -103,6 +104,15 @@ adds the `M₃` residue-disk *input* and the finite sieve
 conjunction; those are not a scheme `X₀(26)(ℚ)` theorem. Typed `hIdentify`
 stays the elliptic-`j` packing. The remaining
 geometric gate is a Mathlib noncuspidal point of `X₀(26)`.
+
+### v4.15.0 Iter typed forall bridge
+
+`beal_forall_from_ribet` in the Forall file is
+`beal_exponent13_from_ribet` (`certified_from_ribet`, no
+axioms via `hGeomForbid_typed_true`). Upstream
+`BealExponent13_Contradiction.certified` still needs both
+computational-assumption axioms. Still not `∀ ℕ`. No
+`False.elim`.
 
 ### v4.14.0 Iter citation contradiction locked
 
@@ -380,6 +390,7 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.13.0-iter-contradiction-start displayed Ribet-path close | `v4.13.0-iter-contradiction-start` | pending DataCite | `contradiction_from_ribet` is `ExistsNoncuspidal_26 → False` via the Ribet axiom. `beal_exponent13_from_ribet` is the typed close. Not `∀ ℕ`. Not a Mathlib `X₀(26)(ℚ)` theorem. Ledger still v1.4.0. |
 | v4.13.1-iter-unstick verify without DOI greps | `v4.13.1-iter-unstick` | pending DataCite | `verify-scaffold.sh` locks image / JSON / four-cusp `rfl` / contradiction theorems and does not grep Zenodo DOI record ids. Not `∀ ℕ`. Ledger still v1.4.0. |
 | v4.14.0-iter-citation-contradiction-locked CITATION + Iter export | `v4.14.0-iter-citation-contradiction-locked` | pending DataCite | `CITATION.cff` locks `c2c47db` / four-cusp abstract. `certified_from_ribet` exported into Iter. Image ≥300 KB. Not `∀ ℕ`. Ledger still v1.4.0. |
+| v4.15.0-iter-typed-forall-bridge Typed → Forall | `v4.15.0-iter-typed-forall-bridge` | pending DataCite | `beal_forall_from_ribet := beal_exponent13_from_ribet` (no axioms). Forall file still not `∀ ℕ`. Ledger still v1.4.0. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use

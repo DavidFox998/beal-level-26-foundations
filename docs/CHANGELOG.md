@@ -17,3 +17,4 @@ This file records trigger commits that do not change Lean.
 # v4.13.0-iter-contradiction-start — wire X0_26_Q + Frey + Ribet → contradiction_from_ribet
 # v4.13.1-iter-unstick — verify locks image/JSON/contradiction; no Zenodo DOI greps
 # v4.14.0-iter-citation-contradiction-locked — CITATION.cff c2c47db + certified_from_ribet
+# v4.15.0-iter-typed-forall-bridge — beal_forall_from_ribet := beal_exponent13_from_ribet

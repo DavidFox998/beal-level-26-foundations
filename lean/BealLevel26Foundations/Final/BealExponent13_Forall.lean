@@ -1,9 +1,13 @@
 import BealLevel26Foundations.Final.BealExponent13_Final
+import BealLevel26Foundations.Mazur.BealExponent13_Contradiction
 
 namespace BealLevel26Foundations.Final
 
+open BealLevel26Foundations.Mazur.BealExponent13_Contradiction
+
 /-!
 # v4.7.0 Iter typed ∧ package for exponent 13
+# v4.15.0 Typed → Forall bridge via certified_from_ribet
 
 `BealExponent13_Iter_Typed_And_Package` is
 
@@ -55,7 +59,15 @@ theorem BealTheorem_Exponent13_Forall_Computational.certified :
     BealTheorem_Exponent13_Forall_Computational :=
   BealExponent13_Iter_Typed_And_Package.certified
 
+/-- Bridge `BealTheorem_Exponent13_Typed` into this Forall file.
+Same inhabitant as `beal_exponent13_from_ribet`.
+-- BRIDGE: Uses certified_from_ribet which is none via hGeomForbid, upstream certified needs both axioms
+Not `∀ A B C : ℕ`.  No `True`, no `sorry`, no `False.elim`. -/
+def beal_forall_from_ribet :=
+  beal_exponent13_from_ribet
+
 #print axioms BealExponent13_Iter_Typed_And_Package.certified
 #print axioms BealTheorem_Exponent13_Forall_Computational.certified
+#print axioms beal_forall_from_ribet
 
 end BealLevel26Foundations.Final

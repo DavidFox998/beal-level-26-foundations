@@ -38,6 +38,15 @@ and `certs/pari_x0_26_four_cusps.json` keys `26a1` /
 `-1664`, `|Sel₂|=1` twice, `det M₃=2`, SHA-256
 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 
+## v4.15.0 Iter typed forall bridge
+
+`beal_forall_from_ribet` is `beal_exponent13_from_ribet`
+in the Forall file. That inhabitant is axiom-free
+(`certified_from_ribet` / `hGeomForbid_typed_true`).
+Upstream `BealExponent13_Contradiction.certified` still
+needs both computational-assumption axioms. Still not
+`∀ A B C : ℕ`.
+
 ## v4.14.0 Iter citation contradiction locked
 
 `CITATION.cff` locks version `v4.13.0-iter-contradiction-start`
