@@ -41,12 +41,14 @@ the already-inhabited formal-immersion *input*, and the displayed
 four-cusp package, that is the finite package
 `ribetExistenceFromQExpansion`.
 
-`ofBealFreyLowering` produces `ExistsFreyWitness` with
-`loweredLevel = 26`.  That is not
-`ExistsNoncuspidalLevel26FreyPoint` (which additionally requires
-`26 ∉ [1, 2, 13, 26]`).  Mathlib 4.12 has no Ribet existence
-theorem.  Absence of a noncuspidal point is proved in
-`NoFreyPointActual_26`, not here.
+`ofBealFreyLowering` produces `ExistsFreyWitness`: a Frey
+Weierstrass model with `Δ ≠ 0` and `loweredLevel = 26`.  That is
+not a Mathlib modular-curve point.  v4.0.7-hIdentify-j packs the
+finite `j`-ratio of such a model as
+`ExistsNoncuspidalLevel26FreyPoint` in `HIdentifyActual_26`.
+The four-cusp list `[1, 2, 13, 26]` stays as cusps in
+`NoFreyPointActual_26`.  Mathlib 4.12 has no Ribet existence
+theorem.  Not a Mathlib Ribet theorem.
 -/
 
 /-- Displayed target of a level-26 lowering certificate. -/
@@ -90,8 +92,8 @@ theorem displayedFreyWitness26_exists :
 
 /-- The Mazur existence half: a Beal counterexample plus a typed
 lowering certificate produces the displayed witness
-`loweredLevel = 26`.  This is `ExistsFreyWitness`, not a
-noncuspidal modular-curve point. -/
+`loweredLevel = 26` and `Δ ≠ 0`.  This is `ExistsFreyWitness`,
+not a Mathlib modular-curve point. -/
 def ofBealFreyLowering
     (cex : BealCounterexample26) {ℓ N p : Nat}
     (hLower : LevelLowering_26 ℓ N p 26)

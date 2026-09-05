@@ -1,6 +1,6 @@
 # lean/BealLevel26Foundations/
 
-Main foundations library. **Current as of** `v4.0.7-hIdentify`.
+Main foundations library. **Current as of** `v4.0.7-hIdentify-j`.
 
 Top-level computable files:
 
@@ -20,7 +20,7 @@ Top-level computable files:
 | [`Jacobian/`](Jacobian/README.md) | v4.0.1 finite product + Picard `Prop`; v4.0.2 S-unit audit; v4.0.3 formal-immersion input; v4.0.6 product rank-zero package |
 | [`Mazur/`](Mazur/README.md) | Genus certificates, four-premise endgame scaffold, v4.0.4 four-cusp package |
 | [`Real/`](Real/README.md) | Frey Weierstrass model and re-exported lowering |
-| [`Ribet/`](Ribet/README.md) | Typed `LevelLowering_26`; v4.0.6 split; v4.0.7 typed `hIdentify` uninhabitable |
+| [`Ribet/`](Ribet/README.md) | Typed `LevelLowering_26`; v4.0.6 split; v4.0.7-j finite `j`-invariant `hIdentify` |
 
 The parent premises
 `J0DecompositionSoundness_26`, geometric

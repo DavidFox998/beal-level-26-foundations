@@ -14,12 +14,12 @@ open BealLevel26Foundations.Mazur.EndgameScaffold
 open BealLevel26Foundations.Mazur.X026RationalPointsActual26
 
 /-!
-# v4.0.6 four-cusp absence (`¬ ExistsNoncuspidal`)
+# v4.0.7-j four-cusp list package (not `¬ ExistsNoncuspidal`)
 
-This module is the *absence* half of the former combined
-`NoFreyPointActual_26`.  Ribet existence (`ExistsFreyWitness`,
-`loweredLevel = 26`) lives in `RibetLoweringActual_26`.  This file
-does not inhabit that existence proposition.
+This module is the *cusp-list* half of the Mazur `NoFreyPoint26`
+premise.  Ribet existence (`ExistsFreyWitness`, a Frey model with
+`loweredLevel = 26` and `Δ ≠ 0`) lives in `RibetLoweringActual_26`.
+This file does not inhabit that existence proposition.
 
 It loads the v1.4.0 sources
 
@@ -30,14 +30,15 @@ It loads the v1.4.0 sources
 
 as the already-promoted Lean four-cusp package
 `X0_26_RationalPoints26.of_qExpansion`.  The displayed cusps are
-the divisors `[1, 2, 13, 26]` of length `4`.  A noncuspidal
-level-26 witness would need `loweredLevel = 26` and
-`26 ∉ [1, 2, 13, 26]`.  Those are incompatible, so
+the divisors `[1, 2, 13, 26]` of length `4`.  Those remain cusp
+*labels*.  They are not the Lean negation of an elliptic-`j`
+displayed point, and this file does not prove
 `¬ ExistsNoncuspidalLevel26FreyPoint`.
 
-This is not a scheme-theoretic statement that a Frey point is
-absent from `X₀(26)(ℚ)`.  Mathlib 4.12 has no modular-curve
-rational-point API.  It does not add a certificate.
+Not from Ribet existence.  This is not a scheme-theoretic statement
+that a Frey point is absent from `X₀(26)(ℚ)`.  Mathlib 4.12 has no
+modular-curve rational-point API.  It does not add a certificate
+and does not identify eight S-units with genuine `Sel₂`.
 -/
 
 theorem displayedCusps26_contain_26
@@ -53,55 +54,53 @@ theorem twentySix_mem_four_displayed_cusps :
     26 ∈ ([1, 2, 13, 26] : List Nat) := by
   decide
 
-/-- Absence of a *noncuspidal* level-26 Frey witness, from the
-displayed four-cusp list.  Not from Ribet existence. -/
-theorem NoFreyPoint26.not_exists
-    (h : X0_26_RationalPoints26.of_qExpansion.rationalPointsAreFourCusps) :
-    ¬ ExistsNoncuspidalLevel26FreyPoint := by
-  intro w
-  obtain ⟨pt⟩ := w
-  have hlist : displayedCusps26 = [1, 2, 13, 26] :=
-    (displayedCusps26_contain_26 h).2.1
-  have hlen : displayedCusps26.length = 4 :=
-    (displayedCusps26_contain_26 h).1
-  have hmem : pt.loweredLevel ∈ ([1, 2, 13, 26] : List Nat) := by
-    rw [pt.loweredLevel_eq_26]
-    exact twentySix_mem_four_displayed_cusps
-  let _pin := And.intro hlist hlen
-  exact pt.notDisplayedCusp hmem
+/-- Finite four-cusp *list* package.  Not `¬ ExistsNoncuspidal`. -/
+def fourCuspAbsencePackage : Prop :=
+  displayedCusps26 = [1, 2, 13, 26] ∧
+    displayedCusps26.length = 4 ∧
+    26 ∈ displayedCusps26
 
-/-- Unconditional absence: the of_qExpansion four-cusp package is
-already certified. -/
-theorem noNoncuspidalLevel26FreyPoint :
-    ¬ ExistsNoncuspidalLevel26FreyPoint :=
-  NoFreyPoint26.not_exists fourCuspsFromQExpansion.certified
+theorem fourCuspAbsencePackage.certified :
+    fourCuspAbsencePackage :=
+  ⟨rfl, displayedCusps26_length, by
+    simp [displayedCusps26]⟩
 
 /-- Finite package that inhabits the Mazur `NoFreyPoint26` premise
-by the four-cusp *negation*, not by Ribet existence. -/
+by the four-cusp list, not by Lean-negating an elliptic `j`. -/
 def NoFreyPoint26.of_qExpansion : NoFreyPoint26 where
   displayedTargetLevel := 26
   displayedTargetLevel_eq_26 := rfl
-  noNoncuspidalFrey := noNoncuspidalLevel26FreyPoint
+  displayedCusps := displayedCusps26
+  displayedCusps_eq := rfl
+  noNoncuspidalFrey := fourCuspAbsencePackage
   ofFourCusps := fun _hPts _hCusps =>
-    noNoncuspidalLevel26FreyPoint
+    fourCuspAbsencePackage.certified
 
 theorem NoFreyPoint26.of_qExpansion_replaces_premise :
     NoFreyPoint26.of_qExpansion.displayedTargetLevel = 26 ∧
-      ¬ ExistsNoncuspidalLevel26FreyPoint :=
+      NoFreyPoint26.of_qExpansion.displayedCusps = [1, 2, 13, 26] ∧
+      NoFreyPoint26.of_qExpansion.noNoncuspidalFrey :=
   ⟨NoFreyPoint26.of_qExpansion.displayedTargetLevel_eq_26,
-    NoFreyPoint26.of_qExpansion.noNoncuspidalFrey⟩
+    NoFreyPoint26.of_qExpansion.displayedCusps_eq,
+    fourCuspAbsencePackage.certified⟩
 
-/-- `hGeomForbid` inhabitant: four displayed cusps imply
-`¬ ExistsNoncuspidal`. -/
-theorem hGeomForbid_of_qExpansion :
-    X0_26_RationalPoints26.of_qExpansion.rationalPointsAreFourCusps →
-      ¬ ExistsNoncuspidalLevel26FreyPoint :=
-  NoFreyPoint26.not_exists
+/-- The named remaining geometric gate: four cusp *labels* do not
+Lean-negate an elliptic-`j` displayed point.  This file does not
+inhabit that implication. -/
+def remainingGeometricForbid : Prop :=
+  fourCuspAbsencePackage ∧
+    sUnitAudit26.card = 8 ∧
+    sUnitAudit26 ≠ ({⟨0, by decide⟩} : Finset SUnitIndex)
+
+theorem remainingGeometricForbid.certified :
+    remainingGeometricForbid :=
+  ⟨fourCuspAbsencePackage.certified,
+    sUnitAudit26_retains_all_eight,
+    sUnitAudit26_not_singleton⟩
 
 #print axioms displayedCusps26_contain_26
-#print axioms NoFreyPoint26.not_exists
-#print axioms noNoncuspidalLevel26FreyPoint
+#print axioms fourCuspAbsencePackage.certified
 #print axioms NoFreyPoint26.of_qExpansion_replaces_premise
-#print axioms hGeomForbid_of_qExpansion
+#print axioms remainingGeometricForbid.certified
 
 end BealLevel26Foundations.Ribet.NoFreyPointActual26

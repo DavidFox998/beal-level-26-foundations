@@ -35,12 +35,14 @@ Picard/Abel--Jacobi comparison, a genuine 2-Selmer identification, a
 scheme-theoretic formal immersion, or a Mathlib `X₀(26)(ℚ)` theorem.
 v4.0.4 inhabits `X0_26_RationalPoints26` by the displayed four-cusp
 finite package. v4.0.5 recorded displayed Ribet existence; v4.0.6
-splits that existence (`ExistsFreyWitness`, `loweredLevel = 26`)
-from four-cusp absence (`¬ ExistsNoncuspidal`) and inhabits
+splits that existence (`ExistsFreyWitness`, a Frey model with
+`loweredLevel = 26`) from the four-cusp list and inhabits
 `J0_26_Q_RankZero26` as the product of two Sage-certified
-rank-zero factors. v4.0.7 records that typed `hIdentify` is
-uninhabitable. That is not genuine `Sel₂` and not an
-unconditional `BealTheorem`.
+rank-zero factors. v4.0.7-hIdentify-j packs a Frey `j`-ratio as
+an elliptic displayed point (`hIdentify`); the four-cusp list
+`[1, 2, 13, 26]` stays as cusps. That is not genuine `Sel₂`,
+not a Mathlib `X₀(26)` point, and not an unconditional
+`BealTheorem`.
 -/
 
 end BealLevel26Foundations.Real

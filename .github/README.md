@@ -13,3 +13,5 @@ requests to **`main`**:
 
 A green CI run is a Lean 4.12 / Mathlib 4.12 build plus the scaffold
 script. It is not a DOI and not an unconditional `BealTheorem`.
+Current Foundations tag `v4.0.7-hIdentify-j` does not change this
+workflow.

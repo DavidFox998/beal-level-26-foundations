@@ -3,7 +3,8 @@
 Versioned release notes for
 [beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations).
 
-**Current as of** tag `v4.0.7-hIdentify` (commit `a4143fc`,
+**Current as of** tag `v4.0.7-hIdentify-j`. Prior published tag
+[`v4.0.7-hIdentify`](releases/v4.0.7-hIdentify.md) (commit `a4143fc`,
 version DOI
 [10.5281/zenodo.22314092](https://doi.org/10.5281/zenodo.22314092)).
 Prior tags
@@ -26,7 +27,7 @@ these notes only record what each tag claimed.
 
 | Path | Contents |
 |---|---|
-| [`releases/`](releases/README.md) | One note per tagged Foundations release, from `v1.0.0-computable` through `v4.0.7-hIdentify` |
+| [`releases/`](releases/README.md) | One note per tagged Foundations release, from `v1.0.0-computable` through `v4.0.7-hIdentify-j` |
 
 The staged plan and open acceptance gates live in [`../PLAN.md`](../PLAN.md).
 The public DOI trail is in [`../README.md`](../README.md).

@@ -21,14 +21,14 @@ namespace BealLevel26Foundations.Scaffold
 This entrypoint gathers the named Frey-conductor, genus,
 Abel--Jacobi/q-expansion, and Mazur-endgame boundaries, including the
 v4.0.4 displayed four-cusp package, the v4.0.5/v4.0.6 split
-between Ribet existence (`ExistsFreyWitness`) and four-cusp
-absence (`¬ ExistsNoncuspidal`), and the v4.0.6 product
-rank-zero package. It is separate from the unconditional
-computable v1 entrypoint. Identifying a displayed level-26
-target with a noncuspidal `X₀(26)` point remains the named
-gate `hIdentify`. v4.0.7 records that the *typed* implication
-`ExistsFreyWitness → ExistsNoncuspidal` is uninhabitable. There
-is no unconditional `BealTheorem` here.
+between Ribet existence (`ExistsFreyWitness`) and the four-cusp
+list, the v4.0.6 product rank-zero package, and the v4.0.7-j
+finite `j`-invariant encoding of typed `hIdentify`. It is
+separate from the unconditional computable v1 entrypoint.
+Typed `hIdentify` packs a Frey `j` as an elliptic displayed
+point, not as `26 ∉ [1, 2, 13, 26]`. Four cusp labels do not
+Lean-negate that elliptic kind; `hGeomForbid` remains the named
+geometric gate. There is no unconditional `BealTheorem` here.
 -/
 
 def status : String :=

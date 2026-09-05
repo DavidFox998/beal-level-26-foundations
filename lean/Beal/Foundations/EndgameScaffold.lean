@@ -8,9 +8,12 @@ namespace Beal.Foundations.EndgameScaffold
 Re-exports `BealLevel26Foundations.Mazur.EndgameScaffold`.
 `BealTheoremFromMazurChain26` is conditional on the four named
 structures plus v2 Frey, v3 `LevelLowering_26`, the four-cusp
-negation `hGeomForbid`, and the remaining identification
-`hIdentify : ExistsFreyWitness → ExistsNoncuspidal`.  It is
-not an unconditional `BealTheorem`.
+negation `hGeomForbid`, and the j-invariant identification
+`hIdentify : ExistsFreyWitness → ExistsNoncuspidal`.  Typed
+`hIdentify` packs a Frey `j`-ratio as an elliptic displayed
+point, not as `26 ∉ [1, 2, 13, 26]`.  `hGeomForbid` remains
+the named geometric gate.  This is not an unconditional
+`BealTheorem`.
 -/
 
 export BealLevel26Foundations.Mazur.EndgameScaffold

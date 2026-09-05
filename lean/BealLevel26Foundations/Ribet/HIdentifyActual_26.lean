@@ -18,42 +18,96 @@ open BealLevel26Foundations.Ribet.NoFreyPointActual26
 open BealLevel26Foundations.Ribet.RibetLoweringActual26
 
 /-!
-# v4.0.7 typed `hIdentify` is uninhabitable as a finite package
+# v4.0.7-hIdentify-j typed `hIdentify` by finite `j`
 
 The geometric content of `hIdentify` is: a Frey curve attached to a
 primitive Beal solution, after Ribet lowering to level `26`, gives a
 *noncuspidal* rational point of `X₀(26)`.  Mathlib 4.12 has no
-modular-curve point API and no residual Galois-representation API
-that would construct such a point.  This file does not add a
-certificate and does not identify eight S-units with genuine
-cohomological `Sel₂`.  Sources remain the frozen v1.4.0 ledger
-SHA-256 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`.
+modular-curve point API.  The finite encoding available here is the
+`j`-ratio `(c₄³ : Δ)` of a displayed Weierstrass model, packed as
+`DisplayedX026PointKind.ellipticJ`, which is a different constructor
+from the four cusp-divisor labels `[1, 2, 13, 26]`.
 
-The *typed* EndgameScaffold hypothesis
+That is *not* the integer membership `26 ∉ [1, 2, 13, 26]`.  The
+four-cusp list stays as cusps (`X0_26_RationalPoints26.of_qExpansion`).
+This file does not add a certificate and does not identify eight
+S-units with genuine cohomological `Sel₂`
+(`sUnitAudit26_is_not_genuine_2Selmer`).  Sources remain the frozen
+v1.4.0 ledger SHA-256
+`0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`.
 
-`ExistsFreyWitness → ExistsNoncuspidalLevel26FreyPoint`
-
-is a different statement.  `ExistsFreyWitness` is the displayed
-target `loweredLevel = 26` (inhabited).  `ExistsNoncuspidal` also
-requires `26 ∉ [1, 2, 13, 26]`.  The four-cusp package proves
-`26 ∈ [1, 2, 13, 26]`, so `ExistsNoncuspidal` is false.  The typed
-implication is therefore `True → False` and is uninhabitable.
-
-A displayed level-26 target is the *cusp* labelled by the divisor
-`26`, not a noncuspidal Frey point.  Identifying them would
-contradict `sUnitAudit26_is_not_genuine_2Selmer` only if one also
-mislabeled the eight S-units as `Sel₂`; this file does neither.
-
-This module therefore records the finite package and proves
-`hIdentify_typed_is_uninhabitable`.  It does not inhabit
-`hIdentify`, and it does not add `theorem BealTheorem`.
+`hIdentify` therefore packs a level-26 Frey `j` as an elliptic
+displayed point.  It does not construct a point of a Mathlib
+`X₀(26)`.  Four cusp labels still do not Lean-negate that elliptic
+kind (`hGeomForbid` remains the named remaining geometric gate).
+This module does not add `theorem BealTheorem`.
 -/
 
-/-- Finite record of the two halves already inhabited, plus the
-four-cusp membership that blocks the typed implication. -/
+/-- Pack a Frey `j`-ratio as a displayed elliptic point.  Constructor
+inequality, not `26 ∉ fourCuspList`. -/
+def noncuspidalPointOf (w : Level26FreyCurveWitness) :
+    NoncuspidalLevel26FreyPoint where
+  source := w
+  kind := DisplayedX026PointKind.ellipticJ
+    (freyJNumerator w) (freyJDenominator w)
+  kind_eq := rfl
+  kind_ne_cusp_divisors :=
+    ⟨ellipticJ_ne_cuspDivisor _ _ 1,
+      ellipticJ_ne_cuspDivisor _ _ 2,
+      ellipticJ_ne_cuspDivisor _ _ 13,
+      ellipticJ_ne_cuspDivisor _ _ 26⟩
+
+/-- Typed EndgameScaffold `hIdentify`: a displayed Frey witness
+gives an elliptic-`j` point, not a cusp-divisor label. -/
+def hIdentify :
+    ExistsFreyWitness → ExistsNoncuspidalLevel26FreyPoint :=
+  fun ⟨w⟩ => ⟨noncuspidalPointOf w⟩
+
+/-- Finite record of the q-expansion sources used with that packing. -/
+structure HIdentify26 where
+  identify : ExistsFreyWitness → ExistsNoncuspidalLevel26FreyPoint
+  a2_26a : certified26a.a2 = -1
+  a2_26b : certified26b.a2 = 1
+  mwrank : MwrankCertificateSoundness_26
+  fourCusps : displayedCusps26 = [1, 2, 13, 26]
+  fourCuspCount : displayedCusps26.length = 4
+  rankZeroProduct : J0_26_Q_RankZero26.of_qExpansion.rankZero
+  notGenuineSelmer : sUnitAudit26.card = 8 ∧
+    sUnitAudit26 ≠ ({⟨0, by decide⟩} : Finset SUnitIndex)
+
+def HIdentify26.of_qExpansion : HIdentify26 where
+  identify := hIdentify
+  a2_26a := certified26a_a2
+  a2_26b := certified26b_a2
+  mwrank := MwrankCertificateSoundness_26.certified
+  fourCusps := rfl
+  fourCuspCount := displayedCusps26_length
+  rankZeroProduct := J0_26_Q_RankZero26.of_qExpansion_replaces_premise
+  notGenuineSelmer := sUnitAudit26_is_not_genuine_2Selmer
+
+theorem HIdentify26.of_qExpansion_replaces_premise :
+    (ExistsFreyWitness → ExistsNoncuspidalLevel26FreyPoint) ∧
+      certified26a.a2 = -1 ∧
+      certified26b.a2 = 1 ∧
+      MwrankCertificateSoundness_26 ∧
+      displayedCusps26 = [1, 2, 13, 26] :=
+  ⟨HIdentify26.of_qExpansion.identify,
+    HIdentify26.of_qExpansion.a2_26a,
+    HIdentify26.of_qExpansion.a2_26b,
+    HIdentify26.of_qExpansion.mwrank,
+    HIdentify26.of_qExpansion.fourCusps⟩
+
+theorem hIdentify_of_displayed_witness :
+    ExistsNoncuspidalLevel26FreyPoint :=
+  hIdentify existsFreyWitness26
+
+/-- Finite package used by the typed identification.  The remaining
+geometric gate is still `hGeomForbid`: four cusp labels do not
+negate an elliptic `j` as a Mathlib `X₀(26)` point. -/
 def hIdentifyFinitePackage : Prop :=
-  ExistsFreyWitness ∧
-    ¬ ExistsNoncuspidalLevel26FreyPoint ∧
+  (ExistsFreyWitness → ExistsNoncuspidalLevel26FreyPoint) ∧
+    ExistsFreyWitness ∧
+    ExistsNoncuspidalLevel26FreyPoint ∧
     displayedCusps26 = [1, 2, 13, 26] ∧
     displayedCusps26.length = 4 ∧
     26 ∈ displayedCusps26 ∧
@@ -65,8 +119,9 @@ def hIdentifyFinitePackage : Prop :=
 
 theorem hIdentifyFinitePackage.certified :
     hIdentifyFinitePackage :=
-  ⟨displayedFreyWitness26_exists,
-    noNoncuspidalLevel26FreyPoint,
+  ⟨hIdentify,
+    displayedFreyWitness26_exists,
+    hIdentify_of_displayed_witness,
     rfl,
     displayedCusps26_length,
     by
@@ -77,39 +132,23 @@ theorem hIdentifyFinitePackage.certified :
     sUnitAudit26_retains_all_eight,
     sUnitAudit26_not_singleton⟩
 
-/-- The typed EndgameScaffold `hIdentify` cannot be supplied from
-the displayed target `26` and the four-cusp list. -/
-theorem hIdentify_typed_is_uninhabitable :
-    ¬ (ExistsFreyWitness → ExistsNoncuspidalLevel26FreyPoint) := by
-  intro hId
-  exact noNoncuspidalLevel26FreyPoint (hId existsFreyWitness26)
-
-theorem hIdentify_typed_contradicts_four_cusps
-    (h :
-      X0_26_RationalPoints26.of_qExpansion.rationalPointsAreFourCusps) :
-    ¬ (ExistsFreyWitness → ExistsNoncuspidalLevel26FreyPoint) := by
-  intro hId
-  exact NoFreyPoint26.not_exists h (hId existsFreyWitness26)
-
-/-- The remaining geometric gate: a Frey curve from a Beal
-counterexample is a noncuspidal `X₀(26)` point.  That is not the
-typed implication above, and it is not discharged here. -/
+/-- Remaining geometric gate after typed `hIdentify`: four cusp
+labels versus a Mathlib noncuspidal `X₀(26)` point. -/
 def remainingGeometricIdentify : Prop :=
   hIdentifyFinitePackage ∧
-    ¬ (ExistsFreyWitness → ExistsNoncuspidalLevel26FreyPoint) ∧
+    fourCuspAbsencePackage ∧
     sUnitAudit26.card = 8 ∧
     sUnitAudit26 ≠ ({⟨0, by decide⟩} : Finset SUnitIndex)
 
 theorem remainingGeometricIdentify.certified :
     remainingGeometricIdentify :=
   ⟨hIdentifyFinitePackage.certified,
-    hIdentify_typed_is_uninhabitable,
+    fourCuspAbsencePackage.certified,
     sUnitAudit26_retains_all_eight,
     sUnitAudit26_not_singleton⟩
 
 #print axioms hIdentifyFinitePackage.certified
-#print axioms hIdentify_typed_is_uninhabitable
-#print axioms hIdentify_typed_contradicts_four_cusps
+#print axioms HIdentify26.of_qExpansion_replaces_premise
 #print axioms remainingGeometricIdentify.certified
 
 end BealLevel26Foundations.Ribet.HIdentifyActual26

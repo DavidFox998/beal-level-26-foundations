@@ -52,6 +52,7 @@ test -f docs/releases/v4.0.4-x026-rational-points.md
 test -f docs/releases/v4.0.5-nofrey-point.md
 test -f docs/releases/v4.0.6-rank-zero-fixed.md
 test -f docs/releases/v4.0.7-hIdentify.md
+test -f docs/releases/v4.0.7-hIdentify-j.md
 test -f lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
 test -f lean/Beal/Foundations/EndgameScaffold.lean
 test -f lean/BealLevel26Foundations/Jacobian/J0_26_DecompActual.lean
@@ -89,32 +90,40 @@ grep -q "v4.0.4-x026-rational-points" README.md
 grep -q "v4.0.5-nofrey-point" README.md
 grep -q "v4.0.6-rank-zero-fixed" README.md
 grep -q "v4.0.7-hIdentify" README.md
+grep -q "v4.0.7-hIdentify-j" README.md
 grep -q "v4.0.3-formal-immersion" docs/README.md
 grep -q "v4.0.4-x026-rational-points" docs/README.md
 grep -q "v4.0.5-nofrey-point" docs/README.md
 grep -q "v4.0.6-rank-zero-fixed" docs/README.md
 grep -q "v4.0.7-hIdentify" docs/README.md
+grep -q "v4.0.7-hIdentify-j" docs/README.md
 grep -q "v4.0.3-formal-immersion" docs/releases/README.md
 grep -q "v4.0.4-x026-rational-points" docs/releases/README.md
 grep -q "v4.0.5-nofrey-point" docs/releases/README.md
 grep -q "v4.0.6-rank-zero-fixed" docs/releases/README.md
 grep -q "v4.0.7-hIdentify" docs/releases/README.md
+grep -q "v4.0.7-hIdentify-j" docs/releases/README.md
 grep -q "v4.0.3-formal-immersion" lean/README.md
 grep -q "v4.0.4-x026-rational-points" lean/README.md
 grep -q "v4.0.5-nofrey-point" lean/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/README.md
 grep -q "v4.0.7-hIdentify" lean/README.md
+grep -q "v4.0.7-hIdentify-j" lean/README.md
 grep -q "v4.0.3-formal-immersion" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "v4.0.7-hIdentify-j" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.4-x026-rational-points" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Mazur/README.md
+grep -q "v4.0.7-hIdentify-j" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.5-nofrey-point" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Ribet/README.md
+grep -q "v4.0.7-hIdentify-j" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" sagemath/README.md
 grep -q "v4.0.7-hIdentify" sagemath/README.md
+grep -q "v4.0.7-hIdentify-j" sagemath/README.md
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md
 grep -qi "genuine cohomological 2-Selmer" \
@@ -379,15 +388,15 @@ if grep -nE 'J0_26_Q_RankZero26[[:space:]]*(where|:|=)|rankZero[[:space:]]*:=[[:
   exit 1
 fi
 test -f lean/BealLevel26Foundations/Ribet/NoFreyPointActual_26.lean
-grep -q "theorem NoFreyPoint26.not_exists" \
+grep -q "def fourCuspAbsencePackage" \
   lean/BealLevel26Foundations/Ribet/NoFreyPointActual_26.lean
-grep -q "theorem noNoncuspidalLevel26FreyPoint" \
+grep -q "theorem fourCuspAbsencePackage.certified" \
   lean/BealLevel26Foundations/Ribet/NoFreyPointActual_26.lean
 grep -q "def NoFreyPoint26.of_qExpansion" \
   lean/BealLevel26Foundations/Ribet/NoFreyPointActual_26.lean
 grep -q "theorem NoFreyPoint26.of_qExpansion_replaces_premise" \
   lean/BealLevel26Foundations/Ribet/NoFreyPointActual_26.lean
-grep -q "¬ ExistsNoncuspidalLevel26FreyPoint" \
+grep -q "displayedCusps" \
   lean/BealLevel26Foundations/Ribet/NoFreyPointActual_26.lean
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   lean/BealLevel26Foundations/Ribet/NoFreyPointActual_26.lean
@@ -396,6 +405,12 @@ grep -q "Not from Ribet existence" \
 if grep -nE 'ofBealFreyLowering|ribetExistenceFromQExpansion' \
     lean/BealLevel26Foundations/Ribet/NoFreyPointActual_26.lean; then
   echo "FAIL: NoFreyPointActual_26 must prove absence, not Ribet existence"
+  exit 1
+fi
+if grep -nE \
+    'theorem[[:space:]]+(NoFreyPoint26\.not_exists|noNoncuspidalLevel26FreyPoint)|hGeomForbid_of_qExpansion' \
+    lean/BealLevel26Foundations/Ribet/NoFreyPointActual_26.lean; then
+  echo "FAIL: NoFreyPointActual_26 must not Lean-negate elliptic-j ExistsNoncuspidal"
   exit 1
 fi
 if grep -nE '^[[:space:]]*theorem BealTheorem[[:space:]]' \
@@ -452,10 +467,16 @@ grep -q "hIdentify" \
   lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
 grep -q "¬ ExistsNoncuspidalLevel26FreyPoint" \
   lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
+grep -q "DisplayedX026PointKind" \
+  lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
+grep -q "ellipticJ" \
+  lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
 test -f lean/BealLevel26Foundations/Ribet/HIdentifyActual_26.lean
-grep -q "def hIdentifyFinitePackage" \
+grep -q "def hIdentify" \
   lean/BealLevel26Foundations/Ribet/HIdentifyActual_26.lean
-grep -q "theorem hIdentify_typed_is_uninhabitable" \
+grep -q "def HIdentify26.of_qExpansion" \
+  lean/BealLevel26Foundations/Ribet/HIdentifyActual_26.lean
+grep -q "def hIdentifyFinitePackage" \
   lean/BealLevel26Foundations/Ribet/HIdentifyActual_26.lean
 grep -q "theorem remainingGeometricIdentify.certified" \
   lean/BealLevel26Foundations/Ribet/HIdentifyActual_26.lean
@@ -463,9 +484,9 @@ grep -q "sUnitAudit26_is_not_genuine_2Selmer" \
   lean/BealLevel26Foundations/Ribet/HIdentifyActual_26.lean
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   lean/BealLevel26Foundations/Ribet/HIdentifyActual_26.lean
-if grep -nE '^[[:space:]]*(def|theorem)[[:space:]]+hIdentify[[:space:]]' \
+if grep -nE 'hIdentify_typed_is_uninhabitable' \
     lean/BealLevel26Foundations/Ribet/HIdentifyActual_26.lean; then
-  echo "FAIL: must not inhabit typed hIdentify ExistsFreyWitness → ExistsNoncuspidal"
+  echo "FAIL: typed hIdentify is the elliptic-j packing, not the old uninhabitable implication"
   exit 1
 fi
 if grep -nE \

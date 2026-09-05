@@ -31,15 +31,15 @@ injectivity; that is not a scheme-theoretic immersion. v4.0.4 inhabits
 `X0_26_RationalPoints26` from the displayed four-cusp package; that is
 not a Mathlib `X₀(26)(ℚ)` theorem. v4.0.5 recorded displayed
 Ribet existence. v4.0.6 splits that existence
-(`ExistsFreyWitness`) from four-cusp absence
-(`¬ ExistsNoncuspidal`) and inhabits `J0_26_Q_RankZero26` as
-the product of two Sage-certified rank-zero factors. That does
-not identify eight S-units with genuine 2-Selmer.
-v4.0.7 records that typed `hIdentify` is uninhabitable.
+(`ExistsFreyWitness`) from the four-cusp list and inhabits
+`J0_26_Q_RankZero26` as the product of two Sage-certified
+rank-zero factors. That does not identify eight S-units with
+genuine 2-Selmer. v4.0.7-hIdentify-j packs a Frey `j`-ratio as
+an elliptic displayed point; four cusp labels stay as cusps.
 No domain axiom is introduced. Geometric Jacobian, genuine
 cohomological Selmer, Picard, Tate, scheme-theoretic Ribet
-existence, and an unconditional `BealTheorem` remain named later
-milestones.
+existence, a Mathlib `X₀(26)` point, and an unconditional
+`BealTheorem` remain named later milestones.
 -/
 
 def release : String :=

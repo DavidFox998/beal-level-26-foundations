@@ -164,10 +164,12 @@ eight-index audit with genuine `Sel₂`. `hGeomForbid` is
 `fourCusps → ¬ ExistsNoncuspidal`. Identifying a displayed
 level-26 target with a noncuspidal `X₀(26)` point remains the
 named gate `hIdentify` on `BealTheoremFromMazurChain26`.
-v4.0.7-hIdentify adds `Ribet/HIdentifyActual_26`: the typed
-implication is uninhabitable because `26` is a displayed cusp.
-The remaining geometric gate is a Frey curve from a Beal
-counterexample. It does
+v4.0.7-hIdentify adds `Ribet/HIdentifyActual_26`: the *old* typed
+implication (`26 ∉ [1, 2, 13, 26]`) is uninhabitable because `26`
+is a displayed cusp. v4.0.7-hIdentify-j retypes
+`ExistsNoncuspidal` as an elliptic `j`-ratio and inhabits typed
+`hIdentify` from that packing. Four cusp labels stay as cusps.
+`hGeomForbid` remains the named geometric gate. It does
 not construct a Mathlib Jacobian, prove Mordell--Weil rank,
 identify the audit with `Sel₂(J₀(26)/ℚ)`, prove a
 scheme-theoretic formal immersion, inhabit
