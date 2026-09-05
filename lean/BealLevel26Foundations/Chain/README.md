@@ -9,8 +9,8 @@ Beal conjecture or typed `fourCusps → ¬ ExistsNoncuspidal`.
 
 | File | What it is | What it is not |
 |---|---|---|
-| `FreyCurve_13_26.lean` | Displayed `26 = 2 × 13` under Frey / Ribet names | Not a Frey curve; not Ribet; not `True`/`trivial` |
-| `RationalPoints_26_FourCusps_26.lean` | `rankZero_unconditional ∧ Chabauty0ForcesCusp_computational` under an `X₀(26)(ℚ)` name | Not a Mathlib rational-point theorem; not the typed implication |
+| `FreyCurve_13_26.lean` | `FreyLevel26 := 2 * 13 = 26`; `FreyToX0_26 := 26 = 2 * 13` | Not a Frey curve; not Ribet; not `True`/`trivial` |
+| `RationalPoints_26_FourCusps_26.lean` | `X0_26_Q_four := rankZero_unconditional ∧ Chabauty0ForcesCusp_computational` | Not a Mathlib `X₀(26)(ℚ)` theorem; not the typed implication |
 
 `X026RationalPointsActual_26` is unchanged. There is no
 unconditional `BealTheorem`. The v1.4.0 ledger SHA-256

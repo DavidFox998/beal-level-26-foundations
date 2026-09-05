@@ -16,7 +16,7 @@ endgame scaffold. **Current as of** `v4.2.0-full-chain`
 | `HGeomForbidActual_26.lean` | Constructor inequality `ellipticJ ≠ cuspDivisor`; cusp-point forall; `hGeomForbid_typed_is_uninhabitable` | Not `fourCusps → ¬ ExistsNoncuspidal`; not `BealTheorem` |
 | `Chabauty0Actual_26.lean` | Finite rank-zero + `M₃` + cusp-point forall + eight S-units | Not Chabauty--Coleman; not typed `hGeomForbid`; not `BealTheorem` |
 | `X026RationalPointsScheme_26.lean` | Second Mazur-premise inhabitant from the finite sieve conjunction | Not a scheme-theoretic `X₀(26)(ℚ)` theorem |
-| `BealTheoremFromMazurChain26.lean` | Computational `hGeomForbid` structure; `BealTheorem_Exponent13`; `BealTheorem_Exponent13_Full` as Frey + four-cusp names; guarded full `theorem BealTheorem` | Not typed `fourCusps → ¬ ExistsNoncuspidal`; not `∀ A B C, ¬ A^13+B^13=C^13`; not a Lean Mordell--Weil theorem |
+| `BealTheoremFromMazurChain26.lean` | Computational `hGeomForbid` structure; `BealTheorem_Exponent13`; `BealTheorem_Exponent13_Full_package` as `X0_26_Q_four ∧ FreyLevel26`; guarded full `theorem BealTheorem` | Not typed `fourCusps → ¬ ExistsNoncuspidal`; not `∀ A B C, ¬ A^13+B^13=C^13`; not a Lean Mordell--Weil theorem |
 
 The four premises of the scaffold:
 
@@ -42,8 +42,8 @@ PARI `|Sel₂|=1` plus `det M₃ ≠ 0`; that is not the typed
 implication. v4.1.3 inhabits a computational `hGeomForbid`
 structure and `BealTheorem_Exponent13`; the full
 `theorem BealTheorem` stays guarded. v4.2.0 names
-`BealTheorem_Exponent13_Full` as the Frey + four-cusp
-computational conjunction. There is no unconditional `BealTheorem`. Rank,
+`BealTheorem_Exponent13_Full_package` as
+`X0_26_Q_four ∧ FreyLevel26`. There is no unconditional `BealTheorem`. Rank,
 scheme-theoretic immersion, a Mathlib `X₀(26)(ℚ)` theorem,
 Mathlib Ribet existence, and `R = T` are not discharged by
 `decide`.

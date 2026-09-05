@@ -704,21 +704,31 @@ grep -q "def hGeomForbid_typed_computational" \
   lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean
 grep -q "theorem hGeomForbid_typed_is_computationally_inhabited" \
   lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean
-grep -q "theorem BealTheorem_Exponent13_Full" \
+grep -qF "def hGeomForbid_typed_computational : Prop :=" \
+  lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean
+grep -q "X0_26_Q_four" \
+  lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean
+grep -qF "def BealTheorem_Exponent13_Full_package : Prop :=" \
+  lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean
+grep -qF "def BealTheorem_Exponent13_Full : Prop :=" \
   lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean
 if grep -nE 'BealTheorem_Exponent13_Full[[:space:]]*:[[:space:]]*∀' \
     lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean; then
   echo "FAIL: BealTheorem_Exponent13_Full must not claim ∀ A B C Fermat/Beal"
   exit 1
 fi
-grep -qF "def FreyConductorDivides26 : Prop := 2 * 13 = 26" \
+grep -qF "def FreyLevel26 : Prop := 2 * 13 = 26" \
   lean/BealLevel26Foundations/Chain/FreyCurve_13_26.lean
 grep -qF "def FreyToX0_26 : Prop := 26 = 2 * 13" \
+  lean/BealLevel26Foundations/Chain/FreyCurve_13_26.lean
+grep -q "theorem freyLevel26_computational" \
   lean/BealLevel26Foundations/Chain/FreyCurve_13_26.lean
 grep -q "theorem freyToX0_26_computational" \
   lean/BealLevel26Foundations/Chain/FreyCurve_13_26.lean
 grep -q "no Ribet" \
   lean/BealLevel26Foundations/Chain/FreyCurve_13_26.lean
+grep -q "def X0_26_Q_four" \
+  lean/BealLevel26Foundations/Chain/RationalPoints_26_FourCusps_26.lean
 grep -q "def X0_26_Q_eq_fourCusps" \
   lean/BealLevel26Foundations/Chain/RationalPoints_26_FourCusps_26.lean
 grep -q "d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260" \

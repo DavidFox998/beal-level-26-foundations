@@ -58,15 +58,16 @@ The full `theorem BealTheorem` stays guarded behind the typed
 four-cusp negation.  `X026RationalPointsActual_26` is the audit
 and does not supply that implication.
 
-v4.2.0 adds the Chain packages: displayed Frey `26 = 2 × 13`
-and `X0_26_Q_eq_fourCusps` (`1 = 1` twice plus `det ≠ 0`).
-`hGeomForbid_typed_computational` aliases that four-cusp
-package.  It is not `fourCusps → ¬ ExistsNoncuspidal`.
+v4.2.0 adds the Chain packages: displayed Frey `FreyLevel26`
+(`26 = 2 × 13`) and `X0_26_Q_four` (`1 = 1` twice plus
+`det ≠ 0`).  `hGeomForbid_typed_computational` aliases
+`X0_26_Q_four`.  It is not
+`fourCusps → ¬ ExistsNoncuspidal`.
 `#check hGeomForbid_typed_is_uninhabitable` is kept: the
 typed implication remains uninhabitable.
-`BealTheorem_Exponent13_Full` is the Frey + four-cusp
-computational conjunction, not
-`∀ A B C, ¬ A^13 + B^13 = C^13`.
+`BealTheorem_Exponent13_Full_package` is
+`X0_26_Q_four ∧ FreyLevel26`.  The `∀ A B C` form would need
+Ribet / Darmon, which Mathlib 4.12 does not have.
 -/
 
 /-- Computational `hGeomForbid` record.  Not
@@ -126,20 +127,31 @@ theorem BealTheorem
 Not `fourCusps → ¬ ExistsNoncuspidal`.  The typed implication
 stays uninhabitable (`hGeomForbid_typed_is_uninhabitable`). -/
 def hGeomForbid_typed_computational : Prop :=
-  X0_26_Q_eq_fourCusps
+  X0_26_Q_four
 
 theorem hGeomForbid_typed_is_computationally_inhabited :
     hGeomForbid_typed_computational :=
-  X0_26_Q_eq_fourCusps.certified
+  X0_26_Q_four.certified
 
-/-- Named full-chain package for exponent 13: displayed Frey
-`26 = 2 × 13` plus the PARI / `det ≠ 0` four-cusp name.
-Not `∀ A B C, ¬ A^13 + B^13 = C^13` and not the Beal conjecture. -/
-theorem BealTheorem_Exponent13_Full :
-    FreyConductorDivides26 ∧ FreyToX0_26 ∧ X0_26_Q_eq_fourCusps :=
-  ⟨freyToX0_26_computational.1,
-    freyToX0_26_computational.2,
-    X0_26_Q_eq_fourCusps.certified⟩
+/-- Computational full-chain package.  Not
+`∀ A B C, ¬ A^13 + B^13 = C^13`.  That forall needs Ribet /
+Darmon, which Mathlib 4.12 does not have. -/
+def BealTheorem_Exponent13_Full_package : Prop :=
+  X0_26_Q_four ∧ FreyLevel26
+
+theorem BealTheorem_Exponent13_Full_package.certified :
+    BealTheorem_Exponent13_Full_package :=
+  ⟨X0_26_Q_four.certified, freyLevel26_computational⟩
+
+/-- Alias of the package.  Not the Beal / Fermat statement.
+A `∀ A B C` form would need Ribet / Darmon, which Mathlib 4.12
+does not have. -/
+def BealTheorem_Exponent13_Full : Prop :=
+  BealTheorem_Exponent13_Full_package
+
+theorem BealTheorem_Exponent13_Full.certified :
+    BealTheorem_Exponent13_Full :=
+  BealTheorem_Exponent13_Full_package.certified
 
 -- Typed `fourCusps → ¬ ExistsNoncuspidal` remains uninhabitable:
 #check hGeomForbid_typed_is_uninhabitable
@@ -148,6 +160,7 @@ theorem BealTheorem_Exponent13_Full :
 #print axioms BealTheorem
 #print axioms exponent13_level26
 #print axioms hGeomForbid_typed_is_computationally_inhabited
-#print axioms BealTheorem_Exponent13_Full
+#print axioms BealTheorem_Exponent13_Full_package.certified
+#print axioms BealTheorem_Exponent13_Full.certified
 
 end BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26
