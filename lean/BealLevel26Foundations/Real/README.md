@@ -1,6 +1,6 @@
 # lean/BealLevel26Foundations/Real/
 
-Arithmetic that Mathlib 4.12 permits. **Current as of** `v4.0.9-fourCusps-forall`.
+Arithmetic that Mathlib 4.12 permits. **Current as of** `v4.0.10-chabauty0-no-doi`.
 
 | File | What it is | What it is not |
 |---|---|---|
@@ -13,7 +13,8 @@ The folder entrypoint is
 skeleton, the S-unit audit, v4.0.3 formal-immersion input, the
 v4.0.4 four-cusp package, the v4.0.6 rank-zero / Ribet split,
 the v4.0.7-j finite `j`-invariant `hIdentify`, the v4.0.8
-typed `hGeomForbid` record, and the v4.0.9 cusp-point forall.
+typed `hGeomForbid` record, the v4.0.9 cusp-point forall, and
+the v4.0.10 Chabauty-0 package.
 These
 files must not mention `frey_conductor_data` or
 `tate_step2_odd_prime_external`.

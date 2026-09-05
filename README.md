@@ -15,10 +15,12 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
-[`v4.0.9-fourCusps-forall`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.9-fourCusps-forall)
-(commit `2281aad`, version DOI
+[`v4.0.10-chabauty0-no-doi`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.10-chabauty0-no-doi)
+(git tag only; no version DOI; prior published
+[`v4.0.9-fourCusps-forall`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.9-fourCusps-forall),
+commit `2281aad`, version DOI
 [10.5281/zenodo.22322627](https://doi.org/10.5281/zenodo.22322627);
-prior published
+prior
 [`v4.0.8-geom-forbid`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.8-geom-forbid),
 commit `916f696`, version DOI
 [10.5281/zenodo.22314435](https://doi.org/10.5281/zenodo.22314435);
@@ -45,7 +47,10 @@ Frey `j` is shown *not* to be a cusp label, so it inhabits
 retypes four cusps as `fourCuspsForallCuspPoints` over those
 cusp-labeled points. That forall is true and does not quantify
 over `ellipticJ`. The same-type forall `fourCuspsForallAllKinds`
-is false. Typed `hGeomForbid` remains uninhabitable. The remaining
+is false. Typed `hGeomForbid` remains uninhabitable. v4.0.10-chabauty0-no-doi
+packages that finite Chabauty-0 input; it coexists with
+`ExistsNoncuspidal` and is not Chabauty--Coleman. Typed `hIdentify`
+stays the elliptic-`j` packing. The remaining
 geometric gate is a Mathlib noncuspidal point of `X₀(26)`.
 
 Folder READMEs under `docs/`, `lean/`, `sagemath/`, and `scripts/` describe
@@ -150,6 +155,7 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.0.7-hIdentify-j finite `j`-invariant encoding | `v4.0.7-hIdentify-j` / `ade01a2` | [10.5281/zenodo.22314212](https://doi.org/10.5281/zenodo.22314212) | Redefines `ExistsNoncuspidal` as an elliptic `j`-ratio `(c₄³ : Δ)`, not `26 ∉ [1,2,13,26]`. `HIdentify26.of_qExpansion` inhabits typed `hIdentify` from q-expansion `26a × 26b`, `MwrankCertificateSoundness_26`, and the four-cusp package. `NoFreyPoint26` keeps the cusp list and does not Lean-negate the elliptic `j`. `hGeomForbid` remains. No `theorem BealTheorem`. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `0a93c94fc19aa64ca8a57a76b1106a8991be4b29ba7ac1bc33839b81ba590e45`. |
 | v4.0.8-geom-forbid typed `hGeomForbid` uninhabitable | `v4.0.8-geom-forbid` / `916f696` | [10.5281/zenodo.22314435](https://doi.org/10.5281/zenodo.22314435) | `Mazur/HGeomForbidActual_26` proves `hGeomForbid_typed_is_uninhabitable`: `fourCusps → ¬ ExistsNoncuspidal` is `True → ¬True` because constructor inequality `ellipticJ ≠ cuspDivisor` inhabits `ExistsNoncuspidal`. Finite package from formal immersion, rank-zero product, and four-cusp list. Does not inhabit that implication and does not add `theorem BealTheorem`. Remaining geometric gate: Mathlib `X₀(26)` noncuspidal point. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `0de1f3a446b09ba9602962116406a1afdab6ebf233cc8163f1b7c27a29c54931`. |
 | v4.0.9-fourCusps-forall cusp-point forall | `v4.0.9-fourCusps-forall` / `2281aad` | [10.5281/zenodo.22322627](https://doi.org/10.5281/zenodo.22322627) | Retypes four cusps as `fourCuspsForallCuspPoints` over `DisplayedX026CuspPoint`. That forall is true and does not quantify over `ellipticJ`. `fourCuspsForallAllKinds_is_false` records the same-type forall is false. Typed `hGeomForbid` remains `True → ¬True`. Does not inhabit that implication and does not add `theorem BealTheorem`. Remaining geometric gate: Mathlib `X₀(26)` noncuspidal point. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `c58219380fd559d49e2d813a7c642e1708221c35d2ea9f828bf852afa07fa056`. |
+| v4.0.10-chabauty0-no-doi Chabauty-0 finite package | `v4.0.10-chabauty0-no-doi` | none (git tag only) | `Mazur/Chabauty0Actual_26` packages rank-zero product, `M₃` input, `fourCuspsForallCuspPoints`, `¬ fourCuspsForallAllKinds`, and eight S-units. Not Chabauty--Coleman. Typed `hIdentify` stays the elliptic-`j` packing (not `True`/`trivial`). Audits `HGeomForbidActual_26` and `X026RationalPointsActual_26` unchanged. Typed `hGeomForbid` remains uninhabitable. No `theorem BealTheorem`. No version DOI. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
@@ -247,8 +253,10 @@ v4.0.8-geom-forbid records that fact as
 `hGeomForbid_typed_is_uninhabitable`. v4.0.9-fourCusps-forall
 retypes four cusps as `fourCuspsForallCuspPoints` over
 cusp-labeled points. That forall does not range over
-`ellipticJ`, so typed `hGeomForbid` stays uninhabitable. There
-is no unconditional `BealTheorem`.
+`ellipticJ`, so typed `hGeomForbid` stays uninhabitable.
+v4.0.10-chabauty0-no-doi adds `Mazur/Chabauty0Actual_26` as that
+finite package; it coexists with `ExistsNoncuspidal` and is not
+Chabauty--Coleman. There is no unconditional `BealTheorem`.
 
 The detailed milestones, acceptance gates, and dependency order are in
 [`PLAN.md`](PLAN.md).
@@ -269,7 +277,7 @@ The detailed milestones, acceptance gates, and dependency order are in
 │   └── BealLevel26Foundations/  # computable, scaffold, and real modules
 │       ├── Frey/
 │       ├── Jacobian/            # v4.0.1–v4.0.3 skeleton, Selmer audit, immersion input, v4.0.6 rank-zero product
-│       ├── Mazur/               # genus arithmetic, endgame scaffold, v4.0.4 four-cusp package, v4.0.8 typed hGeomForbid, v4.0.9 cusp-point forall
+│       ├── Mazur/               # genus arithmetic, endgame scaffold, v4.0.4 four-cusp package, v4.0.8 typed hGeomForbid, v4.0.9 cusp-point forall, v4.0.10 Chabauty0 package
 │       ├── Real/
 │       └── Ribet/               # typed lowering; v4.0.6 split; v4.0.7-j finite j-invariant hIdentify
 ├── sagemath/                    # v1.4.0 ledger + SageMath 10.7 certs

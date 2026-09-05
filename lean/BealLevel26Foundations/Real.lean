@@ -15,6 +15,7 @@ import BealLevel26Foundations.Ribet.RibetLoweringActual_26
 import BealLevel26Foundations.Ribet.NoFreyPointActual_26
 import BealLevel26Foundations.Ribet.HIdentifyActual_26
 import BealLevel26Foundations.Mazur.HGeomForbidActual_26
+import BealLevel26Foundations.Mazur.Chabauty0Actual_26
 
 namespace BealLevel26Foundations.Real
 
@@ -47,7 +48,9 @@ uninhabitable: constructor inequality does not negate an
 elliptic `j`. v4.0.9 retypes four cusps as
 `fourCuspsForallCuspPoints` over cusp-labeled points; that
 forall does not range over `ellipticJ`, so typed `hGeomForbid`
-stays uninhabitable. That is not genuine `Sel₂`, not a Mathlib
+stays uninhabitable. v4.0.10 packages that finite Chabauty-0
+input; it coexists with `ExistsNoncuspidal` and is not
+Chabauty--Coleman. That is not genuine `Sel₂`, not a Mathlib
 `X₀(26)` point, and not an unconditional `BealTheorem`.
 -/
 

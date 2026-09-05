@@ -1,6 +1,6 @@
 # scripts/
 
-Deterministic repository checks. **Current as of** `v4.0.9-fourCusps-forall`.
+Deterministic repository checks. **Current as of** `v4.0.10-chabauty0-no-doi`.
 
 | Script | What it checks |
 |---|---|

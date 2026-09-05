@@ -1,7 +1,7 @@
 # sagemath/
 
 Pinned coefficient ledger and SageMath 10.7 certificate generators.
-**Current as of** `v4.0.9-fourCusps-forall`.
+**Current as of** `v4.0.10-chabauty0-no-doi`.
 
 The ledger version is **v1.4.0** and has been unchanged since tag
 `v1.4.0`:
@@ -19,8 +19,10 @@ The ledger version is **v1.4.0** and has been unchanged since tag
 | [`certs/`](certs/README.md) | The two archived JSON certificates |
 
 Later Foundations tags (v2.0.0-frey through `v4.0.6-rank-zero-fixed`,
-`v4.0.7-hIdentify`, `v4.0.7-hIdentify-j`, `v4.0.8-geom-forbid`, and
-`v4.0.9-fourCusps-forall`) do **not**
+`v4.0.7-hIdentify`, `v4.0.7-hIdentify-j`, `v4.0.8-geom-forbid`,
+`v4.0.9-fourCusps-forall`, and `v4.0.10-chabauty0-no-doi`) do **not**
 add a new cert and do **not** change the ledger SHA. The
 `foundations_doi_manifest.json` top-level `version` field stays
-`v1.4.0`; only `latest_foundations_release` moves.
+`v1.4.0`. `latest_foundations_release` stays at the last
+DataCite-findable version (`v4.0.9-fourCusps-forall`);
+`v4.0.10-chabauty0-no-doi` is a git tag only.

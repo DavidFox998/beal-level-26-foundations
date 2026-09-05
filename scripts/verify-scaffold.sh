@@ -55,6 +55,8 @@ test -f docs/releases/v4.0.7-hIdentify.md
 test -f docs/releases/v4.0.7-hIdentify-j.md
 test -f docs/releases/v4.0.8-geom-forbid.md
 test -f docs/releases/v4.0.9-fourCusps-forall.md
+test -f docs/releases/v4.0.10-chabauty0-no-doi.md
+test -f lean/BealLevel26Foundations/Mazur/Chabauty0Actual_26.lean
 test -f lean/BealLevel26Foundations/Mazur/HGeomForbidActual_26.lean
 test -f lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
 test -f lean/Beal/Foundations/EndgameScaffold.lean
@@ -96,6 +98,7 @@ grep -q "v4.0.7-hIdentify" README.md
 grep -q "v4.0.7-hIdentify-j" README.md
 grep -q "v4.0.8-geom-forbid" README.md
 grep -q "v4.0.9-fourCusps-forall" README.md
+grep -q "v4.0.10-chabauty0-no-doi" README.md
 grep -q "v4.0.3-formal-immersion" docs/README.md
 grep -q "v4.0.4-x026-rational-points" docs/README.md
 grep -q "v4.0.5-nofrey-point" docs/README.md
@@ -104,6 +107,7 @@ grep -q "v4.0.7-hIdentify" docs/README.md
 grep -q "v4.0.7-hIdentify-j" docs/README.md
 grep -q "v4.0.8-geom-forbid" docs/README.md
 grep -q "v4.0.9-fourCusps-forall" docs/README.md
+grep -q "v4.0.10-chabauty0-no-doi" docs/README.md
 grep -q "v4.0.3-formal-immersion" docs/releases/README.md
 grep -q "v4.0.4-x026-rational-points" docs/releases/README.md
 grep -q "v4.0.5-nofrey-point" docs/releases/README.md
@@ -112,6 +116,7 @@ grep -q "v4.0.7-hIdentify" docs/releases/README.md
 grep -q "v4.0.7-hIdentify-j" docs/releases/README.md
 grep -q "v4.0.8-geom-forbid" docs/releases/README.md
 grep -q "v4.0.9-fourCusps-forall" docs/releases/README.md
+grep -q "v4.0.10-chabauty0-no-doi" docs/releases/README.md
 grep -q "v4.0.3-formal-immersion" lean/README.md
 grep -q "v4.0.4-x026-rational-points" lean/README.md
 grep -q "v4.0.5-nofrey-point" lean/README.md
@@ -120,29 +125,34 @@ grep -q "v4.0.7-hIdentify" lean/README.md
 grep -q "v4.0.7-hIdentify-j" lean/README.md
 grep -q "v4.0.8-geom-forbid" lean/README.md
 grep -q "v4.0.9-fourCusps-forall" lean/README.md
+grep -q "v4.0.10-chabauty0-no-doi" lean/README.md
 grep -q "v4.0.3-formal-immersion" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.7-hIdentify-j" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.8-geom-forbid" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.9-fourCusps-forall" lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "v4.0.10-chabauty0-no-doi" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.4-x026-rational-points" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.7-hIdentify-j" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.8-geom-forbid" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.9-fourCusps-forall" lean/BealLevel26Foundations/Mazur/README.md
+grep -q "v4.0.10-chabauty0-no-doi" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.5-nofrey-point" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.7-hIdentify-j" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.8-geom-forbid" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.9-fourCusps-forall" lean/BealLevel26Foundations/Ribet/README.md
+grep -q "v4.0.10-chabauty0-no-doi" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" sagemath/README.md
 grep -q "v4.0.7-hIdentify" sagemath/README.md
 grep -q "v4.0.7-hIdentify-j" sagemath/README.md
 grep -q "v4.0.8-geom-forbid" sagemath/README.md
 grep -q "v4.0.9-fourCusps-forall" sagemath/README.md
+grep -q "v4.0.10-chabauty0-no-doi" sagemath/README.md
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md
 grep -qi "genuine cohomological 2-Selmer" \
@@ -569,6 +579,40 @@ if grep -nE 'selmerGroup|IsDedekindDomain' \
 fi
 if grep -nE '^[[:space:]]*theorem BealTheorem[[:space:]]' \
     lean/BealLevel26Foundations/Mazur/HGeomForbidActual_26.lean; then
+  echo "FAIL: unconditional BealTheorem is not allowed"
+  exit 1
+fi
+test -f lean/BealLevel26Foundations/Mazur/Chabauty0Actual_26.lean
+grep -q "def chabauty0Package" \
+  lean/BealLevel26Foundations/Mazur/Chabauty0Actual_26.lean
+grep -q "theorem chabauty0Package.certified" \
+  lean/BealLevel26Foundations/Mazur/Chabauty0Actual_26.lean
+grep -q "theorem remainingGeometricForbid.certified" \
+  lean/BealLevel26Foundations/Mazur/Chabauty0Actual_26.lean
+grep -q "fourCuspsForallCuspPoints" \
+  lean/BealLevel26Foundations/Mazur/Chabauty0Actual_26.lean
+grep -q "fourCuspsForallAllKinds_is_false" \
+  lean/BealLevel26Foundations/Mazur/Chabauty0Actual_26.lean
+grep -q "sUnitAudit26_is_not_genuine_2Selmer" \
+  lean/BealLevel26Foundations/Mazur/Chabauty0Actual_26.lean
+grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
+  lean/BealLevel26Foundations/Mazur/Chabauty0Actual_26.lean
+grep -q "Not Chabauty" \
+  lean/BealLevel26Foundations/Mazur/Chabauty0Actual_26.lean
+if grep -nE \
+    '^[[:space:]]*(def|theorem)[[:space:]]+hGeomForbid[[:space:]]' \
+    lean/BealLevel26Foundations/Mazur/Chabauty0Actual_26.lean; then
+  echo "FAIL: must not inhabit typed hGeomForbid fourCusps → ¬ ExistsNoncuspidal"
+  exit 1
+fi
+if grep -nE 'rankZero[[:space:]]*:=[[:space:]]*True|⟨[[:space:]]*True[[:space:]]*,[[:space:]]*trivial[[:space:]]*⟩|FreyModLRep.*:=[[:space:]]*True|RibetLowering_26.*:=[[:space:]]*True' \
+    lean/BealLevel26Foundations/Mazur/Chabauty0Actual_26.lean \
+    lean/BealLevel26Foundations/Ribet/HIdentifyActual_26.lean; then
+  echo "FAIL: must not inhabit representation or rank-zero data as True/trivial"
+  exit 1
+fi
+if grep -nE '^[[:space:]]*theorem BealTheorem[[:space:]]' \
+    lean/BealLevel26Foundations/Mazur/Chabauty0Actual_26.lean; then
   echo "FAIL: unconditional BealTheorem is not allowed"
   exit 1
 fi

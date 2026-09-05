@@ -183,7 +183,10 @@ identify the audit with `Sel₂(J₀(26)/ℚ)`, prove a
 scheme-theoretic formal immersion, inhabit
 `J0_26_Q_RankZero26` as `True`/`trivial`, prove a Mathlib Ribet
 theorem, prove a Mathlib `X₀(26)(ℚ)` theorem, or claim an
-unconditional `BealTheorem`. The PLAN.md acceptance gates above
+unconditional `BealTheorem`. v4.0.10-chabauty0-no-doi adds
+`Mazur/Chabauty0Actual_26` as that finite package; it is not
+Chabauty--Coleman and does not inhabit typed `hGeomForbid`.
+The PLAN.md acceptance gates above
 remain open.
 
 **Dependency:** v1, v2, v3, and genuine scheme/Jacobian geometry.

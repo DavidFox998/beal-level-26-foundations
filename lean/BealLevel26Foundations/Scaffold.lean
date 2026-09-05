@@ -13,6 +13,7 @@ import BealLevel26Foundations.Ribet.RibetLoweringActual_26
 import BealLevel26Foundations.Ribet.NoFreyPointActual_26
 import BealLevel26Foundations.Ribet.HIdentifyActual_26
 import BealLevel26Foundations.Mazur.HGeomForbidActual_26
+import BealLevel26Foundations.Mazur.Chabauty0Actual_26
 
 namespace BealLevel26Foundations.Scaffold
 
@@ -26,15 +27,17 @@ between Ribet existence (`ExistsFreyWitness`) and the four-cusp
 list, the v4.0.6 product rank-zero package, and the v4.0.7-j
 finite `j`-invariant encoding of typed `hIdentify`, the
 v4.0.8 record that typed `hGeomForbid` is uninhabitable, and the
-v4.0.9 cusp-point forall `fourCuspsForallCuspPoints`. It is
+v4.0.9 cusp-point forall `fourCuspsForallCuspPoints`, and the
+v4.0.10 Chabauty-0 finite package. It is
 separate from the unconditional computable v1 entrypoint.
 Typed `hIdentify` packs a Frey `j` as an elliptic displayed
 point, not as `26 ∉ [1, 2, 13, 26]`. Constructor inequality
 `ellipticJ ≠ cuspDivisor` does not Lean-negate
 `ExistsNoncuspidal`. The inhabited forall ranges over
 cusp-labeled points, not over `ellipticJ`. Typed `hGeomForbid`
-remains uninhabitable. There is no unconditional `BealTheorem`
-here.
+remains uninhabitable. The Chabauty-0 package coexists with
+`ExistsNoncuspidal`; it is not Chabauty--Coleman. There is no
+unconditional `BealTheorem` here.
 -/
 
 def status : String :=

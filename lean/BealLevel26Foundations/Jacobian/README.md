@@ -1,8 +1,8 @@
 # lean/BealLevel26Foundations/Jacobian/
 
 Finite Jacobian *skeleton*, S-unit audit, and formal-immersion input.
-**Current as of** `v4.0.9-fourCusps-forall`
-(includes `v4.0.8-geom-forbid`, `v4.0.7-hIdentify-j`, `v4.0.7-hIdentify`, `v4.0.6-rank-zero-fixed`, `v4.0.5-nofrey-point`,
+**Current as of** `v4.0.10-chabauty0-no-doi`
+(includes `v4.0.9-fourCusps-forall`, `v4.0.8-geom-forbid`, `v4.0.7-hIdentify-j`, `v4.0.7-hIdentify`, `v4.0.6-rank-zero-fixed`, `v4.0.5-nofrey-point`,
 `v4.0.4-x026-rational-points`, `v4.0.3-formal-immersion`).
 
 Mathlib 4.12 has no modular-curve Jacobian, Picard scheme, Abel--Jacobi

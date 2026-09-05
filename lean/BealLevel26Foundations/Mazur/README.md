@@ -1,8 +1,8 @@
 # lean/BealLevel26Foundations/Mazur/
 
 Genus certificates, q-expansion cotangent calculations, and the v4.0.0
-endgame scaffold. **Current as of** `v4.0.9-fourCusps-forall`
-(includes `v4.0.8-geom-forbid`, `v4.0.7-hIdentify-j`, `v4.0.7-hIdentify`, `v4.0.6-rank-zero-fixed`, `v4.0.5-nofrey-point`,
+endgame scaffold. **Current as of** `v4.0.10-chabauty0-no-doi`
+(includes `v4.0.9-fourCusps-forall`, `v4.0.8-geom-forbid`, `v4.0.7-hIdentify-j`, `v4.0.7-hIdentify`, `v4.0.6-rank-zero-fixed`, `v4.0.5-nofrey-point`,
 `v4.0.4-x026-rational-points`).
 
 | File | What it is | What it is not |
@@ -14,6 +14,7 @@ endgame scaffold. **Current as of** `v4.0.9-fourCusps-forall`
 | `EndgameScaffold.lean` | Four typed premises plus `BealTheoremFromMazurChain26`; Frey `j` as `ellipticJ`; `fourCuspsForallCuspPoints` | Not an unconditional `BealTheorem` |
 | `X026RationalPointsActual_26.lean` | Displayed four cusps `[1,2,13,26]`; last conjunct `fourCuspsForallCuspPoints`; `X0_26_RationalPoints26.of_qExpansion` inhabits the Mazur premise | Not a Mathlib `X₀(26)(ℚ)` theorem |
 | `HGeomForbidActual_26.lean` | Constructor inequality `ellipticJ ≠ cuspDivisor`; cusp-point forall; `hGeomForbid_typed_is_uninhabitable` | Not `fourCusps → ¬ ExistsNoncuspidal`; not `BealTheorem` |
+| `Chabauty0Actual_26.lean` | Finite rank-zero + `M₃` + cusp-point forall + eight S-units | Not Chabauty--Coleman; not typed `hGeomForbid`; not `BealTheorem` |
 
 The four premises of the scaffold:
 
@@ -32,6 +33,8 @@ as uninhabitable
 constructor inequality inhabits `ExistsNoncuspidal` rather than
 negating it. v4.0.9 adds `fourCuspsForallCuspPoints` over
 cusp-labeled points; that forall does not range over `ellipticJ`.
+v4.0.10 adds [`Chabauty0Actual_26.lean`](Chabauty0Actual_26.lean)
+as that finite package; it coexists with `ExistsNoncuspidal`.
 There is no unconditional `BealTheorem`. Rank,
 scheme-theoretic immersion, a Mathlib `X₀(26)(ℚ)` theorem,
 Mathlib Ribet existence, and `R = T` are not discharged by

@@ -43,6 +43,15 @@ displayed point.  It does not construct a point of a Mathlib
 `X₀(26)`.  Four cusp labels still do not Lean-negate that elliptic
 kind (`hGeomForbid` remains the named remaining geometric gate).
 This module does not add `theorem BealTheorem`.
+
+v4.0.10 does **not** replace this packing by a vacuous residual
+representation, a vacuous Ribet existence proposition, or a
+`trivial` witness.  Mathlib 4.12 has no residual Galois
+representation, no genuine Ribet lowering theorem, and no
+`FreyWeierstrassModel` constructor of that shape.
+`ExistsNoncuspidalLevel26FreyPoint` remains a
+`NoncuspidalLevel26FreyPoint` (`source`, elliptic `j`,
+constructor inequality).
 -/
 
 /-- Pack a Frey `j`-ratio as a displayed elliptic point.  Constructor

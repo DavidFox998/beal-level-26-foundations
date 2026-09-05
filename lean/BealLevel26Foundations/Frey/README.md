@@ -1,7 +1,7 @@
 # lean/BealLevel26Foundations/Frey/
 
 Frey-conductor *data* and the v2 odd-prime valuation input. **Current
-as of** `v4.0.9-fourCusps-forall` / `v2.0.0-frey`.
+as of** `v4.0.10-chabauty0-no-doi` / `v2.0.0-frey`.
 
 | File | What it is | What it is not |
 |---|---|---|
