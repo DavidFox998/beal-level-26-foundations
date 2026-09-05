@@ -154,6 +154,7 @@ def formalImmersion_at_2_surjective_from_M3 : Prop :=
 /-- `input.det = 2` over `ZMod 3`; `2 ≠ 0` by `decide`. -/
 theorem formalImmersion_at_2_surjective_from_M3.certified :
     formalImmersion_at_2_surjective_from_M3 := by
+  unfold formalImmersion_at_2_surjective_from_M3
   rw [FormalImmersionAtTwo26.of_qExpansion.input_det]
   decide
 
