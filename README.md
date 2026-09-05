@@ -40,8 +40,9 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
-[`v4.19.0-iter-readme-typed-forall-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.19.0-iter-readme-typed-forall-locked)
+[`v4.20.0-iter-package-none-docs-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.20.0-iter-package-none-docs-locked)
 (prior
+[`v4.19.0-iter-readme-typed-forall-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.19.0-iter-readme-typed-forall-locked),
 [`v4.18.0-iter-typed-forall-package-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.18.0-iter-typed-forall-package-locked),
 [`v4.17.0-iter-forall-bridge-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.17.0-iter-forall-bridge-locked),
 [`v4.16.0-iter-readme-about-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.16.0-iter-readme-about-locked),
@@ -121,6 +122,11 @@ adds the `M₃` residue-disk *input* and the finite sieve
 conjunction; those are not a scheme `X₀(26)(ℚ)` theorem. Typed `hIdentify`
 stays the elliptic-`j` packing. The remaining
 geometric gate is a Mathlib noncuspidal point of `X₀(26)`.
+
+### v4.20.0 Iter package none docs locked
+
+`docs/BealExponent13_Iter_Package.md` locks the axiom-free
+Typed ∧ Forall table. Still not `∀ ℕ`. No `False.elim`.
 
 ### v4.19.0 Iter readme typed forall locked
 
@@ -438,6 +444,7 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.17.0-iter-forall-bridge-locked Forall package lock | `v4.17.0-iter-forall-bridge-locked` | pending DataCite | `beal_forall_from_ribet` / `certified_from_forall` none. Not `∀ ℕ`. Ledger still v1.4.0. |
 | v4.18.0-iter-typed-forall-package-locked Typed ∧ Typed | `v4.18.0-iter-typed-forall-package-locked` | pending DataCite | `typed_and_forall` / `certified_typed_and_forall` none. Not `∀ ℕ`. Ledger still v1.4.0. |
 | v4.19.0-iter-readme-typed-forall-locked README table | `v4.19.0-iter-readme-typed-forall-locked` | pending DataCite | README / About lock the v4.18.0 Typed ∧ Forall none table. Not `∀ ℕ`. Ledger still v1.4.0. |
+| v4.20.0-iter-package-none-docs-locked package docs | `v4.20.0-iter-package-none-docs-locked` | pending DataCite | `docs/BealExponent13_Iter_Package.md` locks none table. Not `∀ ℕ`. Ledger still v1.4.0. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use

@@ -1,8 +1,9 @@
 # docs/releases/
 
 Immutable notes for each published Foundations tag. **Current latest
-note:** [`v4.19.0-iter-readme-typed-forall-locked.md`](v4.19.0-iter-readme-typed-forall-locked.md)
-(prior [`v4.18.0-iter-typed-forall-package-locked.md`](v4.18.0-iter-typed-forall-package-locked.md),
+note:** [`v4.20.0-iter-package-none-docs-locked.md`](v4.20.0-iter-package-none-docs-locked.md)
+(prior [`v4.19.0-iter-readme-typed-forall-locked.md`](v4.19.0-iter-readme-typed-forall-locked.md),
+[`v4.18.0-iter-typed-forall-package-locked.md`](v4.18.0-iter-typed-forall-package-locked.md),
 [`v4.17.0-iter-forall-bridge-locked.md`](v4.17.0-iter-forall-bridge-locked.md),
 [`v4.15.0-iter-typed-forall-bridge.md`](v4.15.0-iter-typed-forall-bridge.md),
 [`v4.14.0-iter-citation-contradiction-locked.md`](v4.14.0-iter-citation-contradiction-locked.md),
@@ -81,6 +82,7 @@ not an unconditional `BealTheorem`.
 | [v4.17.0-iter-forall-bridge-locked.md](v4.17.0-iter-forall-bridge-locked.md) | `v4.17.0-iter-forall-bridge-locked` | pending DataCite |
 | [v4.18.0-iter-typed-forall-package-locked.md](v4.18.0-iter-typed-forall-package-locked.md) | `v4.18.0-iter-typed-forall-package-locked` | pending DataCite |
 | [v4.19.0-iter-readme-typed-forall-locked.md](v4.19.0-iter-readme-typed-forall-locked.md) | `v4.19.0-iter-readme-typed-forall-locked` | pending DataCite |
+| [v4.20.0-iter-package-none-docs-locked.md](v4.20.0-iter-package-none-docs-locked.md) | `v4.20.0-iter-package-none-docs-locked` | pending DataCite |
 
 Concept DOI for the evolving project:
 [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).

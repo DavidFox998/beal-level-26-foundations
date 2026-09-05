@@ -82,6 +82,7 @@ test -f docs/releases/v4.13.1-iter-unstick.md
 test -f docs/images/2-descent-level-26-26a1-26b1.webp
 test -f lean/BealLevel26Foundations/Mazur/BealExponent13_Contradiction.lean
 test -f lean/BealLevel26Foundations/Final/BealExponent13_Iter_Package.lean
+test -f docs/BealExponent13_Iter_Package.md
 test -f certs/pari_x0_26_four_cusps.json
 test -f docs/NEXT_STEPS.md
 test -f lean/BealLevel26Foundations/Chain/X0_26_Point.lean
@@ -1220,6 +1221,7 @@ grep -q "typed_and_forall" \
   lean/BealLevel26Foundations/Final/BealExponent13_Iter_Package.lean
 grep -q "certified_typed_and_forall" \
   lean/BealLevel26Foundations/Final/BealExponent13_Iter_Package.lean
+grep -q "typed_and_forall" docs/BealExponent13_Iter_Package.md
 if grep -nE 'BealExponent13_Iter[[:space:]]*:[[:space:]]*∀' \
     lean/BealLevel26Foundations/Final/BealExponent13_Final.lean \
     lean/BealLevel26Foundations/Final/BealExponent13_Forall.lean; then

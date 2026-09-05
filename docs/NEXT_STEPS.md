@@ -38,6 +38,11 @@ and `certs/pari_x0_26_four_cusps.json` keys `26a1` /
 `-1664`, `|Sel₂|=1` twice, `det M₃=2`, SHA-256
 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 
+## v4.20.0 Iter package none docs locked
+
+`docs/BealExponent13_Iter_Package.md` locks the axiom-free
+Typed ∧ Forall table. Still not `∀ A B C : ℕ`.
+
 ## v4.19.0 Iter readme typed forall locked
 
 README / About lock the v4.18.0 Typed ∧ Forall none table.

@@ -22,7 +22,7 @@ PARI 2-descent certificates for the Jacobian factors of \(J_0(26)\). Certified W
 Versioned release notes for
 [beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations).
 
-**Current as of** tag `v4.7.0-iter-typed-no-axioms-closing` / `v4.8.0-iter-modularity-scaffold` / `v4.9.0-iter-no-True-X0` / `v4.10.0-iter-pari-locked` / `v4.12.0-iter-verify-plus` / `v4.13.0-iter-contradiction-start` / `v4.13.1-iter-unstick` / `v4.14.0-iter-citation-contradiction-locked` / `v4.15.0-iter-typed-forall-bridge` / `v4.16.0-iter-readme-about-locked` / `v4.17.0-iter-forall-bridge-locked` / `v4.18.0-iter-typed-forall-package-locked` / `v4.19.0-iter-readme-typed-forall-locked` (prior
+**Current as of** tag `v4.7.0-iter-typed-no-axioms-closing` / `v4.8.0-iter-modularity-scaffold` / `v4.9.0-iter-no-True-X0` / `v4.10.0-iter-pari-locked` / `v4.12.0-iter-verify-plus` / `v4.13.0-iter-contradiction-start` / `v4.13.1-iter-unstick` / `v4.14.0-iter-citation-contradiction-locked` / `v4.15.0-iter-typed-forall-bridge` / `v4.16.0-iter-readme-about-locked` / `v4.17.0-iter-forall-bridge-locked` / `v4.18.0-iter-typed-forall-package-locked` / `v4.19.0-iter-readme-typed-forall-locked` / `v4.20.0-iter-package-none-docs-locked` (prior
 `v4.6.0-readmes-about`,
 `v4.5.0-forall-real`,
 `v4.4.0-typed-refactor-true-close`,
@@ -183,3 +183,5 @@ v4.17.0-iter-forall-bridge-locked: `beal_forall_from_ribet` / `certified_from_fo
 v4.18.0-iter-typed-forall-package-locked: `typed_and_forall` / `certified_typed_and_forall` none via `hGeomForbid_typed_true`. `hGeomForbid_typed_true` depends on no axioms (`hNotIn hInList`). Not `∀ ℕ` and no `False.elim`.
 
 v4.19.0-iter-readme-typed-forall-locked: README theorem table locks Typed ∧ Forall none. `hGeomForbid_typed_true` depends on no axioms (`hNotIn hInList`). Not `∀ ℕ` and no `False.elim`.
+
+v4.20.0-iter-package-none-docs-locked: `docs/BealExponent13_Iter_Package.md` locks `typed_and_forall` none. `hGeomForbid_typed_true` depends on no axioms (`hNotIn hInList`). Not `∀ ℕ` and no `False.elim`.
