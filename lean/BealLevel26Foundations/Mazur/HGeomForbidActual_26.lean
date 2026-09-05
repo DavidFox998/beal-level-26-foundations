@@ -168,12 +168,14 @@ theorem hGeomForbidFinitePackage.certified :
 
 def remainingGeometricForbid : Prop :=
   hGeomForbidFinitePackage ∧
-    sUnitAudit26_is_not_genuine_2Selmer
+    sUnitAudit26.card = 8 ∧
+    sUnitAudit26 ≠ ({⟨0, by decide⟩} : Finset SUnitIndex)
 
 theorem remainingGeometricForbid.certified :
     remainingGeometricForbid :=
   ⟨hGeomForbidFinitePackage.certified,
-    sUnitAudit26_is_not_genuine_2Selmer⟩
+    sUnitAudit26_retains_all_eight,
+    sUnitAudit26_not_singleton⟩
 
 #print axioms ellipticJ_ne_four_cusp_labels
 #print axioms HGeomForbid26.of_qExpansion_replaces_premise
