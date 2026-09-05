@@ -1,4 +1,5 @@
 import BealLevel26Foundations.FiniteEvidence
+import BealLevel26Foundations.Jacobian.J0_26_DecompActual
 import BealLevel26Foundations.Jacobian.J0_26_Q_RankZeroActual_26
 import BealLevel26Foundations.Jacobian.TwoSelmer_vs_SUnits_26
 import BealLevel26Foundations.Mazur.EndgameScaffold
@@ -10,6 +11,7 @@ import Mathlib.Tactic
 namespace BealLevel26Foundations.Ribet.HIdentifyActual26
 
 open BealLevel26Foundations.FiniteEvidence
+open BealLevel26Foundations.Jacobian.J0_26_DecompActual
 open BealLevel26Foundations.Jacobian.J0_26_Q_RankZeroActual26
 open BealLevel26Foundations.Jacobian.TwoSelmer_vs_SUnits_26
 open BealLevel26Foundations.Mazur.EndgameScaffold
