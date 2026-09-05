@@ -26,4 +26,5 @@ add a new cert and do **not** change the ledger SHA. The
 `foundations_doi_manifest.json` top-level `version` field stays
 `v1.4.0`. `latest_foundations_release` stays at the last
 DataCite-findable version (`v4.0.9-fourCusps-forall`);
-`v4.0.10-chabauty0-no-doi` is a git tag only.
+`v4.0.10-chabauty0-no-doi` and `v4.0.11-residue-disks-no-doi` are git
+tags only.
