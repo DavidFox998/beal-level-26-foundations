@@ -879,7 +879,7 @@ grep -q "Not a Selmer" \
   lean/BealLevel26Foundations/Descent/Selmer_26.lean
 grep -q "Not a Mordell--Weil theorem" \
   lean/BealLevel26Foundations/Descent/Selmer_26.lean
-grep -q "Not Sha[2] triviality" \
+grep -qF "Not Sha[2] triviality" \
   lean/BealLevel26Foundations/Descent/Selmer_26.lean
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   lean/BealLevel26Foundations/Descent/Selmer_26.lean
