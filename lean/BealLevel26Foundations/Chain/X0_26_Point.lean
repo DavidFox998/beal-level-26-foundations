@@ -17,8 +17,10 @@ theorem and not a Chabauty identification: the carrier is
 `X0_26_Point_Raw`, not a modular-curve point.
 
 -- SECURED BY certs/pari_x0_26_four_cusps.json +
-verify_descent_26.py checking `|Sel2|=1` det2 SHA
-`d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+-- scripts/verify_descent_26.py -- fourCusps [1,2,13,26]
+-- Sel2=1 det2 SHA
+-- d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260
+-- illustration: docs/images/2-descent-level-26-26a1-26b1.webp
 
 `DisplayedX026CuspPoint` carries `P.mem` by `decide`.
 `ExistsNoncuspidal_26` is a displayed cusp-labeled point
@@ -45,7 +47,9 @@ def fourCuspsList : List Nat :=
 
 /-- Matches `fourCusps` in `certs/pari_x0_26_four_cusps.json`.
 -- SECURED BY certs/pari_x0_26_four_cusps.json +
-verify_descent_26.py checking `|Sel2|=1` det2 SHA -/
+-- scripts/verify_descent_26.py -- fourCusps [1,2,13,26]
+-- Sel2=1 det2 SHA +
+-- docs/images/2-descent-level-26-26a1-26b1.webp -/
 def x0_26_four_cusps_cert : List Nat :=
   [1, 2, 13, 26]
 

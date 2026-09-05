@@ -1011,19 +1011,24 @@ grep -q "theorem X0_26_Q_four_cusps" \
 echo "----- certs/pari_x0_26_four_cusps.json -----"
 cat certs/pari_x0_26_four_cusps.json
 echo "----- end certs/pari_x0_26_four_cusps.json -----"
+cat certs/pari_x0_26_four_cusps.json | grep -q "d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260"
 python3 - <<'PY'
 import json
 from pathlib import Path
 j = json.loads(Path("certs/pari_x0_26_four_cusps.json").read_text())
 sha = "d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260"
-if j.get("SHA_cert") != sha:
-    raise SystemExit(f"FAIL: SHA_cert {j.get('SHA_cert')!r} != {sha}")
+if j.get("SHA") != sha:
+    raise SystemExit(f"FAIL: SHA {j.get('SHA')!r} != {sha}")
 if j.get("fourCusps") != [1, 2, 13, 26]:
     raise SystemExit(f"FAIL: fourCusps {j.get('fourCusps')!r} != [1, 2, 13, 26]")
 if j.get("M3_det") != 2:
     raise SystemExit(f"FAIL: M3_det {j.get('M3_det')!r} != 2")
 if j.get("frey_level") != "2*13=26":
     raise SystemExit(f"FAIL: frey_level {j.get('frey_level')!r}")
+if j.get("26a1", {}).get("ainv") != [1, 0, 1, -5, -8] or j.get("26a1", {}).get("disc") != -17576:
+    raise SystemExit(f"FAIL: 26a1 {j.get('26a1')!r}")
+if j.get("26b1", {}).get("ainv") != [1, -1, 1, -3, 3] or j.get("26b1", {}).get("disc") != -1664:
+    raise SystemExit(f"FAIL: 26b1 {j.get('26b1')!r}")
 print("verified pari_x0_26_four_cusps.json SHA + fourCuspsList")
 PY
 grep -q "d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260" \
