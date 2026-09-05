@@ -98,8 +98,8 @@ theorem J0_26_Q_RankZero26.of_qExpansion_is_product :
       productRankZeroFromCertifiedFactors :=
   rfl
 
-/-- Linking comment only: Selmer names stay `3 = 3` / `7 = 7` and
-do not replace `rankZero`. -/
+-- Linking comment only: Selmer names stay `3 = 3` / `7 = 7` and
+-- do not replace `rankZero`.
 #check RankZero_26a1_from_Selmer
 #check RankZero_26b1_from_Selmer
 
