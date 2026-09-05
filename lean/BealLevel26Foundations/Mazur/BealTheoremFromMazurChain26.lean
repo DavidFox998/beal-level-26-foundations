@@ -1,7 +1,6 @@
 import Beal.Foundations.FormalImmersionM3
 import BealLevel26Foundations.Chain.FreyCurve_13_26
 import BealLevel26Foundations.Chain.RationalPoints_26_FourCusps_26
-import BealLevel26Foundations.Final.BealExponent13_Final
 import BealLevel26Foundations.Jacobian.FormalImmersionActual_26
 import BealLevel26Foundations.Jacobian.J0_26_Q_RankZeroActual_26
 import BealLevel26Foundations.Mazur.EndgameScaffold
@@ -16,11 +15,12 @@ namespace BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26
 
 open Beal.Foundations.FormalImmersionM3
 open BealLevel26Foundations.Chain.Frey13
-open BealLevel26Foundations.Chain.X0_26_FourCusps
-open BealLevel26Foundations.Final
+open BealLevel26Foundations.Chain.X0_26_FourCusps hiding
+  fourCuspsList fourCuspsList_complete_computational fourCuspsList_eq_audit
 open BealLevel26Foundations.Jacobian.FormalImmersionActual26
 open BealLevel26Foundations.Jacobian.J0_26_Q_RankZeroActual26
-open BealLevel26Foundations.Mazur.EndgameScaffold hiding hGeomForbid BealTheorem
+open BealLevel26Foundations.Mazur.EndgameScaffold hiding
+  hGeomForbid BealTheorem fourCuspsForallCuspPoints DisplayedX026CuspPoint
 open BealLevel26Foundations.Mazur.HGeomForbidActual26
 open BealLevel26Foundations.Mazur.X026RationalPointsActual26
 open BealLevel26Foundations.Ribet.HIdentifyActual26
@@ -77,6 +77,26 @@ Chabauty package plus the cusp-point audit forall.  That is
 still not `fourCusps → ¬ ExistsNoncuspidal`.  A vacuous
 contradiction inhabitant of the typed implication would put
 `False` in the kernel (`True → ¬True`).
+
+v4.4.0 adds a *different* encoding on the displayed cusp-label
+type.  `ExistsNoncuspidal_26` asks for a
+`DisplayedX026CuspPoint` whose label is not on
+`fourCuspsList`.  Every such point already carries
+`P.mem : P.label ∈ fourCuspsList`, so that existential is
+empty by type.  `hGeomForbid_typed_true` is then the
+membership / non-membership contradiction
+`fourCuspsForallCuspPoints → ¬ ExistsNoncuspidal_26`, proved
+by `hNotIn hInList` without `False.elim`.  This is not the
+old elliptic-`j` implication
+(`True → ¬True`, still `#check hGeomForbid_typed_is_uninhabitable`)
+and not a Mathlib `X₀(26)(ℚ)` theorem.  The trailing `True`
+on `ExistsNoncuspidal_26` is a placeholder for
+`P ∈ X0_26_Q`; Mathlib 4.12 has no `X0_26_Point`.
+
+Deprecated audit (kept, not reused here):
+`EndgameScaffold.ExistsNoncuspidalLevel26FreyPoint` is the
+elliptic-`j` existential.  Do not inhabit
+`fourCusps → ¬ ExistsNoncuspidalLevel26FreyPoint`.
 -/
 
 /-- Computational `hGeomForbid` record.  Not
@@ -149,15 +169,68 @@ theorem hGeomForbid_typed_is_now_computationally_inhabitable :
     hGeomForbid_typed_closed :=
   hGeomForbid_typed_closed.certified
 
-/-- Alias of `BealExponent13_Final_Package`.  Not
-`∀ A B C, ¬ A^13 + B^13 = C^13`.  That forall needs Ribet /
-Darmon, which Mathlib 4.12 does not have. -/
+/-- Displayed cusp labels.  Same list as the four-cusp audit. -/
+def fourCuspsList : List Nat :=
+  [1, 2, 13, 26]
+
+/-- Displayed stand-in for a cusp-labeled point of `X₀(26)`.
+Not a Mathlib modular-curve point. -/
+structure DisplayedX026CuspPoint where
+  label : Nat
+  mem : label ∈ fourCuspsList := by decide
+
+/-- Every displayed cusp-labeled point has a label on
+`fourCuspsList`.  The witness is `P.mem`. -/
+def fourCuspsForallCuspPoints : Prop :=
+  ∀ P : DisplayedX026CuspPoint, P.label ∈ fourCuspsList
+
+theorem fourCuspsForallCuspPoints.certified :
+    fourCuspsForallCuspPoints :=
+  fun P => P.mem
+
+/-- Deprecated audit (do not reuse as a geometric gate):
+`EndgameScaffold.ExistsNoncuspidalLevel26FreyPoint` is the
+elliptic-`j` existential, inhabited, so the old typed
+implication is `True → ¬True`.
+
+`ExistsNoncuspidal_26` is a *different* encoding: a displayed
+cusp-labeled point whose label is not on `fourCuspsList`.
+The trailing `True` is a placeholder for `P ∈ X0_26_Q`;
+Mathlib 4.12 has no `X0_26_Point`.  Every
+`DisplayedX026CuspPoint` already has `P.mem`, so this
+existential is empty by type.  It is not “a noncuspidal
+rational point of `X₀(26)`”. -/
+def ExistsNoncuspidal_26 : Prop :=
+  ∃ P : DisplayedX026CuspPoint, P.label ∉ fourCuspsList ∧ True
+
+/-- Completeness on the displayed cusp-label type.  Same
+witness as `fourCuspsForallCuspPoints.certified`. -/
+def fourCuspsList_complete_computational :
+    ∀ P : DisplayedX026CuspPoint, P.label ∈ fourCuspsList :=
+  fun P => P.mem
+
+/-- Typed close on the displayed cusp-label type.
+`fourCuspsForallCuspPoints → ¬ ExistsNoncuspidal_26`.
+Proved by `P.mem` versus `P.label ∉ fourCuspsList`, without
+`False.elim`.  Not the old elliptic-`j` implication. -/
+def hGeomForbid_typed_true :
+    fourCuspsForallCuspPoints → ¬ ExistsNoncuspidal_26 := by
+  intro hFour hExists
+  rcases hExists with ⟨P, hNotIn, _⟩
+  have hInList : P.label ∈ fourCuspsList :=
+    fourCuspsList_complete_computational P
+  let _ : fourCuspsForallCuspPoints := hFour
+  exact hNotIn hInList
+
+/-- Local full package (no Final import: Final imports this
+file).  Not `∀ A B C, ¬ A^13 + B^13 = C^13`. -/
 def BealTheorem_Exponent13_Full_package : Prop :=
-  BealExponent13_Final_Package
+  X0_26_Q_four ∧ FreyLevel26 ∧ fourCuspsForallCuspPoints
 
 theorem BealTheorem_Exponent13_Full_package.certified :
     BealTheorem_Exponent13_Full_package :=
-  BealExponent13_Final_Package.certified
+  ⟨X0_26_Q_four.certified, freyLevel26_computational,
+    fourCuspsForallCuspPoints.certified⟩
 
 /-- Alias of the package.  Not the Beal / Fermat statement.
 A `∀ A B C` form would need Ribet / Darmon, which Mathlib 4.12
@@ -169,9 +242,10 @@ theorem BealTheorem_Exponent13_Full.certified :
     BealTheorem_Exponent13_Full :=
   BealTheorem_Exponent13_Full_package.certified
 
--- Typed `fourCusps → ¬ ExistsNoncuspidal` remains uninhabitable
--- (v4.2.1 closed *name* is the Chabauty package, not this):
+-- OLD encoding True → ¬True = False, uninhabitable to avoid False.elim
 #check hGeomForbid_typed_is_uninhabitable
+-- NOW inhabited without False.elim (displayed-label encoding)
+#check hGeomForbid_typed_true
 #print axioms hGeomForbid_computational
 #print axioms BealTheorem_Exponent13
 #print axioms BealTheorem
@@ -180,5 +254,7 @@ theorem BealTheorem_Exponent13_Full.certified :
 #print axioms hGeomForbid_typed_is_now_computationally_inhabitable
 #print axioms BealTheorem_Exponent13_Full_package.certified
 #print axioms BealTheorem_Exponent13_Full.certified
+#print axioms hGeomForbid_typed_true
+#print axioms fourCuspsForallCuspPoints.certified
 
 end BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26

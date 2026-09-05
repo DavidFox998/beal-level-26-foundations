@@ -69,6 +69,7 @@ test -f docs/releases/v4.2.0-full-chain.md
 test -f docs/releases/v4.2.1-chabauty-closes-typed.md
 test -f docs/releases/v4.2.2-zenodo-trigger.md
 test -f docs/releases/v4.3.0-final-forall-package.md
+test -f docs/releases/v4.4.0-typed-refactor-true-close.md
 test -f docs/CHANGELOG.md
 test -f lean/BealLevel26Foundations/Final/BealExponent13_Final.lean
 test -f lean/BealLevel26Foundations/Final/README.md
@@ -151,6 +152,7 @@ grep -q "v4.2.0-full-chain" README.md
 grep -q "v4.2.1-chabauty-closes-typed" README.md
 grep -q "v4.2.2-zenodo-trigger" README.md
 grep -q "v4.3.0-final-forall-package" README.md
+grep -q "v4.4.0-typed-refactor-true-close" README.md
 grep -q "v4.0.3-formal-immersion" docs/README.md
 grep -q "v4.0.4-x026-rational-points" docs/README.md
 grep -q "v4.0.5-nofrey-point" docs/README.md
@@ -173,6 +175,7 @@ grep -q "v4.2.0-full-chain" docs/README.md
 grep -q "v4.2.1-chabauty-closes-typed" docs/README.md
 grep -q "v4.2.2-zenodo-trigger" docs/README.md
 grep -q "v4.3.0-final-forall-package" docs/README.md
+grep -q "v4.4.0-typed-refactor-true-close" docs/README.md
 grep -q "v4.0.3-formal-immersion" docs/releases/README.md
 grep -q "v4.0.4-x026-rational-points" docs/releases/README.md
 grep -q "v4.0.5-nofrey-point" docs/releases/README.md
@@ -195,6 +198,7 @@ grep -q "v4.2.0-full-chain" docs/releases/README.md
 grep -q "v4.2.1-chabauty-closes-typed" docs/releases/README.md
 grep -q "v4.2.2-zenodo-trigger" docs/releases/README.md
 grep -q "v4.3.0-final-forall-package" docs/releases/README.md
+grep -q "v4.4.0-typed-refactor-true-close" docs/releases/README.md
 grep -q "v4.0.3-formal-immersion" lean/README.md
 grep -q "v4.0.4-x026-rational-points" lean/README.md
 grep -q "v4.0.5-nofrey-point" lean/README.md
@@ -217,6 +221,7 @@ grep -q "v4.2.0-full-chain" lean/README.md
 grep -q "v4.2.1-chabauty-closes-typed" lean/README.md
 grep -q "v4.2.2-zenodo-trigger" lean/README.md
 grep -q "v4.3.0-final-forall-package" lean/README.md
+grep -q "v4.4.0-typed-refactor-true-close" lean/README.md
 grep -q "v4.0.3-formal-immersion" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Jacobian/README.md
@@ -237,6 +242,7 @@ grep -q "v4.2.0-full-chain" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.2.1-chabauty-closes-typed" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.2.2-zenodo-trigger" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.3.0-final-forall-package" lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "v4.4.0-typed-refactor-true-close" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.4-x026-rational-points" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Mazur/README.md
@@ -257,6 +263,7 @@ grep -q "v4.2.0-full-chain" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.2.1-chabauty-closes-typed" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.2.2-zenodo-trigger" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.3.0-final-forall-package" lean/BealLevel26Foundations/Mazur/README.md
+grep -q "v4.4.0-typed-refactor-true-close" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.5-nofrey-point" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Ribet/README.md
@@ -277,6 +284,7 @@ grep -q "v4.2.0-full-chain" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.2.1-chabauty-closes-typed" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.2.2-zenodo-trigger" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.3.0-final-forall-package" lean/BealLevel26Foundations/Ribet/README.md
+grep -q "v4.4.0-typed-refactor-true-close" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" sagemath/README.md
 grep -q "v4.0.7-hIdentify" sagemath/README.md
 grep -q "v4.0.7-hIdentify-j" sagemath/README.md
@@ -296,6 +304,7 @@ grep -q "v4.2.0-full-chain" sagemath/README.md
 grep -q "v4.2.1-chabauty-closes-typed" sagemath/README.md
 grep -q "v4.2.2-zenodo-trigger" sagemath/README.md
 grep -q "v4.3.0-final-forall-package" sagemath/README.md
+grep -q "v4.4.0-typed-refactor-true-close" sagemath/README.md
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md
 grep -qi "genuine cohomological 2-Selmer" \
@@ -833,13 +842,38 @@ if grep -nE '^[[:space:]]*False\.elim|^[[:space:]]*exact[[:space:]]+False\.elim'
   echo "FAIL: Final package must not inhabit a forall by contradiction"
   exit 1
 fi
-if grep -q "import BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26" \
-    lean/BealLevel26Foundations/Final/BealExponent13_Final.lean; then
-  echo "FAIL: Final must not import BealTheoremFromMazurChain26 (cycle)"
+if grep -q "import BealLevel26Foundations.Final.BealExponent13_Final" \
+    lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean; then
+  echo "FAIL: BealTheoremFromMazurChain26 must not import Final (cycle)"
   exit 1
 fi
-grep -q "BealExponent13_Final_Package" \
+grep -q "import BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26" \
+  lean/BealLevel26Foundations/Final/BealExponent13_Final.lean
+grep -qF "def fourCuspsList : List Nat :=" \
   lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean
+grep -q "structure DisplayedX026CuspPoint" \
+  lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean
+grep -q "def fourCuspsForallCuspPoints" \
+  lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean
+grep -q "def ExistsNoncuspidal_26" \
+  lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean
+grep -q "def fourCuspsList_complete_computational" \
+  lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean
+grep -q "def hGeomForbid_typed_true" \
+  lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean
+grep -q "#check hGeomForbid_typed_true" \
+  lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean
+grep -q "#check hGeomForbid_typed_is_uninhabitable" \
+  lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean
+grep -qF "def BealTheorem_Exponent13_Typed : Prop :=" \
+  lean/BealLevel26Foundations/Final/BealExponent13_Final.lean
+grep -q "theorem BealTheorem_Exponent13_Typed.certified" \
+  lean/BealLevel26Foundations/Final/BealExponent13_Final.lean
+if grep -nE 'BealTheorem_Exponent13_Typed[[:space:]]*:[[:space:]]*∀' \
+    lean/BealLevel26Foundations/Final/BealExponent13_Final.lean; then
+  echo "FAIL: BealTheorem_Exponent13_Typed must not claim ∀ A B C"
+  exit 1
+fi
 grep -q "fourCuspsForallCuspPoints" \
   lean/BealLevel26Foundations/Mazur/X026RationalPointsActual_26.lean
 grep -q "fourCuspsForallCuspPoints" \

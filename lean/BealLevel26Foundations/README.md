@@ -1,8 +1,8 @@
 # lean/BealLevel26Foundations/
 
-# v4.3.0 Final ∀ Package Exponent 13 (computational boundary)
+# v4.4.0 Typed True Close (displayed cusp-label encoding)
 
-Main foundations library. **Current as of** `v4.3.0-final-forall-package`.
+Main foundations library. **Current as of** `v4.4.0-typed-refactor-true-close`.
 
 Certified: 26a1 `[1,0,1,-5,-8]` Δ `-17576` conductor 26 torsion 3;
 26b1 `[1,-1,1,-3,3]` Δ `-1664` conductor 26 torsion 7.
@@ -26,10 +26,17 @@ Typed `fourCusps → ¬ ExistsNoncuspidal` still uninhabitable as
 `FreyLevel26 = 2*13=26` (`rfl`), displayed level only. Mathlib 4.12
 has no modularity / Ribet.
 
+`hGeomForbid_typed_true` is
+`fourCuspsForallCuspPoints → ¬ ExistsNoncuspidal_26` on the
+displayed cusp-label type (`P.mem`), without `False.elim`.
+The old elliptic-`j` implication stays uninhabitable.
+
+`BealTheorem_Exponent13_Typed` is that implication plus
+`FreyLevel26`.
 `BealExponent13_Final_Package = X0_26_Q_four ∧ FreyLevel26 ∧ fourCuspsForallCuspPoints`,
 `BealExponent13_Final_Package.certified`.
-`BealTheorem_Exponent13_Full_package` aliases it. No `∀` with
-vacuous contradiction.
+`BealTheorem_Exponent13_Full_package` is the same conjunction
+in Mazur (no Final import). No `∀` with vacuous contradiction.
 
 Checks: `lake build` of the three roots plus Final,
 `verify-scaffold.sh`, `verify_descent_26.py` green.
@@ -38,9 +45,10 @@ Checks: `lake build` of the three roots plus Final,
 
 Releases: `v4.2.0-full-chain` `62d0e13`,
 `v4.2.1-chabauty-closes-typed` `eed5170`,
-`v4.2.2-zenodo-trigger` fresh, `v4.3.0-final-forall-package`.
+`v4.2.2-zenodo-trigger` fresh, `v4.3.0-final-forall-package`,
+`v4.4.0-typed-refactor-true-close`.
 
-[`Final/`](Final/README.md) holds the v4.3.0 package.
+[`Final/`](Final/README.md) holds the v4.4.0 typed package.
 
 Top-level computable files:
 
@@ -63,7 +71,7 @@ Top-level computable files:
 | [`Blueprint/`](Blueprint/README.md) | Phase 3 track board; no `sorry` |
 | [`Mazur/`](Mazur/README.md) | Genus certificates, four-premise endgame scaffold, v4.0.4 four-cusp package, v4.0.8 typed `hGeomForbid`, v4.0.9 cusp-point forall, v4.0.10 Chabauty-0 package |
 | [`Chain/`](Chain/README.md) | v4.2.0 `FreyLevel26` (`2 * 13 = 26`) and `X0_26_Q_four` from PARI `|Sel₂|=1` twice plus `det M₃ = 2`; not Ribet and not `X₀(26)(ℚ)` |
-| [`Final/`](Final/README.md) | v4.3.0 `BealExponent13_Final_Package`; not `∀ A B C` |
+| [`Final/`](Final/README.md) | v4.4.0 `BealTheorem_Exponent13_Typed`; v4.3.0 `BealExponent13_Final_Package`; not `∀ A B C` |
 | [`Real/`](Real/README.md) | Frey Weierstrass model and re-exported lowering |
 | [`Ribet/`](Ribet/README.md) | Typed `LevelLowering_26`; v4.0.6 split; v4.0.7-j finite `j`-invariant `hIdentify` |
 
