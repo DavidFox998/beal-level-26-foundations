@@ -24,14 +24,17 @@ Abel--Jacobi/q-expansion, and Mazur-endgame boundaries, including the
 v4.0.4 displayed four-cusp package, the v4.0.5/v4.0.6 split
 between Ribet existence (`ExistsFreyWitness`) and the four-cusp
 list, the v4.0.6 product rank-zero package, and the v4.0.7-j
-finite `j`-invariant encoding of typed `hIdentify`, and the
-v4.0.8 record that typed `hGeomForbid` is uninhabitable. It is
+finite `j`-invariant encoding of typed `hIdentify`, the
+v4.0.8 record that typed `hGeomForbid` is uninhabitable, and the
+v4.0.9 cusp-point forall `fourCuspsForallCuspPoints`. It is
 separate from the unconditional computable v1 entrypoint.
 Typed `hIdentify` packs a Frey `j` as an elliptic displayed
 point, not as `26 ∉ [1, 2, 13, 26]`. Constructor inequality
 `ellipticJ ≠ cuspDivisor` does not Lean-negate
-`ExistsNoncuspidal`. Typed `hGeomForbid` remains uninhabitable.
-There is no unconditional `BealTheorem` here.
+`ExistsNoncuspidal`. The inhabited forall ranges over
+cusp-labeled points, not over `ellipticJ`. Typed `hGeomForbid`
+remains uninhabitable. There is no unconditional `BealTheorem`
+here.
 -/
 
 def status : String :=

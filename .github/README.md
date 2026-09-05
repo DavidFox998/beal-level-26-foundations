@@ -13,5 +13,5 @@ requests to **`main`**:
 
 A green CI run is a Lean 4.12 / Mathlib 4.12 build plus the scaffold
 script. It is not a DOI and not an unconditional `BealTheorem`.
-Current Foundations tag `v4.0.8-geom-forbid` does not change this
+Current Foundations tag `v4.0.9-fourCusps-forall` does not change this
 workflow.

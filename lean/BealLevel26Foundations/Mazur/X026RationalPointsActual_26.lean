@@ -39,9 +39,11 @@ package `fourCuspsFromQExpansion`.
 read a rank-zero witness.  Mathlib 4.12 has no `X₀(N)(ℚ)` API.
 This is not a theorem that the modular curve `X₀(26)(ℚ)` equals
 four cusps.  v4.0.6 inhabits `J0_26_Q_RankZero26` in a separate
-file.  The four-cusp list here remains cusp labels; v4.0.7-j
-does not reread it as `26 ∉ [1, 2, 13, 26]`.
-This file does not inhabit `NoFreyPoint26` or `J0_26_Q_RankZero26`.
+file.  The four-cusp list here remains cusp labels; v4.0.9 adds the
+forall `fourCuspsForallCuspPoints` over those labels.  That is
+not a forall over Mathlib `X₀(26)(ℚ)` and not a forall over
+`ellipticJ`.  This file does not inhabit `NoFreyPoint26` or
+`J0_26_Q_RankZero26`.
 -/
 
 /-- The four displayed cusps, one per positive divisor of `26`. -/
@@ -62,7 +64,9 @@ theorem displayedCuspCount_eq_genus_certificate :
   rw [displayedCusps26_length, cuspCount26_eq_four]
 
 /-- Finite four-cusp package from q-expansion and genus data.
-Not a modular-curve rational-point theorem. -/
+The first conjuncts stay the displayed list.  The last conjunct is
+the v4.0.9 forall over cusp-labeled points.  Not a modular-curve
+rational-point theorem. -/
 def fourCuspsFromQExpansion : Prop :=
   displayedCusps26.length = 4 ∧
     displayedCusps26 = [1, 2, 13, 26] ∧
@@ -70,14 +74,16 @@ def fourCuspsFromQExpansion : Prop :=
     certified26a.a2 = -1 ∧
     certified26b.a2 = 1 ∧
     MwrankCertificateSoundness_26 ∧
-    FormalImmersionAtTwo26.of_qExpansion.input = !![1, 1; 0, 2]
+    FormalImmersionAtTwo26.of_qExpansion.input = !![1, 1; 0, 2] ∧
+    fourCuspsForallCuspPoints
 
 theorem fourCuspsFromQExpansion.certified :
     fourCuspsFromQExpansion :=
   ⟨displayedCusps26_length, rfl, cuspCount26_eq_four,
     certified26a_a2, certified26b_a2,
     MwrankCertificateSoundness_26.certified,
-    FormalImmersionAtTwo26.of_qExpansion.input_eq⟩
+    FormalImmersionAtTwo26.of_qExpansion.input_eq,
+    fourCuspsForallCuspPoints.certified⟩
 
 /-- Finite package that inhabits the Mazur `X0_26_RationalPoints26`
 premise.  `rationalPointsAreFourCusps` is the displayed four-cusp

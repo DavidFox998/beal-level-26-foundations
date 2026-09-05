@@ -20,7 +20,7 @@ open BealLevel26Foundations.Mazur.X026RationalPointsActual26
 open BealLevel26Foundations.Ribet.HIdentifyActual26
 
 /-!
-# v4.0.8 typed `hGeomForbid` is uninhabitable as a finite package
+# v4.0.9 typed `hGeomForbid` remains uninhabitable after the forall retype
 
 The geometric content of `hGeomForbid` is: the four rational cusps of
 `X₀(26)` exclude a Frey curve as a *noncuspidal* modular-curve point.
@@ -43,10 +43,14 @@ hypothesis
 
 `fourCusps → ¬ ExistsNoncuspidalLevel26FreyPoint`
 
-is therefore `True → ¬True` and is uninhabitable.  This file records
-that finite package and proves `hGeomForbid_typed_is_uninhabitable`.
-It does not inhabit typed `hGeomForbid`, and it does not add
-`theorem BealTheorem`.
+is therefore `True → ¬True` and is uninhabitable.  v4.0.9 retypes
+four cusps as `fourCuspsForallCuspPoints` over cusp-labeled points.
+That forall is true and does not quantify over `ellipticJ`.  The
+same-type forall `fourCuspsForallAllKinds` is false.  Closing
+`∀ cusp-points → ¬ ExistsNoncuspidal` would still put `False` in
+the kernel.  This file records that finite package and proves
+`hGeomForbid_typed_is_uninhabitable`.  It does not inhabit typed
+`hGeomForbid`, and it does not add `theorem BealTheorem`.
 
 Sources remain the frozen v1.4.0 ledger SHA-256
 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`.
@@ -86,6 +90,8 @@ structure HGeomForbid26 where
           DisplayedX026PointKind.cuspDivisor 26
   fourCusps : displayedCusps26 = [1, 2, 13, 26]
   fourCuspCount : displayedCusps26.length = 4
+  fourCuspsForall : fourCuspsForallCuspPoints
+  notAllKinds : ¬ fourCuspsForallAllKinds
   formalImmersion :
     FormalImmersionAtTwo26.of_qExpansion.input = !![1, 1; 0, 2]
   rankZeroProduct : J0_26_Q_RankZero26.of_qExpansion.rankZero
@@ -99,6 +105,8 @@ def HGeomForbid26.of_qExpansion : HGeomForbid26 where
   ellipticJNeCusps := ellipticJ_ne_four_cusp_labels
   fourCusps := rfl
   fourCuspCount := displayedCusps26_length
+  fourCuspsForall := fourCuspsForallCuspPoints.certified
+  notAllKinds := fourCuspsForallAllKinds_is_false
   formalImmersion := FormalImmersionAtTwo26.of_qExpansion.input_eq
   rankZeroProduct := J0_26_Q_RankZero26.of_qExpansion_replaces_premise
   a2_26a := certified26a_a2
@@ -108,6 +116,8 @@ def HGeomForbid26.of_qExpansion : HGeomForbid26 where
 
 theorem HGeomForbid26.of_qExpansion_replaces_premise :
     displayedCusps26 = [1, 2, 13, 26] ∧
+      fourCuspsForallCuspPoints ∧
+      ¬ fourCuspsForallAllKinds ∧
       FormalImmersionAtTwo26.of_qExpansion.input = !![1, 1; 0, 2] ∧
       J0_26_Q_RankZero26.of_qExpansion.rankZero ∧
       MwrankCertificateSoundness_26 ∧
@@ -115,6 +125,8 @@ theorem HGeomForbid26.of_qExpansion_replaces_premise :
         DisplayedX026PointKind.ellipticJ num den ≠
           DisplayedX026PointKind.cuspDivisor 26) :=
   ⟨HGeomForbid26.of_qExpansion.fourCusps,
+    HGeomForbid26.of_qExpansion.fourCuspsForall,
+    HGeomForbid26.of_qExpansion.notAllKinds,
     HGeomForbid26.of_qExpansion.formalImmersion,
     HGeomForbid26.of_qExpansion.rankZeroProduct,
     HGeomForbid26.of_qExpansion.mwrank,
@@ -144,6 +156,8 @@ def hGeomForbidFinitePackage : Prop :=
           DisplayedX026PointKind.cuspDivisor 26) ∧
     displayedCusps26 = [1, 2, 13, 26] ∧
     displayedCusps26.length = 4 ∧
+    fourCuspsForallCuspPoints ∧
+    ¬ fourCuspsForallAllKinds ∧
     ExistsNoncuspidalLevel26FreyPoint ∧
     ¬ (X0_26_RationalPoints26.of_qExpansion.rationalPointsAreFourCusps →
         ¬ ExistsNoncuspidalLevel26FreyPoint) ∧
@@ -158,6 +172,8 @@ theorem hGeomForbidFinitePackage.certified :
   ⟨ellipticJ_ne_four_cusp_labels,
     rfl,
     displayedCusps26_length,
+    fourCuspsForallCuspPoints.certified,
+    fourCuspsForallAllKinds_is_false,
     hIdentify_of_displayed_witness,
     hGeomForbid_typed_is_uninhabitable,
     FormalImmersionAtTwo26.of_qExpansion.input_eq,

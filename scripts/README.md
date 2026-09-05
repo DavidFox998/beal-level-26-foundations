@@ -1,6 +1,6 @@
 # scripts/
 
-Deterministic repository checks. **Current as of** `v4.0.8-geom-forbid`.
+Deterministic repository checks. **Current as of** `v4.0.9-fourCusps-forall`.
 
 | Script | What it checks |
 |---|---|

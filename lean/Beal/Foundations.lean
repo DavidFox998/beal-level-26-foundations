@@ -38,6 +38,9 @@ rank-zero factors. That does not identify eight S-units with
 genuine 2-Selmer. v4.0.7-hIdentify-j packs a Frey `j`-ratio as
 an elliptic displayed point; four cusp labels stay as cusps.
 v4.0.8 records that typed `hGeomForbid` is uninhabitable.
+v4.0.9 retypes four cusps as `fourCuspsForallCuspPoints` over
+cusp-labeled points; a forall over all displayed kinds is
+false. Typed `hGeomForbid` stays uninhabitable.
 No domain axiom is introduced. Geometric Jacobian, genuine
 cohomological Selmer, Picard, Tate, scheme-theoretic Ribet
 existence, a Mathlib `X₀(26)` point, and an unconditional

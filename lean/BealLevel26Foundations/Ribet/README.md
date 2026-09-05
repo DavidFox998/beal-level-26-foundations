@@ -4,8 +4,8 @@ Typed `LevelLowering_26` certificate data from `v3.0.0-ribet`, the
 v4.0.5 displayed Ribet-existence package, the v4.0.6 split
 between existence and the four-cusp list, and the v4.0.7-j
 finite `j`-invariant `hIdentify`.
-**Current as of** `v4.0.8-geom-forbid`
-(includes `v4.0.7-hIdentify-j`, `v4.0.7-hIdentify`, `v4.0.6-rank-zero-fixed`,
+**Current as of** `v4.0.9-fourCusps-forall`
+(includes `v4.0.8-geom-forbid`, `v4.0.7-hIdentify-j`, `v4.0.7-hIdentify`, `v4.0.6-rank-zero-fixed`,
 `v4.0.5-nofrey-point`).
 
 | File | What it is | What it is not |
@@ -26,4 +26,6 @@ newform, and it does not replace the parent
 `LevelLowering_26` supplier. Typed `hIdentify` is the finite
 `j`-packing. v4.0.8 records typed `hGeomForbid` as uninhabitable
 in [`../Mazur/HGeomForbidActual_26.lean`](../Mazur/HGeomForbidActual_26.lean).
+v4.0.9 retypes four cusps as a forall over cusp-labeled points;
+typed `hGeomForbid` stays uninhabitable.
 The remaining geometric gate is a Mathlib noncuspidal `X₀(26)` point.

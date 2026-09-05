@@ -36,14 +36,13 @@ model with `Δ ≠ 0` and lowering target `26`.  A noncuspidal
 constructor from the four cusp-divisor labels `[1, 2, 13, 26]`.
 That is not `26 ∉ [1, 2, 13, 26]` as integer membership.
 
-`hIdentify` packs a Frey `j` as that elliptic kind.  It does not
-construct a point of a Mathlib modular curve.  v4.0.8 records that
-typed `hGeomForbid` (`fourCusps → ¬ ExistsNoncuspidal`) is
-uninhabitable: constructor inequality `ellipticJ ≠ cuspDivisor`
-is how a Frey `j` is shown *not* to be a cusp label, so it
-inhabits `ExistsNoncuspidal` rather than negating it.  The
-remaining geometric gate is a Mathlib noncuspidal `X₀(26)` point.
-This is not an unconditional `BealTheorem`.
+v4.0.9 re-encodes four cusps as the forall
+`fourCuspsForallCuspPoints` over cusp-labeled points.  A forall
+over all `DisplayedX026PointKind` is false (`ellipticJ` is a
+counterexample).  Typed `hGeomForbid` remains uninhabitable:
+the inhabited forall does not range over elliptic `j`, so it
+does not Lean-negate `ExistsNoncuspidal`.  This is not an
+unconditional `BealTheorem`.
 -/
 
 /-- Primitive Beal counterexample in the exponent range of the level-26
@@ -130,8 +129,9 @@ theorem FormalImmersionAtTwo26.input_eq_ledgerM3
 /-- Four displayed cusps, premise-bearing.  The arithmetic count `4` is
 the v1 genus certificate.  v4.0.4 inhabits this structure from
 q-expansion data (`X0_26_RationalPoints26.of_qExpansion`) as that
-finite four-cusp package.  Mathlib 4.12 has no `X₀(N)(ℚ)` API, so
-this is not a modular-curve rational-point theorem. -/
+finite four-cusp package.  v4.0.9 adds the cusp-point forall
+`fourCuspsForallCuspPoints`; that is not a Mathlib `X₀(26)(ℚ)`
+theorem. -/
 structure X0_26_RationalPoints26 where
   displayedCuspCount : Nat
   displayedCuspCount_eq_four : displayedCuspCount = 4
@@ -163,6 +163,40 @@ inductive DisplayedX026PointKind where
   | cuspDivisor : Nat → DisplayedX026PointKind
   | ellipticJ : Int → Int → DisplayedX026PointKind
   deriving DecidableEq
+
+/-- Displayed stand-in for a *cusp-labeled* rational point of
+`X₀(26)`.  The label is a divisor in `[1, 2, 13, 26]`.  This is
+not a Mathlib modular-curve point, and it does not include an
+elliptic `j`. -/
+structure DisplayedX026CuspPoint where
+  label : Nat
+  mem : label ∈ ([1, 2, 13, 26] : List Nat)
+
+def DisplayedX026CuspPoint.kind (P : DisplayedX026CuspPoint) :
+    DisplayedX026PointKind :=
+  DisplayedX026PointKind.cuspDivisor P.label
+
+/-- Forall encoding of the four-cusp list: every displayed
+*cusp-labeled* point is one of `[1, 2, 13, 26]`.  The list is the
+witness.  The domain is `DisplayedX026CuspPoint`, not
+`DisplayedX026PointKind` and not Mathlib `X₀(26)(ℚ)`.  A forall
+over all kinds would be false, because `ellipticJ` is a different
+constructor. -/
+def fourCuspsForallCuspPoints : Prop :=
+  ∀ P : DisplayedX026CuspPoint,
+    ∃ n ∈ ([1, 2, 13, 26] : List Nat),
+      P.kind = DisplayedX026PointKind.cuspDivisor n
+
+theorem fourCuspsForallCuspPoints.certified :
+    fourCuspsForallCuspPoints :=
+  fun P => ⟨P.label, P.mem, rfl⟩
+
+/-- Same-type forall the geometric gate would need: every displayed
+kind is a cusp label.  `ellipticJ` is a counterexample. -/
+def fourCuspsForallAllKinds : Prop :=
+  ∀ P : DisplayedX026PointKind,
+    ∃ n ∈ ([1, 2, 13, 26] : List Nat),
+      P = DisplayedX026PointKind.cuspDivisor n
 
 /-- Displayed Frey curve over `ℤ` with residual target level `26`.
 This is Weierstrass data plus a lowering index, not a Mathlib
@@ -262,6 +296,13 @@ theorem ellipticJ_ne_cuspDivisor (num den : Int) (n : Nat) :
   intro h
   cases h
 
+theorem fourCuspsForallAllKinds_is_false :
+    ¬ fourCuspsForallAllKinds := by
+  intro h
+  obtain ⟨n, _hn, heq⟩ :=
+    h (DisplayedX026PointKind.ellipticJ 0 1)
+  exact ellipticJ_ne_cuspDivisor 0 1 n heq
+
 /-- Displayed Ribet existence from a typed lowering certificate.
 This produces `ExistsFreyWitness` (`loweredLevel = 26` and `Δ ≠ 0`),
 not a Mathlib modular-curve point. -/
@@ -346,6 +387,8 @@ theorem BealTheoremFromMazurChain26
 #print axioms FormalImmersionAtTwo26.input_certificate
 #print axioms FormalImmersionAtTwo26.input_eq_v1_4_M3
 #print axioms bealCounterexample_freyDiscriminant_ne_zero
+#print axioms fourCuspsForallCuspPoints.certified
+#print axioms fourCuspsForallAllKinds_is_false
 #print axioms BealTheoremFromMazurChain26
 
 end BealLevel26Foundations.Mazur.EndgameScaffold

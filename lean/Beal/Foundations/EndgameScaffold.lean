@@ -14,6 +14,7 @@ negation `hGeomForbid`, and the j-invariant identification
 point, not as `26 ∉ [1, 2, 13, 26]`.  Typed `hGeomForbid`
 (`fourCusps → ¬ ExistsNoncuspidal`) is uninhabitable:
 constructor inequality does not negate an elliptic `j`.
+v4.0.9's cusp-point forall does not range over `ellipticJ`.
 This is not an unconditional `BealTheorem`.
 -/
 

@@ -44,7 +44,10 @@ an elliptic displayed point (`hIdentify`); the four-cusp list
 `[1, 2, 13, 26]` stays as cusps. v4.0.8 records that typed
 `hGeomForbid` (`fourCusps → ¬ ExistsNoncuspidal`) is
 uninhabitable: constructor inequality does not negate an
-elliptic `j`. That is not genuine `Sel₂`, not a Mathlib
+elliptic `j`. v4.0.9 retypes four cusps as
+`fourCuspsForallCuspPoints` over cusp-labeled points; that
+forall does not range over `ellipticJ`, so typed `hGeomForbid`
+stays uninhabitable. That is not genuine `Sel₂`, not a Mathlib
 `X₀(26)` point, and not an unconditional `BealTheorem`.
 -/
 
