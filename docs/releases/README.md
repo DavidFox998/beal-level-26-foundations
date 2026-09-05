@@ -1,8 +1,9 @@
 # docs/releases/
 
 Immutable notes for each published Foundations tag. **Current latest
-note:** [`v4.15.0-iter-typed-forall-bridge.md`](v4.15.0-iter-typed-forall-bridge.md)
-(prior [`v4.14.0-iter-citation-contradiction-locked.md`](v4.14.0-iter-citation-contradiction-locked.md),
+note:** [`v4.17.0-iter-forall-bridge-locked.md`](v4.17.0-iter-forall-bridge-locked.md)
+(prior [`v4.15.0-iter-typed-forall-bridge.md`](v4.15.0-iter-typed-forall-bridge.md),
+[`v4.14.0-iter-citation-contradiction-locked.md`](v4.14.0-iter-citation-contradiction-locked.md),
 [`v4.13.1-iter-unstick.md`](v4.13.1-iter-unstick.md),
 [`v4.13.0-iter-contradiction-start.md`](v4.13.0-iter-contradiction-start.md),
 [`v4.12.0-iter-verify-plus.md`](v4.12.0-iter-verify-plus.md),
@@ -75,6 +76,7 @@ not an unconditional `BealTheorem`.
 | [v4.13.1-iter-unstick.md](v4.13.1-iter-unstick.md) | `v4.13.1-iter-unstick` | pending DataCite |
 | [v4.14.0-iter-citation-contradiction-locked.md](v4.14.0-iter-citation-contradiction-locked.md) | `v4.14.0-iter-citation-contradiction-locked` | pending DataCite |
 | [v4.15.0-iter-typed-forall-bridge.md](v4.15.0-iter-typed-forall-bridge.md) | `v4.15.0-iter-typed-forall-bridge` | pending DataCite |
+| [v4.17.0-iter-forall-bridge-locked.md](v4.17.0-iter-forall-bridge-locked.md) | `v4.17.0-iter-forall-bridge-locked` | pending DataCite |
 
 Concept DOI for the evolving project:
 [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).

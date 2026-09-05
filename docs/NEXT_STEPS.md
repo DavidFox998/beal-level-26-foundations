@@ -38,6 +38,15 @@ and `certs/pari_x0_26_four_cusps.json` keys `26a1` /
 `-1664`, `|Sel₂|=1` twice, `det M₃=2`, SHA-256
 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 
+## v4.17.0 Iter forall bridge locked
+
+`beal_forall_from_ribet` is the typed inhabitant from
+`beal_exponent13_from_ribet` (no axioms).
+`certified_from_forall` in Iter_Package is that same
+inhabitant. Upstream `BealExponent13_Contradiction.certified`
+still needs both computational-assumption axioms. Still not
+`∀ A B C : ℕ`.
+
 ## v4.15.0 Iter typed forall bridge
 
 `beal_forall_from_ribet` is `beal_exponent13_from_ribet`

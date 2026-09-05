@@ -5,6 +5,7 @@
 | Theorem | Axioms |
 |---|---|
 | beal_forall_from_ribet | none |
+| beal_forall_certified_from_ribet / certified_from_forall | none |
 | beal_exponent13_from_ribet / certified_from_ribet | none (hGeomForbid_typed_true via hNotIn hInList) |
 | contradiction_from_ribet | ribet_level_lowering_26 only |
 | BealExponent13_Contradiction.certified | frey_modular_13 + ribet_level_lowering_26 |
@@ -20,7 +21,7 @@ PARI 2-descent certificates for the Jacobian factors of \(J_0(26)\). Certified W
 Versioned release notes for
 [beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations).
 
-**Current as of** tag `v4.7.0-iter-typed-no-axioms-closing` / `v4.8.0-iter-modularity-scaffold` / `v4.9.0-iter-no-True-X0` / `v4.10.0-iter-pari-locked` / `v4.12.0-iter-verify-plus` / `v4.13.0-iter-contradiction-start` / `v4.13.1-iter-unstick` / `v4.14.0-iter-citation-contradiction-locked` / `v4.15.0-iter-typed-forall-bridge` / `v4.16.0-iter-readme-about-locked` (prior
+**Current as of** tag `v4.7.0-iter-typed-no-axioms-closing` / `v4.8.0-iter-modularity-scaffold` / `v4.9.0-iter-no-True-X0` / `v4.10.0-iter-pari-locked` / `v4.12.0-iter-verify-plus` / `v4.13.0-iter-contradiction-start` / `v4.13.1-iter-unstick` / `v4.14.0-iter-citation-contradiction-locked` / `v4.15.0-iter-typed-forall-bridge` / `v4.16.0-iter-readme-about-locked` / `v4.17.0-iter-forall-bridge-locked` (prior
 `v4.6.0-readmes-about`,
 `v4.5.0-forall-real`,
 `v4.4.0-typed-refactor-true-close`,
@@ -175,3 +176,5 @@ v4.14.0-iter-citation-contradiction-locked: `CITATION.cff` locks `c2c47db` / fou
 v4.15.0-iter-typed-forall-bridge: `beal_forall_from_ribet := beal_exponent13_from_ribet`. `certified_from_ribet` none via `hGeomForbid_typed_true`. `hGeomForbid_typed_true` depends on no axioms (`hNotIn hInList`). Not `∀ ℕ` and no `False.elim`.
 
 v4.16.0-iter-readme-about-locked: README theorem table + GitHub About. Image `docs/images/2-descent-level-26-26a1-26b1.webp` locked. `hGeomForbid_typed_true` depends on no axioms (`hNotIn hInList`). Not `∀ ℕ` and no `False.elim`.
+
+v4.17.0-iter-forall-bridge-locked: `beal_forall_from_ribet` / `certified_from_forall` none via `hGeomForbid_typed_true`. `hGeomForbid_typed_true` depends on no axioms (`hNotIn hInList`). Not `∀ ℕ` and no `False.elim`.

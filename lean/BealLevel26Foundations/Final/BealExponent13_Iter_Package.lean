@@ -39,6 +39,11 @@ theorem BealExponent13_Iter_Package.certified_from_ribet :
     BealTheorem_Exponent13_Typed :=
   BealLevel26Foundations.Mazur.BealExponent13_Contradiction.certified_from_ribet
 
+/-- Axiom-free typed inhabitant via the Forall bridge.
+Same as `beal_forall_from_ribet` / `hGeomForbid_typed_true`. -/
+def certified_from_forall : BealTheorem_Exponent13_Typed :=
+  beal_forall_from_ribet
+
 /-- The Iter typed-and-package remains `Typed ∧ Iter_Package`. -/
 theorem BealExponent13_Iter_Typed_And_Package_eq :
     BealExponent13_Iter_Typed_And_Package =
@@ -53,6 +58,7 @@ theorem BealExponent13_Iter_Typed_And_Package.certified_from_ribet :
 
 #print axioms BealExponent13_Iter_Package.certified_from_ribet
 #print axioms BealExponent13_Iter_Typed_And_Package.certified_from_ribet
+#print axioms certified_from_forall
 #check BealExponent13_Contradiction.certified
 
 end BealLevel26Foundations.Final
