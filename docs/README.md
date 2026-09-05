@@ -3,8 +3,9 @@
 Versioned release notes for
 [beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations).
 
-**Current as of** tag `v4.0.6-rank-zero-fixed` (DOI pending mint
-from parent [10.5281/zenodo.22313407](https://doi.org/10.5281/zenodo.22313407)).
+**Current as of** tag `v4.0.6-rank-zero-fixed` (commit `2290809`,
+version DOI
+[10.5281/zenodo.22313955](https://doi.org/10.5281/zenodo.22313955)).
 Prior tags
 [`v4.0.5-nofrey-point`](releases/v4.0.5-nofrey-point.md)
 (commit `5b29092`, version DOI
