@@ -1,7 +1,7 @@
 # lean/BealLevel26Foundations/Certs/
 
 Archived LMFDB *display* data and PARI 2-descent display for `26a1`
-and `26b1`. **Current as of** `v4.7.0-iter-typed-no-axioms-closing` / `v4.6.0-readmes-about`.
+and `26b1`. **Current as of** `v4.7.0-iter-typed-no-axioms-closing` / `v4.8.0-iter-modularity-scaffold` / `v4.6.0-readmes-about`.
 
 | File | What it is | What it is not |
 |---|---|---|
@@ -43,3 +43,5 @@ Checks: `lake build` of `BealTheoremFromMazurChain26`,
 `BealExponent13_Final`, `BealExponent13_Forall`,
 `RationalPoints_26_FourCusps_26`, plus `verify-scaffold.sh` and
 `verify_descent_26.py`, green. No `sorry`, no `False.elim`.
+
+v4.8.0-iter-modularity-scaffold: `X0_26_Point_Raw` + `DisplayedX026CuspPoint` `[1,2,13,26]` `P.mem`; `X0_26_Q` keeps a `True` PLACEHOLDER disjunct; `ExistsNoncuspidal_26` drops trailing `True`; `axiom frey_modular_13` and `axiom ribet_level_lowering_26` are COMPUTATIONAL ASSUMPTION placeholders secured by PARI `|Sel₂|=1` twice, `det M₃=2`, SHA-256 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. `hGeomForbid_typed_true` still depends on no axioms (`hNotIn hInList`). Old `#check hGeomForbid_typed_is_uninhabitable` stays live. Not `∀ ℕ` and no `False.elim`.

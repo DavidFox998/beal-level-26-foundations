@@ -31,6 +31,9 @@ import BealLevel26Foundations.Final.BealExponent13_Final
 import BealLevel26Foundations.Final.BealExponent13_Forall
 import BealLevel26Foundations.Chain.FreyCurve_13_26
 import BealLevel26Foundations.Chain.RationalPoints_26_FourCusps_26
+import BealLevel26Foundations.Chain.X0_26_Point
+import BealLevel26Foundations.Modularity.FreyModularity_13
+import BealLevel26Foundations.Modularity.RibetLevelLowering_26
 
 namespace BealLevel26Foundations.Real
 

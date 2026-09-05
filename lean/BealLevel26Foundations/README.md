@@ -2,7 +2,7 @@
 
 # v4.7.0 Iter typed no axioms
 
-Main foundations library. **Current as of** `v4.7.0-iter-typed-no-axioms-closing`.
+Main foundations library. **Current as of** `v4.7.0-iter-typed-no-axioms-closing` / `v4.8.0-iter-modularity-scaffold`.
 
 Certified: 26a1 `[1,0,1,-5,-8]` Δ `-17576` conductor 26 torsion 3;
 26b1 `[1,-1,1,-3,3]` Δ `-1664` conductor 26 torsion 7.
@@ -94,7 +94,8 @@ Top-level computable files:
 | [`Descent/`](Descent/README.md) | certified Weierstrass models; v4.1.1 displayed `|Sel₂|=1` from PARI; not a Selmer group |
 | [`Blueprint/`](Blueprint/README.md) | Phase 3 track board; no `sorry` |
 | [`Mazur/`](Mazur/README.md) | Genus certificates, four-premise endgame scaffold, v4.0.4 four-cusp package, v4.0.8 typed `hGeomForbid`, v4.0.9 cusp-point forall, v4.0.10 Chabauty-0 package |
-| [`Chain/`](Chain/README.md) | v4.2.0 `FreyLevel26` (`2 * 13 = 26`) and `X0_26_Q_four` from PARI `|Sel₂|=1` twice plus `det M₃ = 2`; not Ribet and not `X₀(26)(ℚ)` |
+| [`Chain/`](Chain/README.md) | v4.2.0 `FreyLevel26` (`2 * 13 = 26`) and `X0_26_Q_four`; v4.8.0 `X0_26_Point_Raw` / `X0_26_Q` PLACEHOLDER; not Ribet and not `X₀(26)(ℚ)` |
+| [`Modularity/`](Modularity/README.md) | v4.8.0 `frey_modular_13` and `ribet_level_lowering_26` computational-assumption axioms; not Wiles--Taylor / not Ribet |
 | [`Final/`](Final/README.md) | v4.7.0 `BealExponent13_Iter_Package` / `BealExponent13_Iter_Typed_And_Package`; not `∀ A B C` |
 | [`Real/`](Real/README.md) | Frey Weierstrass model and re-exported lowering |
 | [`Ribet/`](Ribet/README.md) | Typed `LevelLowering_26`; v4.0.6 split; v4.0.7-j finite `j`-invariant `hIdentify` |
@@ -112,3 +113,5 @@ The parent premises
 `MwrankCertificateSoundness_26`, `FormalImmersionSoundness_26`,
 `FreyCurveExists`, and supplier `LevelLowering_26` are **not**
 discharged here.
+
+v4.8.0-iter-modularity-scaffold: `X0_26_Point_Raw` + `DisplayedX026CuspPoint` `[1,2,13,26]` `P.mem`; `X0_26_Q` keeps a `True` PLACEHOLDER disjunct; `ExistsNoncuspidal_26` drops trailing `True`; `axiom frey_modular_13` and `axiom ribet_level_lowering_26` are COMPUTATIONAL ASSUMPTION placeholders secured by PARI `|Sel₂|=1` twice, `det M₃=2`, SHA-256 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. `hGeomForbid_typed_true` still depends on no axioms (`hNotIn hInList`). Old `#check hGeomForbid_typed_is_uninhabitable` stays live. Not `∀ ℕ` and no `False.elim`.

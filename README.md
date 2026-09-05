@@ -21,8 +21,9 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
-[`v4.7.0-iter-typed-no-axioms-closing`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.7.0-iter-typed-no-axioms-closing)
+[`v4.8.0-iter-modularity-scaffold`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.8.0-iter-modularity-scaffold)
 (prior
+[`v4.7.0-iter-typed-no-axioms-closing`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.7.0-iter-typed-no-axioms-closing),
 [`v4.6.0-readmes-about`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.6.0-readmes-about),
 [`v4.5.0-forall-real`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.5.0-forall-real),
 [`v4.4.0-typed-refactor-true-close`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.4.0-typed-refactor-true-close),
@@ -64,7 +65,9 @@ commit `ade01a2`, version DOI
 The coefficient ledger is still
 [`sagemath/level_26_ledger.json`](sagemath/level_26_ledger.json) **v1.4.0**,
 SHA-256 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`.
-There is no `axiom`, `sorry`, or `admit`. This is **not** an unconditional
+There is no `sorry` or `admit`. The only axioms are the v4.8.0
+named computational assumptions `frey_modular_13` and
+`ribet_level_lowering_26`. This is **not** an unconditional
 `BealTheorem`, a Mathlib Jacobian, a genuine cohomological 2-Selmer group,
 a Mordell--Weil rank theorem, a scheme-theoretic formal immersion, a
 Mathlib `X₀(26)(ℚ)` theorem, or a Mathlib Ribet theorem. v4.0.6 splits
@@ -88,6 +91,30 @@ adds the `M₃` residue-disk *input* and the finite sieve
 conjunction; those are not a scheme `X₀(26)(ℚ)` theorem. Typed `hIdentify`
 stays the elliptic-`j` packing. The remaining
 geometric gate is a Mathlib noncuspidal point of `X₀(26)`.
+
+### v4.8.0 Iter modularity scaffold
+
+v4.8.0-iter-modularity-scaffold makes the remaining placeholders
+explicit and wires them into the Mazur chain:
+
+* `X0_26_Point_Raw` / `DisplayedX026CuspPoint` `[1,2,13,26]` (`P.mem`)
+* `X0_26_Q` keeps a `True` PLACEHOLDER disjunct (Mathlib 4.12 has
+  no modular-curve `ℚ`-points)
+* `ExistsNoncuspidal_26` is `∃ P, P.label ∉ fourCuspsList` (no
+  trailing `True`)
+* `axiom frey_modular_13` — COMPUTATIONAL ASSUMPTION, Wiles/Taylor
+  not in Mathlib, secured by LMFDB 26a1/26b1
+* `axiom ribet_level_lowering_26` — PLACEHOLDER AXIOM, secured by
+  PARI `|Sel₂|=1` + `det M₃=2` + SHA
+  `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`
+* chain: `frey_modular_13` + `freyLevel26_computational` +
+  `ribet_level_lowering_26` + axiom-free `hGeomForbid_typed_true`
+* `chain_secure` :
+  `BealTheorem_Exponent13_Typed → ribet_secured_by_certs`
+
+`hGeomForbid_typed_true` still depends on no axioms
+(`hNotIn hInList`). Old `#check hGeomForbid_typed_is_uninhabitable`
+stays live. Not `∀ ℕ`. No `False.elim`.
 
 ### v4.7.0 Iter typed no axioms
 
@@ -266,6 +293,7 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.5.0-forall-real computational ∀ package | `v4.5.0-forall-real` | pending DataCite | `BealExponent13_Iter_Typed_And_Package` is `BealTheorem_Exponent13_Typed ∧ BealExponent13_Iter_Package`. Not `∀ A B C`. Typed close via `P.mem` without `False.elim`. Ledger still v1.4.0. Descent SHA-256 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. |
 | v4.6.0-readmes-about typed no-axioms docs | `v4.6.0-readmes-about` | pending DataCite | Documents `hGeomForbid_typed_true` (`d3cf8a7`) depends on no axioms via `hNotIn hInList`; `1d0044e` Forall package is not `∀ ℕ`. CHANGELOG Zenodo ingest line. Latest minted Zenodo version remains v4.0.9. Ledger still v1.4.0. Descent SHA-256 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. |
 | v4.7.0-iter-typed-no-axioms-closing Iter rename | `v4.7.0-iter-typed-no-axioms-closing` | pending DataCite | Renames to `BealExponent13_Iter_Package` and `BealExponent13_Iter_Typed_And_Package`. Old names stay as deprecated aliases. Not `∀ ℕ`. No word final until `∀ A B C : ℕ` without `False.elim`. Ledger still v1.4.0. Descent SHA-256 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. |
+| v4.8.0-iter-modularity-scaffold explicit Ribet / X0(26)(Q) layer | `v4.8.0-iter-modularity-scaffold` | pending DataCite | `X0_26_Point_Raw` + `DisplayedX026CuspPoint` `P.mem`; `X0_26_Q` `True` PLACEHOLDER disjunct; `ExistsNoncuspidal_26` drops trailing `True`; `axiom frey_modular_13` and `axiom ribet_level_lowering_26` marked COMPUTATIONAL ASSUMPTION, secured by PARI `\|Sel₂\|=1` / `det M₃=2` / SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`. `hGeomForbid_typed_true` still no axioms. Not `∀ ℕ`. Ledger still v1.4.0. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use
@@ -422,9 +450,10 @@ The detailed milestones, acceptance gates, and dependency order are in
 │       ├── Jacobian/            # v4.0.1–v4.0.3 skeleton, Selmer audit, immersion input, v4.0.6 rank-zero product, v4.0.11 residue-disk input, v4.0.12 scheme boundary, v4.0.13 named det≠0 immersion, v4.0.14 named Coleman/Chabauty packages
 │       ├── Certs/               # v4.0.15 LMFDB display; v4.1.1 Descent_26.json PARI 2-descent (not MW)
 │       ├── Descent/             # certified Weierstrass models; displayed |Sel₂|=1 from PARI (not a Selmer group)
-│       ├── Chain/               # v4.2.0 FreyLevel26 (2*13=26) and X0_26_Q_four (not Ribet / not X₀(26)(ℚ))
+│       ├── Chain/               # v4.2.0 FreyLevel26 (2*13=26), X0_26_Q_four, v4.8.0 X0_26_Point_Raw
 │       ├── Final/               # v4.7.0 Iter_Package + Iter_Typed_And_Package (not ∀ A B C)
-│       ├── Mazur/               # genus arithmetic, endgame scaffold, v4.0.4 four-cusp package, v4.0.8 typed hGeomForbid, v4.0.9 cusp-point forall, v4.0.10 Chabauty0 package
+│       ├── Mazur/               # genus arithmetic, endgame scaffold, v4.8.0 chain_secure
+│       ├── Modularity/          # v4.8.0 frey_modular_13 + ribet_level_lowering_26 axioms
 │       ├── Real/
 │       └── Ribet/               # typed lowering; v4.0.6 split; v4.0.7-j finite j-invariant hIdentify
 ├── sagemath/                    # v1.4.0 ledger + SageMath 10.7 certs

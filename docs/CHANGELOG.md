@@ -10,3 +10,4 @@ This file records trigger commits that do not change Lean.
 # v4.6.0-readmes-about — docs / About; hGeomForbid_typed_true no axioms
 # zenodo fix Sat Sep  5 06:21:24 PM UTC 2026
 # v4.7.0-iter-typed-no-axioms-closing — Iter_Package / Iter_Typed_And_Package (no final word)
+# v4.8.0-iter-modularity-scaffold — X0_26_Point + FreyModularity_13 + RibetLevelLowering_26 axioms

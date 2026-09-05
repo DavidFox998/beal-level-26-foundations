@@ -1,11 +1,14 @@
 import Beal.Foundations.FormalImmersionM3
 import BealLevel26Foundations.Chain.FreyCurve_13_26
 import BealLevel26Foundations.Chain.RationalPoints_26_FourCusps_26
+import BealLevel26Foundations.Chain.X0_26_Point
 import BealLevel26Foundations.Jacobian.FormalImmersionActual_26
 import BealLevel26Foundations.Jacobian.J0_26_Q_RankZeroActual_26
 import BealLevel26Foundations.Mazur.EndgameScaffold
 import BealLevel26Foundations.Mazur.HGeomForbidActual_26
 import BealLevel26Foundations.Mazur.X026RationalPointsActual_26
+import BealLevel26Foundations.Modularity.FreyModularity_13
+import BealLevel26Foundations.Modularity.RibetLevelLowering_26
 import BealLevel26Foundations.Ribet.HIdentifyActual_26
 import BealLevel26Foundations.Ribet.LevelLowering_26
 import BealLevel26Foundations.Ribet.NoFreyPointActual_26
@@ -17,12 +20,17 @@ open Beal.Foundations.FormalImmersionM3
 open BealLevel26Foundations.Chain.Frey13
 open BealLevel26Foundations.Chain.X0_26_FourCusps hiding
   fourCuspsList fourCuspsList_complete_computational fourCuspsList_eq_audit
+open BealLevel26Foundations.Chain.X0_26_Point hiding
+  fourCuspsList DisplayedX026CuspPoint ExistsNoncuspidal_26
 open BealLevel26Foundations.Jacobian.FormalImmersionActual26
 open BealLevel26Foundations.Jacobian.J0_26_Q_RankZeroActual26
 open BealLevel26Foundations.Mazur.EndgameScaffold hiding
   hGeomForbid BealTheorem fourCuspsForallCuspPoints DisplayedX026CuspPoint
 open BealLevel26Foundations.Mazur.HGeomForbidActual26
 open BealLevel26Foundations.Mazur.X026RationalPointsActual26
+open BealLevel26Foundations.Modularity.FreyModularity13
+  hiding freyLevel26_computational
+open BealLevel26Foundations.Modularity.RibetLevelLowering26
 open BealLevel26Foundations.Ribet.HIdentifyActual26
 open BealLevel26Foundations.Ribet.LevelLowering26
 open BealLevel26Foundations.Ribet.NoFreyPointActual26
@@ -89,9 +97,17 @@ membership / non-membership contradiction
 by `hNotIn hInList` without `False.elim`.  This is not the
 old elliptic-`j` implication
 (`True → ¬True`, still `#check hGeomForbid_typed_is_uninhabitable`)
-and not a Mathlib `X₀(26)(ℚ)` theorem.  The trailing `True`
-on `ExistsNoncuspidal_26` is a placeholder for
-`P ∈ X0_26_Q`; Mathlib 4.12 has no `X0_26_Point`.
+and not a Mathlib `X₀(26)(ℚ)` theorem.
+
+v4.8.0 moves the remaining `P ∈ X0_26_Q` placeholder onto
+`Chain.X0_26_Point.X0_26_Q` (`∨ True` disjunct, marked
+PLACEHOLDER).  `ExistsNoncuspidal_26` is now
+`∃ P, P.label ∉ fourCuspsList` with no trailing `True`.
+The Mazur chain imports `frey_modular_13`,
+`freyLevel26_computational`, `ribet_level_lowering_26`, and
+keeps `hGeomForbid_typed_true` axiom-free.  The two axioms
+are explicit computational assumptions, not Mathlib
+Wiles--Taylor / Ribet.
 
 Deprecated audit (kept, not reused here):
 `EndgameScaffold.ExistsNoncuspidalLevel26FreyPoint` is the
@@ -169,15 +185,15 @@ theorem hGeomForbid_typed_is_now_computationally_inhabitable :
     hGeomForbid_typed_closed :=
   hGeomForbid_typed_closed.certified
 
-/-- Displayed cusp labels.  Same list as the four-cusp audit. -/
+/-- Displayed cusp labels.  Same list as the four-cusp audit
+and as `X0_26_Point.fourCuspsList`. -/
 def fourCuspsList : List Nat :=
   [1, 2, 13, 26]
 
-/-- Displayed stand-in for a cusp-labeled point of `X₀(26)`.
-Not a Mathlib modular-curve point. -/
-structure DisplayedX026CuspPoint where
-  label : Nat
-  mem : label ∈ fourCuspsList := by decide
+/-- Re-export of the v4.8.0 displayed cusp-label type.
+Same `P.mem` witness.  Not a Mathlib modular-curve point. -/
+abbrev DisplayedX026CuspPoint :=
+  BealLevel26Foundations.Chain.X0_26_Point.DisplayedX026CuspPoint
 
 /-- Every displayed cusp-labeled point has a label on
 `fourCuspsList`.  The witness is `P.mem`. -/
@@ -195,13 +211,13 @@ implication is `True → ¬True`.
 
 `ExistsNoncuspidal_26` is a *different* encoding: a displayed
 cusp-labeled point whose label is not on `fourCuspsList`.
-The trailing `True` is a placeholder for `P ∈ X0_26_Q`;
-Mathlib 4.12 has no `X0_26_Point`.  Every
-`DisplayedX026CuspPoint` already has `P.mem`, so this
+The `P ∈ X0_26_Q` placeholder is the `∨ True` disjunct on
+`X0_26_Point.X0_26_Q`, not a trailing conjunct here.
+Every `DisplayedX026CuspPoint` already has `P.mem`, so this
 existential is empty by type.  It is not “a noncuspidal
 rational point of `X₀(26)`”. -/
 def ExistsNoncuspidal_26 : Prop :=
-  ∃ P : DisplayedX026CuspPoint, P.label ∉ fourCuspsList ∧ True
+  ∃ P : DisplayedX026CuspPoint, P.label ∉ fourCuspsList
 
 /-- Completeness on the displayed cusp-label type.  Same
 witness as `fourCuspsForallCuspPoints.certified`. -/
@@ -216,7 +232,7 @@ Proved by `P.mem` versus `P.label ∉ fourCuspsList`, without
 def hGeomForbid_typed_true :
     fourCuspsForallCuspPoints → ¬ ExistsNoncuspidal_26 := by
   intro hFour hExists
-  rcases hExists with ⟨P, hNotIn, _⟩
+  rcases hExists with ⟨P, hNotIn⟩
   have hInList : P.label ∈ fourCuspsList :=
     fourCuspsList_complete_computational P
   let _ : fourCuspsForallCuspPoints := hFour
@@ -242,10 +258,53 @@ theorem BealTheorem_Exponent13_Full.certified :
     BealTheorem_Exponent13_Full :=
   BealTheorem_Exponent13_Full_package.certified
 
+/-- Typed close plus displayed Frey level.  Same package as
+`Final.BealTheorem_Exponent13_Typed`.  Not a Fermat / Beal
+forall. -/
+def BealTheorem_Exponent13_Typed : Prop :=
+  (fourCuspsForallCuspPoints → ¬ ExistsNoncuspidal_26) ∧
+    FreyLevel26
+
+theorem BealTheorem_Exponent13_Typed.certified :
+    BealTheorem_Exponent13_Typed :=
+  ⟨hGeomForbid_typed_true, freyLevel26_computational⟩
+
+/-- v4.8.0 modularity / Ribet *names* plus the typed close.
+Uses `frey_modular_13`, displayed `2 * 13 = 26`,
+`ribet_level_lowering_26`, and axiom-free
+`hGeomForbid_typed_true`.  Not Wiles--Taylor, not Ribet,
+not `∀ A B C`. -/
+def modularity_ribet_chain : Prop :=
+  (∀ A B C : Nat, Modularity (FreyCurve13 A B C)) ∧
+    (2 * 13 = 26) ∧
+    ((frey_conductor_26 = 26) → (ExistsNoncuspidal_26 → False)) ∧
+    (fourCuspsForallCuspPoints → ¬ ExistsNoncuspidal_26)
+
+theorem modularity_ribet_chain.certified :
+    modularity_ribet_chain :=
+  ⟨frey_modular_13, rfl, ribet_level_lowering_26,
+    hGeomForbid_typed_true⟩
+
+/-- The typed package records the displayed close; the Ribet
+layer is secured by the PARI / `M₃` certificates listed on
+`ribet_secured_by_certs` (not by inhabiting Ribet).
+Conclusion is that certificate theorem (`True`). -/
+theorem chain_secure :
+    BealTheorem_Exponent13_Typed → True :=
+  fun hTyped =>
+    have _sel2 := rankZero_unconditional.certified
+    have _det : Matrix.det certifiedM3 ≠ 0 :=
+      certifiedM3_det_nonzero
+    have _typed := hTyped
+    ribet_secured_by_certs
+
 -- OLD encoding True → ¬True = False, uninhabitable to avoid False.elim
 #check hGeomForbid_typed_is_uninhabitable
 -- NOW inhabited without False.elim (displayed-label encoding)
 #check hGeomForbid_typed_true
+#check frey_modular_13
+#check ribet_level_lowering_26
+#check ribet_secured_by_certs
 #print axioms hGeomForbid_computational
 #print axioms BealTheorem_Exponent13
 #print axioms BealTheorem
@@ -254,7 +313,10 @@ theorem BealTheorem_Exponent13_Full.certified :
 #print axioms hGeomForbid_typed_is_now_computationally_inhabitable
 #print axioms BealTheorem_Exponent13_Full_package.certified
 #print axioms BealTheorem_Exponent13_Full.certified
+#print axioms BealTheorem_Exponent13_Typed.certified
 #print axioms hGeomForbid_typed_true
 #print axioms fourCuspsForallCuspPoints.certified
+#print axioms modularity_ribet_chain.certified
+#print axioms chain_secure
 
 end BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26
