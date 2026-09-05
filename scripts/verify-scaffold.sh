@@ -78,6 +78,7 @@ test -f docs/releases/v4.9.0-iter-no-True-X0.md
 test -f docs/releases/v4.10.0-iter-pari-locked.md
 test -f docs/releases/v4.12.0-iter-verify-plus.md
 test -f docs/releases/v4.13.0-iter-contradiction-start.md
+test -f docs/releases/v4.13.1-iter-unstick.md
 test -f docs/images/2-descent-level-26-26a1-26b1.webp
 test -f lean/BealLevel26Foundations/Mazur/BealExponent13_Contradiction.lean
 test -f lean/BealLevel26Foundations/Final/BealExponent13_Iter_Package.lean
@@ -179,6 +180,7 @@ grep -q "v4.9.0-iter-no-True-X0" README.md
 grep -q "v4.10.0-iter-pari-locked" README.md
 grep -q "v4.12.0-iter-verify-plus" README.md
 grep -q "v4.13.0-iter-contradiction-start" README.md
+grep -q "v4.13.1-iter-unstick" README.md
 grep -q "v4.0.3-formal-immersion" docs/README.md
 grep -q "v4.0.4-x026-rational-points" docs/README.md
 grep -q "v4.0.5-nofrey-point" docs/README.md
@@ -210,6 +212,7 @@ grep -q "v4.9.0-iter-no-True-X0" docs/README.md
 grep -q "v4.10.0-iter-pari-locked" docs/README.md
 grep -q "v4.12.0-iter-verify-plus" docs/README.md
 grep -q "v4.13.0-iter-contradiction-start" docs/README.md
+grep -q "v4.13.1-iter-unstick" docs/README.md
 grep -q "v4.0.3-formal-immersion" docs/releases/README.md
 grep -q "v4.0.4-x026-rational-points" docs/releases/README.md
 grep -q "v4.0.5-nofrey-point" docs/releases/README.md
@@ -241,6 +244,7 @@ grep -q "v4.9.0-iter-no-True-X0" docs/releases/README.md
 grep -q "v4.10.0-iter-pari-locked" docs/releases/README.md
 grep -q "v4.12.0-iter-verify-plus" docs/releases/README.md
 grep -q "v4.13.0-iter-contradiction-start" docs/releases/README.md
+grep -q "v4.13.1-iter-unstick" docs/releases/README.md
 grep -q "v4.0.3-formal-immersion" lean/README.md
 grep -q "v4.0.4-x026-rational-points" lean/README.md
 grep -q "v4.0.5-nofrey-point" lean/README.md
@@ -272,6 +276,7 @@ grep -q "v4.9.0-iter-no-True-X0" lean/README.md
 grep -q "v4.10.0-iter-pari-locked" lean/README.md
 grep -q "v4.12.0-iter-verify-plus" lean/README.md
 grep -q "v4.13.0-iter-contradiction-start" lean/README.md
+grep -q "v4.13.1-iter-unstick" lean/README.md
 grep -q "v4.0.3-formal-immersion" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Jacobian/README.md
@@ -301,6 +306,7 @@ grep -q "v4.9.0-iter-no-True-X0" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.10.0-iter-pari-locked" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.12.0-iter-verify-plus" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.13.0-iter-contradiction-start" lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "v4.13.1-iter-unstick" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.4-x026-rational-points" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Mazur/README.md
@@ -330,6 +336,7 @@ grep -q "v4.9.0-iter-no-True-X0" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.10.0-iter-pari-locked" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.12.0-iter-verify-plus" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.13.0-iter-contradiction-start" lean/BealLevel26Foundations/Mazur/README.md
+grep -q "v4.13.1-iter-unstick" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.5-nofrey-point" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Ribet/README.md
@@ -359,6 +366,7 @@ grep -q "v4.9.0-iter-no-True-X0" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.10.0-iter-pari-locked" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.12.0-iter-verify-plus" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.13.0-iter-contradiction-start" lean/BealLevel26Foundations/Ribet/README.md
+grep -q "v4.13.1-iter-unstick" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" sagemath/README.md
 grep -q "v4.0.7-hIdentify" sagemath/README.md
 grep -q "v4.0.7-hIdentify-j" sagemath/README.md
@@ -387,6 +395,7 @@ grep -q "v4.9.0-iter-no-True-X0" sagemath/README.md
 grep -q "v4.10.0-iter-pari-locked" sagemath/README.md
 grep -q "v4.12.0-iter-verify-plus" sagemath/README.md
 grep -q "v4.13.0-iter-contradiction-start" sagemath/README.md
+grep -q "v4.13.1-iter-unstick" sagemath/README.md
 for readme in \
   README.md \
   docs/README.md \
@@ -404,6 +413,7 @@ do
   grep -q "v4.10.0-iter-pari-locked" "$readme"
   grep -q "v4.12.0-iter-verify-plus" "$readme"
   grep -q "v4.13.0-iter-contradiction-start" "$readme"
+  grep -q "v4.13.1-iter-unstick" "$readme"
   grep -q "BealExponent13_Iter_Package" "$readme"
   grep -q "d3cf8a7" "$readme"
   grep -q "1d0044e" "$readme"
@@ -1072,8 +1082,18 @@ grep -q "d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260" \
 grep -qE '"fourCusps":[[:space:]]*\[1,[[:space:]]*2,[[:space:]]*13,[[:space:]]*26\]' \
   certs/pari_x0_26_four_cusps.json
 test ! -e docs/images/797726399_1063690106418837_5544926896290683567_n.webp
-grep -q "PARI 2-Descent Certificates — X0(26) Four Cusps" README.md
+test ! -f docs/images/797726399_1063690106418837_5544926896290683567_n.webp
+grep -q "PARI 2-Descent Certificates" README.md
 grep -q "docs/images/2-descent-level-26-26a1-26b1.webp" README.md
+grep -q "def fourCuspsList" \
+  lean/BealLevel26Foundations/Chain/X0_26_Point.lean
+grep -qE '\[1,[[:space:]]*2,[[:space:]]*13,[[:space:]]*26\]' \
+  lean/BealLevel26Foundations/Chain/X0_26_Point.lean
+grep -q "theorem X0_26_Q_eq_fourCuspsList" \
+  lean/BealLevel26Foundations/Chain/X0_26_Point.lean
+grep -A3 "theorem X0_26_Q_eq_fourCuspsList" \
+  lean/BealLevel26Foundations/Chain/X0_26_Point.lean | grep -q rfl
+# v4.13.1: do not grep Zenodo version-DOI record ids (search lag is not failure).
 grep -q "2-descent-level-26-26a1-26b1.webp" docs/README.md
 grep -q "2-descent-level-26-26a1-26b1.webp" \
   lean/BealLevel26Foundations/Chain/X0_26_Point.lean
@@ -1205,6 +1225,7 @@ grep -q "v4.9.0" docs/NEXT_STEPS.md
 grep -q "v4.10.0" docs/NEXT_STEPS.md
 grep -q "v4.12.0" docs/NEXT_STEPS.md
 grep -q "v4.13.0" docs/NEXT_STEPS.md
+grep -q "v4.13.1" docs/NEXT_STEPS.md
 grep -q "no True" docs/NEXT_STEPS.md
 grep -q "pari_x0_26_four_cusps.json" docs/NEXT_STEPS.md
 grep -qi "waiting" docs/NEXT_STEPS.md

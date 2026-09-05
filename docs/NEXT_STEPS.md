@@ -38,6 +38,15 @@ and `certs/pari_x0_26_four_cusps.json` keys `26a1` /
 `-1664`, `|Sel₂|=1` twice, `det M₃=2`, SHA-256
 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 
+## v4.13.1 Iter unstick
+
+`verify-scaffold.sh` locks the 2-descent image, Facebook
+name gone, README PARI figure, JSON `26a1`/`26b1`/`SHA`,
+`fourCuspsList` `[1,2,13,26]`, `X0_26_Q_eq_fourCuspsList`
+`rfl`, and `contradiction_from_ribet` /
+`beal_exponent13_from_ribet`. It does not grep Zenodo DOI
+record ids. Still not `∀ A B C : ℕ`.
+
 ## v4.13.0 Iter contradiction start
 
 `BealExponent13_Contradiction` is started. It is

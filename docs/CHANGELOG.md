@@ -15,3 +15,4 @@ This file records trigger commits that do not change Lean.
 # v4.10.0-iter-pari-locked — certs/pari_x0_26_four_cusps.json locks fourCusps + SHA
 # v4.12.0-iter-verify-plus — verify-scaffold locks 2-descent image + JSON keys 26a1/26b1/SHA
 # v4.13.0-iter-contradiction-start — wire X0_26_Q + Frey + Ribet → contradiction_from_ribet
+# v4.13.1-iter-unstick — verify locks image/JSON/contradiction; no Zenodo DOI greps
