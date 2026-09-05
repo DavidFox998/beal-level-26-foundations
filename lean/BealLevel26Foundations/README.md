@@ -22,9 +22,17 @@ Top-level computable files:
 | [`Descent/`](Descent/README.md) | certified Weierstrass models; v4.1.1 displayed `|Sel₂|=1` from PARI; not a Selmer group |
 | [`Blueprint/`](Blueprint/README.md) | Phase 3 track board; no `sorry` |
 | [`Mazur/`](Mazur/README.md) | Genus certificates, four-premise endgame scaffold, v4.0.4 four-cusp package, v4.0.8 typed `hGeomForbid`, v4.0.9 cusp-point forall, v4.0.10 Chabauty-0 package |
-| [`Chain/`](Chain/README.md) | v4.2.0 `FreyLevel26` (`2 * 13 = 26`) and `X0_26_Q_four`; not Ribet and not `X₀(26)(ℚ)` |
+| [`Chain/`](Chain/README.md) | v4.2.0 `FreyLevel26` (`2 * 13 = 26`) and `X0_26_Q_four` from PARI `|Sel₂|=1` twice plus `det M₃ = 2`; not Ribet and not `X₀(26)(ℚ)` |
 | [`Real/`](Real/README.md) | Frey Weierstrass model and re-exported lowering |
 | [`Ribet/`](Ribet/README.md) | Typed `LevelLowering_26`; v4.0.6 split; v4.0.7-j finite `j`-invariant `hIdentify` |
+
+Certified models (PARI 2.17.2; Descent SHA-256
+`d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`):
+`26a1` `[1,0,1,-5,-8]` Δ `-17576` conductor 26 torsion 3;
+`26b1` `[1,-1,1,-3,3]` Δ `-1664` conductor 26 torsion 7;
+both `ellrank [0,0]`, empty `ell2cover`, `|Sel₂|=1`.
+`BealTheorem_Exponent13_Full_package` is
+`X0_26_Q_four ∧ FreyLevel26`. Not `∀ A B C`.
 
 The parent premises
 `J0DecompositionSoundness_26`, geometric

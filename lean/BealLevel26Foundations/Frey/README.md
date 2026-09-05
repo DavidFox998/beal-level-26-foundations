@@ -13,3 +13,6 @@ as of** `v4.2.0-full-chain` / `v2.0.0-frey`.
 not mention `frey_conductor_data` or `tate_step2_odd_prime_external`.
 The Weierstrass model itself is
 [`../Real/FreyWeierstrass.lean`](../Real/FreyWeierstrass.lean).
+The v4.2.0 displayed level name `FreyLevel26` (`2 * 13 = 26`) lives in
+[`../Chain/FreyCurve_13_26.lean`](../Chain/FreyCurve_13_26.lean).
+That is not Ribet level lowering.

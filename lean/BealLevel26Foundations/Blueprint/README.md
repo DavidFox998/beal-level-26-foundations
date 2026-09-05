@@ -88,8 +88,9 @@ Status: **PARI 2-descent display shipped**
 equalities and an `Option` `hGeomForbid`.
 `BealTheoremFromMazurChain26` inhabits a computational
 `hGeomForbid` structure and `BealTheorem_Exponent13`.
-v4.2.0 names `BealTheorem_Exponent13_Full` as the Frey
-`26 = 2 × 13` plus four-cusp computational conjunction.
+v4.2.0 names `FreyLevel26` (`2 * 13 = 26`), `X0_26_Q_four`,
+and `BealTheorem_Exponent13_Full_package` as
+`X0_26_Q_four ∧ FreyLevel26`.
 Remaining: a Mathlib Selmer group, Ribet, and an unconditional
 Mordell--Weil theorem. Do not treat `1 = 1` as unconditional
 rank zero. The typed implication stays uninhabitable.

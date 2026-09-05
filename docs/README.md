@@ -3,8 +3,11 @@
 Versioned release notes for
 [beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations).
 
-**Current as of** tag `v4.2.0-full-chain` (git tag
-only; no version DOI). Prior tag
+**Current as of** tag `v4.2.0-full-chain` (GitHub release;
+version DOI recorded after DataCite `state: findable`).
+Certified models: `26a1` `[1,0,1,-5,-8]` Δ `-17576`,
+`26b1` `[1,-1,1,-3,3]` Δ `-1664`, PARI `|Sel₂|=1` twice,
+`FreyLevel26` is `2 * 13 = 26`. Prior tag
 [`v4.1.3-beal-13-theorem`](releases/v4.1.3-beal-13-theorem.md).
 Prior tag
 [`v4.1.2-beal-13-endgame`](releases/v4.1.2-beal-13-endgame.md).

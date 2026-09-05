@@ -42,5 +42,7 @@ DataCite-findable version (`v4.0.9-fourCusps-forall`);
 `v4.1.0-descent-start`,
 `v4.1.1-descent-compute`,
 `v4.1.2-beal-13-endgame`,
-`v4.1.3-beal-13-theorem`, and
-`v4.2.0-full-chain` are git tags only.
+`v4.1.3-beal-13-theorem` are git tags only.
+`v4.2.0-full-chain` is a GitHub release; its version DOI is
+recorded in `latest_foundations_release` only after DataCite
+`state: findable`.
