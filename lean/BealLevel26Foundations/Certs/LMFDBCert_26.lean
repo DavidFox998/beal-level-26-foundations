@@ -62,8 +62,8 @@ def LMFDB_26a1_rankZero : Prop :=
     lmfdb26a1.torsion = "Z/3Z" ∧
     lmfdb26a1.ap2 = -1
 
-theorem LMFDB_26a1_rankZero.certified : LMFDB_26a1_rankZero := by
-  decide
+theorem LMFDB_26a1_rankZero.certified : LMFDB_26a1_rankZero :=
+  ⟨rfl, rfl, rfl, rfl, rfl⟩
 
 /-- Displayed `26.b1` row: rank field `0`, conductor `26`, `a₂ = 1`.
 Not a Mordell--Weil theorem. -/
@@ -74,8 +74,8 @@ def LMFDB_26b1_rankZero : Prop :=
     lmfdb26b1.torsion = "Z/7Z" ∧
     lmfdb26b1.ap2 = 1
 
-theorem LMFDB_26b1_rankZero.certified : LMFDB_26b1_rankZero := by
-  decide
+theorem LMFDB_26b1_rankZero.certified : LMFDB_26b1_rankZero :=
+  ⟨rfl, rfl, rfl, rfl, rfl⟩
 
 /-- Displayed LMFDB ranks match Sage `certified_mwrank` and the
 q-expansion `a₂` distinction.  Two `Nat`/`Int` equalities.  Not
