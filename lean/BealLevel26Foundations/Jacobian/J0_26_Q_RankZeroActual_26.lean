@@ -49,8 +49,8 @@ added.
 v4.1.0 links the product `rankZero` name to the Descent Selmer
 names only as a comment.  `RankZero_26a1_from_Selmer` /
 `RankZero_26b1_from_Selmer` are `3 = 3` / `7 = 7` on displayed
-torsion-order Nats.  They do not replace `rankZero`.  Not a
-Selmer group and not a Mordell--Weil theorem.
+torsion-order Nats.  They do not replace `rankZero`.  Not a Selmer
+group and not a Mordell--Weil theorem.
 -/
 
 /-- Product of the two certified rank-zero elliptic factors. -/
