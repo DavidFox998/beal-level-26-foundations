@@ -896,7 +896,7 @@ if grep -nE 'Prop[[:space:]]*:=[[:space:]]*True|:=[[:space:]]*trivial' \
   echo "FAIL: Descent ranks/Selmer names must not be True/trivial"
   exit 1
 fi
-if grep -nE '-1216|-1831858856|-213' \
+if grep -nE -- '-1216|-1831858856|-213' \
     lean/BealLevel26Foundations/Descent/EllipticCurve_26a1_26b1_26.lean; then
   echo "FAIL: Descent Weierstrass models must use certified 26a1/26b1 a-invariants"
   exit 1
