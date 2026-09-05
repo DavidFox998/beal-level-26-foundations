@@ -1,7 +1,7 @@
 # sagemath/
 
 Pinned coefficient ledger and SageMath 10.7 certificate generators.
-**Current as of** `v4.6.0-readmes-about` / `v4.5.0-forall-real` / `v4.4.0-typed-refactor-true-close` / `v4.3.0-final-forall-package` / `v4.2.2-zenodo-trigger` / `v4.2.1-chabauty-closes-typed` / `v4.2.0-full-chain`.
+**Current as of** `v4.7.0-iter-typed-no-axioms-closing` / `v4.5.0-forall-real` / `v4.4.0-typed-refactor-true-close` / `v4.3.0-final-forall-package` / `v4.2.2-zenodo-trigger` / `v4.2.1-chabauty-closes-typed` / `v4.2.0-full-chain`.
 
 The ledger version is **v1.4.0** and has been unchanged since tag
 `v1.4.0`:
@@ -50,14 +50,15 @@ recorded in `latest_foundations_release` only after DataCite
 Chabauty completeness *package*; it does not inhabit typed
 `fourCusps → ¬ ExistsNoncuspidal` and does not change the ledger.
 `v4.2.2-zenodo-trigger` is a changelog-only ingest commit.
-`v4.3.0-final-forall-package` names `BealExponent13_Final_Package`;
+`v4.3.0-final-forall-package` named the Iter conjunction
+(then `BealExponent13_Final_Package`, now a deprecated alias);
 it is not `∀ A B C` and does not change the ledger.
 `v4.4.0-typed-refactor-true-close` inhabits
 `hGeomForbid_typed_true` on the displayed cusp-label type
 without `False.elim`; the old elliptic-`j` implication stays
 uninhabitable. It does not change the ledger.
 `v4.5.0-forall-real` names
-`BealTheorem_Exponent13_Forall_Computational`; it is not
+`BealExponent13_Iter_Typed_And_Package`; it is not
 `∀ A B C` and does not change the ledger.
 `v4.6.0-readmes-about` documents `d3cf8a7` / `1d0044e` and adds a
 CHANGELOG Zenodo ingest line. It does not change the ledger.

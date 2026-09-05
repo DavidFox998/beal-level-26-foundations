@@ -1,8 +1,8 @@
 # lean/BealLevel26Foundations/
 
-# v4.6.0 READMEs / About (typed no axioms)
+# v4.7.0 Iter typed no axioms
 
-Main foundations library. **Current as of** `v4.6.0-readmes-about`.
+Main foundations library. **Current as of** `v4.7.0-iter-typed-no-axioms-closing`.
 
 Certified: 26a1 `[1,0,1,-5,-8]` Δ `-17576` conductor 26 torsion 3;
 26b1 `[1,-1,1,-3,3]` Δ `-1664` conductor 26 torsion 7.
@@ -33,13 +33,13 @@ The old elliptic-`j` implication stays uninhabitable.
 
 `BealTheorem_Exponent13_Typed` is that implication plus
 `FreyLevel26`.
-`BealTheorem_Exponent13_Forall_Computational` is
-`BealTheorem_Exponent13_Typed ∧ BealExponent13_Final_Package`
+`BealExponent13_Iter_Typed_And_Package` is
+`BealTheorem_Exponent13_Typed ∧ BealExponent13_Iter_Package`
 (not `∀ A B C`).
-`BealExponent13_Final_Package = X0_26_Q_four ∧ FreyLevel26 ∧ fourCuspsForallCuspPoints`,
-`BealExponent13_Final_Package.certified`.
+`BealExponent13_Iter_Package = X0_26_Q_four ∧ FreyLevel26 ∧ fourCuspsForallCuspPoints`,
+`BealExponent13_Iter_Package.certified`.
 `BealTheorem_Exponent13_Full_package` is the same conjunction
-in Mazur (no Final import). No `∀` with vacuous contradiction.
+in Mazur (no import of this folder). No `∀` with vacuous contradiction.
 
 v4.4.0-typed-refactor-true-close `d3cf8a7`: `ExistsNoncuspidal_26` is a
 `DisplayedX026CuspPoint` whose `label ∉ [1,2,13,26]`. Every such `P`
@@ -50,8 +50,8 @@ is a placeholder for `P ∈ X0_26_Q`; Mathlib 4.12 has no `X0_26_Point`.
 proved by `hNotIn hInList`. It depends on no axioms. That is not the
 old elliptic-`j` implication (`True → ¬True`).
 
-v4.5.0-forall-real `1d0044e`: `BealTheorem_Exponent13_Forall_Computational`
-is `BealTheorem_Exponent13_Typed ∧ BealExponent13_Final_Package`. That
+v4.5.0-forall-real `1d0044e`: `BealExponent13_Iter_Typed_And_Package`
+is `BealTheorem_Exponent13_Typed ∧ BealExponent13_Iter_Package`. That
 is a named conjunction, not `∀ ℕ` and not `∀ A B C`. Certs unchanged:
 26a1 `[1,0,1,-5,-8]` Δ `-17576`, 26b1 `[1,-1,1,-3,3]` Δ `-1664`,
 PARI `|Sel₂|=1` twice, `det M₃=2`, SHA-256
@@ -69,9 +69,10 @@ Releases: `v4.2.0-full-chain` `62d0e13`,
 `v4.2.1-chabauty-closes-typed` `eed5170`,
 `v4.2.2-zenodo-trigger` fresh, `v4.3.0-final-forall-package`,
 `v4.4.0-typed-refactor-true-close` `d3cf8a7`, `v4.5.0-forall-real`
-`1d0044e`, `v4.6.0-readmes-about`.
+`1d0044e`, `v4.6.0-readmes-about`,
+`v4.7.0-iter-typed-no-axioms-closing`.
 
-[`Final/`](Final/README.md) holds the v4.5.0 computational ∀ package.
+[`Final/`](Final/README.md) holds the v4.7.0 Iter package.
 
 Top-level computable files:
 
@@ -94,7 +95,7 @@ Top-level computable files:
 | [`Blueprint/`](Blueprint/README.md) | Phase 3 track board; no `sorry` |
 | [`Mazur/`](Mazur/README.md) | Genus certificates, four-premise endgame scaffold, v4.0.4 four-cusp package, v4.0.8 typed `hGeomForbid`, v4.0.9 cusp-point forall, v4.0.10 Chabauty-0 package |
 | [`Chain/`](Chain/README.md) | v4.2.0 `FreyLevel26` (`2 * 13 = 26`) and `X0_26_Q_four` from PARI `|Sel₂|=1` twice plus `det M₃ = 2`; not Ribet and not `X₀(26)(ℚ)` |
-| [`Final/`](Final/README.md) | v4.5.0 `BealTheorem_Exponent13_Forall_Computational`; v4.4.0 `BealTheorem_Exponent13_Typed`; not `∀ A B C` |
+| [`Final/`](Final/README.md) | v4.7.0 `BealExponent13_Iter_Package` / `BealExponent13_Iter_Typed_And_Package`; not `∀ A B C` |
 | [`Real/`](Real/README.md) | Frey Weierstrass model and re-exported lowering |
 | [`Ribet/`](Ribet/README.md) | Typed `LevelLowering_26`; v4.0.6 split; v4.0.7-j finite `j`-invariant `hIdentify` |
 

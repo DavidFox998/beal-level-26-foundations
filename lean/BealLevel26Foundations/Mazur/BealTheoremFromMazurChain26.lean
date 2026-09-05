@@ -222,8 +222,8 @@ def hGeomForbid_typed_true :
   let _ : fourCuspsForallCuspPoints := hFour
   exact hNotIn hInList
 
-/-- Local full package (no Final import: Final imports this
-file).  Not `∀ A B C, ¬ A^13 + B^13 = C^13`. -/
+/-- Local full package (this file is not imported in a cycle
+from the Iter folder).  Not `∀ A B C, ¬ A^13 + B^13 = C^13`. -/
 def BealTheorem_Exponent13_Full_package : Prop :=
   X0_26_Q_four ∧ FreyLevel26 ∧ fourCuspsForallCuspPoints
 

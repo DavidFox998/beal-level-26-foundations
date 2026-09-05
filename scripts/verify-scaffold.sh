@@ -72,6 +72,8 @@ test -f docs/releases/v4.3.0-final-forall-package.md
 test -f docs/releases/v4.4.0-typed-refactor-true-close.md
 test -f docs/releases/v4.5.0-forall-real.md
 test -f docs/releases/v4.6.0-readmes-about.md
+test -f docs/releases/v4.7.0-iter-typed-no-axioms-closing.md
+test -f docs/NEXT_STEPS.md
 test -f docs/CHANGELOG.md
 test -f lean/BealLevel26Foundations/Final/BealExponent13_Final.lean
 test -f lean/BealLevel26Foundations/Final/BealExponent13_Forall.lean
@@ -158,6 +160,7 @@ grep -q "v4.3.0-final-forall-package" README.md
 grep -q "v4.4.0-typed-refactor-true-close" README.md
 grep -q "v4.5.0-forall-real" README.md
 grep -q "v4.6.0-readmes-about" README.md
+grep -q "v4.7.0-iter-typed-no-axioms-closing" README.md
 grep -q "v4.0.3-formal-immersion" docs/README.md
 grep -q "v4.0.4-x026-rational-points" docs/README.md
 grep -q "v4.0.5-nofrey-point" docs/README.md
@@ -183,6 +186,7 @@ grep -q "v4.3.0-final-forall-package" docs/README.md
 grep -q "v4.4.0-typed-refactor-true-close" docs/README.md
 grep -q "v4.5.0-forall-real" docs/README.md
 grep -q "v4.6.0-readmes-about" docs/README.md
+grep -q "v4.7.0-iter-typed-no-axioms-closing" docs/README.md
 grep -q "v4.0.3-formal-immersion" docs/releases/README.md
 grep -q "v4.0.4-x026-rational-points" docs/releases/README.md
 grep -q "v4.0.5-nofrey-point" docs/releases/README.md
@@ -208,6 +212,7 @@ grep -q "v4.3.0-final-forall-package" docs/releases/README.md
 grep -q "v4.4.0-typed-refactor-true-close" docs/releases/README.md
 grep -q "v4.5.0-forall-real" docs/releases/README.md
 grep -q "v4.6.0-readmes-about" docs/releases/README.md
+grep -q "v4.7.0-iter-typed-no-axioms-closing" docs/releases/README.md
 grep -q "v4.0.3-formal-immersion" lean/README.md
 grep -q "v4.0.4-x026-rational-points" lean/README.md
 grep -q "v4.0.5-nofrey-point" lean/README.md
@@ -233,6 +238,7 @@ grep -q "v4.3.0-final-forall-package" lean/README.md
 grep -q "v4.4.0-typed-refactor-true-close" lean/README.md
 grep -q "v4.5.0-forall-real" lean/README.md
 grep -q "v4.6.0-readmes-about" lean/README.md
+grep -q "v4.7.0-iter-typed-no-axioms-closing" lean/README.md
 grep -q "v4.0.3-formal-immersion" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Jacobian/README.md
@@ -256,6 +262,7 @@ grep -q "v4.3.0-final-forall-package" lean/BealLevel26Foundations/Jacobian/READM
 grep -q "v4.4.0-typed-refactor-true-close" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.5.0-forall-real" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.6.0-readmes-about" lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "v4.7.0-iter-typed-no-axioms-closing" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.4-x026-rational-points" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Mazur/README.md
@@ -279,6 +286,7 @@ grep -q "v4.3.0-final-forall-package" lean/BealLevel26Foundations/Mazur/README.m
 grep -q "v4.4.0-typed-refactor-true-close" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.5.0-forall-real" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.6.0-readmes-about" lean/BealLevel26Foundations/Mazur/README.md
+grep -q "v4.7.0-iter-typed-no-axioms-closing" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.5-nofrey-point" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Ribet/README.md
@@ -302,6 +310,7 @@ grep -q "v4.3.0-final-forall-package" lean/BealLevel26Foundations/Ribet/README.m
 grep -q "v4.4.0-typed-refactor-true-close" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.5.0-forall-real" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.6.0-readmes-about" lean/BealLevel26Foundations/Ribet/README.md
+grep -q "v4.7.0-iter-typed-no-axioms-closing" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" sagemath/README.md
 grep -q "v4.0.7-hIdentify" sagemath/README.md
 grep -q "v4.0.7-hIdentify-j" sagemath/README.md
@@ -324,6 +333,7 @@ grep -q "v4.3.0-final-forall-package" sagemath/README.md
 grep -q "v4.4.0-typed-refactor-true-close" sagemath/README.md
 grep -q "v4.5.0-forall-real" sagemath/README.md
 grep -q "v4.6.0-readmes-about" sagemath/README.md
+grep -q "v4.7.0-iter-typed-no-axioms-closing" sagemath/README.md
 for readme in \
   README.md \
   docs/README.md \
@@ -335,6 +345,8 @@ for readme in \
   lean/BealLevel26Foundations/Certs/README.md
 do
   grep -q "v4.6.0-readmes-about" "$readme"
+  grep -q "v4.7.0-iter-typed-no-axioms-closing" "$readme"
+  grep -q "BealExponent13_Iter_Package" "$readme"
   grep -q "d3cf8a7" "$readme"
   grep -q "1d0044e" "$readme"
   grep -q "hNotIn hInList" "$readme"
@@ -858,9 +870,15 @@ if grep -q "import BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26" \
   echo "FAIL: RationalPoints_26_FourCusps_26 must not import BealTheoremFromMazurChain26 (cycle)"
   exit 1
 fi
+grep -qF "def BealExponent13_Iter_Package : Prop :=" \
+  lean/BealLevel26Foundations/Final/BealExponent13_Final.lean
+grep -q "theorem BealExponent13_Iter_Package.certified" \
+  lean/BealLevel26Foundations/Final/BealExponent13_Final.lean
 grep -qF "def BealExponent13_Final_Package : Prop :=" \
   lean/BealLevel26Foundations/Final/BealExponent13_Final.lean
 grep -q "theorem BealExponent13_Final_Package.certified" \
+  lean/BealLevel26Foundations/Final/BealExponent13_Final.lean
+grep -q "Deprecated alias of \`BealExponent13_Iter_Package\`" \
   lean/BealLevel26Foundations/Final/BealExponent13_Final.lean
 grep -q "d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260" \
   lean/BealLevel26Foundations/Final/BealExponent13_Final.lean
@@ -913,10 +931,24 @@ if grep -nE 'BealTheorem_Exponent13_Typed[[:space:]]*:[[:space:]]*∀' \
 fi
 grep -q "import BealLevel26Foundations.Final.BealExponent13_Final" \
   lean/BealLevel26Foundations/Final/BealExponent13_Forall.lean
+grep -qF "def BealExponent13_Iter_Typed_And_Package : Prop :=" \
+  lean/BealLevel26Foundations/Final/BealExponent13_Forall.lean
+grep -q "theorem BealExponent13_Iter_Typed_And_Package.certified" \
+  lean/BealLevel26Foundations/Final/BealExponent13_Forall.lean
 grep -qF "def BealTheorem_Exponent13_Forall_Computational : Prop :=" \
   lean/BealLevel26Foundations/Final/BealExponent13_Forall.lean
 grep -q "theorem BealTheorem_Exponent13_Forall_Computational.certified" \
   lean/BealLevel26Foundations/Final/BealExponent13_Forall.lean
+if grep -nE 'BealExponent13_Iter[[:space:]]*:[[:space:]]*∀' \
+    lean/BealLevel26Foundations/Final/BealExponent13_Final.lean \
+    lean/BealLevel26Foundations/Final/BealExponent13_Forall.lean; then
+  echo "FAIL: Iter package must not claim ∀ A B C"
+  exit 1
+fi
+grep -q "We do not use the word final" docs/NEXT_STEPS.md
+grep -q "BealExponent13_Contradiction" docs/NEXT_STEPS.md
+grep -q "v4.8.0" docs/NEXT_STEPS.md
+grep -qi "waiting" docs/NEXT_STEPS.md
 grep -q "d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260" \
   lean/BealLevel26Foundations/Final/BealExponent13_Forall.lean
 if grep -nE 'BealTheorem_Exponent13_Forall[[:space:]]*:[[:space:]]*∀' \

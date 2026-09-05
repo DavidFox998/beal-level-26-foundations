@@ -10,7 +10,7 @@ open BealLevel26Foundations.Chain.X0_26_FourCusps hiding
   fourCuspsList fourCuspsList_complete_computational fourCuspsList_eq_audit
 
 /-!
-# v4.4.0 typed true close + v4.3.0 Final package
+# v4.7.0 Iter package + v4.4.0 typed true close
 
 `BealTheorem_Exponent13_Typed` is
 
@@ -24,9 +24,13 @@ It is not the old elliptic-`j` implication
 (`True → ¬True`, still `hGeomForbid_typed_is_uninhabitable`)
 and not a Mathlib `X₀(26)(ℚ)` theorem.
 
-`BealExponent13_Final_Package` is
+`BealExponent13_Iter_Package` is
 
 `X0_26_Q_four ∧ FreyLevel26 ∧ fourCuspsForallCuspPoints`.
+
+`BealExponent13_Final_Package` is a deprecated alias of that
+name.  We do not use the word final until
+`∀ A B C : ℕ` is in the kernel without `False.elim`.
 
 That records PARI `|Sel₂| = 1` twice (`1 = 1`), `det M₃ = 2`,
 the displayed Frey level `2 * 13 = 26`, and the cusp-point
@@ -43,7 +47,7 @@ has no Ribet, no `SelmerGroup`, no `MordellWeil.rank`, and no
 (`True → ¬True`).
 
 This file imports `BealTheoremFromMazurChain26`.  That module
-does **not** import Final (cycle inverted in v4.4.0).
+does **not** import this folder (cycle inverted in v4.4.0).
 `X026RationalPointsActual_26` is unchanged.  Descent SHA-256
 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 -/
@@ -58,16 +62,27 @@ theorem BealTheorem_Exponent13_Typed.certified :
     BealTheorem_Exponent13_Typed :=
   ⟨hGeomForbid_typed_true, freyLevel26_computational⟩
 
-/-- Computational final package.  Not a Fermat / Beal forall. -/
-def BealExponent13_Final_Package : Prop :=
+/-- Iter package: PARI `|Sel₂|=1` twice, `det M₃=2`, displayed
+Frey level, and the cusp-label forall.  Not a Fermat / Beal
+forall. -/
+def BealExponent13_Iter_Package : Prop :=
   X0_26_Q_four ∧ FreyLevel26 ∧ fourCuspsForallCuspPoints
 
-theorem BealExponent13_Final_Package.certified :
-    BealExponent13_Final_Package :=
+theorem BealExponent13_Iter_Package.certified :
+    BealExponent13_Iter_Package :=
   ⟨X0_26_Q_four.certified, freyLevel26_computational,
     fourCuspsForallCuspPoints.certified⟩
 
+/-- Deprecated alias of `BealExponent13_Iter_Package`. -/
+def BealExponent13_Final_Package : Prop :=
+  BealExponent13_Iter_Package
+
+theorem BealExponent13_Final_Package.certified :
+    BealExponent13_Final_Package :=
+  BealExponent13_Iter_Package.certified
+
 #print axioms BealTheorem_Exponent13_Typed.certified
+#print axioms BealExponent13_Iter_Package.certified
 #print axioms BealExponent13_Final_Package.certified
 
 end BealLevel26Foundations.Final

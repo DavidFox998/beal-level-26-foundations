@@ -1,7 +1,7 @@
 # lean/BealLevel26Foundations/Certs/
 
 Archived LMFDB *display* data and PARI 2-descent display for `26a1`
-and `26b1`. **Current as of** `v4.6.0-readmes-about`.
+and `26b1`. **Current as of** `v4.7.0-iter-typed-no-axioms-closing` / `v4.6.0-readmes-about`.
 
 | File | What it is | What it is not |
 |---|---|---|
@@ -29,8 +29,8 @@ is a placeholder for `P ∈ X0_26_Q`; Mathlib 4.12 has no `X0_26_Point`.
 proved by `hNotIn hInList`. It depends on no axioms. That is not the
 old elliptic-`j` implication (`True → ¬True`).
 
-v4.5.0-forall-real `1d0044e`: `BealTheorem_Exponent13_Forall_Computational`
-is `BealTheorem_Exponent13_Typed ∧ BealExponent13_Final_Package`. That
+v4.5.0-forall-real `1d0044e`: `BealExponent13_Iter_Typed_And_Package`
+is `BealTheorem_Exponent13_Typed ∧ BealExponent13_Iter_Package`. That
 is a named conjunction, not `∀ ℕ` and not `∀ A B C`. Certs unchanged:
 26a1 `[1,0,1,-5,-8]` Δ `-17576`, 26b1 `[1,-1,1,-3,3]` Δ `-1664`,
 PARI `|Sel₂|=1` twice, `det M₃=2`, SHA-256

@@ -3,16 +3,20 @@ import BealLevel26Foundations.Final.BealExponent13_Final
 namespace BealLevel26Foundations.Final
 
 /-!
-# v4.5.0 ∀ *computational package* for exponent 13
+# v4.7.0 Iter typed ∧ package for exponent 13
 
-`BealTheorem_Exponent13_Forall_Computational` is
+`BealExponent13_Iter_Typed_And_Package` is
 
-`BealTheorem_Exponent13_Typed ∧ BealExponent13_Final_Package`.
+`BealTheorem_Exponent13_Typed ∧ BealExponent13_Iter_Package`.
 
 That is the typed displayed-label implication
 `fourCuspsForallCuspPoints → ¬ ExistsNoncuspidal_26`
 plus `FreyLevel26`, plus
 `X0_26_Q_four ∧ FreyLevel26 ∧ fourCuspsForallCuspPoints`.
+
+`BealTheorem_Exponent13_Forall_Computational` is a deprecated
+alias of that name.  We do not use the word final until
+`∀ A B C : ℕ` is in the kernel without `False.elim`.
 
 If `A^13+B^13=C^13` were coprime, a Frey construction would
 give a noncuspidal point of `X₀(26)`, contradicting
@@ -33,16 +37,25 @@ Descent SHA-256
 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 -/
 
-/-- Conjunction of the typed close and the Final package.
+/-- Conjunction of the typed close and the Iter package.
 Not a Fermat / Beal forall. -/
+def BealExponent13_Iter_Typed_And_Package : Prop :=
+  BealTheorem_Exponent13_Typed ∧ BealExponent13_Iter_Package
+
+theorem BealExponent13_Iter_Typed_And_Package.certified :
+    BealExponent13_Iter_Typed_And_Package :=
+  ⟨BealTheorem_Exponent13_Typed.certified,
+    BealExponent13_Iter_Package.certified⟩
+
+/-- Deprecated alias of `BealExponent13_Iter_Typed_And_Package`. -/
 def BealTheorem_Exponent13_Forall_Computational : Prop :=
-  BealTheorem_Exponent13_Typed ∧ BealExponent13_Final_Package
+  BealExponent13_Iter_Typed_And_Package
 
 theorem BealTheorem_Exponent13_Forall_Computational.certified :
     BealTheorem_Exponent13_Forall_Computational :=
-  ⟨BealTheorem_Exponent13_Typed.certified,
-    BealExponent13_Final_Package.certified⟩
+  BealExponent13_Iter_Typed_And_Package.certified
 
+#print axioms BealExponent13_Iter_Typed_And_Package.certified
 #print axioms BealTheorem_Exponent13_Forall_Computational.certified
 
 end BealLevel26Foundations.Final

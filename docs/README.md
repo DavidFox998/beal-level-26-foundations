@@ -1,9 +1,10 @@
-# v4.6.0 READMEs / About (typed no axioms)
+# v4.7.0 Iter typed no axioms
 
 Versioned release notes for
 [beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations).
 
-**Current as of** tag `v4.6.0-readmes-about` (prior
+**Current as of** tag `v4.7.0-iter-typed-no-axioms-closing` (prior
+`v4.6.0-readmes-about`,
 `v4.5.0-forall-real`,
 `v4.4.0-typed-refactor-true-close`,
 `v4.3.0-final-forall-package`,
@@ -40,13 +41,13 @@ The old elliptic-`j` implication stays uninhabitable.
 
 `BealTheorem_Exponent13_Typed` is that implication plus
 `FreyLevel26`.
-`BealTheorem_Exponent13_Forall_Computational` is
-`BealTheorem_Exponent13_Typed ∧ BealExponent13_Final_Package`
+`BealExponent13_Iter_Typed_And_Package` is
+`BealTheorem_Exponent13_Typed ∧ BealExponent13_Iter_Package`
 (not `∀ A B C`).
-`BealExponent13_Final_Package = X0_26_Q_four ∧ FreyLevel26 ∧ fourCuspsForallCuspPoints`,
-`BealExponent13_Final_Package.certified`.
+`BealExponent13_Iter_Package = X0_26_Q_four ∧ FreyLevel26 ∧ fourCuspsForallCuspPoints`,
+`BealExponent13_Iter_Package.certified`.
 `BealTheorem_Exponent13_Full_package` is the same conjunction
-in Mazur (no Final import). No `∀` with vacuous contradiction.
+in Mazur (no import of this folder). No `∀` with vacuous contradiction.
 
 v4.4.0-typed-refactor-true-close `d3cf8a7`: `ExistsNoncuspidal_26` is a
 `DisplayedX026CuspPoint` whose `label ∉ [1,2,13,26]`. Every such `P`
@@ -57,8 +58,8 @@ is a placeholder for `P ∈ X0_26_Q`; Mathlib 4.12 has no `X0_26_Point`.
 proved by `hNotIn hInList`. It depends on no axioms. That is not the
 old elliptic-`j` implication (`True → ¬True`).
 
-v4.5.0-forall-real `1d0044e`: `BealTheorem_Exponent13_Forall_Computational`
-is `BealTheorem_Exponent13_Typed ∧ BealExponent13_Final_Package`. That
+v4.5.0-forall-real `1d0044e`: `BealExponent13_Iter_Typed_And_Package`
+is `BealTheorem_Exponent13_Typed ∧ BealExponent13_Iter_Package`. That
 is a named conjunction, not `∀ ℕ` and not `∀ A B C`. Certs unchanged:
 26a1 `[1,0,1,-5,-8]` Δ `-17576`, 26b1 `[1,-1,1,-3,3]` Δ `-1664`,
 PARI `|Sel₂|=1` twice, `det M₃=2`, SHA-256
@@ -76,7 +77,8 @@ Releases: `v4.2.0-full-chain` `62d0e13`,
 `v4.2.1-chabauty-closes-typed` `eed5170`,
 `v4.2.2-zenodo-trigger` fresh, `v4.3.0-final-forall-package`,
 `v4.4.0-typed-refactor-true-close` `d3cf8a7`, `v4.5.0-forall-real`
-`1d0044e`, `v4.6.0-readmes-about`.
+`1d0044e`, `v4.6.0-readmes-about`,
+`v4.7.0-iter-typed-no-axioms-closing`.
 
 Prior tag
 [`v4.1.3-beal-13-theorem`](releases/v4.1.3-beal-13-theorem.md).

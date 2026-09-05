@@ -1,7 +1,7 @@
 # docs/releases/
 
 Immutable notes for each published Foundations tag. **Current latest
-note:** [`v4.6.0-readmes-about.md`](v4.6.0-readmes-about.md)
+note:** [`v4.7.0-iter-typed-no-axioms-closing.md`](v4.7.0-iter-typed-no-axioms-closing.md)
 (prior [`v4.2.2-zenodo-trigger.md`](v4.2.2-zenodo-trigger.md),
 [`v4.2.1-chabauty-closes-typed.md`](v4.2.1-chabauty-closes-typed.md),
 [`v4.2.0-full-chain.md`](v4.2.0-full-chain.md),
@@ -58,6 +58,7 @@ not an unconditional `BealTheorem`.
 | [v4.4.0-typed-refactor-true-close.md](v4.4.0-typed-refactor-true-close.md) | `v4.4.0-typed-refactor-true-close` | pending DataCite |
 | [v4.5.0-forall-real.md](v4.5.0-forall-real.md) | `v4.5.0-forall-real` | pending DataCite |
 | [v4.6.0-readmes-about.md](v4.6.0-readmes-about.md) | `v4.6.0-readmes-about` | pending DataCite |
+| [v4.7.0-iter-typed-no-axioms-closing.md](v4.7.0-iter-typed-no-axioms-closing.md) | `v4.7.0-iter-typed-no-axioms-closing` | pending DataCite |
 
 Concept DOI for the evolving project:
 [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).
