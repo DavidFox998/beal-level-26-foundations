@@ -711,9 +711,9 @@ if grep -nE 'BealTheorem_Exponent13_Full[[:space:]]*:[[:space:]]*∀' \
   echo "FAIL: BealTheorem_Exponent13_Full must not claim ∀ A B C Fermat/Beal"
   exit 1
 fi
-grep -q "def FreyConductorDivides26 : Prop := 2 * 13 = 26" \
+grep -qF "def FreyConductorDivides26 : Prop := 2 * 13 = 26" \
   lean/BealLevel26Foundations/Chain/FreyCurve_13_26.lean
-grep -q "def FreyToX0_26 : Prop := 26 = 2 * 13" \
+grep -qF "def FreyToX0_26 : Prop := 26 = 2 * 13" \
   lean/BealLevel26Foundations/Chain/FreyCurve_13_26.lean
 grep -q "theorem freyToX0_26_computational" \
   lean/BealLevel26Foundations/Chain/FreyCurve_13_26.lean
