@@ -3,7 +3,10 @@
 Versioned release notes for
 [beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations).
 
-**Current as of** tag `v4.0.7-hIdentify-j`. Prior published tag
+**Current as of** tag `v4.0.7-hIdentify-j` (commit `ade01a2`,
+version DOI
+[10.5281/zenodo.22314212](https://doi.org/10.5281/zenodo.22314212)).
+Prior published tag
 [`v4.0.7-hIdentify`](releases/v4.0.7-hIdentify.md) (commit `a4143fc`,
 version DOI
 [10.5281/zenodo.22314092](https://doi.org/10.5281/zenodo.22314092)).

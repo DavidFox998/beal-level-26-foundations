@@ -1,4 +1,4 @@
-[![v4.0.7-hIdentify DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22314092.svg)](https://doi.org/10.5281/zenodo.22314092)
+[![v4.0.7-hIdentify-j DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22314212.svg)](https://doi.org/10.5281/zenodo.22314212)
 [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 [![CI](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml/badge.svg)](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml)
 
@@ -14,8 +14,11 @@ The governing principle is the same as the parent project: a checked
 calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
-**Current public surface:** tag `v4.0.7-hIdentify-j` (prior published
-tag [`v4.0.7-hIdentify`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.7-hIdentify),
+**Current public surface:** tag
+[`v4.0.7-hIdentify-j`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.7-hIdentify-j)
+(commit `ade01a2`, version DOI
+[10.5281/zenodo.22314212](https://doi.org/10.5281/zenodo.22314212);
+prior [`v4.0.7-hIdentify`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.0.7-hIdentify),
 commit `a4143fc`, version DOI
 [10.5281/zenodo.22314092](https://doi.org/10.5281/zenodo.22314092)).
 The coefficient ledger is still
@@ -133,7 +136,7 @@ Jacobian or identify the audit with genuine 2-Selmer.
 | v4.0.5-nofrey-point displayed Ribet existence | `v4.0.5-nofrey-point` / `5b29092` | [10.5281/zenodo.22313407](https://doi.org/10.5281/zenodo.22313407) | `Ribet/NoFreyPointActual_26` inhabits `NoFreyPoint26.of_qExpansion` from displayed target `26` plus the v4.0.1–v4.0.4 q-expansion chain. Not a Mathlib Ribet theorem. `J0_26_Q_RankZero26` and `hGeomForbid` stay supplied. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `02094d6dc522603fed7478500f5ee1f9c7ab3ddc0530d16262003ff866f5f942`. |
 | v4.0.6-rank-zero-fixed split existence from absence | `v4.0.6-rank-zero-fixed` / `2290809` | [10.5281/zenodo.22313955](https://doi.org/10.5281/zenodo.22313955) | Splits Ribet existence (`RibetLoweringActual_26` / `ExistsFreyWitness`, `loweredLevel=26`) from four-cusp absence (`NoFreyPointActual_26` / `¬ ExistsNoncuspidal` from divisors `[1,2,13,26]`). Inhabits `J0_26_Q_RankZero26` as the product of certified `26a×26b` with Sage `certified_mwrank=0` on both; not genuine `Sel₂`. `hGeomForbid` is `fourCusps → ¬ ExistsNoncuspidal`. Remaining named gate: `hIdentify`. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `3597879ae2492dbd48ef3b8d7755bd742c14373988ff9af0469fd89060313570`. |
 | v4.0.7-hIdentify typed implication uninhabitable | `v4.0.7-hIdentify` / `a4143fc` | [10.5281/zenodo.22314092](https://doi.org/10.5281/zenodo.22314092) | `Ribet/HIdentifyActual_26` proves `hIdentify_typed_is_uninhabitable`: `ExistsFreyWitness → ExistsNoncuspidal` is `True → False` because `26` is a displayed cusp. Does not inhabit that implication and does not add `theorem BealTheorem`. Remaining geometric gate: Frey curve from a Beal counterexample. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `df6ff673d4661ae736ff726f7b03f3271493483895910fb97267808bd785e41a`. |
-| v4.0.7-hIdentify-j finite `j`-invariant encoding | `v4.0.7-hIdentify-j` | (version DOI after publish) | Redefines `ExistsNoncuspidal` as an elliptic `j`-ratio `(c₄³ : Δ)`, not `26 ∉ [1,2,13,26]`. `HIdentify26.of_qExpansion` inhabits typed `hIdentify` from q-expansion `26a × 26b`, `MwrankCertificateSoundness_26`, and the four-cusp package. `NoFreyPoint26` keeps the cusp list and does not Lean-negate the elliptic `j`. `hGeomForbid` remains. No `theorem BealTheorem`. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. |
+| v4.0.7-hIdentify-j finite `j`-invariant encoding | `v4.0.7-hIdentify-j` / `ade01a2` | [10.5281/zenodo.22314212](https://doi.org/10.5281/zenodo.22314212) | Redefines `ExistsNoncuspidal` as an elliptic `j`-ratio `(c₄³ : Δ)`, not `26 ∉ [1,2,13,26]`. `HIdentify26.of_qExpansion` inhabits typed `hIdentify` from q-expansion `26a × 26b`, `MwrankCertificateSoundness_26`, and the four-cusp package. `NoFreyPoint26` keeps the cusp list and does not Lean-negate the elliptic `j`. `hGeomForbid` remains. No `theorem BealTheorem`. Ledger still v1.4.0 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`. Archive SHA-256 `0a93c94fc19aa64ca8a57a76b1106a8991be4b29ba7ac1bc33839b81ba590e45`. |
 
 The corrected v1.0.1 theorem uses each signed S-unit in the finite-field
 equation. It supersedes v1.0.0, whose Lean predicate indexed but did not use

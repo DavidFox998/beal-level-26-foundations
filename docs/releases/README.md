@@ -23,7 +23,7 @@ not an unconditional `BealTheorem`.
 | [v4.0.5-nofrey-point.md](v4.0.5-nofrey-point.md) | `v4.0.5-nofrey-point` / `5b29092` | [10.5281/zenodo.22313407](https://doi.org/10.5281/zenodo.22313407) |
 | [v4.0.6-rank-zero-fixed.md](v4.0.6-rank-zero-fixed.md) | `v4.0.6-rank-zero-fixed` / `2290809` | [10.5281/zenodo.22313955](https://doi.org/10.5281/zenodo.22313955) |
 | [v4.0.7-hIdentify.md](v4.0.7-hIdentify.md) | `v4.0.7-hIdentify` / `a4143fc` | [10.5281/zenodo.22314092](https://doi.org/10.5281/zenodo.22314092) |
-| [v4.0.7-hIdentify-j.md](v4.0.7-hIdentify-j.md) | `v4.0.7-hIdentify-j` | (version DOI after publish) |
+| [v4.0.7-hIdentify-j.md](v4.0.7-hIdentify-j.md) | `v4.0.7-hIdentify-j` / `ade01a2` | [10.5281/zenodo.22314212](https://doi.org/10.5281/zenodo.22314212) |
 
 Concept DOI for the evolving project:
 [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).
