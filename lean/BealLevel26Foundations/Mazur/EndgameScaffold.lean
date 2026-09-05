@@ -41,8 +41,13 @@ v4.0.6 splits Ribet *existence* from four-cusp *absence*:
 `hGeomForbid` is the negation
 `fourCusps → ¬ ExistsNoncuspidalLevel26FreyPoint`.  Identifying a
 displayed Ribet target with a *noncuspidal* `X₀(26)` point remains
-the named argument `hIdentify`.  This is not an unconditional
-`BealTheorem`.
+the named argument `hIdentify`.  v4.0.7 proves that typed
+implication uninhabitable
+(`HIdentifyActual_26.hIdentify_typed_is_uninhabitable`): the
+displayed target `26` is a listed cusp, not a noncuspidal point.
+The remaining geometric gate is a Frey curve from a Beal
+counterexample, which this repository does not construct.  This
+is not an unconditional `BealTheorem`.
 -/
 
 /-- Primitive Beal counterexample in the exponent range of the level-26

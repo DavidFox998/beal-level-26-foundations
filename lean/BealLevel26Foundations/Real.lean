@@ -13,6 +13,7 @@ import BealLevel26Foundations.Jacobian.J0_26_Q_RankZeroActual_26
 import BealLevel26Foundations.Mazur.X026RationalPointsActual_26
 import BealLevel26Foundations.Ribet.RibetLoweringActual_26
 import BealLevel26Foundations.Ribet.NoFreyPointActual_26
+import BealLevel26Foundations.Ribet.HIdentifyActual_26
 
 namespace BealLevel26Foundations.Real
 
@@ -37,7 +38,8 @@ finite package. v4.0.5 recorded displayed Ribet existence; v4.0.6
 splits that existence (`ExistsFreyWitness`, `loweredLevel = 26`)
 from four-cusp absence (`¬ ExistsNoncuspidal`) and inhabits
 `J0_26_Q_RankZero26` as the product of two Sage-certified
-rank-zero factors. That is not genuine `Sel₂` and not an
+rank-zero factors. v4.0.7 records that typed `hIdentify` is
+uninhabitable. That is not genuine `Sel₂` and not an
 unconditional `BealTheorem`.
 -/
 

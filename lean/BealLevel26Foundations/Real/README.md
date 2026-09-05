@@ -1,6 +1,6 @@
 # lean/BealLevel26Foundations/Real/
 
-Arithmetic that Mathlib 4.12 permits. **Current as of** `v4.0.6-rank-zero-fixed`.
+Arithmetic that Mathlib 4.12 permits. **Current as of** `v4.0.7-hIdentify`.
 
 | File | What it is | What it is not |
 |---|---|---|

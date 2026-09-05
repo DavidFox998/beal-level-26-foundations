@@ -1,6 +1,6 @@
 # scripts/
 
-Deterministic repository checks. **Current as of** `v4.0.6-rank-zero-fixed`.
+Deterministic repository checks. **Current as of** `v4.0.7-hIdentify`.
 
 | Script | What it checks |
 |---|---|

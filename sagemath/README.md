@@ -1,7 +1,7 @@
 # sagemath/
 
 Pinned coefficient ledger and SageMath 10.7 certificate generators.
-**Current as of** `v4.0.6-rank-zero-fixed`.
+**Current as of** `v4.0.7-hIdentify`.
 
 The ledger version is **v1.4.0** and has been unchanged since tag
 `v1.4.0`:
@@ -18,7 +18,7 @@ The ledger version is **v1.4.0** and has been unchanged since tag
 | `formal_immersion_M3.sage` | Generator for the `M₃` cert |
 | [`certs/`](certs/README.md) | The two archived JSON certificates |
 
-Later Foundations tags (v2.0.0-frey through v4.0.6-rank-zero-fixed) do **not**
+Later Foundations tags (v2.0.0-frey through v4.0.7-hIdentify) do **not**
 add a new cert and do **not** change the ledger SHA. The
 `foundations_doi_manifest.json` top-level `version` field stays
 `v1.4.0`; only `latest_foundations_release` moves.

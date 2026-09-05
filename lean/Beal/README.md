@@ -1,7 +1,7 @@
 # lean/Beal/
 
 Parent-facing `Beal.Foundations` namespace. **Current as of**
-`v4.0.6-rank-zero-fixed`.
+`v4.0.7-hIdentify`.
 
 [`Foundations.lean`](Foundations.lean) is the entrypoint. Its `release`
 string is still `"v1.4.0"`: that is the **certificate-bridge / ledger**

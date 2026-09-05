@@ -1,8 +1,9 @@
 # lean/BealLevel26Foundations/Mazur/
 
 Genus certificates, q-expansion cotangent calculations, and the v4.0.0
-endgame scaffold. **Current as of** `v4.0.6-rank-zero-fixed`
-(includes `v4.0.5-nofrey-point`, `v4.0.4-x026-rational-points`).
+endgame scaffold. **Current as of** `v4.0.7-hIdentify`
+(includes `v4.0.6-rank-zero-fixed`, `v4.0.5-nofrey-point`,
+`v4.0.4-x026-rational-points`).
 
 | File | What it is | What it is not |
 |---|---|---|
@@ -20,9 +21,11 @@ The four premises of the scaffold:
 3. `X0_26_RationalPoints26` (v4.0.4 inhabits the finite four-cusp package; not a modular-curve rational-point theorem)
 4. `NoFreyPoint26` (v4.0.6 inhabits `¬ ExistsNoncuspidal` from the four-cusp list in [`../Ribet/NoFreyPointActual_26.lean`](../Ribet/NoFreyPointActual_26.lean); Ribet existence is [`../Ribet/RibetLoweringActual_26.lean`](../Ribet/RibetLoweringActual_26.lean))
 
-`hGeomForbid` is `fourCusps → ¬ ExistsNoncuspidal`. Identifying a
-displayed level-26 Ribet target with a noncuspidal `X₀(26)` point
-is the named remaining gate `hIdentify`. There is no unconditional
-`BealTheorem`. Rank, scheme-theoretic immersion, a Mathlib
-`X₀(26)(ℚ)` theorem, Mathlib Ribet existence, and `R = T` are not
-discharged by `decide`.
+`hGeomForbid` is `fourCusps → ¬ ExistsNoncuspidal`. v4.0.7 proves
+the typed `hIdentify` implication uninhabitable
+([`../Ribet/HIdentifyActual_26.lean`](../Ribet/HIdentifyActual_26.lean)).
+The remaining geometric gate is a Frey curve from a Beal
+counterexample. There is no unconditional `BealTheorem`. Rank,
+scheme-theoretic immersion, a Mathlib `X₀(26)(ℚ)` theorem,
+Mathlib Ribet existence, and `R = T` are not discharged by
+`decide`.

@@ -12,6 +12,7 @@ import BealLevel26Foundations.Jacobian.J0_26_Q_RankZeroActual_26
 import BealLevel26Foundations.Mazur.X026RationalPointsActual_26
 import BealLevel26Foundations.Ribet.RibetLoweringActual_26
 import BealLevel26Foundations.Ribet.NoFreyPointActual_26
+import BealLevel26Foundations.Ribet.HIdentifyActual_26
 
 namespace Beal.Foundations
 
@@ -34,6 +35,7 @@ Ribet existence. v4.0.6 splits that existence
 (`¬ ExistsNoncuspidal`) and inhabits `J0_26_Q_RankZero26` as
 the product of two Sage-certified rank-zero factors. That does
 not identify eight S-units with genuine 2-Selmer.
+v4.0.7 records that typed `hIdentify` is uninhabitable.
 No domain axiom is introduced. Geometric Jacobian, genuine
 cohomological Selmer, Picard, Tate, scheme-theoretic Ribet
 existence, and an unconditional `BealTheorem` remain named later

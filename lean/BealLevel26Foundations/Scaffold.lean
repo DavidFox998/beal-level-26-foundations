@@ -11,6 +11,7 @@ import BealLevel26Foundations.Jacobian.J0_26_Q_RankZeroActual_26
 import BealLevel26Foundations.Mazur.X026RationalPointsActual_26
 import BealLevel26Foundations.Ribet.RibetLoweringActual_26
 import BealLevel26Foundations.Ribet.NoFreyPointActual_26
+import BealLevel26Foundations.Ribet.HIdentifyActual_26
 
 namespace BealLevel26Foundations.Scaffold
 
@@ -25,7 +26,9 @@ absence (`¬ ExistsNoncuspidal`), and the v4.0.6 product
 rank-zero package. It is separate from the unconditional
 computable v1 entrypoint. Identifying a displayed level-26
 target with a noncuspidal `X₀(26)` point remains the named
-gate `hIdentify`. There is no unconditional `BealTheorem` here.
+gate `hIdentify`. v4.0.7 records that the *typed* implication
+`ExistsFreyWitness → ExistsNoncuspidal` is uninhabitable. There
+is no unconditional `BealTheorem` here.
 -/
 
 def status : String :=

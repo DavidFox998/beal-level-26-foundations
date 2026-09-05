@@ -51,6 +51,7 @@ test -f docs/releases/v4.0.3-formal-immersion.md
 test -f docs/releases/v4.0.4-x026-rational-points.md
 test -f docs/releases/v4.0.5-nofrey-point.md
 test -f docs/releases/v4.0.6-rank-zero-fixed.md
+test -f docs/releases/v4.0.7-hIdentify.md
 test -f lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
 test -f lean/Beal/Foundations/EndgameScaffold.lean
 test -f lean/BealLevel26Foundations/Jacobian/J0_26_DecompActual.lean
@@ -87,25 +88,33 @@ grep -q "v4.0.3-formal-immersion" README.md
 grep -q "v4.0.4-x026-rational-points" README.md
 grep -q "v4.0.5-nofrey-point" README.md
 grep -q "v4.0.6-rank-zero-fixed" README.md
+grep -q "v4.0.7-hIdentify" README.md
 grep -q "v4.0.3-formal-immersion" docs/README.md
 grep -q "v4.0.4-x026-rational-points" docs/README.md
 grep -q "v4.0.5-nofrey-point" docs/README.md
 grep -q "v4.0.6-rank-zero-fixed" docs/README.md
+grep -q "v4.0.7-hIdentify" docs/README.md
 grep -q "v4.0.3-formal-immersion" docs/releases/README.md
 grep -q "v4.0.4-x026-rational-points" docs/releases/README.md
 grep -q "v4.0.5-nofrey-point" docs/releases/README.md
 grep -q "v4.0.6-rank-zero-fixed" docs/releases/README.md
+grep -q "v4.0.7-hIdentify" docs/releases/README.md
 grep -q "v4.0.3-formal-immersion" lean/README.md
 grep -q "v4.0.4-x026-rational-points" lean/README.md
 grep -q "v4.0.5-nofrey-point" lean/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/README.md
+grep -q "v4.0.7-hIdentify" lean/README.md
 grep -q "v4.0.3-formal-immersion" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.4-x026-rational-points" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Mazur/README.md
+grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.5-nofrey-point" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Ribet/README.md
+grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" sagemath/README.md
+grep -q "v4.0.7-hIdentify" sagemath/README.md
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md
 grep -qi "genuine cohomological 2-Selmer" \
@@ -443,6 +452,39 @@ grep -q "hIdentify" \
   lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
 grep -q "¬ ExistsNoncuspidalLevel26FreyPoint" \
   lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean
+test -f lean/BealLevel26Foundations/Ribet/HIdentifyActual_26.lean
+grep -q "def hIdentifyFinitePackage" \
+  lean/BealLevel26Foundations/Ribet/HIdentifyActual_26.lean
+grep -q "theorem hIdentify_typed_is_uninhabitable" \
+  lean/BealLevel26Foundations/Ribet/HIdentifyActual_26.lean
+grep -q "theorem remainingGeometricIdentify.certified" \
+  lean/BealLevel26Foundations/Ribet/HIdentifyActual_26.lean
+grep -q "sUnitAudit26_is_not_genuine_2Selmer" \
+  lean/BealLevel26Foundations/Ribet/HIdentifyActual_26.lean
+grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
+  lean/BealLevel26Foundations/Ribet/HIdentifyActual_26.lean
+if grep -nE '^[[:space:]]*(def|theorem)[[:space:]]+hIdentify[[:space:]]' \
+    lean/BealLevel26Foundations/Ribet/HIdentifyActual_26.lean; then
+  echo "FAIL: must not inhabit typed hIdentify ExistsFreyWitness → ExistsNoncuspidal"
+  exit 1
+fi
+if grep -nE \
+    'theorem[[:space:]]+(genuineCohomological2Selmer|twoSelmerIdentification|SelmerGroup_eq)' \
+    lean/BealLevel26Foundations/Ribet/HIdentifyActual_26.lean; then
+  echo "FAIL: must not identify the S-unit audit with genuine 2-Selmer"
+  exit 1
+fi
+if grep -nE 'selmerGroup|IsDedekindDomain' \
+    lean/BealLevel26Foundations/Ribet/HIdentifyActual_26.lean; then
+  echo "FAIL: hIdentify package must not use IsDedekindDomain.selmerGroup"
+  exit 1
+fi
+if grep -nE '^[[:space:]]*theorem BealTheorem[[:space:]]' \
+    lean/BealLevel26Foundations/Ribet/HIdentifyActual_26.lean \
+    lean/BealLevel26Foundations/Mazur/EndgameScaffold.lean; then
+  echo "FAIL: unconditional BealTheorem is not allowed"
+  exit 1
+fi
 
 python3 scripts/verify_coefficient_ledger.py
 python3 scripts/verify_v1_3_0_certs.py
