@@ -5,7 +5,8 @@ Chabauty--Coleman work. The Lean track list lives in
 [`lean/BealLevel26Foundations/Blueprint/README.md`](../lean/BealLevel26Foundations/Blueprint/README.md).
 This page is documentation only. It does not change any Lean source.
 Track C names the Sage rank-zero product and `det ≠ 0`; it does
-not add a Coleman integral.
+not add a Coleman integral. Track D records archived LMFDB
+display fields; that is not unconditional rank zero.
 
 ## Geometry: X₀(26) Level 26
 

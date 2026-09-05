@@ -60,7 +60,12 @@ test -f docs/releases/v4.0.11-residue-disks-no-doi.md
 test -f docs/releases/v4.0.12-scheme-stub-no-doi.md
 test -f docs/releases/v4.0.13-formal-immersion-proof-no-doi.md
 test -f docs/releases/v4.0.14-coleman-integral-no-doi.md
+test -f docs/releases/v4.0.15-lmfdb-certs-no-doi.md
 test -f lean/BealLevel26Foundations/Blueprint/README.md
+test -f lean/BealLevel26Foundations/Certs/LMFDB_26.json
+test -f lean/BealLevel26Foundations/Certs/LMFDBCert_26.lean
+test -f scripts/fetch_LMFDB.py
+test -f scripts/verify_lmfdb_26.py
 test -f lean/BealLevel26Foundations/Jacobian/ResidueDisksProof_26.lean
 test -f lean/BealLevel26Foundations/Jacobian/ColemanIntegral_26.lean
 test -f lean/BealLevel26Foundations/Jacobian/ColemanNonVanishing_26.lean
@@ -116,6 +121,7 @@ grep -q "v4.0.11-residue-disks-no-doi" README.md
 grep -q "v4.0.12-scheme-stub-no-doi" README.md
 grep -q "v4.0.13-formal-immersion-proof-no-doi" README.md
 grep -q "v4.0.14-coleman-integral-no-doi" README.md
+grep -q "v4.0.15-lmfdb-certs-no-doi" README.md
 grep -q "v4.0.3-formal-immersion" docs/README.md
 grep -q "v4.0.4-x026-rational-points" docs/README.md
 grep -q "v4.0.5-nofrey-point" docs/README.md
@@ -129,6 +135,7 @@ grep -q "v4.0.11-residue-disks-no-doi" docs/README.md
 grep -q "v4.0.12-scheme-stub-no-doi" docs/README.md
 grep -q "v4.0.13-formal-immersion-proof-no-doi" docs/README.md
 grep -q "v4.0.14-coleman-integral-no-doi" docs/README.md
+grep -q "v4.0.15-lmfdb-certs-no-doi" docs/README.md
 grep -q "v4.0.3-formal-immersion" docs/releases/README.md
 grep -q "v4.0.4-x026-rational-points" docs/releases/README.md
 grep -q "v4.0.5-nofrey-point" docs/releases/README.md
@@ -142,6 +149,7 @@ grep -q "v4.0.11-residue-disks-no-doi" docs/releases/README.md
 grep -q "v4.0.12-scheme-stub-no-doi" docs/releases/README.md
 grep -q "v4.0.13-formal-immersion-proof-no-doi" docs/releases/README.md
 grep -q "v4.0.14-coleman-integral-no-doi" docs/releases/README.md
+grep -q "v4.0.15-lmfdb-certs-no-doi" docs/releases/README.md
 grep -q "v4.0.3-formal-immersion" lean/README.md
 grep -q "v4.0.4-x026-rational-points" lean/README.md
 grep -q "v4.0.5-nofrey-point" lean/README.md
@@ -155,6 +163,7 @@ grep -q "v4.0.11-residue-disks-no-doi" lean/README.md
 grep -q "v4.0.12-scheme-stub-no-doi" lean/README.md
 grep -q "v4.0.13-formal-immersion-proof-no-doi" lean/README.md
 grep -q "v4.0.14-coleman-integral-no-doi" lean/README.md
+grep -q "v4.0.15-lmfdb-certs-no-doi" lean/README.md
 grep -q "v4.0.3-formal-immersion" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Jacobian/README.md
@@ -166,6 +175,7 @@ grep -q "v4.0.11-residue-disks-no-doi" lean/BealLevel26Foundations/Jacobian/READ
 grep -q "v4.0.12-scheme-stub-no-doi" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.13-formal-immersion-proof-no-doi" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.14-coleman-integral-no-doi" lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "v4.0.15-lmfdb-certs-no-doi" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.4-x026-rational-points" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Mazur/README.md
@@ -177,6 +187,7 @@ grep -q "v4.0.11-residue-disks-no-doi" lean/BealLevel26Foundations/Mazur/README.
 grep -q "v4.0.12-scheme-stub-no-doi" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.13-formal-immersion-proof-no-doi" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.14-coleman-integral-no-doi" lean/BealLevel26Foundations/Mazur/README.md
+grep -q "v4.0.15-lmfdb-certs-no-doi" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.5-nofrey-point" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Ribet/README.md
@@ -188,6 +199,7 @@ grep -q "v4.0.11-residue-disks-no-doi" lean/BealLevel26Foundations/Ribet/README.
 grep -q "v4.0.12-scheme-stub-no-doi" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.13-formal-immersion-proof-no-doi" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.14-coleman-integral-no-doi" lean/BealLevel26Foundations/Ribet/README.md
+grep -q "v4.0.15-lmfdb-certs-no-doi" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" sagemath/README.md
 grep -q "v4.0.7-hIdentify" sagemath/README.md
 grep -q "v4.0.7-hIdentify-j" sagemath/README.md
@@ -198,6 +210,7 @@ grep -q "v4.0.11-residue-disks-no-doi" sagemath/README.md
 grep -q "v4.0.12-scheme-stub-no-doi" sagemath/README.md
 grep -q "v4.0.13-formal-immersion-proof-no-doi" sagemath/README.md
 grep -q "v4.0.14-coleman-integral-no-doi" sagemath/README.md
+grep -q "v4.0.15-lmfdb-certs-no-doi" sagemath/README.md
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md
 grep -qi "genuine cohomological 2-Selmer" \
@@ -788,8 +801,37 @@ if grep -nE \
   exit 1
 fi
 
+test -f lean/BealLevel26Foundations/Certs/LMFDBCert_26.lean
+grep -q "def LMFDB_26a1_rankZero" \
+  lean/BealLevel26Foundations/Certs/LMFDBCert_26.lean
+grep -q "def LMFDB_26b1_rankZero" \
+  lean/BealLevel26Foundations/Certs/LMFDBCert_26.lean
+grep -q "def J0_26_rankZero_from_LMFDB" \
+  lean/BealLevel26Foundations/Certs/LMFDBCert_26.lean
+grep -q "Not a Mordell--Weil theorem" \
+  lean/BealLevel26Foundations/Certs/LMFDBCert_26.lean
+grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
+  lean/BealLevel26Foundations/Certs/LMFDBCert_26.lean
+if grep -nE 'Prop[[:space:]]*:=[[:space:]]*True|:=[[:space:]]*trivial' \
+    lean/BealLevel26Foundations/Certs/LMFDBCert_26.lean; then
+  echo "FAIL: LMFDB rank must not be True/trivial"
+  exit 1
+fi
+if grep -nE '^[[:space:]]*theorem BealTheorem[[:space:]]' \
+    lean/BealLevel26Foundations/Certs/LMFDBCert_26.lean; then
+  echo "FAIL: unconditional BealTheorem is not allowed"
+  exit 1
+fi
+if grep -nE \
+    '^[[:space:]]*(def|theorem)[[:space:]]+hGeomForbid[[:space:]]' \
+    lean/BealLevel26Foundations/Certs/LMFDBCert_26.lean; then
+  echo "FAIL: must not inhabit typed hGeomForbid fourCusps → ¬ ExistsNoncuspidal"
+  exit 1
+fi
+
 python3 scripts/verify_coefficient_ledger.py
 python3 scripts/verify_v1_3_0_certs.py
 python3 scripts/replay_level26_hensel.py
+python3 scripts/verify_lmfdb_26.py
 
 echo "OK: Beal Level-26 Foundations computable release is internally consistent"

@@ -24,6 +24,7 @@ import BealLevel26Foundations.Jacobian.AbelJacobi_26
 import BealLevel26Foundations.Jacobian.ResidueDisksProof_26
 import BealLevel26Foundations.Jacobian.ColemanIntegral_26
 import BealLevel26Foundations.Jacobian.ColemanNonVanishing_26
+import BealLevel26Foundations.Certs.LMFDBCert_26
 
 namespace BealLevel26Foundations.Real
 
@@ -69,6 +70,8 @@ v4.0.14 names `ColemanVanishesOnRankZero` as the product
 rank-zero package and `Chabauty0ForcesCusp` as that package
 plus `det ≠ 0`; that is not a Coleman integral and not a
 Chabauty--Coleman theorem.
+v4.0.15 records LMFDB display fields for `26a1` and `26b1`; that
+is extra computational evidence, not unconditional rank zero.
 That is not genuine `Sel₂`, not a Mathlib `X₀(26)` point, and not
 an unconditional `BealTheorem`.
 -/

@@ -59,6 +59,13 @@ Reference (not imported, not discharged): Coleman 1985.
 
 ## Track D — LMFDB certificates
 
-Status: **not started.** Must not change
-`sagemath/level_26_ledger.json`. Any LMFDB file is extra computational
-evidence, not a Mordell--Weil theorem.
+Status: **displayed JSON package shipped**
+(`v4.0.15-lmfdb-certs-no-doi`).
+
+| File | What it is | What it is not |
+|---|---|---|
+| [`../Certs/LMFDB_26.json`](../Certs/LMFDB_26.json) | Archived labels, conductor, displayed rank `0`, torsion, `a₂` | Not a live LMFDB fetch |
+| [`../Certs/LMFDBCert_26.lean`](../Certs/LMFDBCert_26.lean) | Those fields as a finite Lean package, matching Sage `certified_mwrank` and q-expansion `a₂` | Not a Mordell--Weil theorem; not unconditional `rankZero`; not `True`/`trivial` |
+
+Must not change `sagemath/level_26_ledger.json`. Extra computational
+evidence is not a Mordell--Weil theorem.

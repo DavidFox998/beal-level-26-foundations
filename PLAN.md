@@ -200,6 +200,10 @@ v4.0.14-coleman-integral-no-doi names
 `ColemanVanishesOnRankZero` as the product rank-zero package
 and `Chabauty0ForcesCusp` as that package plus `det ≠ 0`; that
 is not a Coleman integral and not a Chabauty--Coleman theorem.
+v4.0.15-lmfdb-certs-no-doi records archived LMFDB display
+fields for `26a1` and `26b1`; that is extra computational
+evidence, not a Mordell--Weil theorem and not unconditional
+rank zero.
 The PLAN.md acceptance gates above
 remain open.
 

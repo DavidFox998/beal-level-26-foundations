@@ -1,6 +1,6 @@
 # lean/BealLevel26Foundations/
 
-Main foundations library. **Current as of** `v4.0.14-coleman-integral-no-doi`.
+Main foundations library. **Current as of** `v4.0.15-lmfdb-certs-no-doi`.
 
 Top-level computable files:
 
@@ -18,6 +18,7 @@ Top-level computable files:
 |---|---|
 | [`Frey/`](Frey/README.md) | Conductor *data* and odd-prime valuation input |
 | [`Jacobian/`](Jacobian/README.md) | v4.0.1 finite product + Picard `Prop`; v4.0.2 S-unit audit; v4.0.3 formal-immersion input; v4.0.6 product rank-zero package; v4.0.11 residue-disk input; v4.0.12 scheme boundary; v4.0.13 named `det ≠ 0` immersion; v4.0.14 named Coleman/Chabauty packages |
+| [`Certs/`](Certs/README.md) | v4.0.15 archived LMFDB display data; not a Mordell--Weil theorem |
 | [`Blueprint/`](Blueprint/README.md) | Phase 3 track board; no `sorry` |
 | [`Mazur/`](Mazur/README.md) | Genus certificates, four-premise endgame scaffold, v4.0.4 four-cusp package, v4.0.8 typed `hGeomForbid`, v4.0.9 cusp-point forall, v4.0.10 Chabauty-0 package |
 | [`Real/`](Real/README.md) | Frey Weierstrass model and re-exported lowering |
