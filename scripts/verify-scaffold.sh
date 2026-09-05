@@ -77,7 +77,10 @@ test -f docs/releases/v4.8.0-iter-modularity-scaffold.md
 test -f docs/releases/v4.9.0-iter-no-True-X0.md
 test -f docs/releases/v4.10.0-iter-pari-locked.md
 test -f docs/releases/v4.12.0-iter-verify-plus.md
+test -f docs/releases/v4.13.0-iter-contradiction-start.md
 test -f docs/images/2-descent-level-26-26a1-26b1.webp
+test -f lean/BealLevel26Foundations/Mazur/BealExponent13_Contradiction.lean
+test -f lean/BealLevel26Foundations/Final/BealExponent13_Iter_Package.lean
 test -f certs/pari_x0_26_four_cusps.json
 test -f docs/NEXT_STEPS.md
 test -f lean/BealLevel26Foundations/Chain/X0_26_Point.lean
@@ -175,6 +178,7 @@ grep -q "v4.8.0-iter-modularity-scaffold" README.md
 grep -q "v4.9.0-iter-no-True-X0" README.md
 grep -q "v4.10.0-iter-pari-locked" README.md
 grep -q "v4.12.0-iter-verify-plus" README.md
+grep -q "v4.13.0-iter-contradiction-start" README.md
 grep -q "v4.0.3-formal-immersion" docs/README.md
 grep -q "v4.0.4-x026-rational-points" docs/README.md
 grep -q "v4.0.5-nofrey-point" docs/README.md
@@ -205,6 +209,7 @@ grep -q "v4.8.0-iter-modularity-scaffold" docs/README.md
 grep -q "v4.9.0-iter-no-True-X0" docs/README.md
 grep -q "v4.10.0-iter-pari-locked" docs/README.md
 grep -q "v4.12.0-iter-verify-plus" docs/README.md
+grep -q "v4.13.0-iter-contradiction-start" docs/README.md
 grep -q "v4.0.3-formal-immersion" docs/releases/README.md
 grep -q "v4.0.4-x026-rational-points" docs/releases/README.md
 grep -q "v4.0.5-nofrey-point" docs/releases/README.md
@@ -235,6 +240,7 @@ grep -q "v4.8.0-iter-modularity-scaffold" docs/releases/README.md
 grep -q "v4.9.0-iter-no-True-X0" docs/releases/README.md
 grep -q "v4.10.0-iter-pari-locked" docs/releases/README.md
 grep -q "v4.12.0-iter-verify-plus" docs/releases/README.md
+grep -q "v4.13.0-iter-contradiction-start" docs/releases/README.md
 grep -q "v4.0.3-formal-immersion" lean/README.md
 grep -q "v4.0.4-x026-rational-points" lean/README.md
 grep -q "v4.0.5-nofrey-point" lean/README.md
@@ -265,6 +271,7 @@ grep -q "v4.8.0-iter-modularity-scaffold" lean/README.md
 grep -q "v4.9.0-iter-no-True-X0" lean/README.md
 grep -q "v4.10.0-iter-pari-locked" lean/README.md
 grep -q "v4.12.0-iter-verify-plus" lean/README.md
+grep -q "v4.13.0-iter-contradiction-start" lean/README.md
 grep -q "v4.0.3-formal-immersion" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Jacobian/README.md
@@ -293,6 +300,7 @@ grep -q "v4.8.0-iter-modularity-scaffold" lean/BealLevel26Foundations/Jacobian/R
 grep -q "v4.9.0-iter-no-True-X0" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.10.0-iter-pari-locked" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.12.0-iter-verify-plus" lean/BealLevel26Foundations/Jacobian/README.md
+grep -q "v4.13.0-iter-contradiction-start" lean/BealLevel26Foundations/Jacobian/README.md
 grep -q "v4.0.4-x026-rational-points" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Mazur/README.md
@@ -321,6 +329,7 @@ grep -q "v4.8.0-iter-modularity-scaffold" lean/BealLevel26Foundations/Mazur/READ
 grep -q "v4.9.0-iter-no-True-X0" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.10.0-iter-pari-locked" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.12.0-iter-verify-plus" lean/BealLevel26Foundations/Mazur/README.md
+grep -q "v4.13.0-iter-contradiction-start" lean/BealLevel26Foundations/Mazur/README.md
 grep -q "v4.0.5-nofrey-point" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.7-hIdentify" lean/BealLevel26Foundations/Ribet/README.md
@@ -349,6 +358,7 @@ grep -q "v4.8.0-iter-modularity-scaffold" lean/BealLevel26Foundations/Ribet/READ
 grep -q "v4.9.0-iter-no-True-X0" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.10.0-iter-pari-locked" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.12.0-iter-verify-plus" lean/BealLevel26Foundations/Ribet/README.md
+grep -q "v4.13.0-iter-contradiction-start" lean/BealLevel26Foundations/Ribet/README.md
 grep -q "v4.0.6-rank-zero-fixed" sagemath/README.md
 grep -q "v4.0.7-hIdentify" sagemath/README.md
 grep -q "v4.0.7-hIdentify-j" sagemath/README.md
@@ -376,6 +386,7 @@ grep -q "v4.8.0-iter-modularity-scaffold" sagemath/README.md
 grep -q "v4.9.0-iter-no-True-X0" sagemath/README.md
 grep -q "v4.10.0-iter-pari-locked" sagemath/README.md
 grep -q "v4.12.0-iter-verify-plus" sagemath/README.md
+grep -q "v4.13.0-iter-contradiction-start" sagemath/README.md
 for readme in \
   README.md \
   docs/README.md \
@@ -392,6 +403,7 @@ do
   grep -q "v4.9.0-iter-no-True-X0" "$readme"
   grep -q "v4.10.0-iter-pari-locked" "$readme"
   grep -q "v4.12.0-iter-verify-plus" "$readme"
+  grep -q "v4.13.0-iter-contradiction-start" "$readme"
   grep -q "BealExponent13_Iter_Package" "$readme"
   grep -q "d3cf8a7" "$readme"
   grep -q "1d0044e" "$readme"
@@ -1103,8 +1115,44 @@ grep -q "d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260" \
 if grep -nE '^[[:space:]]*False\.elim|^[[:space:]]*exact[[:space:]]+False\.elim' \
     lean/BealLevel26Foundations/Chain/X0_26_Point.lean \
     lean/BealLevel26Foundations/Modularity/FreyModularity_13.lean \
-    lean/BealLevel26Foundations/Modularity/RibetLevelLowering_26.lean; then
+    lean/BealLevel26Foundations/Modularity/RibetLevelLowering_26.lean \
+    lean/BealLevel26Foundations/Mazur/BealExponent13_Contradiction.lean \
+    lean/BealLevel26Foundations/Final/BealExponent13_Iter_Package.lean; then
   echo "FAIL: modularity scaffold must not use False.elim"
+  exit 1
+fi
+grep -q "frey_modular_13" \
+  lean/BealLevel26Foundations/Mazur/BealExponent13_Contradiction.lean
+grep -q "ribet_level_lowering_26" \
+  lean/BealLevel26Foundations/Mazur/BealExponent13_Contradiction.lean
+grep -q "X0_26_Q_four_cusps" \
+  lean/BealLevel26Foundations/Mazur/BealExponent13_Contradiction.lean
+grep -q "theorem contradiction_from_ribet" \
+  lean/BealLevel26Foundations/Mazur/BealExponent13_Contradiction.lean
+grep -q "theorem beal_exponent13_from_ribet" \
+  lean/BealLevel26Foundations/Mazur/BealExponent13_Contradiction.lean
+grep -q "STILL NOT ∀ N" \
+  lean/BealLevel26Foundations/Mazur/BealExponent13_Contradiction.lean
+grep -q "import BealLevel26Foundations.Mazur.BealExponent13_Contradiction" \
+  lean/BealLevel26Foundations/Final/BealExponent13_Iter_Package.lean
+grep -q "beal_exponent13_from_ribet" \
+  lean/BealLevel26Foundations/Final/BealExponent13_Iter_Package.lean
+grep -q "BealTheorem_Exponent13_Typed ∧ BealExponent13_Iter_Package" \
+  lean/BealLevel26Foundations/Final/BealExponent13_Iter_Package.lean
+if grep -q "import BealLevel26Foundations.Final" \
+    lean/BealLevel26Foundations/Mazur/BealExponent13_Contradiction.lean; then
+  echo "FAIL: Contradiction must not import Final (cycle)"
+  exit 1
+fi
+if grep -q "import BealLevel26Foundations.Mazur.BealExponent13_Contradiction" \
+    lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean; then
+  echo "FAIL: BealTheoremFromMazurChain26 must not import Contradiction (cycle)"
+  exit 1
+fi
+if grep -nE 'BealExponent13_Contradiction[[:space:]]*:[[:space:]]*∀' \
+    lean/BealLevel26Foundations/Mazur/BealExponent13_Contradiction.lean \
+    lean/BealLevel26Foundations/Final/BealExponent13_Iter_Package.lean; then
+  echo "FAIL: Contradiction must not claim ∀ A B C"
   exit 1
 fi
 grep -qF "def fourCuspsList : List Nat :=" \
@@ -1156,6 +1204,7 @@ grep -q "v4.8.0" docs/NEXT_STEPS.md
 grep -q "v4.9.0" docs/NEXT_STEPS.md
 grep -q "v4.10.0" docs/NEXT_STEPS.md
 grep -q "v4.12.0" docs/NEXT_STEPS.md
+grep -q "v4.13.0" docs/NEXT_STEPS.md
 grep -q "no True" docs/NEXT_STEPS.md
 grep -q "pari_x0_26_four_cusps.json" docs/NEXT_STEPS.md
 grep -qi "waiting" docs/NEXT_STEPS.md

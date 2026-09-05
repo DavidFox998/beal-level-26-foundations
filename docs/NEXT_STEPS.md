@@ -38,11 +38,22 @@ and `certs/pari_x0_26_four_cusps.json` keys `26a1` /
 `-1664`, `|Sel₂|=1` twice, `det M₃=2`, SHA-256
 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 
-## v4.11.0 (not started)
+## v4.13.0 Iter contradiction start
 
-`BealExponent13_Contradiction` would be
-`(A^13+B^13=C^13 coprime) → ExistsNoncuspidal_26` as a
-placeholder, then `False` via `hGeomForbid_typed_true`.
-Still computational: the carrier is `X0_26_Point_Raw`, not
-a Mathlib modular-curve point, and the two axioms remain
-assumptions. Do not inhabit `∀ A B C : ℕ` by `False.elim`.
+`BealExponent13_Contradiction` is started. It is
+`ExistsNoncuspidal_26 → False` via
+`ribet_level_lowering_26 (by rfl)`, plus the typed close
+`hGeomForbid_typed_true` and `frey_modular_13`. It is
+**not** `(A^13+B^13=C^13 coprime) → ExistsNoncuspidal_26`
+and not `∀ A B C : ℕ`. The carrier is still
+`X0_26_Point_Raw`. Do not inhabit `∀ A B C : ℕ` by
+`False.elim`.
+
+## v4.11.0 (placeholder shape, not this tag)
+
+The older sketch
+`(A^13+B^13=C^13 coprime) → ExistsNoncuspidal_26`
+then `False` via `hGeomForbid_typed_true` is still not
+in the kernel. v4.13.0 started the Ribet-path close
+instead. Still computational. Do not inhabit
+`∀ A B C : ℕ` by `False.elim`.
