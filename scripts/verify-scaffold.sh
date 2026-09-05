@@ -851,9 +851,9 @@ grep -q "def EC_26b1_aInv" \
   lean/BealLevel26Foundations/Descent/EllipticCurve_26a1_26b1_26.lean
 grep -q "factor26a1.a1" \
   lean/BealLevel26Foundations/Descent/EllipticCurve_26a1_26b1_26.lean
-grep -q "-17576" \
+grep -q -- "-17576" \
   lean/BealLevel26Foundations/Descent/EllipticCurve_26a1_26b1_26.lean
-grep -q "-1664" \
+grep -q -- "-1664" \
   lean/BealLevel26Foundations/Descent/EllipticCurve_26a1_26b1_26.lean
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   lean/BealLevel26Foundations/Descent/EllipticCurve_26a1_26b1_26.lean
