@@ -1,6 +1,6 @@
 # scripts/
 
-Deterministic repository checks. **Current as of** `v4.0.15-lmfdb-certs-no-doi`.
+Deterministic repository checks. **Current as of** `v4.1.0-descent-start`.
 
 | Script | What it checks |
 |---|---|

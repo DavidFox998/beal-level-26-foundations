@@ -69,3 +69,18 @@ Status: **displayed JSON package shipped**
 
 Must not change `sagemath/level_26_ledger.json`. Extra computational
 evidence is not a Mordell--Weil theorem.
+
+## Track E — Descent start
+
+Status: **named Weierstrass / displayed Selmer bounds shipped**
+(`v4.1.0-descent-start`).
+
+| File | What it is | What it is not |
+|---|---|---|
+| [`../Descent/EllipticCurve_26a1_26b1_26.lean`](../Descent/EllipticCurve_26a1_26b1_26.lean) | Certified `[1,0,1,-5,-8]` / `[1,-1,1,-3,3]`, `Δ = -17576` / `-1664` | Not an LMFDB lookup |
+| [`../Descent/TwoDescent_26a1_26.lean`](../Descent/TwoDescent_26a1_26.lean) | Displayed LMFDB rows plus torsion-order Nats `3` and `7` | Not a two-descent; not `|Sel₂|`; not a Selmer group |
+| [`../Descent/Selmer_26.lean`](../Descent/Selmer_26.lean) | `3 = 3` / `7 = 7` under Sha / rank-zero names | Not Sha[2] triviality; not a Mordell--Weil theorem |
+
+Remaining: actual 2-coverings and a genuine Selmer computation.
+Mathlib 4.12 has no `SelmerGroup`. Do not treat `3 = 3` as
+unconditional rank zero.

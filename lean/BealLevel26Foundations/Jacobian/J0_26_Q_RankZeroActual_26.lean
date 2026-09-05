@@ -1,4 +1,5 @@
 import Beal.Foundations.J0DecompositionCertificate
+import BealLevel26Foundations.Descent.Selmer_26
 import BealLevel26Foundations.FiniteEvidence
 import BealLevel26Foundations.Jacobian.J0_26_DecompActual
 import BealLevel26Foundations.Jacobian.TwoSelmer_vs_SUnits_26
@@ -9,6 +10,7 @@ import Mathlib.Tactic
 namespace BealLevel26Foundations.Jacobian.J0_26_Q_RankZeroActual26
 
 open Beal.Foundations.J0DecompositionCertificate
+open BealLevel26Foundations.Descent.Selmer26
 open BealLevel26Foundations.FiniteEvidence
 open BealLevel26Foundations.Jacobian.J0_26_DecompActual
 open BealLevel26Foundations.Jacobian.TwoSelmer_vs_SUnits_26
@@ -43,6 +45,12 @@ Sources remain the frozen v1.4.0 ledger
 SHA-256 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151`
 and the two existing Sage certificates.  No new certificate is
 added.
+
+v4.1.0 links the product `rankZero` name to the Descent Selmer
+names only as a comment.  `RankZero_26a1_from_Selmer` /
+`RankZero_26b1_from_Selmer` are `3 = 3` / `7 = 7` on displayed
+torsion-order Nats.  They do not replace `rankZero`.  Not a
+Selmer group and not a Mordell--Weil theorem.
 -/
 
 /-- Product of the two certified rank-zero elliptic factors. -/
@@ -89,6 +97,11 @@ theorem J0_26_Q_RankZero26.of_qExpansion_is_product :
     J0_26_Q_RankZero26.of_qExpansion.rankZero =
       productRankZeroFromCertifiedFactors :=
   rfl
+
+/-- Linking comment only: Selmer names stay `3 = 3` / `7 = 7` and
+do not replace `rankZero`. -/
+#check RankZero_26a1_from_Selmer
+#check RankZero_26b1_from_Selmer
 
 #print axioms productRankZeroFromCertifiedFactors.certified
 #print axioms J0_26_Q_RankZero26.of_qExpansion_replaces_premise

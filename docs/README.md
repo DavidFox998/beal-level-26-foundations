@@ -3,8 +3,10 @@
 Versioned release notes for
 [beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations).
 
-**Current as of** tag `v4.0.15-lmfdb-certs-no-doi` (git tag
+**Current as of** tag `v4.1.0-descent-start` (git tag
 only; no version DOI). Prior tag
+[`v4.0.15-lmfdb-certs-no-doi`](releases/v4.0.15-lmfdb-certs-no-doi.md).
+Prior tag
 [`v4.0.14-coleman-integral-no-doi`](releases/v4.0.14-coleman-integral-no-doi.md).
 Prior tag
 [`v4.0.13-formal-immersion-proof-no-doi`](releases/v4.0.13-formal-immersion-proof-no-doi.md).
@@ -50,7 +52,7 @@ these notes only record what each tag claimed.
 
 | Path | Contents |
 |---|---|
-| [`releases/`](releases/README.md) | One note per tagged Foundations release, from `v1.0.0-computable` through `v4.0.15-lmfdb-certs-no-doi` |
+| [`releases/`](releases/README.md) | One note per tagged Foundations release, from `v1.0.0-computable` through `v4.1.0-descent-start` |
 
 The staged plan and open acceptance gates live in [`../PLAN.md`](../PLAN.md).
 The public DOI trail is in [`../README.md`](../README.md).

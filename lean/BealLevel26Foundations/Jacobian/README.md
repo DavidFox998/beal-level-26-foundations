@@ -1,8 +1,8 @@
 # lean/BealLevel26Foundations/Jacobian/
 
 Finite Jacobian *skeleton*, S-unit audit, and formal-immersion input.
-**Current as of** `v4.0.15-lmfdb-certs-no-doi`
-(includes `v4.0.14-coleman-integral-no-doi`, `v4.0.13-formal-immersion-proof-no-doi`, `v4.0.12-scheme-stub-no-doi`, `v4.0.11-residue-disks-no-doi`, `v4.0.10-chabauty0-no-doi`, `v4.0.9-fourCusps-forall`, `v4.0.8-geom-forbid`, `v4.0.7-hIdentify-j`, `v4.0.7-hIdentify`, `v4.0.6-rank-zero-fixed`, `v4.0.5-nofrey-point`,
+**Current as of** `v4.1.0-descent-start`
+(includes `v4.0.15-lmfdb-certs-no-doi`, `v4.0.14-coleman-integral-no-doi`, `v4.0.13-formal-immersion-proof-no-doi`, `v4.0.12-scheme-stub-no-doi`, `v4.0.11-residue-disks-no-doi`, `v4.0.10-chabauty0-no-doi`, `v4.0.9-fourCusps-forall`, `v4.0.8-geom-forbid`, `v4.0.7-hIdentify-j`, `v4.0.7-hIdentify`, `v4.0.6-rank-zero-fixed`, `v4.0.5-nofrey-point`,
 `v4.0.4-x026-rational-points`, `v4.0.3-formal-immersion`).
 
 Mathlib 4.12 has no modular-curve Jacobian, Picard scheme, Abel--Jacobi
@@ -25,7 +25,7 @@ No new certificate is added here.
 | `PicardAbelJacobiIdentification_26.lean` | Standalone `Prop`: supplied matrix `= qExpansionM3` | Does not discharge the geometric Picard map |
 | `TwoSelmer_vs_SUnits_26.lean` | Eight S-unit indices retained; audit is not a singleton; finite `MwrankCertificateSoundness_26` for Sage `certified_mwrank = 0` on `26a` and `26b` | Not genuine cohomological 2-Selmer; comparison remains future |
 | `FormalImmersionActual_26.lean` | `M₃` injective (`det = 2 ≠ 0`); `FormalImmersionAtTwo26.of_qExpansion` inhabits the Mazur input premise; `formalImmersion_at_2_surjective_from_M3` is `det ≠ 0` | Not a scheme-theoretic formal immersion; not completed-local-ring surjectivity |
-| `J0_26_Q_RankZeroActual_26.lean` | Product of certified `26a × 26b` with Sage `certified_mwrank = 0` on both; inhabits `J0_26_Q_RankZero26.of_qExpansion` | Not a Mathlib Mordell--Weil theorem; not genuine `Sel₂` |
+| `J0_26_Q_RankZeroActual_26.lean` | Product of certified `26a × 26b` with Sage `certified_mwrank = 0` on both; inhabits `J0_26_Q_RankZero26.of_qExpansion`; v4.1.0-descent-start links Selmer names (`3 = 3` / `7 = 7`) as a comment only | Not a Mathlib Mordell--Weil theorem; not genuine `Sel₂`; Selmer names do not replace `rankZero` |
 | `ResidueDisks_26.lean` | `M₃` input and `det ≠ 0`; rank-zero plus that input | Not a residue-disk theorem |
 | `ResidueDisksProof_26.lean` | Alias `diskEqualityFromImmersion` of `formalImmersion_at_2_surjective_from_M3` | Not a residue-disk theorem |
 | `ColemanIntegral_26.lean` | `ColemanVanishesOnRankZero` is the product rank-zero package | Not a Coleman integral |

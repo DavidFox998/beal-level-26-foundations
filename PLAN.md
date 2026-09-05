@@ -204,6 +204,10 @@ v4.0.15-lmfdb-certs-no-doi records archived LMFDB display
 fields for `26a1` and `26b1`; that is extra computational
 evidence, not a Mordell--Weil theorem and not unconditional
 rank zero.
+v4.1.0-descent-start records certified Weierstrass models and
+displayed Selmer-bound Nats `3` and `7`; those names are
+`3 = 3` / `7 = 7`, not a Selmer group and not unconditional
+Mordell--Weil.
 The PLAN.md acceptance gates above
 remain open.
 
