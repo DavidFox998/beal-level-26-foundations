@@ -73,18 +73,20 @@ stays uninhabited.  Not Mathlib Ribet.
 `notExistsNewformLevel2` **none** does **not** yet give
 `False` (that needs the original sketch).
 
+### v5.2.0-iter-taylor-wiles-R=T-INHABIT — DONE (displayed table)
+
+Displayed `R = T` inhabited: `HeckeAlgebra_26_inhabited`
+(**none**), `R_T_scaffold_inhabited` (**none**),
+`modularity_lifting_of_R_T_inhabited` (**propext**),
+`TW_primes_Q_n_inhabited` (**propext**),
+`WeierstrassModularity_of_pack_from_R_T` (**propext**,
+not `frey_modular_13`).  `R_T_algorithm` stays
+uninhabited.  Not Mathlib `R = T` / BCDT.
+Ceiling now plugs `hTate` + displayed Ribet +
+`hWeierstrass_from_R_T` and still needs original
+`hRibet` (`ExistsNewformLevel2` is `0 ≠ 0`).
+
 ## PLANNED — we finish it for them
-
-### v5.2.0-iter-taylor-wiles-R=T-INHABIT
-
-Inhabit `R_T_scaffold`
-(`DeformationRing ≃ HeckeAlgebra_26`),
-Gorenstein + complete intersection on
-`HeckeAlgebra_26`, `modularity_lifting_of_R_T`, and
-`TW_primes_Q_n` existence.  Then inhabit
-`WeierstrassModularity_of_pack` from `R = T`, **not**
-via the existing `frey_modular_13` assumption.
-Target `#print axioms` **none** or **propext only**.
 
 ### v5.3.0-iter-beal-forall-IN-KERNEL
 

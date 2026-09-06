@@ -9,7 +9,7 @@ and the conditional Beal `∀` ceiling.
 | Gap | Status |
 |---|---|
 | Tate conductor `2 * 13` | v5.0.0 displayed table + `frey_conductor_26_of_Is13Case_inhabited` (**propext**); `tate_algorithm_of_Is13Case` uninhabited; `frey_conductor_26_rfl` **none** is the label |
-| Modularity | `WeierstrassModularity_of_pack` **propext** + existing `frey_modular_13`; not BCDT |
+| Modularity | `WeierstrassModularity_of_pack` **propext** + existing `frey_modular_13`; v5.2.0 `WeierstrassModularity_of_pack_from_R_T` **propext** via displayed `R = T`, not that axiom; not BCDT |
 | Ribet `26 → 2` | v5.1.0 displayed `ribet_level_26_div_13 = 2` + `ribet_produces_newform_level2_inhabited` (**propext**); `rho_bar_Frey_13_inhabited` (**propext**); `DeformationRing_rho_bar_E13_inhabited` (**none**); original `→ ExistsNewformLevel2` uninhabited |
 | `S₂(Γ₀(2))` dim `0` | `notExistsNewformLevel2` **none** DONE |
 | `X₀(26)(ℚ)` Phase 5 | empty inductive scaffold; `X0_26_Q_real_points` **none**; four-cusp lock **none** (label, not Mazur); real curve has `26a1` / `26b1` |

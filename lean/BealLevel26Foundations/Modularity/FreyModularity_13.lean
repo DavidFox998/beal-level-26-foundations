@@ -15,9 +15,10 @@ target level `26 = 2 × 13`.
 
 Mathlib 4.12 has no modularity theorem and no Frey-curve
 constructor.  `FreyCurve13` is a displayed triple.  The
-predicate `Modularity` has no constructors; the only
-inhabitant is the named computational assumption
-`frey_modular_13`.
+predicate `Modularity` has the v5.2.0 displayed token
+`displayed_from_R_T` (not Wiles–Taylor / BCDT).  The
+named computational assumption `frey_modular_13` remains
+and is what `WeierstrassModularity_of_pack` uses.
 
 That axiom is **not** Wiles--Taylor.  It is secured by the
 LMFDB / Cremona labels `26a1` / `26b1` (Weierstrass models
@@ -45,9 +46,12 @@ structure FreyCurve13 (A B C : Nat) where
   coeffB : Nat := B
   coeffC : Nat := C
 
-/-- Named modularity predicate.  No constructors: Mathlib
-4.12 has no Wiles--Taylor theorem. -/
+/-- Named modularity predicate.  Mathlib 4.12 has no
+Wiles--Taylor theorem.  v5.2.0 adds the displayed `R = T`
+token; that is not BCDT.  The axiom `frey_modular_13`
+stays the computational assumption. -/
 inductive Modularity : Type → Prop
+  | displayed_from_R_T : ∀ (A B C : Nat), Modularity (FreyCurve13 A B C)
 
 /-- Displayed conductor label.  Not a conductor computation. -/
 def frey_conductor_26 : Nat :=

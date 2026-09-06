@@ -137,7 +137,18 @@ v5.1.0 inhabits the displayed Ribet table
 Ribet.  The original
 `ribet_produces_newform_level2_of_weierstrass_modularity`
 (`→ ExistsNewformLevel2`) stays uninhabited.
-`R = T` stays uninhabited.
+v5.2.0 inhabits the displayed `R = T` table
+(`HeckeAlgebra_26_inhabited` **none**,
+`R_T_scaffold_inhabited` **none**,
+`modularity_lifting_of_R_T_inhabited` **propext**,
+`TW_primes_Q_n_inhabited` **propext**,
+`WeierstrassModularity_of_pack_from_R_T` **propext**).
+Not Mathlib `R = T` / BCDT.  `R_T_algorithm` stays
+uninhabited.  Original
+`ribet_produces_newform_level2_of_weierstrass_modularity`
+stays uninhabited.
+
+`R = T` displayed table is inhabited.
 
 v4.58.0 locks `Chain.TaylorWilesScaffold`: `R = T`,
 Hecke, deformation, `ρ̄_{E,13}`, lifting, and TW primes
@@ -583,20 +594,33 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Chain.X0_26_Q.nonempty_X0_26_Q_Point_to_False
 #check BealLevel26Foundations.Chain.X0_26_Q.X0_26_Q_Point_to_ExistsNoncuspidal
 #check BealLevel26Foundations.Chain.TaylorWilesScaffold.R_T_scaffold
+#check BealLevel26Foundations.Chain.TaylorWilesScaffold.R_T_scaffold_inhabited
+#check BealLevel26Foundations.Chain.TaylorWilesScaffold.R_T_algorithm
 #check BealLevel26Foundations.Chain.TaylorWilesScaffold.HeckeAlgebra_26
+#check BealLevel26Foundations.Chain.TaylorWilesScaffold.HeckeAlgebra_26_inhabited
 #check BealLevel26Foundations.Chain.TaylorWilesScaffold.DeformationRing_rho_bar_E13
 #check BealLevel26Foundations.Chain.TaylorWilesScaffold.rho_bar_Frey_13
 #check BealLevel26Foundations.Chain.TaylorWilesScaffold.rho_bar_Frey_13_inhabited
 #check BealLevel26Foundations.Chain.TaylorWilesScaffold.DeformationRing_rho_bar_E13_inhabited
 #check BealLevel26Foundations.Chain.TaylorWilesScaffold.galois_rep_algorithm_of_Frey_13
 #check BealLevel26Foundations.Chain.TaylorWilesScaffold.modularity_lifting_of_R_T
+#check BealLevel26Foundations.Chain.TaylorWilesScaffold.modularity_lifting_of_R_T_inhabited
 #check BealLevel26Foundations.Chain.TaylorWilesScaffold.TW_primes_Q_n
+#check BealLevel26Foundations.Chain.TaylorWilesScaffold.TW_primes_Q_n_inhabited
+#check BealLevel26Foundations.Frey.FreyModularity13.WeierstrassModularity_of_pack_from_R_T
+#check BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table
 #check BealLevel26Foundations.Ribet.RibetLevelLowering26.ribet_produces_newform_level2
 #check BealLevel26Foundations.Ribet.RibetLevelLowering26.ribet_produces_newform_level2_inhabited
 #check BealLevel26Foundations.Ribet.RibetLevelLowering26.ribet_algorithm_of_Is13Case
 #check BealLevel26Foundations.Chain.RibetLevel2.ribet_table_done
 #check BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_weierstrass_after_tate_ribet_table
 #print axioms BealLevel26Foundations.Chain.TaylorWilesScaffold.HeckeAlgebra_26_eq
+#print axioms BealLevel26Foundations.Chain.TaylorWilesScaffold.HeckeAlgebra_26_inhabited
+#print axioms BealLevel26Foundations.Chain.TaylorWilesScaffold.R_T_scaffold_inhabited
+#print axioms BealLevel26Foundations.Chain.TaylorWilesScaffold.modularity_lifting_of_R_T_inhabited
+#print axioms BealLevel26Foundations.Chain.TaylorWilesScaffold.TW_primes_Q_n_inhabited
+#print axioms BealLevel26Foundations.Frey.FreyModularity13.WeierstrassModularity_of_pack_from_R_T
+#print axioms BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table
 #print axioms BealLevel26Foundations.Chain.TaylorWilesScaffold.taylor_wiles_ceiling_eq
 #print axioms BealLevel26Foundations.Chain.TaylorWilesScaffold.rho_bar_Frey_13_inhabited
 #print axioms BealLevel26Foundations.Chain.TaylorWilesScaffold.DeformationRing_rho_bar_E13_inhabited

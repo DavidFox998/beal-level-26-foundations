@@ -25,7 +25,8 @@ open BealLevel26Foundations.Frey.FreyConductor26
 open BealLevel26Foundations.Frey.FreyCurve13
   (frey_Delta13_ne_0_of_pos)
 open BealLevel26Foundations.Frey.FreyModularity13
-  (WeierstrassModularity WeierstrassModularity_of_pack)
+  (WeierstrassModularity WeierstrassModularity_of_pack
+    WeierstrassModularity_of_pack_from_R_T)
 open BealLevel26Foundations.Ribet.RibetLevelLowering26
   (ribet_produces_newform_level2_of_weierstrass_modularity
     ribet_produces_newform_level2
@@ -75,8 +76,10 @@ the label.
 `∃ w, c = pack w ∧ Modularity (FreyCurve13 w.A w.B w.C)`.
 Valid type.  `WeierstrassModularity_of_pack` is the
 existing computational assumption `frey_modular_13`
-(propext + that assumption).  Not Wiles–Taylor / BCDT.
-Not a new assumption.  Mathlib 4.12 has no modularity
+(propext + that assumption).  v5.2.0 adds
+`WeierstrassModularity_of_pack_from_R_T` via the
+displayed `R = T` token, **not** that axiom.
+Not Wiles–Taylor / BCDT.  Mathlib 4.12 has no modularity
 predicate for elliptic curves over `ℚ` and no lifting.
 
 ## Gap 3 — Ribet `26 → 2`
@@ -159,6 +162,13 @@ def gap_modularity_pack : Prop :=
     WeierstrassModularity
       (BealLevel26Foundations.Frey.FreyCurve13.FreyCurve13_of_BealCounterexampleBases w)
 
+/-- v5.2.0 displayed `R = T` pack modularity.  Not the axiom. -/
+def gap_modularity_from_R_T
+    (w : BealCounterexampleBases) :
+    WeierstrassModularity
+      (BealLevel26Foundations.Frey.FreyCurve13.FreyCurve13_of_BealCounterexampleBases w) :=
+  WeierstrassModularity_of_pack_from_R_T w
+
 /-- Gap 3 original sketch.  Still uninhabited (`0 ≠ 0`). -/
 def gap_ribet_level2 : Prop :=
   ribet_produces_newform_level2_of_weierstrass_modularity
@@ -221,6 +231,8 @@ theorem ceiling_uses_Path2_not_Path1 :
 #check gap_modularity_pack
 #check WeierstrassModularity
 #check WeierstrassModularity_of_pack
+#check WeierstrassModularity_of_pack_from_R_T
+#check gap_modularity_from_R_T
 #check gap_ribet_level2
 #check gap_ribet_table_done
 #check gap_ribet_inhabited
@@ -249,6 +261,8 @@ theorem ceiling_uses_Path2_not_Path1 :
 #print axioms frey_conductor_26_of_Is13Case_inhabited
 #print axioms frey_conductor_26_rfl
 #print axioms WeierstrassModularity_of_pack
+#print axioms WeierstrassModularity_of_pack_from_R_T
+#print axioms gap_modularity_from_R_T
 #print axioms gap_ribet_level2_eq
 #print axioms gap_ribet_table_done
 #print axioms gap_ribet_inhabited

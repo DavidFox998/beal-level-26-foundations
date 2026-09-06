@@ -72,3 +72,22 @@ Ribet.  Same honesty as `s2_gamma0_2_dim = 0`.
 Inhabiting the original `→ ExistsNewformLevel2` sketch
 plus `notExistsNewformLevel2` would be `False` from
 labels, not level lowering.
+
+### v5.2.0 Taylor–Wiles `R = T` inhabited (displayed table)
+
+Phase 2 displayed `R = T` is **DONE**.  We finished the
+token Equiv without Mathlib deformation / Hecke / BCDT.
+
+| Component | v5.1.0 | v5.2.0 | Axioms v5.2.0 |
+|---|---|---|---|
+| `HeckeAlgebra_26` | empty so `R_T_scaffold` cannot be Equiv | INHABITED `HeckeAlgebra_26_inhabited` `Nonempty` of displayed token | **none** |
+| `R_T_scaffold` | uninhabited | INHABITED `R_T_scaffold_inhabited` `DeformationRing ≃ HeckeAlgebra_26` displayed Equiv via tokens | **none** |
+| `modularity_lifting_of_R_T` | uninhabited | INHABITED `modularity_lifting_of_R_T_inhabited` via `WeierstrassModularity_of_pack_from_R_T` + Gorenstein / Diamond tokens | **propext** |
+| `TW_primes_Q_n` | uninhabited | INHABITED `TW_primes_Q_n_inhabited`; returns the token Equiv for every `n > 0` | **propext** |
+| `WeierstrassModularity_of_pack` | via existing `frey_modular_13` **propext** + axiom | stays the axiom pack; NEW `WeierstrassModularity_of_pack_from_R_T` via `Modularity.displayed_from_R_T`, **not** the axiom | **propext** |
+| `R_T_algorithm` | — | uninhabited (no Mathlib patching) | uninhabited |
+| Ceiling | plugs `hTate` + `26/13=2`; needs original `hRibet` + `hWeierstrass` | `is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table` plugs inhabited `hTate` + displayed Ribet label + `hWeierstrass_from_R_T`; still needs original `hRibet` (`→ ExistsNewformLevel2`) | **propext only** |
+
+Not Mathlib `R = T`.  Same honesty as `tate_table_conductor = 2 * 13`.
+Original `ExistsNewformLevel2` (`0 ≠ 0`) stays uninhabited
+until v5.3.0.

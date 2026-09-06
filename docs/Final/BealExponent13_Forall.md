@@ -994,5 +994,27 @@ SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 Hook `22379293`.  Parallel mint `22552105` (v5.0.0) until a new mint.
 Original-family latest remains `22322627`.
 
+### v5.2.0-iter-taylor-wiles-R=T-inhabit-no-mathlib
+
+Displayed `R = T` inhabited.  Not Mathlib `R = T` / BCDT.
+
+| Name | Status |
+|---|---|
+| `HeckeAlgebra_26_inhabited` | `Nonempty` of displayed token; **none** |
+| `R_T_scaffold_inhabited` | token Equiv; **none** |
+| `modularity_lifting_of_R_T_inhabited` | via `from_R_T`; **propext** |
+| `TW_primes_Q_n_inhabited` | returns token Equiv; **propext** |
+| `WeierstrassModularity_of_pack_from_R_T` | not `frey_modular_13`; **propext** |
+| `R_T_algorithm` | uninhabited |
+| `is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table` | plugs `hTate` + displayed Ribet + `hWeierstrass_from_R_T`; still needs original `hRibet`; **propext only** |
+
+Path 1 false.  Path 2 only honest.  No `False.elim`.
+
+Still not `∀ A B C` unconditionally.  Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22552659` (v5.1.0) until a new mint.
+Original-family latest remains `22322627`.
+
 
 

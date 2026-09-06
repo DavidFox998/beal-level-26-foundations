@@ -24,6 +24,32 @@ v4.58.0 TaylorWilesScaffold R=T|Hecke|Deformation; ceiling propext-only. Still n
 v4.59.0 About catch-up 22551298; ROADMAP v5 without Mathlib. Still not `∀ A B C`.
 v5.0.0 Tate table inhabit; hTate fillable; not Mathlib Tate. Still not `∀ A B C`.
 v5.1.0 Ribet table inhabit; rho_bar+Deformation+26/13=2; not Mathlib Ribet. Still not `∀ A B C`.
+v5.2.0 R=T table inhabit; Hecke token+Equiv; hWeierstrass from R=T; not Mathlib R=T. Still not `∀ A B C`.
+
+### v5.2.0-iter-taylor-wiles-R=T-inhabit-no-mathlib
+
+Lock `HeckeAlgebra_26` as an inhabited token (`Nonempty`,
+**none**) and make `R_T_scaffold_inhabited` the displayed
+`DeformationRing ≃ HeckeAlgebra_26` Equiv (**none**) plus
+`modularity_lifting_of_R_T_inhabited` and
+`TW_primes_Q_n_inhabited` (**propext**).  `hWeierstrass`
+is `WeierstrassModularity_of_pack_from_R_T` from `R = T`,
+**not** via existing `frey_modular_13`.  Ceiling
+`is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table`
+plugs inhabited `hTate` + displayed `hRibet` (`26/13=2`)
++ inhabited `hWeierstrass_from_R_T` → Beal `∀` conditional
+**propext only**.  It still needs original
+`ExistsNewformLevel2` (`0 ≠ 0`), kept uninhabited until
+v5.3.0 Beal `∀` IN KERNEL.
+
+Same honesty as `tate_table_conductor = 2*13` **none**
+and `s2_gamma0_2_dim = 0`.  `R_T_algorithm` /
+`TaylorWilesPatchingWitness` stay uninhabited.  Tate
+DONE v5.0.0.  Ribet displayed DONE v5.1.0.  `R = T`
+displayed DONE v5.2.0.  Path 1 false (`⟨13, 2, 1⟩`).
+Path 2 only honest.  No `False.elim`.  Still not
+`∀ A B C` unconditionally until v5.3.0.  We finish
+displayed `R = T` without Mathlib.
 
 ### v5.1.0-iter-ribet-26-to-2-inhabit-no-mathlib
 

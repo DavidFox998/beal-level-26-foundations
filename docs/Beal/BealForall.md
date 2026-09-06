@@ -181,3 +181,17 @@ only honest.  No `False.elim`.
 Still not `∀ A B C` unconditionally.  Still not Mathlib
 `X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles.
 
+### v5.2.0-iter-taylor-wiles-R=T-inhabit-no-mathlib
+
+Displayed `R = T` inhabited.  New wrapper
+`is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table`
+plugs inhabited `hTate`, displayed Ribet, and
+`WeierstrassModularity_of_pack_from_R_T` (**not**
+`frey_modular_13`); still needs original `hRibet`
+(`→ ExistsNewformLevel2`).  Both original wirings stay.
+`R_T_algorithm` stays uninhabited.  Path 2 only honest.
+No `False.elim`.
+
+Still not `∀ A B C` unconditionally.  Still not Mathlib
+`X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles.
+

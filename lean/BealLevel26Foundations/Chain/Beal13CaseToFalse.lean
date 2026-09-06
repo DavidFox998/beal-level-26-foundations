@@ -38,7 +38,9 @@ Intended composition (not a kernel close):
    `tate_algorithm_of_Is13Case` stays uninhabited.
 3. `WeierstrassModularity (pack w)` is inhabited by
    `WeierstrassModularity_of_pack` (`frey_modular_13`,
-   propext + axiom; not Wiles--Taylor).
+   propext + axiom; not Wiles--Taylor) and, in v5.2.0,
+   by `WeierstrassModularity_of_pack_from_R_T` (displayed
+   `R = T` token, not that axiom).
 4. Displayed Ribet `ribet_produces_newform_level2`
    (`26 / 13 = 2`) is inhabited (v5.1.0).  The False
    sketch
