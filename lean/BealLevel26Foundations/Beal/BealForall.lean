@@ -15,6 +15,7 @@ open BealLevel26Foundations.Frey.FreyConductor26
 # v4.50.0 why GcdGt1 stays uninhabited
 # v4.51.0 gcd counterexample `rfl` + primitive vs not
 # v4.52.0 primitive subtype: exists gcd=1 vs forall gcd>1 false
+# v4.53.0 only honest path is Is13Case → False via level 2
 
 `Frey.FreyConductor26.Is13Case` is `13 ∣ A*B*C` on shared
 bases.  Forall.`Is13Case` is `13 ∣ x*y*z` on a packed
@@ -35,13 +36,29 @@ Forall keeps the packed twin
 `∀ w, Is13Case w → w.gcd > 1` (uninhabited; packed
 `gcd = 1` by `primitive`).
 
-`beal_forall_from_Is13Case_sketch` is the Beal statement
-`∀ A B C m n p, 2 < m,n,p → A^m+B^n=C^p → gcd > 1`.
-Valid type.  Uninhabited.  Level 26 only treats the
-13-case via Tate + Ribet + `S₂(Γ₀(2)) = 0`.  Other primes
-need levels `2p`.  The two 13-case sketches do not imply
-this forall: `Is13Case → False` on bases is not Beal
-(13 may divide one base), and mixed exponents stay open.
+Two attempted paths from `13 ∣ A*B*C` to Beal `∀`:
+
+* Path 1 (FALSE): `Is13Case → gcd > 1` on bases.  Refuted
+  by `triple_13_2_1` `⟨13, 2, 1⟩` primitive `Is13Case`
+  `gcd = 1` `rfl`, `exists_primitive_Is13Case_gcd_1`,
+  `forall_primitive_Is13Case_gcd_gt1_false`
+  `¬ ∀ → gcd > 1` via `Nat.lt_irrefl`.  One factor 13
+  is not a common factor.
+* Path 2 (ONLY HONEST): `Is13Case → False` via level 2.
+  Needs Tate `frey_conductor_26_of_Is13Case` (uninhabited;
+  `fun _ => rfl` is the label, not Tate;
+  `frey_conductor_26_rfl` is `rfl` **none**)
+  + Ribet `ribet_produces_newform_level2` `26 / 13 = 2`
+  (uninhabited) + `notExistsNewformLevel2` **none** via
+  `S₂(Γ₀(2))` dim `0` → `False`.  This is
+  `Is13CaseForcesFalseSketchViaLevel2`
+  `∀ w, Is13Case w → False`, valid type, uninhabited.
+
+`beal_forall_from_Is13Case_false_sketch` is the
+composition `(∀ w, Is13Case w → False) → Beal ∀`.
+Valid type.  Uninhabited.  Uses Path 2, not Path 1.
+`Is13Case → False` on bases is still not Beal: other
+primes need levels `2p`, mixed exponents stay open.
 
 No new axiom.  No `False.elim`.  Not `∀ A B C` in the
 kernel.  `beal_forall_from_ribet` stays the typed
@@ -236,6 +253,44 @@ theorem beal_forall_of_Is13Case_composition
     beal_forall_from_Is13Case_sketch :=
   hComp hFalse hGcd
 
+/-- Path 2 composition only.  Valid type
+`(∀ w, Is13Case w → False) → Beal ∀`.  Uninhabited:
+`Is13Case → False` on bases is not Beal.  Does **not**
+use `gcd > 1`.  No `False.elim`. -/
+def beal_forall_from_Is13Case_false_sketch : Prop :=
+  Is13CaseForcesFalseSketchViaLevel2 →
+    beal_forall_from_Is13Case_sketch
+
+/-- Same composition, expanded for `#check`. -/
+def beal_forall_from_Is13Case_false_sketch_valid_type : Prop :=
+  (∀ (w : BealCounterexampleBases), Is13Case w → False) →
+    ∀ (A B C m n p : Nat),
+      2 < m → 2 < n → 2 < p →
+      A ^ m + B ^ n = C ^ p →
+      gcd3 A B C > 1
+
+theorem beal_forall_from_Is13Case_false_sketch_type_eq :
+    beal_forall_from_Is13Case_false_sketch =
+      beal_forall_from_Is13Case_false_sketch_valid_type :=
+  rfl
+
+/-- Tautology on the Path 2 composition.  Does not inhabit
+`beal_forall_from_Is13Case_sketch`.  Uses
+`Is13CaseForcesFalseSketchViaLevel2`, not `gcd > 1`. -/
+theorem beal_forall_holds_of_Is13Case_false
+    (hComp : beal_forall_from_Is13Case_false_sketch)
+    (hFalse : Is13CaseForcesFalseSketchViaLevel2) :
+    beal_forall_from_Is13Case_sketch :=
+  hComp hFalse
+
+/-- Path 1 is false; Path 2 is the typed
+`∀ w, Is13Case w → False`.  Does not inhabit Path 2. -/
+theorem only_honest_path_is_False_via_level2 :
+    ¬ Is13CaseForcesGcdGt1SketchPrimitive ∧
+      (Is13CaseForcesFalseSketchViaLevel2 =
+        ∀ (w : BealCounterexampleBases), Is13Case w → False) :=
+  ⟨forall_primitive_Is13Case_gcd_gt1_false, rfl⟩
+
 #check Is13Case
 #check Is13CaseForcesGcdGt1Sketch
 #check Is13CaseForcesFalseSketchViaLevel2
@@ -265,6 +320,10 @@ theorem beal_forall_of_Is13Case_composition
 #check Is13CaseForcesGcdGt1SketchPrimitive
 #check forall_primitive_Is13Case_gcd_gt1_false
 #check not_Is13CaseForcesGcdGt1SketchPrimitive
+#check beal_forall_from_Is13Case_false_sketch
+#check beal_forall_from_Is13Case_false_sketch_valid_type
+#check beal_forall_holds_of_Is13Case_false
+#check only_honest_path_is_False_via_level2
 #print axioms gcd_13_2_1_eq_1
 #print axioms dvd_13_2_1
 #print axioms Is13Case_gcd_counterexample_rfl
@@ -279,5 +338,8 @@ theorem beal_forall_of_Is13Case_composition
 #print axioms not_Is13CaseForcesGcdGt1SketchPrimitive
 #print axioms beal_forall_from_Is13Case_sketch_type_eq
 #print axioms beal_forall_of_Is13Case_composition
+#print axioms beal_forall_from_Is13Case_false_sketch_type_eq
+#print axioms beal_forall_holds_of_Is13Case_false
+#print axioms only_honest_path_is_False_via_level2
 
 end BealLevel26Foundations.Beal.BealForall

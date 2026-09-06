@@ -57,3 +57,14 @@ structure field.  `BealPrimitiveCounterexampleBases` is
 `Is13CaseForcesGcdGt1SketchPrimitive` stays uninhabited
 and is now provably false, not just uninhabited.
 `Is13Case → False` stays a valid type, uninhabited.
+
+### v4.53.0 only honest path is False via level 2
+
+Path 1 (`Is13Case → gcd > 1`) is false.
+Path 2 (`Is13Case → False` via level 2) is the only
+honest composition into Beal `∀`.
+`beal_forall_from_Is13Case_false_sketch` is
+`(∀ w, Is13Case w → False) → Beal ∀` (**propext** type eq).
+Uninhabited.  Uses Path 2, not Path 1.  No `False.elim`.
+`only_honest_path_is_False_via_level2` records Path 1
+false and Path 2 as the typed `∀ w, Is13Case w → False`.

@@ -47,10 +47,12 @@ Intended composition (not a kernel close):
 
 `Is13CaseForcesFalseSketchViaLevel2` is the valid type
 `∀ w, Is13Case w → False`.  It stays uninhabited: the
-composition needs Tate + Ribet.  No new axiom.
-Does **not** import Forall or Mazur BealTheorem (cycle).
-This is the `beal_forall_from_ribet` pre-image, not
-`∀ A B C`.
+composition needs Tate + Ribet.  This is the only honest
+path from `13 ∣ A*B*C` toward Beal `∀`:
+`Is13Case → gcd > 1` is false (`⟨13, 2, 1⟩`).
+No new axiom.  Does **not** import Forall or Mazur
+BealTheorem (cycle).  This is the
+`beal_forall_from_ribet` pre-image, not `∀ A B C`.
 -/
 
 /-- Valid type `Is13Case → False` on shared bases.

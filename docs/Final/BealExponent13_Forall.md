@@ -779,3 +779,25 @@ SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 Hook `22379293`.  Parallel mint `22548882` (v4.51.0) until a new mint.
 Original-family latest remains `22322627`.
 
+### v4.53.0-iter-Is13Case-False-only-honest-path-to-Beal
+
+Path 1 (`Is13Case → gcd > 1`) is false via `triple_13_2_1`.
+Path 2 (`Is13Case → False` via level 2) is the only honest
+composition into Beal `∀`.
+
+| Name | Status |
+|---|---|
+| Path 1 | false via `triple_13_2_1` `rfl`; `forall_primitive_Is13Case_gcd_gt1_false` **propext** |
+| Path 2 | `Is13CaseForcesFalseSketchViaLevel2` valid type; uninhabited; needs Tate + Ribet |
+| `beal_forall_from_Is13Case_false_sketch` | `(∀ w, Is13Case w → False) → Beal ∀` valid type; uses level 2 not `gcd > 1` |
+| `beal_forall_holds_of_Is13Case_false` | tautology on that composition; **propext**; no `False.elim` |
+| `only_honest_path_is_False_via_level2` | Path 1 false ∧ Path 2 typed; **propext** |
+| `notExistsNewformLevel2` | **none** via `S₂(Γ₀(2))` dim `0` |
+| `X0_26_Q_Point` | empty inductive; real curve has `26a1` Δ `-17576` and `26b1` Δ `-1664` |
+
+Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22549271` (v4.52.0) until a new mint.
+Original-family latest remains `22322627`.
+

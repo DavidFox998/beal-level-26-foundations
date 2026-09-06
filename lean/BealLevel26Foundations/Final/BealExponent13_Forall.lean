@@ -90,6 +90,12 @@ v4.52.0 adds `IsPrimitive w := w.gcd = 1` and the subtype
 `gcd = 1` vs forall `gcd > 1` is locked false.
 `Is13Case → False` stays a valid type, uninhabited.
 
+v4.53.0 records Path 1 (`Is13Case → gcd > 1`) as false
+and Path 2 (`Is13Case → False` via level 2) as the only
+honest composition into Beal `∀`.
+`beal_forall_from_Is13Case_false_sketch` is that
+composition.  Valid type.  Uninhabited.  No `False.elim`.
+
 `Is13CaseForcesGcdGt1Sketch` stays uninhabited.  The proposed
 term `frey_modular_13 w h13` / `ribet_level_lowering_26 hFrey`
 / `hGeomForbid_typed_true hRibet …` does not type-check.
@@ -502,6 +508,8 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Beal.BealForall.exists_primitive_Is13Case_gcd_1
 #check BealLevel26Foundations.Beal.BealForall.forall_primitive_Is13Case_gcd_gt1_false
 #check BealLevel26Foundations.Beal.BealForall.Is13CaseForcesGcdGt1SketchPrimitive
+#check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_false_sketch
+#check BealLevel26Foundations.Beal.BealForall.only_honest_path_is_False_via_level2
 #print axioms BealLevel26Foundations.Beal.BealForall.gcd_13_2_1_eq_1
 #print axioms BealLevel26Foundations.Beal.BealForall.dvd_13_2_1
 #print axioms BealLevel26Foundations.Beal.BealForall.Is13Case_gcd_counterexample_rfl
@@ -509,6 +517,8 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #print axioms BealLevel26Foundations.Beal.BealForall.Is13Case_gcd_counterexample
 #print axioms BealLevel26Foundations.Beal.BealForall.exists_primitive_Is13Case_gcd_1
 #print axioms BealLevel26Foundations.Beal.BealForall.forall_primitive_Is13Case_gcd_gt1_false
+#print axioms BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_false_sketch_type_eq
+#print axioms BealLevel26Foundations.Beal.BealForall.only_honest_path_is_False_via_level2
 #check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_sketch
 #check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_sketch_valid_type
 #check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_composition
