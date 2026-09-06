@@ -31,6 +31,52 @@ v5.5.0 Path lock ⟨13,2,1⟩ gcd=1 rfl; Path1 false; Path2 displayed table. Sti
 v5.6.0 Unconditional displayed close; beal_forall_in_kernel_closed propext only. Still not Mathlib ∀.
 v5.7.0 FINAL v5 green; About catch-up 22556701. Still not Mathlib ∀.
 v6.0.0-iter-real-algorithms G_Q→GL2 + Tate + R=T real structures. Still not Full Mathlib ∀.
+v6.0.1-iter-about-catchup-22558788 About catch-up 22558113 → 22558788. Still not Full Mathlib ∀.
+
+### v6.0.1-iter-about-catchup-22558788 — About catch-up 22558113 FINAL v5 → 22558788 V6.0.0 REAL ALGORITHMS docs lock No Lean change
+
+About catch-up.  HEAD `4d208a5`
+`v6.0.0-iter-real-algorithms`.  No Lean change.
+Chain `22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788`.  Hook `22379293`.  `IsVersionOf`
+`22272382` only.  Original-family latest remains
+`22322627`.
+
+`TateStep` `tate_algorithm_at_2` /
+`tate_algorithm_at_13` `f_2 = f_13 = 1`
+multiplicative `I_n`.  `tate_real_conductor_26` :
+`FreyCurve.conductor = 2 * 13` by `rfl`.
+`TaylorWilesSystemReal` `Q_n = [53]` `|Q_n| = 1`
+`53 % 13 = 1` by `rfl`.  Diamond / Gorenstein /
+complete-intersection.
+`R_T_patching_witness_real` :
+`DeformationRing_real ≃ HeckeAlgebra_real_26`.
+
+`#print axioms` `rho_bar_Frey_13_real_algorithm_inhabited`
+**none**, `tate_real_conductor_26` **none**,
+`R_T_patching_witness_real` **none**,
+`beal_forall_in_kernel_from_real_algorithms`
+**propext only**.  `Nat.pow` of the Δ formula is
+kept off the none inhabitant;
+`frey_Delta13_formula` is separate so the Galois
+token stays **none**.
+
+Honest lock still uninhabited: `ExistsNewformLevel2`
+is `0 ≠ 0`.  Original `∀ w, Is13Case w → False`,
+original `beal_forall_from_Is13Case_sketch`,
+original Ribet-to-`ExistsNewformLevel2`, empty
+`R_T_algorithm` / `TaylorWilesPatchingWitness` /
+`galois_rep_algorithm_of_Frey_13` /
+`tate_algorithm_of_Is13Case` stay uninhabited.
+Path 1 stays false on `⟨13, 2, 1⟩`.  Path 2 is the
+only honest route.  Real `X₀(26)(ℚ)` still has
+`26a1` Δ `-17576` and `26b1` Δ `-1664`.
+
+Build: `lake clean && lake exe cache get && lake build`
+of the 14 modules twice green.
+`verify-scaffold.sh` OK.  `verify_descent_26.py` OK.
+`NO_SORRY_OK`.  14 modules green twice.
 
 ### v6.0.0-iter-real-algorithms — G_ℚ→GL₂(F₁₃) + Tate's algorithm as real Lean + R=T patching witness — from displayed tokens to real structures, first step to make as real algorithms GOOD sounding
 

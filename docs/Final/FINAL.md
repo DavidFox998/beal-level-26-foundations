@@ -1,16 +1,21 @@
-# FINAL v6.0.0 — real algorithms first step
+# FINAL v6.0.1 — About catch-up `22558788`
 
-## G_ℚ → GL₂(𝔽₁₃) + Tate as real Lean + R=T patching witness
-
-Records Lean HEAD for
-`v6.0.0-iter-real-algorithms`.
-Latest written mint
-[10.5281/zenodo.22558113](https://doi.org/10.5281/zenodo.22558113)
-(v5.7.0 FINAL v5 green) DataCite findable.  Hook
+Records Lean HEAD `4d208a5` /
+`v6.0.0-iter-real-algorithms`.  No Lean change
+on this catch-up.  Latest written mint
+[10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
+(v6.0.0 REAL ALGORITHMS) DataCite findable.  Hook
 `22379293`.  `IsVersionOf` `22272382` metadata only.
 Original-family latest remains `22322627`.
 
-### New real structures (14 modules)
+### v6.0.0 REAL ALGORITHMS
+
+`G_ℚ → GL₂(𝔽₁₃)` real structure **none** +
+Tate real conductor `26` by `rfl` **none** +
+TW `Q_n = [53]` `53 % 13 = 1` by `rfl` +
+`R = T` witness ≃ **none** +
+`beal_forall_in_kernel_from_real_algorithms`
+**propext only**.
 
 - `FreyGaloisRep13` Type: Frey model
   `Y² = X(X − A¹³)(X + B¹³)`, Δ display
@@ -40,6 +45,14 @@ Old displayed tokens stay: `rho_bar_Frey_13_inhabited`
 `TW_primes_Q_n_inhabited` **propext**,
 `WeierstrassModularity_of_pack_from_R_T` **propext**,
 `beal_forall_in_kernel_closed` **propext**.
+
+### v6.0.1 About catch-up DONE
+
+Chain `22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788`.  About now writes `22558788` as the
+latest recorded mint.  Docs lock only.  No Lean
+change.
 
 ### Honest lock (unchanged from FINAL v5)
 

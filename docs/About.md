@@ -1,18 +1,15 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v6.0.0-iter-real-algorithms`.
-Records v6.0.0 real-algorithm structures
-(`FreyGaloisRep13`, `TateStep`,
-`TaylorWilesSystemReal`, `R_T_patching_witness_real`)
-and the closed kernel term
-`beal_forall_in_kernel_from_real_algorithms`
-(**propext only**).
+Latest tag / HEAD: `v6.0.1-iter-about-catchup-22558788`.
+Records Lean HEAD `4d208a5` /
+`v6.0.0-iter-real-algorithms`.  No Lean change
+on this catch-up.
 
 Latest parallel mint written
+[10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
+(v6.0.0 REAL ALGORITHMS) DataCite findable, after
 [10.5281/zenodo.22558113](https://doi.org/10.5281/zenodo.22558113)
-(v5.7.0 FINAL v5 green) DataCite findable, after
-[10.5281/zenodo.22556701](https://doi.org/10.5281/zenodo.22556701)
-(v5.6.0).  Hook
+(v5.7.0 FINAL v5 green).  Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
 `IsVersionOf` [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)
 is metadata only.  Original-family latest remains
@@ -29,9 +26,9 @@ Chain `22552105` (v5.0.0 Tate DONE
 `HeckeAlgebra_26_inhabited` **none**,
 `R_T_scaffold_inhabited` **none** stronger than
 propext-only,
-`modularity_lifting_of_R_T_inhabited` **propext**,
-`TW_primes_Q_n_inhabited` **propext**,
-`WeierstrassModularity_of_pack_from_R_T` **propext**) →
+`modularity_lifting_of_R_T_inhabited` **propext only**,
+`TW_primes_Q_n_inhabited` **propext only**,
+`WeierstrassModularity_of_pack_from_R_T` **propext only**) →
 `22553671` (v5.3.0 Beal `∀` IN KERNEL displayed token
 DONE `Is13CaseForcesFalseSketchViaLevel2_inhabited`
 displayed Path 2 table + `beal_forall_in_kernel`) →
@@ -43,20 +40,31 @@ displayed Path 2 table + `beal_forall_in_kernel`) →
 `Nat.lt_irrefl` Path 1 FALSE formal) →
 `22556701` (v5.6.0 unconditional close displayed
 `beal_forall_in_kernel_closed` closed term
-**propext only**, no original `hRibet` hypothesis) →
-`22558113` (v5.7.0 FINAL v5 green docs lock).
-
-v6.0.0 first real-algorithm step: `FreyCurve`
-`Y² = X(X − A¹³)(X + B¹³)`,
-`FreyGaloisRep13` `G_ℚ → GL₂(𝔽₁₃)` structure
-`rho_bar_Frey_13_real_algorithm_inhabited` **none**,
-Tate `tate_algorithm_at_2` / `tate_algorithm_at_13`
-`f_2 = f_13 = 1`, `tate_real_conductor_26 = 2 * 13`
-**none**, `TaylorWilesSystemReal` `Q_n = [53]`
-`|Q_n| = 1` `53 % 13 = 1`,
-`R_T_patching_witness_real` Equiv **none**,
+**propext only**, no original `hRibet` hypothesis
+`∀ w, Δ ≠ 0 → WeierstrassModularity →
+ExistsNewformLevel2` false label `0 ≠ 0`) →
+`22558113` (v5.7.0 FINAL v5 green docs lock,
+About writes `22556701`) →
+`22558788` (v6.0.0 REAL ALGORITHMS
+`FreyCurve` `Y² = X(X − A¹³)(X + B¹³)`
+`Δ = 16*(A¹³)²*(B¹³)²*(A¹³+B¹³)²`
+`FreyGaloisRep13` `GQ → GL2(F13)` `rho_bar`
+determinant `χ₁₃` unramified outside
+`2*13*A*B*(A¹³+B¹³)` semistable irreducible
+finite_flat real structure **none**
+`rho_bar_Frey_13_real_algorithm_inhabited` **none**
+Tate real `f_2 = 1` `f_13 = 1` conductor `2*13`
+by `rfl` **none** Real `X₀(26)(ℚ)` `26a1` `-17576`
+`26b1` `-1664` `TaylorWilesSystemReal` `Q_n = [53]`
+`|Q_n| = 1` `53 % 13 = 1` by `rfl`
+Diamond / Gorenstein / complete-intersection
+`R_T_patching_witness_real` ≃ **none**
 `beal_forall_in_kernel_from_real_algorithms`
-**propext only**.  14 modules green.
+**propext only**).
+
+As close to unconditional as we can before V6,
+now with real structures: GOOD sounding first
+step to real algorithms.  14 modules green.
 
 Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms.

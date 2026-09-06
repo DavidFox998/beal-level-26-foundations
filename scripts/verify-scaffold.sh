@@ -455,6 +455,7 @@ do
   grep -q "22452680" "$readme"
   grep -q "22456594" "$readme"
   grep -q "v6.0.0-iter-real-algorithms" "$readme"
+  grep -q "v6.0.1-iter-about-catchup-22558788" "$readme"
 done
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md

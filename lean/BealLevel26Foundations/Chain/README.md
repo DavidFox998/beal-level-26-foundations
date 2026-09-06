@@ -31,6 +31,7 @@ v5.5.0 Path lock ⟨13,2,1⟩ gcd=1 rfl; Path1 false; Path2 displayed table. Sti
 v5.6.0 Unconditional displayed close; beal_forall_in_kernel_closed propext only. Still not Mathlib ∀.
 v5.7.0 FINAL v5 green; About catch-up 22556701. Still not Mathlib ∀.
 v6.0.0-iter-real-algorithms G_Q→GL2 + Tate + R=T real structures. Still not Full Mathlib ∀.
+v6.0.1-iter-about-catchup-22558788 About catch-up 22558113 → 22558788. Still not Full Mathlib ∀.
 
 ### v6.0.0 real algorithms (additional modules)
 

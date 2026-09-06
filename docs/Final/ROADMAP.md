@@ -175,3 +175,19 @@ Empty `R_T_algorithm` / `galois_rep_algorithm_of_Frey_13`
 Still not Full Mathlib algorithms.  Same honesty as
 `tate_table_conductor = 2 * 13`.
 
+### v6.0.1-iter-about-catchup-22558788 — DONE
+
+About catch-up `22558113` (FINAL v5) → `22558788`
+(v6.0.0 REAL ALGORITHMS).  Docs lock.  No Lean
+change.  HEAD `4d208a5`.  Hook `22379293`.
+`IsVersionOf` `22272382`.  Original-family latest
+remains `22322627`.
+
+### v6.0.1-iter-about-catchup-22558788 — DONE
+
+About catch-up `22558113` (FINAL v5) → `22558788`
+(v6.0.0 REAL ALGORITHMS).  Docs lock.  No Lean
+change.  HEAD `4d208a5`.  Hook `22379293`.
+`IsVersionOf` `22272382`.  Original-family latest
+remains `22322627`.
+
