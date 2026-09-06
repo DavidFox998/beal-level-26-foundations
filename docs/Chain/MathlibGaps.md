@@ -24,5 +24,10 @@ v4.57.0: Phase 5 is the honest scaffold until Taylor–Wiles.
 `X0_26_Q_Point` has no `.label`.  `X0_26_Q_real_points`
 is a string list, not a Mathlib point type.
 
+v4.58.0: Taylor–Wiles table is
+`docs/Final/TaylorWilesScaffold.md` /
+`Chain.TaylorWilesScaffold` (10th module).  This file's
+Phase 5 row stays.
+
 Still not `∀ A B C`.
 

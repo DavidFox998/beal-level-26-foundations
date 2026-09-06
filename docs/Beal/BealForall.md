@@ -128,3 +128,18 @@ scaffold until Taylor–Wiles / BCDT.
 Still not `∀ A B C` unconditionally.  Still not Mathlib
 `X₀(26)(ℚ)` + Ribet + Tate.
 
+### v4.58.0-iter-taylor-wiles-scaffold
+
+Both Beal wirings stay.  New 10th module
+`Chain.TaylorWilesScaffold` records `R = T`, Hecke,
+deformation, `ρ̄_{E,13}`, lifting, and TW primes as
+uninhabited scaffolds.  `HeckeAlgebra_26` is an empty
+Type (**none**).  Ceiling stays
+`is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only`
+(**propext only**).  Needs `R = T` + Ribet + Tate for
+unconditional Beal `∀`.  Path 2 only honest.  No
+`False.elim`.
+
+Still not `∀ A B C` unconditionally.  Still not Mathlib
+`X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles.
+

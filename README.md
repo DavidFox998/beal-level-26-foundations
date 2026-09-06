@@ -20,6 +20,49 @@ v4.54.0 conditional `hTate+hRibet+hComp+hΔ → Beal ∀`; does not inhabit unco
 v4.55.0 explicit Δ≠0; propext-only Beal ∀ via hTate+hRibet+hWeierstrass. Still not `∀ A B C`.
 v4.56.0 Mathlib gaps Tate/Ribet/Modularity/X0; propext-only Beal ∀ is ceiling. Still not `∀ A B C`.
 v4.57.0 Phase5 X0(26)(Q) honest scaffold; real-points String list; not Mazur. Still not `∀ A B C`.
+v4.58.0 TaylorWilesScaffold R=T|Hecke|Deformation; ceiling propext-only. Still not `∀ A B C`.
+
+### v4.58.0-iter-taylor-wiles-scaffold
+
+Lock `TaylorWilesScaffold.md` / `Chain.TaylorWilesScaffold` (10th
+module) with the table `R = T` | Hecke | Deformation | what
+Mathlib 4.12 lacks.  Pin Lean 4.12.0 + Mathlib v4.12.0.
+`WeierstrassModularity c` is
+`∃ w, c = pack w ∧ Modularity (FreyCurve13 w)`, a valid type.
+`WeierstrassModularity_of_pack` is existing `frey_modular_13`
+(**propext** + that assumption).  Not Wiles–Taylor / BCDT.
+No new axiom.
+
+* `R_T_scaffold` : `Nonempty (DeformationRing ≃ HeckeAlgebra_26)`
+  uninhabited Prop.  Mathlib lacks deformation rings, `R = T`,
+  universal / minimal deformations.  No empty-elim.
+* `HeckeAlgebra_26` empty Type scaffold (**none**).  Mathlib
+  lacks `T_N`, `T_p`, diamond, Gorenstein, complete intersection.
+* `DeformationRing_rho_bar_E13` uninhabited.  Mathlib lacks
+  Galois deformation theory and
+  `ρ̄_{E,13} : G_ℚ → GL₂(𝔽₁₃)` (irreducible, finite flat at
+  13, minimal at 2).
+* `rho_bar_Frey_13` uninhabited.  Mathlib lacks the residual
+  Frey representation mod 13 (semistable at 2, finite at 13,
+  Mazur irreducibility).
+* `modularity_lifting_of_R_T` uninhabited.  Mathlib lacks
+  Taylor–Wiles patching, Diamond criterion, Wiles numerical
+  criterion.  Not inhabited by `WeierstrassModularity_of_pack`.
+* `TW_primes_Q_n` uninhabited.  Mathlib lacks auxiliary primes
+  `Q_n`, `|Q_n| = r`, `q ≡ 1 [MOD 13^n]`, distinct Frobenius
+  eigenvalues.
+* Ceiling stays
+  `is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only`
+  `hTate → hRibet → hWeierstrass → hComp + hΔ → Beal ∀`
+  (**propext only**).  Local `Is13Case → False` via Path 2.
+  Does **not** inhabit unconditional
+  `Is13CaseForcesFalseSketchViaLevel2`.  Needs `R = T` +
+  Ribet + Tate for unconditional Beal `∀`.
+
+Phases 1–5 unchanged.  Path 1 false (`⟨13,2,1⟩`).  Path 2
+only honest `Is13Case → False`.  No `False.elim`.
+Still not `∀ A B C` unconditionally.  Still not Mathlib
+`X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles.
 
 ### v4.57.0-iter-phase5-X0-26-Q-honest-scaffold
 

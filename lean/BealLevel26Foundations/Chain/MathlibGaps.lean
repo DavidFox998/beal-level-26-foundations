@@ -30,6 +30,7 @@ open BealLevel26Foundations.Ribet.RibetLevelLowering26
 /-!
 # v4.56.0 Mathlib gaps — what this pin does not have
 # v4.57.0 Phase 5 honest `X₀(26)(ℚ)` scaffold
+# v4.58.0 Taylor–Wiles table lives in `TaylorWilesScaffold`
 
 This tree pins **Lean 4.12.0** and **Mathlib v4.12.0**.
 The named gaps below are why unconditional Beal `∀` is

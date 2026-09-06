@@ -904,5 +904,32 @@ SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 Hook `22379293`.  Parallel mint `22550771` (v4.56.0) until a new mint.
 Original-family latest remains `22322627`.
 
+### v4.58.0-iter-taylor-wiles-scaffold
+
+Taylor–Wiles scaffold (10th module).  Pin Lean 4.12.0 +
+Mathlib v4.12.0.  `WeierstrassModularity_of_pack` stays
+existing `frey_modular_13` (**propext** + axiom), not
+Wiles–Taylor / BCDT.
+
+| Component | In this repo | Status | Mathlib 4.12 lacks | `#print axioms` |
+|---|---|---|---|---|
+| `R = T` | `R_T_scaffold` : `Nonempty (DeformationRing ≃ HeckeAlgebra_26)` | uninhabited Prop | deformation rings, `R = T`, universal / minimal deformations | uninhabited |
+| Hecke | `HeckeAlgebra_26` | empty Type | `T_N`, `T_p`, diamond, Gorenstein, complete intersection | **none** |
+| Deformation | `DeformationRing_rho_bar_E13` | uninhabited | Galois deformation, `ρ̄_{E,13}` finite flat at 13, minimal at 2 | uninhabited |
+| Galois rep | `rho_bar_Frey_13` | uninhabited | residual Frey mod 13, semistable at 2, Mazur irreducibility | uninhabited |
+| Lifting | `modularity_lifting_of_R_T` | uninhabited | TW patching, Diamond, Wiles numerical criterion | uninhabited |
+| TW primes | `TW_primes_Q_n` | uninhabited | auxiliary `Q_n`, `q ≡ 1 [MOD 13^n]`, distinct `Frob_q` eigenvalues | uninhabited |
+| `frey_modular_13` | `WeierstrassModularity_of_pack` | existing assumption | BCDT 2001 | **propext** + existing |
+| Ceiling | `is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only` | local Path 2 `Is13Case → False`; not unconditional | needs `R = T` + Ribet + Tate | **propext only** |
+
+Phases 1–5 unchanged.  Path 1 false (`⟨13,2,1⟩`).  Path 2
+only honest.  No `False.elim`.
+
+Still not `∀ A B C` unconditionally.  Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22551051` (v4.57.0) until a new mint.
+Original-family latest remains `22322627`.
+
 
 

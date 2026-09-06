@@ -3,6 +3,7 @@ import BealLevel26Foundations.Beal.BealForall
 import BealLevel26Foundations.Chain.Beal13CaseToFalse
 import BealLevel26Foundations.Chain.Level2
 import BealLevel26Foundations.Chain.MathlibGaps
+import BealLevel26Foundations.Chain.TaylorWilesScaffold
 import BealLevel26Foundations.Chain.X0_26_Point
 import BealLevel26Foundations.Chain.X0_26_Q
 import BealLevel26Foundations.Final.BealExponent13_Final
@@ -122,6 +123,12 @@ reference (four cusps plus `26a1` / `26b1`).
 curve.  Four-cusp lock stays on displayed labels, not
 Mazur.  `X0_26_Q_Point_to_ExistsNoncuspidal` stays
 uninhabited (no vacuous empty-elim).
+
+v4.58.0 locks `Chain.TaylorWilesScaffold`: `R = T`,
+Hecke, deformation, `ρ̄_{E,13}`, lifting, and TW primes
+as uninhabited scaffolds.  `HeckeAlgebra_26` is an empty
+Type (**none**).  Both Beal wirings stay.  Ceiling stays
+propext-only.  No `False.elim`.
 
 `Is13CaseForcesGcdGt1Sketch` stays uninhabited.  The proposed
 term `frey_modular_13 w h13` / `ribet_level_lowering_26 hFrey`
@@ -555,6 +562,14 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Chain.X0_26_Q.fourCusps_displayed_of_P_mem
 #check BealLevel26Foundations.Chain.X0_26_Q.nonempty_X0_26_Q_Point_to_False
 #check BealLevel26Foundations.Chain.X0_26_Q.X0_26_Q_Point_to_ExistsNoncuspidal
+#check BealLevel26Foundations.Chain.TaylorWilesScaffold.R_T_scaffold
+#check BealLevel26Foundations.Chain.TaylorWilesScaffold.HeckeAlgebra_26
+#check BealLevel26Foundations.Chain.TaylorWilesScaffold.DeformationRing_rho_bar_E13
+#check BealLevel26Foundations.Chain.TaylorWilesScaffold.rho_bar_Frey_13
+#check BealLevel26Foundations.Chain.TaylorWilesScaffold.modularity_lifting_of_R_T
+#check BealLevel26Foundations.Chain.TaylorWilesScaffold.TW_primes_Q_n
+#print axioms BealLevel26Foundations.Chain.TaylorWilesScaffold.HeckeAlgebra_26_eq
+#print axioms BealLevel26Foundations.Chain.TaylorWilesScaffold.taylor_wiles_ceiling_eq
 #print axioms BealLevel26Foundations.Beal.BealForall.gcd_13_2_1_eq_1
 #print axioms BealLevel26Foundations.Beal.BealForall.dvd_13_2_1
 #print axioms BealLevel26Foundations.Beal.BealForall.Is13Case_gcd_counterexample_rfl
