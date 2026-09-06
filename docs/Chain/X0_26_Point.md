@@ -74,5 +74,6 @@ this four-cusp file.
 Mathlib 4.12 has `EllipticCurve ℚ` but no `CyclicSubgroup`
 and no `X₀(26)(ℚ)`.  That carrier is not
 `DisplayedX026CuspPoint` (label `∈ [1,2,13,26]`).
+v4.45.0 adds `X0_26_Q_Point_to_ExistsNoncuspidal`
+(`Nonempty → ExistsNoncuspidal_26`), uninhabited.
 See `docs/Chain/X0_26_Q.md`.
-

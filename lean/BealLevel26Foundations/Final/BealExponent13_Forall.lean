@@ -162,6 +162,13 @@ and no modular curve, so the second slot is an empty
 inductive.  `weierstrass_modularity_gives_X0_26_Q_Point`
 stays uninhabited.  A `WeierstrassCurve Int` (`a₁…a₆`) is
 not `DisplayedX026CuspPoint`.
+
+## v4.45.0 Nonempty → ExistsNoncuspidal bridge
+
+`X0_26_Q_Point_to_ExistsNoncuspidal` is
+`Nonempty X0_26_Q_Point → ExistsNoncuspidal_26`.
+Uninhabited: empty inductive, no Mathlib `CyclicSubgroup`,
+no modular-curve scheme.  Not a vacuous close.
 -/
 
 /-- Primitive Beal-shaped counterexample (`x,y,z ≥ 3`, `gcd = 1`).
@@ -420,6 +427,7 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Chain.X0_26_Q.X0_26_Q_Point
 #check BealLevel26Foundations.Chain.X0_26_Q.CyclicSubgroup
 #check BealLevel26Foundations.Chain.X0_26_Q.weierstrass_modularity_gives_X0_26_Q_Point
+#check BealLevel26Foundations.Chain.X0_26_Q.X0_26_Q_Point_to_ExistsNoncuspidal
 #print axioms BealLevel26Foundations.Frey.FreyModularity13.WeierstrassModularity_of_pack
 #check existsNoncuspidal_26_implies_False
 #check beal_13_case_implies_False_of_ExistsNoncuspidal

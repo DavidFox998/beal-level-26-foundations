@@ -45,6 +45,13 @@ Inhabiting `ExistsNoncuspidal_26` plus
 `notExistsNoncuspidal_26_proved` would be `False` (`rfl`,
 not Tate).
 
+v4.45.0 records
+`X0_26_Q_Point_to_ExistsNoncuspidal` as the Prop
+`Nonempty X0_26_Q_Point → ExistsNoncuspidal_26`.
+It stays uninhabited.  Empty-inductive elimination would
+be a vacuous close and is not used: a real modular-curve
+point is still not a `DisplayedX026CuspPoint`.
+
 Does **not** import Forall or Mazur BealTheorem (cycle).
 Does **not** add an axiom.  No `False.elim`.
 -/
@@ -73,10 +80,21 @@ def weierstrass_modularity_gives_X0_26_Q_Point : Prop :=
     frey_conductor_26 = 26 →
     Nonempty X0_26_Q_Point
 
+/-- Uninhabited.  `Nonempty X0_26_Q_Point → ExistsNoncuspidal_26`.
+`CyclicSubgroup` is an empty inductive (no Mathlib instance,
+no modular-curve scheme).  Not inhabited by empty elimination:
+`X0_26_Q_Point` is not a `DisplayedX026CuspPoint`
+(label `∈ [1,2,13,26]`).  Need Mathlib `X₀(26)(ℚ)` plus Ribet.
+Inhabiting this plus `notExistsNoncuspidal_26_proved` would
+be `False` (`rfl` conductor label, not Tate). -/
+def X0_26_Q_Point_to_ExistsNoncuspidal : Prop :=
+  Nonempty X0_26_Q_Point → ExistsNoncuspidal_26
+
 #check EllipticCurve
 #check CyclicSubgroup
 #check X0_26_Q_Point
 #check weierstrass_modularity_gives_X0_26_Q_Point
+#check X0_26_Q_Point_to_ExistsNoncuspidal
 #check DisplayedX026CuspPoint
 #check ExistsNoncuspidal_26
 #check WeierstrassModularity

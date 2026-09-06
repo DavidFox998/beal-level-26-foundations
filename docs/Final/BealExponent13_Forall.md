@@ -545,3 +545,37 @@ SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 Hook `22379293`.  Parallel mint `22544762` (v4.43.0) until a new mint.
 Original-family latest remains `22322627`.
 
+### v4.45.0-iter-X0-26-Q-point-to-ExistsNoncuspidal
+
+`Nonempty X0_26_Q_Point → ExistsNoncuspidal_26` bridge.
+`X0_26_Q_Point` is `Σ (E : EllipticCurve ℚ), CyclicSubgroup E 26`
+with `CyclicSubgroup` an empty inductive (Mathlib 4.12 has
+`EllipticCurve ℚ`, no `CyclicSubgroup E n`, no modular-curve
+scheme).  `X0_26_Q_Point_to_ExistsNoncuspidal` stays
+uninhabited.  Not a vacuous empty-elim close.
+`weierstrass_modularity_gives_X0_26_Q_Point` stays
+uninhabited.  Need Mathlib `X₀(26)(ℚ)` plus Ribet for
+`ExistsNoncuspidal_26` → `False`.
+
+| Name | Status |
+|---|---|
+| `X0_26_Q_Point` | type start; uninhabited (`CyclicSubgroup` empty) |
+| `weierstrass_modularity_gives_X0_26_Q_Point` | uninhabited |
+| `X0_26_Q_Point_to_ExistsNoncuspidal` | uninhabited |
+| `ExistsNoncuspidal_26_of_Is13CaseSketch` | uninhabited |
+| `ribet_produces_noncuspidal_of_weierstrass` | uninhabited |
+| `ribet_produces_noncuspidal_of_weierstrass_modularity` | uninhabited |
+| `weierstrass_modularity_gives_ExistsNoncuspidal_sketch` | uninhabited |
+| `existsNoncuspidal_26_implies_False` | **none** |
+| `notExistsNoncuspidal_26_proved` | **none** via `hGeomForbid` four cusps label `∈ [1,2,13,26]` `P.mem` |
+| `fourCuspsForallCuspPoints_of_P_mem` | **none** via `P.mem` / `displayed_mem_cusps` / `hInList_label` |
+| `beal_forall_from_ribet` | **none** |
+| `Is13CaseForcesGcdGt1Sketch` | uninhabited |
+
+Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)`.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22544990` (v4.44.0) until a new mint.
+Original-family latest remains `22322627`.
+
+
