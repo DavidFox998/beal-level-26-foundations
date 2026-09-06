@@ -29,3 +29,17 @@ factor of `A*B*C`.  `Is13Case_gcd_counterexample` is
 `not_Is13CaseForcesGcdGt1Sketch` records that (**none**,
 `Nat.lt_irrefl`).  The packed Forall twin stays
 uninhabited (`gcd = 1` by `primitive`).
+
+### v4.51.0 gcd counterexample `rfl` + primitive vs not
+
+`triple_13_2_1` is the named base `⟨13,2,1⟩`.
+`gcd_13_2_1_eq_1` is `rfl` (**propext**).
+`dvd_13_2_1` is **none**.
+`Is13Case_gcd_counterexample_rfl` is
+`∃ w, Is13Case w ∧ w.gcd = 1` (**propext**).
+`primitive_vs_not_primitive` records that bases may be
+primitive (`gcd = 1`) or not (`gcd > 1`).
+`Is13Case` does not imply primitive.
+Bases are not primitive-by-definition.
+The packed twin stays uninhabited (`gcd = 1` by
+`primitive` if that field is present).

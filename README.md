@@ -13,6 +13,18 @@ v4.47.0 Tate conductor from `Is13Case` (`13 ∣ A*B*C`) is an uninhabited sketch
 v4.48.0 `Is13CaseForcesFalseSketchViaLevel2` is `∀ w, Is13Case w → False` uninhabited (needs Tate+Ribet); valid type, still not `∀ A B C`.
 v4.49.0 `beal_forall_from_Is13Case_sketch` is `∀ A B C` uninhabited (needs Tate+Ribet+GcdGt1); still not `∀ A B C`.
 v4.50.0 `13 ∣ A*B*C` splits to one factor (`Is13Case_prime_dvd` none); `⟨13,2,1⟩` has gcd 1, so GcdGt1 stays uninhabited. Still not `∀ A B C`.
+v4.51.0 `triple_13_2_1` gcd=1 by `rfl`; bases not primitive-by-definition; GcdGt1 stays uninhabited. Still not `∀ A B C`.
+
+### v4.51.0-iter-gcd-counterexample-rfl-primitive
+
+explicit `⟨13,2,1⟩` gcd=1 by `rfl`, `13|13*2*1` by decide,
+bases not primitive-by-definition, `BealCounterexampleBases`
+does not require `gcd=1` so triple valid base, shows
+`13|A*B*C` splits to one factor not common factor, so
+`∀ w Is13Case w → w.gcd>1` false on bases,
+`Is13CaseForcesGcdGt1Sketch` stays uninhabited honest,
+`Is13CaseForcesFalseSketchViaLevel2` `∀ w Is13Case w→False`
+valid type uninhabited needs Tate+Ribet level 2.
 
 ### v4.50.0-iter-Is13Case-gcd-gt1-why-uninhabited
 

@@ -81,6 +81,10 @@ v4.50.0 records why the bases GcdGt1 sketch is uninhabited:
 `⟨13, 2, 1⟩` has `Is13Case` and `gcd = 1`.  The packed
 twin stays uninhabited (`gcd = 1` by `primitive`).
 
+v4.51.0 names `triple_13_2_1` with `gcd = 1` by `rfl`.
+Bases are not primitive-by-definition.  `Is13Case → False`
+stays a valid type, uninhabited.
+
 `Is13CaseForcesGcdGt1Sketch` stays uninhabited.  The proposed
 term `frey_modular_13 w h13` / `ribet_level_lowering_26 hFrey`
 / `hGeomForbid_typed_true hRibet …` does not type-check.
@@ -481,7 +485,15 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Beal.BealForall.Is13CaseForcesGcdGt1Sketch
 #check BealLevel26Foundations.Beal.BealForall.Is13Case_prime_dvd
 #check BealLevel26Foundations.Beal.BealForall.Is13Case_gcd_counterexample
+#check BealLevel26Foundations.Beal.BealForall.triple_13_2_1
+#check BealLevel26Foundations.Beal.BealForall.gcd_13_2_1_eq_1
+#check BealLevel26Foundations.Beal.BealForall.dvd_13_2_1
+#check BealLevel26Foundations.Beal.BealForall.Is13Case_gcd_counterexample_rfl
+#check BealLevel26Foundations.Beal.BealForall.primitive_vs_not_primitive
 #check BealLevel26Foundations.Beal.BealForall.not_Is13CaseForcesGcdGt1Sketch
+#print axioms BealLevel26Foundations.Beal.BealForall.gcd_13_2_1_eq_1
+#print axioms BealLevel26Foundations.Beal.BealForall.dvd_13_2_1
+#print axioms BealLevel26Foundations.Beal.BealForall.Is13Case_gcd_counterexample_rfl
 #print axioms BealLevel26Foundations.Beal.BealForall.Is13Case_prime_dvd
 #print axioms BealLevel26Foundations.Beal.BealForall.Is13Case_gcd_counterexample
 #check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_sketch

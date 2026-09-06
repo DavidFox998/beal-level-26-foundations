@@ -724,3 +724,31 @@ SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 Hook `22379293`.  Parallel mint `22547825` (v4.49.0) until a new mint.
 Original-family latest remains `22322627`.
 
+### v4.51.0-iter-gcd-counterexample-rfl-primitive
+
+explicit `⟨13,2,1⟩` gcd=1 by `rfl`.  Bases are not
+primitive-by-definition.  `BealCounterexampleBases` does
+not require `gcd=1`, so the triple is a valid base.
+`13|A*B*C` splits to one factor, not a common factor.
+
+| Name | Status |
+|---|---|
+| `gcd_13_2_1_eq_1` | `rfl` **propext** (`Nat.gcd` unfold) |
+| `dvd_13_2_1` | **none** `⟨2, rfl⟩` (`13 ∣ 13*2*1`) |
+| `Is13Case_gcd_counterexample_rfl` | `∃ w, Is13Case w ∧ w.gcd=1` **propext** |
+| `Is13Case_prime_dvd` | via `Nat.Prime.dvd_mul` **propext** `Classical.choice` `Quot.sound` |
+| `Is13CaseForcesGcdGt1Sketch` | uninhabited; one factor ≠ common |
+| `primitive_vs_not_primitive` | **propext** bases may have `gcd=1` or `gcd>1`; not primitive-by-definition |
+| `Is13CaseForcesFalseSketchViaLevel2` | uninhabited; needs Tate + Ribet |
+| `notExistsNewformLevel2` | **none** via `S₂(Γ₀(2))` dim `0` |
+| `notExistsNoncuspidal_26_proved` | **none** via `hGeomForbid` four cusps label `∈ [1,2,13,26]` `P.mem` |
+| `frey_conductor_26_rfl` | **none** |
+| `beal_forall_from_Is13Case_sketch` | `∀ A B C m n p` valid type; not in the kernel |
+| `X0_26_Q_Point` | empty inductive; real curve has `26a1` Δ `-17576` and `26b1` Δ `-1664` |
+
+Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22548659` (v4.50.0) until a new mint.
+Original-family latest remains `22322627`.
+

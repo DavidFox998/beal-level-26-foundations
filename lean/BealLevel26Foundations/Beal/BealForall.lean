@@ -13,6 +13,7 @@ open BealLevel26Foundations.Frey.FreyConductor26
 /-!
 # v4.49.0 Beal forall sketch from the 13-case
 # v4.50.0 why GcdGt1 stays uninhabited
+# v4.51.0 gcd counterexample `rfl` + primitive vs not
 
 `Frey.FreyConductor26.Is13Case` is `13 ∣ A*B*C` on shared
 bases.  Forall.`Is13Case` is `13 ∣ x*y*z` on a packed
@@ -73,17 +74,70 @@ theorem Is13Case_prime_dvd
     | Or.inr hB => Or.inr (Or.inl hB)
   | Or.inr hC => Or.inr (Or.inr hC)
 
-/-- Bases `⟨13, 2, 1⟩`: `13 ∣ 13*2*1` and `gcd = 1`.
-One factor 13 is not a common factor.  Not a packed
-primitive witness. -/
+/-- Named bases `A = 13`, `B = 2`, `C = 1`.  Not a packed
+witness and not primitive-by-definition. -/
+def triple_13_2_1 : BealCounterexampleBases :=
+  ⟨13, 2, 1⟩
+
+/-- Displayed gcd of the named triple.  `rfl`, not a
+primitivity field. -/
+theorem gcd_13_2_1_eq_1 : triple_13_2_1.gcd = 1 :=
+  rfl
+
+/-- `13` divides the product.  Witness `⟨2, rfl⟩`. -/
+theorem dvd_13_2_1 : 13 ∣ 13 * 2 * 1 :=
+  ⟨2, rfl⟩
+
+/-- Same `Is13Case` on the named triple. -/
+theorem Is13Case_triple_13_2_1 : Is13Case triple_13_2_1 :=
+  dvd_13_2_1
+
+/-- Explicit counterexample.  `gcd` by `rfl`, product by
+`dvd_13_2_1`.  One factor 13 is not a common factor. -/
+def Is13Case_gcd_counterexample_rfl :
+    ∃ w : BealCounterexampleBases, Is13Case w ∧ w.gcd = 1 :=
+  ⟨triple_13_2_1, Is13Case_triple_13_2_1, gcd_13_2_1_eq_1⟩
+
+/-- Legacy name of `Is13Case_gcd_counterexample_rfl`. -/
 theorem Is13Case_gcd_counterexample :
     ∃ w : BealCounterexampleBases, Is13Case w ∧ w.gcd = 1 :=
-  ⟨⟨13, 2, 1⟩, ⟨2, rfl⟩, rfl⟩
+  Is13Case_gcd_counterexample_rfl
 
-/-- Uninhabited.  `13 ∣ A*B*C` does not force a common
-factor.  Not Forall.`Is13CaseForcesGcdGt1Sketch`.
-`Is13Case_gcd_counterexample` is a counterexample, so this
-forall is false on bases. -/
+/-- Bases may have `gcd = 1` or `gcd > 1`.  `Is13Case`
+does not force either.  Not a packed `primitive` field. -/
+theorem primitive_vs_not_primitive :
+    (∃ w : BealCounterexampleBases, w.gcd = 1) ∧
+      (∃ w : BealCounterexampleBases, 1 < w.gcd) :=
+  ⟨⟨triple_13_2_1, gcd_13_2_1_eq_1⟩,
+    ⟨⟨13, 13, 13⟩,
+      show 1 < Nat.gcd 13 (Nat.gcd 13 13) from
+        Nat.one_lt_succ_succ 11⟩⟩
+
+/-- Named non-primitive 13-case.  `gcd = 13`, not a packed
+`primitive` field. -/
+def triple_13_13_13 : BealCounterexampleBases :=
+  ⟨13, 13, 13⟩
+
+/-- `Is13Case` does not imply `gcd = 1`.  `triple_13_13_13`
+is a 13-case with `gcd = 13`. -/
+theorem Is13Case_not_implies_gcd_eq_one :
+    ¬ ∀ (w : BealCounterexampleBases), Is13Case w → w.gcd = 1 :=
+  fun h =>
+    have h13 : Is13Case triple_13_13_13 :=
+      (Nat.dvd_mul_right 13 13).mul_right 13
+    have hgcd : triple_13_13_13.gcd = 13 := rfl
+    have hne : triple_13_13_13.gcd ≠ 1 :=
+      hgcd.symm ▸ Nat.succ_succ_ne_one 11
+    hne (h triple_13_13_13 h13)
+
+/-- Uninhabited.  Bases are not primitive-by-definition:
+`BealCounterexampleBases` does not require `gcd = 1`, so
+`triple_13_2_1` is a valid base with `gcd = 1`.  That shows
+`13 ∣ A*B*C` is not a common factor (one factor 13 ≠ common
+factor), so `∀ w, Is13Case w → w.gcd > 1` is false.
+Not Forall.`Is13CaseForcesGcdGt1Sketch`.  The packed twin
+stays uninhabited (`gcd = 1` by `primitive` if that field
+is present; this file does not add it). -/
 def Is13CaseForcesGcdGt1Sketch : Prop :=
   ∀ (w : BealCounterexampleBases),
     Is13Case w → w.gcd > 1
@@ -147,8 +201,18 @@ theorem beal_forall_of_Is13Case_composition
   gcd3 A B C > 1)
 #check beal_forall_from_Is13Case_composition
 #check Is13Case_prime_dvd
+#check triple_13_2_1
+#check gcd_13_2_1_eq_1
+#check dvd_13_2_1
+#check Is13Case_gcd_counterexample_rfl
 #check Is13Case_gcd_counterexample
+#check primitive_vs_not_primitive
+#check Is13Case_not_implies_gcd_eq_one
 #check not_Is13CaseForcesGcdGt1Sketch
+#print axioms gcd_13_2_1_eq_1
+#print axioms dvd_13_2_1
+#print axioms Is13Case_gcd_counterexample_rfl
+#print axioms primitive_vs_not_primitive
 #print axioms prime_thirteen
 #print axioms Is13Case_prime_dvd
 #print axioms Is13Case_gcd_counterexample
