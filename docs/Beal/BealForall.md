@@ -92,3 +92,13 @@ so `#print axioms` is **propext only**.
 `hDelta_of_pos` feeds positivity into the existing Δ lemma.
 Does **not** inhabit unconditional `Is13Case → False`.
 No `False.elim`.
+
+### v4.56.0 Mathlib gaps; propext-only is the ceiling
+
+Both wirings stay.  `Chain.MathlibGaps` records Tate,
+modularity, Ribet, and `X₀(26)(ℚ)` as missing from
+Mathlib 4.12.  `notExistsNewformLevel2` **none** is the
+DONE anchor.  The propext-only wiring is the ceiling
+until those gaps close.  Uses Path 2, not Path 1.
+No `False.elim`.
+

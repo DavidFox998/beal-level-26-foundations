@@ -27,6 +27,7 @@ open BealLevel26Foundations.Ribet.RibetLevelLowering26
 # v4.53.0 only honest path is Is13Case → False via level 2
 # v4.54.0 conditional Beal from Tate + Ribet + Path 2 composition
 # v4.55.0 explicit Δ ≠ 0 and propext-only conditional wiring
+# v4.56.0 Mathlib gaps: both wirings stay; propext-only is the ceiling
 
 `Frey.FreyConductor26.Is13Case` is `13 ∣ A*B*C` on shared
 bases.  Forall.`Is13Case` is `13 ∣ x*y*z` on a packed

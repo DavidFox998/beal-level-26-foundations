@@ -18,6 +18,45 @@ v4.52.0 `IsPrimitive` subtype; ∃ primitive Is13Case gcd=1 vs ∀ gcd>1 false. 
 v4.53.0 Path1 gcd>1 false; Path2 only honest `Is13Case → False` via level 2. Still not `∀ A B C`.
 v4.54.0 conditional `hTate+hRibet+hComp+hΔ → Beal ∀`; does not inhabit unconditional False. Still not `∀ A B C`.
 v4.55.0 explicit Δ≠0; propext-only Beal ∀ via hTate+hRibet+hWeierstrass. Still not `∀ A B C`.
+v4.56.0 Mathlib gaps Tate/Ribet/Modularity/X0; propext-only Beal ∀ is ceiling. Still not `∀ A B C`.
+
+### v4.56.0-iter-mathlib-gaps-what-mathlib-does-not-have
+
+This pin is Lean 4.12.0 + Mathlib v4.12.0.
+`Chain.MathlibGaps` records what Mathlib does not have:
+
+* Tate conductor `N = 2*rad(ABC)`:
+  `frey_conductor_26_of_Is13Case` uninhabited sketch;
+  `fun _ => rfl` is the label, not Tate;
+  `frey_conductor_26_rfl` **none** is the same label.
+  Mathlib has Weierstrass Δ, not Tate `∏ p^{f_p}`.
+* Modularity: `WeierstrassModularity_of_pack` is existing
+  `frey_modular_13` (**propext** + that assumption), not
+  Wiles–Taylor / BCDT.  Mathlib has no modularity
+  predicate for elliptic curves over `ℚ`.
+* Ribet `26/13=2`:
+  `ribet_produces_newform_level2` uninhabited.  Mathlib
+  has no residual Galois representation and no level
+  lowering.
+* `S₂(Γ₀(2))=0`: `notExistsNewformLevel2` **none** DONE
+  (dim `0` anchor).
+* `X₀(26)(ℚ)`: `X0_26_Q_Point` empty inductive scaffold,
+  not the real curve.  Real curve has `26a1` Δ `-17576`
+  and `26b1` Δ `-1664`, so `Nonempty → False` is false.
+  `fourCuspsForallCuspPoints_of_P_mem` **none** is
+  label `∈ [1,2,13,26]`, not Mazur.
+
+Conditional Beal `∀` **propext only** is the ceiling:
+`is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only`
+`hTate → hRibet → hWeierstrass → hComp + hΔ → Beal ∀`
+builds a *local* `Is13Case → False` via
+`is13Case_implies_False_of_tate_ribet_disc` and applies
+`beal_forall_from_Is13Case_false_sketch`
+`(∀ w, Is13Case → False) → Beal ∀` (Path 2, not Path 1).
+Neither wiring inhabits unconditional
+`Is13CaseForcesFalseSketchViaLevel2`.  No `False.elim`.
+Still not `∀ A B C` unconditionally.  Still not Mathlib
+`X₀(26)(ℚ)` + Ribet + Tate.
 
 ### v4.55.0-iter-delta-ne0-explicit-conditional-propext-only
 

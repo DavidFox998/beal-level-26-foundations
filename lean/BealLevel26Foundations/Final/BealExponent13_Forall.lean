@@ -2,6 +2,7 @@ import BealLevel26Foundations.Base.BealCounterexampleBase
 import BealLevel26Foundations.Beal.BealForall
 import BealLevel26Foundations.Chain.Beal13CaseToFalse
 import BealLevel26Foundations.Chain.Level2
+import BealLevel26Foundations.Chain.MathlibGaps
 import BealLevel26Foundations.Chain.X0_26_Point
 import BealLevel26Foundations.Chain.X0_26_Q
 import BealLevel26Foundations.Final.BealExponent13_Final
@@ -106,6 +107,13 @@ v4.55.0 makes Δ ≠ 0 explicit via
 `is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only`:
 `hTate → hRibet → hWeierstrass → Beal ∀` with modularity
 as a hypothesis, so `#print axioms` is `propext` only.
+
+v4.56.0 records Mathlib 4.12 gaps in
+`Chain.MathlibGaps`: Tate conductor, modularity lifting,
+Ribet `26 → 2`, `X₀(26)(ℚ)`.  `S₂(Γ₀(2))` dim `0` is
+DONE (`notExistsNewformLevel2` **none**).  Conditional
+Beal `∀` propext-only is the ceiling until those gaps
+close.  Both wirings stay.  No `False.elim`.
 
 `Is13CaseForcesGcdGt1Sketch` stays uninhabited.  The proposed
 term `frey_modular_13 w h13` / `ribet_level_lowering_26 hFrey`
@@ -529,6 +537,12 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only_type
 #check BealLevel26Foundations.Frey.FreyCurve13.frey_Delta13_ne_0_of_pos
 #check BealLevel26Foundations.Chain.Beal13CaseToFalse.is13Case_implies_False_of_tate_ribet_weierstrass
+#check BealLevel26Foundations.Chain.MathlibGaps.gap_tate_conductor
+#check BealLevel26Foundations.Chain.MathlibGaps.gap_ribet_level2
+#check BealLevel26Foundations.Chain.MathlibGaps.gap_s2_gamma0_2_done
+#check BealLevel26Foundations.Chain.MathlibGaps.gap_X0_26_Q_scaffold
+#check BealLevel26Foundations.Chain.MathlibGaps.conditional_Beal_forall_propext_only_ceiling
+#check BealLevel26Foundations.Chain.MathlibGaps.ceiling_uses_Path2_not_Path1
 #print axioms BealLevel26Foundations.Beal.BealForall.gcd_13_2_1_eq_1
 #print axioms BealLevel26Foundations.Beal.BealForall.dvd_13_2_1
 #print axioms BealLevel26Foundations.Beal.BealForall.Is13Case_gcd_counterexample_rfl
@@ -541,6 +555,8 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #print axioms BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_tate_ribet_disc
 #print axioms BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only
 #print axioms BealLevel26Foundations.Frey.FreyCurve13.frey_Delta13_ne_0_of_pos
+#print axioms BealLevel26Foundations.Chain.MathlibGaps.gap_s2_gamma0_2_done
+#print axioms BealLevel26Foundations.Chain.MathlibGaps.conditional_Beal_forall_propext_only_ceiling_eq
 #check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_sketch
 #check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_sketch_valid_type
 #check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_composition

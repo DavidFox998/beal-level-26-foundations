@@ -1,0 +1,201 @@
+import BealLevel26Foundations.Base.BealCounterexampleBase
+import BealLevel26Foundations.Beal.BealForall
+import BealLevel26Foundations.Chain.Beal13CaseToFalse
+import BealLevel26Foundations.Chain.Level2
+import BealLevel26Foundations.Chain.X0_26_Point
+import BealLevel26Foundations.Chain.X0_26_Q
+import BealLevel26Foundations.Frey.FreyConductor_26
+import BealLevel26Foundations.Frey.FreyCurve13
+import BealLevel26Foundations.Frey.FreyModularity_13
+import BealLevel26Foundations.Ribet.RibetLevelLowering_26
+
+namespace BealLevel26Foundations.Chain.MathlibGaps
+
+open BealLevel26Foundations.Base.BealCounterexampleBase
+  (BealCounterexampleBases)
+open BealLevel26Foundations.Beal.BealForall
+open BealLevel26Foundations.Chain.Beal13CaseToFalse
+open BealLevel26Foundations.Chain.Level2
+open BealLevel26Foundations.Chain.X0_26_Point
+open BealLevel26Foundations.Chain.X0_26_Q
+open BealLevel26Foundations.Frey.FreyConductor26
+  (frey_conductor_26_of_Is13Case frey_conductor_26_rfl)
+open BealLevel26Foundations.Frey.FreyCurve13
+  (frey_Delta13_ne_0_of_pos)
+open BealLevel26Foundations.Frey.FreyModularity13
+  (WeierstrassModularity WeierstrassModularity_of_pack)
+open BealLevel26Foundations.Ribet.RibetLevelLowering26
+  (ribet_produces_newform_level2_of_weierstrass_modularity)
+
+/-!
+# v4.56.0 Mathlib gaps — what this pin does not have
+
+This tree pins **Lean 4.12.0** and **Mathlib v4.12.0**.
+The named gaps below are why unconditional Beal `∀` is
+not in the kernel.  They are recorded as valid types
+already in this repo; this file does **not** inhabit
+them and does **not** add an axiom.
+
+Conditional Beal `∀` with
+`is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only`
+is the **ceiling**: a propext-only function on uninhabited
+Tate / Ribet / modularity hypotheses.  It does **not**
+inhabit `Is13CaseForcesFalseSketchViaLevel2` and does
+**not** inhabit Beal `∀` unconditionally.  No `False.elim`.
+Does **not** import Forall (cycle).
+
+## Gap 1 — Tate conductor
+
+Intended: `Is13Case` plus Δ ≠ 0 implies the minimal model
+of `Y² = X(X − A¹³)(X + B¹³)` has multiplicative
+reduction at `2` and `13` only, hence conductor `2 * 13`
+(`N = 2 * rad(ABC)` on the 13-case).
+
+`frey_conductor_26_of_Is13Case` is that sketch.
+Uninhabited.  Mathlib 4.12 has Weierstrass Δ and no
+Tate algorithm (`conductor = ∏ p^{f_p}`).
+`frey_conductor_26_rfl` is `2 * 13` by `rfl` (**none**):
+the label, not Tate.  `fun _ _ _ => rfl` is the same
+label.
+
+## Gap 2 — Modularity lifting
+
+`WeierstrassModularity c` is
+`∃ w, c = pack w ∧ Modularity (FreyCurve13 w.A w.B w.C)`.
+Valid type.  `WeierstrassModularity_of_pack` is the
+existing computational assumption `frey_modular_13`
+(propext + that assumption).  Not Wiles–Taylor / BCDT.
+Not a new assumption.  Mathlib 4.12 has no modularity
+predicate for elliptic curves over `ℚ` and no lifting.
+
+## Gap 3 — Ribet `26 → 2`
+
+`ribet_produces_newform_level2_of_weierstrass_modularity`
+is `Δ ≠ 0 → WeierstrassModularity (pack w) →
+conductor = 2 * 13 → ExistsNewformLevel2`.
+Uninhabited (`26 / 13 = 2`).  Mathlib 4.12 has no Ribet
+theorem, no residual Galois representation
+`ρ̄_{E,13}` (irreducible, finite at 13), and no level
+lowering.
+
+## Gap 4 — `S₂(Γ₀(2))` dim `0` (DONE)
+
+`notExistsNewformLevel2` is `¬ ExistsNewformLevel2`.
+Inhabited (**none**) via displayed `s2_gamma0_2_dim = 0`
+(`rfl`).  This is the only none that yields `False`
+*after* Ribet.  Not a Mathlib modular-forms computation.
+
+## Gap 5 — `X₀(26)(ℚ)` classification
+
+`X0_26_Q_Point` is
+`Σ (E : EllipticCurve ℚ), CyclicSubgroup E 26`.
+`CyclicSubgroup` is an empty inductive.  Scaffold, not
+the real curve.  Mathlib 4.12 has no `X₀(N)(ℚ)`.
+Real `X₀(26)(ℚ)` has four cusps
+(label `∈ [1,2,13,26]`, `fourCuspsForallCuspPoints_of_P_mem`
+**none**) and two non-cuspidal points `26a1` (Δ `-17576`)
+and `26b1` (Δ `-1664`).  So
+`Nonempty X0_26_Q_Point → False` is false.
+`X0_26_Q_Point_to_ExistsNoncuspidal` stays uninhabited
+(no vacuous empty-elim).  `notExistsNoncuspidal_26_proved`
+is **none** via `hGeomForbid` on displayed labels; that
+is a label check, not Mazur.
+
+## Ceiling
+
+`is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only`
+takes `hTate`, `hRibet`, `hWeierstrass`, Path 2 `hComp`,
+and `hΔ`, and returns Beal `∀`.  `#print axioms` is
+`propext` only.  Builds a *local* `Is13Case → False`.
+Uses Path 2, not Path 1.  Path 1 is false (`⟨13, 2, 1⟩`).
+-/
+
+/-- Gap 1.  Uninhabited Tate sketch. -/
+def gap_tate_conductor : Prop :=
+  frey_conductor_26_of_Is13Case
+
+theorem gap_tate_conductor_eq :
+    gap_tate_conductor = frey_conductor_26_of_Is13Case :=
+  rfl
+
+/-- Gap 2.  Existing pack modularity, not BCDT. -/
+def gap_modularity_pack : Prop :=
+  ∀ (w : BealCounterexampleBases),
+    WeierstrassModularity
+      (BealLevel26Foundations.Frey.FreyCurve13.FreyCurve13_of_BealCounterexampleBases w)
+
+/-- Gap 3.  Uninhabited Ribet sketch `26 / 13 = 2`. -/
+def gap_ribet_level2 : Prop :=
+  ribet_produces_newform_level2_of_weierstrass_modularity
+
+theorem gap_ribet_level2_eq :
+    gap_ribet_level2 =
+      ribet_produces_newform_level2_of_weierstrass_modularity :=
+  rfl
+
+/-- Gap 4.  DONE: no newform at level 2. -/
+def gap_s2_gamma0_2_done : ¬ ExistsNewformLevel2 :=
+  notExistsNewformLevel2
+
+/-- Gap 5.  Empty inductive scaffold, not the real curve. -/
+def gap_X0_26_Q_scaffold : Type :=
+  X0_26_Q_Point
+
+theorem gap_X0_26_Q_scaffold_eq :
+    gap_X0_26_Q_scaffold = X0_26_Q_Point :=
+  rfl
+
+/-- Ceiling type without `hComp` / `hΔ`.  Uninhabited. -/
+def conditional_Beal_forall_propext_only_ceiling : Prop :=
+  is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only_type
+
+theorem conditional_Beal_forall_propext_only_ceiling_eq :
+    conditional_Beal_forall_propext_only_ceiling =
+      is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only_type :=
+  rfl
+
+/-- Path 1 is false; Path 2 is the typed `Is13Case → False`.
+Does not inhabit Path 2. -/
+theorem ceiling_uses_Path2_not_Path1 :
+    ¬ Is13CaseForcesGcdGt1SketchPrimitive ∧
+      (Is13CaseForcesFalseSketchViaLevel2 =
+        ∀ (w : BealCounterexampleBases),
+          BealLevel26Foundations.Frey.FreyConductor26.Is13Case w → False) :=
+  only_honest_path_is_False_via_level2
+
+#check gap_tate_conductor
+#check frey_conductor_26_of_Is13Case
+#check frey_conductor_26_rfl
+#check gap_modularity_pack
+#check WeierstrassModularity
+#check WeierstrassModularity_of_pack
+#check gap_ribet_level2
+#check ribet_produces_newform_level2_of_weierstrass_modularity
+#check gap_s2_gamma0_2_done
+#check notExistsNewformLevel2
+#check gap_X0_26_Q_scaffold
+#check X0_26_Q_Point
+#check X0_26_Q_Point_to_ExistsNoncuspidal
+#check fourCuspsForallCuspPoints_of_P_mem
+#check conditional_Beal_forall_propext_only_ceiling
+#check is13Case_false_implies_Beal_of_tate_ribet_disc
+#check is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only
+#check beal_forall_from_Is13Case_false_sketch
+#check frey_Delta13_ne_0_of_pos
+#check exists_primitive_Is13Case_gcd_1
+#print axioms gap_tate_conductor_eq
+#print axioms frey_conductor_26_rfl
+#print axioms WeierstrassModularity_of_pack
+#print axioms gap_ribet_level2_eq
+#print axioms notExistsNewformLevel2
+#print axioms gap_s2_gamma0_2_done
+#print axioms gap_X0_26_Q_scaffold_eq
+#print axioms fourCuspsForallCuspPoints_of_P_mem
+#print axioms conditional_Beal_forall_propext_only_ceiling_eq
+#print axioms is13Case_false_implies_Beal_of_tate_ribet_disc
+#print axioms is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only
+#print axioms frey_Delta13_ne_0_of_pos
+#print axioms exists_primitive_Is13Case_gcd_1
+#print axioms ceiling_uses_Path2_not_Path1
+
+end BealLevel26Foundations.Chain.MathlibGaps

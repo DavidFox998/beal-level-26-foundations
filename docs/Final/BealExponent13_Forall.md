@@ -847,3 +847,35 @@ SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 Hook `22379293`.  Parallel mint `22549784` (v4.54.0) until a new mint.
 Original-family latest remains `22322627`.
 
+### v4.56.0-iter-mathlib-gaps-what-mathlib-does-not-have
+
+This pin is Lean 4.12.0 + Mathlib v4.12.0.
+`Chain.MathlibGaps` records why unconditional Beal `∀`
+is not in the kernel.
+
+| Gap | Def in kernel | Status now | `#print axioms` now | What Mathlib lacks | Needed for `∀` in kernel |
+|---|---|---|---|---|---|
+| Tate conductor `2*13` | `frey_conductor_26_of_Is13Case` | uninhabited sketch; `fun _ => rfl` is the label, not Tate; `frey_conductor_26_rfl` `rfl` **none** | sketch is a Prop (uninhabited); label **none** | Elliptic-curve Tate algorithm `conductor = ∏ p^{f_p}` multiplicative at `2`, `13` | Phase 1 |
+| Modularity | `WeierstrassModularity_of_pack` / `frey_modular_13` | valid type; **propext** + existing assumption; not Wiles–Taylor | **propext** + existing | Modularity predicate + BCDT lifting | Phase 2 |
+| Ribet `26→2` | `ribet_produces_newform_level2` | uninhabited `26/13=2` | uninhabited Prop | residual `ρ̄_{E,13}` irreducible, finite at 13, level lowering | Phase 3 |
+| `S₂(Γ₀(2))=0` | `notExistsNewformLevel2` | **none** via dim `0` | **none** | DONE — dim-`0` anchor | Phase 4 DONE |
+| `X₀(26)(ℚ)` | `X0_26_Q_Point` `Σ (E : EllipticCurve ℚ), CyclicSubgroup E 26` empty inductive | empty, not real; `26a1` Δ `-17576` and `26b1` Δ `-1664` so cusp→False is false | **none** for four cusps | `X₀(N)(ℚ)` classification (Mazur) | Phase 5 optional |
+
+Path 1 is false: `triple_13_2_1` `⟨13,2,1⟩` primitive `gcd=1` `rfl`,
+`exists_primitive_Is13Case_gcd_1` **propext**,
+`forall_primitive_Is13Case_gcd_gt1_false` **propext** via
+`Nat.lt_irrefl`.  One factor ≠ common factor.
+Path 2 is the only honest `Is13Case → False` type;
+uninhabited; needs Tate + Ribet.
+
+Conditional Beal `∀` propext-only is the ceiling.
+Neither wiring inhabits unconditional
+`Is13CaseForcesFalseSketchViaLevel2`.  No `False.elim`.
+
+Still not `∀ A B C` unconditionally.  Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22550229` (v4.55.0) until a new mint.
+Original-family latest remains `22322627`.
+
+
