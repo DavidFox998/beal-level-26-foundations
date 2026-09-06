@@ -1,6 +1,8 @@
 import BealLevel26Foundations.Base.BealCounterexampleBase
 import BealLevel26Foundations.Chain.Beal13CaseToFalse
 import BealLevel26Foundations.Frey.FreyConductor_26
+import BealLevel26Foundations.Frey.FreyCurve13
+import BealLevel26Foundations.Ribet.RibetLevelLowering_26
 import Mathlib.Data.Nat.Prime.Defs
 
 namespace BealLevel26Foundations.Beal.BealForall
@@ -8,7 +10,11 @@ namespace BealLevel26Foundations.Beal.BealForall
 open BealLevel26Foundations.Base.BealCounterexampleBase
 open BealLevel26Foundations.Chain.Beal13CaseToFalse
 open BealLevel26Foundations.Frey.FreyConductor26
-  (Is13Case)
+  (Is13Case frey_conductor_26_of_Is13Case)
+open BealLevel26Foundations.Frey.FreyCurve13
+  (FreyCurve13_of_BealCounterexampleBases)
+open BealLevel26Foundations.Ribet.RibetLevelLowering26
+  (ribet_produces_newform_level2_of_weierstrass_modularity)
 
 /-!
 # v4.49.0 Beal forall sketch from the 13-case
@@ -16,6 +22,7 @@ open BealLevel26Foundations.Frey.FreyConductor26
 # v4.51.0 gcd counterexample `rfl` + primitive vs not
 # v4.52.0 primitive subtype: exists gcd=1 vs forall gcd>1 false
 # v4.53.0 only honest path is Is13Case → False via level 2
+# v4.54.0 conditional Beal from Tate + Ribet + Path 2 composition
 
 `Frey.FreyConductor26.Is13Case` is `13 ∣ A*B*C` on shared
 bases.  Forall.`Is13Case` is `13 ∣ x*y*z` on a packed
@@ -291,6 +298,31 @@ theorem only_honest_path_is_False_via_level2 :
         ∀ (w : BealCounterexampleBases), Is13Case w → False) :=
   ⟨forall_primitive_Is13Case_gcd_gt1_false, rfl⟩
 
+/-- Uninhabited 2-hyp type `hTate → hRibet → Beal ∀`.
+Tate + Ribet give `Is13Case → False` only with Δ ≠ 0, and
+`Is13Case → False` is not Beal. -/
+def is13Case_false_implies_Beal_of_tate_ribet_disc_type : Prop :=
+  frey_conductor_26_of_Is13Case →
+    ribet_produces_newform_level2_of_weierstrass_modularity →
+      beal_forall_from_Is13Case_sketch
+
+/-- Conditional wiring.  Builds a *local* `Is13Case → False`
+from Tate + Ribet + Δ ≠ 0, then applies Path 2
+`beal_forall_from_Is13Case_false_sketch`.  Does **not**
+inhabit `Is13CaseForcesFalseSketchViaLevel2`.  Does **not**
+inhabit the Path 2 composition.  No `False.elim`. -/
+def is13Case_false_implies_Beal_of_tate_ribet_disc
+    (hTate : frey_conductor_26_of_Is13Case)
+    (hRibet : ribet_produces_newform_level2_of_weierstrass_modularity)
+    (hComp : beal_forall_from_Is13Case_false_sketch)
+    (hΔ : ∀ (w : BealCounterexampleBases),
+      Is13Case w →
+      (FreyCurve13_of_BealCounterexampleBases w).Δ ≠ 0) :
+    beal_forall_from_Is13Case_sketch :=
+  hComp (fun w h13 =>
+    is13Case_implies_False_of_tate_ribet_disc hTate hRibet w h13
+      (hΔ w h13))
+
 #check Is13Case
 #check Is13CaseForcesGcdGt1Sketch
 #check Is13CaseForcesFalseSketchViaLevel2
@@ -324,6 +356,8 @@ theorem only_honest_path_is_False_via_level2 :
 #check beal_forall_from_Is13Case_false_sketch_valid_type
 #check beal_forall_holds_of_Is13Case_false
 #check only_honest_path_is_False_via_level2
+#check is13Case_false_implies_Beal_of_tate_ribet_disc_type
+#check is13Case_false_implies_Beal_of_tate_ribet_disc
 #print axioms gcd_13_2_1_eq_1
 #print axioms dvd_13_2_1
 #print axioms Is13Case_gcd_counterexample_rfl
@@ -341,5 +375,6 @@ theorem only_honest_path_is_False_via_level2 :
 #print axioms beal_forall_from_Is13Case_false_sketch_type_eq
 #print axioms beal_forall_holds_of_Is13Case_false
 #print axioms only_honest_path_is_False_via_level2
+#print axioms is13Case_false_implies_Beal_of_tate_ribet_disc
 
 end BealLevel26Foundations.Beal.BealForall

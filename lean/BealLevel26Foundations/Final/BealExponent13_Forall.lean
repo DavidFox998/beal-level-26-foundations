@@ -96,6 +96,10 @@ honest composition into Beal `∀`.
 `beal_forall_from_Is13Case_false_sketch` is that
 composition.  Valid type.  Uninhabited.  No `False.elim`.
 
+v4.54.0 adds `is13Case_false_implies_Beal_of_tate_ribet_disc`:
+Tate + Ribet + Path 2 composition + Δ ≠ 0 → Beal `∀`,
+without inhabiting unconditional `Is13Case → False`.
+
 `Is13CaseForcesGcdGt1Sketch` stays uninhabited.  The proposed
 term `frey_modular_13 w h13` / `ribet_level_lowering_26 hFrey`
 / `hGeomForbid_typed_true hRibet …` does not type-check.
@@ -510,6 +514,8 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Beal.BealForall.Is13CaseForcesGcdGt1SketchPrimitive
 #check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_false_sketch
 #check BealLevel26Foundations.Beal.BealForall.only_honest_path_is_False_via_level2
+#check BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_tate_ribet_disc
+#check BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_tate_ribet_disc_type
 #print axioms BealLevel26Foundations.Beal.BealForall.gcd_13_2_1_eq_1
 #print axioms BealLevel26Foundations.Beal.BealForall.dvd_13_2_1
 #print axioms BealLevel26Foundations.Beal.BealForall.Is13Case_gcd_counterexample_rfl
@@ -519,6 +525,7 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #print axioms BealLevel26Foundations.Beal.BealForall.forall_primitive_Is13Case_gcd_gt1_false
 #print axioms BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_false_sketch_type_eq
 #print axioms BealLevel26Foundations.Beal.BealForall.only_honest_path_is_False_via_level2
+#print axioms BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_tate_ribet_disc
 #check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_sketch
 #check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_sketch_valid_type
 #check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_composition

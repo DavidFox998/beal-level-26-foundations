@@ -68,3 +68,13 @@ honest composition into Beal `∀`.
 Uninhabited.  Uses Path 2, not Path 1.  No `False.elim`.
 `only_honest_path_is_False_via_level2` records Path 1
 false and Path 2 as the typed `∀ w, Is13Case w → False`.
+
+### v4.54.0 conditional Beal from Tate + Ribet
+
+`is13Case_false_implies_Beal_of_tate_ribet_disc` takes
+`hTate`, `hRibet`, Path 2 `hComp`, and Δ ≠ 0, and returns
+Beal `∀`.  It builds a *local* `Is13Case → False` and does
+**not** inhabit the unconditional sketch.
+Axioms **propext** + existing `frey_modular_13`.
+`is13Case_false_implies_Beal_of_tate_ribet_disc_type` is
+the uninhabited `hTate → hRibet → Beal ∀`.

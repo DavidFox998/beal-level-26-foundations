@@ -801,3 +801,25 @@ SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 Hook `22379293`.  Parallel mint `22549271` (v4.52.0) until a new mint.
 Original-family latest remains `22322627`.
 
+### v4.54.0-iter-Beal-from-Is13Case-False-conditional-wiring
+
+Path 1 remains false via `triple_13_2_1`.  Path 2 remains
+the only honest type.  Conditional wiring takes Tate + Ribet
+plus the Path 2 composition and Δ ≠ 0.
+
+| Name | Status |
+|---|---|
+| Path 1 | false via `triple_13_2_1` `rfl` |
+| Path 2 | `Is13CaseForcesFalseSketchViaLevel2` valid type; uninhabited; needs Tate + Ribet |
+| `is13Case_false_implies_Beal_of_tate_ribet_disc` | `hTate+hRibet+hComp+hΔ → Beal ∀` conditional; does not inhabit unconditional False; **propext** + `frey_modular_13` |
+| `is13Case_false_implies_Beal_of_tate_ribet_disc_type` | uninhabited `hTate → hRibet → Beal ∀` |
+| `beal_forall_from_Is13Case_false_sketch` | composition valid type; uses level 2 not `gcd > 1` |
+| `notExistsNewformLevel2` | **none** via `S₂(Γ₀(2))` dim `0` |
+| `X0_26_Q_Point` | empty inductive; real curve has `26a1` Δ `-17576` and `26b1` Δ `-1664` |
+
+Still not `∀ A B C` unconditionally.  Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22549609` (v4.53.0) until a new mint.
+Original-family latest remains `22322627`.
+
