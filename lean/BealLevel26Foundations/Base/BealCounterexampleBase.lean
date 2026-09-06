@@ -16,6 +16,13 @@ structure BealCounterexampleBases where
   B : Nat
   C : Nat
 
+/-- Displayed `gcd(A, gcd(B, C))`.  Bases are not packed
+witnesses and are not primitive-by-definition.  This can
+be `1` even when `13 ∣ A*B*C`. -/
+def BealCounterexampleBases.gcd (w : BealCounterexampleBases) : Nat :=
+  Nat.gcd w.A (Nat.gcd w.B w.C)
+
 #check BealCounterexampleBases
+#check BealCounterexampleBases.gcd
 
 end BealLevel26Foundations.Base.BealCounterexampleBase

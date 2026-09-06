@@ -12,6 +12,20 @@ v4.46.0 real `X₀(26)(ℚ)` has 26a1/26b1 so cusp→False is false; contradicti
 v4.47.0 Tate conductor from `Is13Case` (`13 ∣ A*B*C`) is an uninhabited sketch; `frey_conductor_26_rfl` stays `rfl`. Still not `∀ A B C`.
 v4.48.0 `Is13CaseForcesFalseSketchViaLevel2` is `∀ w, Is13Case w → False` uninhabited (needs Tate+Ribet); valid type, still not `∀ A B C`.
 v4.49.0 `beal_forall_from_Is13Case_sketch` is `∀ A B C` uninhabited (needs Tate+Ribet+GcdGt1); still not `∀ A B C`.
+v4.50.0 `13 ∣ A*B*C` splits to one factor (`Is13Case_prime_dvd` none); `⟨13,2,1⟩` has gcd 1, so GcdGt1 stays uninhabited. Still not `∀ A B C`.
+
+### v4.50.0-iter-Is13Case-gcd-gt1-why-uninhabited
+
+`13 ∣ A*B*C` implies `13 ∣ A ∨ 13 ∣ B ∨ 13 ∣ C` via
+`Nat.Prime.dvd_mul` (`Is13Case_prime_dvd`, **none**).
+One factor 13 is not a common factor.
+`Is13Case_gcd_counterexample` is `⟨13, 2, 1⟩`: `Is13Case`
+and `gcd = 1`.  Bases are not primitive-by-definition, so
+`∀ w, Is13Case w → w.gcd > 1` is false on bases.
+`Is13CaseForcesGcdGt1Sketch` stays uninhabited.
+The packed twin stays uninhabited (`gcd = 1` by `primitive`).
+`Is13CaseForcesFalseSketchViaLevel2` stays
+`∀ w, Is13Case w → False`, uninhabited (needs Tate + Ribet).
 
 ### v4.49.0-iter-Beal-13Case-to-Beal-forall-sketch
 

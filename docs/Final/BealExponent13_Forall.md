@@ -697,3 +697,30 @@ SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 Hook `22379293`.  Parallel mint `22546925` (v4.48.0) until a new mint.
 Original-family latest remains `22322627`.
 
+### v4.50.0-iter-Is13Case-gcd-gt1-why-uninhabited
+
+`13 ∣ A*B*C` splits to one factor via `Nat.Prime.dvd_mul`.
+That is not a common factor.  `⟨13, 2, 1⟩` is `Is13Case`
+with `gcd = 1`.  Bases are not primitive-by-definition.
+The packed twin stays uninhabited (`gcd = 1` by `primitive`).
+
+| Name | Status |
+|---|---|
+| `Is13Case_prime_dvd` | **none** `13 ∣ A ∨ 13 ∣ B ∨ 13 ∣ C` |
+| `Is13Case_gcd_counterexample` | **none** `⟨13, 2, 1⟩` with `gcd = 1` |
+| `not_Is13CaseForcesGcdGt1Sketch` | **none** via `Nat.lt_irrefl` on that witness |
+| `Is13CaseForcesGcdGt1Sketch` (BealForall) | uninhabited; one factor ≠ common |
+| `Is13CaseForcesGcdGt1Sketch` (Forall) | packed twin; uninhabited |
+| `Is13CaseForcesFalseSketchViaLevel2` | uninhabited; needs Tate + Ribet |
+| `notExistsNewformLevel2` | **none** via `S₂(Γ₀(2))` dim `0` |
+| `notExistsNoncuspidal_26_proved` | **none** via `hGeomForbid` four cusps label `∈ [1,2,13,26]` `P.mem` |
+| `frey_conductor_26_rfl` | **none** |
+| `beal_forall_from_Is13Case_sketch` | `∀ A B C m n p` valid type; not in the kernel |
+| `X0_26_Q_Point` | empty inductive; real curve has `26a1` Δ `-17576` and `26b1` Δ `-1664` |
+
+Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22547825` (v4.49.0) until a new mint.
+Original-family latest remains `22322627`.
+

@@ -76,6 +76,11 @@ valid Beal type `∀ A B C m n p`.  Uninhabited: needs
 Tate + Ribet + GcdGt1, and levels `2p` for other primes.
 The two 13-case sketches do not inhabit this forall.
 
+v4.50.0 records why the bases GcdGt1 sketch is uninhabited:
+`Is13Case_prime_dvd` splits `13 ∣ A*B*C` to one factor;
+`⟨13, 2, 1⟩` has `Is13Case` and `gcd = 1`.  The packed
+twin stays uninhabited (`gcd = 1` by `primitive`).
+
 `Is13CaseForcesGcdGt1Sketch` stays uninhabited.  The proposed
 term `frey_modular_13 w h13` / `ribet_level_lowering_26 hFrey`
 / `hGeomForbid_typed_true hRibet …` does not type-check.
@@ -474,6 +479,11 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Chain.Beal13CaseToFalse.Is13CaseForcesFalseSketchViaLevel2_valid_type
 #check BealLevel26Foundations.Chain.Beal13CaseToFalse.is13Case_implies_False_of_tate_ribet_disc
 #check BealLevel26Foundations.Beal.BealForall.Is13CaseForcesGcdGt1Sketch
+#check BealLevel26Foundations.Beal.BealForall.Is13Case_prime_dvd
+#check BealLevel26Foundations.Beal.BealForall.Is13Case_gcd_counterexample
+#check BealLevel26Foundations.Beal.BealForall.not_Is13CaseForcesGcdGt1Sketch
+#print axioms BealLevel26Foundations.Beal.BealForall.Is13Case_prime_dvd
+#print axioms BealLevel26Foundations.Beal.BealForall.Is13Case_gcd_counterexample
 #check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_sketch
 #check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_sketch_valid_type
 #check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_composition

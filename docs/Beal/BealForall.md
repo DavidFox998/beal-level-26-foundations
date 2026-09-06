@@ -19,3 +19,13 @@ Valid type.  Uninhabited.
 Real `X₀(26)(ℚ)` has `26a1` (Δ `-17576`) and `26b1`
 (Δ `-1664`).  The 13-case contradiction is level 2, no
 newform.  Still not `∀ A B C` in the kernel.
+
+### v4.50.0 why GcdGt1 is uninhabited
+
+`Is13Case_prime_dvd` (**none**): prime 13 divides one
+factor of `A*B*C`.  `Is13Case_gcd_counterexample` is
+`⟨13, 2, 1⟩` with `gcd = 1`.  So
+`∀ w, Is13Case w → w.gcd > 1` is false on bases.
+`not_Is13CaseForcesGcdGt1Sketch` records that (**none**,
+`Nat.lt_irrefl`).  The packed Forall twin stays
+uninhabited (`gcd = 1` by `primitive`).
