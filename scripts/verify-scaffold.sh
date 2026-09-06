@@ -1227,6 +1227,8 @@ grep -q "def final_package" \
   lean/BealLevel26Foundations/Final/BealExponent13_Iter_Package.lean
 grep -q "typed_and_forall" docs/BealExponent13_Iter_Package.md
 grep -q "final_package" docs/BealExponent13_Iter_Package.md
+grep -q "final_package" README.md
+grep -q "final_package" docs/README.md
 if grep -nE 'BealExponent13_Iter[[:space:]]*:[[:space:]]*∀' \
     lean/BealLevel26Foundations/Final/BealExponent13_Final.lean \
     lean/BealLevel26Foundations/Final/BealExponent13_Forall.lean; then
