@@ -42,19 +42,17 @@ Descent SHA-256
 -/
 
 /-!
-## v4.34.0 Is13Case gcd>1 vs primitive
+## v4.35.0 sketch still uninhabited — signatures recorded
 
-`Is13Case` is only `13 ∣ x*y*z`.  `Is13ExpCase` stays out of
-scope for level 26.  `#check hGeomForbid_typed_true` is
-`fourCuspsForallCuspPoints → ¬ ExistsNoncuspidal_26`.
-`#check beal_forall_from_ribet` is `BealTheorem_Exponent13_Typed`.
-Neither is `FreyModular13 w` / `Is13Case → gcd > 1`.
+`Is13CaseForcesGcdGt1Sketch` stays uninhabited.  The proposed
+term `frey_modular_13 w h13` / `ribet_level_lowering_26 hFrey`
+/ `hGeomForbid_typed_true hRibet …` does not type-check.
 
-A packed witness has `w.gcd = 1` by `primitive`.  Unconditional
-`Is13Case w → w.gcd > 1` is therefore `Is13Case w → False`
-and would close the 13-case in the kernel.  The force step
-stays a named sketch.  The contradiction `gcd > 1` vs
-`gcd = 1` is proved from that sketch by `Nat.lt_irrefl`.
+`#check is13CaseForcesGcdGt1Sketch_inhabited` is
+`BealTheorem_Exponent13_Typed` (the existing typed close),
+not `∀ w, Is13Case w → w.gcd > 1`.  A packed witness has
+`gcd = 1` by `primitive`, so inhabiting the sketch would be
+`Is13Case → False` in the kernel.  No `False.elim`.
 -/
 
 /-- Primitive Beal-shaped counterexample (`x,y,z ≥ 3`, `gcd = 1`).
@@ -228,8 +226,19 @@ def is13Case_existing_typed_bridge
     BealTheorem_Exponent13_Typed :=
   beal_forall_from_ribet
 
+/-- Not an inhabitant of `Is13CaseForcesGcdGt1Sketch`.
+`#check` this name: `BealTheorem_Exponent13_Typed`.
+The proposed Frey/Ribet/`hGeomForbid` application on `(w, h13)`
+does not type-check, and `w.gcd > 1` contradicts `primitive`. -/
+def is13CaseForcesGcdGt1Sketch_inhabited : BealTheorem_Exponent13_Typed :=
+  beal_forall_from_ribet
+
 #check BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26.hGeomForbid_typed_true
+#check BealLevel26Foundations.Modularity.FreyModularity13.frey_modular_13
+#check BealLevel26Foundations.Modularity.RibetLevelLowering26.ribet_level_lowering_26
 #check beal_forall_from_ribet
+#check is13CaseForcesGcdGt1Sketch_inhabited
+#check Is13CaseForcesGcdGt1Sketch
 #print axioms BealExponent13_Iter_Typed_And_Package.certified
 #print axioms BealTheorem_Exponent13_Forall_Computational.certified
 #print axioms beal_forall_from_ribet
@@ -244,5 +253,6 @@ def is13Case_existing_typed_bridge
 #print axioms beal_13_case_no_primitive_witness
 #print axioms beal_exponent13_no_counterexample
 #print axioms beal_forall_reduces_to_exponent13
+#print axioms is13CaseForcesGcdGt1Sketch_inhabited
 
 end BealLevel26Foundations.Final

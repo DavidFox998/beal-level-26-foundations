@@ -179,3 +179,37 @@ That force is `Is13CaseForcesGcdGt1Sketch`, uninhabited.
 `Contradiction.beal_exponent13_from_ribet`.
 No `False.elim`.  Still not `∀ A B C`.  Still not Mathlib
 `X₀(26)(ℚ)`.
+
+### v4.35.0 sketch still uninhabited — `#check` the actual types
+
+`Is13CaseForcesGcdGt1Sketch` is still the missing force step.
+It is **not** inhabited.
+
+The proposed term
+
+`frey_modular_13 w h13` then `ribet_level_lowering_26 hFrey`
+then `hGeomForbid_typed_true hRibet X0_26_Q_rfl hInList …`
+
+does not type-check.  Live `#check`:
+
+| Name | Actual type |
+|---|---|
+| `hGeomForbid_typed_true` | `fourCuspsForallCuspPoints → ¬ ExistsNoncuspidal_26` |
+| `frey_modular_13` | `∀ A B C, Modularity (FreyCurve13 A B C)` |
+| `ribet_level_lowering_26` | `frey_conductor_26 = 26 → ExistsNoncuspidal_26 → False` |
+| `beal_forall_from_ribet` | `BealTheorem_Exponent13_Typed` (**none**) |
+| `is13CaseForcesGcdGt1Sketch_inhabited` | **same typed close**, not the sketch |
+| `Is13CaseForcesGcdGt1Sketch` | `∀ w, Is13Case w → w.gcd > 1` (uninhabited) |
+
+A packed witness has `w.gcd = 1` by `primitive`.  Inhabiting
+the sketch is `Is13Case → False` and would close the 13-case
+in the kernel.  That needs a Frey curve from the packed
+equation, Ribet producing a noncuspidal `X₀(26)` point, and
+Mathlib `X₀(26)(ℚ)`.  None of that is in Lean 4.12 here.
+
+No unconditional `beal_exponent13_no_counterexample`.
+`#print axioms beal_forall_from_ribet` stays **none**.
+`#print axioms is13CaseForcesGcdGt1Sketch_inhabited` is
+`propext` or **none** (wrapper of the typed close).
+No `False.elim`.  Still not `∀ A B C`.  Still not Mathlib
+`X₀(26)(ℚ)`.
