@@ -665,3 +665,35 @@ SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 Hook `22379293`.  Parallel mint `22546043` (v4.47.0) until a new mint.
 Original-family latest remains `22322627`.
 
+### v4.49.0-iter-Beal-13Case-to-Beal-forall-sketch
+
+`beal_forall_from_Is13Case_sketch` is the Beal statement
+`∀ A B C m n p, 2 < m,n,p → A^m+B^n=C^p → gcd > 1`.
+Valid type.  Uninhabited: needs Tate + Ribet + GcdGt1, and
+levels `2p` for every prime `p ≥ 5`.  The 13-case False
+sketch plus the bases gcd sketch do not imply Beal.
+`Is13CaseForcesGcdGt1Sketch` stays uninhabited in both
+forms (bases `13 ∣ A*B*C → gcd > 1`, packed `w.gcd > 1`).
+No `False.elim`.  Real `X₀(26)(ℚ)` has `26a1` / `26b1`.
+
+| Name | Status |
+|---|---|
+| `Is13CaseForcesFalseSketchViaLevel2` | `∀ w, Is13Case w → False` uninhabited; needs Tate + Ribet |
+| `Is13CaseForcesGcdGt1Sketch` (BealForall) | bases `13 ∣ A*B*C → gcd > 1`; uninhabited |
+| `Is13CaseForcesGcdGt1Sketch` (Forall) | packed `w.gcd > 1`; uninhabited |
+| `beal_forall_from_Is13Case_sketch` | `∀ A B C m n p` Beal; uninhabited |
+| `beal_forall_from_Is13Case_composition` | uninhabited (13-case sketches do not yield Beal) |
+| `frey_conductor_26_of_Is13Case` | uninhabited; needs Tate |
+| `frey_conductor_26_rfl` | **none** `2 * 13` by `rfl` |
+| `notExistsNewformLevel2` | **none** via `S₂(Γ₀(2))` dim `0` |
+| `fourCuspsForallCuspPoints_of_P_mem` | **none** |
+| `notExistsNoncuspidal_26_proved` | **none** via `hGeomForbid` four cusps label `∈ [1,2,13,26]` `P.mem` |
+| `beal_forall_from_ribet` | **none** |
+| `X0_26_Q_Point` | empty inductive; real curve has `26a1` Δ `-17576` and `26b1` Δ `-1664` |
+
+Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22546925` (v4.48.0) until a new mint.
+Original-family latest remains `22322627`.
+

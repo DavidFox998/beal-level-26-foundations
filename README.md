@@ -11,6 +11,21 @@ v4.45.0 `X0_26_Q_Point_to_ExistsNoncuspidal` is `Nonempty → ExistsNoncuspidal_
 v4.46.0 real `X₀(26)(ℚ)` has 26a1/26b1 so cusp→False is false; contradiction is `S₂(Γ₀(2))=0` no newform. Still not `∀ A B C`.
 v4.47.0 Tate conductor from `Is13Case` (`13 ∣ A*B*C`) is an uninhabited sketch; `frey_conductor_26_rfl` stays `rfl`. Still not `∀ A B C`.
 v4.48.0 `Is13CaseForcesFalseSketchViaLevel2` is `∀ w, Is13Case w → False` uninhabited (needs Tate+Ribet); valid type, still not `∀ A B C`.
+v4.49.0 `beal_forall_from_Is13Case_sketch` is `∀ A B C` uninhabited (needs Tate+Ribet+GcdGt1); still not `∀ A B C`.
+
+### v4.49.0-iter-Beal-13Case-to-Beal-forall-sketch
+
+Beal forall sketch via the 13-case and level 2.
+`Is13CaseForcesFalseSketchViaLevel2` is `∀ w, Is13Case w → False`,
+valid type, uninhabited (needs Tate + Ribet).
+`Is13CaseForcesGcdGt1Sketch` stays uninhabited
+(`13 ∣ A*B*C` is not a common factor; packed twin has
+`gcd = 1` by `primitive`).
+`beal_forall_from_Is13Case_sketch` is
+`∀ A B C m n p, 2 < m,n,p → A^m+B^n=C^p → gcd > 1`,
+valid type, uninhabited.  The two 13-case sketches do not
+imply Beal: other primes need levels `2p`.  No `False.elim`.
+Real `X₀(26)(ℚ)` has `26a1` / `26b1`.  Still not `∀ A B C`.
 
 ### v4.48.0-iter-Is13Case-to-False-sketch-via-level-2
 
