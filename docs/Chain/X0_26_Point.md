@@ -33,11 +33,24 @@ This is **not** a Mathlib `X₀(26)(ℚ)` theorem. The carrier is
 | `hNotIn_X0_26` | `∀ x ∉ X0_26_Q, x.label ∉ [1,2,13,26]` |
 | `hInList_label` / `hNotIn_label` | label form used by `hGeomForbid_typed_true` |
 | `displayed_mem_cusps` | `P.mem` : `P.label ∈ X0_26_cusps` |
+| `fourCuspsForallCuspPoints` | `∀ P : DisplayedX026CuspPoint, P.label ∈ [1,2,13,26]` — not Mathlib `X₀(26)(ℚ)` |
+| `fourCuspsForallCuspPoints_of_P_mem` | inhabitant via `P.mem` / `displayed_mem_cusps` / `hInList_label` (**none**) |
 | `ExistsNoncuspidal_26` | empty by `P.mem` versus `P.label ∉ fourCuspsList` |
 
 `hGeomForbid_typed_true` in Mazur uses `displayed_mem_cusps`,
 `hInList_label`, and `hNotIn_label` (`hNotIn hInList`). That
 close is axiom-free. Still not `∀ A B C : ℕ`.
+
+### v4.36.0 `fourCuspsForallCuspPoints` from `P.mem`
+
+The displayed four-cusp forall now lives on the Chain source
+as `fourCuspsForallCuspPoints`, proved by
+`fourCuspsForallCuspPoints_of_P_mem`.  Same witness as
+`X0_26_Q_four_cusps` (`P.mem`).  Toward Mathlib
+`X₀(26)(ℚ)`, not a Mathlib identification.  This is the
+premise of `hGeomForbid_typed_true`, not an inhabitant of
+`Is13CaseForcesGcdGt1Sketch`.  Mazur keeps a parallel encoding
+and hides the Chain name on `open`.
 
 PARI lock: 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`,
 det `M3=2`, SHA

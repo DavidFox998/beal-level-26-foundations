@@ -213,3 +213,51 @@ No unconditional `beal_exponent13_no_counterexample`.
 `propext` or **none** (wrapper of the typed close).
 No `False.elim`.  Still not `∀ A B C`.  Still not Mathlib
 `X₀(26)(ℚ)`.
+
+### v4.36.0 fourCuspsForallCuspPoints from P.mem — sketch stays uninhabited
+
+Stop trying to inhabit `Is13Case → w.gcd > 1` directly.
+The missing *premise* of `hGeomForbid_typed_true` is
+`fourCuspsForallCuspPoints`.  It now lives in
+`Chain/X0_26_Point.lean` as the displayed statement
+
+`∀ P : DisplayedX026CuspPoint, P.label ∈ [1, 2, 13, 26]`
+
+and is inhabited by `fourCuspsForallCuspPoints_of_P_mem`
+from the existing lock: `X0_26_Q = [1,2,13,26]`, `P.mem`,
+`mem_1` `mem_2` `mem_13` `mem_26`, `not_mem_3`, `hInList` /
+`hNotIn`, `displayed_mem_cusps`.  There is no `X0_26_Point`
+type, so `p ∈ [1,2,13,26]` is label membership, not raw
+`∈` on a structure.  Identities only; no `False.elim`.
+
+`Is13CaseForcesGcdGt1Sketch` stays **uninhabited**.  A packed
+`BealCounterexample` already has `w.gcd = 1` by `primitive`.
+Inhabiting `Is13Case w → w.gcd > 1` is therefore
+`Is13Case w → False` and would close the 13-case in the
+kernel.  That needs a Frey curve from the packed equation,
+Ribet producing a noncuspidal `X₀(26)` point, and Mathlib
+`X₀(26)(ℚ)`.  None of that is here.
+
+`frey_modular_13 w h13` still does not type-check
+(`frey_modular_13` is `∀ A B C, Modularity (FreyCurve13 A B C)`).
+The packed witness already has `gcd = 1`.
+`is13CaseForcesGcdGt1Sketch_inhabited` remains
+`BealTheorem_Exponent13_Typed` (**none**), not an inhabitant
+of the sketch.
+
+`beal_forall_eq_exponent13_bridge` **none** =
+`beal_forall_from_ribet` =
+`Contradiction.beal_exponent13_from_ribet` BRIDGE **none**.
+`hGeomForbid_typed_true` is
+`fourCuspsForallCuspPoints → ¬ ExistsNoncuspidal_26`.
+`beal13_forall_bridge_triple` **none**.
+`#print axioms beal_forall_from_ribet` stays **none**
+(`propext` only on list-`decide` lemmas).  No `False.elim`.
+No unconditional `Is13Case → False`.
+
+Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)`.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Confirmed parallel mints through
+`22479906` (v4.35.0).  Original-family latest remains
+`22322627`.

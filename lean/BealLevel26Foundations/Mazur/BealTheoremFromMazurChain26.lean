@@ -22,6 +22,7 @@ open BealLevel26Foundations.Chain.X0_26_FourCusps hiding
   fourCuspsList fourCuspsList_complete_computational fourCuspsList_eq_audit
 open BealLevel26Foundations.Chain.X0_26_Point hiding
   fourCuspsList DisplayedX026CuspPoint ExistsNoncuspidal_26
+  fourCuspsForallCuspPoints
 open BealLevel26Foundations.Jacobian.FormalImmersionActual26
 open BealLevel26Foundations.Jacobian.J0_26_Q_RankZeroActual26
 open BealLevel26Foundations.Mazur.EndgameScaffold hiding

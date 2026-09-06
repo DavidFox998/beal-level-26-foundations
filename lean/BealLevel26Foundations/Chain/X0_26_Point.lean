@@ -5,6 +5,7 @@ namespace BealLevel26Foundations.Chain.X0_26_Point
 
 /-!
 # v4.27.0 displayed `X₀(26)` point layer (cusps `P.mem` locked)
+# v4.36.0 `fourCuspsForallCuspPoints` from `P.mem`
 
 Mathlib 4.12 has no modular-curve scheme and no type of
 rational points of `X₀(26)`.  This file is a displayed
@@ -135,6 +136,24 @@ theorem X0_26_Q_four_cusps :
     ∀ P : DisplayedX026CuspPoint, P.label ∈ fourCuspsList :=
   fun P => P.mem
 
+/-- Displayed `X₀(26)(ℚ) = {cusps}` statement on the
+cusp-label type.  Same as `X0_26_Q_four_cusps`.
+Not Mathlib `∀ P : X₀(26)(ℚ)`.  There is no `X0_26_Point`
+type; membership is `P.label ∈ [1, 2, 13, 26]`. -/
+def fourCuspsForallCuspPoints : Prop :=
+  ∀ P : DisplayedX026CuspPoint,
+    P.label ∈ ([1, 2, 13, 26] : List Nat)
+
+/-- Built from the existing `P.mem` lock
+(`X0_26_Q = [1,2,13,26]`, `mem_1` `mem_2` `mem_13` `mem_26`,
+`not_mem_3`, `hInList` / `hNotIn`, `displayed_mem_cusps`).
+List membership is decidable; the structure field is already
+`label ∈ fourCuspsList`. -/
+theorem fourCuspsForallCuspPoints_of_P_mem :
+    fourCuspsForallCuspPoints :=
+  fun P =>
+    hInList_label (displayed_mem_cusps P)
+
 /-- Displayed noncuspidal *name* on the cusp-label type.
 Empty by type: `P.mem` contradicts `P.label ∉ fourCuspsList`.
 Not a noncuspidal rational point of `X₀(26)`. -/
@@ -142,6 +161,7 @@ def ExistsNoncuspidal_26 : Prop :=
   ∃ P : DisplayedX026CuspPoint, P.label ∉ fourCuspsList
 
 #print axioms X0_26_Q_four_cusps
+#print axioms fourCuspsForallCuspPoints_of_P_mem
 #print axioms X0_26_Q_eq_cusps
 #print axioms mem_1
 #print axioms mem_2
@@ -153,6 +173,8 @@ def ExistsNoncuspidal_26 : Prop :=
 #print axioms displayed_mem_cusps
 #check X0_26_Q
 #check X0_26_cusps
+#check fourCuspsForallCuspPoints
+#check fourCuspsForallCuspPoints_of_P_mem
 #check ExistsNoncuspidal_26
 
 end BealLevel26Foundations.Chain.X0_26_Point

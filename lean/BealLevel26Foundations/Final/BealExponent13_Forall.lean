@@ -53,6 +53,17 @@ term `frey_modular_13 w h13` / `ribet_level_lowering_26 hFrey`
 not `∀ w, Is13Case w → w.gcd > 1`.  A packed witness has
 `gcd = 1` by `primitive`, so inhabiting the sketch would be
 `Is13Case → False` in the kernel.  No `False.elim`.
+
+## v4.36.0 four cusps from `P.mem` — sketch stays uninhabited
+
+`Chain.X0_26_Point.fourCuspsForallCuspPoints` is now the
+displayed forall `∀ P, P.label ∈ [1,2,13,26]`, inhabited by
+`fourCuspsForallCuspPoints_of_P_mem` (`P.mem` /
+`displayed_mem_cusps` / `hInList_label`).  That is the missing
+*premise* of `hGeomForbid_typed_true`, not an inhabitant of
+`Is13CaseForcesGcdGt1Sketch`.  The packed witness still has
+`gcd = 1`; Frey from that equation + Ribet producing a
+noncuspidal point + Mathlib `X₀(26)(ℚ)` are still absent.
 -/
 
 /-- Primitive Beal-shaped counterexample (`x,y,z ≥ 3`, `gcd = 1`).
