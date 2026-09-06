@@ -1,20 +1,31 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v5.4.0-iter-about-catchup-22553671`.
-Records v5.3.0 `020d5cc` /
-`v5.3.0-iter-beal-forall-in-kernel-no-false-label`.
+Latest tag / HEAD: `v5.5.0-iter-path-lock-formal-13-2-1`.
+Records v5.5.0 Path lock formal `⟨13, 2, 1⟩`.
 
-Latest parallel mint
+Latest parallel mint written
 [10.5281/zenodo.22553671](https://doi.org/10.5281/zenodo.22553671)
 (v5.3.0) DataCite findable, replacing
 [10.5281/zenodo.22553129](https://doi.org/10.5281/zenodo.22553129)
-(v5.2.0).  Hook
+(v5.2.0).  v5.4.0 minted
+[10.5281/zenodo.22554242](https://doi.org/10.5281/zenodo.22554242)
+(findable; not written into verify greps).  Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
 `IsVersionOf` [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)
 is metadata only.  Original-family latest remains
 [10.5281/zenodo.22322627](https://doi.org/10.5281/zenodo.22322627).
 Chain `… → 22552105` (v5.0.0) → `22552659` (v5.1.0) →
-`22553129` (v5.2.0) → `22553671` (v5.3.0).
+`22553129` (v5.2.0) → `22553671` (v5.3.0) →
+`22554242` (v5.4.0).
+
+Path lock formal v5.5.0: `triple_13_2_1` `⟨13, 2, 1⟩`
+primitive `gcd = 1` by `rfl`.  `Is13Case` via
+`13 ∣ 13*2*1` `⟨2, rfl⟩` **none**.
+`exists_primitive_Is13Case_gcd_1` **propext**.
+`forall_primitive_Is13Case_gcd_gt1_false` via
+`Nat.lt_irrefl` **propext**.  Path 1 FALSE formal.
+Path 2 only honest: displayed table inhabited, original
+`Is13Case → False` not.
 
 Tate DONE v5.0.0: `tate_table_conductor = 2 * 13` **none**
 + `frey_conductor_26_rfl` **none**.  Ribet displayed DONE
@@ -51,8 +62,8 @@ stays uninhabited (would be `False` from labels, not
 Ribet).  Original `Is13CaseForcesFalseSketchViaLevel2`
 (`∀ w, Is13Case w → False`) stays uninhabited
 (`⟨13, 2, 1⟩` is `Is13Case`, `gcd = 1`).  No
-`False.elim`.  Path 1 false (`⟨13, 2, 1⟩`).  11 modules
-green.  `NO_SORRY_OK`.
+`False.elim`.  Path 1 false formal (`⟨13, 2, 1⟩`).
+11 modules green.  `NO_SORRY_OK`.
 
 This is the in-repo About lock for GitHub About / topics /
 homepage wording.  README badges stay on `22452680`.

@@ -122,3 +122,17 @@ Chain `22552105 → 22552659 → 22553129 → 22553671`.
 Beal `∀` IN KERNEL displayed token DONE v5.3.0.
 No Lean change.  Same honesty as
 `tate_table_conductor = 2 * 13`.
+
+### v5.5.0-iter-path-lock-formal-13-2-1 — DONE
+
+`Chain.PathLock` locks `triple_13_2_1` `⟨13, 2, 1⟩`
+primitive `gcd = 1` by `rfl`.  `Is13Case` via
+`13 ∣ 13*2*1` `⟨2, rfl⟩` **none**.
+`exists_primitive_Is13Case_gcd_1` **propext**.
+`forall_primitive_Is13Case_gcd_gt1_false` via
+`Nat.lt_irrefl` **propext**.  Path 1 FALSE formal.
+Path 2 only honest: displayed table inhabited, original
+`Is13Case → False` uninhabited.  `ExistsNewformLevel2`
+(`0 ≠ 0`) stays uninhabited.  No `False.elim`.
+11 modules green twice.  Same honesty as
+`tate_table_conductor = 2 * 13`.

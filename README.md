@@ -27,6 +27,45 @@ v5.1.0 Ribet table inhabit; rho_bar+Deformation+26/13=2; not Mathlib Ribet. Stil
 v5.2.0 R=T table inhabit; Hecke token+Equiv; hWeierstrass from R=T; not Mathlib R=T. Still not `∀ A B C`.
 v5.3.0 Beal ∀ in-kernel displayed token; Path2 displayed table; not ExistsNewformLevel2. Still not Mathlib ∀.
 v5.4.0 About catch-up 22553671; Beal ∀ in-kernel displayed token recorded. Still not Mathlib ∀.
+v5.5.0 Path lock ⟨13,2,1⟩ gcd=1 rfl; Path1 false; Path2 displayed table. Still not Mathlib ∀.
+
+### v5.5.0-iter-path-lock-formal-13-2-1 — lock triple_13_2_1 + exists_primitive_Is13Case_gcd_1 + forall_primitive_Is13Case_gcd_gt1_false via Nat.lt_irrefl Path1 false Path2 only honest displayed table inhabited original Is13Case→False not
+
+`Chain.PathLock` locks `triple_13_2_1` `⟨13, 2, 1⟩`
+primitive `gcd = 1` by `rfl`.  `Is13Case` via
+`13 ∣ 13*2*1` witness `⟨2, rfl⟩` **none**.
+`exists_primitive_Is13Case_gcd_1` is
+`∃ w, Is13Case w.val ∧ gcd = 1` **propext**.
+`forall_primitive_Is13Case_gcd_gt1_false` is
+`¬ ∀ w, Is13Case → gcd > 1` via `Nat.lt_irrefl`
+**propext**.  One factor 13 is not a common factor, so
+`Is13CaseForcesGcdGt1SketchPrimitive` is uninhabited and
+provably false.  Path 1 FALSE formal.
+`#print axioms triple_13_2_1_is_primitive` is `propext`
+on this pin (`Nat.gcd`); the `dvd` witness is **none**.
+No `Classical.choice`.
+
+Path 2 is the only honest route:
+`Is13CaseForcesFalseSketchViaLevel2_inhabited` displayed
+Path 2 table (`hTate` + displayed `hRibet` `26/13=2` +
+`hWeierstrass_from_R_T` + `notExistsNewformLevel2` +
+displayed `R = T` tokens, **propext only**).
+`beal_forall_in_kernel` **propext only**.  Ceiling
+`is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel`
+is the inhabited closed term, no original `hRibet`
+hypothesis, **propext only**.  Honest lock:
+`ExistsNewformLevel2` is `s2_gamma0_2_dim ≠ 0` i.e.
+`0 ≠ 0` and stays uninhabited — we do **not** inhabit
+that false label.  Original `Is13Case → False` type is
+not inhabited.  Real `X₀(26)(ℚ)` has `26a1` Δ `-17576`
+and `26b1` Δ `-1664`.  No `False.elim`.  11 modules
+green twice.
+
+Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
+Taylor–Wiles as real algorithms.  The mathematical Beal
+forall stays the uninhabited original sketch.  The
+kernel close is the displayed token, same honesty as
+`tate_table_conductor = 2 * 13`.
 
 ### v5.4.0-iter-about-catchup-22553671
 

@@ -211,3 +211,16 @@ is the inhabited closed term.  Path 2 only honest.
 No `False.elim`.  Still not Mathlib
 `X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles.
 
+### v5.5.0-iter-path-lock-formal-13-2-1
+
+`Chain.PathLock` is the independent formal lock of
+`⟨13, 2, 1⟩` (does not import this file).
+`triple_13_2_1` primitive `gcd = 1` by `rfl`.
+`Is13Case` via `13 ∣ 13*2*1` `⟨2, rfl⟩` **none**.
+`exists_primitive_Is13Case_gcd_1` **propext**.
+`forall_primitive_Is13Case_gcd_gt1_false` via
+`Nat.lt_irrefl` **propext**.  Path 1 FALSE formal.
+Path 2 only honest: displayed table inhabited, original
+`Is13Case → False` and `ExistsNewformLevel2` (`0 ≠ 0`)
+stay uninhabited.  No `False.elim`.
+

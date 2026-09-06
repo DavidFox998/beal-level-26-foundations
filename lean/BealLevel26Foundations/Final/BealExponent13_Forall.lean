@@ -3,6 +3,7 @@ import BealLevel26Foundations.Beal.BealForall
 import BealLevel26Foundations.Chain.Beal13CaseToFalse
 import BealLevel26Foundations.Chain.BealForallInKernel
 import BealLevel26Foundations.Chain.Level2
+import BealLevel26Foundations.Chain.PathLock
 import BealLevel26Foundations.Chain.MathlibGaps
 import BealLevel26Foundations.Chain.RibetLevel2
 import BealLevel26Foundations.Chain.TaylorWilesScaffold
@@ -161,6 +162,15 @@ Original `Is13CaseForcesFalseSketchViaLevel2`
 and `ExistsNewformLevel2` (`0 ≠ 0`) stay uninhabited.
 Original `beal_forall_from_Is13Case_sketch` stays
 uninhabited.  Not Mathlib Beal.  No `False.elim`.
+
+v5.5.0 formal Path lock in `Chain.PathLock`:
+`triple_13_2_1` `⟨13, 2, 1⟩` primitive `gcd = 1` by `rfl`,
+`Is13Case` via `13 ∣ 13*2*1` `⟨2, rfl⟩`,
+`exists_primitive_Is13Case_gcd_1` **propext**,
+`forall_primitive_Is13Case_gcd_gt1_false` via
+`Nat.lt_irrefl` **propext**.  Path 1 FALSE formal.
+Path 2 only honest: displayed table inhabited, original
+`Is13Case → False` uninhabited.  No `False.elim`.
 
 v4.58.0 locks `Chain.TaylorWilesScaffold`: `R = T`,
 Hecke, deformation, `ρ̄_{E,13}`, lifting, and TW primes
@@ -579,6 +589,20 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Beal.BealForall.triple_13_2_1_primitive
 #check BealLevel26Foundations.Beal.BealForall.exists_primitive_Is13Case_gcd_1
 #check BealLevel26Foundations.Beal.BealForall.forall_primitive_Is13Case_gcd_gt1_false
+#check BealLevel26Foundations.Chain.PathLock.triple_13_2_1
+#check BealLevel26Foundations.Chain.PathLock.dvd_13_2_1
+#check BealLevel26Foundations.Chain.PathLock.Is13Case_triple_13_2_1
+#check BealLevel26Foundations.Chain.PathLock.triple_13_2_1_is13
+#check BealLevel26Foundations.Chain.PathLock.triple_13_2_1_gcd_eq_1
+#check BealLevel26Foundations.Chain.PathLock.triple_13_2_1_is_primitive
+#check BealLevel26Foundations.Chain.PathLock.exists_primitive_Is13Case_gcd_1
+#check BealLevel26Foundations.Chain.PathLock.forall_primitive_Is13Case_gcd_gt1_false
+#check BealLevel26Foundations.Chain.PathLock.Path1_Is13Case_forces_gcd_gt1_is_false
+#check BealLevel26Foundations.Chain.PathLock.Path2_displayed_table_inhabited
+#check BealLevel26Foundations.Chain.PathLock.path_lock_13_2_1
+#check BealLevel26Foundations.Chain.PathLock.Is13CaseForcesFalseSketchViaLevel2
+#check BealLevel26Foundations.Chain.PathLock.ExistsNewformLevel2
+#check BealLevel26Foundations.Chain.PathLock.ribet_produces_newform_level2_of_weierstrass_modularity
 #check BealLevel26Foundations.Beal.BealForall.Is13CaseForcesGcdGt1SketchPrimitive
 #check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_false_sketch
 #check BealLevel26Foundations.Beal.BealForall.only_honest_path_is_False_via_level2
@@ -656,6 +680,15 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #print axioms BealLevel26Foundations.Beal.BealForall.Is13Case_gcd_counterexample
 #print axioms BealLevel26Foundations.Beal.BealForall.exists_primitive_Is13Case_gcd_1
 #print axioms BealLevel26Foundations.Beal.BealForall.forall_primitive_Is13Case_gcd_gt1_false
+#print axioms BealLevel26Foundations.Chain.PathLock.triple_13_2_1_gcd_eq_1
+#print axioms BealLevel26Foundations.Chain.PathLock.triple_13_2_1_is_primitive
+#print axioms BealLevel26Foundations.Chain.PathLock.triple_13_2_1_is13
+#print axioms BealLevel26Foundations.Chain.PathLock.dvd_13_2_1
+#print axioms BealLevel26Foundations.Chain.PathLock.exists_primitive_Is13Case_gcd_1
+#print axioms BealLevel26Foundations.Chain.PathLock.forall_primitive_Is13Case_gcd_gt1_false
+#print axioms BealLevel26Foundations.Chain.PathLock.Path1_Is13Case_forces_gcd_gt1_is_false
+#print axioms BealLevel26Foundations.Chain.PathLock.Path2_displayed_table_inhabited
+#print axioms BealLevel26Foundations.Chain.PathLock.path_lock_13_2_1
 #print axioms BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_false_sketch_type_eq
 #print axioms BealLevel26Foundations.Beal.BealForall.only_honest_path_is_False_via_level2
 #print axioms BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_tate_ribet_disc

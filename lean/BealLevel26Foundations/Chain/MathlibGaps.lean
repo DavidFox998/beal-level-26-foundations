@@ -2,6 +2,7 @@ import BealLevel26Foundations.Base.BealCounterexampleBase
 import BealLevel26Foundations.Beal.BealForall
 import BealLevel26Foundations.Chain.Beal13CaseToFalse
 import BealLevel26Foundations.Chain.BealForallInKernel
+import BealLevel26Foundations.Chain.PathLock
 import BealLevel26Foundations.Chain.Level2
 import BealLevel26Foundations.Chain.X0_26_Point
 import BealLevel26Foundations.Chain.X0_26_Q
@@ -262,6 +263,10 @@ theorem ceiling_uses_Path2_not_Path1 :
 #check is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
 #check frey_Delta13_ne_0_of_pos
 #check exists_primitive_Is13Case_gcd_1
+#check BealLevel26Foundations.Chain.PathLock.triple_13_2_1
+#check BealLevel26Foundations.Chain.PathLock.exists_primitive_Is13Case_gcd_1
+#check BealLevel26Foundations.Chain.PathLock.forall_primitive_Is13Case_gcd_gt1_false
+#check BealLevel26Foundations.Chain.PathLock.path_lock_13_2_1
 #print axioms gap_tate_conductor_eq
 #print axioms gap_tate_table_done
 #print axioms gap_tate_inhabited
@@ -290,6 +295,11 @@ theorem ceiling_uses_Path2_not_Path1 :
 #print axioms is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
 #print axioms frey_Delta13_ne_0_of_pos
 #print axioms exists_primitive_Is13Case_gcd_1
+#print axioms BealLevel26Foundations.Chain.PathLock.triple_13_2_1_gcd_eq_1
+#print axioms BealLevel26Foundations.Chain.PathLock.triple_13_2_1_is_primitive
+#print axioms BealLevel26Foundations.Chain.PathLock.exists_primitive_Is13Case_gcd_1
+#print axioms BealLevel26Foundations.Chain.PathLock.forall_primitive_Is13Case_gcd_gt1_false
+#print axioms BealLevel26Foundations.Chain.PathLock.path_lock_13_2_1
 #print axioms ceiling_uses_Path2_not_Path1
 
 end BealLevel26Foundations.Chain.MathlibGaps
