@@ -294,5 +294,54 @@ uninhabited.  `is13CaseForcesGcdGt1Sketch_inhabited` remains
 Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)`.
 PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
 SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
-Hook `22379293`.  Parallel mint `22481943` (v4.36.0).
+Hook `22379293`.  Parallel mint `22484385` (v4.37.0).
+Original-family latest remains `22322627`.
+
+### v4.38.0 packed Frey display — next needs `ExistsNoncuspidal_26`
+
+`notExistsNoncuspidal_26_proved` stays `¬ ExistsNoncuspidal_26`
+(**none**) via the four-cusp lock
+`hGeomForbid_typed_true fourCuspsForallCuspPoints_of_P_mem`.
+
+`FreyCurve13_of_BealCounterexample` packs `w.A w.B w.C` into
+the displayed `FreyCurve13` triple.  Those slots are bases,
+not exponents: `frey_modular_13 w.x w.y w.z` would be the
+wrong arguments.  `frey_modular_13 w.A w.B w.C` type-checks
+as the existing axiom.  `frey_conductor_26` is still the
+`Nat` `26` (`rfl`), not a conductor computed from
+`w.x * w.y * w.z`.
+
+There is **no** `existsNoncuspidal_26_of_Is13Case`.
+`ExistsNoncuspidal_26_of_Is13CaseSketch` is the missing
+`∀ w, Is13Case w → ExistsNoncuspidal_26` and stays
+uninhabited: together with `notExistsNoncuspidal_26_proved`
+that would be `Is13Case → False` in the kernel.  That needs
+a Frey curve from the packed equation, Ribet producing a
+noncuspidal point, and Mathlib `X₀(26)(ℚ)`.
+
+`existsNoncuspidal_26_implies_False` is
+
+`ExistsNoncuspidal_26 → False`
+
+via `notExistsNoncuspidal_26_proved`.  `#print axioms` **none**.
+
+`beal_13_case_implies_False_of_ExistsNoncuspidal` is the same
+close with unused 13-case binders `(w) (h13) (hExists)`.
+`#print axioms` is **propext** only (the packed-witness
+telescope), not `frey_modular_13` or `ribet_level_lowering_26`.
+The existential is already empty independently of `Is13Case`.
+The chain is ready once a packed witness produced
+`ExistsNoncuspidal_26`.  It does not build that existential.
+
+`FreyCurve13` already lives in `FreyModularity_13`; a new
+`Frey/FreyCurve13.lean` that imported this file would cycle.
+
+`Is13CaseForcesGcdGt1Sketch` stays uninhabited (`packed gcd = 1`
+so `Is13Case → w.gcd > 1` is `Is13Case → False`).
+`beal_forall_from_ribet` **none**.  No `False.elim`.
+
+Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)`.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22484385` (v4.37.0).
 Original-family latest remains `22322627`.
