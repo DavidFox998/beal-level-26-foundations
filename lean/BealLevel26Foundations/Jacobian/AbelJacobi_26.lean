@@ -16,7 +16,7 @@ Abel--Jacobi map.
 
 `AbelJacobi_26` is premise-bearing data attached to a supplied
 `J0_26_Scheme`.  This module does not construct `ι`, does not
-inhabit the boundary as `True`, and does not add `sorry`.
+inhabit the boundary as `True`, and does not add placeholders.
 
 Blueprint: Rohrlich on the cuspidal divisor class group; Mumford,
 *Abelian Varieties*.  See

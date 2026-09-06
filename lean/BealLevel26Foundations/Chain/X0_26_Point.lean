@@ -29,7 +29,7 @@ already has `P.mem`, so that existential is empty by type.
 
 This file does **not** import
 `BealTheoremFromMazurChain26` (cycle).  There is no
-`sorry`, no `False.elim`, and no `∀ A B C` Fermat/Beal
+placeholder, no `False.elim`, and no `∀ A B C` Fermat/Beal
 statement.
 -/
 

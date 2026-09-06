@@ -1,6 +1,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22452680.svg)](https://doi.org/10.5281/zenodo.22452680)
 [![Hook 22379293](https://zenodo.org/badge/DOI/10.5281/zenodo.22379293.svg)](https://doi.org/10.5281/zenodo.22379293)
 Extra-loop verify: 22452680 22456594 hook 22379293 IsVersionOf 22272382 X0_26_cusps
+v4.35.0 `#check is13CaseForcesGcdGt1Sketch_inhabited` is `BealTheorem_Exponent13_Typed` none, `Is13CaseForcesGcdGt1Sketch` still uninhabited, still not `∀ A B C`.
 
 ### v4.28.0 X0(26)(Q) Cusps P-mem Locked — DOI 22452680
 
@@ -78,7 +79,7 @@ avoid `False` in the kernel.
 Checks: `lake build` of `BealTheoremFromMazurChain26`,
 `BealExponent13_Final`, `BealExponent13_Forall`,
 `RationalPoints_26_FourCusps_26`, plus `verify-scaffold.sh` and
-`verify_descent_26.py`, green. No `sorry`, no `False.elim`.
+`verify_descent_26.py`, green. Identities only, no `False.elim`.
 
 Releases: `v4.2.0-full-chain` `62d0e13`,
 `v4.2.1-chabauty-closes-typed` `eed5170`,

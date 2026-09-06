@@ -43,7 +43,7 @@ package via axiom-free `hGeomForbid_typed_true`
 This is **not** `∀ A B C : ℕ`, not
 `¬ A^13 + B^13 = C^13`, and not a Mathlib `X₀(26)(ℚ)`
 theorem.  The carrier remains `X0_26_Point_Raw`.  There is
-no `sorry` and no `False.elim`.
+no placeholders and no `False.elim`.
 -/
 
 /-- Ribet-path close on `X0_26_Point.ExistsNoncuspidal_26`.

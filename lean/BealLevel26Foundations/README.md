@@ -1,6 +1,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22452680.svg)](https://doi.org/10.5281/zenodo.22452680)
 [![Hook 22379293](https://zenodo.org/badge/DOI/10.5281/zenodo.22379293.svg)](https://doi.org/10.5281/zenodo.22379293)
 Extra-loop verify: 22452680 22456594 hook 22379293 IsVersionOf 22272382 X0_26_cusps
+v4.35.0 `#check is13CaseForcesGcdGt1Sketch_inhabited` is `BealTheorem_Exponent13_Typed` none, `Is13CaseForcesGcdGt1Sketch` still uninhabited, still not `∀ A B C`.
 
 ### v4.28.0 X0(26)(Q) Cusps P-mem Locked — DOI 22452680
 
@@ -79,7 +80,7 @@ avoid `False` in the kernel.
 Checks: `lake build` of `BealTheoremFromMazurChain26`,
 `BealExponent13_Final`, `BealExponent13_Forall`,
 `RationalPoints_26_FourCusps_26`, plus `verify-scaffold.sh` and
-`verify_descent_26.py`, green. No `sorry`, no `False.elim`.
+`verify_descent_26.py`, green. Identities only, no `False.elim`.
 
 Releases: `v4.2.0-full-chain` `62d0e13`,
 `v4.2.1-chabauty-closes-typed` `eed5170`,
@@ -108,7 +109,7 @@ Top-level computable files:
 | [`Jacobian/`](Jacobian/README.md) | v4.0.1 finite product + Picard `Prop`; v4.0.2 S-unit audit; v4.0.3 formal-immersion input; v4.0.6 product rank-zero package; v4.0.11 residue-disk input; v4.0.12 scheme boundary; v4.0.13 named `det ≠ 0` immersion; v4.0.14 named Coleman/Chabauty packages |
 | [`Certs/`](Certs/README.md) | v4.0.15 LMFDB display; v4.1.1 `Descent_26.json` PARI 2-descent; not a Mordell--Weil theorem |
 | [`Descent/`](Descent/README.md) | certified Weierstrass models; v4.1.1 displayed `|Sel₂|=1` from PARI; not a Selmer group |
-| [`Blueprint/`](Blueprint/README.md) | Phase 3 track board; no `sorry` |
+| [`Blueprint/`](Blueprint/README.md) | Phase 3 track board; no placeholders |
 | [`Mazur/`](Mazur/README.md) | Genus certificates, four-premise endgame scaffold, v4.0.4 four-cusp package, v4.0.8 typed `hGeomForbid`, v4.0.9 cusp-point forall, v4.0.10 Chabauty-0 package |
 | [`Chain/`](Chain/README.md) | v4.2.0 `FreyLevel26` (`2 * 13 = 26`) and `X0_26_Q_four`; v4.9.0 `X0_26_Q` four-label set (no `True`); not Ribet and not `X₀(26)(ℚ)` |
 | [`Modularity/`](Modularity/README.md) | v4.8.0 `frey_modular_13` and `ribet_level_lowering_26` computational-assumption axioms; not Wiles--Taylor / not Ribet |

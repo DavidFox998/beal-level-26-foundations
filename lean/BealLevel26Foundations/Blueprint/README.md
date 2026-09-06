@@ -24,7 +24,7 @@ unchanged.
 
 Mathlib 4.12 has no modular-curve scheme, no Jacobian of `X₀(26)`,
 no Abel--Jacobi map, no completed-local-ring formal immersion, and
-no Coleman integral. This folder does not add `sorry`, `axiom`, or
+no Coleman integral. This folder does not add placeholders, `axiom`, or
 `admit`. Named Lean boundaries live next to this board.
 
 ## Track A — Jacobian as scheme

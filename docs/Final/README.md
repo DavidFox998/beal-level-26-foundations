@@ -20,3 +20,6 @@ Iter / Forall / typed-bridge docs. Lean sources live in
 Package table: [`../BealExponent13_Iter_Package.md`](../BealExponent13_Iter_Package.md).
 Forall reduction sketch (v4.31.0, p=13 working prime):
 [`BealExponent13_Forall.md`](BealExponent13_Forall.md).
+v4.35.0: `#check is13CaseForcesGcdGt1Sketch_inhabited` is the typed
+close (`BealTheorem_Exponent13_Typed`, none).
+`Is13CaseForcesGcdGt1Sketch` stays uninhabited. Still not `∀ A B C`.

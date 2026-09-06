@@ -19,7 +19,7 @@ with the finite product `26a × 26b`.
 checked arithmetic genus (`genus_X0_26_arithmetic_eq_2`).  Good
 reduction at 2 and Mordell--Weil rank zero are *supplied* fields:
 this module does not inhabit them as `True` and does not add
-`sorry`.
+placeholders.
 
 Blueprint: Mumford, *Abelian Varieties*; Rohrlich on the cuspidal
 divisor class group.  See
