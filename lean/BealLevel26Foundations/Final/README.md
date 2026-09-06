@@ -12,6 +12,12 @@ Extra-loop verify: 22452680 22456594 hook 22379293 IsVersionOf 22272382 X0_26_cu
 
 DOI `22452680` findable records prior mint `22450737` hook `22379293` `IsVersionOf` `22272382` honest original latest `22322627`.
 
+v4.31.0 named the p=13 reduction sketch in `BealExponent13_Forall.lean`
+(`beal_prime_divisor_13_of_counterexample` is the 13-case hypothesis,
+`beal_forall_reduces_to_exponent13` applies an uninhabited sketch).
+Still not `∀ A B C`.  No `sorry`.  See
+[`docs/Final/BealExponent13_Forall.md`](../../../docs/Final/BealExponent13_Forall.md).
+
 PARI lock: 26a1 Δ `-17576` 26b1 Δ `-1664` `|Sel2|=1` det `M3=2` SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260` image `docs/images/2-descent-level-26-26a1-26b1.webp` ≥300KB.
 
 # v4.7.0 Iter typed no axioms

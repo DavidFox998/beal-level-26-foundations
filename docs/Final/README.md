@@ -18,3 +18,5 @@ PARI lock: 26a1 Δ `-17576` 26b1 Δ `-1664` `|Sel2|=1` det `M3=2` SHA `d9d907f6c
 Iter / Forall / typed-bridge docs. Lean sources live in
 [`lean/BealLevel26Foundations/Final/`](../../lean/BealLevel26Foundations/Final/README.md).
 Package table: [`../BealExponent13_Iter_Package.md`](../BealExponent13_Iter_Package.md).
+Forall reduction sketch (v4.31.0, p=13 working prime):
+[`BealExponent13_Forall.md`](BealExponent13_Forall.md).

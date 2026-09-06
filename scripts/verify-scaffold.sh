@@ -95,6 +95,7 @@ test -f docs/Chain/README.md
 test -f docs/Modularity/README.md
 test -f docs/Mazur/README.md
 test -f docs/Final/README.md
+test -f docs/Final/BealExponent13_Forall.md
 test -f lean/BealLevel26Foundations/Modularity/FreyModularity_13.lean
 test -f lean/BealLevel26Foundations/Modularity/RibetLevelLowering_26.lean
 test -f lean/BealLevel26Foundations/Modularity/README.md
@@ -1227,6 +1228,13 @@ grep -q "theorem BealTheorem_Exponent13_Forall_Computational.certified" \
   lean/BealLevel26Foundations/Final/BealExponent13_Forall.lean
 grep -q "beal_forall_from_ribet" \
   lean/BealLevel26Foundations/Final/BealExponent13_Forall.lean
+grep -q "beal_prime_divisor_13" \
+  lean/BealLevel26Foundations/Final/BealExponent13_Forall.lean
+grep -q "beal_forall_reduces_to_exponent13" \
+  lean/BealLevel26Foundations/Final/BealExponent13_Forall.lean
+grep -q "beal_prime_divisor_13" docs/Final/BealExponent13_Forall.md
+grep -q "v4.31.0" docs/Final/BealExponent13_Forall.md
+grep -q "Reduction to p=13" docs/Final/BealExponent13_Forall.md
 grep -q "certified_from_forall" \
   lean/BealLevel26Foundations/Final/BealExponent13_Iter_Package.lean
 grep -q "typed_and_forall" \
