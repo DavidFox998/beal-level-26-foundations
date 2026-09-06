@@ -22,6 +22,34 @@ v4.56.0 Mathlib gaps Tate/Ribet/Modularity/X0; propext-only Beal ∀ is ceiling.
 v4.57.0 Phase5 X0(26)(Q) honest scaffold; real-points String list; not Mazur. Still not `∀ A B C`.
 v4.58.0 TaylorWilesScaffold R=T|Hecke|Deformation; ceiling propext-only. Still not `∀ A B C`.
 v4.59.0 About catch-up 22551298; ROADMAP v5 without Mathlib. Still not `∀ A B C`.
+v5.0.0 Tate table inhabit; hTate fillable; not Mathlib Tate. Still not `∀ A B C`.
+
+### v5.0.0-iter-tate-conductor-26-inhabit-no-mathlib
+
+Begin v5.  We do not need Mathlib; we finish the displayed
+Tate table for them.  Phase 1 conductor label is inhabited.
+
+`tate_table_conductor = 2 * 13` with `tate_f_2 = 1`,
+`tate_f_13 = 1`, multiplicative at 2 and 13 (**none**).
+`tate_conductor_26_of_Is13Case_proof` is
+`Is13Case ∧ 0 < A ∧ 0 < B → Δ ≠ 0 ∧ table = 2*13`
+via `frey_Delta13_ne_0_of_pos`
+(`Δ = 16*(A¹³)²*(B¹³)²*(A¹³+B¹³)²`, **propext** +
+`Classical.choice` + `Quot.sound`).
+`frey_conductor_26_of_Is13Case_inhabited` fills `hTate`
+(**propext**).  `frey_conductor_26_rfl` stays **none**.
+`tate_algorithm_of_Is13Case` stays uninhabited (no
+Mathlib `∏ p^{f_p}`).  Same honesty as
+`s2_gamma0_2_dim = 0`.  `Is13Case` does not imply
+`2 ∣ A*B*C`.
+
+Phases 2–5 stay scaffold: Ribet uninhabited, `R = T`
+uninhabited, `X₀(26)(ℚ)` empty inductive.  Ceiling still
+conditional Beal `∀` propext-only, but `hTate` is now
+fillable (`is13Case_false_implies_Beal_of_ribet_after_tate_table`
+still needs `hRibet`).  Path 1 false.  Path 2 only honest.
+No `False.elim`.  Still not `∀ A B C` unconditionally.
+Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles.
 
 ### v4.59.0-iter-about-roadmap-catchup-before-v5
 

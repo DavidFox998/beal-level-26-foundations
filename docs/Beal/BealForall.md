@@ -154,3 +154,16 @@ propext-only.  Path 2 only honest.  No `False.elim`.
 Still not `∀ A B C` unconditionally.  Still not Mathlib
 `X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles.
 
+### v5.0.0-iter-tate-conductor-26-inhabit-no-mathlib
+
+`frey_conductor_26_of_Is13Case_inhabited` fills `hTate`
+via the displayed Tate table (**propext**).  Not Mathlib
+Tate.  New wrapper
+`is13Case_false_implies_Beal_of_ribet_after_tate_table`
+still needs `hRibet`.  Both original wirings stay.
+`tate_algorithm_of_Is13Case` stays uninhabited.  Path 2
+only honest.  No `False.elim`.
+
+Still not `∀ A B C` unconditionally.  Still not Mathlib
+`X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles.
+

@@ -30,10 +30,12 @@ Intended composition (not a kernel close):
 
 1. `Is13Case w` and `0 < A`, `0 < B` give Frey Δ ≠ 0
    (`freyCurve13_of_bases_disc_ne_zero`).
-2. Tate sketch `frey_conductor_26_of_Is13Case` would send
-   that to the conductor label `2 * 13`.  Uninhabited:
-   Mathlib 4.12 has no Tate algorithm.
-   `fun _ _ _ => rfl` is the label, not Tate.
+2. Tate sketch `frey_conductor_26_of_Is13Case` sends that
+   to the conductor label `2 * 13`.  v5.0.0 inhabits it
+   via the displayed Tate table
+   (`frey_conductor_26_of_Is13Case_inhabited`).  That is
+   the label lock, not Mathlib Tate.
+   `tate_algorithm_of_Is13Case` stays uninhabited.
 3. `WeierstrassModularity (pack w)` is inhabited by
    `WeierstrassModularity_of_pack` (`frey_modular_13`,
    propext + axiom; not Wiles--Taylor).

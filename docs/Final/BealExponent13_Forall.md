@@ -951,5 +951,26 @@ SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 Hook `22379293`.  Parallel mint `22551298` (v4.58.0) until a new mint.
 Original-family latest remains `22322627`.
 
+### v5.0.0-iter-tate-conductor-26-inhabit-no-mathlib
+
+Displayed Tate table inhabited.  Not Mathlib Tate.
+
+| Name | Status |
+|---|---|
+| `tate_table_conductor` | `2 * 13`, `f_2 = 1`, `f_13 = 1`; **none** |
+| `tate_conductor_26_of_Is13Case_proof` | `Is13Case ∧ 0<A ∧ 0<B → Δ ≠ 0 ∧ table = 2*13`; **propext** + choice + `Quot.sound` |
+| `frey_conductor_26_of_Is13Case_inhabited` | fills `hTate`; **propext** |
+| `tate_algorithm_of_Is13Case` | uninhabited (no `v_p`) |
+| `is13Case_false_implies_Beal_of_ribet_after_tate_table` | ceiling with `hTate` plugged; still needs `hRibet`; **propext only** |
+
+Ribet / `R = T` stay uninhabited.  Path 1 false.  Path 2
+only honest.  No `False.elim`.
+
+Still not `∀ A B C` unconditionally.  Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22551503` (v4.59.0) until a new mint.
+Original-family latest remains `22322627`.
+
 
 

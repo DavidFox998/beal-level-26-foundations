@@ -8,7 +8,7 @@ and the conditional Beal `∀` ceiling.
 
 | Gap | Status |
 |---|---|
-| Tate conductor `2 * 13` | `frey_conductor_26_of_Is13Case` uninhabited; `frey_conductor_26_rfl` **none** is the label |
+| Tate conductor `2 * 13` | v5.0.0 displayed table + `frey_conductor_26_of_Is13Case_inhabited` (**propext**); `tate_algorithm_of_Is13Case` uninhabited; `frey_conductor_26_rfl` **none** is the label |
 | Modularity | `WeierstrassModularity_of_pack` **propext** + existing `frey_modular_13`; not BCDT |
 | Ribet `26 → 2` | `ribet_produces_newform_level2` uninhabited |
 | `S₂(Γ₀(2))` dim `0` | `notExistsNewformLevel2` **none** DONE |

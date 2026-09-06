@@ -42,26 +42,23 @@ is **propext only**.
 
 About records mint `22551298` (v4.58.0) and the chain
 `22550229 → 22550771 → 22551051 → 22551298`.
-This file locks the v5 inhabit plan.  Nothing in v5 is
-inhabited yet.
+This file locks the v5 inhabit plan.
+
+### v5.0.0-iter-tate-conductor-26-INHABIT — DONE (displayed table)
+
+Displayed Tate table inhabited: `tate_f_2 = 1`,
+`tate_f_13 = 1`, multiplicative at 2 and 13,
+`tate_table_conductor = 2 * 13` (**none**).
+`tate_conductor_26_of_Is13Case_proof` inhabited
+(Δ ≠ 0 from `0 < A`, `0 < B` + table).
+`frey_conductor_26_of_Is13Case_inhabited` fills `hTate`
+via the table + label (**propext**).
+`frey_conductor_26_rfl` stays **none**.
+`tate_algorithm_of_Is13Case` stays uninhabited
+(no Mathlib `v_p(Δ)` / Kodaira).
+Not Mathlib Tate.  `Is13Case` does not imply `2 ∣ A*B*C`.
 
 ## PLANNED — we finish it for them
-
-### v5.0.0-iter-tate-conductor-26-INHABIT
-
-Inhabit `frey_conductor_26_of_Is13Case`:
-`∀ w, Is13Case w ∧ 0 < A ∧ 0 < B →`
-conductor of `FreyCurve13 w` `= 2 * 13`, via a
-hand-rolled Tate algorithm.
-`Δ = 16*(A¹³)²*(B¹³)²*(A¹³+B¹³)²` already from
-`frey_Delta13_ne_0_of_pos` (**propext** +
-`Classical.choice` + `Quot.sound`, not none).
-Multiplicative at 2 and 13.
-`conductor = 2 * rad(ABC) = 2 * 13` when
-`Is13Case` (`13 ∣ A*B*C`) and `2 ∣ A*B*C`.
-Prove via a Tate table (Type II? multiplicative).
-Keep `frey_conductor_26_rfl` **none** (`2 * 13` by
-`rfl`, the label) and add Tate steps as `Prop` **none**.
 
 ### v5.1.0-iter-ribet-26-to-2-INHABIT
 

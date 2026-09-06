@@ -124,6 +124,11 @@ curve.  Four-cusp lock stays on displayed labels, not
 Mazur.  `X0_26_Q_Point_to_ExistsNoncuspidal` stays
 uninhabited (no vacuous empty-elim).
 
+v5.0.0 inhabits the displayed Tate table and
+`frey_conductor_26_of_Is13Case_inhabited` (**none**).
+Not Mathlib Tate.  `tate_algorithm_of_Is13Case` stays
+uninhabited.  Ribet and `R = T` stay uninhabited.
+
 v4.58.0 locks `Chain.TaylorWilesScaffold`: `R = T`,
 Hecke, deformation, `ρ̄_{E,13}`, lifting, and TW primes
 as uninhabited scaffolds.  `HeckeAlgebra_26` is an empty
@@ -552,7 +557,12 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only_type
 #check BealLevel26Foundations.Frey.FreyCurve13.frey_Delta13_ne_0_of_pos
 #check BealLevel26Foundations.Chain.Beal13CaseToFalse.is13Case_implies_False_of_tate_ribet_weierstrass
+#check BealLevel26Foundations.Frey.FreyConductor26.frey_conductor_26_of_Is13Case_inhabited
+#check BealLevel26Foundations.Frey.FreyConductor26.tate_table_conductor
+#check BealLevel26Foundations.Frey.FreyConductor26.tate_algorithm_of_Is13Case
+#check BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_ribet_after_tate_table
 #check BealLevel26Foundations.Chain.MathlibGaps.gap_tate_conductor
+#check BealLevel26Foundations.Chain.MathlibGaps.gap_tate_inhabited
 #check BealLevel26Foundations.Chain.MathlibGaps.gap_ribet_level2
 #check BealLevel26Foundations.Chain.MathlibGaps.gap_s2_gamma0_2_done
 #check BealLevel26Foundations.Chain.MathlibGaps.gap_X0_26_Q_scaffold
@@ -581,6 +591,8 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #print axioms BealLevel26Foundations.Beal.BealForall.only_honest_path_is_False_via_level2
 #print axioms BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_tate_ribet_disc
 #print axioms BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only
+#print axioms BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_ribet_after_tate_table
+#print axioms BealLevel26Foundations.Frey.FreyConductor26.frey_conductor_26_of_Is13Case_inhabited
 #print axioms BealLevel26Foundations.Frey.FreyCurve13.frey_Delta13_ne_0_of_pos
 #print axioms BealLevel26Foundations.Chain.MathlibGaps.gap_s2_gamma0_2_done
 #print axioms BealLevel26Foundations.Chain.MathlibGaps.conditional_Beal_forall_propext_only_ceiling_eq

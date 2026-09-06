@@ -19,7 +19,9 @@ open BealLevel26Foundations.Chain.Level2
 open BealLevel26Foundations.Chain.X0_26_Point
 open BealLevel26Foundations.Chain.X0_26_Q
 open BealLevel26Foundations.Frey.FreyConductor26
-  (frey_conductor_26_of_Is13Case frey_conductor_26_rfl)
+  (frey_conductor_26_of_Is13Case frey_conductor_26_rfl
+    frey_conductor_26_of_Is13Case_inhabited
+    tate_table_conductor tate_algorithm_of_Is13Case)
 open BealLevel26Foundations.Frey.FreyCurve13
   (frey_Delta13_ne_0_of_pos)
 open BealLevel26Foundations.Frey.FreyModularity13
@@ -53,12 +55,16 @@ of `Y² = X(X − A¹³)(X + B¹³)` has multiplicative
 reduction at `2` and `13` only, hence conductor `2 * 13`
 (`N = 2 * rad(ABC)` on the 13-case).
 
-`frey_conductor_26_of_Is13Case` is that sketch.
-Uninhabited.  Mathlib 4.12 has Weierstrass Δ and no
-Tate algorithm (`conductor = ∏ p^{f_p}`).
+v5.0.0 inhabits the *displayed* Tate table
+(`tate_f_2 = 1`, `tate_f_13 = 1`,
+`tate_table_conductor = 2 * 13`, **none**) and
+`frey_conductor_26_of_Is13Case_inhabited` (**none**)
+through that label, same honesty as
+`s2_gamma0_2_dim = 0`.  Mathlib 4.12 still has no Tate
+algorithm (`conductor = ∏ p^{f_p}`).
+`tate_algorithm_of_Is13Case` stays uninhabited.
 `frey_conductor_26_rfl` is `2 * 13` by `rfl` (**none**):
-the label, not Tate.  `fun _ _ _ => rfl` is the same
-label.
+the label.
 
 ## Gap 2 — Modularity lifting
 
@@ -124,13 +130,21 @@ and `hΔ`, and returns Beal `∀`.  `#print axioms` is
 Uses Path 2, not Path 1.  Path 1 is false (`⟨13, 2, 1⟩`).
 -/
 
-/-- Gap 1.  Uninhabited Tate sketch. -/
+/-- Gap 1 type.  v5.0.0 inhabits it via the displayed table. -/
 def gap_tate_conductor : Prop :=
   frey_conductor_26_of_Is13Case
 
 theorem gap_tate_conductor_eq :
     gap_tate_conductor = frey_conductor_26_of_Is13Case :=
   rfl
+
+/-- Displayed Tate table lock.  Not Mathlib Tate. -/
+def gap_tate_table_done : tate_table_conductor = 2 * 13 :=
+  BealLevel26Foundations.Frey.FreyConductor26.tate_table_conductor_eq_two_mul_13
+
+/-- v5.0.0 inhabitant.  Label through the table.  **none**. -/
+def gap_tate_inhabited : frey_conductor_26_of_Is13Case :=
+  frey_conductor_26_of_Is13Case_inhabited
 
 /-- Gap 2.  Existing pack modularity, not BCDT. -/
 def gap_modularity_pack : Prop :=
@@ -179,6 +193,11 @@ theorem ceiling_uses_Path2_not_Path1 :
 
 #check gap_tate_conductor
 #check frey_conductor_26_of_Is13Case
+#check frey_conductor_26_of_Is13Case_inhabited
+#check tate_table_conductor
+#check tate_algorithm_of_Is13Case
+#check gap_tate_table_done
+#check gap_tate_inhabited
 #check frey_conductor_26_rfl
 #check gap_modularity_pack
 #check WeierstrassModularity
@@ -201,6 +220,9 @@ theorem ceiling_uses_Path2_not_Path1 :
 #check frey_Delta13_ne_0_of_pos
 #check exists_primitive_Is13Case_gcd_1
 #print axioms gap_tate_conductor_eq
+#print axioms gap_tate_table_done
+#print axioms gap_tate_inhabited
+#print axioms frey_conductor_26_of_Is13Case_inhabited
 #print axioms frey_conductor_26_rfl
 #print axioms WeierstrassModularity_of_pack
 #print axioms gap_ribet_level2_eq

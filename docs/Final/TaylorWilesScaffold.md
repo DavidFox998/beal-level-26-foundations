@@ -33,3 +33,20 @@ inhabited by `WeierstrassModularity_of_pack`.
 
 Still not `∀ A B C` unconditionally.  Still not Mathlib
 `X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles.
+
+### v5.0.0 Tate conductor 26 inhabited (displayed table)
+
+Phase 1 displayed Tate table is **DONE**.  We finished the
+*label* without Mathlib Tate.
+
+| Component | In this repo | Status | `#print axioms` |
+|---|---|---|---|
+| Tate table | `tate_table_conductor = 2 * 13`, `tate_f_2 = 1`, `tate_f_13 = 1`, multiplicative at 2 and 13 | inhabited display | **none** |
+| `tate_conductor_26_of_Is13Case_proof` | `Is13Case ∧ 0<A ∧ 0<B → Δ ≠ 0 ∧ table = 2*13` | inhabited | **propext** + `Classical.choice` + `Quot.sound` (Δ) |
+| `frey_conductor_26_of_Is13Case_inhabited` | original sketch `hTate` | inhabited via table + label | **propext** |
+| `tate_algorithm_of_Is13Case` | Kodaira from `v_p(Δ)`, `v_p(c₄)` | uninhabited | uninhabited |
+| Ribet / `R = T` / ceiling | unchanged | Ribet and `R = T` uninhabited; ceiling still needs `hRibet` | **propext only** |
+
+Not Mathlib Tate (`∏ p^{f_p}`).  Same honesty as
+`s2_gamma0_2_dim = 0`.  `Is13Case` does not imply
+`2 ∣ A*B*C`.

@@ -11,7 +11,8 @@ namespace BealLevel26Foundations.Beal.BealForall
 open BealLevel26Foundations.Base.BealCounterexampleBase
 open BealLevel26Foundations.Chain.Beal13CaseToFalse
 open BealLevel26Foundations.Frey.FreyConductor26
-  (Is13Case frey_conductor_26_of_Is13Case)
+  (Is13Case frey_conductor_26_of_Is13Case
+    frey_conductor_26_of_Is13Case_inhabited)
 open BealLevel26Foundations.Frey.FreyCurve13
   (FreyCurve13_of_BealCounterexampleBases frey_Delta13_ne_0_of_pos)
 open BealLevel26Foundations.Frey.FreyModularity13
@@ -30,6 +31,7 @@ open BealLevel26Foundations.Ribet.RibetLevelLowering26
 # v4.56.0 Mathlib gaps: both wirings stay; propext-only is the ceiling
 # v4.57.0 Phase 5 X0 scaffold; both wirings stay
 # v4.58.0 Taylor–Wiles scaffold; both wirings stay
+# v5.0.0 Tate table inhabit; both wirings stay; hTate fillable
 
 `Frey.FreyConductor26.Is13Case` is `13 ∣ A*B*C` on shared
 bases.  Forall.`Is13Case` is `13 ∣ x*y*z` on a packed
@@ -407,6 +409,25 @@ def is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only
     is13Case_implies_False_of_tate_ribet_weierstrass
       hTate hRibet hWeierstrass w h13 (hΔ w h13))
 
+/-- v5.0.0: plug the displayed Tate-table inhabit for
+`hTate`.  Still needs `hRibet`.  Does **not** inhabit
+unconditional `Is13Case → False`.  **propext only**. -/
+def is13Case_false_implies_Beal_of_ribet_after_tate_table
+    (hRibet : ribet_produces_newform_level2_of_weierstrass_modularity)
+    (hWeierstrass :
+      ∀ (w : BealCounterexampleBases),
+        (FreyCurve13_of_BealCounterexampleBases w).Δ ≠ 0 →
+          WeierstrassModularity
+            (FreyCurve13_of_BealCounterexampleBases w))
+    (hComp : beal_forall_from_Is13Case_false_sketch)
+    (hΔ : ∀ (w : BealCounterexampleBases),
+      Is13Case w →
+      (FreyCurve13_of_BealCounterexampleBases w).Δ ≠ 0) :
+    beal_forall_from_Is13Case_sketch :=
+  is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only
+    frey_conductor_26_of_Is13Case_inhabited
+    hRibet hWeierstrass hComp hΔ
+
 #check Is13Case
 #check Is13CaseForcesGcdGt1Sketch
 #check Is13CaseForcesFalseSketchViaLevel2
@@ -446,6 +467,8 @@ def is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only
 #check is13Case_false_implies_Beal_of_tate_ribet_disc_of_pos
 #check is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only_type
 #check is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only
+#check is13Case_false_implies_Beal_of_ribet_after_tate_table
+#check frey_conductor_26_of_Is13Case_inhabited
 #check frey_Delta13_ne_0_of_pos
 #print axioms gcd_13_2_1_eq_1
 #print axioms dvd_13_2_1
@@ -468,6 +491,8 @@ def is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only
 #print axioms hDelta_of_pos
 #print axioms is13Case_false_implies_Beal_of_tate_ribet_disc_of_pos
 #print axioms is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only
+#print axioms is13Case_false_implies_Beal_of_ribet_after_tate_table
+#print axioms frey_conductor_26_of_Is13Case_inhabited
 #print axioms frey_Delta13_ne_0_of_pos
 
 end BealLevel26Foundations.Beal.BealForall
