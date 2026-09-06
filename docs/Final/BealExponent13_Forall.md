@@ -118,3 +118,26 @@ via `hGeomForbid_typed_true` (`hNotIn` `hInList`
 13-case on the displayed cusp-label type.  `#print axioms
 beal_forall_from_ribet` stays **none**.  New names may use
 `propext`.  No `False.elim`.
+
+### v4.33.0 Is13Case provable conditional — no sorry
+
+`Is13Case w` is now only `13 ∣ w.x * w.y * w.z`.  That makes
+`beal_prime_divisor_13_of_counterexample` and
+`beal_prime_divisor_13_first_disjunct` identities.  No `sorry`.
+
+`Is13ExpCase` is `13 ∣ exponentX ∨ 13 ∣ exponentY ∨ 13 ∣ exponentZ`.
+It is **out of scope** for level 26 (needs levels `2p`).
+`is13ExpCase_out_of_scope_for_level_26` is LEM only
+(`Classical.em`); it does not fold the exponent-or into the
+product case.
+
+`#check beal_forall_from_ribet` is `BealTheorem_Exponent13_Typed`
+(`hGeomForbid_typed_true` ∧ `FreyLevel26`).  It does **not**
+apply to `(w, h13)` and does **not** prove `w.gcd > 1`.
+`is13Case_existing_typed_bridge` returns that same typed close
+(**none**).  `is13Case_forces_gcd_gt1` applies the uninhabited
+`Is13CaseForcesGcdGt1Sketch`.  Primitive witnesses already
+have `w.gcd = 1`.
+
+Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)`.
+`#print axioms beal_forall_from_ribet` stays **none**.

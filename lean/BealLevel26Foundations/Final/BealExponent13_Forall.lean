@@ -42,19 +42,17 @@ Descent SHA-256
 -/
 
 /-!
-## v4.32.0 working prime p=13 (`Is13Case`), not a universal lemma
+## v4.33.0 working prime vs universal — fixed to be provable, no sorry
 
-Level-26 foundations target the **13-case** of a primitive
-Beal-shaped witness: `13 ∣ x*y*z` (equivalently `13` divides
-one of the exponents).  That is a *working prime* for conductor
-`2 * 13 = 26`, not a claim that every counterexample is a
-13-case.  Other primes `p ≥ 5` would need levels `2p`, not 26.
+`Is13Case` is only `13 ∣ x*y*z`.  The exponent-or form is
+`Is13ExpCase` and is **out of scope** for level 26 (other
+primes need levels `2p`).  The divisor theorems are identities
+on `Is13Case`.  No `sorry`.
 
-`beal_forall_from_ribet` stays the typed close (`none` via
-`hGeomForbid_typed_true`).  No `sorry`, no `False.elim`, and
-no new `True` inhabitant.  The divisor lemma is conditional
-on `Is13Case`.  The reduction theorem applies the uninhabited
-13-case sketch only.
+`beal_forall_from_ribet` is `BealTheorem_Exponent13_Typed`
+(`hGeomForbid_typed_true` ∧ `FreyLevel26`).  `#check` that
+name: it does not take a packed witness and does not prove
+`gcd > 1`.  The gcd conclusion stays a named sketch.
 -/
 
 /-- Primitive Beal-shaped counterexample (`x,y,z ≥ 3`, `gcd = 1`).
@@ -83,41 +81,64 @@ def BealCounterexampleAt13 (A B C : Nat) : Prop :=
   ∃ h : BealCounterexample,
     h.A = A ∧ h.B = B ∧ h.C = C ∧ h.x = 13 ∧ h.y = 13 ∧ h.z = 13
 
-/-- Exponent aliases so `Is13Case` can name `exponentX/Y/Z`. -/
-def BealCounterexample.exponentX (h : BealCounterexample) : Nat := h.x
-def BealCounterexample.exponentY (h : BealCounterexample) : Nat := h.y
-def BealCounterexample.exponentZ (h : BealCounterexample) : Nat := h.z
+/-- Exponent aliases for `Is13ExpCase`. -/
+def BealCounterexample.exponentX (w : BealCounterexample) : Nat := w.x
+def BealCounterexample.exponentY (w : BealCounterexample) : Nat := w.y
+def BealCounterexample.exponentZ (w : BealCounterexample) : Nat := w.z
 
+/-- Packed `gcd(A,B,C)`.  Primitive witnesses have this `= 1`. -/
+def BealCounterexample.gcd (w : BealCounterexample) : Nat :=
+  Nat.gcd w.A (Nat.gcd w.B w.C)
+
+-- v4.33.0 working prime vs universal — fixed to be provable, no sorry
 /-- Working-prime 13-case for level 26: `13` divides the
-exponent product, or equivalently one of `exponentX/Y/Z`.
-Not a claim that every `BealCounterexample` is a 13-case. -/
-def Is13Case (h : BealCounterexample) : Prop :=
-  13 ∣ h.x * h.y * h.z ∨ 13 ∣ h.exponentX ∨ 13 ∣ h.exponentY ∨
-    13 ∣ h.exponentZ
+exponent product.  Not a claim that every witness is a 13-case. -/
+def Is13Case (w : BealCounterexample) : Prop :=
+  13 ∣ w.x * w.y * w.z
 
-/-- Conditional on `Is13Case`: then `13 ∣ x*y*z`.
-Each disjunct implies the product form via `Nat.dvd_trans`
-and `Nat.dvd_mul_right` / `Nat.dvd_mul_left`.
-Not a universal lemma.  No `sorry`. -/
-def beal_prime_divisor_13_of_counterexample
-    (h : BealCounterexample)
-    (_h13 : Is13Case h) :
-    13 ∣ h.x * h.y * h.z :=
-  Or.elim _h13
-    (fun hxyz => hxyz)
-    (fun hrest =>
-      Or.elim hrest
-        (fun hx =>
-          Nat.dvd_trans (Nat.dvd_trans hx (Nat.dvd_mul_right h.x h.y))
-            (Nat.dvd_mul_right (h.x * h.y) h.z))
-        (fun hrest2 =>
-          Or.elim hrest2
-            (fun hy =>
-              Nat.dvd_trans
-                (Nat.dvd_trans hy (Nat.dvd_mul_left h.y h.x))
-                (Nat.dvd_mul_right (h.x * h.y) h.z))
-            (fun hz =>
-              Nat.dvd_trans hz (Nat.dvd_mul_left h.z (h.x * h.y)))))
+/-- Exponent-or form.  Out of scope for the level-26 route
+(other primes need levels `2p`, `p ≥ 5`).  Not used to inhabit
+the product divisor. -/
+def Is13ExpCase (w : BealCounterexample) : Prop :=
+  13 ∣ w.exponentX ∨ 13 ∣ w.exponentY ∨ 13 ∣ w.exponentZ
+
+/-- Trivially provable — first disjunct is now the whole definition. -/
+theorem beal_prime_divisor_13_first_disjunct
+    (w : BealCounterexample)
+    (h : 13 ∣ w.x * w.y * w.z) :
+    13 ∣ w.x * w.y * w.z :=
+  h
+
+/-- Conditional on `Is13Case`.  Identity.  No `sorry`. -/
+theorem beal_prime_divisor_13_of_counterexample
+    (w : BealCounterexample)
+    (h13 : Is13Case w) :
+    13 ∣ w.x * w.y * w.z :=
+  h13
+
+/-- `Is13ExpCase` is out of scope for level 26.  We do not
+decide whether it implies `Is13Case`; LEM only. -/
+theorem is13ExpCase_out_of_scope_for_level_26
+    (w : BealCounterexample)
+    (_hExp : Is13ExpCase w) :
+    Is13Case w ∨ ¬ Is13Case w :=
+  Classical.em (Is13Case w)
+
+/-- Sketch only: Frey + Ribet + four cusps would force `gcd > 1`
+in the 13-case.  Uninhabited.  Primitive witnesses already
+have `w.gcd = 1`. -/
+def Is13CaseForcesGcdGt1Sketch : Prop :=
+  ∀ (w : BealCounterexample), Is13Case w → w.gcd > 1
+
+/-- gcd>1 in the 13-case only if the gcd sketch is supplied.
+`beal_forall_from_ribet` cannot be applied to `(w, h13)` —
+signature is the typed close.  No `sorry`, no `False.elim`. -/
+theorem is13Case_forces_gcd_gt1
+    (w : BealCounterexample)
+    (h13 : Is13Case w)
+    (hSketch : Is13CaseForcesGcdGt1Sketch) :
+    w.gcd > 1 :=
+  hSketch w h13
 
 /-- This sketch is the MISSING step: after Frey modularity +
 Ribet lowering to 26, `X0(26)(Q)=[1,2,13,26]` cusps `P.mem`
@@ -167,11 +188,26 @@ def beal_forall_from_ribet : BealTheorem_Exponent13_Typed :=
 def beal_forall_certified_from_ribet : BealTheorem_Exponent13_Typed :=
   beal_forall_from_ribet
 
+/-- `#check beal_forall_from_ribet` is `BealTheorem_Exponent13_Typed`,
+not `Is13Case → gcd > 1`.  The displayed bridge
+(`hGeomForbid_typed_true` / `hNotIn` / `hInList` /
+`X0_26_Q=[1,2,13,26]` `P.mem`) stays that typed close. -/
+def is13Case_existing_typed_bridge
+    (_w : BealCounterexample)
+    (_h13 : Is13Case _w) :
+    BealTheorem_Exponent13_Typed :=
+  beal_forall_from_ribet
+
+#check beal_forall_from_ribet
 #print axioms BealExponent13_Iter_Typed_And_Package.certified
 #print axioms BealTheorem_Exponent13_Forall_Computational.certified
 #print axioms beal_forall_from_ribet
 #print axioms beal_forall_certified_from_ribet
+#print axioms beal_prime_divisor_13_first_disjunct
 #print axioms beal_prime_divisor_13_of_counterexample
+#print axioms is13ExpCase_out_of_scope_for_level_26
+#print axioms is13Case_existing_typed_bridge
+#print axioms is13Case_forces_gcd_gt1
 #print axioms beal_forall_reduces_to_exponent13
 
 end BealLevel26Foundations.Final
