@@ -183,11 +183,17 @@ change.  HEAD `4d208a5`.  Hook `22379293`.
 `IsVersionOf` `22272382`.  Original-family latest
 remains `22322627`.
 
-### v6.0.1-iter-about-catchup-22558788 — DONE
+### v6.1.0-iter-tw-infinite-family — DONE
 
-About catch-up `22558113` (FINAL v5) → `22558788`
-(v6.0.0 REAL ALGORITHMS).  Docs lock.  No Lean
-change.  HEAD `4d208a5`.  Hook `22379293`.
-`IsVersionOf` `22272382`.  Original-family latest
-remains `22322627`.
+`Q_n = [53]` is the `n = 1` slice of a real
+infinite family.  Official build **15 modules**.
+`Q_1` `53 % 13 = 1` **none**, `Q_2` `677 % 169 = 1`
+**none**, `TW_infinite_family_exists` **propext only**,
+`TW_primes_Q_n_real_infinite` **none**,
+`R_T_patching_witness_real_infinite` **none**,
+`beal_forall_in_kernel_from_infinite_TW`
+**propext only**.  Chebotarev density is a token,
+not Mathlib class-field / Chebotarev.  Empty
+`R_T_algorithm` stays uninhabited.  About still
+lists written mint `22558788`.
 

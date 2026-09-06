@@ -22,6 +22,7 @@ open BealLevel26Foundations.Chain.BealForallInKernel
     beal_forall_in_kernel
     beal_forall_in_kernel_closed
     beal_forall_in_kernel_from_real_algorithms
+    beal_forall_in_kernel_from_infinite_TW
     is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
     is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel_closed)
 open BealLevel26Foundations.Chain.Level2
@@ -265,6 +266,7 @@ theorem ceiling_uses_Path2_not_Path1 :
 #check beal_forall_in_kernel
 #check beal_forall_in_kernel_closed
 #check beal_forall_in_kernel_from_real_algorithms
+#check beal_forall_in_kernel_from_infinite_TW
 #check is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
 #check is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel_closed
 #check frey_Delta13_ne_0_of_pos
@@ -300,6 +302,7 @@ theorem ceiling_uses_Path2_not_Path1 :
 #print axioms beal_forall_in_kernel
 #print axioms beal_forall_in_kernel_closed
 #print axioms beal_forall_in_kernel_from_real_algorithms
+#print axioms beal_forall_in_kernel_from_infinite_TW
 #print axioms is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
 #print axioms is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel_closed
 #print axioms frey_Delta13_ne_0_of_pos

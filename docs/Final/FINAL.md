@@ -1,11 +1,12 @@
-# FINAL v6.0.1 — About catch-up `22558788`
+# FINAL v6.1.0 — infinite Taylor–Wiles family
 
-Records Lean HEAD `4d208a5` /
-`v6.0.0-iter-real-algorithms`.  No Lean change
-on this catch-up.  Latest written mint
+Latest tag `v6.1.0-iter-tw-infinite-family`.
+Latest written mint remains
 [10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
-(v6.0.0 REAL ALGORITHMS) DataCite findable.  Hook
-`22379293`.  `IsVersionOf` `22272382` metadata only.
+(v6.0.0 REAL ALGORITHMS) DataCite findable.  This
+v6.1.0 mint is **not** written into About; next
+catch-up is v6.1.1.  Hook `22379293`.
+`IsVersionOf` `22272382` metadata only.
 Original-family latest remains `22322627`.
 
 ### v6.0.0 REAL ALGORITHMS
@@ -37,6 +38,43 @@ TW `Q_n = [53]` `53 % 13 = 1` by `rfl` +
   `BealForall` closed term **propext only**, no
   original `hRibet` hypothesis
 
+### v6.0.1 About catch-up DONE
+
+Chain `22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788`.  About writes `22558788` as the
+latest recorded mint.  Docs lock.  No Lean change
+on that catch-up.
+
+### v6.1.0 TW infinite family
+
+`Q_n = [53]` is now the `n = 1` slice of a real
+infinite family, not a single prime.
+
+- `ChebotarevToken` density `> 0` / infinitely
+  many `q` with `q ≡ 1 [MOD 13^n]` and a
+  Frobenius condition **propext only**
+- `TWPrimesInfiniteFamily` Type: `n`, `r`,
+  `Q_n`, `|Q_n| = r`, distinct-Frob / Chebotarev /
+  Diamond / Gorenstein / complete-intersection
+  labels
+- `Q_1` `n = 1` `Q = [53]` `|Q| = 1` `53 % 13 = 1`
+  by `rfl` **none**
+- `Q_2` `n = 2` `Q = [677]` `|Q| = 1`
+  `677 % 169 = 1` by `rfl` `677 = 4 * 169 + 1`
+  **none**
+- `TW_infinite_family_exists`
+  `∀ n > 0, ∃ Q, Q.n = n ∧ |Q.Q_n| = r ∧
+  ∀ q ∈ Q.Q_n, q % 13^n = 1` **propext only**
+- `TW_primes_Q_n_real_infinite`
+  `TaylorWilesSystemReal` **none**
+- `R_T_patching_witness_real` ≃ **none**, now
+  against the infinite family
+- `R_T_patching_witness_real_infinite` ≃ **none**
+- `beal_forall_in_kernel_from_infinite_TW`
+  `BealForall` closed term **propext only**, no
+  original `hRibet` hypothesis
+
 Old displayed tokens stay: `rho_bar_Frey_13_inhabited`
 **propext**, `DeformationRing_rho_bar_E13_inhabited`
 **none**, `HeckeAlgebra_26_inhabited` **none**,
@@ -45,14 +83,6 @@ Old displayed tokens stay: `rho_bar_Frey_13_inhabited`
 `TW_primes_Q_n_inhabited` **propext**,
 `WeierstrassModularity_of_pack_from_R_T` **propext**,
 `beal_forall_in_kernel_closed` **propext**.
-
-### v6.0.1 About catch-up DONE
-
-Chain `22552105 → 22552659 → 22553129 → 22553671
-→ 22554242 → 22555912 → 22556701 → 22558113
-→ 22558788`.  About now writes `22558788` as the
-latest recorded mint.  Docs lock only.  No Lean
-change.
 
 ### Honest lock (unchanged from FINAL v5)
 
@@ -72,14 +102,11 @@ change.
 - Path 2 ONLY HONEST: displayed table inhabited
 - Real `X₀(26)(ℚ)` still has `26a1` Δ `-17576` and
   `26b1` Δ `-1664`
-- No `False.elim`.  14 modules green twice.
+- No `False.elim`.  15 modules green twice.
   `verify-scaffold.sh` OK.  `verify_descent_26.py` OK.
   `NO_SORRY_OK`
 
 Still not Full Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
-Taylor–Wiles as fully verified Mathlib algorithms.
-Now REAL STRUCTURES with explicit fields Δ, conductor,
-`f_p`, `Q_n`, not just displayed tokens.  Same honesty
-as `tate_table_conductor = 2 * 13`, stronger than
-propext-only.  GOOD sounding first step to real
-algorithms.
+Taylor–Wiles as fully verified Mathlib algorithms,
+but now a REAL infinite TW family with computable
+congruences.  GOOD sounding step.

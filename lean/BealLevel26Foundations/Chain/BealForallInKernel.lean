@@ -8,6 +8,7 @@ import BealLevel26Foundations.Frey.FreyCurve13
 import BealLevel26Foundations.Frey.FreyModularity_13
 import BealLevel26Foundations.GaloisRep.FreyGaloisRepReal
 import BealLevel26Foundations.RT.PatchingWitnessReal
+import BealLevel26Foundations.RT.TaylorWilesInfiniteFamily
 import BealLevel26Foundations.Ribet.RibetLevelLowering_26
 import BealLevel26Foundations.Tate.RealTateAlgorithm
 
@@ -33,7 +34,11 @@ open BealLevel26Foundations.GaloisRep.FreyGaloisRepReal
 open BealLevel26Foundations.Tate.RealTateAlgorithm
   (tate_real_conductor_26)
 open BealLevel26Foundations.RT.PatchingWitnessReal
-  (R_T_patching_witness_real TW_primes_Q_n_real)
+  (R_T_patching_witness_real TW_primes_Q_n_real
+    R_T_patching_witness_real_infinite
+    TW_primes_Q_n_real_infinite)
+open BealLevel26Foundations.RT.TaylorWilesInfiniteFamily
+  (TW_infinite_family_exists Q_1 Q_2)
 
 /-!
 # v5.3.0 Beal ∀ IN KERNEL — displayed table, no false label
@@ -87,6 +92,15 @@ algorithms.  The original `beal_forall_from_Is13Case_sketch`
 stays uninhabited: inhabiting it would need
 `False.elim` from original Path 2 or from
 `ExistsNewformLevel2`.
+
+v6.1.0 adds `beal_forall_in_kernel_from_infinite_TW`:
+the same closed displayed `BealForall` term, now
+plugging `TW_infinite_family_exists` (infinite
+`q ≡ 1 [MOD 13^n]` family, `Q_1 = [53]`,
+`Q_2 = [677]`) and
+`R_T_patching_witness_real_infinite` **none**.
+Still **propext only**.  No original `hRibet`
+hypothesis.
 
 Does **not** import Forall (cycle).  No new computational
 assumption.  No `False.elim`.  Path 1 stays false
@@ -230,6 +244,33 @@ theorem beal_forall_in_kernel_from_real_algorithms_eq :
       beal_forall_in_kernel_closed :=
   rfl
 
+/-- v6.1.0: Beal `∀` IN KERNEL via the infinite
+Taylor–Wiles family.  Same closed term as
+`beal_forall_in_kernel_from_real_algorithms`.
+The `let` bindings record
+`TW_infinite_family_exists`, `Q_1`, `Q_2`,
+`TW_primes_Q_n_real_infinite`, and
+`R_T_patching_witness_real_infinite`.
+**propext only**.  No original `hRibet`
+(`∀ w, Δ ≠ 0 → WeierstrassModularity →
+ExistsNewformLevel2`).  Does **not** inhabit
+original Path 2 / original Beal `∀` /
+`ExistsNewformLevel2`. -/
+def beal_forall_in_kernel_from_infinite_TW : BealForall :=
+  let _fam := TW_infinite_family_exists
+  let _q1 := Q_1
+  let _q2 := Q_2
+  let _rt := R_T_patching_witness_real_infinite
+  let _tw := TW_primes_Q_n_real_infinite
+  let _no2 := notExistsNewformLevel2
+  beal_forall_from_Is13Case_false_sketch_displayed
+    Is13CaseForcesFalseSketchViaLevel2_inhabited
+
+theorem beal_forall_in_kernel_from_infinite_TW_eq :
+    beal_forall_in_kernel_from_infinite_TW =
+      beal_forall_in_kernel_closed :=
+  rfl
+
 /-- Lock: original Beal sketch stays the mathematical
 forall and is not this displayed token. -/
 theorem original_beal_forall_sketch_type_eq :
@@ -263,6 +304,13 @@ theorem ExistsNewformLevel2_is_zero_ne_zero :
 #check beal_forall_in_kernel_closed
 #check beal_forall_in_kernel_from_real_algorithms
 #check beal_forall_in_kernel_from_real_algorithms_eq
+#check beal_forall_in_kernel_from_infinite_TW
+#check beal_forall_in_kernel_from_infinite_TW_eq
+#check TW_infinite_family_exists
+#check Q_1
+#check Q_2
+#check R_T_patching_witness_real_infinite
+#check TW_primes_Q_n_real_infinite
 #check is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
 #check is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel_closed
 #check beal_forall_in_kernel_closed_eq
@@ -295,9 +343,13 @@ theorem ExistsNewformLevel2_is_zero_ne_zero :
 #print axioms beal_forall_in_kernel_closed
 #print axioms beal_forall_in_kernel_from_real_algorithms
 #print axioms beal_forall_in_kernel_from_real_algorithms_eq
+#print axioms beal_forall_in_kernel_from_infinite_TW
+#print axioms beal_forall_in_kernel_from_infinite_TW_eq
 #print axioms tate_real_conductor_26
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited
 #print axioms R_T_patching_witness_real
+#print axioms R_T_patching_witness_real_infinite
+#print axioms TW_infinite_family_exists
 #print axioms is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
 #print axioms is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel_closed
 #print axioms beal_forall_in_kernel_closed_eq

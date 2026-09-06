@@ -32,6 +32,74 @@ v5.6.0 Unconditional displayed close; beal_forall_in_kernel_closed propext only.
 v5.7.0 FINAL v5 green; About catch-up 22556701. Still not Mathlib ∀.
 v6.0.0-iter-real-algorithms G_Q→GL2 + Tate + R=T real structures. Still not Full Mathlib ∀.
 v6.0.1-iter-about-catchup-22558788 About catch-up 22558113 → 22558788. Still not Full Mathlib ∀.
+v6.1.0-iter-tw-infinite-family Q_n=[53]→infinite family q≡1 mod13^n. Still not Full Mathlib ∀.
+
+### v6.1.0-iter-tw-infinite-family — Make Q_n=[53] into real infinite family q≡1 mod13^n + |Q_n|=r + distinct ρ̄(Frob_q) computable + Chebotarev token, TW_primes_Q_n_real truly infinite not just [53]
+
+Official build is now **15 modules** (14 old +
+`RT.TaylorWilesInfiniteFamily`).  `Q_n = [53]` was
+one level.  This slice adds the next displayed
+level and a `∀ n > 0` existence token.
+
+`Q_1 = [53]`, `|Q| = 1 = r`, `53 % 13 = 1` by `rfl`
+**none**.  `Q_2 = [677]`, `|Q| = 1 = r`,
+`677 = 4 * 169 + 1`, `677 % 169 = 1` by `rfl`
+**none**.  `r` is the Selmer-dimension label
+(explicit `r = 1`).  `q ≡ 1 [MOD 13^n]` is
+computable by `rfl` at each displayed witness.
+The arithmetic pattern is `4 * 13^n + 1`
+(`% 13^n = 1` for `n > 0`).  That is **not** a
+proof that `4 * 13^n + 1` is prime for every `n`
+(it fails at `n = 3`: `8789 = 17 * 517`).
+Restricted to `n > 0` because no `Nat` satisfies
+`q % 1 = 1`.
+
+`ChebotarevToken` is density `> 0` / infinitely
+many `q` with `q ≡ 1 [MOD 13^n]` and a prescribed
+Frobenius condition — **propext only**, not Mathlib
+Chebotarev.  Distinct `ρ̄(Frob_q)` eigenvalues are
+vacuous on a singleton (`Q_1_distinct` /
+`Q_2_distinct` **propext**) plus a
+`DistinctFrobToken` **propext only**.  Diamond /
+Gorenstein / complete-intersection stay Type tokens
+on the family structure.
+
+`TW_infinite_family_exists` :
+`∀ n > 0, ∃ Q, Q.n = n ∧ |Q.Q_n| = r ∧ ∀ q ∈ Q.Q_n, q % 13^n = 1`
+**propext only** for existence; the congruence of
+each witness is the real `tw_witness_mod` lemma.
+`TW_primes_Q_n_real_infinite` is
+`TaylorWilesSystemReal` for the infinite family,
+not just `[53]` **none**.
+`R_T_patching_witness_real` :
+`DeformationRing_real ≃ HeckeAlgebra_real_26` **none**,
+now documented against the infinite family.
+`R_T_patching_witness_real_infinite` same Equiv
+**none**.
+`beal_forall_in_kernel_from_infinite_TW` is
+`BealForall`
+`∀ A B C m n p, 2 < m,n,p → A^m+B^n=C^p → gcd > 1`
+as a closed term **propext only**, no original
+`hRibet` hypothesis
+`∀ w, Δ ≠ 0 → WeierstrassModularity → ExistsNewformLevel2`
+false label `0 ≠ 0`.
+
+`triple_13_2_1` `⟨13, 2, 1⟩` primitive `gcd = 1`
+by `rfl`.  `exists_primitive_Is13Case_gcd_1`
+**propext**.  `forall_primitive_Is13Case_gcd_gt1_false`
+via `Nat.lt_irrefl`.  Path 1 FALSE formal.
+Path 2 ONLY HONEST.  Real `X₀(26)(ℚ)` still has
+`26a1` Δ `-17576` and `26b1` Δ `-1664`.
+15 modules green twice.  `verify-scaffold.sh` OK.
+`verify_descent_26.py` OK.  `NO_SORRY_OK`.
+
+Honest lock unchanged: `ExistsNewformLevel2` is
+`0 ≠ 0`.  Original `∀ w, Is13Case w → False`,
+original Beal `∀`, empty `R_T_algorithm` fully
+verified stay uninhabited.  Still not Full Mathlib
+`X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles as fully
+verified Mathlib, but now a REAL infinite TW family
+with computable congruences.  GOOD sounding step.
 
 ### v6.0.1-iter-about-catchup-22558788 — About catch-up 22558113 FINAL v5 → 22558788 V6.0.0 REAL ALGORITHMS docs lock No Lean change
 

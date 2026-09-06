@@ -146,3 +146,14 @@ stay.  Empty `R_T_algorithm` /
 `TaylorWilesPatchingWitness` stay uninhabited.
 Not Mathlib Taylor–Wiles.
 
+### v6.1.0 infinite family (additional, not a replacement)
+
+`RT.TaylorWilesInfiniteFamily` makes `Q_n = [53]`
+the `n = 1` slice of a real infinite family:
+`Q_2 = [677]`, `q ≡ 1 [MOD 13^n]` by `rfl`,
+`TW_infinite_family_exists` **propext only**,
+`ChebotarevToken` **propext only**.
+`TW_primes_Q_n_real_infinite` / `R_T_patching_witness_real_infinite`
+stay **none**.  Empty `R_T_algorithm` stays
+uninhabited.  Not Mathlib Chebotarev / Taylor–Wiles.
+

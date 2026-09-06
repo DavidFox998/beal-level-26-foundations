@@ -151,6 +151,7 @@ test -f lean/Beal/Foundations/FormalImmersionM3Certificate.lean
 test -f lean/BealLevel26Foundations/GaloisRep/FreyGaloisRepReal.lean
 test -f lean/BealLevel26Foundations/Tate/RealTateAlgorithm.lean
 test -f lean/BealLevel26Foundations/RT/PatchingWitnessReal.lean
+test -f lean/BealLevel26Foundations/RT/TaylorWilesInfiniteFamily.lean
 
 grep -q "def rho_bar_Frey_13_real_algorithm_inhabited" \
   lean/BealLevel26Foundations/GaloisRep/FreyGaloisRepReal.lean
@@ -158,14 +159,34 @@ grep -q "theorem tate_real_conductor_26" \
   lean/BealLevel26Foundations/Tate/RealTateAlgorithm.lean
 grep -q "def R_T_patching_witness_real" \
   lean/BealLevel26Foundations/RT/PatchingWitnessReal.lean
+grep -q "def R_T_patching_witness_real_infinite" \
+  lean/BealLevel26Foundations/RT/PatchingWitnessReal.lean
+grep -q "def TW_primes_Q_n_real_infinite" \
+  lean/BealLevel26Foundations/RT/PatchingWitnessReal.lean
+grep -q "def Q_1" \
+  lean/BealLevel26Foundations/RT/TaylorWilesInfiniteFamily.lean
+grep -q "def Q_2" \
+  lean/BealLevel26Foundations/RT/TaylorWilesInfiniteFamily.lean
+grep -q "def ChebotarevToken" \
+  lean/BealLevel26Foundations/RT/TaylorWilesInfiniteFamily.lean
+grep -q "def TW_infinite_family_exists" \
+  lean/BealLevel26Foundations/RT/TaylorWilesInfiniteFamily.lean
 grep -q "def beal_forall_in_kernel_from_real_algorithms" \
+  lean/BealLevel26Foundations/Chain/BealForallInKernel.lean
+grep -q "def beal_forall_in_kernel_from_infinite_TW" \
   lean/BealLevel26Foundations/Chain/BealForallInKernel.lean
 if grep -nE \
     '^import[[:space:]]+(BealLevel26Foundations\.Final|BealLevel26Foundations\.Mazur\.BealTheoremFromMazurChain26|BealLevel26Foundations\.Chain\.PathLock|BealLevel26Foundations\.Chain\.BealForallInKernel|BealLevel26Foundations\.Beal\.BealForall)' \
     lean/BealLevel26Foundations/GaloisRep/FreyGaloisRepReal.lean \
     lean/BealLevel26Foundations/Tate/RealTateAlgorithm.lean \
-    lean/BealLevel26Foundations/RT/PatchingWitnessReal.lean; then
+    lean/BealLevel26Foundations/RT/PatchingWitnessReal.lean \
+    lean/BealLevel26Foundations/RT/TaylorWilesInfiniteFamily.lean; then
   echo "FAIL: real-algorithm modules must not import Forall / Mazur / PathLock / kernel (cycle)"
+  exit 1
+fi
+if grep -q "import BealLevel26Foundations.RT.PatchingWitnessReal" \
+    lean/BealLevel26Foundations/RT/TaylorWilesInfiniteFamily.lean; then
+  echo "FAIL: TaylorWilesInfiniteFamily must not import PatchingWitnessReal (cycle)"
   exit 1
 fi
 
@@ -456,6 +477,7 @@ do
   grep -q "22456594" "$readme"
   grep -q "v6.0.0-iter-real-algorithms" "$readme"
   grep -q "v6.0.1-iter-about-catchup-22558788" "$readme"
+  grep -q "v6.1.0-iter-tw-infinite-family" "$readme"
 done
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md

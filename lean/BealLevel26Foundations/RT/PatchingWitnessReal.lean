@@ -1,10 +1,13 @@
 import BealLevel26Foundations.GaloisRep.FreyGaloisRepReal
+import BealLevel26Foundations.RT.TaylorWilesInfiniteFamily
 import Mathlib.Logic.Equiv.Defs
 
 namespace BealLevel26Foundations.RT.PatchingWitnessReal
 
 open BealLevel26Foundations.GaloisRep.FreyGaloisRepReal
   (FreyGaloisRep13)
+open BealLevel26Foundations.RT.TaylorWilesInfiniteFamily
+  (Q_1 Q_2 TW_infinite_family_exists)
 
 /-!
 # v6.0.0 real algorithm — R = T patching witness
@@ -24,6 +27,18 @@ The auxiliary set is the singleton `{53}`:
 Wiles numerical / Gorenstein / complete-intersection
 fields are tokens.  This is **not** Chebotarev and
 **not** Mathlib Taylor–Wiles patching.
+
+v6.1.0 upgrades the auxiliary set from the
+singleton `{53}` to the infinite family
+`TW_infinite_family_exists`: `Q_1 = [53]`,
+`Q_2 = [677]`, `q ≡ 1 [MOD 13^n]` by `rfl` at
+displayed levels, Chebotarev / distinct-Frob
+tokens **propext only**.
+`TW_primes_Q_n_real_infinite` is the same Type
+as `TW_primes_Q_n_real` (still **none**);
+`R_T_patching_witness_real_infinite` is the
+same Equiv (**none**).  The family existence
+stays in `TaylorWilesInfiniteFamily`.
 
 The empty `TaylorWilesPatchingWitness` /
 `R_T_algorithm` stay uninhabited.  Old displayed
@@ -155,17 +170,63 @@ theorem R_T_patching_witness_real_inhabited :
     Nonempty (DeformationRing_real ≃ HeckeAlgebra_real_26) :=
   ⟨R_T_patching_witness_real⟩
 
+/-- v6.1.0: same Type as `TW_primes_Q_n_real`, now
+documented as the `n = 1` slice of the infinite
+family `Q_1 = [53]`, `Q_2 = [677]`,
+`TW_infinite_family_exists`.  **none**.  Chebotarev
+/ distinct-Frob stay **propext only** on the family
+existence token, not in this structure. -/
+def TW_primes_Q_n_real_infinite : TaylorWilesSystemReal :=
+  TW_primes_Q_n_real
+
+theorem TW_primes_Q_n_real_infinite_card :
+    TW_primes_Q_n_real_infinite.Q_n.length =
+      TW_primes_Q_n_real_infinite.r :=
+  rfl
+
+theorem TW_primes_Q_n_real_infinite_is_Q_1 :
+    TW_primes_Q_n_real_infinite.Q_n = Q_1.Q_n :=
+  rfl
+
+theorem TW_q677_mod169 : 677 % 169 = 1 :=
+  rfl
+
+/-- Same Equiv as `R_T_patching_witness_real`, now
+carrying the infinite-family witness in the
+documentation sense (`Q_1`, `Q_2`,
+`TW_infinite_family_exists`).  **none**.  Does
+**not** put Chebotarev / `propext` into the Equiv
+term. -/
+def R_T_patching_witness_real_infinite :
+    DeformationRing_real ≃ HeckeAlgebra_real_26 :=
+  R_T_patching_witness_real
+
+theorem R_T_patching_witness_real_infinite_inhabited :
+    Nonempty (DeformationRing_real ≃ HeckeAlgebra_real_26) :=
+  ⟨R_T_patching_witness_real_infinite⟩
+
 #check TaylorWilesSystemReal
 #check TW_primes_Q_n_real
+#check TW_primes_Q_n_real_infinite
 #check TW_q53_mod13
+#check TW_q677_mod169
+#check Q_1
+#check Q_2
+#check TW_infinite_family_exists
 #check DeformationRing_real
 #check HeckeAlgebra_real_26
 #check R_T_patching_witness_real
+#check R_T_patching_witness_real_infinite
 #print axioms TW_primes_Q_n_real_card
 #print axioms TW_q53_mod13
 #print axioms TW_q53_mod_13_pow_n
+#print axioms TW_q677_mod169
+#print axioms TW_primes_Q_n_real_infinite
+#print axioms TW_primes_Q_n_real_infinite_is_Q_1
 #print axioms R_T_left_inv_real
 #print axioms R_T_patching_witness_real
 #print axioms R_T_patching_witness_real_inhabited
+#print axioms R_T_patching_witness_real_infinite
+#print axioms R_T_patching_witness_real_infinite_inhabited
 
 end BealLevel26Foundations.RT.PatchingWitnessReal

@@ -32,6 +32,7 @@ v5.6.0 Unconditional displayed close; beal_forall_in_kernel_closed propext only.
 v5.7.0 FINAL v5 green; About catch-up 22556701. Still not Mathlib ∀.
 v6.0.0-iter-real-algorithms G_Q→GL2 + Tate + R=T real structures. Still not Full Mathlib ∀.
 v6.0.1-iter-about-catchup-22558788 About catch-up 22558113 → 22558788. Still not Full Mathlib ∀.
+v6.1.0-iter-tw-infinite-family Q_n=[53]→infinite family q≡1 mod13^n. Still not Full Mathlib ∀.
 
 ### v6.0.0 real algorithms (additional modules)
 
@@ -40,6 +41,13 @@ v6.0.1-iter-about-catchup-22558788 About catch-up 22558113 → 22558788. Still n
 modules `GaloisRep.FreyGaloisRepReal`,
 `Tate.RealTateAlgorithm`, `RT.PatchingWitnessReal`.
 Old displayed tokens stay.  Official count 11 → 14.
+
+### v6.1.0 infinite TW family (15th official module)
+
+`RT.TaylorWilesInfiniteFamily` adds `Q_1 = [53]`,
+`Q_2 = [677]`, `TW_infinite_family_exists`.
+`beal_forall_in_kernel_from_infinite_TW` plugs the
+infinite family.  Official count 14 → 15.
 
 ### v5.5.0 PathLock — `⟨13, 2, 1⟩` formal
 
