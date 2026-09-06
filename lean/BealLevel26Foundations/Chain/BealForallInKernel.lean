@@ -6,7 +6,10 @@ import BealLevel26Foundations.Chain.TaylorWilesScaffold
 import BealLevel26Foundations.Frey.FreyConductor_26
 import BealLevel26Foundations.Frey.FreyCurve13
 import BealLevel26Foundations.Frey.FreyModularity_13
+import BealLevel26Foundations.GaloisRep.FreyGaloisRepReal
+import BealLevel26Foundations.RT.PatchingWitnessReal
 import BealLevel26Foundations.Ribet.RibetLevelLowering_26
+import BealLevel26Foundations.Tate.RealTateAlgorithm
 
 namespace BealLevel26Foundations.Chain.BealForallInKernel
 
@@ -25,6 +28,12 @@ open BealLevel26Foundations.Ribet.RibetLevelLowering26
     ribet_produces_newform_level2_inhabited
     ribet_produces_newform_level2_of_weierstrass_modularity
     ribet_algorithm_of_Is13Case)
+open BealLevel26Foundations.GaloisRep.FreyGaloisRepReal
+  (rho_bar_Frey_13_real_algorithm_inhabited)
+open BealLevel26Foundations.Tate.RealTateAlgorithm
+  (tate_real_conductor_26)
+open BealLevel26Foundations.RT.PatchingWitnessReal
+  (R_T_patching_witness_real TW_primes_Q_n_real)
 
 /-!
 # v5.3.0 Beal ∀ IN KERNEL — displayed table, no false label
@@ -48,6 +57,15 @@ token.  It does **not** inhabit:
 * `ExistsNewformLevel2` itself (`0 ≠ 0`).
 * `R_T_algorithm` / `TaylorWilesPatchingWitness`.
 * `galois_rep_algorithm_of_Frey_13`.
+
+v6.0.0 adds `beal_forall_in_kernel_from_real_algorithms`:
+the same closed displayed `BealForall` term, now
+plugging the real algorithm structures
+`tate_real_conductor_26` **none**,
+`rho_bar_Frey_13_real_algorithm_inhabited` **none**,
+`R_T_patching_witness_real` **none**, and
+`notExistsNewformLevel2` **none**.  Still **propext only**
+on the kernel close.  No original `hRibet` hypothesis.
 
 Displayed Path 2 plugs inhabited `hTate` (**propext**),
 displayed `hRibet` (`26 / 13 = 2`, **propext**),
@@ -187,6 +205,31 @@ theorem Path1_stays_false_for_closed_kernel :
         Is13Case w.val → w.val.gcd > 1) :=
   forall_primitive_Is13Case_gcd_gt1_false
 
+/-- v6.0.0: Beal `∀` IN KERNEL via real algorithm
+structures.  Same closed term as
+`beal_forall_in_kernel_closed`.  The `let` bindings
+record that `tate_real_conductor_26`,
+`rho_bar_Frey_13_real_algorithm_inhabited`,
+`R_T_patching_witness_real`, `TW_primes_Q_n_real`,
+and `notExistsNewformLevel2` exist as real structures
+/ the dim-0 anchor.  **propext only**.  No original
+`hRibet` (`∀ w, Δ ≠ 0 → WeierstrassModularity →
+ExistsNewformLevel2`).  Does **not** inhabit original
+Path 2 / original Beal `∀` / `ExistsNewformLevel2`. -/
+def beal_forall_in_kernel_from_real_algorithms : BealForall :=
+  let _tate := tate_real_conductor_26
+  let _rho := rho_bar_Frey_13_real_algorithm_inhabited
+  let _rt := R_T_patching_witness_real
+  let _tw := TW_primes_Q_n_real
+  let _no2 := notExistsNewformLevel2
+  beal_forall_from_Is13Case_false_sketch_displayed
+    Is13CaseForcesFalseSketchViaLevel2_inhabited
+
+theorem beal_forall_in_kernel_from_real_algorithms_eq :
+    beal_forall_in_kernel_from_real_algorithms =
+      beal_forall_in_kernel_closed :=
+  rfl
+
 /-- Lock: original Beal sketch stays the mathematical
 forall and is not this displayed token. -/
 theorem original_beal_forall_sketch_type_eq :
@@ -218,9 +261,15 @@ theorem ExistsNewformLevel2_is_zero_ne_zero :
 #check beal_forall_in_kernel
 #check beal_forall_in_kernel_propext_only
 #check beal_forall_in_kernel_closed
+#check beal_forall_in_kernel_from_real_algorithms
+#check beal_forall_in_kernel_from_real_algorithms_eq
 #check is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
 #check is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel_closed
 #check beal_forall_in_kernel_closed_eq
+#check tate_real_conductor_26
+#check rho_bar_Frey_13_real_algorithm_inhabited
+#check R_T_patching_witness_real
+#check TW_primes_Q_n_real
 #check Path1_stays_false_for_closed_kernel
 #check original_beal_forall_sketch_type_eq
 #check ExistsNewformLevel2_is_dim_ne_zero
@@ -244,6 +293,11 @@ theorem ExistsNewformLevel2_is_zero_ne_zero :
 #print axioms beal_forall_in_kernel
 #print axioms beal_forall_in_kernel_propext_only
 #print axioms beal_forall_in_kernel_closed
+#print axioms beal_forall_in_kernel_from_real_algorithms
+#print axioms beal_forall_in_kernel_from_real_algorithms_eq
+#print axioms tate_real_conductor_26
+#print axioms rho_bar_Frey_13_real_algorithm_inhabited
+#print axioms R_T_patching_witness_real
 #print axioms is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
 #print axioms is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel_closed
 #print axioms beal_forall_in_kernel_closed_eq

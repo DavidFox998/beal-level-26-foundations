@@ -159,3 +159,19 @@ No Lean change.  Same honesty as
 `tate_table_conductor = 2 * 13`.  Real algorithms
 remain V6.
 
+### v6.0.0-iter-real-algorithms — DONE (first step)
+
+Three new official modules (14 total):
+`GaloisRep.FreyGaloisRepReal`,
+`Tate.RealTateAlgorithm`,
+`RT.PatchingWitnessReal`.
+`rho_bar_Frey_13_real_algorithm_inhabited` **none**,
+`tate_real_conductor_26` **none**,
+`R_T_patching_witness_real` **none**,
+`beal_forall_in_kernel_from_real_algorithms`
+**propext only**.  Old displayed tokens stay.
+Empty `R_T_algorithm` / `galois_rep_algorithm_of_Frey_13`
+/ `tate_algorithm_of_Is13Case` stay uninhabited.
+Still not Full Mathlib algorithms.  Same honesty as
+`tate_table_conductor = 2 * 13`.
+

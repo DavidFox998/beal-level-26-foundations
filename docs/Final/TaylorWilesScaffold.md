@@ -132,3 +132,17 @@ writes latest mint `22556701` (v5.6.0).  Chain
 as `tate_table_conductor = 2 * 13`.  Real algorithms
 remain V6.
 
+### v6.0.0 real patching witness (additional, not a replacement)
+
+`RT.PatchingWitnessReal` adds `TaylorWilesSystemReal`
+with explicit `Q_n = [53]`, `|Q_n| = 1`, `53 % 13 = 1`,
+and `R_T_patching_witness_real` :
+`DeformationRing_real ≃ HeckeAlgebra_real_26` **none**.
+`GaloisRep.FreyGaloisRepReal` adds `FreyGaloisRep13`
+(`rho_bar_Frey_13_real_algorithm_inhabited` **none**).
+Old displayed `HeckeAlgebra_26_inhabited` /
+`R_T_scaffold_inhabited` / `TW_primes_Q_n_inhabited`
+stay.  Empty `R_T_algorithm` /
+`TaylorWilesPatchingWitness` stay uninhabited.
+Not Mathlib Taylor–Wiles.
+

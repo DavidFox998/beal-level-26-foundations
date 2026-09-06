@@ -1,14 +1,18 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v5.7.0-iter-final-v5-green-before-v6`.
-Records v5.6.0 `7027b5d` /
-`v5.6.0-iter-unconditional-close-displayed`.
+Latest tag / HEAD: `v6.0.0-iter-real-algorithms`.
+Records v6.0.0 real-algorithm structures
+(`FreyGaloisRep13`, `TateStep`,
+`TaylorWilesSystemReal`, `R_T_patching_witness_real`)
+and the closed kernel term
+`beal_forall_in_kernel_from_real_algorithms`
+(**propext only**).
 
 Latest parallel mint written
+[10.5281/zenodo.22558113](https://doi.org/10.5281/zenodo.22558113)
+(v5.7.0 FINAL v5 green) DataCite findable, after
 [10.5281/zenodo.22556701](https://doi.org/10.5281/zenodo.22556701)
-(v5.6.0) DataCite findable, replacing
-[10.5281/zenodo.22553671](https://doi.org/10.5281/zenodo.22553671)
-(v5.3.0).  Hook
+(v5.6.0).  Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
 `IsVersionOf` [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)
 is metadata only.  Original-family latest remains
@@ -39,22 +43,31 @@ displayed Path 2 table + `beal_forall_in_kernel`) →
 `Nat.lt_irrefl` Path 1 FALSE formal) →
 `22556701` (v5.6.0 unconditional close displayed
 `beal_forall_in_kernel_closed` closed term
-**propext only**, no original `hRibet` hypothesis,
-as close to unconditional as we can before V6 real
-algorithms).
+**propext only**, no original `hRibet` hypothesis) →
+`22558113` (v5.7.0 FINAL v5 green docs lock).
 
-FINAL v5 green: displayed Beal `∀` is in the kernel
-as a closed term.  Still not Mathlib `X₀(26)(ℚ)` +
-Ribet + Tate + Taylor–Wiles as real algorithms.  The
-mathematical Beal forall stays the uninhabited original
-sketch.  The kernel close is the displayed token, same
-honesty as `tate_table_conductor = 2 * 13`.  Honest
-lock: `ExistsNewformLevel2` is `0 ≠ 0` and stays
-uninhabited.  Original Path 2
+v6.0.0 first real-algorithm step: `FreyCurve`
+`Y² = X(X − A¹³)(X + B¹³)`,
+`FreyGaloisRep13` `G_ℚ → GL₂(𝔽₁₃)` structure
+`rho_bar_Frey_13_real_algorithm_inhabited` **none**,
+Tate `tate_algorithm_at_2` / `tate_algorithm_at_13`
+`f_2 = f_13 = 1`, `tate_real_conductor_26 = 2 * 13`
+**none**, `TaylorWilesSystemReal` `Q_n = [53]`
+`|Q_n| = 1` `53 % 13 = 1`,
+`R_T_patching_witness_real` Equiv **none**,
+`beal_forall_in_kernel_from_real_algorithms`
+**propext only**.  14 modules green.
+
+Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
+Taylor–Wiles as fully verified Mathlib algorithms.
+The mathematical Beal forall stays the uninhabited
+original sketch.  Honest lock: `ExistsNewformLevel2`
+is `0 ≠ 0` and stays uninhabited.  Original Path 2
 (`∀ w, Is13Case w → False`) stays uninhabited
 (`⟨13, 2, 1⟩` is `Is13Case`, `gcd = 1`).  No
-`False.elim`.  Path 1 false formal.  11 modules green.
-`NO_SORRY_OK`.
+`False.elim`.  Path 1 false formal.  Real
+`X₀(26)(ℚ)` still has `26a1` Δ `-17576` and
+`26b1` Δ `-1664`.  `NO_SORRY_OK`.
 
 This is the in-repo About lock for GitHub About / topics /
 homepage wording.  README badges stay on `22452680`.

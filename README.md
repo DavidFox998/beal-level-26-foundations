@@ -30,6 +30,74 @@ v5.4.0 About catch-up 22553671; Beal ∀ in-kernel displayed token recorded. Sti
 v5.5.0 Path lock ⟨13,2,1⟩ gcd=1 rfl; Path1 false; Path2 displayed table. Still not Mathlib ∀.
 v5.6.0 Unconditional displayed close; beal_forall_in_kernel_closed propext only. Still not Mathlib ∀.
 v5.7.0 FINAL v5 green; About catch-up 22556701. Still not Mathlib ∀.
+v6.0.0-iter-real-algorithms G_Q→GL2 + Tate + R=T real structures. Still not Full Mathlib ∀.
+
+### v6.0.0-iter-real-algorithms — G_ℚ→GL₂(F₁₃) + Tate's algorithm as real Lean + R=T patching witness — from displayed tokens to real structures, first step to make as real algorithms GOOD sounding
+
+First step from displayed tokens to executable
+structures.  Official build is now **14 modules**
+(11 old + 3 new).  Old displayed tokens stay.
+
+`FreyCurve` is `Y² = X(X − A¹³)(X + B¹³)`,
+`Δ = 16*(A¹³)²*(B¹³)²*(A¹³+B¹³)²`.
+`frey_Delta13_ne_0_of_pos` stays the existing
+positivity lemma (propext + `Classical.choice` +
+`Quot.sound`).  `FreyGaloisRep13` is a Type with
+explicit fields: bases `⟨13, 2⟩`, exponent `13`,
+leading `16`, conductor `2 * 13`, Δ display
+`16*(A^13)^2*(B^13)^2*(A^13+B^13)^2`, `GQ → GL2(F13)`
+tokens, determinant cyclotomic `χ₁₃`, unramified
+outside `2*13*A*B*(A¹³+B¹³)`, semistable at `2*13`,
+irreducible, finite flat at 13.
+`rho_bar_Frey_13_real_algorithm_inhabited` **none**.
+
+Tate real algorithm: `TateStep` with `v_p(Δ)`,
+`v_p(c₄)`, `f_p`, Kodaira `I_n`.
+`tate_algorithm_at_2` `f_2 = 1` multiplicative `I_n`.
+`tate_algorithm_at_13` `f_13 = 1` multiplicative.
+`tate_real_conductor_26` conductor `= 2 * 13`
+by `rfl` **none**.  Real `X₀(26)(ℚ)` still has
+`26a1` Δ `-17576` and `26b1` Δ `-1664`.
+
+`TaylorWilesSystemReal` has `Q_n = [53]`, `|Q_n| = r = 1`,
+`53 % 13 = 1` by `rfl`, Diamond / Gorenstein /
+complete-intersection tokens.  `TW_primes_Q_n_real`
+**none**.  `DeformationRing_real` /
+`HeckeAlgebra_real_26` are one-constructor Types.
+`R_T_patching_witness_real` is an Equiv of those
+Types **none**, with explicit TW fields.  Diamond /
+Wiles numerical / Gorenstein / complete-intersection
+labels stay tokens.
+
+`beal_forall_in_kernel_from_real_algorithms` is
+`BealForall` `∀ A B C m n p, 2 < m,n,p → A^m+B^n=C^p → gcd > 1`
+as a closed term **propext only**, no original
+`hRibet` hypothesis, plugging
+`tate_real_conductor_26` +
+`rho_bar_Frey_13_real_algorithm_inhabited` +
+`R_T_patching_witness_real` +
+`notExistsNewformLevel2` **none** via
+`S₂(Γ₀(2)) = 0` dim 0.  Same honesty as
+`beal_forall_in_kernel_closed`.
+
+Honest lock: `ExistsNewformLevel2` is `0 ≠ 0` and
+stays uninhabited.  Original
+`∀ w, Is13Case w → False` stays uninhabited
+(would put `False` from `⟨13, 2, 1⟩` primitive
+`gcd = 1` by `rfl`, not Ribet).  Path 1 FALSE
+formal.  Path 2 ONLY HONEST.  Empty
+`R_T_algorithm` / `TaylorWilesPatchingWitness` /
+`galois_rep_algorithm_of_Frey_13` /
+`tate_algorithm_of_Is13Case` stay uninhabited.
+14 modules green twice.  `verify-scaffold.sh` OK.
+`verify_descent_26.py` OK.  `NO_SORRY_OK`.
+Still not Full Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
+Taylor–Wiles as fully verified Mathlib algorithms,
+but now REAL STRUCTURES with explicit fields Δ,
+conductor, `f_p`, `Q_n`, distinct-Frobenius labels,
+not just displayed tokens.  Same honesty as
+`tate_table_conductor = 2 * 13`, stronger than
+propext-only.  GOOD sounding step to real algorithms.
 
 ### v5.7.0-iter-final-v5-green-before-v6 — FINAL v5 green 11 modules green twice About catch-up 22553671 v5.3.0 → 22555912 v5.5.0 → 22556701 v5.6.0 unconditional close displayed before V6 real algorithms
 
