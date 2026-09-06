@@ -1,7 +1,7 @@
 {
   "upload_type": "software",
-  "title": "Beal Level 26 Foundations — Typed ∧ Forall Axiom-Free Cert",
-  "description": "v4.20.0→v4.21.0 Typed ∧ Forall none: typed_and_forall <beal_exponent13_from_ribet, beal_forall_from_ribet> none, certified_typed_and_forall <certified_from_forall, beal_forall_certified_from_ribet> none via hGeomForbid_typed_true hNotIn hInList, beal_forall_from_ribet = Contradiction.beal_exponent13_from_ribet BRIDGE none, contradiction_from_ribet ribet_level_lowering_26 only, Contradiction.certified frey_modular_13+ribet_level_lowering_26, X0_26_Q rfl [1,2,13,26] Frey 2*13=26 26a1 -17576 26b1 -1664 |Sel2|=1 det M3=2 SHA d9d907f6cf... image >=300KB, still not forall N",
+  "title": "Beal Level 26 Foundations — Beal13-Forall-Bridge Triple Axiom-Free Cert",
+  "description": "Beal13-Forall-Bridge Triple Axiom-Free Cert: beal_forall_eq_exponent13_bridge none = beal_forall_from_ribet = Contradiction.beal_exponent13_from_ribet BRIDGE none hGeomForbid_typed_true hNotIn hInList, beal13_forall_bridge_triple <beal_exponent13_from_ribet, beal_forall_from_ribet, beal_forall_eq_exponent13_bridge> none, beal13_forall_bridge_triple_none_check same triple (not True; only ribet_secured_by_certs may be True), typed_and_forall none certified_typed_and_forall none, beal_forall_from_ribet none via hGeomForbid, contradiction_from_ribet ribet_level_lowering_26 only Contradiction.certified frey_modular_13+ribet_level_lowering_26, X0_26_Q rfl [1,2,13,26] Frey 2*13=26 26a1 -17576 26b1 -1664 |Sel2|=1 det M3=2 SHA d9d907f6cf... image >=300KB, still not forall N, parallel parent 22379293 mint 22407709 honest",
   "creators": [
     {
       "name": "Fox, David"

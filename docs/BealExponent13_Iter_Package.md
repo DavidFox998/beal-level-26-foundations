@@ -1,16 +1,24 @@
-# v4.23.0 Iter Package Final Bridge Lock — Axiom-Free Cert
+# v4.25.0 Beal13-Forall-Bridge Triple — Axiom-Free Cert
 
-Package lock for `BealExponent13_Iter_Package`. `final_package` is
-⟨`beal_exponent13_from_ribet`, `beal_forall_from_ribet`, `final_bridge`⟩.
-`final_bridge` is `beal_forall_from_ribet` =
+Package lock for `BealExponent13_Iter_Package`. Formerly
+`final_bridge` / `final_package` / `final_package_none` — now
+`beal_forall_eq_exponent13_bridge` / `beal13_forall_bridge_triple`
+/ `beal13_forall_bridge_triple_none_check`. That says what it is:
+forall = exponent13 bridge triple none.
+
+`beal13_forall_bridge_triple` is
+⟨`beal_exponent13_from_ribet`, `beal_forall_from_ribet`,
+`beal_forall_eq_exponent13_bridge`⟩.
+`beal_forall_eq_exponent13_bridge` is `beal_forall_from_ribet` =
 `Contradiction.beal_exponent13_from_ribet` -- BRIDGE none via
 `hGeomForbid_typed_true` (`hNotIn hInList`). This is **not**
 `∀ N` and **not** a Mathlib `X₀(26)(ℚ)` theorem.
 
 - `typed_and_forall` ⟨beal_exponent13_from_ribet, beal_forall_from_ribet⟩ — none
 - `certified_typed_and_forall` ⟨certified_from_forall, beal_forall_certified_from_ribet⟩ — none
-- `final_bridge` = `beal_forall_from_ribet` — none
-- `final_package` ⟨beal_exponent13_from_ribet, beal_forall_from_ribet, final_bridge⟩ — none
+- `beal_forall_eq_exponent13_bridge` = `beal_forall_from_ribet` — none
+- `beal13_forall_bridge_triple` ⟨beal_exponent13_from_ribet, beal_forall_from_ribet, beal_forall_eq_exponent13_bridge⟩ — none
+- `beal13_forall_bridge_triple_none_check` is the same triple (not `: True`; verify allows only `ribet_secured_by_certs` as `: True :=`)
 - `beal_forall_from_ribet` = `Contradiction.beal_exponent13_from_ribet` -- BRIDGE none via hGeomForbid
 - `X0_26_Q = {P | P.label ∈ fourCuspsList}` `rfl` `[1,2,13,26]` `P.mem`, Frey `2*13=26` `rfl`, `certs/pari_x0_26_four_cusps.json` 26a1 `[1,0,1,-5,-8]` `-17576` 26b1 `[1,-1,1,-3,3]` `-1664` `|Sel2|=1` det `M3=2` SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`, image `docs/images/2-descent-level-26-26a1-26b1.webp` ≥300KB
 
@@ -18,13 +26,14 @@ Package lock for `BealExponent13_Iter_Package`. `final_package` is
 
 | Theorem | Axioms |
 |---|---|
-| typed_and_forall | none |
-| certified_typed_and_forall | none |
-| final_bridge / final_package | none |
+| beal_forall_eq_exponent13_bridge | none = beal_forall_from_ribet = Contradiction.beal_exponent13_from_ribet BRIDGE none hGeomForbid_typed_true |
+| beal13_forall_bridge_triple | none ⟨beal_exponent13_from_ribet, beal_forall_from_ribet, beal_forall_eq_exponent13_bridge⟩ |
+| beal13_forall_bridge_triple_none_check / typed_and_forall / certified_typed_and_forall | none (check is the same triple; only ribet_secured_by_certs may be `: True :=`) |
 | beal_forall_from_ribet / certified_from_forall | none bridge Contradiction.beal_exponent13_from_ribet |
 | beal_exponent13_from_ribet / certified_from_ribet | none hGeomForbid |
 | contradiction_from_ribet | ribet_level_lowering_26 only |
 | Contradiction.certified | frey_modular_13 + ribet_level_lowering_26 |
+| final_bridge / final_package / final_package_none | none (legacy aliases) |
 
 PARI lock: 26a1 `-17576` 26b1 `-1664` `|Sel2|=1` det `M3=2` SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`, image ≥300KB.
 

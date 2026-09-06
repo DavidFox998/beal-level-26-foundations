@@ -69,35 +69,57 @@ def certified_typed_and_forall :
     BealTheorem_Exponent13_Typed ∧ BealTheorem_Exponent13_Typed :=
   ⟨certified_from_forall, beal_forall_certified_from_ribet⟩
 
-/-- FINAL BRIDGE: `beal_forall_from_ribet` is
+/-- Forall equals exponent13: `beal_forall_from_ribet` is
 `Contradiction.beal_exponent13_from_ribet` -- BRIDGE none via
-`hGeomForbid_typed_true` `hNotIn hInList`. Upstream
+`hGeomForbid_typed_true` (`hNotIn hInList`). Upstream
 `Contradiction.certified` needs `frey_modular_13` +
 `ribet_level_lowering_26`. Still not forall N. -/
-def final_bridge : BealTheorem_Exponent13_Typed :=
+def beal_forall_eq_exponent13_bridge : BealTheorem_Exponent13_Typed :=
   beal_forall_from_ribet
 
-/-- Triple lock of the axiom-free typed inhabitants.
+/-- Triple lock: exponent13, forall, and the forall=exponent13 bridge.
 Not `∀ ℕ` and not Mathlib `X₀(26)(ℚ)`. -/
+def beal13_forall_bridge_triple :
+    BealTheorem_Exponent13_Typed ∧
+      BealTheorem_Exponent13_Typed ∧
+      BealTheorem_Exponent13_Typed :=
+  ⟨beal_exponent13_from_ribet, beal_forall_from_ribet,
+    beal_forall_eq_exponent13_bridge⟩
+
+/-- Witness that `#print axioms beal13_forall_bridge_triple` is none.
+Same triple, not a `True` inhabitant. Not `∀ ℕ`. -/
+def beal13_forall_bridge_triple_none_check :
+    BealTheorem_Exponent13_Typed ∧
+      BealTheorem_Exponent13_Typed ∧
+      BealTheorem_Exponent13_Typed :=
+  beal13_forall_bridge_triple
+
+/-- Legacy alias of `beal_forall_eq_exponent13_bridge`. -/
+def final_bridge : BealTheorem_Exponent13_Typed :=
+  beal_forall_eq_exponent13_bridge
+
+/-- Legacy alias of `beal13_forall_bridge_triple`. -/
 def final_package :
     BealTheorem_Exponent13_Typed ∧
       BealTheorem_Exponent13_Typed ∧
       BealTheorem_Exponent13_Typed :=
-  ⟨beal_exponent13_from_ribet, beal_forall_from_ribet, final_bridge⟩
+  beal13_forall_bridge_triple
 
-/-- Witness that `#print axioms final_package` is none.
-Not a `True` inhabitant. Not `∀ ℕ`. -/
+/-- Legacy alias of `beal13_forall_bridge_triple_none_check`. -/
 theorem final_package_none :
     BealTheorem_Exponent13_Typed ∧
       BealTheorem_Exponent13_Typed ∧
       BealTheorem_Exponent13_Typed :=
-  final_package
+  beal13_forall_bridge_triple_none_check
 
 #print axioms BealExponent13_Iter_Package.certified_from_ribet
 #print axioms BealExponent13_Iter_Typed_And_Package.certified_from_ribet
 #print axioms certified_from_forall
 #print axioms typed_and_forall
 #print axioms certified_typed_and_forall
+#print axioms beal_forall_eq_exponent13_bridge
+#print axioms beal13_forall_bridge_triple
+#print axioms beal13_forall_bridge_triple_none_check
 #print axioms final_bridge
 #print axioms final_package
 #print axioms final_package_none

@@ -7,18 +7,18 @@
 
 This repo: v4.20.0 → v4.21.0 Typed ∧ Forall none — see docs/BealExponent13_Iter_Package.md
 
-## v4.23.0 Final Package — Triple Axiom-Free Cert
+## v4.25.0 Beal13-Forall-Bridge Triple — Axiom-Free Cert
 
 | Theorem | Axioms |
 |---|---|
-| final_bridge | none = beal_forall_from_ribet = Contradiction.beal_exponent13_from_ribet |
-| final_package | none ⟨exponent13, forall, bridge⟩ |
-| final_package_none / typed_and_forall / certified_typed_and_forall | none |
+| beal_forall_eq_exponent13_bridge | none = beal_forall_from_ribet = Contradiction.beal_exponent13_from_ribet BRIDGE none hGeomForbid_typed_true |
+| beal13_forall_bridge_triple | none ⟨beal_exponent13_from_ribet, beal_forall_from_ribet, beal_forall_eq_exponent13_bridge⟩ |
+| beal13_forall_bridge_triple_none_check / typed_and_forall / certified_typed_and_forall | none |
 | beal_forall_from_ribet / certified_from_forall / beal_exponent13_from_ribet | none hGeomForbid |
 | contradiction_from_ribet | ribet_level_lowering_26 only |
 | Contradiction.certified | frey_modular_13 + ribet_level_lowering_26 |
 
-`final_package_none` is the same triple as `final_package` (not `: True`; verify allows only `ribet_secured_by_certs` as `: True :=`). Still not ∀ N. Still not a Mathlib X0(26)(Q) theorem. PARI lock: 26a1 `-17576` 26b1 `-1664` `|Sel2|=1` det `M3=2` SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`, image `docs/images/2-descent-level-26-26a1-26b1.webp` ≥300KB.
+Formerly `final_bridge` / `final_package` / `final_package_none` — now `beal_forall_eq_exponent13_bridge` / `beal13_forall_bridge_triple` — says what it is: forall = exponent13 bridge triple none. `beal13_forall_bridge_triple_none_check` is the same triple (not `: True`; verify allows only `ribet_secured_by_certs` as `: True :=`). Legacy `final_*` aliases remain. Still not ∀ N. Still not a Mathlib X0(26)(Q) theorem. PARI lock: 26a1 `-17576` 26b1 `-1664` `|Sel2|=1` det `M3=2` SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`, image `docs/images/2-descent-level-26-26a1-26b1.webp` ≥300KB.
 
 ## v4.18.0 Typed ∧ Forall Lock — Axiom-Free Cert
 
@@ -56,8 +56,9 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
-[`v4.24.0-iter-readme-final-package-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.24.0-iter-readme-final-package-locked)
+[`v4.25.0-iter-zenodo-triple-bridge-none-mint`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.25.0-iter-zenodo-triple-bridge-none-mint)
 (prior
+[`v4.24.0-iter-readme-final-package-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.24.0-iter-readme-final-package-locked),
 [`v4.23.0-iter-package-final-bridge-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.23.0-iter-package-final-bridge-locked),
 [`v4.22.0-iter-zenodo-parent-fix`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.22.0-iter-zenodo-parent-fix),
 [`v4.21.0-iter-zenodo-mint`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.21.0-iter-zenodo-mint),
