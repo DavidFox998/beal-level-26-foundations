@@ -3,6 +3,7 @@ import BealLevel26Foundations.Chain.Level2
 import BealLevel26Foundations.Chain.X0_26_Point
 import BealLevel26Foundations.Chain.X0_26_Q
 import BealLevel26Foundations.Final.BealExponent13_Final
+import BealLevel26Foundations.Frey.FreyConductor_26
 import BealLevel26Foundations.Frey.FreyCurve13
 import BealLevel26Foundations.Frey.FreyModularity_13
 import BealLevel26Foundations.Mazur.BealExponent13_Contradiction
@@ -180,6 +181,14 @@ displayed `S₂(Γ₀(2))` dimension `0` (`rfl`).  Not Mathlib
 modular forms.  `ribet_produces_newform_level2_of_weierstrass_modularity`
 stays uninhabited (needs Ribet; conductor label `rfl`, not
 Tate).
+
+## v4.47.0 Tate conductor from `Is13Case`
+
+`Frey.FreyConductor26.Is13Case` is `13 ∣ A*B*C` on bases.
+`frey_conductor_26_rfl` is `2 * 13` by `rfl` (**none**).
+`Frey.FreyConductor26.frey_conductor_26_of_Is13Case` is the
+uninhabited Tate sketch.  Mathlib 4.12 has no Tate algorithm.
+Inhabiting it by the `rfl` label is not Tate.
 -/
 
 /-- Primitive Beal-shaped counterexample (`x,y,z ≥ 3`, `gcd = 1`).
@@ -429,6 +438,11 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Frey.FreyCurve13.FreyCurve13_of_BealCounterexampleBases
 #check BealLevel26Foundations.Frey.FreyCurve13.frey_conductor_26_eq
 #check BealLevel26Foundations.Frey.FreyCurve13.frey_conductor_26_of_Is13Case
+#check BealLevel26Foundations.Frey.FreyCurve13.frey_conductor_26_rfl
+#check BealLevel26Foundations.Frey.FreyConductor26.Is13Case
+#check BealLevel26Foundations.Frey.FreyConductor26.frey_conductor_26_of_Is13Case
+#check BealLevel26Foundations.Frey.FreyConductor26.frey_conductor_26_rfl
+#print axioms BealLevel26Foundations.Frey.FreyConductor26.frey_conductor_26_rfl
 #check ExistsNoncuspidal_26_of_Is13CaseSketch
 #check BealLevel26Foundations.Frey.FreyModularity13.WeierstrassModularity
 #check BealLevel26Foundations.Frey.FreyModularity13.WeierstrassModularity_of_pack

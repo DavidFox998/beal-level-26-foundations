@@ -92,12 +92,17 @@ theorem frey_conductor_26_eq_two_mul_13 :
     frey_conductor_26 = 2 * 13 :=
   rfl
 
-/-- Displayed working-prime label `2 * 13`.  Named for the
-13-case target.  Does not take `Is13Case` and does not run
-Tate.  Same `rfl` as `frey_conductor_26_eq`. -/
+/-- Displayed working-prime label `2 * 13`.  `rfl`, not Tate.
+v4.47.0 Tate sketch is
+`Frey.FreyConductor26.frey_conductor_26_of_Is13Case`
+(uninhabited). -/
+theorem frey_conductor_26_rfl : frey_conductor_26 = 2 * 13 :=
+  rfl
+
+/-- Legacy name of `frey_conductor_26_rfl`.  Still `rfl`. -/
 theorem frey_conductor_26_of_Is13Case :
     frey_conductor_26 = 2 * 13 :=
-  rfl
+  frey_conductor_26_rfl
 
 #check FreyCurve13_of_BealCounterexample
 #check FreyCurve13_of_BealCounterexampleBases
@@ -105,6 +110,7 @@ theorem frey_conductor_26_of_Is13Case :
 #print axioms FreyCurve13_of_BealCounterexampleBases
 #print axioms freyCurve13_of_bases_disc_ne_zero
 #print axioms frey_conductor_26_eq
+#print axioms frey_conductor_26_rfl
 #print axioms frey_conductor_26_of_Is13Case
 
 end BealLevel26Foundations.Frey.FreyCurve13

@@ -40,3 +40,5 @@ v4.45.0: `X0_26_Q_Point_to_ExistsNoncuspidal` is
 `Nonempty → ExistsNoncuspidal_26` uninhabited. Empty inductive.
 v4.46.0: real `X₀(26)(ℚ)` has 26a1/26b1; contradiction is
 `S₂(Γ₀(2))=0` no newform. `notExistsNewformLevel2` **none**.
+v4.47.0: Tate conductor from `Is13Case` (`13 ∣ A*B*C`)
+uninhabited; `frey_conductor_26_rfl` is `rfl`.

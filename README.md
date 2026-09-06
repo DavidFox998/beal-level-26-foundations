@@ -9,6 +9,16 @@ v4.43.0 Ribet sketches take `WeierstrassModularity` and stay uninhabited. `Weier
 v4.44.0 `X0_26_Q_Point` is `Σ (E : EllipticCurve ℚ), CyclicSubgroup E 26` started; Mathlib 4.12 has no `X₀(26)(ℚ)`. Ribet sketches stay uninhabited, still not `∀ A B C`.
 v4.45.0 `X0_26_Q_Point_to_ExistsNoncuspidal` is `Nonempty → ExistsNoncuspidal_26` uninhabited. Empty inductive, still not `∀ A B C`.
 v4.46.0 real `X₀(26)(ℚ)` has 26a1/26b1 so cusp→False is false; contradiction is `S₂(Γ₀(2))=0` no newform. Still not `∀ A B C`.
+v4.47.0 Tate conductor from `Is13Case` (`13 ∣ A*B*C`) is an uninhabited sketch; `frey_conductor_26_rfl` stays `rfl`. Still not `∀ A B C`.
+
+### v4.47.0-iter-tate-conductor-26-from-Is13Case
+
+`Frey.FreyConductor26.Is13Case` is `13 ∣ A*B*C` on bases.
+`frey_conductor_26_rfl` is `2 * 13` by `rfl` (**none**).
+`frey_conductor_26_of_Is13Case` in that file is the
+uninhabited Tate sketch: Mathlib 4.12 has no Tate algorithm.
+Real `X₀(26)(ℚ)` has `26a1` / `26b1`.  The contradiction is
+level 2, no newform.  Need Tate plus Ribet.
 
 ### v4.46.0-iter-level-2-no-newform
 

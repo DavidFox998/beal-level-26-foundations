@@ -605,3 +605,33 @@ PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
 SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 Hook `22379293`.  Parallel mint `22545169` (v4.45.0) until a new mint.
 Original-family latest remains `22322627`.
+
+### v4.47.0-iter-tate-conductor-26-from-Is13Case
+
+Tate conductor 26 from `Is13Case`.
+`Frey.FreyConductor26.Is13Case` is `13 ∣ A*B*C` on bases
+(not Forall `13 ∣ x*y*z`).  `frey_conductor_26_rfl` is
+`2 * 13` by `rfl` (**none**).
+`Frey.FreyConductor26.frey_conductor_26_of_Is13Case` stays
+uninhabited: Mathlib 4.12 has no Tate algorithm.  Real
+`X₀(26)(ℚ)` has `26a1` / `26b1`.  The contradiction is
+level 2, no newform.  Need Tate plus Ribet.
+
+| Name | Status |
+|---|---|
+| `frey_conductor_26_rfl` | **none** `2 * 13` by `rfl` |
+| `Frey.FreyConductor26.frey_conductor_26_of_Is13Case` | uninhabited; needs Tate |
+| `notExistsNewformLevel2` | **none** via `S₂(Γ₀(2)) = 0` displayed dim `0` |
+| `ribet_produces_newform_level2_of_weierstrass_modularity` | uninhabited; needs Ribet |
+| `notExistsNoncuspidal_26_proved` | **none** via `hGeomForbid` four cusps label `∈ [1,2,13,26]` `P.mem` |
+| `fourCuspsForallCuspPoints_of_P_mem` | **none** |
+| `existsNoncuspidal_26_implies_False` | **none** |
+| `X0_26_Q_Point_to_ExistsNoncuspidal` | uninhabited |
+| `beal_forall_from_ribet` | **none** |
+
+Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22545580` (v4.46.0) until a new mint.
+Original-family latest remains `22322627`.
+
