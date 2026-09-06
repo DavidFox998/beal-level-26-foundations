@@ -1,3 +1,19 @@
+[![Latest Mint](https://zenodo.org/badge/DOI/10.5281/zenodo.22450737.svg)](https://doi.org/10.5281/zenodo.22450737)
+[![Hook 22379293](https://zenodo.org/badge/DOI/10.5281/zenodo.22379293.svg)](https://doi.org/10.5281/zenodo.22379293)
+
+### v4.27.0 X0(26)(Q) Cusps P-mem Locked — DOI 22450737
+
+| Name | What |
+|---|---|
+| X0_26_Q / X0_26_cusps | = [1,2,13,26] rfl P.mem mem_1 mem_2 mem_13 mem_26 not_mem_3 |
+| hInList_X0_26 / hNotIn_X0_26 | P.mem lemmas for hGeomForbid_typed_true |
+| beal_forall_eq_exponent13_bridge | none = beal_forall_from_ribet = Contradiction.beal_exponent13_from_ribet BRIDGE none hGeomForbid_typed_true (hNotIn hInList) |
+| beal13_forall_bridge_triple | none ⟨exponent13,forall,bridge⟩ — formerly final_* |
+
+Hook `22379293` `IsVersionOf` `22272382` is metadata only. Mint `10.5281/zenodo.22450737` findable (index ~19 of the parallel parent). Original-concept latest remains v4.0.9 `10.5281/zenodo.22322627`.
+
+PARI lock: 26a1 Δ `-17576` 26b1 Δ `-1664` `|Sel2|=1` det `M3=2` SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260` image `docs/images/2-descent-level-26-26a1-26b1.webp` ≥300KB.
+
 # Beal Level 26 Foundations — Exponent 13 Full Package (Computational Boundary)
 
 ## v4.27.0 X₀(26) Four Cusps — `P.mem` Lock
@@ -44,7 +60,7 @@ PARI 2-descent certificates for the Jacobian factors of \(J_0(26)\). Certified W
 Versioned release notes for
 [beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations).
 
-**Current as of** tag `v4.7.0-iter-typed-no-axioms-closing` / `v4.8.0-iter-modularity-scaffold` / `v4.9.0-iter-no-True-X0` / `v4.10.0-iter-pari-locked` / `v4.12.0-iter-verify-plus` / `v4.13.0-iter-contradiction-start` / `v4.13.1-iter-unstick` / `v4.14.0-iter-citation-contradiction-locked` / `v4.15.0-iter-typed-forall-bridge` / `v4.16.0-iter-readme-about-locked` / `v4.17.0-iter-forall-bridge-locked` / `v4.18.0-iter-typed-forall-package-locked` / `v4.19.0-iter-readme-typed-forall-locked` / `v4.20.0-iter-package-none-docs-locked` / `v4.23.0-iter-package-final-bridge-locked` / `v4.24.0-iter-readme-final-package-locked` / `v4.25.0-iter-zenodo-triple-bridge-none-mint` / `v4.27.0-iter-X0-26-cusps-P-mem-locked` (prior
+**Current as of** tag `v4.7.0-iter-typed-no-axioms-closing` / `v4.8.0-iter-modularity-scaffold` / `v4.9.0-iter-no-True-X0` / `v4.10.0-iter-pari-locked` / `v4.12.0-iter-verify-plus` / `v4.13.0-iter-contradiction-start` / `v4.13.1-iter-unstick` / `v4.14.0-iter-citation-contradiction-locked` / `v4.15.0-iter-typed-forall-bridge` / `v4.16.0-iter-readme-about-locked` / `v4.17.0-iter-forall-bridge-locked` / `v4.18.0-iter-typed-forall-package-locked` / `v4.19.0-iter-readme-typed-forall-locked` / `v4.20.0-iter-package-none-docs-locked` / `v4.23.0-iter-package-final-bridge-locked` / `v4.24.0-iter-readme-final-package-locked` / `v4.25.0-iter-zenodo-triple-bridge-none-mint` / `v4.27.0-iter-X0-26-cusps-P-mem-locked` / `v4.28.0-iter-zenodo-X0-26-cusps-metadata-mint` (prior
 `v4.6.0-readmes-about`,
 `v4.5.0-forall-real`,
 `v4.4.0-typed-refactor-true-close`,
