@@ -43,3 +43,17 @@ primitive (`gcd = 1`) or not (`gcd > 1`).
 Bases are not primitive-by-definition.
 The packed twin stays uninhabited (`gcd = 1` by
 `primitive` if that field is present).
+
+### v4.52.0 primitive subtype: exists vs forall false
+
+`IsPrimitive w := w.gcd = 1` is a derived Prop, not a
+structure field.  `BealPrimitiveCounterexampleBases` is
+`{w // IsPrimitive w}`.
+`triple_13_2_1_primitive` is `rfl` (**propext**).
+`exists_primitive_Is13Case_gcd_1` is
+`∃ w` primitive `Is13Case w.val ∧ w.val.gcd = 1` (**propext**).
+`forall_primitive_Is13Case_gcd_gt1_false` is
+`¬ ∀ w` primitive `Is13Case → gcd > 1` (**propext**).
+`Is13CaseForcesGcdGt1SketchPrimitive` stays uninhabited
+and is now provably false, not just uninhabited.
+`Is13Case → False` stays a valid type, uninhabited.

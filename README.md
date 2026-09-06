@@ -14,6 +14,24 @@ v4.48.0 `Is13CaseForcesFalseSketchViaLevel2` is `∀ w, Is13Case w → False` un
 v4.49.0 `beal_forall_from_Is13Case_sketch` is `∀ A B C` uninhabited (needs Tate+Ribet+GcdGt1); still not `∀ A B C`.
 v4.50.0 `13 ∣ A*B*C` splits to one factor (`Is13Case_prime_dvd` none); `⟨13,2,1⟩` has gcd 1, so GcdGt1 stays uninhabited. Still not `∀ A B C`.
 v4.51.0 `triple_13_2_1` gcd=1 by `rfl`; bases not primitive-by-definition; GcdGt1 stays uninhabited. Still not `∀ A B C`.
+v4.52.0 `IsPrimitive` subtype; ∃ primitive Is13Case gcd=1 vs ∀ gcd>1 false. Still not `∀ A B C`.
+
+### v4.52.0-iter-primitive-field-Is13Case-gcd-false-exists
+
+add `IsPrimitive w := w.gcd=1`,
+`BealPrimitiveCounterexampleBases := {w // IsPrimitive w}`,
+`triple_13_2_1` `⟨13,2,1⟩` gcd=1 `rfl` dvd `13|13*2*1` decide
+valid base primitive, `triple_13_2_1_primitive` `IsPrimitive`,
+`exists_primitive_Is13Case_gcd_1` `∃ w` primitive `Is13Case w ∧ gcd=1`
+`rfl` **propext**,
+`forall_primitive_Is13Case_gcd_gt1_false`
+`¬ (∀ w` primitive `Is13Case w → gcd>1)` false via counterexample,
+so `Is13CaseForcesGcdGt1SketchPrimitive` stays uninhabited false
+not just uninhabited, `Is13Case_prime_dvd`
+`13|A*B*C → 13|A ∨ 13|B ∨ 13|C` via `Nat.Prime.dvd_mul`,
+one factor ≠ common factor,
+`Is13CaseForcesFalseSketchViaLevel2` `∀ w Is13Case w→False`
+valid type uninhabited needs Tate+Ribet level 2 none.
 
 ### v4.51.0-iter-gcd-counterexample-rfl-primitive
 

@@ -14,6 +14,7 @@ open BealLevel26Foundations.Frey.FreyConductor26
 # v4.49.0 Beal forall sketch from the 13-case
 # v4.50.0 why GcdGt1 stays uninhabited
 # v4.51.0 gcd counterexample `rfl` + primitive vs not
+# v4.52.0 primitive subtype: exists gcd=1 vs forall gcd>1 false
 
 `Frey.FreyConductor26.Is13Case` is `13 ∣ A*B*C` on shared
 bases.  Forall.`Is13Case` is `13 ∣ x*y*z` on a packed
@@ -136,8 +137,10 @@ theorem Is13Case_not_implies_gcd_eq_one :
 `13 ∣ A*B*C` is not a common factor (one factor 13 ≠ common
 factor), so `∀ w, Is13Case w → w.gcd > 1` is false.
 Not Forall.`Is13CaseForcesGcdGt1Sketch`.  The packed twin
-stays uninhabited (`gcd = 1` by `primitive` if that field
-is present; this file does not add it). -/
+stays uninhabited (`gcd = 1` by packed `primitive`).
+`IsPrimitive` is now a derived Prop (`w.gcd = 1`); the
+primitive forall is separately false via
+`forall_primitive_Is13Case_gcd_gt1_false`. -/
 def Is13CaseForcesGcdGt1Sketch : Prop :=
   ∀ (w : BealCounterexampleBases),
     Is13Case w → w.gcd > 1
@@ -151,6 +154,49 @@ theorem not_Is13CaseForcesGcdGt1Sketch :
     match Is13Case_gcd_counterexample with
     | ⟨w, h13, hgcd⟩ =>
       Nat.lt_irrefl (1 : Nat) (hgcd ▸ h w h13)
+
+/-- `gcd = 1` on the named triple.  Same as `gcd_13_2_1_eq_1`. -/
+def triple_13_2_1_primitive : IsPrimitive triple_13_2_1 :=
+  gcd_13_2_1_eq_1
+
+/-- Named primitive subtype witness. -/
+def triple_13_2_1_is_primitive_counterexample :
+    BealPrimitiveCounterexampleBases :=
+  ⟨triple_13_2_1, triple_13_2_1_primitive⟩
+
+/-- `13 ∣ 13*2*1`.  Same as `Is13Case_triple_13_2_1`. -/
+theorem primitive_13_2_1_is_Is13Case : Is13Case triple_13_2_1 :=
+  Is13Case_triple_13_2_1
+
+/-- A primitive 13-case with `gcd = 1`.  One factor 13 is
+not a common factor. -/
+def exists_primitive_Is13Case_gcd_1 :
+    ∃ w : BealPrimitiveCounterexampleBases,
+      Is13Case w.val ∧ w.val.gcd = 1 :=
+  ⟨triple_13_2_1_is_primitive_counterexample,
+    primitive_13_2_1_is_Is13Case, gcd_13_2_1_eq_1⟩
+
+/-- Uninhabited and false.  Primitive bases may still have
+`Is13Case` with `gcd = 1`.  Distinct from inhabiting this
+Prop: the inhabitant would be a term of a false forall. -/
+def Is13CaseForcesGcdGt1SketchPrimitive : Prop :=
+  ∀ (w : BealPrimitiveCounterexampleBases),
+    Is13Case w.val → w.val.gcd > 1
+
+/-- The primitive GcdGt1 forall is false.  Uses
+`exists_primitive_Is13Case_gcd_1` and `Nat.lt_irrefl`.
+Does not inhabit `Is13CaseForcesGcdGt1SketchPrimitive`. -/
+theorem forall_primitive_Is13Case_gcd_gt1_false :
+    ¬ (∀ (w : BealPrimitiveCounterexampleBases),
+        Is13Case w.val → w.val.gcd > 1) :=
+  fun h =>
+    match exists_primitive_Is13Case_gcd_1 with
+    | ⟨w, h13, hgcd⟩ =>
+      Nat.lt_irrefl (1 : Nat) (hgcd ▸ h w h13)
+
+theorem not_Is13CaseForcesGcdGt1SketchPrimitive :
+    ¬ Is13CaseForcesGcdGt1SketchPrimitive :=
+  forall_primitive_Is13Case_gcd_gt1_false
 
 /-- Beal conjecture as a Prop.  Valid type
 `∀ A B C m n p`.  Uninhabited: needs Tate + Ribet + a
@@ -209,6 +255,16 @@ theorem beal_forall_of_Is13Case_composition
 #check primitive_vs_not_primitive
 #check Is13Case_not_implies_gcd_eq_one
 #check not_Is13CaseForcesGcdGt1Sketch
+#check IsPrimitive
+#check IsPrimitiveBases
+#check BealPrimitiveCounterexampleBases
+#check triple_13_2_1_primitive
+#check triple_13_2_1_is_primitive_counterexample
+#check primitive_13_2_1_is_Is13Case
+#check exists_primitive_Is13Case_gcd_1
+#check Is13CaseForcesGcdGt1SketchPrimitive
+#check forall_primitive_Is13Case_gcd_gt1_false
+#check not_Is13CaseForcesGcdGt1SketchPrimitive
 #print axioms gcd_13_2_1_eq_1
 #print axioms dvd_13_2_1
 #print axioms Is13Case_gcd_counterexample_rfl
@@ -217,6 +273,10 @@ theorem beal_forall_of_Is13Case_composition
 #print axioms Is13Case_prime_dvd
 #print axioms Is13Case_gcd_counterexample
 #print axioms not_Is13CaseForcesGcdGt1Sketch
+#print axioms triple_13_2_1_primitive
+#print axioms exists_primitive_Is13Case_gcd_1
+#print axioms forall_primitive_Is13Case_gcd_gt1_false
+#print axioms not_Is13CaseForcesGcdGt1SketchPrimitive
 #print axioms beal_forall_from_Is13Case_sketch_type_eq
 #print axioms beal_forall_of_Is13Case_composition
 

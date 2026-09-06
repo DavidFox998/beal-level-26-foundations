@@ -752,3 +752,30 @@ SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 Hook `22379293`.  Parallel mint `22548659` (v4.50.0) until a new mint.
 Original-family latest remains `22322627`.
 
+### v4.52.0-iter-primitive-field-Is13Case-gcd-false-exists
+
+`IsPrimitive` is the derived Prop `w.gcd = 1`.
+`BealPrimitiveCounterexampleBases` is the subtype.
+`triple_13_2_1` remains `⟨13,2,1⟩` with `gcd = 1` by `rfl`.
+The primitive forall `gcd > 1` is false via that witness.
+
+| Name | Status |
+|---|---|
+| `IsPrimitive` | def `w.gcd = 1`; not a structure field |
+| `BealPrimitiveCounterexampleBases` | subtype `{w // IsPrimitive w}` |
+| `triple_13_2_1` | `⟨13,2,1⟩`; `gcd_13_2_1_eq_1` `rfl` **propext** |
+| `triple_13_2_1_primitive` | `IsPrimitive` `rfl` **propext** |
+| `exists_primitive_Is13Case_gcd_1` | `∃` primitive `Is13Case` `gcd=1` **propext** |
+| `forall_primitive_Is13Case_gcd_gt1_false` | `¬∀` primitive `Is13Case → gcd>1` **propext** |
+| `Is13CaseForcesGcdGt1SketchPrimitive` | uninhabited false (not just uninhabited) |
+| `Is13Case_prime_dvd` | **propext** `Classical.choice` `Quot.sound` |
+| `notExistsNewformLevel2` | **none** via `S₂(Γ₀(2))` dim `0` |
+| `Is13CaseForcesFalseSketchViaLevel2` | uninhabited; needs Tate + Ribet |
+| `X0_26_Q_Point` | empty inductive; real curve has `26a1` Δ `-17576` and `26b1` Δ `-1664` |
+
+Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22548882` (v4.51.0) until a new mint.
+Original-family latest remains `22322627`.
+
