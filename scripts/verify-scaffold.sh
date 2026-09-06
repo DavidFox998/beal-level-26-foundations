@@ -90,6 +90,7 @@ test -f docs/Chain/X0_26_Point.md
 test -f docs/releases/v4.27.0-iter-X0-26-cusps-P-mem-locked.md
 test -f docs/releases/v4.28.0-iter-zenodo-X0-26-cusps-metadata-mint.md
 test -f docs/releases/v4.29.0-iter-readme-X0-26-22452680-locked.md
+test -f docs/releases/v4.30.0-iter-zenodo-22456594-metadata-fix.md
 test -f docs/Chain/README.md
 test -f docs/Modularity/README.md
 test -f docs/Mazur/README.md
@@ -430,6 +431,8 @@ do
   grep -q "depends on no axioms" "$readme"
   grep -q "not \`∀ ℕ\`" "$readme"
   grep -q "no \`False.elim\`" "$readme"
+  grep -q "22452680" "$readme"
+  grep -q "22456594" "$readme"
 done
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md
@@ -1102,7 +1105,8 @@ grep -q "theorem X0_26_Q_eq_fourCuspsList" \
   lean/BealLevel26Foundations/Chain/X0_26_Point.lean
 grep -A3 "theorem X0_26_Q_eq_fourCuspsList" \
   lean/BealLevel26Foundations/Chain/X0_26_Point.lean | grep -q rfl
-# v4.13.1: do not grep Zenodo version-DOI record ids (search lag is not failure).
+# v4.13.1: do not grep unconfirmed Zenodo version-DOI record ids.
+# v4.30.0: lock confirmed 22452680 + 22456594 so stale README badges fail.
 grep -q "2-descent-level-26-26a1-26b1.webp" docs/README.md
 grep -q "2-descent-level-26-26a1-26b1.webp" \
   lean/BealLevel26Foundations/Chain/X0_26_Point.lean
@@ -1244,6 +1248,11 @@ grep -q "final_package" README.md
 grep -q "final_package" docs/README.md
 grep -q "beal13_forall_bridge_triple" README.md
 grep -q "beal13_forall_bridge_triple" docs/README.md
+grep -q "22452680" README.md
+grep -q "22456594" README.md
+grep -q "X0_26_cusps" README.md
+grep -q "beal_forall_eq_exponent13_bridge" \
+  lean/BealLevel26Foundations/Final/BealExponent13_Iter_Package.lean
 grep -q "X0_26_cusps" \
   lean/BealLevel26Foundations/Chain/X0_26_Point.lean
 grep -q "theorem X0_26_Q_eq_cusps" \

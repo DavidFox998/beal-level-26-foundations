@@ -1,5 +1,6 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22452680.svg)](https://doi.org/10.5281/zenodo.22452680)
 [![Hook 22379293](https://zenodo.org/badge/DOI/10.5281/zenodo.22379293.svg)](https://doi.org/10.5281/zenodo.22379293)
+Extra-loop verify: 22452680 22456594 hook 22379293 IsVersionOf 22272382 X0_26_cusps
 [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 [![v4.0.9-fourCusps-forall DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22322627.svg)](https://doi.org/10.5281/zenodo.22322627)
 [![CI](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml/badge.svg)](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml)
@@ -18,7 +19,7 @@ PARI lock: 26a1 Δ `-17576` 26b1 Δ `-1664` `|Sel2|=1` det `M3=2` SHA `d9d907f6c
 
 # Beal Level 26 Foundations — Exponent 13 Full Package (Computational Boundary)
 
-This repo: v4.29.0 README lock DOI 22452680 + forall A B C prep — see docs/BealExponent13_Iter_Package.md and docs/Chain/X0_26_Point.md
+This repo: v4.30.0 metadata fix 22452680→22456594 + verify grep lock — see docs/BealExponent13_Iter_Package.md and docs/Chain/X0_26_Point.md
 
 ## v4.25.0 Beal13-Forall-Bridge Triple — Axiom-Free Cert
 
@@ -69,6 +70,8 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
+[`v4.30.0-iter-zenodo-22456594-metadata-fix`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.30.0-iter-zenodo-22456594-metadata-fix)
+(prior
 [`v4.29.0-iter-readme-X0-26-22452680-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.29.0-iter-readme-X0-26-22452680-locked)
 (prior
 [`v4.28.0-iter-zenodo-X0-26-cusps-metadata-mint`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.28.0-iter-zenodo-X0-26-cusps-metadata-mint)

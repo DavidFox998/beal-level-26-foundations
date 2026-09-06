@@ -1,15 +1,15 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite the corrected v1.0.1-computable release (10.5281/zenodo.22272714) and this package under concept DOI 10.5281/zenodo.22272382."
-title: "Beal Level 26 Foundations — X0(26)(Q) Cusps P-mem [1,2,13,26] + Beal13-Forall-Bridge Triple None — DOI 22450737"
+title: "Beal Level 26 Foundations — X0(26)(Q) Cusps P-mem [1,2,13,26] + README Sweep 22452680 → 22456594 + Beal13-Forall-Bridge Triple None"
 type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v4.28.0-iter-zenodo-X0-26-cusps-metadata-mint"
+version: "v4.30.0-iter-zenodo-22456594-metadata-fix"
 date-released: "2026-09-06"
 doi: "10.5281/zenodo.22272382"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
-url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.28.0-iter-zenodo-X0-26-cusps-metadata-mint"
+url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.30.0-iter-zenodo-22456594-metadata-fix"
 license: MIT
 keywords:
   - beal-conjecture
@@ -21,19 +21,23 @@ keywords:
   - 2-descent
   - axiom-free
 abstract: >-
-  X0(26)(Q) Cusps P-mem Locked: X0_26_Q = [1,2,13,26] cusps rfl
-  P.mem mem_1 mem_2 mem_13 mem_26 not_mem_3 hInList_X0_26
-  hNotIn_X0_26 for hGeomForbid_typed_true,
+  X0(26)(Q) Cusps P-mem Locked [1,2,13,26] rfl P.mem mem_1 mem_2
+  mem_13 mem_26 not_mem_3 hInList_X0_26 hNotIn_X0_26 for
+  hGeomForbid_typed_true, READMEs sweep all folders badges DOI
+  22452680 findable records 22450737 hook 22379293 IsVersionOf
+  22272382 metadata only original latest 22322627, new mint
+  22456594 findable version v4.29.0-iter-readme-X0-26-22452680-locked
+  READMEs point at 22452680, about updated,
   beal_forall_eq_exponent13_bridge none = beal_forall_from_ribet =
   Contradiction.beal_exponent13_from_ribet BRIDGE none hGeomForbid,
   beal13_forall_bridge_triple ⟨exponent13,forall,bridge⟩ none
-  formerly final_*, typed_and_forall ⟨...⟩ none
-  certified_typed_and_forall none, contradiction_from_ribet ribet
-  only Contradiction.certified frey+ribet, PARI 26a1 -17576 26b1
-  -1664 |Sel2|=1 det M3=2 SHA
+  formerly final_*, typed_and_forall none, forall prep comment
+  forall A B C reduces to p=13 dividing xyz via Ribet level
+  lowering to 26 then X0(26)(Q)=cusps forces gcd>1 still not
+  inhabited No False.elim, PARI 26a1 -17576 26b1 -1664 Sel2=1
+  det M3=2 SHA
   d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260
-  image >=300KB, still not forall A B C still not Mathlib
-  X0(26)(Q), parallel parent 22379293 mint 22450737 honest
+  image >=300KB hook 22379293 honest
 identifiers:
   - type: doi
     value: 10.5281/zenodo.22272382
