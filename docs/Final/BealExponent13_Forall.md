@@ -56,16 +56,18 @@ defs.  The sketch is:
    every remaining prime `p ≥ 5` is handled, would give full
    Beal.  Step 5 is not in the kernel.
 
-Named Lean (all axiom-free; `#print axioms` is `none`):
+Named Lean (`beal_forall_from_ribet` stays **none**;
+the two new names use `propext` only, from Nat `∣` / the
+implication — not `frey_modular_13` or `ribet_level_lowering_26`):
 
 | Name | What it actually is |
 |---|---|
 | `BealCounterexample` | Packed primitive Beal-shaped witness (`x,y,z ≥ 3`) |
 | `BealCounterexampleOn A B C` | `∃` such a witness on those bases |
 | `BealCounterexampleAt13 A B C` | Equal-exponent-13 instance on those bases |
-| `beal_prime_divisor_13_of_counterexample` | 13-**case** hypothesis: `13 ∣ x*y*z → 13 ∣ x*y*z`.  Not `∀` counterexamples. |
+| `beal_prime_divisor_13_of_counterexample` | 13-**case** hypothesis: `13 ∣ x*y*z → 13 ∣ x*y*z`.  Not `∀` counterexamples.  Axioms: `propext`. |
 | `BealForallReducesToExponent13Sketch` | The missing implication (uninhabited) |
-| `beal_forall_reduces_to_exponent13` | Applies the sketch: `hSketch → (∀ A B C, ¬ At13) → (∀ A B C, ¬ On)` |
+| `beal_forall_reduces_to_exponent13` | Applies the sketch: `hSketch → (∀ A B C, ¬ At13) → (∀ A B C, ¬ On)`.  Axioms: `propext`. |
 
 `verify-scaffold.sh` rejects `sorry` / `admit` tree-wide.  The
 user-shaped universal statements

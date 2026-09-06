@@ -59,8 +59,10 @@ noncuspidal rational point of `X₀(26)`.  The displayed lock
 `A^13+B^13=C^13`, not full Beal for every prime `p ≥ 5`.
 
 `beal_forall_from_ribet` stays the typed close (`none` via
-`hGeomForbid_typed_true`).  No `sorry`, no `False.elim`, no
-`: True :=`.  New names are allowed to be tautological.
+`hGeomForbid_typed_true`).  No `sorry`, no `False.elim`, and
+no new `True` inhabitant.  New names are tautological and may
+use `propext` (Nat `∣`); they are not `frey_modular_13` /
+`ribet_level_lowering_26`.
 -/
 
 /-- Primitive Beal-shaped counterexample (`x,y,z ≥ 3`, `gcd = 1`).
@@ -95,7 +97,7 @@ def BealCounterexampleAt13 (A B C : Nat) : Prop :=
 level 26.  This does **not** assert that every counterexample
 has `13 ∣ xyz` (exponents may be `3,4,5,…` with no factor 13).
 
-Axiom-free.  No `sorry`.  `#print axioms` is `none`. -/
+No `sorry`.  `#print axioms` is `propext` only (Nat `∣`). -/
 def beal_prime_divisor_13_of_counterexample
     (h : BealCounterexample)
     (h13 : 13 ∣ h.x * h.y * h.z) :
@@ -118,7 +120,8 @@ Beal-shaped solution on any bases `A B C`.  The sketch is not
 discharged here: proving `¬ BealCounterexampleAt13` for all
 bases is still not `∀ A B C, ¬ BealCounterexampleOn`.
 
-Axiom-free tautology.  No `sorry`, no `False.elim`. -/
+Tautology on the sketch.  No `sorry`, no `False.elim`.
+`#print axioms` is `propext` only. -/
 theorem beal_forall_reduces_to_exponent13
     (hSketch : BealForallReducesToExponent13Sketch)
     (h : ∀ A B C : Nat, ¬ BealCounterexampleAt13 A B C) :
