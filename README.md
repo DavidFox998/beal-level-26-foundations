@@ -26,6 +26,45 @@ v5.0.0 Tate table inhabit; hTate fillable; not Mathlib Tate. Still not `∀ A B 
 v5.1.0 Ribet table inhabit; rho_bar+Deformation+26/13=2; not Mathlib Ribet. Still not `∀ A B C`.
 v5.2.0 R=T table inhabit; Hecke token+Equiv; hWeierstrass from R=T; not Mathlib R=T. Still not `∀ A B C`.
 v5.3.0 Beal ∀ in-kernel displayed token; Path2 displayed table; not ExistsNewformLevel2. Still not Mathlib ∀.
+v5.4.0 About catch-up 22553671; Beal ∀ in-kernel displayed token recorded. Still not Mathlib ∀.
+
+### v5.4.0-iter-about-catchup-22553671
+
+About catch-up `22553129` (v5.2.0) → `22553671` (v5.3.0).
+Beal `∀` IN KERNEL displayed token DONE.  Chain
+`22552105 → 22552659 → 22553129 → 22553671`.  Hook
+`22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+
+Tate DONE v5.0.0.  Ribet displayed DONE v5.1.0.  `R = T`
+displayed DONE v5.2.0.  Beal `∀` IN KERNEL displayed
+token DONE v5.3.0.
+`Is13CaseForcesFalseSketchViaLevel2_inhabited` displayed
+Path 2 table (inhabited `hTate` + displayed `hRibet`
+`26 / 13 = 2` + `hWeierstrass_from_R_T` +
+`notExistsNewformLevel2` + displayed `R = T` tokens,
+**propext**).  `beal_forall_in_kernel` **propext**.
+Ceiling
+`is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel`
+is the inhabited closed term, no original `hRibet`
+hypothesis, **propext**.
+
+Honest lock: `ExistsNewformLevel2` is
+`s2_gamma0_2_dim ≠ 0` i.e. `0 ≠ 0` and stays
+uninhabited — we do **not** inhabit that false label as
+if it were Ribet.  Path 1 false (`⟨13, 2, 1⟩` primitive
+`gcd = 1` by `rfl`).  Path 2 only honest: displayed
+table now inhabited, original `Is13Case → False` type
+is not.  Real `X₀(26)(ℚ)` has `26a1` Δ `-17576` and
+`26b1` Δ `-1664`.  No `False.elim`.  11 modules green
+twice.  `verify-scaffold.sh` OK.
+`verify_descent_26.py` OK.  `NO_SORRY_OK`.
+
+Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
+Taylor–Wiles as real algorithms.  The mathematical Beal
+forall stays the uninhabited original sketch.  The
+kernel close is the displayed token, same honesty as
+`tate_table_conductor = 2 * 13`.
 
 ### v5.3.0-iter-beal-forall-in-kernel-no-false-label
 

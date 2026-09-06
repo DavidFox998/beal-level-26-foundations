@@ -109,3 +109,16 @@ Taylor–Wiles as real algorithms.
 Path 1 stays false (`⟨13, 2, 1⟩`).  Path 2 is the only
 honest route (displayed table now inhabited).  No
 `False.elim`.
+
+`Is13CaseForcesFalseSketchViaLevel2_inhabited` **propext**.
+`beal_forall_in_kernel` **propext**.
+
+### v5.4.0-iter-about-catchup-22553671 — DONE
+
+About catch-up `22553129` (v5.2.0) → `22553671` (v5.3.0).
+Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+Chain `22552105 → 22552659 → 22553129 → 22553671`.
+Beal `∀` IN KERNEL displayed token DONE v5.3.0.
+No Lean change.  Same honesty as
+`tate_table_conductor = 2 * 13`.
