@@ -31,6 +31,11 @@ does not construct a Galois representation.
 
 This file does **not** import
 `BealTheoremFromMazurChain26` (cycle).
+
+v4.42.0: a `WeierstrassCurve Int` *value* is not a `Type`,
+so `Modularity` does not apply to it.  The wrapper
+`WeierstrassModularity` lives in
+`Frey/FreyModularity_13.lean` and does not change this axiom.
 -/
 
 /-- Displayed Frey curve for exponent 13.  Not a Weierstrass

@@ -29,3 +29,5 @@ point. `ExistsNoncuspidal_26_of_Is13CaseSketch` stays uninhabited.
 v4.41.0: `ribet_produces_noncuspidal_of_weierstrass` and
 `weierstrass_modularity_gives_ExistsNoncuspidal_sketch` stay
 uninhabited. `WeierstrassCurve` is not `DisplayedX026CuspPoint`.
+v4.42.0: `WeierstrassModularity (FreyCurve13_of_BealCounterexampleBases w)`
+is a valid type. Ribet sketches stay uninhabited.

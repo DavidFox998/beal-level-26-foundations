@@ -21,3 +21,7 @@ Not Mathlib modularity. Not a Lean Ribet theorem.
 v4.41.0 Weierstrass-to-`ExistsNoncuspidal_26` sketches live in
 [`../../lean/BealLevel26Foundations/Ribet/RibetLevelLowering_26.lean`](../../lean/BealLevel26Foundations/Ribet/RibetLevelLowering_26.lean)
 and stay uninhabited.
+v4.42.0 `WeierstrassModularity` in
+[`../../lean/BealLevel26Foundations/Frey/FreyModularity_13.lean`](../../lean/BealLevel26Foundations/Frey/FreyModularity_13.lean)
+is displayed `Modularity (FreyCurve13 w.A w.B w.C)` for the pack.
+`WeierstrassCurve` has no `.A`. Ribet sketches stay uninhabited.

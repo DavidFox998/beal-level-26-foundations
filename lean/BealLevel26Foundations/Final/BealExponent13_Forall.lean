@@ -2,6 +2,7 @@ import BealLevel26Foundations.Base.BealCounterexampleBase
 import BealLevel26Foundations.Chain.X0_26_Point
 import BealLevel26Foundations.Final.BealExponent13_Final
 import BealLevel26Foundations.Frey.FreyCurve13
+import BealLevel26Foundations.Frey.FreyModularity_13
 import BealLevel26Foundations.Mazur.BealExponent13_Contradiction
 import BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26
 import BealLevel26Foundations.Modularity.FreyModularity_13
@@ -133,6 +134,15 @@ and the conductor *label*.  `Modularity` does not apply to a
 `WeierstrassCurve` value.  Both stay uninhabited: need Ribet
 on Mathlib `X₀(26)(ℚ)`.  Inhabiting plus
 `notExistsNoncuspidal_26_proved` would be `False`.
+
+## v4.42.0 WeierstrassModularity bridge
+
+`WeierstrassModularity c` is `∃ w, c = pack w ∧
+Modularity (FreyCurve13 w.A w.B w.C)`.
+`WeierstrassModularity (FreyCurve13_of_BealCounterexampleBases w)`
+is a valid type.  `WeierstrassCurve` has no `.A`.
+`WeierstrassModularity_of_pack` is `frey_modular_13`.
+The Ribet sketches now take that bridge and stay uninhabited.
 -/
 
 /-- Primitive Beal-shaped counterexample (`x,y,z ≥ 3`, `gcd = 1`).
@@ -383,8 +393,11 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Frey.FreyCurve13.frey_conductor_26_eq
 #check BealLevel26Foundations.Frey.FreyCurve13.frey_conductor_26_of_Is13Case
 #check ExistsNoncuspidal_26_of_Is13CaseSketch
+#check BealLevel26Foundations.Frey.FreyModularity13.WeierstrassModularity
+#check BealLevel26Foundations.Frey.FreyModularity13.WeierstrassModularity_of_pack
 #check BealLevel26Foundations.Ribet.RibetLevelLowering26.ribet_produces_noncuspidal_of_weierstrass
 #check BealLevel26Foundations.Ribet.RibetLevelLowering26.weierstrass_modularity_gives_ExistsNoncuspidal_sketch
+#print axioms BealLevel26Foundations.Frey.FreyModularity13.WeierstrassModularity_of_pack
 #check existsNoncuspidal_26_implies_False
 #check beal_13_case_implies_False_of_ExistsNoncuspidal
 #print axioms notExistsNoncuspidal_26_proved

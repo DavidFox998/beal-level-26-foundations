@@ -26,6 +26,12 @@ not Mathlib modularity and not a Lean Ribet theorem.
 | `FreyModularity_13.lean` | `FreyCurve13` displayed triple; empty `Modularity` inductive; `axiom frey_modular_13`; `frey_conductor_26 = 26`; `freyLevel26_computational` is `2 * 13 = 26` | Not Wiles--Taylor; not a Frey Weierstrass model |
 | `RibetLevelLowering_26.lean` | `axiom ribet_level_lowering_26`; `ribet_secured_by_certs` lists PARI `\|Sel₂\|=1` twice, `det M₃=2`, SHA-256 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260` | Not Ribet; not a modular-curve point |
 
+v4.42.0 `WeierstrassModularity` is in
+[`../Frey/FreyModularity_13.lean`](../Frey/FreyModularity_13.lean):
+a `WeierstrassCurve Int` value is not a `Type`, so
+`Modularity` does not apply to it.  The wrapper is displayed
+`Modularity (FreyCurve13 w.A w.B w.C)` for the pack.
+
 The only axioms in the tree are `frey_modular_13` and
 `ribet_level_lowering_26`, each marked
 `COMPUTATIONAL ASSUMPTION`. Mazur imports both plus
