@@ -17,6 +17,41 @@ v4.51.0 `triple_13_2_1` gcd=1 by `rfl`; bases not primitive-by-definition; GcdGt
 v4.52.0 `IsPrimitive` subtype; ∃ primitive Is13Case gcd=1 vs ∀ gcd>1 false. Still not `∀ A B C`.
 v4.53.0 Path1 gcd>1 false; Path2 only honest `Is13Case → False` via level 2. Still not `∀ A B C`.
 v4.54.0 conditional `hTate+hRibet+hComp+hΔ → Beal ∀`; does not inhabit unconditional False. Still not `∀ A B C`.
+v4.55.0 explicit Δ≠0; propext-only Beal ∀ via hTate+hRibet+hWeierstrass. Still not `∀ A B C`.
+
+### v4.55.0-iter-delta-ne0-explicit-conditional-propext-only
+
+explicit Δ≠0 from `FreyCurve13_of_BealCounterexampleBases`
+`Y²=X(X−A¹³)(X+B¹³)` via `frey_Delta13_ne_0_of_pos`
+`∀ w 0<A 0<B → Δ≠0`.  `#print axioms` is **propext** +
+`Classical.choice` + `Quot.sound` (same as
+`freyCurve_discriminant_ne_zero`), not none.  The
+Weierstrass match is
+`Δ = 16*(A¹³)²*(B¹³)²*(A¹³+B¹³)² ≠ 0` when `A,B>0`
+(`Real/FreyWeierstrass`); the informal writeup
+`16*(A¹³*B¹³*C¹³)²` is that formula when
+`A¹³+B¹³=C¹³`.  Bases carry no equation, so `C` is not
+in the displayed Δ.
+
+NEW conditional wiring
+`is13Case_false_implies_Beal_of_tate_ribet_disc` takes
+`hTate` `frey_conductor_26_of_Is13Case` uninhabited +
+`hRibet` `ribet_produces_newform_level2` `26/13=2`
+uninhabited + Path 2 `hComp` + explicit `hΔ` Δ≠0 → Beal `∀`
+`∀ A B C` without inhabiting unconditional `Is13Case→False`.
+Axioms **propext** + existing `frey_modular_13`.
+
+NEW propext-only variant
+`is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only`
+takes `hTate` `hRibet` `hWeierstrassModularity`
+`∀ w Δ≠0 → WeierstrassModularity (pack w)` as hypothesis
+→ Beal `∀` conditional **propext only** (no existing
+`frey_modular_13` axiom in its axioms).
+
+`hDelta_of_pos` / `is13Case_false_implies_Beal_of_tate_ribet_disc_of_pos`
+feed `frey_Delta13_ne_0_of_pos` when `0<A` and `0<B`.
+Path1 false `⟨13,2,1⟩` `rfl` Path2 only honest
+`Is13Case→False` valid type needs Tate+Ribet level2 none.
 
 ### v4.54.0-iter-Beal-from-Is13Case-False-conditional-wiring
 

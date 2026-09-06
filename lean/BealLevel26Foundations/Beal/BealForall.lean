@@ -2,6 +2,7 @@ import BealLevel26Foundations.Base.BealCounterexampleBase
 import BealLevel26Foundations.Chain.Beal13CaseToFalse
 import BealLevel26Foundations.Frey.FreyConductor_26
 import BealLevel26Foundations.Frey.FreyCurve13
+import BealLevel26Foundations.Frey.FreyModularity_13
 import BealLevel26Foundations.Ribet.RibetLevelLowering_26
 import Mathlib.Data.Nat.Prime.Defs
 
@@ -12,7 +13,9 @@ open BealLevel26Foundations.Chain.Beal13CaseToFalse
 open BealLevel26Foundations.Frey.FreyConductor26
   (Is13Case frey_conductor_26_of_Is13Case)
 open BealLevel26Foundations.Frey.FreyCurve13
-  (FreyCurve13_of_BealCounterexampleBases)
+  (FreyCurve13_of_BealCounterexampleBases frey_Delta13_ne_0_of_pos)
+open BealLevel26Foundations.Frey.FreyModularity13
+  (WeierstrassModularity)
 open BealLevel26Foundations.Ribet.RibetLevelLowering26
   (ribet_produces_newform_level2_of_weierstrass_modularity)
 
@@ -23,6 +26,7 @@ open BealLevel26Foundations.Ribet.RibetLevelLowering26
 # v4.52.0 primitive subtype: exists gcd=1 vs forall gcd>1 false
 # v4.53.0 only honest path is Is13Case → False via level 2
 # v4.54.0 conditional Beal from Tate + Ribet + Path 2 composition
+# v4.55.0 explicit Δ ≠ 0 and propext-only conditional wiring
 
 `Frey.FreyConductor26.Is13Case` is `13 ∣ A*B*C` on shared
 bases.  Forall.`Is13Case` is `13 ∣ x*y*z` on a packed
@@ -307,10 +311,17 @@ def is13Case_false_implies_Beal_of_tate_ribet_disc_type : Prop :=
       beal_forall_from_Is13Case_sketch
 
 /-- Conditional wiring.  Builds a *local* `Is13Case → False`
-from Tate + Ribet + Δ ≠ 0, then applies Path 2
+from Tate + Ribet + explicit Δ ≠ 0, then applies Path 2
 `beal_forall_from_Is13Case_false_sketch`.  Does **not**
 inhabit `Is13CaseForcesFalseSketchViaLevel2`.  Does **not**
-inhabit the Path 2 composition.  No `False.elim`. -/
+inhabit the Path 2 composition.  No `False.elim`.
+
+`hΔ` is the explicit discriminant hypothesis.  The pack is
+`Y² = X(X − A¹³)(X + B¹³)`.  `frey_Delta13_ne_0_of_pos`
+proves Δ ≠ 0 from `0 < A` and `0 < B`; `Is13Case` does not
+imply positivity (`A = 0` can satisfy `13 ∣ A*B*C`).
+`#print axioms` is `propext` + existing `frey_modular_13`
+via `WeierstrassModularity_of_pack`.  Not Wiles–Taylor. -/
 def is13Case_false_implies_Beal_of_tate_ribet_disc
     (hTate : frey_conductor_26_of_Is13Case)
     (hRibet : ribet_produces_newform_level2_of_weierstrass_modularity)
@@ -322,6 +333,76 @@ def is13Case_false_implies_Beal_of_tate_ribet_disc
   hComp (fun w h13 =>
     is13Case_implies_False_of_tate_ribet_disc hTate hRibet w h13
       (hΔ w h13))
+
+/-- Explicit Δ ≠ 0 on the 13-case from `0 < A` and `0 < B`.
+Uses `frey_Delta13_ne_0_of_pos` on
+`Y² = X(X − A¹³)(X + B¹³)`.  `Is13Case` does not imply
+positivity, so `hPos` is required. -/
+def hDelta_of_pos
+    (hPos : ∀ (w : BealCounterexampleBases),
+      Is13Case w → 0 < w.A ∧ 0 < w.B)
+    (w : BealCounterexampleBases)
+    (h13 : Is13Case w) :
+    (FreyCurve13_of_BealCounterexampleBases w).Δ ≠ 0 :=
+  frey_Delta13_ne_0_of_pos w (hPos w h13).1 (hPos w h13).2
+
+/-- Same wiring with Δ ≠ 0 from positivity via
+`frey_Delta13_ne_0_of_pos`.  Axioms pick up
+`Classical.choice` / `Quot.sound` from the Δ lemma plus
+existing `frey_modular_13`. -/
+def is13Case_false_implies_Beal_of_tate_ribet_disc_of_pos
+    (hTate : frey_conductor_26_of_Is13Case)
+    (hRibet : ribet_produces_newform_level2_of_weierstrass_modularity)
+    (hComp : beal_forall_from_Is13Case_false_sketch)
+    (hPos : ∀ (w : BealCounterexampleBases),
+      Is13Case w → 0 < w.A ∧ 0 < w.B) :
+    beal_forall_from_Is13Case_sketch :=
+  is13Case_false_implies_Beal_of_tate_ribet_disc
+    hTate hRibet hComp (hDelta_of_pos hPos)
+
+/-- Uninhabited type of the propext-only variant without
+`hComp` / `hΔ`.  `hTate → hRibet → hWeierstrass → Beal ∀`
+is still uninhabited: `Is13Case → False` is not Beal. -/
+def is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only_type :
+    Prop :=
+  frey_conductor_26_of_Is13Case →
+    ribet_produces_newform_level2_of_weierstrass_modularity →
+      (∀ (w : BealCounterexampleBases),
+        (FreyCurve13_of_BealCounterexampleBases w).Δ ≠ 0 →
+          WeierstrassModularity
+            (FreyCurve13_of_BealCounterexampleBases w)) →
+        beal_forall_from_Is13Case_sketch
+
+/-- v4.55.0 **propext-only** variant: take Tate, Ribet, and
+Weierstrass modularity as **hypotheses**.  Does **not**
+call `WeierstrassModularity_of_pack`, so it does not pull
+the existing `frey_modular_13` computational assumption.
+Does **not** call `frey_Delta13_ne_0_of_pos`, so it does
+not pull `Classical.choice`.
+
+`hΔ` is extra: `Is13Case` does not imply Δ ≠ 0.
+`frey_Delta13_ne_0_of_pos` proves Δ ≠ 0 from `0 < A` and
+`0 < B` but is **not** used here.
+
+Does **not** inhabit `Is13CaseForcesFalseSketchViaLevel2`.
+Uses Path 2, not Path 1.  No `False.elim`.
+`#print axioms` is `propext` only. -/
+def is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only
+    (hTate : frey_conductor_26_of_Is13Case)
+    (hRibet : ribet_produces_newform_level2_of_weierstrass_modularity)
+    (hWeierstrass :
+      ∀ (w : BealCounterexampleBases),
+        (FreyCurve13_of_BealCounterexampleBases w).Δ ≠ 0 →
+          WeierstrassModularity
+            (FreyCurve13_of_BealCounterexampleBases w))
+    (hComp : beal_forall_from_Is13Case_false_sketch)
+    (hΔ : ∀ (w : BealCounterexampleBases),
+      Is13Case w →
+      (FreyCurve13_of_BealCounterexampleBases w).Δ ≠ 0) :
+    beal_forall_from_Is13Case_sketch :=
+  hComp (fun w h13 =>
+    is13Case_implies_False_of_tate_ribet_weierstrass
+      hTate hRibet hWeierstrass w h13 (hΔ w h13))
 
 #check Is13Case
 #check Is13CaseForcesGcdGt1Sketch
@@ -358,6 +439,11 @@ def is13Case_false_implies_Beal_of_tate_ribet_disc
 #check only_honest_path_is_False_via_level2
 #check is13Case_false_implies_Beal_of_tate_ribet_disc_type
 #check is13Case_false_implies_Beal_of_tate_ribet_disc
+#check hDelta_of_pos
+#check is13Case_false_implies_Beal_of_tate_ribet_disc_of_pos
+#check is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only_type
+#check is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only
+#check frey_Delta13_ne_0_of_pos
 #print axioms gcd_13_2_1_eq_1
 #print axioms dvd_13_2_1
 #print axioms Is13Case_gcd_counterexample_rfl
@@ -376,5 +462,9 @@ def is13Case_false_implies_Beal_of_tate_ribet_disc
 #print axioms beal_forall_holds_of_Is13Case_false
 #print axioms only_honest_path_is_False_via_level2
 #print axioms is13Case_false_implies_Beal_of_tate_ribet_disc
+#print axioms hDelta_of_pos
+#print axioms is13Case_false_implies_Beal_of_tate_ribet_disc_of_pos
+#print axioms is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only
+#print axioms frey_Delta13_ne_0_of_pos
 
 end BealLevel26Foundations.Beal.BealForall

@@ -100,6 +100,13 @@ v4.54.0 adds `is13Case_false_implies_Beal_of_tate_ribet_disc`:
 Tate + Ribet + Path 2 composition + Δ ≠ 0 → Beal `∀`,
 without inhabiting unconditional `Is13Case → False`.
 
+v4.55.0 makes Δ ≠ 0 explicit via
+`frey_Delta13_ne_0_of_pos` on
+`Y² = X(X − A¹³)(X + B¹³)` and adds
+`is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only`:
+`hTate → hRibet → hWeierstrass → Beal ∀` with modularity
+as a hypothesis, so `#print axioms` is `propext` only.
+
 `Is13CaseForcesGcdGt1Sketch` stays uninhabited.  The proposed
 term `frey_modular_13 w h13` / `ribet_level_lowering_26 hFrey`
 / `hGeomForbid_typed_true hRibet …` does not type-check.
@@ -516,6 +523,12 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Beal.BealForall.only_honest_path_is_False_via_level2
 #check BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_tate_ribet_disc
 #check BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_tate_ribet_disc_type
+#check BealLevel26Foundations.Beal.BealForall.hDelta_of_pos
+#check BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_tate_ribet_disc_of_pos
+#check BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only
+#check BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only_type
+#check BealLevel26Foundations.Frey.FreyCurve13.frey_Delta13_ne_0_of_pos
+#check BealLevel26Foundations.Chain.Beal13CaseToFalse.is13Case_implies_False_of_tate_ribet_weierstrass
 #print axioms BealLevel26Foundations.Beal.BealForall.gcd_13_2_1_eq_1
 #print axioms BealLevel26Foundations.Beal.BealForall.dvd_13_2_1
 #print axioms BealLevel26Foundations.Beal.BealForall.Is13Case_gcd_counterexample_rfl
@@ -526,6 +539,8 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #print axioms BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_false_sketch_type_eq
 #print axioms BealLevel26Foundations.Beal.BealForall.only_honest_path_is_False_via_level2
 #print axioms BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_tate_ribet_disc
+#print axioms BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only
+#print axioms BealLevel26Foundations.Frey.FreyCurve13.frey_Delta13_ne_0_of_pos
 #check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_sketch
 #check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_sketch_valid_type
 #check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_composition

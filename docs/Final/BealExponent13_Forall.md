@@ -823,3 +823,27 @@ SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 Hook `22379293`.  Parallel mint `22549609` (v4.53.0) until a new mint.
 Original-family latest remains `22322627`.
 
+### v4.55.0-iter-delta-ne0-explicit-conditional-propext-only
+
+Explicit Δ ≠ 0 from the working-prime pack
+`Y² = X(X − A¹³)(X + B¹³)`.  Conditional Beal `∀` now
+has a propext-only variant that takes Weierstrass
+modularity as a hypothesis.
+
+| Name | Status |
+|---|---|
+| `frey_Delta13_ne_0_of_pos` | `∀ w, 0 < A → 0 < B → Δ ≠ 0` on `FreyCurve13_of_BealCounterexampleBases`; **propext** + `Classical.choice` + `Quot.sound` (same as `freyCurve_discriminant_ne_zero`); Weierstrass Δ is `16*(A¹³)²*(B¹³)²*(A¹³+B¹³)²` |
+| `is13Case_false_implies_Beal_of_tate_ribet_disc` | `hTate+hRibet+hComp+hΔ → Beal ∀` explicit Δ ≠ 0; conditional **propext** + existing `frey_modular_13` |
+| `is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only` | `hTate → hRibet → hWeierstrass → Beal ∀` modularity as hypothesis; conditional **propext only** |
+| `hDelta_of_pos` | positivity → Δ ≠ 0 via `frey_Delta13_ne_0_of_pos` |
+| Path 1 | false via `triple_13_2_1` `rfl` |
+| Path 2 | `Is13CaseForcesFalseSketchViaLevel2` valid type; uninhabited; needs Tate + Ribet |
+| `notExistsNewformLevel2` | **none** via `S₂(Γ₀(2))` dim `0` |
+| `X0_26_Q_Point` | empty inductive; real curve has `26a1` Δ `-17576` and `26b1` Δ `-1664` |
+
+Still not `∀ A B C` unconditionally.  Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22549784` (v4.54.0) until a new mint.
+Original-family latest remains `22322627`.
+

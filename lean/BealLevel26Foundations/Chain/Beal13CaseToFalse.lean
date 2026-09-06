@@ -15,12 +15,13 @@ open BealLevel26Foundations.Frey.FreyCurve13
   (FreyCurve13_of_BealCounterexampleBases
     freyCurve13_of_bases_disc_ne_zero)
 open BealLevel26Foundations.Frey.FreyModularity13
-  (WeierstrassModularity_of_pack)
+  (WeierstrassModularity WeierstrassModularity_of_pack)
 open BealLevel26Foundations.Ribet.RibetLevelLowering26
   (ribet_produces_newform_level2_of_weierstrass_modularity)
 
 /-!
 # v4.48.0 Is13Case → False via level 2 — uninhabited
+# v4.55.0 weierstrass-as-hypothesis False wiring (propext only)
 
 `Frey.FreyConductor26.Is13Case` is `13 ∣ A*B*C` on shared
 bases.  It is not Forall.`Is13Case` (`13 ∣ x*y*z`).
@@ -95,12 +96,32 @@ theorem is13Case_implies_False_of_tate_ribet_pos
   is13Case_implies_False_of_tate_ribet_disc hTate hRibet w h13
     (freyCurve13_of_bases_disc_ne_zero w hA hB)
 
+/-- Same False wiring, modularity as a hypothesis.
+Does **not** use `WeierstrassModularity_of_pack`, so it
+does not pull `frey_modular_13`.  Still does not inhabit
+the unconditional sketch. -/
+theorem is13Case_implies_False_of_tate_ribet_weierstrass
+    (hTate : frey_conductor_26_of_Is13Case)
+    (hRibet : ribet_produces_newform_level2_of_weierstrass_modularity)
+    (hWeierstrass :
+      ∀ (w : BealCounterexampleBases),
+        (FreyCurve13_of_BealCounterexampleBases w).Δ ≠ 0 →
+          WeierstrassModularity
+            (FreyCurve13_of_BealCounterexampleBases w))
+    (w : BealCounterexampleBases)
+    (h13 : Is13Case w)
+    (hΔ : (FreyCurve13_of_BealCounterexampleBases w).Δ ≠ 0) :
+    False :=
+  notExistsNewformLevel2
+    (hRibet w hΔ (hWeierstrass w hΔ) (hTate w h13 hΔ))
+
 #check Is13Case
 #check Is13CaseForcesFalseSketchViaLevel2
 #check Is13CaseForcesFalseSketchViaLevel2_valid_type
 #check (∀ (w : BealCounterexampleBases), Is13Case w → False)
 #check is13Case_implies_False_of_tate_ribet_disc
 #check is13Case_implies_False_of_tate_ribet_pos
+#check is13Case_implies_False_of_tate_ribet_weierstrass
 #check frey_conductor_26_of_Is13Case
 #check ribet_produces_newform_level2_of_weierstrass_modularity
 #check notExistsNewformLevel2
@@ -108,5 +129,8 @@ theorem is13Case_implies_False_of_tate_ribet_pos
 #print axioms Is13CaseForcesFalseSketchViaLevel2_type_eq
 #print axioms notExistsNewformLevel2
 #print axioms WeierstrassModularity_of_pack
+#print axioms is13Case_implies_False_of_tate_ribet_disc
+#print axioms is13Case_implies_False_of_tate_ribet_pos
+#print axioms is13Case_implies_False_of_tate_ribet_weierstrass
 
 end BealLevel26Foundations.Chain.Beal13CaseToFalse

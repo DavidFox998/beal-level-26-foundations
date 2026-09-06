@@ -78,3 +78,17 @@ Beal `∀`.  It builds a *local* `Is13Case → False` and does
 Axioms **propext** + existing `frey_modular_13`.
 `is13Case_false_implies_Beal_of_tate_ribet_disc_type` is
 the uninhabited `hTate → hRibet → Beal ∀`.
+
+### v4.55.0 explicit Δ ≠ 0 and propext-only wiring
+
+`frey_Delta13_ne_0_of_pos` is `∀ w, 0 < A → 0 < B → Δ ≠ 0`
+on `Y² = X(X − A¹³)(X + B¹³)`.  Axioms **propext** +
+`Classical.choice` + `Quot.sound`.
+`is13Case_false_implies_Beal_of_tate_ribet_disc` still
+takes explicit `hΔ` (propext + `frey_modular_13`).
+`is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only`
+takes `hTate`, `hRibet`, and `hWeierstrass` as hypotheses
+so `#print axioms` is **propext only**.
+`hDelta_of_pos` feeds positivity into the existing Δ lemma.
+Does **not** inhabit unconditional `Is13Case → False`.
+No `False.elim`.

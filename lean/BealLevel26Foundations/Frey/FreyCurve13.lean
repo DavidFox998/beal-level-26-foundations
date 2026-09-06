@@ -83,6 +83,16 @@ theorem freyCurve13_of_bases_disc_ne_zero
     simpa [Nat.cast_add, Nat.cast_pow] using hCast
   exact freyCurve_discriminant_ne_zero hA0 hB0 hSum
 
+/-- Explicit Δ ≠ 0 from `0 < A` and `0 < B` on the
+working-prime pack `Y² = X(X − A¹³)(X + B¹³)`.
+Same as `freyCurve13_of_bases_disc_ne_zero`.  Not a
+conductor and not from `Is13Case`. -/
+theorem frey_Delta13_ne_0_of_pos
+    (w : BealCounterexampleBases)
+    (hA : 0 < w.A) (hB : 0 < w.B) :
+    (FreyCurve13_of_BealCounterexampleBases w).Δ ≠ 0 :=
+  freyCurve13_of_bases_disc_ne_zero w hA hB
+
 /-- Displayed conductor *label*.  Not Tate.  Not from
 `Is13Case` and not from `13 ∣ A*B*C`. -/
 theorem frey_conductor_26_eq : frey_conductor_26 = 26 :=
@@ -109,6 +119,8 @@ theorem frey_conductor_26_of_Is13Case :
 #print axioms FreyCurve13_of_BealCounterexample
 #print axioms FreyCurve13_of_BealCounterexampleBases
 #print axioms freyCurve13_of_bases_disc_ne_zero
+#print axioms frey_Delta13_ne_0_of_pos
+#check frey_Delta13_ne_0_of_pos
 #print axioms frey_conductor_26_eq
 #print axioms frey_conductor_26_rfl
 #print axioms frey_conductor_26_of_Is13Case
