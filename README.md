@@ -5,6 +5,28 @@ v4.35.0 `#check is13CaseForcesGcdGt1Sketch_inhabited` is `BealTheorem_Exponent13
 v4.40.0 `FreyCurve13_of_BealCounterexampleBases` is Weierstrass `freyCurve ↑A ↑B 13 13`, not a noncuspidal `X₀(26)` point. `ExistsNoncuspidal_26_of_Is13CaseSketch` still uninhabited, still not `∀ A B C`.
 v4.41.0 `ribet_produces_noncuspidal_of_weierstrass` / `weierstrass_modularity_gives_ExistsNoncuspidal_sketch` stay uninhabited. `WeierstrassCurve` is not `DisplayedX026CuspPoint`, still not `∀ A B C`.
 v4.42.0 `WeierstrassModularity (FreyCurve13_of_BealCounterexampleBases w)` is a valid type; Ribet sketches stay uninhabited, still not `∀ A B C`.
+v4.43.0 Ribet sketches take `WeierstrassModularity` and stay uninhabited. `WeierstrassCurve` is not `DisplayedX026CuspPoint`, still not `∀ A B C`.
+
+### v4.43.0-iter-ribet-takes-weierstrass-bridge
+
+`WeierstrassCurve Int` has `a₁…a₆`, not `.A`/`.B`/`.C`.
+`WeierstrassModularity c` is `∃ w, c = pack w ∧
+Modularity (FreyCurve13 w.A w.B w.C)`.
+`WeierstrassModularity (FreyCurve13_of_BealCounterexampleBases w)`
+is a valid type.  `WeierstrassModularity_of_pack` is
+`frey_modular_13` (`propext` + that axiom).  Not Wiles--Taylor.
+No new axiom.
+
+`ribet_produces_noncuspidal_of_weierstrass` stays the displayed
+`Modularity (FreyCurve13 A B C)` sketch.
+`ribet_produces_noncuspidal_of_weierstrass_modularity` and
+`weierstrass_modularity_gives_ExistsNoncuspidal_sketch` take the
+bridge.  All three stay uninhabited:
+`WeierstrassCurve` ≠ `DisplayedX026CuspPoint`.  Mathlib 4.12 has
+no `X₀(26)(ℚ)` and no Ribet.  Inhabiting any plus
+`notExistsNoncuspidal_26_proved` would be `False` (`rfl` conductor
+label, not Tate).
+
 [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 [![v4.0.9-fourCusps-forall DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22322627.svg)](https://doi.org/10.5281/zenodo.22322627)
 [![CI](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml/badge.svg)](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml)

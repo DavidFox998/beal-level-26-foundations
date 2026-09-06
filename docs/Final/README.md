@@ -31,3 +31,5 @@ v4.41.0: `ribet_produces_noncuspidal_of_weierstrass` and
 uninhabited. `WeierstrassCurve` is not `DisplayedX026CuspPoint`.
 v4.42.0: `WeierstrassModularity (FreyCurve13_of_BealCounterexampleBases w)`
 is a valid type. Ribet sketches stay uninhabited.
+v4.43.0: `ribet_produces_noncuspidal_of_weierstrass_modularity`
+takes the bridge and stays uninhabited.

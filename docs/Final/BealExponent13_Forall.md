@@ -474,5 +474,39 @@ and no Ribet theorem.  Inhabiting either sketch plus
 Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)`.
 PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
 SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
-Hook `22379293`.  Parallel mint `22543638` (v4.41.0).
+Hook `22379293`.  Parallel mint `22543834` (v4.42.0).
+Original-family latest remains `22322627`.
+
+### v4.43.0-iter-ribet-takes-weierstrass-bridge
+
+`WeierstrassCurve Int` has `a₁…a₆`, not `.A`/`.B`/`.C`.
+`WeierstrassModularity (FreyCurve13_of_BealCounterexampleBases w)`
+is a valid type.  `WeierstrassModularity_of_pack` is
+`frey_modular_13`.  Not Wiles--Taylor.  No new axiom.
+
+`ribet_produces_noncuspidal_of_weierstrass` keeps displayed
+`Modularity (FreyCurve13 A B C)`.
+`ribet_produces_noncuspidal_of_weierstrass_modularity` and
+`weierstrass_modularity_gives_ExistsNoncuspidal_sketch` take
+the bridge.  All three stay uninhabited.
+
+| Name | Status |
+|---|---|
+| `ExistsNoncuspidal_26_of_Is13CaseSketch` | uninhabited |
+| `ribet_produces_noncuspidal_of_weierstrass` | uninhabited |
+| `ribet_produces_noncuspidal_of_weierstrass_modularity` | uninhabited |
+| `weierstrass_modularity_gives_ExistsNoncuspidal_sketch` | uninhabited |
+| `existsNoncuspidal_26_implies_False` | **none** |
+| `notExistsNoncuspidal_26_proved` | **none** via `hGeomForbid` four cusps label `∈ [1,2,13,26]` `P.mem` |
+| `fourCuspsForallCuspPoints_of_P_mem` | **none** via `P.mem` / `displayed_mem_cusps` / `hInList_label` |
+| `beal_forall_from_ribet` | **none** |
+| `Is13CaseForcesGcdGt1Sketch` | uninhabited |
+
+Inhabiting a Ribet sketch plus `notExistsNoncuspidal_26_proved`
+would be `False` (`rfl` conductor label, not Tate).
+
+Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)`.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22543834` (v4.42.0) until a new mint.
 Original-family latest remains `22322627`.

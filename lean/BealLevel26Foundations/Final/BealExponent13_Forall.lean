@@ -142,7 +142,15 @@ Modularity (FreyCurve13 w.A w.B w.C)`.
 `WeierstrassModularity (FreyCurve13_of_BealCounterexampleBases w)`
 is a valid type.  `WeierstrassCurve` has no `.A`.
 `WeierstrassModularity_of_pack` is `frey_modular_13`.
-The Ribet sketches now take that bridge and stay uninhabited.
+
+## v4.43.0 Ribet sketches take the bridge
+
+`ribet_produces_noncuspidal_of_weierstrass` stays the
+displayed `Modularity (FreyCurve13 A B C)` sketch.
+`ribet_produces_noncuspidal_of_weierstrass_modularity` and
+`weierstrass_modularity_gives_ExistsNoncuspidal_sketch`
+take `WeierstrassModularity (pack w)`.  All three stay
+uninhabited.
 -/
 
 /-- Primitive Beal-shaped counterexample (`x,y,z ≥ 3`, `gcd = 1`).
@@ -396,6 +404,7 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Frey.FreyModularity13.WeierstrassModularity
 #check BealLevel26Foundations.Frey.FreyModularity13.WeierstrassModularity_of_pack
 #check BealLevel26Foundations.Ribet.RibetLevelLowering26.ribet_produces_noncuspidal_of_weierstrass
+#check BealLevel26Foundations.Ribet.RibetLevelLowering26.ribet_produces_noncuspidal_of_weierstrass_modularity
 #check BealLevel26Foundations.Ribet.RibetLevelLowering26.weierstrass_modularity_gives_ExistsNoncuspidal_sketch
 #print axioms BealLevel26Foundations.Frey.FreyModularity13.WeierstrassModularity_of_pack
 #check existsNoncuspidal_26_implies_False

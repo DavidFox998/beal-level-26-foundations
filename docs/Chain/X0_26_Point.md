@@ -58,3 +58,12 @@ det `M3=2`, SHA
 image `docs/images/2-descent-level-26-26a1-26b1.webp` ≥300KB.
 Mint `10.5281/zenodo.22450737` findable on parallel parent
 `22379293`. Honest: hook did not retarget `22272382`.
+
+### v4.43.0 Weierstrass coefficients are not bases
+
+A Mathlib `WeierstrassCurve Int` has `a₁…a₆`, not `.A`/`.B`/`.C`.
+`ExistsNoncuspidal_26` is still the displayed cusp-label
+existential on `DisplayedX026CuspPoint`.  Those types do not
+meet.  `WeierstrassModularity` lives on the Frey pack, not on
+this four-cusp file.
+
