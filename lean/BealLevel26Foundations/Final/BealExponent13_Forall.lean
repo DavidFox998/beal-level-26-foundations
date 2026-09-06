@@ -1,4 +1,5 @@
 import BealLevel26Foundations.Base.BealCounterexampleBase
+import BealLevel26Foundations.Chain.Beal13CaseToFalse
 import BealLevel26Foundations.Chain.Level2
 import BealLevel26Foundations.Chain.X0_26_Point
 import BealLevel26Foundations.Chain.X0_26_Q
@@ -61,6 +62,12 @@ Descent SHA-256
 
 /-!
 ## v4.35.0 sketch still uninhabited — signatures recorded
+
+v4.48.0 records
+`Chain.Beal13CaseToFalse.Is13CaseForcesFalseSketchViaLevel2`
+as the valid type `∀ w, Is13Case w → False` on shared
+bases (`13 ∣ A*B*C`).  Uninhabited: needs Tate + Ribet.
+`beal_forall_from_ribet` is still the typed four-cusp close.
 
 `Is13CaseForcesGcdGt1Sketch` stays uninhabited.  The proposed
 term `frey_modular_13 w h13` / `ribet_level_lowering_26 hFrey`
@@ -456,7 +463,11 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Chain.Level2.ExistsNewformLevel2
 #check BealLevel26Foundations.Chain.Level2.notExistsNewformLevel2
 #check BealLevel26Foundations.Ribet.RibetLevelLowering26.ribet_produces_newform_level2_of_weierstrass_modularity
+#check BealLevel26Foundations.Chain.Beal13CaseToFalse.Is13CaseForcesFalseSketchViaLevel2
+#check BealLevel26Foundations.Chain.Beal13CaseToFalse.Is13CaseForcesFalseSketchViaLevel2_valid_type
+#check BealLevel26Foundations.Chain.Beal13CaseToFalse.is13Case_implies_False_of_tate_ribet_disc
 #print axioms BealLevel26Foundations.Chain.Level2.notExistsNewformLevel2
+#print axioms BealLevel26Foundations.Chain.Beal13CaseToFalse.Is13CaseForcesFalseSketchViaLevel2_type_eq
 #print axioms BealLevel26Foundations.Frey.FreyModularity13.WeierstrassModularity_of_pack
 #check existsNoncuspidal_26_implies_False
 #check beal_13_case_implies_False_of_ExistsNoncuspidal

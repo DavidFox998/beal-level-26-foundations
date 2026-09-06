@@ -77,3 +77,9 @@ and no `X₀(26)(ℚ)`.  That carrier is not
 v4.45.0 adds `X0_26_Q_Point_to_ExistsNoncuspidal`
 (`Nonempty → ExistsNoncuspidal_26`), uninhabited.
 See `docs/Chain/X0_26_Q.md`.
+
+Real `X₀(26)(ℚ)` has `26a1` (Δ `-17576`) and `26b1`
+(Δ `-1664`), so a noncuspidal rational point of the real
+curve is not the exponent-13 contradiction.  v4.48.0
+records `Is13Case → False` via level 2
+(`docs/Chain/Beal13CaseToFalse.md`), uninhabited.

@@ -10,6 +10,27 @@ v4.44.0 `X0_26_Q_Point` is `Σ (E : EllipticCurve ℚ), CyclicSubgroup E 26` sta
 v4.45.0 `X0_26_Q_Point_to_ExistsNoncuspidal` is `Nonempty → ExistsNoncuspidal_26` uninhabited. Empty inductive, still not `∀ A B C`.
 v4.46.0 real `X₀(26)(ℚ)` has 26a1/26b1 so cusp→False is false; contradiction is `S₂(Γ₀(2))=0` no newform. Still not `∀ A B C`.
 v4.47.0 Tate conductor from `Is13Case` (`13 ∣ A*B*C`) is an uninhabited sketch; `frey_conductor_26_rfl` stays `rfl`. Still not `∀ A B C`.
+v4.48.0 `Is13CaseForcesFalseSketchViaLevel2` is `∀ w, Is13Case w → False` uninhabited (needs Tate+Ribet); valid type, still not `∀ A B C`.
+
+### v4.48.0-iter-Is13Case-to-False-sketch-via-level-2
+
+Wire `Is13Case` → `ExistsNewformLevel2` → `False` via Tate and
+Ribet sketches.  Uninhabited, honest.
+
+`Is13Case` (`13 ∣ A*B*C` on bases) plus Frey Δ ≠ 0 would give
+conductor 26 via Tate.  That sketch stays uninhabited:
+`fun _ => rfl` is the label, not Tate.
+`frey_conductor_26_rfl` is `2 * 13` by `rfl` (**none**).
+`WeierstrassModularity` is a valid bridge.
+`ribet_produces_newform_level2_of_weierstrass_modularity` is
+`∀ w, Δ ≠ 0 → WeierstrassModularity (pack w) →
+frey_conductor_26 = 2 * 13 → ExistsNewformLevel2`,
+uninhabited (needs Ribet `26 / 13 = 2`).
+`notExistsNewformLevel2` is **none** via `S₂(Γ₀(2))` dim 0.
+Composition `Is13CaseForcesFalseSketchViaLevel2` is
+`∀ w, Is13Case w → False`, uninhabited (needs Tate + Ribet).
+No `False.elim`.  This is the `beal_forall_from_ribet`
+pre-image, not `∀ A B C`.
 
 ### v4.47.0-iter-tate-conductor-26-from-Is13Case
 

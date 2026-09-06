@@ -635,3 +635,33 @@ SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 Hook `22379293`.  Parallel mint `22545580` (v4.46.0) until a new mint.
 Original-family latest remains `22322627`.
 
+### v4.48.0-iter-Is13Case-to-False-sketch-via-level-2
+
+`Is13Case` (`13 ∣ A*B*C` on bases) plus Frey Δ ≠ 0 would
+reach `ExistsNewformLevel2` via Tate and Ribet, then
+`notExistsNewformLevel2` is `False`.  The composition
+`Is13CaseForcesFalseSketchViaLevel2` is the valid type
+`∀ w, Is13Case w → False`.  Uninhabited: Mathlib 4.12 has
+neither Tate nor Ribet.  Conditional wiring
+`is13Case_implies_False_of_tate_ribet_disc` takes those
+sketches as hypotheses.  No `False.elim`.  This is the
+`beal_forall_from_ribet` pre-image, not `∀ A B C`.
+
+| Name | Status |
+|---|---|
+| `frey_conductor_26_of_Is13Case` | uninhabited; needs Tate |
+| `frey_conductor_26_rfl` | **none** `2 * 13` by `rfl` |
+| `WeierstrassModularity` bridge | valid type; `WeierstrassModularity_of_pack` via `frey_modular_13` |
+| `ribet_produces_newform_level2_of_weierstrass_modularity` | uninhabited; needs Ribet `26 / 13 = 2` |
+| `notExistsNewformLevel2` | **none** via `S₂(Γ₀(2))` dim `0` |
+| `Is13CaseForcesFalseSketchViaLevel2` | `∀ w, Is13Case w → False` uninhabited; needs Tate + Ribet |
+| `fourCuspsForallCuspPoints_of_P_mem` | **none** |
+| `notExistsNoncuspidal_26_proved` | **none** via `hGeomForbid` four cusps label `∈ [1,2,13,26]` `P.mem` |
+| `X0_26_Q_Point` | `Σ (E : EllipticCurve ℚ), CyclicSubgroup E 26` empty inductive; real curve has `26a1` Δ `-17576` and `26b1` Δ `-1664` |
+
+Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22546043` (v4.47.0) until a new mint.
+Original-family latest remains `22322627`.
+
