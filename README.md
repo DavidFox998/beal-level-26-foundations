@@ -21,6 +21,32 @@ v4.55.0 explicit Δ≠0; propext-only Beal ∀ via hTate+hRibet+hWeierstrass. St
 v4.56.0 Mathlib gaps Tate/Ribet/Modularity/X0; propext-only Beal ∀ is ceiling. Still not `∀ A B C`.
 v4.57.0 Phase5 X0(26)(Q) honest scaffold; real-points String list; not Mazur. Still not `∀ A B C`.
 v4.58.0 TaylorWilesScaffold R=T|Hecke|Deformation; ceiling propext-only. Still not `∀ A B C`.
+v4.59.0 About catch-up 22551298; ROADMAP v5 without Mathlib. Still not `∀ A B C`.
+
+### v4.59.0-iter-about-roadmap-catchup-before-v5
+
+About catch-up `22551051 → 22551298`.  Hook `22379293`.
+`IsVersionOf` `22272382` metadata only.  Original-family
+latest remains `22322627`.  Chain
+`… → 22550229 → 22550771 → 22551051 → 22551298`.
+Previous HEAD `4c027c3` / `v4.58.0-iter-taylor-wiles-scaffold`
+now records its mint.
+
+Still not `∀ A B C` unconditionally.  Still not Mathlib
+`X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles.  No
+`False.elim`.  Conditional Beal `∀` propext-only is still
+the ceiling.
+
+`docs/Final/ROADMAP.md` locks v5 **without** waiting for
+Mathlib — we finish it for them:
+
+* v5.0.0 Tate conductor 26 **INHABIT**
+  (`frey_conductor_26_of_Is13Case`)
+* v5.1.0 Ribet `26 → 2` **INHABIT**
+* v5.2.0 Taylor–Wiles `R = T` **INHABIT**
+* v5.3.0 Beal `∀` **IN KERNEL**
+
+Those slices are not done.  10 modules stay as in v4.58.0.
 
 ### v4.58.0-iter-taylor-wiles-scaffold
 

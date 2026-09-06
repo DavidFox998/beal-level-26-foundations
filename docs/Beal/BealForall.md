@@ -143,3 +143,14 @@ unconditional Beal `∀`.  Path 2 only honest.  No
 Still not `∀ A B C` unconditionally.  Still not Mathlib
 `X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles.
 
+### v4.59.0-iter-about-roadmap-catchup-before-v5
+
+Both Beal wirings stay.  About now records mint
+`22551298` (v4.58.0).  `docs/Final/ROADMAP.md` locks
+v5.0.0–v5.3.0 inhabit slices without waiting for
+Mathlib.  Those slices are **not** done.  Ceiling stays
+propext-only.  Path 2 only honest.  No `False.elim`.
+
+Still not `∀ A B C` unconditionally.  Still not Mathlib
+`X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles.
+
