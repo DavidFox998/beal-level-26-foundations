@@ -67,3 +67,12 @@ existential on `DisplayedX026CuspPoint`.  Those types do not
 meet.  `WeierstrassModularity` lives on the Frey pack, not on
 this four-cusp file.
 
+### v4.44.0 real modular-curve type start
+
+`Chain/X0_26_Q.lean` starts `X0_26_Q_Point` as
+`Σ (E : EllipticCurve ℚ), CyclicSubgroup E 26`.
+Mathlib 4.12 has `EllipticCurve ℚ` but no `CyclicSubgroup`
+and no `X₀(26)(ℚ)`.  That carrier is not
+`DisplayedX026CuspPoint` (label `∈ [1,2,13,26]`).
+See `docs/Chain/X0_26_Q.md`.
+

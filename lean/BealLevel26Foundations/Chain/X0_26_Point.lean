@@ -32,6 +32,12 @@ This file does **not** import
 `BealTheoremFromMazurChain26` (cycle).  There is no
 placeholder, no `False.elim`, and no `∀ A B C` Fermat/Beal
 statement.
+
+v4.44.0 starts `Chain/X0_26_Q.lean`: intended
+`Σ (E : EllipticCurve ℚ), CyclicSubgroup E 26`.
+Mathlib 4.12 has `EllipticCurve ℚ` but no cyclic-subgroup
+type and no `X₀(26)(ℚ)`.  That carrier is not this
+`DisplayedX026CuspPoint`.
 -/
 
 /-- Displayed raw point of `X₀(26)`.  Not a Mathlib

@@ -1,5 +1,6 @@
 import BealLevel26Foundations.Base.BealCounterexampleBase
 import BealLevel26Foundations.Chain.X0_26_Point
+import BealLevel26Foundations.Chain.X0_26_Q
 import BealLevel26Foundations.Final.BealExponent13_Final
 import BealLevel26Foundations.Frey.FreyCurve13
 import BealLevel26Foundations.Frey.FreyModularity_13
@@ -151,6 +152,16 @@ displayed `Modularity (FreyCurve13 A B C)` sketch.
 `weierstrass_modularity_gives_ExistsNoncuspidal_sketch`
 take `WeierstrassModularity (pack w)`.  All three stay
 uninhabited.
+
+## v4.44.0 real `X₀(26)(ℚ)` type start
+
+`X0_26_Q_Point` is
+`Σ (E : EllipticCurve ℚ), CyclicSubgroup E 26`.
+Mathlib 4.12 has `EllipticCurve ℚ` but no `CyclicSubgroup`
+and no modular curve, so the second slot is an empty
+inductive.  `weierstrass_modularity_gives_X0_26_Q_Point`
+stays uninhabited.  A `WeierstrassCurve Int` (`a₁…a₆`) is
+not `DisplayedX026CuspPoint`.
 -/
 
 /-- Primitive Beal-shaped counterexample (`x,y,z ≥ 3`, `gcd = 1`).
@@ -406,6 +417,9 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Ribet.RibetLevelLowering26.ribet_produces_noncuspidal_of_weierstrass
 #check BealLevel26Foundations.Ribet.RibetLevelLowering26.ribet_produces_noncuspidal_of_weierstrass_modularity
 #check BealLevel26Foundations.Ribet.RibetLevelLowering26.weierstrass_modularity_gives_ExistsNoncuspidal_sketch
+#check BealLevel26Foundations.Chain.X0_26_Q.X0_26_Q_Point
+#check BealLevel26Foundations.Chain.X0_26_Q.CyclicSubgroup
+#check BealLevel26Foundations.Chain.X0_26_Q.weierstrass_modularity_gives_X0_26_Q_Point
 #print axioms BealLevel26Foundations.Frey.FreyModularity13.WeierstrassModularity_of_pack
 #check existsNoncuspidal_26_implies_False
 #check beal_13_case_implies_False_of_ExistsNoncuspidal

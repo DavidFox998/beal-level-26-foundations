@@ -32,6 +32,11 @@ All three stay uninhabited: a `WeierstrassCurve` is not a
 and no Ribet theorem.  Inhabiting any of them plus
 `notExistsNoncuspidal_26_proved` would be `False` from
 modularity and the conductor *label* (`rfl`, not Tate).
+
+v4.44.0 starts `X0_26_Q_Point` as
+`Σ (E : EllipticCurve ℚ), CyclicSubgroup E 26`.
+That is still not this displayed existential.  Need the
+real modular-curve type plus Ribet.
 -/
 
 /-- Uninhabited.  Displayed `Modularity (FreyCurve13 A B C)`.

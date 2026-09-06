@@ -33,3 +33,6 @@ v4.42.0: `WeierstrassModularity (FreyCurve13_of_BealCounterexampleBases w)`
 is a valid type. Ribet sketches stay uninhabited.
 v4.43.0: `ribet_produces_noncuspidal_of_weierstrass_modularity`
 takes the bridge and stays uninhabited.
+v4.44.0: `X0_26_Q_Point` is `Σ (E : EllipticCurve ℚ), CyclicSubgroup E 26`
+started. Mathlib 4.12 has no `X₀(26)(ℚ)`. Ribet sketches stay
+uninhabited.

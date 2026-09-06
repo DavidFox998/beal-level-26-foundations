@@ -6,6 +6,21 @@ v4.40.0 `FreyCurve13_of_BealCounterexampleBases` is Weierstrass `freyCurve ↑A 
 v4.41.0 `ribet_produces_noncuspidal_of_weierstrass` / `weierstrass_modularity_gives_ExistsNoncuspidal_sketch` stay uninhabited. `WeierstrassCurve` is not `DisplayedX026CuspPoint`, still not `∀ A B C`.
 v4.42.0 `WeierstrassModularity (FreyCurve13_of_BealCounterexampleBases w)` is a valid type; Ribet sketches stay uninhabited, still not `∀ A B C`.
 v4.43.0 Ribet sketches take `WeierstrassModularity` and stay uninhabited. `WeierstrassCurve` is not `DisplayedX026CuspPoint`, still not `∀ A B C`.
+v4.44.0 `X0_26_Q_Point` is `Σ (E : EllipticCurve ℚ), CyclicSubgroup E 26` started; Mathlib 4.12 has no `X₀(26)(ℚ)`. Ribet sketches stay uninhabited, still not `∀ A B C`.
+
+### v4.44.0-iter-X0-26-Q-real-modular-curve
+
+`X0_26_Q_Point` starts the intended real modular-curve
+point: `Σ (E : EllipticCurve ℚ), CyclicSubgroup E 26`.
+Mathlib 4.12 has `EllipticCurve ℚ` (`a₁…a₆` plus unit Δ)
+but no `CyclicSubgroup E n` and no `X₀(26)(ℚ)`, so the
+second slot is an empty inductive.  The type is uninhabited.
+
+`WeierstrassModularity` stays a valid type.
+Ribet sketches still take the bridge and stay uninhabited.
+`WeierstrassCurve Int` ≠ `DisplayedX026CuspPoint`
+(label `∈ [1,2,13,26]`).  Need Mathlib `X₀(26)(ℚ)` plus
+Ribet to get `ExistsNoncuspidal_26` → `False`.
 
 ### v4.43.0-iter-ribet-takes-weierstrass-bridge
 
