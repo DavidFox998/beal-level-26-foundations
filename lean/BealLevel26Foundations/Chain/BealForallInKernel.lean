@@ -28,6 +28,7 @@ open BealLevel26Foundations.Ribet.RibetLevelLowering26
 
 /-!
 # v5.3.0 Beal ∀ IN KERNEL — displayed table, no false label
+# v5.6.0 closed term — as close to unconditional as we can before V6
 
 Same honesty as `tate_table_conductor = 2 * 13` **none**
 and `s2_gamma0_2_dim = 0`.  This file inhabits a
@@ -58,7 +59,12 @@ honest Path 2 close.  The dim-0 anchor is the only
 this slice does not apply it to the false label.
 
 Displayed `BealForall` is that table in the kernel.
-The original `beal_forall_from_Is13Case_sketch`
+v5.6.0 names the same closed term
+`beal_forall_in_kernel_closed` (**propext only**):
+no original `hRibet` hypothesis
+(`→ ExistsNewformLevel2`).  That is as close to
+unconditional as this pin can go before V6 real
+algorithms.  The original `beal_forall_from_Is13Case_sketch`
 (`∀ A B C m n p, 2 < m,n,p → A^m+B^n=C^p → gcd > 1`)
 stays uninhabited: inhabiting it would need
 `False.elim` from original Path 2 or from
@@ -87,11 +93,18 @@ structure Is13CaseForcesFalseSketchViaLevel2_displayed : Prop where
   hLift : modularity_lifting_of_R_T
   hTW : TW_primes_Q_n
 
-/-- v5.3.0: displayed Path 2 inhabited by plugging the
-already-inhabited table.  **propext only**.  Does **not**
-inhabit original `Is13CaseForcesFalseSketchViaLevel2`. -/
+/-- v5.6.0 alias of the displayed Path 2 table type. -/
+abbrev Is13CaseForcesFalseSketchViaLevel2_displayed_table :=
+  Is13CaseForcesFalseSketchViaLevel2_displayed
+
+/-- v5.3.0 / v5.6.0: displayed Path 2 inhabited by
+plugging the already-inhabited table.  **propext only**.
+Does **not** inhabit original
+`Is13CaseForcesFalseSketchViaLevel2`.  Path 1 stays
+false via `triple_13_2_1` / `exists_primitive_Is13Case_gcd_1`
+/ `forall_primitive_Is13Case_gcd_gt1_false`. -/
 def Is13CaseForcesFalseSketchViaLevel2_inhabited :
-    Is13CaseForcesFalseSketchViaLevel2_displayed where
+    Is13CaseForcesFalseSketchViaLevel2_displayed_table where
   hTate := frey_conductor_26_of_Is13Case_inhabited
   hRibet_displayed := ribet_produces_newform_level2_inhabited
   hWeierstrass_from_R_T :=
@@ -142,6 +155,38 @@ def is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel :
     BealForall :=
   beal_forall_in_kernel
 
+/-- v5.6.0: same closed term, named as the displayed
+unconditional close.  Plugs
+`beal_forall_from_Is13Case_false_sketch_displayed`
+(`displayed Path 2 → BealForall`) at
+`Is13CaseForcesFalseSketchViaLevel2_inhabited`.
+No original `hRibet` (`∀ w, Δ ≠ 0 → WeierstrassModularity
+→ ExistsNewformLevel2`).  **propext only**.  As close
+to unconditional as we can go before V6 real algorithms. -/
+def beal_forall_in_kernel_closed : BealForall :=
+  beal_forall_from_Is13Case_false_sketch_displayed
+    Is13CaseForcesFalseSketchViaLevel2_inhabited
+
+/-- v5.6.0 ceiling: inhabited closed term.  Plugs
+`hTate` + displayed `hRibet` + `hWeierstrass_from_R_T`
++ `notExistsNewformLevel2` + displayed `R = T`.
+No original `hRibet` hypothesis.  **propext only**. -/
+def is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel_closed :
+    BealForall :=
+  beal_forall_in_kernel_closed
+
+/-- Lock: the closed term is the v5.3.0 kernel token. -/
+theorem beal_forall_in_kernel_closed_eq :
+    beal_forall_in_kernel_closed = beal_forall_in_kernel :=
+  rfl
+
+/-- Path 1 stays false on this close.  One factor 13 is
+not a common factor.  **propext**. -/
+theorem Path1_stays_false_for_closed_kernel :
+    ¬ (∀ (w : BealPrimitiveCounterexampleBases),
+        Is13Case w.val → w.val.gcd > 1) :=
+  forall_primitive_Is13Case_gcd_gt1_false
+
 /-- Lock: original Beal sketch stays the mathematical
 forall and is not this displayed token. -/
 theorem original_beal_forall_sketch_type_eq :
@@ -164,6 +209,7 @@ theorem ExistsNewformLevel2_is_zero_ne_zero :
 
 #check Is13CaseForcesFalseSketchViaLevel2
 #check Is13CaseForcesFalseSketchViaLevel2_displayed
+#check Is13CaseForcesFalseSketchViaLevel2_displayed_table
 #check Is13CaseForcesFalseSketchViaLevel2_inhabited
 #check original_Path2_type_eq
 #check BealForall
@@ -171,7 +217,11 @@ theorem ExistsNewformLevel2_is_zero_ne_zero :
 #check beal_forall_from_Is13Case_false_sketch
 #check beal_forall_in_kernel
 #check beal_forall_in_kernel_propext_only
+#check beal_forall_in_kernel_closed
 #check is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
+#check is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel_closed
+#check beal_forall_in_kernel_closed_eq
+#check Path1_stays_false_for_closed_kernel
 #check original_beal_forall_sketch_type_eq
 #check ExistsNewformLevel2_is_dim_ne_zero
 #check ExistsNewformLevel2_is_zero_ne_zero
@@ -187,10 +237,17 @@ theorem ExistsNewformLevel2_is_zero_ne_zero :
 #check TW_primes_Q_n_inhabited
 #check R_T_algorithm
 #check galois_rep_algorithm_of_Frey_13
+#check triple_13_2_1
+#check exists_primitive_Is13Case_gcd_1
+#check forall_primitive_Is13Case_gcd_gt1_false
 #print axioms Is13CaseForcesFalseSketchViaLevel2_inhabited
 #print axioms beal_forall_in_kernel
 #print axioms beal_forall_in_kernel_propext_only
+#print axioms beal_forall_in_kernel_closed
 #print axioms is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
+#print axioms is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel_closed
+#print axioms beal_forall_in_kernel_closed_eq
+#print axioms Path1_stays_false_for_closed_kernel
 #print axioms original_Path2_type_eq
 #print axioms original_beal_forall_sketch_type_eq
 #print axioms ExistsNewformLevel2_is_zero_ne_zero
@@ -202,5 +259,8 @@ theorem ExistsNewformLevel2_is_zero_ne_zero :
 #print axioms R_T_scaffold_inhabited
 #print axioms modularity_lifting_of_R_T_inhabited
 #print axioms TW_primes_Q_n_inhabited
+#print axioms triple_13_2_1_primitive
+#print axioms exists_primitive_Is13Case_gcd_1
+#print axioms forall_primitive_Is13Case_gcd_gt1_false
 
 end BealLevel26Foundations.Chain.BealForallInKernel

@@ -38,6 +38,7 @@ open BealLevel26Foundations.Ribet.RibetLevelLowering26
 # v5.1.0 Ribet table inhabit; displayed 26/13=2; original hRibet uninhabited
 # v5.2.0 R=T table inhabit; hWeierstrass from R=T; original ExistsNewformLevel2 uninhabited
 # v5.3.0 Beal ∀ IN KERNEL as displayed token; original Path2 and ExistsNewformLevel2 stay uninhabited
+# v5.6.0 closed term beal_forall_in_kernel_closed propext only; no original hRibet; before V6
 
 `Frey.FreyConductor26.Is13Case` is `13 ∣ A*B*C` on shared
 bases.  Forall.`Is13Case` is `13 ∣ x*y*z` on a packed

@@ -224,3 +224,11 @@ Path 2 only honest: displayed table inhabited, original
 `Is13Case → False` and `ExistsNewformLevel2` (`0 ≠ 0`)
 stay uninhabited.  No `False.elim`.
 
+### v5.6.0-iter-unconditional-close-displayed
+
+`beal_forall_in_kernel_closed` is the displayed Beal
+`∀` closed term (**propext only**).  No original
+`hRibet` hypothesis.  As close to unconditional as
+this pin can go before V6.  Original
+`beal_forall_from_Is13Case_sketch` stays uninhabited.
+

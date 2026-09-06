@@ -136,3 +136,15 @@ Path 2 only honest: displayed table inhabited, original
 (`0 ≠ 0`) stays uninhabited.  No `False.elim`.
 11 modules green twice.  Same honesty as
 `tate_table_conductor = 2 * 13`.
+
+### v5.6.0-iter-unconditional-close-displayed — DONE
+
+`beal_forall_in_kernel_closed` is the displayed Beal
+`∀` closed term (**propext only**).  No original
+`hRibet` hypothesis.  Ceiling
+`is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel_closed`
+is that same closed term.  As close to unconditional
+as this pin can go before V6 real algorithms.
+Original Path 2 / `ExistsNewformLevel2` / original
+Beal `∀` stay uninhabited.  Path 1 FALSE formal.
+No `False.elim`.  11 modules green twice.

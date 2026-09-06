@@ -20,7 +20,9 @@ open BealLevel26Foundations.Chain.Beal13CaseToFalse
 open BealLevel26Foundations.Chain.BealForallInKernel
   (Is13CaseForcesFalseSketchViaLevel2_inhabited
     beal_forall_in_kernel
-    is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel)
+    beal_forall_in_kernel_closed
+    is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
+    is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel_closed)
 open BealLevel26Foundations.Chain.Level2
 open BealLevel26Foundations.Chain.X0_26_Point
 open BealLevel26Foundations.Chain.X0_26_Q
@@ -260,7 +262,9 @@ theorem ceiling_uses_Path2_not_Path1 :
 #check beal_forall_from_Is13Case_false_sketch
 #check Is13CaseForcesFalseSketchViaLevel2_inhabited
 #check beal_forall_in_kernel
+#check beal_forall_in_kernel_closed
 #check is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
+#check is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel_closed
 #check frey_Delta13_ne_0_of_pos
 #check exists_primitive_Is13Case_gcd_1
 #check BealLevel26Foundations.Chain.PathLock.triple_13_2_1
@@ -292,7 +296,9 @@ theorem ceiling_uses_Path2_not_Path1 :
 #print axioms is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only
 #print axioms Is13CaseForcesFalseSketchViaLevel2_inhabited
 #print axioms beal_forall_in_kernel
+#print axioms beal_forall_in_kernel_closed
 #print axioms is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
+#print axioms is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel_closed
 #print axioms frey_Delta13_ne_0_of_pos
 #print axioms exists_primitive_Is13Case_gcd_1
 #print axioms BealLevel26Foundations.Chain.PathLock.triple_13_2_1_gcd_eq_1

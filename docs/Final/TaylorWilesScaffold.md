@@ -108,3 +108,17 @@ kernel token without inhabiting `ExistsNewformLevel2`
 Not Mathlib Beal.  Same honesty as `tate_table_conductor = 2 * 13`.
 Path 1 stays false (`⟨13, 2, 1⟩`).  Real `X₀(26)(ℚ)` still
 has `26a1` Δ `-17576` and `26b1` Δ `-1664`.  No `False.elim`.
+
+### v5.6.0 displayed unconditional close (before V6)
+
+| Component | Status | `#print axioms` |
+|---|---|---|
+| `beal_forall_in_kernel_closed` | Displayed `BealForall` `∀ A B C m n p` token as a closed term; no original `hRibet` (`→ ExistsNewformLevel2`); as close to unconditional as we can go before V6 real algorithms | **propext only** |
+| Ceiling UNCONDITIONAL DISPLAYED CLOSE | `is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel_closed` inhabited closed term; plugs `hTate` + displayed `hRibet` + `hWeierstrass_from_R_T` + `notExistsNewformLevel2` + `R = T` tokens; not Mathlib Beal | **propext only** |
+
+Original `ExistsNewformLevel2` (`0 ≠ 0`), original Path 2,
+and original `beal_forall_from_Is13Case_sketch` stay
+uninhabited.  `R_T_algorithm` /
+`TaylorWilesPatchingWitness` /
+`galois_rep_algorithm_of_Frey_13` stay uninhabited —
+real algorithms remain V6.

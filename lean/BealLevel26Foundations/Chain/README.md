@@ -28,6 +28,7 @@ v5.2.0 R=T table inhabit; Hecke token+Equiv; hWeierstrass from R=T; not Mathlib 
 v5.3.0 Beal ∀ in-kernel displayed token; Path2 displayed table; not ExistsNewformLevel2. Still not Mathlib ∀.
 v5.4.0 About catch-up 22553671; Beal ∀ in-kernel displayed token recorded. Still not Mathlib ∀.
 v5.5.0 Path lock ⟨13,2,1⟩ gcd=1 rfl; Path1 false; Path2 displayed table. Still not Mathlib ∀.
+v5.6.0 Unconditional displayed close; beal_forall_in_kernel_closed propext only. Still not Mathlib ∀.
 
 ### v5.5.0 PathLock — `⟨13, 2, 1⟩` formal
 
@@ -39,6 +40,11 @@ v5.5.0 Path lock ⟨13,2,1⟩ gcd=1 rfl; Path1 false; Path2 displayed table. Sti
 honest route (displayed table inhabited, original
 `Is13Case → False` uninhabited).  Not a 12th official
 module; Forall and MathlibGaps import it.
+
+v5.6.0 names `beal_forall_in_kernel_closed` in
+[`BealForallInKernel.lean`](BealForallInKernel.lean)
+(**propext only**, no original `hRibet`).  As close
+to unconditional as this pin can go before V6.
 
 ### v4.28.0 X0(26)(Q) Cusps P-mem Locked — DOI 22452680
 

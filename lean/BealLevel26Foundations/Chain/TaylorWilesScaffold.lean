@@ -44,7 +44,9 @@ No `False.elim`.
 
 v5.3.0 moves the ceiling to the displayed Beal `∀`
 token in `Chain.BealForallInKernel`
-(`beal_forall_in_kernel`, **propext**).  This file
+(`beal_forall_in_kernel`, **propext**).  v5.6.0 names
+that same closed term `beal_forall_in_kernel_closed`
+(**propext only**, no original `hRibet`).  This file
 does **not** import that module (cycle through Forall).
 `R_T_algorithm` / `TaylorWilesPatchingWitness` stay
 uninhabited.

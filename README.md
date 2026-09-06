@@ -28,6 +28,40 @@ v5.2.0 R=T table inhabit; Hecke token+Equiv; hWeierstrass from R=T; not Mathlib 
 v5.3.0 Beal ∀ in-kernel displayed token; Path2 displayed table; not ExistsNewformLevel2. Still not Mathlib ∀.
 v5.4.0 About catch-up 22553671; Beal ∀ in-kernel displayed token recorded. Still not Mathlib ∀.
 v5.5.0 Path lock ⟨13,2,1⟩ gcd=1 rfl; Path1 false; Path2 displayed table. Still not Mathlib ∀.
+v5.6.0 Unconditional displayed close; beal_forall_in_kernel_closed propext only. Still not Mathlib ∀.
+
+### v5.6.0-iter-unconditional-close-displayed — make beal_forall_in_kernel closed term propext only no original hRibet hypothesis as close to unconditional as we can before V6 real algorithms
+
+`beal_forall_in_kernel_closed` is the displayed Beal
+`∀` token as a closed term (**propext only**).  No
+original `hRibet` hypothesis
+(`∀ w, Δ ≠ 0 → WeierstrassModularity → ExistsNewformLevel2`).
+As close to unconditional as this pin can go before V6
+real algorithms.
+
+`Is13CaseForcesFalseSketchViaLevel2_inhabited` displayed
+Path 2 table: inhabited `hTate` **propext**
+(`tate_table_conductor = 2*13` **none**,
+`frey_conductor_26_rfl` **none**) + displayed `hRibet`
+`ribet_level_26_div_13 = 26/13 = 2` **none** +
+`hWeierstrass_from_R_T` **propext** from `R = T`
+displayed Equiv **none** + `notExistsNewformLevel2`
+**none** via `S₂(Γ₀(2)) = 0` dim-0 anchor.  Path 2 only
+honest route.  No `False.elim`.
+
+Honest lock: `ExistsNewformLevel2` is `0 ≠ 0` and stays
+uninhabited — we do **not** inhabit that false label.
+Original `ribet_produces_newform_level2_of_weierstrass_modularity`
+stays uninhabited (would be `False` from labels, not
+Ribet).  Original `∀ w, Is13Case w → False` stays
+uninhabited (would put `False` from `⟨13, 2, 1⟩`
+primitive `gcd = 1` by `rfl`, not Ribet).
+`triple_13_2_1` `⟨13, 2, 1⟩`,
+`exists_primitive_Is13Case_gcd_1` **propext**,
+`forall_primitive_Is13Case_gcd_gt1_false` via
+`Nat.lt_irrefl`.  Path 1 FALSE formal.  Path 2 ONLY
+HONEST.  Real `X₀(26)(ℚ)` `26a1` Δ `-17576`, `26b1`
+Δ `-1664`.  11 modules green twice.
 
 ### v5.5.0-iter-path-lock-formal-13-2-1 — lock triple_13_2_1 + exists_primitive_Is13Case_gcd_1 + forall_primitive_Is13Case_gcd_gt1_false via Nat.lt_irrefl Path1 false Path2 only honest displayed table inhabited original Is13Case→False not
 

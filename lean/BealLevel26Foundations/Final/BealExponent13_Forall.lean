@@ -172,6 +172,13 @@ v5.5.0 formal Path lock in `Chain.PathLock`:
 Path 2 only honest: displayed table inhabited, original
 `Is13Case → False` uninhabited.  No `False.elim`.
 
+v5.6.0 names the displayed kernel token
+`beal_forall_in_kernel_closed` (**propext only**):
+no original `hRibet` hypothesis.  As close to
+unconditional as this pin can go before V6 real
+algorithms.  Original Path 2 / `ExistsNewformLevel2`
+/ original Beal `∀` stay uninhabited.  No `False.elim`.
+
 v4.58.0 locks `Chain.TaylorWilesScaffold`: `R = T`,
 Hecke, deformation, `ρ̄_{E,13}`, lifting, and TW primes
 as uninhabited scaffolds.  `HeckeAlgebra_26` is an empty
@@ -649,7 +656,10 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Chain.BealForallInKernel.BealForall
 #check BealLevel26Foundations.Chain.BealForallInKernel.beal_forall_in_kernel
 #check BealLevel26Foundations.Chain.BealForallInKernel.beal_forall_in_kernel_propext_only
+#check BealLevel26Foundations.Chain.BealForallInKernel.beal_forall_in_kernel_closed
 #check BealLevel26Foundations.Chain.BealForallInKernel.is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
+#check BealLevel26Foundations.Chain.BealForallInKernel.is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel_closed
+#check BealLevel26Foundations.Chain.BealForallInKernel.Path1_stays_false_for_closed_kernel
 #check BealLevel26Foundations.Chain.BealForallInKernel.original_Path2_type_eq
 #check BealLevel26Foundations.Chain.BealForallInKernel.ExistsNewformLevel2_is_zero_ne_zero
 #check BealLevel26Foundations.Ribet.RibetLevelLowering26.ribet_produces_newform_level2
@@ -667,7 +677,10 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #print axioms BealLevel26Foundations.Chain.BealForallInKernel.Is13CaseForcesFalseSketchViaLevel2_inhabited
 #print axioms BealLevel26Foundations.Chain.BealForallInKernel.beal_forall_in_kernel
 #print axioms BealLevel26Foundations.Chain.BealForallInKernel.beal_forall_in_kernel_propext_only
+#print axioms BealLevel26Foundations.Chain.BealForallInKernel.beal_forall_in_kernel_closed
 #print axioms BealLevel26Foundations.Chain.BealForallInKernel.is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
+#print axioms BealLevel26Foundations.Chain.BealForallInKernel.is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel_closed
+#print axioms BealLevel26Foundations.Chain.BealForallInKernel.Path1_stays_false_for_closed_kernel
 #print axioms BealLevel26Foundations.Chain.TaylorWilesScaffold.taylor_wiles_ceiling_eq
 #print axioms BealLevel26Foundations.Chain.TaylorWilesScaffold.rho_bar_Frey_13_inhabited
 #print axioms BealLevel26Foundations.Chain.TaylorWilesScaffold.DeformationRing_rho_bar_E13_inhabited
