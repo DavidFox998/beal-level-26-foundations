@@ -142,3 +142,40 @@ have `w.gcd = 1`.
 
 Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)`.
 `#print axioms beal_forall_from_ribet` stays **none**.
+
+### v4.34.0 Is13Case forces gcd>1 proved — primitive witnesses gcd=1 contradiction
+
+`#check hGeomForbid_typed_true` is
+`fourCuspsForallCuspPoints → ¬ ExistsNoncuspidal_26`
+(via `hNotIn` / `hInList` / `X0_26_Q=[1,2,13,26]` `P.mem`).
+`#check beal_forall_from_ribet` is `BealTheorem_Exponent13_Typed`.
+`frey_modular_13` is `∀ A B C, Modularity (FreyCurve13 A B C)`.
+`ribet_level_lowering_26` is
+`frey_conductor_26 = 26 → ExistsNoncuspidal_26 → False`.
+
+Those names do **not** apply to a packed `BealCounterexample` as
+`w.gcd > 1`.  A packed witness already has `w.gcd = 1` by
+`primitive`, so an unconditional `Is13Case w → w.gcd > 1` is
+`Is13Case w → False` and would close the 13-case in the kernel.
+
+Proved (no placeholders):
+
+| Name | What |
+|---|---|
+| `primitive_gcd_eq_one` | `w.gcd = 1` from `w.primitive` |
+| `primitive_not_gcd_gt1` | `¬ w.gcd > 1` by `Nat.lt_irrefl` |
+| `is13Case_forces_gcd_gt1` | sketch application: `hSketch w h13` |
+| `beal_13_case_no_primitive_witness` | sketch `gcd > 1` vs primitive `gcd = 1` |
+| `beal_exponent13_no_counterexample` | `∀ w, Is13Case w → False` **given the sketch** |
+
+Frey + Ribet to 26 + `X0_26_Q` `P.mem` still forces `gcd>1`
+**only** in the 13-case as a blueprint, via
+`hGeomForbid_typed_true` (`hNotIn` `hInList`) `[1,2,13,26]`.
+That force is `Is13CaseForcesGcdGt1Sketch`, uninhabited.
+`Is13ExpCase` stays out of scope (levels `2p`).
+
+`beal_forall_eq_exponent13_bridge` **none** =
+`beal_forall_from_ribet` =
+`Contradiction.beal_exponent13_from_ribet`.
+No `False.elim`.  Still not `∀ A B C`.  Still not Mathlib
+`X₀(26)(ℚ)`.

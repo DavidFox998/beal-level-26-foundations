@@ -15,7 +15,7 @@ DOI `22452680` findable records prior mint `22450737` hook `22379293` `IsVersion
 v4.31.0 named the p=13 reduction sketch in `BealExponent13_Forall.lean`
 (`beal_prime_divisor_13_of_counterexample` is the 13-case hypothesis,
 `beal_forall_reduces_to_exponent13` applies an uninhabited sketch).
-Still not `∀ A B C`.  No `sorry`.  See
+Still not `∀ A B C`.  See
 [`docs/Final/BealExponent13_Forall.md`](../../../docs/Final/BealExponent13_Forall.md).
 
 PARI lock: 26a1 Δ `-17576` 26b1 Δ `-1664` `|Sel2|=1` det `M3=2` SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260` image `docs/images/2-descent-level-26-26a1-26b1.webp` ≥300KB.
@@ -88,7 +88,7 @@ Checks: `lake build` of `BealTheoremFromMazurChain26`,
 `BealExponent13_Iter_Package`,
 `BealExponent13_Contradiction`,
 `RationalPoints_26_FourCusps_26`, plus `verify-scaffold.sh` and
-`verify_descent_26.py`, green. No `sorry`, no `False.elim`.
+`verify_descent_26.py`, green. Identities only, no `False.elim`.
 
 Releases: `v4.2.0-full-chain` `62d0e13`,
 `v4.2.1-chabauty-closes-typed` `eed5170`,

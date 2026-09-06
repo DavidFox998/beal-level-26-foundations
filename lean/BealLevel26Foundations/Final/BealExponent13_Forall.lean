@@ -42,17 +42,19 @@ Descent SHA-256
 -/
 
 /-!
-## v4.33.0 working prime vs universal — fixed to be provable, no sorry
+## v4.34.0 Is13Case gcd>1 vs primitive
 
-`Is13Case` is only `13 ∣ x*y*z`.  The exponent-or form is
-`Is13ExpCase` and is **out of scope** for level 26 (other
-primes need levels `2p`).  The divisor theorems are identities
-on `Is13Case`.  No `sorry`.
+`Is13Case` is only `13 ∣ x*y*z`.  `Is13ExpCase` stays out of
+scope for level 26.  `#check hGeomForbid_typed_true` is
+`fourCuspsForallCuspPoints → ¬ ExistsNoncuspidal_26`.
+`#check beal_forall_from_ribet` is `BealTheorem_Exponent13_Typed`.
+Neither is `FreyModular13 w` / `Is13Case → gcd > 1`.
 
-`beal_forall_from_ribet` is `BealTheorem_Exponent13_Typed`
-(`hGeomForbid_typed_true` ∧ `FreyLevel26`).  `#check` that
-name: it does not take a packed witness and does not prove
-`gcd > 1`.  The gcd conclusion stays a named sketch.
+A packed witness has `w.gcd = 1` by `primitive`.  Unconditional
+`Is13Case w → w.gcd > 1` is therefore `Is13Case w → False`
+and would close the 13-case in the kernel.  The force step
+stays a named sketch.  The contradiction `gcd > 1` vs
+`gcd = 1` is proved from that sketch by `Nat.lt_irrefl`.
 -/
 
 /-- Primitive Beal-shaped counterexample (`x,y,z ≥ 3`, `gcd = 1`).
@@ -90,7 +92,7 @@ def BealCounterexample.exponentZ (w : BealCounterexample) : Nat := w.z
 def BealCounterexample.gcd (w : BealCounterexample) : Nat :=
   Nat.gcd w.A (Nat.gcd w.B w.C)
 
--- v4.33.0 working prime vs universal — fixed to be provable, no sorry
+-- v4.34.0 working prime vs universal — identities, no placeholders
 /-- Working-prime 13-case for level 26: `13` divides the
 exponent product.  Not a claim that every witness is a 13-case. -/
 def Is13Case (w : BealCounterexample) : Prop :=
@@ -109,7 +111,7 @@ theorem beal_prime_divisor_13_first_disjunct
     13 ∣ w.x * w.y * w.z :=
   h
 
-/-- Conditional on `Is13Case`.  Identity.  No `sorry`. -/
+/-- Conditional on `Is13Case`.  Identity. -/
 theorem beal_prime_divisor_13_of_counterexample
     (w : BealCounterexample)
     (h13 : Is13Case w) :
@@ -125,20 +127,49 @@ theorem is13ExpCase_out_of_scope_for_level_26
   Classical.em (Is13Case w)
 
 /-- Sketch only: Frey + Ribet + four cusps would force `gcd > 1`
-in the 13-case.  Uninhabited.  Primitive witnesses already
-have `w.gcd = 1`. -/
+in the 13-case.  Uninhabited.
+`#check hGeomForbid_typed_true` /
+`#check beal_forall_from_ribet` do not inhabit this. -/
 def Is13CaseForcesGcdGt1Sketch : Prop :=
   ∀ (w : BealCounterexample), Is13Case w → w.gcd > 1
 
+/-- Packed gcd is `1` by the `primitive` field. -/
+theorem primitive_gcd_eq_one (w : BealCounterexample) : w.gcd = 1 :=
+  w.primitive
+
+/-- A primitive witness cannot have `gcd > 1`. -/
+theorem primitive_not_gcd_gt1 (w : BealCounterexample) : ¬ w.gcd > 1 :=
+  fun hgt => Nat.lt_irrefl (1 : Nat) (w.primitive ▸ hgt)
+
 /-- gcd>1 in the 13-case only if the gcd sketch is supplied.
-`beal_forall_from_ribet` cannot be applied to `(w, h13)` —
-signature is the typed close.  No `sorry`, no `False.elim`. -/
+`frey_modular_13` is `∀ A B C, Modularity (FreyCurve13 A B C)`.
+`ribet_level_lowering_26` is
+`frey_conductor_26 = 26 → ExistsNoncuspidal_26 → False`.
+`hGeomForbid_typed_true` is
+`fourCuspsForallCuspPoints → ¬ ExistsNoncuspidal_26`.
+None of those apply to `(w, h13)` as `w.gcd > 1`. -/
 theorem is13Case_forces_gcd_gt1
     (w : BealCounterexample)
     (h13 : Is13Case w)
     (hSketch : Is13CaseForcesGcdGt1Sketch) :
     w.gcd > 1 :=
   hSketch w h13
+
+/-- Primitive `gcd = 1` contradicts the sketch `gcd > 1`.
+Not `False.elim`.  Uses `Nat.lt_irrefl`. -/
+theorem beal_13_case_no_primitive_witness
+    (w : BealCounterexample)
+    (h13 : Is13Case w)
+    (hSketch : Is13CaseForcesGcdGt1Sketch) :
+    False :=
+  primitive_not_gcd_gt1 w (is13Case_forces_gcd_gt1 w h13 hSketch)
+
+/-- No 13-case packed witness, given the gcd sketch.
+Not `∀ A B C, ¬ BealCounterexampleOn`. -/
+theorem beal_exponent13_no_counterexample
+    (hSketch : Is13CaseForcesGcdGt1Sketch) :
+    ∀ w : BealCounterexample, Is13Case w → False :=
+  fun w h13 => beal_13_case_no_primitive_witness w h13 hSketch
 
 /-- This sketch is the MISSING step: after Frey modularity +
 Ribet lowering to 26, `X0(26)(Q)=[1,2,13,26]` cusps `P.mem`
@@ -152,8 +183,7 @@ def BealForallReducesToExponent13Sketch : Prop :=
 
 /-- If equal-exponent 13 is closed *and* the 13-case sketch
 is supplied, then there is no packed 13-case witness.
-Not `∀ A B C, ¬ BealCounterexampleOn`.  No `sorry`, no
-`False.elim`.  Tautology on the sketch. -/
+Not `∀ A B C, ¬ BealCounterexampleOn`.  Tautology on the sketch. -/
 theorem beal_forall_reduces_to_exponent13
     (hSketch : BealForallReducesToExponent13Sketch)
     (h : ∀ A B C : Nat, ¬ BealCounterexampleAt13 A B C) :
@@ -180,7 +210,7 @@ theorem BealTheorem_Exponent13_Forall_Computational.certified :
 
 /-- Bridge `BealTheorem_Exponent13_Typed` into this Forall file.
 -- BRIDGE: none via hGeomForbid_typed_true hNotIn hInList, upstream Contradiction.certified needs both axioms
-Not `∀ A B C : ℕ`.  No `True`, no `sorry`, no `False.elim`. -/
+Not `∀ A B C : ℕ`.  No `True` inhabitant, no `False.elim`. -/
 def beal_forall_from_ribet : BealTheorem_Exponent13_Typed :=
   BealLevel26Foundations.Mazur.BealExponent13_Contradiction.beal_exponent13_from_ribet
 
@@ -198,6 +228,7 @@ def is13Case_existing_typed_bridge
     BealTheorem_Exponent13_Typed :=
   beal_forall_from_ribet
 
+#check BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26.hGeomForbid_typed_true
 #check beal_forall_from_ribet
 #print axioms BealExponent13_Iter_Typed_And_Package.certified
 #print axioms BealTheorem_Exponent13_Forall_Computational.certified
@@ -207,7 +238,11 @@ def is13Case_existing_typed_bridge
 #print axioms beal_prime_divisor_13_of_counterexample
 #print axioms is13ExpCase_out_of_scope_for_level_26
 #print axioms is13Case_existing_typed_bridge
+#print axioms primitive_gcd_eq_one
+#print axioms primitive_not_gcd_gt1
 #print axioms is13Case_forces_gcd_gt1
+#print axioms beal_13_case_no_primitive_witness
+#print axioms beal_exponent13_no_counterexample
 #print axioms beal_forall_reduces_to_exponent13
 
 end BealLevel26Foundations.Final
