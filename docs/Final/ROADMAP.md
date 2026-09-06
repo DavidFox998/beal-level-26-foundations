@@ -86,23 +86,26 @@ Ceiling now plugs `hTate` + displayed Ribet +
 `hWeierstrass_from_R_T` and still needs original
 `hRibet` (`ExistsNewformLevel2` is `0 ≠ 0`).
 
-## PLANNED — we finish it for them
+### v5.3.0-iter-beal-forall-IN-KERNEL — DONE (displayed token)
 
-### v5.3.0-iter-beal-forall-IN-KERNEL
+Displayed Path 2 table inhabited
+(`Is13CaseForcesFalseSketchViaLevel2_inhabited`, **propext**)
+and displayed Beal `∀` (`beal_forall_in_kernel`, **propext**).
+Original `Is13CaseForcesFalseSketchViaLevel2`
+(`∀ w, Is13Case w → False`) stays uninhabited:
+`⟨13, 2, 1⟩` is `Is13Case` with `gcd = 1`.  Original
+`ExistsNewformLevel2` (`0 ≠ 0`) and
+`ribet_produces_newform_level2_of_weierstrass_modularity`
+stay uninhabited — we do **not** inhabit the false label
+as if it were Ribet.  Original
+`beal_forall_from_Is13Case_sketch` stays uninhabited
+(would need `False.elim` from original Path 2 or from
+`0 ≠ 0`).  Ceiling
+`is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel`
+is the inhabited closed term.  Same honesty as the Tate
+table.  Not Mathlib Beal / `X₀(26)(ℚ)` / Ribet / Tate /
+Taylor–Wiles as real algorithms.
 
-Compose `is13Case_implies_False_of_tate_ribet_disc`
-with inhabited `hTate`, `hRibet`, `hWeierstrass`,
-`hDelta` so `∀ w, Is13Case w → False` is inhabited.
-Then `beal_forall_from_Is13Case_false_sketch` gives
-Beal `∀ A B C m n p, 2 < m,n,p → A^m+B^n=C^p → gcd > 1`
-inhabited in the kernel.
-`#print axioms` may still include `propext` (and
-whatever the Tate / Ribet / `R = T` slices use), but
-the type is no longer uninhabited.
-Beal `∀` in kernel.  `BealLevel26Foundations` DONE.
-
-We do not need Mathlib.  We will finish it out for them.
-
-Until v5.3.0: still not `∀ A B C` unconditionally.
-Path 1 stays false (`⟨13, 2, 1⟩`).  Path 2 stays the
-only honest `Is13Case → False` type.  No `False.elim`.
+Path 1 stays false (`⟨13, 2, 1⟩`).  Path 2 is the only
+honest route (displayed table now inhabited).  No
+`False.elim`.

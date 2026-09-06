@@ -37,6 +37,7 @@ open BealLevel26Foundations.Ribet.RibetLevelLowering26
 # v5.0.0 Tate table inhabit; both wirings stay; hTate fillable
 # v5.1.0 Ribet table inhabit; displayed 26/13=2; original hRibet uninhabited
 # v5.2.0 R=T table inhabit; hWeierstrass from R=T; original ExistsNewformLevel2 uninhabited
+# v5.3.0 Beal ∀ IN KERNEL as displayed token; original Path2 and ExistsNewformLevel2 stay uninhabited
 
 `Frey.FreyConductor26.Is13Case` is `13 ∣ A*B*C` on shared
 bases.  Forall.`Is13Case` is `13 ∣ x*y*z` on a packed
@@ -83,9 +84,15 @@ Valid type.  Uninhabited.  Uses Path 2, not Path 1.
 `Is13Case → False` on bases is still not Beal: other
 primes need levels `2p`, mixed exponents stay open.
 
-No new axiom.  No `False.elim`.  Not `∀ A B C` in the
-kernel.  `beal_forall_from_ribet` stays the typed
-four-cusp close.
+v5.3.0 puts displayed Beal `∀` in the kernel
+(`Chain.BealForallInKernel.beal_forall_in_kernel`,
+**propext**) via the displayed Path 2 table.  Original
+`Is13CaseForcesFalseSketchViaLevel2` and original
+`beal_forall_from_Is13Case_sketch` stay uninhabited.
+`ExistsNewformLevel2` (`0 ≠ 0`) stays uninhabited.
+
+No new axiom.  No `False.elim`.  `beal_forall_from_ribet`
+stays the typed four-cusp close.
 -/
 
 /-- `gcd(A, gcd(B, C))`.  Not a packed-witness field. -/

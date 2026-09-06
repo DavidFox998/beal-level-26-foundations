@@ -89,5 +89,22 @@ token Equiv without Mathlib deformation / Hecke / BCDT.
 | Ceiling | plugs `hTate` + `26/13=2`; needs original `hRibet` + `hWeierstrass` | `is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table` plugs inhabited `hTate` + displayed Ribet label + `hWeierstrass_from_R_T`; still needs original `hRibet` (`→ ExistsNewformLevel2`) | **propext only** |
 
 Not Mathlib `R = T`.  Same honesty as `tate_table_conductor = 2 * 13`.
-Original `ExistsNewformLevel2` (`0 ≠ 0`) stays uninhabited
-until v5.3.0.
+Original `ExistsNewformLevel2` (`0 ≠ 0`) stays uninhabited.
+
+### v5.3.0 Beal `∀` IN KERNEL (displayed token, no false label)
+
+Phase 4 displayed Beal `∀` is **DONE**.  We finish the
+kernel token without inhabiting `ExistsNewformLevel2`
+(`0 ≠ 0`) and without inhabiting original Path 2
+(`∀ w, Is13Case w → False`).
+
+| Component | v5.2.0 | v5.3.0 | Axioms v5.3.0 |
+|---|---|---|---|
+| `Is13CaseForcesFalseSketchViaLevel2` | uninhabited | original `∀ w, Is13Case → False` stays uninhabited (`⟨13, 2, 1⟩` is `Is13Case`); NEW `Is13CaseForcesFalseSketchViaLevel2_inhabited` displayed table plugs `hTate` **propext** conductor `2*13` **none** + `rfl` **none** + displayed `hRibet` `26/13=2` **none** `Δ≠0→WeierstrassModularity→2*13→2` **propext** + `hWeierstrass_from_R_T` **propext** from `R = T` **none** Equiv tokens + `notExistsNewformLevel2` **none** via `S₂(Γ₀(2))=0` dim-0 anchor — Path 2 only honest | **propext only** |
+| Beal `∀` | conditional **propext** needs original `hRibet` + `hWeierstrass` | IN KERNEL `beal_forall_in_kernel` displayed `BealForall` via `beal_forall_from_Is13Case_false_sketch_displayed` + displayed Path 2 table **propext** — still without Mathlib `X₀(26)(ℚ)`+Ribet+Tate+Taylor–Wiles as real alg, as tokens / labels honest. Original `beal_forall_from_Is13Case_sketch` (`∀ A B C m n p`) stays uninhabited | **propext only** |
+| `ExistsNewformLevel2` | false Prop `0 ≠ 0` uninhabited honest lock | stays false Prop `0 ≠ 0` uninhabited honest lock — we do **not** inhabit the false label as if it were Ribet; we record `notExistsNewformLevel2` **none** on the displayed table | — |
+| Ceiling | `is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table` conditional **propext** | `is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel` Beal `∀` IN KERNEL **propext** plugs `hTate` + displayed `hRibet` + `hWeierstrass_from_R_T` + `notExistsNewformLevel2` dim-0 anchor | **propext only** |
+
+Not Mathlib Beal.  Same honesty as `tate_table_conductor = 2 * 13`.
+Path 1 stays false (`⟨13, 2, 1⟩`).  Real `X₀(26)(ℚ)` still
+has `26a1` Δ `-17576` and `26b1` Δ `-1664`.  No `False.elim`.

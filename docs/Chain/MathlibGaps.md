@@ -32,3 +32,10 @@ Phase 5 row stays.
 
 Still not `∀ A B C`.
 
+v5.3.0: displayed Path 2 table and displayed Beal `∀`
+token inhabited in `Chain.BealForallInKernel` (**propext**).
+Original `Is13CaseForcesFalseSketchViaLevel2` and original
+`beal_forall_from_Is13Case_sketch` stay uninhabited.
+`ExistsNewformLevel2` (`0 ≠ 0`) stays uninhabited.  Same
+honesty as the Tate table.  No `False.elim`.
+

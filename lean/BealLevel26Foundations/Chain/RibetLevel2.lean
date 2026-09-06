@@ -30,8 +30,11 @@ rep, deformation token, and `26 / 13 = 2` label.
 Does **not** import Forall or Mazur BealTheorem (cycle).
 Does **not** add an axiom.  Does **not** inhabit
 `ribet_produces_newform_level2_of_weierstrass_modularity`
-(`ExistsNewformLevel2` is `0 ≠ 0`).  v5.2.0 inhabits displayed `R = T`.  `R_T_algorithm`
-stays uninhabited.  No `False.elim`.
+(`ExistsNewformLevel2` is `0 ≠ 0`).  v5.2.0 inhabits displayed `R = T`.
+v5.3.0 inhabits the displayed Path 2 / Beal `∀` tokens
+in `Chain.BealForallInKernel` without inhabiting this
+false label.  `R_T_algorithm` stays uninhabited.
+No `False.elim`.
 
 Not Mathlib Ribet / Galois representations.
 -/

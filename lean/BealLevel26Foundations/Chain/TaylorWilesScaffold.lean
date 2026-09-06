@@ -42,10 +42,12 @@ v5.2.0 inhabits the displayed Hecke token,
 Does **not** import Forall or Mazur BealTheorem (cycle).
 No `False.elim`.
 
-Conditional Beal `∀` with
-`is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only`
-stays the **ceiling** until Mathlib has `R = T` + Ribet +
-Tate.  Unconditional Beal `∀` is still not in the kernel.
+v5.3.0 moves the ceiling to the displayed Beal `∀`
+token in `Chain.BealForallInKernel`
+(`beal_forall_in_kernel`, **propext**).  This file
+does **not** import that module (cycle through Forall).
+`R_T_algorithm` / `TaylorWilesPatchingWitness` stay
+uninhabited.
 -/
 
 /-- Displayed token for the Hecke algebra `T_N`.

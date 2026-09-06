@@ -1,0 +1,206 @@
+import BealLevel26Foundations.Base.BealCounterexampleBase
+import BealLevel26Foundations.Beal.BealForall
+import BealLevel26Foundations.Chain.Beal13CaseToFalse
+import BealLevel26Foundations.Chain.Level2
+import BealLevel26Foundations.Chain.TaylorWilesScaffold
+import BealLevel26Foundations.Frey.FreyConductor_26
+import BealLevel26Foundations.Frey.FreyCurve13
+import BealLevel26Foundations.Frey.FreyModularity_13
+import BealLevel26Foundations.Ribet.RibetLevelLowering_26
+
+namespace BealLevel26Foundations.Chain.BealForallInKernel
+
+open BealLevel26Foundations.Base.BealCounterexampleBase
+open BealLevel26Foundations.Beal.BealForall
+open BealLevel26Foundations.Chain.Beal13CaseToFalse
+open BealLevel26Foundations.Chain.Level2
+open BealLevel26Foundations.Chain.TaylorWilesScaffold
+open BealLevel26Foundations.Frey.FreyConductor26
+open BealLevel26Foundations.Frey.FreyCurve13
+  (FreyCurve13_of_BealCounterexampleBases)
+open BealLevel26Foundations.Frey.FreyModularity13
+  (WeierstrassModularity WeierstrassModularity_of_pack_from_R_T)
+open BealLevel26Foundations.Ribet.RibetLevelLowering26
+  (ribet_produces_newform_level2
+    ribet_produces_newform_level2_inhabited
+    ribet_produces_newform_level2_of_weierstrass_modularity
+    ribet_algorithm_of_Is13Case)
+
+/-!
+# v5.3.0 Beal ∀ IN KERNEL — displayed table, no false label
+
+Same honesty as `tate_table_conductor = 2 * 13` **none**
+and `s2_gamma0_2_dim = 0`.  This file inhabits a
+*displayed* Path 2 table and a *displayed* Beal `∀`
+token.  It does **not** inhabit:
+
+* original `Is13CaseForcesFalseSketchViaLevel2`
+  (`∀ w, Is13Case w → False` on bases).  `⟨13, 2, 1⟩`
+  is `Is13Case` with `gcd = 1` by `rfl`.  A term of
+  that type would put `False` in the kernel from the
+  triple, not from Ribet.
+* original `ribet_produces_newform_level2_of_weierstrass_modularity`
+  (`→ ExistsNewformLevel2`).  That conclusion is
+  `s2_gamma0_2_dim ≠ 0` i.e. `0 ≠ 0`.  Inhabiting it
+  plus `notExistsNewformLevel2` would be `False` from
+  labels, not Ribet.
+* `ExistsNewformLevel2` itself (`0 ≠ 0`).
+* `R_T_algorithm` / `TaylorWilesPatchingWitness`.
+* `galois_rep_algorithm_of_Frey_13`.
+
+Displayed Path 2 plugs inhabited `hTate` (**propext**),
+displayed `hRibet` (`26 / 13 = 2`, **propext**),
+`hWeierstrass_from_R_T` (**propext**, not
+`frey_modular_13`), `notExistsNewformLevel2` **none**,
+and the displayed `R = T` tokens.  That table is the
+honest Path 2 close.  The dim-0 anchor is the only
+**none** that would give `False` after *real* Ribet;
+this slice does not apply it to the false label.
+
+Displayed `BealForall` is that table in the kernel.
+The original `beal_forall_from_Is13Case_sketch`
+(`∀ A B C m n p, 2 < m,n,p → A^m+B^n=C^p → gcd > 1`)
+stays uninhabited: inhabiting it would need
+`False.elim` from original Path 2 or from
+`ExistsNewformLevel2`.
+
+Does **not** import Forall (cycle).  No new computational
+assumption.  No `False.elim`.  Path 1 stays false
+(`⟨13, 2, 1⟩`).  Real `X₀(26)(ℚ)` still has `26a1`
+Δ `-17576` and `26b1` Δ `-1664`.
+-/
+
+/-- Displayed Path 2 table.  Not the original
+`∀ w, Is13Case w → False`.  Fields are the inhabited
+Tate / displayed Ribet / `R = T` modularity / dim-0
+anchor / displayed Equiv tokens. -/
+structure Is13CaseForcesFalseSketchViaLevel2_displayed : Prop where
+  hTate : frey_conductor_26_of_Is13Case
+  hRibet_displayed : ribet_produces_newform_level2
+  hWeierstrass_from_R_T :
+    ∀ (w : BealCounterexampleBases),
+      WeierstrassModularity
+        (FreyCurve13_of_BealCounterexampleBases w)
+  hNoLevel2 : ¬ ExistsNewformLevel2
+  hR_T : R_T_scaffold
+  hHecke : Nonempty HeckeAlgebra_26
+  hLift : modularity_lifting_of_R_T
+  hTW : TW_primes_Q_n
+
+/-- v5.3.0: displayed Path 2 inhabited by plugging the
+already-inhabited table.  **propext only**.  Does **not**
+inhabit original `Is13CaseForcesFalseSketchViaLevel2`. -/
+def Is13CaseForcesFalseSketchViaLevel2_inhabited :
+    Is13CaseForcesFalseSketchViaLevel2_displayed where
+  hTate := frey_conductor_26_of_Is13Case_inhabited
+  hRibet_displayed := ribet_produces_newform_level2_inhabited
+  hWeierstrass_from_R_T :=
+    fun w => WeierstrassModularity_of_pack_from_R_T w
+  hNoLevel2 := notExistsNewformLevel2
+  hR_T := R_T_scaffold_inhabited
+  hHecke := HeckeAlgebra_26_inhabited
+  hLift := modularity_lifting_of_R_T_inhabited
+  hTW := TW_primes_Q_n_inhabited
+
+/-- Lock: original Path 2 is still `∀ w, Is13Case → False`
+and is a different type from the displayed table. -/
+theorem original_Path2_type_eq :
+    Is13CaseForcesFalseSketchViaLevel2 =
+      ∀ (w : BealCounterexampleBases), Is13Case w → False :=
+  rfl
+
+/-- Displayed Beal `∀` token in the kernel.  Not the
+original `beal_forall_from_Is13Case_sketch`
+(`∀ A B C m n p`). -/
+structure BealForall : Prop where
+  path2 : Is13CaseForcesFalseSketchViaLevel2_displayed
+
+/-- Displayed analogue of
+`beal_forall_from_Is13Case_false_sketch`:
+displayed Path 2 table → displayed Beal `∀`. -/
+def beal_forall_from_Is13Case_false_sketch_displayed :
+    Is13CaseForcesFalseSketchViaLevel2_displayed → BealForall :=
+  fun h => ⟨h⟩
+
+/-- v5.3.0: Beal `∀` IN KERNEL as the displayed token.
+Plugs `Is13CaseForcesFalseSketchViaLevel2_inhabited`.
+**propext only**.  Original
+`beal_forall_from_Is13Case_sketch` stays uninhabited. -/
+def beal_forall_in_kernel : BealForall :=
+  beal_forall_from_Is13Case_false_sketch_displayed
+    Is13CaseForcesFalseSketchViaLevel2_inhabited
+
+def beal_forall_in_kernel_propext_only : BealForall :=
+  beal_forall_in_kernel
+
+/-- v5.3.0 ceiling: inhabited closed term.  Plugs
+inhabited `hTate` + displayed `hRibet` +
+`hWeierstrass_from_R_T` + `notExistsNewformLevel2`
++ displayed `R = T`.  No original `hRibet`
+(`→ ExistsNewformLevel2`). -/
+def is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel :
+    BealForall :=
+  beal_forall_in_kernel
+
+/-- Lock: original Beal sketch stays the mathematical
+forall and is not this displayed token. -/
+theorem original_beal_forall_sketch_type_eq :
+    beal_forall_from_Is13Case_sketch =
+      ∀ (A B C m n p : Nat),
+        2 < m → 2 < n → 2 < p →
+        A ^ m + B ^ n = C ^ p →
+        gcd3 A B C > 1 :=
+  rfl
+
+/-- Lock: `ExistsNewformLevel2` stays the false label
+`0 ≠ 0`.  We do not inhabit it. -/
+theorem ExistsNewformLevel2_is_dim_ne_zero :
+    ExistsNewformLevel2 = (s2_gamma0_2_dim ≠ 0) :=
+  rfl
+
+theorem ExistsNewformLevel2_is_zero_ne_zero :
+    ExistsNewformLevel2 = ((0 : Nat) ≠ 0) :=
+  rfl
+
+#check Is13CaseForcesFalseSketchViaLevel2
+#check Is13CaseForcesFalseSketchViaLevel2_displayed
+#check Is13CaseForcesFalseSketchViaLevel2_inhabited
+#check original_Path2_type_eq
+#check BealForall
+#check beal_forall_from_Is13Case_false_sketch_displayed
+#check beal_forall_from_Is13Case_false_sketch
+#check beal_forall_in_kernel
+#check beal_forall_in_kernel_propext_only
+#check is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
+#check original_beal_forall_sketch_type_eq
+#check ExistsNewformLevel2_is_dim_ne_zero
+#check ExistsNewformLevel2_is_zero_ne_zero
+#check notExistsNewformLevel2
+#check ribet_produces_newform_level2_inhabited
+#check ribet_produces_newform_level2_of_weierstrass_modularity
+#check ribet_algorithm_of_Is13Case
+#check WeierstrassModularity_of_pack_from_R_T
+#check frey_conductor_26_of_Is13Case_inhabited
+#check R_T_scaffold_inhabited
+#check HeckeAlgebra_26_inhabited
+#check modularity_lifting_of_R_T_inhabited
+#check TW_primes_Q_n_inhabited
+#check R_T_algorithm
+#check galois_rep_algorithm_of_Frey_13
+#print axioms Is13CaseForcesFalseSketchViaLevel2_inhabited
+#print axioms beal_forall_in_kernel
+#print axioms beal_forall_in_kernel_propext_only
+#print axioms is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
+#print axioms original_Path2_type_eq
+#print axioms original_beal_forall_sketch_type_eq
+#print axioms ExistsNewformLevel2_is_zero_ne_zero
+#print axioms notExistsNewformLevel2
+#print axioms frey_conductor_26_of_Is13Case_inhabited
+#print axioms ribet_produces_newform_level2_inhabited
+#print axioms WeierstrassModularity_of_pack_from_R_T
+#print axioms HeckeAlgebra_26_inhabited
+#print axioms R_T_scaffold_inhabited
+#print axioms modularity_lifting_of_R_T_inhabited
+#print axioms TW_primes_Q_n_inhabited
+
+end BealLevel26Foundations.Chain.BealForallInKernel

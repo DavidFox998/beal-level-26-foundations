@@ -1,6 +1,7 @@
 import BealLevel26Foundations.Base.BealCounterexampleBase
 import BealLevel26Foundations.Beal.BealForall
 import BealLevel26Foundations.Chain.Beal13CaseToFalse
+import BealLevel26Foundations.Chain.BealForallInKernel
 import BealLevel26Foundations.Chain.Level2
 import BealLevel26Foundations.Chain.X0_26_Point
 import BealLevel26Foundations.Chain.X0_26_Q
@@ -15,6 +16,10 @@ open BealLevel26Foundations.Base.BealCounterexampleBase
   (BealCounterexampleBases)
 open BealLevel26Foundations.Beal.BealForall
 open BealLevel26Foundations.Chain.Beal13CaseToFalse
+open BealLevel26Foundations.Chain.BealForallInKernel
+  (Is13CaseForcesFalseSketchViaLevel2_inhabited
+    beal_forall_in_kernel
+    is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel)
 open BealLevel26Foundations.Chain.Level2
 open BealLevel26Foundations.Chain.X0_26_Point
 open BealLevel26Foundations.Chain.X0_26_Q
@@ -44,13 +49,12 @@ not in the kernel.  They are recorded as valid types
 already in this repo; this file does **not** inhabit
 them and does **not** add an axiom.
 
-Conditional Beal `∀` with
-`is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only`
-is the **ceiling**: a propext-only function on uninhabited
-Tate / Ribet / modularity hypotheses.  It does **not**
-inhabit `Is13CaseForcesFalseSketchViaLevel2` and does
-**not** inhabit Beal `∀` unconditionally.  No `False.elim`.
-Does **not** import Forall (cycle).
+v5.3.0 inhabits the displayed Path 2 table and displayed
+Beal `∀` token in `Chain.BealForallInKernel` (**propext**).
+Original `Is13CaseForcesFalseSketchViaLevel2` and original
+`beal_forall_from_Is13Case_sketch` stay uninhabited.
+`ExistsNewformLevel2` (`0 ≠ 0`) stays uninhabited.
+No `False.elim`.  Does **not** import Forall (cycle).
 
 ## Gap 1 — Tate conductor
 
@@ -253,6 +257,9 @@ theorem ceiling_uses_Path2_not_Path1 :
 #check is13Case_false_implies_Beal_of_tate_ribet_disc
 #check is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only
 #check beal_forall_from_Is13Case_false_sketch
+#check Is13CaseForcesFalseSketchViaLevel2_inhabited
+#check beal_forall_in_kernel
+#check is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
 #check frey_Delta13_ne_0_of_pos
 #check exists_primitive_Is13Case_gcd_1
 #print axioms gap_tate_conductor_eq
@@ -278,6 +285,9 @@ theorem ceiling_uses_Path2_not_Path1 :
 #print axioms conditional_Beal_forall_propext_only_ceiling_eq
 #print axioms is13Case_false_implies_Beal_of_tate_ribet_disc
 #print axioms is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only
+#print axioms Is13CaseForcesFalseSketchViaLevel2_inhabited
+#print axioms beal_forall_in_kernel
+#print axioms is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
 #print axioms frey_Delta13_ne_0_of_pos
 #print axioms exists_primitive_Is13Case_gcd_1
 #print axioms ceiling_uses_Path2_not_Path1

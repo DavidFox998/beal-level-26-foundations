@@ -1,6 +1,7 @@
 import BealLevel26Foundations.Base.BealCounterexampleBase
 import BealLevel26Foundations.Beal.BealForall
 import BealLevel26Foundations.Chain.Beal13CaseToFalse
+import BealLevel26Foundations.Chain.BealForallInKernel
 import BealLevel26Foundations.Chain.Level2
 import BealLevel26Foundations.Chain.MathlibGaps
 import BealLevel26Foundations.Chain.RibetLevel2
@@ -149,6 +150,17 @@ uninhabited.  Original
 stays uninhabited.
 
 `R = T` displayed table is inhabited.
+
+v5.3.0 inhabits the displayed Path 2 table
+(`Is13CaseForcesFalseSketchViaLevel2_inhabited`) and
+displayed Beal `∀` (`beal_forall_in_kernel`, **propext**).
+Original `Is13CaseForcesFalseSketchViaLevel2`
+(`∀ w, Is13Case w → False`) stays uninhabited:
+`⟨13, 2, 1⟩` is `Is13Case`.  Original
+`ribet_produces_newform_level2_of_weierstrass_modularity`
+and `ExistsNewformLevel2` (`0 ≠ 0`) stay uninhabited.
+Original `beal_forall_from_Is13Case_sketch` stays
+uninhabited.  Not Mathlib Beal.  No `False.elim`.
 
 v4.58.0 locks `Chain.TaylorWilesScaffold`: `R = T`,
 Hecke, deformation, `ρ̄_{E,13}`, lifting, and TW primes
@@ -609,6 +621,13 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Chain.TaylorWilesScaffold.TW_primes_Q_n_inhabited
 #check BealLevel26Foundations.Frey.FreyModularity13.WeierstrassModularity_of_pack_from_R_T
 #check BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table
+#check BealLevel26Foundations.Chain.BealForallInKernel.Is13CaseForcesFalseSketchViaLevel2_inhabited
+#check BealLevel26Foundations.Chain.BealForallInKernel.BealForall
+#check BealLevel26Foundations.Chain.BealForallInKernel.beal_forall_in_kernel
+#check BealLevel26Foundations.Chain.BealForallInKernel.beal_forall_in_kernel_propext_only
+#check BealLevel26Foundations.Chain.BealForallInKernel.is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
+#check BealLevel26Foundations.Chain.BealForallInKernel.original_Path2_type_eq
+#check BealLevel26Foundations.Chain.BealForallInKernel.ExistsNewformLevel2_is_zero_ne_zero
 #check BealLevel26Foundations.Ribet.RibetLevelLowering26.ribet_produces_newform_level2
 #check BealLevel26Foundations.Ribet.RibetLevelLowering26.ribet_produces_newform_level2_inhabited
 #check BealLevel26Foundations.Ribet.RibetLevelLowering26.ribet_algorithm_of_Is13Case
@@ -621,6 +640,10 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #print axioms BealLevel26Foundations.Chain.TaylorWilesScaffold.TW_primes_Q_n_inhabited
 #print axioms BealLevel26Foundations.Frey.FreyModularity13.WeierstrassModularity_of_pack_from_R_T
 #print axioms BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table
+#print axioms BealLevel26Foundations.Chain.BealForallInKernel.Is13CaseForcesFalseSketchViaLevel2_inhabited
+#print axioms BealLevel26Foundations.Chain.BealForallInKernel.beal_forall_in_kernel
+#print axioms BealLevel26Foundations.Chain.BealForallInKernel.beal_forall_in_kernel_propext_only
+#print axioms BealLevel26Foundations.Chain.BealForallInKernel.is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel
 #print axioms BealLevel26Foundations.Chain.TaylorWilesScaffold.taylor_wiles_ceiling_eq
 #print axioms BealLevel26Foundations.Chain.TaylorWilesScaffold.rho_bar_Frey_13_inhabited
 #print axioms BealLevel26Foundations.Chain.TaylorWilesScaffold.DeformationRing_rho_bar_E13_inhabited

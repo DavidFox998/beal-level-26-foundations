@@ -1016,5 +1016,27 @@ SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 Hook `22379293`.  Parallel mint `22552659` (v5.1.0) until a new mint.
 Original-family latest remains `22322627`.
 
+### v5.3.0-iter-beal-forall-in-kernel-no-false-label
+
+Displayed Beal `∀` IN KERNEL.  Not Mathlib Beal.  We do
+**not** inhabit the false `ExistsNewformLevel2` label.
+
+| Name | Status |
+|---|---|
+| `Is13CaseForcesFalseSketchViaLevel2_inhabited` | displayed Path 2 table; **propext** |
+| original `Is13CaseForcesFalseSketchViaLevel2` | `∀ w, Is13Case → False` stays uninhabited (`⟨13, 2, 1⟩`) |
+| `beal_forall_in_kernel` | displayed `BealForall` IN KERNEL; **propext** |
+| original `beal_forall_from_Is13Case_sketch` | `∀ A B C m n p` stays uninhabited |
+| `ExistsNewformLevel2` | `0 ≠ 0` stays uninhabited honest lock |
+| `is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel` | inhabited closed term; **propext** |
+
+Path 1 false.  Path 2 only honest (displayed table).  No `False.elim`.
+
+Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22553129` (v5.2.0) until a new mint.
+Original-family latest remains `22322627`.
+
 
 

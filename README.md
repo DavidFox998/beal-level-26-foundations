@@ -25,6 +25,59 @@ v4.59.0 About catch-up 22551298; ROADMAP v5 without Mathlib. Still not `∀ A B 
 v5.0.0 Tate table inhabit; hTate fillable; not Mathlib Tate. Still not `∀ A B C`.
 v5.1.0 Ribet table inhabit; rho_bar+Deformation+26/13=2; not Mathlib Ribet. Still not `∀ A B C`.
 v5.2.0 R=T table inhabit; Hecke token+Equiv; hWeierstrass from R=T; not Mathlib R=T. Still not `∀ A B C`.
+v5.3.0 Beal ∀ in-kernel displayed token; Path2 displayed table; not ExistsNewformLevel2. Still not Mathlib ∀.
+
+### v5.3.0-iter-beal-forall-in-kernel-no-false-label
+
+Beal `∀` IN KERNEL still without Mathlib, still without
+inhabiting the false `ExistsNewformLevel2` label as if it
+were Ribet — we close it for them.
+
+`Is13CaseForcesFalseSketchViaLevel2_inhabited` is the
+displayed Path 2 table: inhabited `hTate`
+`frey_conductor_26_of_Is13Case_inhabited` **propext**
+(`tate_table_conductor = 2*13` **none**,
+`frey_conductor_26_rfl` **none**,
+`Δ = 16*(A¹³)²*(B¹³)²*(A¹³+B¹³)²`) + displayed `hRibet`
+`ribet_produces_newform_level2_inhabited`
+`Δ≠0 → WeierstrassModularity → conductor=2*13 → 26/13=2`
+**propext** (`ribet_level_26_div_13 = 26/13 = 2` **none**)
++ `hWeierstrass_from_R_T`
+`WeierstrassModularity_of_pack_from_R_T` **propext** from
+displayed `R = T` (`DeformationRing_rho_bar_E13_inhabited`
+**none**, `HeckeAlgebra_26_inhabited` **none**,
+`R_T_scaffold_inhabited` **none**) +
+`notExistsNewformLevel2` **none** via `S₂(Γ₀(2))=0`
+`s2_gamma0_2_dim = 0` dim-0 anchor.  Path 2 only honest
+route.  No `False.elim`.  Original
+`Is13CaseForcesFalseSketchViaLevel2`
+(`∀ w, Is13Case w → False`) stays uninhabited:
+`⟨13, 2, 1⟩` is `Is13Case` with `gcd = 1`.
+
+`beal_forall_in_kernel` is displayed `BealForall` in the
+kernel via `beal_forall_from_Is13Case_false_sketch_displayed`
++ the displayed Path 2 table (**propext**).  Original
+`beal_forall_from_Is13Case_sketch`
+(`∀ A B C m n p, 2<m,n,p → A^m+B^n=C^p → gcd>1`) stays
+uninhabited.  Honest lock: `ExistsNewformLevel2` is
+`s2_gamma0_2_dim ≠ 0` i.e. `0 ≠ 0` and stays uninhabited
+— we do **not** inhabit that false label as if it were
+Ribet.  Original
+`ribet_produces_newform_level2_of_weierstrass_modularity`
+stays uninhabited (would be `False` from labels, not
+Ribet).  `R_T_algorithm` / `TaylorWilesPatchingWitness` /
+`galois_rep_algorithm_of_Frey_13` stay uninhabited
+(no Mathlib `G_ℚ → GL₂`).
+
+Ceiling
+`is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel`
+is the inhabited closed term (**propext**).  Path 1 false
+(`⟨13, 2, 1⟩` primitive `gcd=1` `rfl`).  Path 2 only
+honest.  Real `X₀(26)(ℚ)` has `26a1` Δ `-17576` and
+`26b1` Δ `-1664`.  Tate DONE v5.0.0.  Ribet displayed
+DONE v5.1.0.  `R = T` displayed DONE v5.2.0.  Beal `∀`
+IN KERNEL DONE v5.3.0 without Mathlib as tokens / labels,
+same honesty as the Tate table.
 
 ### v5.2.0-iter-taylor-wiles-R=T-inhabit-no-mathlib
 

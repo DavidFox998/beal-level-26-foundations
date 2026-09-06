@@ -52,13 +52,19 @@ Intended composition (not a kernel close):
    `S₂(Γ₀(2))` dimension `0`.
 
 `Is13CaseForcesFalseSketchViaLevel2` is the valid type
-`∀ w, Is13Case w → False`.  It stays uninhabited: the
-composition needs Tate + Ribet.  This is the only honest
+`∀ w, Is13Case w → False`.  It stays uninhabited: a
+term would be `False` from `⟨13, 2, 1⟩` (`Is13Case`,
+`gcd = 1`) or from inhabiting `ExistsNewformLevel2`
+(`0 ≠ 0`).  v5.3.0 inhabits the *displayed* Path 2
+table in `Chain.BealForallInKernel`
+(`Is13CaseForcesFalseSketchViaLevel2_inhabited`),
+not this original type.  This is the only honest
 path from `13 ∣ A*B*C` toward Beal `∀`:
 `Is13Case → gcd > 1` is false (`⟨13, 2, 1⟩`).
 No new axiom.  Does **not** import Forall or Mazur
 BealTheorem (cycle).  This is the
-`beal_forall_from_ribet` pre-image, not `∀ A B C`.
+`beal_forall_from_ribet` pre-image, not the original
+`∀ A B C` sketch.
 -/
 
 /-- Valid type `Is13Case → False` on shared bases.

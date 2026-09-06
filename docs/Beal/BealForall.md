@@ -195,3 +195,19 @@ No `False.elim`.
 Still not `∀ A B C` unconditionally.  Still not Mathlib
 `X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles.
 
+### v5.3.0-iter-beal-forall-in-kernel-no-false-label
+
+Displayed Beal `∀` IN KERNEL
+(`Chain.BealForallInKernel.beal_forall_in_kernel`,
+**propext**) via the displayed Path 2 table
+(`Is13CaseForcesFalseSketchViaLevel2_inhabited`).
+Original `beal_forall_from_Is13Case_sketch` (`∀ A B C m n p`)
+stays uninhabited.  Original Path 2
+(`∀ w, Is13Case w → False`) stays uninhabited
+(`⟨13, 2, 1⟩` is `Is13Case`).  `ExistsNewformLevel2`
+(`0 ≠ 0`) stays uninhabited.  Ceiling
+`is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel`
+is the inhabited closed term.  Path 2 only honest.
+No `False.elim`.  Still not Mathlib
+`X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles.
+
