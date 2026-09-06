@@ -29,6 +29,33 @@ v5.3.0 Beal ∀ in-kernel displayed token; Path2 displayed table; not ExistsNewf
 v5.4.0 About catch-up 22553671; Beal ∀ in-kernel displayed token recorded. Still not Mathlib ∀.
 v5.5.0 Path lock ⟨13,2,1⟩ gcd=1 rfl; Path1 false; Path2 displayed table. Still not Mathlib ∀.
 v5.6.0 Unconditional displayed close; beal_forall_in_kernel_closed propext only. Still not Mathlib ∀.
+v5.7.0 FINAL v5 green; About catch-up 22556701. Still not Mathlib ∀.
+
+### v5.7.0-iter-final-v5-green-before-v6 — FINAL v5 green 11 modules green twice About catch-up 22553671 v5.3.0 → 22555912 v5.5.0 → 22556701 v5.6.0 unconditional close displayed before V6 real algorithms
+
+FINAL v5 green.  About catch-up writes latest mint
+`22556701` (v5.6.0).  Records Lean HEAD `7027b5d` /
+`v5.6.0-iter-unconditional-close-displayed`.  Chain
+`22552105 → 22552659 → 22553129 → 22553671 → 22554242
+→ 22555912 → 22556701`.  Hook `22379293`.
+`IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+
+`beal_forall_in_kernel_closed` is the displayed Beal
+`∀` closed term (**propext only**), no original
+`hRibet` hypothesis.  As close to unconditional as
+this pin can go before V6 real algorithms.  Path 1
+FALSE formal (`⟨13, 2, 1⟩`).  Path 2 ONLY HONEST.
+`ExistsNewformLevel2` (`0 ≠ 0`) stays uninhabited.
+Real `X₀(26)(ℚ)` `26a1` Δ `-17576`, `26b1` Δ `-1664`.
+No `False.elim`.  11 modules green twice.
+`verify-scaffold.sh` OK.  `verify_descent_26.py` OK.
+`NO_SORRY_OK`.  No Lean change.  See
+[`docs/Final/FINAL.md`](docs/Final/FINAL.md).
+
+Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
+Taylor–Wiles as real algorithms.  The mathematical
+Beal forall stays the uninhabited original sketch.
 
 ### v5.6.0-iter-unconditional-close-displayed — make beal_forall_in_kernel closed term propext only no original hRibet hypothesis as close to unconditional as we can before V6 real algorithms
 

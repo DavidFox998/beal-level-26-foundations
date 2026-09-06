@@ -148,3 +148,14 @@ as this pin can go before V6 real algorithms.
 Original Path 2 / `ExistsNewformLevel2` / original
 Beal `∀` stay uninhabited.  Path 1 FALSE formal.
 No `False.elim`.  11 modules green twice.
+
+### v5.7.0-iter-final-v5-green-before-v6 — DONE
+
+FINAL v5 green.  About catch-up `22553671` (v5.3.0) →
+`22555912` (v5.5.0) → `22556701` (v5.6.0).
+Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+No Lean change.  Same honesty as
+`tate_table_conductor = 2 * 13`.  Real algorithms
+remain V6.
+

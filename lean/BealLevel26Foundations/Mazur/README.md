@@ -29,6 +29,7 @@ v5.3.0 Beal ∀ in-kernel displayed token; Path2 displayed table; not ExistsNewf
 v5.4.0 About catch-up 22553671; Beal ∀ in-kernel displayed token recorded. Still not Mathlib ∀.
 v5.5.0 Path lock ⟨13,2,1⟩ gcd=1 rfl; Path1 false; Path2 displayed table. Still not Mathlib ∀.
 v5.6.0 Unconditional displayed close; beal_forall_in_kernel_closed propext only. Still not Mathlib ∀.
+v5.7.0 FINAL v5 green; About catch-up 22556701. Still not Mathlib ∀.
 
 ### v4.28.0 X0(26)(Q) Cusps P-mem Locked — DOI 22452680
 

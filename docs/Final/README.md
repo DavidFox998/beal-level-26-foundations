@@ -15,6 +15,7 @@ PARI lock: 26a1 Δ `-17576` 26b1 Δ `-1664` `|Sel2|=1` det `M3=2` SHA `d9d907f6c
 
 # docs/Final/
 
+FINAL v5 green: [`FINAL.md`](FINAL.md).
 Iter / Forall / typed-bridge docs. Lean sources live in
 [`lean/BealLevel26Foundations/Final/`](../../lean/BealLevel26Foundations/Final/README.md).
 Package table: [`../BealExponent13_Iter_Package.md`](../BealExponent13_Iter_Package.md).

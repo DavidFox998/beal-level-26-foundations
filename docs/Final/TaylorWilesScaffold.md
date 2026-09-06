@@ -122,3 +122,13 @@ uninhabited.  `R_T_algorithm` /
 `TaylorWilesPatchingWitness` /
 `galois_rep_algorithm_of_Frey_13` stay uninhabited —
 real algorithms remain V6.
+
+### v5.7.0 FINAL v5 green (About catch-up `22556701`)
+
+FINAL v5 green.  11 modules green twice.  About catch-up
+writes latest mint `22556701` (v5.6.0).  Chain
+`22552105 → 22552659 → 22553129 → 22553671 → 22554242
+→ 22555912 → 22556701`.  No Lean change.  Same honesty
+as `tate_table_conductor = 2 * 13`.  Real algorithms
+remain V6.
+
