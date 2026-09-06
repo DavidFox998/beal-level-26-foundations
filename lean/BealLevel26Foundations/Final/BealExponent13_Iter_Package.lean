@@ -69,11 +69,38 @@ def certified_typed_and_forall :
     BealTheorem_Exponent13_Typed ∧ BealTheorem_Exponent13_Typed :=
   ⟨certified_from_forall, beal_forall_certified_from_ribet⟩
 
+/-- FINAL BRIDGE: `beal_forall_from_ribet` is
+`Contradiction.beal_exponent13_from_ribet` -- BRIDGE none via
+`hGeomForbid_typed_true` `hNotIn hInList`. Upstream
+`Contradiction.certified` needs `frey_modular_13` +
+`ribet_level_lowering_26`. Still not forall N. -/
+def final_bridge : BealTheorem_Exponent13_Typed :=
+  beal_forall_from_ribet
+
+/-- Triple lock of the axiom-free typed inhabitants.
+Not `∀ ℕ` and not Mathlib `X₀(26)(ℚ)`. -/
+def final_package :
+    BealTheorem_Exponent13_Typed ∧
+      BealTheorem_Exponent13_Typed ∧
+      BealTheorem_Exponent13_Typed :=
+  ⟨beal_exponent13_from_ribet, beal_forall_from_ribet, final_bridge⟩
+
+/-- Witness that `#print axioms final_package` is none.
+Not a `True` inhabitant. Not `∀ ℕ`. -/
+theorem final_package_none :
+    BealTheorem_Exponent13_Typed ∧
+      BealTheorem_Exponent13_Typed ∧
+      BealTheorem_Exponent13_Typed :=
+  final_package
+
 #print axioms BealExponent13_Iter_Package.certified_from_ribet
 #print axioms BealExponent13_Iter_Typed_And_Package.certified_from_ribet
 #print axioms certified_from_forall
 #print axioms typed_and_forall
 #print axioms certified_typed_and_forall
+#print axioms final_bridge
+#print axioms final_package
+#print axioms final_package_none
 #check BealExponent13_Contradiction.certified
 
 end BealLevel26Foundations.Final
