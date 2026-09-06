@@ -81,3 +81,40 @@ inhabited with `sorry`.  New defs may be tautological;
 
 Still not `∀ A B C : ℕ`.  Still not Mathlib `X₀(26)(ℚ)`.
 We do not use the word final for a Beal close.
+
+### v4.32.0 working prime vs universal
+
+Level 26 foundations = **working prime** `p = 13` case, **not**
+a claim that every counterexample is a 13-case.
+
+`Is13Case h` is
+
+`13 ∣ h.x * h.y * h.z ∨ 13 ∣ h.exponentX ∨ 13 ∣ h.exponentY ∨ 13 ∣ h.exponentZ`
+
+with `exponentX/Y/Z` aliases of the packed exponents.  Witnesses
+whose exponents are `3,4,5,…` with no factor 13 are outside this
+case and need other levels `2p`.
+
+`beal_prime_divisor_13_of_counterexample` is **conditional** on
+`Is13Case`: the four disjuncts all imply `13 ∣ x*y*z` by
+`Nat.dvd_trans`.  No `sorry`.  Not `∀ h, 13 ∣ xyz`.
+
+`BealForallReducesToExponent13Sketch` is the **missing step**:
+after Frey modularity + Ribet lowering to 26,
+`X0(26)(Q)=[1,2,13,26]` cusps `P.mem` forces `gcd>1` **only**
+in the 13-case.  Full `∀ A B C` requires every prime `p ≥ 5`
+with levels `2p`, not just 26.  The sketch stays uninhabited.
+
+`beal_forall_reduces_to_exponent13` applies that sketch:
+
+`(∀ A B C, ¬ At13) → (∀ w, Is13Case w → False)`
+
+It does **not** conclude `∀ A B C, ¬ BealCounterexampleOn`.
+
+Bridge (unchanged): `beal_forall_eq_exponent13_bridge` **none**
+= `beal_forall_from_ribet` = `Contradiction.beal_exponent13_from_ribet`
+via `hGeomForbid_typed_true` (`hNotIn` `hInList`
+`X0_26_Q=[1,2,13,26]` cusps `P.mem`) forces `gcd>1` in the
+13-case on the displayed cusp-label type.  `#print axioms
+beal_forall_from_ribet` stays **none**.  New names may use
+`propext`.  No `False.elim`.
