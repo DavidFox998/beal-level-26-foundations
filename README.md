@@ -1,25 +1,24 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22450737.svg)](https://doi.org/10.5281/zenodo.22450737)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22452680.svg)](https://doi.org/10.5281/zenodo.22452680)
 [![Hook 22379293](https://zenodo.org/badge/DOI/10.5281/zenodo.22379293.svg)](https://doi.org/10.5281/zenodo.22379293)
 [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 [![v4.0.9-fourCusps-forall DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22322627.svg)](https://doi.org/10.5281/zenodo.22322627)
 [![CI](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml/badge.svg)](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml)
 
-### v4.27.0 X0(26)(Q) Cusps P-mem Locked — DOI 22450737
+### v4.28.0 X0(26)(Q) Cusps P-mem Locked — DOI 22452680
 
 | Name | What |
 |---|---|
-| X0_26_Q / X0_26_cusps | = [1,2,13,26] rfl P.mem mem_1 mem_2 mem_13 mem_26 not_mem_3 |
-| hInList_X0_26 / hNotIn_X0_26 | P.mem lemmas for hGeomForbid_typed_true |
+| X0_26_Q | [1,2,13,26] rfl P.mem mem_1 mem_2 mem_13 mem_26 not_mem_3 hInList hNotIn for hGeomForbid |
 | beal_forall_eq_exponent13_bridge | none = beal_forall_from_ribet = Contradiction.beal_exponent13_from_ribet BRIDGE none hGeomForbid_typed_true (hNotIn hInList) |
-| beal13_forall_bridge_triple | none ⟨exponent13,forall,bridge⟩ — formerly final_* |
+| beal13_forall_bridge_triple | none ⟨exponent13,forall,bridge⟩ |
 
-Hook `22379293` `IsVersionOf` `22272382` is metadata only. Mint `10.5281/zenodo.22450737` findable (index ~19 of the parallel parent). Original-concept latest remains v4.0.9 `10.5281/zenodo.22322627`.
+DOI `22452680` findable records prior mint `22450737` hook `22379293` `IsVersionOf` `22272382` honest original latest `22322627`.
 
 PARI lock: 26a1 Δ `-17576` 26b1 Δ `-1664` `|Sel2|=1` det `M3=2` SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260` image `docs/images/2-descent-level-26-26a1-26b1.webp` ≥300KB.
 
 # Beal Level 26 Foundations — Exponent 13 Full Package (Computational Boundary)
 
-This repo: v4.27.0 X0(26)(Q) cusps P-mem + v4.28.0 metadata mint — see docs/BealExponent13_Iter_Package.md and docs/Chain/X0_26_Point.md
+This repo: v4.29.0 README lock DOI 22452680 + forall A B C prep — see docs/BealExponent13_Iter_Package.md and docs/Chain/X0_26_Point.md
 
 ## v4.25.0 Beal13-Forall-Bridge Triple — Axiom-Free Cert
 
@@ -70,6 +69,8 @@ calculation is evidence for exactly what it computes, while every missing
 mathematical bridge is named instead of hidden behind an axiom.
 
 **Current public surface:** tag
+[`v4.29.0-iter-readme-X0-26-22452680-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.29.0-iter-readme-X0-26-22452680-locked)
+(prior
 [`v4.28.0-iter-zenodo-X0-26-cusps-metadata-mint`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.28.0-iter-zenodo-X0-26-cusps-metadata-mint)
 (prior
 [`v4.27.0-iter-X0-26-cusps-P-mem-locked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.27.0-iter-X0-26-cusps-P-mem-locked),

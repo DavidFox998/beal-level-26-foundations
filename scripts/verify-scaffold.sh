@@ -89,6 +89,7 @@ test -f lean/BealLevel26Foundations/Chain/X0_26_Point.lean
 test -f docs/Chain/X0_26_Point.md
 test -f docs/releases/v4.27.0-iter-X0-26-cusps-P-mem-locked.md
 test -f docs/releases/v4.28.0-iter-zenodo-X0-26-cusps-metadata-mint.md
+test -f docs/releases/v4.29.0-iter-readme-X0-26-22452680-locked.md
 test -f docs/Chain/README.md
 test -f docs/Modularity/README.md
 test -f docs/Mazur/README.md

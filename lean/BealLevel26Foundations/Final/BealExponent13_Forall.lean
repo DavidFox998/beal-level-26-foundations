@@ -41,6 +41,11 @@ Descent SHA-256
 `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 -/
 
+-- Next: forall A B C : N, Beal reduces to prime p=13 dividing xyz
+-- via Ribet level lowering to 26, then X0(26)(Q) = cusps forces gcd>1
+-- Comment skeleton only.  Not inhabited.  Still not ∀ A B C : ℕ.
+-- No False.elim.
+
 /-- Conjunction of the typed close and the Iter package.
 Not a Fermat / Beal forall. -/
 def BealExponent13_Iter_Typed_And_Package : Prop :=
