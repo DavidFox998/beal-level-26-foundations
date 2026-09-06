@@ -19,6 +19,28 @@ v4.53.0 Path1 gcd>1 false; Path2 only honest `Is13Case → False` via level 2. S
 v4.54.0 conditional `hTate+hRibet+hComp+hΔ → Beal ∀`; does not inhabit unconditional False. Still not `∀ A B C`.
 v4.55.0 explicit Δ≠0; propext-only Beal ∀ via hTate+hRibet+hWeierstrass. Still not `∀ A B C`.
 v4.56.0 Mathlib gaps Tate/Ribet/Modularity/X0; propext-only Beal ∀ is ceiling. Still not `∀ A B C`.
+v4.57.0 Phase5 X0(26)(Q) honest scaffold; real-points String list; not Mazur. Still not `∀ A B C`.
+
+### v4.57.0-iter-phase5-X0-26-Q-honest-scaffold
+
+Phase 5 build-out of the `X₀(26)(ℚ)` honest scaffold until
+Taylor–Wiles / BCDT.  `X0_26_Q_Point` is still
+`Σ (E : EllipticCurve ℚ), CyclicSubgroup E 26`, an empty
+inductive, **not** the real curve.  Real `X₀(26)(ℚ)` has
+four cusps `1,2,13,26` plus `26a1` Δ `-17576` and `26b1`
+Δ `-1664`.  `X0_26_Q_real_points` is a `List String`
+reference (**none**).  `fourCuspsForallCuspPoints_of_P_mem`
+is **none** on `DisplayedX026CuspPoint` (label
+`∈ [1,2,13,26]`), not Mazur; `X0_26_Q_Point` has no
+`.label`.  `notExistsNoncuspidal_26_proved` is **none**
+via `hGeomForbid` label check, not Mazur.
+`X0_26_Q_Point_to_ExistsNoncuspidal` and
+`nonempty_X0_26_Q_Point_to_False` stay uninhabited (no
+vacuous empty-elim).  `Chain.MathlibGaps` Phase 5 records
+that Mathlib lacks `X₀(N)(ℚ)`.  Phases 1–4 and both Beal
+wirings stay.  Ceiling remains propext-only Path 2.
+No `False.elim`.  Still not `∀ A B C` unconditionally.
+Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate.
 
 ### v4.56.0-iter-mathlib-gaps-what-mathlib-does-not-have
 

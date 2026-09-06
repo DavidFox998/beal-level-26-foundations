@@ -878,4 +878,31 @@ SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 Hook `22379293`.  Parallel mint `22550229` (v4.55.0) until a new mint.
 Original-family latest remains `22322627`.
 
+### v4.57.0-iter-phase5-X0-26-Q-honest-scaffold
+
+Phase 5 honest scaffold until Taylor–Wiles.  Empty
+inductive vs the real curve.
+
+| Name | Status |
+|---|---|
+| `X0_26_Q_Point` | `Σ (E : EllipticCurve ℚ), CyclicSubgroup E 26` empty inductive; **not** the real curve |
+| `X0_26_Q_real_points` | `List String` `["cusp_1","cusp_2","cusp_13","cusp_26","26a1 Δ -17576","26b1 Δ -1664"]`; **none** |
+| `mem_26a1_real_points` / `mem_26b1_real_points` | **none** via `List.mem_cons_*` |
+| `fourCuspsForallCuspPoints_of_P_mem` | **none** on `DisplayedX026CuspPoint`; label `∈ [1,2,13,26]`; not Mazur; `X0_26_Q_Point` has no `.label` |
+| `notExistsNoncuspidal_26_proved` | **none** via `hGeomForbid` label check, not Mazur |
+| `X0_26_Q_Point_to_ExistsNoncuspidal` | uninhabited; no vacuous empty-elim |
+| `nonempty_X0_26_Q_Point_to_False` | uninhabited; mathematically false (`26a1` / `26b1` exist) |
+| Ceiling | `is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only` **propext only**; Path 2 |
+
+Path 1 stays false (`⟨13,2,1⟩`).  Path 2 stays the only
+honest `Is13Case → False` type.  Phases 1–4 unchanged.
+No `False.elim`.
+
+Still not `∀ A B C` unconditionally.  Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22550771` (v4.56.0) until a new mint.
+Original-family latest remains `22322627`.
+
+
 

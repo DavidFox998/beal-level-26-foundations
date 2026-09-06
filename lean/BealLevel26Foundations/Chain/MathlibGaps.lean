@@ -29,6 +29,7 @@ open BealLevel26Foundations.Ribet.RibetLevelLowering26
 
 /-!
 # v4.56.0 Mathlib gaps — what this pin does not have
+# v4.57.0 Phase 5 honest `X₀(26)(ℚ)` scaffold
 
 This tree pins **Lean 4.12.0** and **Mathlib v4.12.0**.
 The named gaps below are why unconditional Beal `∀` is
@@ -85,21 +86,33 @@ Inhabited (**none**) via displayed `s2_gamma0_2_dim = 0`
 (`rfl`).  This is the only none that yields `False`
 *after* Ribet.  Not a Mathlib modular-forms computation.
 
-## Gap 5 — `X₀(26)(ℚ)` classification
+## Gap 5 — `X₀(26)(ℚ)` (Phase 5 honest scaffold)
 
 `X0_26_Q_Point` is
 `Σ (E : EllipticCurve ℚ), CyclicSubgroup E 26`.
-`CyclicSubgroup` is an empty inductive.  Scaffold, not
-the real curve.  Mathlib 4.12 has no `X₀(N)(ℚ)`.
-Real `X₀(26)(ℚ)` has four cusps
-(label `∈ [1,2,13,26]`, `fourCuspsForallCuspPoints_of_P_mem`
-**none**) and two non-cuspidal points `26a1` (Δ `-17576`)
-and `26b1` (Δ `-1664`).  So
-`Nonempty X0_26_Q_Point → False` is false.
-`X0_26_Q_Point_to_ExistsNoncuspidal` stays uninhabited
-(no vacuous empty-elim).  `notExistsNoncuspidal_26_proved`
-is **none** via `hGeomForbid` on displayed labels; that
-is a label check, not Mazur.
+`CyclicSubgroup` is an empty inductive.  Scaffold, **not**
+the real curve.  Mathlib 4.12 has no `X₀(N)(ℚ)`, no
+modular-curve points, and no Mazur classification.
+
+Real `X₀(26)(ℚ)` has four cusps and two non-cuspidal
+points.  `X0_26_Q_real_points` is the honest
+`List String` reference
+`["cusp_1", "cusp_2", "cusp_13", "cusp_26",
+"26a1 Δ -17576", "26b1 Δ -1664"]` (**none** via `rfl`
+/ `List.Mem`).
+
+`fourCuspsForallCuspPoints_of_P_mem` is **none** on
+`DisplayedX026CuspPoint` (label `∈ [1,2,13,26]`).
+`X0_26_Q_Point` has no `.label`.  That lock does **not**
+handle non-cuspidal points, so a cusp-only forall does
+not imply `False` on the real curve.
+
+`notExistsNoncuspidal_26_proved` is **none** via
+`hGeomForbid` on displayed labels, not Mazur.
+`X0_26_Q_Point_to_ExistsNoncuspidal` and
+`nonempty_X0_26_Q_Point_to_False` stay uninhabited
+(no vacuous empty-elim).  Phase 5 stays a scaffold
+until Taylor–Wiles / BCDT plus Mathlib `X₀(N)(ℚ)`.
 
 ## Ceiling
 
@@ -176,6 +189,9 @@ theorem ceiling_uses_Path2_not_Path1 :
 #check gap_X0_26_Q_scaffold
 #check X0_26_Q_Point
 #check X0_26_Q_Point_to_ExistsNoncuspidal
+#check X0_26_Q_real_points
+#check fourCusps_displayed_of_P_mem
+#check nonempty_X0_26_Q_Point_to_False
 #check fourCuspsForallCuspPoints_of_P_mem
 #check conditional_Beal_forall_propext_only_ceiling
 #check is13Case_false_implies_Beal_of_tate_ribet_disc
@@ -190,6 +206,10 @@ theorem ceiling_uses_Path2_not_Path1 :
 #print axioms notExistsNewformLevel2
 #print axioms gap_s2_gamma0_2_done
 #print axioms gap_X0_26_Q_scaffold_eq
+#print axioms X0_26_Q_real_points_eq
+#print axioms mem_26a1_real_points
+#print axioms mem_26b1_real_points
+#print axioms fourCusps_displayed_of_P_mem
 #print axioms fourCuspsForallCuspPoints_of_P_mem
 #print axioms conditional_Beal_forall_propext_only_ceiling_eq
 #print axioms is13Case_false_implies_Beal_of_tate_ribet_disc

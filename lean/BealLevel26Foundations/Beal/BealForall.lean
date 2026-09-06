@@ -28,6 +28,7 @@ open BealLevel26Foundations.Ribet.RibetLevelLowering26
 # v4.54.0 conditional Beal from Tate + Ribet + Path 2 composition
 # v4.55.0 explicit Δ ≠ 0 and propext-only conditional wiring
 # v4.56.0 Mathlib gaps: both wirings stay; propext-only is the ceiling
+# v4.57.0 Phase 5 X0 scaffold; both wirings stay
 
 `Frey.FreyConductor26.Is13Case` is `13 ∣ A*B*C` on shared
 bases.  Forall.`Is13Case` is `13 ∣ x*y*z` on a packed

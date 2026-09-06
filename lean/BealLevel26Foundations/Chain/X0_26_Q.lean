@@ -60,6 +60,23 @@ It stays uninhabited.  Empty-inductive elimination would
 be a vacuous close and is not used: a real modular-curve
 point is still not a `DisplayedX026CuspPoint`.
 
+v4.57.0 Phase 5 honest scaffold until Taylor–Wiles /
+BCDT: `X0_26_Q_real_points` is a `List String` reference
+for the real curve (four cusps plus `26a1` / `26b1`).
+It is not a Mathlib point type.  `X0_26_Q_Point` has no
+`.label`; the four-cusp lock stays on
+`DisplayedX026CuspPoint` (`fourCuspsForallCuspPoints_of_P_mem`,
+**none**).  That lock is a label check, not Mazur.
+`notExistsNoncuspidal_26_proved` (in Forall) is the same
+label check via `hGeomForbid_typed_true`, not Mazur
+`X₀(N)(ℚ)` classification.  So it does **not** prove
+the real curve has only cusps.
+
+`nonempty_X0_26_Q_Point_to_False` is
+`Nonempty X0_26_Q_Point → False`.  Mathematically false
+(real points exist).  Uninhabited here: empty-elim on
+`CyclicSubgroup` would inhabit it and is not used.
+
 Does **not** import Forall or Mazur BealTheorem (cycle).
 Does **not** add an axiom.  No `False.elim`.
 -/
@@ -99,13 +116,72 @@ real curve (`26a1` / `26b1` exist).  Need level 2. -/
 def X0_26_Q_Point_to_ExistsNoncuspidal : Prop :=
   Nonempty X0_26_Q_Point → ExistsNoncuspidal_26
 
+/-- Honest reference for real `X₀(26)(ℚ)`.
+Four displayed cusp names plus the two LMFDB / PARI
+non-cuspidal points.  A `List String`, not a Mathlib
+point type and not a proof. -/
+def X0_26_Q_real_points : List String :=
+  ["cusp_1", "cusp_2", "cusp_13", "cusp_26",
+    "26a1 Δ -17576", "26b1 Δ -1664"]
+
+theorem X0_26_Q_real_points_eq :
+    X0_26_Q_real_points =
+      ["cusp_1", "cusp_2", "cusp_13", "cusp_26",
+        "26a1 Δ -17576", "26b1 Δ -1664"] :=
+  rfl
+
+theorem X0_26_Q_real_points_length :
+    X0_26_Q_real_points.length = 6 :=
+  rfl
+
+theorem mem_26a1_real_points :
+    "26a1 Δ -17576" ∈ X0_26_Q_real_points :=
+  X0_26_Q_real_points_eq ▸
+    (List.mem_cons_of_mem _ <|
+      List.mem_cons_of_mem _ <|
+        List.mem_cons_of_mem _ <|
+          List.mem_cons_of_mem _ <|
+            List.mem_cons_self _ _)
+
+theorem mem_26b1_real_points :
+    "26b1 Δ -1664" ∈ X0_26_Q_real_points :=
+  X0_26_Q_real_points_eq ▸
+    (List.mem_cons_of_mem _ <|
+      List.mem_cons_of_mem _ <|
+        List.mem_cons_of_mem _ <|
+          List.mem_cons_of_mem _ <|
+            List.mem_cons_of_mem _ <|
+              List.mem_cons_self _ _)
+
+/-- Displayed four-cusp lock.  Carrier is
+`DisplayedX026CuspPoint` (has `.label`), **not**
+`X0_26_Q_Point` (Σ-type, no `.label`).  Label
+`∈ [1,2,13,26]`, not Mazur. -/
+def fourCusps_displayed_of_P_mem : fourCuspsForallCuspPoints :=
+  fourCuspsForallCuspPoints_of_P_mem
+
+/-- Mathematically false: real `X₀(26)(ℚ)` has `26a1`
+and `26b1`.  Uninhabited.  Empty-elim on the scaffold
+would inhabit this and is not used. -/
+def nonempty_X0_26_Q_Point_to_False : Prop :=
+  Nonempty X0_26_Q_Point → False
+
 #check EllipticCurve
 #check CyclicSubgroup
 #check X0_26_Q_Point
 #check weierstrass_modularity_gives_X0_26_Q_Point
 #check X0_26_Q_Point_to_ExistsNoncuspidal
+#check X0_26_Q_real_points
+#check fourCusps_displayed_of_P_mem
+#check nonempty_X0_26_Q_Point_to_False
 #check DisplayedX026CuspPoint
 #check ExistsNoncuspidal_26
 #check WeierstrassModularity
+#check fourCuspsForallCuspPoints_of_P_mem
+#print axioms X0_26_Q_real_points_eq
+#print axioms X0_26_Q_real_points_length
+#print axioms mem_26a1_real_points
+#print axioms mem_26b1_real_points
+#print axioms fourCusps_displayed_of_P_mem
 
 end BealLevel26Foundations.Chain.X0_26_Q

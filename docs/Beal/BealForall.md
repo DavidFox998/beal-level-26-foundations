@@ -102,3 +102,29 @@ DONE anchor.  The propext-only wiring is the ceiling
 until those gaps close.  Uses Path 2, not Path 1.
 No `False.elim`.
 
+### v4.57.0-iter-phase5-X0-26-Q-honest-scaffold
+
+Both Beal wirings stay as in v4.55.0 / v4.56.0.  This
+slice builds out **Phase 5** `X₀(26)(ℚ)` as an honest
+scaffold until Taylor–Wiles / BCDT.
+
+- `X0_26_Q_Point` stays the **empty inductive** scaffold
+  `Σ (E : EllipticCurve ℚ), CyclicSubgroup E 26`.  It is
+  **not** real `X₀(26)(ℚ)`.
+- Real curve has four cusps (`1, 2, 13, 26`) **and**
+  `26a1` (Δ `-17576`) and `26b1` (Δ `-1664`).  Reference
+  list: `X0_26_Q_real_points` (`List String`, **none**).
+- `fourCuspsForallCuspPoints_of_P_mem` is **none** via
+  displayed `label ∈ [1, 2, 13, 26]`, **not** Mazur.
+- `notExistsNoncuspidal_26_proved` is **none** via
+  `hGeomForbid` **label check**, **not** Mazur `X₀(N)(ℚ)`
+  classification.
+- `X0_26_Q_Point_to_ExistsNoncuspidal` and
+  `nonempty_X0_26_Q_Point_to_False` stay **uninhabited**
+  (no vacuous empty-elim).
+- `Chain.MathlibGaps` Phase 5 now states Mathlib 4.12
+  lacks `X₀(N)(ℚ)` / Mazur.
+
+Still not `∀ A B C` unconditionally.  Still not Mathlib
+`X₀(26)(ℚ)` + Ribet + Tate.
+

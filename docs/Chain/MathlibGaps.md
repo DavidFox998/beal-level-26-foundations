@@ -12,7 +12,7 @@ and the conditional Beal `∀` ceiling.
 | Modularity | `WeierstrassModularity_of_pack` **propext** + existing `frey_modular_13`; not BCDT |
 | Ribet `26 → 2` | `ribet_produces_newform_level2` uninhabited |
 | `S₂(Γ₀(2))` dim `0` | `notExistsNewformLevel2` **none** DONE |
-| `X₀(26)(ℚ)` | empty inductive scaffold; real curve has `26a1` / `26b1` |
+| `X₀(26)(ℚ)` Phase 5 | empty inductive scaffold; `X0_26_Q_real_points` **none**; four-cusp lock **none** (label, not Mazur); real curve has `26a1` / `26b1` |
 
 Ceiling:
 `is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only`
@@ -20,4 +20,9 @@ is **propext only**.  It does not inhabit unconditional
 `Is13Case → False` and does not inhabit Beal `∀`
 unconditionally.  No `False.elim`.
 
+v4.57.0: Phase 5 is the honest scaffold until Taylor–Wiles.
+`X0_26_Q_Point` has no `.label`.  `X0_26_Q_real_points`
+is a string list, not a Mathlib point type.
+
 Still not `∀ A B C`.
+

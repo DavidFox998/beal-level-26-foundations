@@ -115,6 +115,14 @@ DONE (`notExistsNewformLevel2` **none**).  Conditional
 Beal `∀` propext-only is the ceiling until those gaps
 close.  Both wirings stay.  No `False.elim`.
 
+v4.57.0 Phase 5 honest `X₀(26)(ℚ)` scaffold until
+Taylor–Wiles: `X0_26_Q_real_points` is a `List String`
+reference (four cusps plus `26a1` / `26b1`).
+`X0_26_Q_Point` stays an empty inductive, not the real
+curve.  Four-cusp lock stays on displayed labels, not
+Mazur.  `X0_26_Q_Point_to_ExistsNoncuspidal` stays
+uninhabited (no vacuous empty-elim).
+
 `Is13CaseForcesGcdGt1Sketch` stays uninhabited.  The proposed
 term `frey_modular_13 w h13` / `ribet_level_lowering_26 hFrey`
 / `hGeomForbid_typed_true hRibet …` does not type-check.
@@ -543,6 +551,10 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Chain.MathlibGaps.gap_X0_26_Q_scaffold
 #check BealLevel26Foundations.Chain.MathlibGaps.conditional_Beal_forall_propext_only_ceiling
 #check BealLevel26Foundations.Chain.MathlibGaps.ceiling_uses_Path2_not_Path1
+#check BealLevel26Foundations.Chain.X0_26_Q.X0_26_Q_real_points
+#check BealLevel26Foundations.Chain.X0_26_Q.fourCusps_displayed_of_P_mem
+#check BealLevel26Foundations.Chain.X0_26_Q.nonempty_X0_26_Q_Point_to_False
+#check BealLevel26Foundations.Chain.X0_26_Q.X0_26_Q_Point_to_ExistsNoncuspidal
 #print axioms BealLevel26Foundations.Beal.BealForall.gcd_13_2_1_eq_1
 #print axioms BealLevel26Foundations.Beal.BealForall.dvd_13_2_1
 #print axioms BealLevel26Foundations.Beal.BealForall.Is13Case_gcd_counterexample_rfl
@@ -557,6 +569,9 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #print axioms BealLevel26Foundations.Frey.FreyCurve13.frey_Delta13_ne_0_of_pos
 #print axioms BealLevel26Foundations.Chain.MathlibGaps.gap_s2_gamma0_2_done
 #print axioms BealLevel26Foundations.Chain.MathlibGaps.conditional_Beal_forall_propext_only_ceiling_eq
+#print axioms BealLevel26Foundations.Chain.X0_26_Q.X0_26_Q_real_points_eq
+#print axioms BealLevel26Foundations.Chain.X0_26_Q.mem_26a1_real_points
+#print axioms BealLevel26Foundations.Chain.X0_26_Q.fourCusps_displayed_of_P_mem
 #check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_sketch
 #check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_sketch_valid_type
 #check BealLevel26Foundations.Beal.BealForall.beal_forall_from_Is13Case_composition
