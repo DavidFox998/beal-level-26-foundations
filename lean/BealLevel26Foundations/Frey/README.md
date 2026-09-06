@@ -23,6 +23,7 @@ as of** `v4.2.0-full-chain` / `v2.0.0-frey`.
 | `FreyConductorData_26.lean` | Supplied conductor fields for scaffold theorems | Not Tate's algorithm |
 | `FreyConductorUnconditional_26.lean` | Re-export of the valuation input | Not `frey_conductor_data` |
 | `Conductor_26_Unconditional.lean` | `vₚ(c₄)=0` and `vₚ(Δ)>0` from `p ∤ c₄`, `p ∣ Δ`, `Δ ≠ 0` | Not Kodaira type `I_n` or `N = 2^e rad(ABC)` |
+| `FreyCurve13.lean` | Displayed `FreyCurve13` pack from `BealCounterexampleBases` (`A B C` only). Does not import Forall. | Not a Weierstrass model; not a noncuspidal `X₀(26)` point |
 
 `TateKodairaBoundary26` is an explicit named boundary. These files must
 not mention `frey_conductor_data` or `tate_step2_odd_prime_external`.

@@ -345,3 +345,32 @@ PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
 SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 Hook `22379293`.  Parallel mint `22484385` (v4.37.0).
 Original-family latest remains `22322627`.
+
+### v4.39.0 shared bases break the Frey–Forall cycle
+
+`BealCounterexampleBases` in
+`Base/BealCounterexampleBase.lean` is only `A B C`.  No
+equation, no exponents.  `Frey/FreyCurve13.lean` defines
+`FreyCurve13_of_BealCounterexample` on that type and does
+**not** import Forall.  Forall sends `w.toBases` (`⟨w.A, w.B, w.C⟩`)
+into the Frey pack.  Cycle break only.
+
+The pack is still a displayed triple, not a Weierstrass
+model, and does not produce `ExistsNoncuspidal_26`.
+`frey_modular_13 w.A w.B w.C` type-checks as the existing
+axiom.  `frey_conductor_26` is still the `Nat` `26` (`rfl`).
+
+`ExistsNoncuspidal_26_of_Is13CaseSketch` stays **uninhabited**.
+Inhabiting it plus `notExistsNoncuspidal_26_proved` would be
+`Is13Case → False`.  `Is13CaseForcesGcdGt1Sketch` stays
+uninhabited (`packed gcd = 1`).
+`existsNoncuspidal_26_implies_False` **none**.
+`beal_13_case_implies_False_of_ExistsNoncuspidal` **propext**
+only.  `notExistsNoncuspidal_26_proved` **none**.
+`beal_forall_from_ribet` **none**.  No `False.elim`.
+
+Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)`.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22489270` (v4.38.0).
+Original-family latest remains `22322627`.

@@ -1,11 +1,15 @@
+import BealLevel26Foundations.Base.BealCounterexampleBase
 import BealLevel26Foundations.Chain.X0_26_Point
 import BealLevel26Foundations.Final.BealExponent13_Final
+import BealLevel26Foundations.Frey.FreyCurve13
 import BealLevel26Foundations.Mazur.BealExponent13_Contradiction
 import BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26
 import BealLevel26Foundations.Modularity.FreyModularity_13
 
 namespace BealLevel26Foundations.Final
 
+open BealLevel26Foundations.Base.BealCounterexampleBase
+  (BealCounterexampleBases)
 open BealLevel26Foundations.Chain.X0_26_Point
   (fourCuspsForallCuspPoints_of_P_mem ExistsNoncuspidal_26)
 open BealLevel26Foundations.Mazur.BealExponent13_Contradiction
@@ -99,6 +103,14 @@ still the `Nat` `26`.  There is no inhabitant of
 `existsNoncuspidal_26_implies_False` is the ready chain
 (`none`).  `beal_13_case_implies_False_of_ExistsNoncuspidal`
 adds unused 13-case binders and prints `propext` only.
+
+## v4.39.0 shared bases — Frey does not import Forall
+
+`BealCounterexampleBases` is `A B C` only (no equation).
+`Frey/FreyCurve13.lean` packs those bases and does not
+import this file.  The Forall wrapper sends
+`⟨w.A, w.B, w.C⟩` into that pack.  Cycle break only.
+`ExistsNoncuspidal_26_of_Is13CaseSketch` stays uninhabited.
 -/
 
 /-- Primitive Beal-shaped counterexample (`x,y,z ≥ 3`, `gcd = 1`).
@@ -117,12 +129,18 @@ structure BealCounterexample where
   equation : A ^ x + B ^ y = C ^ z
   primitive : Nat.gcd A (Nat.gcd B C) = 1
 
-/-- Displayed Frey triple on the packed *bases*.  Not
-`FreyCurve13 w.x w.y w.z` (those are exponents).  Not a
-Weierstrass model and not a noncuspidal `X₀(26)` point. -/
+/-- Drop exponents and the equation.  Shared bases only. -/
+def BealCounterexample.toBases (w : BealCounterexample) :
+    BealCounterexampleBases :=
+  ⟨w.A, w.B, w.C⟩
+
+/-- Forall wrapper: pack bases via `Frey/FreyCurve13.lean`.
+That module does not import Forall.  Not a Weierstrass
+model and not a noncuspidal `X₀(26)` point. -/
 def FreyCurve13_of_BealCounterexample (w : BealCounterexample) :
     FreyCurve13 w.A w.B w.C :=
-  {}
+  BealLevel26Foundations.Frey.FreyCurve13.FreyCurve13_of_BealCounterexample
+    w.toBases
 
 /-- Bases of some primitive Beal-shaped solution (any exponents ≥ 3). -/
 def BealCounterexampleOn (A B C : Nat) : Prop :=
@@ -325,6 +343,7 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check is13CaseForcesGcdGt1Sketch_inhabited
 #check Is13CaseForcesGcdGt1Sketch
 #check notExistsNoncuspidal_26_proved
+#check BealCounterexample.toBases
 #check FreyCurve13_of_BealCounterexample
 #check ExistsNoncuspidal_26_of_Is13CaseSketch
 #check existsNoncuspidal_26_implies_False
