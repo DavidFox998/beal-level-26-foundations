@@ -135,7 +135,8 @@ product case.
 (`hGeomForbid_typed_true` ∧ `FreyLevel26`).  It does **not**
 apply to `(w, h13)` and does **not** prove `w.gcd > 1`.
 `is13Case_existing_typed_bridge` returns that same typed close
-(**none**).  `is13Case_forces_gcd_gt1` applies the uninhabited
+(prints `propext`; the underlying bridge is **none**).
+`is13Case_forces_gcd_gt1` applies the uninhabited
 `Is13CaseForcesGcdGt1Sketch`.  Primitive witnesses already
 have `w.gcd = 1`.
 
