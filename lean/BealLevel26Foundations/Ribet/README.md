@@ -29,6 +29,7 @@ finite `j`-invariant `hIdentify`.
 | `RibetLoweringActual_26.lean` | Displayed Frey model with `loweredLevel = 26` and `Δ ≠ 0`; `ofBealFreyLowering` inhabits `ExistsFreyWitness` | Not a Mathlib Ribet theorem; not a modular-curve point |
 | `NoFreyPointActual_26.lean` | Four-cusp *list* `[1,2,13,26]` from `X0_26_RationalPoints26.of_qExpansion` | Not Ribet existence; not `¬` elliptic-`j` `ExistsNoncuspidal`; not a modular-curve rational-point theorem |
 | `HIdentifyActual_26.lean` | `hIdentify` / `HIdentify26.of_qExpansion` packs a Frey `j` as `ellipticJ` | Not a Mathlib `X₀(26)` point; not `BealTheorem` |
+| `RibetLevelLowering_26.lean` | Uninhabited sketches `ribet_produces_noncuspidal_of_weierstrass` / `weierstrass_modularity_gives_ExistsNoncuspidal_sketch` | Not Ribet; `WeierstrassCurve` is not `DisplayedX026CuspPoint`; not Mathlib `X₀(26)(ℚ)` |
 
 [`LevelLowering_26.lean`](LevelLowering_26.lean) is a **structure**, not
 an opaque `Prop`. It is indexed by residual prime `ℓ`, source/target

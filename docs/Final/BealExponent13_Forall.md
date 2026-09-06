@@ -412,5 +412,36 @@ point and Mathlib `X₀(26)(ℚ)`.
 Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)`.
 PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
 SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
-Hook `22379293`.  Parallel mint `22492425` (v4.39.0).
+Hook `22379293`.  Parallel mint `22543465` (v4.40.0).
+Original-family latest remains `22322627`.
+
+### v4.41.0 Ribet from Weierstrass — uninhabited sketch
+
+`ribet_produces_noncuspidal_of_weierstrass` and
+`weierstrass_modularity_gives_ExistsNoncuspidal_sketch`
+in `Ribet/RibetLevelLowering_26.lean` are the missing Ribet
+step: Weierstrass `Δ ≠ 0`, displayed
+`Modularity (FreyCurve13 w.A w.B w.C)`, conductor *label*
+`26 = 2 * 13`, conclusion `ExistsNoncuspidal_26`.
+
+`Modularity (FreyCurve13_of_BealCounterexampleBases w)`
+does not type-check: `Modularity` takes a `Type`, and the
+Weierstrass pack is a `WeierstrassCurve Int` value.
+`frey_modular_13 w.A w.B w.C` still type-checks on the
+displayed triple.
+
+Both sketches stay **uninhabited**.  A `WeierstrassCurve` is
+not a `DisplayedX026CuspPoint`.  Mathlib 4.12 has no
+`X₀(26)(ℚ)` and no Ribet theorem.  Inhabiting either sketch
+plus `notExistsNoncuspidal_26_proved` would be `False`.
+
+`ExistsNoncuspidal_26_of_Is13CaseSketch` stays uninhabited.
+`existsNoncuspidal_26_implies_False` **none**.
+`notExistsNoncuspidal_26_proved` **none**.
+`beal_forall_from_ribet` **none**.  No `False.elim`.
+
+Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)`.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22543465` (v4.40.0).
 Original-family latest remains `22322627`.

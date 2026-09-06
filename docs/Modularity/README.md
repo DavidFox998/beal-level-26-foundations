@@ -18,3 +18,6 @@ PARI lock: 26a1 Δ `-17576` 26b1 Δ `-1664` `|Sel2|=1` det `M3=2` SHA `d9d907f6c
 Wiles--Taylor / Ribet *names*. Lean sources live in
 [`lean/BealLevel26Foundations/Modularity/`](../../lean/BealLevel26Foundations/Modularity/README.md).
 Not Mathlib modularity. Not a Lean Ribet theorem.
+v4.41.0 Weierstrass-to-`ExistsNoncuspidal_26` sketches live in
+[`../../lean/BealLevel26Foundations/Ribet/RibetLevelLowering_26.lean`](../../lean/BealLevel26Foundations/Ribet/RibetLevelLowering_26.lean)
+and stay uninhabited.

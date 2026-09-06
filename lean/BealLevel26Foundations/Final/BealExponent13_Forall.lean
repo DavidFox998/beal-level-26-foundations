@@ -5,6 +5,7 @@ import BealLevel26Foundations.Frey.FreyCurve13
 import BealLevel26Foundations.Mazur.BealExponent13_Contradiction
 import BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26
 import BealLevel26Foundations.Modularity.FreyModularity_13
+import BealLevel26Foundations.Ribet.RibetLevelLowering_26
 
 namespace BealLevel26Foundations.Final
 
@@ -121,6 +122,17 @@ That is not Tate, not `frey_conductor_26` from `Is13Case`
 (the label is the `Nat` `26`), and not
 `ExistsNoncuspidal_26` (wrong type).  The sketch stays
 uninhabited.
+
+## v4.41.0 Ribet from Weierstrass — still uninhabited
+
+`ribet_produces_noncuspidal_of_weierstrass` and
+`weierstrass_modularity_gives_ExistsNoncuspidal_sketch`
+live in `Ribet/RibetLevelLowering_26.lean`.  They record
+Weierstrass `Δ ≠ 0`, displayed `Modularity (FreyCurve13 A B C)`,
+and the conductor *label*.  `Modularity` does not apply to a
+`WeierstrassCurve` value.  Both stay uninhabited: need Ribet
+on Mathlib `X₀(26)(ℚ)`.  Inhabiting plus
+`notExistsNoncuspidal_26_proved` would be `False`.
 -/
 
 /-- Primitive Beal-shaped counterexample (`x,y,z ≥ 3`, `gcd = 1`).
@@ -371,6 +383,8 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Frey.FreyCurve13.frey_conductor_26_eq
 #check BealLevel26Foundations.Frey.FreyCurve13.frey_conductor_26_of_Is13Case
 #check ExistsNoncuspidal_26_of_Is13CaseSketch
+#check BealLevel26Foundations.Ribet.RibetLevelLowering26.ribet_produces_noncuspidal_of_weierstrass
+#check BealLevel26Foundations.Ribet.RibetLevelLowering26.weierstrass_modularity_gives_ExistsNoncuspidal_sketch
 #check existsNoncuspidal_26_implies_False
 #check beal_13_case_implies_False_of_ExistsNoncuspidal
 #print axioms notExistsNoncuspidal_26_proved

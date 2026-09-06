@@ -26,3 +26,6 @@ close (`BealTheorem_Exponent13_Typed`, none).
 v4.40.0: `FreyCurve13_of_BealCounterexampleBases` is the working-prime
 Weierstrass `freyCurve ↑A ↑B 13 13`.  Not a noncuspidal `X₀(26)`
 point. `ExistsNoncuspidal_26_of_Is13CaseSketch` stays uninhabited.
+v4.41.0: `ribet_produces_noncuspidal_of_weierstrass` and
+`weierstrass_modularity_gives_ExistsNoncuspidal_sketch` stay
+uninhabited. `WeierstrassCurve` is not `DisplayedX026CuspPoint`.
