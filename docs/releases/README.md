@@ -1,7 +1,8 @@
 # docs/releases/
 
 Immutable notes for each published Foundations tag. **Current latest
-note:** [`v4.20.0-iter-package-none-docs-locked.md`](v4.20.0-iter-package-none-docs-locked.md)
+note:** [`v4.27.0-iter-X0-26-cusps-P-mem-locked.md`](v4.27.0-iter-X0-26-cusps-P-mem-locked.md)
+(prior [`v4.20.0-iter-package-none-docs-locked.md`](v4.20.0-iter-package-none-docs-locked.md)
 (prior [`v4.19.0-iter-readme-typed-forall-locked.md`](v4.19.0-iter-readme-typed-forall-locked.md),
 [`v4.18.0-iter-typed-forall-package-locked.md`](v4.18.0-iter-typed-forall-package-locked.md),
 [`v4.17.0-iter-forall-bridge-locked.md`](v4.17.0-iter-forall-bridge-locked.md),

@@ -1,5 +1,14 @@
 # Beal Level 26 Foundations — Exponent 13 Full Package (Computational Boundary)
 
+## v4.27.0 X₀(26) Four Cusps — `P.mem` Lock
+
+Displayed `X0_26_Q` is the four-cusp set `{P | P.label ∈ [1,2,13,26]}`.
+`X0_26_cusps` is that list. Membership is decidable: `mem_1` `mem_2`
+`mem_13` `mem_26` `not_mem_3`. `hInList_X0_26` / `hNotIn_X0_26` /
+`displayed_mem_cusps` feed `hGeomForbid_typed_true` (`hNotIn hInList`).
+See [`Chain/X0_26_Point.md`](Chain/X0_26_Point.md). Still not ∀ N.
+Still not Mathlib `X0(26)(Q)`.
+
 ## v4.25.0 Beal13-Forall-Bridge Triple — Axiom-Free Cert
 
 | Theorem | Axioms |
@@ -35,7 +44,7 @@ PARI 2-descent certificates for the Jacobian factors of \(J_0(26)\). Certified W
 Versioned release notes for
 [beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations).
 
-**Current as of** tag `v4.7.0-iter-typed-no-axioms-closing` / `v4.8.0-iter-modularity-scaffold` / `v4.9.0-iter-no-True-X0` / `v4.10.0-iter-pari-locked` / `v4.12.0-iter-verify-plus` / `v4.13.0-iter-contradiction-start` / `v4.13.1-iter-unstick` / `v4.14.0-iter-citation-contradiction-locked` / `v4.15.0-iter-typed-forall-bridge` / `v4.16.0-iter-readme-about-locked` / `v4.17.0-iter-forall-bridge-locked` / `v4.18.0-iter-typed-forall-package-locked` / `v4.19.0-iter-readme-typed-forall-locked` / `v4.20.0-iter-package-none-docs-locked` / `v4.23.0-iter-package-final-bridge-locked` / `v4.24.0-iter-readme-final-package-locked` / `v4.25.0-iter-zenodo-triple-bridge-none-mint` (prior
+**Current as of** tag `v4.7.0-iter-typed-no-axioms-closing` / `v4.8.0-iter-modularity-scaffold` / `v4.9.0-iter-no-True-X0` / `v4.10.0-iter-pari-locked` / `v4.12.0-iter-verify-plus` / `v4.13.0-iter-contradiction-start` / `v4.13.1-iter-unstick` / `v4.14.0-iter-citation-contradiction-locked` / `v4.15.0-iter-typed-forall-bridge` / `v4.16.0-iter-readme-about-locked` / `v4.17.0-iter-forall-bridge-locked` / `v4.18.0-iter-typed-forall-package-locked` / `v4.19.0-iter-readme-typed-forall-locked` / `v4.20.0-iter-package-none-docs-locked` / `v4.23.0-iter-package-final-bridge-locked` / `v4.24.0-iter-readme-final-package-locked` / `v4.25.0-iter-zenodo-triple-bridge-none-mint` / `v4.27.0-iter-X0-26-cusps-P-mem-locked` (prior
 `v4.6.0-readmes-about`,
 `v4.5.0-forall-real`,
 `v4.4.0-typed-refactor-true-close`,

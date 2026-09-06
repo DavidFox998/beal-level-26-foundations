@@ -4,7 +4,7 @@ import Mathlib.Tactic
 namespace BealLevel26Foundations.Chain.X0_26_Point
 
 /-!
-# v4.10.0 displayed `X₀(26)` point layer (PARI-locked)
+# v4.27.0 displayed `X₀(26)` point layer (cusps `P.mem` locked)
 
 Mathlib 4.12 has no modular-curve scheme and no type of
 rational points of `X₀(26)`.  This file is a displayed
@@ -80,6 +80,55 @@ theorem X0_26_Q_eq_fourCuspsList :
     X0_26_Q = {P | P.label ∈ fourCuspsList} :=
   rfl
 
+/-- Four displayed cusp labels.  Same as `fourCuspsList`.
+Not Mathlib `X₀(26)(ℚ)`. -/
+def X0_26_cusps : List Nat :=
+  [1, 2, 13, 26]
+
+theorem X0_26_cusps_eq_fourCuspsList :
+    X0_26_cusps = fourCuspsList :=
+  rfl
+
+/-- Displayed set equals labels on `X0_26_cusps`.
+`X0_26_Q` is a `Set X0_26_Point_Raw`, not the list itself. -/
+theorem X0_26_Q_eq_cusps :
+    X0_26_Q = {P | P.label ∈ X0_26_cusps} :=
+  rfl
+
+theorem mem_1 : 1 ∈ X0_26_cusps := by decide
+theorem mem_2 : 2 ∈ X0_26_cusps := by decide
+theorem mem_13 : 13 ∈ X0_26_cusps := by decide
+theorem mem_26 : 26 ∈ X0_26_cusps := by decide
+theorem not_mem_3 : 3 ∉ X0_26_cusps := by decide
+
+/-- P.mem lemma: a displayed raw point in `X0_26_Q` has
+label on `[1,2,13,26]`.  Definitional. -/
+def hInList_X0_26 :
+    ∀ x ∈ X0_26_Q, x.label ∈ ([1, 2, 13, 26] : List Nat) :=
+  fun _ hx => hx
+
+/-- P.mem lemma: a displayed raw point off `X0_26_Q` has
+label off `[1,2,13,26]`.  Definitional. -/
+def hNotIn_X0_26 :
+    ∀ x : X0_26_Point_Raw, x ∉ X0_26_Q →
+      x.label ∉ ([1, 2, 13, 26] : List Nat) :=
+  fun _ hx => hx
+
+/-- Label form used by `hGeomForbid_typed_true` (`hNotIn hInList`). -/
+def hInList_label {x : Nat} (hx : x ∈ X0_26_cusps) :
+    x ∈ ([1, 2, 13, 26] : List Nat) :=
+  hx
+
+/-- Label form used by `hGeomForbid_typed_true` (`hNotIn hInList`). -/
+def hNotIn_label {x : Nat} (hx : x ∉ X0_26_cusps) :
+    x ∉ ([1, 2, 13, 26] : List Nat) :=
+  hx
+
+/-- `P.mem` is membership in the four-cusp list. -/
+theorem displayed_mem_cusps (P : DisplayedX026CuspPoint) :
+    P.label ∈ X0_26_cusps :=
+  P.mem
+
 /-- Every displayed cusp-labeled point has a label on
 `fourCuspsList`.  The witness is `P.mem`. -/
 theorem X0_26_Q_four_cusps :
@@ -93,7 +142,17 @@ def ExistsNoncuspidal_26 : Prop :=
   ∃ P : DisplayedX026CuspPoint, P.label ∉ fourCuspsList
 
 #print axioms X0_26_Q_four_cusps
+#print axioms X0_26_Q_eq_cusps
+#print axioms mem_1
+#print axioms mem_2
+#print axioms mem_13
+#print axioms mem_26
+#print axioms not_mem_3
+#print axioms hInList_X0_26
+#print axioms hNotIn_X0_26
+#print axioms displayed_mem_cusps
 #check X0_26_Q
+#check X0_26_cusps
 #check ExistsNoncuspidal_26
 
 end BealLevel26Foundations.Chain.X0_26_Point

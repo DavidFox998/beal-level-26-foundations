@@ -91,7 +91,7 @@ Certified models behind the four-cusp *name* (PARI 2.17.2;
 |---|---|---|
 | `FreyCurve_13_26.lean` | `FreyLevel26 := 2 * 13 = 26`; `FreyToX0_26 := 26 = 2 * 13` | Not a Frey curve; not Ribet; not `True`/`trivial` |
 | `RationalPoints_26_FourCusps_26.lean` | `X0_26_Q_four`; `fourCuspsList_complete_computational` over `DisplayedX026CuspPoint`; `hGeomForbid_typed_closed` package | Not a Mathlib `X₀(26)(ℚ)` theorem; not `fourCusps → ¬ ExistsNoncuspidal` |
-| `X0_26_Point.lean` | `X0_26_Point_Raw`; `DisplayedX026CuspPoint` with `P.mem`; `X0_26_Q = {P \| P.label ∈ fourCuspsList}` (no `True`); `x0_26_four_cusps_cert` locked to `certs/pari_x0_26_four_cusps.json`; `ExistsNoncuspidal_26` | Not a Mathlib `X₀(26)(ℚ)` theorem |
+| `X0_26_Point.lean` | `X0_26_Point_Raw`; `DisplayedX026CuspPoint` with `P.mem`; `X0_26_cusps = [1,2,13,26]`; `X0_26_Q = {P \| P.label ∈ fourCuspsList}` (no `True`); `X0_26_Q_eq_cusps` `rfl`; `mem_1`/`mem_2`/`mem_13`/`mem_26`/`not_mem_3`; `hInList_X0_26`/`hNotIn_X0_26`; `x0_26_four_cusps_cert` locked to `certs/pari_x0_26_four_cusps.json`; `ExistsNoncuspidal_26` | Not a Mathlib `X₀(26)(ℚ)` theorem |
 
 `BealTheorem_Exponent13_Full_package` (in Mazur) is
 `X0_26_Q_four ∧ FreyLevel26`. `X026RationalPointsActual_26` is

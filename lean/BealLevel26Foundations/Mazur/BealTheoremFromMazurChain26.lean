@@ -227,16 +227,20 @@ def fourCuspsList_complete_computational :
 
 /-- Typed close on the displayed cusp-label type.
 `fourCuspsForallCuspPoints → ¬ ExistsNoncuspidal_26`.
-Proved by `P.mem` versus `P.label ∉ fourCuspsList`, without
-`False.elim`.  Not the old elliptic-`j` implication. -/
+Proved by `P.mem` versus `P.label ∉ fourCuspsList` via
+`X0_26_Point` `hInList_label` / `hNotIn_label` /
+`displayed_mem_cusps`, without `False.elim`.  Not the old
+elliptic-`j` implication. -/
 def hGeomForbid_typed_true :
     fourCuspsForallCuspPoints → ¬ ExistsNoncuspidal_26 := by
   intro hFour hExists
   rcases hExists with ⟨P, hNotIn⟩
-  have hInList : P.label ∈ fourCuspsList :=
-    fourCuspsList_complete_computational P
-  let _ : fourCuspsForallCuspPoints := hFour
-  exact hNotIn hInList
+  have hInList : P.label ∈ ([1, 2, 13, 26] : List Nat) :=
+    hInList_label (displayed_mem_cusps P)
+  have hNotInList : P.label ∉ ([1, 2, 13, 26] : List Nat) :=
+    hNotIn_label hNotIn
+  let _ : P.label ∈ fourCuspsList := hFour P
+  exact hNotInList hInList
 
 /-- Local full package (this file is not imported in a cycle
 from the Iter folder).  Not `∀ A B C, ¬ A^13 + B^13 = C^13`. -/

@@ -86,6 +86,8 @@ test -f docs/BealExponent13_Iter_Package.md
 test -f certs/pari_x0_26_four_cusps.json
 test -f docs/NEXT_STEPS.md
 test -f lean/BealLevel26Foundations/Chain/X0_26_Point.lean
+test -f docs/Chain/X0_26_Point.md
+test -f docs/releases/v4.27.0-iter-X0-26-cusps-P-mem-locked.md
 test -f lean/BealLevel26Foundations/Modularity/FreyModularity_13.lean
 test -f lean/BealLevel26Foundations/Modularity/RibetLevelLowering_26.lean
 test -f lean/BealLevel26Foundations/Modularity/README.md
@@ -1236,6 +1238,39 @@ grep -q "final_package" README.md
 grep -q "final_package" docs/README.md
 grep -q "beal13_forall_bridge_triple" README.md
 grep -q "beal13_forall_bridge_triple" docs/README.md
+grep -q "X0_26_cusps" \
+  lean/BealLevel26Foundations/Chain/X0_26_Point.lean
+grep -q "theorem X0_26_Q_eq_cusps" \
+  lean/BealLevel26Foundations/Chain/X0_26_Point.lean
+grep -A3 "theorem X0_26_Q_eq_cusps" \
+  lean/BealLevel26Foundations/Chain/X0_26_Point.lean | grep -q rfl
+grep -q "theorem mem_1" \
+  lean/BealLevel26Foundations/Chain/X0_26_Point.lean
+grep -q "theorem mem_2" \
+  lean/BealLevel26Foundations/Chain/X0_26_Point.lean
+grep -q "theorem mem_13" \
+  lean/BealLevel26Foundations/Chain/X0_26_Point.lean
+grep -q "theorem mem_26" \
+  lean/BealLevel26Foundations/Chain/X0_26_Point.lean
+grep -q "theorem not_mem_3" \
+  lean/BealLevel26Foundations/Chain/X0_26_Point.lean
+grep -q "def hInList_X0_26" \
+  lean/BealLevel26Foundations/Chain/X0_26_Point.lean
+grep -q "def hNotIn_X0_26" \
+  lean/BealLevel26Foundations/Chain/X0_26_Point.lean
+grep -q "def hInList_label" \
+  lean/BealLevel26Foundations/Chain/X0_26_Point.lean
+grep -q "def hNotIn_label" \
+  lean/BealLevel26Foundations/Chain/X0_26_Point.lean
+grep -q "theorem displayed_mem_cusps" \
+  lean/BealLevel26Foundations/Chain/X0_26_Point.lean
+grep -q "hInList_label" \
+  lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean
+grep -q "displayed_mem_cusps" \
+  lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean
+grep -q "X0_26_cusps" docs/Chain/X0_26_Point.md
+grep -q "P.mem" docs/Chain/X0_26_Point.md
+grep -q "mem_1" docs/Chain/X0_26_Point.md
 if grep -nE 'BealExponent13_Iter[[:space:]]*:[[:space:]]*∀' \
     lean/BealLevel26Foundations/Final/BealExponent13_Final.lean \
     lean/BealLevel26Foundations/Final/BealExponent13_Forall.lean; then
