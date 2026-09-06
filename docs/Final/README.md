@@ -23,3 +23,6 @@ Forall reduction sketch (v4.31.0, p=13 working prime):
 v4.35.0: `#check is13CaseForcesGcdGt1Sketch_inhabited` is the typed
 close (`BealTheorem_Exponent13_Typed`, none).
 `Is13CaseForcesGcdGt1Sketch` stays uninhabited. Still not `∀ A B C`.
+v4.40.0: `FreyCurve13_of_BealCounterexampleBases` is the working-prime
+Weierstrass `freyCurve ↑A ↑B 13 13`.  Not a noncuspidal `X₀(26)`
+point. `ExistsNoncuspidal_26_of_Is13CaseSketch` stays uninhabited.

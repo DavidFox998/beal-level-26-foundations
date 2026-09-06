@@ -111,6 +111,16 @@ adds unused 13-case binders and prints `propext` only.
 import this file.  The Forall wrapper sends
 `⟨w.A, w.B, w.C⟩` into that pack.  Cycle break only.
 `ExistsNoncuspidal_26_of_Is13CaseSketch` stays uninhabited.
+
+## v4.40.0 working-prime Weierstrass — no noncuspidal point
+
+`FreyCurve13_of_BealCounterexampleBases` is
+`freyCurve ↑A ↑B 13 13`, the integral model
+`Y² = X(X − A¹³)(X + B¹³)`.  Δ ≠ 0 when `0 < A` and `0 < B`.
+That is not Tate, not `frey_conductor_26` from `Is13Case`
+(the label is the `Nat` `26`), and not
+`ExistsNoncuspidal_26` (wrong type).  The sketch stays
+uninhabited.
 -/
 
 /-- Primitive Beal-shaped counterexample (`x,y,z ≥ 3`, `gcd = 1`).
@@ -134,13 +144,24 @@ def BealCounterexample.toBases (w : BealCounterexample) :
     BealCounterexampleBases :=
   ⟨w.A, w.B, w.C⟩
 
-/-- Forall wrapper: pack bases via `Frey/FreyCurve13.lean`.
-That module does not import Forall.  Not a Weierstrass
-model and not a noncuspidal `X₀(26)` point. -/
+/-- Forall wrapper: displayed modularity triple via Frey.
+That module does not import Forall. -/
 def FreyCurve13_of_BealCounterexample (w : BealCounterexample) :
     FreyCurve13 w.A w.B w.C :=
   BealLevel26Foundations.Frey.FreyCurve13.FreyCurve13_of_BealCounterexample
     w.toBases
+
+/-- Working-prime Weierstrass `Y² = X(X − A¹³)(X + B¹³)`.
+Not a noncuspidal `X₀(26)` point. -/
+def FreyWeierstrass13_of_BealCounterexample (w : BealCounterexample) :=
+  BealLevel26Foundations.Frey.FreyCurve13.FreyCurve13_of_BealCounterexampleBases
+    w.toBases
+
+theorem FreyWeierstrass13_of_BealCounterexample_disc_ne_zero
+    (w : BealCounterexample) :
+    (FreyWeierstrass13_of_BealCounterexample w).Δ ≠ 0 :=
+  BealLevel26Foundations.Frey.FreyCurve13.freyCurve13_of_bases_disc_ne_zero
+    w.toBases w.positiveA w.positiveB
 
 /-- Bases of some primitive Beal-shaped solution (any exponents ≥ 3). -/
 def BealCounterexampleOn (A B C : Nat) : Prop :=
@@ -345,11 +366,17 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check notExistsNoncuspidal_26_proved
 #check BealCounterexample.toBases
 #check FreyCurve13_of_BealCounterexample
+#check FreyWeierstrass13_of_BealCounterexample
+#check BealLevel26Foundations.Frey.FreyCurve13.FreyCurve13_of_BealCounterexampleBases
+#check BealLevel26Foundations.Frey.FreyCurve13.frey_conductor_26_eq
+#check BealLevel26Foundations.Frey.FreyCurve13.frey_conductor_26_of_Is13Case
 #check ExistsNoncuspidal_26_of_Is13CaseSketch
 #check existsNoncuspidal_26_implies_False
 #check beal_13_case_implies_False_of_ExistsNoncuspidal
 #print axioms notExistsNoncuspidal_26_proved
 #print axioms FreyCurve13_of_BealCounterexample
+#print axioms FreyWeierstrass13_of_BealCounterexample
+#print axioms FreyWeierstrass13_of_BealCounterexample_disc_ne_zero
 #print axioms existsNoncuspidal_26_implies_False
 #print axioms beal_13_case_implies_False_of_ExistsNoncuspidal
 #print axioms BealExponent13_Iter_Typed_And_Package.certified

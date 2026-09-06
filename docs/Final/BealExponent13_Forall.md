@@ -372,5 +372,45 @@ only.  `notExistsNoncuspidal_26_proved` **none**.
 Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)`.
 PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
 SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
-Hook `22379293`.  Parallel mint `22489270` (v4.38.0).
+Hook `22379293`.  Parallel mint `22492425` (v4.39.0).
+Original-family latest remains `22322627`.
+
+### v4.40.0 working-prime Weierstrass from packed bases
+
+`FreyCurve13_of_BealCounterexampleBases` is the Mathlib
+`WeierstrassCurve Int`
+
+`freyCurve ↑A ↑B 13 13`
+
+i.e. `Y² = X(X − A¹³)(X + B¹³)`.  Coefficients and Δ match
+`Real/FreyWeierstrass.lean`.  `Δ ≠ 0` when `0 < A` and
+`0 < B` (Forall: `w.positiveA`, `w.positiveB`).  This is the
+*working-prime* display, not the Frey curve of a
+mixed-exponent packed equation (`w.x`, `w.y`).
+
+The displayed modularity pack
+`FreyCurve13_of_BealCounterexample` stays `{}` so
+`frey_modular_13 w.A w.B w.C` still type-checks.  A
+`WeierstrassCurve` is a different type from `FreyCurve13`.
+
+`frey_conductor_26_of_Is13Case` is
+`frey_conductor_26 = 2 * 13` (`rfl`).  It is **not**
+Tate's algorithm and **not** from `Is13Case`
+(`13 ∣ x*y*z`) or from `13 ∣ A*B*C`.
+
+There is still no `existsNoncuspidal_26_of_Is13Case`.
+A `WeierstrassCurve` is not a `DisplayedX026CuspPoint`.
+`ExistsNoncuspidal_26_of_Is13CaseSketch` stays **uninhabited**:
+with `notExistsNoncuspidal_26_proved` that would be
+`Is13Case → False`.  Needs Ribet producing a noncuspidal
+point and Mathlib `X₀(26)(ℚ)`.
+
+`existsNoncuspidal_26_implies_False` **none**.
+`notExistsNoncuspidal_26_proved` **none**.
+`beal_forall_from_ribet` **none**.  No `False.elim`.
+
+Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)`.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22492425` (v4.39.0).
 Original-family latest remains `22322627`.
