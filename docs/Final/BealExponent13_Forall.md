@@ -259,5 +259,40 @@ Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)`.
 PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
 SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 Hook `22379293`.  Confirmed parallel mints through
-`22479906` (v4.35.0).  Original-family latest remains
+`22481943` (v4.36.0).  Original-family latest remains
 `22322627`.
+
+### v4.37.0 `¬ ExistsNoncuspidal_26` proved none
+
+`notExistsNoncuspidal_26_proved` is
+
+`¬ ExistsNoncuspidal_26`
+
+via `hGeomForbid_typed_true fourCuspsForallCuspPoints_of_P_mem`.
+`#print axioms notExistsNoncuspidal_26_proved` is **none**.
+That is the displayed empty existential on the cusp-label
+type (`DisplayedX026CuspPoint.label ∈ [1,2,13,26]`), not a
+Mathlib `X₀(26)(ℚ)` theorem.
+
+`frey_conductor_26` is the displayed `Nat` `26` (`rfl`).  It
+is not a conductor computed from `Is13Case`.  There is no
+`existsNoncuspidal_26_of_Is13Case`: `frey_modular_13` is
+`∀ A B C, Modularity (FreyCurve13 A B C)`, not
+`frey_modular_13 w h13`.  Ribet is still
+`frey_conductor_26 = 26 → ExistsNoncuspidal_26 → False`.
+Applying Ribet to a packed witness would need a Frey curve
+from the packed equation that produces a noncuspidal
+`X₀(26)` point.  Mathlib 4.12 does not have that.
+
+`Is13Case → w.gcd > 1` is still `Is13Case → False` on a
+packed witness (`gcd = 1` by `primitive`).  That stays
+uninhabited.  `is13CaseForcesGcdGt1Sketch_inhabited` remains
+`BealTheorem_Exponent13_Typed` (**none**).
+`beal_forall_from_ribet` **none**.  `beal13_forall_bridge_triple`
+**none**.  No `False.elim`.  No unconditional `Is13Case → False`.
+
+Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)`.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22481943` (v4.36.0).
+Original-family latest remains `22322627`.

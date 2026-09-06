@@ -1,9 +1,15 @@
+import BealLevel26Foundations.Chain.X0_26_Point
 import BealLevel26Foundations.Final.BealExponent13_Final
 import BealLevel26Foundations.Mazur.BealExponent13_Contradiction
+import BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26
 
 namespace BealLevel26Foundations.Final
 
+open BealLevel26Foundations.Chain.X0_26_Point
+  (fourCuspsForallCuspPoints_of_P_mem ExistsNoncuspidal_26)
 open BealLevel26Foundations.Mazur.BealExponent13_Contradiction
+open BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26
+  (hGeomForbid_typed_true)
 
 /-!
 # v4.7.0 Iter typed ∧ package for exponent 13
@@ -64,6 +70,19 @@ displayed forall `∀ P, P.label ∈ [1,2,13,26]`, inhabited by
 `Is13CaseForcesGcdGt1Sketch`.  The packed witness still has
 `gcd = 1`; Frey from that equation + Ribet producing a
 noncuspidal point + Mathlib `X₀(26)(ℚ)` are still absent.
+
+## v4.37.0 `¬ ExistsNoncuspidal_26` from the four-cusp lock
+
+`notExistsNoncuspidal_26_proved` applies
+`hGeomForbid_typed_true` to
+`fourCuspsForallCuspPoints_of_P_mem`.  That is the displayed
+empty existential, not a Mathlib `X₀(26)(ℚ)` theorem.
+`frey_conductor_26` is the `Nat` `26` (`rfl`); it is not a
+conductor computed from `Is13Case`.  `frey_modular_13` is
+still `∀ A B C, Modularity (FreyCurve13 A B C)`, not
+`frey_modular_13 w h13`.  No `ExistsNoncuspidal_26` from a
+packed witness.  `Is13CaseForcesGcdGt1Sketch` stays
+uninhabited.
 -/
 
 /-- Primitive Beal-shaped counterexample (`x,y,z ≥ 3`, `gcd = 1`).
@@ -244,12 +263,23 @@ does not type-check, and `w.gcd > 1` contradicts `primitive`. -/
 def is13CaseForcesGcdGt1Sketch_inhabited : BealTheorem_Exponent13_Typed :=
   beal_forall_from_ribet
 
+/-- Displayed empty existential on the cusp-label type.
+`hGeomForbid_typed_true` applied to
+`fourCuspsForallCuspPoints_of_P_mem`.  Not Mathlib
+`X₀(26)(ℚ)`.  Does not inhabit `Is13Case → w.gcd > 1`.
+`frey_modular_13` is still `∀ A B C`, not `(w, h13)`. -/
+theorem notExistsNoncuspidal_26_proved :
+    ¬ ExistsNoncuspidal_26 :=
+  hGeomForbid_typed_true fourCuspsForallCuspPoints_of_P_mem
+
 #check BealLevel26Foundations.Mazur.BealTheoremFromMazurChain26.hGeomForbid_typed_true
 #check BealLevel26Foundations.Modularity.FreyModularity13.frey_modular_13
 #check BealLevel26Foundations.Modularity.RibetLevelLowering26.ribet_level_lowering_26
 #check beal_forall_from_ribet
 #check is13CaseForcesGcdGt1Sketch_inhabited
 #check Is13CaseForcesGcdGt1Sketch
+#check notExistsNoncuspidal_26_proved
+#print axioms notExistsNoncuspidal_26_proved
 #print axioms BealExponent13_Iter_Typed_And_Package.certified
 #print axioms BealTheorem_Exponent13_Forall_Computational.certified
 #print axioms beal_forall_from_ribet
