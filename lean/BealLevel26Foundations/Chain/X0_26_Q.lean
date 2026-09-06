@@ -36,6 +36,14 @@ and **no** `X₀(26)(ℚ)`.
 constructors.  `X0_26_Q_Point` is therefore uninhabited.
 That is the type start, not a Mathlib rational point.
 
+v4.46.0: real `X₀(26)(ℚ)` **does** have points `26a1`
+(Δ `-17576`) and `26b1` (Δ `-1664`).  So
+`Nonempty X0_26_Q_Point → False` is false, and
+`X0_26_Q_Point_to_ExistsNoncuspidal` cannot give `False`.
+The four-cusp lock is displayed labels, not the real curve.
+The contradiction is level 2 (`S₂(Γ₀(2)) = 0`), not
+`X₀(26)`.  See `Chain/Level2.lean`.
+
 A `WeierstrassCurve Int` has `a₁…a₆`, not `.A`/`.B`/`.C`.
 It is not `DisplayedX026CuspPoint` (label `∈ [1,2,13,26]`).
 It is not `X0_26_Q_Point`.  Need Ribet plus a real
@@ -86,7 +94,8 @@ no modular-curve scheme).  Not inhabited by empty elimination:
 `X0_26_Q_Point` is not a `DisplayedX026CuspPoint`
 (label `∈ [1,2,13,26]`).  Need Mathlib `X₀(26)(ℚ)` plus Ribet.
 Inhabiting this plus `notExistsNoncuspidal_26_proved` would
-be `False` (`rfl` conductor label, not Tate). -/
+be `False` on the *displayed* cusp-label type, not on the
+real curve (`26a1` / `26b1` exist).  Need level 2. -/
 def X0_26_Q_Point_to_ExistsNoncuspidal : Prop :=
   Nonempty X0_26_Q_Point → ExistsNoncuspidal_26
 

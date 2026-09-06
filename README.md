@@ -8,6 +8,19 @@ v4.42.0 `WeierstrassModularity (FreyCurve13_of_BealCounterexampleBases w)` is a 
 v4.43.0 Ribet sketches take `WeierstrassModularity` and stay uninhabited. `WeierstrassCurve` is not `DisplayedX026CuspPoint`, still not `∀ A B C`.
 v4.44.0 `X0_26_Q_Point` is `Σ (E : EllipticCurve ℚ), CyclicSubgroup E 26` started; Mathlib 4.12 has no `X₀(26)(ℚ)`. Ribet sketches stay uninhabited, still not `∀ A B C`.
 v4.45.0 `X0_26_Q_Point_to_ExistsNoncuspidal` is `Nonempty → ExistsNoncuspidal_26` uninhabited. Empty inductive, still not `∀ A B C`.
+v4.46.0 real `X₀(26)(ℚ)` has 26a1/26b1 so cusp→False is false; contradiction is `S₂(Γ₀(2))=0` no newform. Still not `∀ A B C`.
+
+### v4.46.0-iter-level-2-no-newform
+
+Real `X₀(26)(ℚ)` has points `26a1` (Δ `-17576`) and `26b1`
+(Δ `-1664`), so `X0_26_Q_Point → False` is false.  The
+four-cusp lock is displayed labels, not the real curve.
+The contradiction is `S₂(Γ₀(2)) = 0`: no newform at level 2.
+Conductor `26 = 2 * 13` is `rfl`, not Tate.  Need Tate plus
+Ribet to reach level 2.  `notExistsNewformLevel2` is **none**
+via displayed dimension `0`.
+`ribet_produces_newform_level2_of_weierstrass_modularity`
+stays uninhabited.
 
 ### v4.45.0-iter-X0-26-Q-point-to-ExistsNoncuspidal
 

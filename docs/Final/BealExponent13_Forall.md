@@ -578,4 +578,30 @@ SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 Hook `22379293`.  Parallel mint `22544990` (v4.44.0) until a new mint.
 Original-family latest remains `22322627`.
 
+### v4.46.0-iter-level-2-no-newform
 
+Real `X₀(26)(ℚ)` has points `26a1` (Δ `-17576`) and `26b1`
+(Δ `-1664`), `|Sel2|=1`, `M3=2`.  So
+`Nonempty X0_26_Q_Point → False` is false.  The four-cusp
+lock is displayed labels, not the real curve.  The
+contradiction is `S₂(Γ₀(2)) = 0`: no newform at level 2.
+Conductor `26 = 2 * 13` is `rfl`, not Tate.  Need Tate plus
+Ribet.
+
+| Name | Status |
+|---|---|
+| `fourCuspsForallCuspPoints_of_P_mem` | **none** via `P.mem` / `displayed_mem_cusps` / `hInList_label` |
+| `notExistsNoncuspidal_26_proved` | **none** via `hGeomForbid` four cusps label `∈ [1,2,13,26]` `P.mem` |
+| `existsNoncuspidal_26_implies_False` | **none** |
+| `notExistsNewformLevel2` | **none** via `S₂(Γ₀(2)) = 0` displayed dim `0` |
+| `ribet_produces_newform_level2_of_weierstrass_modularity` | uninhabited; needs Ribet |
+| `weierstrass_modularity_gives_X0_26_Q_Point` | uninhabited |
+| `X0_26_Q_Point_to_ExistsNoncuspidal` | uninhabited; empty inductive; real `X₀(26)` has `26a1` / `26b1` |
+| `beal_forall_from_ribet` | **none** |
+| `Is13CaseForcesGcdGt1Sketch` | uninhabited |
+
+Still not `∀ A B C`.  Still not Mathlib `X₀(26)(ℚ)` + Ribet.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22545169` (v4.45.0) until a new mint.
+Original-family latest remains `22322627`.

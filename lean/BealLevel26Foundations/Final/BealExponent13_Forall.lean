@@ -1,4 +1,5 @@
 import BealLevel26Foundations.Base.BealCounterexampleBase
+import BealLevel26Foundations.Chain.Level2
 import BealLevel26Foundations.Chain.X0_26_Point
 import BealLevel26Foundations.Chain.X0_26_Q
 import BealLevel26Foundations.Final.BealExponent13_Final
@@ -169,6 +170,16 @@ not `DisplayedX026CuspPoint`.
 `Nonempty X0_26_Q_Point → ExistsNoncuspidal_26`.
 Uninhabited: empty inductive, no Mathlib `CyclicSubgroup`,
 no modular-curve scheme.  Not a vacuous close.
+
+## v4.46.0 level 2 no newform
+
+Real `X₀(26)(ℚ)` has `26a1` / `26b1`, so
+`Nonempty X0_26_Q_Point → False` is false.
+`notExistsNewformLevel2` is `¬ ExistsNewformLevel2` from
+displayed `S₂(Γ₀(2))` dimension `0` (`rfl`).  Not Mathlib
+modular forms.  `ribet_produces_newform_level2_of_weierstrass_modularity`
+stays uninhabited (needs Ribet; conductor label `rfl`, not
+Tate).
 -/
 
 /-- Primitive Beal-shaped counterexample (`x,y,z ≥ 3`, `gcd = 1`).
@@ -428,6 +439,10 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Chain.X0_26_Q.CyclicSubgroup
 #check BealLevel26Foundations.Chain.X0_26_Q.weierstrass_modularity_gives_X0_26_Q_Point
 #check BealLevel26Foundations.Chain.X0_26_Q.X0_26_Q_Point_to_ExistsNoncuspidal
+#check BealLevel26Foundations.Chain.Level2.ExistsNewformLevel2
+#check BealLevel26Foundations.Chain.Level2.notExistsNewformLevel2
+#check BealLevel26Foundations.Ribet.RibetLevelLowering26.ribet_produces_newform_level2_of_weierstrass_modularity
+#print axioms BealLevel26Foundations.Chain.Level2.notExistsNewformLevel2
 #print axioms BealLevel26Foundations.Frey.FreyModularity13.WeierstrassModularity_of_pack
 #check existsNoncuspidal_26_implies_False
 #check beal_13_case_implies_False_of_ExistsNoncuspidal
