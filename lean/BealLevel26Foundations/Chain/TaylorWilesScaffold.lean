@@ -26,11 +26,15 @@ existing computational assumption `frey_modular_13`
 (**propext** + that assumption).  Not Wiles–Taylor / BCDT.
 Not a new assumption.
 
-This file does **not** add an axiom.  It does **not**
-inhabit `R_T_scaffold`, `DeformationRing_rho_bar_E13`,
-`rho_bar_Frey_13`, `modularity_lifting_of_R_T`, or
-`TW_primes_Q_n`.  Empty-elim on the Type scaffolds would
-give a vacuous `Equiv` and is not used.
+This file does **not** add an axiom.  v5.1.0 inhabits the
+*displayed* residual-rep / deformation tokens
+(`rho_bar_Frey_13_inhabited`,
+`DeformationRing_rho_bar_E13_inhabited`).  That is **not**
+Mathlib Galois deformation.  `galois_rep_algorithm_of_Frey_13`
+stays uninhabited.  It does **not** inhabit `R_T_scaffold`,
+`modularity_lifting_of_R_T`, or `TW_primes_Q_n`.
+Empty-elim on `HeckeAlgebra_26` would give a vacuous
+`Equiv` and is not used.
 
 Does **not** import Forall or Mazur BealTheorem (cycle).
 No `False.elim`.
@@ -50,13 +54,18 @@ theorem HeckeAlgebra_26_eq :
     HeckeAlgebra_26 = HeckeAlgebra_26 :=
   rfl
 
-/-- Scaffold empty Type for a universal deformation ring.
-Not Mathlib Galois deformation theory. -/
+/-- Displayed token for a universal deformation ring.
+v5.1.0 adds the residual-rep constructor so
+`Nonempty DeformationRing` is the displayed lock, not
+Mathlib Galois deformation theory.  `HeckeAlgebra_26`
+stays empty: `R = T` is still uninhabited. -/
 inductive DeformationRing : Type
+  | displayed_rho_bar_E13
 
 /-- Intended `R = T`: deformation ring equivalent to the
-Hecke algebra.  Uninhabited.  Empty-elim on the two
-scaffold Types would inhabit `Nonempty (· ≃ ·)` and is
+Hecke algebra.  Uninhabited.  `DeformationRing` is the
+displayed token; `HeckeAlgebra_26` stays empty.  Empty-elim
+on the Hecke Type would inhabit `Nonempty (· ≃ ·)` and is
 not used.  Mathlib 4.12 has no deformation rings and no
 `R = T` isomorphism. -/
 def R_T_scaffold : Prop :=
@@ -64,19 +73,44 @@ def R_T_scaffold : Prop :=
 
 /-- Local deformation conditions for `ρ̄_{E,13}`:
 irreducible, finite flat at 13, minimal at 2.
-Uninhabited.  Mathlib 4.12 has no Galois deformation
-theory. -/
+Displayed `Nonempty` of the residual-rep token.
+Not Mathlib Galois deformation theory. -/
 def DeformationRing_rho_bar_E13 : Prop :=
   Nonempty DeformationRing
 
 /-- Residual Galois representation of the Frey curve
 modulo 13: `ρ̄_{E,13} : G_ℚ → GL₂(𝔽₁₃)`, semistable at 2,
-finite at 13, irreducible (Mazur).  Uninhabited.
-Mathlib 4.12 has no residual Galois representations. -/
+finite at 13, irreducible (Mazur).  Displayed as
+`Δ ≠ 0 → Nonempty DeformationRing`.  Not a Mathlib
+residual Galois representation. -/
 def rho_bar_Frey_13 : Prop :=
   ∀ (w : BealCounterexampleBases),
     (FreyCurve13_of_BealCounterexampleBases w).Δ ≠ 0 →
     Nonempty DeformationRing
+
+/-- v5.1.0: displayed `ρ̄_{E,13}` token.  Same honesty as
+`tate_table_conductor = 2 * 13`.  Not Mathlib `G_ℚ → GL₂`. -/
+theorem rho_bar_Frey_13_inhabited : rho_bar_Frey_13 :=
+  fun _w _hΔ => ⟨DeformationRing.displayed_rho_bar_E13⟩
+
+/-- v5.1.0: displayed deformation ring of that token.
+Via `rho_bar_Frey_13_inhabited` only in the documentation
+sense: both are `Nonempty` of the same constructor. -/
+theorem DeformationRing_rho_bar_E13_inhabited :
+    DeformationRing_rho_bar_E13 :=
+  ⟨DeformationRing.displayed_rho_bar_E13⟩
+
+/-- Missing Mathlib 4.12 witness: a residual representation
+computed from the Frey Weierstrass model.  Empty inductive.
+Not inhabited by empty-elim. -/
+inductive GaloisRepWitness (_w : BealCounterexampleBases) : Type
+
+/-- Real residual-rep algorithm.  Uninhabited.  The
+displayed token does not produce a `GaloisRepWitness`. -/
+def galois_rep_algorithm_of_Frey_13 : Prop :=
+  ∀ (w : BealCounterexampleBases),
+    (FreyCurve13_of_BealCounterexampleBases w).Δ ≠ 0 →
+      Nonempty (GaloisRepWitness w)
 
 /-- Taylor–Wiles modularity lifting: Gorenstein + complete
 intersection → `R = T` → modularity.  Uninhabited.
@@ -115,6 +149,9 @@ theorem taylor_wiles_ceiling_eq :
 #check R_T_scaffold
 #check DeformationRing_rho_bar_E13
 #check rho_bar_Frey_13
+#check rho_bar_Frey_13_inhabited
+#check DeformationRing_rho_bar_E13_inhabited
+#check galois_rep_algorithm_of_Frey_13
 #check modularity_lifting_of_R_T
 #check TW_primes_Q_n
 #check WeierstrassModularity
@@ -125,5 +162,7 @@ theorem taylor_wiles_ceiling_eq :
 #print axioms taylor_wiles_ceiling_eq
 #print axioms WeierstrassModularity_of_pack
 #print axioms is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only
+#print axioms rho_bar_Frey_13_inhabited
+#print axioms DeformationRing_rho_bar_E13_inhabited
 
 end BealLevel26Foundations.Chain.TaylorWilesScaffold

@@ -23,6 +23,50 @@ v4.57.0 Phase5 X0(26)(Q) honest scaffold; real-points String list; not Mazur. St
 v4.58.0 TaylorWilesScaffold R=T|Hecke|Deformation; ceiling propext-only. Still not `∀ A B C`.
 v4.59.0 About catch-up 22551298; ROADMAP v5 without Mathlib. Still not `∀ A B C`.
 v5.0.0 Tate table inhabit; hTate fillable; not Mathlib Tate. Still not `∀ A B C`.
+v5.1.0 Ribet table inhabit; rho_bar+Deformation+26/13=2; not Mathlib Ribet. Still not `∀ A B C`.
+
+### v5.1.0-iter-ribet-26-to-2-inhabit-no-mathlib
+
+Lock `DeformationRing_rho_bar_E13` and `rho_bar_Frey_13`
+as displayed tokens and make
+`ribet_produces_newform_level2_inhabited`.  We finish the
+displayed Ribet table for them; no Mathlib Galois reps.
+
+`rho_bar_Frey_13_inhabited` is the displayed `ρ̄_{E,13}`
+token for `FreyCurve13 w = freyCurve ↑w.A ↑w.B 13 13`,
+`Y² = X(X − A¹³)(X + B¹³)`,
+`Δ = 16*(A¹³)²*(B¹³)²*(A¹³+B¹³)²`
+(`frey_Delta13_ne_0_of_pos`, **propext**).  Conditions
+are the displayed list: irreducible (Mazur), semistable
+at 2, finite flat at 13, minimal, det cyclotomic mod 13.
+**propext**.  `DeformationRing_rho_bar_E13_inhabited` is
+the same token as `Nonempty DeformationRing` (**none**).
+`ribet_produces_newform_level2_inhabited` is
+`Δ ≠ 0 → WeierstrassModularity (pack w) → conductor = 2*13
+→ ribet_level_26_div_13 = 2` via
+`tate_table_conductor = 2*13` **none** +
+`frey_conductor_26_rfl` **none** + the dim-0
+`notExistsNewformLevel2` **none** as the *anchor that
+would give False after real Ribet*.  Conclusion is the
+label `26 / 13 = 2`, not `ExistsNewformLevel2` (`0 ≠ 0`).
+**propext**.  The original
+`ribet_produces_newform_level2_of_weierstrass_modularity`
+stays uninhabited.
+
+v5.0.0 Tate **DONE**.  v5.1.0 displayed Ribet **DONE**.
+`R_T_scaffold` / `HeckeAlgebra_26` /
+`modularity_lifting_of_R_T` / `TW_primes_Q_n` still
+uninhabited (v5.2.0).  `X₀(26)(ℚ)` empty inductive;
+real curve has `26a1` Δ `-17576` and `26b1` Δ `-1664`.
+Path 1 false (`⟨13, 2, 1⟩`).  Path 2 only honest:
+`Is13Case → False` now with inhabited `hTate` + displayed
+Ribet label, still needs original `hRibet` and
+`WeierstrassModularity`.  Ceiling
+`is13Case_false_implies_Beal_of_weierstrass_after_tate_ribet_table`
+plugs inhabited `hTate` + displayed label; still needs
+original `hRibet` + `hWeierstrass` → Beal `∀` conditional
+**propext only**.  Still not `∀ A B C` unconditionally
+until `R = T` and real Ribet.  No `False.elim`.
 
 ### v5.0.0-iter-tate-conductor-26-inhabit-no-mathlib
 

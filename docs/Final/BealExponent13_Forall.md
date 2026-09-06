@@ -972,5 +972,27 @@ SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
 Hook `22379293`.  Parallel mint `22551503` (v4.59.0) until a new mint.
 Original-family latest remains `22322627`.
 
+### v5.1.0-iter-ribet-26-to-2-inhabit-no-mathlib
+
+Displayed Ribet table inhabited.  Not Mathlib Ribet.
+
+| Name | Status |
+|---|---|
+| `rho_bar_Frey_13_inhabited` | displayed ρ̄ token; **propext** |
+| `DeformationRing_rho_bar_E13_inhabited` | displayed deformation token; **none** |
+| `ribet_level_26_div_13` | `26 / 13 = 2`; **none** |
+| `ribet_produces_newform_level2_inhabited` | `Δ≠0 → WeierstrassModularity → 2*13 → 26/13=2`; **propext** |
+| `ribet_algorithm_of_Is13Case` | original `→ ExistsNewformLevel2`; uninhabited |
+| `is13Case_false_implies_Beal_of_weierstrass_after_tate_ribet_table` | plugs `hTate` + displayed label; still needs original `hRibet` + `hWeierstrass`; **propext only** |
+
+`R = T` stays uninhabited.  Path 1 false.  Path 2
+only honest.  No `False.elim`.
+
+Still not `∀ A B C` unconditionally.  Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles.
+PARI 26a1 Δ `-17576`, 26b1 Δ `-1664`, `|Sel2|=1`, `M3=2`,
+SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260`.
+Hook `22379293`.  Parallel mint `22552105` (v5.0.0) until a new mint.
+Original-family latest remains `22322627`.
+
 
 

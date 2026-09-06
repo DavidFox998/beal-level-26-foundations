@@ -33,18 +33,19 @@ Intended composition (not a kernel close):
 2. Tate sketch `frey_conductor_26_of_Is13Case` sends that
    to the conductor label `2 * 13`.  v5.0.0 inhabits it
    via the displayed Tate table
-   (`frey_conductor_26_of_Is13Case_inhabited`).  That is
+   (   `frey_conductor_26_of_Is13Case_inhabited`).  That is
    the label lock, not Mathlib Tate.
    `tate_algorithm_of_Is13Case` stays uninhabited.
 3. `WeierstrassModularity (pack w)` is inhabited by
    `WeierstrassModularity_of_pack` (`frey_modular_13`,
    propext + axiom; not Wiles--Taylor).
-4. Ribet sketch
+4. Displayed Ribet `ribet_produces_newform_level2`
+   (`26 / 13 = 2`) is inhabited (v5.1.0).  The False
+   sketch
    `ribet_produces_newform_level2_of_weierstrass_modularity`
    would send modularity and `2 * 13` to
-   `ExistsNewformLevel2`.  Uninhabited: Mathlib 4.12 has
-   no Ribet theorem (`26 / 13 = 2`, mod-13 rep unramified
-   at 13).
+   `ExistsNewformLevel2` (`0 ≠ 0`).  Uninhabited:
+   Mathlib 4.12 has no Ribet theorem.
 5. `notExistsNewformLevel2` is none via displayed
    `S₂(Γ₀(2))` dimension `0`.
 

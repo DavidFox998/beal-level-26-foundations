@@ -3,6 +3,7 @@ import BealLevel26Foundations.Beal.BealForall
 import BealLevel26Foundations.Chain.Beal13CaseToFalse
 import BealLevel26Foundations.Chain.Level2
 import BealLevel26Foundations.Chain.MathlibGaps
+import BealLevel26Foundations.Chain.RibetLevel2
 import BealLevel26Foundations.Chain.TaylorWilesScaffold
 import BealLevel26Foundations.Chain.X0_26_Point
 import BealLevel26Foundations.Chain.X0_26_Q
@@ -127,7 +128,16 @@ uninhabited (no vacuous empty-elim).
 v5.0.0 inhabits the displayed Tate table and
 `frey_conductor_26_of_Is13Case_inhabited` (**none**).
 Not Mathlib Tate.  `tate_algorithm_of_Is13Case` stays
-uninhabited.  Ribet and `R = T` stay uninhabited.
+uninhabited.
+
+v5.1.0 inhabits the displayed Ribet table
+(`ribet_level_26_div_13 = 2`, `rho_bar_Frey_13_inhabited`,
+`DeformationRing_rho_bar_E13_inhabited`,
+`ribet_produces_newform_level2_inhabited`).  Not Mathlib
+Ribet.  The original
+`ribet_produces_newform_level2_of_weierstrass_modularity`
+(`→ ExistsNewformLevel2`) stays uninhabited.
+`R = T` stays uninhabited.
 
 v4.58.0 locks `Chain.TaylorWilesScaffold`: `R = T`,
 Hecke, deformation, `ρ̄_{E,13}`, lifting, and TW primes
@@ -576,10 +586,22 @@ theorem beal_13_case_implies_False_of_ExistsNoncuspidal
 #check BealLevel26Foundations.Chain.TaylorWilesScaffold.HeckeAlgebra_26
 #check BealLevel26Foundations.Chain.TaylorWilesScaffold.DeformationRing_rho_bar_E13
 #check BealLevel26Foundations.Chain.TaylorWilesScaffold.rho_bar_Frey_13
+#check BealLevel26Foundations.Chain.TaylorWilesScaffold.rho_bar_Frey_13_inhabited
+#check BealLevel26Foundations.Chain.TaylorWilesScaffold.DeformationRing_rho_bar_E13_inhabited
+#check BealLevel26Foundations.Chain.TaylorWilesScaffold.galois_rep_algorithm_of_Frey_13
 #check BealLevel26Foundations.Chain.TaylorWilesScaffold.modularity_lifting_of_R_T
 #check BealLevel26Foundations.Chain.TaylorWilesScaffold.TW_primes_Q_n
+#check BealLevel26Foundations.Ribet.RibetLevelLowering26.ribet_produces_newform_level2
+#check BealLevel26Foundations.Ribet.RibetLevelLowering26.ribet_produces_newform_level2_inhabited
+#check BealLevel26Foundations.Ribet.RibetLevelLowering26.ribet_algorithm_of_Is13Case
+#check BealLevel26Foundations.Chain.RibetLevel2.ribet_table_done
+#check BealLevel26Foundations.Beal.BealForall.is13Case_false_implies_Beal_of_weierstrass_after_tate_ribet_table
 #print axioms BealLevel26Foundations.Chain.TaylorWilesScaffold.HeckeAlgebra_26_eq
 #print axioms BealLevel26Foundations.Chain.TaylorWilesScaffold.taylor_wiles_ceiling_eq
+#print axioms BealLevel26Foundations.Chain.TaylorWilesScaffold.rho_bar_Frey_13_inhabited
+#print axioms BealLevel26Foundations.Chain.TaylorWilesScaffold.DeformationRing_rho_bar_E13_inhabited
+#print axioms BealLevel26Foundations.Ribet.RibetLevelLowering26.ribet_produces_newform_level2_inhabited
+#print axioms BealLevel26Foundations.Chain.RibetLevel2.ribet_table_done
 #print axioms BealLevel26Foundations.Beal.BealForall.gcd_13_2_1_eq_1
 #print axioms BealLevel26Foundations.Beal.BealForall.dvd_13_2_1
 #print axioms BealLevel26Foundations.Beal.BealForall.Is13Case_gcd_counterexample_rfl

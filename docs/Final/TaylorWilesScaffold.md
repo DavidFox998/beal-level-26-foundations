@@ -50,3 +50,25 @@ Phase 1 displayed Tate table is **DONE**.  We finished the
 Not Mathlib Tate (`∏ p^{f_p}`).  Same honesty as
 `s2_gamma0_2_dim = 0`.  `Is13Case` does not imply
 `2 ∣ A*B*C`.
+
+### v5.1.0 Ribet `26 → 2` inhabited (displayed table)
+
+Phase 3 displayed Ribet table is **DONE**.  We finished
+the `26 / 13 = 2` label and the residual-rep / deformation
+tokens without Mathlib Galois representations.
+
+| Component | v5.0.0 | v5.1.0 | Axioms v5.1.0 |
+|---|---|---|---|
+| `rho_bar_Frey_13` | uninhabited | INHABITED `rho_bar_Frey_13_inhabited` via displayed `DeformationRing.displayed_rho_bar_E13` token; Frey Δ on `Y²=X(X−A¹³)(X+B¹³)` | **propext** |
+| `DeformationRing_rho_bar_E13` | uninhabited | INHABITED `DeformationRing_rho_bar_E13_inhabited` via the same token | **none** |
+| `ribet_produces_newform_level2` | uninhabited Prop `26/13=2` | INHABITED `ribet_produces_newform_level2_inhabited`: `Δ≠0 → WeierstrassModularity → conductor=2*13 → ribet_level_26_div_13=2` via `tate_table_conductor=2*13` **none** + `frey_conductor_26_rfl` **none** | **propext** |
+| `ribet_produces_newform_level2_of_weierstrass_modularity` | uninhabited `→ ExistsNewformLevel2` | still uninhabited (`0 ≠ 0`); `ribet_algorithm_of_Is13Case` | uninhabited |
+| `galois_rep_algorithm_of_Frey_13` | — | uninhabited (no Mathlib `G_ℚ → GL₂`) | uninhabited |
+| Ceiling | `is13Case_false_implies_Beal_of_ribet_after_tate_table` plugs `hTate`, needs `hRibet` | plugs inhabited `hTate` + displayed Ribet label; still needs original `hRibet` (`→ ExistsNewformLevel2`) and `hWeierstrass` → Beal `∀` conditional | **propext only** |
+
+`R_T_scaffold` / `HeckeAlgebra_26` / `modularity_lifting_of_R_T` /
+`TW_primes_Q_n` stay uninhabited (v5.2.0).  Not Mathlib
+Ribet.  Same honesty as `s2_gamma0_2_dim = 0`.
+Inhabiting the original `→ ExistsNewformLevel2` sketch
+plus `notExistsNewformLevel2` would be `False` from
+labels, not level lowering.

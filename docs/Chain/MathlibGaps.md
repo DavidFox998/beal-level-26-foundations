@@ -10,7 +10,7 @@ and the conditional Beal `∀` ceiling.
 |---|---|
 | Tate conductor `2 * 13` | v5.0.0 displayed table + `frey_conductor_26_of_Is13Case_inhabited` (**propext**); `tate_algorithm_of_Is13Case` uninhabited; `frey_conductor_26_rfl` **none** is the label |
 | Modularity | `WeierstrassModularity_of_pack` **propext** + existing `frey_modular_13`; not BCDT |
-| Ribet `26 → 2` | `ribet_produces_newform_level2` uninhabited |
+| Ribet `26 → 2` | v5.1.0 displayed `ribet_level_26_div_13 = 2` + `ribet_produces_newform_level2_inhabited` (**propext**); `rho_bar_Frey_13_inhabited` (**propext**); `DeformationRing_rho_bar_E13_inhabited` (**none**); original `→ ExistsNewformLevel2` uninhabited |
 | `S₂(Γ₀(2))` dim `0` | `notExistsNewformLevel2` **none** DONE |
 | `X₀(26)(ℚ)` Phase 5 | empty inductive scaffold; `X0_26_Q_real_points` **none**; four-cusp lock **none** (label, not Mazur); real curve has `26a1` / `26b1` |
 
@@ -26,7 +26,8 @@ is a string list, not a Mathlib point type.
 
 v4.58.0: Taylor–Wiles table is
 `docs/Final/TaylorWilesScaffold.md` /
-`Chain.TaylorWilesScaffold` (10th module).  This file's
+`Chain.TaylorWilesScaffold` (10th module) and
+`Chain.RibetLevel2` (11th module).  This file's
 Phase 5 row stays.
 
 Still not `∀ A B C`.

@@ -167,3 +167,17 @@ only honest.  No `False.elim`.
 Still not `∀ A B C` unconditionally.  Still not Mathlib
 `X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles.
 
+### v5.1.0-iter-ribet-26-to-2-inhabit-no-mathlib
+
+Displayed Ribet table inhabited (`26 / 13 = 2`, ρ̄ token,
+deformation token).  Not Mathlib Ribet.  New wrapper
+`is13Case_false_implies_Beal_of_weierstrass_after_tate_ribet_table`
+plugs inhabited `hTate` and the displayed label; still
+needs original `hRibet` (`→ ExistsNewformLevel2`) and
+`hWeierstrass`.  Both original wirings stay.
+`ribet_algorithm_of_Is13Case` stays uninhabited.  Path 2
+only honest.  No `False.elim`.
+
+Still not `∀ A B C` unconditionally.  Still not Mathlib
+`X₀(26)(ℚ)` + Ribet + Tate + Taylor–Wiles.
+

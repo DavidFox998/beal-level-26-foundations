@@ -27,7 +27,10 @@ open BealLevel26Foundations.Frey.FreyCurve13
 open BealLevel26Foundations.Frey.FreyModularity13
   (WeierstrassModularity WeierstrassModularity_of_pack)
 open BealLevel26Foundations.Ribet.RibetLevelLowering26
-  (ribet_produces_newform_level2_of_weierstrass_modularity)
+  (ribet_produces_newform_level2_of_weierstrass_modularity
+    ribet_produces_newform_level2
+    ribet_produces_newform_level2_inhabited
+    ribet_algorithm_of_Is13Case ribet_level_26_div_13)
 
 /-!
 # v4.56.0 Mathlib gaps — what this pin does not have
@@ -78,13 +81,17 @@ predicate for elliptic curves over `ℚ` and no lifting.
 
 ## Gap 3 — Ribet `26 → 2`
 
+v5.1.0 inhabits the *displayed* lowering
+`ribet_level_26_div_13 = 26 / 13 = 2` and
+`ribet_produces_newform_level2_inhabited` (conclusion
+is that label).  `rho_bar_Frey_13_inhabited` and
+`DeformationRing_rho_bar_E13_inhabited` are displayed
+tokens.  The original
 `ribet_produces_newform_level2_of_weierstrass_modularity`
-is `Δ ≠ 0 → WeierstrassModularity (pack w) →
-conductor = 2 * 13 → ExistsNewformLevel2`.
-Uninhabited (`26 / 13 = 2`).  Mathlib 4.12 has no Ribet
-theorem, no residual Galois representation
-`ρ̄_{E,13}` (irreducible, finite at 13), and no level
-lowering.
+(`→ ExistsNewformLevel2`, i.e. `0 ≠ 0`) stays
+uninhabited as `ribet_algorithm_of_Is13Case`.
+Mathlib 4.12 has no Ribet theorem and no residual
+Galois representation.
 
 ## Gap 4 — `S₂(Γ₀(2))` dim `0` (DONE)
 
@@ -152,7 +159,7 @@ def gap_modularity_pack : Prop :=
     WeierstrassModularity
       (BealLevel26Foundations.Frey.FreyCurve13.FreyCurve13_of_BealCounterexampleBases w)
 
-/-- Gap 3.  Uninhabited Ribet sketch `26 / 13 = 2`. -/
+/-- Gap 3 original sketch.  Still uninhabited (`0 ≠ 0`). -/
 def gap_ribet_level2 : Prop :=
   ribet_produces_newform_level2_of_weierstrass_modularity
 
@@ -160,6 +167,18 @@ theorem gap_ribet_level2_eq :
     gap_ribet_level2 =
       ribet_produces_newform_level2_of_weierstrass_modularity :=
   rfl
+
+/-- Displayed `26 / 13 = 2` lock.  **none**. -/
+def gap_ribet_table_done : ribet_level_26_div_13 = 2 :=
+  BealLevel26Foundations.Ribet.RibetLevelLowering26.ribet_level_26_div_13_eq
+
+/-- v5.1.0 displayed inhabit. -/
+def gap_ribet_inhabited : ribet_produces_newform_level2 :=
+  ribet_produces_newform_level2_inhabited
+
+/-- Real Ribet algorithm stays uninhabited. -/
+def gap_ribet_algorithm : Prop :=
+  ribet_algorithm_of_Is13Case
 
 /-- Gap 4.  DONE: no newform at level 2. -/
 def gap_s2_gamma0_2_done : ¬ ExistsNewformLevel2 :=
@@ -203,7 +222,12 @@ theorem ceiling_uses_Path2_not_Path1 :
 #check WeierstrassModularity
 #check WeierstrassModularity_of_pack
 #check gap_ribet_level2
+#check gap_ribet_table_done
+#check gap_ribet_inhabited
+#check gap_ribet_algorithm
 #check ribet_produces_newform_level2_of_weierstrass_modularity
+#check ribet_produces_newform_level2_inhabited
+#check ribet_algorithm_of_Is13Case
 #check gap_s2_gamma0_2_done
 #check notExistsNewformLevel2
 #check gap_X0_26_Q_scaffold
@@ -226,6 +250,9 @@ theorem ceiling_uses_Path2_not_Path1 :
 #print axioms frey_conductor_26_rfl
 #print axioms WeierstrassModularity_of_pack
 #print axioms gap_ribet_level2_eq
+#print axioms gap_ribet_table_done
+#print axioms gap_ribet_inhabited
+#print axioms ribet_produces_newform_level2_inhabited
 #print axioms notExistsNewformLevel2
 #print axioms gap_s2_gamma0_2_done
 #print axioms gap_X0_26_Q_scaffold_eq

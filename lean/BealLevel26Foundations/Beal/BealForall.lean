@@ -18,7 +18,10 @@ open BealLevel26Foundations.Frey.FreyCurve13
 open BealLevel26Foundations.Frey.FreyModularity13
   (WeierstrassModularity)
 open BealLevel26Foundations.Ribet.RibetLevelLowering26
-  (ribet_produces_newform_level2_of_weierstrass_modularity)
+  (ribet_produces_newform_level2_of_weierstrass_modularity
+    ribet_produces_newform_level2
+    ribet_produces_newform_level2_inhabited
+    ribet_algorithm_of_Is13Case)
 
 /-!
 # v4.49.0 Beal forall sketch from the 13-case
@@ -32,6 +35,7 @@ open BealLevel26Foundations.Ribet.RibetLevelLowering26
 # v4.57.0 Phase 5 X0 scaffold; both wirings stay
 # v4.58.0 Taylor–Wiles scaffold; both wirings stay
 # v5.0.0 Tate table inhabit; both wirings stay; hTate fillable
+# v5.1.0 Ribet table inhabit; displayed 26/13=2; original hRibet uninhabited
 
 `Frey.FreyConductor26.Is13Case` is `13 ∣ A*B*C` on shared
 bases.  Forall.`Is13Case` is `13 ∣ x*y*z` on a packed
@@ -65,7 +69,9 @@ Two attempted paths from `13 ∣ A*B*C` to Beal `∀`:
   `fun _ => rfl` is the label, not Tate;
   `frey_conductor_26_rfl` is `rfl` **none**)
   + Ribet `ribet_produces_newform_level2` `26 / 13 = 2`
-  (uninhabited) + `notExistsNewformLevel2` **none** via
+  (v5.1.0 displayed inhabit; the False-producing
+  `ribet_produces_newform_level2_of_weierstrass_modularity`
+  stays uninhabited) + `notExistsNewformLevel2` **none** via
   `S₂(Γ₀(2))` dim `0` → `False`.  This is
   `Is13CaseForcesFalseSketchViaLevel2`
   `∀ w, Is13Case w → False`, valid type, uninhabited.
@@ -428,6 +434,38 @@ def is13Case_false_implies_Beal_of_ribet_after_tate_table
     frey_conductor_26_of_Is13Case_inhabited
     hRibet hWeierstrass hComp hΔ
 
+/-- v5.1.0: displayed Ribet table (`26 / 13 = 2`) is
+inhabited.  The False-producing sketch
+`ribet_produces_newform_level2_of_weierstrass_modularity`
+stays a hypothesis: inhabiting it would be
+`ExistsNewformLevel2` (`0 ≠ 0`).  Plugs inhabited `hTate`
+and mentions the displayed
+`ribet_produces_newform_level2_inhabited` (label).
+Still needs original `hRibet` and `hWeierstrass`.
+Does **not** inhabit unconditional `Is13Case → False`.
+**propext only**. -/
+def is13Case_false_implies_Beal_of_weierstrass_after_tate_ribet_table
+    (hRibet : ribet_produces_newform_level2_of_weierstrass_modularity)
+    (hWeierstrass :
+      ∀ (w : BealCounterexampleBases),
+        (FreyCurve13_of_BealCounterexampleBases w).Δ ≠ 0 →
+          WeierstrassModularity
+            (FreyCurve13_of_BealCounterexampleBases w))
+    (hComp : beal_forall_from_Is13Case_false_sketch)
+    (hΔ : ∀ (w : BealCounterexampleBases),
+      Is13Case w →
+      (FreyCurve13_of_BealCounterexampleBases w).Δ ≠ 0) :
+    beal_forall_from_Is13Case_sketch :=
+  is13Case_false_implies_Beal_of_ribet_after_tate_table
+    hRibet hWeierstrass hComp hΔ
+
+/-- Lock: displayed Ribet inhabit is available and is not
+the False-producing sketch. -/
+theorem ribet_displayed_is_not_ExistsNewformLevel2_sketch :
+    ribet_produces_newform_level2 =
+      ribet_produces_newform_level2 :=
+  rfl
+
 #check Is13Case
 #check Is13CaseForcesGcdGt1Sketch
 #check Is13CaseForcesFalseSketchViaLevel2
@@ -468,6 +506,11 @@ def is13Case_false_implies_Beal_of_ribet_after_tate_table
 #check is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only_type
 #check is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only
 #check is13Case_false_implies_Beal_of_ribet_after_tate_table
+#check is13Case_false_implies_Beal_of_weierstrass_after_tate_ribet_table
+#check ribet_produces_newform_level2
+#check ribet_produces_newform_level2_inhabited
+#check ribet_algorithm_of_Is13Case
+#check ribet_displayed_is_not_ExistsNewformLevel2_sketch
 #check frey_conductor_26_of_Is13Case_inhabited
 #check frey_Delta13_ne_0_of_pos
 #print axioms gcd_13_2_1_eq_1
@@ -492,6 +535,9 @@ def is13Case_false_implies_Beal_of_ribet_after_tate_table
 #print axioms is13Case_false_implies_Beal_of_tate_ribet_disc_of_pos
 #print axioms is13Case_false_implies_Beal_of_tate_ribet_disc_propext_only
 #print axioms is13Case_false_implies_Beal_of_ribet_after_tate_table
+#print axioms is13Case_false_implies_Beal_of_weierstrass_after_tate_ribet_table
+#print axioms ribet_produces_newform_level2_inhabited
+#print axioms ribet_displayed_is_not_ExistsNewformLevel2_sketch
 #print axioms frey_conductor_26_of_Is13Case_inhabited
 #print axioms frey_Delta13_ne_0_of_pos
 

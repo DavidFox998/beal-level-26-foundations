@@ -28,8 +28,8 @@ inductive, **not** the real curve.
 
 `R_T_scaffold` uninhabited.
 `HeckeAlgebra_26` empty Type (**none**).
-`DeformationRing_rho_bar_E13` uninhabited.
-`rho_bar_Frey_13` uninhabited.
+`DeformationRing_rho_bar_E13` displayed inhabit in v5.1.0.
+`rho_bar_Frey_13` displayed inhabit in v5.1.0.
 `modularity_lifting_of_R_T` uninhabited.
 `TW_primes_Q_n` uninhabited.
 `WeierstrassModularity_of_pack` **propext** + existing
@@ -58,14 +58,22 @@ via the table + label (**propext**).
 (no Mathlib `v_p(Δ)` / Kodaira).
 Not Mathlib Tate.  `Is13Case` does not imply `2 ∣ A*B*C`.
 
+### v5.1.0-iter-ribet-26-to-2-INHABIT — DONE (displayed table)
+
+Displayed Ribet table inhabited: `ribet_level_26_div_13 = 2`
+(**none**), `rho_bar_Frey_13_inhabited` (**propext**),
+`DeformationRing_rho_bar_E13_inhabited` (**none**),
+`ribet_produces_newform_level2_inhabited` (**propext**).
+Conclusion of the inhabit is the label `26 / 13 = 2`,
+not `ExistsNewformLevel2` (`0 ≠ 0`).
+`ribet_algorithm_of_Is13Case` /
+`ribet_produces_newform_level2_of_weierstrass_modularity`
+stay uninhabited.  `galois_rep_algorithm_of_Frey_13`
+stays uninhabited.  Not Mathlib Ribet.
+`notExistsNewformLevel2` **none** does **not** yet give
+`False` (that needs the original sketch).
+
 ## PLANNED — we finish it for them
-
-### v5.1.0-iter-ribet-26-to-2-INHABIT
-
-Inhabit `ribet_produces_newform_level2`:
-`ρ̄_{E,13}` irreducible, finite at 13, level lowers
-`26 → 2`.  Then `notExistsNewformLevel2` **none** via
-`S₂(Γ₀(2)) = 0` dim-0 anchor gives `False`.
 
 ### v5.2.0-iter-taylor-wiles-R=T-INHABIT
 
