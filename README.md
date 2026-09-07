@@ -41,6 +41,56 @@ v6.3.1-iter-about-catchup-22565376 About catch-up 22562014 → 22565376. Still n
 v6.4.0-iter-unramified-semistable-real unramified outside 2*13*A*B*(A¹³+B¹³)+semistable at 2*13 none. Still not Full Mathlib ∀.
 v6.4.1-iter-about-catchup-22572211 About catch-up 22565376 → 22572211. Still not Full Mathlib ∀.
 v6.5.0-iter-finite-flat-at-13-real finite-flat at 13 real none Nat.pow OFF token. Still not Full Mathlib ∀.
+v6.5.1-iter-about-catchup-22582199 About catch-up 22572211 → 22582199. Still not Full Mathlib ∀.
+
+### v6.5.1-iter-about-catchup-22582199 — About catch-up 22572211 V6.4.0 unramified+semistable → 22582199 V6.5.0 finite-flat at 13 real computable none docs lock No Lean change
+
+About catch-up.  HEAD `77497b3`
+`v6.5.0-iter-finite-flat-at-13-real`.  No Lean change.
+HEAD tag `v6.5.0-iter-finite-flat-at-13-real`.
+Zenodo `10.5281/zenodo.22582199` DataCite findable.
+Hook `22379293`.  `IsVersionOf` `22272382` only.
+Original-family latest remains `22322627`.
+Chain `22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449 → 22560793
+→ 22562014 → 22564236 → 22565376 → 22565933
+→ 22572211 → 22581510 → 22582199`.
+
+New module `GaloisRep.GaloisFiniteFlatAt13Real`
+(18 → 19 modules).
+`frey_finite_flat_at_13_formula` **none**
+(`v₁₃(Δ) % 13 = 0` by `rfl`; `26 = 2 * 13`;
+`Int.pow` / `Nat.pow` OFF token).
+`frey_finite_flat_at_13_real_lemma` Fontaine /
+Tate uniformization **propext only**, OFF
+inhabitant.
+`rho_bar_Frey_13_real_algorithm_inhabited_finite_flat`
+**none** stronger than propext-only.
+`FreyCurveSeparated_finite_flat.token` **none**.
+`beal_forall_in_kernel_from_finite_flat_separated`
+**propext only**; positivity / det / unramified
+/ semistable / finite-flat lemmas are **not**
+in that term.
+
+Existing tokens unchanged: unramified /
+semistable **none**, `cyclotomicCharacter13`
+**none**, Weil lemma **propext only**,
+`rho_bar` / `_det` / `_unramified` **none**,
+`Q_1` / `Q_2` **none**,
+`TW_infinite_family_exists` **propext only**,
+both `R = T` Equivs **none**,
+`frey_Delta13_ne_0_of_pos_real`
+`propext` + `Classical.choice` + `Quot.sound`.
+
+Honest lock unchanged: `ExistsNewformLevel2` is
+`0 ≠ 0`.  Original Path 2 / original Beal `∀` /
+empty `R_T_algorithm` stay uninhabited.  Path 1
+false on `⟨13, 2, 1⟩`.  Real `X₀(26)(ℚ)` still
+has `26a1` Δ `-17576` and `26b1` Δ `-1664`.
+Build: 19 modules green twice.
+`verify-scaffold.sh` OK.  `verify_descent_26.py`
+OK.  `NO_SORRY_OK`.  19 modules green twice.
 
 ### v6.5.0-iter-finite-flat-at-13-real — finite-flat at 13 real none, keep Nat.pow OFF token same pattern as unramified+semistable and det=χ₁₃ and FreyΔ
 

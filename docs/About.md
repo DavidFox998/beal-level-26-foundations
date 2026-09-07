@@ -1,26 +1,17 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v6.5.0-iter-finite-flat-at-13-real`.
-Lean change on this slice: finite-flat at 13
-computable none field.  `ρ̄|_{G_{ℚ₁₃}}` arises
-from a finite flat group scheme over `ℤ₁₃`
-(Barsotti–Tate / Fontaine–Laffaille).
-`frey_finite_flat_at_13_formula` is
-`v₁₃(Δ) % 13 = 0` by `rfl` **none**,
-`Int.pow` / `Nat.pow` **OFF** the token.
-`frey_finite_flat_at_13_real_lemma` Fontaine /
-Tate uniformization **propext only**, off the
-inhabitant.
-`rho_bar_Frey_13_real_algorithm_inhabited_finite_flat`
-**none** stays **none**, stronger than
-propext-only, same pattern as
-`frey_Delta13_formula`, `det = χ₁₃`, and
-unramified `p ∉ S`.
+Latest tag / HEAD: `v6.5.1-iter-about-catchup-22582199`.
+Records Lean HEAD `77497b3` /
+`v6.5.0-iter-finite-flat-at-13-real`.  No Lean change
+on this catch-up.
 
 Latest parallel mint written
+[10.5281/zenodo.22582199](https://doi.org/10.5281/zenodo.22582199)
+(v6.5.0 finite-flat at 13 real computable none)
+DataCite findable, after
 [10.5281/zenodo.22572211](https://doi.org/10.5281/zenodo.22572211)
 (v6.4.0 unramified + semistable real computable
-none) DataCite findable, after
+none), after
 [10.5281/zenodo.22565376](https://doi.org/10.5281/zenodo.22565376)
 (v6.3.0 det ρ̄ = χ₁₃ computable none), after
 [10.5281/zenodo.22562014](https://doi.org/10.5281/zenodo.22562014)
@@ -28,10 +19,8 @@ none) DataCite findable, after
 [10.5281/zenodo.22559449](https://doi.org/10.5281/zenodo.22559449)
 (v6.1.0 TW infinite family), after
 [10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
-(v6.0.0 REAL ALGORITHMS).  The v6.4.1 mint
-`22581510` and this v6.5.0 mint are **not**
-written here; next About catch-up is v6.5.1.
-Hook
+(v6.0.0 REAL ALGORITHMS).  The new v6.5.1 mint is
+**not** written here.  Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
 `IsVersionOf` [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)
 is metadata only.  Original-family latest remains
@@ -184,21 +173,41 @@ OFF none token and `det = χ₁₃` OFF none token
 `beal_forall_in_kernel_from_unramified_separated`
 displayed Beal `∀` closed term **propext only**
 positivity / det / unramified / semistable
-lemmas not in term so no `Classical.choice`).
-
-v6.5.0 finite-flat at 13 real: new module
-`GaloisRep.GaloisFiniteFlatAt13Real`
-(18 → 19 modules).
-`frey_finite_flat_at_13_formula` **none**
-(`v₁₃(Δ) % 13 = 0` by `rfl`; `Int.pow` /
-`Nat.pow` OFF token).
-`frey_finite_flat_at_13_real_lemma` **propext only**.
+lemmas not in term so no `Classical.choice`) →
+`22581510` (v6.4.1 About catch-up DONE,
+About writes `22572211`) →
+`22582199` (v6.5.0 finite-flat at 13 real none
+`frey_finite_flat_at_13_formula` FiniteFlat at
+13 (`ρ̄_Frey_13`) `ρ̄|_{G_{ℚ₁₃}}` arises from
+a finite flat group scheme over `ℤ₁₃`
+Barsotti–Tate / Fontaine–Laffaille computable
+**none** field `v₁₃(Δ) % 13 = 0` by `rfl`
+**none** `Int.pow` / `Nat.pow` **OFF** token
+`26 = 2 * 13`
+`frey_finite_flat_at_13_real_lemma` semistable
+at 13 via `tate_real_conductor_26` conductor
+`2*13` by `rfl` **none** good or multiplicative
+Tate curve `q` with `v₁₃(q) = v₁₃(Δ)` divisible
+by 13 because
+`Δ = 16*(A¹³)²*(B¹³)²*(A¹³+B¹³)²`
+`v₁₃(Δ) = 2*13*v₁₃(A*B*C) ≡ 0 [MOD 13]` so
+`v₁₃(Δ) % 13 = 0` by `rfl` **none**
+Tate uniformization `E[13] ≅ μ₁₃ × ℤ/13`
+finite-flat via Fontaine iff `v₁₃(Δ) ≡ 0
+[MOD 13]` **propext only** OFF inhabitant
 `rho_bar_Frey_13_real_algorithm_inhabited_finite_flat`
-**none**.  `FreyCurveSeparated_finite_flat.token`
-**none**.  `beal_forall_in_kernel_from_finite_flat_separated`
-**propext only**; positivity / det / unramified /
-semistable / finite-flat lemmas are **not**
-in that term.
+**none** stays **none** stronger than
+propext-only same pattern as
+`frey_Delta13_formula` `Int.pow` / `Nat.pow`
+OFF none token and `det = χ₁₃` OFF none token
+and unramified `p ∉ S` by `rfl` OFF none token
+and semistable `2*13` by `rfl` none
+`FreyCurveSeparated_finite_flat.token` **none**
+`beal_forall_in_kernel_from_finite_flat_separated`
+displayed Beal `∀` closed term **propext only**
+positivity / det / unramified / semistable /
+finite-flat lemmas not in term so no
+`Classical.choice`).
 
 Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms.
