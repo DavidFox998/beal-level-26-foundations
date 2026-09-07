@@ -15,6 +15,7 @@ import BealLevel26Foundations.GaloisRep.GaloisRibetModularityAt26Real
 import BealLevel26Foundations.GaloisRep.GaloisModularLiftingAt26Real
 import BealLevel26Foundations.GaloisRep.GaloisExistsNewformLevel2Real
 import BealLevel26Foundations.GaloisRep.GaloisBealForallClosedReal
+import BealLevel26Foundations.GaloisRep.GaloisBealForallNoneReal
 import BealLevel26Foundations.RT.PatchingWitnessReal
 import BealLevel26Foundations.RT.TaylorWilesInfiniteFamily
 import BealLevel26Foundations.Ribet.RibetLevelLowering_26
@@ -85,6 +86,13 @@ open BealLevel26Foundations.GaloisRep.GaloisBealForallClosedReal
     FreyGaloisRep13_real_beal_forall_closed
     FreyCurveSeparated_beal_forall_closed
     rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_closed)
+open BealLevel26Foundations.GaloisRep.GaloisBealForallNoneReal
+  (frey_beal_forall_none_formula
+    BealForallNone_real_token
+    BealForall_real_witness_none
+    FreyGaloisRep13_real_beal_forall_none
+    FreyCurveSeparated_beal_forall_none
+    rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_none)
 open BealLevel26Foundations.Tate.RealTateAlgorithm
   (tate_real_conductor_26)
 open BealLevel26Foundations.RT.PatchingWitnessReal
@@ -515,6 +523,36 @@ theorem beal_forall_in_kernel_from_beal_forall_closed_separated_eq :
       beal_forall_in_kernel_closed :=
   rfl
 
+/-- v7.0.0: Beal `∀` IN KERNEL via displayed
+Beal Forall none real witness.  Binds the
+**none** formulas / tokens, not the TW /
+`R = T` / Ribet / modularity / positivity /
+exists-newform / beal-forall-closed /
+beal-forall-none lemmas, so no
+`Classical.choice`.  Does **not** inhabit
+original Beal `∀` sketch or original
+`ExistsNewformLevel2` (`0 ≠ 0`). -/
+def beal_forall_in_kernel_from_beal_forall_none_separated : BealForall :=
+  let _nn := frey_beal_forall_none_formula
+  let _tokT := BealForallNone_real_token
+  let _wit := BealForall_real_witness_none
+  let _tok := FreyGaloisRep13_real_beal_forall_none.token
+  let _curve := FreyCurveSeparated_beal_forall_none.token
+  let _rhoN := rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_none
+  let _cl := frey_beal_forall_closed_formula
+  let _rhoC := rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_closed
+  let _nf := frey_exists_newform_level_2_formula
+  let _rhoNf := rho_bar_Frey_13_real_algorithm_inhabited_exists_newform
+  let _rho := rho_bar_Frey_13_real_algorithm_inhabited
+  let _no2 := notExistsNewformLevel2
+  beal_forall_from_Is13Case_false_sketch_displayed
+    Is13CaseForcesFalseSketchViaLevel2_inhabited
+
+theorem beal_forall_in_kernel_from_beal_forall_none_separated_eq :
+    beal_forall_in_kernel_from_beal_forall_none_separated =
+      beal_forall_in_kernel_closed :=
+  rfl
+
 /-- Lock: original Beal sketch stays the mathematical
 forall and is not this displayed token. -/
 theorem original_beal_forall_sketch_type_eq :
@@ -566,11 +604,18 @@ theorem ExistsNewformLevel2_is_zero_ne_zero :
 #check beal_forall_in_kernel_from_exists_newform_separated_eq
 #check beal_forall_in_kernel_from_beal_forall_closed_separated
 #check beal_forall_in_kernel_from_beal_forall_closed_separated_eq
+#check beal_forall_in_kernel_from_beal_forall_none_separated
+#check beal_forall_in_kernel_from_beal_forall_none_separated_eq
 #check frey_beal_forall_closed_formula
 #check BealForall_real_witness
 #check rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_closed
 #check FreyCurveSeparated_beal_forall_closed.token
 #check FreyGaloisRep13_real_beal_forall_closed.token
+#check frey_beal_forall_none_formula
+#check BealForall_real_witness_none
+#check rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_none
+#check FreyCurveSeparated_beal_forall_none.token
+#check FreyGaloisRep13_real_beal_forall_none.token
 #check frey_exists_newform_level_2_formula
 #check ExistsNewformLevel2_real_witness
 #check rho_bar_Frey_13_real_algorithm_inhabited_exists_newform
@@ -661,10 +706,16 @@ theorem ExistsNewformLevel2_is_zero_ne_zero :
 #print axioms beal_forall_in_kernel_from_exists_newform_separated_eq
 #print axioms beal_forall_in_kernel_from_beal_forall_closed_separated
 #print axioms beal_forall_in_kernel_from_beal_forall_closed_separated_eq
+#print axioms beal_forall_in_kernel_from_beal_forall_none_separated
+#print axioms beal_forall_in_kernel_from_beal_forall_none_separated_eq
 #print axioms frey_beal_forall_closed_formula
 #print axioms BealForall_real_witness
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_closed
 #print axioms FreyCurveSeparated_beal_forall_closed.token
+#print axioms frey_beal_forall_none_formula
+#print axioms BealForall_real_witness_none
+#print axioms rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_none
+#print axioms FreyCurveSeparated_beal_forall_none.token
 #print axioms frey_exists_newform_level_2_formula
 #print axioms ExistsNewformLevel2_real_witness
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_exists_newform

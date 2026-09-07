@@ -504,3 +504,33 @@ latest remains `22322627`.  Chain
 → 22587409 → 22589077 → 22592524 → 22595002
 → 22602899 → 22607942 → 22611775`.
 
+### v7.0.0-iter-beal-forall-none-real — DONE
+
+Push `propext` out of the displayed Beal `∀`
+closed real witness.  New module
+`GaloisRep.GaloisBealForallNoneReal`
+(23 → 24 modules).
+`frey_beal_forall_none_formula` **none**
+(`26 / 13 = 2` by `rfl` **none** + finite-flat
+`v₁₃(Δ) % 13 = 0` by `rfl` **none** +
+unramified `p ∉ S` + semistable `2 * 13` +
+`det = χ₁₃` + TW `Q_1`/`Q_2` + `R = T` +
+`X₀(26)` discs + exists-newform + Beal `∀`
+closed **none**).
+`frey_beal_forall_none_real_lemma` **none**
+(`rfl` only + none tokens; positivity / det /
+unramified / finite-flat / Ribet / modularity /
+TW / `R = T` / lifting / exists-newform /
+beal-forall-closed lemmas not in term).
+`BealForall_real_witness_none` **none**.
+`rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_none`
+**none**.
+`beal_forall_in_kernel_from_beal_forall_none_separated`
+**propext only**.  Official build
+**24 modules**.  Original
+`ExistsNewformLevel2` (`0 ≠ 0`) /
+original Path 2 / original Beal `∀`
+sketch / empty `R_T_algorithm` stay
+uninhabited.  About still lists
+written mint `22611775` until v7.0.1.
+

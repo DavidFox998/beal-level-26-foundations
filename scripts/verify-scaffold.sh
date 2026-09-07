@@ -157,6 +157,7 @@ test -f lean/BealLevel26Foundations/GaloisRep/GaloisRibetModularityAt26Real.lean
 test -f lean/BealLevel26Foundations/GaloisRep/GaloisModularLiftingAt26Real.lean
 test -f lean/BealLevel26Foundations/GaloisRep/GaloisExistsNewformLevel2Real.lean
 test -f lean/BealLevel26Foundations/GaloisRep/GaloisBealForallClosedReal.lean
+test -f lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean
 test -f lean/BealLevel26Foundations/Tate/RealTateAlgorithm.lean
 test -f lean/BealLevel26Foundations/RT/PatchingWitnessReal.lean
 test -f lean/BealLevel26Foundations/RT/TaylorWilesInfiniteFamily.lean
@@ -257,6 +258,18 @@ grep -q "def FreyCurveSeparated_beal_forall_closed.token" \
   lean/BealLevel26Foundations/GaloisRep/GaloisBealForallClosedReal.lean
 grep -q "def beal_forall_in_kernel_from_beal_forall_closed_separated" \
   lean/BealLevel26Foundations/Chain/BealForallInKernel.lean
+grep -q "def frey_beal_forall_none_formula" \
+  lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean
+grep -q "def frey_beal_forall_none_real_lemma" \
+  lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean
+grep -q "def BealForall_real_witness_none" \
+  lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean
+grep -q "def rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_none" \
+  lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean
+grep -q "def FreyCurveSeparated_beal_forall_none.token" \
+  lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean
+grep -q "def beal_forall_in_kernel_from_beal_forall_none_separated" \
+  lean/BealLevel26Foundations/Chain/BealForallInKernel.lean
 grep -q "theorem tate_real_conductor_26" \
   lean/BealLevel26Foundations/Tate/RealTateAlgorithm.lean
 grep -q "def R_T_patching_witness_real" \
@@ -288,6 +301,7 @@ if grep -nE \
     lean/BealLevel26Foundations/GaloisRep/GaloisModularLiftingAt26Real.lean \
     lean/BealLevel26Foundations/GaloisRep/GaloisExistsNewformLevel2Real.lean \
     lean/BealLevel26Foundations/GaloisRep/GaloisBealForallClosedReal.lean \
+    lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean \
     lean/BealLevel26Foundations/Tate/RealTateAlgorithm.lean \
     lean/BealLevel26Foundations/RT/PatchingWitnessReal.lean \
     lean/BealLevel26Foundations/RT/TaylorWilesInfiniteFamily.lean; then
@@ -387,6 +401,26 @@ fi
 if grep -q "import BealLevel26Foundations.Chain.Level2" \
     lean/BealLevel26Foundations/GaloisRep/GaloisBealForallClosedReal.lean; then
   echo "FAIL: GaloisBealForallClosedReal must not import Level2 (false-label lock)"
+  exit 1
+fi
+if grep -q "import BealLevel26Foundations.GaloisRep.FreyGaloisRepReal" \
+    lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean; then
+  echo "FAIL: GaloisBealForallNoneReal must not import FreyGaloisRepReal (cycle)"
+  exit 1
+fi
+if grep -q "import BealLevel26Foundations.Tate.RealTateAlgorithm" \
+    lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean; then
+  echo "FAIL: GaloisBealForallNoneReal must not import Tate (cycle)"
+  exit 1
+fi
+if grep -q "import BealLevel26Foundations.RT.PatchingWitnessReal" \
+    lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean; then
+  echo "FAIL: GaloisBealForallNoneReal must not import PatchingWitnessReal (cycle)"
+  exit 1
+fi
+if grep -q "import BealLevel26Foundations.Chain.Level2" \
+    lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean; then
+  echo "FAIL: GaloisBealForallNoneReal must not import Level2 (false-label lock)"
   exit 1
 fi
 if grep -q "import BealLevel26Foundations.RT.PatchingWitnessReal" \
@@ -700,6 +734,7 @@ do
   grep -q "v6.8.1-iter-about-catchup-22602899-relook" "$readme"
   grep -q "v6.9.0-iter-beal-forall-closed-real" "$readme"
   grep -q "v6.9.1-iter-about-catchup-22611775-relook" "$readme"
+  grep -q "v7.0.0-iter-beal-forall-none-real" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png

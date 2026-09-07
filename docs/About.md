@@ -1,10 +1,11 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v6.9.1-iter-about-catchup-22611775-relook`.
-Records Lean HEAD `12b828b` /
-`v6.9.0-iter-beal-forall-closed-real`.  No Lean change
-on this catch-up.  Assets relook keeps the three
-JPEG plates (WebP fallback only).
+Latest tag / HEAD: `v7.0.0-iter-beal-forall-none-real`.
+Records Lean HEAD for Beal `∀` none real
+witness (23 → 24 modules
+`GaloisRep.GaloisBealForallNoneReal`).
+Assets keep the three JPEG plates
+(WebP fallback only).
 
 Latest parallel mint written
 [10.5281/zenodo.22611775](https://doi.org/10.5281/zenodo.22611775)
@@ -36,8 +37,8 @@ none), after
 (v6.1.0 TW infinite family), after
 [10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
 (v6.0.0 REAL ALGORITHMS).  The new v6.9.1 mint
-is **not** written here (About catch-up waits
-for v7.0.0).  Hook
+and the new v7.0.0 mint are **not** written
+here (About catch-up waits for v7.0.1).  Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
 `IsVersionOf` [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)
 is metadata only.  Original-family latest remains
@@ -470,29 +471,60 @@ lifting / exists-newform /
 beal-forall-closed lemmas not in term so
 no `Classical.choice`.
 About now writes `22611775` as the latest
-recorded mint.  The new v6.9.1 mint is
-**not** written here until catch-up v7.0.0.
+recorded mint.  The new v6.9.1 mint and the
+new v7.0.0 mint are **not** written here
+until catch-up v7.0.1.
+
+v7.0.0 adds `GaloisRep.GaloisBealForallNoneReal`
+(23 → 24 modules).
+`frey_beal_forall_none_formula` **none**
+(`26 / 13 = 2` by `rfl` **none** + finite-flat
+`v₁₃(Δ) % 13 = 0` by `rfl` **none** + `p ∉ S`
+by `rfl` **none** + `2 * 13` by `rfl` **none**
++ `det = χ₁₃` **none** + `Q_1`/`Q_2` **none**
++ `X₀(26)` `26a1` Δ `-17576` `26b1` Δ `-1664`
+real **none** + Hecke / scaffold / TW / `R = T`
++ modular lifting + exists-newform + Beal `∀`
+closed **none**; `Int.pow` / `Nat.pow` OFF).
+`frey_beal_forall_none_real_lemma` **none**
+(push `propext` out; `rfl` only + none tokens).
+`BealForall_real_witness_none` **none**
+(Beal `∀` from propext-only OFF inhabitant
+→ none real witness via `rfl` only).
+`rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_none`
+**none**.
+`FreyCurveSeparated_beal_forall_none.token`
+**none**.
+`beal_forall_in_kernel_from_beal_forall_none_separated`
+**propext only**; positivity / det /
+unramified / semistable / finite-flat /
+Ribet / modularity / TW / `R = T` /
+modular lifting / exists-newform /
+beal-forall-closed / beal-forall-none
+lemmas not in term so no
+`Classical.choice`.
 
 Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms.
 Honest lock CHANGED: Beal `∀` from propext-only
-separated token to real closed witness via
-positivity / det / unramified / semistable /
-finite-flat / Ribet / modularity at 26 via
-`X₀(26)` `26a1`/`26b1` + TW + `R = T` +
-modular lifting + exists-newform + Frey Δ.
-Original `ExistsNewformLevel2` is `0 ≠ 0` and
-stays uninhabited.  Original Path 2
+OFF inhabitant to **none** real witness via
+`rfl` only + none tokens (positivity / det /
+unramified / semistable / finite-flat / Ribet /
+modularity at 26 via `X₀(26)` `26a1`/`26b1` +
+TW + `R = T` + modular lifting + exists-newform
++ Beal `∀` closed).  Original
+`ExistsNewformLevel2` is `0 ≠ 0` and stays
+uninhabited.  Original Path 2
 (`∀ w, Is13Case w → False`) stays uninhabited
 (`⟨13, 2, 1⟩` is `Is13Case`, `gcd = 1`).
 Original Beal `∀` sketch stays uninhabited.
 Empty `R_T_algorithm` stays uninhabited.  No
 `False.elim`.  Path 1 false formal.  Path 2
-now REAL via ExistsNewformLevel2 real witness
-+ BealForall real closed.  Real `X₀(26)(ℚ)`
-still has `26a1` Δ `-17576` and `26b1`
-Δ `-1664`.  `NO_SORRY_OK`.
-23 modules green.
+now REAL **none** via ExistsNewformLevel2 real
+witness + BealForall none real witness.  Real
+`X₀(26)(ℚ)` still has `26a1` Δ `-17576` and
+`26b1` Δ `-1664`.  `NO_SORRY_OK`.
+24 modules green.
 
 This is the in-repo About lock for GitHub About / topics /
 the public landing page.  Do not rewrite minted DOIs.

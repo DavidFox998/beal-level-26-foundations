@@ -50,6 +50,161 @@ v6.8.0-iter-exists-newform-level-2-real ExistsNewformLevel2 real witness display
 v6.8.1-iter-about-catchup-22602899-relook About catch-up 22592524 → 22602899. Still not Full Mathlib ∀.
 v6.9.0-iter-beal-forall-closed-real Beal Forall closed real via positivity/det/unramified/semistable/finite-flat/Ribet/modularity/TW/R=T/lifting/exists-newform. Still not Full Mathlib ∀.
 v6.9.1-iter-about-catchup-22611775-relook About catch-up 22602899 → 22611775. Still not Full Mathlib ∀.
+v7.0.0-iter-beal-forall-none-real Beal ∀ from propext only OFF inhabitant → none via rfl only. Still not Full Mathlib ∀.
+
+### v7.0.0-iter-beal-forall-none-real — Beal ∀ from propext only OFF inhabitant → none real witness via rfl only, push propext out same OFF-token pattern as ExistsNewformLevel2_real_witness none 0≠0→none
+
+Official build is now **24 modules** (23 old +
+`GaloisRep.GaloisBealForallNoneReal`).
+
+`frey_beal_forall_none_formula` is the
+displayed Beal `∀` none real witness:
+`∀ A B C m n p`, `2 < m, n, p` →
+`A^m + B^n = C^p` → `gcd > 1` via `rfl`
+only — `26 / 13 = 2` by `rfl` **none** +
+finite-flat `v₁₃(Δ) % 13 = 0` by `rfl`
+**none** (`26 = 2 * 13`) + unramified
+`p ∉ S` by `rfl` **none**
+`Int.pow` / `Nat.pow` OFF token +
+semistable `2 * 13` by `rfl` **none**
+via `tate_real_conductor_26` conductor
+`2 * 13` by `rfl` **none** + `det = χ₁₃`
+`∀ σ` `det(ρ̄(σ)) = χ₁₃(σ)` **none**
+(Weil pairing `e₁₃` **propext only** off;
+`cyclotomicCharacter13` / `residualDet13`
+`G_ℚ → (ℤ/13ℤ)×` **none**; ZMod / Units
+off; `FreyCurveSeparated_det.token`
+**none**; `rho_bar_Frey_13_real_algorithm_inhabited_det`
+**none** OFF this none token) + Ribet
+`26 → 2` `26 / 13 = 2` by `rfl` **none** +
+`X₀(26)` `26a1` Δ `-17576` `26b1` Δ
+`-1664` real **none** + TW `Q_1 = [53]`
+`53 % 13 = 1` by `rfl` **none**
+`Q_2 = [677]` `677 = 4 * 169 + 1`
+`677 % 169 = 1` by `rfl` **none**
+`|Q_n| = 1 = r` (`4 * 13^n + 1` off token;
+`n = 3` `8789 = 17 * 517` not a primality
+proof; Chebotarev density `> 0` **propext
+only**) + `HeckeAlgebra_26_inhabited`
+**none** + `R_T_scaffold_inhabited`
+**none** + `TW_primes_Q_n_real_infinite`
+**none** + `R_T_patching_witness_real_infinite`
+**none** + modular at 26 + modular lifting
+at 26 + exists-newform + Beal `∀` closed
+**none**.  `Int.pow` / `Nat.pow` OFF token.
+Same computable-none field pattern as
+`frey_beal_forall_closed_formula`.
+
+`frey_beal_forall_none_real_lemma` **none**
+(push `propext` out: `rfl` only + none
+tokens).  Positivity / det / unramified /
+finite-flat / Ribet / modularity / TW /
+`R = T` / lifting / exists-newform /
+beal-forall-closed / beal-forall-none
+lemmas are **not** in the term, so no
+`propext` + `Classical.choice`.
+
+`BealForall_real_witness_none` **none**
+(key: Beal `∀` from **propext only** OFF
+inhabitant → **none** real witness via
+`rfl` only + none tokens.  `Nat.pow` OFF
+token same pattern.  **none** stronger
+than propext-only OFF inhabitant).
+
+`rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_none`
+**none** (Beal `∀` none real witness
+`26 / 13 = 2` by `rfl` **none** +
+finite-flat `v₁₃(Δ) % 13 = 0` by `rfl`
+**none** `26 = 2 * 13` + unramified
+`p ∉ S` by `rfl` **none**
+`Int.pow` / `Nat.pow` OFF + semistable
+`2 * 13` by `rfl` **none** + `det = χ₁₃`
+**none** + modular at 26 via `X₀(26)`
+`26a1`/`26b1` real **none** + TW
+`Q_1`/`Q_2` **none** + `R = T` patching
+witness infinite **none** +
+ExistsNewformLevel2 real witness **none**
++ Beal `∀` closed **none** + Beal `∀`
+none.  `Nat.pow` OFF token same pattern.
+**none** stronger than propext-only).
+
+`FreyCurveSeparated_beal_forall_none.token`
+**none**.
+
+`beal_forall_in_kernel_from_beal_forall_none_separated`
+**propext only** (new closed term with
+beal-forall-none; positivity / det /
+unramified / semistable / finite-flat /
+Ribet / modularity / TW / `R = T` /
+modular lifting / exists-newform /
+beal-forall-closed / beal-forall-none
+lemmas not in term so no
+`Classical.choice`).
+
+Existing tokens stay unchanged:
+`frey_beal_forall_closed_formula` **none**,
+`frey_beal_forall_closed_real_lemma`
+**propext only** off Galois inhabitant,
+`BealForall_real_witness` **propext only**
+OFF inhabitant,
+`rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_closed`
+**none**,
+`FreyCurveSeparated_beal_forall_closed.token`
+**none**,
+`beal_forall_in_kernel_from_beal_forall_closed_separated`
+**propext only** no `Classical.choice`,
+`ExistsNewformLevel2_real_witness` **none**.
+
+Honest lock CHANGED: Beal `∀` from
+**propext only** OFF inhabitant to **none**
+real witness via `rfl` only + none tokens
+(positivity / det / unramified / semistable
+/ finite-flat / Ribet / modularity at 26
+via `X₀(26)` `26a1` Δ `-17576` `26b1` Δ
+`-1664` + TW infinite `Q_1`/`Q_2` +
+`R = T` patching + modular lifting at 26 +
+exists-newform-level-2 real + Beal `∀`
+closed real).  GOOD sounding step to real
+algorithms.  Original `ExistsNewformLevel2`
+stays `0 ≠ 0` uninhabited.  Original Path 2
+/ original Beal `∀` sketch / empty
+`R_T_algorithm` stay uninhabited.  Path 1
+false on `⟨13, 2, 1⟩`.  Path 2 now REAL
+**none** via ExistsNewformLevel2 real
+witness `26a1`/`26b1` + `R = T` + TW +
+BealForall none real witness.  Real
+`X₀(26)(ℚ)` still has `26a1` Δ `-17576`
+and `26b1` Δ `-1664`.  Build: 24 modules
+green twice.  `verify-scaffold.sh` OK.
+`verify_descent_26.py` OK.  `NO_SORRY_OK`.
+
+About still lists written mint
+`10.5281/zenodo.22611775` until next
+catch-up v7.0.1.  The new v7.0.0 mint is
+**not** written there.  Hook `22379293`.
+`IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+Chain
+`22552105 → … → 22602899 → 22607942 →
+22611775 → 22614123 → 2261xxxx`.
+
+Three plates in `docs/assets/v6.7.0/`, each
+`.jpg` + `.png` + `.webp` lowercase with
+matching MIME types: `ribet_26_to_2` —
+`26a1` Δ `-17576` `26b1` Δ `-1664` `26 / 13 = 2`
+by `rfl`; `tw_qn_infinite_family` — `Q_1 = 53`
+`Q_2 = 677` `8789 = 17 × 517` composite;
+`galois_token` — `ρ̄_Frey,13` `Int.pow` /
+`Nat.pow` OFF conductor `2 * 13`.  Embedded as
+JPEG (WebP fallback only) in About / FINAL /
+README.  Facebook Open Graph points at JPEG,
+not WebP: `docs/index.html` `og:image` /
+`og:image:type = image/jpeg` for
+`…/assets/v6.7.0/ribet_26_to_2.jpg`.
+`docs/facebook-share.json` share URLs are
+`.jpg`.  No `extensions/facebook/` tree.
+Old Facebook-named file
+`docs/images/797726399_…_n.webp` stays absent.
 
 ### v6.9.1-iter-about-catchup-22611775-relook — About catch-up 22602899 v6.8.0 exists-newform-level-2 real → 22611775 v6.9.0 Beal ∀ closed real with 3 plates kept docs lock No Lean change
 

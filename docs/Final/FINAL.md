@@ -1,22 +1,16 @@
-# FINAL v6.9.1 — About catch-up 22611775 relook
+# FINAL v7.0.0 — Beal Forall none real
 
-Latest tag `v6.9.1-iter-about-catchup-22611775-relook`.
-Records Lean HEAD `12b828b` /
-`v6.9.0-iter-beal-forall-closed-real`.  **No Lean change.**
-Official build **23 modules**
-(22 old + `GaloisRep.GaloisBealForallClosedReal`).
-Latest written mint now
+Latest tag `v7.0.0-iter-beal-forall-none-real`.
+Lean change: Beal `∀` from propext-only OFF
+inhabitant → **none** real witness via `rfl`
+only.  Official build **24 modules**
+(23 old + `GaloisRep.GaloisBealForallNoneReal`).
+Latest written mint stays
 [10.5281/zenodo.22611775](https://doi.org/10.5281/zenodo.22611775)
-(v6.9.0 Beal `∀` closed real via positivity /
-det / unramified / semistable / finite-flat /
-Ribet / modularity at 26 via `X₀(26)` + TW +
-`R = T` + modular lifting + exists-newform)
-DataCite findable, after
-[10.5281/zenodo.22602899](https://doi.org/10.5281/zenodo.22602899)
-(v6.8.0 ExistsNewformLevel2 real witness via
-`R = T` + `X₀(26)` + TW infinite real none).
-The new v6.9.1 mint is **not** written into About.
-Three JPEG plates stay in `docs/assets/v6.7.0/`.
+(v6.9.0 Beal `∀` closed real) until catch-up
+v7.0.1.  The new v7.0.0 mint is **not**
+written into About.  Three JPEG plates stay
+in `docs/assets/v6.7.0/`.
 Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
 Original-family latest remains `22322627`.
 
@@ -510,7 +504,49 @@ Chain `22552105 → 22552659 → 22553129 → 22553671
 writes `22611775` as the latest recorded mint.
 Docs lock + 3 plates relook.  No Lean change.
 
-### Honest lock (updated v6.9.0)
+### v7.0.0 Beal Forall none real via rfl only (push propext out)
+
+Displayed Beal `∀` none real witness via
+`rfl` only + none tokens.  Pushes `propext`
+out of `BealForall_real_witness`.  Official
+build **24 modules**
+(23 old + `GaloisRep.GaloisBealForallNoneReal`).
+
+- `frey_beal_forall_none_formula`
+  Ribet `26 / 13 = 2` by `rfl`, finite-flat
+  `v₁₃(Δ) % 13 = 0` by `rfl` (`26 = 2 * 13`),
+  unramified `p ∉ S` by `rfl`, semistable
+  `2 * 13` by `rfl`, `det = χ₁₃`, TW
+  `Q_1 = [53]` `53 % 13 = 1` by `rfl`,
+  `Q_2 = [677]` `677 % 169 = 1` by `rfl`,
+  `X₀(26)` discs, Hecke / scaffold / TW /
+  `R = T` / modular-lifting / exists-newform /
+  Beal `∀` closed tokens **none**.
+  `Int.pow` / `Nat.pow` OFF token
+- `frey_beal_forall_none_real_lemma` **none**
+  (`rfl` only + none tokens; positivity /
+  det / unramified / finite-flat / Ribet /
+  modularity / TW / `R = T` / lifting /
+  exists-newform / beal-forall-closed lemmas
+  not in term)
+- `BealForall_real_witness_none` **none**
+  (Beal `∀` from propext-only OFF inhabitant
+  → none real witness via `rfl` only)
+- `rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_none`
+  **none** stronger than propext-only
+- `FreyCurveSeparated_beal_forall_none.token`
+  **none**
+- `beal_forall_in_kernel_from_beal_forall_none_separated`
+  **propext only**; positivity / det /
+  unramified / semistable / finite-flat /
+  Ribet / modularity / TW / `R = T` /
+  modular lifting / exists-newform /
+  beal-forall-closed / beal-forall-none
+  lemmas are **not** in that term
+
+Existing closed tokens unchanged.
+
+### Honest lock (updated v7.0.0)
 
 - Original `ExistsNewformLevel2` is `s2_gamma0_2_dim ≠ 0`
   i.e. `0 ≠ 0` and stays uninhabited
@@ -530,31 +566,34 @@ Docs lock + 3 plates relook.  No Lean change.
   modularity / TW / `R = T` / modular lifting /
   exists-newform + Frey Δ; it does **not** inhabit
   the original sketch
+- New displayed `BealForall_real_witness_none` is
+  **none** via `rfl` only + none tokens; it
+  pushes `propext` out of the closed witness
+  and does **not** inhabit the original sketch
 - Empty `R_T_algorithm` / `TaylorWilesPatchingWitness` /
   `galois_rep_algorithm_of_Frey_13` /
   `tate_algorithm_of_Is13Case` stay uninhabited
 - Path 1 FALSE formal: `triple_13_2_1` `⟨13, 2, 1⟩`
   primitive `gcd = 1` by `rfl`
-- Path 2 now REAL via ExistsNewformLevel2 real
-  witness `26a1`/`26b1` + `R = T` + TW +
-  BealForall real closed; original Path 2 type
-  stays uninhabited
+- Path 2 now REAL **none** via ExistsNewformLevel2
+  real witness `26a1`/`26b1` + `R = T` + TW +
+  BealForall none real witness; original Path 2
+  type stays uninhabited
 - Real `X₀(26)(ℚ)` still has `26a1` Δ `-17576` and
   `26b1` Δ `-1664`
-- No `False.elim`.  23 modules green twice.
+- No `False.elim`.  24 modules green twice.
   `verify-scaffold.sh` OK.  `verify_descent_26.py` OK.
   `NO_SORRY_OK`
 
 Still not Full Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms,
-but now a displayed Beal `∀` closed real witness
-via positivity / det / unramified / semistable /
-finite-flat / Ribet / modularity at 26 via
-`X₀(26)` `26a1`/`26b1` (`26 / 13 = 2` by `rfl`
-**none**) + finite-flat `v₁₃(Δ) % 13 = 0` by
-`rfl` **none** (`26 = 2 * 13`) + TW `Q_1`/`Q_2`
-none + `R = T` patching infinite none +
-ExistsNewformLevel2 real witness none.  GOOD
-sounding step from propext-only separated token
-to a real closed witness.  Original `0 ≠ 0` /
-original Beal `∀` sketch stay uninhabited.
+but now a displayed Beal `∀` none real witness
+via `rfl` only (`26 / 13 = 2` by `rfl` **none**
++ finite-flat `v₁₃(Δ) % 13 = 0` by `rfl`
+**none** (`26 = 2 * 13`) + TW `Q_1`/`Q_2` none
++ `R = T` patching infinite none +
+ExistsNewformLevel2 real witness none +
+Beal `∀` closed none).  GOOD sounding step
+from propext-only OFF inhabitant to a none
+real witness.  Original `0 ≠ 0` / original
+Beal `∀` sketch stay uninhabited.
