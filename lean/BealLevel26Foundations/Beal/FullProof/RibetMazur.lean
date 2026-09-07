@@ -3,8 +3,8 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.8.0 — HeckeAction_N + Mazur-step *real*
-pack on a `PositiveBealTriple`.
+Track B v8.9.0 — packed `X0(N)` / `J0(N)` tokens
+plus Frey Steinberg label (not 26-ledger `a₃`).
 
 Mathlib 4.12 has no Ribet functor and no arrow
     `Modular w → ExistsNewformLevel2`.  That label is
@@ -38,7 +38,15 @@ What it *does* prove:
   that pack to `N / ∏q = 2`;
 * `ModularImpliesLevel2Newform_real` is the same
   uninhabited Prop as `ModularImpliesLevel2Newform`;
-* `beal_from_ribet_real` stays *from* that Prop.
+* `beal_from_ribet_real` stays *from* that Prop;
+* `X0_N_Model` / `J0_N_Model` are level tokens at
+  `N = rad(ABC)`, not Mathlib modular curves;
+* `frey_a_q_is_pm1` is the Tate Steinberg label,
+  not a Frey Fourier coefficient `a_q = ±1`;
+* `mazur_step_real_fixed` / `ribet_iterated_real_fixed`
+  iterate that pack to `N / ∏q = 2`;
+* `beal_from_ribet_real_fixed` stays *from*
+  `ModularImpliesLevel2Newform`.
 
 Does **not** import `X0_26_Model`.  FullProof-only.
 None chain does not import this file.
@@ -553,6 +561,153 @@ theorem beal_from_ribet_real
       1 < Nat.gcd A (Nat.gcd B C) :=
   beal_from_ribet hModNew
 
+/-! ## v8.9.0 — packed X0(N)/J0(N) and Frey Steinberg label -/
+
+/-- Packed modular-curve token at conductor `N`.
+Not a Mathlib moduli space of cyclic `N`-isogenies
+and not a base change of the affine `X0_26` model. -/
+structure X0_N_Model (N : Nat) where
+  level : Nat
+  level_eq : level = N
+
+def X0_N_Model.ofTriple (t : PositiveBealTriple) :
+    X0_N_Model (globalConductorTate t.toPrimitive) where
+  level := globalConductorTate t.toPrimitive
+  level_eq := rfl
+
+theorem X0_N_Model_eq_rad (t : PositiveBealTriple) :
+    (X0_N_Model.ofTriple t).level = radABC t.A t.B t.C :=
+  (frey_global_conductor t.toPrimitive).1
+
+theorem X0_N_Model_two_odd (t : PositiveBealTriple) :
+    (X0_N_Model.ofTriple t).level = 2 * oddConductorPart t.toPrimitive :=
+  rfl
+
+/-- Displayed four-cusp labels of the `N = 26` model.
+Not the cusp set of `X₀(N)` for general `N`. -/
+def displayed_cusps_26 : List Nat :=
+  [1, 2, 13, 26]
+
+/-- Jacobian token at conductor `N`: the level plus the
+displayed `N = 26` cusp labels.  Not `Pic⁰` of a curve
+and not a free abelian group on the cusps of `X₀(N)`. -/
+structure J0_N_Model (N : Nat) where
+  level : Nat
+  level_eq : level = N
+  cusp_labels_26 : List Nat
+
+def J0_N_Model.ofTriple (t : PositiveBealTriple) :
+    J0_N_Model (globalConductorTate t.toPrimitive) where
+  level := globalConductorTate t.toPrimitive
+  level_eq := rfl
+  cusp_labels_26 := displayed_cusps_26
+
+theorem J0_N_Model_cusps (t : PositiveBealTriple) :
+    (J0_N_Model.ofTriple t).cusp_labels_26 = [1, 2, 13, 26] :=
+  rfl
+
+/-- Same `T_q` formula as `HeckeAction_N`, now named as
+the Frey-side token.  The sequence `a` is *not* filled
+by a Frey q-expansion (Mathlib 4.12 has none). -/
+def HeckeAction_N_real (q : Nat) (hpos : 1 < q) (a : List ℤ)
+    (n : Nat) : ℤ :=
+  HeckeAction_N q hpos a n
+
+/-- Classical Steinberg *label* for the Frey residual
+at an odd prime of multiplicative reduction.  The
+proved data is `v_q(c₄)=0` and `v_q(Δ)>0`.  This is
+**not** a Fourier coefficient `a_q = ±1` of a Frey
+newform. -/
+def Frey_aq_pm1 (w : PrimitiveBealTriple) (q : Nat) : Prop :=
+  steinberg_label w q
+
+theorem frey_a_q_is_pm1 (t : PositiveBealTriple) {q : Nat}
+    (hqMem : q ∈ (t.A * t.B * t.C).primeFactors) (hodd : q ≠ 2) :
+    Frey_aq_pm1 t.toPrimitive q :=
+  (mazur_principle_step t hqMem hodd).steinberg
+
+/-- Even if a Frey eigenvalue were `±1`, it is not
+`±(q+1)` mod 13 at `q = 3`.  So
+`T_q ≡ ±(q+1) (mod 13)` is not the Steinberg label. -/
+theorem pm1_ne_pm_qplus1_mod13_at_3 :
+    ¬ ((1 : ZMod 13) = 4 ∨ (1 : ZMod 13) = -4) ∧
+      ¬ ((-1 : ZMod 13) = 4 ∨ (-1 : ZMod 13) = -4) := by
+  decide
+
+/-- Frey-side Mazur pack: Tate Steinberg label, packed
+`X0_N` / `J0_N` tokens, TW rank 1, and `(N/q)*q = N`.
+Does **not** use the `26a1` coefficient `a₃` as a Frey
+`a_q`.  Not Mathlib modularity at `N/q`. -/
+structure MazurStepRealFixed (t : PositiveBealTriple) (q : Nat) : Prop where
+  step : MazurStepReal t q
+  frey_steinberg : Frey_aq_pm1 t.toPrimitive q
+  X0_level : (X0_N_Model.ofTriple t).level = globalConductorTate t.toPrimitive
+  J0_level : (J0_N_Model.ofTriple t).level = globalConductorTate t.toPrimitive
+  J0_cusps : (J0_N_Model.ofTriple t).cusp_labels_26 = displayed_cusps_26
+  hecke_real :
+    ∀ (hq : 1 < q) (a : List ℤ),
+      HeckeAction_N_real q hq a 1 = coeffAt a q
+  tw : HeckeAction_N_TW q
+  not_26_oldform : (coeffAt qExp_26a1 3 : ZMod 13) ≠ (4 : ZMod 13)
+  pm1_not_oldform_at_3 : ¬ ((1 : ZMod 13) = 4 ∨ (1 : ZMod 13) = -4)
+
+theorem mazur_step_real_fixed (t : PositiveBealTriple) {q : Nat}
+    (hqMem : q ∈ (t.A * t.B * t.C).primeFactors) (hodd : q ≠ 2)
+    (hMod : Modular t.toPrimitive) :
+    MazurStepRealFixed t q where
+  step := mazur_step_real t hqMem hodd hMod
+  frey_steinberg := frey_a_q_is_pm1 t hqMem hodd
+  X0_level := rfl
+  J0_level := rfl
+  J0_cusps := rfl
+  hecke_real := fun hq a => Tq_at_one_eq_aq a hq
+  tw := HeckeAction_N_TW_holds q
+  not_26_oldform := a3_26a1_ne_pm_qplus1_mod13.1
+  pm1_not_oldform_at_3 := pm1_ne_pm_qplus1_mod13_at_3.1
+
+/-- Iterated Frey-side pack: a `MazurStepRealFixed` at
+every odd prime of `ABC` and `N / ∏q = 2`.  Not
+`ExistsNewformLevel2`. -/
+structure RibetIteratedRealFixed (t : PositiveBealTriple) : Prop where
+  pack : RibetIteratedReal t
+  mazur_fixed_all :
+    ∀ q ∈ odd_q_divisors_N t, MazurStepRealFixed t q
+  level_two : ribet_iterated_real_level t = 2
+  X0_rad : (X0_N_Model.ofTriple t).level = radABC t.A t.B t.C
+  no_newform : ¬ ExistsNewformLevel2
+
+theorem ribet_iterated_real_fixed (t : PositiveBealTriple)
+    (hMod : Modular t.toPrimitive) :
+    RibetIteratedRealFixed t where
+  pack := ribet_iterated_real t hMod
+  mazur_fixed_all := by
+    intro q hq
+    have hqMem : q ∈ (t.A * t.B * t.C).primeFactors :=
+      (Finset.mem_filter.mp hq).1
+    have hodd : q ≠ 2 := (Finset.mem_filter.mp hq).2
+    exact mazur_step_real_fixed t hqMem hodd hMod
+  level_two := ribet_iterated_real_level_eq_two t
+  X0_rad := X0_N_Model_eq_rad t
+  no_newform := no_newform_level2
+
+/-- Honesty: Wiles-domain `Modular` at `N`, after the
+iterated pack, is still not `ExistsNewformLevel2`. -/
+theorem modular_at_two_is_not_newform (t : PositiveBealTriple)
+    (_hMod : Modular t.toPrimitive) :
+    ¬ ExistsNewformLevel2 :=
+  no_newform_level2
+
+/-- Beal on positive bases, *from* the missing Mathlib
+arrow.  Not `¬ PositiveBealTriple`. -/
+theorem beal_from_ribet_real_fixed
+    (hModNew : ModularImpliesLevel2Newform) :
+    ∀ A B C m n p : Nat,
+      0 < A → 0 < B → 0 < C →
+      2 < m → 2 < n → 2 < p →
+      A ^ m + B ^ n = C ^ p →
+      1 < Nat.gcd A (Nat.gcd B C) :=
+  beal_from_ribet_real hModNew
+
 #check q_expansion_26a1
 #check q_expansion_26b1
 #check q_expansion_26a1_int
@@ -565,17 +720,32 @@ theorem beal_from_ribet_real
 #check ModularImpliesLevel2Newform_real
 #check beal_from_ribet
 #check beal_from_ribet_real
+#check beal_from_ribet_real_fixed
 #check beal_positive_bases_unconditional
+#check X0_N_Model
+#check J0_N_Model
+#check HeckeAction_N_real
+#check Frey_aq_pm1
+#check MazurStepRealFixed
+#check RibetIteratedRealFixed
 #print axioms q_expansion_26a1_a1
 #print axioms q_expansion_26a1_a3
 #print axioms q_expansion_26b1_a3
 #print axioms T3_26a1_matches_a3
 #print axioms mazur_principle_step
 #print axioms mazur_step_real
+#print axioms mazur_step_real_fixed
 #print axioms ribet_iterated
 #print axioms ribet_iterated_real
+#print axioms ribet_iterated_real_fixed
 #print axioms ribet_iterated_does_not_inhabit_newform
+#print axioms frey_a_q_is_pm1
+#print axioms pm1_ne_pm_qplus1_mod13_at_3
+#print axioms modular_at_two_is_not_newform
+#print axioms X0_N_Model_eq_rad
+#print axioms J0_N_Model_cusps
 #print axioms beal_from_ribet
 #print axioms beal_from_ribet_real
+#print axioms beal_from_ribet_real_fixed
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

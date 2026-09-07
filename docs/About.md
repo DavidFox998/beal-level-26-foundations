@@ -1,15 +1,17 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.8.0-ribet-proof`.
-Lean change: `RibetMazur.lean` adds
-`HeckeAction_N` (weight-2 `T_q` plus TW `R≃T`
-at `26·53`/`26·677`) and `mazur_step_real`
-(Tate Steinberg at odd `q|ABC`, `(N/q)*q=N`).
-`ribet_iterated_real` is that pack plus
-`N/prod q = 2`, **not** a term of type
+Latest tag / HEAD: `v8.9.0-explicit-J0N`.
+Lean change: `RibetMazur.lean` adds packed
+`X0_N_Model` / `J0_N_Model` tokens at
+`N = rad(ABC)` (not Mathlib `J0(N)`) and
+`frey_a_q_is_pm1` (Tate Steinberg label
+`v_q(c4)=0` and `v_q(Delta)>0`, not a Frey
+Fourier coefficient `a_q = ±1`).
+`mazur_step_real_fixed` /
+`ribet_iterated_real_fixed` iterate that pack
+to `N/prod q = 2`, **not** a term of type
 `ExistsNewformLevel2` (`0 ≠ 0`).
-`ModularImpliesLevel2Newform_real` and
-`beal_from_ribet_real` stay *from*
+`beal_from_ribet_real_fixed` stays *from*
 `ModularImpliesLevel2Newform`.
 `ExistsNewformLevel2` is still `0 ≠ 0`.
 The unguarded sketch type is **false**

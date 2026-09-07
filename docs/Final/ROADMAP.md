@@ -799,6 +799,28 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.9.0-explicit-J0N — DONE (packed X0(N)/J0(N) + Frey Steinberg label, arrow stays a Prop)
+
+Lean change.  `RibetMazur.lean` adds packed
+`X0_N_Model` / `J0_N_Model` tokens at
+`N = rad(ABC)` (not Mathlib `J₀(N)`),
+`frey_a_q_is_pm1` (Tate Steinberg label, not
+Frey `a_q = ±1`), and
+`mazur_step_real_fixed` /
+`ribet_iterated_real_fixed`.  Even if a Frey
+eigenvalue were `±1`, it is not `±(q+1)`
+mod 13 at `q = 3`.  Displayed `S₂(Γ₀(2))`
+dim 0 means this is **not**
+`ExistsNewformLevel2` (`0 ≠ 0`).
+`beal_from_ribet_real_fixed` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** import `X0_26_Model`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.8.0-ribet-proof — DONE (HeckeAction_N + Mazur-step real pack, arrow stays a Prop)
 
 Lean change.  `RibetMazur.lean` adds

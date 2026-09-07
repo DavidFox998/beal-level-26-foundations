@@ -69,6 +69,7 @@ v8.5.0-cotangent-sheaf X0_26_Model AdjoinRoot (Y²−f) + Ω[R⁄ℚ] with 2 y d
 v8.6.0-level-lowering-term LevelLowering Frey_GaloisRep + level_lowering_to_2_term Hecke/TW pack; ExistsNewformLevel2 stays 0≠0; beal_positive_bases_unconditional still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.7.0-ribet-q-mazur RibetMazur q_expansion_26a1/b1 + mazur_principle_step pack; ribet_iterated_arrow stays the Prop; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.8.0-ribet-proof RibetMazur HeckeAction_N + mazur_step_real pack; ModularImpliesLevel2Newform_real stays the Prop; ExistsNewformLevel2 stays 0≠0; beal_from_ribet_real still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.9.0-explicit-J0N RibetMazur packed X0_N_Model/J0_N_Model + Frey Steinberg label; beal_from_ribet_real_fixed still from the Prop; ExistsNewformLevel2 stays 0≠0. Sketch stays uninhabited. Still not Full Mathlib ∀.
 
 ### v6.0.0 real algorithms (additional modules)
 

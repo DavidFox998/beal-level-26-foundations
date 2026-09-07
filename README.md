@@ -88,6 +88,19 @@ v8.5.0-cotangent-sheaf X0_26_Model AdjoinRoot (Y²−f) + Ω[R⁄ℚ] with 2 y d
 v8.6.0-level-lowering-term LevelLowering Frey_GaloisRep + level_lowering_to_2_term Hecke/TW pack; ExistsNewformLevel2 stays 0≠0; beal_positive_bases_unconditional still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.7.0-ribet-q-mazur RibetMazur q_expansion_26a1/b1 + mazur_principle_step pack; ribet_iterated_arrow stays the Prop; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.8.0-ribet-proof RibetMazur HeckeAction_N + mazur_step_real pack; ModularImpliesLevel2Newform_real stays the Prop; ExistsNewformLevel2 stays 0≠0; beal_from_ribet_real still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.9.0-explicit-J0N RibetMazur packed X0_N_Model/J0_N_Model + Frey Steinberg label; beal_from_ribet_real_fixed still from the Prop; ExistsNewformLevel2 stays 0≠0. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.9.0-explicit-J0N — packed X0(N)/J0(N) + Frey Steinberg label (arrow stays a Prop)
+
+Lean change.  `RibetMazur.lean` adds packed `X0_N_Model` / `J0_N_Model` tokens and the Frey Steinberg label.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `X0_N_Model` / `J0_N_Model`: level tokens at `N = rad(ABC)`; displayed cusps `[1,2,13,26]` (not Mathlib `J₀(N)`);
+- `HeckeAction_N_real`: same weight-2 `T_q` formula as `HeckeAction_N` (not `End(J₀(N)[13])`);
+- `frey_a_q_is_pm1`: Tate Steinberg `v_q(c₄)=0`, `v_q(Δ)>0` — not a Frey Fourier coefficient `a_q = ±1`;
+- `mazur_step_real_fixed` / `ribet_iterated_real_fixed`: `N/∏q=2`; **not** `ExistsNewformLevel2`;
+- `beal_from_ribet_real_fixed`: still *from* `ModularImpliesLevel2Newform`.
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.8.0-ribet-proof — HeckeAction_N + Mazur-step real pack (arrow stays a Prop)
 

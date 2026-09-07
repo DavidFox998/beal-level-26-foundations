@@ -783,6 +783,7 @@ do
   grep -q "v8.6.0-level-lowering-term" "$readme"
   grep -q "v8.7.0-ribet-q-mazur" "$readme"
   grep -q "v8.8.0-ribet-proof" "$readme"
+  grep -q "v8.9.0-explicit-J0N" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1125,6 +1126,20 @@ grep -q "theorem ribet_iterated_real" \
 grep -q "def ModularImpliesLevel2Newform_real" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem beal_from_ribet_real" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "structure X0_N_Model" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "structure J0_N_Model" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def HeckeAction_N_real" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem frey_a_q_is_pm1" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem mazur_step_real_fixed" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem ribet_iterated_real_fixed" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem beal_from_ribet_real_fixed" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "def beal_forall_from_Is13Case_sketch_stays_uninhabited" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
