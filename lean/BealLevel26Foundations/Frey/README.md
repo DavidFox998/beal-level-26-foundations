@@ -24,6 +24,7 @@ as of** `v4.2.0-full-chain` / `v2.0.0-frey`.
 | `FreyConductorUnconditional_26.lean` | Re-export of the valuation input | Not `frey_conductor_data` |
 | `Conductor_26_Unconditional.lean` | `vₚ(c₄)=0` and `vₚ(Δ)>0` from `p ∤ c₄`, `p ∣ Δ`, `Δ ≠ 0` | Not Kodaira type `I_n` or `N = 2^e rad(ABC)` |
 | `../Beal/FullProof/TrueConductor.lean` | Mixed-exponent Frey model; `Δ`/`c₄` by `ring`; `true_gcd_pairwise`; Tate Step 2 at odd `q∣ABC` gives Kodaira `I_n` and exponent `1`; `N = 2 · ∏_{odd q} q = rad(ABC)` | Not Mathlib `MinimalModel`; 2-adic Step 2 does not apply to this integral model (`v₂(c₄)=4`); sketch stays uninhabited |
+| `../Beal/FullProof/ModularityRibet.lean` | Wiles domain from TrueConductor; Ribet quotient `N/∏q=2`; `det=χ_l`; TW family `q_n=4·13ⁿ+1`; bookkeeping `R_∞≃T_∞`; `S₂(Γ₀(2))=0` | Not Mathlib Wiles/Ribet/Hecke; `ribet_step_2_contradiction` is `RibetStep2Glue`, not `False` from the Beal equation; sketch stays uninhabited |
 | `FreyCurve13.lean` | Displayed triple plus working-prime `WeierstrassCurve` `freyCurve ↑A ↑B 13 13`. Does not import Forall. | Not Tate conductor; not a noncuspidal `X₀(26)` point |
 | `FreyModularity_13.lean` | `WeierstrassModularity c` is displayed `Modularity (FreyCurve13 w.A w.B w.C)` when `c` is the pack of `w`. `WeierstrassModularity_of_pack` is `frey_modular_13`. | Not Wiles--Taylor; `WeierstrassCurve` has no `.A`; not a noncuspidal `X₀(26)` point |
 

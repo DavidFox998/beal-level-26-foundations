@@ -1,17 +1,19 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v7.2.1-tate-filled`.
-Lean change: `Beal/FullProof/TrueConductor.lean` fills
-the v7.2.0 empty-Type Tate holes with theorems.  Proved:
-`true_gcd_pairwise` (`Aᵐ, Bⁿ, Cᵖ` pairwise coprime);
-Tate Step 2 at every odd prime `q | ABC` (Kodaira `I_n`,
-local exponent `1`, `v_q(c₄)=0`); at `2` the integral
-model has `v₂(c₄)=4` so Step 2 does not apply, and the
-radical contribution of `2` has exponent `1`;
-`N = 2 · ∏_{odd q|ABC} q = rad(ABC)`.  `#print axioms`
-is `[propext, Classical.choice, Quot.sound]`.  Does
-**not** inhabit `beal_forall_from_Is13Case_sketch`.  The
-v7.1.0 none chain
+Latest tag / HEAD: `v7.3.0-ribet-rt-filled`.
+Lean change: `Beal/FullProof/ModularityRibet.lean` fills
+the Ribet / `R = T` arithmetic on top of v7.2.1 Tate.
+Proved: Wiles domain from `frey_global_conductor`
+(`N = rad(ABC)`); Ribet quotient
+`N / ∏_{odd q|ABC} q = 2`; `det = χ_l` with `l = 13`
+as an instance; TW family `q_n = 4 · 13ⁿ + 1` so
+`q_n ≡ 1 [MOD 13ⁿ]` (`53 % 13 = 1`, `677 % 169 = 1`,
+`8789 = 17 · 517` composite); bookkeeping
+`R_∞ ≃ T_∞` at the proved conductor;
+`S₂(Γ₀(2)) = 0` hence `¬ ExistsNewformLevel2`.
+`#print axioms` is `[propext, Classical.choice, Quot.sound]`.
+Does **not** inhabit `beal_forall_from_Is13Case_sketch`
+(Step 3 `GeometryBridge` remains).  The v7.1.0 none chain
 (`BealForall_real_witness_none`,
 `beal_forall_in_kernel_from_beal_forall_none_separated`)
 is untouched.

@@ -160,7 +160,10 @@ test -f lean/BealLevel26Foundations/GaloisRep/GaloisExistsNewformLevel2Real.lean
 test -f lean/BealLevel26Foundations/GaloisRep/GaloisBealForallClosedReal.lean
 test -f lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
+test -f lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
+test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
+test -f docs/Beal/ModularityRibet.md
 test -f lean/BealLevel26Foundations/Tate/RealTateAlgorithm.lean
 test -f lean/BealLevel26Foundations/RT/PatchingWitnessReal.lean
 test -f lean/BealLevel26Foundations/RT/TaylorWilesInfiniteFamily.lean
@@ -749,6 +752,7 @@ do
   grep -q "v7.1.3-iter-beal-not-route-e-corrected" "$readme"
   grep -q "v7.2.0-step1-true-conductor-scaffold" "$readme"
   grep -q "v7.2.1-tate-filled" "$readme"
+  grep -q "v7.3.0-ribet-rt-filled" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -870,7 +874,7 @@ grep -q "theorem certifiedM3_det_nonzero" \
 grep -q 'roots := #\[`BealLevel26Foundations, `Beal\]' lakefile.lean
 grep -q 'roots := #\[`BealLevel26Foundations.Scaffold\]' lakefile.lean
 grep -q 'roots := #\[`BealLevel26Foundations.Real\]' lakefile.lean
-grep -q 'roots := #\[`BealLevel26Foundations.Beal.FullProof.TrueConductor\]' lakefile.lean
+grep -q 'roots := #\[`BealLevel26Foundations.Beal.FullProof\]' lakefile.lean
 grep -q "structure PrimitiveBealTriple" \
   lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
 grep -q "theorem frey_Delta_of_equation" \
@@ -903,6 +907,64 @@ grep -q "structure FreyTwoAdicConductorCertificate" \
   lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
 grep -q "def beal_forall_from_Is13Case_sketch_stays_uninhabited" \
   lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
+grep -q "import BealLevel26Foundations.Beal.FullProof.TrueConductor" \
+  lean/BealLevel26Foundations/Beal/FullProof.lean
+grep -q "import BealLevel26Foundations.Beal.FullProof.ModularityRibet" \
+  lean/BealLevel26Foundations/Beal/FullProof.lean
+grep -q "theorem wiles_modularity_Frey" \
+  lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
+grep -q "theorem ribet_level_lowering_general" \
+  lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
+grep -q "theorem ribet_level_quotient" \
+  lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
+grep -q "def TW_primes_Q" \
+  lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
+grep -q "theorem TW_Q_infinite" \
+  lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
+grep -q "theorem TW_q53_mod13" \
+  lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
+grep -q "theorem TW_q677_mod169" \
+  lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
+grep -q "abbrev HeckeAlgebra_26" \
+  lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
+grep -q "structure TaylorWilesPatchingData" \
+  lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
+grep -q "def R_T_scaffold" \
+  lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
+grep -q "theorem localizedRankOne_from_Patching" \
+  lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
+grep -q "theorem S2_Gamma0_2_zero" \
+  lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
+grep -q "theorem no_newform_level2" \
+  lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
+grep -q "theorem ribet_step_2_contradiction" \
+  lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
+grep -q "def beal_forall_from_Is13Case_sketch_stays_uninhabited" \
+  lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
+if grep -q "import BealLevel26Foundations.Beal.FullProof.ModularityRibet" \
+    lean/BealLevel26Foundations.lean \
+    lean/BealLevel26Foundations/Beal/BealForall.lean \
+    lean/BealLevel26Foundations/Chain/BealForallInKernel.lean \
+    lean/BealLevel26Foundations/Chain/PathLock.lean \
+    lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean \
+    lean/BealLevel26Foundations/GaloisRep/GaloisBealForallClosedReal.lean \
+    lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean; then
+  echo "FAIL: none chain must not import ModularityRibet"
+  exit 1
+fi
+if grep -nE \
+    '^import[[:space:]]+(BealLevel26Foundations\.Beal\.BealForall|BealLevel26Foundations\.GaloisRep\.GaloisBealForallNoneReal|BealLevel26Foundations\.GaloisRep\.GaloisBealForallClosedReal|BealLevel26Foundations\.Chain\.PathLock|BealLevel26Foundations\.Chain\.BealForallInKernel|BealLevel26Foundations\.Mazur|BealLevel26Foundations\.RT\.PatchingWitnessReal|BealLevel26Foundations\.RT\.TaylorWilesScaffold)' \
+    lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean; then
+  echo "FAIL: ModularityRibet must not import none-chain / Forall / Mazur / none RT tokens"
+  exit 1
+fi
+if grep -nE '^[[:space:]]*False\.elim|^[[:space:]]*exact[[:space:]]+False\.elim' \
+    lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean \
+    lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean \
+    lean/BealLevel26Foundations/Beal/FullProof.lean; then
+  echo "FAIL: FullProof track must not use False.elim"
+  exit 1
+fi
 
 if grep -RInE \
   'frey_conductor_data|tate_step2_odd_prime_external' \

@@ -1,3 +1,29 @@
+# FINAL v7.3.0 — ModularityRibet Ribet + R=T filled
+
+Latest tag `v7.3.0-ribet-rt-filled`.
+Lean change.
+`lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean`
+replaces displayed `26/13=2`, `53%13=1`, `677%169=1`
+tokens with theorems on the TrueConductor conductor
+`N = rad(ABC)`: Wiles domain, Ribet quotient
+`N / ∏_{odd q|ABC} q = 2`, `det = χ_l`, TW family
+`q_n = 4 · 13ⁿ + 1`, bookkeeping `R_∞ ≃ T_∞`,
+`S₂(Γ₀(2)) = 0` so `¬ ExistsNewformLevel2`.
+`#print axioms` is `[propext, Classical.choice, Quot.sound]`.
+Does **not** inhabit
+`beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+FullProof track is **25 modules** (TrueConductor +
+ModularityRibet on the FullProof root).
+Latest written mint
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221)
+(v7.1.1 About catch-up).  The new v7.3.0 mint is
+**not** written into About until the next catch-up.
+Three JPEG plates stay in `docs/assets/v6.7.0/`.
+Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+
 # FINAL v7.2.1 — TrueConductor Tate filled (odd-prime Step 2, global rad)
 
 Latest tag `v7.2.1-tate-filled`.

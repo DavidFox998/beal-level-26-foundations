@@ -77,6 +77,22 @@ v7.1.2-iter-readme-uniform-opera-links README header uniformized (badges 2263220
 v7.1.3-iter-beal-not-route-e-corrected Beal Conjecture corrected from mislabeled "Route E" to its own two-repository chamber of Opera Numerorum, not part of the Riemann Hypothesis A-D route lettering, no Lean change. Still not Full Mathlib ∀.
 v7.2.0-step1-true-conductor-scaffold TrueConductor typed scaffold: Frey model of a primitive Beal triple, Δ=16(Aᵐ)²(Bⁿ)²(Cᵖ)² by ring, true gcd pairwise-coprime ⇒ odd p|ABC does not divide c₄, v_p(c₄)=0 and v_p(Δ)>0; Tate/Kodaira/N=2·rad(ABC) stay uninhabited empty-Type witnesses not sorry. Still not Full Mathlib ∀.
 v7.2.1-tate-filled TrueConductor Tate filled: true_gcd_pairwise on Aᵐ,Bⁿ,Cᵖ; Tate Step 2 at odd q|ABC gives Kodaira I_n and exponent 1; at 2 the integral model has v₂(c₄)=4 so Step 2 does not apply and rad exponent of 2 is 1; N=2·∏_{odd q|ABC}q=rad(ABC). Sketch stays uninhabited. Still not Full Mathlib ∀.
+v7.3.0-ribet-rt-filled ModularityRibet theorems: Wiles domain from TrueConductor N=rad(ABC); Ribet quotient N/∏q=2; det=χ_l (l=13 instance); TW family q_n=4·13ⁿ+1 with 53%13=1, 677%169=1, 8789=17·517 composite; R_∞≃T_∞ bookkeeping; S₂(Γ₀(2))=0 so ¬ExistsNewformLevel2. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v7.3.0-ribet-rt-filled — Ribet + R=T filled: N/∏q=2, TW family, bookkeeping R_∞≃T_∞, no newform at level 2
+
+Lean change.  `ModularityRibet.lean` replaces displayed `26/13=2`, `53%13=1`, `677%169=1` tokens with theorems on the TrueConductor conductor.  Does **not** inhabit `beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `wiles_modularity_Frey`: Wiles-domain input from `frey_global_conductor` (`N = rad(ABC)`);
+- `ribet_level_quotient` / `ribet_level_lowering_general`: `N / ∏_{odd q|ABC} q = 2`, `det = χ_l`, ramification support, odd-prime minimality;
+- `TW_primes_Q` / `TW_Q_infinite`: `q_n = 4 · 13ⁿ + 1`, so `q_n ≡ 1 [MOD 13ⁿ]`; `8789 = 17 · 517` is composite;
+- `R_T_scaffold`: bookkeeping `R_∞ ≃ T_∞` at the proved conductor, not Mathlib Hecke;
+- `S2_Gamma0_2_zero` / `no_newform_level2`: displayed `S₂(Γ₀(2))` dimension `0`;
+- `ribet_step_2_contradiction` is inhabited `RibetStep2Glue`, not `False` from the Beal equation (Mathlib 4.12 cannot turn `Modular w` into `ExistsNewformLevel2`).
+
+`#print axioms` is `[propext, Classical.choice, Quot.sound]`.  Step 3 (`GeometryBridge`) remains.
+
+The v7.1.0 none chain is untouched — 24 modules still green.  About still writes the v7.1.1 mint `22635221`; the new v7.3.0 mint is not written.
 
 ### v7.2.1-tate-filled — Tate Step 2 filled: odd-prime I_n and exponent 1, global N = rad(ABC)
 

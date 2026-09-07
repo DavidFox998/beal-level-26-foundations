@@ -694,3 +694,33 @@ Does **not** inhabit
 Does **not** touch the 24-module none chain.
 No `False.elim`.
 
+### v7.3.0-ribet-rt-filled — DONE
+
+Lean change.  New FullProof module
+`Beal/FullProof/ModularityRibet.lean`.
+`wiles_modularity_Frey` is the Wiles-domain input
+discharged from `frey_global_conductor`
+(`N = 2 · ∏_{odd q|ABC} q = rad(ABC)`).
+`ribet_level_quotient` is `N / ∏_{odd q} q = 2`,
+replacing the displayed `26/13=2` token.
+`ribet_level_lowering_general` packs lowered level 2,
+`det = χ_l`, ramification support `{l,2} ∪ primeFactors(ABC)`,
+and odd-prime minimality.
+`TW_primes_Q n = 4 · 13ⁿ + 1` with
+`TW_Q_infinite`, `53 % 13 = 1`, `677 % 169 = 1`,
+and honesty `8789 = 17 · 517` composite.
+`R_T_scaffold` is bookkeeping `R_∞ ≃ T_∞` at the
+proved conductor, not Mathlib Hecke/deformation.
+`S2_Gamma0_2_zero` / `no_newform_level2` reuse
+`s2_gamma0_2_dim = 0`.
+`ribet_step_2_contradiction` is inhabited
+`RibetStep2Glue`, **not** `False` from the Beal
+equation (Mathlib 4.12 cannot turn `Modular w`
+into `ExistsNewformLevel2`).
+`#print axioms` `[propext, Classical.choice, Quot.sound]`.
+Does **not** inhabit
+`beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+Step 3 (`GeometryBridge`) remains.
+No `False.elim`.
+

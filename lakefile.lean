@@ -19,9 +19,8 @@ lean_lib BealLevel26FoundationsReal where
   srcDir := "lean"
   roots := #[`BealLevel26Foundations.Real]
 
-/-- v7.2.1 FullProof track.  Separate root so the 24-module
-none chain is not rebuilt from this file.  Auto-discovered
-also via the `BealLevel26Foundations` submodule glob. -/
+/-- v7.3.0 FullProof track.  Separate root so the 24-module
+none chain is not rebuilt from this file. -/
 lean_lib BealLevel26FoundationsFullProof where
   srcDir := "lean"
-  roots := #[`BealLevel26Foundations.Beal.FullProof.TrueConductor]
+  roots := #[`BealLevel26Foundations.Beal.FullProof]
