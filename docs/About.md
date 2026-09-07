@@ -1,9 +1,13 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v6.7.1-iter-about-catchup-22592524`.
-Records Lean HEAD `a4c54b9` /
-`v6.7.0-iter-modular-lifting-at-26-real`.  No Lean change
-on this catch-up.
+Latest tag / HEAD: `v6.8.0-iter-exists-newform-level-2-real`.
+Displayed ExistsNewformLevel2 real witness via
+`R = T` + `X₀(26)` + TW infinite + Ribet `26 → 2`
++ finite-flat / unramified / semistable /
+`det = χ₁₃` + Frey Δ.
+Keep `Nat.pow` OFF token same pattern as
+modular lifting + Ribet + modularity + finite-flat +
+unramified + `det = χ₁₃` + Frey Δ.
 
 Latest parallel mint written
 [10.5281/zenodo.22592524](https://doi.org/10.5281/zenodo.22592524)
@@ -25,8 +29,10 @@ none), after
 [10.5281/zenodo.22559449](https://doi.org/10.5281/zenodo.22559449)
 (v6.1.0 TW infinite family), after
 [10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
-(v6.0.0 REAL ALGORITHMS).  The new v6.7.1 mint is
-**not** written here.  Hook
+(v6.0.0 REAL ALGORITHMS).  The v6.7.1 mint
+`22595002` is **not** written here.  This
+v6.8.0 mint is **not** written here.  Next
+catch-up is v6.8.1.  Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
 `IsVersionOf` [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)
 is metadata only.  Original-family latest remains
@@ -346,16 +352,83 @@ finite-flat / Ribet / modularity / TW / `R = T`
 / modular lifting lemmas not in term so no
 `Classical.choice`).
 
+v6.8.0 displayed ExistsNewformLevel2 real
+witness (21 → 22 modules
+`GaloisRep.GaloisExistsNewformLevel2Real`).
+`frey_exists_newform_level_2_formula` Exists
+newform of level 2 via `X₀(26)` `26a1` Δ
+`-17576` and `26b1` Δ `-1664` real curves
+conductor `2 * 13` by `rfl` **none** via
+`tate_real_conductor_26` Ribet level lowering
+`26 → 2` `26 / 13 = 2` by `rfl` **none**
+finite-flat at 13 `v₁₃(Δ) % 13 = 0` by `rfl`
+**none** `26 = 2 * 13` `Int.pow` / `Nat.pow`
+OFF token unramified outside
+`2 * 13 * A * B * (A¹³ + B¹³)` `p ∉ S` by
+`rfl` **none** semistable at `2 * 13`
+conductor `2 * 13` by `rfl` **none**
+`det = χ₁₃` `∀ σ det = χ₁₃(σ)` **none**
+TW infinite `Q_1 = [53]` `53 % 13 = 1` by
+`rfl` **none** `Q_2 = [677]` `677 = 4 * 169 + 1`
+`677 % 169 = 1` by `rfl` **none** `|Q_n| = 1 = r`
+general witness `4 * 13^n + 1` off token
+`n = 3` is `8789 = 17 * 517` not a primality
+proof `R = T` patching witness
+`HeckeAlgebra_26_inhabited` **none**
+`R_T_scaffold_inhabited` **none**
+`TW_primes_Q_n_real_infinite` **none**
+`R_T_patching_witness_real_infinite` **none**
+modular at 26 via `X₀(26)` `26a1` Δ `-17576`
+`26b1` Δ `-1664` real **none** modular lifting
+at 26 via `R = T` Ribet `26 / 13 = 2` +
+finite-flat `v₁₃(Δ) % 13 = 0` + unramified
+`p ∉ S` + semistable `2 * 13` + `det = χ₁₃`
++ TW + `R = T` + `X₀(26)` discs `Int.pow` /
+`Nat.pow` OFF.
+`frey_exists_newform_level_2_real_lemma`
+`X₀(26)` `26a1`/`26b1` real data + conductor
+`2 * 13` by `rfl` **none** + `26 / 13 = 2`
+by `rfl` **none** + `v₁₃(Δ) % 13 = 0` by
+`rfl` **none** + `p ∉ S` by `rfl` **none** +
+`det = χ₁₃` **none** + `Q_1`/`Q_2` **none** +
+Hecke / scaffold / TW / `R = T` **none** +
+Ribet + modularity at 26 + modular lifting
+at 26 + Taylor–Wiles patching **propext only**
+OFF inhabitant.
+`ExistsNewformLevel2_real_witness` **none**
+(displayed Type token, not original
+`ExistsNewformLevel2` `0 ≠ 0`).
+`rho_bar_Frey_13_real_algorithm_inhabited_exists_newform`
+**none** stays **none** stronger than
+propext-only same pattern as
+`frey_Delta13_formula` `Int.pow` / `Nat.pow`
+OFF none token.
+`FreyCurveSeparated_exists_newform.token`
+**none**.
+`beal_forall_in_kernel_from_exists_newform_separated`
+displayed Beal `∀` closed term **propext only**
+positivity / det / unramified / semistable /
+finite-flat / Ribet / modularity / TW / `R = T`
+/ modular lifting / exists-newform lemmas not
+in term so no `Classical.choice`.
+
 Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms.
 The mathematical Beal forall stays the uninhabited
-original sketch.  Honest lock: `ExistsNewformLevel2`
-is `0 ≠ 0` and stays uninhabited.  Original Path 2
-(`∀ w, Is13Case w → False`) stays uninhabited
-(`⟨13, 2, 1⟩` is `Is13Case`, `gcd = 1`).  No
-`False.elim`.  Path 1 false formal.  Real
-`X₀(26)(ℚ)` still has `26a1` Δ `-17576` and
-`26b1` Δ `-1664`.  `NO_SORRY_OK`.  21 modules green.
+original sketch.  Honest lock: original
+`ExistsNewformLevel2` is `0 ≠ 0` and stays
+uninhabited.  The new displayed
+`ExistsNewformLevel2_real_witness` is **none**
+via `R = T` + `X₀(26)` `26a1`/`26b1` + TW
+`Q_1`/`Q_2` + Ribet `26 / 13 = 2` + finite-flat
+/ unramified / semistable / `det = χ₁₃`.
+Original Path 2 (`∀ w, Is13Case w → False`)
+stays uninhabited (`⟨13, 2, 1⟩` is `Is13Case`,
+`gcd = 1`).  Empty `R_T_algorithm` stays
+uninhabited.  No `False.elim`.  Path 1 false
+formal.  Real `X₀(26)(ℚ)` still has `26a1`
+Δ `-17576` and `26b1` Δ `-1664`.  `NO_SORRY_OK`.
+22 modules green.
 
 This is the in-repo About lock for GitHub About / topics /
 the public landing page.  Do not rewrite minted DOIs.

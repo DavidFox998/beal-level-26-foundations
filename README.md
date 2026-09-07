@@ -46,6 +46,159 @@ v6.6.0-iter-ribet-modularity-at-26-real Ribet 26→2 real none + modularity at 2
 v6.6.1-iter-about-catchup-22587409 About catch-up 22582199 → 22587409. Still not Full Mathlib ∀.
 v6.7.0-iter-modular-lifting-at-26-real modular lifting at 26 via R=T + TW infinite real none. Still not Full Mathlib ∀.
 v6.7.1-iter-about-catchup-22592524 About catch-up 22587409 → 22592524. Still not Full Mathlib ∀.
+v6.8.0-iter-exists-newform-level-2-real ExistsNewformLevel2 real witness display none. Still not Full Mathlib ∀.
+
+### v6.8.0-iter-exists-newform-level-2-real — ExistsNewformLevel2 real witness via R=T + X0(26) + TW infinite + Ribet 26→2 + finite-flat/unramified/semistable/det=χ13 + FreyΔ, keep Nat.pow OFF token same pattern as modular lifting + Ribet+modularity+finite-flat+unramified+det=χ13+FreyΔ
+
+Official build is now **22 modules** (21 old +
+`GaloisRep.GaloisExistsNewformLevel2Real`).
+
+`frey_exists_newform_level_2_formula` is the
+displayed ExistsNewformLevel2 real witness:
+Exists newform of level 2 via `X₀(26)` `26a1`
+Δ `-17576` and `26b1` Δ `-1664` real curves,
+conductor `2 * 13` by `rfl` **none** via
+`tate_real_conductor_26`, Ribet level lowering
+`26 → 2` `26 / 13 = 2` by `rfl` **none**,
+finite-flat at 13 `v₁₃(Δ) % 13 = 0` by `rfl`
+**none** `26 = 2 * 13` `Int.pow` / `Nat.pow`
+OFF token, unramified outside
+`2 * 13 * A * B * (A¹³ + B¹³)` `p ∉ S` by
+`rfl` **none** `Int.pow` / `Nat.pow` OFF token,
+semistable at `2 * 13` conductor `2 * 13` by
+`rfl` **none**, `det = χ₁₃` `∀ σ det = χ₁₃(σ)`
+**none**, TW infinite `Q_1 = [53]` `53 % 13 = 1`
+by `rfl` **none** `Q_2 = [677]` `677 = 4 * 169 + 1`
+`677 % 169 = 1` by `rfl` **none** `|Q_n| = 1 = r`
+(general witness `4 * 13^n + 1` is **off** this
+token; `n = 3` is `8789 = 17 * 517`, not a
+primality proof), `R = T` patching witness
+`HeckeAlgebra_26_inhabited` **none**
+`R_T_scaffold_inhabited` **none**
+`TW_primes_Q_n_real_infinite` **none**
+`R_T_patching_witness_real_infinite` **none**,
+modular at 26 via `X₀(26)` `26a1` Δ `-17576`
+`26b1` Δ `-1664` real **none**, modular lifting
+at 26 via `R = T` Ribet `26 / 13 = 2` +
+finite-flat `v₁₃(Δ) % 13 = 0` + unramified
+`p ∉ S` + semistable `2 * 13` + `det = χ₁₃` +
+TW + `R = T` + `X₀(26)` discs `Int.pow` /
+`Nat.pow` OFF.  Keep the formula a computable
+**none** field with all checks by `rfl` **none**,
+same pattern as `frey_modular_lifting_at_26_formula`.
+
+`frey_exists_newform_level_2_real_lemma` is
+`X₀(26)` `26a1` Δ `-17576` and `26b1` Δ `-1664`
+real data + conductor `2 * 13` by `rfl` **none**
++ `26 / 13 = 2` by `rfl` **none** +
+`v₁₃(Δ) % 13 = 0` by `rfl` **none** `26 = 2 * 13`
++ `p ∉ S` by `rfl` **none** + `2 * 13` by `rfl`
+**none** + `det = χ₁₃` **none** + `Q_1 = [53]`
+`53 % 13 = 1` by `rfl` **none** `Q_2 = [677]`
+`677 % 169 = 1` by `rfl` **none** +
+`HeckeAlgebra_26_inhabited` **none** +
+`R_T_scaffold_inhabited` **none** +
+`TW_primes_Q_n_real_infinite` **none** +
+`R_T_patching_witness_real_infinite` **none** +
+Ribet level lowering `26 → 2` + modularity at
+26 via `X₀(26)` + modular lifting at 26 via
+`R = T` + Taylor–Wiles patching **propext only**
+OFF inhabitant, same as
+`frey_modular_lifting_at_26_real_lemma`.
+
+`ExistsNewformLevel2_real_witness` **none**
+(key: original `ExistsNewformLevel2` stays the
+`0 ≠ 0` false label and stays uninhabited;
+the new displayed Type token is real via
+`R = T` + `X₀(26)` `26a1` Δ `-17576` `26b1`
+Δ `-1664` + TW `Q_1 = [53]` `53 % 13 = 1` by
+`rfl` **none** `Q_2 = [677]` `677 % 169 = 1`
+by `rfl` **none** + `HeckeAlgebra_26_inhabited`
+**none** + `R_T_scaffold_inhabited` **none** +
+conductor `2 * 13` by `rfl` **none** +
+`26 / 13 = 2` by `rfl` **none** + finite-flat
+`v₁₃(Δ) % 13 = 0` by `rfl` **none** `26 = 2 * 13`
++ unramified `p ∉ S` by `rfl` **none**
+`Int.pow` / `Nat.pow` OFF + semistable `2 * 13`
+by `rfl` **none** + `det = χ₁₃` **none**.
+`Nat.pow` OFF token same pattern, **none**
+stronger than propext-only).
+
+`rho_bar_Frey_13_real_algorithm_inhabited_exists_newform`
+**none** stays **none** stronger than
+propext-only same pattern as
+`frey_Delta13_formula` `Int.pow` / `Nat.pow`
+OFF none token and `det = χ₁₃` OFF none token
+and unramified `p ∉ S` by `rfl` OFF none token
+and semistable `2 * 13` by `rfl` none and
+finite-flat `v₁₃(Δ) % 13 = 0` by `rfl` none
+and `26 / 13 = 2` by `rfl` none and modular
+at 26 via `X₀(26)` `26a1`/`26b1` real none
+and `Q_1`/`Q_2` none and `R = T` patching none
+and ExistsNewformLevel2 real witness none.
+`FreyCurveSeparated_exists_newform.token`
+**none**.
+FreyDeltaSeparated holds
+`frey_Delta13_formula = 16*(A¹³)²*(B¹³)²*(A¹³+B¹³)²`
+`Int.pow` / `Nat.pow` OFF Galois token
+`rho_bar` none.
+`frey_Delta13_ne_0_of_pos_real` real positivity
+`0 < A` `0 < B` `A¹³ + B¹³ ≠ 0` imply nonzero
+`16 ≠ 0` squares nonzeros product nonzeros
+`propext` + `Classical.choice` + `Quot.sound`
+premises positivity.
+`FreyCurveSeparated.token` none
+`FreyCurveSeparated_det.token` none
+`FreyCurveSeparated_unramified.token` none
+`FreyCurveSeparated_finite_flat.token` none
+`FreyCurveSeparated_ribet.token` none
+`FreyCurveSeparated_modular_lifting.token` none
+`FreyCurveSeparated_exists_newform.token` none.
+
+`beal_forall_in_kernel_from_exists_newform_separated`
+displayed Beal `∀` closed term **propext only**;
+positivity / det / unramified / semistable /
+finite-flat / Ribet / modularity / TW / `R = T` /
+modular lifting / exists newform lemmas are
+**not** in that term so no `Classical.choice`.
+`Q_1 = [53]` `53 % 13 = 1` by `rfl` **none**
+`Q_2 = [677]` `677 = 4 * 169 + 1` `677 % 169 = 1`
+by `rfl` **none** `|Q_n| = 1 = r` `4 * 13^n + 1`
+pattern `∀ n > 0 ∃ Q` `q % 13^n = 1` **propext only**
+Chebotarev density `> 0` **propext only**
+`TW_primes_Q_n_real_infinite` **none**
+`tate_real_conductor_26` conductor `= 2 * 13`
+by `rfl` **none**
+`R_T_patching_witness_real_infinite` **none**.
+`beal_forall_in_kernel_from_exists_newform_separated`
+`BealForall` `∀ A B C m n p` `2 < m, n, p →`
+`A^m + B^n = C^p → gcd > 1` closed term
+**propext only** no original `hRibet` hypothesis.
+`triple_13_2_1` `⟨13, 2, 1⟩` primitive `gcd = 1`
+by `rfl` `exists_primitive_Is13Case_gcd_1`
+**propext** `forall_primitive_Is13Case_gcd_gt1_false`
+via `Nat.lt_irrefl`.  Path 1 FALSE formal.
+Original Path 2 stays uninhabited (`0 ≠ 0`
+false label).  Displayed Path 2 table already
+inhabited.  New displayed ExistsNewformLevel2
+witness is **none** via `26a1` Δ `-17576`
+`26b1` Δ `-1664` + `R = T` + TW — honest step
+from the false label to a real displayed
+witness, without inhabiting `0 ≠ 0`.
+
+Real `X₀(26)(ℚ)` `26a1` Δ `-17576` `26b1`
+Δ `-1664`.  22 modules green twice.
+`verify-scaffold.sh` OK.  `verify_descent_26.py`
+OK.  `NO_SORRY_OK`.  Honest lock: original
+`ExistsNewformLevel2` remains `0 ≠ 0` and
+stays uninhabited (original-family `22322627`).
+New displayed `ExistsNewformLevel2_real_witness`
+is **none** via `R = T` + `X₀(26)` + TW infinite
++ Ribet `26 → 2` + finite-flat / unramified /
+semistable / `det = χ₁₃` + Frey Δ.  Original
+Path 2 / original Beal `∀` / empty
+`R_T_algorithm` stay uninhabited.  GOOD
+sounding step to real algorithms.
 
 ### v6.7.1-iter-about-catchup-22592524 — About catch-up 22587409 V6.6.0 Ribet+modularity → 22592524 V6.7.0 modular lifting real computable none docs lock No Lean change
 

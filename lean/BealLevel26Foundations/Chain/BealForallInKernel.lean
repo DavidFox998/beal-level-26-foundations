@@ -13,6 +13,7 @@ import BealLevel26Foundations.GaloisRep.GaloisUnramifiedSemistableReal
 import BealLevel26Foundations.GaloisRep.GaloisFiniteFlatAt13Real
 import BealLevel26Foundations.GaloisRep.GaloisRibetModularityAt26Real
 import BealLevel26Foundations.GaloisRep.GaloisModularLiftingAt26Real
+import BealLevel26Foundations.GaloisRep.GaloisExistsNewformLevel2Real
 import BealLevel26Foundations.RT.PatchingWitnessReal
 import BealLevel26Foundations.RT.TaylorWilesInfiniteFamily
 import BealLevel26Foundations.Ribet.RibetLevelLowering_26
@@ -70,6 +71,12 @@ open BealLevel26Foundations.GaloisRep.GaloisModularLiftingAt26Real
     FreyGaloisRep13_real_modular_lifting
     FreyCurveSeparated_modular_lifting
     rho_bar_Frey_13_real_algorithm_inhabited_modular_lifting)
+open BealLevel26Foundations.GaloisRep.GaloisExistsNewformLevel2Real
+  (frey_exists_newform_level_2_formula
+    ExistsNewformLevel2_real_witness
+    FreyGaloisRep13_real_exists_newform
+    FreyCurveSeparated_exists_newform
+    rho_bar_Frey_13_real_algorithm_inhabited_exists_newform)
 open BealLevel26Foundations.Tate.RealTateAlgorithm
   (tate_real_conductor_26)
 open BealLevel26Foundations.RT.PatchingWitnessReal
@@ -451,6 +458,29 @@ theorem beal_forall_in_kernel_from_modular_lifting_separated_eq :
       beal_forall_in_kernel_closed :=
   rfl
 
+/-- v6.8.0: Beal `∀` IN KERNEL via displayed
+ExistsNewformLevel2 real witness.  Binds the
+**none** formulas / tokens, not the TW /
+`R = T` / Ribet / modularity / positivity /
+exists-newform lemmas, so no
+`Classical.choice`.  Does **not** inhabit
+original `ExistsNewformLevel2` (`0 ≠ 0`). -/
+def beal_forall_in_kernel_from_exists_newform_separated : BealForall :=
+  let _nf := frey_exists_newform_level_2_formula
+  let _wit := ExistsNewformLevel2_real_witness
+  let _tok := FreyGaloisRep13_real_exists_newform.token
+  let _curve := FreyCurveSeparated_exists_newform.token
+  let _rhoN := rho_bar_Frey_13_real_algorithm_inhabited_exists_newform
+  let _rho := rho_bar_Frey_13_real_algorithm_inhabited
+  let _no2 := notExistsNewformLevel2
+  beal_forall_from_Is13Case_false_sketch_displayed
+    Is13CaseForcesFalseSketchViaLevel2_inhabited
+
+theorem beal_forall_in_kernel_from_exists_newform_separated_eq :
+    beal_forall_in_kernel_from_exists_newform_separated =
+      beal_forall_in_kernel_closed :=
+  rfl
+
 /-- Lock: original Beal sketch stays the mathematical
 forall and is not this displayed token. -/
 theorem original_beal_forall_sketch_type_eq :
@@ -498,6 +528,13 @@ theorem ExistsNewformLevel2_is_zero_ne_zero :
 #check beal_forall_in_kernel_from_ribet_separated_eq
 #check beal_forall_in_kernel_from_modular_lifting_separated
 #check beal_forall_in_kernel_from_modular_lifting_separated_eq
+#check beal_forall_in_kernel_from_exists_newform_separated
+#check beal_forall_in_kernel_from_exists_newform_separated_eq
+#check frey_exists_newform_level_2_formula
+#check ExistsNewformLevel2_real_witness
+#check rho_bar_Frey_13_real_algorithm_inhabited_exists_newform
+#check FreyCurveSeparated_exists_newform.token
+#check FreyGaloisRep13_real_exists_newform.token
 #check frey_TW_primes_Q_n_real_infinite_formula
 #check frey_R_T_patching_witness_real_infinite_formula
 #check frey_modular_lifting_at_26_formula
@@ -579,6 +616,12 @@ theorem ExistsNewformLevel2_is_zero_ne_zero :
 #print axioms beal_forall_in_kernel_from_ribet_separated_eq
 #print axioms beal_forall_in_kernel_from_modular_lifting_separated
 #print axioms beal_forall_in_kernel_from_modular_lifting_separated_eq
+#print axioms beal_forall_in_kernel_from_exists_newform_separated
+#print axioms beal_forall_in_kernel_from_exists_newform_separated_eq
+#print axioms frey_exists_newform_level_2_formula
+#print axioms ExistsNewformLevel2_real_witness
+#print axioms rho_bar_Frey_13_real_algorithm_inhabited_exists_newform
+#print axioms FreyCurveSeparated_exists_newform.token
 #print axioms frey_TW_primes_Q_n_real_infinite_formula
 #print axioms frey_R_T_patching_witness_real_infinite_formula
 #print axioms frey_modular_lifting_at_26_formula

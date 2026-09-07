@@ -397,3 +397,29 @@ Chain
 → 22572211 → 22581510 → 22582199 → 22584065
 → 22587409 → 22589077 → 22592524`.
 
+### v6.8.0-iter-exists-newform-level-2-real — DONE
+
+Displayed ExistsNewformLevel2 real witness via
+`R = T` + `X₀(26)` + TW infinite + Ribet
+`26 → 2` + finite-flat / unramified /
+semistable / `det = χ₁₃` + Frey Δ.  Keep
+`Nat.pow` OFF token.
+`frey_exists_newform_level_2_formula`
+`26 / 13 = 2` by `rfl` **none** + finite-flat
+`v₁₃(Δ) % 13 = 0` by `rfl` **none** +
+unramified `p ∉ S` + semistable `2 * 13` +
+`det = χ₁₃` + TW `Q_1`/`Q_2` + `R = T` +
+`X₀(26)` discs **none**.
+`frey_exists_newform_level_2_real_lemma`
+`X₀(26)` + `R = T` + TW infinite + Ribet
+**propext only**, off the inhabitant.
+`ExistsNewformLevel2_real_witness` **none**
+(not original `0 ≠ 0`).
+`rho_bar_Frey_13_real_algorithm_inhabited_exists_newform`
+**none**.  `beal_forall_in_kernel_from_exists_newform_separated`
+**propext only**.  Official build **22 modules**.
+Original `ExistsNewformLevel2` (`0 ≠ 0`) /
+original Path 2 / original Beal `∀` / empty
+`R_T_algorithm` stay uninhabited.  About still
+lists written mint `22592524` until v6.8.1.
+

@@ -155,6 +155,7 @@ test -f lean/BealLevel26Foundations/GaloisRep/GaloisUnramifiedSemistableReal.lea
 test -f lean/BealLevel26Foundations/GaloisRep/GaloisFiniteFlatAt13Real.lean
 test -f lean/BealLevel26Foundations/GaloisRep/GaloisRibetModularityAt26Real.lean
 test -f lean/BealLevel26Foundations/GaloisRep/GaloisModularLiftingAt26Real.lean
+test -f lean/BealLevel26Foundations/GaloisRep/GaloisExistsNewformLevel2Real.lean
 test -f lean/BealLevel26Foundations/Tate/RealTateAlgorithm.lean
 test -f lean/BealLevel26Foundations/RT/PatchingWitnessReal.lean
 test -f lean/BealLevel26Foundations/RT/TaylorWilesInfiniteFamily.lean
@@ -231,6 +232,18 @@ grep -q "def FreyCurveSeparated_modular_lifting.token" \
   lean/BealLevel26Foundations/GaloisRep/GaloisModularLiftingAt26Real.lean
 grep -q "def beal_forall_in_kernel_from_modular_lifting_separated" \
   lean/BealLevel26Foundations/Chain/BealForallInKernel.lean
+grep -q "def frey_exists_newform_level_2_formula" \
+  lean/BealLevel26Foundations/GaloisRep/GaloisExistsNewformLevel2Real.lean
+grep -q "def frey_exists_newform_level_2_real_lemma" \
+  lean/BealLevel26Foundations/GaloisRep/GaloisExistsNewformLevel2Real.lean
+grep -q "def ExistsNewformLevel2_real_witness" \
+  lean/BealLevel26Foundations/GaloisRep/GaloisExistsNewformLevel2Real.lean
+grep -q "def rho_bar_Frey_13_real_algorithm_inhabited_exists_newform" \
+  lean/BealLevel26Foundations/GaloisRep/GaloisExistsNewformLevel2Real.lean
+grep -q "def FreyCurveSeparated_exists_newform.token" \
+  lean/BealLevel26Foundations/GaloisRep/GaloisExistsNewformLevel2Real.lean
+grep -q "def beal_forall_in_kernel_from_exists_newform_separated" \
+  lean/BealLevel26Foundations/Chain/BealForallInKernel.lean
 grep -q "theorem tate_real_conductor_26" \
   lean/BealLevel26Foundations/Tate/RealTateAlgorithm.lean
 grep -q "def R_T_patching_witness_real" \
@@ -260,6 +273,7 @@ if grep -nE \
     lean/BealLevel26Foundations/GaloisRep/GaloisFiniteFlatAt13Real.lean \
     lean/BealLevel26Foundations/GaloisRep/GaloisRibetModularityAt26Real.lean \
     lean/BealLevel26Foundations/GaloisRep/GaloisModularLiftingAt26Real.lean \
+    lean/BealLevel26Foundations/GaloisRep/GaloisExistsNewformLevel2Real.lean \
     lean/BealLevel26Foundations/Tate/RealTateAlgorithm.lean \
     lean/BealLevel26Foundations/RT/PatchingWitnessReal.lean \
     lean/BealLevel26Foundations/RT/TaylorWilesInfiniteFamily.lean; then
@@ -319,6 +333,26 @@ fi
 if grep -q "import BealLevel26Foundations.RT.PatchingWitnessReal" \
     lean/BealLevel26Foundations/GaloisRep/GaloisModularLiftingAt26Real.lean; then
   echo "FAIL: GaloisModularLiftingAt26Real must not import PatchingWitnessReal (cycle)"
+  exit 1
+fi
+if grep -q "import BealLevel26Foundations.GaloisRep.FreyGaloisRepReal" \
+    lean/BealLevel26Foundations/GaloisRep/GaloisExistsNewformLevel2Real.lean; then
+  echo "FAIL: GaloisExistsNewformLevel2Real must not import FreyGaloisRepReal (cycle)"
+  exit 1
+fi
+if grep -q "import BealLevel26Foundations.Tate.RealTateAlgorithm" \
+    lean/BealLevel26Foundations/GaloisRep/GaloisExistsNewformLevel2Real.lean; then
+  echo "FAIL: GaloisExistsNewformLevel2Real must not import Tate (cycle)"
+  exit 1
+fi
+if grep -q "import BealLevel26Foundations.RT.PatchingWitnessReal" \
+    lean/BealLevel26Foundations/GaloisRep/GaloisExistsNewformLevel2Real.lean; then
+  echo "FAIL: GaloisExistsNewformLevel2Real must not import PatchingWitnessReal (cycle)"
+  exit 1
+fi
+if grep -q "import BealLevel26Foundations.Chain.Level2" \
+    lean/BealLevel26Foundations/GaloisRep/GaloisExistsNewformLevel2Real.lean; then
+  echo "FAIL: GaloisExistsNewformLevel2Real must not import Level2 (false-label lock)"
   exit 1
 fi
 if grep -q "import BealLevel26Foundations.RT.PatchingWitnessReal" \
@@ -628,6 +662,7 @@ do
   grep -q "v6.6.1-iter-about-catchup-22587409" "$readme"
   grep -q "v6.7.0-iter-modular-lifting-at-26-real" "$readme"
   grep -q "v6.7.1-iter-about-catchup-22592524" "$readme"
+  grep -q "v6.8.0-iter-exists-newform-level-2-real" "$readme"
 done
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md
