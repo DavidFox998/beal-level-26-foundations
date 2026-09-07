@@ -1,21 +1,17 @@
-# FINAL v7.0.1 — About catch-up 22618433 relook
+# FINAL v7.1.0 — Beal ∀ kernel separated none
 
-Latest tag `v7.0.1-iter-about-catchup-22618433-relook`.
-Records Lean HEAD `d9e5e6f` /
-`v7.0.0-iter-beal-forall-none-real`.  **No Lean change.**
-Official build **24 modules**
-(23 old + `GaloisRep.GaloisBealForallNoneReal`).
-Latest written mint now
+Latest tag `v7.1.0-iter-beal-forall-kernel-separated-none-real`.
+Lean change: Beal `∀` kernel separated from
+`propext` only → **none** via `rfl` only.
+Official build stays **24 modules**.
+Latest written mint remains
 [10.5281/zenodo.22618433](https://doi.org/10.5281/zenodo.22618433)
-(v7.0.0 Beal `∀` none real via `rfl` only;
-`propext` pushed out of the closed witness)
+(v7.0.0 Beal `∀` none real via `rfl` only)
 DataCite findable, after
 [10.5281/zenodo.22611775](https://doi.org/10.5281/zenodo.22611775)
-(v6.9.0 Beal `∀` closed real via positivity /
-det / unramified / semistable / finite-flat /
-Ribet / modularity at 26 via `X₀(26)` + TW +
-`R = T` + modular lifting + exists-newform).
-The new v7.0.1 mint is **not** written into About.
+(v6.9.0 Beal `∀` closed real).  The new
+v7.1.0 mint is **not** written into About
+until catch-up v7.1.1.
 Three JPEG plates stay in `docs/assets/v6.7.0/`.
 Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
 Original-family latest remains `22322627`.
@@ -543,7 +539,7 @@ build **24 modules**
 - `FreyCurveSeparated_beal_forall_none.token`
   **none**
 - `beal_forall_in_kernel_from_beal_forall_none_separated`
-  **propext only**; positivity / det /
+  **propext only** at v7.0.0; positivity / det /
   unramified / semistable / finite-flat /
   Ribet / modularity / TW / `R = T` /
   modular lifting / exists-newform /
@@ -565,7 +561,32 @@ Chain `22552105 → 22552659 → 22553129 → 22553671
 the latest recorded mint.  Docs lock + 3
 plates relook.  No Lean change.
 
-### Honest lock (updated v7.0.0)
+### v7.1.0 Beal Forall kernel separated none
+
+Push `propext` out of the displayed Beal `∀`
+kernel.  Same 24-module official build.
+`beal_forall_in_kernel_from_beal_forall_none_separated`
+and
+`beal_forall_in_kernel_from_beal_forall_none_separated_none`
+are **none** via `rfl` only + none tokens.
+`beal_forall_from_none_formula_displayed`
+**none**.  Displayed `BealForall` wraps
+only `frey_beal_forall_none_formula` so
+the Path 2 table does not leak `propext`
+into the type.  Closed kernel
+`beal_forall_in_kernel_from_beal_forall_closed_separated`
+stays **propext only** (binds the Path 2
+inhabitant).  `BealForall_real_witness_none`
+**none**.  `frey_beal_forall_none_formula`
+**none**.  `frey_beal_forall_none_real_lemma`
+**none**.
+`rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_none`
+**none**.
+`FreyCurveSeparated_beal_forall_none.token`
+**none**.  About still writes `22618433`
+until catch-up v7.1.1.
+
+### Honest lock (updated v7.1.0)
 
 - Original `ExistsNewformLevel2` is `s2_gamma0_2_dim ≠ 0`
   i.e. `0 ≠ 0` and stays uninhabited
@@ -589,6 +610,11 @@ plates relook.  No Lean change.
   **none** via `rfl` only + none tokens; it
   pushes `propext` out of the closed witness
   and does **not** inhabit the original sketch
+- New displayed
+  `beal_forall_in_kernel_from_beal_forall_none_separated`
+  is **none** via `rfl` only + none tokens;
+  it pushes `propext` out of the kernel
+  and does **not** inhabit the original sketch
 - Empty `R_T_algorithm` / `TaylorWilesPatchingWitness` /
   `galois_rep_algorithm_of_Frey_13` /
   `tate_algorithm_of_Is13Case` stay uninhabited
@@ -596,8 +622,9 @@ plates relook.  No Lean change.
   primitive `gcd = 1` by `rfl`
 - Path 2 now REAL **none** via ExistsNewformLevel2
   real witness `26a1`/`26b1` + `R = T` + TW +
-  BealForall none real witness; original Path 2
-  type stays uninhabited
+  BealForall none real witness + kernel
+  separated none; original Path 2 type stays
+  uninhabited
 - Real `X₀(26)(ℚ)` still has `26a1` Δ `-17576` and
   `26b1` Δ `-1664`
 - No `False.elim`.  24 modules green twice.

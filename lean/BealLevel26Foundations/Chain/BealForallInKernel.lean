@@ -88,6 +88,8 @@ open BealLevel26Foundations.GaloisRep.GaloisBealForallClosedReal
     rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_closed)
 open BealLevel26Foundations.GaloisRep.GaloisBealForallNoneReal
   (frey_beal_forall_none_formula
+    frey_beal_forall_none_formula_rfl
+    frey_beal_forall_none_real_lemma
     BealForallNone_real_token
     BealForall_real_witness_none
     FreyGaloisRep13_real_beal_forall_none
@@ -218,15 +220,37 @@ theorem original_Path2_type_eq :
 
 /-- Displayed Beal `∀` token in the kernel.  Not the
 original `beal_forall_from_Is13Case_sketch`
-(`∀ A B C m n p`). -/
+(`∀ A B C m n p`).
+
+Wraps only the none formula.  The Path 2 table
+must **not** appear in this type: `#print axioms`
+of `A ∨ Path2Table` leaked `propext` even for
+`Or.inl` of a none proof.
+
+Closed kernels still *bind* the Path 2 inhabitant
+in the term (propext only).  The v7.1.0 none
+kernel binds only `rfl` + none tokens. -/
 structure BealForall : Prop where
-  path2 : Is13CaseForcesFalseSketchViaLevel2_displayed
+  of_none : frey_beal_forall_none_formula
 
 /-- Displayed analogue of
 `beal_forall_from_Is13Case_false_sketch`:
-displayed Path 2 table → displayed Beal `∀`. -/
+displayed Path 2 table → displayed Beal `∀`.
+Binds the Path 2 inhabitant so `#print axioms`
+stays **propext only**. -/
 def beal_forall_from_Is13Case_false_sketch_displayed :
     Is13CaseForcesFalseSketchViaLevel2_displayed → BealForall :=
+  fun h =>
+    let _path2 := h
+    ⟨frey_beal_forall_none_formula_rfl⟩
+
+/-- v7.1.0: displayed none formula → displayed Beal `∀`.
+**none**.  Does **not** bind Path 2 / positivity /
+det / unramified / finite-flat / Ribet / modularity /
+TW / `R = T` / lifting / exists-newform / closed
+lemmas. -/
+def beal_forall_from_none_formula_displayed :
+    frey_beal_forall_none_formula → BealForall :=
   fun h => ⟨h⟩
 
 /-- v5.3.0: Beal `∀` IN KERNEL as the displayed token.
@@ -523,17 +547,22 @@ theorem beal_forall_in_kernel_from_beal_forall_closed_separated_eq :
       beal_forall_in_kernel_closed :=
   rfl
 
-/-- v7.0.0: Beal `∀` IN KERNEL via displayed
-Beal Forall none real witness.  Binds the
-**none** formulas / tokens, not the TW /
-`R = T` / Ribet / modularity / positivity /
+/-- v7.1.0: Beal `∀` IN KERNEL via displayed none
+real witness.  Binds only **none** formulas /
+tokens (`rfl` numeral checks + none
+inhabitants).  Does **not** bind Path 2
+`Is13CaseForcesFalseSketchViaLevel2_inhabited`
+or positivity / det / unramified / finite-flat /
+Ribet / modularity / TW / `R = T` / lifting /
 exists-newform / beal-forall-closed /
-beal-forall-none lemmas, so no
-`Classical.choice`.  Does **not** inhabit
-original Beal `∀` sketch or original
+beal-forall-none lemmas, so no `propext` +
+`Classical.choice`.  **none**.  Does **not**
+inhabit original Beal `∀` sketch or original
 `ExistsNewformLevel2` (`0 ≠ 0`). -/
-def beal_forall_in_kernel_from_beal_forall_none_separated : BealForall :=
+def beal_forall_in_kernel_from_beal_forall_none_separated_none : BealForall :=
   let _nn := frey_beal_forall_none_formula
+  let _rfl := frey_beal_forall_none_formula_rfl
+  let _lem := frey_beal_forall_none_real_lemma
   let _tokT := BealForallNone_real_token
   let _wit := BealForall_real_witness_none
   let _tok := FreyGaloisRep13_real_beal_forall_none.token
@@ -545,12 +574,25 @@ def beal_forall_in_kernel_from_beal_forall_none_separated : BealForall :=
   let _rhoNf := rho_bar_Frey_13_real_algorithm_inhabited_exists_newform
   let _rho := rho_bar_Frey_13_real_algorithm_inhabited
   let _no2 := notExistsNewformLevel2
-  beal_forall_from_Is13Case_false_sketch_displayed
-    Is13CaseForcesFalseSketchViaLevel2_inhabited
+  beal_forall_from_none_formula_displayed
+    BealForall_real_witness_none
+
+/-- v7.1.0: same none kernel.  Pushes `propext`
+out of the v7.0.0 separated term.  **none**. -/
+def beal_forall_in_kernel_from_beal_forall_none_separated : BealForall :=
+  beal_forall_in_kernel_from_beal_forall_none_separated_none
 
 theorem beal_forall_in_kernel_from_beal_forall_none_separated_eq :
     beal_forall_in_kernel_from_beal_forall_none_separated =
-      beal_forall_in_kernel_closed :=
+      beal_forall_in_kernel_from_beal_forall_none_separated_none :=
+  rfl
+
+/-- Lock: the none kernel is the none-formula
+wrapper, not the Path 2 propext table. -/
+theorem beal_forall_in_kernel_from_beal_forall_none_separated_none_ctor :
+    beal_forall_in_kernel_from_beal_forall_none_separated_none =
+      beal_forall_from_none_formula_displayed
+        frey_beal_forall_none_formula_rfl :=
   rfl
 
 /-- Lock: original Beal sketch stays the mathematical
@@ -606,6 +648,9 @@ theorem ExistsNewformLevel2_is_zero_ne_zero :
 #check beal_forall_in_kernel_from_beal_forall_closed_separated_eq
 #check beal_forall_in_kernel_from_beal_forall_none_separated
 #check beal_forall_in_kernel_from_beal_forall_none_separated_eq
+#check beal_forall_in_kernel_from_beal_forall_none_separated_none
+#check beal_forall_from_none_formula_displayed
+#check beal_forall_in_kernel_from_beal_forall_none_separated_none_ctor
 #check frey_beal_forall_closed_formula
 #check BealForall_real_witness
 #check rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_closed
@@ -708,6 +753,9 @@ theorem ExistsNewformLevel2_is_zero_ne_zero :
 #print axioms beal_forall_in_kernel_from_beal_forall_closed_separated_eq
 #print axioms beal_forall_in_kernel_from_beal_forall_none_separated
 #print axioms beal_forall_in_kernel_from_beal_forall_none_separated_eq
+#print axioms beal_forall_in_kernel_from_beal_forall_none_separated_none
+#print axioms beal_forall_from_none_formula_displayed
+#print axioms beal_forall_in_kernel_from_beal_forall_none_separated_none_ctor
 #print axioms frey_beal_forall_closed_formula
 #print axioms BealForall_real_witness
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_closed

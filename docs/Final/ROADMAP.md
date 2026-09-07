@@ -555,3 +555,28 @@ Chain
 → 22602899 → 22607942 → 22611775 → 22614123
 → 22618433`.
 
+### v7.1.0-iter-beal-forall-kernel-separated-none-real — DONE
+
+Push `propext` out of the displayed Beal `∀`
+kernel.  Stay **24 modules**.
+`beal_forall_in_kernel_from_beal_forall_none_separated`
+**none** via `rfl` only + none tokens.
+`beal_forall_in_kernel_from_beal_forall_none_separated_none`
+**none**.
+`beal_forall_from_none_formula_displayed`
+**none**.  Displayed `BealForall` wraps
+only the none formula.  Closed kernel
+`beal_forall_in_kernel_from_beal_forall_closed_separated`
+stays **propext only**.
+`BealForall_real_witness_none` **none**.
+`frey_beal_forall_none_formula` **none**.
+`rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_none`
+**none**.
+`FreyCurveSeparated_beal_forall_none.token`
+**none**.  Official build **24 modules**.
+Original `ExistsNewformLevel2` (`0 ≠ 0`) /
+original Path 2 / original Beal `∀`
+sketch / empty `R_T_algorithm` stay
+uninhabited.  About still lists
+written mint `22618433` until v7.1.1.
+

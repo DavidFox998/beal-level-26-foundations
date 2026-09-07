@@ -1,10 +1,11 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v7.0.1-iter-about-catchup-22618433-relook`.
-Records Lean HEAD `d9e5e6f` /
-`v7.0.0-iter-beal-forall-none-real`.  No Lean change
-on this catch-up.  Assets relook keeps the three
-JPEG plates (WebP fallback only).
+Latest tag / HEAD: `v7.1.0-iter-beal-forall-kernel-separated-none-real`.
+Lean change: Beal `∀` kernel separated from
+`propext` only → **none** via `rfl` only.
+Official build stays **24 modules**.
+Assets relook keeps the three JPEG plates
+(WebP fallback only).
 
 Latest parallel mint written
 [10.5281/zenodo.22618433](https://doi.org/10.5281/zenodo.22618433)
@@ -39,9 +40,9 @@ none), after
 [10.5281/zenodo.22559449](https://doi.org/10.5281/zenodo.22559449)
 (v6.1.0 TW infinite family), after
 [10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
-(v6.0.0 REAL ALGORITHMS).  The new v7.0.1 mint
+(v6.0.0 REAL ALGORITHMS).  The new v7.1.0 mint
 is **not** written here (About catch-up waits
-for v7.1.0).  Hook
+for v7.1.1).  Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
 `IsVersionOf` [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)
 is metadata only.  Original-family latest remains
@@ -498,26 +499,29 @@ closed **none**; `Int.pow` / `Nat.pow` OFF).
 `FreyCurveSeparated_beal_forall_none.token`
 **none**.
 `beal_forall_in_kernel_from_beal_forall_none_separated`
-**propext only**; positivity / det /
-unramified / semistable / finite-flat /
-Ribet / modularity / TW / `R = T` /
-modular lifting / exists-newform /
-beal-forall-closed / beal-forall-none
-lemmas not in term so no
+**none** (kernel separated from propext
+only → none via `rfl` only + none tokens,
+same as `BealForall_real_witness_none`).
+`beal_forall_in_kernel_from_beal_forall_none_separated_none`
+**none**.  Closed kernel
+`beal_forall_in_kernel_from_beal_forall_closed_separated`
+stays **propext only**; no
 `Classical.choice`.
 About now writes `22618433` as the latest
-recorded mint.  The new v7.0.1 mint is
-**not** written here until catch-up v7.1.0.
+recorded mint.  The new v7.1.0 mint is
+**not** written here until catch-up v7.1.1.
 
 Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms.
-Honest lock CHANGED: Beal `∀` from propext-only
-OFF inhabitant to **none** real witness via
-`rfl` only + none tokens (positivity / det /
-unramified / semistable / finite-flat / Ribet /
-modularity at 26 via `X₀(26)` `26a1`/`26b1` +
-TW + `R = T` + modular lifting + exists-newform
-+ Beal `∀` closed).  Original
+Honest lock CHANGED: Beal `∀` kernel
+separated from propext-only to **none**
+real witness via `rfl` only + none tokens
+(positivity / det / unramified / semistable
+/ finite-flat / Ribet / modularity at 26
+via `X₀(26)` `26a1`/`26b1` + TW + `R = T`
++ modular lifting + exists-newform +
+Beal `∀` closed + Beal `∀` none + kernel
+separated none).  Original
 `ExistsNewformLevel2` is `0 ≠ 0` and stays
 uninhabited.  Original Path 2
 (`∀ w, Is13Case w → False`) stays uninhabited
@@ -526,7 +530,8 @@ Original Beal `∀` sketch stays uninhabited.
 Empty `R_T_algorithm` stays uninhabited.  No
 `False.elim`.  Path 1 false formal.  Path 2
 now REAL **none** via ExistsNewformLevel2 real
-witness + BealForall none real witness.  Real
+witness + BealForall none real witness +
+kernel separated none.  Real
 `X₀(26)(ℚ)` still has `26a1` Δ `-17576` and
 `26b1` Δ `-1664`.  `NO_SORRY_OK`.
 24 modules green.

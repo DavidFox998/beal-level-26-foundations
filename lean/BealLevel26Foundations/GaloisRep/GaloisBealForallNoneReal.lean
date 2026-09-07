@@ -155,6 +155,19 @@ Beal `∀`. -/
 def BealForall_real_witness_none : frey_beal_forall_none_formula :=
   frey_beal_forall_none_formula_rfl
 
+/-- v7.1.0: displayed kernel-separated none
+formula.  Same numeral checks as
+`frey_beal_forall_none_formula`.  The
+`BealForall` inhabitant lives in
+`BealForallInKernel` (cycle lock).
+**none**. -/
+def beal_forall_kernel_separated_none_formula : Prop :=
+  frey_beal_forall_none_formula
+
+theorem beal_forall_kernel_separated_none_formula_rfl :
+    beal_forall_kernel_separated_none_formula :=
+  frey_beal_forall_none_formula_rfl
+
 /-- v7.0.0: displayed residual-rep plus
 Beal `∀` none display.  Extends the
 closed Type.  Propext lemmas stay off
@@ -290,6 +303,8 @@ def FreyCurveSeparated_beal_forall_none_token_inhabited :
 #check BealForallNone_real_token_eq
 #check frey_beal_forall_none_real_lemma
 #check BealForall_real_witness_none
+#check beal_forall_kernel_separated_none_formula
+#check beal_forall_kernel_separated_none_formula_rfl
 #check FreyGaloisRep13_real_beal_forall_none
 #check FreyGaloisRep13_real_beal_forall_none.token
 #check FreyCurveSeparated_beal_forall_none
@@ -301,6 +316,8 @@ def FreyCurveSeparated_beal_forall_none_token_inhabited :
 #print axioms BealForallNone_real_token_eq
 #print axioms frey_beal_forall_none_real_lemma
 #print axioms BealForall_real_witness_none
+#print axioms beal_forall_kernel_separated_none_formula
+#print axioms beal_forall_kernel_separated_none_formula_rfl
 #print axioms FreyGaloisRep13_real_beal_forall_none.token
 #print axioms FreyCurveSeparated_beal_forall_none.token
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_none

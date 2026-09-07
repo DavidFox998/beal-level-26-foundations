@@ -270,6 +270,10 @@ grep -q "def FreyCurveSeparated_beal_forall_none.token" \
   lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean
 grep -q "def beal_forall_in_kernel_from_beal_forall_none_separated" \
   lean/BealLevel26Foundations/Chain/BealForallInKernel.lean
+grep -q "def beal_forall_in_kernel_from_beal_forall_none_separated_none" \
+  lean/BealLevel26Foundations/Chain/BealForallInKernel.lean
+grep -q "def beal_forall_from_none_formula_displayed" \
+  lean/BealLevel26Foundations/Chain/BealForallInKernel.lean
 grep -q "theorem tate_real_conductor_26" \
   lean/BealLevel26Foundations/Tate/RealTateAlgorithm.lean
 grep -q "def R_T_patching_witness_real" \
@@ -736,6 +740,7 @@ do
   grep -q "v6.9.1-iter-about-catchup-22611775-relook" "$readme"
   grep -q "v7.0.0-iter-beal-forall-none-real" "$readme"
   grep -q "v7.0.1-iter-about-catchup-22618433-relook" "$readme"
+  grep -q "v7.1.0-iter-beal-forall-kernel-separated-none-real" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
