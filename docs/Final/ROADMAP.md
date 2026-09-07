@@ -764,3 +764,24 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.1.0-modular-implies-newform — DONE (arithmetic filled, arrow stays a Prop)
+
+Lean change.  New FullProof module
+`Beal/FullProof/ModularImpliesNewform.lean`.
+`PositiveBealTriple` is the positivity guard.
+`sketch_fails_on_zero_one_counterexample` refutes
+the unguarded `∀`.  Mathlib `Gamma0 2` is used;
+displayed `S₂(Γ₀(2))` dim 0 stays `Chain.Level2`.
+`modular_implies_level2_arithmetic` packs Tate
+`N=rad(ABC)`, Ribet `N/∏q=2`, TW `53`/`677`,
+`R≃T`, `¬ ExistsNewformLevel2`,
+`no_noncuspidal_Q_points`, `M₃` det 2.
+`ModularImpliesLevel2Newform` remains a Prop.
+`beal_forall_proof` equals
+`beal_forall_proof_positive` (still *from*
+that Prop).  Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+

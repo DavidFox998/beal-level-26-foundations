@@ -1,13 +1,21 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.0.0-beal-forall-proof`.
-Lean change: `Beal/FullProof/BealForallProof.lean` glues
-Tate + Ribet/`R = T` + GeometryBridge.  The unguarded
-sketch type is **false** (`0³ + 1³ = 1³`, `gcd = 1`).
-`beal_forall_proof` is Beal on **positive** bases
-**from** the missing Mathlib arrow
-`Modular → ExistsNewformLevel2`.  The glue
-`beal_forall_glue` is inhabited.  Does **not** inhabit
+Latest tag / HEAD: `v8.1.0-modular-implies-newform`.
+Lean change: `Beal/FullProof/ModularImpliesNewform.lean`
+proves the *arithmetic* of
+`ModularImpliesLevel2Newform` on
+`PositiveBealTriple` (Tate conductor `rad(ABC)`,
+Ribet `N/∏q=2`, TW `4·13ⁿ+1` with `53%13=1`
+`677%169=1`, `R≃T`, displayed `S₂(Γ₀(2))=0`,
+`no_noncuspidal_Q_points`, `M₃` det 2).
+Mathlib 4.12 supplies `Γ₀(2)` as a congruence
+subgroup; it does **not** supply
+`Modular → ExistsNewformLevel2`.  That arrow
+stays a Prop.  `beal_forall_proof` equals
+`beal_forall_proof_positive` and remains
+conditional.  The unguarded sketch type is
+**false** (`0³ + 1³ = 1³`, `gcd = 1`).
+Does **not** inhabit
 `Beal.BealForall.beal_forall_from_Is13Case_sketch`.
 `#print axioms` is `[propext, Classical.choice, Quot.sound]`.
 The v7.1.0 none chain

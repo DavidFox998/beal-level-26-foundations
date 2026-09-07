@@ -80,6 +80,21 @@ v7.2.1-tate-filled TrueConductor Tate filled: true_gcd_pairwise on Aᵐ,Bⁿ,C�
 v7.3.0-ribet-rt-filled ModularityRibet theorems: Wiles domain from TrueConductor N=rad(ABC); Ribet quotient N/∏q=2; det=χ_l (l=13 instance); TW family q_n=4·13ⁿ+1 with 53%13=1, 677%169=1, 8789=17·517 composite; R_∞≃T_∞ bookkeeping; S₂(Γ₀(2))=0 so ¬ExistsNewformLevel2. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v7.4.0-geometry-filled GeometryBridge theorems: J0(26) dim 2=1+1 as E_26a1×E_26b1 (Δ -17576/-1664); Pic⁰=J0 product; formal immersion at 2 via M3=[[1,1],[0,2]] det=2 with ω1=dx/y ω2=x dx/y; X0(26)(Q) labels [1,2,13,26] so ¬ExistsNoncuspidal; Sel2=1 rank 0. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.0.0-beal-forall-proof FullProof glue: unguarded sketch is false (0³+1³=1³, gcd=1); beal_forall_proof is positive-bases Beal from the missing Modular→ExistsNewformLevel2 arrow; Tate+Ribet+GeometryBridge glue inhabited. BealForall.lean sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.1.0-modular-implies-newform ModularImpliesNewform: PositiveBealTriple + Mathlib Γ₀(2) + TW 53%13=1 677%169=1 + Ribet N/∏q=2 arithmetic; ModularImpliesLevel2Newform stays a Prop; beal_forall_proof = beal_forall_proof_positive (still conditional). Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.1.0-modular-implies-newform — Step 5 arithmetic of ModularImpliesLevel2Newform (arrow stays a Prop)
+
+Lean change.  New FullProof module `Beal/FullProof/ModularImpliesNewform.lean`.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `PositiveBealTriple`: `0 < A,B,C`, `2 < m,n,p`, equation, `gcd = 1`;
+- `sketch_fails_on_zero_one_counterexample`: the unguarded `∀` is false (`0³ + 1³ = 1³`);
+- `Gamma0_2`: Mathlib `CongruenceSubgroup.Gamma0 2`; displayed `S₂(Γ₀(2))` dim 0 stays `Chain.Level2`;
+- `TW_Q_base_53` / `TW_Q_base_677`: `53 % 13 = 1`, `677 % 169 = 1` by `rfl`;
+- `modular_implies_level2_arithmetic`: conductor `rad(ABC)`, Ribet `N/∏q = 2`, TW family, `R ≃ T`, `¬ ExistsNewformLevel2`, `no_noncuspidal_Q_points`, `M₃` det 2;
+- `ModularImpliesLevel2Newform` remains the missing Mathlib arrow (`Modular w → ExistsNewformLevel2`);
+- `beal_forall_proof` equals `beal_forall_proof_positive` (still *from* that Prop).
+
+Mathlib 4.12 has no `Modular →` Mathlib newform.  This is not an unconditional Beal theorem.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.0.0-beal-forall-proof — FullProof glue: unguarded sketch false, positive Beal from the missing newform arrow
 

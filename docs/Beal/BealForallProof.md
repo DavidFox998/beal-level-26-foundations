@@ -1,4 +1,11 @@
-# v8.0.0 BealForallProof FullProof glue
+# v8.1.0 BealForallProof FullProof glue
+
+Re-exports Step 5: `beal_forall_proof` equals
+`ModularImpliesNewform.beal_forall_proof_positive`.
+`ModularImpliesLevel2Newform` is the same missing
+Mathlib arrow owned by
+`ModularImpliesNewform.lean`.
+
 
 `lean/BealLevel26Foundations/Beal/FullProof/BealForallProof.lean`
 

@@ -1,13 +1,18 @@
-# FINAL v8.0.0 — FullProof Beal glue (sketch stays uninhabited)
+# FINAL v8.1.0 — ModularImpliesNewform arithmetic (arrow stays a Prop)
 
-Latest tag `v8.0.0-beal-forall-proof`.
+Latest tag `v8.1.0-modular-implies-newform`.
 Lean change.
-`lean/BealLevel26Foundations/Beal/FullProof/BealForallProof.lean`
-glues TrueConductor + ModularityRibet + GeometryBridge.
-`sketch_fails_on_zero_one` is `¬` the unguarded sketch
-(`0³ + 1³ = 1³`).  `beal_forall_proof` is positive-bases
-Beal from `ModularImpliesLevel2Newform`.
-`beal_forall_glue` is inhabited.  Does **not** inhabit
+`lean/BealLevel26Foundations/Beal/FullProof/ModularImpliesNewform.lean`
+proves Step 5 arithmetic on `PositiveBealTriple`:
+Ribet `N/∏q=2`, TW `4·13ⁿ+1` (`53%13=1`, `677%169=1`),
+`R≃T`, Mathlib `Γ₀(2)`, displayed `S₂(Γ₀(2))=0`,
+`no_noncuspidal_Q_points`, `M₃` det 2.
+`ModularImpliesLevel2Newform` stays the missing
+Mathlib arrow.  `beal_forall_proof` equals
+`beal_forall_proof_positive` (still conditional).
+`sketch_fails_on_zero_one_counterexample` is `¬`
+the unguarded sketch (`0³ + 1³ = 1³`).
+Does **not** inhabit
 `Beal.BealForall.beal_forall_from_Is13Case_sketch`.
 **No `sorry`**, **no `False.elim`**.
 Official none-chain build stays **24 modules**.

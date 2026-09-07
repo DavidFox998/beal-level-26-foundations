@@ -249,8 +249,10 @@ theorem not_Is13CaseForcesGcdGt1SketchPrimitive :
 /-- Beal conjecture as a Prop.  Valid type
 `∀ A B C m n p`.  Uninhabited lock remains.
 
-v8.0.0 FullProof name `beal_forall_proof` lives in
-`Beal.FullProof.BealForallProof` and is the
+v8.1.0 FullProof name `beal_forall_proof` lives in
+`Beal.FullProof.BealForallProof` and equals
+`beal_forall_proof_positive` from
+`ModularImpliesNewform.lean`.  It is the
 *conditional* positive-bases theorem
 (`ModularImpliesLevel2Newform → ∀ 0<A,B,C … gcd>1`),
 not an inhabitant of this sketch.  This file does

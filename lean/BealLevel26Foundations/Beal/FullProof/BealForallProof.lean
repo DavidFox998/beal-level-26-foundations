@@ -1,6 +1,7 @@
 import BealLevel26Foundations.Beal.FullProof.TrueConductor
 import BealLevel26Foundations.Beal.FullProof.ModularityRibet
 import BealLevel26Foundations.Beal.FullProof.GeometryBridge
+import BealLevel26Foundations.Beal.FullProof.ModularImpliesNewform
 import BealLevel26Foundations.Chain.Level2
 import Mathlib.Tactic
 
@@ -9,13 +10,15 @@ namespace BealLevel26Foundations.Beal.FullProof.BealForallProof
 open BealLevel26Foundations.Beal.FullProof.TrueConductor
 open BealLevel26Foundations.Beal.FullProof.ModularityRibet
 open BealLevel26Foundations.Beal.FullProof.GeometryBridge
+open BealLevel26Foundations.Beal.FullProof.ModularImpliesNewform
 open BealLevel26Foundations.Chain.Level2
 
 /-!
-# v8.0.0-beal-forall-proof
+# v8.1.0-modular-implies-newform
 
 FullProof glue of Tate + Ribet/`R = T` + Mazur geometry
-toward Beal `∀`.
+toward Beal `∀`.  Step 5 arithmetic lives in
+`ModularImpliesNewform.lean`.
 
 This module does **not** inhabit
 `Beal.BealForall.beal_forall_from_Is13Case_sketch`.
@@ -75,10 +78,11 @@ theorem sketch_fails_on_zero_one :
       (h 0 1 1 3 3 3 (by decide) (by decide) (by decide)
         zero_pow_add_one_pow)
 
-/-- Missing Mathlib arrow: Wiles-domain modularity produces
-a displayed level-2 newform (`0 ≠ 0`). -/
+/-- Missing Mathlib arrow.  Owned by Step 5
+`ModularImpliesNewform.lean`; same type
+`Modular w → ExistsNewformLevel2`. -/
 def ModularImpliesLevel2Newform : Prop :=
-  ∀ w : PrimitiveBealTriple, Modular w → ExistsNewformLevel2
+  ModularImpliesNewform.ModularImpliesLevel2Newform
 
 def of_primitive
     {A B C m n p : Nat}
@@ -137,28 +141,19 @@ theorem contradiction_of_newform_arrow
   absurd (hArrow w (wiles_modularity_Frey w)) no_newform_level2
 
 /-- Beal on **positive** bases, from the missing newform
-arrow.  Not an inhabitant of the unguarded sketch. -/
+arrow.  Equal to Step 5 `beal_forall_proof_positive`. -/
 theorem beal_forall_positive_of_newform_arrow
     (hArrow : ModularImpliesLevel2Newform) :
     ∀ (A B C m n p : Nat),
       0 < A → 0 < B → 0 < C →
       2 < m → 2 < n → 2 < p →
       A ^ m + B ^ n = C ^ p →
-      gcd3 A B C > 1 := by
-  intro A B C m n p hA hB hC hm hn hp hEq
-  by_cases hgt : gcd3 A B C > 1
-  · exact hgt
-  · have w :=
-      of_primitive hA hB hC hm hn hp hEq
-        (gcd3_eq_one_of_not_gt hA hgt)
-    have glue := beal_forall_glue w
-    have _geom := glue.geometry
-    have _ribet := glue.ribet
-    have _cond := glue.conductor
-    exact nomatch (contradiction_of_newform_arrow hArrow w)
+      gcd3 A B C > 1 :=
+  beal_forall_proof_positive hArrow
 
-/-- Requested name.  Conditional positive Beal, not an
-inhabitant of `beal_forall_from_Is13Case_sketch`. -/
+/-- Requested name.  Conditional positive Beal, equal to
+`beal_forall_proof_positive`.  Not an inhabitant of
+`beal_forall_from_Is13Case_sketch`. -/
 theorem beal_forall_proof
     (hArrow : ModularImpliesLevel2Newform) :
     ∀ (A B C m n p : Nat),
@@ -166,7 +161,7 @@ theorem beal_forall_proof
       2 < m → 2 < n → 2 < p →
       A ^ m + B ^ n = C ^ p →
       gcd3 A B C > 1 :=
-  beal_forall_positive_of_newform_arrow hArrow
+  beal_forall_proof_positive hArrow
 
 /-- Lock: the unguarded sketch type is not inhabited. -/
 def beal_forall_from_Is13Case_sketch_stays_uninhabited : Prop :=
