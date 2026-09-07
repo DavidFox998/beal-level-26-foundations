@@ -5,11 +5,11 @@ type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v8.12.0-fermat-four-plus-RinfTinf-ell"
+version: "v8.13.0-mixed-ell-plus-dirichlet"
 date-released: "2026-09-07"
 doi: "10.5281/zenodo.22272382"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
-url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.12.0-fermat-four-plus-RinfTinf-ell"
+url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.13.0-mixed-ell-plus-dirichlet"
 license: MIT
 keywords:
   - beal-conjecture

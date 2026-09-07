@@ -92,6 +92,20 @@ v8.9.0-explicit-J0N RibetMazur packed X0_N_Model/J0_N_Model + Frey Steinberg lab
 v8.10.0-frey-aq-pm1-real RibetMazur frey_a_q_real via (-c6/q)=±1 + J0_N_real ModSym token; mazur_step_real_fixed only when 13|v_q(Δ); quotient is 2 only under Frey13Case; beal_from_ribet_real_fixed still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.11.0-frey-ell-case RibetMazur FreyEllCase5 + ell_of_q so ℓ|v_q(Δ) at every odd q; mazur_step_ell; N/∏q=2 under FreyEllCase5; beal_from_ribet_ell_case still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.12.0-fermat-four-plus-RinfTinf-ell RibetMazur fermat_four_lemma + FermatFourCase closes power-of-2 exponents; TWAuxEll search Q1≡1 mod ℓ; mazur_step_real_ell_upgraded; beal_from_ribet_ell_upgraded still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.13.0-mixed-ell-plus-dirichlet RibetMazur FreyEllCase5Mixed covers m=4 n=13 p=13 when A=2^e; TWAuxEllFixed N<Q1 so Q1∤N; listed Q1 for ℓ in {5,7,11,13,17,19,23,29,31} not ∀ℓ≤1000; beal_from_ribet_ell_mixed still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.13.0-mixed-ell-plus-dirichlet — Mixed `A=2^e` + `TWAuxEllFixed` (arrow stays a Prop)
+
+Lean change.  `RibetMazur.lean` adds the mixed power-of-2-base case and conductor-relative TW primes.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `FreyEllCase5Mixed` / `mixed_covers_4_13_13`: `m=4,n=13,p=13` when `A=2^e`;
+- `thirteen_dvd_Delta_of_mixed_pow2_A`: every odd `q` has `13 | v_q(Δ)` in that case;
+- `TWAuxEllFixed ℓ N`: `N < Qᵢ` implies `Qᵢ ∤ N`.  Not `∀ N`;
+- listed `Q₁ ≡ 1 [MOD ℓ]` for `ℓ ∈ {5,7,11,13,17,19,23,29,31}` only — not `∀ ℓ ≤ 1000`, not Dirichlet;
+- `TWAuxEll.of5` / `of7` / `of13_26`;
+- `beal_from_ribet_ell_mixed`: still *from* `ModularImpliesLevel2Newform`.
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.12.0-fermat-four-plus-RinfTinf-ell — FLT n=4 for power-of-2 exponents + TW search at ℓ (arrow stays a Prop)
 

@@ -1,17 +1,16 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.12.0-fermat-four-plus-RinfTinf-ell`.
+Latest tag / HEAD: `v8.13.0-mixed-ell-plus-dirichlet`.
 Lean change: `RibetMazur.lean` adds
-Mathlib `fermatLastTheoremFour` as
-`fermat_four_lemma`, so a primitive Beal
-triple whose exponents are all powers of 2
-at least 4 is impossible.  `m=4` alone is
-not FLT4.  `TWAuxEll` records primes
-`Q1 ≡ 1 [MOD ℓ]` and `Q2 ≡ 1 [MOD ℓ²]`
-(inhabited at `ℓ=13` by 53/677; a computable
-search may return none).  `mazur_step_real_ell_upgraded`
-uses `N·Q1(ℓ)` / `N·Q2(ℓ)`.
-`beal_from_ribet_ell_upgraded` stays *from*
+`FreyEllCase5Mixed` so `m=4, n=13, p=13`
+is covered when `A` is a power of 2
+(`13 | v_q(Δ)` at every odd `q`).
+`TWAuxEllFixed ℓ N` requires `N < Q1, Q2`,
+hence `Qi` does not divide `N`.
+Listed `Q1 ≡ 1 [MOD ℓ]` for
+`ℓ` in `{5,7,11,13,17,19,23,29,31}` only —
+not every `ℓ ≤ 1000` and not Dirichlet.
+`beal_from_ribet_ell_mixed` stays *from*
 `ModularImpliesLevel2Newform`.
 `ExistsNewformLevel2` is still `0 ≠ 0`.
 The unguarded sketch type is **false**

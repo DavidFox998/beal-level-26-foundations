@@ -1,27 +1,25 @@
-# v8.12.0 RibetMazur Fermat n=4 + TW search at ℓ
+# v8.13.0 RibetMazur mixed case + TWAuxEllFixed
 
 `lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean`
 
-Mathlib `fermatLastTheoremFour` closes a primitive
-Beal triple whose exponents are all powers of 2 at
-least `4`.  TW auxiliary primes are a search token
-`Q₁ ≡ 1 [MOD ℓ]`, `Q₂ ≡ 1 [MOD ℓ²]`.  Does **not**
-import `X0_26_Model`.  Does **not** inhabit
-`ExistsNewformLevel2` (`0 ≠ 0`) and does **not**
-prove `¬ PositiveBealTriple` in general.
+A power-of-2 base plus two exponents with a prime
+factor `ℓ ≥ 5` makes every odd `q | ABC` Mazur-eligible
+(`13 | v_q(Δ)` in the displayed `4,13,13` case).
+TW primes are relative to a conductor `N` via
+`N < Qᵢ`.  Does **not** import `X0_26_Model`.
+Does **not** inhabit `ExistsNewformLevel2` (`0 ≠ 0`).
 
 | Name | Status |
 |---|---|
-| `fermat_four_lemma` | Mathlib `fermatLastTheoremFour` as `¬ ∃ A,B,C > 0, A⁴+B⁴=C⁴` |
-| `FermatFourCase` / `beal_pow2_exponents` | all three exponents `2^e`, `e ≥ 2`; Beal holds by FLT4 |
-| `not_FreyEllCase5_of_exp_four_reduced` | `m=4` and `n,p` powers of 2; `m=4` alone is not FLT4 |
-| `FreyEllCase5Complete` | `FreyEllCase5 ∨ FermatFourCase`; not a cover (`4,13,13`) |
-| `find_prime_congruent_one_mod` | computable search; may return `none` |
-| `TWAuxEll` / `TWAuxEll_of_ell` | `Q₁ ≡ 1 [MOD ℓ]`, `Q₂ ≡ 1 [MOD ℓ²]`; `∀ N, ¬ Q₁ ∣ N` is false |
-| `HeckeAction_N_real_ell_upgraded` | double-coset token plus `N·Q₁(ℓ)` / `N·Q₂(ℓ)` |
-| `mazur_step_real_ell_upgraded` | requires `ℓ \| v_q(Δ)` and a `TWAuxEll` witness |
-| `ribet_iterated_ell_upgraded` | `FreyEllCase5` pack; FLT4 branch is separate |
-| `beal_from_ribet_ell_upgraded` | still *from* `ModularImpliesLevel2Newform` |
+| `FreyEllCase5Mixed` | `FreyEllCase5 ∨ FermatFourCase ∨ MixedPow2Case` |
+| `mixed_covers_4_13_13` | `m=4,n=13,p=13` when `A=2^e` |
+| `thirteen_dvd_Delta_of_mixed_pow2_A` | every odd `q` has `13 \| v_q(Δ)` in that case |
+| `beal_pow2_base` | `rad(2^e) = 1` or `2` |
+| `TWAuxEllFixed ℓ N` | `N < Qᵢ` implies `Qᵢ ∤ N`; not `∀ N` |
+| `TWAuxEll.of5` / `of7` / `of13_26` | explicit pairs `11/101`, `29/197`, `53/677` |
+| `exists_prime_one_mod_ell_listed` | `Q₁` for nine small `ℓ` only, not `∀ ℓ ≤ 1000` |
+| `ribet_iterated_ell_mixed` | packed mixed iteration; not a newform |
+| `beal_from_ribet_ell_mixed` | still *from* `ModularImpliesLevel2Newform` |
 
 `#print axioms` is `[propext, Classical.choice, Quot.sound]`.
 Track A About mint stays `22635221`.

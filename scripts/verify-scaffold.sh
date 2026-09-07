@@ -787,6 +787,7 @@ do
   grep -q "v8.10.0-frey-aq-pm1-real" "$readme"
   grep -q "v8.11.0-frey-ell-case" "$readme"
   grep -q "v8.12.0-fermat-four-plus-RinfTinf-ell" "$readme"
+  grep -q "v8.13.0-mixed-ell-plus-dirichlet" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1197,6 +1198,24 @@ grep -q "theorem beal_from_ribet_ell_upgraded" \
 grep -q "theorem beal_pow2_exponents" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem not_FreyEllCase5_of_exp_four_reduced" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def FreyEllCase5Mixed" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def TWAuxEllFixed" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def find_prime_congruent_one_mod_explicit" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem beal_pow2_base" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem mixed_covers_4_13_13" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem thirteen_dvd_Delta_of_mixed_pow2_A" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem ribet_iterated_ell_mixed" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem beal_from_ribet_ell_mixed" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem exists_prime_one_mod_ell_listed" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "def beal_forall_from_Is13Case_sketch_stays_uninhabited" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean

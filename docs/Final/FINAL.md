@@ -1,3 +1,25 @@
+# FINAL v8.13.0 — Mixed A=2^e + TWAuxEllFixed (arrow stays a Prop)
+
+Latest tag `v8.13.0-mixed-ell-plus-dirichlet`.
+Lean change.
+`RibetMazur.lean` adds `FreyEllCase5Mixed`
+(covers `m=4,n=13,p=13` when `A=2^e`) and
+`TWAuxEllFixed ℓ N` with `N < Qᵢ`.
+Listed `Q₁` for nine small residuals only.
+`beal_from_ribet_ell_mixed` stays *from*
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221)
+(v7.1.1 About catch-up, Track A).  Track B does **not**
+write a new mint claiming unconditional Beal `∀`.
+Three JPEG plates stay in `docs/assets/v6.7.0/`.
+Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+
 # FINAL v8.12.0 — FLT n=4 for power-of-2 exponents + TW search at ℓ (arrow stays a Prop)
 
 Latest tag `v8.12.0-fermat-four-plus-RinfTinf-ell`.

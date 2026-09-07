@@ -799,6 +799,22 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.13.0-mixed-ell-plus-dirichlet — DONE (mixed A=2^e + TWAuxEllFixed, arrow stays a Prop)
+
+Lean change.  `RibetMazur.lean` adds
+`FreyEllCase5Mixed` (power-of-2 base plus
+two `ℓ ≥ 5` exponents) and `TWAuxEllFixed ℓ N`
+with `N < Qᵢ`.  Listed `Q₁ ≡ 1 [MOD ℓ]` for
+nine small residuals, not `∀ ℓ ≤ 1000`.
+`beal_from_ribet_ell_mixed` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** import `X0_26_Model`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.12.0-fermat-four-plus-RinfTinf-ell — DONE (FLT n=4 for power-of-2 exponents + TW search at ℓ, arrow stays a Prop)
 
 Lean change.  `RibetMazur.lean` adds

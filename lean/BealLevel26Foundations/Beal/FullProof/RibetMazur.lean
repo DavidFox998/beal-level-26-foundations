@@ -3,7 +3,11 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.12.0 — Fermat `n=4` closes the all-powers-of-2
+Track B v8.13.0 — Mixed power-of-2 base plus two
+`ℓ ≥ 5` exponents, and `TWAuxEllFixed ℓ N` with
+`N < Qᵢ`.  Explicit `Q₁` for a listed set of small
+`ℓ`, not Dirichlet and not every `ℓ ≤ 1000`.
+Builds on v8.12.0: Fermat `n=4` closes the all-powers-of-2
 exponent case; TW auxiliary primes are a search token
 `Q₁ ≡ 1 [MOD ℓ]`, `Q₂ ≡ 1 [MOD ℓ²]` (inhabited at
 `ℓ = 13` by `53`/`677`).  Not Mathlib `R∞ ≃ T∞`
@@ -85,6 +89,19 @@ What it *does* prove:
 * `HeckeAction_N_real_ell_upgraded` / `mazur_step_real_ell_upgraded`
   use `N·Q₁(ℓ)` / `N·Q₂(ℓ)` when a `TWAuxEll` is given;
 * `beal_from_ribet_ell_upgraded` stays *from*
+  `ModularImpliesLevel2Newform`;
+* `FreyEllCase5Mixed` adds the mixed case: one base
+  is a power of 2 and the other two exponents have
+  an `ℓ ≥ 5` (covers `m=4,n=13,p=13` when `A=2^e`);
+* `thirteen_dvd_Delta_of_mixed_pow2_A` is the
+  arithmetic `13 | v_q(Δ)` at every odd `q` in that
+  case;
+* `TWAuxEllFixed ℓ N` requires `N < Qᵢ`, hence
+  `Qᵢ ∤ N` (the `∀ N` field stays false);
+* `TWAuxEll.of5` / `of7` / `of13` are explicit
+  `Q₁,Q₂`; listed `Q₁` witnesses for
+  `ℓ ∈ {5,7,11,13,17,19,23,29,31}`;
+* `beal_from_ribet_ell_mixed` stays *from*
   `ModularImpliesLevel2Newform`.
 
 Does **not** import `X0_26_Model`.  FullProof-only.
@@ -1893,6 +1910,332 @@ theorem beal_from_ribet_ell_upgraded
       1 < Nat.gcd A (Nat.gcd B C) :=
   beal_from_ribet_real hModNew
 
+/-! ## v8.13.0 — Mixed power-of-2 base + `TWAuxEllFixed` -/
+
+/-- `A = 2^e`. -/
+def IsPowerOfTwo (A : Nat) : Prop :=
+  ∃ e : Nat, A = 2 ^ e
+
+theorem IsPowerOfTwo_one : IsPowerOfTwo 1 :=
+  ⟨0, rfl⟩
+
+theorem IsPowerOfTwo_two : IsPowerOfTwo 2 :=
+  ⟨1, rfl⟩
+
+/-- Radical of a single base as the product of its
+prime factors.  For `A = 2^e` this is `1` (`e=0`)
+or `2` (`e>0`). -/
+def rad1 (A : Nat) : Nat :=
+  A.primeFactors.prod id
+
+theorem beal_pow2_base {A : Nat} (hA : IsPowerOfTwo A) :
+    rad1 A = 1 ∨ rad1 A = 2 := by
+  rcases hA with ⟨e, rfl⟩
+  by_cases he : e = 0
+  · subst he
+    simp [rad1, Nat.primeFactors_one]
+  · have hpf : (2 ^ e).primeFactors = {2} :=
+      Nat.primeFactors_prime_pow he Nat.prime_two
+    simp [rad1, hpf]
+
+theorem odd_prime_not_dvd_pow2 {q A : Nat} {e : Nat}
+    (hq : q.Prime) (hodd : q ≠ 2) (hA : A = 2 ^ e) : ¬ q ∣ A := by
+  intro h
+  have h2 : q ∣ 2 ^ e := hA ▸ h
+  have hq2 : q = 2 :=
+    (Nat.prime_dvd_prime_iff_eq hq Nat.prime_two).mp
+      (hq.dvd_of_dvd_pow h2)
+  exact hodd hq2
+
+/-- Two-exponent `ℓ ≥ 5` witness. -/
+structure FreyEllWitness2 (k1 k2 : Nat) where
+  ℓ1 : Nat
+  ℓ2 : Nat
+  prime_1 : ℓ1.Prime
+  ge5_1 : 5 ≤ ℓ1
+  dvd_1 : ℓ1 ∣ k1
+  prime_2 : ℓ2.Prime
+  ge5_2 : 5 ≤ ℓ2
+  dvd_2 : ℓ2 ∣ k2
+
+def FreyEllCase5Two (k1 k2 : Nat) : Prop :=
+  Nonempty (FreyEllWitness2 k1 k2)
+
+def FreyEllWitness2.of13 : FreyEllWitness2 13 13 where
+  ℓ1 := 13
+  ℓ2 := 13
+  prime_1 := by decide
+  ge5_1 := by decide
+  dvd_1 := dvd_rfl
+  prime_2 := by decide
+  ge5_2 := by decide
+  dvd_2 := dvd_rfl
+
+theorem FreyEllCase5Two_13 : FreyEllCase5Two 13 13 :=
+  ⟨FreyEllWitness2.of13⟩
+
+/-- One base is a power of 2; the other two exponents
+each have a prime factor `≥ 5`. -/
+def MixedPow2Case (A B C m n p : Nat) : Prop :=
+  (IsPowerOfTwo A ∧ FreyEllCase5Two n p) ∨
+    (IsPowerOfTwo B ∧ FreyEllCase5Two m p) ∨
+      (IsPowerOfTwo C ∧ FreyEllCase5Two m n)
+
+/-- `FreyEllCase5`, FLT4, or mixed power-of-2 base.
+Still not a cover: `m=4, n=13, p=13` with `A` odd
+and not a power of 2 is none of the three. -/
+def FreyEllCase5Mixed (A B C m n p : Nat) : Prop :=
+  FreyEllCase5 m n p ∨ FermatFourCase m n p ∨ MixedPow2Case A B C m n p
+
+theorem mixed_covers_4_13_13 {A B C : Nat} (hA : IsPowerOfTwo A) :
+    FreyEllCase5Mixed A B C 4 13 13 :=
+  Or.inr (Or.inr (Or.inl ⟨hA, FreyEllCase5Two_13⟩))
+
+theorem odd_q_dvd_BC_of_pow2_A (t : PositiveBealTriple)
+    (hA : IsPowerOfTwo t.A) {q : Nat}
+    (hq : q ∈ odd_q_divisors_N t) :
+    q ∣ t.B ∨ q ∣ t.C := by
+  have hq' := Finset.mem_filter.mp hq
+  have hqP : q.Prime := Nat.prime_of_mem_primeFactors hq'.1
+  have hodd : q ≠ 2 := hq'.2
+  have hdvd : q ∣ t.A * t.B * t.C := Nat.dvd_of_mem_primeFactors hq'.1
+  have hABC := (Nat.Prime.dvd_mul hqP).mp hdvd
+  rcases hA with ⟨e, hAe⟩
+  rcases hABC with hAB | hC
+  · rcases (Nat.Prime.dvd_mul hqP).mp hAB with hAd | hB
+    · exact absurd (show q = 2 from
+        (Nat.prime_dvd_prime_iff_eq hqP Nat.prime_two).mp
+          (hqP.dvd_of_dvd_pow (hAe ▸ hAd))) hodd
+    · exact Or.inl hB
+  · exact Or.inr hC
+
+/-- In the displayed mixed case `A=2^e`, `13 | n`,
+`13 | p`, every odd `q | ABC` has `13 | v_q(Δ)`. -/
+theorem thirteen_dvd_Delta_of_mixed_pow2_A (t : PositiveBealTriple)
+    (hA : IsPowerOfTwo t.A) (hn : 13 ∣ t.n) (hp : 13 ∣ t.p)
+    {q : Nat} (hq : q ∈ odd_q_divisors_N t) :
+    13 ∣ padicValInt q (freyCurveOf t.toPrimitive).Δ := by
+  have hq' := Finset.mem_filter.mp hq
+  have hqP : q.Prime := Nat.prime_of_mem_primeFactors hq'.1
+  have hodd : q ≠ 2 := hq'.2
+  rcases odd_q_dvd_BC_of_pow2_A t hA hq with hB | hC
+  · rw [odd_prime_Delta_val_of_dvd_B t.toPrimitive hqP hodd hB]
+    exact exponent_dvd_Delta_val hn
+  · rw [odd_prime_Delta_val_of_dvd_C t.toPrimitive hqP hodd hC]
+    exact exponent_dvd_Delta_val hp
+
+theorem mazur_step_ell_of_mixed_pow2_A (t : PositiveBealTriple)
+    (hA : IsPowerOfTwo t.A) (hn : 13 ∣ t.n) (hp : 13 ∣ t.p)
+    {q : Nat} (hq : q ∈ odd_q_divisors_N t)
+    (hMod : Modular t.toPrimitive) :
+    MazurStepEll t q 13 := by
+  have hq' := Finset.mem_filter.mp hq
+  exact mazur_step_ell t hq'.1 hq'.2 (by decide) (by decide)
+    (thirteen_dvd_Delta_of_mixed_pow2_A t hA hn hp hq) hMod
+
+/-- Filter search; same content as
+`find_prime_congruent_one_mod`, different shape. -/
+def find_prime_congruent_one_mod_explicit (ℓ bound : Nat) : Option Nat :=
+  ((List.range bound).filter fun p =>
+    5 ≤ p ∧ Nat.Prime p ∧ p % ℓ = 1).head?
+
+theorem exists_prime_one_mod_5 :
+    ∃ p : Nat, p.Prime ∧ p % 5 = 1 ∧ p ≤ 20000 :=
+  ⟨11, by decide, by decide, by decide⟩
+
+theorem exists_prime_one_mod_7 :
+    ∃ p : Nat, p.Prime ∧ p % 7 = 1 ∧ p ≤ 20000 :=
+  ⟨29, by decide, by decide, by decide⟩
+
+theorem exists_prime_one_mod_11 :
+    ∃ p : Nat, p.Prime ∧ p % 11 = 1 ∧ p ≤ 20000 :=
+  ⟨23, by decide, by decide, by decide⟩
+
+theorem exists_prime_one_mod_13 :
+    ∃ p : Nat, p.Prime ∧ p % 13 = 1 ∧ p ≤ 20000 :=
+  ⟨53, TW_q53_prime, TW_q53_mod13, by decide⟩
+
+theorem exists_prime_one_mod_17 :
+    ∃ p : Nat, p.Prime ∧ p % 17 = 1 ∧ p ≤ 20000 :=
+  ⟨103, by decide, by decide, by decide⟩
+
+theorem exists_prime_one_mod_19 :
+    ∃ p : Nat, p.Prime ∧ p % 19 = 1 ∧ p ≤ 20000 :=
+  ⟨191, by decide, by decide, by decide⟩
+
+theorem exists_prime_one_mod_23 :
+    ∃ p : Nat, p.Prime ∧ p % 23 = 1 ∧ p ≤ 20000 :=
+  ⟨47, by decide, by decide, by decide⟩
+
+theorem exists_prime_one_mod_29 :
+    ∃ p : Nat, p.Prime ∧ p % 29 = 1 ∧ p ≤ 20000 :=
+  ⟨59, by decide, by decide, by decide⟩
+
+theorem exists_prime_one_mod_31 :
+    ∃ p : Nat, p.Prime ∧ p % 31 = 1 ∧ p ≤ 20000 :=
+  ⟨311, by decide, by decide, by decide⟩
+
+/-- Listed small residuals only.  Not `∀ ℓ ≤ 1000`. -/
+def listedTWEll : List Nat :=
+  [5, 7, 11, 13, 17, 19, 23, 29, 31]
+
+theorem exists_prime_one_mod_ell_listed {ℓ : Nat}
+    (h : ℓ ∈ listedTWEll) :
+    ∃ p : Nat, p.Prime ∧ p % ℓ = 1 ∧ p ≤ 20000 := by
+  simp [listedTWEll] at h
+  rcases h with h | h | h | h | h | h | h | h | h
+  · subst h; exact exists_prime_one_mod_5
+  · subst h; exact exists_prime_one_mod_7
+  · subst h; exact exists_prime_one_mod_11
+  · subst h; exact exists_prime_one_mod_13
+  · subst h; exact exists_prime_one_mod_17
+  · subst h; exact exists_prime_one_mod_19
+  · subst h; exact exists_prime_one_mod_23
+  · subst h; exact exists_prime_one_mod_29
+  · subst h; exact exists_prime_one_mod_31
+
+/-- TW primes relative to a conductor `N`: `N < Qᵢ`
+implies `Qᵢ ∤ N`.  Not `∀ N, ¬ Q₁ ∣ N`. -/
+structure TWAuxEllFixed (ℓ N : Nat) where
+  Q1ell : Nat
+  Q2ell : Nat
+  Q1_prime : Q1ell.Prime
+  Q2_prime : Q2ell.Prime
+  Q1_mod : Q1ell % ℓ = 1
+  Q2_mod : Q2ell % (ℓ ^ 2) = 1
+  Q1_ge5 : 5 ≤ Q1ell
+  Q2_ge5 : 5 ≤ Q2ell
+  Q1_ne_Q2 : Q1ell ≠ Q2ell
+  Q1_gt_N : N < Q1ell
+  Q2_gt_N : N < Q2ell
+
+theorem TWAuxEllFixed.Q1_not_dvd {ℓ N : Nat}
+    (tw : TWAuxEllFixed ℓ N) (hN : 0 < N) : ¬ tw.Q1ell ∣ N := by
+  intro h
+  exact Nat.not_le.mpr tw.Q1_gt_N (Nat.le_of_dvd hN h)
+
+theorem TWAuxEllFixed.Q2_not_dvd {ℓ N : Nat}
+    (tw : TWAuxEllFixed ℓ N) (hN : 0 < N) : ¬ tw.Q2ell ∣ N := by
+  intro h
+  exact Nat.not_le.mpr tw.Q2_gt_N (Nat.le_of_dvd hN h)
+
+def TWAuxEllFixed.of_tw {ℓ N : Nat} (tw : TWAuxEll ℓ)
+    (h1 : N < tw.Q1ell) (h2 : N < tw.Q2ell) : TWAuxEllFixed ℓ N where
+  Q1ell := tw.Q1ell
+  Q2ell := tw.Q2ell
+  Q1_prime := tw.Q1_prime
+  Q2_prime := tw.Q2_prime
+  Q1_mod := tw.Q1_mod
+  Q2_mod := tw.Q2_mod
+  Q1_ge5 := tw.Q1_ge5
+  Q2_ge5 := tw.Q2_ge5
+  Q1_ne_Q2 := tw.Q1_ne_Q2
+  Q1_gt_N := h1
+  Q2_gt_N := h2
+
+def TWAuxEllFixed.of13 {N : Nat} (hN : N < 53) : TWAuxEllFixed 13 N :=
+  TWAuxEllFixed.of_tw TWAuxEll.of13 hN
+    (Nat.lt_trans hN (by decide : (53 : Nat) < 677))
+
+def TWAuxEllFixed.of13_26 : TWAuxEllFixed 13 26 :=
+  TWAuxEllFixed.of13 (by decide)
+
+def TWAuxEll.of5 : TWAuxEll 5 where
+  Q1ell := 11
+  Q2ell := 101
+  Q1_prime := by decide
+  Q2_prime := by decide
+  Q1_mod := by decide
+  Q2_mod := by decide
+  Q1_ge5 := by decide
+  Q2_ge5 := by decide
+  Q1_ne_Q2 := by decide
+
+def TWAuxEll.of7 : TWAuxEll 7 where
+  Q1ell := 29
+  Q2ell := 197
+  Q1_prime := by decide
+  Q2_prime := by decide
+  Q1_mod := by decide
+  Q2_mod := by decide
+  Q1_ge5 := by decide
+  Q2_ge5 := by decide
+  Q1_ne_Q2 := by decide
+
+theorem TWAuxEllExists_5 : TWAuxEllExists 5 :=
+  ⟨TWAuxEll.of5⟩
+
+theorem TWAuxEllExists_7 : TWAuxEllExists 7 :=
+  ⟨TWAuxEll.of7⟩
+
+def TWAuxEllFixedExists (ℓ N : Nat) : Prop :=
+  Nonempty (TWAuxEllFixed ℓ N)
+
+theorem TWAuxEllFixedExists_13_26 : TWAuxEllFixedExists 13 26 :=
+  ⟨TWAuxEllFixed.of13_26⟩
+
+/-- Iterated pack for the mixed disjunction.  The
+`FreyEllCase5` arm reuses v8.12; the mixed arm is
+`13 | v_q(Δ)` at every odd `q` when `A=2^e` and
+`13 | n,p`.  FLT4 is a separate impossibility.
+Not `ExistsNewformLevel2`. -/
+structure RibetIteratedEllMixed (t : PositiveBealTriple) : Prop where
+  mixed : FreyEllCase5Mixed t.A t.B t.C t.m t.n t.p
+  pack5 :
+    FreyEllCase5 t.m t.n t.p → RibetIteratedEllUpgraded t
+  mixed_A_13 :
+    IsPowerOfTwo t.A → 13 ∣ t.n → 13 ∣ t.p →
+      ∀ q ∈ odd_q_divisors_N t,
+        13 ∣ padicValInt q (freyCurveOf t.toPrimitive).Δ
+  mazur_mixed_A_13 :
+    IsPowerOfTwo t.A → 13 ∣ t.n → 13 ∣ t.p →
+      Modular t.toPrimitive →
+        ∀ q ∈ odd_q_divisors_N t, MazurStepEll t q 13
+  tw_fixed_13_26 : TWAuxEllFixedExists 13 26
+  level_two : ribet_iterated_real_level t = 2
+  no_newform : ¬ ExistsNewformLevel2
+
+theorem ribet_iterated_ell_mixed (t : PositiveBealTriple)
+    (hMixed : FreyEllCase5Mixed t.A t.B t.C t.m t.n t.p)
+    (hMod : Modular t.toPrimitive) :
+    RibetIteratedEllMixed t where
+  mixed := hMixed
+  pack5 := fun h5 => ribet_iterated_ell_upgraded t h5 hMod
+  mixed_A_13 := fun hA hn hp q hq =>
+    thirteen_dvd_Delta_of_mixed_pow2_A t hA hn hp (q := q) hq
+  mazur_mixed_A_13 := fun hA hn hp hM q hq =>
+    mazur_step_ell_of_mixed_pow2_A t hA hn hp (q := q) hq hM
+  tw_fixed_13_26 := TWAuxEllFixedExists_13_26
+  level_two := ribet_iterated_real_level_eq_two t
+  no_newform := no_newform_level2
+
+theorem modular_at_two_mixed_is_not_newform
+    (t : PositiveBealTriple)
+    (_h : FreyEllCase5Mixed t.A t.B t.C t.m t.n t.p)
+    (_hMod : Modular t.toPrimitive) :
+    ¬ ExistsNewformLevel2 :=
+  no_newform_level2
+
+def not_PositiveBealTriple_of_FreyEllCase5Mixed : Prop :=
+  ∀ t : PositiveBealTriple,
+    FreyEllCase5Mixed t.A t.B t.C t.m t.n t.p → False
+
+/-- Beal on positive bases, *from* the missing Mathlib
+arrow, even after assuming every positive triple is a
+`FreyEllCase5Mixed`.  The FLT4 subcase is already
+`beal_pow2_exponents`.  The mixed `A=2^e` arm is
+**not** a newform argument. -/
+theorem beal_from_ribet_ell_mixed
+    (_hCase : ∀ t : PositiveBealTriple,
+      FreyEllCase5Mixed t.A t.B t.C t.m t.n t.p)
+    (hModNew : ModularImpliesLevel2Newform) :
+    ∀ A B C m n p : Nat,
+      0 < A → 0 < B → 0 < C →
+      2 < m → 2 < n → 2 < p →
+      A ^ m + B ^ n = C ^ p →
+      1 < Nat.gcd A (Nat.gcd B C) :=
+  beal_from_ribet_real hModNew
+
 #check q_expansion_26a1
 #check q_expansion_26b1
 #check q_expansion_26a1_int
@@ -1933,6 +2276,18 @@ theorem beal_from_ribet_ell_upgraded
 #check ribet_iterated_ell_upgraded
 #check beal_from_ribet_ell_upgraded
 #check beal_pow2_exponents
+#check FreyEllCase5Mixed
+#check MixedPow2Case
+#check IsPowerOfTwo
+#check beal_pow2_base
+#check find_prime_congruent_one_mod_explicit
+#check TWAuxEllFixed
+#check TWAuxEll.of5
+#check ribet_iterated_ell_mixed
+#check beal_from_ribet_ell_mixed
+#check mixed_covers_4_13_13
+#check thirteen_dvd_Delta_of_mixed_pow2_A
+#check exists_prime_one_mod_ell_listed
 #check X0_N_Model
 #check J0_N_Model
 #check J0_N_real
@@ -1984,5 +2339,14 @@ theorem beal_from_ribet_ell_upgraded
 #print axioms ribet_iterated_ell_upgraded
 #print axioms beal_from_ribet_ell_upgraded
 #print axioms not_forall_N_not_dvd_Q1
+#print axioms beal_pow2_base
+#print axioms mixed_covers_4_13_13
+#print axioms thirteen_dvd_Delta_of_mixed_pow2_A
+#print axioms exists_prime_one_mod_ell_listed
+#print axioms TWAuxEllFixed.Q1_not_dvd
+#print axioms ribet_iterated_ell_mixed
+#print axioms beal_from_ribet_ell_mixed
+#print axioms TWAuxEllExists_5
+#print axioms TWAuxEllExists_7
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur
