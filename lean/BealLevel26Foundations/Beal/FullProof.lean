@@ -9,15 +9,16 @@ import BealLevel26Foundations.Beal.FullProof.RibetFunctor
 import BealLevel26Foundations.Beal.FullProof.X0_26_Model
 import BealLevel26Foundations.Beal.FullProof.HeckeAction
 import BealLevel26Foundations.Beal.FullProof.LevelLowering
+import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.6.0)
+# FullProof track (v8.7.0)
 
-Aggregator for Track B.  `Frey_GaloisRep` plus
-`level_lowering_to_2_term` pack the Hecke/TW/oldform
-arithmetic on a `PositiveBealTriple`.
+Aggregator for Track B.  `RibetMazur` adds explicit
+`q_expansion_26a1`/`26b1` and a Mazur-step pack.
+`ribet_iterated_arrow` stays the v8.1.0 Prop.
 `ExistsNewformLevel2` is still `0 ≠ 0`.
-`beal_positive_bases_unconditional` stays *from*
+`beal_from_ribet` stays *from*
 `ModularImpliesLevel2Newform`.  Not imported by the
 24-module none chain.
 -/

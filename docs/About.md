@@ -1,15 +1,15 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.6.0-level-lowering-term`.
-Lean change: `LevelLowering.lean` adds
-`Frey_GaloisRep` (packed ρ̄ mod 13 of the Frey
-curve, `N = rad(ABC)`) and
-`level_lowering_to_2_term` (HeckeAction basis
-`f_26a1`/`f_26b1`, TW `53`/`677`, `N/∏q=2`).
-That pack is **not** a term of type
-`ExistsNewformLevel2` (`0 ≠ 0`).
-`beal_positive_bases_unconditional` stays *from*
-`ModularImpliesLevel2Newform`.
+Latest tag / HEAD: `v8.7.0-ribet-q-mazur`.
+Lean change: `RibetMazur.lean` adds
+`q_expansion_26a1` / `26b1` (101-coeff ledger
+as `List ℚ`) and `mazur_principle_step` (Tate
+Steinberg label at odd `q|ABC` plus displayed
+`T₃` on `26a1`/`26b1`).  `ribet_iterated` is
+that pack plus `N/∏q=2`, **not** a term of
+type `ExistsNewformLevel2` (`0 ≠ 0`).
+`ribet_iterated_arrow` and `beal_from_ribet`
+stay *from* `ModularImpliesLevel2Newform`.
 `ExistsNewformLevel2` is still `0 ≠ 0`.
 The unguarded sketch type is **false**
 (`0³ + 1³ = 1³`, `gcd = 1`).

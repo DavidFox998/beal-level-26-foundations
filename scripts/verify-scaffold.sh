@@ -170,6 +170,7 @@ test -f lean/BealLevel26Foundations/Beal/FullProof/RibetFunctor.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/X0_26_Model.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/HeckeAction.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/LevelLowering.lean
+test -f lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -182,6 +183,7 @@ test -f docs/Beal/RibetFunctor.md
 test -f docs/Beal/X0_26_Model.md
 test -f docs/Beal/HeckeAction.md
 test -f docs/Beal/LevelLowering.md
+test -f docs/Beal/RibetMazur.md
 test -f lean/BealLevel26Foundations/Tate/RealTateAlgorithm.lean
 test -f lean/BealLevel26Foundations/RT/PatchingWitnessReal.lean
 test -f lean/BealLevel26Foundations/RT/TaylorWilesInfiniteFamily.lean
@@ -779,6 +781,7 @@ do
   grep -q "v8.4.0-formal-immersion" "$readme"
   grep -q "v8.5.0-cotangent-sheaf" "$readme"
   grep -q "v8.6.0-level-lowering-term" "$readme"
+  grep -q "v8.7.0-ribet-q-mazur" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -955,6 +958,8 @@ grep -q "import BealLevel26Foundations.Beal.FullProof.HeckeAction" \
   lean/BealLevel26Foundations/Beal/FullProof.lean
 grep -q "import BealLevel26Foundations.Beal.FullProof.LevelLowering" \
   lean/BealLevel26Foundations/Beal/FullProof.lean
+grep -q "import BealLevel26Foundations.Beal.FullProof.RibetMazur" \
+  lean/BealLevel26Foundations/Beal/FullProof.lean
 grep -q "theorem wiles_modularity_Frey" \
   lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
 grep -q "theorem ribet_level_lowering_general" \
@@ -1043,7 +1048,7 @@ if grep -q "import BealLevel26Foundations.Beal.FullProof.ModularImpliesNewform" 
   echo "FAIL: none chain must not import ModularImpliesNewform"
   exit 1
 fi
-if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|HeckeAlgebra|RibetFunctor|X0_26_Model|HeckeAction|LevelLowering)" \
+if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|HeckeAlgebra|RibetFunctor|X0_26_Model|HeckeAction|LevelLowering|RibetMazur)" \
     lean/BealLevel26Foundations.lean \
     lean/BealLevel26Foundations/Beal/BealForall.lean \
     lean/BealLevel26Foundations/Chain/BealForallInKernel.lean \
@@ -1051,7 +1056,7 @@ if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|Heck
     lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean \
     lean/BealLevel26Foundations/GaloisRep/GaloisBealForallClosedReal.lean \
     lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean; then
-  echo "FAIL: none chain must not import GeometryScheme / HeckeAlgebra / RibetFunctor / X0_26_Model / HeckeAction / LevelLowering"
+  echo "FAIL: none chain must not import GeometryScheme / HeckeAlgebra / RibetFunctor / X0_26_Model / HeckeAction / LevelLowering / RibetMazur"
   exit 1
 fi
 grep -q "def X0_26_f" \
@@ -1098,6 +1103,25 @@ grep -q "theorem beal_positive_bases" \
   lean/BealLevel26Foundations/Beal/FullProof/LevelLowering.lean
 grep -q "theorem beal_positive_bases_unconditional" \
   lean/BealLevel26Foundations/Beal/FullProof/LevelLowering.lean
+grep -q "def q_expansion_26a1" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def q_expansion_26b1" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem mazur_principle_step" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem ribet_iterated" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def ribet_iterated_arrow" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem beal_from_ribet" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def beal_forall_from_Is13Case_sketch_stays_uninhabited" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+if grep -q "import BealLevel26Foundations.Beal.FullProof.X0_26_Model" \
+    lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean; then
+  echo "FAIL: RibetMazur must not import X0_26_Model"
+  exit 1
+fi
 grep -q "def beal_forall_from_Is13Case_sketch_stays_uninhabited" \
   lean/BealLevel26Foundations/Beal/FullProof/X0_26_Model.lean
 grep -q "def beal_forall_from_Is13Case_sketch_stays_uninhabited" \
@@ -1183,7 +1207,8 @@ if grep -nE \
     lean/BealLevel26Foundations/Beal/FullProof/RibetFunctor.lean \
     lean/BealLevel26Foundations/Beal/FullProof/X0_26_Model.lean \
     lean/BealLevel26Foundations/Beal/FullProof/HeckeAction.lean \
-    lean/BealLevel26Foundations/Beal/FullProof/LevelLowering.lean; then
+    lean/BealLevel26Foundations/Beal/FullProof/LevelLowering.lean \
+    lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean; then
   echo "FAIL: FullProof Step 2/3/4/5/6/7 must not import none-chain / Forall / Mazur / none RT tokens"
   exit 1
 fi
@@ -1199,6 +1224,7 @@ if grep -nE '^[[:space:]]*False\.elim|^[[:space:]]*exact[[:space:]]+False\.elim'
     lean/BealLevel26Foundations/Beal/FullProof/X0_26_Model.lean \
     lean/BealLevel26Foundations/Beal/FullProof/HeckeAction.lean \
     lean/BealLevel26Foundations/Beal/FullProof/LevelLowering.lean \
+    lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean \
     lean/BealLevel26Foundations/Beal/FullProof.lean; then
   echo "FAIL: FullProof track must not use False.elim"
   exit 1

@@ -799,6 +799,23 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.7.0-ribet-q-mazur — DONE (q-expansions + Mazur-step pack, arrow stays a Prop)
+
+Lean change.  `RibetMazur.lean` adds
+`q_expansion_26a1`/`26b1` and
+`mazur_principle_step`.  `ribet_iterated`
+iterates that pack and `N / ∏q = 2`.
+Displayed `S₂(Γ₀(2))` dim 0 means this is
+**not** `ExistsNewformLevel2` (`0 ≠ 0`).
+`ribet_iterated_arrow` / `beal_from_ribet`
+still take `ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** import `X0_26_Model`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.6.0-level-lowering-term — DONE (Frey residual + Hecke/TW pack, arrow stays a Prop)
 
 Lean change.  `LevelLowering.lean` adds
