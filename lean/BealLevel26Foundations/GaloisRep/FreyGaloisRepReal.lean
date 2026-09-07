@@ -2,6 +2,7 @@ import BealLevel26Foundations.Base.BealCounterexampleBase
 import BealLevel26Foundations.Frey.FreyCurve13
 import BealLevel26Foundations.GaloisRep.FreyDeltaSeparated
 import BealLevel26Foundations.GaloisRep.GaloisDetCyclotomicReal
+import BealLevel26Foundations.GaloisRep.GaloisUnramifiedSemistableReal
 import BealLevel26Foundations.Real.FreyWeierstrass
 
 namespace BealLevel26Foundations.GaloisRep.FreyGaloisRepReal
@@ -16,6 +17,11 @@ open BealLevel26Foundations.GaloisRep.GaloisDetCyclotomicReal
   (FreyGaloisRep13_real_separated_det FreyCurveSeparated_det
     rho_bar_Frey_13_real_algorithm_inhabited_det
     cyclotomicCharacter13 frey_det_eq_cyclotomic_formula)
+open BealLevel26Foundations.GaloisRep.GaloisUnramifiedSemistableReal
+  (FreyGaloisRep13_real_unramified FreyCurveSeparated_unramified
+    rho_bar_Frey_13_real_algorithm_inhabited_unramified
+    frey_unramified_outside_formula
+    frey_semistable_at_2_13_formula)
 open BealLevel26Foundations.Real.FreyWeierstrass
 
 /-!
@@ -125,7 +131,10 @@ v6.2.0: the Int formula and `A > 0`, `B > 0`,
 `A¹³+B¹³ ≠ 0` positivity live in
 `FreyDeltaSeparated` and are not unfolded here.
 v6.3.0: `det ρ̄ = χ₁₃` / Weil pairing live in
-`GaloisDetCyclotomicReal` and are not unfolded here. -/
+`GaloisDetCyclotomicReal` and are not unfolded here.
+v6.4.0: unramified-outside / semistable-at-`2*13`
+live in `GaloisUnramifiedSemistableReal` and are
+not unfolded here. -/
 def FreyGaloisRep13.token : FreyGaloisRep13 where
   A := 13
   B := 2
@@ -189,6 +198,14 @@ def rho_bar_Frey_13_real_algorithm_inhabited_det_alias :
     Nonempty FreyGaloisRep13_real_separated_det :=
   rho_bar_Frey_13_real_algorithm_inhabited_det
 
+/-- v6.4.0 alias of the unramified token.  Same
+**none** as
+`GaloisUnramifiedSemistableReal.rho_bar_Frey_13_real_algorithm_inhabited_unramified`.
+NOS / semistable lemmas stay off this inhabitant. -/
+def rho_bar_Frey_13_real_algorithm_inhabited_unramified_alias :
+    Nonempty FreyGaloisRep13_real_unramified :=
+  rho_bar_Frey_13_real_algorithm_inhabited_unramified
+
 #check FreyCurve
 #check FreyCurve_Delta
 #check FreyGaloisRep13
@@ -198,6 +215,12 @@ def rho_bar_Frey_13_real_algorithm_inhabited_det_alias :
 #check rho_bar_Frey_13_real_algorithm_inhabited_separated
 #check rho_bar_Frey_13_real_algorithm_inhabited_det
 #check rho_bar_Frey_13_real_algorithm_inhabited_det_alias
+#check rho_bar_Frey_13_real_algorithm_inhabited_unramified
+#check rho_bar_Frey_13_real_algorithm_inhabited_unramified_alias
+#check frey_unramified_outside_formula
+#check frey_semistable_at_2_13_formula
+#check FreyGaloisRep13_real_unramified
+#check FreyCurveSeparated_unramified
 #check cyclotomicCharacter13
 #check frey_det_eq_cyclotomic_formula
 #check FreyGaloisRep13_real_separated_det
@@ -212,5 +235,7 @@ def rho_bar_Frey_13_real_algorithm_inhabited_det_alias :
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_separated
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_det
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_det_alias
+#print axioms rho_bar_Frey_13_real_algorithm_inhabited_unramified
+#print axioms rho_bar_Frey_13_real_algorithm_inhabited_unramified_alias
 
 end BealLevel26Foundations.GaloisRep.FreyGaloisRepReal

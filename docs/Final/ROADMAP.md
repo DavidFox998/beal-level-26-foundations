@@ -256,3 +256,18 @@ Original-family latest remains `22322627`.  Chain
 → 22558788 → 22559130 → 22559449 → 22560793
 → 22562014 → 22564236 → 22565376`.
 
+### v6.4.0-iter-unramified-semistable-real — DONE
+
+Unramified outside `2*13*A*B*(A¹³+B¹³)` +
+semistable at `2*13` computable **none** fields.
+`frey_unramified_outside_formula` **none**.
+`frey_unramified_outside_real_lemma` NOS
+**propext only**, off the inhabitant.
+`frey_semistable_at_2_13_formula` **none** via
+Tate conductor `2*13` by `rfl`.
+`rho_bar_Frey_13_real_algorithm_inhabited_unramified`
+**none**.  `beal_forall_in_kernel_from_unramified_separated`
+**propext only**.  Official build **18 modules**.
+About still lists written mint `22565376` until
+v6.4.1.
+

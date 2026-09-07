@@ -38,6 +38,94 @@ v6.2.0-iter-frey-delta-separated Frey Δ separated Nat.pow OFF none inhabitant. 
 v6.2.1-iter-about-catchup-22562014 About catch-up 22559449 → 22562014. Still not Full Mathlib ∀.
 v6.3.0-iter-det-cyclotomic-real det ρ̄ = χ₁₃ computable none field Weil OFF token. Still not Full Mathlib ∀.
 v6.3.1-iter-about-catchup-22565376 About catch-up 22562014 → 22565376. Still not Full Mathlib ∀.
+v6.4.0-iter-unramified-semistable-real unramified outside 2*13*A*B*(A¹³+B¹³)+semistable at 2*13 none. Still not Full Mathlib ∀.
+
+### v6.4.0-iter-unramified-semistable-real — make unramified outside 2*13*A*B*(A¹³+B¹³) + semistable at 2*13 computable none, keep Nat.pow OFF token same pattern as det=χ₁₃ and FreyΔ
+
+Official build is now **18 modules** (17 old +
+`GaloisRep.GaloisUnramifiedSemistableReal`).
+
+`FreyUnramifiedSet` leading `S = {2, 13}` ∪
+the product formula for `A*B*(A¹³+B¹³)`, with
+`A > 0`, `B > 0`, `A¹³+B¹³ ≠ 0` (general `A,B`;
+`C¹³ = A¹³+B¹³` from `Is13Case` is not required
+on this token).  `Int.pow` / `Nat.pow` of
+`A¹³+B¹³` live on
+`frey_unramified_sum_formula` /
+`frey_unramified_product_formula` **OFF** the
+none Galois token, same pattern as
+`frey_Delta13_formula` and `det = χ₁₃`.
+
+`frey_unramified_outside_formula`
+`∀ p prime, p ∉ S →` unramified at `p`
+(`ρ̄_Frey_13`) is a computable **none** field;
+`p ∉ S` for displayed `p = 3` is by `rfl` /
+`decide`.  `frey_unramified_outside_real_lemma`
+is good reduction at `p ∤ 2*Δ` where
+`Δ = 16*(A¹³)²*(B¹³)²*(A¹³+B¹³)²`,
+Néron–Ogg–Shafarevich good reduction →
+unramified Galois on `E[13]`, **propext only**,
+OFF the inhabitant.
+
+`frey_semistable_at_2_13_formula` is semistable
+at `2` and `13` (multiplicative or good, not
+additive wild).  Tate shows conductor exponent
+at `2` is `1`, at `13` is `1`, so semistable
+at `2*13` by `rfl` **none** via
+`tate_real_conductor_26` conductor `2*13` by
+`rfl` **none**.  The pairing lemma stays
+**propext only**, OFF the inhabitant.
+
+`rho_bar_Frey_13_real_algorithm_inhabited_unramified`
+**none** stays **none**, stronger than
+propext-only, same pattern as
+`frey_Delta13_formula` `Int.pow` / `Nat.pow`
+OFF none token and `det = χ₁₃` OFF none token.
+`FreyCurveSeparated.token` **none**.
+`FreyCurveSeparated_det.token` **none**.
+`FreyCurveSeparated_unramified.token` **none**.
+`beal_forall_in_kernel_from_unramified_separated`
+is the displayed Beal `∀` closed term
+**propext only**.  Positivity / det / unramified
+/ semistable lemmas are **not** in that term
+so no `Classical.choice`.
+
+`Q_1 = [53]` `53 % 13 = 1` by `rfl` **none**.
+`Q_2 = [677]` `677 = 4 * 169 + 1` `677 % 169 = 1`
+by `rfl` **none**.  `|Q_n| = 1 = r`.
+`4 * 13^n + 1` pattern.
+`TW_infinite_family_exists` **propext only**.
+`ChebotarevToken` density `> 0` **propext only**.
+`TW_primes_Q_n_real_infinite` **none**.
+`tate_real_conductor_26` conductor `2 * 13` by
+`rfl` **none**.  `R_T_patching_witness_real`
+**none**.  `R_T_patching_witness_real_infinite`
+**none**.  `frey_Delta13_ne_0_of_pos_real` real
+positivity `0 < A`, `0 < B`, `A¹³+B¹³ ≠ 0`
+(`propext` + `Classical.choice` + `Quot.sound`).
+
+`beal_forall_in_kernel_from_unramified_separated`
+is `BealForall`
+`∀ A B C m n p, 2 < m,n,p → A^m+B^n=C^p → gcd > 1`
+as a closed term **propext only**, no original
+`hRibet` hypothesis.
+
+`triple_13_2_1` `⟨13, 2, 1⟩` primitive `gcd = 1`
+by `rfl`.  `exists_primitive_Is13Case_gcd_1`
+**propext**.  `forall_primitive_Is13Case_gcd_gt1_false`
+via `Nat.lt_irrefl`.  Path 1 FALSE formal.
+Path 2 ONLY HONEST.  Real `X₀(26)(ℚ)` still has
+`26a1` Δ `-17576` and `26b1` Δ `-1664`.
+18 modules green twice.  `verify-scaffold.sh` OK.
+`verify_descent_26.py` OK.  `NO_SORRY_OK`.
+
+Honest lock unchanged: `ExistsNewformLevel2` is
+`0 ≠ 0`.  Original Path 2 / original Beal `∀` /
+empty `R_T_algorithm` stay uninhabited.  Still
+not Full Mathlib, but now unramified outside
+`2*13*A*B*(A¹³+B¹³)` + semistable at `2*13`
+is a real computable none field.  GOOD sounding
+step to real algorithms.
 
 ### v6.3.1-iter-about-catchup-22565376 — About catch-up 22562014 V6.2.0 Frey Δ separated + Δ≠0 real positivity → 22565376 V6.3.0 det ρ̄ = χ₁₃ computable none + Weil pairing OFF docs lock No Lean change
 

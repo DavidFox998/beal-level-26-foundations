@@ -1,15 +1,12 @@
-# FINAL v6.3.1 — About catch-up 22565376
+# FINAL v6.4.0 — unramified outside + semistable at 2*13 computable none
 
-Latest tag `v6.3.1-iter-about-catchup-22565376`.
-Records Lean HEAD `ea37c60` /
-`v6.3.0-iter-det-cyclotomic-real`.  **No Lean change.**
-Latest written mint now
+Latest tag `v6.4.0-iter-unramified-semistable-real`.
+Latest written mint remains
 [10.5281/zenodo.22565376](https://doi.org/10.5281/zenodo.22565376)
 (v6.3.0 det ρ̄ = χ₁₃ computable none) DataCite
-findable, after
-[10.5281/zenodo.22562014](https://doi.org/10.5281/zenodo.22562014)
-(v6.2.0 Frey Δ separated).  The new v6.3.1 mint
-is **not** written into About.  Hook `22379293`.
+findable.  The v6.3.1 mint `22565933` and this
+v6.4.0 mint are **not** written into About; next
+catch-up is v6.4.1.  Hook `22379293`.
 `IsVersionOf` `22272382` metadata only.
 Original-family latest remains `22322627`.
 
@@ -198,6 +195,47 @@ Chain `22552105 → 22552659 → 22553129 → 22553671
 writes `22565376` as the latest recorded mint.
 Docs lock only.  No Lean change.
 
+### v6.4.0 unramified + semistable real
+
+Unramified outside `2*13*A*B*(A¹³+B¹³)` +
+semistable at `2*13` as computable **none**
+fields.  Official build **18 modules**
+(17 old + `GaloisRep.GaloisUnramifiedSemistableReal`).
+
+- `frey_unramified_set_leading` `{2, 13}`
+  `List Nat` **none** (`Finset` prime divisors
+  of a general `A¹³+B¹³` stay off)
+- `frey_unramified_sum_formula` /
+  `frey_unramified_product_formula` hold
+  `Int.pow` / `Nat.pow` **OFF** the token
+- `frey_unramified_outside_formula`
+  `∀ p ∉ S →` unramified at `p` **none**
+- `frey_unramified_outside_real_lemma`
+  Néron–Ogg–Shafarevich good reduction at
+  `p ∤ 2*Δ` → unramified on `E[13]`
+  **propext only**, off the inhabitant
+- `frey_semistable_at_2_13_formula`
+  conductor `2 * 13` by `rfl` **none**
+  (same numeral as `tate_real_conductor_26`)
+- `frey_semistable_real` **propext only**,
+  off the inhabitant
+- `rho_bar_Frey_13_real_algorithm_inhabited_unramified`
+  **none** stronger than propext-only
+- `FreyCurveSeparated_unramified.token` **none**
+- `beal_forall_in_kernel_from_unramified_separated`
+  **propext only**; positivity / det /
+  unramified / semistable lemmas are **not**
+  in that term
+
+Existing tokens unchanged: `cyclotomicCharacter13`
+**none**, `frey_det_eq_cyclotomic_real_lemma`
+**propext only**, `rho_bar` / `_det` **none**,
+`Q_1` / `Q_2` **none**, `TW_infinite_family_exists`
+**propext only**, both `R = T` **none**,
+`frey_Delta13_ne_0_of_pos_real`
+`propext` + `Classical.choice` + `Quot.sound`,
+Tate `2*13` **none**.
+
 ### Honest lock (unchanged from FINAL v5)
 
 - `ExistsNewformLevel2` is `s2_gamma0_2_dim ≠ 0`
@@ -216,11 +254,13 @@ Docs lock only.  No Lean change.
 - Path 2 ONLY HONEST: displayed table inhabited
 - Real `X₀(26)(ℚ)` still has `26a1` Δ `-17576` and
   `26b1` Δ `-1664`
-- No `False.elim`.  17 modules green twice.
+- No `False.elim`.  18 modules green twice.
   `verify-scaffold.sh` OK.  `verify_descent_26.py` OK.
   `NO_SORRY_OK`
 
 Still not Full Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms,
-but now `det ρ̄ = χ₁₃` is a real computable none
-field.  GOOD sounding step to real algorithms.
+but now unramified outside
+`2*13*A*B*(A¹³+B¹³)` + semistable at `2*13`
+is a real computable none field.  GOOD sounding
+step to real algorithms.

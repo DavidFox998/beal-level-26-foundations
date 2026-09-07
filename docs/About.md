@@ -1,9 +1,26 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v6.3.1-iter-about-catchup-22565376`.
-Records Lean HEAD `ea37c60` /
-`v6.3.0-iter-det-cyclotomic-real`.  No Lean change
-on this catch-up.
+Latest tag / HEAD: `v6.4.0-iter-unramified-semistable-real`.
+Lean change on this slice: unramified outside
+`2*13*A*B*(A¹³+B¹³)` + semistable at `2*13`
+computable none fields.  `FreyUnramifiedSet`
+leading `{2, 13}` plus the product formula
+with `A>0` `B>0` `A¹³+B¹³≠0`.
+`frey_unramified_outside_formula` `∀ p ∉ S →`
+unramified at `p` (`ρ̄_Frey_13`) **none**,
+`p ∉ S` check by `rfl` **none**, `Int.pow` /
+`Nat.pow` **OFF** the token.
+`frey_unramified_outside_real_lemma` good
+reduction at `p ∤ 2*Δ` Néron–Ogg–Shafarevich
+**propext only**, off the inhabitant.
+`frey_semistable_at_2_13_formula` semistable
+at `2` and `13` **none** via
+`tate_real_conductor_26` conductor `2*13` by
+`rfl` **none**.
+`rho_bar_Frey_13_real_algorithm_inhabited_unramified`
+**none** stays **none**, stronger than
+propext-only, same pattern as
+`frey_Delta13_formula` and `det = χ₁₃`.
 
 Latest parallel mint written
 [10.5281/zenodo.22565376](https://doi.org/10.5281/zenodo.22565376)
@@ -14,8 +31,10 @@ findable, after
 [10.5281/zenodo.22559449](https://doi.org/10.5281/zenodo.22559449)
 (v6.1.0 TW infinite family), after
 [10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
-(v6.0.0 REAL ALGORITHMS).  The new v6.3.1 mint is
-**not** written here.  Hook
+(v6.0.0 REAL ALGORITHMS).  The v6.3.1 mint
+`22565933` and this v6.4.0 mint are **not**
+written here; next About catch-up is v6.4.1.
+Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
 `IsVersionOf` [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)
 is metadata only.  Original-family latest remains
@@ -133,6 +152,20 @@ both `R = T` Equivs **none**
 `frey_Delta13_ne_0_of_pos_real`
 `propext` + `Classical.choice` + `Quot.sound`).
 
+v6.4.0 unramified + semistable real: new module
+`GaloisRep.GaloisUnramifiedSemistableReal`
+(17 → 18 modules).
+`FreyUnramifiedSet` leading `S = {2, 13}`
+(`List Nat`, not `Finset` factorization).
+`frey_unramified_outside_formula` **none**.
+`frey_unramified_outside_real_lemma` **propext only**.
+`frey_semistable_at_2_13_formula` **none**.
+`rho_bar_Frey_13_real_algorithm_inhabited_unramified`
+**none**.  `FreyCurveSeparated_unramified.token`
+**none**.  `beal_forall_in_kernel_from_unramified_separated`
+**propext only**; positivity / det / unramified /
+semistable lemmas are **not** in that term.
+
 Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms.
 The mathematical Beal forall stays the uninhabited
@@ -142,7 +175,7 @@ is `0 ≠ 0` and stays uninhabited.  Original Path 2
 (`⟨13, 2, 1⟩` is `Is13Case`, `gcd = 1`).  No
 `False.elim`.  Path 1 false formal.  Real
 `X₀(26)(ℚ)` still has `26a1` Δ `-17576` and
-`26b1` Δ `-1664`.  `NO_SORRY_OK`.  17 modules green.
+`26b1` Δ `-1664`.  `NO_SORRY_OK`.  18 modules green.
 
 This is the in-repo About lock for GitHub About / topics /
 the public landing page.  Do not rewrite minted DOIs.
