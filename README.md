@@ -89,6 +89,20 @@ v8.6.0-level-lowering-term LevelLowering Frey_GaloisRep + level_lowering_to_2_te
 v8.7.0-ribet-q-mazur RibetMazur q_expansion_26a1/b1 + mazur_principle_step pack; ribet_iterated_arrow stays the Prop; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.8.0-ribet-proof RibetMazur HeckeAction_N + mazur_step_real pack; ModularImpliesLevel2Newform_real stays the Prop; ExistsNewformLevel2 stays 0≠0; beal_from_ribet_real still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.9.0-explicit-J0N RibetMazur packed X0_N_Model/J0_N_Model + Frey Steinberg label; beal_from_ribet_real_fixed still from the Prop; ExistsNewformLevel2 stays 0≠0. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.10.0-frey-aq-pm1-real RibetMazur frey_a_q_real via (-c6/q)=±1 + J0_N_real ModSym token; mazur_step_real_fixed only when 13|v_q(Δ); quotient is 2 only under Frey13Case; beal_from_ribet_real_fixed still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.10.0-frey-aq-pm1-real — Tate a_q=±1 + 13|v_q(Δ) + ModSym token (arrow stays a Prop)
+
+Lean change.  `RibetMazur.lean` adds the Tate sign, the `13 ∣ v_q(Δ)` Mazur gate, and a packed `ModSym` token.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `frey_a_q_real` / `frey_a_q_is_pm1`: `(-c₆/q)=±1` because `q ∤ c₆`;
+- `pm1_ne_pm_qplus1_mod13_at_3`: `1,12 ≠ 4,9` in `ZMod 13` by `decide`;
+- `J0_N_real` / `HeckeAction_N_real`: packed `ModSym(Γ₀(N),2)` with double-coset `T_q`; TW at `N·53`/`N·677`;
+- `mazur_step_real_fixed`: only when `13 ∣ v_q(Δ)`;
+- `ribet_iterated_real_fixed`: `N / ∏_{13|v_q} q`, **not** `2` unless `Frey13Case`;
+- `beal_from_ribet_real_fixed`: still *from* `ModularImpliesLevel2Newform`.
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.9.0-explicit-J0N — packed X0(N)/J0(N) + Frey Steinberg label (arrow stays a Prop)
 

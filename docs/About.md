@@ -1,16 +1,17 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.9.0-explicit-J0N`.
-Lean change: `RibetMazur.lean` adds packed
-`X0_N_Model` / `J0_N_Model` tokens at
-`N = rad(ABC)` (not Mathlib `J0(N)`) and
-`frey_a_q_is_pm1` (Tate Steinberg label
-`v_q(c4)=0` and `v_q(Delta)>0`, not a Frey
-Fourier coefficient `a_q = ±1`).
-`mazur_step_real_fixed` /
-`ribet_iterated_real_fixed` iterate that pack
-to `N/prod q = 2`, **not** a term of type
-`ExistsNewformLevel2` (`0 ≠ 0`).
+Latest tag / HEAD: `v8.10.0-frey-aq-pm1-real`.
+Lean change: `RibetMazur.lean` adds
+`frey_a_q_real` (Tate sign `(-c6/q)=±1` because
+`q` does not divide `c6`),
+`frey_rho_unramified_iff_13_dvd_vqDelta`,
+and `J0_N_real` as a packed `ModSym` token
+with double-coset `T_q` at `N` (TW at
+`N*53`/`N*677`).  `mazur_step_real_fixed`
+requires `13 | v_q(Delta)`.
+`ribet_iterated_real_fixed` iterates only
+those primes; the quotient is **not** `2`
+unless `Frey13Case`.
 `beal_from_ribet_real_fixed` stays *from*
 `ModularImpliesLevel2Newform`.
 `ExistsNewformLevel2` is still `0 ≠ 0`.

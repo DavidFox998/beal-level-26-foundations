@@ -70,6 +70,7 @@ v8.6.0-level-lowering-term LevelLowering Frey_GaloisRep + level_lowering_to_2_te
 v8.7.0-ribet-q-mazur RibetMazur q_expansion_26a1/b1 + mazur_principle_step pack; ribet_iterated_arrow stays the Prop; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.8.0-ribet-proof RibetMazur HeckeAction_N + mazur_step_real pack; ModularImpliesLevel2Newform_real stays the Prop; ExistsNewformLevel2 stays 0≠0; beal_from_ribet_real still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.9.0-explicit-J0N RibetMazur packed X0_N_Model/J0_N_Model + Frey Steinberg label; beal_from_ribet_real_fixed still from the Prop; ExistsNewformLevel2 stays 0≠0. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.10.0-frey-aq-pm1-real RibetMazur frey_a_q_real via (-c6/q)=±1 + J0_N_real ModSym token; mazur_step_real_fixed only when 13|v_q(Δ); quotient is 2 only under Frey13Case; beal_from_ribet_real_fixed still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 
 ### v6.0.0 real algorithms (additional modules)
 

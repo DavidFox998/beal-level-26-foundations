@@ -799,6 +799,26 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.10.0-frey-aq-pm1-real — DONE (Tate a_q=±1 + 13|v_q(Δ) + ModSym token, arrow stays a Prop)
+
+Lean change.  `RibetMazur.lean` adds
+`frey_a_q_real` (`(-c₆/q)=±1` because `q ∤ c₆`),
+`pm1_ne_pm_qplus1_mod13_at_3` by `decide`,
+`frey_rho_unramified_iff_13_dvd_vqDelta`,
+`J0_N_real` as a packed `ModSym(Γ₀(N),2)` token
+with double-coset `T_q`, and TW at `N·53`/`N·677`.
+`mazur_step_real_fixed` requires `13 ∣ v_q(Δ)`.
+`ribet_iterated_real_fixed` iterates only those
+primes; `N / ∏q = 2` only under `Frey13Case`.
+`beal_from_ribet_real_fixed` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** import `X0_26_Model`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.9.0-explicit-J0N — DONE (packed X0(N)/J0(N) + Frey Steinberg label, arrow stays a Prop)
 
 Lean change.  `RibetMazur.lean` adds packed

@@ -784,6 +784,7 @@ do
   grep -q "v8.7.0-ribet-q-mazur" "$readme"
   grep -q "v8.8.0-ribet-proof" "$readme"
   grep -q "v8.9.0-explicit-J0N" "$readme"
+  grep -q "v8.10.0-frey-aq-pm1-real" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1140,6 +1141,16 @@ grep -q "theorem mazur_step_real_fixed" \
 grep -q "theorem ribet_iterated_real_fixed" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem beal_from_ribet_real_fixed" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def J0_N_real" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem frey_a_q_real" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem frey_rho_unramified_iff_13_dvd_vqDelta" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def Frey13Case" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def odd_q_divisors_with_13dvd" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "def beal_forall_from_Is13Case_sketch_stays_uninhabited" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean

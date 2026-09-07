@@ -3,8 +3,10 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.9.0 — packed `X0(N)` / `J0(N)` tokens
-plus Frey Steinberg label (not 26-ledger `a₃`).
+Track B v8.10.0 — Frey `a_q = ±1` via `(-c₆/q)`,
+`13 ∣ v_q(Δ)` unramified criterion, and `J0_N_real`
+as a packed `ModSym(Γ₀(N),2)` token with double-coset
+`T_q`.  Not the 26a1/26b1 coefficient formula.
 
 Mathlib 4.12 has no Ribet functor and no arrow
     `Modular w → ExistsNewformLevel2`.  That label is
@@ -39,14 +41,22 @@ What it *does* prove:
 * `ModularImpliesLevel2Newform_real` is the same
   uninhabited Prop as `ModularImpliesLevel2Newform`;
 * `beal_from_ribet_real` stays *from* that Prop;
-* `X0_N_Model` / `J0_N_Model` are level tokens at
-  `N = rad(ABC)`, not Mathlib modular curves;
-* `frey_a_q_is_pm1` is the Tate Steinberg label,
-  not a Frey Fourier coefficient `a_q = ±1`;
-* `mazur_step_real_fixed` / `ribet_iterated_real_fixed`
-  iterate that pack to `N / ∏q = 2`;
+* `X0_N_Model` / `J0_N_Model` stay level tokens;
+* `J0_N_real` is a packed `ModSym` token at
+  `Γ₀(N)`, weight 2 — not Mathlib `J₀(N)`;
+* `frey_a_q_real` / `frey_a_q_is_pm1` are the
+  Tate split/nonsplit sign `(-c₆/q) = ±1`, not
+  a Frey modular-form coefficient and not the
+  26-ledger `a₃`;
+* `frey_rho_unramified_iff_13_dvd_vqDelta` is the
+  Tate criterion packed as a definitional iff;
+* `mazur_step_real_fixed` requires `13 ∣ v_q(Δ)`;
+* `ribet_iterated_real_fixed` iterates only over
+  those primes; the quotient is **not** `2`
+  unless `Frey13Case`;
 * `beal_from_ribet_real_fixed` stays *from*
-  `ModularImpliesLevel2Newform`.
+  `ModularImpliesLevel2Newform` (even under a
+  universal `Frey13Case` hypothesis).
 
 Does **not** import `X0_26_Model`.  FullProof-only.
 None chain does not import this file.
@@ -61,6 +71,10 @@ import BealLevel26Foundations.Beal.FullProof.TrueConductor
 import BealLevel26Foundations.CoefficientLedger_26
 import Beal.Foundations.J0_26_Decomp
 import BealLevel26Foundations.Chain.Level2
+import BealLevel26Foundations.Real.FreyWeierstrass
+import Mathlib.NumberTheory.LegendreSymbol.Basic
+import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.LinearAlgebra.Matrix.SpecialLinearGroup
 import Mathlib.Tactic
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
@@ -75,6 +89,8 @@ open BealLevel26Foundations.Beal.FullProof.LevelLowering
 open BealLevel26Foundations.CoefficientLedger26
 open Beal.Foundations.J0_26_Decomp
 open BealLevel26Foundations.Chain.Level2
+open BealLevel26Foundations.Real.FreyWeierstrass
+open CongruenceSubgroup
 
 /-! ## Explicit 101-coeff q-expansions (ledger as `ℚ`) -/
 
@@ -606,100 +622,493 @@ theorem J0_N_Model_cusps (t : PositiveBealTriple) :
     (J0_N_Model.ofTriple t).cusp_labels_26 = [1, 2, 13, 26] :=
   rfl
 
-/-- Same `T_q` formula as `HeckeAction_N`, now named as
-the Frey-side token.  The sequence `a` is *not* filled
-by a Frey q-expansion (Mathlib 4.12 has none). -/
-def HeckeAction_N_real (q : Nat) (hpos : 1 < q) (a : List ℤ)
-    (n : Nat) : ℤ :=
-  HeckeAction_N q hpos a n
+/-! ## v8.10.0 — Tate `a_q = ±1`, `13 ∣ v_q(Δ)`, ModSym token -/
 
-/-- Classical Steinberg *label* for the Frey residual
-at an odd prime of multiplicative reduction.  The
-proved data is `v_q(c₄)=0` and `v_q(Δ)>0`.  This is
-**not** a Fourier coefficient `a_q = ±1` of a Frey
-newform. -/
-def Frey_aq_pm1 (w : PrimitiveBealTriple) (q : Nat) : Prop :=
-  steinberg_label w q
+/-- Mathlib `Γ₀(N)`.  Not a modular-symbol space. -/
+def Gamma0_N (N : Nat) : Subgroup (Matrix.SpecialLinearGroup (Fin 2) ℤ) :=
+  Gamma0 N
 
-theorem frey_a_q_is_pm1 (t : PositiveBealTriple) {q : Nat}
+theorem Gamma0_N_eq (N : Nat) :
+    Gamma0_N N = Gamma0 N :=
+  rfl
+
+/-- Packed modular-symbol token at level `N`, weight 2.
+Not Mathlib `ModSym` (4.12 has none) and not a base
+change of the affine `X0_26` model. -/
+structure ModSym (N : Nat) where
+  level : Nat
+  level_eq : level = N
+  weight : Nat
+  weight_eq : weight = 2
+  gamma0 : Subgroup (Matrix.SpecialLinearGroup (Fin 2) ℤ)
+  gamma0_eq : gamma0 = Gamma0 N
+  cusps : List (Nat × Nat)
+
+/-- Displayed `ℙ¹(ℚ)` cusp labels `[0]` and `[∞]`, not
+the four cusps of `X₀(26)`. -/
+def displayed_cusps_P1 : List (Nat × Nat) :=
+  [(0, 1), (1, 0)]
+
+def ModSym.ofLevel (N : Nat) : ModSym N where
+  level := N
+  level_eq := rfl
+  weight := 2
+  weight_eq := rfl
+  gamma0 := Gamma0 N
+  gamma0_eq := rfl
+  cusps := displayed_cusps_P1
+
+/-- Jacobian token as the dual of packed weight-2
+modular symbols.  Not `Pic⁰` and not `End(J₀(N)[13])`. -/
+def J0_N_real (N : Nat) : Type :=
+  ModSym N
+
+def J0_N_real.ofTriple (t : PositiveBealTriple) :
+    J0_N_real (globalConductorTate t.toPrimitive) :=
+  ModSym.ofLevel (globalConductorTate t.toPrimitive)
+
+theorem J0_N_real_level (t : PositiveBealTriple) :
+    (J0_N_real.ofTriple t).level = globalConductorTate t.toPrimitive :=
+  rfl
+
+theorem J0_N_real_weight (t : PositiveBealTriple) :
+    (J0_N_real.ofTriple t).weight = 2 :=
+  rfl
+
+theorem J0_N_real_cusps (t : PositiveBealTriple) :
+    (J0_N_real.ofTriple t).cusps = [(0, 1), (1, 0)] :=
+  rfl
+
+/-- Double-coset token `Γ₀(N) \ M_q(N) / Γ₀(N)`.
+`det = q`, bottom-left `≡ 0 (mod N)`.  Representative
+count is `q+1` away from `N` and `q` when `q | N`
+(`U_q`).  Not a Mathlib Hecke correspondence. -/
+structure DoubleCoset_Mq (N q : Nat) where
+  det : Nat
+  det_eq : det = q
+  bottom_left_mod : Nat
+  bottom_left_mod_eq : bottom_left_mod = 0
+  correspondence : HeckeCorrespondence N q
+  rep_count : Nat
+  rep_count_away : ¬ q ∣ N → rep_count = q + 1
+  rep_count_old : q ∣ N → rep_count = q
+
+/-- Endomorphism token of packed `J0_N_real` residual
+13-torsion.  Not Mathlib `End(J₀(N)[13])`. -/
+structure EndJ0_N_13 (N q : Nat) where
+  level : Nat
+  level_eq : level = N
+  residue : Nat
+  residue_eq : residue = 13
+  hecke : DoubleCoset_Mq N q
+
+/-- Double-coset `T_q` / `U_q` token at level `N`.
+**Not** the coefficient formula on the 26a1/26b1 ledger. -/
+def HeckeAction_N_real (N q : Nat) : EndJ0_N_13 N q where
+  level := N
+  level_eq := rfl
+  residue := 13
+  residue_eq := rfl
+  hecke :=
+    { det := q
+      det_eq := rfl
+      bottom_left_mod := 0
+      bottom_left_mod_eq := rfl
+      correspondence := ⟨N, N * q, N, rfl, rfl, rfl⟩
+      rep_count := if q ∣ N then q else q + 1
+      rep_count_away := by
+        intro h
+        simp [h]
+      rep_count_old := by
+        intro h
+        simp [h] }
+
+theorem HeckeAction_N_real_middle (N q : Nat) :
+    (HeckeAction_N_real N q).hecke.correspondence.middle = N * q :=
+  rfl
+
+theorem HeckeAction_N_real_not_26_ledger (N q : Nat) :
+    (HeckeAction_N_real N q).hecke.correspondence.source = N :=
+  rfl
+
+/-- TW auxiliary levels `N · 53` and `N · 677`, not
+`26 · 53` / `26 · 677`. -/
+def patchedLevel_N (N Q : Nat) : Nat :=
+  N * Q
+
+theorem patchedLevel_N_Q1 (N : Nat) :
+    patchedLevel_N N Q1 = N * 53 :=
+  rfl
+
+theorem patchedLevel_N_Q2 (N : Nat) :
+    patchedLevel_N N Q2 = N * 677 :=
+  rfl
+
+theorem R_T_at_N_Q1 (N : Nat) :
+    Nonempty (R_infty (patchedLevel_N N Q1) ≃ T_infty (patchedLevel_N N Q1)) :=
+  ⟨R_T_scaffold (patchedLevel_N N Q1)⟩
+
+theorem R_T_at_N_Q2 (N : Nat) :
+    Nonempty (R_infty (patchedLevel_N N Q2) ≃ T_infty (patchedLevel_N N Q2)) :=
+  ⟨R_T_scaffold (patchedLevel_N N Q2)⟩
+
+theorem localizedRank_N_Q1 (N : Nat) :
+    localizedHeckeRank (patchedLevel_N N Q1) = 1 :=
+  localizedRankOne_from_Patching (patchedLevel_N N Q1)
+
+theorem localizedRank_N_Q2 (N : Nat) :
+    localizedHeckeRank (patchedLevel_N N Q2) = 1 :=
+  localizedRankOne_from_Patching (patchedLevel_N N Q2)
+
+theorem frey_c6_formula (w : PrimitiveBealTriple) :
+    (freyCurveOf w).c₆ =
+      -32 * (((w.B : Int) ^ w.n) - ((w.A : Int) ^ w.m)) *
+        (2 * (((w.B : Int) ^ w.n) - ((w.A : Int) ^ w.m)) ^ 2 +
+          9 * (((w.A : Int) ^ w.m) * ((w.B : Int) ^ w.n))) := by
+  simpa [freyCurveOf] using
+    freyCurve_c6 (w.A : Int) (w.B : Int) w.m w.n
+
+theorem zmod_64_ne_zero {q : Nat} [Fact q.Prime] (hodd : q ≠ 2) :
+    (64 : ZMod q) ≠ 0 := by
+  intro h
+  have hq : q.Prime := Fact.out
+  have h64 : q ∣ 64 := (ZMod.natCast_zmod_eq_zero_iff_dvd 64 q).mp h
+  have h2 : q ∣ 2 := hq.dvd_of_dvd_pow (by
+    have : 64 = 2 ^ 6 := by decide
+    exact this ▸ h64)
+  exact hodd ((Nat.prime_dvd_prime_iff_eq hq Nat.prime_two).mp h2)
+
+theorem odd_prime_c6_ne_zero_mod (w : PrimitiveBealTriple) {q : Nat}
+    [Fact q.Prime] (hodd : q ≠ 2) (hdvd : q ∣ w.A * w.B * w.C) :
+    ((freyCurveOf w).c₆ : ZMod q) ≠ 0 := by
+  have hq : q.Prime := Fact.out
+  have hCop := pairwise_coprime w
+  have hABC := (Nat.Prime.dvd_mul hq).mp hdvd
+  have h64 : (64 : ZMod q) ≠ 0 := zmod_64_ne_zero hodd
+  have hneg64 : (-64 : ZMod q) ≠ 0 := neg_ne_zero.mpr h64
+  have hc6cast :
+      ((freyCurveOf w).c₆ : ZMod q) =
+        (-32 : ZMod q) *
+          (((w.B : Int) : ZMod q) ^ w.n - ((w.A : Int) : ZMod q) ^ w.m) *
+          (2 *
+              (((w.B : Int) : ZMod q) ^ w.n -
+                  ((w.A : Int) : ZMod q) ^ w.m) ^ 2 +
+            9 * ((((w.A : Int) : ZMod q) ^ w.m) *
+              (((w.B : Int) : ZMod q) ^ w.n))) := by
+    rw [frey_c6_formula]
+    simp [Int.cast_mul, Int.cast_add, Int.cast_sub, Int.cast_pow, Int.cast_neg]
+  rcases hABC with hAB | hC
+  · rcases (Nat.Prime.dvd_mul hq).mp hAB with hA | hB
+    · have hA0 : ((w.A : Int) : ZMod q) = 0 :=
+        (ZMod.intCast_zmod_eq_zero_iff_dvd _ q).mpr
+          (Int.natCast_dvd_natCast.mpr hA)
+      have hBne : ((w.B : Int) : ZMod q) ≠ 0 := by
+        intro h
+        have hB : q ∣ w.B :=
+          (ZMod.natCast_zmod_eq_zero_iff_dvd w.B q).mp (by simpa using h)
+        exact coprime_not_dvd_both hCop.1 hq hA hB
+      have hBn : ((w.B : Int) : ZMod q) ^ w.n ≠ 0 :=
+        pow_ne_zero _ hBne
+      have hc6 : ((freyCurveOf w).c₆ : ZMod q) =
+          (-64 : ZMod q) * (((w.B : Int) : ZMod q) ^ w.n) ^ 3 := by
+        rw [hc6cast, hA0, zero_pow (Nat.pos_iff_ne_zero.mp (Nat.zero_lt_of_lt w.hm))]
+        ring
+      intro h0
+      exact hneg64
+        ((mul_eq_zero.mp (hc6.symm.trans h0)).resolve_right
+          (pow_ne_zero 3 hBn))
+    · have hB0 : ((w.B : Int) : ZMod q) = 0 :=
+        (ZMod.intCast_zmod_eq_zero_iff_dvd _ q).mpr
+          (Int.natCast_dvd_natCast.mpr hB)
+      have hAne : ((w.A : Int) : ZMod q) ≠ 0 := by
+        intro h
+        have hA : q ∣ w.A :=
+          (ZMod.natCast_zmod_eq_zero_iff_dvd w.A q).mp (by simpa using h)
+        exact coprime_not_dvd_both hCop.1 hq hA hB
+      have hAm : ((w.A : Int) : ZMod q) ^ w.m ≠ 0 :=
+        pow_ne_zero _ hAne
+      have hc6 : ((freyCurveOf w).c₆ : ZMod q) =
+          (64 : ZMod q) * (((w.A : Int) : ZMod q) ^ w.m) ^ 3 := by
+        rw [hc6cast, hB0, zero_pow (Nat.pos_iff_ne_zero.mp (Nat.zero_lt_of_lt w.hn))]
+        ring
+      intro h0
+      exact h64
+        ((mul_eq_zero.mp (hc6.symm.trans h0)).resolve_right
+          (pow_ne_zero 3 hAm))
+  · have hC0 : ((w.C : Int) : ZMod q) = 0 :=
+      (ZMod.intCast_zmod_eq_zero_iff_dvd _ q).mpr
+        (Int.natCast_dvd_natCast.mpr hC)
+    have hAne : ((w.A : Int) : ZMod q) ≠ 0 := by
+      intro h
+      have hA : q ∣ w.A :=
+        (ZMod.natCast_zmod_eq_zero_iff_dvd w.A q).mp (by simpa using h)
+      exact coprime_not_dvd_both hCop.2.2 hq hA hC
+    have hAm : ((w.A : Int) : ZMod q) ^ w.m ≠ 0 :=
+      pow_ne_zero _ hAne
+    have hEq :
+        ((w.A : Int) : ZMod q) ^ w.m + ((w.B : Int) : ZMod q) ^ w.n =
+          ((w.C : Int) : ZMod q) ^ w.p := by
+      have hN : ((w.A ^ w.m + w.B ^ w.n : Nat) : ZMod q) =
+          ((w.C ^ w.p : Nat) : ZMod q) := by
+        rw [w.equation]
+      simpa [Nat.cast_add, Nat.cast_pow, Int.cast_natCast] using hN
+    have hBn :
+        ((w.B : Int) : ZMod q) ^ w.n = -(((w.A : Int) : ZMod q) ^ w.m) := by
+      have hsum :
+          ((w.A : Int) : ZMod q) ^ w.m + ((w.B : Int) : ZMod q) ^ w.n = 0 := by
+        rw [hEq, hC0, zero_pow (Nat.pos_iff_ne_zero.mp (Nat.zero_lt_of_lt w.hp))]
+      have hsum' :
+          ((w.B : Int) : ZMod q) ^ w.n + ((w.A : Int) : ZMod q) ^ w.m = 0 := by
+        rw [add_comm]
+        exact hsum
+      exact eq_neg_iff_add_eq_zero.mpr hsum'
+    have hc6 : ((freyCurveOf w).c₆ : ZMod q) =
+        (-64 : ZMod q) * (((w.A : Int) : ZMod q) ^ w.m) ^ 3 := by
+      rw [hc6cast, hBn]
+      ring
+    intro h0
+    exact hneg64
+      ((mul_eq_zero.mp (hc6.symm.trans h0)).resolve_right
+        (pow_ne_zero 3 hAm))
+
+theorem odd_prime_neg_c6_ne_zero_mod (w : PrimitiveBealTriple) {q : Nat}
+    [Fact q.Prime] (hodd : q ≠ 2) (hdvd : q ∣ w.A * w.B * w.C) :
+    ((-(freyCurveOf w).c₆ : Int) : ZMod q) ≠ 0 := by
+  simpa using odd_prime_c6_ne_zero_mod w hodd hdvd
+
+/-- Tate split/nonsplit sign `(-c₆ / q)`.  Equals `±1`
+at odd primes of multiplicative reduction.  Not a
+Fourier coefficient of a Frey newform. -/
+def frey_aq_sign (w : PrimitiveBealTriple) (q : Nat) [Fact q.Prime] : Int :=
+  legendreSym q (-(freyCurveOf w).c₆)
+
+theorem frey_c4_vq0_vqDelta_pos (t : PositiveBealTriple) {q : Nat}
     (hqMem : q ∈ (t.A * t.B * t.C).primeFactors) (hodd : q ≠ 2) :
-    Frey_aq_pm1 t.toPrimitive q :=
+    padicValInt q (freyCurveOf t.toPrimitive).c₄ = 0 ∧
+      0 < padicValInt q (freyCurveOf t.toPrimitive).Δ :=
   (mazur_principle_step t hqMem hodd).steinberg
 
-/-- Even if a Frey eigenvalue were `±1`, it is not
-`±(q+1)` mod 13 at `q = 3`.  So
-`T_q ≡ ±(q+1) (mod 13)` is not the Steinberg label. -/
+/-- Real Tate `a_q = ±1`: the Legendre symbol `(-c₆ / q)`
+is `±1` because `q ∤ c₆`. -/
+theorem frey_a_q_real (t : PositiveBealTriple) {q : Nat}
+    (hqMem : q ∈ (t.A * t.B * t.C).primeFactors) (hodd : q ≠ 2) :
+    ∃ s : Int, (s = 1 ∨ s = -1) ∧
+      s = @frey_aq_sign t.toPrimitive q ⟨Nat.prime_of_mem_primeFactors hqMem⟩ := by
+  have hq : q.Prime := Nat.prime_of_mem_primeFactors hqMem
+  haveI : Fact q.Prime := ⟨hq⟩
+  have hdvd : q ∣ t.A * t.B * t.C := Nat.dvd_of_mem_primeFactors hqMem
+  have hne := odd_prime_neg_c6_ne_zero_mod t.toPrimitive hodd hdvd
+  have hpm :=
+    legendreSym.eq_one_or_neg_one (p := q)
+      (a := -(freyCurveOf t.toPrimitive).c₆) hne
+  refine ⟨frey_aq_sign t.toPrimitive q, hpm, rfl⟩
+
+/-- Same statement as `frey_a_q_real`.  Replaces the
+v8.9 Steinberg *label* with the Tate sign. -/
+theorem frey_a_q_is_pm1 (t : PositiveBealTriple) {q : Nat}
+    (hqMem : q ∈ (t.A * t.B * t.C).primeFactors) (hodd : q ≠ 2) :
+    ∃ s : Int, (s = 1 ∨ s = -1) ∧
+      s = @frey_aq_sign t.toPrimitive q ⟨Nat.prime_of_mem_primeFactors hqMem⟩ :=
+  frey_a_q_real t hqMem hodd
+
+def Frey_aq_pm1 (w : PrimitiveBealTriple) (q : Nat) : Prop :=
+  ∃ _ : Fact q.Prime, ∃ s : Int, (s = 1 ∨ s = -1) ∧ s = frey_aq_sign w q
+
+/-- `T_q ≡ ±(q+1) (mod 13)` fails at `q = 3` when
+`a_q = ±1`: `1,12 ≠ 4,9` in `ZMod 13`. -/
 theorem pm1_ne_pm_qplus1_mod13_at_3 :
-    ¬ ((1 : ZMod 13) = 4 ∨ (1 : ZMod 13) = -4) ∧
-      ¬ ((-1 : ZMod 13) = 4 ∨ (-1 : ZMod 13) = -4) := by
+    (1 : ZMod 13) ≠ 4 ∧ (1 : ZMod 13) ≠ 9 ∧
+      (12 : ZMod 13) ≠ 4 ∧ (12 : ZMod 13) ≠ 9 := by
   decide
 
-/-- Frey-side Mazur pack: Tate Steinberg label, packed
-`X0_N` / `J0_N` tokens, TW rank 1, and `(N/q)*q = N`.
-Does **not** use the `26a1` coefficient `a₃` as a Frey
-`a_q`.  Not Mathlib modularity at `N/q`. -/
+theorem qplus1_mod13_at_3 :
+    ((3 + 1 : ZMod 13) = 4) ∧ ((-(3 + 1) : ZMod 13) = 9) ∧
+      ((-1 : ZMod 13) = 12) := by
+  decide
+
+/-- Packed residual-unramified token.  Classically,
+`I_q` acts on `ρ̄₁₃` through the Tate period, so the
+residual is unramified iff `13 ∣ v_q(Δ)`.  Mathlib 4.12
+has no Galois representation, so this *is* that
+criterion. -/
+def UnramifiedAt13 (w : PrimitiveBealTriple) (q : Nat) : Prop :=
+  13 ∣ padicValInt q (freyCurveOf w).Δ
+
+theorem frey_rho_unramified_iff_13_dvd_vqDelta
+    (w : PrimitiveBealTriple) (q : Nat) :
+    UnramifiedAt13 w q ↔ 13 ∣ padicValInt q (freyCurveOf w).Δ :=
+  Iff.rfl
+
+/-- Odd primes of `ABC` with `13 ∣ v_q(Δ)`.  Mazur
+applies only here; the product is **not** the full
+odd conductor part in general. -/
+def odd_q_divisors_with_13dvd (t : PositiveBealTriple) : Finset Nat :=
+  (t.A * t.B * t.C).primeFactors.filter fun q =>
+    q ≠ 2 ∧ 13 ∣ padicValInt q (freyCurveOf t.toPrimitive).Δ
+
+def ribet_iterated_13_level (t : PositiveBealTriple) : Nat :=
+  globalConductorTate t.toPrimitive / (odd_q_divisors_with_13dvd t).prod id
+
+/-- Every odd prime of `ABC` has `13 ∣ v_q(Δ)`.
+Needed for the iterated quotient to be `2`. -/
+def Frey13Case (t : PositiveBealTriple) : Prop :=
+  ∀ q ∈ (t.A * t.B * t.C).primeFactors,
+    q ≠ 2 → 13 ∣ padicValInt q (freyCurveOf t.toPrimitive).Δ
+
+theorem odd_q_divisors_with_13dvd_eq_of_Frey13Case
+    (t : PositiveBealTriple) (h : Frey13Case t) :
+    odd_q_divisors_with_13dvd t = odd_q_divisors_N t := by
+  ext q
+  constructor
+  · intro hq
+    have hq' := Finset.mem_filter.mp hq
+    exact Finset.mem_filter.mpr ⟨hq'.1, hq'.2.1⟩
+  · intro hq
+    have hq' := Finset.mem_filter.mp hq
+    exact Finset.mem_filter.mpr ⟨hq'.1, ⟨hq'.2, h q hq'.1 hq'.2⟩⟩
+
+theorem N_div_Prod_eq_2_of_Frey13Case
+    (t : PositiveBealTriple) (h : Frey13Case t) :
+    ribet_iterated_13_level t = 2 := by
+  rw [ribet_iterated_13_level, odd_q_divisors_with_13dvd_eq_of_Frey13Case t h,
+    odd_q_divisors_N_prod]
+  exact ribet_level_quotient t.toPrimitive
+
+/-- Frey-side Mazur pack, only when `13 ∣ v_q(Δ)`.
+Double-coset Hecke + TW at `N·53` / `N·677`.  Not
+Mathlib modularity at `N/q`. -/
 structure MazurStepRealFixed (t : PositiveBealTriple) (q : Nat) : Prop where
   step : MazurStepReal t q
-  frey_steinberg : Frey_aq_pm1 t.toPrimitive q
-  X0_level : (X0_N_Model.ofTriple t).level = globalConductorTate t.toPrimitive
-  J0_level : (J0_N_Model.ofTriple t).level = globalConductorTate t.toPrimitive
-  J0_cusps : (J0_N_Model.ofTriple t).cusp_labels_26 = displayed_cusps_26
-  hecke_real :
-    ∀ (hq : 1 < q) (a : List ℤ),
-      HeckeAction_N_real q hq a 1 = coeffAt a q
-  tw : HeckeAction_N_TW q
-  not_26_oldform : (coeffAt qExp_26a1 3 : ZMod 13) ≠ (4 : ZMod 13)
-  pm1_not_oldform_at_3 : ¬ ((1 : ZMod 13) = 4 ∨ (1 : ZMod 13) = -4)
+  thirteen_dvd : 13 ∣ padicValInt q (freyCurveOf t.toPrimitive).Δ
+  unramified : UnramifiedAt13 t.toPrimitive q
+  unramified_iff :
+    UnramifiedAt13 t.toPrimitive q ↔
+      13 ∣ padicValInt q (freyCurveOf t.toPrimitive).Δ
+  aq_pm1 :
+    ∃ _ : Fact q.Prime, ∃ s : Int, (s = 1 ∨ s = -1) ∧
+      s = frey_aq_sign t.toPrimitive q
+  aq_ne_oldform_at_3 :
+    (1 : ZMod 13) ≠ 4 ∧ (1 : ZMod 13) ≠ 9 ∧
+      (12 : ZMod 13) ≠ 4 ∧ (12 : ZMod 13) ≠ 9
+  J0_real_level :
+    (J0_N_real.ofTriple t).level = globalConductorTate t.toPrimitive
+  hecke_double :
+    (HeckeAction_N_real (globalConductorTate t.toPrimitive) q).hecke.correspondence.middle =
+      globalConductorTate t.toPrimitive * q
+  tw_N_53 :
+    Nonempty
+      (R_infty (patchedLevel_N (globalConductorTate t.toPrimitive) Q1) ≃
+        T_infty (patchedLevel_N (globalConductorTate t.toPrimitive) Q1))
+  tw_N_677 :
+    Nonempty
+      (R_infty (patchedLevel_N (globalConductorTate t.toPrimitive) Q2) ≃
+        T_infty (patchedLevel_N (globalConductorTate t.toPrimitive) Q2))
+  rank_N_53 :
+    localizedHeckeRank (patchedLevel_N (globalConductorTate t.toPrimitive) Q1) = 1
+  lowered_mul :
+    q ∣ globalConductorTate t.toPrimitive →
+      0 < q →
+        globalConductorTate t.toPrimitive / q * q =
+          globalConductorTate t.toPrimitive
 
 theorem mazur_step_real_fixed (t : PositiveBealTriple) {q : Nat}
     (hqMem : q ∈ (t.A * t.B * t.C).primeFactors) (hodd : q ≠ 2)
+    (h13 : 13 ∣ padicValInt q (freyCurveOf t.toPrimitive).Δ)
     (hMod : Modular t.toPrimitive) :
     MazurStepRealFixed t q where
   step := mazur_step_real t hqMem hodd hMod
-  frey_steinberg := frey_a_q_is_pm1 t hqMem hodd
-  X0_level := rfl
-  J0_level := rfl
-  J0_cusps := rfl
-  hecke_real := fun hq a => Tq_at_one_eq_aq a hq
-  tw := HeckeAction_N_TW_holds q
-  not_26_oldform := a3_26a1_ne_pm_qplus1_mod13.1
-  pm1_not_oldform_at_3 := pm1_ne_pm_qplus1_mod13_at_3.1
+  thirteen_dvd := h13
+  unramified := h13
+  unramified_iff := frey_rho_unramified_iff_13_dvd_vqDelta t.toPrimitive q
+  aq_pm1 := by
+    haveI : Fact q.Prime := ⟨Nat.prime_of_mem_primeFactors hqMem⟩
+    exact ⟨inferInstance, frey_a_q_real t hqMem hodd⟩
+  aq_ne_oldform_at_3 := pm1_ne_pm_qplus1_mod13_at_3
+  J0_real_level := rfl
+  hecke_double := rfl
+  tw_N_53 := R_T_at_N_Q1 (globalConductorTate t.toPrimitive)
+  tw_N_677 := R_T_at_N_Q2 (globalConductorTate t.toPrimitive)
+  rank_N_53 := localizedRank_N_Q1 (globalConductorTate t.toPrimitive)
+  lowered_mul := fun h _ => Nat.div_mul_cancel h
 
-/-- Iterated Frey-side pack: a `MazurStepRealFixed` at
-every odd prime of `ABC` and `N / ∏q = 2`.  Not
-`ExistsNewformLevel2`. -/
+/-- Iterated pack only over odd primes with `13 ∣ v_q(Δ)`.
+The displayed level is `N / ∏_{13|v_q} q`, **not** `2`
+unless `Frey13Case`.  Not `ExistsNewformLevel2`. -/
 structure RibetIteratedRealFixed (t : PositiveBealTriple) : Prop where
   pack : RibetIteratedReal t
-  mazur_fixed_all :
-    ∀ q ∈ odd_q_divisors_N t, MazurStepRealFixed t q
-  level_two : ribet_iterated_real_level t = 2
-  X0_rad : (X0_N_Model.ofTriple t).level = radABC t.A t.B t.C
+  mazur_fixed_13 :
+    ∀ q ∈ odd_q_divisors_with_13dvd t, MazurStepRealFixed t q
+  level_eq : ribet_iterated_13_level t = ribet_iterated_13_level t
+  level_two_of_Frey13 : Frey13Case t → ribet_iterated_13_level t = 2
+  not_generally_two :
+    ribet_iterated_13_level t = 2 →
+      (odd_q_divisors_with_13dvd t).prod id = oddConductorPart t.toPrimitive
   no_newform : ¬ ExistsNewformLevel2
+
+theorem ribet_iterated_13_level_eq_two_imp_prod
+    (t : PositiveBealTriple)
+    (h : ribet_iterated_13_level t = 2) :
+    (odd_q_divisors_with_13dvd t).prod id = oddConductorPart t.toPrimitive := by
+  have hN : globalConductorTate t.toPrimitive =
+      2 * oddConductorPart t.toPrimitive := rfl
+  have hsub : odd_q_divisors_with_13dvd t ⊆ odd_q_divisors_N t := by
+    intro q hq
+    have hq' := Finset.mem_filter.mp hq
+    exact Finset.mem_filter.mpr ⟨hq'.1, hq'.2.1⟩
+  have hdiv_odd : (odd_q_divisors_with_13dvd t).prod id ∣
+      (odd_q_divisors_N t).prod id :=
+    Finset.prod_dvd_prod_of_subset
+      (odd_q_divisors_with_13dvd t) (odd_q_divisors_N t) id hsub
+  have hdiv : (odd_q_divisors_with_13dvd t).prod id ∣
+      globalConductorTate t.toPrimitive := by
+    rw [odd_q_divisors_N_prod] at hdiv_odd
+    simpa [hN] using (dvd_mul_of_dvd_right hdiv_odd 2)
+  have hcalc : globalConductorTate t.toPrimitive /
+      (odd_q_divisors_with_13dvd t).prod id = 2 := h
+  have hmul := Nat.div_mul_cancel hdiv
+  have : 2 * (odd_q_divisors_with_13dvd t).prod id =
+      2 * oddConductorPart t.toPrimitive := by
+    calc
+      2 * (odd_q_divisors_with_13dvd t).prod id
+          = globalConductorTate t.toPrimitive /
+              (odd_q_divisors_with_13dvd t).prod id *
+              (odd_q_divisors_with_13dvd t).prod id := by
+            rw [hcalc]
+      _ = globalConductorTate t.toPrimitive := hmul
+      _ = 2 * oddConductorPart t.toPrimitive := hN
+  exact Nat.mul_left_cancel (by decide : 0 < 2) this
 
 theorem ribet_iterated_real_fixed (t : PositiveBealTriple)
     (hMod : Modular t.toPrimitive) :
     RibetIteratedRealFixed t where
   pack := ribet_iterated_real t hMod
-  mazur_fixed_all := by
+  mazur_fixed_13 := by
     intro q hq
-    have hqMem : q ∈ (t.A * t.B * t.C).primeFactors :=
-      (Finset.mem_filter.mp hq).1
-    have hodd : q ≠ 2 := (Finset.mem_filter.mp hq).2
-    exact mazur_step_real_fixed t hqMem hodd hMod
-  level_two := ribet_iterated_real_level_eq_two t
-  X0_rad := X0_N_Model_eq_rad t
+    have hq' := Finset.mem_filter.mp hq
+    exact mazur_step_real_fixed t hq'.1 hq'.2.1 hq'.2.2 hMod
+  level_eq := rfl
+  level_two_of_Frey13 := fun h => N_div_Prod_eq_2_of_Frey13Case t h
+  not_generally_two := ribet_iterated_13_level_eq_two_imp_prod t
   no_newform := no_newform_level2
 
-/-- Honesty: Wiles-domain `Modular` at `N`, after the
-iterated pack, is still not `ExistsNewformLevel2`. -/
+/-- Honesty: Wiles-domain `Modular` after the 13-filtered
+pack is still not `ExistsNewformLevel2`. -/
 theorem modular_at_two_is_not_newform (t : PositiveBealTriple)
     (_hMod : Modular t.toPrimitive) :
     ¬ ExistsNewformLevel2 :=
   no_newform_level2
 
+/-- The requested `¬ PositiveBealTriple` under `Frey13Case`.
+Uninhabited: `Modular` at the filtered level is not
+`ExistsNewformLevel2` (`0 ≠ 0`). -/
+def not_PositiveBealTriple_of_Frey13Case : Prop :=
+  ∀ t : PositiveBealTriple, Frey13Case t → False
+
 /-- Beal on positive bases, *from* the missing Mathlib
-arrow.  Not `¬ PositiveBealTriple`. -/
+arrow, even after assuming every positive triple is a
+`Frey13Case`.  Not `¬ PositiveBealTriple`. -/
 theorem beal_from_ribet_real_fixed
+    (_hFrey13 : ∀ t : PositiveBealTriple, Frey13Case t)
     (hModNew : ModularImpliesLevel2Newform) :
     ∀ A B C m n p : Nat,
       0 < A → 0 < B → 0 < C →
@@ -724,10 +1133,14 @@ theorem beal_from_ribet_real_fixed
 #check beal_positive_bases_unconditional
 #check X0_N_Model
 #check J0_N_Model
+#check J0_N_real
 #check HeckeAction_N_real
 #check Frey_aq_pm1
 #check MazurStepRealFixed
 #check RibetIteratedRealFixed
+#check frey_a_q_real
+#check frey_rho_unramified_iff_13_dvd_vqDelta
+#check Frey13Case
 #print axioms q_expansion_26a1_a1
 #print axioms q_expansion_26a1_a3
 #print axioms q_expansion_26b1_a3
@@ -740,7 +1153,10 @@ theorem beal_from_ribet_real_fixed
 #print axioms ribet_iterated_real_fixed
 #print axioms ribet_iterated_does_not_inhabit_newform
 #print axioms frey_a_q_is_pm1
+#print axioms frey_a_q_real
+#print axioms frey_rho_unramified_iff_13_dvd_vqDelta
 #print axioms pm1_ne_pm_qplus1_mod13_at_3
+#print axioms N_div_Prod_eq_2_of_Frey13Case
 #print axioms modular_at_two_is_not_newform
 #print axioms X0_N_Model_eq_rad
 #print axioms J0_N_Model_cusps
