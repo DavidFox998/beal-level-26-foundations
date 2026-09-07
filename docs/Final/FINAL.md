@@ -1,19 +1,20 @@
-# FINAL v6.8.0 — ExistsNewformLevel2 real witness via R=T + X0(26) + TW infinite
+# FINAL v6.8.1 — About catch-up 22602899 relook
 
-Latest tag `v6.8.0-iter-exists-newform-level-2-real`.
-Displayed ExistsNewformLevel2 real witness via
-`R = T` + `X₀(26)` + TW infinite + Ribet `26 → 2`
-+ finite-flat / unramified / semistable /
-`det = χ₁₃` + Frey Δ.  Keep `Nat.pow` OFF token.
-Official build **22 modules**.  Latest written mint remains
+Latest tag `v6.8.1-iter-about-catchup-22602899-relook`.
+Records Lean HEAD `3cfa703` /
+`v6.8.0-iter-exists-newform-level-2-real`.  **No Lean change.**
+Latest written mint now
+[10.5281/zenodo.22602899](https://doi.org/10.5281/zenodo.22602899)
+(v6.8.0 ExistsNewformLevel2 real witness via
+`R = T` + `X₀(26)` + TW infinite real none)
+DataCite findable, after
 [10.5281/zenodo.22592524](https://doi.org/10.5281/zenodo.22592524)
 (v6.7.0 modular lifting at 26 via `R = T`
 patching + TW infinite real none).
-The v6.7.1 mint `22595002` and this v6.8.0 mint
-are **not** written into About.  Next catch-up
-is v6.8.1.  Hook `22379293`.  `IsVersionOf`
-`22272382` metadata only.  Original-family
-latest remains `22322627`.
+The new v6.8.1 mint is **not** written into About.
+Three JPEG plates stay in `docs/assets/v6.7.0/`.
+Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
 
 ### v6.0.0 REAL ALGORITHMS
 
@@ -433,6 +434,18 @@ This is **not** inhabiting original
   are **not** in that term
 
 Existing tokens unchanged.
+
+### v6.8.1 About catch-up DONE
+
+Chain `22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449 → 22560793
+→ 22562014 → 22564236 → 22565376 → 22565933
+→ 22572211 → 22581510 → 22582199 → 22584065
+→ 22587409 → 22589077 → 22592524 → 22595002
+→ 22602899`.  About now writes `22602899` as
+the latest recorded mint.  Docs lock + 3 plates
+relook.  No Lean change.
 
 ### Honest lock (unchanged from FINAL v5)
 

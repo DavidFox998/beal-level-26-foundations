@@ -423,3 +423,23 @@ original Path 2 / original Beal `∀` / empty
 `R_T_algorithm` stay uninhabited.  About still
 lists written mint `22592524` until v6.8.1.
 
+### v6.8.1-iter-about-catchup-22602899-relook — DONE
+
+About catch-up `22592524` (v6.7.0 modular lifting
+at 26 via `R = T` patching + TW infinite real none)
+→ `22602899` (v6.8.0 ExistsNewformLevel2 real
+witness via `R = T` + `X₀(26)` + TW infinite).
+Docs lock.  No Lean change.  HEAD `3cfa703`.
+Three JPEG plates kept in `docs/assets/v6.7.0/`.
+Facebook Open Graph stays JPEG, not WebP.
+Hook `22379293`.  `IsVersionOf` `22272382`.
+Original-family latest remains `22322627`.
+Chain
+`22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449 → 22560793
+→ 22562014 → 22564236 → 22565376 → 22565933
+→ 22572211 → 22581510 → 22582199 → 22584065
+→ 22587409 → 22589077 → 22592524 → 22595002
+→ 22602899`.
+

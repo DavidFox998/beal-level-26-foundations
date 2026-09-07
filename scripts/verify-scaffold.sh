@@ -663,7 +663,33 @@ do
   grep -q "v6.7.0-iter-modular-lifting-at-26-real" "$readme"
   grep -q "v6.7.1-iter-about-catchup-22592524" "$readme"
   grep -q "v6.8.0-iter-exists-newform-level-2-real" "$readme"
+  grep -q "v6.8.1-iter-about-catchup-22602899-relook" "$readme"
 done
+test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
+test -f docs/assets/v6.7.0/ribet_26_to_2.png
+test -f docs/assets/v6.7.0/ribet_26_to_2.webp
+test -f docs/assets/v6.7.0/tw_qn_infinite_family.jpg
+test -f docs/assets/v6.7.0/tw_qn_infinite_family.png
+test -f docs/assets/v6.7.0/tw_qn_infinite_family.webp
+test -f docs/assets/v6.7.0/galois_token.jpg
+test -f docs/assets/v6.7.0/galois_token.png
+test -f docs/assets/v6.7.0/galois_token.webp
+grep -q 'og:image" content="https://davidfox998.github.io/beal-level-26-foundations/assets/v6.7.0/ribet_26_to_2.jpg"' \
+  docs/index.html
+grep -q 'og:image:type" content="image/jpeg"' docs/index.html
+grep -q 'assets/v6.7.0/ribet_26_to_2.jpg' docs/facebook-share.json
+grep -q 'image/jpeg' docs/facebook-share.json
+test ! -e extensions/facebook
+test ! -e docs/images/797726399_1063690106418837_5544926896290683567_n.webp
+grep -q "assets/v6.7.0/ribet_26_to_2.jpg" docs/About.md
+grep -q "assets/v6.7.0/tw_qn_infinite_family.jpg" docs/About.md
+grep -q "assets/v6.7.0/galois_token.jpg" docs/About.md
+grep -q "assets/v6.7.0/ribet_26_to_2.jpg" docs/Final/FINAL.md
+grep -q "assets/v6.7.0/tw_qn_infinite_family.jpg" docs/Final/FINAL.md
+grep -q "assets/v6.7.0/galois_token.jpg" docs/Final/FINAL.md
+grep -q "docs/assets/v6.7.0/ribet_26_to_2.jpg" README.md
+grep -q "docs/assets/v6.7.0/tw_qn_infinite_family.jpg" README.md
+grep -q "docs/assets/v6.7.0/galois_token.jpg" README.md
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md
 grep -qi "genuine cohomological 2-Selmer" \

@@ -1,19 +1,19 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v6.8.0-iter-exists-newform-level-2-real`.
-Displayed ExistsNewformLevel2 real witness via
-`R = T` + `X₀(26)` + TW infinite + Ribet `26 → 2`
-+ finite-flat / unramified / semistable /
-`det = χ₁₃` + Frey Δ.
-Keep `Nat.pow` OFF token same pattern as
-modular lifting + Ribet + modularity + finite-flat +
-unramified + `det = χ₁₃` + Frey Δ.
+Latest tag / HEAD: `v6.8.1-iter-about-catchup-22602899-relook`.
+Records Lean HEAD `3cfa703` /
+`v6.8.0-iter-exists-newform-level-2-real`.  No Lean change
+on this catch-up.  Assets relook keeps the three
+JPEG plates (WebP fallback only).
 
 Latest parallel mint written
+[10.5281/zenodo.22602899](https://doi.org/10.5281/zenodo.22602899)
+(v6.8.0 ExistsNewformLevel2 real witness via
+`R = T` + `X₀(26)` + TW infinite real none)
+DataCite findable, after
 [10.5281/zenodo.22592524](https://doi.org/10.5281/zenodo.22592524)
 (v6.7.0 modular lifting at 26 via `R = T`
-patching + TW infinite real none)
-DataCite findable, after
+patching + TW infinite real none), after
 [10.5281/zenodo.22587409](https://doi.org/10.5281/zenodo.22587409)
 (v6.6.0 Ribet level lowering `26 → 2` real none +
 modularity at 26 via `X₀(26)` real none), after
@@ -29,10 +29,8 @@ none), after
 [10.5281/zenodo.22559449](https://doi.org/10.5281/zenodo.22559449)
 (v6.1.0 TW infinite family), after
 [10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
-(v6.0.0 REAL ALGORITHMS).  The v6.7.1 mint
-`22595002` is **not** written here.  This
-v6.8.0 mint is **not** written here.  Next
-catch-up is v6.8.1.  Hook
+(v6.0.0 REAL ALGORITHMS).  The new v6.8.1 mint is
+**not** written here.  Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
 `IsVersionOf` [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)
 is metadata only.  Original-family latest remains
@@ -353,9 +351,11 @@ displayed Beal `∀` closed term **propext only**
 positivity / det / unramified / semistable /
 finite-flat / Ribet / modularity / TW / `R = T`
 / modular lifting lemmas not in term so no
-`Classical.choice`).
-
-v6.8.0 displayed ExistsNewformLevel2 real
+`Classical.choice`) →
+`22595002` (v6.7.1 About catch-up DONE,
+About writes `22592524`; v6.7.1-assets
+`607a017` places three JPEG plates) →
+`22602899` (v6.8.0 displayed ExistsNewformLevel2 real
 witness (21 → 22 modules
 `GaloisRep.GaloisExistsNewformLevel2Real`).
 `frey_exists_newform_level_2_formula` Exists
@@ -414,6 +414,15 @@ positivity / det / unramified / semistable /
 finite-flat / Ribet / modularity / TW / `R = T`
 / modular lifting / exists-newform lemmas not
 in term so no `Classical.choice`.
+Three plates kept JPEG (WebP fallback only):
+`assets/v6.7.0/ribet_26_to_2.jpg` after the
+v6.6.0 `26a1`/`26b1` line,
+`assets/v6.7.0/tw_qn_infinite_family.jpg`
+after the v6.7.0 `Q_1`/`Q_2`/`8789` line,
+`assets/v6.7.0/galois_token.jpg` after the
+v6.7.0 `frey_Delta13_formula` `Int.pow` /
+`Nat.pow` OFF text.  Facebook Open Graph
+uses JPEG, not WebP.).
 
 Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms.

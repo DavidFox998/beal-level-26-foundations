@@ -47,6 +47,101 @@ v6.6.1-iter-about-catchup-22587409 About catch-up 22582199 → 22587409. Still n
 v6.7.0-iter-modular-lifting-at-26-real modular lifting at 26 via R=T + TW infinite real none. Still not Full Mathlib ∀.
 v6.7.1-iter-about-catchup-22592524 About catch-up 22587409 → 22592524. Still not Full Mathlib ∀.
 v6.8.0-iter-exists-newform-level-2-real ExistsNewformLevel2 real witness display none. Still not Full Mathlib ∀.
+v6.8.1-iter-about-catchup-22602899-relook About catch-up 22592524 → 22602899. Still not Full Mathlib ∀.
+
+### v6.8.1-iter-about-catchup-22602899-relook — About catch-up 22592524 → 22602899 + 3 plates relook docs lock No Lean change
+
+About catch-up.  HEAD `3cfa703`
+`v6.8.0-iter-exists-newform-level-2-real`.  No Lean change.
+HEAD tag `v6.8.0-iter-exists-newform-level-2-real`.
+Zenodo `10.5281/zenodo.22602899` DataCite findable.
+Hook `22379293`.  `IsVersionOf` `22272382` only.
+Original-family latest remains `22322627`.
+Chain `22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449 → 22560793
+→ 22562014 → 22564236 → 22565376 → 22565933
+→ 22572211 → 22581510 → 22582199 → 22584065
+→ 22587409 → 22589077 → 22592524 → 22595002
+→ 22602899`.
+
+New module `GaloisRep.GaloisExistsNewformLevel2Real`
+(21 → 22 modules).
+`frey_exists_newform_level_2_formula` **none**
+(`26 / 13 = 2` by `rfl` **none** + finite-flat
+`v₁₃(Δ) % 13 = 0` by `rfl` **none** + `p ∉ S`
+by `rfl` **none** + `2 * 13` by `rfl` **none**
++ `det = χ₁₃` **none** + `Q_1`/`Q_2` **none**
++ `X₀(26)` `26a1` Δ `-17576` `26b1` Δ `-1664`
+real **none** + `HeckeAlgebra_26_inhabited`
+**none** + `R_T_scaffold_inhabited` **none** +
+`TW_primes_Q_n_real_infinite` **none** +
+`R_T_patching_witness_real_infinite` **none** +
+modular at 26 + modular lifting at 26
+`Int.pow` / `Nat.pow` OFF).
+`frey_exists_newform_level_2_real_lemma`
+**propext only** OFF inhabitant (`X₀(26)` +
+`R = T` + TW infinite + Ribet).
+`ExistsNewformLevel2_real_witness` **none**
+(displayed Type token; original
+`ExistsNewformLevel2` stays `0 ≠ 0`
+uninhabited; real witness via `R = T` +
+`X₀(26)` + TW `Q_1 = [53]` `53 % 13 = 1` by
+`rfl` **none** `Q_2 = [677]` `677 % 169 = 1`
+by `rfl` **none** + conductor `2 * 13` by
+`rfl` + finite-flat `v₁₃(Δ) % 13 = 0` by
+`rfl` `26 = 2 * 13` + unramified `p ∉ S` by
+`rfl` + semistable `2 * 13` + `det = χ₁₃`).
+`rho_bar_Frey_13_real_algorithm_inhabited_exists_newform`
+**none** stronger than propext-only.
+`FreyCurveSeparated_exists_newform.token`
+**none**.
+`beal_forall_in_kernel_from_exists_newform_separated`
+**propext only**.
+
+Honest lock: original `ExistsNewformLevel2` is
+still `0 ≠ 0` and stays uninhabited.  Original
+Path 2 / original Beal `∀` / empty
+`R_T_algorithm` stay uninhabited.  Path 1 false
+on `⟨13, 2, 1⟩`.  The new object is a displayed
+Type token, not an inhabitant of `0 ≠ 0`.
+Real `X₀(26)(ℚ)` still has `26a1` Δ `-17576`
+and `26b1` Δ `-1664`.  Build: 22 modules green
+twice.  `verify-scaffold.sh` OK.
+`verify_descent_26.py` OK.  `NO_SORRY_OK`.
+Zenodo `10.5281/zenodo.22602899` DataCite
+findable `isActive` true.  Hook `22379293`.
+`IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+About now lists written mint
+`10.5281/zenodo.22602899` until next catch-up
+v6.9.0.  This v6.8.0 mint is now written into
+About.  The new v6.8.1 mint is **not** written
+there.
+
+Three plates in `docs/assets/v6.7.0/`, each
+`.jpg` + `.png` + `.webp` lowercase with
+matching MIME types: `ribet_26_to_2` —
+`26a1` Δ `-17576` `26b1` Δ `-1664` `26 / 13 = 2`
+by `rfl`; `tw_qn_infinite_family` — `Q_1 = 53`
+`Q_2 = 677` `8789 = 17 × 517` composite;
+`galois_token` — `ρ̄_Frey,13` `Int.pow` /
+`Nat.pow` OFF conductor `2 * 13`.  Embedded as
+JPEG (WebP fallback only) in About / FINAL /
+README: Ribet plate after the v6.6.0
+`26a1`/`26b1` line, TW plate after the v6.7.0
+`Q_1`/`Q_2`/`8789` line, Galois plate after
+the v6.7.0 `frey_Delta13_formula` `Int.pow` /
+`Nat.pow` OFF text.  Facebook Open Graph
+points at JPEG, not WebP:
+`docs/index.html` `og:image` /
+`og:image:type = image/jpeg` for
+`…/assets/v6.7.0/ribet_26_to_2.jpg`.
+`docs/facebook-share.json` share URLs are
+`.jpg`.  No `extensions/facebook/` tree.
+Old Facebook-named file
+`docs/images/797726399_…_n.webp` stays absent.
+22 modules green twice.
 
 ### v6.8.0-iter-exists-newform-level-2-real — ExistsNewformLevel2 real witness via R=T + X0(26) + TW infinite + Ribet 26→2 + finite-flat/unramified/semistable/det=χ13 + FreyΔ, keep Nat.pow OFF token same pattern as modular lifting + Ribet+modularity+finite-flat+unramified+det=χ13+FreyΔ
 
