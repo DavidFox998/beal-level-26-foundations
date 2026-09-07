@@ -34,7 +34,7 @@ as of** `v4.2.0-full-chain` / `v2.0.0-frey`.
 | `../Beal/FullProof/X0_26_Model.lean` | `AdjoinRoot (Y²−f)` + `Ω[R⁄ℚ]`; `2 y dy = f' dx`; integral model at 3 | Not Mathlib modular-curve sheaf / Chabauty `X(ℚ)` |
 | `../Beal/FullProof/HeckeAction.lean` | Weight-2 `T_q` on ledger prefixes; TW 53/677 | Not Mathlib `End(J₀(N))` |
 | `../Beal/FullProof/LevelLowering.lean` | `Frey_GaloisRep` + `level_lowering_to_2_term` Hecke/TW pack; `beal_positive_bases_unconditional` from the Prop | Not `ExistsNewformLevel2` (`0 ≠ 0`); not unconditional Beal |
-| `../Beal/FullProof/RibetMazur.lean` | `FreyEllCase5Mixed` (`A=2^e` plus two `ℓ≥5`); `TWAuxEllFixed` with `N<Qᵢ` | Not `ExistsNewformLevel2` (`0 ≠ 0`); not unconditional Beal `∀` |
+| `../Beal/FullProof/RibetMazur.lean` | Odd-`A` residues for `4,13,13`; `A=1` impossible; Mixed iff `A=2^e` | Not `ExistsNewformLevel2` (`0 ≠ 0`); odd `A ≥ 3` not closed; not unconditional Beal `∀` |
 | `FreyCurve13.lean` | Displayed triple plus working-prime `WeierstrassCurve` `freyCurve ↑A ↑B 13 13`. Does not import Forall. | Not Tate conductor; not a noncuspidal `X₀(26)` point |
 | `FreyModularity_13.lean` | `WeierstrassModularity c` is displayed `Modularity (FreyCurve13 w.A w.B w.C)` when `c` is the pack of `w`. `WeierstrassModularity_of_pack` is `frey_modular_13`. | Not Wiles--Taylor; `WeierstrassCurve` has no `.A`; not a noncuspidal `X₀(26)` point |
 

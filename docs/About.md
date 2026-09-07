@@ -1,15 +1,14 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.13.0-mixed-ell-plus-dirichlet`.
-Lean change: `RibetMazur.lean` adds
-`FreyEllCase5Mixed` so `m=4, n=13, p=13`
-is covered when `A` is a power of 2
-(`13 | v_q(Δ)` at every odd `q`).
-`TWAuxEllFixed ℓ N` requires `N < Q1, Q2`,
-hence `Qi` does not divide `N`.
-Listed `Q1 ≡ 1 [MOD ℓ]` for
-`ℓ` in `{5,7,11,13,17,19,23,29,31}` only —
-not every `ℓ ≤ 1000` and not Dirichlet.
+Latest tag / HEAD: `v8.14.0-mixed-odd-A`.
+Lean change: `RibetMazur.lean` proves
+odd `A⁴ ≡ 1 [MOD 16]`, odd `B¹³ ≡ B [MOD 8]`,
+`A⁴ ≡ C−B [MOD 13]`, and that the only odd
+power of 2 (`A=1`) cannot satisfy
+`1 + B¹³ = C¹³`.  `FreyEllCase5Mixed` covers
+`m=4, n=13, p=13` **iff** `A=2^e`; odd
+`A ≥ 3` is still none of the three arms.
+`beal_4_13_13_size` stays an uninhabited Prop.
 `beal_from_ribet_ell_mixed` stays *from*
 `ModularImpliesLevel2Newform`.
 `ExistsNewformLevel2` is still `0 ≠ 0`.

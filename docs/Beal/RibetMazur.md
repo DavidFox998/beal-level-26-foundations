@@ -1,24 +1,24 @@
-# v8.13.0 RibetMazur mixed case + TWAuxEllFixed
+# v8.14.0 RibetMazur odd-A residues + A=1 impossible
 
 `lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean`
 
-A power-of-2 base plus two exponents with a prime
-factor `ℓ ≥ 5` makes every odd `q | ABC` Mazur-eligible
-(`13 | v_q(Δ)` in the displayed `4,13,13` case).
-TW primes are relative to a conductor `N` via
-`N < Qᵢ`.  Does **not** import `X0_26_Model`.
-Does **not** inhabit `ExistsNewformLevel2` (`0 ≠ 0`).
+Elementary modular constraints for `m=4, n=13, p=13`
+with odd `A`.  The only odd power of 2 is `A=1`,
+and `1 + B¹³ = C¹³` is impossible.  Mixed covers
+that exponent triple **iff** `A=2^e`.  Odd `A ≥ 3`
+is still none of the three arms.  Does **not**
+import `X0_26_Model`.  Does **not** inhabit
+`ExistsNewformLevel2` (`0 ≠ 0`).
 
 | Name | Status |
 |---|---|
-| `FreyEllCase5Mixed` | `FreyEllCase5 ∨ FermatFourCase ∨ MixedPow2Case` |
-| `mixed_covers_4_13_13` | `m=4,n=13,p=13` when `A=2^e` |
-| `thirteen_dvd_Delta_of_mixed_pow2_A` | every odd `q` has `13 \| v_q(Δ)` in that case |
-| `beal_pow2_base` | `rad(2^e) = 1` or `2` |
-| `TWAuxEllFixed ℓ N` | `N < Qᵢ` implies `Qᵢ ∤ N`; not `∀ N` |
-| `TWAuxEll.of5` / `of7` / `of13_26` | explicit pairs `11/101`, `29/197`, `53/677` |
-| `exists_prime_one_mod_ell_listed` | `Q₁` for nine small `ℓ` only, not `∀ ℓ ≤ 1000` |
-| `ribet_iterated_ell_mixed` | packed mixed iteration; not a newform |
+| `mod_pow4_odd` | odd `A` has `A⁴ ≡ 1 [MOD 16]` |
+| `mod_pow13_odd` | odd `B` has `B¹³ ≡ B [MOD 8]`; not `∀ B` |
+| `beal_4_13_13_mod8` | opposite parity plus residues; not `False` |
+| `beal_4_13_13_mod13` | `A⁴ ≡ C − B` in `ZMod 13` |
+| `not_beal_4_13_13_of_A_eq_one` | `1 + B¹³ = C¹³` is impossible |
+| `FreyEllCase5Mixed_4_13_13_iff_pow2_A` | Mixed iff `A=2^e` |
+| `beal_4_13_13_size` | uninhabited Prop; odd `A ≥ 3` not closed |
 | `beal_from_ribet_ell_mixed` | still *from* `ModularImpliesLevel2Newform` |
 
 `#print axioms` is `[propext, Classical.choice, Quot.sound]`.

@@ -3,15 +3,13 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.13.0 — Mixed power-of-2 base plus two
-`ℓ ≥ 5` exponents, and `TWAuxEllFixed ℓ N` with
-`N < Qᵢ`.  Explicit `Q₁` for a listed set of small
-`ℓ`, not Dirichlet and not every `ℓ ≤ 1000`.
-Builds on v8.12.0: Fermat `n=4` closes the all-powers-of-2
-exponent case; TW auxiliary primes are a search token
-`Q₁ ≡ 1 [MOD ℓ]`, `Q₂ ≡ 1 [MOD ℓ²]` (inhabited at
-`ℓ = 13` by `53`/`677`).  Not Mathlib `R∞ ≃ T∞`
-at varying `ℓ`.
+Track B v8.14.0 — Odd-`A` modular constraints for
+`m=4, n=13, p=13`, and the only odd power of 2
+(`A=1`) is impossible.  Builds on v8.13.0:
+`FreyEllCase5Mixed` covers that exponent triple
+**iff** `A=2^e`.  Odd `A ≥ 3` is still none of
+the three mixed arms.  Not Zsigmondy, not a
+size cover, not `FreyEllCase5MixedCover`.
 
 Mathlib 4.12 has no Ribet functor and no arrow
     `Modular w → ExistsNewformLevel2`.  That label is
@@ -102,7 +100,22 @@ What it *does* prove:
   `Q₁,Q₂`; listed `Q₁` witnesses for
   `ℓ ∈ {5,7,11,13,17,19,23,29,31}`;
 * `beal_from_ribet_ell_mixed` stays *from*
-  `ModularImpliesLevel2Newform`.
+  `ModularImpliesLevel2Newform`;
+* `mod_pow4_odd`: odd `A` has `A⁴ ≡ 1 [MOD 16]`;
+* `mod_pow13_odd`: odd `B` has `B¹³ ≡ B [MOD 8]`
+  (false for even `B`, e.g. `B=2`);
+* `beal_4_13_13_mod8`: opposite parity plus
+  residues `(B ≡ 7 ∧ C even) ∨ (B even ∧ C ≡ 1)`,
+  not a contradiction;
+* `beal_4_13_13_mod13`: `A⁴ ≡ C − B [MOD 13]`;
+* `IsPowerOfTwo.eq_one_of_odd` / `not_beal_4_13_13_of_A_eq_one`:
+  the only odd power of 2 is `A=1`, and
+  `1 + B¹³ = C¹³` is impossible;
+* `FreyEllCase5Mixed_4_13_13_iff_pow2_A`: Mixed
+  covers `4,13,13` **iff** `A=2^e`;
+* `beal_4_13_13_size` stays an uninhabited Prop
+  (odd `A ≥ 3` is not closed by mod 8, mod 13,
+  or `Cⁿ−(C−1)ⁿ > 1`).
 
 Does **not** import `X0_26_Model`.  FullProof-only.
 None chain does not import this file.
@@ -121,6 +134,7 @@ import BealLevel26Foundations.Real.FreyWeierstrass
 import Mathlib.NumberTheory.LegendreSymbol.Basic
 import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
 import Mathlib.NumberTheory.FLT.Four
+import Mathlib.FieldTheory.Finite.Basic
 import Mathlib.LinearAlgebra.Matrix.SpecialLinearGroup
 import Mathlib.Tactic
 
@@ -2236,6 +2250,308 @@ theorem beal_from_ribet_ell_mixed
       1 < Nat.gcd A (Nat.gcd B C) :=
   beal_from_ribet_real hModNew
 
+/-! ## v8.14.0 — Odd `A` residues for `4,13,13`; `A=1` impossible -/
+
+/-- Odd `A`: `(2k+1)⁴ = 16k²(k+1)² + 8k(k+1) + 1`
+and `k(k+1)` is even, so `A⁴ ≡ 1 [MOD 16]`. -/
+theorem even_pair (n : Nat) (h : Even n) : ∃ t, n = 2 * t := by
+  obtain ⟨t, ht⟩ := h
+  exact ⟨t, ht.trans (two_mul t).symm⟩
+
+theorem even_mul_succ (k : Nat) : Even (k * (k + 1)) := by
+  rcases Nat.even_or_odd k with hk' | hk'
+  · exact hk'.mul_right _
+  · exact (hk'.add_odd (by decide : Odd (1 : Nat))).mul_left _
+
+theorem mod_pow4_odd (A : Nat) (hOdd : Odd A) : A ^ 4 % 16 = 1 := by
+  obtain ⟨k, hk⟩ := hOdd
+  have hexp :
+      (2 * k + 1) ^ 4 = 16 * (k ^ 2 * (k + 1) ^ 2) + 8 * (k * (k + 1)) + 1 := by
+    ring
+  obtain ⟨t, ht⟩ := even_pair (k * (k + 1)) (even_mul_succ k)
+  rw [hk, hexp, ht]
+  have h16 : 16 * (k ^ 2 * (k + 1) ^ 2) + 8 * (2 * t) + 1
+      = 1 + 16 * (k ^ 2 * (k + 1) ^ 2 + t) := by
+    ring
+  rw [h16, Nat.add_mul_mod_self_left, Nat.mod_eq_of_lt (by decide : 1 < 16)]
+
+theorem odd_fourth_mod8 (A : Nat) (hOdd : Odd A) : A ^ 4 % 8 = 1 := by
+  have h16 : A ^ 4 % 16 = 1 := mod_pow4_odd A hOdd
+  have h : (A ^ 4 % 16) % 8 = 1 % 8 := congrArg (fun n => n % 8) h16
+  rw [Nat.mod_mod_of_dvd (A ^ 4) (by decide : 8 ∣ 16)] at h
+  exact h.trans (Nat.mod_eq_of_lt (by decide : 1 < 8))
+
+/-- Odd `B`: `B² ≡ 1 [MOD 8]`, hence `B¹³ ≡ B [MOD 8]`.
+The identity `∀ B, B¹³ ≡ B [MOD 8]` is false. -/
+theorem odd_sq_mod8 (B : Nat) (hOdd : Odd B) : B ^ 2 % 8 = 1 := by
+  obtain ⟨k, hk⟩ := hOdd
+  have hexp : (2 * k + 1) ^ 2 = 4 * (k * (k + 1)) + 1 := by
+    ring
+  obtain ⟨t, ht⟩ := even_pair (k * (k + 1)) (even_mul_succ k)
+  rw [hk, hexp, ht]
+  have h8 : 4 * (2 * t) + 1 = 1 + 8 * t := by
+    ring
+  rw [h8, Nat.add_mul_mod_self_left, Nat.mod_eq_of_lt (by decide : 1 < 8)]
+
+theorem mod_pow13_odd (B : Nat) (hOdd : Odd B) : B ^ 13 % 8 = B % 8 := by
+  have h2 : B ^ 2 % 8 = 1 := odd_sq_mod8 B hOdd
+  have h12 : B ^ 12 % 8 = 1 := by
+    have : B ^ 12 = (B ^ 2) ^ 6 := by ring
+    rw [this, Nat.pow_mod, h2]
+  have h13 : B ^ 13 = B ^ 12 * B := by ring
+  rw [h13, Nat.mul_mod, h12, Nat.one_mul, Nat.mod_mod]
+
+theorem not_forall_pow13_mod8 : ¬ ∀ B : Nat, B ^ 13 % 8 = B % 8 := by
+  intro h
+  have h2 := h 2
+  exact (by decide : ¬ (2 : Nat) ^ 13 % 8 = 2 % 8) h2
+
+/-- Even `B`: already `B³ ≡ 0 [MOD 8]`, so `B¹³ ≡ 0`. -/
+theorem even_pow13_mod8 (B : Nat) (hE : Even B) : B ^ 13 % 8 = 0 := by
+  obtain ⟨k, hk⟩ := even_pair B hE
+  rw [hk, Nat.mul_pow]
+  have : 8 ∣ 2 ^ 13 := by decide
+  exact Nat.mod_eq_zero_of_dvd (dvd_mul_of_dvd_left this _)
+
+theorem odd_of_odd_pow13 {C : Nat} (h : Odd (C ^ 13)) : Odd C := by
+  rw [Nat.odd_iff] at h ⊢
+  rw [Nat.pow_mod] at h
+  have : C % 2 < 2 := Nat.mod_lt C (by decide)
+  interval_cases C % 2
+  · simp at h
+  · rfl
+
+theorem even_of_even_pow13 {C : Nat} (h : Even (C ^ 13)) : Even C := by
+  rw [Nat.even_iff] at h ⊢
+  rw [Nat.pow_mod] at h
+  have : C % 2 < 2 := Nat.mod_lt C (by decide)
+  interval_cases C % 2
+  · rfl
+  · simp at h
+
+/-- Residues forced by `A⁴ + B¹³ = C¹³` with `A` odd.
+Opposite parity, not a contradiction: either
+`B ≡ 7 [MOD 8]` and `C` even, or `B` even and `C ≡ 1`. -/
+theorem pow_mod2_of_odd {n k : Nat} (h : Odd n) : n ^ k % 2 = 1 := by
+  rw [Nat.pow_mod, Nat.odd_iff.mp h, Nat.one_pow]
+
+theorem pow_mod2_of_even {n k : Nat} (h : Even n) (hk : k ≠ 0) : n ^ k % 2 = 0 := by
+  rw [Nat.pow_mod, Nat.even_iff.mp h]
+  cases k with
+  | zero => exact absurd rfl hk
+  | succ k => rfl
+
+theorem beal_4_13_13_mod8 (A B C : Nat) (hAodd : Odd A)
+    (heq : A ^ 4 + B ^ 13 = C ^ 13) :
+    (Odd B ∧ B % 8 = 7 ∧ Even C) ∨ (Even B ∧ C % 8 = 1 ∧ Odd C) := by
+  have hA4_8 : A ^ 4 % 8 = 1 := odd_fourth_mod8 A hAodd
+  have hsum8 : (1 + B ^ 13 % 8) % 8 = C ^ 13 % 8 := by
+    have : (A ^ 4 + B ^ 13) % 8 = C ^ 13 % 8 := by rw [heq]
+    rwa [Nat.add_mod, hA4_8] at this
+  have hA4_2 : A ^ 4 % 2 = 1 := pow_mod2_of_odd (k := 4) hAodd
+  rcases Nat.even_or_odd B with hBe | hBo
+  · have hB13_8 : B ^ 13 % 8 = 0 := even_pow13_mod8 B hBe
+    have hC13_8 : C ^ 13 % 8 = 1 := by
+      rw [hB13_8, Nat.add_zero, Nat.mod_eq_of_lt (by decide : 1 < 8)] at hsum8
+      exact hsum8.symm
+    have hB13_2 : B ^ 13 % 2 = 0 := pow_mod2_of_even hBe (by decide)
+    have hC13_2 : C ^ 13 % 2 = 1 := by
+      have : (A ^ 4 + B ^ 13) % 2 = 1 := by
+        rw [Nat.add_mod, hA4_2, hB13_2]
+      rwa [heq] at this
+    have hCodd : Odd C := odd_of_odd_pow13 (Nat.odd_iff.mpr hC13_2)
+    have hCself : C ^ 13 % 8 = C % 8 := mod_pow13_odd C hCodd
+    exact Or.inr ⟨hBe, hCself.symm.trans hC13_8, hCodd⟩
+  · have hB13_2 : B ^ 13 % 2 = 1 := pow_mod2_of_odd (k := 13) hBo
+    have hC13_2 : C ^ 13 % 2 = 0 := by
+      have : (A ^ 4 + B ^ 13) % 2 = 0 := by
+        rw [Nat.add_mod, hA4_2, hB13_2]
+      rwa [heq] at this
+    have hCeven : Even C := even_of_even_pow13 (Nat.even_iff.mpr hC13_2)
+    have hC13_8 : C ^ 13 % 8 = 0 := even_pow13_mod8 C hCeven
+    have hBself : B ^ 13 % 8 = B % 8 := mod_pow13_odd B hBo
+    have hsum : (1 + B % 8) % 8 = 0 := by
+      rwa [hBself, hC13_8] at hsum8
+    have hB7 : B % 8 = 7 := by
+      have : B % 8 < 8 := Nat.mod_lt B (by decide)
+      interval_cases B % 8 <;> simp at hsum ⊢
+    exact Or.inl ⟨hBo, hB7, hCeven⟩
+
+/-- Fermat: `x¹³ ≡ x [MOD 13]`. -/
+theorem pow13_eq_self_mod13 (x : Nat) :
+    ((x : ZMod 13) ^ 13) = (x : ZMod 13) := by
+  haveI : Fact (Nat.Prime 13) := ⟨by decide⟩
+  exact ZMod.pow_card _
+
+theorem beal_4_13_13_C_ge_B (A B C : Nat)
+    (heq : A ^ 4 + B ^ 13 = C ^ 13) : B ≤ C := by
+  have : B ^ 13 ≤ C ^ 13 := by
+    rw [← heq]
+    exact Nat.le_add_left _ _
+  exact (Nat.pow_le_pow_iff_left (by decide : (13 : Nat) ≠ 0)).mp this
+
+/-- Packed form: `A⁴ ≡ C − B` in `ZMod 13`. -/
+theorem beal_4_13_13_mod13 (A B C : Nat)
+    (heq : A ^ 4 + B ^ 13 = C ^ 13) :
+    (A : ZMod 13) ^ 4 = (C : ZMod 13) - (B : ZMod 13) := by
+  haveI : Fact (Nat.Prime 13) := ⟨by decide⟩
+  have hcast :
+      ((A ^ 4 + B ^ 13 : Nat) : ZMod 13) = (C ^ 13 : Nat) := by
+    rw [heq]
+  simp only [Nat.cast_add, Nat.cast_pow] at hcast
+  have hB : (B : ZMod 13) ^ 13 = (B : ZMod 13) := ZMod.pow_card _
+  have hC : (C : ZMod 13) ^ 13 = (C : ZMod 13) := ZMod.pow_card _
+  rw [hB, hC] at hcast
+  exact (eq_sub_iff_add_eq).mpr hcast
+
+/-- Nat form, using `B ≤ C` from the equation. -/
+theorem beal_4_13_13_mod13_nat (A B C : Nat)
+    (heq : A ^ 4 + B ^ 13 = C ^ 13) :
+    A ^ 4 % 13 = (C - B) % 13 := by
+  have hge : B ≤ C := beal_4_13_13_C_ge_B A B C heq
+  have hz : (A : ZMod 13) ^ 4 = (C : ZMod 13) - (B : ZMod 13) :=
+    beal_4_13_13_mod13 A B C heq
+  have hcast : ((A ^ 4 : Nat) : ZMod 13) = ((C - B : Nat) : ZMod 13) := by
+    rw [Nat.cast_pow, Nat.cast_sub hge, hz]
+  exact (ZMod.natCast_eq_natCast_iff' (A ^ 4) (C - B) 13).mp hcast
+
+theorem IsPowerOfTwo.eq_one_of_odd {A : Nat}
+    (h : IsPowerOfTwo A) (hOdd : Odd A) : A = 1 := by
+  obtain ⟨e, rfl⟩ := h
+  cases e with
+  | zero => rfl
+  | succ e =>
+    have heven : Even (2 ^ (e + 1)) := by
+      rw [pow_succ]
+      exact even_two.mul_left _
+    exact absurd hOdd (Nat.not_odd_iff_even.mpr heven)
+
+/-- For `n ≥ 2` and `C ≥ 1`, `(C+1)ⁿ − Cⁿ > 1`. -/
+theorem succ_pow_sub_pow_gt_one (n C : Nat) (hn : 1 < n) (hC : 0 < C) :
+    1 < (C + 1) ^ n - C ^ n := by
+  have hn2 : 2 ≤ n := Nat.succ_le_of_lt hn
+  obtain ⟨k, rfl⟩ := Nat.exists_eq_add_of_le hn2
+  have hCk : C ^ k ≤ (C + 1) ^ k :=
+    Nat.pow_le_pow_left (Nat.le_succ C) k
+  have hexpL : (C + 1) ^ (2 + k) = (C + 1) ^ 2 * (C + 1) ^ k :=
+    Nat.pow_add _ 2 k
+  have hexpR : C ^ (2 + k) = C ^ 2 * C ^ k :=
+    Nat.pow_add _ 2 k
+  have hstep : (C + 1) ^ 2 * C ^ k - C ^ 2 * C ^ k
+      ≤ (C + 1) ^ (2 + k) - C ^ (2 + k) := by
+    rw [hexpL, hexpR]
+    exact Nat.sub_le_sub_right (Nat.mul_le_mul_left _ hCk) _
+  have hfactor :
+      (C + 1) ^ 2 * C ^ k - C ^ 2 * C ^ k
+        = C ^ k * ((C + 1) ^ 2 - C ^ 2) := by
+    rw [Nat.mul_comm ((C + 1) ^ 2), Nat.mul_comm (C ^ 2)]
+    exact (Nat.mul_sub (C ^ k) ((C + 1) ^ 2) (C ^ 2)).symm
+  have hsq : (C + 1) ^ 2 - C ^ 2 = 2 * C + 1 := by
+    have hbin : (C + 1) ^ 2 = C ^ 2 + 2 * C + 1 := by
+      ring
+    rw [hbin, Nat.add_assoc, Nat.add_sub_cancel_left]
+  have hposk : 0 < C ^ k := Nat.pow_pos (n := k) hC
+  have hge3 : 3 ≤ 2 * C + 1 := by
+    have : 1 ≤ C := hC
+    exact Nat.le_trans (by decide : 3 ≤ 2 * 1 + 1)
+      (Nat.add_le_add_right (Nat.mul_le_mul_left 2 this) 1)
+  have hsmall : 1 < C ^ k * (2 * C + 1) := by
+    have h1 : 1 < 3 := by decide
+    have h2 : 3 ≤ C ^ k * (2 * C + 1) := by
+      have : 1 * 3 ≤ C ^ k * (2 * C + 1) :=
+        Nat.mul_le_mul (Nat.succ_le_of_lt hposk) hge3
+      rwa [Nat.one_mul] at this
+    exact Nat.lt_of_lt_of_le h1 h2
+  have : 1 < (C + 1) ^ (2 + k) - C ^ (2 + k) :=
+    Nat.lt_of_lt_of_le (hfactor ▸ (hsq ▸ hsmall)) hstep
+  exact this
+
+theorem not_one_plus_B13_eq_C13 {B C : Nat}
+    (hB : 0 < B) (hC : 0 < C) (heq : 1 + B ^ 13 = C ^ 13) : False := by
+  have hlt : B ^ 13 < C ^ 13 :=
+    Nat.lt_of_lt_of_eq (Nat.lt_add_of_pos_left (by decide : 0 < 1)) heq
+  have hBC : B < C := (Nat.pow_lt_pow_iff_left (by decide : (13 : Nat) ≠ 0)).mp hlt
+  have hge : (B + 1) ^ 13 - B ^ 13 ≤ C ^ 13 - B ^ 13 :=
+    Nat.sub_le_sub_right (Nat.pow_le_pow_left (Nat.succ_le_of_lt hBC) 13) _
+  have hgt : 1 < (B + 1) ^ 13 - B ^ 13 :=
+    succ_pow_sub_pow_gt_one 13 B (by decide) hB
+  have hdiff : C ^ 13 - B ^ 13 = 1 := by
+    have : C ^ 13 = B ^ 13 + 1 :=
+      heq.symm.trans (Nat.add_comm 1 (B ^ 13))
+    rw [this, Nat.add_sub_cancel_left]
+  exact Nat.lt_irrefl _ (hgt.trans_le (hge.trans_eq hdiff))
+
+theorem not_beal_4_13_13_of_A_eq_one {B C : Nat}
+    (hB : 0 < B) (hC : 0 < C)
+    (heq : (1 : Nat) ^ 4 + B ^ 13 = C ^ 13) : False := by
+  have h1 : (1 : Nat) ^ 4 = 1 := by decide
+  rw [h1] at heq
+  exact not_one_plus_B13_eq_C13 hB hC heq
+
+/-- The only odd power of 2 is `A=1`, which cannot
+satisfy `A⁴ + B¹³ = C¹³`. -/
+theorem not_beal_4_13_13_of_odd_pow2_A {A B C : Nat}
+    (hA : Odd A) (hpow : IsPowerOfTwo A)
+    (hB : 0 < B) (hC : 0 < C)
+    (heq : A ^ 4 + B ^ 13 = C ^ 13) : False := by
+  have hA1 : A = 1 := IsPowerOfTwo.eq_one_of_odd hpow hA
+  subst hA1
+  exact not_beal_4_13_13_of_A_eq_one hB hC heq
+
+theorem not_FermatFourCase_4_13_13 : ¬ FermatFourCase 4 13 13 := by
+  rintro ⟨_, ⟨e, he, hn⟩, _⟩
+  have hepos : e ≠ 0 :=
+    Nat.ne_of_gt (lt_of_lt_of_le (by decide : 0 < 2) he)
+  have : 2 ∣ 13 := hn ▸ dvd_pow_self 2 hepos
+  exact (by decide : ¬ 2 ∣ 13) this
+
+theorem not_FreyEllCase5Two_of_exp_four (k : Nat) :
+    ¬ FreyEllCase5Two 4 k := by
+  intro h
+  refine h.elim fun wit => ?_
+  have hdiv : wit.ℓ1 ∣ 4 := wit.dvd_1
+  have hpow : wit.ℓ1 ∣ 2 ^ 2 := by
+    have : (4 : Nat) = 2 ^ 2 := by decide
+    exact this ▸ hdiv
+  have h2 : wit.ℓ1 = 2 :=
+    (Nat.prime_dvd_prime_iff_eq wit.prime_1 Nat.prime_two).mp
+      (wit.prime_1.dvd_of_dvd_pow hpow)
+  have : 5 ≤ 2 := h2 ▸ wit.ge5_1
+  exact (by decide : ¬ 5 ≤ 2) this
+
+/-- Mixed covers `m=4,n=13,p=13` only through `A=2^e`.
+`B` or `C` being a power of 2 still needs `ℓ ∣ 4`
+with `ℓ ≥ 5`, which is impossible. -/
+theorem not_FreyEllCase5Mixed_of_4_13_13_A_not_pow2
+    {A B C : Nat} (hAnot : ¬ IsPowerOfTwo A) :
+    ¬ FreyEllCase5Mixed A B C 4 13 13 := by
+  intro h
+  rcases h with h5 | h4 | hmix
+  · exact not_FreyEllCase5_of_exp_four 13 13 h5
+  · exact not_FermatFourCase_4_13_13 h4
+  · rcases hmix with hA | hB | hC
+    · exact hAnot hA.1
+    · exact not_FreyEllCase5Two_of_exp_four 13 hB.2
+    · exact not_FreyEllCase5Two_of_exp_four 13 hC.2
+
+theorem FreyEllCase5Mixed_4_13_13_iff_pow2_A {A B C : Nat} :
+    FreyEllCase5Mixed A B C 4 13 13 ↔ IsPowerOfTwo A := by
+  constructor
+  · intro h
+    by_contra hnot
+    exact not_FreyEllCase5Mixed_of_4_13_13_A_not_pow2 hnot h
+  · intro hA
+    exact mixed_covers_4_13_13 (A := A) (B := B) (C := C) hA
+
+/-- Uninhabited.  Odd `A ≥ 3` is not closed by mod 8,
+mod 13, or `(C+1)ⁿ − Cⁿ > 1`.  Mathlib 4.12 has no
+Zsigmondy, and the gap around `13^{1/4} B³` is wide. -/
+def beal_4_13_13_size : Prop :=
+  ∀ A B C : Nat,
+    0 < A → 0 < B → 0 < C →
+    Odd A → ¬ IsPowerOfTwo A →
+    A ^ 4 + B ^ 13 = C ^ 13 → False
+
 #check q_expansion_26a1
 #check q_expansion_26b1
 #check q_expansion_26a1_int
@@ -2288,6 +2604,18 @@ theorem beal_from_ribet_ell_mixed
 #check mixed_covers_4_13_13
 #check thirteen_dvd_Delta_of_mixed_pow2_A
 #check exists_prime_one_mod_ell_listed
+#check mod_pow4_odd
+#check mod_pow13_odd
+#check not_forall_pow13_mod8
+#check beal_4_13_13_mod8
+#check beal_4_13_13_mod13
+#check beal_4_13_13_mod13_nat
+#check IsPowerOfTwo.eq_one_of_odd
+#check not_beal_4_13_13_of_A_eq_one
+#check not_beal_4_13_13_of_odd_pow2_A
+#check FreyEllCase5Mixed_4_13_13_iff_pow2_A
+#check beal_4_13_13_size
+#check not_FreyEllCase5Mixed_of_4_13_13_A_not_pow2
 #check X0_N_Model
 #check J0_N_Model
 #check J0_N_real
@@ -2348,5 +2676,17 @@ theorem beal_from_ribet_ell_mixed
 #print axioms beal_from_ribet_ell_mixed
 #print axioms TWAuxEllExists_5
 #print axioms TWAuxEllExists_7
+#print axioms mod_pow4_odd
+#print axioms mod_pow13_odd
+#print axioms not_forall_pow13_mod8
+#print axioms beal_4_13_13_mod8
+#print axioms beal_4_13_13_mod13
+#print axioms beal_4_13_13_mod13_nat
+#print axioms IsPowerOfTwo.eq_one_of_odd
+#print axioms not_beal_4_13_13_of_A_eq_one
+#print axioms not_beal_4_13_13_of_odd_pow2_A
+#print axioms FreyEllCase5Mixed_4_13_13_iff_pow2_A
+#print axioms not_FreyEllCase5Mixed_of_4_13_13_A_not_pow2
+#print axioms succ_pow_sub_pow_gt_one
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

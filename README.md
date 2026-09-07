@@ -93,6 +93,22 @@ v8.10.0-frey-aq-pm1-real RibetMazur frey_a_q_real via (-c6/q)=±1 + J0_N_real Mo
 v8.11.0-frey-ell-case RibetMazur FreyEllCase5 + ell_of_q so ℓ|v_q(Δ) at every odd q; mazur_step_ell; N/∏q=2 under FreyEllCase5; beal_from_ribet_ell_case still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.12.0-fermat-four-plus-RinfTinf-ell RibetMazur fermat_four_lemma + FermatFourCase closes power-of-2 exponents; TWAuxEll search Q1≡1 mod ℓ; mazur_step_real_ell_upgraded; beal_from_ribet_ell_upgraded still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.13.0-mixed-ell-plus-dirichlet RibetMazur FreyEllCase5Mixed covers m=4 n=13 p=13 when A=2^e; TWAuxEllFixed N<Q1 so Q1∤N; listed Q1 for ℓ in {5,7,11,13,17,19,23,29,31} not ∀ℓ≤1000; beal_from_ribet_ell_mixed still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.14.0-mixed-odd-A RibetMazur odd A^4≡1 mod16; odd B^13≡B mod8; A^4≡C-B mod13; only odd power of 2 is A=1 and 1+B^13=C^13 is impossible; Mixed covers 4,13,13 iff A=2^e not a cover for odd A≥3; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.14.0-mixed-odd-A — Odd-A residues; A=1 impossible; Mixed is not a cover (arrow stays a Prop)
+
+Lean change.  `RibetMazur.lean` proves the elementary modular constraints for `m=4, n=13, p=13` with odd `A`, and that the only odd power of 2 cannot be a Beal base.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `mod_pow4_odd`: odd `A` has `A⁴ ≡ 1 [MOD 16]`;
+- `mod_pow13_odd`: odd `B` has `B¹³ ≡ B [MOD 8]` (false for even `B`);
+- `beal_4_13_13_mod8`: opposite parity plus residues, **not** a contradiction;
+- `beal_4_13_13_mod13`: `A⁴ ≡ C − B [MOD 13]`;
+- `not_beal_4_13_13_of_A_eq_one`: `1 + B¹³ = C¹³` is impossible;
+- `FreyEllCase5Mixed_4_13_13_iff_pow2_A`: Mixed covers `4,13,13` **iff** `A=2^e`;
+- `beal_4_13_13_size` stays an uninhabited Prop (odd `A ≥ 3` is not closed);
+- `beal_from_ribet_ell_mixed`: still *from* `ModularImpliesLevel2Newform`.
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.13.0-mixed-ell-plus-dirichlet — Mixed `A=2^e` + `TWAuxEllFixed` (arrow stays a Prop)
 

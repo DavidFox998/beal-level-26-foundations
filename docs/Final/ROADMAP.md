@@ -799,6 +799,24 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.14.0-mixed-odd-A — DONE (odd-A residues; A=1 impossible; Mixed is not a cover, arrow stays a Prop)
+
+Lean change.  `RibetMazur.lean` proves
+`mod_pow4_odd`, `mod_pow13_odd` (odd `B` only),
+`beal_4_13_13_mod8` / `mod13`, and
+`not_beal_4_13_13_of_A_eq_one`.
+`FreyEllCase5Mixed_4_13_13_iff_pow2_A`: Mixed
+covers `4,13,13` iff `A=2^e`.  Odd `A ≥ 3`
+is not closed (`beal_4_13_13_size` uninhabited).
+`beal_from_ribet_ell_mixed` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** import `X0_26_Model`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.13.0-mixed-ell-plus-dirichlet — DONE (mixed A=2^e + TWAuxEllFixed, arrow stays a Prop)
 
 Lean change.  `RibetMazur.lean` adds
