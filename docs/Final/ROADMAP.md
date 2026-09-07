@@ -799,6 +799,23 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.11.0-frey-ell-case — DONE (Frey-ℓ case, `N/∏q=2` at every odd q, arrow stays a Prop)
+
+Lean change.  `RibetMazur.lean` adds
+`FreyEllCase5` / `ell_of_q` so `ℓ | v_q(Δ)`
+at every odd `q | ABC`, `mazur_step_ell`,
+and `ribet_iterated_ell_case` with
+arithmetic `N / ∏q = 2` under
+`FreyEllCase5`.  Residual traces are
+packed as `±(q+1)`.  `beal_from_ribet_ell_case`
+still takes `ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** import `X0_26_Model`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.10.0-frey-aq-pm1-real — DONE (Tate a_q=±1 + 13|v_q(Δ) + ModSym token, arrow stays a Prop)
 
 Lean change.  `RibetMazur.lean` adds

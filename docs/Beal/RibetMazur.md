@@ -1,26 +1,28 @@
-# v8.10.0 RibetMazur Frey a_q=±1 + 13|v_q(Δ) + ModSym token
+# v8.11.0 RibetMazur Frey-ℓ case
 
 `lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean`
 
-Tate split/nonsplit sign `(-c₆/q) = ±1` at odd primes
-of multiplicative reduction, the residual-unramified
-criterion `13 ∣ v_q(Δ)`, and a packed `ModSym(Γ₀(N),2)`
-token with double-coset `T_q`.  Does **not** import
+Each exponent of a primitive Beal triple may carry a
+prime factor `ℓ ≥ 5`.  At an odd prime `q | ABC` the
+matching residual then divides `v_q(Δ)`, so the Mazur
+gate is no longer locked to `13`.  Does **not** import
 `X0_26_Model`.  Does **not** inhabit
 `ExistsNewformLevel2` (`0 ≠ 0`) and does **not** prove
 `¬ PositiveBealTriple`.
 
 | Name | Status |
 |---|---|
-| `frey_a_q_real` / `frey_a_q_is_pm1` | `(-c₆/q)=±1` because `q ∤ c₆`; not a Frey newform coefficient |
-| `pm1_ne_pm_qplus1_mod13_at_3` | `1,12 ≠ 4,9` in `ZMod 13` by `decide` |
-| `frey_rho_unramified_iff_13_dvd_vqDelta` | definitional iff with `UnramifiedAt13` |
-| `J0_N_real` / `ModSym` | packed weight-2 `Γ₀(N)` token; cusps `[0],[∞]` |
-| `HeckeAction_N_real` | double-coset token at `N·q`; TW at `N·53`/`N·677` |
-| `mazur_step_real_fixed` | requires `13 ∣ v_q(Δ)`; not Mathlib modularity at `N/q` |
-| `ribet_iterated_real_fixed` | iterates only those primes; quotient is **not** `2` unless `Frey13Case` |
-| `N_div_Prod_eq_2_of_Frey13Case` | `N / ∏q = 2` under `Frey13Case` |
-| `beal_from_ribet_real_fixed` | still *from* `ModularImpliesLevel2Newform` |
+| `FreyEllCase5` / `FreyEllWitness` | each of `m,n,p` has a prime factor `ℓ ≥ 5`; fails for `m = 4` |
+| `ell_of_q` | `ℓ_m` if `q \| A`, `ℓ_n` if `q \| B`, else `ℓ_p` |
+| `ell_of_q_dvd_vqDelta` | `ℓ(q) \| v_q(Δ)` from `v_q(Δ) = 2m v_q(A)` (or `n`/`p`) |
+| `frey_a_q_real_ell` | same Tate sign `(-c₆/q)=±1` as v8.10 |
+| `frey_rho_unramified_iff_ell_dvd_vqDelta` | packed Tate criterion at residual `ℓ` |
+| `trace_eq_pm_qplus1_when_unramified` | packed traces `±(q+1)`, not `a_q = ±1` |
+| `HeckeAction_N_real_ell` | double-coset token at residual `ℓ` |
+| `TWAuxEll.of13` | `53 ≡ 1 [MOD 13]`, `677 ≡ 1 [MOD 169]`; not Dirichlet for general `ℓ` |
+| `mazur_step_ell` | requires `ℓ \| v_q(Δ)`; not Mathlib modularity at `N/q` |
+| `ribet_iterated_ell_case` | every odd `q` under `FreyEllCase5`; arithmetic `N / ∏q = 2` |
+| `beal_from_ribet_ell_case` | still *from* `ModularImpliesLevel2Newform` |
 
 `#print axioms` is `[propext, Classical.choice, Quot.sound]`.
 Track A About mint stays `22635221`.

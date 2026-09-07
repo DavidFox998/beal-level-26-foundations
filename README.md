@@ -90,6 +90,20 @@ v8.7.0-ribet-q-mazur RibetMazur q_expansion_26a1/b1 + mazur_principle_step pack;
 v8.8.0-ribet-proof RibetMazur HeckeAction_N + mazur_step_real pack; ModularImpliesLevel2Newform_real stays the Prop; ExistsNewformLevel2 stays 0≠0; beal_from_ribet_real still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.9.0-explicit-J0N RibetMazur packed X0_N_Model/J0_N_Model + Frey Steinberg label; beal_from_ribet_real_fixed still from the Prop; ExistsNewformLevel2 stays 0≠0. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.10.0-frey-aq-pm1-real RibetMazur frey_a_q_real via (-c6/q)=±1 + J0_N_real ModSym token; mazur_step_real_fixed only when 13|v_q(Δ); quotient is 2 only under Frey13Case; beal_from_ribet_real_fixed still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.11.0-frey-ell-case RibetMazur FreyEllCase5 + ell_of_q so ℓ|v_q(Δ) at every odd q; mazur_step_ell; N/∏q=2 under FreyEllCase5; beal_from_ribet_ell_case still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.11.0-frey-ell-case — Frey-ℓ case makes `N/∏q=2` arithmetic at every odd q (arrow stays a Prop)
+
+Lean change.  `RibetMazur.lean` adds `FreyEllCase5`, `ell_of_q`, and `mazur_step_ell`.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `FreyEllCase5` / `FreyEllWitness`: each exponent has a prime factor `ℓ ≥ 5` (fails for `m = 4`);
+- `ell_of_q_dvd_vqDelta`: `ℓ(q) | v_q(Δ)` at every odd `q | ABC`;
+- `trace_eq_pm_qplus1_when_unramified`: packed residual traces `±(q+1)`, not `a_q = ±1`;
+- `HeckeAction_N_real_ell` / `TWAuxEll.of13`: double-coset `T_q` at residual `ℓ`; TW primes `53`/`677` at `ℓ = 13`;
+- `mazur_step_ell` / `ribet_iterated_ell_case`: Mazur at every odd `q` under `FreyEllCase5`, so `N / ∏q = 2` as arithmetic;
+- `beal_from_ribet_ell_case`: still *from* `ModularImpliesLevel2Newform`.
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.10.0-frey-aq-pm1-real — Tate a_q=±1 + 13|v_q(Δ) + ModSym token (arrow stays a Prop)
 

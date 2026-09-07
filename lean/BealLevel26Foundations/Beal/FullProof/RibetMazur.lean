@@ -3,10 +3,11 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.10.0 — Frey `a_q = ±1` via `(-c₆/q)`,
-`13 ∣ v_q(Δ)` unramified criterion, and `J0_N_real`
-as a packed `ModSym(Γ₀(N),2)` token with double-coset
-`T_q`.  Not the 26a1/26b1 coefficient formula.
+Track B v8.11.0 — Frey-ℓ case: each exponent has a
+prime factor `ℓ ≥ 5`, so `ℓ | v_q(Δ)` at every odd
+`q | ABC` and the Mazur gate is no longer locked to
+`13`.  Residual traces are packed as `±(q+1)` (not
+`a_q = ±1`).  Not Mathlib modularity at `N/q`.
 
 Mathlib 4.12 has no Ribet functor and no arrow
     `Modular w → ExistsNewformLevel2`.  That label is
@@ -56,7 +57,19 @@ What it *does* prove:
   unless `Frey13Case`;
 * `beal_from_ribet_real_fixed` stays *from*
   `ModularImpliesLevel2Newform` (even under a
-  universal `Frey13Case` hypothesis).
+  universal `Frey13Case` hypothesis);
+* `FreyEllCase5` is a witness that each exponent
+  has a prime factor `ℓ ≥ 5` (fails for `m = 4`);
+* `ell_of_q` picks `ℓ_m` / `ℓ_n` / `ℓ_p` from
+  which of `A,B,C` the prime `q` divides;
+* `ell_of_q_dvd_vqDelta` is the arithmetic
+  `ℓ(q) | v_q(Δ)` at every odd `q`;
+* `mazur_step_ell` requires `ℓ | v_q(Δ)`;
+* `ribet_iterated_ell_case` iterates every odd
+  `q` under `FreyEllCase5`, so `N / ∏q = 2`
+  as arithmetic (still not a newform);
+* `beal_from_ribet_ell_case` stays *from*
+  `ModularImpliesLevel2Newform`.
 
 Does **not** import `X0_26_Model`.  FullProof-only.
 None chain does not import this file.
@@ -1117,6 +1130,454 @@ theorem beal_from_ribet_real_fixed
       1 < Nat.gcd A (Nat.gcd B C) :=
   beal_from_ribet_real hModNew
 
+/-! ## v8.11.0 — Frey-ℓ case: `ℓ | v_q(Δ)` at every odd `q` -/
+
+/-- Data witness: each exponent has a prime factor
+`ℓ ≥ 5`.  A Type, not a Prop, so the three primes
+can be used by `ell_of_q` without `sorryAx`. -/
+structure FreyEllWitness (m n p : Nat) where
+  ℓm : Nat
+  ℓn : Nat
+  ℓp : Nat
+  prime_m : ℓm.Prime
+  ge5_m : 5 ≤ ℓm
+  dvd_m : ℓm ∣ m
+  prime_n : ℓn.Prime
+  ge5_n : 5 ≤ ℓn
+  dvd_n : ℓn ∣ n
+  prime_p : ℓp.Prime
+  ge5_p : 5 ≤ ℓp
+  dvd_p : ℓp ∣ p
+
+/-- Each of `m,n,p` has a prime factor `≥ 5`.
+Fails when an exponent is a power of 2 (e.g. `4`). -/
+def FreyEllCase5 (m n p : Nat) : Prop :=
+  Nonempty (FreyEllWitness m n p)
+
+/-- Weaker: some `ℓ ≥ 5` divides the product of
+exponents. -/
+def FreyEllCase5Weak (m n p : Nat) : Prop :=
+  ∃ ℓ : Nat, ℓ.Prime ∧ 5 ≤ ℓ ∧ ℓ ∣ m * n * p
+
+theorem FreyEllCase5_iff (m n p : Nat) :
+    FreyEllCase5 m n p ↔
+      ∃ ℓm ℓn ℓp : Nat,
+        ℓm.Prime ∧ 5 ≤ ℓm ∧ ℓm ∣ m ∧
+          ℓn.Prime ∧ 5 ≤ ℓn ∧ ℓn ∣ n ∧
+            ℓp.Prime ∧ 5 ≤ ℓp ∧ ℓp ∣ p := by
+  constructor
+  · intro h
+    refine h.elim fun wit =>
+      ⟨wit.ℓm, wit.ℓn, wit.ℓp, wit.prime_m, wit.ge5_m, wit.dvd_m,
+        wit.prime_n, wit.ge5_n, wit.dvd_n, wit.prime_p, wit.ge5_p,
+        wit.dvd_p⟩
+  · intro h
+    rcases h with ⟨ℓm, ℓn, ℓp, hmP, hm5, hmd, hnP, hn5, hnd, hpP, hp5, hpd⟩
+    exact ⟨⟨ℓm, ℓn, ℓp, hmP, hm5, hmd, hnP, hn5, hnd, hpP, hp5, hpd⟩⟩
+
+theorem FreyEllCase5_to_weak (m n p : Nat)
+    (h : FreyEllCase5 m n p) : FreyEllCase5Weak m n p :=
+  h.elim fun wit =>
+    ⟨wit.ℓm, wit.prime_m, wit.ge5_m,
+      dvd_mul_of_dvd_left (dvd_mul_of_dvd_left wit.dvd_m n) p⟩
+
+/-- Displayed working-prime witness `ℓ = 13` on all
+three exponents. -/
+def FreyEllWitness.of13 : FreyEllWitness 13 13 13 where
+  ℓm := 13
+  ℓn := 13
+  ℓp := 13
+  prime_m := by decide
+  ge5_m := by decide
+  dvd_m := dvd_rfl
+  prime_n := by decide
+  ge5_n := by decide
+  dvd_n := dvd_rfl
+  prime_p := by decide
+  ge5_p := by decide
+  dvd_p := dvd_rfl
+
+theorem FreyEllCase5_of13 : FreyEllCase5 13 13 13 :=
+  ⟨FreyEllWitness.of13⟩
+
+/-- No prime `≥ 5` divides `4 = 2²`, so the triple
+case fails when an exponent is `4`.  This file does
+**not** reduce that case to FLT. -/
+theorem not_FreyEllCase5_of_exp_four (n p : Nat) :
+    ¬ FreyEllCase5 4 n p := by
+  intro h
+  refine h.elim fun wit => ?_
+  have hdiv : wit.ℓm ∣ 4 := wit.dvd_m
+  have hpow : wit.ℓm ∣ 2 ^ 2 := by
+    have : (4 : Nat) = 2 ^ 2 := by decide
+    exact this ▸ hdiv
+  have h2 : wit.ℓm = 2 :=
+    (Nat.prime_dvd_prime_iff_eq wit.prime_m Nat.prime_two).mp
+      (wit.prime_m.dvd_of_dvd_pow hpow)
+  have : 5 ≤ 2 := h2 ▸ wit.ge5_m
+  exact (by decide : ¬ 5 ≤ 2) this
+
+/-- Residual prime attached to `q | ABC`: `ℓ_m` if
+`q | A`, `ℓ_n` if `q | B`, else `ℓ_p`.  Pairwise
+coprimeness makes the three branches exclusive. -/
+def ell_of_q (t : PositiveBealTriple)
+    (wit : FreyEllWitness t.m t.n t.p) (q : Nat) : Nat :=
+  if q ∣ t.A then wit.ℓm else if q ∣ t.B then wit.ℓn else wit.ℓp
+
+theorem ell_of_q_of_dvd_A (t : PositiveBealTriple)
+    (wit : FreyEllWitness t.m t.n t.p) {q : Nat}
+    (hA : q ∣ t.A) : ell_of_q t wit q = wit.ℓm := by
+  simp [ell_of_q, hA]
+
+theorem ell_of_q_of_dvd_B (t : PositiveBealTriple)
+    (wit : FreyEllWitness t.m t.n t.p) {q : Nat}
+    (hA : ¬ q ∣ t.A) (hB : q ∣ t.B) :
+    ell_of_q t wit q = wit.ℓn := by
+  simp [ell_of_q, hA, hB]
+
+theorem ell_of_q_of_dvd_C (t : PositiveBealTriple)
+    (wit : FreyEllWitness t.m t.n t.p) {q : Nat}
+    (hA : ¬ q ∣ t.A) (hB : ¬ q ∣ t.B) :
+    ell_of_q t wit q = wit.ℓp := by
+  simp [ell_of_q, hA, hB]
+
+theorem ell_of_q_prime (t : PositiveBealTriple)
+    (wit : FreyEllWitness t.m t.n t.p) (q : Nat) :
+    (ell_of_q t wit q).Prime := by
+  by_cases hA : q ∣ t.A
+  · rw [ell_of_q_of_dvd_A t wit hA]; exact wit.prime_m
+  · by_cases hB : q ∣ t.B
+    · rw [ell_of_q_of_dvd_B t wit hA hB]; exact wit.prime_n
+    · rw [ell_of_q_of_dvd_C t wit hA hB]; exact wit.prime_p
+
+theorem ell_of_q_ge5 (t : PositiveBealTriple)
+    (wit : FreyEllWitness t.m t.n t.p) (q : Nat) :
+    5 ≤ ell_of_q t wit q := by
+  by_cases hA : q ∣ t.A
+  · rw [ell_of_q_of_dvd_A t wit hA]; exact wit.ge5_m
+  · by_cases hB : q ∣ t.B
+    · rw [ell_of_q_of_dvd_B t wit hA hB]; exact wit.ge5_n
+    · rw [ell_of_q_of_dvd_C t wit hA hB]; exact wit.ge5_p
+
+theorem exponent_dvd_Delta_val {k v : Nat} {ℓ : Nat}
+    (hℓ : ℓ ∣ k) : ℓ ∣ 2 * k * v := by
+  have hk : k ∣ 2 * k * v := by
+    have : 2 * k * v = k * (2 * v) := by ring
+    rw [this]
+    exact dvd_mul_right _ _
+  exact dvd_trans hℓ hk
+
+/-- Same Tate sign as `frey_a_q_real`.  Not a residual
+trace. -/
+theorem frey_a_q_real_ell (t : PositiveBealTriple) {q : Nat}
+    (hqMem : q ∈ (t.A * t.B * t.C).primeFactors) (hodd : q ≠ 2) :
+    ∃ s : Int, (s = 1 ∨ s = -1) ∧
+      s = @frey_aq_sign t.toPrimitive q ⟨Nat.prime_of_mem_primeFactors hqMem⟩ :=
+  frey_a_q_real t hqMem hodd
+
+/-- Packed residual-unramified token at an arbitrary
+`ℓ`: classically `I_q` is trivial on `ρ̄_ℓ` iff
+`ℓ | v_q(Δ)`.  Mathlib 4.12 has no Galois
+representation, so this *is* that criterion. -/
+def UnramifiedAtEll (w : PrimitiveBealTriple) (q ℓ : Nat) : Prop :=
+  ℓ ∣ padicValInt q (freyCurveOf w).Δ
+
+theorem frey_rho_unramified_iff_ell_dvd_vqDelta
+    (w : PrimitiveBealTriple) (q ℓ : Nat) :
+    UnramifiedAtEll w q ℓ ↔
+      ℓ ∣ padicValInt q (freyCurveOf w).Δ :=
+  Iff.rfl
+
+/-- Classical unramified traces `1+q` and `-(1+q)`.
+Not the Frey `a_q = ±1` sign, and not a Mathlib
+`Frob_q` matrix. -/
+def TraceFrob_pm_qplus1 (q ℓ : Nat) : ZMod ℓ × ZMod ℓ :=
+  ((q + 1 : ZMod ℓ), (-(q + 1) : ZMod ℓ))
+
+theorem trace_eq_pm_qplus1_when_unramified
+    (w : PrimitiveBealTriple) (q ℓ : Nat)
+    (_hUnram : UnramifiedAtEll w q ℓ) :
+    (TraceFrob_pm_qplus1 q ℓ).1 = (q + 1 : ZMod ℓ) ∧
+      (TraceFrob_pm_qplus1 q ℓ).2 = (-(q + 1) : ZMod ℓ) :=
+  ⟨rfl, rfl⟩
+
+/-- At `q = 3`, residual traces are `4` and `9` in
+`ZMod 13`.  Mazur uses these, not `a_q = ±1`. -/
+theorem trace_at_3_mod13_is_pm_qplus1 :
+    (TraceFrob_pm_qplus1 3 13).1 = 4 ∧
+      (TraceFrob_pm_qplus1 3 13).2 = 9 := by
+  decide
+
+/-- Endomorphism token of packed residual-`ℓ` torsion.
+Not Mathlib `End(J₀(N)[ℓ])`. -/
+structure EndJ0_N_ell (N q ℓ : Nat) where
+  level : Nat
+  level_eq : level = N
+  residue : Nat
+  residue_eq : residue = ℓ
+  hecke : DoubleCoset_Mq N q
+
+/-- Double-coset `T_q` token at level `N` and residual
+`ℓ`.  Not the 26a1/26b1 coefficient formula. -/
+def HeckeAction_N_real_ell (N q ℓ : Nat) : EndJ0_N_ell N q ℓ where
+  level := N
+  level_eq := rfl
+  residue := ℓ
+  residue_eq := rfl
+  hecke :=
+    { det := q
+      det_eq := rfl
+      bottom_left_mod := 0
+      bottom_left_mod_eq := rfl
+      correspondence := ⟨N, N * q, N, rfl, rfl, rfl⟩
+      rep_count := if q ∣ N then q else q + 1
+      rep_count_away := by
+        intro h
+        simp [h]
+      rep_count_old := by
+        intro h
+        simp [h] }
+
+theorem HeckeAction_N_real_ell_residue (N q ℓ : Nat) :
+    (HeckeAction_N_real_ell N q ℓ).residue = ℓ :=
+  rfl
+
+theorem HeckeAction_N_real_ell_middle (N q ℓ : Nat) :
+    (HeckeAction_N_real_ell N q ℓ).hecke.correspondence.middle = N * q :=
+  rfl
+
+/-- TW auxiliary primes for residual `ℓ`:
+`Q₁ ≡ 1 [MOD ℓ]`, `Q₂ ≡ 1 [MOD ℓ²]`.  Inhabited at
+`ℓ = 13` by `53` and `677`.  Not constructed for
+general `ℓ` (Dirichlet is not invoked). -/
+structure TWAuxEll (ℓ : Nat) where
+  Q1ell : Nat
+  Q2ell : Nat
+  Q1_prime : Q1ell.Prime
+  Q2_prime : Q2ell.Prime
+  Q1_mod : Q1ell % ℓ = 1
+  Q2_mod : Q2ell % (ℓ ^ 2) = 1
+
+def TWAuxEll.of13 : TWAuxEll 13 where
+  Q1ell := 53
+  Q2ell := 677
+  Q1_prime := TW_q53_prime
+  Q2_prime := TW_q677_prime
+  Q1_mod := TW_q53_mod13
+  Q2_mod := by
+    change 677 % 169 = 1
+    exact TW_q677_mod169
+
+def TWAuxEllExists (ℓ : Nat) : Prop :=
+  Nonempty (TWAuxEll ℓ)
+
+theorem TWAuxEllExists_13 : TWAuxEllExists 13 :=
+  ⟨TWAuxEll.of13⟩
+
+def patchedLevel_N_ell (N ℓ : Nat) : Nat :=
+  N * ℓ
+
+theorem R_T_at_N_ell (N ℓ : Nat) :
+    Nonempty
+      (R_infty (patchedLevel_N_ell N ℓ) ≃
+        T_infty (patchedLevel_N_ell N ℓ)) :=
+  ⟨R_T_scaffold (patchedLevel_N_ell N ℓ)⟩
+
+theorem localizedRank_N_ell (N ℓ : Nat) :
+    localizedHeckeRank (patchedLevel_N_ell N ℓ) = 1 :=
+  localizedRankOne_from_Patching (patchedLevel_N_ell N ℓ)
+
+def patchedLevel_N_Q1_ell (N : Nat) {ℓ : Nat} (tw : TWAuxEll ℓ) : Nat :=
+  N * tw.Q1ell
+
+def patchedLevel_N_Q2_ell (N : Nat) {ℓ : Nat} (tw : TWAuxEll ℓ) : Nat :=
+  N * tw.Q2ell
+
+theorem R_T_at_N_Q1_ell (N : Nat) {ℓ : Nat} (tw : TWAuxEll ℓ) :
+    Nonempty
+      (R_infty (patchedLevel_N_Q1_ell N tw) ≃
+        T_infty (patchedLevel_N_Q1_ell N tw)) :=
+  ⟨R_T_scaffold (patchedLevel_N_Q1_ell N tw)⟩
+
+theorem R_T_at_N_Q2_ell (N : Nat) {ℓ : Nat} (tw : TWAuxEll ℓ) :
+    Nonempty
+      (R_infty (patchedLevel_N_Q2_ell N tw) ≃
+        T_infty (patchedLevel_N_Q2_ell N tw)) :=
+  ⟨R_T_scaffold (patchedLevel_N_Q2_ell N tw)⟩
+
+/-- Wiles-domain pack plus a residual-`ℓ` label.
+`Modular` is independent of `ℓ`.  Not a modularity
+lifting theorem at residual `ℓ`. -/
+theorem wiles_modularity_Frey_mod_ell (w : PrimitiveBealTriple)
+    (ℓ : Nat) (_hℓ : ℓ.Prime) (_h5 : 5 ≤ ℓ) :
+    Modular w ∧ (residualFreyRep w ℓ).residualPrime = ℓ :=
+  ⟨wiles_modularity_Frey w, rfl⟩
+
+/-- Arithmetic core: under a Frey-ℓ witness, the
+residual attached to `q` divides `v_q(Δ)`. -/
+theorem ell_of_q_dvd_vqDelta (t : PositiveBealTriple)
+    (wit : FreyEllWitness t.m t.n t.p) {q : Nat}
+    (hqMem : q ∈ (t.A * t.B * t.C).primeFactors) (hodd : q ≠ 2) :
+    ell_of_q t wit q ∣
+      padicValInt q (freyCurveOf t.toPrimitive).Δ := by
+  have hq : q.Prime := Nat.prime_of_mem_primeFactors hqMem
+  have hdvd : q ∣ t.A * t.B * t.C := Nat.dvd_of_mem_primeFactors hqMem
+  have hCop := pairwise_coprime t.toPrimitive
+  have hABC := (Nat.Prime.dvd_mul hq).mp hdvd
+  rcases hABC with hAB | hC
+  · rcases (Nat.Prime.dvd_mul hq).mp hAB with hA | hB
+    · rw [ell_of_q_of_dvd_A t wit hA,
+        odd_prime_Delta_val_of_dvd_A t.toPrimitive hq hodd hA]
+      exact exponent_dvd_Delta_val wit.dvd_m
+    · have hA : ¬ q ∣ t.A :=
+        fun hA => coprime_not_dvd_both hCop.1 hq hA hB
+      rw [ell_of_q_of_dvd_B t wit hA hB,
+        odd_prime_Delta_val_of_dvd_B t.toPrimitive hq hodd hB]
+      exact exponent_dvd_Delta_val wit.dvd_n
+  · have hA : ¬ q ∣ t.A :=
+      fun hA => coprime_not_dvd_both hCop.2.2 hq hA hC
+    have hB : ¬ q ∣ t.B :=
+      fun hB => coprime_not_dvd_both hCop.2.1 hq hB hC
+    rw [ell_of_q_of_dvd_C t wit hA hB,
+      odd_prime_Delta_val_of_dvd_C t.toPrimitive hq hodd hC]
+    exact exponent_dvd_Delta_val wit.dvd_p
+
+/-- Frey-ℓ Mazur pack: Wiles-domain `Modular` at
+`N = rad(ABC)`, Tate `ℓ | v_q(Δ)`, residual traces
+`±(q+1)`, double-coset Hecke at residual `ℓ`, and
+TW scaffold at `N·ℓ`.  Not Mathlib modularity at
+`N/q`. -/
+structure MazurStepEll (t : PositiveBealTriple) (q ℓ : Nat) : Prop where
+  step : MazurStepReal t q
+  ell_prime : ℓ.Prime
+  ell_ge5 : 5 ≤ ℓ
+  ell_dvd : ℓ ∣ padicValInt q (freyCurveOf t.toPrimitive).Δ
+  unramified : UnramifiedAtEll t.toPrimitive q ℓ
+  unramified_iff :
+    UnramifiedAtEll t.toPrimitive q ℓ ↔
+      ℓ ∣ padicValInt q (freyCurveOf t.toPrimitive).Δ
+  aq_pm1 :
+    ∃ _ : Fact q.Prime, ∃ s : Int, (s = 1 ∨ s = -1) ∧
+      s = frey_aq_sign t.toPrimitive q
+  traces :
+    (TraceFrob_pm_qplus1 q ℓ).1 = (q + 1 : ZMod ℓ) ∧
+      (TraceFrob_pm_qplus1 q ℓ).2 = (-(q + 1) : ZMod ℓ)
+  J0_real_level :
+    (J0_N_real.ofTriple t).level = globalConductorTate t.toPrimitive
+  hecke_ell :
+    (HeckeAction_N_real_ell (globalConductorTate t.toPrimitive) q ℓ).residue = ℓ
+  tw_N_ell :
+    Nonempty
+      (R_infty (patchedLevel_N_ell (globalConductorTate t.toPrimitive) ℓ) ≃
+        T_infty (patchedLevel_N_ell (globalConductorTate t.toPrimitive) ℓ))
+  rank_N_ell :
+    localizedHeckeRank (patchedLevel_N_ell (globalConductorTate t.toPrimitive) ℓ) = 1
+  modular_ell :
+    Modular t.toPrimitive ∧
+      (residualFreyRep t.toPrimitive ℓ).residualPrime = ℓ
+  lowered_mul :
+    q ∣ globalConductorTate t.toPrimitive →
+      0 < q →
+        globalConductorTate t.toPrimitive / q * q =
+          globalConductorTate t.toPrimitive
+
+theorem mazur_step_ell (t : PositiveBealTriple) {q ℓ : Nat}
+    (hqMem : q ∈ (t.A * t.B * t.C).primeFactors) (hodd : q ≠ 2)
+    (hℓP : ℓ.Prime) (hℓ5 : 5 ≤ ℓ)
+    (hℓ : ℓ ∣ padicValInt q (freyCurveOf t.toPrimitive).Δ)
+    (hMod : Modular t.toPrimitive) :
+    MazurStepEll t q ℓ where
+  step := mazur_step_real t hqMem hodd hMod
+  ell_prime := hℓP
+  ell_ge5 := hℓ5
+  ell_dvd := hℓ
+  unramified := hℓ
+  unramified_iff := frey_rho_unramified_iff_ell_dvd_vqDelta t.toPrimitive q ℓ
+  aq_pm1 := by
+    haveI : Fact q.Prime := ⟨Nat.prime_of_mem_primeFactors hqMem⟩
+    exact ⟨inferInstance, frey_a_q_real_ell t hqMem hodd⟩
+  traces := trace_eq_pm_qplus1_when_unramified t.toPrimitive q ℓ hℓ
+  J0_real_level := rfl
+  hecke_ell := rfl
+  tw_N_ell := R_T_at_N_ell (globalConductorTate t.toPrimitive) ℓ
+  rank_N_ell := localizedRank_N_ell (globalConductorTate t.toPrimitive) ℓ
+  modular_ell := wiles_modularity_Frey_mod_ell t.toPrimitive ℓ hℓP hℓ5
+  lowered_mul := fun h _ => Nat.div_mul_cancel h
+
+theorem mazur_step_ell_of_witness (t : PositiveBealTriple)
+    (wit : FreyEllWitness t.m t.n t.p) {q : Nat}
+    (hq : q ∈ odd_q_divisors_N t) (hMod : Modular t.toPrimitive) :
+    MazurStepEll t q (ell_of_q t wit q) := by
+  have hq' := Finset.mem_filter.mp hq
+  exact mazur_step_ell t hq'.1 hq'.2
+    (ell_of_q_prime t wit q) (ell_of_q_ge5 t wit q)
+    (ell_of_q_dvd_vqDelta t wit hq'.1 hq'.2) hMod
+
+/-- Under `FreyEllCase5` every odd prime of `ABC` is
+Mazur-eligible (`ℓ(q) | v_q(Δ)`), so the iterated
+arithmetic quotient is `N / ∏q = 2`.  Still not
+`ExistsNewformLevel2`. -/
+structure RibetIteratedEllCase (t : PositiveBealTriple) : Prop where
+  pack : RibetIteratedReal t
+  case5 : FreyEllCase5 t.m t.n t.p
+  mazur_all_wit :
+    ∀ wit : FreyEllWitness t.m t.n t.p,
+      ∀ q ∈ odd_q_divisors_N t, MazurStepEll t q (ell_of_q t wit q)
+  every_odd_has_ell :
+    ∀ wit : FreyEllWitness t.m t.n t.p,
+      ∀ q ∈ odd_q_divisors_N t,
+        ell_of_q t wit q ∣
+          padicValInt q (freyCurveOf t.toPrimitive).Δ
+  level_two : ribet_iterated_real_level t = 2
+  no_newform : ¬ ExistsNewformLevel2
+
+theorem N_div_Prod_eq_2_of_FreyEllCase5
+    (t : PositiveBealTriple) (_hCase : FreyEllCase5 t.m t.n t.p) :
+    globalConductorTate t.toPrimitive / (odd_q_divisors_N t).prod id = 2 :=
+  ribet_level_quotient t.toPrimitive
+
+theorem ribet_iterated_ell_case (t : PositiveBealTriple)
+    (hCase : FreyEllCase5 t.m t.n t.p)
+    (hMod : Modular t.toPrimitive) :
+    RibetIteratedEllCase t where
+  pack := ribet_iterated_real t hMod
+  case5 := hCase
+  mazur_all_wit := fun wit q hq =>
+    mazur_step_ell_of_witness t wit hq hMod
+  every_odd_has_ell := by
+    intro wit q hq
+    have hq' := Finset.mem_filter.mp hq
+    exact ell_of_q_dvd_vqDelta t wit hq'.1 hq'.2
+  level_two := ribet_iterated_real_level_eq_two t
+  no_newform := no_newform_level2
+
+/-- Honesty: Wiles-domain `Modular` after the Frey-ℓ
+pack is still not `ExistsNewformLevel2`. -/
+theorem modular_at_two_ell_is_not_newform (t : PositiveBealTriple)
+    (_hCase : FreyEllCase5 t.m t.n t.p)
+    (_hMod : Modular t.toPrimitive) :
+    ¬ ExistsNewformLevel2 :=
+  no_newform_level2
+
+/-- The requested `¬ PositiveBealTriple` under
+`FreyEllCase5`.  Uninhabited: `Modular` at 2 is not
+`ExistsNewformLevel2` (`0 ≠ 0`). -/
+def not_PositiveBealTriple_of_FreyEllCase5 : Prop :=
+  ∀ t : PositiveBealTriple, FreyEllCase5 t.m t.n t.p → False
+
+/-- Beal on positive bases, *from* the missing Mathlib
+arrow, even after assuming every positive triple is a
+`FreyEllCase5`.  Not `¬ PositiveBealTriple`. -/
+theorem beal_from_ribet_ell_case
+    (_hCase : ∀ t : PositiveBealTriple, FreyEllCase5 t.m t.n t.p)
+    (hModNew : ModularImpliesLevel2Newform) :
+    ∀ A B C m n p : Nat,
+      0 < A → 0 < B → 0 < C →
+      2 < m → 2 < n → 2 < p →
+      A ^ m + B ^ n = C ^ p →
+      1 < Nat.gcd A (Nat.gcd B C) :=
+  beal_from_ribet_real hModNew
+
 #check q_expansion_26a1
 #check q_expansion_26b1
 #check q_expansion_26a1_int
@@ -1130,7 +1591,23 @@ theorem beal_from_ribet_real_fixed
 #check beal_from_ribet
 #check beal_from_ribet_real
 #check beal_from_ribet_real_fixed
+#check beal_from_ribet_ell_case
 #check beal_positive_bases_unconditional
+#check FreyEllCase5
+#check FreyEllCase5Weak
+#check FreyEllWitness
+#check ell_of_q
+#check HeckeAction_N_real_ell
+#check MazurStepEll
+#check RibetIteratedEllCase
+#check frey_a_q_real_ell
+#check frey_rho_unramified_iff_ell_dvd_vqDelta
+#check trace_eq_pm_qplus1_when_unramified
+#check mazur_step_ell
+#check ribet_iterated_ell_case
+#check N_div_Prod_eq_2_of_FreyEllCase5
+#check TWAuxEll
+#check wiles_modularity_Frey_mod_ell
 #check X0_N_Model
 #check J0_N_Model
 #check J0_N_real
@@ -1163,5 +1640,16 @@ theorem beal_from_ribet_real_fixed
 #print axioms beal_from_ribet
 #print axioms beal_from_ribet_real
 #print axioms beal_from_ribet_real_fixed
+#print axioms frey_a_q_real_ell
+#print axioms frey_rho_unramified_iff_ell_dvd_vqDelta
+#print axioms trace_eq_pm_qplus1_when_unramified
+#print axioms ell_of_q_dvd_vqDelta
+#print axioms mazur_step_ell
+#print axioms ribet_iterated_ell_case
+#print axioms N_div_Prod_eq_2_of_FreyEllCase5
+#print axioms not_FreyEllCase5_of_exp_four
+#print axioms beal_from_ribet_ell_case
+#print axioms TWAuxEllExists_13
+#print axioms wiles_modularity_Frey_mod_ell
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

@@ -785,6 +785,7 @@ do
   grep -q "v8.8.0-ribet-proof" "$readme"
   grep -q "v8.9.0-explicit-J0N" "$readme"
   grep -q "v8.10.0-frey-aq-pm1-real" "$readme"
+  grep -q "v8.11.0-frey-ell-case" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1151,6 +1152,30 @@ grep -q "theorem frey_rho_unramified_iff_13_dvd_vqDelta" \
 grep -q "def Frey13Case" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "def odd_q_divisors_with_13dvd" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def FreyEllCase5" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def FreyEllCase5Weak" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def ell_of_q" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def HeckeAction_N_real_ell" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem frey_a_q_real_ell" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem frey_rho_unramified_iff_ell_dvd_vqDelta" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem trace_eq_pm_qplus1_when_unramified" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem mazur_step_ell" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem ribet_iterated_ell_case" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem N_div_Prod_eq_2_of_FreyEllCase5" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem beal_from_ribet_ell_case" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem ell_of_q_dvd_vqDelta" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "def beal_forall_from_Is13Case_sketch_stays_uninhabited" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean

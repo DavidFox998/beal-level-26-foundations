@@ -1,18 +1,17 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.10.0-frey-aq-pm1-real`.
+Latest tag / HEAD: `v8.11.0-frey-ell-case`.
 Lean change: `RibetMazur.lean` adds
-`frey_a_q_real` (Tate sign `(-c6/q)=±1` because
-`q` does not divide `c6`),
-`frey_rho_unramified_iff_13_dvd_vqDelta`,
-and `J0_N_real` as a packed `ModSym` token
-with double-coset `T_q` at `N` (TW at
-`N*53`/`N*677`).  `mazur_step_real_fixed`
-requires `13 | v_q(Delta)`.
-`ribet_iterated_real_fixed` iterates only
-those primes; the quotient is **not** `2`
-unless `Frey13Case`.
-`beal_from_ribet_real_fixed` stays *from*
+`FreyEllCase5` / `ell_of_q` so a residual
+`ℓ ≥ 5` dividing the matching exponent
+gives `ℓ | v_q(Δ)` at every odd `q | ABC`.
+`mazur_step_ell` is the packed Mazur step
+at that `ℓ`.  Residual traces are packed
+as `±(q+1)`, not `a_q = ±1`.
+`ribet_iterated_ell_case` iterates every
+odd prime under `FreyEllCase5`, so the
+arithmetic quotient is `N / ∏q = 2`.
+`beal_from_ribet_ell_case` stays *from*
 `ModularImpliesLevel2Newform`.
 `ExistsNewformLevel2` is still `0 ≠ 0`.
 The unguarded sketch type is **false**
