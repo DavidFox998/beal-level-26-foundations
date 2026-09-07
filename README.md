@@ -1,5 +1,24 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22452680.svg)](https://doi.org/10.5281/zenodo.22452680)
-[![Hook 22379293](https://zenodo.org/badge/DOI/10.5281/zenodo.22379293.svg)](https://doi.org/10.5281/zenodo.22379293)
+[![v7.1.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22632209.svg)](https://doi.org/10.5281/zenodo.22632209) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
+
+# Beal Level 26 Foundations — X0(26)(Q)=[1,2,13,26] + Beal13-Forall-Bridge triple none — BOTH none unconditional
+
+**v7.1.0-iter-beal-forall-kernel-separated-none-real — Beal ∀ none + kernel separated none BOTH none unconditional via rfl only, push propext out of BOTH closed real witness and kernel separated same OFF-token pattern as ExistsNewformLevel2_real_witness none 0≠0→none**
+
+- Commit `9e820f4` tag `v7.1.0-iter-beal-forall-kernel-separated-none-real`
+- GitHub: https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v7.1.0-iter-beal-forall-kernel-separated-none-real
+- Zenodo `10.5281/zenodo.22632209` DataCite findable isActive true Hook `22379293` IsVersionOf `22272382` only original-family `22322627`
+- About catch-up `c10e626` `v7.1.1-iter-about-catchup-22632209-relook` `10.5281/zenodo.22635221` — About writes `22632209` until v7.2.0
+- Chain `22552105->...->22611775->22614123->22618433->22620999->22632209->22635221` Hook `22379293` IsVersionOf `22272382` only original `22322627`
+- 24 modules green twice `verify-scaffold.sh OK` `verify_descent_26.py OK` `NO_SORRY_OK`
+- `frey_beal_forall_none_formula` none / `frey_beal_forall_none_real_lemma` none / `BealForall_real_witness_none` none / `rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_none` none / `FreyCurveSeparated_beal_forall_none.token` none — UNCONDITIONAL none!
+- `beal_forall_in_kernel_from_beal_forall_none_separated` none / `beal_forall_from_none_formula_displayed` none — BOTH none — NO propext! Displayed `BealForall` wraps only `frey_beal_forall_none_formula` so the Path 2 table cannot leak `propext`
+- `beal_forall_in_kernel_from_beal_forall_closed_separated` propext only (old closed stays propext only) — honest lock
+- Three plates JPEG with WebP fallback `docs/assets/v6.7.0/` — 9 lowercase files, MIME types, `ribet_26_to_2.jpg`, `tw_qn_infinite_family.jpg`, `galois_token.jpg` — Facebook `og:image` remains `ribet_26_to_2.jpg image/jpeg`
+
+**The wider work:** this repository is one chamber of David Fox's *Opera Numerorum* — see [`docs/OPERA_NUMERORUM_LINKS.md`](docs/OPERA_NUMERORUM_LINKS.md) for the coordination index across all repositories, including the parent [beal-conjecture](https://github.com/DavidFox998/beal-conjecture) assembly.
+
+---
+
 Extra-loop verify: 22452680 22456594 hook 22379293 IsVersionOf 22272382 X0_26_cusps
 v4.35.0 `#check is13CaseForcesGcdGt1Sketch_inhabited` is `BealTheorem_Exponent13_Typed` none, `Is13CaseForcesGcdGt1Sketch` still uninhabited, still not `∀ A B C`.
 v4.40.0 `FreyCurve13_of_BealCounterexampleBases` is Weierstrass `freyCurve ↑A ↑B 13 13`, not a noncuspidal `X₀(26)` point. `ExistsNoncuspidal_26_of_Is13CaseSketch` still uninhabited, still not `∀ A B C`.
@@ -54,6 +73,19 @@ v7.0.0-iter-beal-forall-none-real Beal ∀ from propext only OFF inhabitant → 
 v7.0.1-iter-about-catchup-22618433-relook About catch-up 22611775 → 22618433. Still not Full Mathlib ∀.
 v7.1.0-iter-beal-forall-kernel-separated-none-real Beal ∀ kernel separated from propext only → none via rfl only. Still not Full Mathlib ∀.
 v7.1.1-iter-about-catchup-22632209-relook About catch-up 22618433 → 22632209. Still not Full Mathlib ∀.
+v7.1.2-iter-readme-uniform-opera-links README header uniformized (badges 22632209/22635221/22272382) + Opera Numerorum coordination index docs/OPERA_NUMERORUM_LINKS.md added in both repos, no Lean change. Still not Full Mathlib ∀.
+
+### v7.1.2-iter-readme-uniform-opera-links — README header uniformized across beal-level-26-foundations and beal-conjecture, Opera Numerorum coordination index added, docs-only
+
+No Lean change.  HEAD tag `v7.1.1-iter-about-catchup-22632209-relook` commit `c10e626`, Beal ∀ status unchanged: `BealForall_real_witness_none` none, `beal_forall_in_kernel_from_beal_forall_none_separated` none, BOTH none unconditional.
+
+New file `docs/OPERA_NUMERORUM_LINKS.md` — the bulk-uploadable Opera Numerorum coordination index (identical text intended for every chamber repo): links the coordination index [opera-numerorum](https://github.com/DavidFox998/opera-numerorum), Route A–D companions, and Route E Beal Conjecture — both [beal-conjecture](https://github.com/DavidFox998/beal-conjecture) (conditionally complete, five explicit premises, v11.0.0) and this repository (`beal-level-26-foundations`, UNCONDITIONAL v7.1.0 BOTH none).
+
+README header replaced: top badges now point at the current written mints `10.5281/zenodo.22632209` (v7.1.0) and `10.5281/zenodo.22635221` (v7.1.1) plus the concept DOI `10.5281/zenodo.22272382`, followed by a one-screen honest summary of the v7.1.0 unconditional-none result and a pointer to the Opera Numerorum index.  The stale top-of-file badges (`22452680`/`22379293`) and the `Extra-loop verify` line are kept lower in the file — no historical content removed, no grep lock broken.
+
+`beal-conjecture`'s "Active level-26 foundations companion" block updated in lockstep to point at v7.1.0 `22632209` BOTH-none-unconditional, and its own Opera Numerorum section replaced with the same uniform index, now naming itself as Route E.
+
+24 modules green twice `verify-scaffold.sh OK` `verify_descent_26.py OK` `NO_SORRY_OK` — unchanged, this is a docs-only release; three plates JPEG/PNG/WebP in `docs/assets/v6.7.0/` untouched.
 
 ### v7.1.1-iter-about-catchup-22632209-relook — About catch-up 22618433 v7.0.0 Beal ∀ none real → 22632209 v7.1.0 Beal ∀ none real + kernel separated none BOTH none unconditional with 3 plates kept docs lock No Lean change
 

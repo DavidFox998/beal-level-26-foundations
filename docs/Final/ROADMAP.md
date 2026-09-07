@@ -601,3 +601,29 @@ latest remains `22322627`.  Chain
 → 22602899 → 22607942 → 22611775 → 22614123
 → 22618433 → 22620999 → 22632209`.
 
+### v7.1.2-iter-readme-uniform-opera-links — DONE
+
+Docs-only.  No Lean change.  HEAD stays
+`9e820f4` / `c10e626`, still v7.1.0 Beal
+`∀` none real + kernel separated none BOTH
+**none** unconditional.  New file
+`docs/OPERA_NUMERORUM_LINKS.md` — the
+bulk-uploadable *Opera Numerorum*
+coordination index, listing Route A–D
+companions and Route E (`beal-conjecture`
+conditionally complete v11.0.0 plus this
+repository, UNCONDITIONAL v7.1.0 BOTH
+none).  `README.md` top header replaced:
+badges now pin the current written mints
+`22632209` (v7.1.0) and `22635221`
+(v7.1.1) plus concept DOI `22272382`,
+followed by a one-screen honest summary
+of the v7.1.0 BOTH-none result.
+`beal-conjecture`'s companion block and
+Opera Numerorum section updated in
+lockstep to point at v7.1.0 `22632209`.
+Three JPEG plates untouched in
+`docs/assets/v6.7.0/`.  24 modules green
+twice, `verify-scaffold.sh OK`,
+`verify_descent_26.py OK`, `NO_SORRY_OK`.
+

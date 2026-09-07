@@ -1,11 +1,21 @@
-# FINAL v7.1.1 — About catch-up 22632209 relook
+# FINAL v7.1.2 — README uniform + Opera Numerorum links
 
-Latest tag `v7.1.1-iter-about-catchup-22632209-relook`.
+Latest tag `v7.1.2-iter-readme-uniform-opera-links`.
 Records Lean HEAD `9e820f4` /
 `v7.1.0-iter-beal-forall-kernel-separated-none-real`.
-**No Lean change.**
+**No Lean change.**  Docs-only: new
+`docs/OPERA_NUMERORUM_LINKS.md` coordination
+index (bulk-uploadable, identical across
+chamber repos) and a uniformized `README.md`
+top header — badges now pin the current
+written mints and the concept DOI, followed
+by a one-screen honest summary of the v7.1.0
+BOTH-none result.  `beal-conjecture`'s
+companion block and its own Opera Numerorum
+section updated in lockstep to point at
+v7.1.0 `22632209` BOTH none unconditional.
 Official build stays **24 modules**.
-Latest written mint now
+Latest written mint remains
 [10.5281/zenodo.22632209](https://doi.org/10.5281/zenodo.22632209)
 (v7.1.0 Beal `∀` none real + kernel
 separated none, both **none**
