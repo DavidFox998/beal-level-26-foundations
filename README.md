@@ -85,6 +85,18 @@ v8.2.0-scheme-hecke-ribet GeometryScheme + HeckeAlgebra + RibetFunctor: packed X
 v8.3.0-explicit-X0-26 X0_26_Model + HeckeAction + LevelLowering: explicit y²=x⁶−8x⁵+22x⁴−20x³+5x²+4x−4, M_ℤ=[[1,1],[0,2]] det=2, T_q on 26a1/26b1 prefixes, TW 53/677 patching; beal_positive_bases stays from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.4.0-formal-immersion X0_26_Model localizes M_ℤ at (2)/(3): IsUnit det over ℤ_{(3)} (v₃(2)=0); ¬IsUnit over ℤ_{(2)} (v₂(2)=1); X0_26_Q_points_cusps_model_real from formal_immersion_at_3. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.5.0-cotangent-sheaf X0_26_Model AdjoinRoot (Y²−f) + Ω[R⁄ℚ] with 2 y dy = f'(x) dx; cotangentSheaf affine patch; integral model at 3 is the v8.4.0 matrix. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.6.0-level-lowering-term LevelLowering Frey_GaloisRep + level_lowering_to_2_term Hecke/TW pack; ExistsNewformLevel2 stays 0≠0; beal_positive_bases_unconditional still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.6.0-level-lowering-term — Frey residual + Hecke/TW pack (arrow stays a Prop)
+
+Lean change.  `LevelLowering.lean` adds `Frey_GaloisRep` and `level_lowering_to_2_term`.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `Frey_GaloisRep`: packed ρ̄ mod 13 of `Y² = X(X−Aᵐ)(X+Bⁿ)`, `N = rad(ABC)`, Tate exponent 1, `det = χ₁₃`;
+- `level_lowering_to_2_term`: HeckeAction basis `f_26a1`/`f_26b1` (dim `2=1+1`), TW `53`/`677` `R_∞ ≃ T_∞`, oldform quotient `N/∏q=2`;
+- `S2_Gamma0_2_zero_of_term`: displayed `S₂(Γ₀(2))` dim 0, so the pack is **not** `ExistsNewformLevel2`;
+- `beal_positive_bases_unconditional`: same type as `beal_positive_bases` (still *from* `ModularImpliesLevel2Newform`).
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.5.0-cotangent-sheaf — Ω¹ of the affine hyperelliptic model (arrow stays a Prop)
 

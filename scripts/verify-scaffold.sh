@@ -778,6 +778,7 @@ do
   grep -q "v8.3.0-explicit-X0-26" "$readme"
   grep -q "v8.4.0-formal-immersion" "$readme"
   grep -q "v8.5.0-cotangent-sheaf" "$readme"
+  grep -q "v8.6.0-level-lowering-term" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1089,7 +1090,13 @@ grep -q "theorem R_inf_eq_T_inf_patched" \
   lean/BealLevel26Foundations/Beal/FullProof/HeckeAction.lean
 grep -q "theorem level_lowering_to_2" \
   lean/BealLevel26Foundations/Beal/FullProof/LevelLowering.lean
+grep -q "def Frey_GaloisRep" \
+  lean/BealLevel26Foundations/Beal/FullProof/LevelLowering.lean
+grep -q "theorem level_lowering_to_2_term" \
+  lean/BealLevel26Foundations/Beal/FullProof/LevelLowering.lean
 grep -q "theorem beal_positive_bases" \
+  lean/BealLevel26Foundations/Beal/FullProof/LevelLowering.lean
+grep -q "theorem beal_positive_bases_unconditional" \
   lean/BealLevel26Foundations/Beal/FullProof/LevelLowering.lean
 grep -q "def beal_forall_from_Is13Case_sketch_stays_uninhabited" \
   lean/BealLevel26Foundations/Beal/FullProof/X0_26_Model.lean

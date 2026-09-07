@@ -799,6 +799,23 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.6.0-level-lowering-term — DONE (Frey residual + Hecke/TW pack, arrow stays a Prop)
+
+Lean change.  `LevelLowering.lean` adds
+`Frey_GaloisRep` and `level_lowering_to_2_term`.
+The four-step pack uses HeckeAction
+(`f_26a1`/`f_26b1`, dim `2=1+1`), TW `53`/`677`
+(`R_∞ ≃ T_∞` at `26·53` and `26·677`), and
+`N / ∏q = 2`.  Displayed `S₂(Γ₀(2))` dim 0
+means this is **not** `ExistsNewformLevel2`
+(`0 ≠ 0`).  `beal_positive_bases_unconditional`
+still takes `ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.5.0-cotangent-sheaf — DONE (Ω¹ from f, arrow stays a Prop)
 
 Lean change.  `X0_26_Model.lean` adds

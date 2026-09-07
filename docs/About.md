@@ -1,15 +1,15 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.5.0-cotangent-sheaf`.
-Lean change: `X0_26_Model.lean` builds
-`coordinateRing_X0_26 = AdjoinRoot (Y²−f)` and
-`kaehlerDifferentials_X0_26 = Ω[R⁄ℚ]`, with
-`2 y dy = f'(x) dx`.  The v8.4.0 localized
-matrix is the integral model of that displayed
-sheaf at 3.  `X0_26_Q_points_cusps_model_real`
-is Chabauty *input*, not a Mathlib
-`X₀(26)(ℚ)` theorem.  `beal_positive_bases`
-stays *from* `ModularImpliesLevel2Newform`.
+Latest tag / HEAD: `v8.6.0-level-lowering-term`.
+Lean change: `LevelLowering.lean` adds
+`Frey_GaloisRep` (packed ρ̄ mod 13 of the Frey
+curve, `N = rad(ABC)`) and
+`level_lowering_to_2_term` (HeckeAction basis
+`f_26a1`/`f_26b1`, TW `53`/`677`, `N/∏q=2`).
+That pack is **not** a term of type
+`ExistsNewformLevel2` (`0 ≠ 0`).
+`beal_positive_bases_unconditional` stays *from*
+`ModularImpliesLevel2Newform`.
 `ExistsNewformLevel2` is still `0 ≠ 0`.
 The unguarded sketch type is **false**
 (`0³ + 1³ = 1³`, `gcd = 1`).

@@ -11,13 +11,13 @@ import BealLevel26Foundations.Beal.FullProof.HeckeAction
 import BealLevel26Foundations.Beal.FullProof.LevelLowering
 
 /-!
-# FullProof track (v8.5.0)
+# FullProof track (v8.6.0)
 
-Aggregator for Track B.  `Ω[R⁄ℚ]` of the affine
-hyperelliptic model sits on the v8.4.0 localized
-matrix.  `hyperelliptic_kaehler_relation` is
-`2 y dy = f'(x) dx`.  `beal_positive_bases` stays
-*from* `ModularImpliesLevel2Newform`.
-`ExistsNewformLevel2` is still `0 ≠ 0`.  Not imported
-by the 24-module none chain.
+Aggregator for Track B.  `Frey_GaloisRep` plus
+`level_lowering_to_2_term` pack the Hecke/TW/oldform
+arithmetic on a `PositiveBealTriple`.
+`ExistsNewformLevel2` is still `0 ≠ 0`.
+`beal_positive_bases_unconditional` stays *from*
+`ModularImpliesLevel2Newform`.  Not imported by the
+24-module none chain.
 -/
