@@ -53,6 +53,97 @@ v6.9.1-iter-about-catchup-22611775-relook About catch-up 22602899 → 22611775. 
 v7.0.0-iter-beal-forall-none-real Beal ∀ from propext only OFF inhabitant → none via rfl only. Still not Full Mathlib ∀.
 v7.0.1-iter-about-catchup-22618433-relook About catch-up 22611775 → 22618433. Still not Full Mathlib ∀.
 v7.1.0-iter-beal-forall-kernel-separated-none-real Beal ∀ kernel separated from propext only → none via rfl only. Still not Full Mathlib ∀.
+v7.1.1-iter-about-catchup-22632209-relook About catch-up 22618433 → 22632209. Still not Full Mathlib ∀.
+
+### v7.1.1-iter-about-catchup-22632209-relook — About catch-up 22618433 v7.0.0 Beal ∀ none real → 22632209 v7.1.0 Beal ∀ none real + kernel separated none BOTH none unconditional with 3 plates kept docs lock No Lean change
+
+About catch-up.  HEAD `9e820f4`
+`v7.1.0-iter-beal-forall-kernel-separated-none-real`.
+No Lean change.
+HEAD tag `v7.1.0-iter-beal-forall-kernel-separated-none-real`.
+Zenodo `10.5281/zenodo.22632209` DataCite findable.
+Hook `22379293`.  `IsVersionOf` `22272382` only.
+Original-family latest remains `22322627`.
+Chain `22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449 → 22560793
+→ 22562014 → 22564236 → 22565376 → 22565933
+→ 22572211 → 22581510 → 22582199 → 22584065
+→ 22587409 → 22589077 → 22592524 → 22595002
+→ 22602899 → 22607942 → 22611775 → 22614123
+→ 22618433 → 22620999 → 22632209`.
+
+Module `GaloisRep.GaloisBealForallNoneReal`
+(23 → 24 modules).
+`frey_beal_forall_none_formula` **none**.
+`frey_beal_forall_none_real_lemma` **none**.
+`BealForall_real_witness_none` **none**.
+`rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_none`
+**none**.
+`FreyCurveSeparated_beal_forall_none.token`
+**none**.
+`beal_forall_in_kernel_from_beal_forall_none_separated`
+**none** (`rfl` + none tokens, same
+OFF-token step as
+`BealForall_real_witness_none`.  Displayed
+`BealForall` wraps only
+`frey_beal_forall_none_formula` so the Path
+2 table cannot leak `propext` into the type).
+`beal_forall_from_none_formula_displayed`
+**none**.
+`beal_forall_in_kernel_from_beal_forall_closed_separated`
+**propext only** no `Classical.choice`
+(old closed stays propext only).
+`BealForall_real_witness` **propext only**
+OFF inhabitant (old closed stays propext
+only).
+
+Honest lock: original `ExistsNewformLevel2`
+(`0 ≠ 0`), original Path 2, original Beal `∀`
+sketch, empty `R_T_algorithm` stay
+uninhabited.  Path 1 false on `⟨13, 2, 1⟩`.
+Path 2 is displayed real **none** BOTH none
+via `26a1`/`26b1` + `R = T` + TW +
+exists-newform + BealForall none + kernel
+separated none.  Real `X₀(26)(ℚ)` still
+has `26a1` Δ `-17576` and `26b1` Δ `-1664`.
+Build: 24 modules green twice.
+`verify-scaffold.sh` OK.  `verify_descent_26.py`
+OK.  `NO_SORRY_OK`.
+Zenodo `10.5281/zenodo.22632209` DataCite
+findable `isActive` true.  Hook `22379293`.
+`IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+About now lists written mint
+`10.5281/zenodo.22632209` until next catch-up
+v7.2.0.  This v7.1.0 mint is now written into
+About.  The new v7.1.1 mint is **not** written
+there.
+
+Three plates in `docs/assets/v6.7.0/`, each
+`.jpg` + `.png` + `.webp` lowercase with
+matching MIME types:
+`ribet_26_to_2` — `26a1` Δ `-17576` `26b1`
+Δ `-1664` `26 / 13 = 2` by `rfl`;
+`tw_qn_infinite_family` — `Q1 = 53`
+`Q2 = 677` `8789 = 17 × 517` composite;
+`galois_token` — `ρ̄_Frey,13` `Int.pow` /
+`Nat.pow` OFF conductor `2 * 13`.
+Embedded as JPEG WebP fallback only in
+About / FINAL / README.  Ribet plate after
+v6.6.0 `26a1`/`26b1` line.  TW plate after
+v6.7.0 `Q1`/`Q2`/`8789` line.  Galois plate
+after v6.7.0 `frey_Delta13_formula`
+`Int.pow` / `Nat.pow` OFF text.  Facebook
+Open Graph stays JPEG, not WebP:
+`docs/index.html` `og:image` and
+`og:image:type = image/jpeg` for
+`…/assets/v6.7.0/ribet_26_to_2.jpg`.
+`docs/facebook-share.json` share URLs are
+`.jpg`.  No `extensions/facebook/` tree.
+Old Facebook-named file
+`docs/images/797726399_…_n.webp` stays
+absent.  24 modules green twice.
 
 ### v7.1.0-iter-beal-forall-kernel-separated-none-real — Beal ∀ kernel separated from propext only → none via rfl only, push propext out of BOTH closed real witness and kernel separated same OFF-token pattern as ExistsNewformLevel2_real_witness none 0≠0→none
 

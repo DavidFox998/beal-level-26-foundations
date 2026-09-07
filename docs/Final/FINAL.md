@@ -1,17 +1,20 @@
-# FINAL v7.1.0 — Beal ∀ kernel separated none
+# FINAL v7.1.1 — About catch-up 22632209 relook
 
-Latest tag `v7.1.0-iter-beal-forall-kernel-separated-none-real`.
-Lean change: Beal `∀` kernel separated from
-`propext` only → **none** via `rfl` only.
+Latest tag `v7.1.1-iter-about-catchup-22632209-relook`.
+Records Lean HEAD `9e820f4` /
+`v7.1.0-iter-beal-forall-kernel-separated-none-real`.
+**No Lean change.**
 Official build stays **24 modules**.
-Latest written mint remains
-[10.5281/zenodo.22618433](https://doi.org/10.5281/zenodo.22618433)
-(v7.0.0 Beal `∀` none real via `rfl` only)
+Latest written mint now
+[10.5281/zenodo.22632209](https://doi.org/10.5281/zenodo.22632209)
+(v7.1.0 Beal `∀` none real + kernel
+separated none, both **none**
+unconditional)
 DataCite findable, after
-[10.5281/zenodo.22611775](https://doi.org/10.5281/zenodo.22611775)
-(v6.9.0 Beal `∀` closed real).  The new
-v7.1.0 mint is **not** written into About
-until catch-up v7.1.1.
+[10.5281/zenodo.22618433](https://doi.org/10.5281/zenodo.22618433)
+(v7.0.0 Beal `∀` none real via `rfl` only).
+The new v7.1.1 mint is **not** written into
+About until catch-up v7.2.0.
 Three JPEG plates stay in `docs/assets/v6.7.0/`.
 Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
 Original-family latest remains `22322627`.
@@ -585,6 +588,46 @@ inhabitant).  `BealForall_real_witness_none`
 `FreyCurveSeparated_beal_forall_none.token`
 **none**.  About still writes `22618433`
 until catch-up v7.1.1.
+
+### v7.1.1 About catch-up DONE
+
+Chain `22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449 → 22560793
+→ 22562014 → 22564236 → 22565376 → 22565933
+→ 22572211 → 22581510 → 22582199 → 22584065
+→ 22587409 → 22589077 → 22592524 → 22595002
+→ 22602899 → 22607942 → 22611775 → 22614123
+→ 22618433 → 22620999 → 22632209`.  About now
+writes `22632209` as the latest recorded mint.
+Docs lock + 3 plates relook.  No Lean change.
+
+v7.1.0 Beal `∀` none real + kernel
+separated none BOTH **none** unconditional.
+`frey_beal_forall_none_formula` **none**.
+`frey_beal_forall_none_real_lemma` **none**.
+`BealForall_real_witness_none` **none**.
+`rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_none`
+**none**.
+`FreyCurveSeparated_beal_forall_none.token`
+**none**.
+`beal_forall_in_kernel_from_beal_forall_none_separated`
+**none** (`rfl` + none tokens; displayed
+`BealForall` wraps only the none formula so
+the Path 2 table cannot leak `propext`).
+`beal_forall_from_none_formula_displayed`
+**none**.
+`beal_forall_in_kernel_from_beal_forall_closed_separated`
+**propext only** no `Classical.choice`
+(old closed stays propext only).
+Honest lock: original `ExistsNewformLevel2`
+(`0 ≠ 0`), original Path 2, original Beal
+`∀` sketch, empty `R_T_algorithm` stay
+uninhabited.  Path 1 false on `⟨13, 2, 1⟩`.
+Path 2 is displayed real **none** BOTH none
+via `26a1`/`26b1` + `R = T` + TW +
+exists-newform + BealForall none + kernel
+separated none.
 
 ### Honest lock (updated v7.1.0)
 

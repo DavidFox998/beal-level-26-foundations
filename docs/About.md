@@ -1,17 +1,22 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v7.1.0-iter-beal-forall-kernel-separated-none-real`.
-Lean change: Beal `∀` kernel separated from
-`propext` only → **none** via `rfl` only.
-Official build stays **24 modules**.
-Assets relook keeps the three JPEG plates
+Latest tag / HEAD: `v7.1.1-iter-about-catchup-22632209-relook`.
+Records Lean HEAD `9e820f4` /
+`v7.1.0-iter-beal-forall-kernel-separated-none-real`.
+No Lean change on this catch-up.  Assets
+relook keeps the three JPEG plates
 (WebP fallback only).
 
 Latest parallel mint written
+[10.5281/zenodo.22632209](https://doi.org/10.5281/zenodo.22632209)
+(v7.1.0 Beal `∀` none real + kernel
+separated none, both **none**
+unconditional via `rfl` only)
+DataCite findable, after
 [10.5281/zenodo.22618433](https://doi.org/10.5281/zenodo.22618433)
 (v7.0.0 Beal `∀` none real via `rfl` only;
-`propext` pushed out of the closed witness)
-DataCite findable, after
+`propext` pushed out of the closed witness),
+after
 [10.5281/zenodo.22611775](https://doi.org/10.5281/zenodo.22611775)
 (v6.9.0 Beal `∀` closed real via positivity /
 det / unramified / semistable / finite-flat /
@@ -40,9 +45,9 @@ none), after
 [10.5281/zenodo.22559449](https://doi.org/10.5281/zenodo.22559449)
 (v6.1.0 TW infinite family), after
 [10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
-(v6.0.0 REAL ALGORITHMS).  The new v7.1.0 mint
+(v6.0.0 REAL ALGORITHMS).  The new v7.1.1 mint
 is **not** written here (About catch-up waits
-for v7.1.1).  Hook
+for v7.2.0).  Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
 `IsVersionOf` [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)
 is metadata only.  Original-family latest remains
@@ -507,9 +512,21 @@ same as `BealForall_real_witness_none`).
 `beal_forall_in_kernel_from_beal_forall_closed_separated`
 stays **propext only**; no
 `Classical.choice`.
-About now writes `22618433` as the latest
-recorded mint.  The new v7.1.0 mint is
-**not** written here until catch-up v7.1.1.
+→
+`22620999` (v7.0.1 About catch-up DONE,
+About writes `22618433`; 3 plates relook) →
+`22632209` (v7.1.0 Beal `∀` none real +
+kernel separated none BOTH **none**
+unconditional.  Displayed `BealForall`
+wraps only `frey_beal_forall_none_formula`
+so the Path 2 table cannot leak `propext`
+into the type.
+`beal_forall_in_kernel_from_beal_forall_none_separated`
+**none**.  Closed kernel stays **propext
+only**).
+About now writes `22632209` as the latest
+recorded mint.  The new v7.1.1 mint is
+**not** written here until catch-up v7.2.0.
 
 Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms.
