@@ -1,3 +1,24 @@
+# FINAL v8.0.0 — FullProof Beal glue (sketch stays uninhabited)
+
+Latest tag `v8.0.0-beal-forall-proof`.
+Lean change.
+`lean/BealLevel26Foundations/Beal/FullProof/BealForallProof.lean`
+glues TrueConductor + ModularityRibet + GeometryBridge.
+`sketch_fails_on_zero_one` is `¬` the unguarded sketch
+(`0³ + 1³ = 1³`).  `beal_forall_proof` is positive-bases
+Beal from `ModularImpliesLevel2Newform`.
+`beal_forall_glue` is inhabited.  Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221)
+(v7.1.1 About catch-up, Track A).  Track B does **not**
+write a new mint claiming unconditional Beal `∀`.
+Three JPEG plates stay in `docs/assets/v6.7.0/`.
+Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+
 # FINAL v7.4.0 — GeometryBridge Mazur geometry filled
 
 Latest tag `v7.4.0-geometry-filled`.

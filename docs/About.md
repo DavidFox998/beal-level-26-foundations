@@ -1,22 +1,20 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v7.4.0-geometry-filled`.
-Lean change: `Beal/FullProof/GeometryBridge.lean` fills
-the Mazur geometry at level 26.  Proved: `J₀(26)`
-dimension `2 = 1 + 1` as the product of `26a1`
-(`Δ = -17576`) and `26b1` (`Δ = -1664`);
-`Pic⁰(X₀(26))` identified with that product;
-formal immersion at 2 via `M₃ = [[1, 1], [0, 2]]`,
-`det = 2`, basis `ω₁ = dx/y`, `ω₂ = x dx/y`;
-`X₀(26)(ℚ)` labels `[1, 2, 13, 26]` so
-`¬ ExistsNoncuspidal_26`; `|Sel₂| = 1` and certified
-rank `0`.  `#print axioms` is
-`[propext, Classical.choice, Quot.sound]`.
-Does **not** inhabit `beal_forall_from_Is13Case_sketch`
-(Step 4 remains).  The v7.1.0 none chain
+Latest tag / HEAD: `v8.0.0-beal-forall-proof`.
+Lean change: `Beal/FullProof/BealForallProof.lean` glues
+Tate + Ribet/`R = T` + GeometryBridge.  The unguarded
+sketch type is **false** (`0³ + 1³ = 1³`, `gcd = 1`).
+`beal_forall_proof` is Beal on **positive** bases
+**from** the missing Mathlib arrow
+`Modular → ExistsNewformLevel2`.  The glue
+`beal_forall_glue` is inhabited.  Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+`#print axioms` is `[propext, Classical.choice, Quot.sound]`.
+The v7.1.0 none chain
 (`BealForall_real_witness_none`,
 `beal_forall_in_kernel_from_beal_forall_none_separated`)
-is untouched.
+is untouched.  Track B does **not** write a new Zenodo
+claiming an unconditional Beal `∀`.
 
 Latest parallel mint written
 [10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221)

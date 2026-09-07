@@ -747,3 +747,20 @@ Does **not** touch the 24-module none chain.
 Step 4 (inhabit the sketch) remains.
 No `False.elim`.
 
+### v8.0.0-beal-forall-proof — DONE (honest glue, sketch uninhabited)
+
+Lean change.  New FullProof module
+`Beal/FullProof/BealForallProof.lean`.
+`sketch_fails_on_zero_one` refutes the unguarded
+sketch type (`0³ + 1³ = 1³`, `gcd = 1`).
+`beal_forall_glue` packs Tate + Ribet/`R = T` +
+GeometryBridge on every `PrimitiveBealTriple`.
+`beal_forall_proof` is Beal on positive bases
+**from** `ModularImpliesLevel2Newform`
+(the missing Mathlib `Modular → ExistsNewformLevel2`
+arrow).  Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+

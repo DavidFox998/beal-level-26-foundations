@@ -247,8 +247,19 @@ theorem not_Is13CaseForcesGcdGt1SketchPrimitive :
   forall_primitive_Is13Case_gcd_gt1_false
 
 /-- Beal conjecture as a Prop.  Valid type
-`∀ A B C m n p`.  Uninhabited: needs Tate + Ribet + a
-true gcd step, and the same for every prime `p ≥ 5`. -/
+`∀ A B C m n p`.  Uninhabited lock remains.
+
+v8.0.0 FullProof name `beal_forall_proof` lives in
+`Beal.FullProof.BealForallProof` and is the
+*conditional* positive-bases theorem
+(`ModularImpliesLevel2Newform → ∀ 0<A,B,C … gcd>1`),
+not an inhabitant of this sketch.  This file does
+**not** import FullProof (none chain).
+
+The sketch as typed is false: `0³ + 1³ = 1³` and
+`gcd(0,1,1) = 1`.  Beal needs positive bases, and
+Mathlib 4.12 has no `Modular → ExistsNewformLevel2`
+arrow. -/
 def beal_forall_from_Is13Case_sketch : Prop :=
   ∀ (A B C m n p : Nat),
     2 < m → 2 < n → 2 < p →

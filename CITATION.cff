@@ -5,8 +5,8 @@ type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v4.30.0-iter-zenodo-22456594-metadata-fix"
-date-released: "2026-09-06"
+version: "v8.0.0-beal-forall-proof"
+date-released: "2026-09-07"
 doi: "10.5281/zenodo.22272382"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
 url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v4.30.0-iter-zenodo-22456594-metadata-fix"
