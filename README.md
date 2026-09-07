@@ -84,6 +84,19 @@ v8.1.0-modular-implies-newform ModularImpliesNewform: PositiveBealTriple + Mathl
 v8.2.0-scheme-hecke-ribet GeometryScheme + HeckeAlgebra + RibetFunctor: packed X0(26)/J0(26) models, TW-tower R≃T, functorial lowering N→2; ModularImpliesLevel2Newform_Real stays the v8.1.0 Prop (ExistsNewformLevel2 is 0≠0). Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.3.0-explicit-X0-26 X0_26_Model + HeckeAction + LevelLowering: explicit y²=x⁶−8x⁵+22x⁴−20x³+5x²+4x−4, M_ℤ=[[1,1],[0,2]] det=2, T_q on 26a1/26b1 prefixes, TW 53/677 patching; beal_positive_bases stays from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.4.0-formal-immersion X0_26_Model localizes M_ℤ at (2)/(3): IsUnit det over ℤ_{(3)} (v₃(2)=0); ¬IsUnit over ℤ_{(2)} (v₂(2)=1); X0_26_Q_points_cusps_model_real from formal_immersion_at_3. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.5.0-cotangent-sheaf X0_26_Model AdjoinRoot (Y²−f) + Ω[R⁄ℚ] with 2 y dy = f'(x) dx; cotangentSheaf affine patch; integral model at 3 is the v8.4.0 matrix. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.5.0-cotangent-sheaf — Ω¹ of the affine hyperelliptic model (arrow stays a Prop)
+
+Lean change.  `X0_26_Model.lean` builds Mathlib `Ω[R⁄ℚ]` from `f`.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `coordinateRing_X0_26`: `AdjoinRoot (Y² − f)`;
+- `hyperelliptic_kaehler_relation`: `2 y dy = f'(x) dx`;
+- `cotangent_omega1` / `cotangent_omega2`: regular charts `dx/y`, `x dx/y`;
+- `cotangentSheaf_X0_26`: affine patch `= Ω[R⁄ℚ]` (not a `TopCat.Sheaf`);
+- `cotangent_Z3_is_unit_sheaf`: the v8.4.0 matrix is the integral model at 3.
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.4.0-formal-immersion — localized cotangent over ℤ_{(3)} (arrow stays a Prop)
 

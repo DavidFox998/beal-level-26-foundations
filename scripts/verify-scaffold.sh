@@ -777,6 +777,7 @@ do
   grep -q "v8.2.0-scheme-hecke-ribet" "$readme"
   grep -q "v8.3.0-explicit-X0-26" "$readme"
   grep -q "v8.4.0-formal-immersion" "$readme"
+  grep -q "v8.5.0-cotangent-sheaf" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1069,6 +1070,18 @@ grep -q "theorem X0_26_Q_points_cusps_model_real" \
 grep -q "theorem cotangent_Z3_det_isUnit" \
   lean/BealLevel26Foundations/Beal/FullProof/X0_26_Model.lean
 grep -q "theorem cotangent_Z2_det_not_unit" \
+  lean/BealLevel26Foundations/Beal/FullProof/X0_26_Model.lean
+grep -q "abbrev coordinateRing_X0_26" \
+  lean/BealLevel26Foundations/Beal/FullProof/X0_26_Model.lean
+grep -q "abbrev kaehlerDifferentials_X0_26" \
+  lean/BealLevel26Foundations/Beal/FullProof/X0_26_Model.lean
+grep -q "theorem hyperelliptic_kaehler_relation" \
+  lean/BealLevel26Foundations/Beal/FullProof/X0_26_Model.lean
+grep -q "def cotangentSheaf_X0_26" \
+  lean/BealLevel26Foundations/Beal/FullProof/X0_26_Model.lean
+grep -q "theorem cotangent_Z3_is_unit_sheaf" \
+  lean/BealLevel26Foundations/Beal/FullProof/X0_26_Model.lean
+grep -q "def basis_H0_Omega1" \
   lean/BealLevel26Foundations/Beal/FullProof/X0_26_Model.lean
 grep -q "def HeckeOperator_Tq_coeff" \
   lean/BealLevel26Foundations/Beal/FullProof/HeckeAction.lean

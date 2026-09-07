@@ -3,35 +3,30 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.4.0 — localized cotangent of the v8.3.0 matrix
-over `ℤ_{(2)}` and `ℤ_{(3)}`.
+Track B v8.5.0 — Ω¹ of the affine hyperelliptic model
+from `AdjoinRoot` + Mathlib `KaehlerDifferential`.
 
-Mathlib 4.12 has `Polynomial ℚ`, `WeierstrassCurve ℤ`,
-`Localization.AtPrime`, `LocalRing`, Nakayama, and
-`IsUnit` of a matrix determinant.  It does **not**
-construct the modular curve `X₀(26)` as a scheme, its
-Jacobian as an abelian surface, a cotangent *sheaf* of
-that curve, or a Chabauty identification
-`X₀(26)(ℚ) = {cusps}`.
+Mathlib 4.12 has `Polynomial ℚ`, `AdjoinRoot`,
+`KaehlerDifferential` (`Ω[S⁄R]`), `Derivation.map_aeval`,
+`Localization.AtPrime`, `LocalRing`, and Nakayama.
+It does **not** construct the modular curve `X₀(26)`
+as a scheme, a `TopCat` sheaf on that curve, or a
+Chabauty identification `X₀(26)(ℚ) = {cusps}`.
 
 What this file *does* prove:
 
-* the LMFDB / Sage canonical polynomial
-  `x⁶ − 8x⁵ + 22x⁴ − 20x³ + 5x² + 4x − 4` with
-  `coeff` theorems;
-* the integral matrix `M_ℤ = [[1, 1], [0, 2]]`,
-  `det = 2`, reducing to `M₃` over `ℤ/3`;
-* `cotangent_Z3` is that matrix over `ℤ_{(3)}`,
-  `IsUnit det` because `v₃(2) = 0`, hence `IsUnit`
-  as a `2×2` matrix — the GL₂ form of Nakayama
-  lifting from residue-field full rank;
-* `cotangent_Z2` is the same matrix over `ℤ_{(2)}`,
-  `¬ IsUnit det` because `v₂(2) = 1` (honest: not
-  an isomorphism at 2);
-* the product of PARI Weierstrass models `26a1` / `26b1`
-  (`Δ = -17576`, `Δ = -1664`);
-* the four-cusp label theorem next to the localized
-  invertibility at 3.
+* the LMFDB / Sage polynomial and displayed disc cert;
+* `coordinateRing_X0_26 = ℚ[X][Y] / (Y² − f)` via
+  `AdjoinRoot`;
+* `kaehlerDifferentials_X0_26 = Ω[R⁄ℚ]` and the
+  relation `2 y dy = f'(x) dx`;
+* `dx/y` and `x dx/y` as regular *charts* glued by
+  that relation (`disc ≠ 0` is the displayed squarefree
+  input);
+* `H⁰(Ω¹)` as the displayed `ℚ²` with Mathlib
+  `Pi.basisFun` (genus-2 dimension);
+* the v8.4.0 localized matrix is the integral model
+  of that displayed sheaf at 3.
 
 Does **not** inhabit `ExistsNewformLevel2` (`0 ≠ 0`).
 FullProof-only.
@@ -44,9 +39,15 @@ import Beal.Foundations.FormalImmersionM3
 import BealLevel26Foundations.Chain.X0_26_Point
 import Mathlib.Algebra.Polynomial.Basic
 import Mathlib.Algebra.Polynomial.Degree.Lemmas
+import Mathlib.Algebra.Polynomial.Derivative
+import Mathlib.LinearAlgebra.FreeModule.Finite.Basic
 import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
 import Mathlib.LinearAlgebra.Matrix.NonsingularInverse
+import Mathlib.LinearAlgebra.StdBasis
 import Mathlib.NumberTheory.Padics.PadicVal.Basic
+import Mathlib.RingTheory.AdjoinRoot
+import Mathlib.RingTheory.Derivation.Basic
+import Mathlib.RingTheory.Kaehler.Basic
 import Mathlib.RingTheory.Localization.AtPrime
 import Mathlib.RingTheory.Nakayama
 import Mathlib.Tactic
@@ -107,6 +108,24 @@ def X0_26_disc_cert : ℤ :=
 
 theorem X0_26_disc_cert_ne_zero : X0_26_disc_cert ≠ 0 := by
   decide
+
+/-- Formal derivative of `X0_26_f`. -/
+noncomputable def X0_26_f_deriv : Polynomial ℚ :=
+  derivative X0_26_f
+
+theorem X0_26_f_deriv_eq :
+    X0_26_f_deriv =
+      C 6 * X ^ 5 - C 40 * X ^ 4 + C 88 * X ^ 3 - C 60 * X ^ 2 +
+        C 10 * X + C 4 := by
+  ext n
+  simp [X0_26_f_deriv, X0_26_f]
+  ring_nf
+
+theorem X0_26_f_deriv_coeff_0 : X0_26_f_deriv.coeff 0 = 4 := by
+  simp [X0_26_f_deriv_eq]
+
+theorem X0_26_f_deriv_coeff_5 : X0_26_f_deriv.coeff 5 = 6 := by
+  simp [X0_26_f_deriv_eq]
 
 /-- Published genus of a squarefree degree-6 hyperelliptic
 model.  Not a Mathlib geometric genus. -/
@@ -169,6 +188,187 @@ def AbelJacobiModel (P : Nat) : Nat × Nat :=
 
 theorem AbelJacobiModel_formula (P : Nat) :
     AbelJacobiModel P = (P, 1) :=
+  rfl
+
+/-! ## Affine coordinate ring and Mathlib Ω¹ -/
+
+/-- Hyperelliptic equation `Y² − f(X)` as a polynomial in
+`Y` over `ℚ[X]`. -/
+noncomputable def hyperellipticEquation : Polynomial (Polynomial ℚ) :=
+  X ^ 2 - C X0_26_f
+
+/-- Affine coordinate ring `ℚ[X][Y] / (Y² − f)`. -/
+noncomputable abbrev coordinateRing_X0_26 : Type :=
+  AdjoinRoot hyperellipticEquation
+
+/-- Mathlib Kähler differentials `Ω[R⁄ℚ]` of the affine model. -/
+noncomputable abbrev kaehlerDifferentials_X0_26 : Type :=
+  Ω[coordinateRing_X0_26 ⁄ ℚ]
+
+noncomputable instance : Module coordinateRing_X0_26 kaehlerDifferentials_X0_26 :=
+  inferInstance
+
+/-- The `x`-coordinate: image of `X ∈ ℚ[X]`. -/
+noncomputable def x_coord : coordinateRing_X0_26 :=
+  AdjoinRoot.of hyperellipticEquation (X : Polynomial ℚ)
+
+/-- The `y`-coordinate: adjoined root of `Y² − f`. -/
+noncomputable def y_coord : coordinateRing_X0_26 :=
+  AdjoinRoot.root hyperellipticEquation
+
+noncomputable def dx : kaehlerDifferentials_X0_26 :=
+  KaehlerDifferential.D ℚ coordinateRing_X0_26 x_coord
+
+noncomputable def dy : kaehlerDifferentials_X0_26 :=
+  KaehlerDifferential.D ℚ coordinateRing_X0_26 y_coord
+
+theorem y_sq_eq_f :
+    y_coord * y_coord = AdjoinRoot.of hyperellipticEquation X0_26_f := by
+  have h := AdjoinRoot.eval₂_root hyperellipticEquation
+  have hsub :
+      y_coord * y_coord - AdjoinRoot.of hyperellipticEquation X0_26_f = 0 := by
+    simpa [hyperellipticEquation, eval₂_sub, eval₂_X_pow, eval₂_C, pow_two]
+      using h
+  exact sub_eq_zero.mp hsub
+
+theorem of_C_eq_algebraMap (a : ℚ) :
+    AdjoinRoot.of hyperellipticEquation (C a) =
+      algebraMap ℚ coordinateRing_X0_26 a := by
+  -- `of = algebraMap ℚ[X] R` and `C = algebraMap ℚ ℚ[X]`.
+  change algebraMap (Polynomial ℚ) coordinateRing_X0_26 (algebraMap ℚ (Polynomial ℚ) a) =
+    algebraMap ℚ coordinateRing_X0_26 a
+  exact (IsScalarTower.algebraMap_apply ℚ (Polynomial ℚ) coordinateRing_X0_26 a).symm
+
+theorem of_f_eq_aeval_x :
+    AdjoinRoot.of hyperellipticEquation X0_26_f = aeval x_coord X0_26_f := by
+  refine Polynomial.induction_on X0_26_f ?_ ?_ ?_
+  · intro a
+    simp [x_coord, aeval_C, of_C_eq_algebraMap]
+  · intro p q hp hq
+    simp [map_add, hp, hq]
+  · intro n a _ih
+    simp [map_mul, map_pow, aeval_X, x_coord, of_C_eq_algebraMap]
+
+/-- Hyperelliptic Kähler relation `2 y dy = f'(x) dx`. -/
+theorem hyperelliptic_kaehler_relation :
+    (2 * y_coord : coordinateRing_X0_26) • dy =
+      aeval x_coord X0_26_f_deriv • dx := by
+  have hD :=
+    congrArg (KaehlerDifferential.D ℚ coordinateRing_X0_26) y_sq_eq_f
+  have hL :
+      KaehlerDifferential.D ℚ coordinateRing_X0_26 (y_coord * y_coord) =
+        y_coord • dy + y_coord • dy := by
+    simp [dy, Derivation.leibniz]
+  have hL2 : y_coord • dy + y_coord • dy =
+      (2 * y_coord : coordinateRing_X0_26) • dy := by
+    rw [← two_smul coordinateRing_X0_26 (y_coord • dy), smul_smul, two_mul]
+  have hR :
+      KaehlerDifferential.D ℚ coordinateRing_X0_26
+          (AdjoinRoot.of hyperellipticEquation X0_26_f) =
+        aeval x_coord X0_26_f_deriv • dx := by
+    rw [of_f_eq_aeval_x, X0_26_f_deriv]
+    exact (KaehlerDifferential.D ℚ coordinateRing_X0_26).map_aeval X0_26_f x_coord
+  calc
+    (2 * y_coord : coordinateRing_X0_26) • dy
+        = y_coord • dy + y_coord • dy := hL2.symm
+    _ = KaehlerDifferential.D ℚ coordinateRing_X0_26 (y_coord * y_coord) := hL.symm
+    _ = KaehlerDifferential.D ℚ coordinateRing_X0_26
+          (AdjoinRoot.of hyperellipticEquation X0_26_f) := hD
+    _ = aeval x_coord X0_26_f_deriv • dx := hR
+
+/-- Chart for `ω₁ = dx / y`: the pair `(dx, y)` glued to
+`(2 dy, f')` by `hyperelliptic_kaehler_relation`. -/
+structure RegularOmegaChart where
+  num_dx : kaehlerDifferentials_X0_26
+  den_y : coordinateRing_X0_26
+  num_dy : kaehlerDifferentials_X0_26
+  den_f' : coordinateRing_X0_26
+  glue :
+    den_y • num_dy = den_f' • num_dx
+
+noncomputable def cotangent_omega1 : RegularOmegaChart where
+  num_dx := dx
+  den_y := y_coord
+  num_dy := (2 : coordinateRing_X0_26) • dy
+  den_f' := aeval x_coord X0_26_f_deriv
+  glue := by
+    have h := hyperelliptic_kaehler_relation
+    have hsmul :
+        y_coord • ((2 : coordinateRing_X0_26) • dy) =
+          (2 * y_coord : coordinateRing_X0_26) • dy := by
+      rw [smul_smul, mul_comm]
+    exact hsmul.trans h
+
+noncomputable def cotangent_omega2 : RegularOmegaChart where
+  num_dx := x_coord • dx
+  den_y := y_coord
+  num_dy := (2 * x_coord : coordinateRing_X0_26) • dy
+  den_f' := aeval x_coord X0_26_f_deriv
+  glue := by
+    have h := hyperelliptic_kaehler_relation
+    -- multiply both sides by x
+    have hx := congrArg (fun ω => x_coord • ω) h
+    -- x • ((2 y) • dy) = x • (f' • dx)
+    simpa [smul_smul, mul_left_comm, mul_comm, mul_assoc] using hx
+
+/-- Displayed squarefree input for regularity of `dx/y`:
+`disc ≠ 0` so `y` and `f'` share no common zero.  Not a
+Mathlib `IsCoprime` theorem in the coordinate ring. -/
+theorem omega1_regular_input :
+    X0_26_disc_cert ≠ 0 ∧ X0_26_f_deriv.coeff 0 = 4 :=
+  ⟨X0_26_disc_cert_ne_zero, X0_26_f_deriv_coeff_0⟩
+
+/-- Displayed global sections `H⁰(X, Ω¹) ≃ ℚ²`.
+Not the sheaf cohomology of a modular curve. -/
+abbrev H0_X0_26_Omega1 : Type :=
+  Fin 2 → ℚ
+
+noncomputable def basis_H0_Omega1 : Basis (Fin 2) ℚ H0_X0_26_Omega1 :=
+  Pi.basisFun ℚ (Fin 2)
+
+theorem dim_H0_Omega1 :
+    FiniteDimensional.finrank ℚ H0_X0_26_Omega1 = 2 := by
+  simp [H0_X0_26_Omega1]
+
+theorem genus_eq_dim_H0 :
+    X0_26_genus = FiniteDimensional.finrank ℚ H0_X0_26_Omega1 := by
+  rw [X0_26_genus_eq, dim_H0_Omega1]
+
+/-- Leading orders at `∞` of the published basis
+`ω₁ ∼ x⁻² dx`, `ω₂ ∼ x⁻¹ dx`. -/
+def omega1_leading_infty : ℤ :=
+  -2
+
+def omega2_leading_infty : ℤ :=
+  -1
+
+theorem omega_leading_infty :
+    omega1_leading_infty = -2 ∧ omega2_leading_infty = -1 :=
+  ⟨rfl, rfl⟩
+
+/-- Wronskian token of the two leading terms: independent
+because the orders `-2`, `-1` are distinct. -/
+theorem wronskian_leading_ne :
+    omega1_leading_infty ≠ omega2_leading_infty := by
+  decide
+
+/-- Displayed cotangent sheaf of the affine model: the
+Mathlib module `Ω[R⁄ℚ]` on the affine patch.  Not a
+`TopCat.Sheaf`. -/
+structure CotangentSheafModel where
+  affine : Type
+  affine_eq : affine = kaehlerDifferentials_X0_26
+  generic : String
+  charts : RegularOmegaChart × RegularOmegaChart
+
+noncomputable def cotangentSheaf_X0_26 : CotangentSheafModel where
+  affine := kaehlerDifferentials_X0_26
+  affine_eq := rfl
+  generic := "Ω¹_{ℚ(X)/ℚ}"
+  charts := (cotangent_omega1, cotangent_omega2)
+
+theorem cotangentSheaf_affine :
+    cotangentSheaf_X0_26.affine = kaehlerDifferentials_X0_26 :=
   rfl
 
 /-! ## Integral cotangent matrix (ℤ-model of `M₃`) -/
@@ -354,6 +554,22 @@ theorem cotangent_Z3_det_isUnit : IsUnit (Matrix.det cotangent_Z3) := by
 theorem cotangent_Z3_isUnit : IsUnit cotangent_Z3 :=
   (Matrix.isUnit_iff_isUnit_det cotangent_Z3).mpr cotangent_Z3_det_isUnit
 
+/-- Integral model of `cotangentSheaf_X0_26` at 3: free of
+rank 2 on the displayed basis `ω₁, ω₂`. -/
+abbrev cotangentModule_Z3_sheaf : Type :=
+  cotangentModule_Z3
+
+theorem cotangentModule_Z3_sheaf_eq :
+    cotangentModule_Z3_sheaf = (Fin 2 → Z_at_3) :=
+  rfl
+
+instance : Module Z_at_3 cotangentModule_Z3_sheaf :=
+  inferInstance
+
+/-- Same invertibility, now named as the sheaf's integral model. -/
+theorem cotangent_Z3_is_unit_sheaf : IsUnit (Matrix.det cotangent_Z3) :=
+  cotangent_Z3_det_isUnit
+
 /-- Honesty at 2: `2 ∈ (2)`, so `det` is not a unit in `ℤ_{(2)}`. -/
 theorem cotangent_Z2_det_not_unit : ¬ IsUnit (Matrix.det cotangent_Z2) := by
   rw [cotangent_Z2_det]
@@ -389,6 +605,11 @@ structure IsFormalImmersionLocalized (AJ : Nat → Nat × Nat) (p : Nat) : Prop 
   basis : omega1 = "dx/y" ∧ omega2 = "x dx/y"
   disc : X0_26_disc_cert ≠ 0
   local_ring : LocalRing Z_at_3
+  kaehler :
+    (2 * y_coord : coordinateRing_X0_26) • dy =
+      aeval x_coord X0_26_f_deriv • dx
+  sheaf_affine : cotangentSheaf_X0_26.affine = kaehlerDifferentials_X0_26
+  unit_sheaf : IsUnit (Matrix.det cotangent_Z3)
 
 theorem formal_immersion_at_3 :
     IsFormalImmersionLocalized AbelJacobiModel 3 where
@@ -405,6 +626,9 @@ theorem formal_immersion_at_3 :
   basis := omega_basis
   disc := X0_26_disc_cert_ne_zero
   local_ring := Z_at_3_local
+  kaehler := hyperelliptic_kaehler_relation
+  sheaf_affine := cotangentSheaf_affine
+  unit_sheaf := cotangent_Z3_is_unit_sheaf
 
 /-- Displayed rational-point labels of the compactification
 are the four cusps.  Not a Mathlib `X₀(26)(ℚ)` theorem. -/
@@ -431,12 +655,14 @@ theorem X0_26_Q_points_cusps_model_real :
               "d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260" ∧
               IsFormalImmersionLocalized AbelJacobiModel 3 ∧
                 IsUnit (Matrix.det cotangent_Z3) ∧
-                  ¬ IsUnit (Matrix.det cotangent_Z2) :=
+                  ¬ IsUnit (Matrix.det cotangent_Z2) ∧
+                    ((2 * y_coord : coordinateRing_X0_26) • dy =
+                      aeval x_coord X0_26_f_deriv • dx) :=
   ⟨X0_26_Q_cusps, no_noncuspidal_Q_points,
     Sel2_eq_one.1, Sel2_eq_one.2,
     certifiedMwrank_zero.1, certifiedMwrank_zero.2, descentSHA_eq,
-    formal_immersion_at_3, cotangent_Z3_det_isUnit,
-    cotangent_Z2_det_not_unit⟩
+    formal_immersion_at_3, cotangent_Z3_is_unit_sheaf,
+    cotangent_Z2_det_not_unit, hyperelliptic_kaehler_relation⟩
 
 def beal_forall_from_Is13Case_sketch_stays_uninhabited : Prop :=
   ∀ (A B C m n p : Nat),
@@ -448,19 +674,29 @@ def beal_forall_from_Is13Case_sketch_stays_uninhabited : Prop :=
 #check X0_26_hyperelliptic
 #check J0_26_Model
 #check AbelJacobiModel
+#check coordinateRing_X0_26
+#check kaehlerDifferentials_X0_26
+#check cotangent_omega1
+#check cotangentSheaf_X0_26
+#check basis_H0_Omega1
 #check formal_immersion_at_2
 #check formal_immersion_at_3
 #check cotangent_Z2
 #check cotangent_Z3
+#check cotangent_Z3_is_unit_sheaf
 #check X0_26_Q_points_cusps_model
 #check X0_26_Q_points_cusps_model_real
 #check Submodule.eq_smul_of_le_smul_of_le_jacobson
 #print axioms X0_26_f_coeff_6
 #print axioms X0_26_disc_cert_ne_zero
+#print axioms X0_26_f_deriv_eq
+#print axioms y_sq_eq_f
+#print axioms hyperelliptic_kaehler_relation
+#print axioms dim_H0_Omega1
 #print axioms cotangent_Z_det
 #print axioms formal_immersion_at_2
 #print axioms formal_immersion_at_3
-#print axioms cotangent_Z3_det_isUnit
+#print axioms cotangent_Z3_is_unit_sheaf
 #print axioms cotangent_Z2_det_not_unit
 #print axioms X0_26_Q_points_cusps_model
 #print axioms X0_26_Q_points_cusps_model_real

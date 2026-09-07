@@ -1,13 +1,13 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.4.0-formal-immersion`.
-Lean change: `X0_26_Model.lean` localizes
-`M_ℤ = [[1,1],[0,2]]` at `(2)` and `(3)`.
-`formal_immersion_at_3` is `IsUnit det` over
-`ℤ_{(3)}` (`v₃(2)=0`); `formal_immersion_at_2`
-stays the honest `ℤ`-model with `v₂(det)=1`.
-`X0_26_Q_points_cusps_model_real` is Chabauty
-*input* from that invertibility, not a Mathlib
+Latest tag / HEAD: `v8.5.0-cotangent-sheaf`.
+Lean change: `X0_26_Model.lean` builds
+`coordinateRing_X0_26 = AdjoinRoot (Y²−f)` and
+`kaehlerDifferentials_X0_26 = Ω[R⁄ℚ]`, with
+`2 y dy = f'(x) dx`.  The v8.4.0 localized
+matrix is the integral model of that displayed
+sheaf at 3.  `X0_26_Q_points_cusps_model_real`
+is Chabauty *input*, not a Mathlib
 `X₀(26)(ℚ)` theorem.  `beal_positive_bases`
 stays *from* `ModularImpliesLevel2Newform`.
 `ExistsNewformLevel2` is still `0 ≠ 0`.

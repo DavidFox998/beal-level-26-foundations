@@ -799,6 +799,23 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.5.0-cotangent-sheaf — DONE (Ω¹ from f, arrow stays a Prop)
+
+Lean change.  `X0_26_Model.lean` adds
+`coordinateRing_X0_26` (`AdjoinRoot`) and
+`kaehlerDifferentials_X0_26` (`Ω[R⁄ℚ]`), with
+`hyperelliptic_kaehler_relation`
+`2 y dy = f'(x) dx`.  `cotangentSheaf_X0_26`
+is the affine patch, not a `TopCat.Sheaf`.
+`formal_immersion_at_3` is from that relation
+plus `IsUnit det` over `ℤ_{(3)}`.
+`ExistsNewformLevel2` is `0 ≠ 0`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.4.0-formal-immersion — DONE (localized cotangent, arrow stays a Prop)
 
 Lean change.  `X0_26_Model.lean` adds
