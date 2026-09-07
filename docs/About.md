@@ -1,17 +1,15 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.2.0-scheme-hecke-ribet`.
-Lean change: `GeometryScheme.lean`, `HeckeAlgebra.lean`,
-`RibetFunctor.lean` lift PARI certs to packed
-`X₀(26)` / `J₀(26)` models, TW-tower `R≃T`,
-and functorial lowering `N → 2`.  Mathlib 4.12
-has `Scheme`/`Spec` and Nakayama; it does **not**
-construct modular curves or inhabit
-`ExistsNewformLevel2` (`0 ≠ 0`).
-`ModularImpliesLevel2Newform_Real` is the same
-Prop as v8.1.0.  `beal_forall_proof` remains
-conditional.  The unguarded sketch type is
-**false** (`0³ + 1³ = 1³`, `gcd = 1`).
+Latest tag / HEAD: `v8.3.0-explicit-X0-26`.
+Lean change: `X0_26_Model.lean`, `HeckeAction.lean`,
+`LevelLowering.lean` add the explicit hyperelliptic
+polynomial, the `ℤ`-matrix `M_ℤ = [[1,1],[0,2]]`,
+weight-2 `T_q` on the `26a1`/`26b1` prefixes, and
+TW patching at `53`/`677`.  `beal_positive_bases`
+stays *from* `ModularImpliesLevel2Newform`.
+`ExistsNewformLevel2` is still `0 ≠ 0`.
+The unguarded sketch type is **false**
+(`0³ + 1³ = 1³`, `gcd = 1`).
 Does **not** inhabit
 `Beal.BealForall.beal_forall_from_Is13Case_sketch`.
 `#print axioms` is `[propext, Classical.choice, Quot.sound]`.

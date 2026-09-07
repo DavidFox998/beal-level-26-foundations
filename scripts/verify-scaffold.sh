@@ -167,6 +167,9 @@ test -f lean/BealLevel26Foundations/Beal/FullProof/ModularImpliesNewform.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/GeometryScheme.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/HeckeAlgebra.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/RibetFunctor.lean
+test -f lean/BealLevel26Foundations/Beal/FullProof/X0_26_Model.lean
+test -f lean/BealLevel26Foundations/Beal/FullProof/HeckeAction.lean
+test -f lean/BealLevel26Foundations/Beal/FullProof/LevelLowering.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -176,6 +179,9 @@ test -f docs/Beal/ModularImpliesNewform.md
 test -f docs/Beal/GeometryScheme.md
 test -f docs/Beal/HeckeAlgebra.md
 test -f docs/Beal/RibetFunctor.md
+test -f docs/Beal/X0_26_Model.md
+test -f docs/Beal/HeckeAction.md
+test -f docs/Beal/LevelLowering.md
 test -f lean/BealLevel26Foundations/Tate/RealTateAlgorithm.lean
 test -f lean/BealLevel26Foundations/RT/PatchingWitnessReal.lean
 test -f lean/BealLevel26Foundations/RT/TaylorWilesInfiniteFamily.lean
@@ -769,6 +775,7 @@ do
   grep -q "v8.0.0-beal-forall-proof" "$readme"
   grep -q "v8.1.0-modular-implies-newform" "$readme"
   grep -q "v8.2.0-scheme-hecke-ribet" "$readme"
+  grep -q "v8.3.0-explicit-X0-26" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -939,6 +946,12 @@ grep -q "import BealLevel26Foundations.Beal.FullProof.HeckeAlgebra" \
   lean/BealLevel26Foundations/Beal/FullProof.lean
 grep -q "import BealLevel26Foundations.Beal.FullProof.RibetFunctor" \
   lean/BealLevel26Foundations/Beal/FullProof.lean
+grep -q "import BealLevel26Foundations.Beal.FullProof.X0_26_Model" \
+  lean/BealLevel26Foundations/Beal/FullProof.lean
+grep -q "import BealLevel26Foundations.Beal.FullProof.HeckeAction" \
+  lean/BealLevel26Foundations/Beal/FullProof.lean
+grep -q "import BealLevel26Foundations.Beal.FullProof.LevelLowering" \
+  lean/BealLevel26Foundations/Beal/FullProof.lean
 grep -q "theorem wiles_modularity_Frey" \
   lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
 grep -q "theorem ribet_level_lowering_general" \
@@ -1027,7 +1040,7 @@ if grep -q "import BealLevel26Foundations.Beal.FullProof.ModularImpliesNewform" 
   echo "FAIL: none chain must not import ModularImpliesNewform"
   exit 1
 fi
-if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|HeckeAlgebra|RibetFunctor)" \
+if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|HeckeAlgebra|RibetFunctor|X0_26_Model|HeckeAction|LevelLowering)" \
     lean/BealLevel26Foundations.lean \
     lean/BealLevel26Foundations/Beal/BealForall.lean \
     lean/BealLevel26Foundations/Chain/BealForallInKernel.lean \
@@ -1035,9 +1048,29 @@ if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|Heck
     lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean \
     lean/BealLevel26Foundations/GaloisRep/GaloisBealForallClosedReal.lean \
     lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean; then
-  echo "FAIL: none chain must not import GeometryScheme / HeckeAlgebra / RibetFunctor"
+  echo "FAIL: none chain must not import GeometryScheme / HeckeAlgebra / RibetFunctor / X0_26_Model / HeckeAction / LevelLowering"
   exit 1
 fi
+grep -q "def X0_26_f" \
+  lean/BealLevel26Foundations/Beal/FullProof/X0_26_Model.lean
+grep -q "def cotangent_Z" \
+  lean/BealLevel26Foundations/Beal/FullProof/X0_26_Model.lean
+grep -q "theorem formal_immersion_at_2" \
+  lean/BealLevel26Foundations/Beal/FullProof/X0_26_Model.lean
+grep -q "def HeckeOperator_Tq_coeff" \
+  lean/BealLevel26Foundations/Beal/FullProof/HeckeAction.lean
+grep -q "theorem R_inf_eq_T_inf_patched" \
+  lean/BealLevel26Foundations/Beal/FullProof/HeckeAction.lean
+grep -q "theorem level_lowering_to_2" \
+  lean/BealLevel26Foundations/Beal/FullProof/LevelLowering.lean
+grep -q "theorem beal_positive_bases" \
+  lean/BealLevel26Foundations/Beal/FullProof/LevelLowering.lean
+grep -q "def beal_forall_from_Is13Case_sketch_stays_uninhabited" \
+  lean/BealLevel26Foundations/Beal/FullProof/X0_26_Model.lean
+grep -q "def beal_forall_from_Is13Case_sketch_stays_uninhabited" \
+  lean/BealLevel26Foundations/Beal/FullProof/HeckeAction.lean
+grep -q "def beal_forall_from_Is13Case_sketch_stays_uninhabited" \
+  lean/BealLevel26Foundations/Beal/FullProof/LevelLowering.lean
 grep -q "structure X0_26_Scheme" \
   lean/BealLevel26Foundations/Beal/FullProof/GeometryScheme.lean
 grep -q "structure J0_26_Scheme" \
@@ -1114,8 +1147,11 @@ if grep -nE \
     lean/BealLevel26Foundations/Beal/FullProof/ModularImpliesNewform.lean \
     lean/BealLevel26Foundations/Beal/FullProof/GeometryScheme.lean \
     lean/BealLevel26Foundations/Beal/FullProof/HeckeAlgebra.lean \
-    lean/BealLevel26Foundations/Beal/FullProof/RibetFunctor.lean; then
-  echo "FAIL: FullProof Step 2/3/4/5/6 must not import none-chain / Forall / Mazur / none RT tokens"
+    lean/BealLevel26Foundations/Beal/FullProof/RibetFunctor.lean \
+    lean/BealLevel26Foundations/Beal/FullProof/X0_26_Model.lean \
+    lean/BealLevel26Foundations/Beal/FullProof/HeckeAction.lean \
+    lean/BealLevel26Foundations/Beal/FullProof/LevelLowering.lean; then
+  echo "FAIL: FullProof Step 2/3/4/5/6/7 must not import none-chain / Forall / Mazur / none RT tokens"
   exit 1
 fi
 if grep -nE '^[[:space:]]*False\.elim|^[[:space:]]*exact[[:space:]]+False\.elim' \
@@ -1127,6 +1163,9 @@ if grep -nE '^[[:space:]]*False\.elim|^[[:space:]]*exact[[:space:]]+False\.elim'
     lean/BealLevel26Foundations/Beal/FullProof/GeometryScheme.lean \
     lean/BealLevel26Foundations/Beal/FullProof/HeckeAlgebra.lean \
     lean/BealLevel26Foundations/Beal/FullProof/RibetFunctor.lean \
+    lean/BealLevel26Foundations/Beal/FullProof/X0_26_Model.lean \
+    lean/BealLevel26Foundations/Beal/FullProof/HeckeAction.lean \
+    lean/BealLevel26Foundations/Beal/FullProof/LevelLowering.lean \
     lean/BealLevel26Foundations/Beal/FullProof.lean; then
   echo "FAIL: FullProof track must not use False.elim"
   exit 1

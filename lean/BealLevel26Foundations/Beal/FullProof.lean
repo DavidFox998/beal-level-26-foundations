@@ -6,16 +6,17 @@ import BealLevel26Foundations.Beal.FullProof.BealForallProof
 import BealLevel26Foundations.Beal.FullProof.GeometryScheme
 import BealLevel26Foundations.Beal.FullProof.HeckeAlgebra
 import BealLevel26Foundations.Beal.FullProof.RibetFunctor
+import BealLevel26Foundations.Beal.FullProof.X0_26_Model
+import BealLevel26Foundations.Beal.FullProof.HeckeAction
+import BealLevel26Foundations.Beal.FullProof.LevelLowering
 
 /-!
-# FullProof track (v8.2.0)
+# FullProof track (v8.3.0)
 
-Aggregator for Track B.  Does **not** inhabit
-`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
-GeometryScheme / HeckeAlgebra / RibetFunctor lift PARI
-certs to named scheme / Hecke / Ribet *models*.
-`ModularImpliesLevel2Newform_Real` stays the same Prop
-as v8.1.0 — Mathlib 4.12 does not inhabit
-`ExistsNewformLevel2` (`0 ≠ 0`).
-Not imported by the 24-module none chain.
+Aggregator for Track B.  Explicit polynomial / Weierstrass
+/ q-expansion data sit beside the v8.2.0 packed models.
+`beal_positive_bases` stays *from*
+`ModularImpliesLevel2Newform`.  `ExistsNewformLevel2`
+is still `0 ≠ 0`.  Not imported by the 24-module none
+chain.
 -/

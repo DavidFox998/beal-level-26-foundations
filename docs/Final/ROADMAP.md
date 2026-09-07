@@ -799,3 +799,19 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.3.0-explicit-X0-26 — DONE (explicit data, arrow stays a Prop)
+
+Lean change.  New FullProof modules
+`X0_26_Model.lean`, `HeckeAction.lean`,
+`LevelLowering.lean`.  Explicit hyperelliptic
+polynomial, `ℤ`-matrix `M_ℤ` det 2, weight-2
+`T_q`, TW `53`/`677` patching.
+`beal_positive_bases` stays *from*
+`ModularImpliesLevel2Newform`.
+`ExistsNewformLevel2` is `0 ≠ 0`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+

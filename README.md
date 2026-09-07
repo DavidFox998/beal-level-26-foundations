@@ -82,6 +82,19 @@ v7.4.0-geometry-filled GeometryBridge theorems: J0(26) dim 2=1+1 as E_26a1×E_26
 v8.0.0-beal-forall-proof FullProof glue: unguarded sketch is false (0³+1³=1³, gcd=1); beal_forall_proof is positive-bases Beal from the missing Modular→ExistsNewformLevel2 arrow; Tate+Ribet+GeometryBridge glue inhabited. BealForall.lean sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.1.0-modular-implies-newform ModularImpliesNewform: PositiveBealTriple + Mathlib Γ₀(2) + TW 53%13=1 677%169=1 + Ribet N/∏q=2 arithmetic; ModularImpliesLevel2Newform stays a Prop; beal_forall_proof = beal_forall_proof_positive (still conditional). Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.2.0-scheme-hecke-ribet GeometryScheme + HeckeAlgebra + RibetFunctor: packed X0(26)/J0(26) models, TW-tower R≃T, functorial lowering N→2; ModularImpliesLevel2Newform_Real stays the v8.1.0 Prop (ExistsNewformLevel2 is 0≠0). Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.3.0-explicit-X0-26 X0_26_Model + HeckeAction + LevelLowering: explicit y²=x⁶−8x⁵+22x⁴−20x³+5x²+4x−4, M_ℤ=[[1,1],[0,2]] det=2, T_q on 26a1/26b1 prefixes, TW 53/677 patching; beal_positive_bases stays from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.3.0-explicit-X0-26 — explicit polynomial / Weierstrass / T_q data (arrow stays a Prop)
+
+Lean change.  New FullProof modules `X0_26_Model.lean`, `HeckeAction.lean`, `LevelLowering.lean`.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `X0_26_f`: `x⁶ − 8x⁵ + 22x⁴ − 20x³ + 5x² + 4x − 4` with `coeff` theorems;
+- `cotangent_Z`: `[[1, 1], [0, 2]]` over `ℤ`, `det = 2`, reduces to `M₃` over `ℤ/3`;
+- `HeckeOperator_Tq_coeff`: weight-2 `T_q a_n = a_{nq} + q·a_{n/q}` on ledger prefixes;
+- `R_inf_eq_T_inf_patched`: explicit `53` / `677` TW levels;
+- `beal_positive_bases` equals `beal_forall_proof_positive` (still *from* the Prop).
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.2.0-scheme-hecke-ribet — packed X₀(26)/J₀(26) models, TW-tower R≃T, Ribet functor (arrow stays a Prop)
 
