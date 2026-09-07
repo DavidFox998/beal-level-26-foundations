@@ -782,6 +782,7 @@ do
   grep -q "v8.5.0-cotangent-sheaf" "$readme"
   grep -q "v8.6.0-level-lowering-term" "$readme"
   grep -q "v8.7.0-ribet-q-mazur" "$readme"
+  grep -q "v8.8.0-ribet-proof" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1114,6 +1115,16 @@ grep -q "theorem ribet_iterated" \
 grep -q "def ribet_iterated_arrow" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem beal_from_ribet" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def HeckeAction_N" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem mazur_step_real" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem ribet_iterated_real" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def ModularImpliesLevel2Newform_real" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem beal_from_ribet_real" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "def beal_forall_from_Is13Case_sketch_stays_uninhabited" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean

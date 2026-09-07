@@ -799,6 +799,26 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.8.0-ribet-proof — DONE (HeckeAction_N + Mazur-step real pack, arrow stays a Prop)
+
+Lean change.  `RibetMazur.lean` adds
+`HeckeAction_N`, `mazur_step_real`, and
+`ribet_iterated_real`.  The displayed
+`a₃(26a1) = 1` is not `±(3+1)` mod 13, so
+the requested `T_q ≡ ±(q+1)` check fails on
+the level-26 ledger.  Displayed `S₂(Γ₀(2))`
+dim 0 means this is **not**
+`ExistsNewformLevel2` (`0 ≠ 0`).
+`ModularImpliesLevel2Newform_real` /
+`beal_from_ribet_real` still take
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** import `X0_26_Model`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.7.0-ribet-q-mazur — DONE (q-expansions + Mazur-step pack, arrow stays a Prop)
 
 Lean change.  `RibetMazur.lean` adds

@@ -1,3 +1,25 @@
+# FINAL v8.8.0 — HeckeAction_N + Mazur-step real pack (arrow stays a Prop)
+
+Latest tag `v8.8.0-ribet-proof`.
+Lean change.
+`RibetMazur.lean` adds `HeckeAction_N` and
+`mazur_step_real`.  `ribet_iterated_real`
+is that pack plus `N/∏q=2`, **not**
+`ExistsNewformLevel2` (`0 ≠ 0`).
+`beal_from_ribet_real` stays *from*
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221)
+(v7.1.1 About catch-up, Track A).  Track B does **not**
+write a new mint claiming unconditional Beal `∀`.
+Three JPEG plates stay in `docs/assets/v6.7.0/`.
+Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+
 # FINAL v8.7.0 — explicit q-expansions + Mazur-step pack (arrow stays a Prop)
 
 Latest tag `v8.7.0-ribet-q-mazur`.

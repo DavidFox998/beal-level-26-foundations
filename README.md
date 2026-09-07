@@ -87,6 +87,19 @@ v8.4.0-formal-immersion X0_26_Model localizes M_ℤ at (2)/(3): IsUnit det over 
 v8.5.0-cotangent-sheaf X0_26_Model AdjoinRoot (Y²−f) + Ω[R⁄ℚ] with 2 y dy = f'(x) dx; cotangentSheaf affine patch; integral model at 3 is the v8.4.0 matrix. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.6.0-level-lowering-term LevelLowering Frey_GaloisRep + level_lowering_to_2_term Hecke/TW pack; ExistsNewformLevel2 stays 0≠0; beal_positive_bases_unconditional still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.7.0-ribet-q-mazur RibetMazur q_expansion_26a1/b1 + mazur_principle_step pack; ribet_iterated_arrow stays the Prop; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.8.0-ribet-proof RibetMazur HeckeAction_N + mazur_step_real pack; ModularImpliesLevel2Newform_real stays the Prop; ExistsNewformLevel2 stays 0≠0; beal_from_ribet_real still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.8.0-ribet-proof — HeckeAction_N + Mazur-step real pack (arrow stays a Prop)
+
+Lean change.  `RibetMazur.lean` adds `HeckeAction_N`, `mazur_step_real`, and `ribet_iterated_real`.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `q_expansion_26a1_int` / `26b1_int`: 101-coeff ledger; `a₀=0`; `a₁=1`; `T₃=1`/`-3`; `Q1%13=1`, `Q2%169=1`, `Q3=17·517`;
+- `HeckeAction_N`: weight-2 `T_q` plus TW `R≃T` at `26·53`/`26·677` (not `End(J₀(N)[13])`);
+- `mazur_step_real`: Tate Steinberg at odd `q|ABC` and `(N/q)*q=N`; displayed `a₃(26a1)≢±4` mod 13;
+- `ribet_iterated_real`: `N/∏q=2`; **not** `ExistsNewformLevel2`;
+- `ModularImpliesLevel2Newform_real` / `beal_from_ribet_real`: still *from* `ModularImpliesLevel2Newform`.
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.7.0-ribet-q-mazur — explicit q-expansions + Mazur-step pack (arrow stays a Prop)
 

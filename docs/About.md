@@ -1,15 +1,16 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.7.0-ribet-q-mazur`.
+Latest tag / HEAD: `v8.8.0-ribet-proof`.
 Lean change: `RibetMazur.lean` adds
-`q_expansion_26a1` / `26b1` (101-coeff ledger
-as `List ℚ`) and `mazur_principle_step` (Tate
-Steinberg label at odd `q|ABC` plus displayed
-`T₃` on `26a1`/`26b1`).  `ribet_iterated` is
-that pack plus `N/∏q=2`, **not** a term of
-type `ExistsNewformLevel2` (`0 ≠ 0`).
-`ribet_iterated_arrow` and `beal_from_ribet`
-stay *from* `ModularImpliesLevel2Newform`.
+`HeckeAction_N` (weight-2 `T_q` plus TW `R≃T`
+at `26·53`/`26·677`) and `mazur_step_real`
+(Tate Steinberg at odd `q|ABC`, `(N/q)*q=N`).
+`ribet_iterated_real` is that pack plus
+`N/prod q = 2`, **not** a term of type
+`ExistsNewformLevel2` (`0 ≠ 0`).
+`ModularImpliesLevel2Newform_real` and
+`beal_from_ribet_real` stay *from*
+`ModularImpliesLevel2Newform`.
 `ExistsNewformLevel2` is still `0 ≠ 0`.
 The unguarded sketch type is **false**
 (`0³ + 1³ = 1³`, `gcd = 1`).

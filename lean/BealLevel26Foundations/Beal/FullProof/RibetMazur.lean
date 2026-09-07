@@ -3,7 +3,7 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.7.0 — explicit q-expansions + Mazur-step
+Track B v8.8.0 — HeckeAction_N + Mazur-step *real*
 pack on a `PositiveBealTriple`.
 
 Mathlib 4.12 has no Ribet functor and no arrow
@@ -31,7 +31,14 @@ What it *does* prove:
 * `ribet_iterated_arrow` is the same uninhabited
   Prop as `ModularImpliesLevel2Newform`;
 * `beal_from_ribet` is Beal on positive bases *from*
-  that Prop.
+  that Prop;
+* `HeckeAction_N` is the weight-2 `T_q` formula plus
+  TW lift at `26·53` / `26·677` (not `End(J₀(N)[13])`);
+* `mazur_step_real` / `ribet_iterated_real` iterate
+  that pack to `N / ∏q = 2`;
+* `ModularImpliesLevel2Newform_real` is the same
+  uninhabited Prop as `ModularImpliesLevel2Newform`;
+* `beal_from_ribet_real` stays *from* that Prop.
 
 Does **not** import `X0_26_Model`.  FullProof-only.
 None chain does not import this file.
@@ -54,6 +61,7 @@ open BealLevel26Foundations.Beal.FullProof.TrueConductor
 open BealLevel26Foundations.Beal.FullProof.ModularityRibet
 open BealLevel26Foundations.Beal.FullProof.ModularImpliesNewform
 open BealLevel26Foundations.Beal.FullProof.HeckeAction
+open BealLevel26Foundations.Beal.FullProof.HeckeAlgebra
 open BealLevel26Foundations.Beal.FullProof.RibetFunctor
 open BealLevel26Foundations.Beal.FullProof.LevelLowering
 open BealLevel26Foundations.CoefficientLedger26
@@ -351,20 +359,223 @@ def beal_forall_from_Is13Case_sketch_stays_uninhabited : Prop :=
     A ^ m + B ^ n = C ^ p →
     gcd3 A B C > 1
 
+/-! ## v8.8.0 — Int ledger, HeckeAction_N, iterated real pack -/
+
+/-- Integer ledger prefix of `26a1`.  Same array as
+`qExp_26a1`. -/
+def q_expansion_26a1_int : List ℤ :=
+  qExp_26a1
+
+/-- Integer ledger prefix of `26b1`. -/
+def q_expansion_26b1_int : List ℤ :=
+  qExp_26b1
+
+theorem q_expansion_26a1_int_length : q_expansion_26a1_int.length = 101 :=
+  qExp_26a1_length
+
+theorem q_expansion_26b1_int_length : q_expansion_26b1_int.length = 101 :=
+  qExp_26b1_length
+
+theorem q_expansion_26a1_int_a0 : q_expansion_26a1_int.get? 0 = some 0 := by
+  decide
+
+theorem q_expansion_26b1_int_a0 : q_expansion_26b1_int.get? 0 = some 0 := by
+  decide
+
+theorem q_expansion_26a1_int_a1 : q_expansion_26a1_int.get? 1 = some 1 :=
+  qExp_26a1_get1
+
+theorem Q1_mod : Q1 % 13 = 1 := by
+  decide
+
+theorem Q2_mod : Q2 % 169 = 1 := by
+  decide
+
+theorem Q3_composite_decide : 17 * 517 = Q3 := by
+  decide
+
+/-- Weight-2 `T_q` on a coefficient sequence, used as the
+Hecke action token at a prime `q` of `N`.  Not an
+endomorphism of Mathlib `J₀(N)[13]`.  The unused
+positivity hypothesis records that `q` is an odd prime
+of the conductor, not that `26 ∣ N`. -/
+def HeckeAction_N (q : Nat) (_hpos : 1 < q) (a : List ℤ) (n : Nat) : ℤ :=
+  HeckeOperator_Tq_coeff q n a
+
+/-- TW / degeneracy pack: `T_q` is the HeckeAction
+formula, the double-coset token lives at `26q`, and
+`R ≃ T` is rank 1 at the TW levels `26·53` and
+`26·677`.  This is **not** a degeneracy
+`J₀(26) → J₀(N)` for general `N = rad(ABC)`. -/
+structure HeckeAction_N_TW (q : Nat) : Prop where
+  Tq_at_one :
+    ∀ (hq : 1 < q) (a : List ℤ), HeckeAction_N q hq a 1 = coeffAt a q
+  T3_model :
+    HeckeAlgebra_T_Model.canonical.T3 =
+      fun a n => HeckeOperator_Tq_coeff 3 n a
+  T5_model :
+    HeckeAlgebra_T_Model.canonical.T5 =
+      fun a n => HeckeOperator_Tq_coeff 5 n a
+  T7_model :
+    HeckeAlgebra_T_Model.canonical.T7 =
+      fun a n => HeckeOperator_Tq_coeff 7 n a
+  middle : (HeckeOperator_Tq q).correspondence.middle = 26 * q
+  patched_53 : Nonempty (R_infty patchedLevel1 ≃ T_infty patchedLevel1)
+  patched_677 : Nonempty (R_infty patchedLevel2 ≃ T_infty patchedLevel2)
+  rank_one_53 : localizedHeckeRank patchedLevel1 = 1
+  rank_one_677 : localizedHeckeRank patchedLevel2 = 1
+
+theorem HeckeAction_N_TW_holds (q : Nat) : HeckeAction_N_TW q where
+  Tq_at_one := fun hq a => Tq_at_one_eq_aq a hq
+  T3_model := HeckeAlgebra_T_Model.canonical.T3_def
+  T5_model := HeckeAlgebra_T_Model.canonical.T5_def
+  T7_model := HeckeAlgebra_T_Model.canonical.T7_def
+  middle := HeckeOperator_Tq_correspondence q
+  patched_53 := R_inf_eq_T_inf_patched.1
+  patched_677 := R_inf_eq_T_inf_patched.2.1
+  rank_one_53 := localizedRankOne_from_Patching patchedLevel1
+  rank_one_677 := localizedRankOne_from_Patching patchedLevel2
+
+/-- Honesty: the *level-26* coefficient `a₃(26a1) = 1`
+is **not** `±(3+1)` mod 13.  The requested
+`T_q ≡ ±(q+1) (mod 13)` check therefore fails on the
+displayed ledger at `q = 3`.  These are not Frey
+Fourier coefficients of level `rad(ABC)`. -/
+theorem a3_26a1_ne_pm_qplus1_mod13 :
+    (coeffAt qExp_26a1 3 : ZMod 13) ≠ (4 : ZMod 13) ∧
+      (coeffAt qExp_26a1 3 : ZMod 13) ≠ (-4 : ZMod 13) := by
+  decide
+
+/-- One Mazur step as packed data: Wiles-domain
+`Modular` at `N = rad(ABC)`, Tate Steinberg at `q`,
+displayed Hecke / TW tokens, and the arithmetic
+`q ∣ N → (N/q)*q = N`.  Not Mathlib modularity at
+`N/q`. -/
+structure MazurStepReal (t : PositiveBealTriple) (q : Nat) : Prop where
+  step : MazurPrincipleStep t q
+  hecke : HeckeAction_N_TW q
+  modular_N : Modular t.toPrimitive
+  conductor_N : globalConductorTate t.toPrimitive = radABC t.A t.B t.C
+  pairwise : Nat.Coprime t.A t.B ∧ Nat.Coprime t.B t.C ∧ Nat.Coprime t.A t.C
+  lowered_mul :
+    q ∣ globalConductorTate t.toPrimitive →
+      0 < q →
+        globalConductorTate t.toPrimitive / q * q =
+          globalConductorTate t.toPrimitive
+  rank_one : localizedHeckeRank patchedLevel1 = 1
+  displayed_T3_not_oldform :
+    (coeffAt qExp_26a1 3 : ZMod 13) ≠ (4 : ZMod 13)
+
+theorem mazur_step_real (t : PositiveBealTriple) {q : Nat}
+    (hqMem : q ∈ (t.A * t.B * t.C).primeFactors) (hodd : q ≠ 2)
+    (_hMod : Modular t.toPrimitive) :
+    MazurStepReal t q where
+  step := mazur_principle_step t hqMem hodd
+  hecke := HeckeAction_N_TW_holds q
+  modular_N := wiles_modularity_Frey t.toPrimitive
+  conductor_N := (frey_global_conductor t.toPrimitive).1
+  pairwise := pairwise_coprime t.toPrimitive
+  lowered_mul := fun h _ => Nat.div_mul_cancel h
+  rank_one := localizedRankOne_from_Patching patchedLevel1
+  displayed_T3_not_oldform := a3_26a1_ne_pm_qplus1_mod13.1
+
+/-- Odd prime factors of `ABC`, i.e. the primes in
+`oddConductorPart`. -/
+def odd_q_divisors_N (t : PositiveBealTriple) : Finset Nat :=
+  (t.A * t.B * t.C).primeFactors.filter fun q => q ≠ 2
+
+theorem odd_q_divisors_N_prod (t : PositiveBealTriple) :
+    (odd_q_divisors_N t).prod id = oddConductorPart t.toPrimitive :=
+  rfl
+
+/-- Level after removing every odd prime of `ABC`.
+Equals `2` by `ribet_level_quotient`. -/
+def ribet_iterated_real_level (t : PositiveBealTriple) : Nat :=
+  globalConductorTate t.toPrimitive / (odd_q_divisors_N t).prod id
+
+theorem ribet_iterated_real_level_eq_two (t : PositiveBealTriple) :
+    ribet_iterated_real_level t = 2 := by
+  rw [ribet_iterated_real_level, odd_q_divisors_N_prod]
+  exact ribet_level_quotient t.toPrimitive
+
+/-- Iterated Mazur pack: a `MazurStepReal` at every odd
+prime of `ABC`, fold identity `N / ∏q = 2`, displayed
+`S₂(Γ₀(2))` dim 0.  Not `ExistsNewformLevel2`. -/
+structure RibetIteratedReal (t : PositiveBealTriple) : Prop where
+  pack : RibetIteratedPack t
+  mazur_real_all :
+    ∀ q ∈ odd_q_divisors_N t, MazurStepReal t q
+  level_two : ribet_iterated_real_level t = 2
+  hecke_N : ∀ q ∈ odd_q_divisors_N t, HeckeAction_N_TW q
+  no_newform : ¬ ExistsNewformLevel2
+
+theorem ribet_iterated_real (t : PositiveBealTriple)
+    (hMod : Modular t.toPrimitive) :
+    RibetIteratedReal t where
+  pack := ribet_iterated t hMod
+  mazur_real_all := by
+    intro q hq
+    have hqMem : q ∈ (t.A * t.B * t.C).primeFactors :=
+      (Finset.mem_filter.mp hq).1
+    have hodd : q ≠ 2 := (Finset.mem_filter.mp hq).2
+    exact mazur_step_real t hqMem hodd hMod
+  level_two := ribet_iterated_real_level_eq_two t
+  hecke_N := fun q _ => HeckeAction_N_TW_holds q
+  no_newform := no_newform_level2
+
+/-- The requested arrow `Modular w → ExistsNewformLevel2`.
+Same uninhabited Prop as `ModularImpliesLevel2Newform`.
+A theorem of this type would inhabit `0 ≠ 0` from
+`wiles_modularity_Frey`. -/
+def ModularImpliesLevel2Newform_real : Prop :=
+  ModularImpliesLevel2Newform
+
+theorem ModularImpliesLevel2Newform_real_eq :
+    ModularImpliesLevel2Newform_real = ModularImpliesLevel2Newform :=
+  rfl
+
+/-- Honesty: the missing arrow plus `S2_Gamma0_2_zero`
+is `False`.  Not a theorem from a positive triple
+alone. -/
+theorem ModularImpliesLevel2Newform_real_of_arrow
+    (h : ModularImpliesLevel2Newform_real)
+    (w : PrimitiveBealTriple) : False :=
+  no_newform_level2_of_arrow h w
+
+/-- Beal on positive bases, *from* the missing Mathlib
+arrow.  Not `¬ PositiveBealTriple`. -/
+theorem beal_from_ribet_real
+    (hModNew : ModularImpliesLevel2Newform) :
+    ∀ A B C m n p : Nat,
+      0 < A → 0 < B → 0 < C →
+      2 < m → 2 < n → 2 < p →
+      A ^ m + B ^ n = C ^ p →
+      1 < Nat.gcd A (Nat.gcd B C) :=
+  beal_from_ribet hModNew
+
 #check q_expansion_26a1
 #check q_expansion_26b1
+#check q_expansion_26a1_int
+#check HeckeAction_N
 #check mazur_principle_step
+#check mazur_step_real
 #check ribet_iterated
+#check ribet_iterated_real
 #check ribet_iterated_arrow
+#check ModularImpliesLevel2Newform_real
 #check beal_from_ribet
+#check beal_from_ribet_real
 #check beal_positive_bases_unconditional
 #print axioms q_expansion_26a1_a1
 #print axioms q_expansion_26a1_a3
 #print axioms q_expansion_26b1_a3
 #print axioms T3_26a1_matches_a3
 #print axioms mazur_principle_step
+#print axioms mazur_step_real
 #print axioms ribet_iterated
+#print axioms ribet_iterated_real
 #print axioms ribet_iterated_does_not_inhabit_newform
 #print axioms beal_from_ribet
+#print axioms beal_from_ribet_real
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur
