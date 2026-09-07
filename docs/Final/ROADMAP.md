@@ -287,3 +287,16 @@ HEAD `7eef274`.  Hook `22379293`.  `IsVersionOf`
 → 22562014 → 22564236 → 22565376 → 22565933
 → 22572211`.
 
+### v6.5.0-iter-finite-flat-at-13-real — DONE
+
+Finite-flat at 13 computable **none** field.
+`frey_finite_flat_at_13_formula` `v₁₃(Δ) % 13 = 0`
+by `rfl` **none**.
+`frey_finite_flat_at_13_real_lemma` Fontaine
+**propext only**, off the inhabitant.
+`rho_bar_Frey_13_real_algorithm_inhabited_finite_flat`
+**none**.  `beal_forall_in_kernel_from_finite_flat_separated`
+**propext only**.  Official build **19 modules**.
+About still lists written mint `22572211` until
+v6.5.1.
+

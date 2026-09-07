@@ -1,17 +1,15 @@
-# FINAL v6.4.1 — About catch-up 22572211
+# FINAL v6.5.0 — finite-flat at 13 computable none
 
-Latest tag `v6.4.1-iter-about-catchup-22572211`.
-Records Lean HEAD `7eef274` /
-`v6.4.0-iter-unramified-semistable-real`.  **No Lean change.**
-Latest written mint now
+Latest tag `v6.5.0-iter-finite-flat-at-13-real`.
+Latest written mint remains
 [10.5281/zenodo.22572211](https://doi.org/10.5281/zenodo.22572211)
 (v6.4.0 unramified + semistable real computable
-none) DataCite findable, after
-[10.5281/zenodo.22565376](https://doi.org/10.5281/zenodo.22565376)
-(v6.3.0 det ρ̄ = χ₁₃ computable none).  The new
-v6.4.1 mint is **not** written into About.  Hook
-`22379293`.  `IsVersionOf` `22272382` metadata only.
-Original-family latest remains `22322627`.
+none) DataCite findable.  The v6.4.1 mint
+`22581510` and this v6.5.0 mint are **not**
+written into About; next catch-up is v6.5.1.
+Hook `22379293`.  `IsVersionOf` `22272382`
+metadata only.  Original-family latest remains
+`22322627`.
 
 ### v6.0.0 REAL ALGORITHMS
 
@@ -249,6 +247,39 @@ Chain `22552105 → 22552659 → 22553129 → 22553671
 the latest recorded mint.  Docs lock only.
 No Lean change.
 
+### v6.5.0 finite-flat at 13 real
+
+Finite-flat at 13 as a computable **none**
+field.  Official build **19 modules**
+(18 old + `GaloisRep.GaloisFiniteFlatAt13Real`).
+
+- `frey_Delta13_val_13_pow_formula` holds
+  `Int.pow` / `Nat.pow` **OFF** the token
+- `frey_Delta13_val_13_leading` `26 = 2 * 13`
+  **none**
+- `frey_finite_flat_at_13_formula`
+  `v₁₃(Δ) % 13 = 0` by `rfl` **none**
+- `frey_finite_flat_at_13_real_lemma`
+  Fontaine–Laffaille / Tate uniformization
+  **propext only**, off the inhabitant
+- `rho_bar_Frey_13_real_algorithm_inhabited_finite_flat`
+  **none** stronger than propext-only
+- `FreyCurveSeparated_finite_flat.token` **none**
+- `beal_forall_in_kernel_from_finite_flat_separated`
+  **propext only**; positivity / det /
+  unramified / semistable / finite-flat lemmas
+  are **not** in that term
+
+Existing tokens unchanged: unramified /
+semistable **none**, `cyclotomicCharacter13`
+**none**, Weil lemma **propext only**,
+`rho_bar` / `_det` / `_unramified` **none**,
+`Q_1` / `Q_2` **none**, `TW_infinite_family_exists`
+**propext only**, both `R = T` **none**,
+`frey_Delta13_ne_0_of_pos_real`
+`propext` + `Classical.choice` + `Quot.sound`,
+Tate `2*13` **none**.
+
 ### Honest lock (unchanged from FINAL v5)
 
 - `ExistsNewformLevel2` is `s2_gamma0_2_dim ≠ 0`
@@ -267,13 +298,11 @@ No Lean change.
 - Path 2 ONLY HONEST: displayed table inhabited
 - Real `X₀(26)(ℚ)` still has `26a1` Δ `-17576` and
   `26b1` Δ `-1664`
-- No `False.elim`.  18 modules green twice.
+- No `False.elim`.  19 modules green twice.
   `verify-scaffold.sh` OK.  `verify_descent_26.py` OK.
   `NO_SORRY_OK`
 
 Still not Full Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms,
-but now unramified outside
-`2*13*A*B*(A¹³+B¹³)` + semistable at `2*13`
-is a real computable none field.  GOOD sounding
-step to real algorithms.
+but now finite-flat at 13 is a real computable
+none field.  GOOD sounding step to real algorithms.

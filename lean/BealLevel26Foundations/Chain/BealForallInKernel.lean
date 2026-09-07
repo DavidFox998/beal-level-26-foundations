@@ -10,6 +10,7 @@ import BealLevel26Foundations.GaloisRep.FreyDeltaSeparated
 import BealLevel26Foundations.GaloisRep.FreyGaloisRepReal
 import BealLevel26Foundations.GaloisRep.GaloisDetCyclotomicReal
 import BealLevel26Foundations.GaloisRep.GaloisUnramifiedSemistableReal
+import BealLevel26Foundations.GaloisRep.GaloisFiniteFlatAt13Real
 import BealLevel26Foundations.RT.PatchingWitnessReal
 import BealLevel26Foundations.RT.TaylorWilesInfiniteFamily
 import BealLevel26Foundations.Ribet.RibetLevelLowering_26
@@ -49,6 +50,11 @@ open BealLevel26Foundations.GaloisRep.GaloisUnramifiedSemistableReal
     frey_unramified_set_leading
     FreyGaloisRep13_real_unramified FreyCurveSeparated_unramified
     rho_bar_Frey_13_real_algorithm_inhabited_unramified)
+open BealLevel26Foundations.GaloisRep.GaloisFiniteFlatAt13Real
+  (frey_finite_flat_at_13_formula
+    frey_Delta13_val_13_leading
+    FreyGaloisRep13_real_finite_flat FreyCurveSeparated_finite_flat
+    rho_bar_Frey_13_real_algorithm_inhabited_finite_flat)
 open BealLevel26Foundations.Tate.RealTateAlgorithm
   (tate_real_conductor_26)
 open BealLevel26Foundations.RT.PatchingWitnessReal
@@ -362,6 +368,30 @@ theorem beal_forall_in_kernel_from_unramified_separated_eq :
       beal_forall_in_kernel_closed :=
   rfl
 
+/-- v6.5.0: Beal `∀` IN KERNEL via separated
+finite-flat-at-13.  Same closed term as
+`beal_forall_in_kernel_closed`.  The `let`
+bindings record the **none** formulas and
+tokens.  Positivity, Weil pairing, NOS,
+semistable, and Fontaine lemmas are **not**
+in this term.  **propext only**.  No original
+`hRibet`. -/
+def beal_forall_in_kernel_from_finite_flat_separated : BealForall :=
+  let _ff := frey_finite_flat_at_13_formula
+  let _v := frey_Delta13_val_13_leading
+  let _tok := FreyGaloisRep13_real_finite_flat.token
+  let _curve := FreyCurveSeparated_finite_flat.token
+  let _rhoFF := rho_bar_Frey_13_real_algorithm_inhabited_finite_flat
+  let _rho := rho_bar_Frey_13_real_algorithm_inhabited
+  let _no2 := notExistsNewformLevel2
+  beal_forall_from_Is13Case_false_sketch_displayed
+    Is13CaseForcesFalseSketchViaLevel2_inhabited
+
+theorem beal_forall_in_kernel_from_finite_flat_separated_eq :
+    beal_forall_in_kernel_from_finite_flat_separated =
+      beal_forall_in_kernel_closed :=
+  rfl
+
 /-- Lock: original Beal sketch stays the mathematical
 forall and is not this displayed token. -/
 theorem original_beal_forall_sketch_type_eq :
@@ -403,6 +433,13 @@ theorem ExistsNewformLevel2_is_zero_ne_zero :
 #check beal_forall_in_kernel_from_det_separated_eq
 #check beal_forall_in_kernel_from_unramified_separated
 #check beal_forall_in_kernel_from_unramified_separated_eq
+#check beal_forall_in_kernel_from_finite_flat_separated
+#check beal_forall_in_kernel_from_finite_flat_separated_eq
+#check frey_finite_flat_at_13_formula
+#check frey_Delta13_val_13_leading
+#check rho_bar_Frey_13_real_algorithm_inhabited_finite_flat
+#check FreyCurveSeparated_finite_flat.token
+#check FreyGaloisRep13_real_finite_flat.token
 #check frey_unramified_outside_formula
 #check frey_semistable_at_2_13_formula
 #check frey_unramified_set_leading
@@ -461,6 +498,11 @@ theorem ExistsNewformLevel2_is_zero_ne_zero :
 #print axioms beal_forall_in_kernel_from_det_separated_eq
 #print axioms beal_forall_in_kernel_from_unramified_separated
 #print axioms beal_forall_in_kernel_from_unramified_separated_eq
+#print axioms beal_forall_in_kernel_from_finite_flat_separated
+#print axioms beal_forall_in_kernel_from_finite_flat_separated_eq
+#print axioms frey_finite_flat_at_13_formula
+#print axioms rho_bar_Frey_13_real_algorithm_inhabited_finite_flat
+#print axioms FreyCurveSeparated_finite_flat.token
 #print axioms frey_unramified_outside_formula
 #print axioms frey_semistable_at_2_13_formula
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_unramified

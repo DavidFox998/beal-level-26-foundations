@@ -3,6 +3,7 @@ import BealLevel26Foundations.Frey.FreyCurve13
 import BealLevel26Foundations.GaloisRep.FreyDeltaSeparated
 import BealLevel26Foundations.GaloisRep.GaloisDetCyclotomicReal
 import BealLevel26Foundations.GaloisRep.GaloisUnramifiedSemistableReal
+import BealLevel26Foundations.GaloisRep.GaloisFiniteFlatAt13Real
 import BealLevel26Foundations.Real.FreyWeierstrass
 
 namespace BealLevel26Foundations.GaloisRep.FreyGaloisRepReal
@@ -22,6 +23,10 @@ open BealLevel26Foundations.GaloisRep.GaloisUnramifiedSemistableReal
     rho_bar_Frey_13_real_algorithm_inhabited_unramified
     frey_unramified_outside_formula
     frey_semistable_at_2_13_formula)
+open BealLevel26Foundations.GaloisRep.GaloisFiniteFlatAt13Real
+  (FreyGaloisRep13_real_finite_flat FreyCurveSeparated_finite_flat
+    rho_bar_Frey_13_real_algorithm_inhabited_finite_flat
+    frey_finite_flat_at_13_formula)
 open BealLevel26Foundations.Real.FreyWeierstrass
 
 /-!
@@ -134,6 +139,9 @@ v6.3.0: `det ρ̄ = χ₁₃` / Weil pairing live in
 `GaloisDetCyclotomicReal` and are not unfolded here.
 v6.4.0: unramified-outside / semistable-at-`2*13`
 live in `GaloisUnramifiedSemistableReal` and are
+not unfolded here.
+v6.5.0: finite-flat-at-13 / `v₁₃(Δ) % 13 = 0`
+live in `GaloisFiniteFlatAt13Real` and are
 not unfolded here. -/
 def FreyGaloisRep13.token : FreyGaloisRep13 where
   A := 13
@@ -206,6 +214,15 @@ def rho_bar_Frey_13_real_algorithm_inhabited_unramified_alias :
     Nonempty FreyGaloisRep13_real_unramified :=
   rho_bar_Frey_13_real_algorithm_inhabited_unramified
 
+/-- v6.5.0 alias of the finite-flat token.  Same
+**none** as
+`GaloisFiniteFlatAt13Real.rho_bar_Frey_13_real_algorithm_inhabited_finite_flat`.
+Fontaine / Tate-uniformization lemmas stay off
+this inhabitant. -/
+def rho_bar_Frey_13_real_algorithm_inhabited_finite_flat_alias :
+    Nonempty FreyGaloisRep13_real_finite_flat :=
+  rho_bar_Frey_13_real_algorithm_inhabited_finite_flat
+
 #check FreyCurve
 #check FreyCurve_Delta
 #check FreyGaloisRep13
@@ -217,6 +234,11 @@ def rho_bar_Frey_13_real_algorithm_inhabited_unramified_alias :
 #check rho_bar_Frey_13_real_algorithm_inhabited_det_alias
 #check rho_bar_Frey_13_real_algorithm_inhabited_unramified
 #check rho_bar_Frey_13_real_algorithm_inhabited_unramified_alias
+#check rho_bar_Frey_13_real_algorithm_inhabited_finite_flat
+#check rho_bar_Frey_13_real_algorithm_inhabited_finite_flat_alias
+#check frey_finite_flat_at_13_formula
+#check FreyGaloisRep13_real_finite_flat
+#check FreyCurveSeparated_finite_flat
 #check frey_unramified_outside_formula
 #check frey_semistable_at_2_13_formula
 #check FreyGaloisRep13_real_unramified
@@ -237,5 +259,7 @@ def rho_bar_Frey_13_real_algorithm_inhabited_unramified_alias :
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_det_alias
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_unramified
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_unramified_alias
+#print axioms rho_bar_Frey_13_real_algorithm_inhabited_finite_flat
+#print axioms rho_bar_Frey_13_real_algorithm_inhabited_finite_flat_alias
 
 end BealLevel26Foundations.GaloisRep.FreyGaloisRepReal

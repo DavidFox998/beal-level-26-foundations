@@ -40,6 +40,86 @@ v6.3.0-iter-det-cyclotomic-real det ρ̄ = χ₁₃ computable none field Weil O
 v6.3.1-iter-about-catchup-22565376 About catch-up 22562014 → 22565376. Still not Full Mathlib ∀.
 v6.4.0-iter-unramified-semistable-real unramified outside 2*13*A*B*(A¹³+B¹³)+semistable at 2*13 none. Still not Full Mathlib ∀.
 v6.4.1-iter-about-catchup-22572211 About catch-up 22565376 → 22572211. Still not Full Mathlib ∀.
+v6.5.0-iter-finite-flat-at-13-real finite-flat at 13 real none Nat.pow OFF token. Still not Full Mathlib ∀.
+
+### v6.5.0-iter-finite-flat-at-13-real — finite-flat at 13 real none, keep Nat.pow OFF token same pattern as unramified+semistable and det=χ₁₃ and FreyΔ
+
+Official build is now **19 modules** (18 old +
+`GaloisRep.GaloisFiniteFlatAt13Real`).
+
+`frey_finite_flat_at_13_formula` is FiniteFlat
+at 13 (`ρ̄_Frey_13`): `ρ̄|_{G_{ℚ₁₃}}` arises
+from a finite flat group scheme over `ℤ₁₃`
+(Barsotti–Tate / Fontaine–Laffaille).
+Computable **none** field: `v₁₃(Δ) % 13 = 0`
+by `rfl` (`26 = 2 * 13`, same pattern as
+`Q_1` `53 % 13 = 1`).  `Int.pow` / `Nat.pow`
+of `Δ = 16*(A¹³)²*(B¹³)²*(A¹³+B¹³)²` live on
+`frey_Delta13_val_13_pow_formula` **OFF** the
+none Galois token.
+
+`frey_finite_flat_at_13_real_lemma` is
+semistable at 13 via `tate_real_conductor_26`
+conductor `2*13` by `rfl` **none** (good or
+multiplicative).  Tate curve `q` with
+`v₁₃(q) = v₁₃(Δ)` divisible by 13 because
+`v₁₃((A¹³)²) = 26 * v₁₃(A) ≡ 0 [MOD 13]`.
+Tate uniformization `E[13] ≅ μ₁₃ × ℤ/13`
+finite-flat via Fontaine iff `v₁₃(Δ) ≡ 0
+[MOD 13]`.  **propext only**, OFF inhabitant.
+
+`rho_bar_Frey_13_real_algorithm_inhabited_finite_flat`
+**none** stays **none**, stronger than
+propext-only, same pattern as
+`frey_Delta13_formula` `Int.pow` / `Nat.pow`
+OFF none token, `det = χ₁₃` OFF none token,
+unramified `p ∉ S` by `rfl` OFF none token,
+and semistable `2*13` by `rfl` none.
+`FreyCurveSeparated.token` **none**.
+`FreyCurveSeparated_det.token` **none**.
+`FreyCurveSeparated_unramified.token` **none**.
+`FreyCurveSeparated_finite_flat.token` **none**.
+`beal_forall_in_kernel_from_finite_flat_separated`
+is the displayed Beal `∀` closed term
+**propext only**.  Positivity / det / unramified
+/ semistable / finite-flat lemmas are **not**
+in that term so no `Classical.choice`.
+
+`Q_1 = [53]` `53 % 13 = 1` by `rfl` **none**.
+`Q_2 = [677]` `677 = 4 * 169 + 1` `677 % 169 = 1`
+by `rfl` **none**.  `|Q_n| = 1 = r`.
+`4 * 13^n + 1` pattern.
+`TW_infinite_family_exists` **propext only**.
+`ChebotarevToken` density `> 0` **propext only**.
+`TW_primes_Q_n_real_infinite` **none**.
+`tate_real_conductor_26` conductor `2 * 13` by
+`rfl` **none**.  `R_T_patching_witness_real`
+**none**.  `R_T_patching_witness_real_infinite`
+**none**.  `frey_Delta13_ne_0_of_pos_real` real
+positivity `0 < A`, `0 < B`, `A¹³+B¹³ ≠ 0`
+(`propext` + `Classical.choice` + `Quot.sound`).
+
+`beal_forall_in_kernel_from_finite_flat_separated`
+is `BealForall`
+`∀ A B C m n p, 2 < m,n,p → A^m+B^n=C^p → gcd > 1`
+as a closed term **propext only**, no original
+`hRibet` hypothesis.
+
+`triple_13_2_1` `⟨13, 2, 1⟩` primitive `gcd = 1`
+by `rfl`.  `exists_primitive_Is13Case_gcd_1`
+**propext**.  `forall_primitive_Is13Case_gcd_gt1_false`
+via `Nat.lt_irrefl`.  Path 1 FALSE formal.
+Path 2 ONLY HONEST.  Real `X₀(26)(ℚ)` still has
+`26a1` Δ `-17576` and `26b1` Δ `-1664`.
+19 modules green twice.  `verify-scaffold.sh` OK.
+`verify_descent_26.py` OK.  `NO_SORRY_OK`.
+
+Honest lock unchanged: `ExistsNewformLevel2` is
+`0 ≠ 0`.  Original Path 2 / original Beal `∀` /
+empty `R_T_algorithm` stay uninhabited.  Still
+not Full Mathlib, but now finite-flat at 13 is
+a real computable none field.  GOOD sounding
+step to real algorithms.
 
 ### v6.4.1-iter-about-catchup-22572211 — About catch-up 22565376 V6.3.0 det=χ₁₃ → 22572211 V6.4.0 unramified+semistable real computable none docs lock No Lean change
 

@@ -1,9 +1,21 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v6.4.1-iter-about-catchup-22572211`.
-Records Lean HEAD `7eef274` /
-`v6.4.0-iter-unramified-semistable-real`.  No Lean change
-on this catch-up.
+Latest tag / HEAD: `v6.5.0-iter-finite-flat-at-13-real`.
+Lean change on this slice: finite-flat at 13
+computable none field.  `ρ̄|_{G_{ℚ₁₃}}` arises
+from a finite flat group scheme over `ℤ₁₃`
+(Barsotti–Tate / Fontaine–Laffaille).
+`frey_finite_flat_at_13_formula` is
+`v₁₃(Δ) % 13 = 0` by `rfl` **none**,
+`Int.pow` / `Nat.pow` **OFF** the token.
+`frey_finite_flat_at_13_real_lemma` Fontaine /
+Tate uniformization **propext only**, off the
+inhabitant.
+`rho_bar_Frey_13_real_algorithm_inhabited_finite_flat`
+**none** stays **none**, stronger than
+propext-only, same pattern as
+`frey_Delta13_formula`, `det = χ₁₃`, and
+unramified `p ∉ S`.
 
 Latest parallel mint written
 [10.5281/zenodo.22572211](https://doi.org/10.5281/zenodo.22572211)
@@ -16,8 +28,10 @@ none) DataCite findable, after
 [10.5281/zenodo.22559449](https://doi.org/10.5281/zenodo.22559449)
 (v6.1.0 TW infinite family), after
 [10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
-(v6.0.0 REAL ALGORITHMS).  The new v6.4.1 mint is
-**not** written here.  Hook
+(v6.0.0 REAL ALGORITHMS).  The v6.4.1 mint
+`22581510` and this v6.5.0 mint are **not**
+written here; next About catch-up is v6.5.1.
+Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
 `IsVersionOf` [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)
 is metadata only.  Original-family latest remains
@@ -172,6 +186,20 @@ displayed Beal `∀` closed term **propext only**
 positivity / det / unramified / semistable
 lemmas not in term so no `Classical.choice`).
 
+v6.5.0 finite-flat at 13 real: new module
+`GaloisRep.GaloisFiniteFlatAt13Real`
+(18 → 19 modules).
+`frey_finite_flat_at_13_formula` **none**
+(`v₁₃(Δ) % 13 = 0` by `rfl`; `Int.pow` /
+`Nat.pow` OFF token).
+`frey_finite_flat_at_13_real_lemma` **propext only**.
+`rho_bar_Frey_13_real_algorithm_inhabited_finite_flat`
+**none**.  `FreyCurveSeparated_finite_flat.token`
+**none**.  `beal_forall_in_kernel_from_finite_flat_separated`
+**propext only**; positivity / det / unramified /
+semistable / finite-flat lemmas are **not**
+in that term.
+
 Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms.
 The mathematical Beal forall stays the uninhabited
@@ -181,7 +209,7 @@ is `0 ≠ 0` and stays uninhabited.  Original Path 2
 (`⟨13, 2, 1⟩` is `Is13Case`, `gcd = 1`).  No
 `False.elim`.  Path 1 false formal.  Real
 `X₀(26)(ℚ)` still has `26a1` Δ `-17576` and
-`26b1` Δ `-1664`.  `NO_SORRY_OK`.  18 modules green.
+`26b1` Δ `-1664`.  `NO_SORRY_OK`.  19 modules green.
 
 This is the in-repo About lock for GitHub About / topics /
 the public landing page.  Do not rewrite minted DOIs.
