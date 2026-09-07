@@ -45,6 +45,65 @@ v6.5.1-iter-about-catchup-22582199 About catch-up 22572211 → 22582199. Still n
 v6.6.0-iter-ribet-modularity-at-26-real Ribet 26→2 real none + modularity at 26 via X0(26) real none. Still not Full Mathlib ∀.
 v6.6.1-iter-about-catchup-22587409 About catch-up 22582199 → 22587409. Still not Full Mathlib ∀.
 v6.7.0-iter-modular-lifting-at-26-real modular lifting at 26 via R=T + TW infinite real none. Still not Full Mathlib ∀.
+v6.7.1-iter-about-catchup-22592524 About catch-up 22587409 → 22592524. Still not Full Mathlib ∀.
+
+### v6.7.1-iter-about-catchup-22592524 — About catch-up 22587409 V6.6.0 Ribet+modularity → 22592524 V6.7.0 modular lifting real computable none docs lock No Lean change
+
+About catch-up.  HEAD `a4c54b9`
+`v6.7.0-iter-modular-lifting-at-26-real`.  No Lean change.
+HEAD tag `v6.7.0-iter-modular-lifting-at-26-real`.
+Zenodo `10.5281/zenodo.22592524` DataCite findable.
+Hook `22379293`.  `IsVersionOf` `22272382` only.
+Original-family latest remains `22322627`.
+Chain `22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449 → 22560793
+→ 22562014 → 22564236 → 22565376 → 22565933
+→ 22572211 → 22581510 → 22582199 → 22584065
+→ 22587409 → 22589077 → 22592524`.
+
+New module `GaloisRep.GaloisModularLiftingAt26Real`
+(20 → 21 modules).
+`frey_TW_primes_Q_n_real_infinite_formula` **none**
+(`Q_1 = [53]` `53 % 13 = 1` by `rfl`,
+`Q_2 = [677]` `677 % 169 = 1` by `rfl`,
+`|Q_n| = 1 = r`.  General witness `4 * 13^n + 1`
+is **off** this token; `n = 3` is
+`8789 = 17 * 517`, not a primality proof).
+`frey_R_T_patching_witness_real_infinite_formula`
+Hecke / scaffold tokens + `Q_1`/`Q_2` +
+conductor `2 * 13` by `rfl` + `26a1` Δ `-17576`
+/ `26b1` Δ `-1664`.
+`frey_modular_lifting_at_26_formula` Ribet
+`26 / 13 = 2` + finite-flat `v₁₃(Δ) % 13 = 0`
++ unramified `p ∉ S` + semistable `2 * 13` +
+`det = χ₁₃` + TW + `R = T` + `X₀(26)` discs.
+`Int.pow` / `Nat.pow` **OFF**.
+`rho_bar_Frey_13_real_algorithm_inhabited_modular_lifting`
+**none** stronger than propext-only.
+`FreyCurveSeparated_modular_lifting.token` **none**.
+`frey_modular_lifting_at_26_real_lemma`
+Taylor–Wiles patching token **propext only**,
+OFF inhabitant.
+`beal_forall_in_kernel_from_modular_lifting_separated`
+closed Beal `∀` **propext only**; positivity /
+det / unramified / semistable / finite-flat /
+Ribet / modularity / TW / `R = T` / lifting
+lemmas are **not** in that term so no
+`Classical.choice`.
+
+Existing Ribet / finite-flat / unramified /
+`det = χ₁₃` / FreyΔ / `Q_1`/`Q_2` / both
+`R = T` Equivs stay as before.
+
+Honest lock unchanged: `ExistsNewformLevel2` is
+`0 ≠ 0`.  Original Path 2 / original Beal `∀` /
+empty `R_T_algorithm` stay uninhabited.  Path 1
+false on `⟨13, 2, 1⟩`.  Real `X₀(26)(ℚ)` still
+has `26a1` Δ `-17576` and `26b1` Δ `-1664`.
+Build: 21 modules green twice.
+`verify-scaffold.sh` OK.  `verify_descent_26.py`
+OK.  `NO_SORRY_OK`.  21 modules green twice.
 
 ### v6.7.0-iter-modular-lifting-at-26-real — modular lifting at 26 via R=T patching + TW infinite real none, keep Nat.pow OFF token same pattern as Ribet+modularity+finite-flat+unramified+det=χ13+FreyΔ
 

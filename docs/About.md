@@ -1,17 +1,18 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v6.7.0-iter-modular-lifting-at-26-real`.
-Modular lifting at 26 via `R = T` patching +
-TW infinite real none.
-Keep `Nat.pow` OFF token same pattern as
-Ribet + modularity + finite-flat + unramified +
-`det = χ₁₃` + Frey Δ.
+Latest tag / HEAD: `v6.7.1-iter-about-catchup-22592524`.
+Records Lean HEAD `a4c54b9` /
+`v6.7.0-iter-modular-lifting-at-26-real`.  No Lean change
+on this catch-up.
 
 Latest parallel mint written
+[10.5281/zenodo.22592524](https://doi.org/10.5281/zenodo.22592524)
+(v6.7.0 modular lifting at 26 via `R = T`
+patching + TW infinite real none)
+DataCite findable, after
 [10.5281/zenodo.22587409](https://doi.org/10.5281/zenodo.22587409)
 (v6.6.0 Ribet level lowering `26 → 2` real none +
-modularity at 26 via `X₀(26)` real none)
-DataCite findable, after
+modularity at 26 via `X₀(26)` real none), after
 [10.5281/zenodo.22582199](https://doi.org/10.5281/zenodo.22582199)
 (v6.5.0 finite-flat at 13 real computable none), after
 [10.5281/zenodo.22572211](https://doi.org/10.5281/zenodo.22572211)
@@ -24,10 +25,8 @@ none), after
 [10.5281/zenodo.22559449](https://doi.org/10.5281/zenodo.22559449)
 (v6.1.0 TW infinite family), after
 [10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
-(v6.0.0 REAL ALGORITHMS).  The v6.6.1 mint
-`22589077` is **not** written here.  This
-v6.7.0 mint is **not** written here.  Next
-catch-up is v6.7.1.  Hook
+(v6.0.0 REAL ALGORITHMS).  The new v6.7.1 mint is
+**not** written here.  Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
 `IsVersionOf` [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)
 is metadata only.  Original-family latest remains
@@ -269,12 +268,13 @@ and `26 / 13 = 2` by `rfl` none
 displayed Beal `∀` closed term **propext only**
 positivity / det / unramified / semistable /
 finite-flat / Ribet / modularity lemmas not
-in term so no `Classical.choice`).
-
-v6.7.0 modular lifting at 26 via `R = T`
-patching + TW infinite real none
-(20 → 21 modules,
-`GaloisRep.GaloisModularLiftingAt26Real`).
+in term so no `Classical.choice`) →
+`22589077` (v6.6.1 About catch-up DONE,
+About writes `22587409`) →
+`22592524` (v6.7.0 modular lifting at 26 via
+`R = T` patching + TW infinite real none
+20 → 21 modules
+`GaloisRep.GaloisModularLiftingAt26Real`.
 `frey_TW_primes_Q_n_real_infinite_formula` TW
 primes `Q_n` infinite family real witness
 `Q_1 = [53]` `53 % 13 = 1` by `rfl` **none**
@@ -344,7 +344,7 @@ displayed Beal `∀` closed term **propext only**
 positivity / det / unramified / semistable /
 finite-flat / Ribet / modularity / TW / `R = T`
 / modular lifting lemmas not in term so no
-`Classical.choice`.
+`Classical.choice`).
 
 Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms.
