@@ -35,6 +35,59 @@ v6.0.1-iter-about-catchup-22558788 About catch-up 22558113 → 22558788. Still n
 v6.1.0-iter-tw-infinite-family Q_n=[53]→infinite family q≡1 mod13^n. Still not Full Mathlib ∀.
 v6.1.1-iter-about-catchup-22559449 About catch-up 22558788 → 22559449. Still not Full Mathlib ∀.
 v6.2.0-iter-frey-delta-separated Frey Δ separated Nat.pow OFF none inhabitant. Still not Full Mathlib ∀.
+v6.2.1-iter-about-catchup-22562014 About catch-up 22559449 → 22562014. Still not Full Mathlib ∀.
+
+### v6.2.1-iter-about-catchup-22562014 — About catch-up 22559449 V6.1.0 TW infinite → 22562014 V6.2.0 Frey Δ separated + Δ≠0 real positivity docs lock No Lean change
+
+About catch-up.  HEAD `4de20a8`
+`v6.2.0-iter-frey-delta-separated`.  No Lean change.
+HEAD tag `v6.2.0-iter-frey-delta-separated`.
+Zenodo `10.5281/zenodo.22562014` DataCite findable.
+Hook `22379293`.  `IsVersionOf` `22272382` only.
+Original-family latest remains `22322627`.
+Chain `22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449 → 22560793
+→ 22562014`.
+
+`FreyDeltaSeparated` holds
+`frey_Delta13_formula = 16*(A¹³)²*(B¹³)²*(A¹³+B¹³)²`
+with `Int.pow` / `Nat.pow` **OFF** the Galois
+token.  `rho_bar_Frey_13_real_algorithm_inhabited`
+stays **none**, stronger than propext-only.
+`frey_Delta13_ne_0_of_pos_real` is real positivity:
+`0 < A`, `0 < B`, and `A¹³+B¹³ ≠ 0` imply the
+formula is nonzero (`16 ≠ 0`, squares of nonzeros,
+product of nonzeros).  Axioms
+`propext` + `Classical.choice` + `Quot.sound`;
+the premises are the positivity data.
+`FreyCurveSeparated.token` and
+`FreyGaloisRep13_real_algorithm_inhabited_separated`
+are **none**.
+`beal_forall_in_kernel_from_delta_separated` is the
+displayed Beal `∀` closed term **propext only**.
+The positivity lemma is not in that term so it
+does not pick up `Classical.choice`.  Existing
+TW / Tate / R=T tokens are unchanged.
+
+`#print axioms`:
+`rho_bar_Frey_13_real_algorithm_inhabited` **none**,
+`frey_Delta13_ne_0_of_pos_real`
+`propext` + `Classical.choice` + `Quot.sound`,
+`Q_1` **none**, `Q_2` **none**,
+`TW_infinite_family_exists` **propext only**,
+both `R = T` Equivs **none**,
+`beal_forall_in_kernel_from_delta_separated`
+**propext only**.
+
+Honest lock unchanged: `ExistsNewformLevel2` is
+`0 ≠ 0`.  Original Path 2 / original Beal `∀` /
+empty `R_T_algorithm` stay uninhabited.  Path 1
+false on `⟨13, 2, 1⟩`.  Real `X₀(26)(ℚ)` still
+has `26a1` Δ `-17576` and `26b1` Δ `-1664`.
+Build: 16 modules green twice.
+`verify-scaffold.sh` OK.  `verify_descent_26.py`
+OK.  `NO_SORRY_OK`.  16 modules green twice.
 
 ### v6.2.0-iter-frey-delta-separated — keep frey_Delta13_formula Δ=16*(A¹³)²*(B¹³)²*(A¹³+B¹³)² with Nat.pow OFF the none inhabitant so rho_bar_Frey_13_real_algorithm_inhabited none stays none stronger than propext-only, and make Δ≠0 real via A>0 B>0 positivity + A¹³+B¹³≠0
 

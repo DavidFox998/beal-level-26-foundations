@@ -214,5 +214,19 @@ stays **none**.  `frey_Delta13_ne_0_of_pos_real`
 via `A > 0`, `B > 0`, `A¹³+B¹³ ≠ 0`.
 `beal_forall_in_kernel_from_delta_separated`
 **propext only**.  Official build **16 modules**.
-About still lists written mint `22559449`.
+About still listed written mint `22559449` until
+v6.2.1.
+
+### v6.2.1-iter-about-catchup-22562014 — DONE
+
+About catch-up `22559449` (v6.1.0 TW infinite family)
+→ `22562014` (v6.2.0 Frey Δ separated + Δ ≠ 0 real
+positivity).  Docs lock.  No Lean change.  HEAD
+`4de20a8`.  Hook `22379293`.  `IsVersionOf`
+`22272382`.  Original-family latest remains
+`22322627`.  Chain
+`22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449 → 22560793
+→ 22562014`.
 

@@ -1,11 +1,14 @@
-# FINAL v6.2.0 — Frey Δ separated
+# FINAL v6.2.1 — About catch-up 22562014
 
-Latest tag `v6.2.0-iter-frey-delta-separated`.
-Latest written mint remains
+Latest tag `v6.2.1-iter-about-catchup-22562014`.
+Records Lean HEAD `4de20a8` /
+`v6.2.0-iter-frey-delta-separated`.  **No Lean change.**
+Latest written mint now
+[10.5281/zenodo.22562014](https://doi.org/10.5281/zenodo.22562014)
+(v6.2.0 Frey Δ separated) DataCite findable, after
 [10.5281/zenodo.22559449](https://doi.org/10.5281/zenodo.22559449)
-(v6.1.0 TW infinite family) DataCite findable.
-This v6.2.0 mint is **not** written into About;
-next catch-up is v6.2.1.  Hook `22379293`.
+(v6.1.0 TW infinite family).  The new v6.2.1 mint
+is **not** written into About.  Hook `22379293`.
 `IsVersionOf` `22272382` metadata only.
 Original-family latest remains `22322627`.
 
@@ -117,6 +120,30 @@ inhabitant.
   **propext only**, no original `hRibet`
 
 Official build **16 modules**.
+`FreyDeltaSeparated` holds
+`frey_Delta13_formula = 16*(A¹³)²*(B¹³)²*(A¹³+B¹³)²`
+with `Int.pow` / `Nat.pow` **OFF** the Galois
+token.  `rho_bar` **none** stays **none** stronger
+than propext-only.  `frey_Delta13_ne_0_of_pos_real`
+real positivity: `0 < A`, `0 < B`, `A¹³+B¹³ ≠ 0`
+imply nonzero (`16 ≠ 0`, squares of nonzeros,
+product of nonzeros).  Axioms
+`propext` + `Classical.choice` + `Quot.sound`;
+premises are positivity data.
+`FreyCurveSeparated.token` **none**.
+`FreyGaloisRep13_real_algorithm_inhabited_separated`
+**none**.  `beal_forall_in_kernel_from_delta_separated`
+**propext only**; positivity is not in that term
+so it does not pick up `Classical.choice`.
+
+### v6.2.1 About catch-up DONE
+
+Chain `22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449 → 22560793
+→ 22562014`.  About now writes `22562014` as the
+latest recorded mint.  Docs lock only.  No Lean
+change.
 
 ### Honest lock (unchanged from FINAL v5)
 

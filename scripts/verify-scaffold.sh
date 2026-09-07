@@ -495,6 +495,7 @@ do
   grep -q "v6.1.0-iter-tw-infinite-family" "$readme"
   grep -q "v6.1.1-iter-about-catchup-22559449" "$readme"
   grep -q "v6.2.0-iter-frey-delta-separated" "$readme"
+  grep -q "v6.2.1-iter-about-catchup-22562014" "$readme"
 done
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md
