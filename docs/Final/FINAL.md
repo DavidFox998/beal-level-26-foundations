@@ -1,17 +1,18 @@
-# FINAL v6.6.0 — Ribet 26→2 + modularity at 26 real none
+# FINAL v6.6.1 — About catch-up 22587409
 
-Latest tag `v6.6.0-iter-ribet-modularity-at-26-real`.
-Ribet level lowering `26 → 2` real none +
-modularity at 26 via `X₀(26)` real none.
-Keep `Nat.pow` OFF token.  Official build
-**20 modules**.  Latest written mint remains
+Latest tag `v6.6.1-iter-about-catchup-22587409`.
+Records Lean HEAD `5e1b06e` /
+`v6.6.0-iter-ribet-modularity-at-26-real`.  **No Lean change.**
+Latest written mint now
+[10.5281/zenodo.22587409](https://doi.org/10.5281/zenodo.22587409)
+(v6.6.0 Ribet level lowering `26 → 2` real none +
+modularity at 26 via `X₀(26)` real none)
+DataCite findable, after
 [10.5281/zenodo.22582199](https://doi.org/10.5281/zenodo.22582199)
 (v6.5.0 finite-flat at 13 real computable none).
-The v6.5.1 mint `22584065` and this v6.6.0 mint
-are **not** written into About.  Next catch-up
-is v6.6.1.  Hook `22379293`.  `IsVersionOf`
-`22272382` metadata only.  Original-family
-latest remains `22322627`.
+The new v6.6.1 mint is **not** written into About.
+Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
 
 ### v6.0.0 REAL ALGORITHMS
 
@@ -323,8 +324,18 @@ Official build **20 modules** (19 old +
   Ribet / modularity lemmas are **not** in
   that term
 
-Existing tokens unchanged.  About still lists
-written mint `22582199` until v6.6.1.
+Existing tokens unchanged.
+
+### v6.6.1 About catch-up DONE
+
+Chain `22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449 → 22560793
+→ 22562014 → 22564236 → 22565376 → 22565933
+→ 22572211 → 22581510 → 22582199 → 22584065
+→ 22587409`.  About now writes `22587409` as
+the latest recorded mint.  Docs lock only.
+No Lean change.
 
 ### Honest lock (unchanged from FINAL v5)
 

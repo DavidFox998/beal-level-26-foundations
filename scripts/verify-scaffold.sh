@@ -594,6 +594,7 @@ do
   grep -q "v6.5.0-iter-finite-flat-at-13-real" "$readme"
   grep -q "v6.5.1-iter-about-catchup-22582199" "$readme"
   grep -q "v6.6.0-iter-ribet-modularity-at-26-real" "$readme"
+  grep -q "v6.6.1-iter-about-catchup-22587409" "$readme"
 done
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md

@@ -43,6 +43,67 @@ v6.4.1-iter-about-catchup-22572211 About catch-up 22565376 → 22572211. Still n
 v6.5.0-iter-finite-flat-at-13-real finite-flat at 13 real none Nat.pow OFF token. Still not Full Mathlib ∀.
 v6.5.1-iter-about-catchup-22582199 About catch-up 22572211 → 22582199. Still not Full Mathlib ∀.
 v6.6.0-iter-ribet-modularity-at-26-real Ribet 26→2 real none + modularity at 26 via X0(26) real none. Still not Full Mathlib ∀.
+v6.6.1-iter-about-catchup-22587409 About catch-up 22582199 → 22587409. Still not Full Mathlib ∀.
+
+### v6.6.1-iter-about-catchup-22587409 — About catch-up 22582199 V6.5.0 finite-flat → 22587409 V6.6.0 Ribet+modularity real computable none docs lock No Lean change
+
+About catch-up.  HEAD `5e1b06e`
+`v6.6.0-iter-ribet-modularity-at-26-real`.  No Lean change.
+HEAD tag `v6.6.0-iter-ribet-modularity-at-26-real`.
+Zenodo `10.5281/zenodo.22587409` DataCite findable.
+Hook `22379293`.  `IsVersionOf` `22272382` only.
+Original-family latest remains `22322627`.
+Chain `22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449 → 22560793
+→ 22562014 → 22564236 → 22565376 → 22565933
+→ 22572211 → 22581510 → 22582199 → 22584065
+→ 22587409`.
+
+New module `GaloisRep.GaloisRibetModularityAt26Real`
+(19 → 20 modules).
+`ribet_level_26_div_13_formula` **none**
+(`26 / 13 = 2` by `rfl`).
+`frey_ribet_level_lowering_formula` **none**
+(`26 / 13 = 2`, `v₁₃(Δ) % 13 = 0`, `p ∉ S`,
+conductor `2*13`, `det = χ₁₃`, `26a1` Δ `-17576`
+/ `26b1` Δ `-1664`).
+`frey_ribet_level_lowering_real_lemma` Ribet
+**propext only**, OFF inhabitant.
+`frey_modularity_at_26_formula` **none**
+(conductor `2*13` by `rfl` + `X₀(26)` discs).
+`frey_modularity_at_26_real_lemma` **propext only**,
+OFF inhabitant.
+`rho_bar_Frey_13_real_algorithm_inhabited_ribet`
+**none** stronger than propext-only.
+`FreyCurveSeparated_ribet.token` **none**.
+`beal_forall_in_kernel_from_ribet_separated`
+**propext only**; positivity / det / unramified
+/ semistable / finite-flat / Ribet / modularity
+lemmas are **not** in that term.
+
+Existing tokens unchanged: `frey_finite_flat_at_13_formula`
+**none**, `frey_finite_flat_at_13_real_lemma`
+**propext only** OFF,
+`rho_bar_Frey_13_real_algorithm_inhabited_finite_flat`
+**none**, `FreyCurveSeparated_finite_flat.token`
+**none**, unramified / semistable **none**,
+`cyclotomicCharacter13` **none**, Weil lemma
+**propext only**, `rho_bar` / `_det` / `_unramified`
+**none**, `Q_1` / `Q_2` **none**,
+`TW_infinite_family_exists` **propext only**,
+both `R = T` Equivs **none**,
+`frey_Delta13_ne_0_of_pos_real`
+`propext` + `Classical.choice` + `Quot.sound`.
+
+Honest lock unchanged: `ExistsNewformLevel2` is
+`0 ≠ 0`.  Original Path 2 / original Beal `∀` /
+empty `R_T_algorithm` stay uninhabited.  Path 1
+false on `⟨13, 2, 1⟩`.  Real `X₀(26)(ℚ)` still
+has `26a1` Δ `-17576` and `26b1` Δ `-1664`.
+Build: 20 modules green twice.
+`verify-scaffold.sh` OK.  `verify_descent_26.py`
+OK.  `NO_SORRY_OK`.  20 modules green twice.
 
 ### v6.6.0-iter-ribet-modularity-at-26-real — Ribet level lowering 26→2 real none + modularity at 26 via X0(26) real none, keep Nat.pow OFF token same pattern as finite-flat + unramified+semistable + det=χ13 + FreyΔ
 

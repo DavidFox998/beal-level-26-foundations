@@ -336,3 +336,20 @@ by `rfl` **none**.
 About still lists written mint `22582199` until
 v6.6.1.
 
+### v6.6.1-iter-about-catchup-22587409 — DONE
+
+About catch-up `22582199` (v6.5.0 finite-flat
+at 13 real computable none)
+→ `22587409` (v6.6.0 Ribet level lowering
+`26 → 2` real none + modularity at 26 via
+`X₀(26)` real none).  Docs lock.  No Lean change.
+HEAD `5e1b06e`.  Hook `22379293`.  `IsVersionOf`
+`22272382`.  Original-family latest remains
+`22322627`.  Chain
+`22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449 → 22560793
+→ 22562014 → 22564236 → 22565376 → 22565933
+→ 22572211 → 22581510 → 22582199 → 22584065
+→ 22587409`.
+
