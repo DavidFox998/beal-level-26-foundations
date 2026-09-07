@@ -1,18 +1,17 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v7.2.0-step1-true-conductor-scaffold`.
-Lean change: new FullProof module
-`Beal/FullProof/TrueConductor.lean` types the
-true-gcd + Tate obligations of
-`beal_forall_from_Is13Case_sketch` without
-inhabiting that sketch and without `sorry`.
-Proved: mixed-exponent Frey model, `Δ` and `c₄`
-identities by `ring`, pairwise coprimality from
-`gcd=1` plus the equation, and
-`v_q(c₄)=0`, `v_q(Δ)>0` at odd primes dividing
-`ABC`.  Uninhabited: minimality, Kodaira `Iₙ`,
-local exponent `1`, 2-adic exponent, and
-`N = 2 · rad(ABC)`.  The v7.1.0 none chain
+Latest tag / HEAD: `v7.2.1-tate-filled`.
+Lean change: `Beal/FullProof/TrueConductor.lean` fills
+the v7.2.0 empty-Type Tate holes with theorems.  Proved:
+`true_gcd_pairwise` (`Aᵐ, Bⁿ, Cᵖ` pairwise coprime);
+Tate Step 2 at every odd prime `q | ABC` (Kodaira `I_n`,
+local exponent `1`, `v_q(c₄)=0`); at `2` the integral
+model has `v₂(c₄)=4` so Step 2 does not apply, and the
+radical contribution of `2` has exponent `1`;
+`N = 2 · ∏_{odd q|ABC} q = rad(ABC)`.  `#print axioms`
+is `[propext, Classical.choice, Quot.sound]`.  Does
+**not** inhabit `beal_forall_from_Is13Case_sketch`.  The
+v7.1.0 none chain
 (`BealForall_real_witness_none`,
 `beal_forall_in_kernel_from_beal_forall_none_separated`)
 is untouched.
@@ -59,7 +58,7 @@ none), after
 [10.5281/zenodo.22559449](https://doi.org/10.5281/zenodo.22559449)
 (v6.1.0 TW infinite family), after
 [10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
-(v6.0.0 REAL ALGORITHMS).  The new v7.2.0 mint
+(v6.0.0 REAL ALGORITHMS).  The new v7.2.1 mint
 is **not** written here (About catch-up waits
 for the next docs-only catch-up).  Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).

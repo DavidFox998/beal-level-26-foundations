@@ -57,6 +57,7 @@ v7.1.1-iter-about-catchup-22632209-relook About catch-up 22618433 → 22632209. 
 v7.1.2-iter-readme-uniform-opera-links README header uniformized (badges 22632209/22635221/22272382) + Opera Numerorum coordination index docs/OPERA_NUMERORUM_LINKS.md added in both repos, no Lean change. Still not Full Mathlib ∀.
 v7.1.3-iter-beal-not-route-e-corrected Beal Conjecture corrected from mislabeled "Route E" to its own two-repository chamber of Opera Numerorum, not part of the Riemann Hypothesis A-D route lettering, no Lean change. Still not Full Mathlib ∀.
 v7.2.0-step1-true-conductor-scaffold TrueConductor typed scaffold: Frey model of a primitive Beal triple, Δ=16(Aᵐ)²(Bⁿ)²(Cᵖ)² by ring, true gcd pairwise-coprime ⇒ odd p|ABC does not divide c₄, v_p(c₄)=0 and v_p(Δ)>0; Tate/Kodaira/N=2·rad(ABC) stay uninhabited empty-Type witnesses not sorry. Still not Full Mathlib ∀.
+v7.2.1-tate-filled TrueConductor Tate filled: true_gcd_pairwise on Aᵐ,Bⁿ,Cᵖ; Tate Step 2 at odd q|ABC gives Kodaira I_n and exponent 1; at 2 the integral model has v₂(c₄)=4 so Step 2 does not apply and rad exponent of 2 is 1; N=2·∏_{odd q|ABC}q=rad(ABC). Sketch stays uninhabited. Still not Full Mathlib ∀.
 
 ### v6.0.0 real algorithms (additional modules)
 

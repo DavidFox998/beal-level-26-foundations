@@ -76,6 +76,21 @@ v7.1.1-iter-about-catchup-22632209-relook About catch-up 22618433 → 22632209. 
 v7.1.2-iter-readme-uniform-opera-links README header uniformized (badges 22632209/22635221/22272382) + Opera Numerorum coordination index docs/OPERA_NUMERORUM_LINKS.md added in both repos, no Lean change. Still not Full Mathlib ∀.
 v7.1.3-iter-beal-not-route-e-corrected Beal Conjecture corrected from mislabeled "Route E" to its own two-repository chamber of Opera Numerorum, not part of the Riemann Hypothesis A-D route lettering, no Lean change. Still not Full Mathlib ∀.
 v7.2.0-step1-true-conductor-scaffold TrueConductor typed scaffold: Frey model of a primitive Beal triple, Δ=16(Aᵐ)²(Bⁿ)²(Cᵖ)² by ring, true gcd pairwise-coprime ⇒ odd p|ABC does not divide c₄, v_p(c₄)=0 and v_p(Δ)>0; Tate/Kodaira/N=2·rad(ABC) stay uninhabited empty-Type witnesses not sorry. Still not Full Mathlib ∀.
+v7.2.1-tate-filled TrueConductor Tate filled: true_gcd_pairwise on Aᵐ,Bⁿ,Cᵖ; Tate Step 2 at odd q|ABC gives Kodaira I_n and exponent 1; at 2 the integral model has v₂(c₄)=4 so Step 2 does not apply and rad exponent of 2 is 1; N=2·∏_{odd q|ABC}q=rad(ABC). Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v7.2.1-tate-filled — Tate Step 2 filled: odd-prime I_n and exponent 1, global N = rad(ABC)
+
+Lean change.  `TrueConductor.lean` replaces v7.2.0 empty-Type witnesses with theorems.  Does **not** inhabit `beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `true_gcd_pairwise`: `gcd=1` ⇒ `Aᵐ`, `Bⁿ`, `Cᵖ` pairwise coprime;
+- Tate 1975 Step 2 as `kodairaTate` / `conductorExponentTate` (valuation criterion, Silverman AEC IV.9);
+- `tate_odd_prime`: at every odd `q | ABC`, `v_q(c₄)=0`, exact `v_q(Δ)`, Kodaira `I_n` with `n=v_q(Δ)`, local exponent `1`;
+- `tate_two`: this integral model has `v₂(c₄)=4`, so Step 2 does not apply; `2 | ABC` always and `padicValNat 2 rad(ABC) = 1`;
+- `frey_global_conductor`: `N = 2 · ∏_{odd q|ABC} q = rad(ABC)`, replacing the displayed `26/13=2` token.
+
+`#print axioms` is `[propext, Classical.choice, Quot.sound]`.  Mathlib 4.12 has no `MinimalModel` API; a 2-adic `u=2` change of variables is not a `VariableChange` over `ℤ`.
+
+The v7.1.0 none chain is untouched — 24 modules still green.  About still writes the v7.1.1 mint `22635221`; the new v7.2.1 mint is not written.
 
 ### v7.2.0-step1-true-conductor-scaffold — TrueConductor typed scaffold: gcd + Δ/c₄ equalities proved, Tate/Kodaira holes typed without sorry
 

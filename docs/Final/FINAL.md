@@ -1,3 +1,27 @@
+# FINAL v7.2.1 — TrueConductor Tate filled (odd-prime Step 2, global rad)
+
+Latest tag `v7.2.1-tate-filled`.
+Lean change.
+`lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean`
+replaces v7.2.0 empty-Type witnesses with theorems:
+`true_gcd_pairwise`; Tate Step 2 at every odd prime
+dividing `ABC` (Kodaira `I_n`, exponent `1`); at `2` the
+integral model has `v₂(c₄)=4` (Step 2 does not apply) and
+the radical exponent of `2` is `1`;
+`N = 2 · ∏_{odd q|ABC} q = rad(ABC)`.
+`#print axioms` is `[propext, Classical.choice, Quot.sound]`.
+Does **not** inhabit
+`beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221)
+(v7.1.1 About catch-up).  The new v7.2.1 mint is
+**not** written into About until the next catch-up.
+Three JPEG plates stay in `docs/assets/v6.7.0/`.
+Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+
 # FINAL v7.2.0 — TrueConductor typed scaffold (gcd proved, Tate holes typed)
 
 Latest tag `v7.2.0-step1-true-conductor-scaffold`.

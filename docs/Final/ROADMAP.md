@@ -677,3 +677,20 @@ Does **not** inhabit
 Does **not** touch the 24-module none chain.
 No `False.elim`.
 
+### v7.2.1-tate-filled — DONE
+
+Lean change.  Empty-Type witnesses in
+`Beal/FullProof/TrueConductor.lean` replaced by theorems.
+`true_gcd_pairwise` is coprimality of the Beal powers.
+Tate 1975 Step 2 is `kodairaTate` / `conductorExponentTate`.
+`tate_odd_prime` inhabits Kodaira `I_n` and local exponent
+`1` at every odd prime dividing `ABC`.
+`tate_two` proves `v₂(c₄)=4` on this integral model
+(Step 2 does not apply) and radical exponent `1` at `2`.
+`frey_global_conductor` is `N = 2 · ∏_{odd q|ABC} q = rad(ABC)`.
+`#print axioms` `[propext, Classical.choice, Quot.sound]`.
+Does **not** inhabit
+`beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.
+

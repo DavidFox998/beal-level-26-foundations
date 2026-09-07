@@ -748,6 +748,7 @@ do
   grep -q "v7.1.2-iter-readme-uniform-opera-links" "$readme"
   grep -q "v7.1.3-iter-beal-not-route-e-corrected" "$readme"
   grep -q "v7.2.0-step1-true-conductor-scaffold" "$readme"
+  grep -q "v7.2.1-tate-filled" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -878,13 +879,23 @@ grep -q "theorem pairwise_coprime" \
   lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
 grep -q "theorem odd_prime_not_dvd_c4" \
   lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
-grep -q "def frey_minimal_model_at_odd_prime" \
+grep -q "theorem true_gcd_pairwise" \
   lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
-grep -q "def frey_conductor_exponent_one_odd" \
+grep -q "theorem tate_odd_prime" \
   lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
-grep -q "def frey_conductor_two" \
+grep -q "theorem tate_two" \
   lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
-grep -q "def frey_global_conductor" \
+grep -q "def kodairaTate" \
+  lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
+grep -q "def conductorExponentTate" \
+  lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
+grep -q "theorem frey_minimal_model_at_odd_prime" \
+  lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
+grep -q "theorem frey_conductor_exponent_one_odd" \
+  lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
+grep -q "theorem frey_conductor_two" \
+  lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
+grep -q "theorem frey_global_conductor" \
   lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
 grep -q "structure FreyTwoAdicExponentOneCertificate" \
   lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean

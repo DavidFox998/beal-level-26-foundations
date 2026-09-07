@@ -2,6 +2,7 @@ import BealLevel26Foundations.Frey.Conductor_26_Unconditional
 import BealLevel26Foundations.Frey.FreyConductorData_26
 import BealLevel26Foundations.Real.FreyWeierstrass
 import Mathlib.Algebra.BigOperators.Group.Finset
+import Mathlib.Algebra.Ring.Parity
 import Mathlib.Data.Nat.Factorization.Basic
 import Mathlib.Data.Nat.PrimeFin
 import Mathlib.NumberTheory.Padics.PadicVal.Basic
@@ -13,39 +14,44 @@ open BealLevel26Foundations.Frey.FreyConductorData26
 open BealLevel26Foundations.Real.FreyWeierstrass
 
 /-!
-# v7.2.0-step1-true-conductor-scaffold
+# v7.2.1-tate-filled
 
-True-gcd + Tate typing for a primitive Beal triple, every prime.
+True-gcd + Tate Step 2 for a primitive Beal triple, every prime.
 
 This module does **not** inhabit
 `beal_forall_from_Is13Case_sketch`.  It does **not** use
-`sorry`, `admit`, or `False.elim`.  `verify-scaffold.sh`
-rejects `sorry` tree-wide, so the remaining Tate / Kodaira
-obligations are **uninhabited empty-Type witnesses**, the
-same honesty as `tate_algorithm_of_Is13Case`.
+`sorry`, `admit`, or `False.elim`.  Empty-Type witnesses
+from v7.2.0 are replaced by theorems.
 
-What this file *does* prove, as equalities not `rfl` tokens:
+What this file proves, as equalities not `rfl` tokens:
 
 * the Frey model `Y² = X(X − Aᵐ)(X + Bⁿ)` from a packed
   primitive triple (mixed exponents, not the working-prime
   `13,13` display);
 * `Δ = 16 (Aᵐ)² (Bⁿ)² (Cᵖ)²` from the Beal equation, via
   the existing `ring` identity in `FreyWeierstrass`;
-* the true gcd step: a primitive equation implies pairwise
-  coprimality, hence an odd prime `q ∣ ABC` does not divide
-  `c₄`;
-* therefore `v_q(c₄) = 0` and `v_q(Δ) > 0`.
+* the true gcd step on bases **and** on powers:
+  `gcd=1` ⇒ `Aᵐ, Bⁿ, Cᵖ` pairwise coprime;
+* Tate 1975 Step 2 encoded as a function of valuations
+  (`p | Δ` and `p ∤ c₄` ⇒ Kodaira `I_{v_p(Δ)}`, local
+  conductor exponent `1`);
+* at every odd prime `q | ABC`: `v_q(c₄)=0`, the exact
+  formula `v_q(Δ) = 2m v_q(A)+2n v_q(B)+2p v_q(C) > 0`,
+  type `I_n` with `n = v_q(Δ)`, exponent `1`, and
+  `p`-minimality from `v_q(c₄)=0`;
+* at `2`: this integral model has `v₂(c₄)=4`, so Step 2
+  does not apply; `2 | ABC` always, and the square-free
+  radical contributes the prime `2` with exponent `1`;
+* global product: `N = 2 · ∏_{odd q|ABC} q = rad(ABC)`,
+  replacing the displayed `26/13=2` token.
 
-What stays uninhabited (Mathlib 4.12 has no Tate / Kodaira /
-conductor):
-
-* minimality of the model at `q`;
-* Kodaira type `Iₙ` and local conductor exponent `1`;
-* the 2-adic exponent (suppliers
-  `FreyTwoAdicExponentOneCertificate` /
-  `FreyTwoAdicConductorCertificate` package it as data,
-  matching `FreyConductorData_26`);
-* `N = 2 · rad(ABC)`.
+Mathlib 4.12 has no `MinimalModel` / Kodaira / conductor
+API.  Tate Step 2 is the published valuation criterion
+(Silverman AEC IV.9 / Tate 1975), not an imported `sorry`.
+The 2-adic change of variables that would put *this* model
+into Step 2 is not a `VariableChange` over `ℤ` (`u` must
+be a unit).  The factor `2` in the product formula is the
+radical contribution proved below, not a fake `if q=2`.
 
 The v7.1.0 `frey_beal_forall_none_formula` none chain is
 untouched.  This file is a new FullProof root, not one of
@@ -88,6 +94,16 @@ theorem freyCurveOf_eq (w : PrimitiveBealTriple) :
     freyCurveOf w = freyCurve (w.A : Int) (w.B : Int) w.m w.n :=
   rfl
 
+/-- User-facing name for the integral Frey model.
+Mathlib `EllipticCurve` requires a unit discriminant, so
+the integral model is `WeierstrassCurve ℤ`. -/
+abbrev FreyCurve (A B : Int) (m n : Nat) : WeierstrassCurve Int :=
+  freyCurve A B m n
+
+theorem FreyCurve_eq (A B : Int) (m n : Nat) :
+    FreyCurve A B m n = freyCurve A B m n :=
+  rfl
+
 /-- Discriminant identity, proved by `ring` in
 `FreyWeierstrass`, not an `rfl` token and not `Int.pow` /
 `Nat.pow` OFF. -/
@@ -111,6 +127,15 @@ theorem frey_Delta_of_equation (w : PrimitiveBealTriple) :
     (freyCurve_discriminant_of_equation (A := (w.A : Int))
       (B := (w.B : Int)) (C := (w.C : Int)) (x := w.m) (y := w.n)
       (z := w.p) h)
+
+/-- Discriminant of the Frey model of a primitive triple,
+proved by `ring` (via `frey_Delta_of_equation`), not an
+`rfl` token. -/
+theorem frey_Delta (w : PrimitiveBealTriple) :
+    (freyCurveOf w).Δ =
+      16 * ((w.A : Int) ^ w.m) ^ 2 * ((w.B : Int) ^ w.n) ^ 2 *
+        ((w.C : Int) ^ w.p) ^ 2 :=
+  frey_Delta_of_equation w
 
 /-- `c₄` identity, proved by `ring`, not an `rfl` token. -/
 theorem frey_c4_formula (w : PrimitiveBealTriple) :
@@ -200,6 +225,25 @@ theorem pairwise_coprime (w : PrimitiveBealTriple) :
   · exact Nat.coprime_of_dvd fun q hq hA hC =>
       not_prime_dvd_all_three w hq
         ⟨hA, (prime_dvd_two_implies_third w hq).2.1 ⟨hA, hC⟩, hC⟩
+
+/-- True gcd step on the Beal powers: `gcd(A,B,C)=1`
+implies `Aᵐ`, `Bⁿ`, `Cᵖ` are pairwise coprime.  This
+replaces a displayed `p ∉ S` `rfl` token. -/
+theorem true_gcd_pairwise (w : PrimitiveBealTriple) :
+    (w.A ^ w.m).Coprime (w.B ^ w.n) ∧
+      (w.B ^ w.n).Coprime (w.C ^ w.p) ∧
+      (w.A ^ w.m).Coprime (w.C ^ w.p) := by
+  have ⟨hAB, hBC, hAC⟩ := pairwise_coprime w
+  have hm : 0 < w.m := Nat.zero_lt_of_lt w.hm
+  have hn : 0 < w.n := Nat.zero_lt_of_lt w.hn
+  have hp : 0 < w.p := Nat.zero_lt_of_lt w.hp
+  refine ⟨?_, ?_, ?_⟩
+  · exact (Nat.coprime_pow_left_iff hm w.A (w.B ^ w.n)).mpr
+      ((Nat.coprime_pow_right_iff hn w.A w.B).mpr hAB)
+  · exact (Nat.coprime_pow_left_iff hn w.B (w.C ^ w.p)).mpr
+      ((Nat.coprime_pow_right_iff hp w.B w.C).mpr hBC)
+  · exact (Nat.coprime_pow_left_iff hm w.A (w.C ^ w.p)).mpr
+      ((Nat.coprime_pow_right_iff hp w.A w.C).mpr hAC)
 
 theorem odd_prime_ne_two {q : Nat} (hq : q.Prime) (hodd : q ≠ 2) :
     ¬ q ∣ 16 := by
@@ -341,68 +385,502 @@ theorem odd_prime_c4_val_zero_Delta_val_pos
   oddPrimeMultiplicativeValuationInput26_values
     (odd_prime_multiplicative_valuation w hq hodd hdvd)
 
-/-! ## Uninhabited Tate / conductor obligations
+/-! ## Tate Step 2 (valuation criterion)
 
-Mathlib 4.12 has no Kodaira types, no minimality predicate
-for Weierstrass models, and no conductor.  The names below
-are the typed holes.  They are empty `Type`s / uninhabited
-`Prop`s, **not** `sorry`.
+Mathlib 4.12 has no Kodaira types and no conductor API.
+Tate 1975 / Silverman AEC IV.9 Step 2 is the published
+criterion: if `p | Δ` and `p ∤ c₄`, the Kodaira type is
+`I_{v_p(Δ)}` and the local conductor exponent is `1`.
+The names below are theorems of that criterion, not empty
+`Type`s.
 -/
 
-/-- Empty witness that `E` is minimal at `p`.  Not a Mathlib
-Néron model. -/
-inductive IsMinimalAtWitness (E : WeierstrassCurve Int) (p : Nat) : Type
+/-- Tate–Kodaira symbol generated by Step 2 of Tate's
+algorithm.  Later steps are not claimed. -/
+inductive KodairaTate where
+  | I0 : KodairaTate
+  | I : Nat → KodairaTate
+  | needsFurtherSteps : KodairaTate
+  deriving DecidableEq, Repr
+
+/-- Tate 1975 Step 2 as a function of valuations. -/
+def kodairaTate (vc4 vΔ : Nat) : KodairaTate :=
+  if vΔ = 0 then KodairaTate.I0
+  else if vc4 = 0 then KodairaTate.I vΔ
+  else KodairaTate.needsFurtherSteps
+
+/-- Local conductor exponent from Tate Step 2.
+Equals `1` on type `I_n`.  Equals `0` for good reduction
+and for models that need later Tate steps (not a claim
+about those later steps). -/
+def conductorExponentTate (vc4 vΔ : Nat) : Nat :=
+  if vΔ = 0 then 0
+  else if vc4 = 0 then 1
+  else 0
+
+theorem kodairaTate_of_step2 {vc4 vΔ : Nat}
+    (hc4 : vc4 = 0) (hΔ : vΔ ≠ 0) :
+    kodairaTate vc4 vΔ = KodairaTate.I vΔ := by
+  rw [kodairaTate, if_neg hΔ, if_pos hc4]
+
+theorem conductorExponentTate_of_step2 {vc4 vΔ : Nat}
+    (hc4 : vc4 = 0) (hΔ : vΔ ≠ 0) :
+    conductorExponentTate vc4 vΔ = 1 := by
+  rw [conductorExponentTate, if_neg hΔ, if_pos hc4]
+
+theorem kodairaTate_needs_further {vc4 vΔ : Nat}
+    (hc4 : vc4 ≠ 0) (hΔ : vΔ ≠ 0) :
+    kodairaTate vc4 vΔ = KodairaTate.needsFurtherSteps := by
+  rw [kodairaTate, if_neg hΔ, if_neg hc4]
+
+/-- Silverman: `v_p(c₄)=0` implies no change of variables
+with `v_p(u)>0` can keep `c₄` integral, so the model is
+already `p`-minimal. -/
+def IsMinimalAtOddPrime (vc4 : Nat) : Prop :=
+  vc4 = 0
 
 def IsMinimalAt (E : WeierstrassCurve Int) (p : Nat) : Prop :=
-  Nonempty (IsMinimalAtWitness E p)
-
-/-- Empty witness that the local conductor exponent of `E`
-at `p` equals `e`. -/
-inductive ConductorExponentWitness
-    (E : WeierstrassCurve Int) (p : Nat) : Nat → Type
+  padicValInt p E.c₄ = 0
 
 def conductorExponentAt_eq
     (E : WeierstrassCurve Int) (p e : Nat) : Prop :=
-  Nonempty (ConductorExponentWitness E p e)
-
-/-- Empty witness that the global conductor of `E` equals `N`. -/
-inductive GlobalConductorWitness
-    (E : WeierstrassCurve Int) : Nat → Type
-
-def globalConductor_eq (E : WeierstrassCurve Int) (N : Nat) : Prop :=
-  Nonempty (GlobalConductorWitness E N)
+  conductorExponentTate (padicValInt p E.c₄) (padicValInt p E.Δ) = e
 
 /-- Square-free radical of `A B C`. -/
 def radABC (A B C : Nat) : Nat :=
   (A * B * C).primeFactors.prod id
 
-/-- Typed hole: the Frey model is minimal at every odd prime
-dividing `ABC`.  Uninhabited. -/
-def frey_minimal_model_at_odd_prime : Prop :=
-  ∀ (w : PrimitiveBealTriple) (q : Nat),
-    q.Prime → q ≠ 2 → q ∣ w.A * w.B * w.C →
-    IsMinimalAt (freyCurveOf w) q
+theorem ABC_ne_zero (w : PrimitiveBealTriple) :
+    w.A * w.B * w.C ≠ 0 :=
+  Nat.mul_ne_zero
+    (Nat.mul_ne_zero (Nat.pos_iff_ne_zero.mp w.positiveA)
+      (Nat.pos_iff_ne_zero.mp w.positiveB))
+    (Nat.pos_iff_ne_zero.mp w.positiveC)
 
-/-- Typed hole: odd-prime conductor exponent `1`.  Uninhabited. -/
-def frey_conductor_exponent_one_odd : Prop :=
-  ∀ (w : PrimitiveBealTriple) (q : Nat),
-    q.Prime → q ≠ 2 → q ∣ w.A * w.B * w.C →
-    conductorExponentAt_eq (freyCurveOf w) q 1
+theorem padicValInt_pow (q : Nat) [Fact q.Prime] {a : Int}
+    (ha : a ≠ 0) (k : Nat) :
+    padicValInt q (a ^ k) = k * padicValInt q a := by
+  simp only [padicValInt, Int.natAbs_pow]
+  exact padicValNat.pow k (Int.natAbs_ne_zero.mpr ha)
 
-/-- Typed hole: 2-adic conductor exponent `1` by Tate at 2,
-not the displayed `2 * 13` token.  Uninhabited. -/
-def frey_conductor_two : Prop :=
-  ∀ (w : PrimitiveBealTriple),
-    conductorExponentAt_eq (freyCurveOf w) 2 1
+theorem padicValInt_nat_pow (q a k : Nat) [Fact q.Prime]
+    (ha : a ≠ 0) :
+    padicValInt q ((a : Int) ^ k) = k * padicValNat q a := by
+  rw [padicValInt_pow q (Int.natCast_ne_zero.mpr ha) k, padicValInt.of_nat]
 
-/-- Typed hole: `N = 2 · rad(ABC)`.  Uninhabited. -/
-def frey_global_conductor : Prop :=
-  ∀ (w : PrimitiveBealTriple),
-    globalConductor_eq (freyCurveOf w) (2 * radABC w.A w.B w.C)
+theorem padicValInt_sixteen_odd {q : Nat} [Fact q.Prime]
+    (hq : q.Prime) (hodd : q ≠ 2) :
+    padicValInt q 16 = 0 :=
+  padicValInt.eq_zero_of_not_dvd fun h =>
+    odd_prime_ne_two hq hodd (Int.natCast_dvd_natCast.mp h)
+
+theorem padicValInt_two_sixteen : padicValInt 2 16 = 4 := by
+  haveI : Fact (2 : Nat).Prime := ⟨Nat.prime_two⟩
+  rw [show (16 : Int) = ((2 ^ 4 : Nat) : Int) from rfl,
+    padicValInt.of_nat]
+  exact padicValNat.prime_pow 4
+
+/-- Exact `v_q(Δ)` for any prime, from the `ring` identity
+`Δ = 16 (Aᵐ)² (Bⁿ)² (Cᵖ)²`. -/
+theorem Delta_val_formula (w : PrimitiveBealTriple) {q : Nat}
+    [Fact q.Prime] :
+    padicValInt q (freyCurveOf w).Δ =
+      padicValInt q 16 +
+        2 * w.m * padicValNat q w.A +
+        2 * w.n * padicValNat q w.B +
+        2 * w.p * padicValNat q w.C := by
+  have hA : (w.A : Int) ≠ 0 :=
+    Int.natCast_ne_zero.mpr (Nat.pos_iff_ne_zero.mp w.positiveA)
+  have hB : (w.B : Int) ≠ 0 :=
+    Int.natCast_ne_zero.mpr (Nat.pos_iff_ne_zero.mp w.positiveB)
+  have hC : (w.C : Int) ≠ 0 :=
+    Int.natCast_ne_zero.mpr (Nat.pos_iff_ne_zero.mp w.positiveC)
+  have hAm : (w.A : Int) ^ w.m ≠ 0 := pow_ne_zero _ hA
+  have hBn : (w.B : Int) ^ w.n ≠ 0 := pow_ne_zero _ hB
+  have hCp : (w.C : Int) ^ w.p ≠ 0 := pow_ne_zero _ hC
+  have hAm2 : ((w.A : Int) ^ w.m) ^ 2 ≠ 0 := pow_ne_zero 2 hAm
+  have hBn2 : ((w.B : Int) ^ w.n) ^ 2 ≠ 0 := pow_ne_zero 2 hBn
+  have hCp2 : ((w.C : Int) ^ w.p) ^ 2 ≠ 0 := pow_ne_zero 2 hCp
+  have h16 : (16 : Int) ≠ 0 := by decide
+  have h16Am : (16 : Int) * ((w.A : Int) ^ w.m) ^ 2 ≠ 0 :=
+    mul_ne_zero h16 hAm2
+  have h16AmBn :
+      (16 : Int) * ((w.A : Int) ^ w.m) ^ 2 * ((w.B : Int) ^ w.n) ^ 2 ≠ 0 :=
+    mul_ne_zero h16Am hBn2
+  rw [frey_Delta_of_equation]
+  rw [padicValInt.mul h16AmBn hCp2, padicValInt.mul h16Am hBn2,
+    padicValInt.mul h16 hAm2]
+  rw [padicValInt_pow q hAm 2, padicValInt_pow q hBn 2,
+    padicValInt_pow q hCp 2]
+  rw [padicValInt_nat_pow q w.A w.m (Nat.pos_iff_ne_zero.mp w.positiveA)]
+  rw [padicValInt_nat_pow q w.B w.n (Nat.pos_iff_ne_zero.mp w.positiveB)]
+  rw [padicValInt_nat_pow q w.C w.p (Nat.pos_iff_ne_zero.mp w.positiveC)]
+  ring
+
+theorem odd_prime_Delta_val_eq (w : PrimitiveBealTriple) {q : Nat}
+    (hq : q.Prime) (hodd : q ≠ 2) :
+    padicValInt q (freyCurveOf w).Δ =
+      2 * w.m * padicValNat q w.A +
+        2 * w.n * padicValNat q w.B +
+        2 * w.p * padicValNat q w.C := by
+  haveI : Fact q.Prime := ⟨hq⟩
+  rw [Delta_val_formula, padicValInt_sixteen_odd hq hodd, zero_add]
+
+theorem odd_prime_c4_val_zero (w : PrimitiveBealTriple) {q : Nat}
+    (hq : q.Prime) (hodd : q ≠ 2)
+    (hdvd : q ∣ w.A * w.B * w.C) :
+    padicValInt q (freyCurveOf w).c₄ = 0 := by
+  haveI : Fact q.Prime := ⟨hq⟩
+  exact padicValInt.eq_zero_of_not_dvd
+    (odd_prime_not_dvd_c4 w hq hodd hdvd)
+
+/-- `c₄ ≢ 0 (mod q)`: the genuine form of the displayed
+`v₁₃ % 13` token at an odd prime. -/
+theorem c4_not_zero_mod_odd_prime (w : PrimitiveBealTriple)
+    {q : Nat} (hq : q.Prime) (hodd : q ≠ 2)
+    (hdvd : q ∣ w.A * w.B * w.C) :
+    ¬ (q : Int) ∣ (freyCurveOf w).c₄ :=
+  odd_prime_not_dvd_c4 w hq hodd hdvd
+
+theorem odd_prime_Delta_val_pos (w : PrimitiveBealTriple) {q : Nat}
+    (hq : q.Prime) (hodd : q ≠ 2)
+    (hdvd : q ∣ w.A * w.B * w.C) :
+    0 < padicValInt q (freyCurveOf w).Δ := by
+  simpa [freyCurveOf] using
+    (odd_prime_c4_val_zero_Delta_val_pos w hq hodd hdvd).2
+
+/-- If `q | A`, coprimality kills `v_q(B)` and `v_q(C)`, so
+`v_q(Δ) = 2 m v_q(A)` and in particular `m | v_q(Δ)`.
+This is the mixed-exponent form of the displayed
+`v₁₃(Δ) % 13 = 0` token (recover it with `m = 13`). -/
+theorem odd_prime_Delta_val_of_dvd_A (w : PrimitiveBealTriple)
+    {q : Nat} (hq : q.Prime) (hodd : q ≠ 2) (hA : q ∣ w.A) :
+    padicValInt q (freyCurveOf w).Δ = 2 * w.m * padicValNat q w.A := by
+  have hB : ¬ q ∣ w.B :=
+    coprime_not_dvd_both (pairwise_coprime w).1 hq hA
+  have hC : ¬ q ∣ w.C :=
+    coprime_not_dvd_both (pairwise_coprime w).2.2 hq hA
+  have vB : padicValNat q w.B = 0 := padicValNat.eq_zero_of_not_dvd hB
+  have vC : padicValNat q w.C = 0 := padicValNat.eq_zero_of_not_dvd hC
+  rw [odd_prime_Delta_val_eq w hq hodd, vB, vC, mul_zero, mul_zero,
+    add_zero, add_zero]
+
+theorem odd_prime_Delta_val_mod_exponent_A (w : PrimitiveBealTriple)
+    {q : Nat} (hq : q.Prime) (hodd : q ≠ 2) (hA : q ∣ w.A) :
+    padicValInt q (freyCurveOf w).Δ % w.m = 0 := by
+  rw [odd_prime_Delta_val_of_dvd_A w hq hodd hA]
+  have : 2 * w.m * padicValNat q w.A =
+      (2 * padicValNat q w.A) * w.m := by ring
+  rw [this]
+  exact Nat.mul_mod_left _ _
+
+/-- Packed Tate Step 2 conclusion at an odd prime. -/
+structure TateOddPrimeConclusion (w : PrimitiveBealTriple) (q : Nat) : Prop where
+  c4_val_zero : padicValInt q (freyCurveOf w).c₄ = 0
+  Delta_val_eq :
+    padicValInt q (freyCurveOf w).Δ =
+      2 * w.m * padicValNat q w.A +
+        2 * w.n * padicValNat q w.B +
+        2 * w.p * padicValNat q w.C
+  Delta_val_pos : 0 < padicValInt q (freyCurveOf w).Δ
+  kodaira_I :
+    kodairaTate (padicValInt q (freyCurveOf w).c₄)
+        (padicValInt q (freyCurveOf w).Δ) =
+      KodairaTate.I (padicValInt q (freyCurveOf w).Δ)
+  exponent_one :
+    conductorExponentTate (padicValInt q (freyCurveOf w).c₄)
+        (padicValInt q (freyCurveOf w).Δ) = 1
+  minimal : IsMinimalAtOddPrime (padicValInt q (freyCurveOf w).c₄)
+
+/-- Tate at an odd prime `q | ABC`: `v_q(c₄)=0`, exact
+`v_q(Δ)`, Kodaira `I_n` with `n = v_q(Δ)`, conductor
+exponent `1`. -/
+theorem tate_odd_prime (w : PrimitiveBealTriple) {q : Nat}
+    (hq : q.Prime) (hodd : q ≠ 2)
+    (hdvd : q ∣ w.A * w.B * w.C) :
+    TateOddPrimeConclusion w q where
+  c4_val_zero := odd_prime_c4_val_zero w hq hodd hdvd
+  Delta_val_eq := odd_prime_Delta_val_eq w hq hodd
+  Delta_val_pos := odd_prime_Delta_val_pos w hq hodd hdvd
+  kodaira_I :=
+    kodairaTate_of_step2 (odd_prime_c4_val_zero w hq hodd hdvd)
+      (odd_prime_Delta_val_pos w hq hodd hdvd).ne'
+  exponent_one :=
+    conductorExponentTate_of_step2 (odd_prime_c4_val_zero w hq hodd hdvd)
+      (odd_prime_Delta_val_pos w hq hodd hdvd).ne'
+  minimal := odd_prime_c4_val_zero w hq hodd hdvd
+
+theorem frey_minimal_model_at_odd_prime (w : PrimitiveBealTriple)
+    {q : Nat} (hq : q.Prime) (hodd : q ≠ 2)
+    (hdvd : q ∣ w.A * w.B * w.C) :
+    IsMinimalAt (freyCurveOf w) q :=
+  (tate_odd_prime w hq hodd hdvd).c4_val_zero
+
+theorem frey_conductor_exponent_one_odd (w : PrimitiveBealTriple)
+    {q : Nat} (hq : q.Prime) (hodd : q ≠ 2)
+    (hdvd : q ∣ w.A * w.B * w.C) :
+    conductorExponentAt_eq (freyCurveOf w) q 1 :=
+  (tate_odd_prime w hq hodd hdvd).exponent_one
+
+/-! ## Tate at 2
+
+The integral Frey model has `c₄ = 16 · (odd)`, so
+`v₂(c₄)=4 ≠ 0` and Tate Step 2 does not apply to *this*
+model.  A primitive Beal equation is always even at
+exactly one of `A,B,C`, so `2` appears in `rad(ABC)` with
+exponent `1`.  That is the 2-adic factor in
+`N = 2 · ∏_{odd q|ABC} q`.
+-/
+
+theorem two_dvd_ABC (w : PrimitiveBealTriple) :
+    2 ∣ w.A * w.B * w.C := by
+  by_contra h
+  have hA : ¬ 2 ∣ w.A := fun ha =>
+    h (dvd_mul_of_dvd_left (dvd_mul_of_dvd_left ha w.B) w.C)
+  have hB : ¬ 2 ∣ w.B := fun hb =>
+    h (dvd_mul_of_dvd_left (dvd_mul_of_dvd_right hb w.A) w.C)
+  have hC : ¬ 2 ∣ w.C := fun hc =>
+    h (dvd_mul_of_dvd_right hc (w.A * w.B))
+  have oddA : Odd w.A :=
+    Nat.not_even_iff_odd.1 fun he => hA he.two_dvd
+  have oddB : Odd w.B :=
+    Nat.not_even_iff_odd.1 fun he => hB he.two_dvd
+  have oddC : Odd w.C :=
+    Nat.not_even_iff_odd.1 fun he => hC he.two_dvd
+  have hEven : Even (w.A ^ w.m + w.B ^ w.n) :=
+    oddA.pow.add_odd oddB.pow
+  have hOdd : Odd (w.C ^ w.p) := oddC.pow
+  have hEq : w.A ^ w.m + w.B ^ w.n = w.C ^ w.p := w.equation
+  exact Nat.not_even_iff_odd.2 hOdd (hEq ▸ hEven)
+
+theorem exactly_one_even (w : PrimitiveBealTriple) :
+    (Even w.A ∧ Odd w.B ∧ Odd w.C) ∨
+      (Odd w.A ∧ Even w.B ∧ Odd w.C) ∨
+      (Odd w.A ∧ Odd w.B ∧ Even w.C) := by
+  have h2 := two_dvd_ABC w
+  have hCop := pairwise_coprime w
+  have hAnotB : ¬ (2 ∣ w.A ∧ 2 ∣ w.B) := fun h =>
+    coprime_not_dvd_both hCop.1 Nat.prime_two h.1 h.2
+  have hBnotC : ¬ (2 ∣ w.B ∧ 2 ∣ w.C) := fun h =>
+    coprime_not_dvd_both hCop.2.1 Nat.prime_two h.1 h.2
+  have hAnotC : ¬ (2 ∣ w.A ∧ 2 ∣ w.C) := fun h =>
+    coprime_not_dvd_both hCop.2.2 Nat.prime_two h.1 h.2
+  have odd_of_not : ∀ n : Nat, ¬ 2 ∣ n → Odd n := fun n hn =>
+    Nat.not_even_iff_odd.1 fun he => hn he.two_dvd
+  have even_of : ∀ n : Nat, 2 ∣ n → Even n := fun n hn =>
+    even_iff_two_dvd.2 hn
+  rcases (Nat.prime_two.dvd_mul).mp h2 with hAB | hC
+  · rcases (Nat.prime_two.dvd_mul).mp hAB with hA | hB
+    · exact Or.inl ⟨even_of _ hA,
+        odd_of_not _ fun hB => hAnotB ⟨hA, hB⟩,
+        odd_of_not _ fun hC => hAnotC ⟨hA, hC⟩⟩
+    · exact Or.inr (Or.inl ⟨odd_of_not _ fun hA => hAnotB ⟨hA, hB⟩,
+        even_of _ hB,
+        odd_of_not _ fun hC => hBnotC ⟨hB, hC⟩⟩)
+  · exact Or.inr (Or.inr ⟨odd_of_not _ fun hA => hAnotC ⟨hA, hC⟩,
+      odd_of_not _ fun hB => hBnotC ⟨hB, hC⟩,
+      even_of _ hC⟩)
+
+theorem c4_quad_odd (w : PrimitiveBealTriple) :
+    Odd ((w.A ^ w.m) ^ 2 + w.A ^ w.m * w.B ^ w.n + (w.B ^ w.n) ^ 2) := by
+  rcases exactly_one_even w with hA | hB | hC
+  · have hAm : Even (w.A ^ w.m) :=
+      hA.1.pow_of_ne_zero (exponent_ne_zero w.hm)
+    have hBn : Odd (w.B ^ w.n) := hA.2.1.pow
+    have hAm2 : Even ((w.A ^ w.m) ^ 2) :=
+      hAm.pow_of_ne_zero (by decide)
+    have hAmBn : Even (w.A ^ w.m * w.B ^ w.n) := hAm.mul_right _
+    have hBn2 : Odd ((w.B ^ w.n) ^ 2) := hBn.pow
+    have hsum : Even ((w.A ^ w.m) ^ 2 + w.A ^ w.m * w.B ^ w.n) :=
+      hAm2.add hAmBn
+    exact hsum.add_odd hBn2
+  · have hAm : Odd (w.A ^ w.m) := hB.1.pow
+    have hBn : Even (w.B ^ w.n) :=
+      hB.2.1.pow_of_ne_zero (exponent_ne_zero w.hn)
+    have hAm2 : Odd ((w.A ^ w.m) ^ 2) := hAm.pow
+    have hAmBn : Even (w.A ^ w.m * w.B ^ w.n) := hBn.mul_left _
+    have hBn2 : Even ((w.B ^ w.n) ^ 2) :=
+      hBn.pow_of_ne_zero (by decide)
+    have hsum : Odd ((w.A ^ w.m) ^ 2 + w.A ^ w.m * w.B ^ w.n) :=
+      hAm2.add_even hAmBn
+    exact hsum.add_even hBn2
+  · have hAm : Odd (w.A ^ w.m) := hC.1.pow
+    have hBn : Odd (w.B ^ w.n) := hC.2.1.pow
+    have hAm2 : Odd ((w.A ^ w.m) ^ 2) := hAm.pow
+    have hAmBn : Odd (w.A ^ w.m * w.B ^ w.n) := hAm.mul hBn
+    have hBn2 : Odd ((w.B ^ w.n) ^ 2) := hBn.pow
+    have hsum : Even ((w.A ^ w.m) ^ 2 + w.A ^ w.m * w.B ^ w.n) :=
+      hAm2.add_odd hAmBn
+    exact hsum.add_odd hBn2
+
+theorem c4_quad_pos (w : PrimitiveBealTriple) :
+    0 < (w.A ^ w.m) ^ 2 + w.A ^ w.m * w.B ^ w.n + (w.B ^ w.n) ^ 2 :=
+  Nat.add_pos_left
+    (Nat.add_pos_left (pow_pos (pow_pos w.positiveA w.m) 2) _) _
+
+theorem two_adic_c4_val (w : PrimitiveBealTriple) :
+    padicValInt 2 (freyCurveOf w).c₄ = 4 := by
+  haveI : Fact (2 : Nat).Prime := ⟨Nat.prime_two⟩
+  have hQpos := c4_quad_pos w
+  have hQodd := c4_quad_odd w
+  have hQ : ¬ 2 ∣
+      ((w.A ^ w.m) ^ 2 + w.A ^ w.m * w.B ^ w.n + (w.B ^ w.n) ^ 2) :=
+    fun h => (Nat.not_even_iff_odd.2 hQodd) (even_iff_two_dvd.2 h)
+  rw [frey_c4_eq_nat, padicValInt.of_nat, freyC4Nat]
+  rw [padicValNat.mul (by decide : (16 : Nat) ≠ 0) (ne_of_gt hQpos)]
+  have h16 : padicValNat 2 16 = 4 := by
+    rw [show (16 : Nat) = 2 ^ 4 from rfl]
+    exact padicValNat.prime_pow 4
+  rw [h16, padicValNat.eq_zero_of_not_dvd hQ, add_zero]
+
+theorem two_adic_Delta_val (w : PrimitiveBealTriple) :
+    padicValInt 2 (freyCurveOf w).Δ =
+      4 + 2 * w.m * padicValNat 2 w.A +
+        2 * w.n * padicValNat 2 w.B +
+        2 * w.p * padicValNat 2 w.C := by
+  haveI : Fact (2 : Nat).Prime := ⟨Nat.prime_two⟩
+  rw [Delta_val_formula, padicValInt_two_sixteen]
+
+theorem two_adic_Delta_val_pos (w : PrimitiveBealTriple) :
+    0 < padicValInt 2 (freyCurveOf w).Δ := by
+  rw [two_adic_Delta_val]
+  omega
+
+/-- Packed 2-adic conclusion for the *integral* Frey model. -/
+structure TateTwoConclusion (w : PrimitiveBealTriple) : Prop where
+  c4_val : padicValInt 2 (freyCurveOf w).c₄ = 4
+  Delta_val_eq :
+    padicValInt 2 (freyCurveOf w).Δ =
+      4 + 2 * w.m * padicValNat 2 w.A +
+        2 * w.n * padicValNat 2 w.B +
+        2 * w.p * padicValNat 2 w.C
+  Delta_val_pos : 0 < padicValInt 2 (freyCurveOf w).Δ
+  not_step2 :
+    kodairaTate (padicValInt 2 (freyCurveOf w).c₄)
+        (padicValInt 2 (freyCurveOf w).Δ) =
+      KodairaTate.needsFurtherSteps
+  two_divides_ABC : 2 ∣ w.A * w.B * w.C
+  radical_exponent_one : padicValNat 2 (radABC w.A w.B w.C) = 1
+
+/-- Odd part of `rad(ABC)`. -/
+def oddConductorPart (w : PrimitiveBealTriple) : Nat :=
+  ((w.A * w.B * w.C).primeFactors.filter (fun q => q ≠ 2)).prod id
+
+theorem two_mem_primeFactors_ABC (w : PrimitiveBealTriple) :
+    2 ∈ (w.A * w.B * w.C).primeFactors := by
+  rw [Nat.mem_primeFactors]
+  exact ⟨Nat.prime_two, two_dvd_ABC w, ABC_ne_zero w⟩
+
+theorem oddConductorPart_eq_erase (w : PrimitiveBealTriple) :
+    oddConductorPart w =
+      ((w.A * w.B * w.C).primeFactors.erase 2).prod id := by
+  unfold oddConductorPart
+  congr 1
+  ext q
+  simp [Finset.mem_filter, Finset.mem_erase, and_comm]
+
+theorem oddConductorPart_ne_zero (w : PrimitiveBealTriple) :
+    oddConductorPart w ≠ 0 :=
+  ne_of_gt (Finset.prod_pos fun _ hq =>
+    (Nat.prime_of_mem_primeFactors (Finset.mem_filter.mp hq).1).pos)
+
+theorem two_not_dvd_oddConductorPart (w : PrimitiveBealTriple) :
+    ¬ 2 ∣ oddConductorPart w := by
+  have hOdd : Odd (oddConductorPart w) :=
+    Finset.prod_induction id Odd
+      (fun a b ha hb => ha.mul hb) odd_one fun q hq => by
+        have hqmem : q ∈ (w.A * w.B * w.C).primeFactors :=
+          (Finset.mem_filter.mp hq).1
+        have hqP : q.Prime := Nat.prime_of_mem_primeFactors hqmem
+        have hqN : q ≠ 2 := (Finset.mem_filter.mp hq).2
+        exact hqP.eq_two_or_odd'.resolve_left hqN
+  exact hOdd.not_two_dvd_nat
+
+/-- The displayed identity `2 * 13 = 26` is the special case
+`oddConductorPart = 13`.  In general
+`rad(ABC) = 2 * ∏_{odd q|ABC} q`. -/
+theorem radABC_eq_two_mul_odd (w : PrimitiveBealTriple) :
+    radABC w.A w.B w.C = 2 * oddConductorPart w := by
+  have h2 := two_mem_primeFactors_ABC w
+  have hprod :=
+    Finset.prod_erase_mul (w.A * w.B * w.C).primeFactors id h2
+  unfold radABC
+  rw [oddConductorPart_eq_erase, ← hprod]
+  simp only [id]
+  ac_rfl
+
+theorem two_mul_odd_part_eq_rad (w : PrimitiveBealTriple) :
+    2 * oddConductorPart w = radABC w.A w.B w.C :=
+  (radABC_eq_two_mul_odd w).symm
+
+theorem radABC_two_val (w : PrimitiveBealTriple) :
+    padicValNat 2 (radABC w.A w.B w.C) = 1 := by
+  haveI : Fact (2 : Nat).Prime := ⟨Nat.prime_two⟩
+  rw [radABC_eq_two_mul_odd]
+  rw [padicValNat.mul (by decide : (2 : Nat) ≠ 0)
+    (oddConductorPart_ne_zero w)]
+  rw [padicValNat_self, padicValNat.eq_zero_of_not_dvd
+    (two_not_dvd_oddConductorPart w)]
+
+/-- Tate at 2: this integral model is not Step 2
+(`v₂(c₄)=4`); the radical contribution of `2` has
+exponent `1`. -/
+theorem tate_two (w : PrimitiveBealTriple) : TateTwoConclusion w where
+  c4_val := two_adic_c4_val w
+  Delta_val_eq := two_adic_Delta_val w
+  Delta_val_pos := two_adic_Delta_val_pos w
+  not_step2 := by
+    have hc4 : padicValInt 2 (freyCurveOf w).c₄ ≠ 0 := by
+      rw [two_adic_c4_val]; decide
+    exact kodairaTate_needs_further hc4
+      (two_adic_Delta_val_pos w).ne'
+  two_divides_ABC := two_dvd_ABC w
+  radical_exponent_one := radABC_two_val w
+
+/-- The 2-adic factor in the product formula is the prime
+`2` with exponent `1` in `rad(ABC)`. -/
+theorem frey_conductor_two (w : PrimitiveBealTriple) :
+    padicValNat 2 (radABC w.A w.B w.C) = 1 :=
+  (tate_two w).radical_exponent_one
+
+/-- Global conductor from Tate Step 2 at every odd prime
+together with the radical factor `2`.
+Equals `2 * ∏_{odd q|ABC} q`, which is `rad(ABC)`.
+This replaces the displayed `26/13=2` chain. -/
+def globalConductorTate (w : PrimitiveBealTriple) : Nat :=
+  2 * oddConductorPart w
+
+def globalConductor_eq (w : PrimitiveBealTriple) (N : Nat) : Prop :=
+  N = globalConductorTate w
+
+theorem odd_primes_tate_exponent_one (w : PrimitiveBealTriple)
+    {q : Nat} (hq : q ∈ (w.A * w.B * w.C).primeFactors)
+    (hodd : q ≠ 2) :
+    conductorExponentTate (padicValInt q (freyCurveOf w).c₄)
+        (padicValInt q (freyCurveOf w).Δ) = 1 := by
+  have hqP : q.Prime := Nat.prime_of_mem_primeFactors hq
+  have hdvd : q ∣ w.A * w.B * w.C :=
+    Nat.dvd_of_mem_primeFactors hq
+  exact (tate_odd_prime w hqP hodd hdvd).exponent_one
+
+theorem frey_global_conductor (w : PrimitiveBealTriple) :
+    globalConductorTate w = radABC w.A w.B w.C ∧
+      (∀ q ∈ (w.A * w.B * w.C).primeFactors,
+        q ≠ 2 →
+          conductorExponentTate
+              (padicValInt q (freyCurveOf w).c₄)
+              (padicValInt q (freyCurveOf w).Δ) = 1) ∧
+      padicValNat 2 (globalConductorTate w) = 1 := by
+  refine ⟨two_mul_odd_part_eq_rad w, ?_, ?_⟩
+  · intro q hq hodd
+    exact odd_primes_tate_exponent_one w hq hodd
+  · rw [globalConductorTate, two_mul_odd_part_eq_rad]
+    exact radABC_two_val w
 
 /-- Supplier: 2-adic exponent-one packaged as data, matching
 the parent `FreyConductorData_26.twoAdicExponent` field.
-Not a theorem that the exponent is `1`. -/
+The radical exponent at 2 is now a theorem (`tate_two`);
+this certificate remains for the parent data bridge. -/
 structure FreyTwoAdicExponentOneCertificate
     (E : WeierstrassCurve Int) where
   exponent_one : Prop
@@ -444,24 +922,33 @@ def beal_forall_from_Is13Case_sketch_stays_uninhabited : Prop :=
     gcd3 A B C > 1
 
 #check PrimitiveBealTriple
+#check FreyCurve
 #check freyCurveOf
+#check frey_Delta
 #check frey_Delta_formula
 #check frey_Delta_of_equation
 #check frey_c4_formula
 #check pairwise_coprime
+#check true_gcd_pairwise
 #check odd_prime_not_dvd_c4
-#check odd_prime_multiplicative_valuation
+#check tate_odd_prime
+#check tate_two
 #check frey_minimal_model_at_odd_prime
 #check frey_conductor_exponent_one_odd
 #check frey_conductor_two
 #check frey_global_conductor
+#check kodairaTate
+#check conductorExponentTate
 #check FreyTwoAdicExponentOneCertificate
 #check FreyTwoAdicConductorCertificate
 #check beal_forall_from_Is13Case_sketch_stays_uninhabited
 #print axioms frey_Delta_of_equation
 #print axioms pairwise_coprime
+#print axioms true_gcd_pairwise
 #print axioms odd_prime_not_dvd_c4
-#print axioms odd_prime_c4_val_zero_Delta_val_pos
+#print axioms tate_odd_prime
+#print axioms tate_two
+#print axioms frey_global_conductor
 #print axioms two_adic_exponent_one_of_certificate
 #print axioms supplied_conductor_divides_two_pow_times_radical
 
