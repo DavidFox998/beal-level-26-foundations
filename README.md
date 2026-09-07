@@ -34,6 +34,56 @@ v6.0.0-iter-real-algorithms G_Q→GL2 + Tate + R=T real structures. Still not Fu
 v6.0.1-iter-about-catchup-22558788 About catch-up 22558113 → 22558788. Still not Full Mathlib ∀.
 v6.1.0-iter-tw-infinite-family Q_n=[53]→infinite family q≡1 mod13^n. Still not Full Mathlib ∀.
 v6.1.1-iter-about-catchup-22559449 About catch-up 22558788 → 22559449. Still not Full Mathlib ∀.
+v6.2.0-iter-frey-delta-separated Frey Δ separated Nat.pow OFF none inhabitant. Still not Full Mathlib ∀.
+
+### v6.2.0-iter-frey-delta-separated — keep frey_Delta13_formula Δ=16*(A¹³)²*(B¹³)²*(A¹³+B¹³)² with Nat.pow OFF the none inhabitant so rho_bar_Frey_13_real_algorithm_inhabited none stays none stronger than propext-only, and make Δ≠0 real via A>0 B>0 positivity + A¹³+B¹³≠0
+
+Official build is now **16 modules** (15 old +
+`GaloisRep.FreyDeltaSeparated`).
+
+`frey_Delta13_formula` is the Int formula
+`16*(A¹³)²*(B¹³)²*(A¹³+B¹³)²` with `Int.pow` /
+`Nat.pow` **off** the none Galois inhabitant.
+`rho_bar_Frey_13_real_algorithm_inhabited` stays
+**none**, stronger than propext-only.
+`frey_Delta13_ne_0_of_pos_real` is Δ ≠ 0 from
+real positivity: `0 < A`, `0 < B` → `A¹³ ≠ 0`,
+`B¹³ ≠ 0` → squares ≠ 0, `16 ≠ 0`,
+`A¹³+B¹³ ≠ 0` → `(A¹³+B¹³)² ≠ 0`, product of
+nonzeros.  Axioms
+`propext` + `Classical.choice` + `Quot.sound`,
+but the premises are real `A > 0`, `B > 0`.
+`FreyCurveSeparated.token` **none**.
+`FreyGaloisRep13_real_algorithm_inhabited_separated`
+**none**.
+
+`tate_real_conductor_26` conductor `2 * 13` by
+`rfl` **none**.  `Q_1 = [53]` `53 % 13 = 1` **none**.
+`Q_2 = [677]` `677 = 4 * 169 + 1` `677 % 169 = 1`
+**none**.  `|Q_n| = 1 = r`.  `4 * 13^n + 1` pattern.
+`TW_infinite_family_exists` **propext only**.
+`ChebotarevToken` density `> 0` **propext only**.
+`TW_primes_Q_n_real_infinite` **none**.
+`R_T_patching_witness_real` **none**.
+`R_T_patching_witness_real_infinite` **none**.
+`beal_forall_in_kernel_from_delta_separated` is
+`BealForall`
+`∀ A B C m n p, 2 < m,n,p → A^m+B^n=C^p → gcd > 1`
+as a closed term **propext only**, no original
+`hRibet` hypothesis.
+
+`triple_13_2_1` `⟨13, 2, 1⟩` primitive `gcd = 1`
+by `rfl`.  Path 1 FALSE formal.  Path 2 ONLY
+HONEST.  Real `X₀(26)(ℚ)` still has `26a1` Δ
+`-17576` and `26b1` Δ `-1664`.  16 modules green
+twice.  `verify-scaffold.sh` OK.
+`verify_descent_26.py` OK.  `NO_SORRY_OK`.
+
+Honest lock unchanged: `ExistsNewformLevel2` is
+`0 ≠ 0`.  Original Path 2 / original Beal `∀` /
+empty `R_T_algorithm` stay uninhabited.  Still
+not Full Mathlib, but now Frey Δ is separated
+with real positivity.  GOOD sounding step.
 
 ### v6.1.1-iter-about-catchup-22559449 — About catch-up 22558788 V6.0.0 REAL → 22559449 V6.1.0 TW infinite family docs lock No Lean change
 

@@ -1,11 +1,12 @@
-# FINAL v6.1.1 — About catch-up `22559449`
+# FINAL v6.2.0 — Frey Δ separated
 
-Records Lean HEAD `e45d610` /
-`v6.1.0-iter-tw-infinite-family`.  No Lean change
-on this catch-up.  Latest written mint
+Latest tag `v6.2.0-iter-frey-delta-separated`.
+Latest written mint remains
 [10.5281/zenodo.22559449](https://doi.org/10.5281/zenodo.22559449)
-(v6.1.0 TW infinite family) DataCite findable.  Hook
-`22379293`.  `IsVersionOf` `22272382` metadata only.
+(v6.1.0 TW infinite family) DataCite findable.
+This v6.2.0 mint is **not** written into About;
+next catch-up is v6.2.1.  Hook `22379293`.
+`IsVersionOf` `22272382` metadata only.
 Original-family latest remains `22322627`.
 
 ### v6.0.0 REAL ALGORITHMS
@@ -98,6 +99,25 @@ Chain `22552105 → 22552659 → 22553129 → 22553671
 writes `22559449` as the latest recorded mint.
 Docs lock only.  No Lean change.
 
+### v6.2.0 Frey Δ separated
+
+`Nat.pow` / `Int.pow` of
+`Δ = 16*(A¹³)²*(B¹³)²*(A¹³+B¹³)²` is
+`frey_Delta13_formula`, **off** the none Galois
+inhabitant.
+
+- `rho_bar_Frey_13_real_algorithm_inhabited` **none**
+  stays **none**, stronger than propext-only
+- `frey_Delta13_ne_0_of_pos_real` Δ ≠ 0 real via
+  `A > 0`, `B > 0`, `A¹³+B¹³ ≠ 0`
+  (`propext` + `Classical.choice` + `Quot.sound`)
+- `FreyGaloisRep13_real_algorithm_inhabited_separated`
+  **none**
+- `beal_forall_in_kernel_from_delta_separated`
+  **propext only**, no original `hRibet`
+
+Official build **16 modules**.
+
 ### Honest lock (unchanged from FINAL v5)
 
 - `ExistsNewformLevel2` is `s2_gamma0_2_dim ≠ 0`
@@ -116,11 +136,11 @@ Docs lock only.  No Lean change.
 - Path 2 ONLY HONEST: displayed table inhabited
 - Real `X₀(26)(ℚ)` still has `26a1` Δ `-17576` and
   `26b1` Δ `-1664`
-- No `False.elim`.  15 modules green twice.
+- No `False.elim`.  16 modules green twice.
   `verify-scaffold.sh` OK.  `verify_descent_26.py` OK.
   `NO_SORRY_OK`
 
 Still not Full Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms,
-but now a REAL infinite TW family with computable
-congruences.  GOOD sounding step.
+but now Frey Δ is separated with real positivity.
+GOOD sounding step.

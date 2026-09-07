@@ -205,3 +205,14 @@ lock.  No Lean change.  HEAD `e45d610`.  Hook
 `22379293`.  `IsVersionOf` `22272382`.
 Original-family latest remains `22322627`.
 
+### v6.2.0-iter-frey-delta-separated — DONE
+
+`frey_Delta13_formula` with `Nat.pow` / `Int.pow`
+off the none Galois inhabitant.
+`rho_bar_Frey_13_real_algorithm_inhabited` **none**
+stays **none**.  `frey_Delta13_ne_0_of_pos_real`
+via `A > 0`, `B > 0`, `A¹³+B¹³ ≠ 0`.
+`beal_forall_in_kernel_from_delta_separated`
+**propext only**.  Official build **16 modules**.
+About still lists written mint `22559449`.
+

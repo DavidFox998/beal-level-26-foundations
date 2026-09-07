@@ -1,15 +1,19 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v6.1.1-iter-about-catchup-22559449`.
-Records Lean HEAD `e45d610` /
-`v6.1.0-iter-tw-infinite-family`.  No Lean change
-on this catch-up.
+Latest tag / HEAD: `v6.2.0-iter-frey-delta-separated`.
+Lean change on this slice: Frey Δ separated —
+`frey_Delta13_formula` with `Nat.pow` / `Int.pow`
+off the none Galois inhabitant, and
+`frey_Delta13_ne_0_of_pos_real` via `A > 0`,
+`B > 0`, `A¹³+B¹³ ≠ 0`.
 
 Latest parallel mint written
 [10.5281/zenodo.22559449](https://doi.org/10.5281/zenodo.22559449)
 (v6.1.0 TW infinite family) DataCite findable, after
 [10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
-(v6.0.0 REAL ALGORITHMS).  Hook
+(v6.0.0 REAL ALGORITHMS).  The v6.1.1 mint
+`22560793` and this v6.2.0 mint are **not** written
+here; next About catch-up is v6.2.1.  Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
 `IsVersionOf` [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)
 is metadata only.  Original-family latest remains
@@ -82,6 +86,19 @@ tokens `TW_primes_Q_n_real_infinite` **none**
 `R_T_patching_witness_real_infinite` **none**
 `beal_forall_in_kernel_from_infinite_TW`
 **propext only**).
+
+v6.2.0 separates Frey Δ:
+`frey_Delta13_formula` `16*(A¹³)²*(B¹³)²*(A¹³+B¹³)²`
+with pow **off** the none inhabitant
+`rho_bar_Frey_13_real_algorithm_inhabited` **none**
+stays **none** stronger than propext-only.
+`frey_Delta13_ne_0_of_pos_real` Δ ≠ 0 real via
+`A > 0`, `B > 0` → `A¹³ ≠ 0`, `B¹³ ≠ 0` →
+squares ≠ 0, `16 ≠ 0`, `A¹³+B¹³ ≠ 0` → product
+of nonzeros (`propext` + `Classical.choice` +
+`Quot.sound`).
+`beal_forall_in_kernel_from_delta_separated`
+**propext only**.  16 modules green.
 
 Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms.

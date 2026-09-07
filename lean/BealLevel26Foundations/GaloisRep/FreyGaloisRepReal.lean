@@ -1,5 +1,6 @@
 import BealLevel26Foundations.Base.BealCounterexampleBase
 import BealLevel26Foundations.Frey.FreyCurve13
+import BealLevel26Foundations.GaloisRep.FreyDeltaSeparated
 import BealLevel26Foundations.Real.FreyWeierstrass
 
 namespace BealLevel26Foundations.GaloisRep.FreyGaloisRepReal
@@ -8,6 +9,8 @@ open BealLevel26Foundations.Base.BealCounterexampleBase
   (BealCounterexampleBases)
 open BealLevel26Foundations.Frey.FreyCurve13
   (frey_Delta13_ne_0_of_pos FreyCurve13_of_BealCounterexampleBases)
+open BealLevel26Foundations.GaloisRep.FreyDeltaSeparated
+  (FreyCurveSeparated FreyGaloisRep13_real_algorithm_inhabited_separated)
 open BealLevel26Foundations.Real.FreyWeierstrass
 
 /-!
@@ -112,7 +115,10 @@ structure FreyGaloisRep13 : Type where
 coefficient `16` and exponent `13`.  Conductor is
 `2 * 13`.  Galois / GL₂ fields are tokens.  **none**.
 `Nat.pow` of the formula is `frey_Delta13_formula`,
-kept off this token so the inhabitant stays **none**. -/
+kept off this token so the inhabitant stays **none**.
+v6.2.0: the Int formula and `A > 0`, `B > 0`,
+`A¹³+B¹³ ≠ 0` positivity live in
+`FreyDeltaSeparated` and are not unfolded here. -/
 def FreyGaloisRep13.token : FreyGaloisRep13 where
   A := 13
   B := 2
@@ -162,16 +168,26 @@ def rho_bar_Frey_13_real_algorithm_inhabited :
     Nonempty FreyGaloisRep13 :=
   ⟨FreyGaloisRep13.token⟩
 
+/-- v6.2.0 alias: same **none** token.  Separated Δ
+formula / positivity stay off this term. -/
+def rho_bar_Frey_13_real_algorithm_inhabited_separated :
+    Nonempty FreyGaloisRep13 :=
+  rho_bar_Frey_13_real_algorithm_inhabited
+
 #check FreyCurve
 #check FreyCurve_Delta
 #check FreyGaloisRep13
 #check FreyGaloisRep13.token
 #check FreyGaloisRep13.conductor_eq
 #check rho_bar_Frey_13_real_algorithm_inhabited
+#check rho_bar_Frey_13_real_algorithm_inhabited_separated
 #check frey_Delta13_ne_0_of_pos_real
+#check FreyGaloisRep13_real_algorithm_inhabited_separated
+#check FreyCurveSeparated
 #print axioms FreyGaloisRep13.conductor_eq
 #print axioms FreyGaloisRep13.delta_display_eq
 #print axioms FreyGaloisRep13.token
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited
+#print axioms rho_bar_Frey_13_real_algorithm_inhabited_separated
 
 end BealLevel26Foundations.GaloisRep.FreyGaloisRepReal
