@@ -271,3 +271,19 @@ Tate conductor `2*13` by `rfl`.
 About still lists written mint `22565376` until
 v6.4.1.
 
+### v6.4.1-iter-about-catchup-22572211 — DONE
+
+About catch-up `22565376` (v6.3.0 det ρ̄ = χ₁₃
+computable none + Weil pairing OFF) →
+`22572211` (v6.4.0 unramified outside
+`2*13*A*B*(A¹³+B¹³)` + semistable at `2*13`
+computable none).  Docs lock.  No Lean change.
+HEAD `7eef274`.  Hook `22379293`.  `IsVersionOf`
+`22272382`.  Original-family latest remains
+`22322627`.  Chain
+`22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449 → 22560793
+→ 22562014 → 22564236 → 22565376 → 22565933
+→ 22572211`.
+

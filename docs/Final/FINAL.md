@@ -1,13 +1,16 @@
-# FINAL v6.4.0 — unramified outside + semistable at 2*13 computable none
+# FINAL v6.4.1 — About catch-up 22572211
 
-Latest tag `v6.4.0-iter-unramified-semistable-real`.
-Latest written mint remains
+Latest tag `v6.4.1-iter-about-catchup-22572211`.
+Records Lean HEAD `7eef274` /
+`v6.4.0-iter-unramified-semistable-real`.  **No Lean change.**
+Latest written mint now
+[10.5281/zenodo.22572211](https://doi.org/10.5281/zenodo.22572211)
+(v6.4.0 unramified + semistable real computable
+none) DataCite findable, after
 [10.5281/zenodo.22565376](https://doi.org/10.5281/zenodo.22565376)
-(v6.3.0 det ρ̄ = χ₁₃ computable none) DataCite
-findable.  The v6.3.1 mint `22565933` and this
-v6.4.0 mint are **not** written into About; next
-catch-up is v6.4.1.  Hook `22379293`.
-`IsVersionOf` `22272382` metadata only.
+(v6.3.0 det ρ̄ = χ₁₃ computable none).  The new
+v6.4.1 mint is **not** written into About.  Hook
+`22379293`.  `IsVersionOf` `22272382` metadata only.
 Original-family latest remains `22322627`.
 
 ### v6.0.0 REAL ALGORITHMS
@@ -235,6 +238,16 @@ Existing tokens unchanged: `cyclotomicCharacter13`
 `frey_Delta13_ne_0_of_pos_real`
 `propext` + `Classical.choice` + `Quot.sound`,
 Tate `2*13` **none**.
+
+### v6.4.1 About catch-up DONE
+
+Chain `22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449 → 22560793
+→ 22562014 → 22564236 → 22565376 → 22565933
+→ 22572211`.  About now writes `22572211` as
+the latest recorded mint.  Docs lock only.
+No Lean change.
 
 ### Honest lock (unchanged from FINAL v5)
 

@@ -39,6 +39,55 @@ v6.2.1-iter-about-catchup-22562014 About catch-up 22559449 → 22562014. Still n
 v6.3.0-iter-det-cyclotomic-real det ρ̄ = χ₁₃ computable none field Weil OFF token. Still not Full Mathlib ∀.
 v6.3.1-iter-about-catchup-22565376 About catch-up 22562014 → 22565376. Still not Full Mathlib ∀.
 v6.4.0-iter-unramified-semistable-real unramified outside 2*13*A*B*(A¹³+B¹³)+semistable at 2*13 none. Still not Full Mathlib ∀.
+v6.4.1-iter-about-catchup-22572211 About catch-up 22565376 → 22572211. Still not Full Mathlib ∀.
+
+### v6.4.1-iter-about-catchup-22572211 — About catch-up 22565376 V6.3.0 det=χ₁₃ → 22572211 V6.4.0 unramified+semistable real computable none docs lock No Lean change
+
+About catch-up.  HEAD `7eef274`
+`v6.4.0-iter-unramified-semistable-real`.  No Lean change.
+HEAD tag `v6.4.0-iter-unramified-semistable-real`.
+Zenodo `10.5281/zenodo.22572211` DataCite findable.
+Hook `22379293`.  `IsVersionOf` `22272382` only.
+Original-family latest remains `22322627`.
+Chain `22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449 → 22560793
+→ 22562014 → 22564236 → 22565376 → 22565933
+→ 22572211`.
+
+New module `GaloisRep.GaloisUnramifiedSemistableReal`
+(17 → 18 modules).
+`frey_unramified_outside_formula` **none**
+(`p ∉ S` by `rfl`; `Int.pow` / `Nat.pow` OFF
+token).  `frey_unramified_outside_real_lemma`
+Néron–Ogg–Shafarevich **propext only**, OFF
+inhabitant.  `frey_semistable_at_2_13_formula`
+**none** via `tate_real_conductor_26` conductor
+`2*13` by `rfl`.
+`rho_bar_Frey_13_real_algorithm_inhabited_unramified`
+**none** stronger than propext-only.
+`FreyCurveSeparated_unramified.token` **none**.
+`beal_forall_in_kernel_from_unramified_separated`
+**propext only**; positivity / det / unramified
+/ semistable lemmas are **not** in that term.
+
+Existing tokens unchanged:
+`cyclotomicCharacter13` **none**, Weil lemma
+**propext only**, `rho_bar` / `_det` **none**,
+`Q_1` / `Q_2` **none**,
+`TW_infinite_family_exists` **propext only**,
+both `R = T` Equivs **none**,
+`frey_Delta13_ne_0_of_pos_real`
+`propext` + `Classical.choice` + `Quot.sound`.
+
+Honest lock unchanged: `ExistsNewformLevel2` is
+`0 ≠ 0`.  Original Path 2 / original Beal `∀` /
+empty `R_T_algorithm` stay uninhabited.  Path 1
+false on `⟨13, 2, 1⟩`.  Real `X₀(26)(ℚ)` still
+has `26a1` Δ `-17576` and `26b1` Δ `-1664`.
+Build: 18 modules green twice.
+`verify-scaffold.sh` OK.  `verify_descent_26.py`
+OK.  `NO_SORRY_OK`.  18 modules green twice.
 
 ### v6.4.0-iter-unramified-semistable-real — make unramified outside 2*13*A*B*(A¹³+B¹³) + semistable at 2*13 computable none, keep Nat.pow OFF token same pattern as det=χ₁₃ and FreyΔ
 

@@ -542,6 +542,7 @@ do
   grep -q "v6.3.0-iter-det-cyclotomic-real" "$readme"
   grep -q "v6.3.1-iter-about-catchup-22565376" "$readme"
   grep -q "v6.4.0-iter-unramified-semistable-real" "$readme"
+  grep -q "v6.4.1-iter-about-catchup-22572211" "$readme"
 done
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md
