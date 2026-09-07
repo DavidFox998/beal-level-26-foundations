@@ -1,23 +1,21 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v6.3.0-iter-det-cyclotomic-real`.
-Lean change on this slice: `det ρ̄ = χ₁₃`
-computable none field — token maps
-`cyclotomicCharacter13` / `residualDet13` and
-`frey_det_eq_cyclotomic_formula`, Weil pairing
-**off** the none Galois inhabitant, same pattern
-as `frey_Delta13_formula` with `Nat.pow` /
-`Int.pow` off `rho_bar`.
+Latest tag / HEAD: `v6.3.1-iter-about-catchup-22565376`.
+Records Lean HEAD `ea37c60` /
+`v6.3.0-iter-det-cyclotomic-real`.  No Lean change
+on this catch-up.
 
 Latest parallel mint written
+[10.5281/zenodo.22565376](https://doi.org/10.5281/zenodo.22565376)
+(v6.3.0 det ρ̄ = χ₁₃ computable none) DataCite
+findable, after
 [10.5281/zenodo.22562014](https://doi.org/10.5281/zenodo.22562014)
-(v6.2.0 Frey Δ separated) DataCite findable, after
+(v6.2.0 Frey Δ separated), after
 [10.5281/zenodo.22559449](https://doi.org/10.5281/zenodo.22559449)
 (v6.1.0 TW infinite family), after
 [10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
-(v6.0.0 REAL ALGORITHMS).  The v6.2.1 mint
-`22564236` and this v6.3.0 mint are **not** written
-here; next About catch-up is v6.3.1.  Hook
+(v6.0.0 REAL ALGORITHMS).  The new v6.3.1 mint is
+**not** written here.  Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
 `IsVersionOf` [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)
 is metadata only.  Original-family latest remains
@@ -111,22 +109,29 @@ are **none**
 the displayed Beal `∀` closed term **propext only**
 The positivity lemma is not in that term so it
 does not pick up `Classical.choice` Existing
-TW / Tate / R=T tokens are unchanged).
-
-v6.3.0 makes `det ρ̄ = χ₁₃` a computable none
-field: `cyclotomicCharacter13` **none**,
-`frey_det_eq_cyclotomic_formula`
-`∀ σ, det(ρ̄(σ)) = χ₁₃(σ)` token-map equality
-**none**, `frey_det_eq_cyclotomic_real_lemma`
-**propext only** (Weil pairing
-`e₁₃ : E[13] × E[13] → μ₁₃` Galois-equivariant
-off the none inhabitant),
+TW / Tate / R=T tokens are unchanged) →
+`22564236` (v6.2.1 About catch-up DONE,
+About writes `22562014`) →
+`22565376` (v6.3.0 det ρ̄ = χ₁₃ computable none
+field Weil pairing off token
+`cyclotomicCharacter13` / `residualDet13` token
+maps `G_ℚ → (ℤ/13ℤ)×` **none** (`ZMod` / `Units`
+stay off) `frey_det_eq_cyclotomic_formula`
+`∀ σ, det(ρ̄(σ)) = χ₁₃(σ)` **none**
+`frey_det_eq_cyclotomic_real_lemma` Weil pairing
+`e₁₃ : E[13] × E[13] → μ₁₃` **propext only**
+off the inhabitant
 `rho_bar_Frey_13_real_algorithm_inhabited_det`
-**none** stays **none** stronger than
-propext-only.  `FreyCurveSeparated_det.token`
-**none**.  `beal_forall_in_kernel_from_det_separated`
-**propext only**; positivity / det lemmas are
-**not** in that term.  Official build **17 modules**.
+**none** stronger than propext-only
+`FreyCurveSeparated_det.token` **none**
+`beal_forall_in_kernel_from_det_separated`
+**propext only** positivity and det lemmas not
+in that term Existing tokens unchanged `Q_1` /
+`Q_2` **none** `TW_infinite_family_exists`
+**propext only** Tate conductor `2*13` **none**
+both `R = T` Equivs **none**
+`frey_Delta13_ne_0_of_pos_real`
+`propext` + `Classical.choice` + `Quot.sound`).
 
 Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms.

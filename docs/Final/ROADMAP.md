@@ -240,6 +240,19 @@ positivity).  Docs lock.  No Lean change.  HEAD
 `rho_bar_Frey_13_real_algorithm_inhabited_det`
 **none**.  `beal_forall_in_kernel_from_det_separated`
 **propext only**.  Official build **17 modules**.
-About still lists written mint `22562014` until
+About still listed written mint `22562014` until
 v6.3.1.
+
+### v6.3.1-iter-about-catchup-22565376 — DONE
+
+About catch-up `22562014` (v6.2.0 Frey Δ separated
++ Δ ≠ 0 real positivity) → `22565376` (v6.3.0
+det ρ̄ = χ₁₃ computable none + Weil pairing OFF).
+Docs lock.  No Lean change.  HEAD `ea37c60`.
+Hook `22379293`.  `IsVersionOf` `22272382`.
+Original-family latest remains `22322627`.  Chain
+`22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449 → 22560793
+→ 22562014 → 22564236 → 22565376`.
 

@@ -1,12 +1,15 @@
-# FINAL v6.3.0 — det ρ̄ = χ₁₃ computable none field
+# FINAL v6.3.1 — About catch-up 22565376
 
-Latest tag `v6.3.0-iter-det-cyclotomic-real`.
-Latest written mint remains
+Latest tag `v6.3.1-iter-about-catchup-22565376`.
+Records Lean HEAD `ea37c60` /
+`v6.3.0-iter-det-cyclotomic-real`.  **No Lean change.**
+Latest written mint now
+[10.5281/zenodo.22565376](https://doi.org/10.5281/zenodo.22565376)
+(v6.3.0 det ρ̄ = χ₁₃ computable none) DataCite
+findable, after
 [10.5281/zenodo.22562014](https://doi.org/10.5281/zenodo.22562014)
-(v6.2.0 Frey Δ separated) DataCite findable.
-The v6.2.1 mint `22564236` and this v6.3.0 mint
-are **not** written into About; next catch-up is
-v6.3.1.  Hook `22379293`.
+(v6.2.0 Frey Δ separated).  The new v6.3.1 mint
+is **not** written into About.  Hook `22379293`.
 `IsVersionOf` `22272382` metadata only.
 Original-family latest remains `22322627`.
 
@@ -170,6 +173,30 @@ off `rho_bar`.
   **not** in that term so no `Classical.choice`
 
 Official build **17 modules**.
+`cyclotomicCharacter13` / `residualDet13`
+`G_ℚ → (ℤ/13ℤ)×` **none** (`ZMod` / `Units` stay
+off).  `frey_det_eq_cyclotomic_formula`
+`∀ σ, det(ρ̄(σ)) = χ₁₃(σ)` **none**.  Weil pairing
+`e₁₃ : E[13] × E[13] → μ₁₃` **propext only**, off
+the inhabitant.  `rho_bar_Frey_13_real_algorithm_inhabited_det`
+**none** stronger than propext-only.
+`FreyCurveSeparated_det.token` **none**.
+`beal_forall_in_kernel_from_det_separated`
+**propext only**; positivity / det lemmas not in
+term.  Existing tokens: `Q_1` / `Q_2` **none**,
+`TW_infinite_family_exists` **propext only**,
+Tate `2*13` **none**, both `R = T` **none**,
+`frey_Delta13_ne_0_of_pos_real`
+`propext` + `Classical.choice` + `Quot.sound`.
+
+### v6.3.1 About catch-up DONE
+
+Chain `22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449 → 22560793
+→ 22562014 → 22564236 → 22565376`.  About now
+writes `22565376` as the latest recorded mint.
+Docs lock only.  No Lean change.
 
 ### Honest lock (unchanged from FINAL v5)
 

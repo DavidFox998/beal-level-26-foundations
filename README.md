@@ -37,6 +37,51 @@ v6.1.1-iter-about-catchup-22559449 About catch-up 22558788 → 22559449. Still n
 v6.2.0-iter-frey-delta-separated Frey Δ separated Nat.pow OFF none inhabitant. Still not Full Mathlib ∀.
 v6.2.1-iter-about-catchup-22562014 About catch-up 22559449 → 22562014. Still not Full Mathlib ∀.
 v6.3.0-iter-det-cyclotomic-real det ρ̄ = χ₁₃ computable none field Weil OFF token. Still not Full Mathlib ∀.
+v6.3.1-iter-about-catchup-22565376 About catch-up 22562014 → 22565376. Still not Full Mathlib ∀.
+
+### v6.3.1-iter-about-catchup-22565376 — About catch-up 22562014 V6.2.0 Frey Δ separated + Δ≠0 real positivity → 22565376 V6.3.0 det ρ̄ = χ₁₃ computable none + Weil pairing OFF docs lock No Lean change
+
+About catch-up.  HEAD `ea37c60`
+`v6.3.0-iter-det-cyclotomic-real`.  No Lean change.
+HEAD tag `v6.3.0-iter-det-cyclotomic-real`.
+Zenodo `10.5281/zenodo.22565376` DataCite findable.
+Hook `22379293`.  `IsVersionOf` `22272382` only.
+Original-family latest remains `22322627`.
+Chain `22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449 → 22560793
+→ 22562014 → 22564236 → 22565376`.
+
+New module `GaloisRep.GaloisDetCyclotomicReal`
+(16 → 17 modules).
+`cyclotomicCharacter13` / `residualDet13`
+`G_ℚ → (ℤ/13ℤ)×` **none** (`ZMod` / `Units` stay
+off).  `frey_det_eq_cyclotomic_formula`
+`∀ σ, det(ρ̄(σ)) = χ₁₃(σ)` **none**.
+`frey_det_eq_cyclotomic_real_lemma` Weil pairing
+`e₁₃ : E[13] × E[13] → μ₁₃` **propext only**,
+off the inhabitant.
+`rho_bar_Frey_13_real_algorithm_inhabited_det`
+**none** stronger than propext-only.
+`FreyCurveSeparated_det.token` **none**.
+`beal_forall_in_kernel_from_det_separated`
+**propext only**; positivity / det lemmas are
+**not** in that term.
+
+Existing tokens unchanged: `Q_1` / `Q_2` **none**,
+`TW_infinite_family_exists` **propext only**,
+Tate conductor `2 * 13` **none**, both `R = T`
+Equivs **none**, `frey_Delta13_ne_0_of_pos_real`
+`propext` + `Classical.choice` + `Quot.sound`.
+
+Honest lock unchanged: `ExistsNewformLevel2` is
+`0 ≠ 0`.  Original Path 2 / original Beal `∀` /
+empty `R_T_algorithm` stay uninhabited.  Path 1
+false on `⟨13, 2, 1⟩`.  Real `X₀(26)(ℚ)` still
+has `26a1` Δ `-17576` and `26b1` Δ `-1664`.
+Build: 17 modules green twice.
+`verify-scaffold.sh` OK.  `verify_descent_26.py`
+OK.  `NO_SORRY_OK`.  17 modules green twice.
 
 ### v6.3.0-iter-det-cyclotomic-real — Make det ρ̄ = χ₁₃ computable none field, keep Nat.pow OFF token same pattern
 
