@@ -81,6 +81,19 @@ v7.3.0-ribet-rt-filled ModularityRibet theorems: Wiles domain from TrueConductor
 v7.4.0-geometry-filled GeometryBridge theorems: J0(26) dim 2=1+1 as E_26a1×E_26b1 (Δ -17576/-1664); Pic⁰=J0 product; formal immersion at 2 via M3=[[1,1],[0,2]] det=2 with ω1=dx/y ω2=x dx/y; X0(26)(Q) labels [1,2,13,26] so ¬ExistsNoncuspidal; Sel2=1 rank 0. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.0.0-beal-forall-proof FullProof glue: unguarded sketch is false (0³+1³=1³, gcd=1); beal_forall_proof is positive-bases Beal from the missing Modular→ExistsNewformLevel2 arrow; Tate+Ribet+GeometryBridge glue inhabited. BealForall.lean sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.1.0-modular-implies-newform ModularImpliesNewform: PositiveBealTriple + Mathlib Γ₀(2) + TW 53%13=1 677%169=1 + Ribet N/∏q=2 arithmetic; ModularImpliesLevel2Newform stays a Prop; beal_forall_proof = beal_forall_proof_positive (still conditional). Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.2.0-scheme-hecke-ribet GeometryScheme + HeckeAlgebra + RibetFunctor: packed X0(26)/J0(26) models, TW-tower R≃T, functorial lowering N→2; ModularImpliesLevel2Newform_Real stays the v8.1.0 Prop (ExistsNewformLevel2 is 0≠0). Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.2.0-scheme-hecke-ribet — packed X₀(26)/J₀(26) models, TW-tower R≃T, Ribet functor (arrow stays a Prop)
+
+Lean change.  New FullProof modules `GeometryScheme.lean`, `HeckeAlgebra.lean`, `RibetFunctor.lean`.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `X0_26_Scheme` / `J0_26_Scheme`: Mathlib `Γ₀(26)` plus four cusps; product of `26a1`/`26b1`;
+- `formal_immersion_scheme_at_2`: `M₃` det `2 ≠ 0` over `ℤ/3` (Nakayama *input*, not a `ℤ_{(2)}` cotangent module);
+- `HeckeOperator_Tq` / `R_inf_eq_T_inf`: correspondence `26 ← 26q → 26` and TW-tower bookkeeping `R_∞ ≃ T_∞`;
+- `ribet_level_lowering_functor`: packed lowering `N → 2` with `det = χ₁₃`;
+- `ModularImpliesLevel2Newform_Real` is the same Prop as v8.1.0.  `ExistsNewformLevel2` stays `0 ≠ 0`.
+
+Mathlib 4.12 has `Scheme`/`Spec` and Nakayama, not modular curves or a Ribet functor that produces a level-2 newform.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.1.0-modular-implies-newform — Step 5 arithmetic of ModularImpliesLevel2Newform (arrow stays a Prop)
 

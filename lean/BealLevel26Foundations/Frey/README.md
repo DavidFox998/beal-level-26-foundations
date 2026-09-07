@@ -28,6 +28,9 @@ as of** `v4.2.0-full-chain` / `v2.0.0-frey`.
 | `../Beal/FullProof/GeometryBridge.lean` | `J₀(26)` as `E_{26a1}×E_{26b1}`; formal immersion at 2 via `M₃` `det=2`; four cusps `[1,2,13,26]`; `|Sel₂|=1` | Not Mathlib Chabauty / Picard; `GeometryBridge` is certified Mazur input, not `False` from the Beal equation; sketch stays uninhabited |
 | `../Beal/FullProof/BealForallProof.lean` | Glue of Tate + Ribet + GeometryBridge; `beal_forall_proof` = `beal_forall_proof_positive` | Unguarded sketch is false (`0³+1³=1³`); none-chain sketch stays uninhabited; not a journal Beal proof |
 | `../Beal/FullProof/ModularImpliesNewform.lean` | `PositiveBealTriple`; Mathlib `Γ₀(2)`; TW `53%13=1` `677%169=1`; Ribet `N/∏q=2` arithmetic; `ModularImpliesLevel2Newform` stays a Prop | Not Mathlib Wiles/newform; not `PositiveBealTriple → False`; not unconditional Beal |
+| `../Beal/FullProof/GeometryScheme.lean` | Packed `X₀(26)` / `J₀(26)` models; `M₃` det 2 Nakayama input; four cusps | Not Mathlib modular-curve Scheme / Jacobian |
+| `../Beal/FullProof/HeckeAlgebra.lean` | `T_q` correspondence; TW-tower `R_∞ ≃ T_∞` | Not Mathlib `End(J₀(N))` / `R = T` |
+| `../Beal/FullProof/RibetFunctor.lean` | Packed lowering `N → 2`; `ModularImpliesLevel2Newform_Real` stays a Prop | Not `ExistsNewformLevel2` (`0 ≠ 0`) |
 | `FreyCurve13.lean` | Displayed triple plus working-prime `WeierstrassCurve` `freyCurve ↑A ↑B 13 13`. Does not import Forall. | Not Tate conductor; not a noncuspidal `X₀(26)` point |
 | `FreyModularity_13.lean` | `WeierstrassModularity c` is displayed `Modularity (FreyCurve13 w.A w.B w.C)` when `c` is the pack of `w`. `WeierstrassModularity_of_pack` is `frey_modular_13`. | Not Wiles--Taylor; `WeierstrassCurve` has no `.A`; not a noncuspidal `X₀(26)` point |
 

@@ -1,18 +1,15 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.1.0-modular-implies-newform`.
-Lean change: `Beal/FullProof/ModularImpliesNewform.lean`
-proves the *arithmetic* of
-`ModularImpliesLevel2Newform` on
-`PositiveBealTriple` (Tate conductor `rad(ABC)`,
-Ribet `N/∏q=2`, TW `4·13ⁿ+1` with `53%13=1`
-`677%169=1`, `R≃T`, displayed `S₂(Γ₀(2))=0`,
-`no_noncuspidal_Q_points`, `M₃` det 2).
-Mathlib 4.12 supplies `Γ₀(2)` as a congruence
-subgroup; it does **not** supply
-`Modular → ExistsNewformLevel2`.  That arrow
-stays a Prop.  `beal_forall_proof` equals
-`beal_forall_proof_positive` and remains
+Latest tag / HEAD: `v8.2.0-scheme-hecke-ribet`.
+Lean change: `GeometryScheme.lean`, `HeckeAlgebra.lean`,
+`RibetFunctor.lean` lift PARI certs to packed
+`X₀(26)` / `J₀(26)` models, TW-tower `R≃T`,
+and functorial lowering `N → 2`.  Mathlib 4.12
+has `Scheme`/`Spec` and Nakayama; it does **not**
+construct modular curves or inhabit
+`ExistsNewformLevel2` (`0 ≠ 0`).
+`ModularImpliesLevel2Newform_Real` is the same
+Prop as v8.1.0.  `beal_forall_proof` remains
 conditional.  The unguarded sketch type is
 **false** (`0³ + 1³ = 1³`, `gcd = 1`).
 Does **not** inhabit

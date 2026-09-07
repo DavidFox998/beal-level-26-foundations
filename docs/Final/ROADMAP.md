@@ -785,3 +785,17 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.2.0-scheme-hecke-ribet — DONE (packed models, arrow stays a Prop)
+
+Lean change.  New FullProof modules
+`GeometryScheme.lean`, `HeckeAlgebra.lean`,
+`RibetFunctor.lean`.  Packed `X₀(26)` / `J₀(26)`
+models, TW-tower `R≃T`, functorial lowering
+`N → 2`.  `ModularImpliesLevel2Newform_Real`
+stays the v8.1.0 Prop.  `ExistsNewformLevel2`
+is `0 ≠ 0`.  Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
