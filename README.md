@@ -91,6 +91,20 @@ v8.8.0-ribet-proof RibetMazur HeckeAction_N + mazur_step_real pack; ModularImpli
 v8.9.0-explicit-J0N RibetMazur packed X0_N_Model/J0_N_Model + Frey Steinberg label; beal_from_ribet_real_fixed still from the Prop; ExistsNewformLevel2 stays 0≠0. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.10.0-frey-aq-pm1-real RibetMazur frey_a_q_real via (-c6/q)=±1 + J0_N_real ModSym token; mazur_step_real_fixed only when 13|v_q(Δ); quotient is 2 only under Frey13Case; beal_from_ribet_real_fixed still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.11.0-frey-ell-case RibetMazur FreyEllCase5 + ell_of_q so ℓ|v_q(Δ) at every odd q; mazur_step_ell; N/∏q=2 under FreyEllCase5; beal_from_ribet_ell_case still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.12.0-fermat-four-plus-RinfTinf-ell RibetMazur fermat_four_lemma + FermatFourCase closes power-of-2 exponents; TWAuxEll search Q1≡1 mod ℓ; mazur_step_real_ell_upgraded; beal_from_ribet_ell_upgraded still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.12.0-fermat-four-plus-RinfTinf-ell — FLT n=4 for power-of-2 exponents + TW search at ℓ (arrow stays a Prop)
+
+Lean change.  `RibetMazur.lean` adds Mathlib `fermatLastTheoremFour` and a computable TW prime search.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `fermat_four_lemma`: no positive `A⁴ + B⁴ = C⁴`;
+- `FermatFourCase` / `beal_pow2_exponents`: if all three exponents are `2^e` with `e ≥ 2`, Beal holds by FLT4.  `m=4` alone is **not** this case;
+- `FreyEllCase5Complete`: `FreyEllCase5 ∨ FermatFourCase`, not a cover of every triple;
+- `find_prime_congruent_one_mod` / `TWAuxEll_of_ell`: search token `Q₁ ≡ 1 [MOD ℓ]`.  `∀ N, ¬ Q₁ ∣ N` is false;
+- `mazur_step_real_ell_upgraded` / `ribet_iterated_ell_upgraded`: TW levels `N·Q₁(ℓ)` / `N·Q₂(ℓ)` when a witness is given;
+- `beal_from_ribet_ell_upgraded`: still *from* `ModularImpliesLevel2Newform`.
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.11.0-frey-ell-case — Frey-ℓ case makes `N/∏q=2` arithmetic at every odd q (arrow stays a Prop)
 

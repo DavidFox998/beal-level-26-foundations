@@ -12,14 +12,14 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.11.0)
+# FullProof track (v8.12.0)
 
 Aggregator for Track B.  `RibetMazur` adds
-`FreyEllCase5` / `ell_of_q` so `ℓ | v_q(Δ)` at
-every odd `q | ABC`, `mazur_step_ell`, and
-`ribet_iterated_ell_case` with arithmetic
-`N / ∏q = 2`.  `beal_from_ribet_ell_case` stays
-*from* `ModularImpliesLevel2Newform`.
+Mathlib `fermatLastTheoremFour` as
+`fermat_four_lemma`, `FermatFourCase` for
+power-of-2 exponents, and `TWAuxEll` search
+tokens `Q₁ ≡ 1 [MOD ℓ]`.  `beal_from_ribet_ell_upgraded`
+stays *from* `ModularImpliesLevel2Newform`.
 `ExistsNewformLevel2` is still `0 ≠ 0`.  Not
 imported by the 24-module none chain.
 -/

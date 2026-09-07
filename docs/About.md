@@ -1,17 +1,17 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.11.0-frey-ell-case`.
+Latest tag / HEAD: `v8.12.0-fermat-four-plus-RinfTinf-ell`.
 Lean change: `RibetMazur.lean` adds
-`FreyEllCase5` / `ell_of_q` so a residual
-`ℓ ≥ 5` dividing the matching exponent
-gives `ℓ | v_q(Δ)` at every odd `q | ABC`.
-`mazur_step_ell` is the packed Mazur step
-at that `ℓ`.  Residual traces are packed
-as `±(q+1)`, not `a_q = ±1`.
-`ribet_iterated_ell_case` iterates every
-odd prime under `FreyEllCase5`, so the
-arithmetic quotient is `N / ∏q = 2`.
-`beal_from_ribet_ell_case` stays *from*
+Mathlib `fermatLastTheoremFour` as
+`fermat_four_lemma`, so a primitive Beal
+triple whose exponents are all powers of 2
+at least 4 is impossible.  `m=4` alone is
+not FLT4.  `TWAuxEll` records primes
+`Q1 ≡ 1 [MOD ℓ]` and `Q2 ≡ 1 [MOD ℓ²]`
+(inhabited at `ℓ=13` by 53/677; a computable
+search may return none).  `mazur_step_real_ell_upgraded`
+uses `N·Q1(ℓ)` / `N·Q2(ℓ)`.
+`beal_from_ribet_ell_upgraded` stays *from*
 `ModularImpliesLevel2Newform`.
 `ExistsNewformLevel2` is still `0 ≠ 0`.
 The unguarded sketch type is **false**

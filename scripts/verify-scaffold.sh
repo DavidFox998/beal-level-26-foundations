@@ -786,6 +786,7 @@ do
   grep -q "v8.9.0-explicit-J0N" "$readme"
   grep -q "v8.10.0-frey-aq-pm1-real" "$readme"
   grep -q "v8.11.0-frey-ell-case" "$readme"
+  grep -q "v8.12.0-fermat-four-plus-RinfTinf-ell" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1176,6 +1177,26 @@ grep -q "theorem N_div_Prod_eq_2_of_FreyEllCase5" \
 grep -q "theorem beal_from_ribet_ell_case" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem ell_of_q_dvd_vqDelta" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem fermat_four_lemma" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def FermatFourCase" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def FreyEllCase5Complete" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def find_prime_congruent_one_mod" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def HeckeAction_N_real_ell_upgraded" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem mazur_step_real_ell_upgraded" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem ribet_iterated_ell_upgraded" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem beal_from_ribet_ell_upgraded" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem beal_pow2_exponents" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem not_FreyEllCase5_of_exp_four_reduced" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "def beal_forall_from_Is13Case_sketch_stays_uninhabited" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean

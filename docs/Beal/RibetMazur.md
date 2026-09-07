@@ -1,28 +1,27 @@
-# v8.11.0 RibetMazur Frey-ℓ case
+# v8.12.0 RibetMazur Fermat n=4 + TW search at ℓ
 
 `lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean`
 
-Each exponent of a primitive Beal triple may carry a
-prime factor `ℓ ≥ 5`.  At an odd prime `q | ABC` the
-matching residual then divides `v_q(Δ)`, so the Mazur
-gate is no longer locked to `13`.  Does **not** import
-`X0_26_Model`.  Does **not** inhabit
-`ExistsNewformLevel2` (`0 ≠ 0`) and does **not** prove
-`¬ PositiveBealTriple`.
+Mathlib `fermatLastTheoremFour` closes a primitive
+Beal triple whose exponents are all powers of 2 at
+least `4`.  TW auxiliary primes are a search token
+`Q₁ ≡ 1 [MOD ℓ]`, `Q₂ ≡ 1 [MOD ℓ²]`.  Does **not**
+import `X0_26_Model`.  Does **not** inhabit
+`ExistsNewformLevel2` (`0 ≠ 0`) and does **not**
+prove `¬ PositiveBealTriple` in general.
 
 | Name | Status |
 |---|---|
-| `FreyEllCase5` / `FreyEllWitness` | each of `m,n,p` has a prime factor `ℓ ≥ 5`; fails for `m = 4` |
-| `ell_of_q` | `ℓ_m` if `q \| A`, `ℓ_n` if `q \| B`, else `ℓ_p` |
-| `ell_of_q_dvd_vqDelta` | `ℓ(q) \| v_q(Δ)` from `v_q(Δ) = 2m v_q(A)` (or `n`/`p`) |
-| `frey_a_q_real_ell` | same Tate sign `(-c₆/q)=±1` as v8.10 |
-| `frey_rho_unramified_iff_ell_dvd_vqDelta` | packed Tate criterion at residual `ℓ` |
-| `trace_eq_pm_qplus1_when_unramified` | packed traces `±(q+1)`, not `a_q = ±1` |
-| `HeckeAction_N_real_ell` | double-coset token at residual `ℓ` |
-| `TWAuxEll.of13` | `53 ≡ 1 [MOD 13]`, `677 ≡ 1 [MOD 169]`; not Dirichlet for general `ℓ` |
-| `mazur_step_ell` | requires `ℓ \| v_q(Δ)`; not Mathlib modularity at `N/q` |
-| `ribet_iterated_ell_case` | every odd `q` under `FreyEllCase5`; arithmetic `N / ∏q = 2` |
-| `beal_from_ribet_ell_case` | still *from* `ModularImpliesLevel2Newform` |
+| `fermat_four_lemma` | Mathlib `fermatLastTheoremFour` as `¬ ∃ A,B,C > 0, A⁴+B⁴=C⁴` |
+| `FermatFourCase` / `beal_pow2_exponents` | all three exponents `2^e`, `e ≥ 2`; Beal holds by FLT4 |
+| `not_FreyEllCase5_of_exp_four_reduced` | `m=4` and `n,p` powers of 2; `m=4` alone is not FLT4 |
+| `FreyEllCase5Complete` | `FreyEllCase5 ∨ FermatFourCase`; not a cover (`4,13,13`) |
+| `find_prime_congruent_one_mod` | computable search; may return `none` |
+| `TWAuxEll` / `TWAuxEll_of_ell` | `Q₁ ≡ 1 [MOD ℓ]`, `Q₂ ≡ 1 [MOD ℓ²]`; `∀ N, ¬ Q₁ ∣ N` is false |
+| `HeckeAction_N_real_ell_upgraded` | double-coset token plus `N·Q₁(ℓ)` / `N·Q₂(ℓ)` |
+| `mazur_step_real_ell_upgraded` | requires `ℓ \| v_q(Δ)` and a `TWAuxEll` witness |
+| `ribet_iterated_ell_upgraded` | `FreyEllCase5` pack; FLT4 branch is separate |
+| `beal_from_ribet_ell_upgraded` | still *from* `ModularImpliesLevel2Newform` |
 
 `#print axioms` is `[propext, Classical.choice, Quot.sound]`.
 Track A About mint stays `22635221`.

@@ -3,11 +3,11 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.11.0 — Frey-ℓ case: each exponent has a
-prime factor `ℓ ≥ 5`, so `ℓ | v_q(Δ)` at every odd
-`q | ABC` and the Mazur gate is no longer locked to
-`13`.  Residual traces are packed as `±(q+1)` (not
-`a_q = ±1`).  Not Mathlib modularity at `N/q`.
+Track B v8.12.0 — Fermat `n=4` closes the all-powers-of-2
+exponent case; TW auxiliary primes are a search token
+`Q₁ ≡ 1 [MOD ℓ]`, `Q₂ ≡ 1 [MOD ℓ²]` (inhabited at
+`ℓ = 13` by `53`/`677`).  Not Mathlib `R∞ ≃ T∞`
+at varying `ℓ`.
 
 Mathlib 4.12 has no Ribet functor and no arrow
     `Modular w → ExistsNewformLevel2`.  That label is
@@ -69,6 +69,22 @@ What it *does* prove:
   `q` under `FreyEllCase5`, so `N / ∏q = 2`
   as arithmetic (still not a newform);
 * `beal_from_ribet_ell_case` stays *from*
+  `ModularImpliesLevel2Newform`;
+* `fermat_four_lemma` is Mathlib
+  `fermatLastTheoremFour` as `¬ ∃ A B C > 0,
+  A⁴+B⁴=C⁴`;
+* `FermatFourCase` is all three exponents
+  `2^e` with `e ≥ 2`; that case of
+  `PositiveBealTriple` is impossible;
+* `m = 4` alone is **not** FLT4 (e.g. `n = 13`);
+* `FreyEllCase5Complete` is `FreyEllCase5 ∨ FermatFourCase`,
+  not a cover of every exponent triple;
+* `find_prime_congruent_one_mod` is a computable
+  search; `TWAuxEll` adds `Qᵢ ≥ 5` and `Q₁ ≠ Q₂`;
+  `∀ N, ¬ Q₁ ∣ N` is false (`Q₁ ∣ Q₁`);
+* `HeckeAction_N_real_ell_upgraded` / `mazur_step_real_ell_upgraded`
+  use `N·Q₁(ℓ)` / `N·Q₂(ℓ)` when a `TWAuxEll` is given;
+* `beal_from_ribet_ell_upgraded` stays *from*
   `ModularImpliesLevel2Newform`.
 
 Does **not** import `X0_26_Model`.  FullProof-only.
@@ -87,6 +103,7 @@ import BealLevel26Foundations.Chain.Level2
 import BealLevel26Foundations.Real.FreyWeierstrass
 import Mathlib.NumberTheory.LegendreSymbol.Basic
 import Mathlib.NumberTheory.ModularForms.CongruenceSubgroups
+import Mathlib.NumberTheory.FLT.Four
 import Mathlib.LinearAlgebra.Matrix.SpecialLinearGroup
 import Mathlib.Tactic
 
@@ -1357,6 +1374,9 @@ structure TWAuxEll (ℓ : Nat) where
   Q2_prime : Q2ell.Prime
   Q1_mod : Q1ell % ℓ = 1
   Q2_mod : Q2ell % (ℓ ^ 2) = 1
+  Q1_ge5 : 5 ≤ Q1ell
+  Q2_ge5 : 5 ≤ Q2ell
+  Q1_ne_Q2 : Q1ell ≠ Q2ell
 
 def TWAuxEll.of13 : TWAuxEll 13 where
   Q1ell := 53
@@ -1367,6 +1387,9 @@ def TWAuxEll.of13 : TWAuxEll 13 where
   Q2_mod := by
     change 677 % 169 = 1
     exact TW_q677_mod169
+  Q1_ge5 := by decide
+  Q2_ge5 := by decide
+  Q1_ne_Q2 := by decide
 
 def TWAuxEllExists (ℓ : Nat) : Prop :=
   Nonempty (TWAuxEll ℓ)
@@ -1578,6 +1601,298 @@ theorem beal_from_ribet_ell_case
       1 < Nat.gcd A (Nat.gcd B C) :=
   beal_from_ribet_real hModNew
 
+/-! ## v8.12.0 — Fermat `n=4` + TW search at residual `ℓ` -/
+
+/-- Mathlib `fermatLastTheoremFour`: no positive
+`A⁴ + B⁴ = C⁴`. -/
+theorem fermat_four_lemma :
+    ¬ ∃ A B C : Nat, 0 < A ∧ 0 < B ∧ 0 < C ∧ A ^ 4 + B ^ 4 = C ^ 4 := by
+  rintro ⟨A, B, C, hA, hB, hC, heq⟩
+  exact fermatLastTheoremFour A B C
+    (Nat.pos_iff_ne_zero.mp hA)
+    (Nat.pos_iff_ne_zero.mp hB)
+    (Nat.pos_iff_ne_zero.mp hC)
+    heq
+
+/-- Exponent is `2^e` with `e ≥ 2`, hence at least `4`. -/
+def IsPow2Ge4 (k : Nat) : Prop :=
+  ∃ e : Nat, 2 ≤ e ∧ k = 2 ^ e
+
+theorem IsPow2Ge4_four : IsPow2Ge4 4 :=
+  ⟨2, le_rfl, rfl⟩
+
+/-- All three Beal exponents are powers of 2 at least `4`.
+This is the case that reduces to FLT `n=4`.  It does
+**not** cover `m=4, n=13, p=13`. -/
+def FermatFourCase (m n p : Nat) : Prop :=
+  IsPow2Ge4 m ∧ IsPow2Ge4 n ∧ IsPow2Ge4 p
+
+theorem FermatFourCase_of_four : FermatFourCase 4 4 4 :=
+  ⟨IsPow2Ge4_four, IsPow2Ge4_four, IsPow2Ge4_four⟩
+
+theorem two_pow_eq_four_mul (e : Nat) (he : 2 ≤ e) :
+    2 ^ e = 4 * 2 ^ (e - 2) := by
+  calc
+    2 ^ e = 2 ^ (e - 2 + 2) := by rw [Nat.sub_add_cancel he]
+    _ = 2 ^ (e - 2) * 2 ^ 2 := Nat.pow_add _ _ _
+    _ = 2 ^ (e - 2) * 4 := rfl
+    _ = 4 * 2 ^ (e - 2) := Nat.mul_comm _ _
+
+theorem pow_pow2_as_fourth (A e : Nat) (he : 2 ≤ e) :
+    A ^ (2 ^ e) = (A ^ (2 ^ (e - 2))) ^ 4 := by
+  rw [two_pow_eq_four_mul e he, Nat.mul_comm, pow_mul]
+
+theorem PositiveBealTriple.eq_fourth_of_FermatFourCase
+    (t : PositiveBealTriple) (h : FermatFourCase t.m t.n t.p) :
+    ∃ A' B' C' : Nat,
+      A' ≠ 0 ∧ B' ≠ 0 ∧ C' ≠ 0 ∧ A' ^ 4 + B' ^ 4 = C' ^ 4 := by
+  rcases h with ⟨⟨em, hem, hm⟩, ⟨en, hen, hn⟩, ⟨ep, hep, hp⟩⟩
+  refine ⟨t.A ^ (2 ^ (em - 2)), t.B ^ (2 ^ (en - 2)),
+    t.C ^ (2 ^ (ep - 2)), ?_, ?_, ?_, ?_⟩
+  · exact pow_ne_zero _ (Nat.pos_iff_ne_zero.mp t.hposA)
+  · exact pow_ne_zero _ (Nat.pos_iff_ne_zero.mp t.hposB)
+  · exact pow_ne_zero _ (Nat.pos_iff_ne_zero.mp t.hposC)
+  · have heq : t.A ^ t.m + t.B ^ t.n = t.C ^ t.p := t.heq
+    rw [hm, hn, hp, pow_pow2_as_fourth t.A em hem,
+      pow_pow2_as_fourth t.B en hen, pow_pow2_as_fourth t.C ep hep] at heq
+    exact heq
+
+/-- A primitive Beal triple whose exponents are all
+powers of 2 at least `4` would give a positive
+`A⁴ + B⁴ = C⁴`. -/
+theorem not_PositiveBealTriple_of_FermatFourCase
+    (t : PositiveBealTriple) (h : FermatFourCase t.m t.n t.p) : False := by
+  rcases PositiveBealTriple.eq_fourth_of_FermatFourCase t h with
+    ⟨A', B', C', hA, hB, hC, heq⟩
+  exact fermatLastTheoremFour A' B' C' hA hB hC heq
+
+/-- `m = 4` and `n,p` powers of 2 at least `4` is FLT4.
+`m = 4` alone is not. -/
+theorem not_FreyEllCase5_of_exp_four_reduced
+    {n p : Nat} (hn : IsPow2Ge4 n) (hp : IsPow2Ge4 p) :
+    ¬ ∃ t : PositiveBealTriple, t.m = 4 ∧ t.n = n ∧ t.p = p := by
+  rintro ⟨t, hm, htn, htp⟩
+  have hF : FermatFourCase t.m t.n t.p := by
+    refine ⟨⟨2, le_rfl, ?_⟩, ?_, ?_⟩
+    · rw [hm]; rfl
+    · simpa [htn] using hn
+    · simpa [htp] using hp
+  exact not_PositiveBealTriple_of_FermatFourCase t hF
+
+/-- Beal on positive bases when every exponent is a
+power of 2 at least `4`.  This is FLT `n=4`, not the
+missing modularity arrow. -/
+theorem beal_pow2_exponents
+    {A B C m n p : Nat}
+    (hA : 0 < A) (hB : 0 < B) (hC : 0 < C)
+    (hm : 2 < m) (hn : 2 < n) (hp : 2 < p)
+    (heq : A ^ m + B ^ n = C ^ p)
+    (hF : FermatFourCase m n p) :
+    1 < Nat.gcd A (Nat.gcd B C) := by
+  by_cases hgt : 1 < Nat.gcd A (Nat.gcd B C)
+  · exact hgt
+  · have hpos : 0 < Nat.gcd A (Nat.gcd B C) :=
+      Nat.gcd_pos_of_pos_left _ hA
+    have h1 : Nat.gcd A (Nat.gcd B C) = 1 :=
+      Nat.le_antisymm (Nat.not_lt.mp hgt) (Nat.succ_le_of_lt hpos)
+    let t : PositiveBealTriple :=
+      ⟨A, B, C, m, n, p, hA, hB, hC, hm, hn, hp, heq, h1⟩
+    rcases PositiveBealTriple.eq_fourth_of_FermatFourCase t hF with
+      ⟨A', B', C', hA', hB', hC', heq'⟩
+    exact absurd heq' (fermatLastTheoremFour A' B' C' hA' hB' hC')
+
+/-- Either each exponent has a prime factor `≥ 5`, or
+all three are powers of 2 at least `4`.  Not a cover:
+`m=4, n=13, p=13` is neither. -/
+def FreyEllCase5Complete (m n p : Nat) : Prop :=
+  FreyEllCase5 m n p ∨ FermatFourCase m n p
+
+/-- Computable search for a prime `p ≤ bound` with
+`p ≡ 1 [MOD ℓ]` and `p ≥ 5`.  Not Dirichlet; may
+return `none`. -/
+def find_prime_congruent_one_mod (ℓ bound : Nat) : Option Nat :=
+  (List.range (bound + 1)).find? fun p =>
+    5 ≤ p ∧ Nat.Prime p ∧ p % ℓ = 1
+
+theorem find_prime_congruent_one_mod_spec {ℓ bound p : Nat}
+    (h : find_prime_congruent_one_mod ℓ bound = some p) :
+    p ∈ List.range (bound + 1) ∧ 5 ≤ p ∧ p.Prime ∧ p % ℓ = 1 := by
+  have hmem := List.mem_of_find?_eq_some h
+  have hpred : 5 ≤ p ∧ Nat.Prime p ∧ p % ℓ = 1 := by
+    have := List.find?_some h
+    exact of_decide_eq_true this
+  exact ⟨hmem, hpred⟩
+
+/-- Build a `TWAuxEll` from two supplied primes.  The
+requested field `∀ N, ¬ Q₁ ∣ N` is false (`Q₁ ∣ Q₁`). -/
+def TWAuxEll.of_primes (ℓ q1 q2 : Nat)
+    (h1P : q1.Prime) (h2P : q2.Prime)
+    (h1m : q1 % ℓ = 1) (h2m : q2 % (ℓ ^ 2) = 1)
+    (h15 : 5 ≤ q1) (h25 : 5 ≤ q2)
+    (hne : q1 ≠ q2) : TWAuxEll ℓ :=
+  ⟨q1, q2, h1P, h2P, h1m, h2m, h15, h25, hne⟩
+
+def TWAuxEll_of_ell (ℓ : Nat) (_hℓ : ℓ.Prime) (_h5 : 5 ≤ ℓ)
+    (q1 q2 : Nat)
+    (hq1 : q1.Prime ∧ q1 % ℓ = 1 ∧ 5 ≤ q1)
+    (hq2 : q2.Prime ∧ q2 % (ℓ ^ 2) = 1 ∧ 5 ≤ q2)
+    (hne : q1 ≠ q2) : TWAuxEll ℓ :=
+  TWAuxEll.of_primes ℓ q1 q2 hq1.1 hq2.1 hq1.2.1 hq2.2.1 hq1.2.2 hq2.2.2 hne
+
+def TWAuxEll_of13 : TWAuxEll 13 :=
+  TWAuxEll.of13
+
+theorem TWAuxEll_of13_Q :
+    TWAuxEll_of13.Q1ell = 53 ∧ TWAuxEll_of13.Q2ell = 677 :=
+  ⟨rfl, rfl⟩
+
+/-- The requested `∀ N, ¬ Q₁ ∣ N` is false. -/
+theorem not_forall_N_not_dvd_Q1 {ℓ : Nat} (tw : TWAuxEll ℓ) :
+    ¬ ∀ N : Nat, ¬ tw.Q1ell ∣ N :=
+  fun h => h tw.Q1ell dvd_rfl
+
+theorem TWAuxEll.Q1_not_dvd_two {ℓ : Nat} (tw : TWAuxEll ℓ) :
+    ¬ tw.Q1ell ∣ 2 := by
+  intro h
+  have h2 : tw.Q1ell = 2 :=
+    (Nat.prime_dvd_prime_iff_eq tw.Q1_prime Nat.prime_two).mp
+      (tw.Q1_prime.dvd_of_dvd_pow (by
+        have : 2 = 2 ^ 1 := by decide
+        exact this ▸ h))
+  exact (by decide : ¬ 5 ≤ 2) (h2 ▸ tw.Q1_ge5)
+
+theorem TWAuxEll.Q2_not_dvd_two {ℓ : Nat} (tw : TWAuxEll ℓ) :
+    ¬ tw.Q2ell ∣ 2 := by
+  intro h
+  have h2 : tw.Q2ell = 2 :=
+    (Nat.prime_dvd_prime_iff_eq tw.Q2_prime Nat.prime_two).mp
+      (tw.Q2_prime.dvd_of_dvd_pow (by
+        have : 2 = 2 ^ 1 := by decide
+        exact this ▸ h))
+  exact (by decide : ¬ 5 ≤ 2) (h2 ▸ tw.Q2_ge5)
+
+/-- Double-coset token at residual `ℓ`, with TW levels
+`N·Q₁(ℓ)` and `N·Q₂(ℓ)` recorded from the witness.
+Not Mathlib `End(J₀(N)[ℓ])` and not a proved
+`R∞ ≃ T∞`. -/
+def HeckeAction_N_real_ell_upgraded (N q ℓ : Nat) (_tw : TWAuxEll ℓ) :
+    EndJ0_N_ell N q ℓ :=
+  HeckeAction_N_real_ell N q ℓ
+
+theorem HeckeAction_N_real_ell_upgraded_tw (N q ℓ : Nat) (tw : TWAuxEll ℓ) :
+    (HeckeAction_N_real_ell_upgraded N q ℓ tw).residue = ℓ ∧
+      patchedLevel_N_Q1_ell N tw = N * tw.Q1ell ∧
+        patchedLevel_N_Q2_ell N tw = N * tw.Q2ell :=
+  ⟨rfl, rfl, rfl⟩
+
+/-- Mazur pack at residual `ℓ` using the TW primes of a
+`TWAuxEll` witness.  Not Mathlib modularity at `N/q`. -/
+structure MazurStepEllUpgraded
+    (t : PositiveBealTriple) (q ℓ : Nat) (tw : TWAuxEll ℓ) : Prop where
+  step : MazurStepEll t q ℓ
+  Q1_mod : tw.Q1ell % ℓ = 1
+  Q2_mod : tw.Q2ell % (ℓ ^ 2) = 1
+  tw_Q1 :
+    Nonempty
+      (R_infty (patchedLevel_N_Q1_ell (globalConductorTate t.toPrimitive) tw) ≃
+        T_infty (patchedLevel_N_Q1_ell (globalConductorTate t.toPrimitive) tw))
+  tw_Q2 :
+    Nonempty
+      (R_infty (patchedLevel_N_Q2_ell (globalConductorTate t.toPrimitive) tw) ≃
+        T_infty (patchedLevel_N_Q2_ell (globalConductorTate t.toPrimitive) tw))
+  rank_Q1 :
+    localizedHeckeRank
+      (patchedLevel_N_Q1_ell (globalConductorTate t.toPrimitive) tw) = 1
+  rank_Q2 :
+    localizedHeckeRank
+      (patchedLevel_N_Q2_ell (globalConductorTate t.toPrimitive) tw) = 1
+  hecke_up :
+    (HeckeAction_N_real_ell_upgraded
+        (globalConductorTate t.toPrimitive) q ℓ tw).residue = ℓ
+
+theorem mazur_step_real_ell_upgraded (t : PositiveBealTriple)
+    {q ℓ : Nat} (tw : TWAuxEll ℓ)
+    (hqMem : q ∈ (t.A * t.B * t.C).primeFactors) (hodd : q ≠ 2)
+    (hℓP : ℓ.Prime) (hℓ5 : 5 ≤ ℓ)
+    (hℓ : ℓ ∣ padicValInt q (freyCurveOf t.toPrimitive).Δ)
+    (hMod : Modular t.toPrimitive) :
+    MazurStepEllUpgraded t q ℓ tw where
+  step := mazur_step_ell t hqMem hodd hℓP hℓ5 hℓ hMod
+  Q1_mod := tw.Q1_mod
+  Q2_mod := tw.Q2_mod
+  tw_Q1 := R_T_at_N_Q1_ell (globalConductorTate t.toPrimitive) tw
+  tw_Q2 := R_T_at_N_Q2_ell (globalConductorTate t.toPrimitive) tw
+  rank_Q1 := localizedRankOne_from_Patching
+    (patchedLevel_N_Q1_ell (globalConductorTate t.toPrimitive) tw)
+  rank_Q2 := localizedRankOne_from_Patching
+    (patchedLevel_N_Q2_ell (globalConductorTate t.toPrimitive) tw)
+  hecke_up := rfl
+
+theorem mazur_step_real_ell_upgraded_of_witness
+    (t : PositiveBealTriple) (wit : FreyEllWitness t.m t.n t.p)
+    {q : Nat} (tw : TWAuxEll (ell_of_q t wit q))
+    (hq : q ∈ odd_q_divisors_N t) (hMod : Modular t.toPrimitive) :
+    MazurStepEllUpgraded t q (ell_of_q t wit q) tw := by
+  have hq' := Finset.mem_filter.mp hq
+  exact mazur_step_real_ell_upgraded t tw hq'.1 hq'.2
+    (ell_of_q_prime t wit q) (ell_of_q_ge5 t wit q)
+    (ell_of_q_dvd_vqDelta t wit hq'.1 hq'.2) hMod
+
+/-- Iterated pack under `FreyEllCase5`, with TW levels
+`N·Q₁(ℓ)` / `N·Q₂(ℓ)` available whenever a `TWAuxEll`
+witness is supplied.  The `FermatFourCase` branch is
+closed by FLT4 and is not a newform argument.
+Not `ExistsNewformLevel2`. -/
+structure RibetIteratedEllUpgraded (t : PositiveBealTriple) : Prop where
+  pack : RibetIteratedEllCase t
+  complete_or_pow2 :
+    FreyEllCase5Complete t.m t.n t.p
+  mazur_tw :
+    ∀ wit : FreyEllWitness t.m t.n t.p,
+      ∀ q ∈ odd_q_divisors_N t,
+        ∀ tw : TWAuxEll (ell_of_q t wit q),
+          MazurStepEllUpgraded t q (ell_of_q t wit q) tw
+  level_two : ribet_iterated_real_level t = 2
+  no_newform : ¬ ExistsNewformLevel2
+
+theorem ribet_iterated_ell_upgraded (t : PositiveBealTriple)
+    (hCase : FreyEllCase5 t.m t.n t.p)
+    (hMod : Modular t.toPrimitive) :
+    RibetIteratedEllUpgraded t where
+  pack := ribet_iterated_ell_case t hCase hMod
+  complete_or_pow2 := Or.inl hCase
+  mazur_tw := fun wit q hq tw =>
+    mazur_step_real_ell_upgraded_of_witness t wit (q := q) tw hq hMod
+  level_two := ribet_iterated_real_level_eq_two t
+  no_newform := no_newform_level2
+
+/-- Honesty: `FreyEllCase5Complete` does not inhabit
+`ExistsNewformLevel2`.  The power-of-2 branch is FLT4;
+the `ℓ ≥ 5` branch is still the missing arrow. -/
+theorem modular_at_two_ell_upgraded_is_not_newform
+    (t : PositiveBealTriple)
+    (_h : FreyEllCase5Complete t.m t.n t.p)
+    (_hMod : Modular t.toPrimitive) :
+    ¬ ExistsNewformLevel2 :=
+  no_newform_level2
+
+def not_PositiveBealTriple_of_FreyEllCase5Complete : Prop :=
+  ∀ t : PositiveBealTriple, FreyEllCase5Complete t.m t.n t.p → False
+
+/-- Beal on positive bases, *from* the missing Mathlib
+arrow, even after assuming every positive triple is a
+`FreyEllCase5Complete`.  The power-of-2 subcase is
+already `beal_pow2_exponents`.  Not unconditional Beal. -/
+theorem beal_from_ribet_ell_upgraded
+    (_hCase : ∀ t : PositiveBealTriple, FreyEllCase5Complete t.m t.n t.p)
+    (hModNew : ModularImpliesLevel2Newform) :
+    ∀ A B C m n p : Nat,
+      0 < A → 0 < B → 0 < C →
+      2 < m → 2 < n → 2 < p →
+      A ^ m + B ^ n = C ^ p →
+      1 < Nat.gcd A (Nat.gcd B C) :=
+  beal_from_ribet_real hModNew
+
 #check q_expansion_26a1
 #check q_expansion_26b1
 #check q_expansion_26a1_int
@@ -1608,6 +1923,16 @@ theorem beal_from_ribet_ell_case
 #check N_div_Prod_eq_2_of_FreyEllCase5
 #check TWAuxEll
 #check wiles_modularity_Frey_mod_ell
+#check fermat_four_lemma
+#check FermatFourCase
+#check FreyEllCase5Complete
+#check find_prime_congruent_one_mod
+#check TWAuxEll_of_ell
+#check HeckeAction_N_real_ell_upgraded
+#check mazur_step_real_ell_upgraded
+#check ribet_iterated_ell_upgraded
+#check beal_from_ribet_ell_upgraded
+#check beal_pow2_exponents
 #check X0_N_Model
 #check J0_N_Model
 #check J0_N_real
@@ -1651,5 +1976,13 @@ theorem beal_from_ribet_ell_case
 #print axioms beal_from_ribet_ell_case
 #print axioms TWAuxEllExists_13
 #print axioms wiles_modularity_Frey_mod_ell
+#print axioms fermat_four_lemma
+#print axioms not_PositiveBealTriple_of_FermatFourCase
+#print axioms not_FreyEllCase5_of_exp_four_reduced
+#print axioms beal_pow2_exponents
+#print axioms mazur_step_real_ell_upgraded
+#print axioms ribet_iterated_ell_upgraded
+#print axioms beal_from_ribet_ell_upgraded
+#print axioms not_forall_N_not_dvd_Q1
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur
