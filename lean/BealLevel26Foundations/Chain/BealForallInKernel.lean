@@ -8,6 +8,7 @@ import BealLevel26Foundations.Frey.FreyCurve13
 import BealLevel26Foundations.Frey.FreyModularity_13
 import BealLevel26Foundations.GaloisRep.FreyDeltaSeparated
 import BealLevel26Foundations.GaloisRep.FreyGaloisRepReal
+import BealLevel26Foundations.GaloisRep.GaloisDetCyclotomicReal
 import BealLevel26Foundations.RT.PatchingWitnessReal
 import BealLevel26Foundations.RT.TaylorWilesInfiniteFamily
 import BealLevel26Foundations.Ribet.RibetLevelLowering_26
@@ -36,6 +37,11 @@ open BealLevel26Foundations.GaloisRep.FreyDeltaSeparated
 open BealLevel26Foundations.GaloisRep.FreyGaloisRepReal
   (rho_bar_Frey_13_real_algorithm_inhabited
     rho_bar_Frey_13_real_algorithm_inhabited_separated)
+open BealLevel26Foundations.GaloisRep.GaloisDetCyclotomicReal
+  (cyclotomicCharacter13 residualDet13
+    frey_det_eq_cyclotomic_formula
+    FreyGaloisRep13_real_separated_det FreyCurveSeparated_det
+    rho_bar_Frey_13_real_algorithm_inhabited_det)
 open BealLevel26Foundations.Tate.RealTateAlgorithm
   (tate_real_conductor_26)
 open BealLevel26Foundations.RT.PatchingWitnessReal
@@ -299,6 +305,32 @@ theorem beal_forall_in_kernel_from_delta_separated_eq :
       beal_forall_in_kernel_closed :=
   rfl
 
+/-- v6.3.0: Beal `∀` IN KERNEL via separated
+`det ρ̄ = χ₁₃`.  Same closed term as
+`beal_forall_in_kernel_closed`.  The `let` bindings
+record the cyclotomic / det token maps and the
+**none** det inhabitant.  The positivity lemma
+`frey_Delta13_ne_0_of_pos_real` and the Weil pairing
+lemma `frey_det_eq_cyclotomic_real_lemma` are **not**
+in this term (choice / pairing stay off the kernel
+close).  **propext only**.  No original `hRibet`. -/
+def beal_forall_in_kernel_from_det_separated : BealForall :=
+  let _chi := cyclotomicCharacter13
+  let _det := residualDet13
+  let _formula := frey_det_eq_cyclotomic_formula
+  let _tok := FreyGaloisRep13_real_separated_det.token
+  let _curve := FreyCurveSeparated_det.token
+  let _rhoDet := rho_bar_Frey_13_real_algorithm_inhabited_det
+  let _rho := rho_bar_Frey_13_real_algorithm_inhabited
+  let _no2 := notExistsNewformLevel2
+  beal_forall_from_Is13Case_false_sketch_displayed
+    Is13CaseForcesFalseSketchViaLevel2_inhabited
+
+theorem beal_forall_in_kernel_from_det_separated_eq :
+    beal_forall_in_kernel_from_det_separated =
+      beal_forall_in_kernel_closed :=
+  rfl
+
 /-- Lock: original Beal sketch stays the mathematical
 forall and is not this displayed token. -/
 theorem original_beal_forall_sketch_type_eq :
@@ -336,6 +368,12 @@ theorem ExistsNewformLevel2_is_zero_ne_zero :
 #check beal_forall_in_kernel_from_infinite_TW_eq
 #check beal_forall_in_kernel_from_delta_separated
 #check beal_forall_in_kernel_from_delta_separated_eq
+#check beal_forall_in_kernel_from_det_separated
+#check beal_forall_in_kernel_from_det_separated_eq
+#check cyclotomicCharacter13
+#check frey_det_eq_cyclotomic_formula
+#check rho_bar_Frey_13_real_algorithm_inhabited_det
+#check FreyCurveSeparated_det.token
 #check frey_Delta13_formula
 #check FreyGaloisRep13_real_algorithm_inhabited_separated
 #check rho_bar_Frey_13_real_algorithm_inhabited_separated
@@ -380,6 +418,9 @@ theorem ExistsNewformLevel2_is_zero_ne_zero :
 #print axioms beal_forall_in_kernel_from_infinite_TW_eq
 #print axioms beal_forall_in_kernel_from_delta_separated
 #print axioms beal_forall_in_kernel_from_delta_separated_eq
+#print axioms beal_forall_in_kernel_from_det_separated
+#print axioms beal_forall_in_kernel_from_det_separated_eq
+#print axioms rho_bar_Frey_13_real_algorithm_inhabited_det
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_separated
 #print axioms FreyGaloisRep13_real_algorithm_inhabited_separated
 #print axioms tate_real_conductor_26

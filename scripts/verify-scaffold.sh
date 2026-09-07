@@ -150,6 +150,7 @@ test -f lean/Beal/Foundations/FormalImmersionM3.lean
 test -f lean/Beal/Foundations/FormalImmersionM3Certificate.lean
 test -f lean/BealLevel26Foundations/GaloisRep/FreyGaloisRepReal.lean
 test -f lean/BealLevel26Foundations/GaloisRep/FreyDeltaSeparated.lean
+test -f lean/BealLevel26Foundations/GaloisRep/GaloisDetCyclotomicReal.lean
 test -f lean/BealLevel26Foundations/Tate/RealTateAlgorithm.lean
 test -f lean/BealLevel26Foundations/RT/PatchingWitnessReal.lean
 test -f lean/BealLevel26Foundations/RT/TaylorWilesInfiniteFamily.lean
@@ -163,6 +164,18 @@ grep -q "theorem frey_Delta13_ne_0_of_pos_real" \
 grep -q "def FreyGaloisRep13_real_algorithm_inhabited_separated" \
   lean/BealLevel26Foundations/GaloisRep/FreyDeltaSeparated.lean
 grep -q "def beal_forall_in_kernel_from_delta_separated" \
+  lean/BealLevel26Foundations/Chain/BealForallInKernel.lean
+grep -q "def cyclotomicCharacter13" \
+  lean/BealLevel26Foundations/GaloisRep/GaloisDetCyclotomicReal.lean
+grep -q "def frey_det_eq_cyclotomic_formula" \
+  lean/BealLevel26Foundations/GaloisRep/GaloisDetCyclotomicReal.lean
+grep -q "def frey_det_eq_cyclotomic_real_lemma" \
+  lean/BealLevel26Foundations/GaloisRep/GaloisDetCyclotomicReal.lean
+grep -q "def rho_bar_Frey_13_real_algorithm_inhabited_det" \
+  lean/BealLevel26Foundations/GaloisRep/GaloisDetCyclotomicReal.lean
+grep -q "def FreyCurveSeparated_det.token" \
+  lean/BealLevel26Foundations/GaloisRep/GaloisDetCyclotomicReal.lean
+grep -q "def beal_forall_in_kernel_from_det_separated" \
   lean/BealLevel26Foundations/Chain/BealForallInKernel.lean
 grep -q "theorem tate_real_conductor_26" \
   lean/BealLevel26Foundations/Tate/RealTateAlgorithm.lean
@@ -188,6 +201,7 @@ if grep -nE \
     '^import[[:space:]]+(BealLevel26Foundations\.Final|BealLevel26Foundations\.Mazur\.BealTheoremFromMazurChain26|BealLevel26Foundations\.Chain\.PathLock|BealLevel26Foundations\.Chain\.BealForallInKernel|BealLevel26Foundations\.Beal\.BealForall)' \
     lean/BealLevel26Foundations/GaloisRep/FreyGaloisRepReal.lean \
     lean/BealLevel26Foundations/GaloisRep/FreyDeltaSeparated.lean \
+    lean/BealLevel26Foundations/GaloisRep/GaloisDetCyclotomicReal.lean \
     lean/BealLevel26Foundations/Tate/RealTateAlgorithm.lean \
     lean/BealLevel26Foundations/RT/PatchingWitnessReal.lean \
     lean/BealLevel26Foundations/RT/TaylorWilesInfiniteFamily.lean; then
@@ -197,6 +211,11 @@ fi
 if grep -q "import BealLevel26Foundations.GaloisRep.FreyGaloisRepReal" \
     lean/BealLevel26Foundations/GaloisRep/FreyDeltaSeparated.lean; then
   echo "FAIL: FreyDeltaSeparated must not import FreyGaloisRepReal (cycle)"
+  exit 1
+fi
+if grep -q "import BealLevel26Foundations.GaloisRep.FreyGaloisRepReal" \
+    lean/BealLevel26Foundations/GaloisRep/GaloisDetCyclotomicReal.lean; then
+  echo "FAIL: GaloisDetCyclotomicReal must not import FreyGaloisRepReal (cycle)"
   exit 1
 fi
 if grep -q "import BealLevel26Foundations.RT.PatchingWitnessReal" \
@@ -496,6 +515,7 @@ do
   grep -q "v6.1.1-iter-about-catchup-22559449" "$readme"
   grep -q "v6.2.0-iter-frey-delta-separated" "$readme"
   grep -q "v6.2.1-iter-about-catchup-22562014" "$readme"
+  grep -q "v6.3.0-iter-det-cyclotomic-real" "$readme"
 done
 grep -q "0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151" \
   sagemath/README.md

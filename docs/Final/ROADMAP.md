@@ -230,3 +230,16 @@ positivity).  Docs lock.  No Lean change.  HEAD
 → 22558788 → 22559130 → 22559449 → 22560793
 → 22562014`.
 
+### v6.3.0-iter-det-cyclotomic-real — DONE
+
+`det ρ̄ = χ₁₃` computable none field.  Token maps
+`cyclotomicCharacter13` / `residualDet13` **none**.
+`frey_det_eq_cyclotomic_formula` **none**.
+`frey_det_eq_cyclotomic_real_lemma` Weil pairing
+**propext only**, off the none inhabitant.
+`rho_bar_Frey_13_real_algorithm_inhabited_det`
+**none**.  `beal_forall_in_kernel_from_det_separated`
+**propext only**.  Official build **17 modules**.
+About still lists written mint `22562014` until
+v6.3.1.
+

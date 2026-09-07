@@ -16,6 +16,7 @@ open BealLevel26Foundations.Chain.BealForallInKernel
     beal_forall_in_kernel_from_real_algorithms
     beal_forall_in_kernel_from_infinite_TW
     beal_forall_in_kernel_from_delta_separated
+    beal_forall_in_kernel_from_det_separated
     is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel_closed)
 open BealLevel26Foundations.Chain.Level2
 open BealLevel26Foundations.Frey.FreyConductor26
@@ -173,6 +174,7 @@ theorem path_lock_13_2_1 :
 #check beal_forall_in_kernel_from_real_algorithms
 #check beal_forall_in_kernel_from_infinite_TW
 #check beal_forall_in_kernel_from_delta_separated
+#check beal_forall_in_kernel_from_det_separated
 #check is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel_closed
 #check notExistsNewformLevel2
 #check ribet_produces_newform_level2_of_weierstrass_modularity
@@ -192,6 +194,7 @@ theorem path_lock_13_2_1 :
 #print axioms beal_forall_in_kernel_from_real_algorithms
 #print axioms beal_forall_in_kernel_from_infinite_TW
 #print axioms beal_forall_in_kernel_from_delta_separated
+#print axioms beal_forall_in_kernel_from_det_separated
 #print axioms is13Case_false_implies_Beal_of_R_T_after_tate_ribet_table_in_kernel_closed
 
 end BealLevel26Foundations.Chain.PathLock

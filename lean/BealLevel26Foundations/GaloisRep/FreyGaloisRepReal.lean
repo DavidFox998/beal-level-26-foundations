@@ -1,6 +1,7 @@
 import BealLevel26Foundations.Base.BealCounterexampleBase
 import BealLevel26Foundations.Frey.FreyCurve13
 import BealLevel26Foundations.GaloisRep.FreyDeltaSeparated
+import BealLevel26Foundations.GaloisRep.GaloisDetCyclotomicReal
 import BealLevel26Foundations.Real.FreyWeierstrass
 
 namespace BealLevel26Foundations.GaloisRep.FreyGaloisRepReal
@@ -11,6 +12,10 @@ open BealLevel26Foundations.Frey.FreyCurve13
   (frey_Delta13_ne_0_of_pos FreyCurve13_of_BealCounterexampleBases)
 open BealLevel26Foundations.GaloisRep.FreyDeltaSeparated
   (FreyCurveSeparated FreyGaloisRep13_real_algorithm_inhabited_separated)
+open BealLevel26Foundations.GaloisRep.GaloisDetCyclotomicReal
+  (FreyGaloisRep13_real_separated_det FreyCurveSeparated_det
+    rho_bar_Frey_13_real_algorithm_inhabited_det
+    cyclotomicCharacter13 frey_det_eq_cyclotomic_formula)
 open BealLevel26Foundations.Real.FreyWeierstrass
 
 /-!
@@ -118,7 +123,9 @@ coefficient `16` and exponent `13`.  Conductor is
 kept off this token so the inhabitant stays **none**.
 v6.2.0: the Int formula and `A > 0`, `B > 0`,
 `A¹³+B¹³ ≠ 0` positivity live in
-`FreyDeltaSeparated` and are not unfolded here. -/
+`FreyDeltaSeparated` and are not unfolded here.
+v6.3.0: `det ρ̄ = χ₁₃` / Weil pairing live in
+`GaloisDetCyclotomicReal` and are not unfolded here. -/
 def FreyGaloisRep13.token : FreyGaloisRep13 where
   A := 13
   B := 2
@@ -174,6 +181,14 @@ def rho_bar_Frey_13_real_algorithm_inhabited_separated :
     Nonempty FreyGaloisRep13 :=
   rho_bar_Frey_13_real_algorithm_inhabited
 
+/-- v6.3.0 alias of the det token.  Same **none**
+as `GaloisDetCyclotomicReal.rho_bar_Frey_13_real_algorithm_inhabited_det`.
+Weil pairing / `det = χ₁₃` lemma stay off this
+Galois inhabitant. -/
+def rho_bar_Frey_13_real_algorithm_inhabited_det_alias :
+    Nonempty FreyGaloisRep13_real_separated_det :=
+  rho_bar_Frey_13_real_algorithm_inhabited_det
+
 #check FreyCurve
 #check FreyCurve_Delta
 #check FreyGaloisRep13
@@ -181,6 +196,12 @@ def rho_bar_Frey_13_real_algorithm_inhabited_separated :
 #check FreyGaloisRep13.conductor_eq
 #check rho_bar_Frey_13_real_algorithm_inhabited
 #check rho_bar_Frey_13_real_algorithm_inhabited_separated
+#check rho_bar_Frey_13_real_algorithm_inhabited_det
+#check rho_bar_Frey_13_real_algorithm_inhabited_det_alias
+#check cyclotomicCharacter13
+#check frey_det_eq_cyclotomic_formula
+#check FreyGaloisRep13_real_separated_det
+#check FreyCurveSeparated_det
 #check frey_Delta13_ne_0_of_pos_real
 #check FreyGaloisRep13_real_algorithm_inhabited_separated
 #check FreyCurveSeparated
@@ -189,5 +210,7 @@ def rho_bar_Frey_13_real_algorithm_inhabited_separated :
 #print axioms FreyGaloisRep13.token
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_separated
+#print axioms rho_bar_Frey_13_real_algorithm_inhabited_det
+#print axioms rho_bar_Frey_13_real_algorithm_inhabited_det_alias
 
 end BealLevel26Foundations.GaloisRep.FreyGaloisRepReal

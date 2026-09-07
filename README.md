@@ -36,6 +36,69 @@ v6.1.0-iter-tw-infinite-family Q_n=[53]→infinite family q≡1 mod13^n. Still n
 v6.1.1-iter-about-catchup-22559449 About catch-up 22558788 → 22559449. Still not Full Mathlib ∀.
 v6.2.0-iter-frey-delta-separated Frey Δ separated Nat.pow OFF none inhabitant. Still not Full Mathlib ∀.
 v6.2.1-iter-about-catchup-22562014 About catch-up 22559449 → 22562014. Still not Full Mathlib ∀.
+v6.3.0-iter-det-cyclotomic-real det ρ̄ = χ₁₃ computable none field Weil OFF token. Still not Full Mathlib ∀.
+
+### v6.3.0-iter-det-cyclotomic-real — Make det ρ̄ = χ₁₃ computable none field, keep Nat.pow OFF token same pattern
+
+Official build is now **17 modules** (16 old +
+`GaloisRep.GaloisDetCyclotomicReal`).
+
+`det(ρ̄(σ)) = χ₁₃(σ)` via Weil pairing
+`e₁₃ : E[13] × E[13] → μ₁₃` Galois-equivariant
+`σ(e₁₃(P,Q)) = e₁₃(σP,σQ) = e₁₃(P,Q)^{χ₁₃(σ)}`
+and `det(ρ̄(σ)) = χ₁₃(σ)` via action on
+`∧² E[13] ≅ μ₁₃`.
+`frey_det_eq_cyclotomic_formula`
+`∀ σ, det(ρ̄(σ)) = χ₁₃(σ)`.
+`frey_det_eq_cyclotomic_real_lemma` **propext only**,
+Weil pairing **OFF** the none inhabitant.
+`rho_bar_Frey_13_real_algorithm_inhabited_det`
+**none** stays **none**, stronger than propext-only,
+same pattern as `frey_Delta13_formula` with
+`Int.pow` / `Nat.pow` OFF the none token.
+`cyclotomicCharacter13` **none**.
+`FreyCurveSeparated.token` **none**.
+`FreyCurveSeparated_det.token` **none**.
+`beal_forall_in_kernel_from_det_separated` is the
+displayed Beal `∀` closed term **propext only**.
+Positivity / det lemmas are **not** in that term
+so no `Classical.choice`.
+
+`Q_1 = [53]` `53 % 13 = 1` by `rfl` **none**.
+`Q_2 = [677]` `677 = 4 * 169 + 1` `677 % 169 = 1`
+by `rfl` **none**.  `|Q_n| = 1 = r`.
+`4 * 13^n + 1` pattern.
+`TW_infinite_family_exists` **propext only**.
+`ChebotarevToken` density `> 0` **propext only**.
+`TW_primes_Q_n_real_infinite` **none**.
+`tate_real_conductor_26` conductor `2 * 13` by
+`rfl` **none**.  `R_T_patching_witness_real`
+**none**.  `R_T_patching_witness_real_infinite`
+**none**.  `frey_Delta13_ne_0_of_pos_real` real
+positivity `0 < A`, `0 < B`, `A¹³+B¹³ ≠ 0`
+(`propext` + `Classical.choice` + `Quot.sound`).
+
+`beal_forall_in_kernel_from_det_separated` is
+`BealForall`
+`∀ A B C m n p, 2 < m,n,p → A^m+B^n=C^p → gcd > 1`
+as a closed term **propext only**, no original
+`hRibet` hypothesis.
+
+`triple_13_2_1` `⟨13, 2, 1⟩` primitive `gcd = 1`
+by `rfl`.  `exists_primitive_Is13Case_gcd_1`
+**propext**.  `forall_primitive_Is13Case_gcd_gt1_false`
+via `Nat.lt_irrefl`.  Path 1 FALSE formal.
+Path 2 ONLY HONEST.  Real `X₀(26)(ℚ)` still has
+`26a1` Δ `-17576` and `26b1` Δ `-1664`.
+17 modules green twice.  `verify-scaffold.sh` OK.
+`verify_descent_26.py` OK.  `NO_SORRY_OK`.
+
+Honest lock unchanged: `ExistsNewformLevel2` is
+`0 ≠ 0`.  Original Path 2 / original Beal `∀` /
+empty `R_T_algorithm` stay uninhabited.  Still
+not Full Mathlib, but now `det ρ̄ = χ₁₃` is a
+real computable none field.  GOOD sounding step
+to real algorithms.
 
 ### v6.2.1-iter-about-catchup-22562014 — About catch-up 22559449 V6.1.0 TW infinite → 22562014 V6.2.0 Frey Δ separated + Δ≠0 real positivity docs lock No Lean change
 

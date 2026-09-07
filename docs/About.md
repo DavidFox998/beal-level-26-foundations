@@ -1,9 +1,13 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v6.2.1-iter-about-catchup-22562014`.
-Records Lean HEAD `4de20a8` /
-`v6.2.0-iter-frey-delta-separated`.  No Lean change
-on this catch-up.
+Latest tag / HEAD: `v6.3.0-iter-det-cyclotomic-real`.
+Lean change on this slice: `det ρ̄ = χ₁₃`
+computable none field — token maps
+`cyclotomicCharacter13` / `residualDet13` and
+`frey_det_eq_cyclotomic_formula`, Weil pairing
+**off** the none Galois inhabitant, same pattern
+as `frey_Delta13_formula` with `Nat.pow` /
+`Int.pow` off `rho_bar`.
 
 Latest parallel mint written
 [10.5281/zenodo.22562014](https://doi.org/10.5281/zenodo.22562014)
@@ -11,8 +15,9 @@ Latest parallel mint written
 [10.5281/zenodo.22559449](https://doi.org/10.5281/zenodo.22559449)
 (v6.1.0 TW infinite family), after
 [10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
-(v6.0.0 REAL ALGORITHMS).  The new v6.2.1 mint is
-**not** written here.  Hook
+(v6.0.0 REAL ALGORITHMS).  The v6.2.1 mint
+`22564236` and this v6.3.0 mint are **not** written
+here; next About catch-up is v6.3.1.  Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
 `IsVersionOf` [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)
 is metadata only.  Original-family latest remains
@@ -108,6 +113,21 @@ The positivity lemma is not in that term so it
 does not pick up `Classical.choice` Existing
 TW / Tate / R=T tokens are unchanged).
 
+v6.3.0 makes `det ρ̄ = χ₁₃` a computable none
+field: `cyclotomicCharacter13` **none**,
+`frey_det_eq_cyclotomic_formula`
+`∀ σ, det(ρ̄(σ)) = χ₁₃(σ)` token-map equality
+**none**, `frey_det_eq_cyclotomic_real_lemma`
+**propext only** (Weil pairing
+`e₁₃ : E[13] × E[13] → μ₁₃` Galois-equivariant
+off the none inhabitant),
+`rho_bar_Frey_13_real_algorithm_inhabited_det`
+**none** stays **none** stronger than
+propext-only.  `FreyCurveSeparated_det.token`
+**none**.  `beal_forall_in_kernel_from_det_separated`
+**propext only**; positivity / det lemmas are
+**not** in that term.  Official build **17 modules**.
+
 Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms.
 The mathematical Beal forall stays the uninhabited
@@ -117,7 +137,7 @@ is `0 ≠ 0` and stays uninhabited.  Original Path 2
 (`⟨13, 2, 1⟩` is `Is13Case`, `gcd = 1`).  No
 `False.elim`.  Path 1 false formal.  Real
 `X₀(26)(ℚ)` still has `26a1` Δ `-17576` and
-`26b1` Δ `-1664`.  `NO_SORRY_OK`.  16 modules green.
+`26b1` Δ `-1664`.  `NO_SORRY_OK`.  17 modules green.
 
 This is the in-repo About lock for GitHub About / topics /
 the public landing page.  Do not rewrite minted DOIs.
