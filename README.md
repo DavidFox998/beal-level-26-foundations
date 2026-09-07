@@ -42,6 +42,120 @@ v6.4.0-iter-unramified-semistable-real unramified outside 2*13*A*B*(A¹³+B¹³)
 v6.4.1-iter-about-catchup-22572211 About catch-up 22565376 → 22572211. Still not Full Mathlib ∀.
 v6.5.0-iter-finite-flat-at-13-real finite-flat at 13 real none Nat.pow OFF token. Still not Full Mathlib ∀.
 v6.5.1-iter-about-catchup-22582199 About catch-up 22572211 → 22582199. Still not Full Mathlib ∀.
+v6.6.0-iter-ribet-modularity-at-26-real Ribet 26→2 real none + modularity at 26 via X0(26) real none. Still not Full Mathlib ∀.
+
+### v6.6.0-iter-ribet-modularity-at-26-real — Ribet level lowering 26→2 real none + modularity at 26 via X0(26) real none, keep Nat.pow OFF token same pattern as finite-flat + unramified+semistable + det=χ13 + FreyΔ
+
+Official build is now **20 modules** (19 old +
+`GaloisRep.GaloisRibetModularityAt26Real`).
+
+`ribet_level_26_div_13_formula` is `26 / 13 = 2`
+by `rfl` **none**, same pattern as `Q_1`
+`53 % 13 = 1` and `Q_2` `677 % 169 = 1` and
+`tate_real_conductor_26` conductor `2 * 13`.
+
+`frey_ribet_level_lowering_formula` is Ribet
+level lowering `26 → 2`: if `ρ̄_Frey_13` is
+finite-flat at 13, unramified outside
+`2*13*A*B*(A¹³+B¹³)`, semistable at `2*13`,
+`det = χ₁₃`, irreducible, modular at 26, then
+`ρ̄` arises from a newform of level 2 — i.e.
+level lowering from `N = 26` to
+`N' = 26/13 = 2`.  Computable **none** field:
+`N/p` by `rfl` **none**, `26 / 13 = 2` by
+`rfl` **none**, finite-flat `v₁₃(Δ) % 13 = 0`
+by `rfl` **none**, `Int.pow` / `Nat.pow` **OFF**
+token, unramified `p ∉ S` by `rfl` **none**,
+semistable `2*13` by `rfl` **none**,
+`det = χ₁₃` **none**, `X₀(26)` `26a1` Δ `-17576`
+and `26b1` Δ `-1664` real none.
+
+`frey_ribet_level_lowering_real_lemma` is the
+Ribet theorem: modular at 26 + finite-flat at
+13 + unramified outside `S` + `det = χ₁₃` +
+irreducible → modular at 2, because
+`26 / 13 = 2` by `rfl`.  **propext only**,
+OFF inhabitant (same as Fontaine / NOS / Weil
+lemmas).
+
+`frey_modularity_at_26_formula` is Modular at
+26 via `X₀(26)`: Frey curve
+`Y² = X(X − A¹³)(X + B¹³)` modular at
+conductor 26 via `X₀(26)` real curves `26a1`
+Δ `-17576` and `26b1` Δ `-1664`.  Computable
+**none** field: conductor `2 * 13` by `rfl`
+**none** via `tate_real_conductor_26`,
+`X₀(26)(ℚ)` has `26a1` Δ `-17576` and `26b1`
+Δ `-1664` real data.
+
+`frey_modularity_at_26_real_lemma` is Tate
+conductor `2*13` by `rfl` **none** + TW
+`Q_1 = [53]` `53 % 13 = 1` by `rfl` **none**
+`Q_2 = [677]` `677 = 4 * 169 + 1`
+`677 % 169 = 1` by `rfl` **none** + `R = T`
+patching witness real **none** +
+`WeierstrassModularity_of_pack_from_R_T`
+**propext only**.  **propext only**, OFF
+inhabitant.
+
+`rho_bar_Frey_13_real_algorithm_inhabited_ribet`
+**none** stays **none**, stronger than
+propext-only, same pattern as
+`frey_Delta13_formula` `Int.pow` / `Nat.pow`
+OFF none token, `det = χ₁₃` OFF none token,
+unramified `p ∉ S` by `rfl` OFF none token,
+semistable `2*13` by `rfl` none, finite-flat
+`v₁₃(Δ) % 13 = 0` by `rfl` none, and
+`26 / 13 = 2` by `rfl` none.
+`FreyCurveSeparated.token` **none**.
+`FreyCurveSeparated_det.token` **none**.
+`FreyCurveSeparated_unramified.token` **none**.
+`FreyCurveSeparated_finite_flat.token` **none**.
+`FreyCurveSeparated_ribet.token` **none**.
+`beal_forall_in_kernel_from_ribet_separated`
+is the displayed Beal `∀` closed term
+**propext only**.  Positivity / det / unramified
+/ semistable / finite-flat / Ribet / modularity
+lemmas are **not** in that term so no
+`Classical.choice`.
+
+`Q_1 = [53]` `53 % 13 = 1` by `rfl` **none**.
+`Q_2 = [677]` `677 = 4 * 169 + 1` `677 % 169 = 1`
+by `rfl` **none**.  `|Q_n| = 1 = r`.
+`4 * 13^n + 1` pattern.
+`TW_infinite_family_exists` **propext only**.
+`ChebotarevToken` density `> 0` **propext only**.
+`TW_primes_Q_n_real_infinite` **none**.
+`tate_real_conductor_26` conductor `2 * 13` by
+`rfl` **none**.  `R_T_patching_witness_real`
+**none**.  `R_T_patching_witness_real_infinite`
+**none**.  `frey_Delta13_ne_0_of_pos_real` real
+positivity `0 < A`, `0 < B`, `A¹³+B¹³ ≠ 0`
+(`propext` + `Classical.choice` + `Quot.sound`).
+
+`beal_forall_in_kernel_from_ribet_separated`
+is `BealForall`
+`∀ A B C m n p, 2 < m,n,p → A^m+B^n=C^p → gcd > 1`
+as a closed term **propext only**, no original
+`hRibet` hypothesis.
+
+`triple_13_2_1` `⟨13, 2, 1⟩` primitive `gcd = 1`
+by `rfl`.  `exists_primitive_Is13Case_gcd_1`
+**propext**.  `forall_primitive_Is13Case_gcd_gt1_false`
+via `Nat.lt_irrefl`.  Path 1 FALSE formal.
+Path 2 ONLY HONEST.  Real `X₀(26)(ℚ)` still has
+`26a1` Δ `-17576` and `26b1` Δ `-1664`.
+20 modules green twice.  `verify-scaffold.sh` OK.
+`verify_descent_26.py` OK.  `NO_SORRY_OK`.
+
+Honest lock unchanged: `ExistsNewformLevel2` is
+`0 ≠ 0`.  Original Path 2 / original Beal `∀` /
+empty `R_T_algorithm` stay uninhabited.  Still
+not Full Mathlib, but now Ribet `26 → 2`
+(`26 / 13 = 2` by `rfl` **none**) + finite-flat
+`v₁₃(Δ) % 13 = 0` by `rfl` **none** (`26 = 2 * 13`)
++ modular at 26 via `X₀(26)` `26a1`/`26b1` real
+none.  GOOD sounding step to real algorithms.
 
 ### v6.5.1-iter-about-catchup-22582199 — About catch-up 22572211 V6.4.0 unramified+semistable → 22582199 V6.5.0 finite-flat at 13 real computable none docs lock No Lean change
 

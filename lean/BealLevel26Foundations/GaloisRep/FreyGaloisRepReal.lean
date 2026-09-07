@@ -4,6 +4,7 @@ import BealLevel26Foundations.GaloisRep.FreyDeltaSeparated
 import BealLevel26Foundations.GaloisRep.GaloisDetCyclotomicReal
 import BealLevel26Foundations.GaloisRep.GaloisUnramifiedSemistableReal
 import BealLevel26Foundations.GaloisRep.GaloisFiniteFlatAt13Real
+import BealLevel26Foundations.GaloisRep.GaloisRibetModularityAt26Real
 import BealLevel26Foundations.Real.FreyWeierstrass
 
 namespace BealLevel26Foundations.GaloisRep.FreyGaloisRepReal
@@ -27,6 +28,12 @@ open BealLevel26Foundations.GaloisRep.GaloisFiniteFlatAt13Real
   (FreyGaloisRep13_real_finite_flat FreyCurveSeparated_finite_flat
     rho_bar_Frey_13_real_algorithm_inhabited_finite_flat
     frey_finite_flat_at_13_formula)
+open BealLevel26Foundations.GaloisRep.GaloisRibetModularityAt26Real
+  (FreyGaloisRep13_real_ribet FreyCurveSeparated_ribet
+    rho_bar_Frey_13_real_algorithm_inhabited_ribet
+    ribet_level_26_div_13_formula
+    frey_ribet_level_lowering_formula
+    frey_modularity_at_26_formula)
 open BealLevel26Foundations.Real.FreyWeierstrass
 
 /-!
@@ -142,6 +149,10 @@ live in `GaloisUnramifiedSemistableReal` and are
 not unfolded here.
 v6.5.0: finite-flat-at-13 / `v₁₃(Δ) % 13 = 0`
 live in `GaloisFiniteFlatAt13Real` and are
+not unfolded here.
+v6.6.0: Ribet `26 → 2` / modularity at 26
+via `X₀(26)` live in
+`GaloisRibetModularityAt26Real` and are
 not unfolded here. -/
 def FreyGaloisRep13.token : FreyGaloisRep13 where
   A := 13
@@ -223,6 +234,15 @@ def rho_bar_Frey_13_real_algorithm_inhabited_finite_flat_alias :
     Nonempty FreyGaloisRep13_real_finite_flat :=
   rho_bar_Frey_13_real_algorithm_inhabited_finite_flat
 
+/-- v6.6.0 alias of the Ribet token.  Same
+**none** as
+`GaloisRibetModularityAt26Real.rho_bar_Frey_13_real_algorithm_inhabited_ribet`.
+Ribet / modularity lemmas stay off this
+inhabitant. -/
+def rho_bar_Frey_13_real_algorithm_inhabited_ribet_alias :
+    Nonempty FreyGaloisRep13_real_ribet :=
+  rho_bar_Frey_13_real_algorithm_inhabited_ribet
+
 #check FreyCurve
 #check FreyCurve_Delta
 #check FreyGaloisRep13
@@ -236,6 +256,13 @@ def rho_bar_Frey_13_real_algorithm_inhabited_finite_flat_alias :
 #check rho_bar_Frey_13_real_algorithm_inhabited_unramified_alias
 #check rho_bar_Frey_13_real_algorithm_inhabited_finite_flat
 #check rho_bar_Frey_13_real_algorithm_inhabited_finite_flat_alias
+#check rho_bar_Frey_13_real_algorithm_inhabited_ribet
+#check rho_bar_Frey_13_real_algorithm_inhabited_ribet_alias
+#check ribet_level_26_div_13_formula
+#check frey_ribet_level_lowering_formula
+#check frey_modularity_at_26_formula
+#check FreyGaloisRep13_real_ribet
+#check FreyCurveSeparated_ribet
 #check frey_finite_flat_at_13_formula
 #check FreyGaloisRep13_real_finite_flat
 #check FreyCurveSeparated_finite_flat
@@ -261,5 +288,7 @@ def rho_bar_Frey_13_real_algorithm_inhabited_finite_flat_alias :
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_unramified_alias
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_finite_flat
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_finite_flat_alias
+#print axioms rho_bar_Frey_13_real_algorithm_inhabited_ribet
+#print axioms rho_bar_Frey_13_real_algorithm_inhabited_ribet_alias
 
 end BealLevel26Foundations.GaloisRep.FreyGaloisRepReal

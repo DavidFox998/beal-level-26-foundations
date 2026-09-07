@@ -1,9 +1,11 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v6.5.1-iter-about-catchup-22582199`.
-Records Lean HEAD `77497b3` /
-`v6.5.0-iter-finite-flat-at-13-real`.  No Lean change
-on this catch-up.
+Latest tag / HEAD: `v6.6.0-iter-ribet-modularity-at-26-real`.
+Ribet level lowering `26 → 2` real none +
+modularity at 26 via `X₀(26)` real none.
+Keep `Nat.pow` OFF token same pattern as
+finite-flat + unramified + semistable +
+`det = χ₁₃` + Frey Δ.
 
 Latest parallel mint written
 [10.5281/zenodo.22582199](https://doi.org/10.5281/zenodo.22582199)
@@ -19,8 +21,10 @@ none), after
 [10.5281/zenodo.22559449](https://doi.org/10.5281/zenodo.22559449)
 (v6.1.0 TW infinite family), after
 [10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
-(v6.0.0 REAL ALGORITHMS).  The new v6.5.1 mint is
-**not** written here.  Hook
+(v6.0.0 REAL ALGORITHMS).  The v6.5.1 mint
+`22584065` is **not** written here.  This
+v6.6.0 mint is **not** written here.  Next
+catch-up is v6.6.1.  Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
 `IsVersionOf` [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)
 is metadata only.  Original-family latest remains
@@ -209,6 +213,61 @@ positivity / det / unramified / semistable /
 finite-flat lemmas not in term so no
 `Classical.choice`).
 
+v6.6.0 Ribet level lowering `26 → 2` real none
++ modularity at 26 via `X₀(26)` real none
+(19 → 20 modules,
+`GaloisRep.GaloisRibetModularityAt26Real`).
+`ribet_level_26_div_13_formula` `26 / 13 = 2`
+by `rfl` **none**.
+`frey_ribet_level_lowering_formula` If
+`ρ̄_Frey_13` is finite-flat at 13, unramified
+outside `2*13*A*B*(A¹³+B¹³)`, semistable at
+`2*13`, `det = χ₁₃`, irreducible, modular at
+26, then `ρ̄` arises from a newform of level 2
+— level lowering `N = 26` to `N' = 26/13 = 2`
+computable **none** field `N/p` by `rfl`
+**none** `26 / 13 = 2` by `rfl` **none**
+finite-flat `v₁₃(Δ) % 13 = 0` by `rfl` **none**
+`Int.pow` / `Nat.pow` **OFF** token unramified
+`p ∉ S` by `rfl` **none** semistable `2*13` by
+`rfl` **none** `det = χ₁₃` **none** `X₀(26)`
+`26a1` Δ `-17576` `26b1` Δ `-1664` real none.
+`frey_ribet_level_lowering_real_lemma` Ribet
+theorem modular at 26 + finite-flat at 13 +
+unramified outside `S` + `det = χ₁₃` +
+irreducible → modular at 2 **propext only**
+OFF inhabitant.
+`frey_modularity_at_26_formula` Modular at 26
+via `X₀(26)` Frey curve
+`Y² = X(X − A¹³)(X + B¹³)` modular at
+conductor 26 via `X₀(26)` real curves `26a1`
+Δ `-17576` and `26b1` Δ `-1664` computable
+**none** field conductor `2*13` by `rfl`
+**none** via `tate_real_conductor_26`.
+`frey_modularity_at_26_real_lemma` Tate
+conductor `2*13` by `rfl` **none** + TW
+`Q_1 = [53]` `53 % 13 = 1` by `rfl` **none**
+`Q_2 = [677]` `677 = 4*169+1` `677 % 169 = 1`
+by `rfl` **none** + `R = T` patching witness
+real **none** +
+`WeierstrassModularity_of_pack_from_R_T`
+**propext only** OFF inhabitant.
+`rho_bar_Frey_13_real_algorithm_inhabited_ribet`
+**none** stays **none** stronger than
+propext-only same pattern as
+`frey_Delta13_formula` `Int.pow` / `Nat.pow`
+OFF none token and `det = χ₁₃` OFF none token
+and unramified `p ∉ S` by `rfl` OFF none token
+and semistable `2*13` by `rfl` none and
+finite-flat `v₁₃(Δ) % 13 = 0` by `rfl` none
+and `26 / 13 = 2` by `rfl` none.
+`FreyCurveSeparated_ribet.token` **none**.
+`beal_forall_in_kernel_from_ribet_separated`
+displayed Beal `∀` closed term **propext only**
+positivity / det / unramified / semistable /
+finite-flat / Ribet / modularity lemmas not
+in term so no `Classical.choice`.
+
 Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms.
 The mathematical Beal forall stays the uninhabited
@@ -218,7 +277,7 @@ is `0 ≠ 0` and stays uninhabited.  Original Path 2
 (`⟨13, 2, 1⟩` is `Is13Case`, `gcd = 1`).  No
 `False.elim`.  Path 1 false formal.  Real
 `X₀(26)(ℚ)` still has `26a1` Δ `-17576` and
-`26b1` Δ `-1664`.  `NO_SORRY_OK`.  19 modules green.
+`26b1` Δ `-1664`.  `NO_SORRY_OK`.  20 modules green.
 
 This is the in-repo About lock for GitHub About / topics /
 the public landing page.  Do not rewrite minted DOIs.

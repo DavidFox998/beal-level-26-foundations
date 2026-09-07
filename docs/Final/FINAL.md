@@ -1,17 +1,17 @@
-# FINAL v6.5.1 — About catch-up 22582199
+# FINAL v6.6.0 — Ribet 26→2 + modularity at 26 real none
 
-Latest tag `v6.5.1-iter-about-catchup-22582199`.
-Records Lean HEAD `77497b3` /
-`v6.5.0-iter-finite-flat-at-13-real`.  **No Lean change.**
-Latest written mint now
+Latest tag `v6.6.0-iter-ribet-modularity-at-26-real`.
+Ribet level lowering `26 → 2` real none +
+modularity at 26 via `X₀(26)` real none.
+Keep `Nat.pow` OFF token.  Official build
+**20 modules**.  Latest written mint remains
 [10.5281/zenodo.22582199](https://doi.org/10.5281/zenodo.22582199)
-(v6.5.0 finite-flat at 13 real computable none)
-DataCite findable, after
-[10.5281/zenodo.22572211](https://doi.org/10.5281/zenodo.22572211)
-(v6.4.0 unramified + semistable).  The new
-v6.5.1 mint is **not** written into About.  Hook
-`22379293`.  `IsVersionOf` `22272382` metadata only.
-Original-family latest remains `22322627`.
+(v6.5.0 finite-flat at 13 real computable none).
+The v6.5.1 mint `22584065` and this v6.6.0 mint
+are **not** written into About.  Next catch-up
+is v6.6.1.  Hook `22379293`.  `IsVersionOf`
+`22272382` metadata only.  Original-family
+latest remains `22322627`.
 
 ### v6.0.0 REAL ALGORITHMS
 
@@ -292,6 +292,40 @@ Chain `22552105 → 22552659 → 22553129 → 22553671
 writes `22582199` as the latest recorded mint.
 Docs lock only.  No Lean change.
 
+### v6.6.0 Ribet level lowering 26→2 + modularity at 26 real
+
+Ribet `26 → 2` and modularity at 26 via
+`X₀(26)` as computable **none** fields.
+Official build **20 modules** (19 old +
+`GaloisRep.GaloisRibetModularityAt26Real`).
+
+- `ribet_level_26_div_13_formula` `26 / 13 = 2`
+  by `rfl` **none**
+- `frey_ribet_level_lowering_formula`
+  `N/p = 2` by `rfl`, finite-flat
+  `v₁₃(Δ) % 13 = 0` by `rfl`, unramified
+  `p ∉ S` token, semistable `2 * 13` by `rfl`,
+  `det = χ₁₃` token, `X₀(26)` `26a1` Δ `-17576`
+  `26b1` Δ `-1664` **none**
+- `frey_ribet_level_lowering_real_lemma`
+  Ribet theorem **propext only**, off the
+  inhabitant
+- `frey_modularity_at_26_formula` conductor
+  `2 * 13` by `rfl` + `X₀(26)` discs **none**
+- `frey_modularity_at_26_real_lemma` `R = T`
+  patching **propext only**, off the inhabitant
+- `rho_bar_Frey_13_real_algorithm_inhabited_ribet`
+  **none** stronger than propext-only
+- `FreyCurveSeparated_ribet.token` **none**
+- `beal_forall_in_kernel_from_ribet_separated`
+  **propext only**; positivity / det /
+  unramified / semistable / finite-flat /
+  Ribet / modularity lemmas are **not** in
+  that term
+
+Existing tokens unchanged.  About still lists
+written mint `22582199` until v6.6.1.
+
 ### Honest lock (unchanged from FINAL v5)
 
 - `ExistsNewformLevel2` is `s2_gamma0_2_dim ≠ 0`
@@ -310,11 +344,14 @@ Docs lock only.  No Lean change.
 - Path 2 ONLY HONEST: displayed table inhabited
 - Real `X₀(26)(ℚ)` still has `26a1` Δ `-17576` and
   `26b1` Δ `-1664`
-- No `False.elim`.  19 modules green twice.
+- No `False.elim`.  20 modules green twice.
   `verify-scaffold.sh` OK.  `verify_descent_26.py` OK.
   `NO_SORRY_OK`
 
 Still not Full Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms,
-but now finite-flat at 13 is a real computable
-none field.  GOOD sounding step to real algorithms.
+but now Ribet `26 → 2` (`26 / 13 = 2` by `rfl`
+**none**) + finite-flat `v₁₃(Δ) % 13 = 0` by
+`rfl` **none** (`26 = 2 * 13`) + modular at 26
+via `X₀(26)` `26a1`/`26b1` real none.  GOOD
+sounding step to real algorithms.

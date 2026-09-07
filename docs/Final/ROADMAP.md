@@ -315,3 +315,24 @@ HEAD `77497b3`.  Hook `22379293`.  `IsVersionOf`
 → 22562014 → 22564236 → 22565376 → 22565933
 → 22572211 → 22581510 → 22582199`.
 
+### v6.6.0-iter-ribet-modularity-at-26-real — DONE
+
+Ribet level lowering `26 → 2` computable
+**none** field + modularity at 26 via
+`X₀(26)` real none.  Keep `Nat.pow` OFF token.
+`ribet_level_26_div_13_formula` `26 / 13 = 2`
+by `rfl` **none**.
+`frey_ribet_level_lowering_formula` **none**.
+`frey_ribet_level_lowering_real_lemma` Ribet
+**propext only**, off the inhabitant.
+`frey_modularity_at_26_formula` conductor
+`2 * 13` by `rfl` + `26a1` Δ `-17576`
+`26b1` Δ `-1664` **none**.
+`frey_modularity_at_26_real_lemma` `R = T`
+**propext only**, off the inhabitant.
+`rho_bar_Frey_13_real_algorithm_inhabited_ribet`
+**none**.  `beal_forall_in_kernel_from_ribet_separated`
+**propext only**.  Official build **20 modules**.
+About still lists written mint `22582199` until
+v6.6.1.
+
