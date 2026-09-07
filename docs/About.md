@@ -1,11 +1,14 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.3.0-explicit-X0-26`.
-Lean change: `X0_26_Model.lean`, `HeckeAction.lean`,
-`LevelLowering.lean` add the explicit hyperelliptic
-polynomial, the `ℤ`-matrix `M_ℤ = [[1,1],[0,2]]`,
-weight-2 `T_q` on the `26a1`/`26b1` prefixes, and
-TW patching at `53`/`677`.  `beal_positive_bases`
+Latest tag / HEAD: `v8.4.0-formal-immersion`.
+Lean change: `X0_26_Model.lean` localizes
+`M_ℤ = [[1,1],[0,2]]` at `(2)` and `(3)`.
+`formal_immersion_at_3` is `IsUnit det` over
+`ℤ_{(3)}` (`v₃(2)=0`); `formal_immersion_at_2`
+stays the honest `ℤ`-model with `v₂(det)=1`.
+`X0_26_Q_points_cusps_model_real` is Chabauty
+*input* from that invertibility, not a Mathlib
+`X₀(26)(ℚ)` theorem.  `beal_positive_bases`
 stays *from* `ModularImpliesLevel2Newform`.
 `ExistsNewformLevel2` is still `0 ≠ 0`.
 The unguarded sketch type is **false**

@@ -799,6 +799,24 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.4.0-formal-immersion — DONE (localized cotangent, arrow stays a Prop)
+
+Lean change.  `X0_26_Model.lean` adds
+`cotangent_Z2` / `cotangent_Z3` as the matrix
+over Mathlib `Localization.AtPrime` at `(2)`
+and `(3)`.  `formal_immersion_at_3` is
+`IsUnit det` over `ℤ_{(3)}`.  `formal_immersion_at_2`
+stays the honest `ℤ`-model with `v₂(det)=1`.
+`X0_26_Q_points_cusps_model_real` is from
+`formal_immersion_at_3` plus the four-cusp
+display — Chabauty *input*, not Mathlib
+`X₀(26)(ℚ)`.  `ExistsNewformLevel2` is `0 ≠ 0`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.3.0-explicit-X0-26 — DONE (explicit data, arrow stays a Prop)
 
 Lean change.  New FullProof modules

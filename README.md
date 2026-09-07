@@ -83,6 +83,18 @@ v8.0.0-beal-forall-proof FullProof glue: unguarded sketch is false (0³+1³=1³,
 v8.1.0-modular-implies-newform ModularImpliesNewform: PositiveBealTriple + Mathlib Γ₀(2) + TW 53%13=1 677%169=1 + Ribet N/∏q=2 arithmetic; ModularImpliesLevel2Newform stays a Prop; beal_forall_proof = beal_forall_proof_positive (still conditional). Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.2.0-scheme-hecke-ribet GeometryScheme + HeckeAlgebra + RibetFunctor: packed X0(26)/J0(26) models, TW-tower R≃T, functorial lowering N→2; ModularImpliesLevel2Newform_Real stays the v8.1.0 Prop (ExistsNewformLevel2 is 0≠0). Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.3.0-explicit-X0-26 X0_26_Model + HeckeAction + LevelLowering: explicit y²=x⁶−8x⁵+22x⁴−20x³+5x²+4x−4, M_ℤ=[[1,1],[0,2]] det=2, T_q on 26a1/26b1 prefixes, TW 53/677 patching; beal_positive_bases stays from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.4.0-formal-immersion X0_26_Model localizes M_ℤ at (2)/(3): IsUnit det over ℤ_{(3)} (v₃(2)=0); ¬IsUnit over ℤ_{(2)} (v₂(2)=1); X0_26_Q_points_cusps_model_real from formal_immersion_at_3. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.4.0-formal-immersion — localized cotangent over ℤ_{(3)} (arrow stays a Prop)
+
+Lean change.  `X0_26_Model.lean` localizes the v8.3.0 matrix at the primes `(2)` and `(3)`.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `cotangent_Z3`: `M_ℤ` over Mathlib `Localization.AtPrime (3)`, `IsUnit det` because `v₃(2)=0`;
+- `cotangent_Z2`: same matrix over `ℤ_{(2)}`, `¬ IsUnit det` because `v₂(2)=1`;
+- `formal_immersion_at_3`: `IsFormalImmersionLocalized AbelJacobiModel 3` from that invertibility (`LocalRing`, Nakayama `GL₂` form);
+- `X0_26_Q_points_cusps_model_real`: four-cusp / Selmer / SHA display *from* `formal_immersion_at_3` — Chabauty *input*, not Mathlib `X₀(26)(ℚ)`.
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.3.0-explicit-X0-26 — explicit polynomial / Weierstrass / T_q data (arrow stays a Prop)
 

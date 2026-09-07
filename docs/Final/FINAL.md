@@ -1,3 +1,29 @@
+# FINAL v8.4.0 — localized cotangent over ℤ_{(3)} (arrow stays a Prop)
+
+Latest tag `v8.4.0-formal-immersion`.
+Lean change.
+`X0_26_Model.lean` localizes `M_ℤ = [[1,1],[0,2]]`
+at `(2)` and `(3)`.  `formal_immersion_at_3` is
+`IsUnit det` over `ℤ_{(3)}` (`v₃(2)=0`, Nakayama
+`GL₂` form).  `formal_immersion_at_2` stays the
+honest `ℤ`-model with `v₂(det)=1`.
+`X0_26_Q_points_cusps_model_real` is Chabauty
+*input*, not a Mathlib `X₀(26)(ℚ)` theorem.
+`beal_positive_bases` stays *from*
+`ModularImpliesLevel2Newform`.
+`ExistsNewformLevel2` is `0 ≠ 0`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221)
+(v7.1.1 About catch-up, Track A).  Track B does **not**
+write a new mint claiming unconditional Beal `∀`.
+Three JPEG plates stay in `docs/assets/v6.7.0/`.
+Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+
 # FINAL v8.3.0 — explicit X₀(26) polynomial / T_q / lowering pack (arrow stays a Prop)
 
 Latest tag `v8.3.0-explicit-X0-26`.

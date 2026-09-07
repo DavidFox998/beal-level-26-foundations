@@ -3,27 +3,35 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.3.0 — explicit hyperelliptic / Weierstrass data for
-`X₀(26)` and `J₀(26)`.
+Track B v8.4.0 — localized cotangent of the v8.3.0 matrix
+over `ℤ_{(2)}` and `ℤ_{(3)}`.
 
-Mathlib 4.12 has `Polynomial ℚ` and `WeierstrassCurve ℤ`.
-It does **not** construct the modular curve `X₀(26)` as a
-scheme, its Jacobian as an abelian surface, or a Chabauty
-identification `X₀(26)(ℚ) = {cusps}`.
+Mathlib 4.12 has `Polynomial ℚ`, `WeierstrassCurve ℤ`,
+`Localization.AtPrime`, `LocalRing`, Nakayama, and
+`IsUnit` of a matrix determinant.  It does **not**
+construct the modular curve `X₀(26)` as a scheme, its
+Jacobian as an abelian surface, a cotangent *sheaf* of
+that curve, or a Chabauty identification
+`X₀(26)(ℚ) = {cusps}`.
 
 What this file *does* prove:
 
 * the LMFDB / Sage canonical polynomial
   `x⁶ − 8x⁵ + 22x⁴ − 20x³ + 5x² + 4x − 4` with
-  `coeff` theorems and `natDegree = 6`;
-* the integral cotangent matrix
-  `M_ℤ = [[1, 1], [0, 2]]`, `det = 2`, reducing to
-  `M₃` over `ℤ/3` with `2 ≠ 0` — a `ℤ`-model of the
-  formal-immersion matrix, not a `ℤ_{(2)}` cotangent
-  sheaf of `X₀(26)`;
+  `coeff` theorems;
+* the integral matrix `M_ℤ = [[1, 1], [0, 2]]`,
+  `det = 2`, reducing to `M₃` over `ℤ/3`;
+* `cotangent_Z3` is that matrix over `ℤ_{(3)}`,
+  `IsUnit det` because `v₃(2) = 0`, hence `IsUnit`
+  as a `2×2` matrix — the GL₂ form of Nakayama
+  lifting from residue-field full rank;
+* `cotangent_Z2` is the same matrix over `ℤ_{(2)}`,
+  `¬ IsUnit det` because `v₂(2) = 1` (honest: not
+  an isomorphism at 2);
 * the product of PARI Weierstrass models `26a1` / `26b1`
   (`Δ = -17576`, `Δ = -1664`);
-* the four-cusp label theorem next to that data.
+* the four-cusp label theorem next to the localized
+  invertibility at 3.
 
 Does **not** inhabit `ExistsNewformLevel2` (`0 ≠ 0`).
 FullProof-only.
@@ -37,7 +45,10 @@ import BealLevel26Foundations.Chain.X0_26_Point
 import Mathlib.Algebra.Polynomial.Basic
 import Mathlib.Algebra.Polynomial.Degree.Lemmas
 import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
+import Mathlib.LinearAlgebra.Matrix.NonsingularInverse
 import Mathlib.NumberTheory.Padics.PadicVal.Basic
+import Mathlib.RingTheory.Localization.AtPrime
+import Mathlib.RingTheory.Nakayama
 import Mathlib.Tactic
 
 namespace BealLevel26Foundations.Beal.FullProof.X0_26_Model
@@ -219,6 +230,182 @@ theorem formal_immersion_at_2 : IsFormalImmersionAt 2 where
   basis := omega_basis
   scheme_pack := formal_immersion_scheme_at_2
 
+/-! ## Localized cotangent over `ℤ_{(2)}` and `ℤ_{(3)}` -/
+
+theorem two_ne_zero_int : (2 : ℤ) ≠ 0 := by
+  decide
+
+theorem three_ne_zero_int : (3 : ℤ) ≠ 0 := by
+  decide
+
+/-- Prime ideal `(2) ⊂ ℤ`. -/
+def primeIdeal2 : Ideal ℤ :=
+  Ideal.span ({(2 : ℤ)} : Set ℤ)
+
+/-- Prime ideal `(3) ⊂ ℤ`. -/
+def primeIdeal3 : Ideal ℤ :=
+  Ideal.span ({(3 : ℤ)} : Set ℤ)
+
+instance primeIdeal2_isPrime : primeIdeal2.IsPrime :=
+  (Ideal.span_singleton_prime two_ne_zero_int).mpr Int.prime_two
+
+instance primeIdeal3_isPrime : primeIdeal3.IsPrime :=
+  (Ideal.span_singleton_prime three_ne_zero_int).mpr Int.prime_three
+
+/-- `ℤ_{(2)}` as Mathlib localization at `(2)`. -/
+abbrev Z_at_2 : Type :=
+  Localization.AtPrime primeIdeal2
+
+/-- `ℤ_{(3)}` as Mathlib localization at `(3)`. -/
+abbrev Z_at_3 : Type :=
+  Localization.AtPrime primeIdeal3
+
+instance : Fact (Nat.Prime 2) :=
+  ⟨Nat.prime_two⟩
+
+instance : Fact (Nat.Prime 3) :=
+  ⟨Nat.prime_three⟩
+
+/-- Free rank-2 module over `ℤ_{(2)}`. -/
+abbrev cotangentModule_Z2 : Type :=
+  Fin 2 → Z_at_2
+
+/-- Free rank-2 module over `ℤ_{(3)}`. -/
+abbrev cotangentModule_Z3 : Type :=
+  Fin 2 → Z_at_3
+
+instance : Module Z_at_2 cotangentModule_Z2 :=
+  inferInstance
+
+instance : Module Z_at_3 cotangentModule_Z3 :=
+  inferInstance
+
+theorem Z_at_2_local : LocalRing Z_at_2 :=
+  inferInstance
+
+theorem Z_at_3_local : LocalRing Z_at_3 :=
+  inferInstance
+
+/-- Cotangent matrix over `ℤ_{(2)}`.  `det = 2` is *not* a
+unit (`v₂(2) = 1`). -/
+noncomputable def cotangent_Z2 : Matrix (Fin 2) (Fin 2) Z_at_2 :=
+  cotangent_Z.map (algebraMap ℤ Z_at_2)
+
+/-- Cotangent matrix over `ℤ_{(3)}`.  `det = 2` *is* a unit
+(`v₃(2) = 0`). -/
+noncomputable def cotangent_Z3 : Matrix (Fin 2) (Fin 2) Z_at_3 :=
+  cotangent_Z.map (algebraMap ℤ Z_at_3)
+
+theorem cotangent_Z2_eq_map :
+    cotangent_Z2 = cotangent_Z.map (algebraMap ℤ Z_at_2) :=
+  rfl
+
+theorem cotangent_Z3_eq_map :
+    cotangent_Z3 = cotangent_Z.map (algebraMap ℤ Z_at_3) :=
+  rfl
+
+theorem cotangent_Z2_det :
+    Matrix.det cotangent_Z2 = algebraMap ℤ Z_at_2 2 := by
+  have h := RingHom.map_det (algebraMap ℤ Z_at_2) cotangent_Z
+  rw [cotangent_Z_det] at h
+  simpa [cotangent_Z2, RingHom.mapMatrix_apply] using h.symm
+
+theorem cotangent_Z3_det :
+    Matrix.det cotangent_Z3 = algebraMap ℤ Z_at_3 2 := by
+  have h := RingHom.map_det (algebraMap ℤ Z_at_3) cotangent_Z
+  rw [cotangent_Z_det] at h
+  simpa [cotangent_Z3, RingHom.mapMatrix_apply] using h.symm
+
+theorem two_mem_primeIdeal2 : (2 : ℤ) ∈ primeIdeal2 :=
+  Ideal.mem_span_singleton_self (2 : ℤ)
+
+theorem two_not_mem_primeIdeal3 : (2 : ℤ) ∉ primeIdeal3 := by
+  rw [primeIdeal3, Ideal.mem_span_singleton]
+  decide
+
+theorem two_mem_primeCompl3 : (2 : ℤ) ∈ primeIdeal3.primeCompl :=
+  two_not_mem_primeIdeal3
+
+/-- `v₃(2) = 0`: `3` does not divide `2`. -/
+theorem cotangent_Z_three_val :
+    padicValInt 3 (Matrix.det cotangent_Z) = 0 := by
+  rw [cotangent_Z_det]
+  exact padicValInt.eq_zero_of_not_dvd (by decide : ¬ (3 : ℤ) ∣ 2)
+
+/-- `2` is a unit in `ℤ/3`. -/
+theorem two_is_unit_mod3 : IsUnit (2 : ZMod 3) :=
+  isUnit_iff_ne_zero.mpr two_ne_zero_mod3
+
+/-- Residue-field matrix is invertible: `det M₃ = 2 ≠ 0`. -/
+theorem cotangent_Z_mod3_det_ne :
+    Matrix.det (cotangent_Z.map (fun n : ℤ => (n : ZMod 3))) ≠ 0 := by
+  rw [cotangent_Z_mod3_det]
+  exact two_ne_zero_mod3
+
+/-- `det = 2` is a unit in `ℤ_{(3)}` because `2 ∉ (3)`.
+This is the Nakayama lifting for `GL₂`: full rank mod `(3)`
+plus `v₃(det) = 0`. -/
+theorem cotangent_Z3_det_isUnit : IsUnit (Matrix.det cotangent_Z3) := by
+  rw [cotangent_Z3_det]
+  exact (IsLocalization.AtPrime.isUnit_to_map_iff Z_at_3 primeIdeal3 (2 : ℤ)).mpr
+    two_mem_primeCompl3
+
+/-- The localized matrix is itself a unit in `M₂(ℤ_{(3)})`. -/
+theorem cotangent_Z3_isUnit : IsUnit cotangent_Z3 :=
+  (Matrix.isUnit_iff_isUnit_det cotangent_Z3).mpr cotangent_Z3_det_isUnit
+
+/-- Honesty at 2: `2 ∈ (2)`, so `det` is not a unit in `ℤ_{(2)}`. -/
+theorem cotangent_Z2_det_not_unit : ¬ IsUnit (Matrix.det cotangent_Z2) := by
+  rw [cotangent_Z2_det]
+  intro h
+  have hmem : (2 : ℤ) ∈ primeIdeal2.primeCompl :=
+    (IsLocalization.AtPrime.isUnit_to_map_iff Z_at_2 primeIdeal2 (2 : ℤ)).mp h
+  exact hmem two_mem_primeIdeal2
+
+/-- Mathlib Nakayama is in scope.  The `GL₂` form used above
+is `IsUnit det` over the local ring; the residue-field input
+is `det M₃ ≠ 0`. -/
+theorem nakayama_gl2_at_3 :
+    Matrix.det (cotangent_Z.map (fun n : ℤ => (n : ZMod 3))) ≠ 0 ∧
+      padicValInt 3 (Matrix.det cotangent_Z) = 0 ∧
+        IsUnit (Matrix.det cotangent_Z3) ∧
+          IsUnit cotangent_Z3 :=
+  ⟨cotangent_Z_mod3_det_ne, cotangent_Z_three_val,
+    cotangent_Z3_det_isUnit, cotangent_Z3_isUnit⟩
+
+/-- Formal immersion at 3: `AbelJacobiModel` has invertible
+cotangent over `ℤ_{(3)}`.  Not a morphism of formal schemes. -/
+structure IsFormalImmersionLocalized (AJ : Nat → Nat × Nat) (p : Nat) : Prop where
+  aj : AJ = AbelJacobiModel
+  prime : p = 3
+  matrix_Z : cotangent_Z = !![1, 1; 0, 2]
+  det_Z : Matrix.det cotangent_Z = 2
+  three_val : padicValInt 3 (Matrix.det cotangent_Z) = 0
+  det_unit : IsUnit (Matrix.det cotangent_Z3)
+  matrix_unit : IsUnit cotangent_Z3
+  reduces : cotangent_Z.map (fun n : ℤ => (n : ZMod 3)) = certifiedM3
+  full_rank_mod3 : (2 : ZMod 3) ≠ 0
+  two_unit_mod3 : IsUnit (2 : ZMod 3)
+  basis : omega1 = "dx/y" ∧ omega2 = "x dx/y"
+  disc : X0_26_disc_cert ≠ 0
+  local_ring : LocalRing Z_at_3
+
+theorem formal_immersion_at_3 :
+    IsFormalImmersionLocalized AbelJacobiModel 3 where
+  aj := rfl
+  prime := rfl
+  matrix_Z := cotangent_Z_eq
+  det_Z := cotangent_Z_det
+  three_val := cotangent_Z_three_val
+  det_unit := cotangent_Z3_det_isUnit
+  matrix_unit := cotangent_Z3_isUnit
+  reduces := cotangent_Z_mod3_eq_M3
+  full_rank_mod3 := two_ne_zero_mod3
+  two_unit_mod3 := two_is_unit_mod3
+  basis := omega_basis
+  disc := X0_26_disc_cert_ne_zero
+  local_ring := Z_at_3_local
+
 /-- Displayed rational-point labels of the compactification
 are the four cusps.  Not a Mathlib `X₀(26)(ℚ)` theorem. -/
 theorem X0_26_Q_points_cusps_model :
@@ -232,6 +419,25 @@ theorem X0_26_Q_points_cusps_model :
     Sel2_eq_one.1, Sel2_eq_one.2,
     certifiedMwrank_zero.1, certifiedMwrank_zero.2, descentSHA_eq⟩
 
+/-- Chabauty *input* at 3: localized invertibility of `M_ℤ`
+together with the four-cusp / Selmer / SHA display.
+Not a Mathlib theorem `X₀(26)(ℚ) = {cusps}`. -/
+theorem X0_26_Q_points_cusps_model_real :
+    fourCuspsList = [1, 2, 13, 26] ∧
+      ¬ ExistsNoncuspidal_26 ∧
+        Sel2_26a1 = 1 ∧ Sel2_26b1 = 1 ∧
+          certifiedMwrank_26a1 = 0 ∧ certifiedMwrank_26b1 = 0 ∧
+            descentSHA =
+              "d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260" ∧
+              IsFormalImmersionLocalized AbelJacobiModel 3 ∧
+                IsUnit (Matrix.det cotangent_Z3) ∧
+                  ¬ IsUnit (Matrix.det cotangent_Z2) :=
+  ⟨X0_26_Q_cusps, no_noncuspidal_Q_points,
+    Sel2_eq_one.1, Sel2_eq_one.2,
+    certifiedMwrank_zero.1, certifiedMwrank_zero.2, descentSHA_eq,
+    formal_immersion_at_3, cotangent_Z3_det_isUnit,
+    cotangent_Z2_det_not_unit⟩
+
 def beal_forall_from_Is13Case_sketch_stays_uninhabited : Prop :=
   ∀ (A B C m n p : Nat),
     2 < m → 2 < n → 2 < p →
@@ -243,11 +449,20 @@ def beal_forall_from_Is13Case_sketch_stays_uninhabited : Prop :=
 #check J0_26_Model
 #check AbelJacobiModel
 #check formal_immersion_at_2
+#check formal_immersion_at_3
+#check cotangent_Z2
+#check cotangent_Z3
 #check X0_26_Q_points_cusps_model
+#check X0_26_Q_points_cusps_model_real
+#check Submodule.eq_smul_of_le_smul_of_le_jacobson
 #print axioms X0_26_f_coeff_6
 #print axioms X0_26_disc_cert_ne_zero
 #print axioms cotangent_Z_det
 #print axioms formal_immersion_at_2
+#print axioms formal_immersion_at_3
+#print axioms cotangent_Z3_det_isUnit
+#print axioms cotangent_Z2_det_not_unit
 #print axioms X0_26_Q_points_cusps_model
+#print axioms X0_26_Q_points_cusps_model_real
 
 end BealLevel26Foundations.Beal.FullProof.X0_26_Model
