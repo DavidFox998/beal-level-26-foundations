@@ -51,6 +51,95 @@ v6.8.1-iter-about-catchup-22602899-relook About catch-up 22592524 → 22602899. 
 v6.9.0-iter-beal-forall-closed-real Beal Forall closed real via positivity/det/unramified/semistable/finite-flat/Ribet/modularity/TW/R=T/lifting/exists-newform. Still not Full Mathlib ∀.
 v6.9.1-iter-about-catchup-22611775-relook About catch-up 22602899 → 22611775. Still not Full Mathlib ∀.
 v7.0.0-iter-beal-forall-none-real Beal ∀ from propext only OFF inhabitant → none via rfl only. Still not Full Mathlib ∀.
+v7.0.1-iter-about-catchup-22618433-relook About catch-up 22611775 → 22618433. Still not Full Mathlib ∀.
+
+### v7.0.1-iter-about-catchup-22618433-relook — About catch-up 22611775 v6.9.0 Beal ∀ closed real propext only OFF → 22618433 v7.0.0 Beal ∀ none real with 3 plates kept docs lock No Lean change
+
+About catch-up.  HEAD `d9e5e6f`
+`v7.0.0-iter-beal-forall-none-real`.  No Lean change.
+HEAD tag `v7.0.0-iter-beal-forall-none-real`.
+Zenodo `10.5281/zenodo.22618433` DataCite findable.
+Hook `22379293`.  `IsVersionOf` `22272382` only.
+Original-family latest remains `22322627`.
+Chain `22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449 → 22560793
+→ 22562014 → 22564236 → 22565376 → 22565933
+→ 22572211 → 22581510 → 22582199 → 22584065
+→ 22587409 → 22589077 → 22592524 → 22595002
+→ 22602899 → 22607942 → 22611775 → 22614123
+→ 22618433`.
+
+New module `GaloisRep.GaloisBealForallNoneReal`
+(23 → 24 modules).
+`frey_beal_forall_none_formula` **none**
+(`26 / 13 = 2` by `rfl` **none** + finite-flat
+`v₁₃(Δ) % 13 = 0` by `rfl` **none** + `p ∉ S`
+by `rfl` **none** + `2 * 13` by `rfl` **none**
++ `det = χ₁₃` **none** + `Q_1`/`Q_2` **none**
++ `X₀(26)` `26a1` Δ `-17576` `26b1` Δ `-1664`
+real **none** + Hecke / scaffold / TW / `R = T`
++ modular lifting + exists-newform + Beal `∀`
+closed **none**; `Int.pow` / `Nat.pow` OFF).
+`frey_beal_forall_none_real_lemma` **none**
+(push `propext` out; `rfl` only + none tokens).
+Positivity / det / unramified / finite-flat /
+Ribet / modularity / TW / `R = T` / lifting /
+exists-newform / closed lemmas stay out of
+term.
+`BealForall_real_witness_none` **none**.
+`rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_none`
+**none**.
+`FreyCurveSeparated_beal_forall_none.token`
+**none**.
+`beal_forall_in_kernel_from_beal_forall_none_separated`
+**propext only** (closed lemmas not in term;
+no `Classical.choice`).
+
+Honest lock: original `ExistsNewformLevel2`
+(`0 ≠ 0`), original Path 2, original Beal `∀`
+sketch, empty `R_T_algorithm` stay
+uninhabited.  Path 1 false on `⟨13, 2, 1⟩`.
+Path 2 is displayed real **none** via
+`26a1`/`26b1` + `R = T` + TW + exists-newform
++ BealForall none.  Real `X₀(26)(ℚ)` still
+has `26a1` Δ `-17576` and `26b1` Δ `-1664`.
+Build: 24 modules green twice.
+`verify-scaffold.sh` OK.  `verify_descent_26.py`
+OK.  `NO_SORRY_OK`.
+Zenodo `10.5281/zenodo.22618433` DataCite
+findable `isActive` true.  Hook `22379293`.
+`IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+About now lists written mint
+`10.5281/zenodo.22618433` until next catch-up
+v7.1.0.  This v7.0.0 mint is now written into
+About.  The new v7.0.1 mint is **not** written
+there.
+
+Three plates in `docs/assets/v6.7.0/`, each
+`.jpg` + `.png` + `.webp` lowercase with
+matching MIME types: `ribet_26_to_2` —
+`26a1` Δ `-17576` `26b1` Δ `-1664` `26 / 13 = 2`
+by `rfl`; `tw_qn_infinite_family` — `Q_1 = 53`
+`Q_2 = 677` `8789 = 17 × 517` composite;
+`galois_token` — `ρ̄_Frey,13` `Int.pow` /
+`Nat.pow` OFF conductor `2 * 13`.  Embedded as
+JPEG (WebP fallback only) in About / FINAL /
+README: Ribet plate after the v6.6.0
+`26a1`/`26b1` line, TW plate after the v6.7.0
+`Q_1`/`Q_2`/`8789` line, Galois plate after
+the v6.7.0 `frey_Delta13_formula` `Int.pow` /
+`Nat.pow` OFF text.  Facebook Open Graph
+points at JPEG, not WebP:
+`docs/index.html` `og:image` /
+`og:image:type = image/jpeg` for
+`…/assets/v6.7.0/ribet_26_to_2.jpg`.
+`docs/facebook-share.json` share URLs are
+`.jpg`.  No `extensions/facebook/` tree.
+Old Facebook-named file
+`docs/images/797726399_…_n.webp` stays absent.
+24 modules green twice.
 
 ### v7.0.0-iter-beal-forall-none-real — Beal ∀ from propext only OFF inhabitant → none real witness via rfl only, push propext out same OFF-token pattern as ExistsNewformLevel2_real_witness none 0≠0→none
 

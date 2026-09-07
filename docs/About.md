@@ -1,19 +1,22 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v7.0.0-iter-beal-forall-none-real`.
-Records Lean HEAD for Beal `∀` none real
-witness (23 → 24 modules
-`GaloisRep.GaloisBealForallNoneReal`).
-Assets keep the three JPEG plates
-(WebP fallback only).
+Latest tag / HEAD: `v7.0.1-iter-about-catchup-22618433-relook`.
+Records Lean HEAD `d9e5e6f` /
+`v7.0.0-iter-beal-forall-none-real`.  No Lean change
+on this catch-up.  Assets relook keeps the three
+JPEG plates (WebP fallback only).
 
 Latest parallel mint written
+[10.5281/zenodo.22618433](https://doi.org/10.5281/zenodo.22618433)
+(v7.0.0 Beal `∀` none real via `rfl` only;
+`propext` pushed out of the closed witness)
+DataCite findable, after
 [10.5281/zenodo.22611775](https://doi.org/10.5281/zenodo.22611775)
 (v6.9.0 Beal `∀` closed real via positivity /
 det / unramified / semistable / finite-flat /
 Ribet / modularity at 26 via `X₀(26)` + TW +
-`R = T` + modular lifting + exists-newform)
-DataCite findable, after
+`R = T` + modular lifting + exists-newform),
+after
 [10.5281/zenodo.22602899](https://doi.org/10.5281/zenodo.22602899)
 (v6.8.0 ExistsNewformLevel2 real witness via
 `R = T` + `X₀(26)` + TW infinite real none),
@@ -36,9 +39,9 @@ none), after
 [10.5281/zenodo.22559449](https://doi.org/10.5281/zenodo.22559449)
 (v6.1.0 TW infinite family), after
 [10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
-(v6.0.0 REAL ALGORITHMS).  The new v6.9.1 mint
-and the new v7.0.0 mint are **not** written
-here (About catch-up waits for v7.0.1).  Hook
+(v6.0.0 REAL ALGORITHMS).  The new v7.0.1 mint
+is **not** written here (About catch-up waits
+for v7.1.0).  Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
 `IsVersionOf` [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)
 is metadata only.  Original-family latest remains
@@ -470,13 +473,12 @@ modularity / TW / `R = T` / modular
 lifting / exists-newform /
 beal-forall-closed lemmas not in term so
 no `Classical.choice`.
-About now writes `22611775` as the latest
-recorded mint.  The new v6.9.1 mint and the
-new v7.0.0 mint are **not** written here
-until catch-up v7.0.1.
-
-v7.0.0 adds `GaloisRep.GaloisBealForallNoneReal`
-(23 → 24 modules).
+→
+`22614123` (v6.9.1 About catch-up DONE,
+About writes `22611775`; 3 plates relook) →
+`22618433` (v7.0.0 displayed Beal Forall none
+real witness (23 → 24 modules
+`GaloisRep.GaloisBealForallNoneReal`).
 `frey_beal_forall_none_formula` **none**
 (`26 / 13 = 2` by `rfl` **none** + finite-flat
 `v₁₃(Δ) % 13 = 0` by `rfl` **none** + `p ∉ S`
@@ -503,6 +505,9 @@ modular lifting / exists-newform /
 beal-forall-closed / beal-forall-none
 lemmas not in term so no
 `Classical.choice`.
+About now writes `22618433` as the latest
+recorded mint.  The new v7.0.1 mint is
+**not** written here until catch-up v7.1.0.
 
 Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms.

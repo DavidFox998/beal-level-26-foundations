@@ -735,6 +735,7 @@ do
   grep -q "v6.9.0-iter-beal-forall-closed-real" "$readme"
   grep -q "v6.9.1-iter-about-catchup-22611775-relook" "$readme"
   grep -q "v7.0.0-iter-beal-forall-none-real" "$readme"
+  grep -q "v7.0.1-iter-about-catchup-22618433-relook" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png

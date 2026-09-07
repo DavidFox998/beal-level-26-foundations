@@ -1,16 +1,22 @@
-# FINAL v7.0.0 — Beal Forall none real
+# FINAL v7.0.1 — About catch-up 22618433 relook
 
-Latest tag `v7.0.0-iter-beal-forall-none-real`.
-Lean change: Beal `∀` from propext-only OFF
-inhabitant → **none** real witness via `rfl`
-only.  Official build **24 modules**
+Latest tag `v7.0.1-iter-about-catchup-22618433-relook`.
+Records Lean HEAD `d9e5e6f` /
+`v7.0.0-iter-beal-forall-none-real`.  **No Lean change.**
+Official build **24 modules**
 (23 old + `GaloisRep.GaloisBealForallNoneReal`).
-Latest written mint stays
+Latest written mint now
+[10.5281/zenodo.22618433](https://doi.org/10.5281/zenodo.22618433)
+(v7.0.0 Beal `∀` none real via `rfl` only;
+`propext` pushed out of the closed witness)
+DataCite findable, after
 [10.5281/zenodo.22611775](https://doi.org/10.5281/zenodo.22611775)
-(v6.9.0 Beal `∀` closed real) until catch-up
-v7.0.1.  The new v7.0.0 mint is **not**
-written into About.  Three JPEG plates stay
-in `docs/assets/v6.7.0/`.
+(v6.9.0 Beal `∀` closed real via positivity /
+det / unramified / semistable / finite-flat /
+Ribet / modularity at 26 via `X₀(26)` + TW +
+`R = T` + modular lifting + exists-newform).
+The new v7.0.1 mint is **not** written into About.
+Three JPEG plates stay in `docs/assets/v6.7.0/`.
 Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
 Original-family latest remains `22322627`.
 
@@ -545,6 +551,19 @@ build **24 modules**
   lemmas are **not** in that term
 
 Existing closed tokens unchanged.
+
+### v7.0.1 About catch-up DONE
+
+Chain `22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449 → 22560793
+→ 22562014 → 22564236 → 22565376 → 22565933
+→ 22572211 → 22581510 → 22582199 → 22584065
+→ 22587409 → 22589077 → 22592524 → 22595002
+→ 22602899 → 22607942 → 22611775 → 22614123
+→ 22618433`.  About now writes `22618433` as
+the latest recorded mint.  Docs lock + 3
+plates relook.  No Lean change.
 
 ### Honest lock (updated v7.0.0)
 
