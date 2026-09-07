@@ -1,25 +1,27 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v7.1.3-iter-beal-not-route-e-corrected`.
-Records Lean HEAD `9e820f4` /
-`v7.1.0-iter-beal-forall-kernel-separated-none-real`.
-No Lean change.  Corrects a v7.1.2
-labeling error: the Beal Conjecture is
-**not** "Route E" of the Riemann
-Hypothesis Route A–D lettering — it is
-its own chamber of *Opera Numerorum*,
-housed in two companion repositories
-(`beal-conjecture` and this repository).
-`docs/OPERA_NUMERORUM_LINKS.md` now
-gives Beal its own heading, with Routes
-A–D grouped under a separate "The
-Riemann Hypothesis" parent; the same fix
-is mirrored into `beal-conjecture`'s own
-coordination-index file and README.
-Assets keep the three JPEG plates
-(WebP fallback only).
+Latest tag / HEAD: `v7.2.0-step1-true-conductor-scaffold`.
+Lean change: new FullProof module
+`Beal/FullProof/TrueConductor.lean` types the
+true-gcd + Tate obligations of
+`beal_forall_from_Is13Case_sketch` without
+inhabiting that sketch and without `sorry`.
+Proved: mixed-exponent Frey model, `Δ` and `c₄`
+identities by `ring`, pairwise coprimality from
+`gcd=1` plus the equation, and
+`v_q(c₄)=0`, `v_q(Δ)>0` at odd primes dividing
+`ABC`.  Uninhabited: minimality, Kodaira `Iₙ`,
+local exponent `1`, 2-adic exponent, and
+`N = 2 · rad(ABC)`.  The v7.1.0 none chain
+(`BealForall_real_witness_none`,
+`beal_forall_in_kernel_from_beal_forall_none_separated`)
+is untouched.
 
 Latest parallel mint written
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221)
+(v7.1.1 About catch-up of v7.1.0 Beal `∀` none
+real + kernel separated none)
+DataCite findable, after
 [10.5281/zenodo.22632209](https://doi.org/10.5281/zenodo.22632209)
 (v7.1.0 Beal `∀` none real + kernel
 separated none, both **none**
@@ -57,9 +59,9 @@ none), after
 [10.5281/zenodo.22559449](https://doi.org/10.5281/zenodo.22559449)
 (v6.1.0 TW infinite family), after
 [10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
-(v6.0.0 REAL ALGORITHMS).  The new v7.1.1 mint
+(v6.0.0 REAL ALGORITHMS).  The new v7.2.0 mint
 is **not** written here (About catch-up waits
-for v7.2.0).  Hook
+for the next docs-only catch-up).  Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
 `IsVersionOf` [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)
 is metadata only.  Original-family latest remains

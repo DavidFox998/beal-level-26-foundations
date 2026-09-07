@@ -75,6 +75,23 @@ v7.1.0-iter-beal-forall-kernel-separated-none-real Beal ∀ kernel separated fro
 v7.1.1-iter-about-catchup-22632209-relook About catch-up 22618433 → 22632209. Still not Full Mathlib ∀.
 v7.1.2-iter-readme-uniform-opera-links README header uniformized (badges 22632209/22635221/22272382) + Opera Numerorum coordination index docs/OPERA_NUMERORUM_LINKS.md added in both repos, no Lean change. Still not Full Mathlib ∀.
 v7.1.3-iter-beal-not-route-e-corrected Beal Conjecture corrected from mislabeled "Route E" to its own two-repository chamber of Opera Numerorum, not part of the Riemann Hypothesis A-D route lettering, no Lean change. Still not Full Mathlib ∀.
+v7.2.0-step1-true-conductor-scaffold TrueConductor typed scaffold: Frey model of a primitive Beal triple, Δ=16(Aᵐ)²(Bⁿ)²(Cᵖ)² by ring, true gcd pairwise-coprime ⇒ odd p|ABC does not divide c₄, v_p(c₄)=0 and v_p(Δ)>0; Tate/Kodaira/N=2·rad(ABC) stay uninhabited empty-Type witnesses not sorry. Still not Full Mathlib ∀.
+
+### v7.2.0-step1-true-conductor-scaffold — TrueConductor typed scaffold: gcd + Δ/c₄ equalities proved, Tate/Kodaira holes typed without sorry
+
+Lean change.  New file `lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean` plus lake target `BealLevel26FoundationsFullProof`.  This is step 1 of closing `beal_forall_from_Is13Case_sketch` (Tate + true gcd, every prime).  It does **not** inhabit that sketch and does **not** use `sorry` / `False.elim`.
+
+Proved, as `ring` / coprimality equalities, not `rfl` tokens:
+
+- `freyCurveOf` is the mixed-exponent Frey model `Y² = X(X − Aᵐ)(X + Bⁿ)` of a packed primitive Beal triple (`2 < m,n,p`, `gcd(A,B,C)=1`);
+- `frey_Delta_of_equation`: `Δ = 16 (Aᵐ)² (Bⁿ)² (Cᵖ)²`;
+- `frey_c4_formula`: `c₄ = 16 ((Aᵐ)² + Aᵐ Bⁿ + (Bⁿ)²)`;
+- `pairwise_coprime`: a primitive equation implies pairwise coprimality (true gcd step);
+- `odd_prime_not_dvd_c4` / `odd_prime_c4_val_zero_Delta_val_pos`: an odd prime `q ∣ ABC` satisfies `v_q(c₄)=0` and `v_q(Δ)>0`.
+
+Uninhabited empty-Type witnesses (Mathlib 4.12 has no Tate / Kodaira / conductor): `frey_minimal_model_at_odd_prime`, `frey_conductor_exponent_one_odd`, `frey_conductor_two`, `frey_global_conductor` (`N = 2 · rad(ABC)`).  2-adic data stays supplied by `FreyTwoAdicExponentOneCertificate` / `FreyTwoAdicConductorCertificate` / `FreyConductorData_26`.
+
+The v7.1.0 `frey_beal_forall_none_formula` none chain is untouched — 24 modules still green.  About now writes the v7.1.1 mint `22635221`; the new v7.2.0 mint is not written.
 
 ### v7.1.2-iter-readme-uniform-opera-links — README header uniformized across beal-level-26-foundations and beal-conjecture, Opera Numerorum coordination index added, docs-only
 

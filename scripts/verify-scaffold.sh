@@ -159,6 +159,8 @@ test -f lean/BealLevel26Foundations/GaloisRep/GaloisModularLiftingAt26Real.lean
 test -f lean/BealLevel26Foundations/GaloisRep/GaloisExistsNewformLevel2Real.lean
 test -f lean/BealLevel26Foundations/GaloisRep/GaloisBealForallClosedReal.lean
 test -f lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean
+test -f lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
+test -f docs/Beal/TrueConductor.md
 test -f lean/BealLevel26Foundations/Tate/RealTateAlgorithm.lean
 test -f lean/BealLevel26Foundations/RT/PatchingWitnessReal.lean
 test -f lean/BealLevel26Foundations/RT/TaylorWilesInfiniteFamily.lean
@@ -745,6 +747,7 @@ do
   grep -q "v7.1.1-iter-about-catchup-22632209-relook" "$readme"
   grep -q "v7.1.2-iter-readme-uniform-opera-links" "$readme"
   grep -q "v7.1.3-iter-beal-not-route-e-corrected" "$readme"
+  grep -q "v7.2.0-step1-true-conductor-scaffold" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -866,6 +869,29 @@ grep -q "theorem certifiedM3_det_nonzero" \
 grep -q 'roots := #\[`BealLevel26Foundations, `Beal\]' lakefile.lean
 grep -q 'roots := #\[`BealLevel26Foundations.Scaffold\]' lakefile.lean
 grep -q 'roots := #\[`BealLevel26Foundations.Real\]' lakefile.lean
+grep -q 'roots := #\[`BealLevel26Foundations.Beal.FullProof.TrueConductor\]' lakefile.lean
+grep -q "structure PrimitiveBealTriple" \
+  lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
+grep -q "theorem frey_Delta_of_equation" \
+  lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
+grep -q "theorem pairwise_coprime" \
+  lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
+grep -q "theorem odd_prime_not_dvd_c4" \
+  lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
+grep -q "def frey_minimal_model_at_odd_prime" \
+  lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
+grep -q "def frey_conductor_exponent_one_odd" \
+  lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
+grep -q "def frey_conductor_two" \
+  lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
+grep -q "def frey_global_conductor" \
+  lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
+grep -q "structure FreyTwoAdicExponentOneCertificate" \
+  lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
+grep -q "structure FreyTwoAdicConductorCertificate" \
+  lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
+grep -q "def beal_forall_from_Is13Case_sketch_stays_uninhabited" \
+  lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
 
 if grep -RInE \
   'frey_conductor_data|tate_step2_odd_prime_external' \

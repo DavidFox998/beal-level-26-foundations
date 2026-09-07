@@ -1,3 +1,30 @@
+# FINAL v7.2.0 — TrueConductor typed scaffold (gcd proved, Tate holes typed)
+
+Latest tag `v7.2.0-step1-true-conductor-scaffold`.
+Lean change.  New module
+`lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean`
+plus lake target `BealLevel26FoundationsFullProof`.
+Step 1 toward inhabiting
+`beal_forall_from_Is13Case_sketch`: the true gcd
+step is now a theorem (pairwise coprimality of a
+primitive Beal triple, hence an odd prime dividing
+`ABC` does not divide `c₄`, hence `v_q(c₄)=0` and
+`v_q(Δ)>0`).  Discriminant and `c₄` identities are
+`ring` equalities, not `rfl` tokens, on the
+mixed-exponent Frey model
+`Y² = X(X − Aᵐ)(X + Bⁿ)`.
+Tate / Kodaira / global conductor remain
+uninhabited empty-Type witnesses — **no `sorry`**,
+**no `False.elim`**, sketch stays uninhabited.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221)
+(v7.1.1 About catch-up).  The new v7.2.0 mint is
+**not** written into About until the next catch-up.
+Three JPEG plates stay in `docs/assets/v6.7.0/`.
+Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+
 # FINAL v7.1.3 — Beal corrected: own chamber, not "Route E"
 
 Latest tag `v7.1.3-iter-beal-not-route-e-corrected`.

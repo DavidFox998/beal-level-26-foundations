@@ -23,6 +23,7 @@ as of** `v4.2.0-full-chain` / `v2.0.0-frey`.
 | `FreyConductorData_26.lean` | Supplied conductor fields for scaffold theorems | Not Tate's algorithm |
 | `FreyConductorUnconditional_26.lean` | Re-export of the valuation input | Not `frey_conductor_data` |
 | `Conductor_26_Unconditional.lean` | `vₚ(c₄)=0` and `vₚ(Δ)>0` from `p ∤ c₄`, `p ∣ Δ`, `Δ ≠ 0` | Not Kodaira type `I_n` or `N = 2^e rad(ABC)` |
+| `../Beal/FullProof/TrueConductor.lean` | Mixed-exponent Frey model of a primitive Beal triple; `Δ`/`c₄` identities; true gcd ⇒ odd `q∣ABC` gives `v_q(c₄)=0`, `v_q(Δ)>0` | Not Tate/Kodaira; `frey_global_conductor` uninhabited |
 | `FreyCurve13.lean` | Displayed triple plus working-prime `WeierstrassCurve` `freyCurve ↑A ↑B 13 13`. Does not import Forall. | Not Tate conductor; not a noncuspidal `X₀(26)` point |
 | `FreyModularity_13.lean` | `WeierstrassModularity c` is displayed `Modularity (FreyCurve13 w.A w.B w.C)` when `c` is the pack of `w`. `WeierstrassModularity_of_pack` is `frey_modular_13`. | Not Wiles--Taylor; `WeierstrassCurve` has no `.A`; not a noncuspidal `X₀(26)` point |
 

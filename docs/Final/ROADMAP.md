@@ -651,3 +651,29 @@ Same fix mirrored into `beal-conjecture`.
 `verify-scaffold.sh OK`,
 `verify_descent_26.py OK`, `NO_SORRY_OK`.
 
+### v7.2.0-step1-true-conductor-scaffold — DONE
+
+Lean change.  New FullProof module
+`Beal/FullProof/TrueConductor.lean`.
+`PrimitiveBealTriple` is a packed primitive Beal
+equation (`2 < m,n,p`, `gcd=1`).
+`freyCurveOf` is `Y² = X(X − Aᵐ)(X + Bⁿ)`.
+`frey_Delta_of_equation` / `frey_c4_formula` are
+`ring` identities, not `2*13` tokens.
+`pairwise_coprime` is the true gcd step.
+`odd_prime_not_dvd_c4` plus the existing
+valuation lemmas give `v_q(c₄)=0` and
+`v_q(Δ)>0` at every odd prime dividing `ABC`.
+`frey_minimal_model_at_odd_prime`,
+`frey_conductor_exponent_one_odd`,
+`frey_conductor_two`, `frey_global_conductor`
+stay uninhabited (empty `Type` witnesses, not
+`sorry`).  2-adic data remains supplied by
+`FreyTwoAdicExponentOneCertificate` /
+`FreyTwoAdicConductorCertificate` /
+`FreyConductorData_26`.
+Does **not** inhabit
+`beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.
+
