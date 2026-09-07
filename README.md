@@ -288,6 +288,7 @@ with `Q_1`/`Q_2` by `rfl` **none**, same
 pattern.  `Nat.pow` of `4 * 13^n + 1` lives
 on `tw_general_witness_pow_formula` **off**
 this none token.
+![Qn infinite Q1=53 53%13=1 by rfl none Q2=677 677%169=1 by rfl none 8789=17*517](docs/assets/v6.7.0/tw_qn_infinite_family.jpg)
 
 `frey_R_T_patching_witness_real_infinite_formula`
 is the `R = T` patching witness infinite real:
@@ -348,6 +349,7 @@ via `X₀(26)` `26a1`/`26b1` real none,
 `FreyDeltaSeparated` holds
 `frey_Delta13_formula = 16*(A¹³)²*(B¹³)²*(A¹³+B¹³)²`
 `Int.pow` / `Nat.pow` OFF Galois token.
+![Galois token Int.pow OFF Nat.pow OFF rho_bar_Frey_13 G_Q→GL2(F13) v13(Delta)%13=0 by rfl none conductor 2*13 by rfl none](docs/assets/v6.7.0/galois_token.jpg)
 `rho_bar` **none**.
 `frey_Delta13_ne_0_of_pos_real` real
 positivity `0 < A`, `0 < B`, `A¹³+B¹³ ≠ 0`
@@ -492,6 +494,7 @@ token, unramified `p ∉ S` by `rfl` **none**,
 semistable `2*13` by `rfl` **none**,
 `det = χ₁₃` **none**, `X₀(26)` `26a1` Δ `-17576`
 and `26b1` Δ `-1664` real none.
+![Ribet 26→2 26/13=2 by rfl none 26a1 Δ -17576 26b1 Δ -1664](docs/assets/v6.7.0/ribet_26_to_2.jpg)
 
 `frey_ribet_level_lowering_real_lemma` is the
 Ribet theorem: modular at 26 + finite-flat at

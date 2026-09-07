@@ -309,6 +309,7 @@ Official build **20 modules** (19 old +
   `p ∉ S` token, semistable `2 * 13` by `rfl`,
   `det = χ₁₃` token, `X₀(26)` `26a1` Δ `-17576`
   `26b1` Δ `-1664` **none**
+![Ribet 26→2 26/13=2 by rfl none 26a1 Δ -17576 26b1 Δ -1664](../assets/v6.7.0/ribet_26_to_2.jpg)
 - `frey_ribet_level_lowering_real_lemma`
   Ribet theorem **propext only**, off the
   inhabitant
@@ -353,6 +354,7 @@ and the TW infinite family as computable
   (`n = 3` is `8789 = 17 * 517`, not a
   primality proof).  `TW_infinite_family_exists`
   / Chebotarev stay **propext only**
+![Qn infinite Q1=53 53%13=1 by rfl none Q2=677 677%169=1 by rfl none 8789=17*517](../assets/v6.7.0/tw_qn_infinite_family.jpg)
 - `frey_R_T_patching_witness_real_infinite_formula`
   Hecke / scaffold tokens + `Q_1`/`Q_2` +
   conductor `2 * 13` by `rfl` + `26a1` Δ
@@ -364,6 +366,7 @@ and the TW infinite family as computable
   TW `Q_1`/`Q_2`, `X₀(26)` discs, Hecke /
   scaffold tokens **none**.  `Int.pow` /
   `Nat.pow` OFF token
+![Galois token Int.pow OFF Nat.pow OFF rho_bar_Frey_13 G_Q→GL2(F13) v13(Delta)%13=0 by rfl none conductor 2*13 by rfl none](../assets/v6.7.0/galois_token.jpg)
 - `frey_modular_lifting_at_26_real_lemma`
   Taylor–Wiles patching **propext only**,
   off the inhabitant

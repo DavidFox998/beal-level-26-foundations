@@ -240,6 +240,7 @@ finite-flat `v₁₃(Δ) % 13 = 0` by `rfl` **none**
 `p ∉ S` by `rfl` **none** semistable `2*13` by
 `rfl` **none** `det = χ₁₃` **none** `X₀(26)`
 `26a1` Δ `-17576` `26b1` Δ `-1664` real none
+![Ribet 26→2 26/13=2 by rfl none 26a1 Δ -17576 26b1 Δ -1664](assets/v6.7.0/ribet_26_to_2.jpg)
 `frey_ribet_level_lowering_real_lemma` Ribet
 theorem modular at 26 + finite-flat at 13 +
 unramified outside `S` + `det = χ₁₃` +
@@ -289,6 +290,7 @@ by `rfl` **none** `|Q_n| = 1 = r` general
 witness `4 * 13^n + 1` congruent to 1
 `[MOD 13^n]` for `n > 0` not a primality
 proof every `n` (`n = 3` is `8789 = 17 * 517`)
+![Qn infinite Q1=53 53%13=1 by rfl none Q2=677 677%169=1 by rfl none 8789=17*517](assets/v6.7.0/tw_qn_infinite_family.jpg)
 Existence `n > 0` no `Nat` `q % 1 = 1`
 `TW_infinite_family_exists` `∀ n > 0 ∃ Q`
 `Q.n = n ∧ |Q.Q_n| = r ∧ ∀ q ∈ Q.Q_n`
@@ -343,6 +345,7 @@ finite-flat `v₁₃(Δ) % 13 = 0` by `rfl` none
 and `26 / 13 = 2` by `rfl` none and modular
 at 26 via `X₀(26)` `26a1`/`26b1` real none
 and `Q_1`/`Q_2` none and `R = T` patching none.
+![Galois token Int.pow OFF Nat.pow OFF rho_bar_Frey_13 G_Q→GL2(F13) v13(Delta)%13=0 by rfl none conductor 2*13 by rfl none](assets/v6.7.0/galois_token.jpg)
 `FreyCurveSeparated_modular_lifting.token`
 **none**.
 `beal_forall_in_kernel_from_modular_lifting_separated`
