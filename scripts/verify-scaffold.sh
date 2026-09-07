@@ -1201,7 +1201,7 @@ grep -q "theorem not_FreyEllCase5_of_exp_four_reduced" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "def FreyEllCase5Mixed" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
-grep -q "def TWAuxEllFixed" \
+grep -q "structure TWAuxEllFixed" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "def find_prime_congruent_one_mod_explicit" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
