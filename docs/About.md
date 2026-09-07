@@ -1,17 +1,15 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v6.1.0-iter-tw-infinite-family`.
-Lean change on this slice: infinite Taylor–Wiles
-family `Q_1 = [53]`, `Q_2 = [677]`,
-`TW_infinite_family_exists`.
+Latest tag / HEAD: `v6.1.1-iter-about-catchup-22559449`.
+Records Lean HEAD `e45d610` /
+`v6.1.0-iter-tw-infinite-family`.  No Lean change
+on this catch-up.
 
 Latest parallel mint written
+[10.5281/zenodo.22559449](https://doi.org/10.5281/zenodo.22559449)
+(v6.1.0 TW infinite family) DataCite findable, after
 [10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
-(v6.0.0 REAL ALGORITHMS) DataCite findable, after
-[10.5281/zenodo.22558113](https://doi.org/10.5281/zenodo.22558113)
-(v5.7.0 FINAL v5 green).  The v6.0.1 mint
-`22559130` and this v6.1.0 mint are **not** written
-here; next About catch-up is v6.1.1.  Hook
+(v6.0.0 REAL ALGORITHMS).  Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
 `IsVersionOf` [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)
 is metadata only.  Original-family latest remains
@@ -62,21 +60,28 @@ by `rfl` **none** Real `X₀(26)(ℚ)` `26a1` `-17576`
 Diamond / Gorenstein / complete-intersection
 `R_T_patching_witness_real` ≃ **none**
 `beal_forall_in_kernel_from_real_algorithms`
-**propext only**).
-
-v6.1.0 makes `Q_n = [53]` a real infinite family:
-`Q_1 = [53]` `53 % 13 = 1` by `rfl` **none**,
-`Q_2 = [677]` `677 % 169 = 1` by `rfl` **none**,
-`677 = 4 * 169 + 1` prime, `|Q_n| = 1 = r`
-(`r` = Selmer dim), `q ≡ 1 [MOD 13^n]` computable
-by `rfl`, distinct `ρ̄(Frob_q)` **propext only**,
-`ChebotarevToken` density `> 0` **propext only**,
-`TW_infinite_family_exists` `∀ n > 0, ∃ Q`
-**propext only**,
-`TW_primes_Q_n_real_infinite` **none**,
-`R_T_patching_witness_real_infinite` ≃ **none**,
+**propext only**) →
+`22559130` (v6.0.1 About catch-up DONE,
+About writes `22558788`) →
+`22559449` (v6.1.0 TW infinite family
+`Q_1 = [53]` `53 % 13 = 1` by `rfl` **none**
+`Q_2 = [677]` `677 = 4 * 169 + 1`
+`677 % 169 = 1` by `rfl` **none** `|Q_n| = 1 = r`
+general witness `4 * 13^n + 1` congruent to `1`
+mod `13^n` for `n > 0` not a primality proof for
+every `n` (`n = 3` `8789 = 17 * 517`) existence
+restricted to `n > 0` because no `Nat` satisfies
+`q % 1 = 1` `TW_infinite_family_exists`
+`∀ n > 0, ∃ Q, Q.n = n ∧ |Q.Q_n| = r ∧
+∀ q ∈ Q.Q_n, q % 13^n = 1` **propext only**
+`ChebotarevToken` density `> 0` **propext only**
+distinct `ρ̄(Frob_q)` token on a singleton
+Diamond / Gorenstein / complete-intersection Type
+tokens `TW_primes_Q_n_real_infinite` **none**
+`R_T_patching_witness_real` **none**
+`R_T_patching_witness_real_infinite` **none**
 `beal_forall_in_kernel_from_infinite_TW`
-**propext only**.  15 modules green.
+**propext only**).
 
 Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms.
@@ -87,7 +92,7 @@ is `0 ≠ 0` and stays uninhabited.  Original Path 2
 (`⟨13, 2, 1⟩` is `Is13Case`, `gcd = 1`).  No
 `False.elim`.  Path 1 false formal.  Real
 `X₀(26)(ℚ)` still has `26a1` Δ `-17576` and
-`26b1` Δ `-1664`.  `NO_SORRY_OK`.
+`26b1` Δ `-1664`.  `NO_SORRY_OK`.  15 modules green.
 
 This is the in-repo About lock for GitHub About / topics /
 the public landing page.  Do not rewrite minted DOIs.

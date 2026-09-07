@@ -195,5 +195,13 @@ infinite family.  Official build **15 modules**.
 **propext only**.  Chebotarev density is a token,
 not Mathlib class-field / Chebotarev.  Empty
 `R_T_algorithm` stays uninhabited.  About still
-lists written mint `22558788`.
+lists written mint `22558788` until v6.1.1.
+
+### v6.1.1-iter-about-catchup-22559449 — DONE
+
+About catch-up `22558788` (v6.0.0 REAL ALGORITHMS)
+→ `22559449` (v6.1.0 TW infinite family).  Docs
+lock.  No Lean change.  HEAD `e45d610`.  Hook
+`22379293`.  `IsVersionOf` `22272382`.
+Original-family latest remains `22322627`.
 

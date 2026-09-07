@@ -1,12 +1,11 @@
-# FINAL v6.1.0 — infinite Taylor–Wiles family
+# FINAL v6.1.1 — About catch-up `22559449`
 
-Latest tag `v6.1.0-iter-tw-infinite-family`.
-Latest written mint remains
-[10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
-(v6.0.0 REAL ALGORITHMS) DataCite findable.  This
-v6.1.0 mint is **not** written into About; next
-catch-up is v6.1.1.  Hook `22379293`.
-`IsVersionOf` `22272382` metadata only.
+Records Lean HEAD `e45d610` /
+`v6.1.0-iter-tw-infinite-family`.  No Lean change
+on this catch-up.  Latest written mint
+[10.5281/zenodo.22559449](https://doi.org/10.5281/zenodo.22559449)
+(v6.1.0 TW infinite family) DataCite findable.  Hook
+`22379293`.  `IsVersionOf` `22272382` metadata only.
 Original-family latest remains `22322627`.
 
 ### v6.0.0 REAL ALGORITHMS
@@ -42,7 +41,7 @@ TW `Q_n = [53]` `53 % 13 = 1` by `rfl` +
 
 Chain `22552105 → 22552659 → 22553129 → 22553671
 → 22554242 → 22555912 → 22556701 → 22558113
-→ 22558788`.  About writes `22558788` as the
+→ 22558788`.  About wrote `22558788` as the
 latest recorded mint.  Docs lock.  No Lean change
 on that catch-up.
 
@@ -83,6 +82,21 @@ Old displayed tokens stay: `rho_bar_Frey_13_inhabited`
 `TW_primes_Q_n_inhabited` **propext**,
 `WeierstrassModularity_of_pack_from_R_T` **propext**,
 `beal_forall_in_kernel_closed` **propext**.
+
+`Q_1 = [53]` `53 % 13 = 1` by `rfl` **none**.
+`Q_2 = [677]` `677 % 169 = 1` by `rfl` **none**.
+`|Q_n| = 1 = r`.  `4 * 13^n + 1` pattern.
+`∀ n > 0, ∃ Q` with `q % 13^n = 1` **propext only**.
+Chebotarev density `> 0` **propext only**.
+Truly infinite, not just `[53]`.
+
+### v6.1.1 About catch-up DONE
+
+Chain `22552105 → 22552659 → 22553129 → 22553671
+→ 22554242 → 22555912 → 22556701 → 22558113
+→ 22558788 → 22559130 → 22559449`.  About now
+writes `22559449` as the latest recorded mint.
+Docs lock only.  No Lean change.
 
 ### Honest lock (unchanged from FINAL v5)
 
