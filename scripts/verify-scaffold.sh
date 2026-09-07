@@ -699,6 +699,7 @@ do
   grep -q "v6.8.0-iter-exists-newform-level-2-real" "$readme"
   grep -q "v6.8.1-iter-about-catchup-22602899-relook" "$readme"
   grep -q "v6.9.0-iter-beal-forall-closed-real" "$readme"
+  grep -q "v6.9.1-iter-about-catchup-22611775-relook" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
