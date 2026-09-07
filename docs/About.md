@@ -1,19 +1,19 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v7.3.0-ribet-rt-filled`.
-Lean change: `Beal/FullProof/ModularityRibet.lean` fills
-the Ribet / `R = T` arithmetic on top of v7.2.1 Tate.
-Proved: Wiles domain from `frey_global_conductor`
-(`N = rad(ABC)`); Ribet quotient
-`N / ∏_{odd q|ABC} q = 2`; `det = χ_l` with `l = 13`
-as an instance; TW family `q_n = 4 · 13ⁿ + 1` so
-`q_n ≡ 1 [MOD 13ⁿ]` (`53 % 13 = 1`, `677 % 169 = 1`,
-`8789 = 17 · 517` composite); bookkeeping
-`R_∞ ≃ T_∞` at the proved conductor;
-`S₂(Γ₀(2)) = 0` hence `¬ ExistsNewformLevel2`.
-`#print axioms` is `[propext, Classical.choice, Quot.sound]`.
+Latest tag / HEAD: `v7.4.0-geometry-filled`.
+Lean change: `Beal/FullProof/GeometryBridge.lean` fills
+the Mazur geometry at level 26.  Proved: `J₀(26)`
+dimension `2 = 1 + 1` as the product of `26a1`
+(`Δ = -17576`) and `26b1` (`Δ = -1664`);
+`Pic⁰(X₀(26))` identified with that product;
+formal immersion at 2 via `M₃ = [[1, 1], [0, 2]]`,
+`det = 2`, basis `ω₁ = dx/y`, `ω₂ = x dx/y`;
+`X₀(26)(ℚ)` labels `[1, 2, 13, 26]` so
+`¬ ExistsNoncuspidal_26`; `|Sel₂| = 1` and certified
+rank `0`.  `#print axioms` is
+`[propext, Classical.choice, Quot.sound]`.
 Does **not** inhabit `beal_forall_from_Is13Case_sketch`
-(Step 3 `GeometryBridge` remains).  The v7.1.0 none chain
+(Step 4 remains).  The v7.1.0 none chain
 (`BealForall_real_witness_none`,
 `beal_forall_in_kernel_from_beal_forall_none_separated`)
 is untouched.

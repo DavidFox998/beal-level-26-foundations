@@ -724,3 +724,26 @@ Does **not** touch the 24-module none chain.
 Step 3 (`GeometryBridge`) remains.
 No `False.elim`.
 
+### v7.4.0-geometry-filled — DONE
+
+Lean change.  New FullProof module
+`Beal/FullProof/GeometryBridge.lean`.
+`J0_26_dim` is `2 = 1 + 1` from the two dim-1
+newform factors.  `J0_26_isogeny` is the product
+`E_{26a1} × E_{26b1}` with PARI discriminants
+`-17576` and `-1664`.  `PicardAbelJacobiIdentification_26`
+identifies `Pic⁰` with that product.
+`formal_immersion_X0_26_to_J0_26_at_2` is `M₃`
+of rank 2 over `ℤ/3` (`det = 2`) with basis
+`ω₁ = dx/y`, `ω₂ = x dx/y`.
+`no_noncuspidal_Q_points` is `¬ ExistsNoncuspidal_26`
+from the four-cusp labels `[1, 2, 13, 26]`.
+`GeometryBridge` packs no non-cuspidal `ℚ`-point
+and the rank-0 piece `|Sel₂| = 1`.
+`#print axioms` `[propext, Classical.choice, Quot.sound]`.
+Does **not** inhabit
+`beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+Step 4 (inhabit the sketch) remains.
+No `False.elim`.
+

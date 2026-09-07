@@ -78,6 +78,21 @@ v7.1.3-iter-beal-not-route-e-corrected Beal Conjecture corrected from mislabeled
 v7.2.0-step1-true-conductor-scaffold TrueConductor typed scaffold: Frey model of a primitive Beal triple, Δ=16(Aᵐ)²(Bⁿ)²(Cᵖ)² by ring, true gcd pairwise-coprime ⇒ odd p|ABC does not divide c₄, v_p(c₄)=0 and v_p(Δ)>0; Tate/Kodaira/N=2·rad(ABC) stay uninhabited empty-Type witnesses not sorry. Still not Full Mathlib ∀.
 v7.2.1-tate-filled TrueConductor Tate filled: true_gcd_pairwise on Aᵐ,Bⁿ,Cᵖ; Tate Step 2 at odd q|ABC gives Kodaira I_n and exponent 1; at 2 the integral model has v₂(c₄)=4 so Step 2 does not apply and rad exponent of 2 is 1; N=2·∏_{odd q|ABC}q=rad(ABC). Sketch stays uninhabited. Still not Full Mathlib ∀.
 v7.3.0-ribet-rt-filled ModularityRibet theorems: Wiles domain from TrueConductor N=rad(ABC); Ribet quotient N/∏q=2; det=χ_l (l=13 instance); TW family q_n=4·13ⁿ+1 with 53%13=1, 677%169=1, 8789=17·517 composite; R_∞≃T_∞ bookkeeping; S₂(Γ₀(2))=0 so ¬ExistsNewformLevel2. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v7.4.0-geometry-filled GeometryBridge theorems: J0(26) dim 2=1+1 as E_26a1×E_26b1 (Δ -17576/-1664); Pic⁰=J0 product; formal immersion at 2 via M3=[[1,1],[0,2]] det=2 with ω1=dx/y ω2=x dx/y; X0(26)(Q) labels [1,2,13,26] so ¬ExistsNoncuspidal; Sel2=1 rank 0. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v7.4.0-geometry-filled — Mazur geometry filled: J₀(26) product, formal immersion at 2, four cusps
+
+Lean change.  `GeometryBridge.lean` replaces JSON / M₃ tokens with theorems.  Does **not** inhabit `beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `J0_26_dim` / `J0_26_isogeny`: `dim = 2 = 1 + 1` as `E_{26a1} × E_{26b1}` (`Δ = -17576`, `Δ = -1664`);
+- `PicardAbelJacobiIdentification_26`: `Pic⁰` identified with that product;
+- `formal_immersion_X0_26_to_J0_26_at_2`: `M₃ = [[1, 1], [0, 2]]`, `det = 2`, basis `ω₁ = dx/y`, `ω₂ = x dx/y`;
+- `no_noncuspidal_Q_points`: `X₀(26)(ℚ)` labels `[1, 2, 13, 26]`;
+- `GeometryBridge`: no displayed non-cuspidal `ℚ`-point, rank-0 piece `|Sel₂| = 1`.
+
+`#print axioms` is `[propext, Classical.choice, Quot.sound]`.  Step 4 (inhabit the sketch) remains.
+
+The v7.1.0 none chain is untouched — 24 modules still green.  About still writes the v7.1.1 mint `22635221`; the new v7.4.0 mint is not written.
 
 ### v7.3.0-ribet-rt-filled — Ribet + R=T filled: N/∏q=2, TW family, bookkeeping R_∞≃T_∞, no newform at level 2
 

@@ -161,9 +161,11 @@ test -f lean/BealLevel26Foundations/GaloisRep/GaloisBealForallClosedReal.lean
 test -f lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
+test -f lean/BealLevel26Foundations/Beal/FullProof/GeometryBridge.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
+test -f docs/Beal/GeometryBridge.md
 test -f lean/BealLevel26Foundations/Tate/RealTateAlgorithm.lean
 test -f lean/BealLevel26Foundations/RT/PatchingWitnessReal.lean
 test -f lean/BealLevel26Foundations/RT/TaylorWilesInfiniteFamily.lean
@@ -753,6 +755,7 @@ do
   grep -q "v7.2.0-step1-true-conductor-scaffold" "$readme"
   grep -q "v7.2.1-tate-filled" "$readme"
   grep -q "v7.3.0-ribet-rt-filled" "$readme"
+  grep -q "v7.4.0-geometry-filled" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -911,6 +914,8 @@ grep -q "import BealLevel26Foundations.Beal.FullProof.TrueConductor" \
   lean/BealLevel26Foundations/Beal/FullProof.lean
 grep -q "import BealLevel26Foundations.Beal.FullProof.ModularityRibet" \
   lean/BealLevel26Foundations/Beal/FullProof.lean
+grep -q "import BealLevel26Foundations.Beal.FullProof.GeometryBridge" \
+  lean/BealLevel26Foundations/Beal/FullProof.lean
 grep -q "theorem wiles_modularity_Frey" \
   lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
 grep -q "theorem ribet_level_lowering_general" \
@@ -941,6 +946,20 @@ grep -q "theorem ribet_step_2_contradiction" \
   lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
 grep -q "def beal_forall_from_Is13Case_sketch_stays_uninhabited" \
   lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
+grep -q "theorem J0_26_dim" \
+  lean/BealLevel26Foundations/Beal/FullProof/GeometryBridge.lean
+grep -q "theorem J0_26_isogeny" \
+  lean/BealLevel26Foundations/Beal/FullProof/GeometryBridge.lean
+grep -q "theorem PicardAbelJacobiIdentification_26" \
+  lean/BealLevel26Foundations/Beal/FullProof/GeometryBridge.lean
+grep -q "theorem formal_immersion_X0_26_to_J0_26_at_2" \
+  lean/BealLevel26Foundations/Beal/FullProof/GeometryBridge.lean
+grep -q "theorem no_noncuspidal_Q_points" \
+  lean/BealLevel26Foundations/Beal/FullProof/GeometryBridge.lean
+grep -q "theorem GeometryBridge" \
+  lean/BealLevel26Foundations/Beal/FullProof/GeometryBridge.lean
+grep -q "def beal_forall_from_Is13Case_sketch_stays_uninhabited" \
+  lean/BealLevel26Foundations/Beal/FullProof/GeometryBridge.lean
 if grep -q "import BealLevel26Foundations.Beal.FullProof.ModularityRibet" \
     lean/BealLevel26Foundations.lean \
     lean/BealLevel26Foundations/Beal/BealForall.lean \
@@ -952,15 +971,28 @@ if grep -q "import BealLevel26Foundations.Beal.FullProof.ModularityRibet" \
   echo "FAIL: none chain must not import ModularityRibet"
   exit 1
 fi
+if grep -q "import BealLevel26Foundations.Beal.FullProof.GeometryBridge" \
+    lean/BealLevel26Foundations.lean \
+    lean/BealLevel26Foundations/Beal/BealForall.lean \
+    lean/BealLevel26Foundations/Chain/BealForallInKernel.lean \
+    lean/BealLevel26Foundations/Chain/PathLock.lean \
+    lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean \
+    lean/BealLevel26Foundations/GaloisRep/GaloisBealForallClosedReal.lean \
+    lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean; then
+  echo "FAIL: none chain must not import GeometryBridge"
+  exit 1
+fi
 if grep -nE \
     '^import[[:space:]]+(BealLevel26Foundations\.Beal\.BealForall|BealLevel26Foundations\.GaloisRep\.GaloisBealForallNoneReal|BealLevel26Foundations\.GaloisRep\.GaloisBealForallClosedReal|BealLevel26Foundations\.Chain\.PathLock|BealLevel26Foundations\.Chain\.BealForallInKernel|BealLevel26Foundations\.Mazur|BealLevel26Foundations\.RT\.PatchingWitnessReal|BealLevel26Foundations\.RT\.TaylorWilesScaffold)' \
-    lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean; then
-  echo "FAIL: ModularityRibet must not import none-chain / Forall / Mazur / none RT tokens"
+    lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean \
+    lean/BealLevel26Foundations/Beal/FullProof/GeometryBridge.lean; then
+  echo "FAIL: FullProof Step 2/3 must not import none-chain / Forall / Mazur / none RT tokens"
   exit 1
 fi
 if grep -nE '^[[:space:]]*False\.elim|^[[:space:]]*exact[[:space:]]+False\.elim' \
     lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean \
     lean/BealLevel26Foundations/Beal/FullProof/TrueConductor.lean \
+    lean/BealLevel26Foundations/Beal/FullProof/GeometryBridge.lean \
     lean/BealLevel26Foundations/Beal/FullProof.lean; then
   echo "FAIL: FullProof track must not use False.elim"
   exit 1

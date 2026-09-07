@@ -1,3 +1,31 @@
+# FINAL v7.4.0 — GeometryBridge Mazur geometry filled
+
+Latest tag `v7.4.0-geometry-filled`.
+Lean change.
+`lean/BealLevel26Foundations/Beal/FullProof/GeometryBridge.lean`
+replaces JSON / M₃ tokens with theorems:
+`J₀(26)` dimension `2 = 1 + 1` as
+`E_{26a1} × E_{26b1}` (`Δ = -17576`, `Δ = -1664`);
+`Pic⁰ = J₀` as that product; formal immersion at 2
+via `M₃ = [[1, 1], [0, 2]]`, `det = 2`,
+`ω₁ = dx/y`, `ω₂ = x dx/y`; `X₀(26)(ℚ)` labels
+`[1, 2, 13, 26]` so `¬ ExistsNoncuspidal_26`;
+`|Sel₂| = 1` and certified rank `0`.
+`#print axioms` is `[propext, Classical.choice, Quot.sound]`.
+Does **not** inhabit
+`beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+FullProof track is **26 modules** (TrueConductor +
+ModularityRibet + GeometryBridge on the FullProof root).
+Latest written mint
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221)
+(v7.1.1 About catch-up).  The new v7.4.0 mint is
+**not** written into About until the next catch-up.
+Three JPEG plates stay in `docs/assets/v6.7.0/`.
+Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+
 # FINAL v7.3.0 — ModularityRibet Ribet + R=T filled
 
 Latest tag `v7.3.0-ribet-rt-filled`.
