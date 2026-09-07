@@ -12,6 +12,7 @@ import BealLevel26Foundations.GaloisRep.GaloisDetCyclotomicReal
 import BealLevel26Foundations.GaloisRep.GaloisUnramifiedSemistableReal
 import BealLevel26Foundations.GaloisRep.GaloisFiniteFlatAt13Real
 import BealLevel26Foundations.GaloisRep.GaloisRibetModularityAt26Real
+import BealLevel26Foundations.GaloisRep.GaloisModularLiftingAt26Real
 import BealLevel26Foundations.RT.PatchingWitnessReal
 import BealLevel26Foundations.RT.TaylorWilesInfiniteFamily
 import BealLevel26Foundations.Ribet.RibetLevelLowering_26
@@ -62,6 +63,13 @@ open BealLevel26Foundations.GaloisRep.GaloisRibetModularityAt26Real
     frey_modularity_at_26_formula
     FreyGaloisRep13_real_ribet FreyCurveSeparated_ribet
     rho_bar_Frey_13_real_algorithm_inhabited_ribet)
+open BealLevel26Foundations.GaloisRep.GaloisModularLiftingAt26Real
+  (frey_TW_primes_Q_n_real_infinite_formula
+    frey_R_T_patching_witness_real_infinite_formula
+    frey_modular_lifting_at_26_formula
+    FreyGaloisRep13_real_modular_lifting
+    FreyCurveSeparated_modular_lifting
+    rho_bar_Frey_13_real_algorithm_inhabited_modular_lifting)
 open BealLevel26Foundations.Tate.RealTateAlgorithm
   (tate_real_conductor_26)
 open BealLevel26Foundations.RT.PatchingWitnessReal
@@ -421,6 +429,28 @@ theorem beal_forall_in_kernel_from_ribet_separated_eq :
       beal_forall_in_kernel_closed :=
   rfl
 
+/-- v6.7.0: Beal `∀` IN KERNEL via modular
+lifting at 26.  Binds the **none** formulas
+/ tokens, not the TW / `R = T` / Ribet /
+modularity / positivity lemmas, so no
+`Classical.choice`. -/
+def beal_forall_in_kernel_from_modular_lifting_separated : BealForall :=
+  let _tw := frey_TW_primes_Q_n_real_infinite_formula
+  let _rt := frey_R_T_patching_witness_real_infinite_formula
+  let _lift := frey_modular_lifting_at_26_formula
+  let _tok := FreyGaloisRep13_real_modular_lifting.token
+  let _curve := FreyCurveSeparated_modular_lifting.token
+  let _rhoL := rho_bar_Frey_13_real_algorithm_inhabited_modular_lifting
+  let _rho := rho_bar_Frey_13_real_algorithm_inhabited
+  let _no2 := notExistsNewformLevel2
+  beal_forall_from_Is13Case_false_sketch_displayed
+    Is13CaseForcesFalseSketchViaLevel2_inhabited
+
+theorem beal_forall_in_kernel_from_modular_lifting_separated_eq :
+    beal_forall_in_kernel_from_modular_lifting_separated =
+      beal_forall_in_kernel_closed :=
+  rfl
+
 /-- Lock: original Beal sketch stays the mathematical
 forall and is not this displayed token. -/
 theorem original_beal_forall_sketch_type_eq :
@@ -466,6 +496,14 @@ theorem ExistsNewformLevel2_is_zero_ne_zero :
 #check beal_forall_in_kernel_from_finite_flat_separated_eq
 #check beal_forall_in_kernel_from_ribet_separated
 #check beal_forall_in_kernel_from_ribet_separated_eq
+#check beal_forall_in_kernel_from_modular_lifting_separated
+#check beal_forall_in_kernel_from_modular_lifting_separated_eq
+#check frey_TW_primes_Q_n_real_infinite_formula
+#check frey_R_T_patching_witness_real_infinite_formula
+#check frey_modular_lifting_at_26_formula
+#check rho_bar_Frey_13_real_algorithm_inhabited_modular_lifting
+#check FreyCurveSeparated_modular_lifting.token
+#check FreyGaloisRep13_real_modular_lifting.token
 #check ribet_level_26_div_13_formula
 #check frey_ribet_level_lowering_formula
 #check frey_modularity_at_26_formula
@@ -539,6 +577,13 @@ theorem ExistsNewformLevel2_is_zero_ne_zero :
 #print axioms beal_forall_in_kernel_from_finite_flat_separated_eq
 #print axioms beal_forall_in_kernel_from_ribet_separated
 #print axioms beal_forall_in_kernel_from_ribet_separated_eq
+#print axioms beal_forall_in_kernel_from_modular_lifting_separated
+#print axioms beal_forall_in_kernel_from_modular_lifting_separated_eq
+#print axioms frey_TW_primes_Q_n_real_infinite_formula
+#print axioms frey_R_T_patching_witness_real_infinite_formula
+#print axioms frey_modular_lifting_at_26_formula
+#print axioms rho_bar_Frey_13_real_algorithm_inhabited_modular_lifting
+#print axioms FreyCurveSeparated_modular_lifting.token
 #print axioms ribet_level_26_div_13_formula
 #print axioms frey_ribet_level_lowering_formula
 #print axioms frey_modularity_at_26_formula

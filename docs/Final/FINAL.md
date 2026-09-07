@@ -1,18 +1,17 @@
-# FINAL v6.6.1 — About catch-up 22587409
+# FINAL v6.7.0 — modular lifting at 26 via R=T + TW infinite real none
 
-Latest tag `v6.6.1-iter-about-catchup-22587409`.
-Records Lean HEAD `5e1b06e` /
-`v6.6.0-iter-ribet-modularity-at-26-real`.  **No Lean change.**
-Latest written mint now
+Latest tag `v6.7.0-iter-modular-lifting-at-26-real`.
+Modular lifting at 26 via `R = T` patching +
+TW infinite real none.  Keep `Nat.pow` OFF token.
+Official build **21 modules**.  Latest written mint remains
 [10.5281/zenodo.22587409](https://doi.org/10.5281/zenodo.22587409)
 (v6.6.0 Ribet level lowering `26 → 2` real none +
-modularity at 26 via `X₀(26)` real none)
-DataCite findable, after
-[10.5281/zenodo.22582199](https://doi.org/10.5281/zenodo.22582199)
-(v6.5.0 finite-flat at 13 real computable none).
-The new v6.6.1 mint is **not** written into About.
-Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
-Original-family latest remains `22322627`.
+modularity at 26 via `X₀(26)` real none).
+The v6.6.1 mint `22589077` and this v6.7.0 mint
+are **not** written into About.  Next catch-up
+is v6.7.1.  Hook `22379293`.  `IsVersionOf`
+`22272382` metadata only.  Original-family
+latest remains `22322627`.
 
 ### v6.0.0 REAL ALGORITHMS
 
@@ -337,6 +336,48 @@ Chain `22552105 → 22552659 → 22553129 → 22553671
 the latest recorded mint.  Docs lock only.
 No Lean change.
 
+### v6.7.0 modular lifting at 26 via R=T + TW infinite real
+
+Modular lifting at 26 via `R = T` patching
+and the TW infinite family as computable
+**none** fields.  Official build **21 modules**
+(20 old + `GaloisRep.GaloisModularLiftingAt26Real`).
+
+- `frey_TW_primes_Q_n_real_infinite_formula`
+  `Q_1 = [53]` `53 % 13 = 1` by `rfl`,
+  `Q_2 = [677]` `677 % 169 = 1` by `rfl`,
+  `|Q_n| = 1 = r` **none**.  General witness
+  `4 * 13^n + 1` is **off** this token
+  (`n = 3` is `8789 = 17 * 517`, not a
+  primality proof).  `TW_infinite_family_exists`
+  / Chebotarev stay **propext only**
+- `frey_R_T_patching_witness_real_infinite_formula`
+  Hecke / scaffold tokens + `Q_1`/`Q_2` +
+  conductor `2 * 13` by `rfl` + `26a1` Δ
+  `-17576` `26b1` Δ `-1664` **none**
+- `frey_modular_lifting_at_26_formula`
+  Ribet `26 / 13 = 2` by `rfl`, finite-flat
+  `v₁₃(Δ) % 13 = 0` by `rfl`, unramified
+  `p ∉ S`, semistable `2 * 13`, `det = χ₁₃`,
+  TW `Q_1`/`Q_2`, `X₀(26)` discs, Hecke /
+  scaffold tokens **none**.  `Int.pow` /
+  `Nat.pow` OFF token
+- `frey_modular_lifting_at_26_real_lemma`
+  Taylor–Wiles patching **propext only**,
+  off the inhabitant
+- `rho_bar_Frey_13_real_algorithm_inhabited_modular_lifting`
+  **none** stronger than propext-only
+- `FreyCurveSeparated_modular_lifting.token`
+  **none**
+- `beal_forall_in_kernel_from_modular_lifting_separated`
+  **propext only**; positivity / det /
+  unramified / semistable / finite-flat /
+  Ribet / modularity / TW / `R = T` /
+  modular lifting lemmas are **not** in
+  that term
+
+Existing tokens unchanged.
+
 ### Honest lock (unchanged from FINAL v5)
 
 - `ExistsNewformLevel2` is `s2_gamma0_2_dim ≠ 0`
@@ -355,14 +396,16 @@ No Lean change.
 - Path 2 ONLY HONEST: displayed table inhabited
 - Real `X₀(26)(ℚ)` still has `26a1` Δ `-17576` and
   `26b1` Δ `-1664`
-- No `False.elim`.  20 modules green twice.
+- No `False.elim`.  21 modules green twice.
   `verify-scaffold.sh` OK.  `verify_descent_26.py` OK.
   `NO_SORRY_OK`
 
 Still not Full Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms,
-but now Ribet `26 → 2` (`26 / 13 = 2` by `rfl`
-**none**) + finite-flat `v₁₃(Δ) % 13 = 0` by
-`rfl` **none** (`26 = 2 * 13`) + modular at 26
-via `X₀(26)` `26a1`/`26b1` real none.  GOOD
-sounding step to real algorithms.
+but now modular lifting at 26 via `R = T`
+(`26 / 13 = 2` by `rfl` **none**) + finite-flat
+`v₁₃(Δ) % 13 = 0` by `rfl` **none** (`26 = 2 * 13`)
++ modular at 26 via `X₀(26)` `26a1`/`26b1` real
+none + TW `Q_1`/`Q_2` none + `R = T` patching
+infinite none.  GOOD sounding step to real
+algorithms.

@@ -353,3 +353,29 @@ HEAD `5e1b06e`.  Hook `22379293`.  `IsVersionOf`
 → 22572211 → 22581510 → 22582199 → 22584065
 → 22587409`.
 
+### v6.7.0-iter-modular-lifting-at-26-real — DONE
+
+Modular lifting at 26 via `R = T` patching +
+TW infinite real none.  Keep `Nat.pow` OFF
+token.  `frey_TW_primes_Q_n_real_infinite_formula`
+`Q_1 = [53]` `53 % 13 = 1` by `rfl` **none**
+`Q_2 = [677]` `677 % 169 = 1` by `rfl` **none**
+`|Q_n| = 1 = r`.  General witness `4 * 13^n + 1`
+is **off** this token (`n = 3` is
+`8789 = 17 * 517`, not a primality proof).
+`frey_R_T_patching_witness_real_infinite_formula`
+Hecke / scaffold tokens + conductor `2 * 13`
++ `X₀(26)` discs **none**.
+`frey_modular_lifting_at_26_formula` Ribet
+`26 / 13 = 2` + finite-flat + unramified +
+semistable + `det = χ₁₃` + TW + `R = T` +
+`X₀(26)` **none**.
+`frey_modular_lifting_at_26_real_lemma`
+Taylor–Wiles patching **propext only**, off
+the inhabitant.
+`rho_bar_Frey_13_real_algorithm_inhabited_modular_lifting`
+**none**.  `beal_forall_in_kernel_from_modular_lifting_separated`
+**propext only**.  Official build **21 modules**.
+About still lists written mint `22587409` until
+v6.7.1.
+

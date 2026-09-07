@@ -5,6 +5,7 @@ import BealLevel26Foundations.GaloisRep.GaloisDetCyclotomicReal
 import BealLevel26Foundations.GaloisRep.GaloisUnramifiedSemistableReal
 import BealLevel26Foundations.GaloisRep.GaloisFiniteFlatAt13Real
 import BealLevel26Foundations.GaloisRep.GaloisRibetModularityAt26Real
+import BealLevel26Foundations.GaloisRep.GaloisModularLiftingAt26Real
 import BealLevel26Foundations.Real.FreyWeierstrass
 
 namespace BealLevel26Foundations.GaloisRep.FreyGaloisRepReal
@@ -34,6 +35,12 @@ open BealLevel26Foundations.GaloisRep.GaloisRibetModularityAt26Real
     ribet_level_26_div_13_formula
     frey_ribet_level_lowering_formula
     frey_modularity_at_26_formula)
+open BealLevel26Foundations.GaloisRep.GaloisModularLiftingAt26Real
+  (FreyGaloisRep13_real_modular_lifting FreyCurveSeparated_modular_lifting
+    rho_bar_Frey_13_real_algorithm_inhabited_modular_lifting
+    frey_TW_primes_Q_n_real_infinite_formula
+    frey_R_T_patching_witness_real_infinite_formula
+    frey_modular_lifting_at_26_formula)
 open BealLevel26Foundations.Real.FreyWeierstrass
 
 /-!
@@ -153,6 +160,10 @@ not unfolded here.
 v6.6.0: Ribet `26 → 2` / modularity at 26
 via `X₀(26)` live in
 `GaloisRibetModularityAt26Real` and are
+not unfolded here.
+v6.7.0: modular lifting at 26 via `R = T`
+/ TW infinite live in
+`GaloisModularLiftingAt26Real` and are
 not unfolded here. -/
 def FreyGaloisRep13.token : FreyGaloisRep13 where
   A := 13
@@ -243,6 +254,15 @@ def rho_bar_Frey_13_real_algorithm_inhabited_ribet_alias :
     Nonempty FreyGaloisRep13_real_ribet :=
   rho_bar_Frey_13_real_algorithm_inhabited_ribet
 
+/-- v6.7.0 alias of the modular-lifting token.
+Same **none** as
+`GaloisModularLiftingAt26Real.rho_bar_Frey_13_real_algorithm_inhabited_modular_lifting`.
+Taylor–Wiles / `R = T` lemmas stay off this
+inhabitant. -/
+def rho_bar_Frey_13_real_algorithm_inhabited_modular_lifting_alias :
+    Nonempty FreyGaloisRep13_real_modular_lifting :=
+  rho_bar_Frey_13_real_algorithm_inhabited_modular_lifting
+
 #check FreyCurve
 #check FreyCurve_Delta
 #check FreyGaloisRep13
@@ -258,6 +278,13 @@ def rho_bar_Frey_13_real_algorithm_inhabited_ribet_alias :
 #check rho_bar_Frey_13_real_algorithm_inhabited_finite_flat_alias
 #check rho_bar_Frey_13_real_algorithm_inhabited_ribet
 #check rho_bar_Frey_13_real_algorithm_inhabited_ribet_alias
+#check rho_bar_Frey_13_real_algorithm_inhabited_modular_lifting
+#check rho_bar_Frey_13_real_algorithm_inhabited_modular_lifting_alias
+#check frey_TW_primes_Q_n_real_infinite_formula
+#check frey_R_T_patching_witness_real_infinite_formula
+#check frey_modular_lifting_at_26_formula
+#check FreyGaloisRep13_real_modular_lifting
+#check FreyCurveSeparated_modular_lifting
 #check ribet_level_26_div_13_formula
 #check frey_ribet_level_lowering_formula
 #check frey_modularity_at_26_formula
@@ -290,5 +317,7 @@ def rho_bar_Frey_13_real_algorithm_inhabited_ribet_alias :
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_finite_flat_alias
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_ribet
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_ribet_alias
+#print axioms rho_bar_Frey_13_real_algorithm_inhabited_modular_lifting
+#print axioms rho_bar_Frey_13_real_algorithm_inhabited_modular_lifting_alias
 
 end BealLevel26Foundations.GaloisRep.FreyGaloisRepReal

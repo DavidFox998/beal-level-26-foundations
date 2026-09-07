@@ -1,9 +1,11 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v6.6.1-iter-about-catchup-22587409`.
-Records Lean HEAD `5e1b06e` /
-`v6.6.0-iter-ribet-modularity-at-26-real`.  No Lean change
-on this catch-up.
+Latest tag / HEAD: `v6.7.0-iter-modular-lifting-at-26-real`.
+Modular lifting at 26 via `R = T` patching +
+TW infinite real none.
+Keep `Nat.pow` OFF token same pattern as
+Ribet + modularity + finite-flat + unramified +
+`det = χ₁₃` + Frey Δ.
 
 Latest parallel mint written
 [10.5281/zenodo.22587409](https://doi.org/10.5281/zenodo.22587409)
@@ -22,8 +24,10 @@ none), after
 [10.5281/zenodo.22559449](https://doi.org/10.5281/zenodo.22559449)
 (v6.1.0 TW infinite family), after
 [10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
-(v6.0.0 REAL ALGORITHMS).  The new v6.6.1 mint is
-**not** written here.  Hook
+(v6.0.0 REAL ALGORITHMS).  The v6.6.1 mint
+`22589077` is **not** written here.  This
+v6.7.0 mint is **not** written here.  Next
+catch-up is v6.7.1.  Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
 `IsVersionOf` [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)
 is metadata only.  Original-family latest remains
@@ -267,6 +271,81 @@ positivity / det / unramified / semistable /
 finite-flat / Ribet / modularity lemmas not
 in term so no `Classical.choice`).
 
+v6.7.0 modular lifting at 26 via `R = T`
+patching + TW infinite real none
+(20 → 21 modules,
+`GaloisRep.GaloisModularLiftingAt26Real`).
+`frey_TW_primes_Q_n_real_infinite_formula` TW
+primes `Q_n` infinite family real witness
+`Q_1 = [53]` `53 % 13 = 1` by `rfl` **none**
+`Q_2 = [677]` `677 = 4*169+1` `677 % 169 = 1`
+by `rfl` **none** `|Q_n| = 1 = r` general
+witness `4 * 13^n + 1` congruent to 1
+`[MOD 13^n]` for `n > 0` not a primality
+proof every `n` (`n = 3` is `8789 = 17 * 517`)
+Existence `n > 0` no `Nat` `q % 1 = 1`
+`TW_infinite_family_exists` `∀ n > 0 ∃ Q`
+`Q.n = n ∧ |Q.Q_n| = r ∧ ∀ q ∈ Q.Q_n`
+`q % 13^n = 1` **propext only**
+`ChebotarevToken` density `> 0` **propext only**
+Distinct `ρ̄(Frob_q)` token singleton
+Diamond / Gorenstein / complete-intersection
+Type tokens `TW_primes_Q_n_real_infinite`
+**none** `R_T_patching_witness_real_infinite`
+**none**.
+`frey_R_T_patching_witness_real_infinite_formula`
+`R = T` patching witness infinite real
+`HeckeAlgebra_26_inhabited` **none**
+`R_T_scaffold_inhabited` **none** stronger
+than propext-only
+`modularity_lifting_of_R_T_inhabited`
+**propext only** `TW_primes_Q_n_inhabited`
+**propext only**
+`WeierstrassModularity_of_pack_from_R_T`
+**propext only** `TW_primes_Q_n_real_infinite`
+**none** `R_T_patching_witness_real` **none**
+`R_T_patching_witness_real_infinite` **none**.
+`frey_modular_lifting_at_26_formula` Modular
+lifting at 26 via `R = T` If `ρ̄_Frey_13`
+modular at 26 via `X₀(26)` `26a1` Δ `-17576`
+`26b1` Δ `-1664` + Ribet `26 → 2`
+`26 / 13 = 2` by `rfl` **none** + finite-flat
+`v₁₃(Δ) % 13 = 0` by `rfl` **none** +
+unramified `p ∉ S` by `rfl` **none** +
+semistable `2*13` by `rfl` **none** +
+`det = χ₁₃` **none** + TW infinite
+`Q_1 = [53]` `53 % 13 = 1` by `rfl` **none**
+`Q_2 = [677]` `677 % 169 = 1` by `rfl` **none**
++ `R = T` patching witness infinite **none**
+then Frey curve `Y² = X(X − A¹³)(X + B¹³)`
+modular lifting at 26 computable **none**
+field.
+`frey_modular_lifting_at_26_real_lemma`
+Taylor–Wiles patching + Ribet + finite-flat
++ unramified + semistable + `det = χ₁₃` +
+modular at 26 via `X₀(26)` + `Q_1`/`Q_2` +
+`R = T` scaffold + `HeckeAlgebra_26_inhabited`
+**propext only** OFF inhabitant.
+`rho_bar_Frey_13_real_algorithm_inhabited_modular_lifting`
+**none** stays **none** stronger than
+propext-only same pattern as
+`frey_Delta13_formula` `Int.pow` / `Nat.pow`
+OFF none token and `det = χ₁₃` OFF none token
+and unramified `p ∉ S` by `rfl` OFF none token
+and semistable `2*13` by `rfl` none and
+finite-flat `v₁₃(Δ) % 13 = 0` by `rfl` none
+and `26 / 13 = 2` by `rfl` none and modular
+at 26 via `X₀(26)` `26a1`/`26b1` real none
+and `Q_1`/`Q_2` none and `R = T` patching none.
+`FreyCurveSeparated_modular_lifting.token`
+**none**.
+`beal_forall_in_kernel_from_modular_lifting_separated`
+displayed Beal `∀` closed term **propext only**
+positivity / det / unramified / semistable /
+finite-flat / Ribet / modularity / TW / `R = T`
+/ modular lifting lemmas not in term so no
+`Classical.choice`.
+
 Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms.
 The mathematical Beal forall stays the uninhabited
@@ -276,7 +355,7 @@ is `0 ≠ 0` and stays uninhabited.  Original Path 2
 (`⟨13, 2, 1⟩` is `Is13Case`, `gcd = 1`).  No
 `False.elim`.  Path 1 false formal.  Real
 `X₀(26)(ℚ)` still has `26a1` Δ `-17576` and
-`26b1` Δ `-1664`.  `NO_SORRY_OK`.  20 modules green.
+`26b1` Δ `-1664`.  `NO_SORRY_OK`.  21 modules green.
 
 This is the in-repo About lock for GitHub About / topics /
 the public landing page.  Do not rewrite minted DOIs.
