@@ -627,3 +627,27 @@ Three JPEG plates untouched in
 twice, `verify-scaffold.sh OK`,
 `verify_descent_26.py OK`, `NO_SORRY_OK`.
 
+### v7.1.3-iter-beal-not-route-e-corrected — DONE
+
+Docs-only.  No Lean change.  Corrects a
+labeling error in v7.1.2: Beal was filed
+as "Route E," implying it was a fifth
+entry in the Riemann Hypothesis Route
+A–D lettering.  It is not — Beal is its
+own chamber of *Opera Numerorum*, housed
+in two companion repositories
+(`beal-conjecture` and this repository),
+unrelated to the RH route list beyond
+both being chambers of the same wider
+project.  `docs/OPERA_NUMERORUM_LINKS.md`
+restructured: Beal now under its own
+"### The Beal Conjecture — housed in
+two companion repositories" heading;
+Routes A–D grouped under "### The
+Riemann Hypothesis — four independent
+routes" as `#### Route A`–`#### Route D`.
+Same fix mirrored into `beal-conjecture`.
+24 modules green twice,
+`verify-scaffold.sh OK`,
+`verify_descent_26.py OK`, `NO_SORRY_OK`.
+

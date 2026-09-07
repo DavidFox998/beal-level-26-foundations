@@ -1,22 +1,23 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v7.1.2-iter-readme-uniform-opera-links`.
+Latest tag / HEAD: `v7.1.3-iter-beal-not-route-e-corrected`.
 Records Lean HEAD `9e820f4` /
 `v7.1.0-iter-beal-forall-kernel-separated-none-real`.
-No Lean change.  Docs-only uniform pack:
-new `docs/OPERA_NUMERORUM_LINKS.md`
-coordination index (identical text
-intended for every *Opera Numerorum*
-chamber repo) plus a uniformized
-`README.md` top header pointing at the
-current written mints and the concept
-DOI.  Companion repo `beal-conjecture`
-updated in lockstep: its "Active
-level-26 foundations companion" block
-and its own Opera Numerorum section now
-point at this repo's v7.1.0 BOTH-none
-unconditional result.  Assets keep the
-three JPEG plates (WebP fallback only).
+No Lean change.  Corrects a v7.1.2
+labeling error: the Beal Conjecture is
+**not** "Route E" of the Riemann
+Hypothesis Route A–D lettering — it is
+its own chamber of *Opera Numerorum*,
+housed in two companion repositories
+(`beal-conjecture` and this repository).
+`docs/OPERA_NUMERORUM_LINKS.md` now
+gives Beal its own heading, with Routes
+A–D grouped under a separate "The
+Riemann Hypothesis" parent; the same fix
+is mirrored into `beal-conjecture`'s own
+coordination-index file and README.
+Assets keep the three JPEG plates
+(WebP fallback only).
 
 Latest parallel mint written
 [10.5281/zenodo.22632209](https://doi.org/10.5281/zenodo.22632209)

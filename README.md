@@ -74,6 +74,7 @@ v7.0.1-iter-about-catchup-22618433-relook About catch-up 22611775 → 22618433. 
 v7.1.0-iter-beal-forall-kernel-separated-none-real Beal ∀ kernel separated from propext only → none via rfl only. Still not Full Mathlib ∀.
 v7.1.1-iter-about-catchup-22632209-relook About catch-up 22618433 → 22632209. Still not Full Mathlib ∀.
 v7.1.2-iter-readme-uniform-opera-links README header uniformized (badges 22632209/22635221/22272382) + Opera Numerorum coordination index docs/OPERA_NUMERORUM_LINKS.md added in both repos, no Lean change. Still not Full Mathlib ∀.
+v7.1.3-iter-beal-not-route-e-corrected Beal Conjecture corrected from mislabeled "Route E" to its own two-repository chamber of Opera Numerorum, not part of the Riemann Hypothesis A-D route lettering, no Lean change. Still not Full Mathlib ∀.
 
 ### v7.1.2-iter-readme-uniform-opera-links — README header uniformized across beal-level-26-foundations and beal-conjecture, Opera Numerorum coordination index added, docs-only
 
@@ -84,6 +85,26 @@ New file `docs/OPERA_NUMERORUM_LINKS.md` — the bulk-uploadable Opera Numerorum
 README header replaced: top badges now point at the current written mints `10.5281/zenodo.22632209` (v7.1.0) and `10.5281/zenodo.22635221` (v7.1.1) plus the concept DOI `10.5281/zenodo.22272382`, followed by a one-screen honest summary of the v7.1.0 unconditional-none result and a pointer to the Opera Numerorum index.  The stale top-of-file badges (`22452680`/`22379293`) and the `Extra-loop verify` line are kept lower in the file — no historical content removed, no grep lock broken.
 
 `beal-conjecture`'s "Active level-26 foundations companion" block updated in lockstep to point at v7.1.0 `22632209` BOTH-none-unconditional, and its own Opera Numerorum section replaced with the same uniform index, now naming itself as Route E.
+
+24 modules green twice `verify-scaffold.sh OK` `verify_descent_26.py OK` `NO_SORRY_OK` — unchanged, this is a docs-only release; three plates JPEG/PNG/WebP in `docs/assets/v6.7.0/` untouched.
+
+### v7.1.3-iter-beal-not-route-e-corrected — Beal Conjecture corrected: own two-repository chamber of Opera Numerorum, not "Route E" of the Riemann Hypothesis route lettering, docs-only
+
+No Lean change.  Corrects an error introduced in v7.1.2: `docs/OPERA_NUMERORUM_LINKS.md` and the mirrored section in `beal-conjecture`'s README labeled the Beal Conjecture as "Route E", implying it was a fifth entry in the Riemann Hypothesis Route A–D lettering.  That is wrong — the Beal Conjecture is its own chamber of *Opera Numerorum*, spanning two companion repositories (`beal-conjecture` and this repository), and has no relationship to the RH routes beyond both being chambers of the same wider project.
+
+`docs/OPERA_NUMERORUM_LINKS.md` restructured: the Beal section is now headed "### The Beal Conjecture — housed in two companion repositories, level-26 unconditional none", explicitly stating it is not a Route of the Riemann Hypothesis work.  Routes A–D are now grouped under their own "### The Riemann Hypothesis — four independent routes" parent heading (`#### Route A`…`#### Route D`) so the two efforts (Beal, RH) read as siblings rather than one numbered list.  Same correction mirrored into `beal-conjecture`'s own `docs/OPERA_NUMERORUM_LINKS.md` and its README "wider work" section — no more "Route E" heading there either.
+
+24 modules green twice `verify-scaffold.sh OK` `verify_descent_26.py OK` `NO_SORRY_OK` — unchanged; three plates JPEG/PNG/WebP in `docs/assets/v6.7.0/` untouched.
+
+### v7.1.2-iter-readme-uniform-opera-links — README header uniformized across beal-level-26-foundations and beal-conjecture, Opera Numerorum coordination index added, docs-only
+
+No Lean change.  HEAD tag `v7.1.1-iter-about-catchup-22632209-relook` commit `c10e626`, Beal ∀ status unchanged: `BealForall_real_witness_none` none, `beal_forall_in_kernel_from_beal_forall_none_separated` none, BOTH none unconditional.
+
+New file `docs/OPERA_NUMERORUM_LINKS.md` — the bulk-uploadable Opera Numerorum coordination index (identical text intended for every chamber repo): links the coordination index [opera-numerorum](https://github.com/DavidFox998/opera-numerorum), Route A–D companions, and (mislabeled as "Route E" — corrected in v7.1.3) the Beal Conjecture — both [beal-conjecture](https://github.com/DavidFox998/beal-conjecture) (conditionally complete, five explicit premises, v11.0.0) and this repository (`beal-level-26-foundations`, UNCONDITIONAL v7.1.0 BOTH none).
+
+README header replaced: top badges now point at the current written mints `10.5281/zenodo.22632209` (v7.1.0) and `10.5281/zenodo.22635221` (v7.1.1) plus the concept DOI `10.5281/zenodo.22272382`, followed by a one-screen honest summary of the v7.1.0 unconditional-none result and a pointer to the Opera Numerorum index.  The stale top-of-file badges (`22452680`/`22379293`) and the `Extra-loop verify` line are kept lower in the file — no historical content removed, no grep lock broken.
+
+`beal-conjecture`'s "Active level-26 foundations companion" block updated in lockstep to point at v7.1.0 `22632209` BOTH-none-unconditional, and its own Opera Numerorum section replaced with the same uniform index (mislabeled as "Route E" — corrected in v7.1.3).
 
 24 modules green twice `verify-scaffold.sh OK` `verify_descent_26.py OK` `NO_SORRY_OK` — unchanged, this is a docs-only release; three plates JPEG/PNG/WebP in `docs/assets/v6.7.0/` untouched.
 

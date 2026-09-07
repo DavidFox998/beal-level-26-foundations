@@ -1,19 +1,20 @@
-# FINAL v7.1.2 — README uniform + Opera Numerorum links
+# FINAL v7.1.3 — Beal corrected: own chamber, not "Route E"
 
-Latest tag `v7.1.2-iter-readme-uniform-opera-links`.
+Latest tag `v7.1.3-iter-beal-not-route-e-corrected`.
 Records Lean HEAD `9e820f4` /
 `v7.1.0-iter-beal-forall-kernel-separated-none-real`.
-**No Lean change.**  Docs-only: new
-`docs/OPERA_NUMERORUM_LINKS.md` coordination
-index (bulk-uploadable, identical across
-chamber repos) and a uniformized `README.md`
-top header — badges now pin the current
-written mints and the concept DOI, followed
-by a one-screen honest summary of the v7.1.0
-BOTH-none result.  `beal-conjecture`'s
-companion block and its own Opera Numerorum
-section updated in lockstep to point at
-v7.1.0 `22632209` BOTH none unconditional.
+**No Lean change.**  Docs-only correction:
+v7.1.2 mislabeled the Beal Conjecture as
+"Route E," implying it was a fifth entry in
+the Riemann Hypothesis Route A–D lettering.
+It is not.  Beal is its own chamber of
+*Opera Numerorum*, housed in two companion
+repositories (`beal-conjecture` and this
+repository).  `docs/OPERA_NUMERORUM_LINKS.md`
+restructured with Beal under its own heading
+and Routes A–D grouped under their own
+"The Riemann Hypothesis" parent; same fix
+mirrored into `beal-conjecture`.
 Official build stays **24 modules**.
 Latest written mint remains
 [10.5281/zenodo.22632209](https://doi.org/10.5281/zenodo.22632209)

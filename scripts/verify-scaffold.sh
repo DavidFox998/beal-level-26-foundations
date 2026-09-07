@@ -744,6 +744,7 @@ do
   grep -q "v7.1.0-iter-beal-forall-kernel-separated-none-real" "$readme"
   grep -q "v7.1.1-iter-about-catchup-22632209-relook" "$readme"
   grep -q "v7.1.2-iter-readme-uniform-opera-links" "$readme"
+  grep -q "v7.1.3-iter-beal-not-route-e-corrected" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
