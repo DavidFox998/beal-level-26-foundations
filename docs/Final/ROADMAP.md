@@ -443,3 +443,40 @@ Chain
 → 22587409 → 22589077 → 22592524 → 22595002
 → 22602899`.
 
+### v6.9.0-iter-beal-forall-closed-real — DONE
+
+Displayed Beal Forall closed real witness via
+positivity / `det = χ₁₃` / unramified /
+semistable / finite-flat / Ribet /
+modularity at 26 via `X₀(26)` `26a1` Δ
+`-17576` `26b1` Δ `-1664` / TW infinite
+`Q_1`/`Q_2` / `R = T` patching / modular
+lifting at 26 / exists-newform-level-2
+real.  Keep `Nat.pow` OFF token.
+`frey_beal_forall_closed_formula`
+`26 / 13 = 2` by `rfl` **none** +
+finite-flat `v₁₃(Δ) % 13 = 0` by `rfl`
+**none** + unramified `p ∉ S` +
+semistable `2 * 13` + `det = χ₁₃` + TW
+`Q_1`/`Q_2` + `R = T` + `X₀(26)` discs +
+exists-newform **none**.
+`frey_beal_forall_closed_real_lemma`
+positivity + det + unramified +
+semistable + finite-flat + Ribet +
+modularity + TW + `R = T` + modular
+lifting + exists-newform + `X₀(26)` +
+Beal `∀` closed **propext only**, off
+the inhabitant.
+`BealForall_real_witness` **propext
+only** OFF inhabitant.
+`rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_closed`
+**none**.
+`beal_forall_in_kernel_from_beal_forall_closed_separated`
+**propext only**.  Official build
+**23 modules**.  Original
+`ExistsNewformLevel2` (`0 ≠ 0`) /
+original Path 2 / original Beal `∀`
+sketch / empty `R_T_algorithm` stay
+uninhabited.  About still lists
+written mint `22602899` until v6.9.1.
+

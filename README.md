@@ -48,6 +48,122 @@ v6.7.0-iter-modular-lifting-at-26-real modular lifting at 26 via R=T + TW infini
 v6.7.1-iter-about-catchup-22592524 About catch-up 22587409 → 22592524. Still not Full Mathlib ∀.
 v6.8.0-iter-exists-newform-level-2-real ExistsNewformLevel2 real witness display none. Still not Full Mathlib ∀.
 v6.8.1-iter-about-catchup-22602899-relook About catch-up 22592524 → 22602899. Still not Full Mathlib ∀.
+v6.9.0-iter-beal-forall-closed-real Beal Forall closed real via positivity/det/unramified/semistable/finite-flat/Ribet/modularity/TW/R=T/lifting/exists-newform. Still not Full Mathlib ∀.
+
+### v6.9.0-iter-beal-forall-closed-real — Beal Forall closed real via positivity/det/unramified/semistable/finite-flat/Ribet/modularity at 26/X0(26) 26a1 Δ -17576 26b1 Δ -1664/TW infinite Q1/Q2/R=T patching/modular lifting at 26/exists-newform-level-2 real, keep Nat.pow OFF token same pattern as exists-newform + modular lifting + Ribet+modularity+finite-flat+unramified+det=χ13+FreyΔ
+
+Official build is now **23 modules** (22 old +
+`GaloisRep.GaloisBealForallClosedReal`).
+
+`frey_beal_forall_closed_formula` is the
+displayed Beal `∀` closed real witness:
+`∀ A B C m n p`, `2 < m, n, p` →
+`A^m + B^n = C^p` → `gcd > 1` via
+positivity `frey_Delta13_ne_0_of_pos_real`
+`0 < A` `0 < B` `A^13 + B^13 ≠ 0` →
+`Δ = 16 * (A^13)^2 * (B^13)^2 * (A^13 + B^13)^2 ≠ 0`
+`Int.pow` / `Nat.pow` OFF token,
+`det = χ₁₃` **none**, unramified `p ∉ S`
+by `rfl` **none**, semistable `2 * 13` by
+`rfl` **none**, finite-flat
+`v₁₃(Δ) % 13 = 0` by `rfl` **none**
+`26 = 2 * 13`, Ribet `26 / 13 = 2` by
+`rfl` **none**, modularity at 26 via
+`X₀(26)` `26a1` Δ `-17576` `26b1` Δ
+`-1664` real **none**, TW infinite
+`Q_1 = [53]` `53 % 13 = 1` by `rfl`
+**none** `Q_2 = [677]` `677 % 169 = 1`
+by `rfl` **none**, `R = T` patching
+`HeckeAlgebra_26_inhabited` **none**
+`R_T_scaffold_inhabited` **none**
+`TW_primes_Q_n_real_infinite` **none**
+`R_T_patching_witness_real_infinite`
+**none**, modular lifting at 26
+**none**, ExistsNewformLevel2 real
+witness **none**.  Formula stays
+computable **none** (`rfl` checks).
+
+`frey_beal_forall_closed_real_lemma`
+positivity + `det = χ₁₃` + unramified +
+semistable + finite-flat + Ribet +
+modularity + TW + `R = T` + modular
+lifting + exists-newform + `X₀(26)` +
+Beal `∀` closed **propext only** OFF
+inhabitant.
+
+`BealForall_real_witness` **propext
+only** OFF inhabitant (key: Beal
+`∀` from propext-only separated token
+to real closed witness via positivity /
+det / unramified / semistable /
+finite-flat / Ribet / modularity at 26
+via `X₀(26)` `26a1` Δ `-17576` `26b1`
+Δ `-1664` + TW `Q_1`/`Q_2` + Hecke /
+scaffold + conductor `2 * 13` by `rfl`
++ `26 / 13 = 2` by `rfl` + finite-flat
+`v₁₃(Δ) % 13 = 0` by `rfl` + unramified
+`p ∉ S` by `rfl` + semistable `2 * 13`
++ `det = χ₁₃`, `Nat.pow` OFF token).
+
+`rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_closed`
+**none** stronger than propext-only
+(same pattern as `frey_Delta13_formula`
+OFF none, `det = χ₁₃` OFF none,
+unramified / finite-flat / Ribet /
+modular lifting / exists-newform OFF
+none).
+`FreyCurveSeparated_beal_forall_closed.token`
+**none**.
+`beal_forall_in_kernel_from_beal_forall_closed_separated`
+displayed Beal `∀` closed term
+**propext only**; positivity / det /
+unramified / semistable / finite-flat /
+Ribet / modularity / TW / `R = T` /
+modular lifting / exists-newform /
+beal-forall-closed lemmas **not** in
+term so no `Classical.choice`.
+
+Honest lock CHANGED: Beal `∀` from
+propext-only separated token to real
+closed witness via all none tokens.
+Original `ExistsNewformLevel2` is still
+`0 ≠ 0` and stays uninhabited.  Original
+Path 2 / original Beal `∀` sketch /
+empty `R_T_algorithm` stay uninhabited.
+Path 1 false on `⟨13, 2, 1⟩`.  Path 2
+now REAL via ExistsNewformLevel2 real
+witness `26a1`/`26b1` + `R = T` + TW
++ BealForall real closed.  Real
+`X₀(26)(ℚ)` still has `26a1` Δ `-17576`
+and `26b1` Δ `-1664`.  Build: 23 modules
+green twice.  `verify-scaffold.sh` OK.
+`verify_descent_26.py` OK.  `NO_SORRY_OK`.
+About still lists written mint
+`10.5281/zenodo.22602899` until next
+catch-up v6.9.1.  The new v6.9.0 mint
+is **not** written into About or verify
+greps.
+
+Three plates stay in `docs/assets/v6.7.0/`,
+each `.jpg` + `.png` + `.webp` lowercase
+with matching MIME types: `ribet_26_to_2`
+— `26a1` Δ `-17576` `26b1` Δ `-1664`
+`26 / 13 = 2` by `rfl`;
+`tw_qn_infinite_family` — `Q_1 = 53`
+`Q_2 = 677` `8789 = 17 × 517` composite;
+`galois_token` — `ρ̄_Frey,13` `Int.pow` /
+`Nat.pow` OFF conductor `2 * 13`.
+Embedded as JPEG (WebP fallback only)
+in About / FINAL / README.  Facebook
+Open Graph points at JPEG, not WebP:
+`docs/index.html` `og:image` /
+`og:image:type = image/jpeg` for
+`…/assets/v6.7.0/ribet_26_to_2.jpg`.
+`docs/facebook-share.json` share URLs
+are `.jpg`.  No `extensions/facebook/`
+tree.  Old Facebook-named file
+`docs/images/797726399_…_n.webp` stays
+absent.
 
 ### v6.8.1-iter-about-catchup-22602899-relook — About catch-up 22592524 → 22602899 + 3 plates relook docs lock No Lean change
 

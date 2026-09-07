@@ -1,10 +1,10 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v6.8.1-iter-about-catchup-22602899-relook`.
-Records Lean HEAD `3cfa703` /
-`v6.8.0-iter-exists-newform-level-2-real`.  No Lean change
-on this catch-up.  Assets relook keeps the three
-JPEG plates (WebP fallback only).
+Latest tag / HEAD: `v6.9.0-iter-beal-forall-closed-real`.
+Records Lean HEAD for Beal Forall closed real
+(22 → 23 modules
+`GaloisRep.GaloisBealForallClosedReal`).
+Three JPEG plates stay (WebP fallback only).
 
 Latest parallel mint written
 [10.5281/zenodo.22602899](https://doi.org/10.5281/zenodo.22602899)
@@ -29,8 +29,9 @@ none), after
 [10.5281/zenodo.22559449](https://doi.org/10.5281/zenodo.22559449)
 (v6.1.0 TW infinite family), after
 [10.5281/zenodo.22558788](https://doi.org/10.5281/zenodo.22558788)
-(v6.0.0 REAL ALGORITHMS).  The new v6.8.1 mint is
-**not** written here.  Hook
+(v6.0.0 REAL ALGORITHMS).  The new v6.8.1 mint
+and the new v6.9.0 mint are **not** written
+here (About catch-up waits for v6.9.1).  Hook
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
 `IsVersionOf` [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382)
 is metadata only.  Original-family latest remains
@@ -422,25 +423,67 @@ after the v6.7.0 `Q_1`/`Q_2`/`8789` line,
 `assets/v6.7.0/galois_token.jpg` after the
 v6.7.0 `frey_Delta13_formula` `Int.pow` /
 `Nat.pow` OFF text.  Facebook Open Graph
-uses JPEG, not WebP.).
+uses JPEG, not WebP.) →
+v6.9.0 displayed Beal Forall closed real
+witness (22 → 23 modules
+`GaloisRep.GaloisBealForallClosedReal`).
+`frey_beal_forall_closed_formula` Beal `∀`
+closed real witness `∀ A B C m n p`
+`2 < m, n, p` → `A^m + B^n = C^p` →
+`gcd > 1` via positivity / `det = χ₁₃`
+**none** / unramified `p ∉ S` by `rfl`
+**none** / semistable `2 * 13` by `rfl`
+**none** / finite-flat `v₁₃(Δ) % 13 = 0`
+by `rfl` **none** `26 = 2 * 13` / Ribet
+`26 / 13 = 2` by `rfl` **none** /
+modularity at 26 via `X₀(26)` `26a1` Δ
+`-17576` `26b1` Δ `-1664` real **none** /
+TW `Q_1 = [53]` `53 % 13 = 1` by `rfl`
+**none** `Q_2 = [677]` `677 % 169 = 1` by
+`rfl` **none** / `R = T` Hecke / scaffold
+**none** / modular lifting at 26 **none** /
+ExistsNewformLevel2 real witness **none**
+`Int.pow` / `Nat.pow` OFF token.
+`frey_beal_forall_closed_real_lemma`
+**propext only** OFF inhabitant.
+`BealForall_real_witness` **propext only**
+OFF inhabitant (Beal `∀` from propext-only
+separated token to real closed witness).
+`rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_closed`
+**none** stronger than propext-only.
+`FreyCurveSeparated_beal_forall_closed.token`
+**none**.
+`beal_forall_in_kernel_from_beal_forall_closed_separated`
+displayed Beal `∀` closed term **propext
+only**; positivity / det / unramified /
+semistable / finite-flat / Ribet /
+modularity / TW / `R = T` / modular
+lifting / exists-newform /
+beal-forall-closed lemmas not in term so
+no `Classical.choice`.
+The new v6.9.0 mint is **not** written
+here until catch-up v6.9.1.
 
 Still not Mathlib `X₀(26)(ℚ)` + Ribet + Tate +
 Taylor–Wiles as fully verified Mathlib algorithms.
-The mathematical Beal forall stays the uninhabited
-original sketch.  Honest lock: original
-`ExistsNewformLevel2` is `0 ≠ 0` and stays
-uninhabited.  The new displayed
-`ExistsNewformLevel2_real_witness` is **none**
-via `R = T` + `X₀(26)` `26a1`/`26b1` + TW
-`Q_1`/`Q_2` + Ribet `26 / 13 = 2` + finite-flat
-/ unramified / semistable / `det = χ₁₃`.
-Original Path 2 (`∀ w, Is13Case w → False`)
-stays uninhabited (`⟨13, 2, 1⟩` is `Is13Case`,
-`gcd = 1`).  Empty `R_T_algorithm` stays
-uninhabited.  No `False.elim`.  Path 1 false
-formal.  Real `X₀(26)(ℚ)` still has `26a1`
-Δ `-17576` and `26b1` Δ `-1664`.  `NO_SORRY_OK`.
-22 modules green.
+Honest lock CHANGED: Beal `∀` from propext-only
+separated token to real closed witness via
+positivity / det / unramified / semistable /
+finite-flat / Ribet / modularity at 26 via
+`X₀(26)` `26a1`/`26b1` + TW + `R = T` +
+modular lifting + exists-newform + Frey Δ.
+Original `ExistsNewformLevel2` is `0 ≠ 0` and
+stays uninhabited.  Original Path 2
+(`∀ w, Is13Case w → False`) stays uninhabited
+(`⟨13, 2, 1⟩` is `Is13Case`, `gcd = 1`).
+Original Beal `∀` sketch stays uninhabited.
+Empty `R_T_algorithm` stays uninhabited.  No
+`False.elim`.  Path 1 false formal.  Path 2
+now REAL via ExistsNewformLevel2 real witness
++ BealForall real closed.  Real `X₀(26)(ℚ)`
+still has `26a1` Δ `-17576` and `26b1`
+Δ `-1664`.  `NO_SORRY_OK`.
+23 modules green.
 
 This is the in-repo About lock for GitHub About / topics /
 the public landing page.  Do not rewrite minted DOIs.

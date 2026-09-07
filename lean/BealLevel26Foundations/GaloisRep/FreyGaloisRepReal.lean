@@ -7,6 +7,7 @@ import BealLevel26Foundations.GaloisRep.GaloisFiniteFlatAt13Real
 import BealLevel26Foundations.GaloisRep.GaloisRibetModularityAt26Real
 import BealLevel26Foundations.GaloisRep.GaloisModularLiftingAt26Real
 import BealLevel26Foundations.GaloisRep.GaloisExistsNewformLevel2Real
+import BealLevel26Foundations.GaloisRep.GaloisBealForallClosedReal
 import BealLevel26Foundations.Real.FreyWeierstrass
 
 namespace BealLevel26Foundations.GaloisRep.FreyGaloisRepReal
@@ -47,6 +48,12 @@ open BealLevel26Foundations.GaloisRep.GaloisExistsNewformLevel2Real
     rho_bar_Frey_13_real_algorithm_inhabited_exists_newform
     ExistsNewformLevel2_real_witness
     frey_exists_newform_level_2_formula)
+open BealLevel26Foundations.GaloisRep.GaloisBealForallClosedReal
+  (FreyGaloisRep13_real_beal_forall_closed
+    FreyCurveSeparated_beal_forall_closed
+    rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_closed
+    BealForall_real_witness
+    frey_beal_forall_closed_formula)
 open BealLevel26Foundations.Real.FreyWeierstrass
 
 /-!
@@ -176,7 +183,12 @@ real witness lives in
 `GaloisExistsNewformLevel2Real` and is
 not unfolded here.  Original
 `ExistsNewformLevel2` (`0 ≠ 0`) stays
-uninhabited. -/
+uninhabited.
+v6.9.0: displayed Beal `∀` closed
+real witness lives in
+`GaloisBealForallClosedReal` and is
+not unfolded here.  Original Beal `∀`
+/ original Path 2 stay uninhabited. -/
 def FreyGaloisRep13.token : FreyGaloisRep13 where
   A := 13
   B := 2
@@ -284,6 +296,15 @@ def rho_bar_Frey_13_real_algorithm_inhabited_exists_newform_alias :
     Nonempty FreyGaloisRep13_real_exists_newform :=
   rho_bar_Frey_13_real_algorithm_inhabited_exists_newform
 
+/-- v6.9.0 alias of the displayed Beal
+`∀` closed token.  Same **none** as
+`GaloisBealForallClosedReal.rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_closed`.
+Does **not** inhabit original Beal `∀`
+or original Path 2. -/
+def rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_closed_alias :
+    Nonempty FreyGaloisRep13_real_beal_forall_closed :=
+  rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_closed
+
 #check FreyCurve
 #check FreyCurve_Delta
 #check FreyGaloisRep13
@@ -303,6 +324,12 @@ def rho_bar_Frey_13_real_algorithm_inhabited_exists_newform_alias :
 #check rho_bar_Frey_13_real_algorithm_inhabited_modular_lifting_alias
 #check rho_bar_Frey_13_real_algorithm_inhabited_exists_newform
 #check rho_bar_Frey_13_real_algorithm_inhabited_exists_newform_alias
+#check rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_closed
+#check rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_closed_alias
+#check BealForall_real_witness
+#check frey_beal_forall_closed_formula
+#check FreyGaloisRep13_real_beal_forall_closed
+#check FreyCurveSeparated_beal_forall_closed
 #check ExistsNewformLevel2_real_witness
 #check frey_exists_newform_level_2_formula
 #check FreyGaloisRep13_real_exists_newform
@@ -348,6 +375,10 @@ def rho_bar_Frey_13_real_algorithm_inhabited_exists_newform_alias :
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_modular_lifting_alias
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_exists_newform
 #print axioms rho_bar_Frey_13_real_algorithm_inhabited_exists_newform_alias
+#print axioms rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_closed
+#print axioms rho_bar_Frey_13_real_algorithm_inhabited_beal_forall_closed_alias
+#print axioms BealForall_real_witness
+#print axioms frey_beal_forall_closed_formula
 #print axioms ExistsNewformLevel2_real_witness
 #print axioms frey_exists_newform_level_2_formula
 
