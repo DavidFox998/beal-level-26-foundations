@@ -1,3 +1,40 @@
+# FINAL v8.24.0 — Zsigmondy primitive vp1 inhabited; odd A≥3 closes from real v_p=1 (arrow stays a Prop)
+
+Latest tag `v8.24.0-Zsigmondy-primitive-vp1-inhabited`.
+Lean change.
+Step18 inhabits
+`zsigmondy_exists_primitive_inhabited`,
+`zsig_p_not_dvd_k_of_gcd_inhabited`,
+`S_times_g_not_fourth_of_vp1_inhabited`,
+`beal_odd_A_ge3_closed_of_vp1`.
+`zsigmondy_vp_S_eq_one_inhabited` is
+Hensel-conditional (order in
+`(ℤ/p²)ˣ` is not 13; not `hPrim : True`).
+`zsigmondy_vp_S_eq_one_unconditional`,
+`beal_odd_A_ge3_B_le_100_closed`,
+`beal_odd_A_ge3_B_gt_100_closed_via_zsig_inhabited`,
+`beal_odd_A_closed_v8_24_0`,
+`beal_4_13_13_full_closed_mod_modular_v8_24_0`,
+`beal_4_13_13_Zsigmondy_13_Zsig_primitive_vp1_inhabited_plan`
+stay uninhabited.
+Unconditional `¬ p² ∣ S` is false
+(Hensel).
+v8.23.1 S-bounds / k-shape stay.
+v8.22.1 `oddPart_rec` / `2q` stay.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` stays *from*
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
+(`v8.19.9-fourth-power-residue` houseclean archive).
+Track A none-chain mint stays
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221).
+This mint does **not** claim unconditional Beal `∀`.
+
 # FINAL v8.23.1 — Zsigmondy S vp1 plan for the last odd lock (arrow stays a Prop)
 
 Latest tag `v8.23.1-Zsigmondy-S-vp1-plan`.

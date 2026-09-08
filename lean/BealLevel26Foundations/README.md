@@ -106,8 +106,9 @@ v8.22.0-X0-26-RibetMazur-plan RibetMazur Step14 even_not_pow2_has_odd_prime frey
 v8.22.1-X0-2q-Darmon-Merel-plan RibetMazur Step15 oddPart_rec rad oddPart_def rad_dvd_pow even_not_pow2_has_odd_prime_q level_2q_of_odd_prime_dvd_A; kraus_criterion_q_ne_13 X0_2q_no_Frey_match stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.23.0-odd-A-closure-plan RibetMazur Step16 S_bounds_13_B12_le_S_le_13_C12 k_almost_fourth_power_shape k_le_A4_div_13_B12 B_gt_100_k_bounded k_ge_B_imp_A_ge_9B3; zsigmondy_prime_S S_not_fourth_power_of_zsig stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.23.1-Zsigmondy-S-vp1-plan RibetMazur Step17 S_val S_bounds thirteen_dvd_S_of_13_nmid_B gcd_k_S_dvd_13 k_shape_1_13_13cubed; zsigmondy_exists_primitive zsigmondy_vp_S_eq_one S_times_g_not_fourth_of_vp1 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.24.0-Zsigmondy-primitive-vp1-inhabited RibetMazur Step18 zsigmondy_exists_primitive_inhabited zsig_p_not_dvd_k_of_gcd_inhabited S_times_g_not_fourth_of_vp1_inhabited beal_odd_A_ge3_closed_of_vp1; zsigmondy_vp_S_eq_one stays Hensel-conditional; beal_odd_A_closed_v8_24_0 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 
-### File order v8.19.0–v8.23.1
+### File order v8.19.0–v8.24.0
 
 | Version | File |
 |---|---|
@@ -129,6 +130,7 @@ v8.23.1-Zsigmondy-S-vp1-plan RibetMazur Step17 S_val S_bounds thirteen_dvd_S_of_
 | v8.22.1 | `Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.lean` |
 | v8.23.0 | `Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.lean` |
 | v8.23.1 | `Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.lean` |
+| v8.24.0 | `Beal_4_13_13_Zsigmondy_13_Step18_Zsig_primitive_vp1_inhabited.lean` |
 
 Not imported by the 24-module none chain.  Track A: no new Beal-∀.
 
@@ -280,9 +282,9 @@ v4.14.0-iter-citation-contradiction-locked: `CITATION.cff` locks `c2c47db` / fou
 
 [![v8.19.9 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.23.1-Zsigmondy-S-vp1-plan
+# Beal Level 26 Foundations — v8.24.0-Zsigmondy-primitive-vp1-inhabited
 
-**v8.23.1-Zsigmondy-S-vp1-plan — Beal (4,13,13) Zsigmondy S vp1 plan (Track B). Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.24.0-Zsigmondy-primitive-vp1-inhabited — Beal (4,13,13) Zsigmondy primitive vp1 inhabited (Track B). Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 - Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
 - Houseclean mint `10.5281/zenodo.22654189` (`v8.19.9-fourth-power-residue`) under hook `22379293`. Track A none-chain mint stays `10.5281/zenodo.22635221`.
@@ -299,7 +301,8 @@ v4.14.0-iter-citation-contradiction-locked: `CITATION.cff` locks `c2c47db` / fou
   - v8.22.1 `oddPart_rec`, `rad`, `oddPart_def`, `rad_dvd_pow`, `even_not_pow2_has_odd_prime_q`, `level_2q_of_odd_prime_dvd_A`. `kraus_criterion_q_ne_13` / `X0_2q_no_Frey_match` stay uninhabited.
   - v8.23.0 `S_bounds_13_B12_le_S_le_13_C12`, `k_almost_fourth_power_shape`, `k_le_A4_div_13_B12`, `B_gt_100_k_bounded`, `k_ge_B_imp_A_ge_9B3`. `zsigmondy_prime_S` / `S_not_fourth_power_of_zsig` stay uninhabited.
   - v8.23.1 `S_val`, `S_bounds`, `thirteen_dvd_S_of_13_nmid_B`, `gcd_k_S_dvd_13`, `k_shape_1_13_13cubed`. `zsigmondy_exists_primitive` / `zsigmondy_vp_S_eq_one` / `S_times_g_not_fourth_of_vp1` stay uninhabited. Unconditional `¬ p² ∣ S` is false (Hensel).
-- Uninhabited: Zsigmondy-of-`S`, unconditional `S_not_fourth`, Kraus / X₀(2q) matching, Ribet to `N'`, X₀(26) matching, Modular W last lock, `B > 100` close, `ExistsNewformLevel2` is `0 ≠ 0`, `beal_from_ribet` still needs `ModularImpliesLevel2Newform`.
+  - v8.24.0 `zsigmondy_exists_primitive_inhabited`, `zsig_p_not_dvd_k_of_gcd_inhabited`, `S_times_g_not_fourth_of_vp1_inhabited`, `beal_odd_A_ge3_closed_of_vp1`. `zsigmondy_vp_S_eq_one_inhabited` is Hensel-conditional. `beal_odd_A_closed_v8_24_0` stays uninhabited.
+- Uninhabited: bare odd-`A` close, unconditional `v_p(S)=1`, Zsigmondy-of-`S`, unconditional `S_not_fourth`, Kraus / X₀(2q) matching, Ribet to `N'`, X₀(26) matching, Modular W last lock, `B > 100` close, `ExistsNewformLevel2` is `0 ≠ 0`, `beal_from_ribet` still needs `ModularImpliesLevel2Newform`.
 - Build: `lake build BealLevel26Foundations` and `BealLevel26FoundationsFullProof` green twice, `scripts/verify-scaffold.sh` passed, `#print axioms` `[propext, Classical.choice, Quot.sound]`.
 
 **The wider work:** this repository is one chamber of David Fox's *Opera Numerorum* — see [`docs/OPERA_NUMERORUM_LINKS.md`](docs/OPERA_NUMERORUM_LINKS.md) for the coordination index across all repositories, including the parent [beal-conjecture](https://github.com/DavidFox998/beal-conjecture) assembly.
@@ -424,6 +427,7 @@ v8.22.0-X0-26-RibetMazur-plan RibetMazur Step14 even_not_pow2_has_odd_prime frey
 v8.22.1-X0-2q-Darmon-Merel-plan RibetMazur Step15 oddPart_rec rad oddPart_def rad_dvd_pow even_not_pow2_has_odd_prime_q level_2q_of_odd_prime_dvd_A; kraus_criterion_q_ne_13 X0_2q_no_Frey_match stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.23.0-odd-A-closure-plan RibetMazur Step16 S_bounds_13_B12_le_S_le_13_C12 k_almost_fourth_power_shape k_le_A4_div_13_B12 B_gt_100_k_bounded k_ge_B_imp_A_ge_9B3; zsigmondy_prime_S S_not_fourth_power_of_zsig stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.23.1-Zsigmondy-S-vp1-plan RibetMazur Step17 S_val S_bounds thirteen_dvd_S_of_13_nmid_B gcd_k_S_dvd_13 k_shape_1_13_13cubed; zsigmondy_exists_primitive zsigmondy_vp_S_eq_one S_times_g_not_fourth_of_vp1 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.24.0-Zsigmondy-primitive-vp1-inhabited RibetMazur Step18 zsigmondy_exists_primitive_inhabited zsig_p_not_dvd_k_of_gcd_inhabited S_times_g_not_fourth_of_vp1_inhabited beal_odd_A_ge3_closed_of_vp1; zsigmondy_vp_S_eq_one stays Hensel-conditional; beal_odd_A_closed_v8_24_0 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 
 ### v8.19.9-fourth-power-residue — houseclean (Track A no new Beal-∀)
 

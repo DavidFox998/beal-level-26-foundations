@@ -799,6 +799,28 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.24.0-Zsigmondy-primitive-vp1-inhabited — DONE (Zsigmondy primitive existence / p∤k / S·g not fourth from real v_p=1 inhabited; unconditional v_p=1 and bare odd-A close stay uninhabited; arrow stays a Prop)
+
+Lean change.  Step18 file
+`Beal_4_13_13_Zsigmondy_13_Step18_Zsig_primitive_vp1_inhabited.lean`
+inhabits
+`zsigmondy_exists_primitive_inhabited`,
+`zsig_p_not_dvd_k_of_gcd_inhabited`,
+`S_times_g_not_fourth_of_vp1_inhabited`,
+`beal_odd_A_ge3_closed_of_vp1`.
+`zsigmondy_vp_S_eq_one_inhabited` is
+Hensel-conditional.
+`beal_odd_A_closed_v8_24_0`,
+`beal_4_13_13_Zsigmondy_13_Zsig_primitive_vp1_inhabited_plan`
+stay uninhabited.
+Unconditional `¬ p² ∣ S` is false
+(Hensel).
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.23.1-Zsigmondy-S-vp1-plan — DONE (S_val / 13|S / k-shape {1,13,13³} inhabited; Zsigmondy primitive / v_p(S)=1 stay uninhabited; arrow stays a Prop)
 
 Lean change.  Step17 file

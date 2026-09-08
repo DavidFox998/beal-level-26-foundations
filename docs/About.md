@@ -1,16 +1,20 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.23.1-Zsigmondy-S-vp1-plan`
-Lean change: Step17 inhabits
-`S_val`, `S_bounds`,
-`thirteen_dvd_S_of_13_nmid_B`,
-`gcd_k_S_dvd_13`,
-`k_shape_1_13_13cubed`.
-`zsigmondy_exists_primitive`,
-`zsigmondy_vp_S_eq_one`,
-`S_times_g_not_fourth_of_vp1` stay
+Latest tag / HEAD: `v8.24.0-Zsigmondy-primitive-vp1-inhabited`
+Lean change: Step18 inhabits
+`zsigmondy_exists_primitive_inhabited`,
+`zsig_p_not_dvd_k_of_gcd_inhabited`,
+`S_times_g_not_fourth_of_vp1_inhabited`,
+`beal_odd_A_ge3_closed_of_vp1`.
+`zsigmondy_vp_S_eq_one_inhabited` is
+Hensel-conditional.
+`beal_odd_A_closed_v8_24_0` stays
 uninhabited (`ExistsNewformLevel2`
 is `0 ≠ 0`).
+v8.23.1 `S_val`, `S_bounds`,
+`thirteen_dvd_S_of_13_nmid_B`,
+`gcd_k_S_dvd_13`,
+`k_shape_1_13_13cubed` stay.
 Unconditional `¬ p² ∣ S` is false
 (Hensel).
 v8.23.0 `S_bounds_13_B12_le_S_le_13_C12`
