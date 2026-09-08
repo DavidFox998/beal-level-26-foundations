@@ -1,6 +1,7 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.19.9-fourth-pow-residue`.
+Latest tag / HEAD: `v8.19.9-fourth-power-residue`
+(houseclean of `v8.19.9-fourth-pow-residue`).
 Lean change: `A⁴ ≡ k¹³ [MOD B]` is a
 fourth-power residue.  Odd `A` and
 `B % 4 = 0` force `k % 4 = 1`;

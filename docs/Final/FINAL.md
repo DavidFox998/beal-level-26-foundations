@@ -1,6 +1,6 @@
 # FINAL v8.19.9 — A⁴≡k¹³ mod B forces k%4=1 / k%8=1 when B%4=0 / B%8=0 (arrow stays a Prop)
 
-Latest tag `v8.19.9-fourth-pow-residue`.
+Latest tag `v8.19.9-fourth-power-residue`.
 Lean change.
 For odd `A`, `A⁴ ≡ 1 [MOD 4]` and
 `A⁴ ≡ 1 [MOD 8]`.  Odd `k` has

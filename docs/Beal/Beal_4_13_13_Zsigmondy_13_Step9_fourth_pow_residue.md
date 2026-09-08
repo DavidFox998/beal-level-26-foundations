@@ -1,4 +1,4 @@
-# v8.19.9 Zsigmondy Step 9 — fourth-power residue
+# v8.19.9-fourth-power-residue Zsigmondy Step 9
 
 `lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.lean`
 

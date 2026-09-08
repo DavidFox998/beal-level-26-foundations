@@ -829,6 +829,7 @@ do
   grep -q "v8.19.7-general-k" "$readme"
   grep -q "v8.19.8-k-odd-coprime" "$readme"
   grep -q "v8.19.9-fourth-pow-residue" "$readme"
+  grep -q "v8.19.9-fourth-power-residue" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
