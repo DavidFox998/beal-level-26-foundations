@@ -175,6 +175,8 @@ test -f lean/BealLevel26Foundations/Beal/FullProof/TWAuxEllFixedCore.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/TWAuxEllFixed.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/TWAuxEllFixed_5_100.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/TWAuxEllFixed_901_1000.lean
+test -f lean/BealLevel26Foundations/Beal/FullProof/X0_2_Genus.lean
+test -f docs/Beal/X0_2_Genus.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -797,6 +799,7 @@ do
   grep -q "v8.16.0-q2-table-100M" "$readme"
   grep -q "v8.17.0-twaux-26-and-10000" "$readme"
   grep -q "v8.18.0-product" "$readme"
+  grep -q "v8.19.0-ExistsNewformLevel2" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1063,7 +1066,7 @@ if grep -q "import BealLevel26Foundations.Beal.FullProof.ModularImpliesNewform" 
   echo "FAIL: none chain must not import ModularImpliesNewform"
   exit 1
 fi
-if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|HeckeAlgebra|RibetFunctor|X0_26_Model|HeckeAction|LevelLowering|RibetMazur|TWPrimes|TWPrimesPratt|TWPrimesQ2|TWAuxEllFixed)" \
+if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|HeckeAlgebra|RibetFunctor|X0_26_Model|HeckeAction|LevelLowering|RibetMazur|TWPrimes|TWPrimesPratt|TWPrimesQ2|TWAuxEllFixed|X0_2_Genus)" \
     lean/BealLevel26Foundations.lean \
     lean/BealLevel26Foundations/Beal/BealForall.lean \
     lean/BealLevel26Foundations/Chain/BealForallInKernel.lean \
@@ -1071,7 +1074,7 @@ if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|Heck
     lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean \
     lean/BealLevel26Foundations/GaloisRep/GaloisBealForallClosedReal.lean \
     lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean; then
-  echo "FAIL: none chain must not import GeometryScheme / HeckeAlgebra / RibetFunctor / X0_26_Model / HeckeAction / LevelLowering / RibetMazur / TWPrimes / TWPrimesPratt / TWPrimesQ2 / TWAuxEllFixed"
+  echo "FAIL: none chain must not import GeometryScheme / HeckeAlgebra / RibetFunctor / X0_26_Model / HeckeAction / LevelLowering / RibetMazur / TWPrimes / TWPrimesPratt / TWPrimesQ2 / TWAuxEllFixed / X0_2_Genus"
   exit 1
 fi
 grep -q "def X0_26_f" \
@@ -1284,6 +1287,18 @@ grep -q "def of_ℓ_N_product" \
   lean/BealLevel26Foundations/Beal/FullProof/TWAuxEllFixed.lean
 grep -q "def TWAuxEllFixed.of_N_le" \
   lean/BealLevel26Foundations/Beal/FullProof/TWAuxEllFixedCore.lean
+grep -q "def genus_X0_2_rat" \
+  lean/BealLevel26Foundations/Beal/FullProof/X0_2_Genus.lean
+grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
+  lean/BealLevel26Foundations/Beal/FullProof/X0_2_Genus.lean
+grep -q "inductive BealAArm" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem beal_odd_A_ge3_not_mixed" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def beal_from_ribet_upside_down" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def beal_mixed_pow2_implies_level_2_newform" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem primes5to100_eq_Icc_filter" \
   lean/BealLevel26Foundations/Beal/FullProof/TWPrimes_5_100.lean
 grep -q "def twaux_10000_941" \

@@ -12,16 +12,12 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.18.0)
+# FullProof track (v8.19.0)
 
-Aggregator for Track B.  `TWAuxEllFixed` is
-inhabited for every `N ≤ 10000` on
-`InTWEll1000` by transporting the
-`N = 10000` witnesses.  Not Dirichlet and
-not `Nat.Prime ℓ → 5 ≤ ℓ ≤ 1000`.  Mixed /
-odd-`A` facts are unchanged.
-`beal_from_ribet_ell_mixed` stays *from*
-`ModularImpliesLevel2Newform`.
-`ExistsNewformLevel2` is still `0 ≠ 0`.  Not
+Aggregator for Track B.  Rational genus of
+`X₀(2)` is `0`.  `BealAArm` splits a
+positive `4,13,13` base.  `ExistsNewformLevel2`
+is still `0 ≠ 0`.  `beal_from_ribet` stays
+*from* `ModularImpliesLevel2Newform`.  Not
 imported by the 24-module none chain.
 -/

@@ -98,6 +98,21 @@ v8.15.0-dirichlet-up-to-1000 RibetMazur 166-row Q1≡1 mod ℓ table via InTWEll
 v8.16.0-q2-table-100M RibetMazur 166-row Q2≡1 mod ℓ² table via Pratt, bound 1e8; 919→59119271; 56 missing at 5e6 now included; ∀N≤10000 stays uninhabited; Mixed/odd-A facts unchanged; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.17.0-twaux-26-and-10000 RibetMazur TWAuxEllFixed inhabited at N=26 and N=10000 for InTWEll1000; Q1>N Q2>N; ℓ=941 needs Q1=30113 (N+21000); ∀N≤10000 stays uninhabited; completeness only [5,100] via Finset.filter; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.18.0-product RibetMazur TWAuxEllFixed inhabited for every N≤10000 on InTWEll1000 by transporting the N=10000 row; not Nat.Prime completeness; not Q1≤N+21000 for small N; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.19.0-ExistsNewformLevel2 RibetMazur genus_X0_2_rat=0 over ℚ; BealAArm splits positive A; odd A≥3 not Mixed for 4,13,13; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop; mixed-pow2→newform and upside-down ∀ stay uninhabited. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.19.0-ExistsNewformLevel2 — Rational genus of X₀(2); BealAArm split (arrow stays a Prop)
+
+Lean change.  `genus_X0_2_rat = 0` over `ℚ` from the classical counts `μ=3`, `ν₂=1`, `ν₃=0`, `ν∞=2`.  `BealAArm.of_pos` splits a positive `4,13,13` base; odd `A ≥ 3` is not Mixed.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `genus_X0_2_rat` / `genus_X0_2_rat_eq_zero`: `1 + 3/12 − 1/4 − 0 − 1 = 0` over `ℚ` (`ℕ` division is not this formula);
+- `ExistsNewformLevel2_eq_zero_ne_zero`: honesty lock, still `0 ≠ 0`; `not_ExistsNewformLevel2` aliases the existing `notExistsNewformLevel2`;
+- `BealAArm`: `pow2` / `odd_ge3` / `even_not_pow2`; `A=1` is `2^0`;
+- `beal_odd_A_ge3_not_mixed`: from `FreyEllCase5Mixed_4_13_13_iff_pow2_A` and `IsPowerOfTwo.eq_one_of_odd`;
+- `beal_mixed_pow2_implies_level_2_newform` / `beal_from_ribet_upside_down` stay uninhabited (no Ribet functor, no Zsigmondy);
+- `of5_26_gt` / `of7_26_gt` / `of13_26_gt` and the v8.18.0 product transport stay;
+- `beal_from_ribet` / `beal_from_ribet_ell_mixed`: still *from* `ModularImpliesLevel2Newform`.
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.18.0-product — TWAuxEllFixed for every N≤10000 on InTWEll1000 (arrow stays a Prop)
 

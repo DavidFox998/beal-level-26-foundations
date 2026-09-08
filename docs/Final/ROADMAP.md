@@ -799,6 +799,25 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.19.0-ExistsNewformLevel2 — DONE (rational genus of X₀(2); BealAArm split; ExistsNewformLevel2 stays 0≠0; arrow stays a Prop)
+
+Lean change.  `genus_X0_2_rat = 0` over `ℚ`
+from `μ=3`, `ν₂=1`, `ν₃=0`, `ν∞=2`.
+`BealAArm.of_pos` splits a positive
+`4,13,13` base.  Odd `A ≥ 3` is not Mixed.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_mixed_pow2_implies_level_2_newform`
+and `beal_from_ribet_upside_down` stay
+uninhabited.  `beal_from_ribet` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** import `X0_26_Model` from
+`RibetMazur`.  Does **not** touch the
+24-module none chain.  No `False.elim`.
+No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.18.0-product — DONE (TWAuxEllFixed for every N≤10000 on InTWEll1000; Prime completeness uninhabited, arrow stays a Prop)
 
 Lean change.  `of_N_le` transports the

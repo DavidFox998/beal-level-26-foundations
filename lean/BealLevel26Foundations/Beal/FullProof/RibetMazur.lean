@@ -3,13 +3,12 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.18.0 — `TWAuxEllFixed` for every
-`N ≤ 10000` on `InTWEll1000`, by transporting
-the `N = 10000` witnesses.  Not
-`Nat.Prime → 5 ≤ ℓ ≤ 1000`.  `ℓ = 941`
-needs `Q₁ = 30113`.  Completeness is
-kernel-checked only on `[5, 100]`.
-Builds on the v8.17.0 two-conductor tables.
+Track B v8.19.0 — Rational genus of `X₀(2)`
+is `0`, and the `4,13,13` base `A` splits
+into `BealAArm`.  `ExistsNewformLevel2` stays
+`0 ≠ 0`.  `beal_from_ribet` still takes
+`ModularImpliesLevel2Newform`.  Builds on
+the v8.18.0 product transport.
 
 Mathlib 4.12 has no Ribet functor and no arrow
     `Modular w → ExistsNewformLevel2`.  That label is
@@ -136,7 +135,13 @@ What it *does* prove:
   `InTWEll1000_complete` and the
   Prime-quantified
   `TWAuxEllFixed_inhabited_for_every_ell_le_1000`
-  stay uninhabited.
+  stay uninhabited;
+* `genus_X0_2_rat = 0` over `ℚ`;
+  `ExistsNewformLevel2` stays `0 ≠ 0`;
+* `BealAArm.of_pos` splits a positive base;
+  `beal_odd_A_ge3_not_mixed` for `4,13,13`;
+* `beal_mixed_pow2_implies_level_2_newform` /
+  `beal_from_ribet_upside_down` stay uninhabited.
 
 Does **not** import `X0_26_Model`.  FullProof-only.
 None chain does not import this file.
@@ -161,6 +166,7 @@ import Mathlib.Tactic
 import BealLevel26Foundations.Beal.FullProof.TWPrimes
 import BealLevel26Foundations.Beal.FullProof.TWAuxEllFixedCore
 import BealLevel26Foundations.Beal.FullProof.TWAuxEllFixed
+import BealLevel26Foundations.Beal.FullProof.X0_2_Genus
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -179,6 +185,7 @@ open BealLevel26Foundations.Beal.FullProof.TWPrimes
 open BealLevel26Foundations.Beal.FullProof.TWAuxEllFixedCore
 open BealLevel26Foundations.Beal.FullProof.TWAuxEllFixed
 open BealLevel26Foundations.Beal.FullProof.TWAuxEllFixed_5_100
+open BealLevel26Foundations.Beal.FullProof.X0_2_Genus
 open CongruenceSubgroup
 
 /-! ## Explicit 101-coeff q-expansions (ledger as `ℚ`) -/
@@ -2552,6 +2559,55 @@ def beal_4_13_13_size : Prop :=
     Odd A → ¬ IsPowerOfTwo A →
     A ^ 4 + B ^ 13 = C ^ 13 → False
 
+/-! ## v8.19.0 — `BealAArm` split; genus of `X₀(2)` over `ℚ` -/
+
+/-- Case split on a positive base `A` for `4,13,13`.
+`A=1` is `pow2` (`2^0`).  Not a cover of every
+Beal exponent triple. -/
+inductive BealAArm (A : Nat) where
+  | pow2 : IsPowerOfTwo A → BealAArm A
+  | odd_ge3 : Odd A → 3 ≤ A → BealAArm A
+  | even_not_pow2 : Even A → ¬ IsPowerOfTwo A → BealAArm A
+
+noncomputable def BealAArm.of_pos {A : Nat} (hA : 0 < A) : BealAArm A := by
+  by_cases hpow : IsPowerOfTwo A
+  · exact BealAArm.pow2 hpow
+  · by_cases hOdd : Odd A
+    · refine BealAArm.odd_ge3 hOdd ?_
+      have hne1 : A ≠ 1 := by
+        intro h
+        exact hpow (h ▸ IsPowerOfTwo_one)
+      have hne2 : A ≠ 2 := by
+        intro h
+        subst h
+        exact (Nat.not_odd_iff_even.mpr even_two) hOdd
+      omega
+    · exact BealAArm.even_not_pow2
+        (Nat.not_odd_iff_even.mp hOdd) hpow
+
+/-- Odd `A ≥ 3` is not Mixed for `4,13,13`.
+The only odd power of 2 is `A=1`. -/
+theorem beal_odd_A_ge3_not_mixed {A B C : Nat}
+    (hOdd : Odd A) (h3 : 3 ≤ A) :
+    ¬ FreyEllCase5Mixed A B C 4 13 13 := by
+  intro h
+  have hpow : IsPowerOfTwo A :=
+    (FreyEllCase5Mixed_4_13_13_iff_pow2_A.mp h)
+  have hA1 : A = 1 := IsPowerOfTwo.eq_one_of_odd hpow hOdd
+  subst hA1
+  exact (by decide : ¬ (3 : Nat) ≤ 1) h3
+
+/-- Uninhabited.  Needs the missing arrow
+`Modular w → ExistsNewformLevel2` (`0 ≠ 0`). -/
+def beal_mixed_pow2_implies_level_2_newform : Prop :=
+  ∀ t : PositiveBealTriple, IsPowerOfTwo t.A → ExistsNewformLevel2
+
+/-- Uninhabited.  Unconditional `¬ PositiveBealTriple`
+still needs `ModularImpliesLevel2Newform` and the
+odd-`A` size gap (no Zsigmondy). -/
+def beal_from_ribet_upside_down : Prop :=
+  ∀ t : PositiveBealTriple, False
+
 /-! ## v8.15.0 — Finite `Q₁` table for residuals in `[5, 1000]` -/
 
 theorem InTWEll1000_13 : InTWEll1000 13 :=
@@ -2712,6 +2768,15 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check product_all_mem
 #check find_next_prime_one_mod_gt_exists_product
 #check TWAuxEllFixed.of_N_le
+#check genus_X0_2_rat
+#check genus_X0_2_rat_eq_zero
+#check s2_gamma0_2_dim_and_genus
+#check ExistsNewformLevel2_eq_zero_ne_zero
+#check BealAArm
+#check BealAArm.of_pos
+#check beal_odd_A_ge3_not_mixed
+#check beal_mixed_pow2_implies_level_2_newform
+#check beal_from_ribet_upside_down
 #check exists_prime_one_mod_ell_all_13
 #check exists_prime_one_mod_ell_sq_all
 #check exists_prime_one_mod_ell_sq_all_13
@@ -2812,6 +2877,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms TWAuxEllFixed_inhabited_for_every_ell_le_1000_product
 #print axioms TWAuxEllFixed.of_N_le
 #print axioms find_next_prime_one_mod_gt_exists_product
+#print axioms genus_X0_2_rat_eq_zero
+#print axioms ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealAArm.of_pos
+#print axioms beal_odd_A_ge3_not_mixed
 #print axioms InTWEll1000_of_prime_5_100
 #print axioms InTWEll1000_iff_mem
 #print axioms succ_pow_sub_pow_gt_one
