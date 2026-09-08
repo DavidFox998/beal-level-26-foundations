@@ -194,6 +194,54 @@ theorem beal_4_13_13_k_mod8_eq_1_of_coprime_B_mod8_eq_0
     · exact hAo
   exact beal_4_13_13_k_mod8_eq_1_of_B_mod8_eq_0 A B C h hAodd hB8
 
+/-! ## Sketch names (v8.19.9) -/
+
+/-- Every fourth power is `0` or `1 [MOD 4]`. -/
+theorem fourth_pow_mod_4 (A : Nat) : A ^ 4 % 4 = 0 ∨ A ^ 4 % 4 = 1 := by
+  have hlt : A % 4 < 4 := Nat.mod_lt A (by decide)
+  rw [Nat.pow_mod]
+  interval_cases A % 4
+  · decide
+  · decide
+  · decide
+  · decide
+
+theorem fourth_pow_mod_8_odd (A : Nat) (hOdd : Odd A) : A ^ 4 % 8 = 1 :=
+  odd_fourth_mod8 A hOdd
+
+theorem odd_pow_mod_4 (k : Nat) (hOdd : Odd k) : k ^ 13 % 4 = k % 4 :=
+  odd_pow13_mod4 k hOdd
+
+theorem k_pow13_mod_8_odd (k : Nat) (hOdd : Odd k) : k ^ 13 % 8 = k % 8 :=
+  odd_pow13_mod8 k hOdd
+
+theorem k_mod_4_eq_1_of_B_divisible_by_4 (A B k : Nat)
+    (hOddA : Odd A) (hOddK : Odd k) (hBmod4_0 : B % 4 = 0)
+    (hCong : A ^ 4 % B = k ^ 13 % B) : k % 4 = 1 :=
+  k_mod4_eq_1_of_fourth_pow_residue A B k hOddA hOddK hBmod4_0 hCong
+
+theorem k_mod_8_eq_1_of_B_divisible_by_8 (A B k : Nat)
+    (hOddA : Odd A) (hOddK : Odd k) (hBmod8_0 : B % 8 = 0)
+    (hCong : A ^ 4 % B = k ^ 13 % B) : k % 8 = 1 :=
+  k_mod8_eq_1_of_fourth_pow_residue A B k hOddA hOddK hBmod8_0 hCong
+
+theorem beal_4_13_13_k_mod_4_eq_1_of_B_mod_4_0 (A B k : Nat)
+    (hOddA : Odd A) (hOddK : Odd k) (hB4 : B % 4 = 0)
+    (hCong : A ^ 4 % B = k ^ 13 % B) : k % 4 = 1 :=
+  k_mod_4_eq_1_of_B_divisible_by_4 A B k hOddA hOddK hB4 hCong
+
+theorem beal_4_13_13_k_mod_8_eq_1_of_B_mod_8_0 (A B k : Nat)
+    (hOddA : Odd A) (hOddK : Odd k) (hB8 : B % 8 = 0)
+    (hCong : A ^ 4 % B = k ^ 13 % B) : k % 8 = 1 :=
+  k_mod_8_eq_1_of_B_divisible_by_8 A B k hOddA hOddK hB8 hCong
+
+/-- v8.19.8 congruence, packaged with odd `A`. -/
+theorem beal_4_13_13_A4_cong_k13_mod_B_restricts_B
+    (A B C : Nat) (h : A ^ 4 + B ^ 13 = C ^ 13) (hOddA : Odd A) :
+    A ^ 4 % B = (C - B) ^ 13 % B := by
+  let _ := hOddA
+  exact beal_4_13_13_A_pow4_mod_B_eq_k_pow13 A B C h
+
 /-- Uninhabited.  Without odd `A`, `B % 4 = 0`
 does not force `k % 4 = 1`. -/
 def k_mod4_eq_1_of_B_mod4_eq_0_without_odd_A : Prop :=

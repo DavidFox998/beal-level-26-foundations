@@ -2826,6 +2826,42 @@ def k_mod4_eq_1_of_B_mod4_eq_0_without_odd_A :=
 def beal_odd_A_ge3_closed_of_fourth_pow_residue :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_odd_A_ge3_closed_of_fourth_pow_residue
 
+/-- Inhabited.  Every fourth power is `0` or `1 [MOD 4]`. -/
+def fourth_pow_mod_4 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.fourth_pow_mod_4
+
+/-- Inhabited sketch name.  Odd fourth powers are `1 [MOD 8]`. -/
+def fourth_pow_mod_8_odd :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.fourth_pow_mod_8_odd
+
+/-- Inhabited sketch name.  Odd `k` has `k^13 ≡ k [MOD 4]`. -/
+def odd_pow_mod_4 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.odd_pow_mod_4
+
+/-- Inhabited sketch name.  Odd `k` has `k^13 ≡ k [MOD 8]`. -/
+def k_pow13_mod_8_odd :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.k_pow13_mod_8_odd
+
+/-- Inhabited sketch name.  `B % 4 = 0` forces `k % 4 = 1`. -/
+def k_mod_4_eq_1_of_B_divisible_by_4 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.k_mod_4_eq_1_of_B_divisible_by_4
+
+/-- Inhabited sketch name.  `B % 8 = 0` forces `k % 8 = 1`. -/
+def k_mod_8_eq_1_of_B_divisible_by_8 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.k_mod_8_eq_1_of_B_divisible_by_8
+
+/-- Inhabited congruence form (not the Beal `(A B C)` wrapper). -/
+def beal_4_13_13_k_mod_4_eq_1_of_B_mod_4_0 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_k_mod_4_eq_1_of_B_mod_4_0
+
+/-- Inhabited congruence form (not the Beal `(A B C)` wrapper). -/
+def beal_4_13_13_k_mod_8_eq_1_of_B_mod_8_0 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_k_mod_8_eq_1_of_B_mod_8_0
+
+/-- Inhabited.  v8.19.8 congruence with odd `A`. -/
+def beal_4_13_13_A4_cong_k13_mod_B_restricts_B :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_A4_cong_k13_mod_B_restricts_B
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -3071,6 +3107,15 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_k_mod4_eq_1_of_B_mod4_eq_0
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_k_mod8_eq_1_of_B_mod8_eq_0
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.k_mod4_eq_1_of_B_mod4_eq_0_without_odd_A
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.fourth_pow_mod_4
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.fourth_pow_mod_8_odd
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.odd_pow_mod_4
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.k_pow13_mod_8_odd
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.k_mod_4_eq_1_of_B_divisible_by_4
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.k_mod_8_eq_1_of_B_divisible_by_8
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_k_mod_4_eq_1_of_B_mod_4_0
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_k_mod_8_eq_1_of_B_mod_8_0
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_A4_cong_k13_mod_B_restricts_B
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -3222,5 +3267,14 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.k_mod8_eq_1_of_fourth_pow_residue
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_k_mod4_eq_1_of_B_mod4_eq_0
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_k_mod8_eq_1_of_B_mod8_eq_0
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.fourth_pow_mod_4
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.fourth_pow_mod_8_odd
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.odd_pow_mod_4
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.k_pow13_mod_8_odd
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.k_mod_4_eq_1_of_B_divisible_by_4
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.k_mod_8_eq_1_of_B_divisible_by_8
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_k_mod_4_eq_1_of_B_mod_4_0
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_k_mod_8_eq_1_of_B_mod_8_0
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_A4_cong_k13_mod_B_restricts_B
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

@@ -1441,6 +1441,24 @@ grep -q "theorem beal_4_13_13_k_mod8_eq_1_of_B_mod8_eq_0" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.lean
 grep -q "def k_mod4_eq_1_of_B_mod4_eq_0_without_odd_A" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.lean
+grep -q "theorem fourth_pow_mod_4" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.lean
+grep -q "theorem fourth_pow_mod_8_odd" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.lean
+grep -q "theorem odd_pow_mod_4" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.lean
+grep -q "theorem k_pow13_mod_8_odd" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.lean
+grep -q "theorem k_mod_4_eq_1_of_B_divisible_by_4" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.lean
+grep -q "theorem k_mod_8_eq_1_of_B_divisible_by_8" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.lean
+grep -q "theorem beal_4_13_13_k_mod_4_eq_1_of_B_mod_4_0" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.lean
+grep -q "theorem beal_4_13_13_k_mod_8_eq_1_of_B_mod_8_0" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.lean
+grep -q "theorem beal_4_13_13_A4_cong_k13_mod_B_restricts_B" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.lean
 grep -q "theorem beal_4_13_13_k_odd" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
 grep -q "theorem S_13_ge_13_mul_B_pow12" \
