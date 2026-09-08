@@ -1,29 +1,29 @@
-# v8.27.0 RibetMazur two-primitive-primes counting plan
+# v8.28.0 RibetMazur Phi13 Zeta13 prime-ideal plan
 
-`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.lean`
+`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.lean`
 and `RibetMazur.lean`
 
-Step22 inhabits
-`S_not_power_of_thirteen`,
-`exists_p_of_two_primes_one_not_square_inhabited`,
-`zsigmondy_vp_S_eq_one_of_order_ne_13_inhabited`,
-`S_not_fourth_of_order_ne_13_inhabited`.
-Zsigmondy gives one primitive prime, not
-two. `S` may still be `q^k` for that prime,
-so “not a prime power” stays a Prop.
-`S` cannot be `13^k` (inhabited).
-Size `S ≤ 13 C¹²` does not rule out two
-lifts (`53² · 79²` already sits under that
-bound for `C ≥ 4`).
-`S_not_prime_power_when_C_ge_B_plus_3`,
-`S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3`,
-`not_all_p_lift_when_two_primes`,
+Step23 inhabits
+`norm_eq_S`, `zeta13_class_number_one`,
+`zeta13_prime_ideal_factorization_exists`,
+`S_not_power_of_thirteen_inhabited`.
+The displayed homogeneous `Φ₁₃(C,B)`
+equals `S_val`. Class number 1 is the
+recorded Washington value, not a
+Mathlib class-group computation.
+A primitive prime of the displayed
+norm exists. Two distinct prime ideals
+stay a Prop: `C − B ζ` may still be a
+prime power in the PID, and two primes
+above one `p` still give one rational
+prime.
 `exists_p_with_order_ne_13_mod_p_sq_inhabited`
-stay uninhabited (`ExistsNewformLevel2`
+stays uninhabited (`ExistsNewformLevel2`
 is `0 ≠ 0`).
 `beal_odd_A_closed_v8_24_0_inhabited`
 stays uninhabited.
 
+v8.27.0 `S` not `13^k` stays.
 v8.26.0 exists-`p` plan wraps stay.
 v8.25.0 dichotomy / lift example stay.
 v8.24.1 Hensel glue stays.
@@ -36,11 +36,12 @@ v8.20.1 `B ≤ 100` stays packaged.
 
 | Name | Status |
 |---|---|
-| `S_not_power_of_thirteen` | inhabited |
-| `exists_p_of_two_primes_one_not_square_inhabited` | inhabited |
-| `S_not_prime_power_when_C_ge_B_plus_3` | uninhabited |
-| `S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3` | uninhabited |
-| `not_all_p_lift_when_two_primes` | uninhabited |
+| `norm_eq_S` | inhabited |
+| `zeta13_class_number_one` | inhabited |
+| `zeta13_prime_ideal_factorization_exists` | inhabited |
+| `S_not_power_of_thirteen_inhabited` | inhabited |
+| `S_has_two_distinct_prime_ideals_in_Z_zeta13_when_C_ge_B_plus_3` | uninhabited |
+| `zeta13_two_prime_ideals_give_two_rational_primes` | uninhabited |
 | `exists_p_with_order_ne_13_mod_p_sq_inhabited` | uninhabited |
 | `beal_odd_A_closed_v8_24_0_inhabited` | uninhabited |
 | `kraus_criterion_q_ne_13` | stays uninhabited |

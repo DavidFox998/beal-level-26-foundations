@@ -12,13 +12,13 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.27.0)
+# FullProof track (v8.28.0)
 
-Aggregator for Track B.  Step22 inhabits
-`S_not_power_of_thirteen`,
-`exists_p_of_two_primes_one_not_square_inhabited`.
-`S_not_prime_power_when_C_ge_B_plus_3`,
-`S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3`,
+Aggregator for Track B.  Step23 inhabits
+`norm_eq_S`, `zeta13_class_number_one`,
+`zeta13_prime_ideal_factorization_exists`,
+`S_not_power_of_thirteen_inhabited`.
+`S_has_two_distinct_prime_ideals_in_Z_zeta13_when_C_ge_B_plus_3`,
 `exists_p_with_order_ne_13_mod_p_sq_inhabited`
 stay uninhabited.
 Bare odd-`A` / full close stay uninhabited.

@@ -3,12 +3,13 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.27.0 — two-primitive-primes
-counting plan.
-`S_not_power_of_thirteen`,
-`exists_p_of_two_primes_one_not_square_inhabited`
+Track B v8.28.0 — Phi13 / Zeta13
+prime-ideal plan.
+`norm_eq_S`, `zeta13_class_number_one`,
+`zeta13_prime_ideal_factorization_exists`,
+`S_not_power_of_thirteen_inhabited`
 are inhabited.
-`S_not_prime_power_when_C_ge_B_plus_3`
+`S_has_two_distinct_prime_ideals_in_Z_zeta13_when_C_ge_B_plus_3`
 and `exists_p_with_order_ne_13_mod_p_sq_inhabited`
 stay uninhabited.
 `beal_odd_A_closed_v8_24_0_inhabited`
@@ -325,6 +326,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -3471,6 +3473,32 @@ def S_not_fourth_of_order_ne_13_inhabited :=
 def S_not_prime_power_when_C_ge_B_plus_3 :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.S_not_prime_power_when_C_ge_B_plus_3
 
+/-! ## v8.28.0 — Phi13 / Zeta13 prime-ideal plan -/
+
+/-- Inhabited.  Displayed cyclotomic norm equals `S_val`. -/
+def norm_eq_S :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.norm_eq_S
+
+/-- Inhabited.  Recorded class number of `Q(ζ₁₃)` is `1`. -/
+def zeta13_class_number_one :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.zeta13_class_number_one
+
+/-- Inhabited.  One primitive prime of the displayed norm. -/
+def zeta13_prime_ideal_factorization_exists :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.zeta13_prime_ideal_factorization_exists
+
+/-- Inhabited wrap.  `S` is not a power of `13`. -/
+def S_not_power_of_thirteen_inhabited :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.S_not_power_of_thirteen_inhabited
+
+/-- Uninhabited.  Same lock as two rational primes. -/
+def S_has_two_distinct_prime_ideals_in_Z_zeta13_when_C_ge_B_plus_3 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.S_has_two_distinct_prime_ideals_in_Z_zeta13_when_C_ge_B_plus_3
+
+/-- Uninhabited.  Two ideals need not lie over two rationals. -/
+def zeta13_two_prime_ideals_give_two_rational_primes :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.zeta13_two_prime_ideals_give_two_rational_primes
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -3863,6 +3891,15 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.beal_odd_A_closed_v8_24_0_inhabited
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.norm_eq_S
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.zeta13_class_number_one
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.zeta13_prime_ideal_factorization_exists
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.S_not_power_of_thirteen_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.S_has_two_distinct_prime_ideals_in_Z_zeta13_when_C_ge_B_plus_3
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.zeta13_two_prime_ideals_give_two_rational_primes
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.exists_p_with_order_ne_13_mod_p_sq_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.beal_odd_A_closed_v8_24_0_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -4109,5 +4146,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.zsigmondy_vp_S_eq_one_of_order_ne_13_inhabited
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.S_not_fourth_of_order_ne_13_inhabited
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.norm_eq_S
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.zeta13_class_number_one
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.zeta13_prime_ideal_factorization_exists
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.S_not_power_of_thirteen_inhabited
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

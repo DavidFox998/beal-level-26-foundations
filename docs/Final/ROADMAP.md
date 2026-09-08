@@ -799,6 +799,27 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.28.0-Phi13-Zeta13-prime-ideal-plan — DONE (displayed Phi13 norm equals S, recorded class number 1, one primitive prime of the norm inhabited; two prime ideals and exists_p stay uninhabited; arrow stays a Prop)
+
+Lean change.  Step23 file
+`Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.lean`
+inhabits
+`norm_eq_S`, `zeta13_class_number_one`,
+`zeta13_prime_ideal_factorization_exists`,
+`S_not_power_of_thirteen_inhabited`.
+Mathlib 4.12 has no class group of
+`Q(ζ13)`. Two prime ideals stay a Prop.
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`,
+`beal_odd_A_closed_v8_24_0_inhabited`
+stay uninhabited.
+Unconditional `¬ p² ∣ S` is false
+(Hensel; `B=1`, `C=460`, `p=53`).
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.27.0-two-primitive-primes-counting-plan — DONE (S not a power of 13 inhabited; not-a-prime-power, two primitive primes, not-both-lift, and exists_p stay uninhabited; arrow stays a Prop)
 
 Lean change.  Step22 file

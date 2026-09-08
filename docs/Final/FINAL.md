@@ -1,3 +1,40 @@
+# FINAL v8.28.0 — Phi13 Zeta13 prime-ideal plan (arrow stays a Prop)
+
+Latest tag `v8.28.0-Phi13-Zeta13-prime-ideal-plan`.
+Lean change.
+Step23 inhabits
+`norm_eq_S`, `zeta13_class_number_one`,
+`zeta13_prime_ideal_factorization_exists`,
+`S_not_power_of_thirteen_inhabited`.
+Displayed `Φ₁₃(C,B)` equals `S_val`.
+Class number 1 is recorded, not Mathlib.
+One primitive prime of the displayed
+norm exists. Two prime ideals stay a
+Prop (same lock as two rational primes;
+two primes above one `p` still give one
+rational prime). Size does not kill two
+Hensel lifts.
+`S_has_two_distinct_prime_ideals_in_Z_zeta13_when_C_ge_B_plus_3`,
+`zeta13_two_prime_ideals_give_two_rational_primes`,
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`,
+`beal_odd_A_closed_v8_24_0_inhabited`,
+`beal_4_13_13_full_closed_mod_modular_v8_24_0_inhabited`,
+`beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real`
+stay uninhabited.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` stays *from*
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
+(`v8.19.9-fourth-power-residue` houseclean archive).
+Track A none-chain mint stays
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221).
+This mint does **not** claim unconditional Beal `∀`.
+
 # FINAL v8.27.0 — two-primitive-primes counting plan (arrow stays a Prop)
 
 Latest tag `v8.27.0-two-primitive-primes-counting-plan`.

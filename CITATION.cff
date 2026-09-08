@@ -5,11 +5,11 @@ type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v8.27.0-two-primitive-primes-counting-plan"
+version: "v8.28.0-Phi13-Zeta13-prime-ideal-plan"
 date-released: "2026-09-08"
 doi: "10.5281/zenodo.22272382"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
-url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.27.0-two-primitive-primes-counting-plan"
+url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.28.0-Phi13-Zeta13-prime-ideal-plan"
 license: MIT
 keywords:
   - beal-conjecture
