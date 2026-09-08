@@ -3,12 +3,14 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.16.0 — Finite `Q₁` and `Q₂` tables
-for the 166 primes in `[5, 1000]`.  Builds on
-v8.15.0.  Not Dirichlet and not `∀ N ≤ 10000`.
-Every table residual has `Q₂ ≡ 1 [MOD ℓ²]`
-with `Q₂ ≤ 10⁸` (56 missed `5·10⁶`; largest
-is `59119271` at `ℓ = 919`).
+Track B v8.17.0 — `TWAuxEllFixed` at `N = 26`
+and `N = 10000` for every residual in
+`InTWEll1000`.  `Qᵢ > N` so `Qᵢ ∤ N`.
+Not `∀ N ≤ 10000`.  `ℓ = 941` needs
+`Q₁ = 30113` (`N + 21000`).  Completeness
+`Nat.Prime → 5 ≤ ℓ ≤ 1000` is kernel-checked
+only on `[5, 100]` via `Finset.filter`.
+Builds on the v8.16.0 `Q₂ ≤ 10⁸` Pratt table.
 
 Mathlib 4.12 has no Ribet functor and no arrow
     `Modular w → ExistsNewformLevel2`.  That label is
@@ -121,8 +123,17 @@ What it *does* prove:
   imply `Q₁ ∤ N` (the `∀ N` field stays false);
 * `exists_prime_one_mod_ell_sq_all`: `Q₂` for
   every residual in `InTWEll1000`, bound `10⁸`;
-* `find_next_prime_one_mod_gt_exists` stays
-  an uninhabited Prop (`∀ N ≤ 10000`).
+* `find_next_prime_one_mod_gt_exists` /
+  `next_Q1_gt_N_exists` stay uninhabited
+  (`∀ N ≤ 10000`);
+* `TWAuxEllFixedExists_26_all` /
+  `TWAuxEllFixedExists_10000_all` inhabit
+  the two conductors on `InTWEll1000`;
+* `of5_26` / `of7_26` / `of13_26` keep the
+  same witnesses and are also `of5_26_gt`
+  (`Q₁ > 26` already);
+* `primes_le_1000` is the Finset union;
+  `InTWEll1000_complete` stays uninhabited.
 
 Does **not** import `X0_26_Model`.  FullProof-only.
 None chain does not import this file.
@@ -145,6 +156,8 @@ import Mathlib.FieldTheory.Finite.Basic
 import Mathlib.LinearAlgebra.Matrix.SpecialLinearGroup
 import Mathlib.Tactic
 import BealLevel26Foundations.Beal.FullProof.TWPrimes
+import BealLevel26Foundations.Beal.FullProof.TWAuxEllFixedCore
+import BealLevel26Foundations.Beal.FullProof.TWAuxEllFixed
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -160,6 +173,9 @@ open Beal.Foundations.J0_26_Decomp
 open BealLevel26Foundations.Chain.Level2
 open BealLevel26Foundations.Real.FreyWeierstrass
 open BealLevel26Foundations.Beal.FullProof.TWPrimes
+open BealLevel26Foundations.Beal.FullProof.TWAuxEllFixedCore
+open BealLevel26Foundations.Beal.FullProof.TWAuxEllFixed
+open BealLevel26Foundations.Beal.FullProof.TWAuxEllFixed_5_100
 open CongruenceSubgroup
 
 /-! ## Explicit 101-coeff q-expansions (ledger as `ℚ`) -/
@@ -2117,31 +2133,6 @@ theorem exists_prime_one_mod_ell_listed {ℓ : Nat}
   · subst h; exact exists_prime_one_mod_29
   · subst h; exact exists_prime_one_mod_31
 
-/-- TW primes relative to a conductor `N`: `N < Qᵢ`
-implies `Qᵢ ∤ N`.  Not `∀ N, ¬ Q₁ ∣ N`. -/
-structure TWAuxEllFixed (ℓ N : Nat) where
-  Q1ell : Nat
-  Q2ell : Nat
-  Q1_prime : Q1ell.Prime
-  Q2_prime : Q2ell.Prime
-  Q1_mod : Q1ell % ℓ = 1
-  Q2_mod : Q2ell % (ℓ ^ 2) = 1
-  Q1_ge5 : 5 ≤ Q1ell
-  Q2_ge5 : 5 ≤ Q2ell
-  Q1_ne_Q2 : Q1ell ≠ Q2ell
-  Q1_gt_N : N < Q1ell
-  Q2_gt_N : N < Q2ell
-
-theorem TWAuxEllFixed.Q1_not_dvd {ℓ N : Nat}
-    (tw : TWAuxEllFixed ℓ N) (hN : 0 < N) : ¬ tw.Q1ell ∣ N := by
-  intro h
-  exact Nat.not_le.mpr tw.Q1_gt_N (Nat.le_of_dvd hN h)
-
-theorem TWAuxEllFixed.Q2_not_dvd {ℓ N : Nat}
-    (tw : TWAuxEllFixed ℓ N) (hN : 0 < N) : ¬ tw.Q2ell ∣ N := by
-  intro h
-  exact Nat.not_le.mpr tw.Q2_gt_N (Nat.le_of_dvd hN h)
-
 def TWAuxEllFixed.of_tw {ℓ N : Nat} (tw : TWAuxEll ℓ)
     (h1 : N < tw.Q1ell) (h2 : N < tw.Q2ell) : TWAuxEllFixed ℓ N where
   Q1ell := tw.Q1ell
@@ -2190,9 +2181,6 @@ theorem TWAuxEllExists_5 : TWAuxEllExists 5 :=
 
 theorem TWAuxEllExists_7 : TWAuxEllExists 7 :=
   ⟨TWAuxEll.of7⟩
-
-def TWAuxEllFixedExists (ℓ N : Nat) : Prop :=
-  Nonempty (TWAuxEllFixed ℓ N)
 
 theorem TWAuxEllFixedExists_13_26 : TWAuxEllFixedExists 13 26 :=
   ⟨TWAuxEllFixed.of13_26⟩
@@ -2599,6 +2587,24 @@ def TWAuxEllFixed.of7_26 : TWAuxEllFixed 7 26 where
   Q1_gt_N := by decide
   Q2_gt_N := by decide
 
+def TWAuxEllFixed.of5_26_gt : TWAuxEllFixed 5 26 :=
+  TWAuxEllFixed.of5_26
+
+def TWAuxEllFixed.of7_26_gt : TWAuxEllFixed 7 26 :=
+  TWAuxEllFixed.of7_26
+
+def TWAuxEllFixed.of13_26_gt : TWAuxEllFixed 13 26 :=
+  TWAuxEllFixed.of13_26
+
+def TWAuxEllFixed.of5_10000 : TWAuxEllFixed 5 10000 :=
+  twaux_10000_5
+
+def TWAuxEllFixed.of7_10000 : TWAuxEllFixed 7 10000 :=
+  twaux_10000_7
+
+def TWAuxEllFixed.of13_10000 : TWAuxEllFixed 13 10000 :=
+  twaux_10000_13
+
 theorem TWAuxEllFixedExists_5_26 : TWAuxEllFixedExists 5 26 :=
   ⟨TWAuxEllFixed.of5_26⟩
 
@@ -2687,12 +2693,26 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check Q1_not_dvd_N_of_Q1_gt_N
 #check TWAuxEllFixed.of5_26
 #check TWAuxEllFixed.of7_26
+#check TWAuxEllFixed.of5_26_gt
+#check TWAuxEllFixed.of7_26_gt
+#check TWAuxEllFixed.of13_26_gt
+#check TWAuxEllFixed.of5_10000
+#check TWAuxEllFixed.of7_10000
+#check TWAuxEllFixed.of13_10000
 #check TWAuxEllFixedExists_5_26
 #check TWAuxEllFixedExists_7_26
+#check TWAuxEllFixedExists_26_all
+#check TWAuxEllFixedExists_10000_all
 #check exists_prime_one_mod_ell_all_13
 #check exists_prime_one_mod_ell_sq_all
 #check exists_prime_one_mod_ell_sq_all_13
 #check find_next_prime_one_mod_gt_exists
+#check next_Q1_gt_N
+#check next_Q1_gt_N_exists
+#check primes_le_1000
+#check InTWEll1000_iff_mem
+#check InTWEll1000_of_prime_5_100
+#check InTWEll1000_complete
 #check TWAuxEllFixed_inhabited_for_every_ell_le_1000
 #check X0_N_Model
 #check J0_N_Model
@@ -2772,8 +2792,15 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms exists_prime_one_mod_ell_all_13
 #print axioms TWAuxEllFixed.of5_26
 #print axioms TWAuxEllFixed.of7_26
+#print axioms TWAuxEllFixed.of5_26_gt
+#print axioms TWAuxEllFixed.of7_26_gt
+#print axioms TWAuxEllFixed.of13_26_gt
 #print axioms TWAuxEllFixedExists_5_26
 #print axioms TWAuxEllFixedExists_7_26
+#print axioms TWAuxEllFixedExists_26_all
+#print axioms TWAuxEllFixedExists_10000_all
+#print axioms InTWEll1000_of_prime_5_100
+#print axioms InTWEll1000_iff_mem
 #print axioms succ_pow_sub_pow_gt_one
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

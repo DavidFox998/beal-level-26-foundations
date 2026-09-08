@@ -3,10 +3,13 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.16.0 — Finite `Q₁ ≡ 1 [MOD ℓ]` and `Q₂ ≡ 1 [MOD ℓ²]`
+Track B v8.17.0 — Finite `Q₁ ≡ 1 [MOD ℓ]` and `Q₂ ≡ 1 [MOD ℓ²]`
 tables for every residual in `InTWEll1000`.  Not Dirichlet and
-not `∀ N ≤ 10000`.  The 56 residuals that missed `Q₂ ≤ 5·10⁶`
-now have witnesses `≤ 10⁸` (largest: `ℓ = 919`, `Q₂ = 59119271`).
+not `∀ N ≤ 10000`.  `primes_le_1000` is the union of the ten
+Finsets; completeness `Nat.Prime → 5 ≤ ℓ ≤ 1000` is
+kernel-checked only on `[5, 100]` via `Finset.filter`
+(`interval_cases` hits max recursion).  Search window for
+`Q₁ > N` is `N + 21000` (`ℓ = 941` needs `30113`).
 
 Does **not** inhabit `ExistsNewformLevel2` (`0 ≠ 0`).
 Does **not** drop `ModularImpliesLevel2Newform`.
@@ -60,13 +63,36 @@ open BealLevel26Foundations.Beal.FullProof.TWPrimesQ2_901_1000
 
 /-- Membership in the 166-row table of primes in `[5, 1000]`.
 The converse (`Nat.Prime ℓ → 5 ≤ ℓ → ℓ ≤ 1000 → InTWEll1000 ℓ`)
-is not kernel-checked: `interval_cases` on those ranges
-hits max recursion / heartbeats. -/
+is kernel-checked only on `[5, 100]`.  `interval_cases` on
+the remaining hundreds hits max recursion / heartbeats. -/
 def InTWEll1000 (ℓ : Nat) : Prop :=
   ℓ ∈ primes5to100 ∨ ℓ ∈ primes101to200 ∨ ℓ ∈ primes201to300 ∨
     ℓ ∈ primes301to400 ∨ ℓ ∈ primes401to500 ∨ ℓ ∈ primes501to600 ∨
     ℓ ∈ primes601to700 ∨ ℓ ∈ primes701to800 ∨ ℓ ∈ primes801to900 ∨
     ℓ ∈ primes901to1000
+
+/-- Right-associated union so `mem` matches `InTWEll1000`.
+`fin_cases ℓ ∈ primes_le_1000` is the enumeration; it does
+not prove every `Nat.Prime` in `[5, 1000]` is a member. -/
+def primes_le_1000 : Finset Nat :=
+  primes5to100 ∪ (primes101to200 ∪ (primes201to300 ∪
+    (primes301to400 ∪ (primes401to500 ∪ (primes501to600 ∪
+      (primes601to700 ∪ (primes701to800 ∪
+        (primes801to900 ∪ primes901to1000))))))))
+
+theorem InTWEll1000_iff_mem {ℓ : Nat} :
+    InTWEll1000 ℓ ↔ ℓ ∈ primes_le_1000 := by
+  simp only [InTWEll1000, primes_le_1000, Finset.mem_union]
+
+theorem InTWEll1000_of_prime_5_100 {ℓ : Nat}
+    (hp : Nat.Prime ℓ) (hlo : 5 ≤ ℓ) (hhi : ℓ ≤ 100) :
+    InTWEll1000 ℓ :=
+  Or.inl (mem_primes5to100_of_prime hp hlo hhi)
+
+/-- Uninhabited.  `interval_cases` on `[101, 1000]` hits
+max recursion.  `[5, 100]` is `InTWEll1000_of_prime_5_100`. -/
+def InTWEll1000_complete : Prop :=
+  ∀ ℓ : Nat, ℓ.Prime → 5 ≤ ℓ → ℓ ≤ 1000 → InTWEll1000 ℓ
 
 /-- Smallest prime `Q₁ ≤ 20000` with `Q₁ ≡ 1 [MOD ℓ]`
 for every residual in the 166-row table.  Not Dirichlet
@@ -128,10 +154,26 @@ theorem find_next_prime_one_mod_gt_spec {ℓ N bound p : Nat}
   have hle : p ≤ bound := Nat.lt_succ_iff.mp (List.mem_range.mp hmem)
   exact ⟨hpred.1, hpred.2.1, hpred.2.2, hle⟩
 
-/-- Uninhabited.  A prime `≡ 1 [MOD ℓ]` in `(N, N+20000]`
-for every `N ≤ 10000` is not a 166-row table. -/
+/-- Honest search window.  `ℓ = 941` at `N = 10000`
+needs `Q₁ = 30113 = N + 20113`. -/
+def next_Q1_search_bound : Nat := 21000
+
+/-- Search `p` in `(N, N + 21000]` with `p ≡ 1 [MOD ℓ]`
+and `Nat.Prime p`.  Fallback `N + ℓ + 1` is not a witness. -/
+def next_Q1_gt_N (ℓ N : Nat) : Nat :=
+  (find_next_prime_one_mod_gt ℓ N (N + next_Q1_search_bound)).getD
+    (N + ℓ + 1)
+
+/-- Uninhabited.  A prime `≡ 1 [MOD ℓ]` in `(N, N+21000]`
+for every `N ≤ 10000` is not a 166-row table.  The
+inhabited slices are `N = 26` and `N = 10000` on
+`InTWEll1000`.  `N + 20000` is false at `ℓ = 941`. -/
 def find_next_prime_one_mod_gt_exists : Prop :=
   ∀ ℓ N : Nat, ℓ.Prime → 5 ≤ ℓ → ℓ ≤ 1000 → N ≤ 10000 →
-    ∃ Q1 : Nat, Q1.Prime ∧ Q1 % ℓ = 1 ∧ N < Q1 ∧ Q1 ≤ N + 20000
+    ∃ Q1 : Nat, Q1.Prime ∧ Q1 % ℓ = 1 ∧ N < Q1 ∧ Q1 ≤ N + 21000
+
+/-- Uninhabited alias of the `∀ N ≤ 10000` search. -/
+def next_Q1_gt_N_exists : Prop :=
+  find_next_prime_one_mod_gt_exists
 
 end BealLevel26Foundations.Beal.FullProof.TWPrimes

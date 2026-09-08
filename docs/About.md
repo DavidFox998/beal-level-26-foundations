@@ -1,16 +1,22 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.16.0-q2-table-100M`.
-Lean change: Pratt certificates inhabit
-`exists_prime_one_mod_ell_sq_all` on
-`InTWEll1000` with `Q₂ ≤ 10⁸`.  The 56
-residuals that missed `5·10⁶` now have
-witnesses; largest is `919 → 59119271`.
+Latest tag / HEAD: `v8.17.0-twaux-26-and-10000`.
+Lean change: `TWAuxEllFixed` is inhabited at
+`N = 26` and `N = 10000` for every residual
+in `InTWEll1000`, with `Qᵢ > N` so `Qᵢ ∤ N`.
+`of5_26` / `of7_26` / `of13_26` keep
+`(31,101)` / `(29,197)` / `(53,677)` and
+are also `of5_26_gt` (`Q₁ > 26` already).
+`ℓ = 941` needs `Q₁ = 30113` (`N + 21000`,
+not `N + 20000`).  `ℓ = 29` at `N = 10000`
+uses `Q₁ = 10151` so `Q₁ ≠ Q₂ = 10093`.
 That is **not** Dirichlet and **not**
-`∀ N ≤ 10000`.  Smallest `Q₂` is often
-`< N`, so `TWAuxEllFixed` is still not
-inhabited for every `N ≤ 10000`.
-Mixed / odd-`A` facts are unchanged.
+`∀ N ≤ 10000`.  Completeness
+`Nat.Prime ℓ → 5 ≤ ℓ ≤ 1000` is
+kernel-checked only on `[5, 100]` via
+`Finset.filter` (`interval_cases` hits
+max recursion).  Mixed / odd-`A` facts
+are unchanged.
 `beal_from_ribet_ell_mixed` stays
 *from* `ModularImpliesLevel2Newform`.
 `ExistsNewformLevel2` is still `0 ≠ 0`.

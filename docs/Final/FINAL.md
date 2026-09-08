@@ -1,3 +1,32 @@
+# FINAL v8.17.0 — TWAuxEllFixed at N=26 and N=10000 (arrow stays a Prop)
+
+Latest tag `v8.17.0-twaux-26-and-10000`.
+Lean change.
+`TWAuxEllFixedExists_26_all` and
+`TWAuxEllFixedExists_10000_all` inhabit
+`TWAuxEllFixed ℓ N` for every residual in
+`InTWEll1000` at the two conductors
+`N = 26` and `N = 10000`.  `Qᵢ > N` so
+`Qᵢ ∤ N`.  `ℓ = 941` needs `Q₁ = 30113`
+(`N + 21000`).  `∀ N ≤ 10000` stays
+uninhabited.  Completeness
+`Nat.Prime → 5 ≤ ℓ ≤ 1000` is
+kernel-checked only on `[5, 100]` via
+`Finset.filter`.  Mixed / odd-`A` facts
+are unchanged.  `beal_from_ribet_ell_mixed`
+stays *from* `ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221)
+(v7.1.1 About catch-up, Track A).  Track B does **not**
+write a new mint claiming unconditional Beal `∀`.
+Three JPEG plates stay in `docs/assets/v6.7.0/`.
+Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+
 # FINAL v8.16.0 — Finite Q₂ table within 100M (arrow stays a Prop)
 
 Latest tag `v8.16.0-q2-table-100M`.

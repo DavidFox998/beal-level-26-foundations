@@ -12,11 +12,11 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.16.0)
+# FullProof track (v8.17.0)
 
-Aggregator for Track B.  `TWPrimes` is the
-166-row `Q₁ ≡ 1 [MOD ℓ]` and `Q₂ ≡ 1 [MOD ℓ²]`
-table for residuals in `InTWEll1000`.  Not
+Aggregator for Track B.  `TWAuxEllFixed` is
+inhabited at `N = 26` and `N = 10000` for
+every residual in `InTWEll1000`.  Not
 Dirichlet and not `∀ N ≤ 10000`.  Mixed /
 odd-`A` facts are unchanged.
 `beal_from_ribet_ell_mixed` stays *from*

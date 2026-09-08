@@ -10,7 +10,7 @@ import Mathlib.Tactic
 
 namespace BealLevel26Foundations.Beal.FullProof.TWPrimes_5_100
 
-set_option maxHeartbeats 400000
+set_option maxHeartbeats 2000000
 
 def primes5to100 : Finset Nat :=
   { 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97 }
@@ -106,6 +106,20 @@ theorem q1_witness_89 :
 theorem q1_witness_97 :
     Nat.Prime 389 ∧ 389 % 97 = 1 ∧ 389 ≤ 20000 ∧ 5 ≤ 389 :=
   ⟨by norm_num, by decide, by decide, by decide⟩
+
+/-- Kernel-checked completeness on `[5, 100]`.
+`Finset.Icc` plus `filter Nat.Prime`, not `interval_cases`.
+Larger hundreds still hit max recursion. -/
+theorem primes5to100_eq_Icc_filter :
+    (Finset.Icc 5 100).filter Nat.Prime = primes5to100 := by
+  decide
+
+theorem mem_primes5to100_of_prime {ℓ : Nat}
+    (hp : Nat.Prime ℓ) (hlo : 5 ≤ ℓ) (hhi : ℓ ≤ 100) :
+    ℓ ∈ primes5to100 := by
+  have : ℓ ∈ (Finset.Icc 5 100).filter Nat.Prime :=
+    Finset.mem_filter.mpr ⟨Finset.mem_Icc.mpr ⟨hlo, hhi⟩, hp⟩
+  rwa [primes5to100_eq_Icc_filter] at this
 
 theorem exists_prime_one_mod_ell_5_100 {ℓ : Nat}
     (h : ℓ ∈ primes5to100) :

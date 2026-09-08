@@ -96,6 +96,22 @@ v8.13.0-mixed-ell-plus-dirichlet RibetMazur FreyEllCase5Mixed covers m=4 n=13 p=
 v8.14.0-mixed-odd-A RibetMazur odd A^4≡1 mod16; odd B^13≡B mod8; A^4≡C-B mod13; only odd power of 2 is A=1 and 1+B^13=C^13 is impossible; Mixed covers 4,13,13 iff A=2^e not a cover for odd A≥3; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.15.0-dirichlet-up-to-1000 RibetMazur 166-row Q1≡1 mod ℓ table via InTWEll1000; Q1_not_dvd_N_of_Q1_gt_N when 0<N<Q1; Q2-∀ and ∀N≤10000 stay uninhabited; Mixed/odd-A facts unchanged; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.16.0-q2-table-100M RibetMazur 166-row Q2≡1 mod ℓ² table via Pratt, bound 1e8; 919→59119271; 56 missing at 5e6 now included; ∀N≤10000 stays uninhabited; Mixed/odd-A facts unchanged; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.17.0-twaux-26-and-10000 RibetMazur TWAuxEllFixed inhabited at N=26 and N=10000 for InTWEll1000; Q1>N Q2>N; ℓ=941 needs Q1=30113 (N+21000); ∀N≤10000 stays uninhabited; completeness only [5,100] via Finset.filter; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.17.0-twaux-26-and-10000 — TWAuxEllFixed at N=26 and N=10000 (arrow stays a Prop)
+
+Lean change.  `TWAuxEllFixedExists_26_all` / `TWAuxEllFixedExists_10000_all` inhabit conductor-relative TW primes for every residual in `InTWEll1000`.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `of5_26_gt` / `of7_26_gt` / `of13_26_gt`: same witnesses as `of5_26` `(31,101)`, `of7_26` `(29,197)`, `of13_26` `(53,677)` with `Q₁ > 26` already;
+- `ℓ = 941` at `N = 10000` needs `Q₁ = 30113` (`N + 21000`, not `N + 20000`);
+- `ℓ = 29` at `N = 10000` uses `Q₁ = 10151` so `Q₁ ≠ Q₂ = 10093`;
+- `primes_le_1000` / `InTWEll1000_iff_mem`: Finset union; `fin_cases` on the table, not `interval_cases`;
+- `InTWEll1000_of_prime_5_100`: completeness via `Finset.Icc.filter` on `[5, 100]` only;
+- `TWAuxEllFixed_inhabited_for_every_ell_le_1000` / `InTWEll1000_complete` / `next_Q1_gt_N_exists` stay uninhabited (`∀ N ≤ 10000` is not two tables);
+- Mixed / odd-`A` facts from v8.14.0–v8.16.0 are unchanged;
+- `beal_from_ribet_ell_mixed`: still *from* `ModularImpliesLevel2Newform`.
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.16.0-q2-table-100M — Finite Q₂ table within 100M (arrow stays a Prop)
 

@@ -799,6 +799,30 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.17.0-twaux-26-and-10000 — DONE (TWAuxEllFixed at N=26 and N=10000; ∀N uninhabited, arrow stays a Prop)
+
+Lean change.  Ten `TWAuxEllFixed_*` chunks
+inhabit `TWAuxEllFixed ℓ 26` and
+`TWAuxEllFixed ℓ 10000` for every residual
+in `InTWEll1000`.  `Qᵢ > N` so `Qᵢ ∤ N`.
+`ℓ = 941` needs `Q₁ = 30113` (`N + 21000`).
+`ℓ = 29` at `N = 10000` uses `Q₁ = 10151`
+(`Q₁ ≠ Q₂ = 10093`).  `of5_26` / `of7_26`
+/ `of13_26` become `of5_26_gt` with the
+same witnesses.  `primes_le_1000` is the
+Finset union; completeness via
+`Finset.Icc.filter` is kernel-checked
+only on `[5, 100]`.  `∀ N ≤ 10000` and
+`InTWEll1000_complete` stay uninhabited.
+`beal_from_ribet_ell_mixed` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** import `X0_26_Model`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.16.0-q2-table-100M — DONE (166-row Q₂ table within 100M via Pratt; ∀N uninhabited, arrow stays a Prop)
 
 Lean change.  `prime_of_pratt` plus ten `TWPrimesQ2_*`
