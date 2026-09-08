@@ -1,3 +1,36 @@
+# FINAL v8.22.1 — X₀(2q) Darmon–Merel plan for even not-pow2 A, q≠13 (arrow stays a Prop)
+
+Latest tag `v8.22.1-X0-2q-Darmon-Merel-plan`.
+Lean change.
+Step15 inhabits
+`oddPart_rec`, `rad`, `oddPart_def`,
+`rad_dvd_pow`,
+`even_not_pow2_has_odd_prime_q`,
+`level_2q_of_odd_prime_dvd_A`
+(`N' = 2 q` divides `2 · rad(oddPart_rec A)`).
+`kraus_criterion_q_ne_13`,
+`X0_2q_no_Frey_match`,
+`beal_even_not_pow2_general_q_False`,
+`beal_even_not_pow2_closed_v8_22_1`,
+`beal_even_A_closed_v8_22_1`,
+`beal_4_13_13_odd_only_remaining`,
+`beal_4_13_13_X0_2q_Darmon_Merel_plan`
+stay uninhabited.
+v8.22.0 radical `N'` stays.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` stays *from*
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
+(`v8.19.9-fourth-power-residue` houseclean archive).
+Track A none-chain mint stays
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221).
+This mint does **not** claim unconditional Beal `∀`.
+
 # FINAL v8.22.0 — X₀(26) RibetMazur plan for even not-pow2 A (arrow stays a Prop)
 
 Latest tag `v8.22.0-X0-26-RibetMazur-plan`.

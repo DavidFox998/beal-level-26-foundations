@@ -799,6 +799,27 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.22.1-X0-2q-Darmon-Merel-plan — DONE (oddPart/rad and 2q radical inhabited; Kraus / X0(2q) matching stay uninhabited; arrow stays a Prop)
+
+Lean change.  Step15 file
+`Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.lean`
+inhabits `oddPart_rec`, `rad`,
+`oddPart_def`, `rad_dvd_pow`,
+`even_not_pow2_has_odd_prime_q`,
+`level_2q_of_odd_prime_dvd_A`.
+`kraus_criterion_q_ne_13`,
+`X0_2q_no_Frey_match`,
+`beal_even_not_pow2_general_q_False`,
+`beal_even_not_pow2_closed_v8_22_1`,
+`beal_even_A_closed_v8_22_1`,
+`beal_4_13_13_X0_2q_Darmon_Merel_plan`
+stay uninhabited.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.22.0-X0-26-RibetMazur-plan — DONE (even-not-pow2 radical N' inhabited; Ribet / X0(26) matching stay uninhabited; arrow stays a Prop)
 
 Lean change.  Step14 file

@@ -209,6 +209,8 @@ test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_l
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.md
 test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.md
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -848,6 +850,7 @@ do
   grep -q "v8.21.0-B-gt-100-bounded-k" "$readme"
   grep -q "v8.21.1-Modular-W-lift-last-lock" "$readme"
   grep -q "v8.22.0-X0-26-RibetMazur-plan" "$readme"
+  grep -q "v8.22.1-X0-2q-Darmon-Merel-plan" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1610,6 +1613,32 @@ grep -q "def beal_4_13_13_X0_26_RibetMazur_plan" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.lean
 grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.lean
+grep -q "def oddPart_rec" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.lean
+grep -q "def rad" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.lean
+grep -q "theorem oddPart_def" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.lean
+grep -q "theorem rad_dvd_pow" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.lean
+grep -q "theorem even_not_pow2_has_odd_prime_q" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.lean
+grep -q "theorem level_2q_of_odd_prime_dvd_A" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.lean
+grep -q "def kraus_criterion_q_ne_13" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.lean
+grep -q "def X0_2q_no_Frey_match" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.lean
+grep -q "def beal_even_not_pow2_general_q_False" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.lean
+grep -q "def beal_even_not_pow2_closed_v8_22_1" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.lean
+grep -q "def beal_even_A_closed_v8_22_1" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.lean
+grep -q "def beal_4_13_13_X0_2q_Darmon_Merel_plan" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.lean
+grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.lean
 grep -q "theorem beal_4_13_13_k_odd" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
 grep -q "theorem S_13_ge_13_mul_B_pow12" \

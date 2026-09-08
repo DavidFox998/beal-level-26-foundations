@@ -3,17 +3,19 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.22.0 — X₀(26) / RibetMazur plan
-for even not-pow2 `A`.
-`even_not_pow2_has_odd_prime`,
-`frey_conductor_even_A`,
-`minimal_level_26_of_13_dvd_A`,
-`level_at_least_6_of_even_not_pow2`
+Track B v8.22.1 — X₀(2q) / Darmon–Merel plan
+for even not-pow2 `A` with `q ≠ 13`.
+`oddPart_rec`, `rad`, `oddPart_def`,
+`rad_dvd_pow`,
+`even_not_pow2_has_odd_prime_q`,
+`level_2q_of_odd_prime_dvd_A`
 are inhabited.
-`ribet_level_lowering_to_Nprime`,
-`X0_26_no_matching_newform` stay
+`kraus_criterion_q_ne_13`,
+`X0_2q_no_Frey_match` stay
 uninhabited (`ExistsNewformLevel2`
 is `0 ≠ 0`).
+v8.22.0 `even_not_pow2_has_odd_prime`,
+`frey_conductor_even_A` stay.
 v8.21.1 `frey_curve_conductor` stays.
 v8.21.0 `A_ge_53_of_S_prime`,
 `k_le_A_pow4_div_13_B_pow12`,
@@ -231,6 +233,14 @@ What it *does* prove:
   `N' = 2 · rad(oddPart A)`;
   `ribet_level_lowering_to_Nprime` /
   `X0_26_no_matching_newform` stay
+  uninhabited;
+* `oddPart_rec` / `rad` / `oddPart_def` /
+  `rad_dvd_pow` /
+  `even_not_pow2_has_odd_prime_q` /
+  `level_2q_of_odd_prime_dvd_A`
+  inhabit the displayed `2q` slot;
+  `kraus_criterion_q_ne_13` /
+  `X0_2q_no_Frey_match` stay
   uninhabited.
 
 Does **not** import `X0_26_Model`.  FullProof-only.
@@ -272,6 +282,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -3117,6 +3128,56 @@ def beal_even_A_closed :=
 def beal_4_13_13_X0_26_RibetMazur_plan :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.beal_4_13_13_X0_26_RibetMazur_plan
 
+/-! ## v8.22.1 — X₀(2q) / Darmon–Merel even-not-pow2 plan -/
+
+/-- Inhabited.  Recursive 2-adic stripping. -/
+def oddPart_rec :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.oddPart_rec
+
+/-- Inhabited.  Product of distinct prime factors. -/
+def rad_step15 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.rad
+
+/-- Inhabited.  `oddPart_rec n = n / 2^{v₂(n)}`. -/
+def oddPart_def :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.oddPart_def
+
+/-- Inhabited.  `rad n ∣ n²`. -/
+def rad_dvd_pow :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.rad_dvd_pow
+
+/-- Inhabited.  Even not-pow2 has odd prime on the odd part. -/
+def even_not_pow2_has_odd_prime_q :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.even_not_pow2_has_odd_prime_q
+
+/-- Inhabited.  Displayed `2q` divides `2 · rad(oddPart)`. -/
+def level_2q_of_odd_prime_dvd_A :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.level_2q_of_odd_prime_dvd_A
+
+/-- Uninhabited.  Kraus residual at level `2q`. -/
+def kraus_criterion_q_ne_13 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.kraus_criterion_q_ne_13
+
+/-- Uninhabited.  No matching Frey newform on `X₀(2q)`. -/
+def X0_2q_no_Frey_match :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.X0_2q_no_Frey_match
+
+/-- Uninhabited.  General `q ≠ 13` close. -/
+def beal_even_not_pow2_general_q_False :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.beal_even_not_pow2_general_q_False
+
+/-- Uninhabited.  Even not-pow2 close. -/
+def beal_even_not_pow2_closed_v8_22_1 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.beal_even_not_pow2_closed_v8_22_1
+
+/-- Uninhabited.  Even `A` close. -/
+def beal_even_A_closed_v8_22_1 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.beal_even_A_closed_v8_22_1
+
+/-- Uninhabited public API. -/
+def beal_4_13_13_X0_2q_Darmon_Merel_plan :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.beal_4_13_13_X0_2q_Darmon_Merel_plan
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -3435,6 +3496,14 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.beal_even_A_closed
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.beal_4_13_13_X0_26_RibetMazur_plan
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.oddPart_def
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.rad_dvd_pow
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.even_not_pow2_has_odd_prime_q
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.level_2q_of_odd_prime_dvd_A
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.kraus_criterion_q_ne_13
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.X0_2q_no_Frey_match
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.beal_4_13_13_X0_2q_Darmon_Merel_plan
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -3637,5 +3706,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.minimal_level_26_of_13_dvd_A
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.level_at_least_6_of_even_not_pow2
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.oddPart_def
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.rad_dvd_pow
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.even_not_pow2_has_odd_prime_q
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.level_2q_of_odd_prime_dvd_A
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

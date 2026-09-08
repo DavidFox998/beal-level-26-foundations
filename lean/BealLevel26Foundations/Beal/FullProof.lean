@@ -12,15 +12,16 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.22.0)
+# FullProof track (v8.22.1)
 
-Aggregator for Track B.  Step14 inhabits
-`even_not_pow2_has_odd_prime`,
-`frey_conductor_even_A`,
-`minimal_level_26_of_13_dvd_A`,
-`level_at_least_6_of_even_not_pow2`.
-Ribet to `N'`, `X0_26_no_matching_newform`,
-and even-`A` close stay uninhabited.
+Aggregator for Track B.  Step15 inhabits
+`oddPart_rec`, `rad`, `oddPart_def`,
+`rad_dvd_pow`,
+`even_not_pow2_has_odd_prime_q`,
+`level_2q_of_odd_prime_dvd_A`.
+Kraus / `X0_2q_no_Frey_match` and even-`A`
+close stay uninhabited.
+Step14 radical `N'` stays.
 Step13 `frey_curve_conductor` stays.
 `ExistsNewformLevel2` is still `0 ≠ 0`.
 `beal_from_ribet` stays *from*
