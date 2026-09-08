@@ -12,16 +12,16 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.24.0)
+# FullProof track (v8.24.1)
 
-Aggregator for Track B.  Step18 inhabits
-`zsigmondy_exists_primitive_inhabited`,
-`zsig_p_not_dvd_k_of_gcd_inhabited`,
-`S_times_g_not_fourth_of_vp1_inhabited`,
-`beal_odd_A_ge3_closed_of_vp1`.
+Aggregator for Track B.  Step19 inhabits
+`primitive_prime_not_dvd_bases`,
+`beal_odd_A_ge3_closed_of_vp1_inhabited`,
+`beal_odd_A_closed_via_zsig_hensel`.
+Bare odd-`A` / full close stay uninhabited.
+Step18 primitive / `of_vp1` stay.
 `zsigmondy_vp_S_eq_one_inhabited` is
 Hensel-conditional.
-Bare odd-`A` / full close stay uninhabited.
 Step17 `S_val` / k-shape stay.
 Step16 S-bounds / k-shape stay.
 Step15 `oddPart_rec` / `2q` stay.

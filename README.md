@@ -1,8 +1,8 @@
 [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.24.0-Zsigmondy-primitive-vp1-inhabited
+# Beal Level 26 Foundations — v8.24.1-odd-A-closed-for-real
 
-**v8.24.0-Zsigmondy-primitive-vp1-inhabited — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.24.1-odd-A-closed-for-real — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 GitHub will not render a README much over ~100KB, so the old wall
 stayed cached at v4.28.0.  This file is the short wall.  The full
@@ -13,7 +13,7 @@ and [`certs/README.md`](certs/README.md).
 - Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
   About Website stays [10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221).
 - Houseclean mint [10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
-  (`v8.19.9-fourth-power-residue` / `v8.24.0-Zsigmondy-primitive-vp1-inhabited`) under hook `22379293`.
+  (`v8.19.9-fourth-power-residue` / `v8.24.1-odd-A-closed-for-real`) under hook `22379293`.
   Concept DOI [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).
 - Track B odd-A ladder (4,13,13): v8.19.6 `B ≤ 100` with `C = B+1` and
   `C = B+2` closed by `decide`; v8.19.7 `A⁴ ≥ 13 k B¹²`, `A⁴ ≥ 39 B¹²`,
@@ -39,8 +39,12 @@ and [`certs/README.md`](certs/README.md).
   v8.24.0 Zsigmondy primitive of `S`,
   `p ∤ k` from `gcd(k,S) ∣ 13`, `S·g` not a
   fourth power from real `v_p=1`, odd `A ≥ 3`
-  closes **from** that valuation.
-- Inhabited: `zsigmondy_exists_primitive_inhabited`,
+  closes **from** that valuation;
+  v8.24.1 Hensel glue of primitive + `v_p=1` + `of_vp1`.
+- Inhabited: `primitive_prime_not_dvd_bases`,
+  `beal_odd_A_closed_via_zsig_hensel`,
+  `beal_odd_A_ge3_closed_of_vp1_inhabited`;
+  `zsigmondy_exists_primitive_inhabited`,
   `zsig_p_not_dvd_k_of_gcd_inhabited`,
   `S_times_g_not_fourth_of_vp1_inhabited`,
   `beal_odd_A_ge3_closed_of_vp1`,
@@ -60,7 +64,10 @@ and [`certs/README.md`](certs/README.md).
   `k_le_A_pow4_div_13_B_pow12`, `B_gt_100_imp_k_bounded_by_A`;
   `genus_X0_2_rat=0`; `S_13_mod_k`, `gcd(k,S)|13`, `k_almost_fourth_power`;
   `B_le_100_closed`.
-- Uninhabited: `zsigmondy_vp_S_eq_one_unconditional`,
+- Uninhabited: `beal_odd_A_closed_v8_24_0_inhabited`,
+  `beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real`,
+  `beal_4_13_13_full_closed_mod_modular_v8_24_0_inhabited`;
+  `zsigmondy_vp_S_eq_one_unconditional`,
   `beal_odd_A_closed_v8_24_0`,
   `beal_4_13_13_Zsigmondy_13_Zsig_primitive_vp1_inhabited_plan`;
   `zsigmondy_exists_primitive`,
@@ -103,8 +110,8 @@ PARI 2-Descent Certificates image
 Still not `∀ ℕ`. No `False.elim`. no `False.elim`.
 `BealExponent13_Iter_Package` `d3cf8a7` `1d0044e`.
 
-HEAD also has Track B `v8.24.0-Zsigmondy-primitive-vp1-inhabited`
-(Zsigmondy primitive / `p ∤ k` / `S·g` not fourth from real `v_p=1`;
+HEAD also has Track B `v8.24.1-odd-A-closed-for-real`
+(Hensel glue of primitive + `v_p=1` + `of_vp1`;
 bare odd-`A` close stays uninhabited);
 that does **not** change the Track A lock or the About Website.
 
@@ -231,3 +238,4 @@ v8.22.1-X0-2q-Darmon-Merel-plan RibetMazur Step15 oddPart_rec rad oddPart_def ra
 v8.23.0-odd-A-closure-plan RibetMazur Step16 S_bounds_13_B12_le_S_le_13_C12 k_almost_fourth_power_shape k_le_A4_div_13_B12 B_gt_100_k_bounded k_ge_B_imp_A_ge_9B3; zsigmondy_prime_S S_not_fourth_power_of_zsig stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.23.1-Zsigmondy-S-vp1-plan RibetMazur Step17 S_val S_bounds thirteen_dvd_S_of_13_nmid_B gcd_k_S_dvd_13 k_shape_1_13_13cubed; zsigmondy_exists_primitive zsigmondy_vp_S_eq_one S_times_g_not_fourth_of_vp1 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.24.0-Zsigmondy-primitive-vp1-inhabited RibetMazur Step18 zsigmondy_exists_primitive_inhabited zsig_p_not_dvd_k_of_gcd_inhabited S_times_g_not_fourth_of_vp1_inhabited beal_odd_A_ge3_closed_of_vp1; zsigmondy_vp_S_eq_one stays Hensel-conditional; beal_odd_A_closed_v8_24_0 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.24.1-odd-A-closed-for-real RibetMazur Step19 beal_odd_A_closed_via_zsig_hensel primitive_prime_not_dvd_bases beal_odd_A_ge3_closed_of_vp1_inhabited; beal_odd_A_closed_v8_24_0_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.

@@ -217,6 +217,8 @@ test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.md
 test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step18_Zsig_primitive_vp1_inhabited.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step18_Zsig_primitive_vp1_inhabited.md
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -860,6 +862,7 @@ do
   grep -q "v8.23.0-odd-A-closure-plan" "$readme"
   grep -q "v8.23.1-Zsigmondy-S-vp1-plan" "$readme"
   grep -q "v8.24.0-Zsigmondy-primitive-vp1-inhabited" "$readme"
+  grep -q "v8.24.1-odd-A-closed-for-real" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1732,6 +1735,24 @@ grep -q "def beal_4_13_13_Zsigmondy_13_Zsig_primitive_vp1_inhabited_plan" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step18_Zsig_primitive_vp1_inhabited.lean
 grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step18_Zsig_primitive_vp1_inhabited.lean
+grep -q "theorem primitive_prime_not_dvd_bases" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.lean
+grep -q "theorem beal_odd_A_ge3_closed_of_vp1_inhabited" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.lean
+grep -q "theorem beal_odd_A_closed_via_zsig_hensel" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.lean
+grep -q "theorem beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real_of_hensel" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.lean
+grep -q "def beal_odd_A_ge3_B_le_100_closed" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.lean
+grep -q "def beal_odd_A_closed_v8_24_0_inhabited" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.lean
+grep -q "def beal_4_13_13_full_closed_mod_modular_v8_24_0_inhabited" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.lean
+grep -q "def beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.lean
+grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.lean
 grep -q "theorem beal_4_13_13_k_odd" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
 grep -q "theorem S_13_ge_13_mul_B_pow12" \

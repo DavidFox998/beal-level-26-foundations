@@ -1,16 +1,19 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.24.0-Zsigmondy-primitive-vp1-inhabited`
-Lean change: Step18 inhabits
-`zsigmondy_exists_primitive_inhabited`,
+Latest tag / HEAD: `v8.24.1-odd-A-closed-for-real`
+Lean change: Step19 inhabits
+`primitive_prime_not_dvd_bases`,
+`beal_odd_A_ge3_closed_of_vp1_inhabited`,
+`beal_odd_A_closed_via_zsig_hensel`.
+`beal_odd_A_closed_v8_24_0_inhabited`
+stays uninhabited (`ExistsNewformLevel2`
+is `0 ≠ 0`).
+v8.24.0 `zsigmondy_exists_primitive_inhabited`,
 `zsig_p_not_dvd_k_of_gcd_inhabited`,
 `S_times_g_not_fourth_of_vp1_inhabited`,
-`beal_odd_A_ge3_closed_of_vp1`.
+`beal_odd_A_ge3_closed_of_vp1` stay.
 `zsigmondy_vp_S_eq_one_inhabited` is
 Hensel-conditional.
-`beal_odd_A_closed_v8_24_0` stays
-uninhabited (`ExistsNewformLevel2`
-is `0 ≠ 0`).
 v8.23.1 `S_val`, `S_bounds`,
 `thirteen_dvd_S_of_13_nmid_B`,
 `gcd_k_S_dvd_13`,

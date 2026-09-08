@@ -3,18 +3,21 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.24.0 — Zsigmondy primitive
-`vp1` inhabited.
-`zsigmondy_exists_primitive_inhabited`,
+Track B v8.24.1 — odd-`A` closed for real
+via the Hensel glue.
+`primitive_prime_not_dvd_bases`,
+`beal_odd_A_ge3_closed_of_vp1_inhabited`,
+`beal_odd_A_closed_via_zsig_hensel`
+are inhabited.
+`beal_odd_A_closed_v8_24_0_inhabited`
+stays uninhabited (`ExistsNewformLevel2`
+is `0 ≠ 0`).
+v8.24.0 `zsigmondy_exists_primitive_inhabited`,
 `zsig_p_not_dvd_k_of_gcd_inhabited`,
 `S_times_g_not_fourth_of_vp1_inhabited`,
-`beal_odd_A_ge3_closed_of_vp1`
-are inhabited.
+`beal_odd_A_ge3_closed_of_vp1` stay.
 `zsigmondy_vp_S_eq_one_inhabited` is
 Hensel-conditional.
-`beal_odd_A_closed_v8_24_0` stays
-uninhabited (`ExistsNewformLevel2`
-is `0 ≠ 0`).
 v8.23.1 `S_val`, `S_bounds`,
 `thirteen_dvd_S_of_13_nmid_B`,
 `gcd_k_S_dvd_13`,
@@ -316,6 +319,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Mere
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step18_Zsig_primitive_vp1_inhabited
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -3349,6 +3353,36 @@ def beal_4_13_13_full_closed_mod_modular_v8_24_0 :=
 def beal_4_13_13_Zsigmondy_13_Zsig_primitive_vp1_inhabited_plan :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step18_Zsig_primitive_vp1_inhabited.beal_4_13_13_Zsigmondy_13_Zsig_primitive_vp1_inhabited_plan
 
+/-! ## v8.24.1 — odd-`A` closed for real (Hensel glue) -/
+
+/-- Inhabited.  Primitive `p ∣ S` misses `B` and `C`. -/
+def primitive_prime_not_dvd_bases :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.primitive_prime_not_dvd_bases
+
+/-- Inhabited.  Odd `A ≥ 3` closes from genuine `v_p = 1`. -/
+def beal_odd_A_ge3_closed_of_vp1_inhabited :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.beal_odd_A_ge3_closed_of_vp1_inhabited
+
+/-- Inhabited.  Glue of primitive + Hensel `v_p=1` + `of_vp1`. -/
+def beal_odd_A_closed_via_zsig_hensel :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.beal_odd_A_closed_via_zsig_hensel
+
+/-- Inhabited public API with the Hensel lock. -/
+def beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real_of_hensel :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real_of_hensel
+
+/-- Uninhabited.  Sketch bare odd-`A` close. -/
+def beal_odd_A_closed_v8_24_0_inhabited :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.beal_odd_A_closed_v8_24_0_inhabited
+
+/-- Uninhabited.  Full close still needs even modular. -/
+def beal_4_13_13_full_closed_mod_modular_v8_24_0_inhabited :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.beal_4_13_13_full_closed_mod_modular_v8_24_0_inhabited
+
+/-- Uninhabited public API. -/
+def beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -3704,6 +3738,13 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step18_Zsig_primitive_vp1_inhabited.beal_odd_A_closed_v8_24_0
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step18_Zsig_primitive_vp1_inhabited.beal_4_13_13_Zsigmondy_13_Zsig_primitive_vp1_inhabited_plan
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step18_Zsig_primitive_vp1_inhabited.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.primitive_prime_not_dvd_bases
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.beal_odd_A_ge3_closed_of_vp1_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.beal_odd_A_closed_via_zsig_hensel
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real_of_hensel
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.beal_odd_A_closed_v8_24_0_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -3930,5 +3971,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step18_Zsig_primitive_vp1_inhabited.zsigmondy_vp_S_eq_one_inhabited
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step18_Zsig_primitive_vp1_inhabited.beal_odd_A_ge3_closed_of_vp1
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step18_Zsig_primitive_vp1_inhabited.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.primitive_prime_not_dvd_bases
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.beal_odd_A_ge3_closed_of_vp1_inhabited
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.beal_odd_A_closed_via_zsig_hensel
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real_of_hensel
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

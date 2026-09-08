@@ -1,3 +1,37 @@
+# FINAL v8.24.1 — odd A closed for real via Hensel glue (arrow stays a Prop)
+
+Latest tag `v8.24.1-odd-A-closed-for-real`.
+Lean change.
+Step19 inhabits
+`primitive_prime_not_dvd_bases`,
+`beal_odd_A_ge3_closed_of_vp1_inhabited`,
+`beal_odd_A_closed_via_zsig_hensel`,
+`beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real_of_hensel`.
+The glue needs the Step11 order in
+`(ℤ/p²)ˣ` not equal to 13
+(**not** `hPrimOrder : True`).
+`beal_odd_A_closed_v8_24_0_inhabited`,
+`beal_4_13_13_full_closed_mod_modular_v8_24_0_inhabited`,
+`beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real`
+stay uninhabited.
+Unconditional `¬ p² ∣ S` is false
+(Hensel).
+v8.24.0 primitive / `of_vp1` stay.
+v8.23.1 S-bounds / k-shape stay.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` stays *from*
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
+(`v8.19.9-fourth-power-residue` houseclean archive).
+Track A none-chain mint stays
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221).
+This mint does **not** claim unconditional Beal `∀`.
+
 # FINAL v8.24.0 — Zsigmondy primitive vp1 inhabited; odd A≥3 closes from real v_p=1 (arrow stays a Prop)
 
 Latest tag `v8.24.0-Zsigmondy-primitive-vp1-inhabited`.
