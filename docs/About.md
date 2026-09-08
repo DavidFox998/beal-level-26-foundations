@@ -1,11 +1,13 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.19.7-general-k`.
-Lean change: `C ≥ B+k` gives
-`A⁴ ≥ 13·k·B¹²` from the 13-term sum.
-`C ≥ B+3` specialises to `A⁴ ≥ 39·B¹²`
-(real size `A ≥ 39^{1/4} B³ ≈ 2.49 B³`).
-`A ≥ 3 B³` stays uninhabited (`39 < 81`).
+Latest tag / HEAD: `v8.19.8-k-odd-coprime`.
+Lean change: odd `A` gives `k = C−B` odd;
+`Coprime C B` and `C ≥ B` give `Coprime k B`;
+`Coprime C B` gives `Coprime A B`;
+`A⁴ ≡ k¹³ [MOD B]`.
+Unrestricted `gcd(k,B)=1` without `C ≥ B`
+stays uninhabited (`C=1`, `B=2`).
+v8.19.7 `A⁴ ≥ 13 k B¹²` / `39 B¹²` stay.
 `B ≤ 100` with `C = B+1` or `C = B+2`
 stays closed.
 `zsigmondy_13` stays inhabited.

@@ -106,6 +106,20 @@ v8.19.4-zsigmondy-13-step4 RibetMazur p∣S from p∣(C^13-B^13) and p∤(C−B)
 v8.19.5-p-mod-13-eq-1 RibetMazur primitive p for n=13 has order 13 so p≡1 mod 13 and p≥53 and A≥53; zsigmondy_13 stays inhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.19.6-B-le-100-closed RibetMazur B≤100 C=B+1 and C=B+2 closed for odd A by A≥53 A≥B³ and decide tables; C≥B+3 stays open; zsigmondy_13 stays inhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.19.7-general-k RibetMazur C≥B+k gives A^4≥13k B^12 from the 13-term sum; C≥B+3 gives A^4≥39 B^12; A≥3 B^3 stays uninhabited (39<81); B≤100 C=B+1,B+2 stay closed; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.19.8-k-odd-coprime RibetMazur odd A gives k=C-B odd; Coprime C B and C≥B give Coprime k B; Coprime C B gives Coprime A B; A^4 ≡ k^13 mod B; unrestricted gcd(k,B)=1 without C≥B stays uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.19.8-k-odd-coprime — k=C−B odd, gcd(k,B)=1, gcd(A,B)=1, A⁴≡k¹³ mod B (arrow stays a Prop)
+
+Lean change.  Odd `A` forces `k = C−B` odd (opposite parity).  `Coprime C B` and `C ≥ B` give `Coprime k B` via `gcd(C−B,B)=gcd(C,B)`.  `Coprime C B` plus the equation give `Coprime A B`.  `A⁴ ≡ k¹³ [MOD B]`.  Without `C ≥ B` the gcd claim is false (`C=1`, `B=2`).  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `k_odd_of_odd_A` / `beal_4_13_13_k_odd`: inhabited;
+- `gcd_k_B_eq_one_of_coprime_C_B` / `gcd_A_B_eq_one_of_coprime_C_B`: inhabited;
+- `A_pow4_congr_k_pow13_mod_B` / `beal_4_13_13_A_pow4_mod_B_eq_k_pow13`: inhabited;
+- `beal_4_13_13_gcd_k_B_eq_one_of_coprime_only` stays uninhabited;
+- v8.19.7 `A⁴ ≥ 13 k B¹²` / `39 B¹²` stay; `zsigmondy_13` stays inhabited;
+- `beal_from_ribet` / `beal_from_ribet_ell_mixed`: still *from* `ModularImpliesLevel2Newform`.
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.19.7-general-k — C≥B+k gives A⁴≥13k B¹²; C≥B+3 gives A⁴≥39 B¹² (arrow stays a Prop)
 

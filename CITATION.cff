@@ -5,11 +5,11 @@ type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v8.19.7-general-k"
+version: "v8.19.8-k-odd-coprime"
 date-released: "2026-09-08"
 doi: "10.5281/zenodo.22272382"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
-url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.19.7-general-k"
+url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.19.8-k-odd-coprime"
 license: MIT
 keywords:
   - beal-conjecture

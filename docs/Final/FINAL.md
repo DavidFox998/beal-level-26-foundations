@@ -1,3 +1,36 @@
+# FINAL v8.19.8 — k=C−B odd, gcd(k,B)=1, gcd(A,B)=1, A⁴≡k¹³ mod B (arrow stays a Prop)
+
+Latest tag `v8.19.8-k-odd-coprime`.
+Lean change.
+Odd `A` forces `k = C−B` odd.
+`Coprime C B` and `C ≥ B` give
+`Coprime k B`.  `Coprime C B` plus
+the equation give `Coprime A B`.
+`A⁴ ≡ k¹³ [MOD B]`.
+Without `C ≥ B` the gcd claim is
+false (`C = 1`, `B = 2`).
+v8.19.7 `A⁴ ≥ 13 k B¹²` / `39 B¹²`
+and `A ≥ 2 B³ + 1` stay.
+v8.19.6 `B ≤ 100` with `C = B+1` and
+`C = B+2` stays closed.
+`zsigmondy_13` stays inhabited.
+The general `beal_4_13_13_size` stays
+uninhabited.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` stays *from*
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221)
+(v7.1.1 About catch-up, Track A).  Track B does **not**
+write a new mint claiming unconditional Beal `∀`.
+Three JPEG plates stay in `docs/assets/v6.7.0/`.
+Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+
 # FINAL v8.19.7 — C≥B+k gives A⁴≥13k B¹²; C≥B+3 gives A⁴≥39 B¹² (arrow stays a Prop)
 
 Latest tag `v8.19.7-general-k`.

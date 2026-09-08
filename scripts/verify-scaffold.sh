@@ -193,6 +193,8 @@ test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_clo
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.md
 test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step7_General_k.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step7_General_k.md
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -823,6 +825,7 @@ do
   grep -q "v8.19.5-p-mod-13-eq-1" "$readme"
   grep -q "v8.19.6-B-le-100-closed" "$readme"
   grep -q "v8.19.7-general-k" "$readme"
+  grep -q "v8.19.8-k-odd-coprime" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1402,6 +1405,28 @@ grep -q "theorem beal_4_13_13_A_pow4_ge_39_mul_B12_of_C_ge_B_plus_3" \
 grep -q "theorem C_ge_B_plus_k_implies_A_pow4_ge_13kB12" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step7_General_k.lean
 grep -q "def beal_4_13_13_A_ge_3_mul_B_pow_3_of_C_ge_B_plus_3" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step7_General_k.lean
+grep -q "theorem k_odd_of_odd_A" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
+grep -q "theorem gcd_k_B_eq_one_of_coprime_C_B" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
+grep -q "theorem gcd_A_B_eq_one_of_coprime_C_B" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
+grep -q "theorem A_pow4_congr_k_pow13_mod_B" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
+grep -q "theorem beal_4_13_13_k_odd" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
+grep -q "theorem beal_4_13_13_gcd_k_B_eq_one" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
+grep -q "theorem beal_4_13_13_gcd_A_B_eq_one" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
+grep -q "theorem beal_4_13_13_A_pow4_mod_B_eq_k_pow13" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
+grep -q "def beal_4_13_13_gcd_k_B_eq_one_of_coprime_only" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
+grep -q "theorem S_13_ge_13_mul_B_pow12" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step7_General_k.lean
+grep -q "theorem beal_4_13_13_A_pow4_ge_39_mul_B12_of_C_ge_B_plus_3" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step7_General_k.lean
 grep -q "theorem zsigmondy_13" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13.lean

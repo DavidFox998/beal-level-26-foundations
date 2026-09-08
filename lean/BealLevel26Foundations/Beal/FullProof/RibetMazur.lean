@@ -3,10 +3,11 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.19.7 — `C ≥ B+k` gives
-`A⁴ ≥ 13·k·B¹²` from the 13-term sum.
-`C ≥ B+3` specialises to `A⁴ ≥ 39·B¹²`.
-`A ≥ 3 B³` stays uninhabited (`39 < 81`).
+Track B v8.19.8 — `k = C − B` is odd
+when `A` is odd; `gcd(k,B) = 1` when
+`Coprime C B` and `C ≥ B`; `gcd(A,B) = 1`
+from `Coprime C B`; `A⁴ ≡ k¹³ [MOD B]`.
+v8.19.7 `C ≥ B+k` / `A⁴ ≥ 39 B¹²` stay.
 v8.19.6 `B ≤ 100` with `C = B+1` or
 `C = B+2` stays closed.
 v8.19.5 `p ≡ 1 [MOD 13]` / `A ≥ 53` stay.
@@ -145,6 +146,12 @@ What it *does* prove:
   `C ≥ B+k` gives `A⁴ ≥ 13 k B¹²`;
   `C ≥ B+3` gives `A⁴ ≥ 39 B¹²`;
   `A ≥ 3 B³` stays uninhabited (`39 < 81`);
+  odd `A` gives `k = C−B` odd;
+  `Coprime C B` and `C ≥ B` give
+  `Coprime k B`; `Coprime C B` gives
+  `Coprime A B`; `A⁴ ≡ k¹³ [MOD B]`;
+  unrestricted `gcd(k,B)=1` without
+  `C ≥ B` stays uninhabited;
   `beal_from_ribet_upside_down_odd_A_closed`
   stays uninhabited;
 * `exists_prime_one_mod_ell_all`: `Q₁` for every
@@ -206,6 +213,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step4
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -2760,6 +2768,32 @@ def beal_4_13_13_A_ge_2_mul_B_pow_3_succ_of_C_ge_B_plus_3 :=
 def beal_4_13_13_A_ge_3_mul_B_pow_3_of_C_ge_B_plus_3 :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.beal_4_13_13_A_ge_3_mul_B_pow_3_of_C_ge_B_plus_3
 
+/-! ## v8.19.8 — `k` odd, coprime, `A^4 ≡ k^13 [MOD B]` -/
+
+/-- Inhabited.  Odd `A` forces `k = C − B` odd. -/
+def beal_4_13_13_k_odd :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.beal_4_13_13_k_odd
+
+/-- Inhabited.  `Coprime C B` and `C ≥ B` give `Coprime k B`. -/
+def beal_4_13_13_gcd_k_B_eq_one :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.beal_4_13_13_gcd_k_B_eq_one
+
+/-- Inhabited.  `Coprime C B` gives `Coprime A B`. -/
+def beal_4_13_13_gcd_A_B_eq_one :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.beal_4_13_13_gcd_A_B_eq_one
+
+/-- Inhabited.  `A^4 ≡ (C − B)^13 [MOD B]`. -/
+def beal_4_13_13_A_pow4_mod_B_eq_k_pow13 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.beal_4_13_13_A_pow4_mod_B_eq_k_pow13
+
+/-- Uninhabited.  `Coprime C B` alone does not give `Coprime (C − B) B`. -/
+def beal_4_13_13_gcd_k_B_eq_one_of_coprime_only :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.beal_4_13_13_gcd_k_B_eq_one_of_coprime_only
+
+/-- Uninhabited.  The congruences do not close the equation. -/
+def beal_odd_A_ge3_closed_of_k_odd_coprime :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.beal_odd_A_ge3_closed_of_k_odd_coprime
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -2987,6 +3021,15 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.C_ge_B_plus_k_implies_A_pow4_ge_13kB12
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.beal_4_13_13_A_ge_2_mul_B_pow_3_succ_of_C_ge_B_plus_3
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.beal_4_13_13_A_ge_3_mul_B_pow_3_of_C_ge_B_plus_3
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.k_odd_of_odd_A
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.gcd_k_B_eq_one_of_coprime_C_B
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.gcd_A_B_eq_one_of_coprime_C_B
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.A_pow4_congr_k_pow13_mod_B
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.beal_4_13_13_k_odd
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.beal_4_13_13_gcd_k_B_eq_one
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.beal_4_13_13_gcd_A_B_eq_one
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.beal_4_13_13_A_pow4_mod_B_eq_k_pow13
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.beal_4_13_13_gcd_k_B_eq_one_of_coprime_only
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -3125,5 +3168,12 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.beal_4_13_13_A_pow4_ge_39_mul_B12_of_C_ge_B_plus_3
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.C_ge_B_plus_k_implies_A_pow4_ge_13kB12
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.beal_4_13_13_A_ge_2_mul_B_pow_3_succ_of_C_ge_B_plus_3
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.k_odd_of_odd_A
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.gcd_k_B_eq_one_of_coprime_C_B
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.gcd_A_B_eq_one_of_coprime_C_B
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.A_pow4_congr_k_pow13_mod_B
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.beal_4_13_13_k_odd
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.beal_4_13_13_gcd_A_B_eq_one
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.beal_4_13_13_A_pow4_mod_B_eq_k_pow13
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

@@ -799,6 +799,27 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.19.8-k-odd-coprime — DONE (k odd, gcd(k,B)=1 when C≥B, gcd(A,B)=1, A⁴≡k¹³ mod B; arrow stays a Prop)
+
+Lean change.  Odd `A` forces `k = C−B`
+odd.  `Coprime C B` and `C ≥ B` give
+`Coprime k B`.  `Coprime C B` gives
+`Coprime A B`.  `A⁴ ≡ k¹³ [MOD B]`.
+Unrestricted `gcd(k,B)=1` without
+`C ≥ B` stays uninhabited.
+v8.19.7 bounds stay.  `zsigmondy_13`
+stays inhabited.  `ExistsNewformLevel2`
+stays `0 ≠ 0`.
+`beal_from_ribet` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** import `X0_26_Model` from
+`RibetMazur`.  Does **not** touch the
+24-module none chain.  No `False.elim`.
+No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.19.7-general-k — DONE (C≥B+k gives A⁴≥13k B¹²; C≥B+3 gives A⁴≥39 B¹²; A≥3 B³ uninhabited; arrow stays a Prop)
 
 Lean change.  The 13-term sum is
