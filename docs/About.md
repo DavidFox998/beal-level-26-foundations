@@ -1,12 +1,14 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.20.0-k-upper-bound-plan`
-Lean change: plan for an upper bound on
+Latest tag / HEAD: `v8.20.0-upper-bound-k`
+Lean change: upper bound shape of
 `k = C − B`.  Coprime `k B` forces
 `gcd(k,S) ∣ 13`, so `k` is `u⁴` or
 `13 u⁴` or `13³ u⁴`.  The unbounded
 `B ≤ 100`, `k ≥ 3` fourth-power claim
 on `S` stays uninhabited.
+`beal_4_13_13_B_le_100_C_ge_B_plus_3_closed_of_S_not_fourth`
+stays uninhabited.
 v8.19.9 residue `k % 4 = 1` / `k % 8 = 1`
 stay.  v8.19.8 `k` odd / coprime
 stay.  v8.19.7 `A⁴ ≥ 13 k B¹²` / `39 B¹²`

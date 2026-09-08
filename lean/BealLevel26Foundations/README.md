@@ -98,6 +98,7 @@ v8.19.8-k-odd-coprime RibetMazur odd A gives k=C-B odd; Coprime C B and C≥B gi
 v8.19.9-fourth-pow-residue RibetMazur A^4≡k^13 mod B and B%4=0 give k%4=1; B%8=0 give k%8=1 for odd A; without odd A stays uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.19.9-fourth-power-residue houseclean Track B residue names fourth_pow_mod_4/8 k%4=1 when B%4=0 k%8=1 when B%8=0; Track A no new Beal-∀ unconditional Beal NOT claimed. Still not Full Mathlib ∀.
 v8.20.0-k-upper-bound-plan RibetMazur gcd(k,S)|13 so k is u^4 or 13 u^4 or 13^3 u^4; B≤100 k≥3 S=v^4 stays uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.20.0-upper-bound-k RibetMazur Step10_upper_bound_k gcd(k,S)|13 k almost fourth power; B≤100 C≥B+3 of S not fourth stays uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 
 ### File order v8.19.0–v8.20.0
 
@@ -113,7 +114,7 @@ v8.20.0-k-upper-bound-plan RibetMazur gcd(k,S)|13 so k is u^4 or 13 u^4 or 13^3 
 | v8.19.7 | `Beal_4_13_13_Zsigmondy_13_Step7_General_k.lean` |
 | v8.19.8 | `Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean` |
 | v8.19.9 | `Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.lean` |
-| v8.20.0 | `Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.lean` |
+| v8.20.0 | `Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.lean`, `Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.lean` |
 
 Not imported by the 24-module none chain.  Track A: no new Beal-∀.
 
@@ -265,9 +266,9 @@ v4.14.0-iter-citation-contradiction-locked: `CITATION.cff` locks `c2c47db` / fou
 
 [![v8.19.9 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.20.0-k-upper-bound-plan
+# Beal Level 26 Foundations — v8.20.0-upper-bound-k
 
-**v8.20.0-k-upper-bound-plan — Beal (4,13,13) odd-A ladder (Track B). Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.20.0-upper-bound-k — Beal (4,13,13) odd-A ladder (Track B). Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 - Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
 - Houseclean mint `10.5281/zenodo.22654189` (`v8.19.9-fourth-power-residue`) under hook `22379293`. Track A none-chain mint stays `10.5281/zenodo.22635221`.
@@ -276,7 +277,7 @@ v4.14.0-iter-citation-contradiction-locked: `CITATION.cff` locks `c2c47db` / fou
   - v8.19.7 `A⁴ ≥ 13 k B¹²`, `A⁴ ≥ 39 B¹²`, `A ≥ 2 B³ + 1`;
   - v8.19.8 `k` odd, `gcd(k,B)=1`, `gcd(A,B)=1`, `A⁴ ≡ k¹³ [MOD B]`;
   - v8.19.9 `fourth_pow_mod_4` / `fourth_pow_mod_8_odd`, `k % 4 = 1` when `B % 4 = 0`, `k % 8 = 1` when `B % 8 = 0`;
-  - v8.20.0 `gcd(k,S) ∣ 13`, so `k` is `u⁴` or `13 u⁴` or `13³ u⁴`. `B ≤ 100`, `k ≥ 3`, `S = v⁴` stays uninhabited.
+  - v8.20.0 `gcd(k,S) ∣ 13`, so `k` is `u⁴` or `13 u⁴` or `13³ u⁴`. Sketch file `Step10_upper_bound_k`. `B ≤ 100`, `k ≥ 3`, `S = v⁴` stays uninhabited.
 - Uninhabited: `B ≤ 100` `C ≥ B+3` open (`k` unbounded), `B > 100`, `ExistsNewformLevel2` is `0 ≠ 0`, `beal_from_ribet` still needs `ModularImpliesLevel2Newform`.
 - Build: `lake build BealLevel26Foundations` and `BealLevel26FoundationsFullProof` green twice, `scripts/verify-scaffold.sh` passed, `#print axioms` `[propext, Classical.choice, Quot.sound]`.
 
@@ -394,6 +395,7 @@ v8.19.8-k-odd-coprime RibetMazur odd A gives k=C-B odd; Coprime C B and C≥B gi
 v8.19.9-fourth-pow-residue RibetMazur A^4≡k^13 mod B and B%4=0 give k%4=1; B%8=0 give k%8=1 for odd A; without odd A stays uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.19.9-fourth-power-residue houseclean Track B residue names fourth_pow_mod_4/8 k%4=1 when B%4=0 k%8=1 when B%8=0; Track A no new Beal-∀ unconditional Beal NOT claimed. Still not Full Mathlib ∀.
 v8.20.0-k-upper-bound-plan RibetMazur gcd(k,S)|13 so k is u^4 or 13 u^4 or 13^3 u^4; B≤100 k≥3 S=v^4 stays uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.20.0-upper-bound-k RibetMazur Step10_upper_bound_k gcd(k,S)|13 k almost fourth power; B≤100 C≥B+3 of S not fourth stays uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 
 ### v8.19.9-fourth-power-residue — houseclean (Track A no new Beal-∀)
 

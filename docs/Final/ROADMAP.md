@@ -799,6 +799,29 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.20.0-upper-bound-k — DONE (Step10_upper_bound_k sketch names; gcd(k,S)|13; k almost fourth power; arrow stays a Prop)
+
+Lean change.  Sketch file
+`Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.lean`
+re-exports `S_13_mod_k`, `gcd_k_S_dvd_13`,
+`gcd_k_S_eq_1_or_13`, `k_mul_S_eq_A_pow4`,
+`coprime_mul_eq_fourth_pow_imp_fourth_pow`,
+`k_almost_fourth_power`,
+`genus_X0_2_rat = 0`,
+`ExistsNewformLevel2_eq_zero_ne_zero`.
+`B_le_100_k_ge_3_no_S_fourth_pow` and
+`beal_4_13_13_B_le_100_C_ge_B_plus_3_closed_of_S_not_fourth`
+stay uninhabited.  Mixed-pow2 → newform
+and upside-down stay uninhabited.
+`beal_4_13_13_mod8` / `mod13` stay residues.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** import `X0_26_Model` from
+`RibetMazur`.  Does **not** touch the
+24-module none chain.  No `False.elim`.
+No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.20.0-k-upper-bound-plan — DONE (gcd(k,S)|13, k is u⁴ or 13u⁴ or 13³u⁴; arrow stays a Prop)
 
 Lean change.  `C = B+k` gives

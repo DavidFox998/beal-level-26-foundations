@@ -1,6 +1,6 @@
 # FINAL v8.20.0 — gcd(k,S)|13 so k is u⁴ or 13u⁴ or 13³u⁴ (arrow stays a Prop)
 
-Latest tag `v8.20.0-k-upper-bound-plan`.
+Latest tag `v8.20.0-upper-bound-k`.
 Lean change.
 With `C = B+k`, `S ≡ 13 B¹² [MOD k]`.
 Coprime `k B` forces `gcd(k,S) ∣ 13`,

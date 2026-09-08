@@ -1,9 +1,10 @@
-# v8.20.0 RibetMazur k-upper-bound plan
+# v8.20.0 RibetMazur upper bound on k
 
+`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.lean`,
 `lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.lean`
 and `RibetMazur.lean`
 
-Plan for an upper bound on `k = C − B`.
+Upper bound shape of `k = C − B`.
 `S ≡ 13 B¹² [MOD k]`.  Coprime `k B`
 forces `gcd(k,S) ∣ 13`, so `k` is
 `u⁴` or `13 u⁴` or `13³ u⁴`.
@@ -32,10 +33,12 @@ Does **not** import `X0_26_Model`.
 | `gcd_k_S_dvd_13` / `gcd_k_S_eq_1_or_13` | inhabited |
 | `k_mul_S_eq_A_pow4` | inhabited |
 | `coprime_mul_eq_fourth_pow` | inhabited |
+| `coprime_mul_eq_fourth_pow_imp_fourth_pow` | inhabited |
 | `k_almost_fourth_power` | inhabited |
 | `beal_4_13_13_k_almost_fourth_power` | inhabited |
 | `fourth_pow_mod_16` | inhabited |
 | `B_le_100_k_ge_3_no_S_fourth_pow` | uninhabited |
+| `beal_4_13_13_B_le_100_C_ge_B_plus_3_closed_of_S_not_fourth` | uninhabited |
 | `fourth_pow_mod_4` / `k % 4 = 1` | stays inhabited (v8.19.9) |
 | `beal_4_13_13_k_odd` | stays inhabited |
 | `zsigmondy_13` | stays inhabited |

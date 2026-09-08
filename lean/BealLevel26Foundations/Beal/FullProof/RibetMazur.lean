@@ -3,12 +3,14 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.20.0 — plan for an upper bound on
+Track B v8.20.0 — upper bound shape of
 `k = C − B`.  Coprime `k B` forces
 `gcd(k,S) ∣ 13`, so `k` is `u⁴` or
 `13 u⁴` or `13³ u⁴`.  The unbounded
 `B ≤ 100`, `k ≥ 3` fourth-power claim
 on `S` stays uninhabited.
+`beal_4_13_13_B_le_100_C_ge_B_plus_3_closed_of_S_not_fourth`
+stays uninhabited.
 v8.19.9 residue `k % 4 = 1` /
 `k % 8 = 1` stay.
 v8.19.8 `k` odd / coprime / `A⁴ ≡ k¹³`
@@ -229,6 +231,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -2893,6 +2896,10 @@ def k_mul_S_eq_A_pow4 :=
 def coprime_mul_eq_fourth_pow :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.coprime_mul_eq_fourth_pow
 
+/-- Inhabited sketch name from `Step10_upper_bound_k`. -/
+def coprime_mul_eq_fourth_pow_imp_fourth_pow :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.coprime_mul_eq_fourth_pow_imp_fourth_pow
+
 /-- Inhabited.  `k = u⁴` or `13 u⁴` or `13³ u⁴`. -/
 def k_almost_fourth_power :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.k_almost_fourth_power
@@ -2908,6 +2915,10 @@ def fourth_pow_mod_16 :=
 /-- Uninhabited.  `k ≥ 3` is unbounded. -/
 def B_le_100_k_ge_3_no_S_fourth_pow :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.B_le_100_k_ge_3_no_S_fourth_pow
+
+/-- Uninhabited.  Odd-`A` size gap, `C ≥ B+3`, no Zsigmondy. -/
+def beal_4_13_13_B_le_100_C_ge_B_plus_3_closed_of_S_not_fourth :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.beal_4_13_13_B_le_100_C_ge_B_plus_3_closed_of_S_not_fourth
 
 /-- Uninhabited.  The shape does not close the equation. -/
 def beal_odd_A_ge3_closed_of_k_upper_bound_plan :=
@@ -3182,6 +3193,17 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.B_le_100_k_ge_3_no_S_fourth_pow
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.beal_odd_A_ge3_closed_of_k_upper_bound_plan
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.k_almost_fourth_power_without_gcd
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.S_13_mod_k
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.gcd_k_S_dvd_13
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.gcd_k_S_eq_1_or_13
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.k_mul_S_eq_A_pow4
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.coprime_mul_eq_fourth_pow_imp_fourth_pow
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.k_almost_fourth_power
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.B_le_100_k_ge_3_no_S_fourth_pow
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.beal_4_13_13_B_le_100_C_ge_B_plus_3_closed_of_S_not_fourth
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.beal_mixed_pow2_implies_level_2_newform
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.beal_from_ribet_upside_down
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -3350,5 +3372,13 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.k_almost_fourth_power
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.beal_4_13_13_k_almost_fourth_power
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.fourth_pow_mod_16
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.S_13_mod_k
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.gcd_k_S_dvd_13
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.gcd_k_S_eq_1_or_13
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.k_mul_S_eq_A_pow4
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.coprime_mul_eq_fourth_pow_imp_fourth_pow
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.k_almost_fourth_power
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.genus_X0_2_rat_eq_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur
