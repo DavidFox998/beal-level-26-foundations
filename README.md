@@ -94,6 +94,21 @@ v8.11.0-frey-ell-case RibetMazur FreyEllCase5 + ell_of_q so ℓ|v_q(Δ) at every
 v8.12.0-fermat-four-plus-RinfTinf-ell RibetMazur fermat_four_lemma + FermatFourCase closes power-of-2 exponents; TWAuxEll search Q1≡1 mod ℓ; mazur_step_real_ell_upgraded; beal_from_ribet_ell_upgraded still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.13.0-mixed-ell-plus-dirichlet RibetMazur FreyEllCase5Mixed covers m=4 n=13 p=13 when A=2^e; TWAuxEllFixed N<Q1 so Q1∤N; listed Q1 for ℓ in {5,7,11,13,17,19,23,29,31} not ∀ℓ≤1000; beal_from_ribet_ell_mixed still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.14.0-mixed-odd-A RibetMazur odd A^4≡1 mod16; odd B^13≡B mod8; A^4≡C-B mod13; only odd power of 2 is A=1 and 1+B^13=C^13 is impossible; Mixed covers 4,13,13 iff A=2^e not a cover for odd A≥3; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.15.0-dirichlet-up-to-1000 RibetMazur 166-row Q1≡1 mod ℓ table via InTWEll1000; Q1_not_dvd_N_of_Q1_gt_N when 0<N<Q1; Q2-∀ and ∀N≤10000 stay uninhabited; Mixed/odd-A facts unchanged; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.15.0-dirichlet-up-to-1000 — Finite Q₁ table for residuals in [5, 1000] (arrow stays a Prop)
+
+Lean change.  Ten small Finsets plus `exists_prime_one_mod_ell_all` give a prime `Q₁ ≡ 1 [MOD ℓ]` with `Q₁ ≤ 20000` for every residual in `InTWEll1000`.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `InTWEll1000` / `exists_prime_one_mod_ell_all`: 166-row table, not Dirichlet, not `Nat.Prime ℓ → 5 ≤ ℓ ≤ 1000`;
+- `Q1_not_dvd_N_of_Q1_gt_N`: `0 < N < Q₁` implies `Q₁ ∤ N`.  `∀ N, ¬ Q₁ ∣ N` stays false;
+- `TWAuxEllFixed.of5_26` / `of7_26` / `of13_26`: explicit `N < Qᵢ` witnesses.  `TWAuxEllFixed_inhabited_for_every_ell_le_1000` stays uninhabited;
+- `exists_prime_one_mod_ell_sq_all` stays uninhabited (56 residuals miss `Q₂ ≤ 5·10⁶`);
+- `find_next_prime_one_mod_gt_exists` stays uninhabited (`∀ N ≤ 10000` is not a 166-row table);
+- Mixed / odd-`A` facts from v8.14.0 are unchanged;
+- `beal_from_ribet_ell_mixed`: still *from* `ModularImpliesLevel2Newform`.
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.14.0-mixed-odd-A — Odd-A residues; A=1 impossible; Mixed is not a cover (arrow stays a Prop)
 

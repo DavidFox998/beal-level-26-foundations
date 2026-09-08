@@ -1,16 +1,19 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.14.0-mixed-odd-A`.
-Lean change: `RibetMazur.lean` proves
-odd `A⁴ ≡ 1 [MOD 16]`, odd `B¹³ ≡ B [MOD 8]`,
-`A⁴ ≡ C−B [MOD 13]`, and that the only odd
-power of 2 (`A=1`) cannot satisfy
-`1 + B¹³ = C¹³`.  `FreyEllCase5Mixed` covers
-`m=4, n=13, p=13` **iff** `A=2^e`; odd
-`A ≥ 3` is still none of the three arms.
-`beal_4_13_13_size` stays an uninhabited Prop.
-`beal_from_ribet_ell_mixed` stays *from*
-`ModularImpliesLevel2Newform`.
+Latest tag / HEAD: `v8.15.0-dirichlet-up-to-1000`.
+Lean change: `TWPrimes.lean` plus
+`RibetMazur.lean` give a 166-row table
+`InTWEll1000` of primes `Q₁ ≡ 1 [MOD ℓ]`
+with `Q₁ ≤ 20000`.  That is **not**
+Dirichlet, **not** `∀ N ≤ 10000`, and
+**not** `Q₂ ≡ 1 [MOD ℓ²]` for every
+residual (56 miss `5·10⁶`).
+`Q1_not_dvd_N_of_Q1_gt_N` needs `0 < N < Q₁`.
+`TWAuxEllFixed.of5_26` / `of7_26` / `of13_26`
+are explicit `N < Qᵢ` witnesses.
+Mixed / odd-`A` facts from v8.14.0 are
+unchanged.  `beal_from_ribet_ell_mixed` stays
+*from* `ModularImpliesLevel2Newform`.
 `ExistsNewformLevel2` is still `0 ≠ 0`.
 The unguarded sketch type is **false**
 (`0³ + 1³ = 1³`, `gcd = 1`).

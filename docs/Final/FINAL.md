@@ -1,3 +1,29 @@
+# FINAL v8.15.0 — Finite Q₁ table for residuals in [5, 1000] (arrow stays a Prop)
+
+Latest tag `v8.15.0-dirichlet-up-to-1000`.
+Lean change.
+`TWPrimes.lean` is a 166-row table
+`InTWEll1000` of primes `Q₁ ≡ 1 [MOD ℓ]`
+with `Q₁ ≤ 20000`.  Not Dirichlet, not
+`∀ N ≤ 10000`, and not `Q₂ ≡ 1 [MOD ℓ²]`
+for every residual (56 miss `5·10⁶`).
+`Q1_not_dvd_N_of_Q1_gt_N` needs `0 < N < Q₁`.
+`TWAuxEllFixed.of5_26` / `of7_26` / `of13_26`
+are explicit.  Mixed / odd-`A` facts are
+unchanged.  `beal_from_ribet_ell_mixed`
+stays *from* `ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221)
+(v7.1.1 About catch-up, Track A).  Track B does **not**
+write a new mint claiming unconditional Beal `∀`.
+Three JPEG plates stay in `docs/assets/v6.7.0/`.
+Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+
 # FINAL v8.14.0 — Odd-A residues; A=1 impossible; Mixed is not a cover (arrow stays a Prop)
 
 Latest tag `v8.14.0-mixed-odd-A`.

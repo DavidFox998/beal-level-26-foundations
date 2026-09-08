@@ -799,6 +799,27 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.15.0-dirichlet-up-to-1000 — DONE (166-row Q₁ table; not Dirichlet; Q₂-∀ and ∀N uninhabited, arrow stays a Prop)
+
+Lean change.  Ten small Finsets plus
+`exists_prime_one_mod_ell_all` give
+`Q₁ ≡ 1 [MOD ℓ]` with `Q₁ ≤ 20000` for
+every residual in `InTWEll1000`.  Not
+`Nat.Prime ℓ → 5 ≤ ℓ ≤ 1000`, not Dirichlet,
+not `∀ N ≤ 10000`.  `exists_prime_one_mod_ell_sq_all`
+stays uninhabited (56 residuals miss `5·10⁶`).
+`Q1_not_dvd_N_of_Q1_gt_N` needs `0 < N < Q₁`.
+`TWAuxEllFixed.of5_26` / `of7_26` / `of13_26`
+are explicit.  Mixed / odd-`A` facts unchanged.
+`beal_from_ribet_ell_mixed` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** import `X0_26_Model`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.14.0-mixed-odd-A — DONE (odd-A residues; A=1 impossible; Mixed is not a cover, arrow stays a Prop)
 
 Lean change.  `RibetMazur.lean` proves

@@ -5,11 +5,11 @@ type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v8.14.0-mixed-odd-A"
+version: "v8.15.0-dirichlet-up-to-1000"
 date-released: "2026-09-07"
 doi: "10.5281/zenodo.22272382"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
-url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.14.0-mixed-odd-A"
+url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.15.0-dirichlet-up-to-1000"
 license: MIT
 keywords:
   - beal-conjecture

@@ -3,13 +3,12 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.14.0 — Odd-`A` modular constraints for
-`m=4, n=13, p=13`, and the only odd power of 2
-(`A=1`) is impossible.  Builds on v8.13.0:
-`FreyEllCase5Mixed` covers that exponent triple
-**iff** `A=2^e`.  Odd `A ≥ 3` is still none of
-the three mixed arms.  Not Zsigmondy, not a
-size cover, not `FreyEllCase5MixedCover`.
+Track B v8.15.0 — Finite `Q₁ ≡ 1 [MOD ℓ]` table
+for the 166 primes in `[5, 1000]`.  Builds on
+v8.14.0 odd-`A` residues and v8.13.0 mixed case.
+Not Dirichlet, not `∀ N ≤ 10000`, and not
+`Q₂ ≡ 1 [MOD ℓ²]` for every residual (56 miss
+the `5·10⁶` bound).
 
 Mathlib 4.12 has no Ribet functor and no arrow
     `Modular w → ExistsNewformLevel2`.  That label is
@@ -115,7 +114,14 @@ What it *does* prove:
   covers `4,13,13` **iff** `A=2^e`;
 * `beal_4_13_13_size` stays an uninhabited Prop
   (odd `A ≥ 3` is not closed by mod 8, mod 13,
-  or `Cⁿ−(C−1)ⁿ > 1`).
+  or `Cⁿ−(C−1)ⁿ > 1`);
+* `exists_prime_one_mod_ell_all`: `Q₁` for every
+  residual in the 166-row table `InTWEll1000`;
+* `Q1_not_dvd_N_of_Q1_gt_N`: `N < Q₁` and `0 < N`
+  imply `Q₁ ∤ N` (the `∀ N` field stays false);
+* `exists_prime_one_mod_ell_sq_all` and
+  `find_next_prime_one_mod_gt_exists` stay
+  uninhabited Props.
 
 Does **not** import `X0_26_Model`.  FullProof-only.
 None chain does not import this file.
@@ -137,6 +143,7 @@ import Mathlib.NumberTheory.FLT.Four
 import Mathlib.FieldTheory.Finite.Basic
 import Mathlib.LinearAlgebra.Matrix.SpecialLinearGroup
 import Mathlib.Tactic
+import BealLevel26Foundations.Beal.FullProof.TWPrimes
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -151,6 +158,7 @@ open BealLevel26Foundations.CoefficientLedger26
 open Beal.Foundations.J0_26_Decomp
 open BealLevel26Foundations.Chain.Level2
 open BealLevel26Foundations.Real.FreyWeierstrass
+open BealLevel26Foundations.Beal.FullProof.TWPrimes
 open CongruenceSubgroup
 
 /-! ## Explicit 101-coeff q-expansions (ledger as `ℚ`) -/
@@ -2552,6 +2560,58 @@ def beal_4_13_13_size : Prop :=
     Odd A → ¬ IsPowerOfTwo A →
     A ^ 4 + B ^ 13 = C ^ 13 → False
 
+/-! ## v8.15.0 — Finite `Q₁` table for residuals in `[5, 1000]` -/
+
+theorem InTWEll1000_13 : InTWEll1000 13 :=
+  Or.inl (by decide)
+
+theorem InTWEll1000_5 : InTWEll1000 5 :=
+  Or.inl (by decide)
+
+theorem exists_prime_one_mod_ell_all_13 :
+    ∃ Q1 : Nat, Q1.Prime ∧ Q1 % 13 = 1 ∧ Q1 ≤ 20000 ∧ 5 ≤ Q1 :=
+  exists_prime_one_mod_ell_all InTWEll1000_13
+
+def TWAuxEllFixed.of5_26 : TWAuxEllFixed 5 26 where
+  Q1ell := 31
+  Q2ell := 101
+  Q1_prime := by decide
+  Q2_prime := by decide
+  Q1_mod := by decide
+  Q2_mod := by decide
+  Q1_ge5 := by decide
+  Q2_ge5 := by decide
+  Q1_ne_Q2 := by decide
+  Q1_gt_N := by decide
+  Q2_gt_N := by decide
+
+def TWAuxEllFixed.of7_26 : TWAuxEllFixed 7 26 where
+  Q1ell := 29
+  Q2ell := 197
+  Q1_prime := by decide
+  Q2_prime := by decide
+  Q1_mod := by decide
+  Q2_mod := by decide
+  Q1_ge5 := by decide
+  Q2_ge5 := by decide
+  Q1_ne_Q2 := by decide
+  Q1_gt_N := by decide
+  Q2_gt_N := by decide
+
+theorem TWAuxEllFixedExists_5_26 : TWAuxEllFixedExists 5 26 :=
+  ⟨TWAuxEllFixed.of5_26⟩
+
+theorem TWAuxEllFixedExists_7_26 : TWAuxEllFixedExists 7 26 :=
+  ⟨TWAuxEllFixed.of7_26⟩
+
+/-- Uninhabited.  `TWAuxEllFixed` needs a prime
+`Q₂ ≡ 1 [MOD ℓ²]` larger than `N`.  Fifty-six
+residuals have no such `Q₂ ≤ 5·10⁶`, and
+`∀ N ≤ 10000` is not a 166-row table. -/
+def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
+  ∀ ℓ N : Nat, ℓ.Prime → 5 ≤ ℓ → ℓ ≤ 1000 → N ≤ 10000 →
+    Nonempty (TWAuxEllFixed ℓ N)
+
 #check q_expansion_26a1
 #check q_expansion_26b1
 #check q_expansion_26a1_int
@@ -2616,6 +2676,17 @@ def beal_4_13_13_size : Prop :=
 #check FreyEllCase5Mixed_4_13_13_iff_pow2_A
 #check beal_4_13_13_size
 #check not_FreyEllCase5Mixed_of_4_13_13_A_not_pow2
+#check exists_prime_one_mod_ell_all
+#check InTWEll1000
+#check Q1_not_dvd_N_of_Q1_gt_N
+#check TWAuxEllFixed.of5_26
+#check TWAuxEllFixed.of7_26
+#check TWAuxEllFixedExists_5_26
+#check TWAuxEllFixedExists_7_26
+#check exists_prime_one_mod_ell_all_13
+#check exists_prime_one_mod_ell_sq_all
+#check find_next_prime_one_mod_gt_exists
+#check TWAuxEllFixed_inhabited_for_every_ell_le_1000
 #check X0_N_Model
 #check J0_N_Model
 #check J0_N_real
@@ -2687,6 +2758,13 @@ def beal_4_13_13_size : Prop :=
 #print axioms not_beal_4_13_13_of_odd_pow2_A
 #print axioms FreyEllCase5Mixed_4_13_13_iff_pow2_A
 #print axioms not_FreyEllCase5Mixed_of_4_13_13_A_not_pow2
+#print axioms exists_prime_one_mod_ell_all
+#print axioms Q1_not_dvd_N_of_Q1_gt_N
+#print axioms exists_prime_one_mod_ell_all_13
+#print axioms TWAuxEllFixed.of5_26
+#print axioms TWAuxEllFixed.of7_26
+#print axioms TWAuxEllFixedExists_5_26
+#print axioms TWAuxEllFixedExists_7_26
 #print axioms succ_pow_sub_pow_gt_one
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur
