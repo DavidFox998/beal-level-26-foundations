@@ -104,6 +104,19 @@ v8.19.2-C-ge-B+2 RibetMazur C≥B+2 gives A^4≥26 B^12 from the 13-term sum tim
 v8.19.3-zsigmondy-13 RibetMazur n=13 primitive prime from Φ₁₃ (exceptions (2,1,6) and n=2 fail by decide); zsigmondy_13 inhabited; beal_odd_A_ge3_size_gap has p∣A p∤(C−B); ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.19.4-zsigmondy-13-step4 RibetMazur p∣S from p∣(C^13-B^13) and p∤(C−B); p∣B and p∣S contradicts Coprime C B; p∣S∧p∣A→p∣B stays uninhabited; zsigmondy_13 stays inhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.19.5-p-mod-13-eq-1 RibetMazur primitive p for n=13 has order 13 so p≡1 mod 13 and p≥53 and A≥53; zsigmondy_13 stays inhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.19.6-B-le-100-closed RibetMazur B≤100 C=B+1 and C=B+2 closed for odd A by A≥53 A≥B³ and decide tables; C≥B+3 stays open; zsigmondy_13 stays inhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.19.6-B-le-100-closed — B≤100 C∈{B+1,B+2} closed for odd A (arrow stays a Prop)
+
+Lean change.  Combine `A ≥ 53`, `A ≥ B³`, and the `B ≤ 100` decide tables to close `C = B+1` and `C = B+2` for odd `A`.  `C ≥ B+3` stays open.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `beal_4_13_13_B_le_100_C_eq_B_plus_1_no_fourth_power` / `_plus_2_`: inhabited by `decide` floors;
+- `beal_odd_A_ge3_B_le_100_closed_C_le_B_plus_2` / `_slice_`: inhabited;
+- `beal_odd_A_ge3_B_le_100_C_ge_B_plus_3_closed` stays uninhabited;
+- v8.19.5 `A ≥ 53` and v8.19.1 `A ≥ B³` stay; `zsigmondy_13` stays inhabited;
+- `beal_from_ribet` / `beal_from_ribet_ell_mixed`: still *from* `ModularImpliesLevel2Newform`.
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.19.5-p-mod-13-eq-1 — order 13 forces p≡1 mod 13, p≥53, A≥53 (arrow stays a Prop)
 

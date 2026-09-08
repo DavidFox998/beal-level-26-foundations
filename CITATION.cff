@@ -5,11 +5,11 @@ type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v8.19.5-p-mod-13-eq-1"
+version: "v8.19.6-B-le-100-closed"
 date-released: "2026-09-08"
 doi: "10.5281/zenodo.22272382"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
-url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.19.5-p-mod-13-eq-1"
+url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.19.6-B-le-100-closed"
 license: MIT
 keywords:
   - beal-conjecture

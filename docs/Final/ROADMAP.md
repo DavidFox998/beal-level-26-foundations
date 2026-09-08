@@ -799,6 +799,25 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.19.6-B-le-100-closed — DONE (B≤100 C∈{B+1,B+2} closed for odd A; C≥B+3 open; arrow stays a Prop)
+
+Lean change.  `B ≤ 100` and
+`C ∈ {B+1, B+2}` closes for odd `A`
+by `A ≥ 53`, `A ≥ B³`, and the
+decide tables.  `C ≥ B+3` stays
+open.  `zsigmondy_13` stays
+inhabited.  `ExistsNewformLevel2`
+stays `0 ≠ 0`.
+`beal_from_ribet` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** import `X0_26_Model` from
+`RibetMazur`.  Does **not** touch the
+24-module none chain.  No `False.elim`.
+No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.19.5-p-mod-13-eq-1 — DONE (order 13 forces p≡1 mod 13, p≥53, A≥53; arrow stays a Prop)
 
 Lean change.  A primitive prime of

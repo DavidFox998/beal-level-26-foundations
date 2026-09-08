@@ -1,11 +1,10 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.19.5-p-mod-13-eq-1`.
-Lean change: a primitive prime of
-`C¹³ − B¹³` has order 13, so
-`p ≡ 1 [MOD 13]`, `p ≥ 53`, and
-odd `A ≥ 3` has `A ≥ 53`.
-`A ≥ 53` does not close the equation.
+Latest tag / HEAD: `v8.19.6-B-le-100-closed`.
+Lean change: `B ≤ 100` and
+`C ∈ {B+1, B+2}` closes for odd `A`
+by `A ≥ 53`, `A ≥ B³`, and the
+decide tables.  `C ≥ B+3` stays open.
 `zsigmondy_13` stays inhabited.
 The general `beal_4_13_13_size` stays
 uninhabited.

@@ -3,12 +3,12 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.19.5 — primitive `p` for
-`n=13` has order 13, so `p ≡ 1 [MOD 13]`,
-`p ≥ 53`, and `A ≥ 53`.  v8.19.4
-`S_13` / `p ∣ S` / `p ≠ 13` /
-`p ∣ A → ¬ p ∣ B` stay.  v8.19.3
-`zsigmondy_13` stays inhabited.
+Track B v8.19.6 — `B ≤ 100` slice closed
+for odd `A` when `C = B+1` or `C = B+2`,
+using `A ≥ 53`, `A ≥ B³`, and the decide
+tables.  `C ≥ B+3` stays open.
+v8.19.5 `p ≡ 1 [MOD 13]` / `A ≥ 53` stay.
+v8.19.3 `zsigmondy_13` stays inhabited.
 `ExistsNewformLevel2` stays `0 ≠ 0`.
 `beal_from_ribet` still takes
 `ModularImpliesLevel2Newform`.  Builds on
@@ -136,6 +136,10 @@ What it *does* prove:
   `p ≡ 1 [MOD 13]`, `p ≥ 53`, `A ≥ 53`;
   `beal_odd_A_ge3_closed_of_A_ge_53`
   stays uninhabited;
+  `B ≤ 100` and `C ∈ {B+1, B+2}`
+  closes for odd `A`;
+  `beal_odd_A_ge3_B_le_100_C_ge_B_plus_3_closed`
+  stays uninhabited;
   `beal_from_ribet_upside_down_odd_A_closed`
   stays uninhabited;
 * `exists_prime_one_mod_ell_all`: `Q₁` for every
@@ -195,6 +199,7 @@ import BealLevel26Foundations.Beal_4_13_13_Size_C_ge_B_plus_2
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step4
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -2694,6 +2699,27 @@ def beal_odd_A_ge3_A_ge_53 :=
 def beal_odd_A_ge3_closed_of_A_ge_53 :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.beal_odd_A_ge3_closed_of_A_ge_53
 
+/-! ## v8.19.6 — `B ≤ 100` slice `C ∈ {B+1, B+2}` closed -/
+
+/-- Inhabited.  `C = B+1` difference is not a
+fourth power on `B ∈ [1, 100]`. -/
+def beal_4_13_13_B_le_100_C_eq_B_plus_1_no_fourth_power :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.beal_4_13_13_B_le_100_C_eq_B_plus_1_no_fourth_power
+
+/-- Inhabited.  `C = B+2` difference is not a
+fourth power on `B ∈ [1, 100]`. -/
+def beal_4_13_13_B_le_100_C_eq_B_plus_2_no_fourth_power :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.beal_4_13_13_B_le_100_C_eq_B_plus_2_no_fourth_power
+
+/-- Inhabited.  Odd `A ≥ 3`, `B ≤ 100`,
+`C ∈ {B+1, B+2}` is impossible. -/
+def beal_odd_A_ge3_B_le_100_closed_C_le_B_plus_2 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.beal_odd_A_ge3_B_le_100_closed_C_le_B_plus_2
+
+/-- Uninhabited.  `C ≥ B+3` stays open. -/
+def beal_odd_A_ge3_B_le_100_C_ge_B_plus_3_closed :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.beal_odd_A_ge3_B_le_100_C_ge_B_plus_3_closed
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -2907,6 +2933,12 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.beal_odd_A_ge3_primitive_prime_ge_53
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.beal_odd_A_ge3_A_ge_53
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.beal_odd_A_ge3_closed_of_A_ge_53
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.beal_4_13_13_B_le_100_C_eq_B_plus_1_no_fourth_power
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.beal_4_13_13_B_le_100_C_eq_B_plus_2_no_fourth_power
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.beal_odd_A_ge3_B_le_100_C_le_B_plus_2_closed
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.beal_odd_A_ge3_B_le_100_closed_C_le_B_plus_2
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.beal_odd_A_ge3_B_le_100_slice_C_le_B_plus_2_closed
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.beal_odd_A_ge3_B_le_100_C_ge_B_plus_3_closed
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -3036,5 +3068,8 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.primitive_prime_mod_13_eq_1
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.primitive_prime_ge_53
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.beal_odd_A_ge3_A_ge_53
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.beal_4_13_13_B_le_100_C_eq_B_plus_1_no_fourth_power
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.beal_4_13_13_B_le_100_C_eq_B_plus_2_no_fourth_power
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.beal_odd_A_ge3_B_le_100_closed_C_le_B_plus_2
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

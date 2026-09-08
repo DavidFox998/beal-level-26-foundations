@@ -189,6 +189,8 @@ test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step4.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step4.md
 test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.md
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -817,6 +819,7 @@ do
   grep -q "v8.19.3-zsigmondy-13" "$readme"
   grep -q "v8.19.4-zsigmondy-13-step4" "$readme"
   grep -q "v8.19.5-p-mod-13-eq-1" "$readme"
+  grep -q "v8.19.6-B-le-100-closed" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1371,6 +1374,18 @@ grep -q "theorem beal_odd_A_ge3_A_ge_53" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.lean
 grep -q "def beal_odd_A_ge3_closed_of_A_ge_53" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.lean
+grep -q "theorem beal_4_13_13_B_le_100_C_eq_B_plus_1_no_fourth_power" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.lean
+grep -q "theorem beal_4_13_13_B_le_100_C_eq_B_plus_2_no_fourth_power" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.lean
+grep -q "theorem beal_odd_A_ge3_B_le_100_C_le_B_plus_2_closed" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.lean
+grep -q "theorem beal_odd_A_ge3_B_le_100_closed_C_le_B_plus_2" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.lean
+grep -q "theorem beal_odd_A_ge3_B_le_100_slice_C_le_B_plus_2_closed" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.lean
+grep -q "def beal_odd_A_ge3_B_le_100_C_ge_B_plus_3_closed" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.lean
 grep -q "theorem zsigmondy_13" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13.lean
 grep -q "def beal_size_B_le_100_table" \
