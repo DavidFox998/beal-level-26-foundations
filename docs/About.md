@@ -1,14 +1,16 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.19.1-beal-4-13-13-size`.
-Lean change: `(B+1)¹³ − B¹³ ≥ 13 B¹²`,
-so a positive `4,13,13` solution has
-`A⁴ ≥ 13 B¹²` and `A ≥ B³`.  The
-`C = B+1` table `B ∈ [1, 100]` is not
-a fourth power.  That is **not**
-Zsigmondy and **not** `A ≥ 2 B³`.
-`zsigmondy_13` and the general
-`beal_4_13_13_size` stay uninhabited.
+Latest tag / HEAD: `v8.19.2-C-ge-B+2`.
+Lean change: `C ≥ B+2` gives
+`C¹³ − B¹³ ≥ 26 B¹²` from the same
+13-term sum times `C−B ≥ 2`, so
+`A⁴ ≥ 26 B¹²`.  The `C = B+2` table
+`B ∈ [1, 100]` kernel-checks that
+bound.  That is **not** Zsigmondy
+and **not** `interval_cases` on
+unbounded `C−B`.  `zsigmondy_13` and
+the general `beal_4_13_13_size` stay
+uninhabited.
 `genus_X0_2_rat = 0` and `BealAArm`
 from v8.19.0 stay.
 `beal_from_ribet` / `beal_from_ribet_ell_mixed`

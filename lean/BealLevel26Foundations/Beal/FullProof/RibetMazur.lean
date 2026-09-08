@@ -3,11 +3,10 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.19.1 — Size skeleton for `4,13,13`.
-`(B+1)¹³ − B¹³ ≥ 13 B¹²`, so a positive
-solution has `A⁴ ≥ 13 B¹²` and `A ≥ B³`.
-The `C = B+1` table inhabits
-`beal_4_13_13_size` for `B ≤ 100`.
+Track B v8.19.2 — `C ≥ B+2` gives
+`A⁴ ≥ 26 B¹²` from the same 13-term sum
+times `C−B ≥ 2`.  The `C = B+2` table
+`B ∈ [1, 100]` kernel-checks that bound.
 `zsigmondy_13` stays uninhabited.
 `ExistsNewformLevel2` stays `0 ≠ 0`.
 `beal_from_ribet` still takes
@@ -121,9 +120,10 @@ What it *does* prove:
   `beal_4_13_13_A_ge_B_pow_3` are inhabited;
 * `beal_4_13_13_size_B_le_100_C_succ` inhabits
   the `C = B+1` slice `B ∈ [1, 100]`;
+* `C13_sub_B13_ge_26_mul_B_pow_12_of_C_ge_B_plus_2`
+  inhabits `C ≥ B+2 → C¹³−B¹³ ≥ 26 B¹²`;
 * `beal_4_13_13_size` stays the general
-  uninhabited Prop (no Zsigmondy, no
-  `C ≥ B+2` search);
+  uninhabited Prop (no Zsigmondy);
 * `zsigmondy_13` / `beal_odd_A_ge3_size_gap` /
   `beal_from_ribet_upside_down_odd_A_closed`
   stay uninhabited;
@@ -180,6 +180,7 @@ import BealLevel26Foundations.Beal.FullProof.TWAuxEllFixedCore
 import BealLevel26Foundations.Beal.FullProof.TWAuxEllFixed
 import BealLevel26Foundations.Beal.FullProof.X0_2_Genus
 import BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Size_Table
+import BealLevel26Foundations.Beal_4_13_13_Size_C_ge_B_plus_2
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -200,6 +201,7 @@ open BealLevel26Foundations.Beal.FullProof.TWAuxEllFixed
 open BealLevel26Foundations.Beal.FullProof.TWAuxEllFixed_5_100
 open BealLevel26Foundations.Beal.FullProof.X0_2_Genus
 open BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Size_Table
+open BealLevel26Foundations.Beal_4_13_13_Size_C_ge_B_plus_2
 open CongruenceSubgroup
 
 /-! ## Explicit 101-coeff q-expansions (ledger as `ℚ`) -/
@@ -2662,6 +2664,8 @@ def beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed : Prop :=
     A ^ 4 + B ^ 13 = C ^ 13 → 0 < B → B < C →
     2 * B ^ 3 ≤ A
 
+/-! ## v8.19.2 — `C ≥ B+2` bound `A⁴ ≥ 26 B¹²` -/
+
 /-! ## v8.15.0 — Finite `Q₁` table for residuals in `[5, 1000]` -/
 
 theorem InTWEll1000_13 : InTWEll1000 13 :=
@@ -2843,6 +2847,13 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check beal_odd_A_ge3_size_gap
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
+#check C_pow13_sub_B_pow13
+#check C13_sub_B13_ge_26_mul_B_pow_12_of_C_ge_B_plus_2
+#check C13_sub_B13_ge_26_mul_B12_of_C_ge_B_plus_2_B_le_100
+#check beal_4_13_13_A_pow4_ge_26_mul_B12_of_C_ge_B_plus_2
+#check beal_4_13_13_A_pow4_ge_26_mul_B12_of_C_ge_B_plus_2_B_le_100
+#check size_table_C_eq_B_plus_2_lower_bound_B_le_100
+#check beal_size_B_le_100_C_eq_B_plus_2_table
 #check exists_prime_one_mod_ell_all_13
 #check exists_prime_one_mod_ell_sq_all
 #check exists_prime_one_mod_ell_sq_all_13
@@ -2952,6 +2963,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms beal_4_13_13_A_ge_B_pow_3
 #print axioms size_table_lower_bound_B_le_100
 #print axioms beal_4_13_13_size_B_le_100_C_succ
+#print axioms C13_sub_B13_ge_26_mul_B_pow_12_of_C_ge_B_plus_2
+#print axioms beal_4_13_13_A_pow4_ge_26_mul_B12_of_C_ge_B_plus_2
+#print axioms size_table_C_eq_B_plus_2_lower_bound_B_le_100
 #print axioms InTWEll1000_of_prime_5_100
 #print axioms InTWEll1000_iff_mem
 #print axioms succ_pow_sub_pow_gt_one

@@ -179,6 +179,9 @@ test -f lean/BealLevel26Foundations/Beal/FullProof/X0_2_Genus.lean
 test -f docs/Beal/X0_2_Genus.md
 test -f lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Size_Table.lean
 test -f certs/Beal_4_13_13_Size_Table.lean
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Size_C_ge_B_plus_2.lean
+test -f certs/Beal_4_13_13_Size_C_ge_B_plus_2_Table.lean
+test -f docs/Beal/Beal_4_13_13_Size_C_ge_B_plus_2.md
 test -f docs/Beal/Beal_4_13_13_Size.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
@@ -804,6 +807,7 @@ do
   grep -q "v8.18.0-product" "$readme"
   grep -q "v8.19.0-ExistsNewformLevel2" "$readme"
   grep -q "v8.19.1-beal-4-13-13-size" "$readme"
+  grep -q "v8.19.2-C-ge-B+2" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1081,6 +1085,17 @@ if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|Heck
   echo "FAIL: none chain must not import GeometryScheme / HeckeAlgebra / RibetFunctor / X0_26_Model / HeckeAction / LevelLowering / RibetMazur / TWPrimes / TWPrimesPratt / TWPrimesQ2 / TWAuxEllFixed / X0_2_Genus / Beal_4_13_13_Size_Table"
   exit 1
 fi
+if grep -E -q "import BealLevel26Foundations.Beal_4_13_13_Size" \
+    lean/BealLevel26Foundations.lean \
+    lean/BealLevel26Foundations/Beal/BealForall.lean \
+    lean/BealLevel26Foundations/Chain/BealForallInKernel.lean \
+    lean/BealLevel26Foundations/Chain/PathLock.lean \
+    lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean \
+    lean/BealLevel26Foundations/GaloisRep/GaloisBealForallClosedReal.lean \
+    lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean; then
+  echo "FAIL: none chain must not import size tables"
+  exit 1
+fi
 grep -q "def X0_26_f" \
   lean/BealLevel26Foundations/Beal/FullProof/X0_26_Model.lean
 grep -q "def cotangent_Z" \
@@ -1317,6 +1332,16 @@ grep -q "def beal_size_B_le_100_table" \
   certs/Beal_4_13_13_Size_Table.lean
 grep -q "def beal_4_13_13_C_eq_B_plus_1_diff" \
   certs/Beal_4_13_13_Size_Table.lean
+grep -q "theorem C13_sub_B13_ge_26_mul_B_pow_12_of_C_ge_B_plus_2" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Size_C_ge_B_plus_2.lean
+grep -q "theorem beal_4_13_13_A_pow4_ge_26_mul_B12_of_C_ge_B_plus_2" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Size_C_ge_B_plus_2.lean
+grep -q "theorem size_table_C_eq_B_plus_2_lower_bound_B_le_100" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Size_C_ge_B_plus_2.lean
+grep -q "def beal_4_13_13_size_C_eq_B_plus_2_full_table" \
+  certs/Beal_4_13_13_Size_C_ge_B_plus_2_Table.lean
+grep -q "def zsigmondy_13" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem primes5to100_eq_Icc_filter" \
   lean/BealLevel26Foundations/Beal/FullProof/TWPrimes_5_100.lean
 grep -q "def twaux_10000_941" \

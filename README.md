@@ -101,6 +101,18 @@ v8.18.0-product RibetMazur TWAuxEllFixed inhabited for every N≤10000 on InTWEl
 v8.19.0-ExistsNewformLevel2 RibetMazur genus_X0_2_rat=0 over ℚ; BealAArm splits positive A; odd A≥3 not Mixed for 4,13,13; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop; mixed-pow2→newform and upside-down ∀ stay uninhabited. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.19.1-beal-4-13-13-size RibetMazur C=B+1 bound A^4≥13 B^12 and A≥B^3; B≤100 table not a 4th power by decide; Zsigmondy and general beal_4_13_13_size stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 
+### v8.19.2-C-ge-B+2 — C≥B+2 gives A⁴≥26 B¹² (arrow stays a Prop)
+
+Lean change.  `C¹³ − B¹³ = (C−B) · (13-term sum)`, each term `≥ B¹²`, and `C ≥ B+2` forces `C−B ≥ 2`, so `A⁴ ≥ 26 B¹²`.  The `C = B+2` table `B ∈ [1, 100]` kernel-checks that bound.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `C13_sub_B13_ge_26_mul_B_pow_12_of_C_ge_B_plus_2` / `beal_4_13_13_A_pow4_ge_26_mul_B12_of_C_ge_B_plus_2`: inhabited for every `B`;
+- `size_table_C_eq_B_plus_2_lower_bound_B_le_100`: `decide` on `[1, 100]`;
+- not `interval_cases` on unbounded `C−B`;
+- `zsigmondy_13` and general `beal_4_13_13_size` stay uninhabited;
+- `beal_from_ribet` / `beal_from_ribet_ell_mixed`: still *from* `ModularImpliesLevel2Newform`.
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
+
 ### v8.19.1-beal-4-13-13-size — C=B+1 size bound and B≤100 table (arrow stays a Prop)
 
 Lean change.  `(B+1)¹³ − B¹³ ≥ 13 B¹²` by the geometric-sum factorisation.  A positive `A⁴ + B¹³ = C¹³` has `A⁴ ≥ 13 B¹²` and `A ≥ B³`.  The `C = B+1` table `B ∈ [1, 100]` is not a fourth power.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.

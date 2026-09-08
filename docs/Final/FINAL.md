@@ -1,3 +1,30 @@
+# FINAL v8.19.2 — C≥B+2 gives A⁴≥26 B¹² (arrow stays a Prop)
+
+Latest tag `v8.19.2-C-ge-B+2`.
+Lean change.
+`C¹³ − B¹³ = (C−B) · (13-term sum)`,
+each term `≥ B¹²`.  `C ≥ B+2` forces
+`C−B ≥ 2`, so `A⁴ ≥ 26 B¹²`.  The
+`C = B+2` table `B ∈ [1, 100]`
+kernel-checks that bound.  Not
+`interval_cases` on unbounded `C−B`.
+`zsigmondy_13` and the general
+`beal_4_13_13_size` stay uninhabited.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` stays *from*
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221)
+(v7.1.1 About catch-up, Track A).  Track B does **not**
+write a new mint claiming unconditional Beal `∀`.
+Three JPEG plates stay in `docs/assets/v6.7.0/`.
+Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+
 # FINAL v8.19.1 — C=B+1 size bound and B≤100 table (arrow stays a Prop)
 
 Latest tag `v8.19.1-beal-4-13-13-size`.
