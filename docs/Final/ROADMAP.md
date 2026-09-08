@@ -799,6 +799,28 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.23.1-Zsigmondy-S-vp1-plan — DONE (S_val / 13|S / k-shape {1,13,13³} inhabited; Zsigmondy primitive / v_p(S)=1 stay uninhabited; arrow stays a Prop)
+
+Lean change.  Step17 file
+`Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.lean`
+inhabits `S_val`, `S_bounds`,
+`thirteen_dvd_S_of_13_nmid_B`,
+`gcd_k_S_dvd_13`,
+`k_shape_1_13_13cubed`.
+`zsigmondy_exists_primitive`,
+`zsigmondy_vp_S_eq_one`,
+`S_times_g_not_fourth_of_vp1`,
+`beal_odd_A_closed_v8_23_1`,
+`beal_4_13_13_Zsigmondy_13_Zsig_S_vp1_plan`
+stay uninhabited.
+Unconditional `¬ p² ∣ S` is false
+(Hensel).
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.23.0-odd-A-closure-plan — DONE (S bounds / k-shape / k bounds inhabited; Zsigmondy-of-S / S_not_fourth stay uninhabited; arrow stays a Prop)
 
 Lean change.  Step16 file

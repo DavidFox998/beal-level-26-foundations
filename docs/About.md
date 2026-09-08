@@ -1,16 +1,20 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.23.0-odd-A-closure-plan`
-Lean change: Step16 inhabits
-`S_bounds_13_B12_le_S_le_13_C12`,
-`k_almost_fourth_power_shape`,
-`k_le_A4_div_13_B12`,
-`B_gt_100_k_bounded`,
-`k_ge_B_imp_A_ge_9B3`.
-`zsigmondy_prime_S`,
-`S_not_fourth_power_of_zsig` stay
+Latest tag / HEAD: `v8.23.1-Zsigmondy-S-vp1-plan`
+Lean change: Step17 inhabits
+`S_val`, `S_bounds`,
+`thirteen_dvd_S_of_13_nmid_B`,
+`gcd_k_S_dvd_13`,
+`k_shape_1_13_13cubed`.
+`zsigmondy_exists_primitive`,
+`zsigmondy_vp_S_eq_one`,
+`S_times_g_not_fourth_of_vp1` stay
 uninhabited (`ExistsNewformLevel2`
 is `0 ≠ 0`).
+Unconditional `¬ p² ∣ S` is false
+(Hensel).
+v8.23.0 `S_bounds_13_B12_le_S_le_13_C12`
+/ `k_almost_fourth_power_shape` stay.
 v8.22.1 `oddPart_rec` / `2q` stay.
 v8.22.0 radical `N'` stays.
 v8.21.1 `frey_curve_conductor` stays.

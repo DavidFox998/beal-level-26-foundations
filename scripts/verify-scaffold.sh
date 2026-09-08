@@ -213,6 +213,8 @@ test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmo
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.md
 test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.md
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -854,6 +856,7 @@ do
   grep -q "v8.22.0-X0-26-RibetMazur-plan" "$readme"
   grep -q "v8.22.1-X0-2q-Darmon-Merel-plan" "$readme"
   grep -q "v8.23.0-odd-A-closure-plan" "$readme"
+  grep -q "v8.23.1-Zsigmondy-S-vp1-plan" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1642,6 +1645,62 @@ grep -q "def beal_4_13_13_X0_2q_Darmon_Merel_plan" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.lean
 grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.lean
+grep -q "theorem S_bounds_13_B12_le_S_le_13_C12" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.lean
+grep -q "theorem k_almost_fourth_power_shape" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.lean
+grep -q "theorem k_le_A4_div_13_B12" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.lean
+grep -q "theorem B_gt_100_k_bounded" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.lean
+grep -q "theorem k_ge_B_imp_A_ge_9B3" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.lean
+grep -q "def zsigmondy_prime_S" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.lean
+grep -q "def zsig_p_not_dvd_k" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.lean
+grep -q "def S_not_fourth_power_of_zsig" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.lean
+grep -q "def S_times_g_not_fourth" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.lean
+grep -q "def beal_odd_A_ge3_B_gt_100_closed" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.lean
+grep -q "def beal_odd_A_closed_v8_23_0" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.lean
+grep -q "def beal_4_13_13_full_closed_mod_modular" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.lean
+grep -q "def beal_4_13_13_Zsigmondy_13_odd_A_closure_plan" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.lean
+grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.lean
+grep -q "def S_val" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.lean
+grep -q "theorem S_bounds" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.lean
+grep -q "theorem thirteen_dvd_S_of_13_nmid_B" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.lean
+grep -q "theorem gcd_k_S_dvd_13" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.lean
+grep -q "theorem k_shape_1_13_13cubed" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.lean
+grep -q "def zsigmondy_exists_primitive" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.lean
+grep -q "def zsigmondy_vp_S_eq_one" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.lean
+grep -q "def zsig_p_not_dvd_k_of_gcd" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.lean
+grep -q "def S_times_g_not_fourth_of_vp1" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.lean
+grep -q "def beal_odd_A_ge3_B_gt_100_closed_via_zsig" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.lean
+grep -q "def beal_odd_A_closed_v8_23_1" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.lean
+grep -q "def beal_4_13_13_full_closed_mod_modular_v8_23_1" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.lean
+grep -q "def beal_4_13_13_Zsigmondy_13_Zsig_S_vp1_plan" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.lean
+grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.lean
 grep -q "theorem beal_4_13_13_k_odd" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
 grep -q "theorem S_13_ge_13_mul_B_pow12" \

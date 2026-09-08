@@ -3,17 +3,21 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.23.0 — odd-`A` closure plan.
-`S_bounds_13_B12_le_S_le_13_C12`,
-`k_almost_fourth_power_shape`,
-`k_le_A4_div_13_B12`,
-`B_gt_100_k_bounded`,
-`k_ge_B_imp_A_ge_9B3`
+Track B v8.23.1 — Zsigmondy `S` `v_p=1` plan.
+`S_val`, `S_bounds`,
+`thirteen_dvd_S_of_13_nmid_B`,
+`gcd_k_S_dvd_13`,
+`k_shape_1_13_13cubed`
 are inhabited.
-`zsigmondy_prime_S`,
-`S_not_fourth_power_of_zsig` stay
+`zsigmondy_exists_primitive`,
+`zsigmondy_vp_S_eq_one`,
+`S_times_g_not_fourth_of_vp1` stay
 uninhabited (`ExistsNewformLevel2`
 is `0 ≠ 0`).
+Unconditional `¬ p² ∣ S` is false
+(Hensel).
+v8.23.0 `S_bounds_13_B12_le_S_le_13_C12`
+/ `k_almost_fourth_power_shape` stay.
 v8.22.1 `oddPart_rec` /
 `even_not_pow2_has_odd_prime_q` stay.
 v8.22.0 `even_not_pow2_has_odd_prime`,
@@ -252,6 +256,16 @@ What it *does* prove:
   odd-`A` bound package;
   `zsigmondy_prime_S` /
   `S_not_fourth_power_of_zsig` stay
+  uninhabited;
+* `S_val` / `S_bounds` /
+  `thirteen_dvd_S_of_13_nmid_B` /
+  `gcd_k_S_dvd_13` /
+  `k_shape_1_13_13cubed` inhabit the
+  Zsigmondy `S` value / `{1,13,13³}`
+  package;
+  `zsigmondy_exists_primitive` /
+  `zsigmondy_vp_S_eq_one` /
+  `S_times_g_not_fourth_of_vp1` stay
   uninhabited.
 
 Does **not** import `X0_26_Model`.  FullProof-only.
@@ -295,6 +309,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_la
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -3228,6 +3243,48 @@ def beal_odd_A_closed_v8_23_0 :=
 def beal_4_13_13_Zsigmondy_13_odd_A_closure_plan :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.beal_4_13_13_Zsigmondy_13_odd_A_closure_plan
 
+/-! ## v8.23.1 — Zsigmondy `S` `v_p=1` plan -/
+
+/-- Inhabited.  `S = (C¹³ − B¹³)/(C − B)`. -/
+def S_val :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.S_val
+
+/-- Inhabited.  `13 B¹² ≤ S_val ≤ 13 C¹²`. -/
+def S_bounds :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.S_bounds
+
+/-- Inhabited.  `13 ∤ B`, `B ≡ C [MOD 13]` → `13 ∣ S`. -/
+def thirteen_dvd_S_of_13_nmid_B :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.thirteen_dvd_S_of_13_nmid_B
+
+/-- Inhabited.  Honest `S_val` wrap of `gcd(k,S) ∣ 13`. -/
+def gcd_k_S_dvd_13_S_val :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.gcd_k_S_dvd_13
+
+/-- Inhabited.  `k = g · u⁴` for `g ∈ {1, 13, 2197}`. -/
+def k_shape_1_13_13cubed :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.k_shape_1_13_13cubed
+
+/-- Uninhabited.  Primitive Zsigmondy prime of `S`. -/
+def zsigmondy_exists_primitive :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.zsigmondy_exists_primitive
+
+/-- Uninhabited.  Bundled `v_p(S) = 1`. -/
+def zsigmondy_vp_S_eq_one :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.zsigmondy_vp_S_eq_one
+
+/-- Uninhabited.  `S · g` not a fourth power from `v_p=1`. -/
+def S_times_g_not_fourth_of_vp1 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.S_times_g_not_fourth_of_vp1
+
+/-- Uninhabited.  Odd-`A` close via Zsigmondy. -/
+def beal_odd_A_closed_v8_23_1 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.beal_odd_A_closed_v8_23_1
+
+/-- Uninhabited public API. -/
+def beal_4_13_13_Zsigmondy_13_Zsig_S_vp1_plan :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.beal_4_13_13_Zsigmondy_13_Zsig_S_vp1_plan
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -3563,6 +3620,16 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.S_not_fourth_power_of_zsig
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.beal_4_13_13_Zsigmondy_13_odd_A_closure_plan
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.S_val
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.S_bounds
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.thirteen_dvd_S_of_13_nmid_B
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.gcd_k_S_dvd_13
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.k_shape_1_13_13cubed
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.zsigmondy_exists_primitive
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.zsigmondy_vp_S_eq_one
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.S_times_g_not_fourth_of_vp1
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.beal_4_13_13_Zsigmondy_13_Zsig_S_vp1_plan
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -3776,5 +3843,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.B_gt_100_k_bounded
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.k_ge_B_imp_A_ge_9B3
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.S_bounds
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.thirteen_dvd_S_of_13_nmid_B
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.gcd_k_S_dvd_13
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.k_shape_1_13_13cubed
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur
