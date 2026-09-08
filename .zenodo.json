@@ -23,6 +23,16 @@
       "relation": "isVersionOf",
       "identifier": "10.5281/zenodo.22272382",
       "scheme": "doi"
+    },
+    {
+      "relation": "isSupplementTo",
+      "identifier": "10.5281/zenodo.22635221",
+      "scheme": "doi"
+    },
+    {
+      "relation": "isAlternateIdentifier",
+      "identifier": "10.5281/zenodo.22654189",
+      "scheme": "doi"
     }
   ]
 }
