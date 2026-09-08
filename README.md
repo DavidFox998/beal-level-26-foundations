@@ -105,6 +105,20 @@ v8.19.3-zsigmondy-13 RibetMazur n=13 primitive prime from Φ₁₃ (exceptions (
 v8.19.4-zsigmondy-13-step4 RibetMazur p∣S from p∣(C^13-B^13) and p∤(C−B); p∣B and p∣S contradicts Coprime C B; p∣S∧p∣A→p∣B stays uninhabited; zsigmondy_13 stays inhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.19.5-p-mod-13-eq-1 RibetMazur primitive p for n=13 has order 13 so p≡1 mod 13 and p≥53 and A≥53; zsigmondy_13 stays inhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.19.6-B-le-100-closed RibetMazur B≤100 C=B+1 and C=B+2 closed for odd A by A≥53 A≥B³ and decide tables; C≥B+3 stays open; zsigmondy_13 stays inhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.19.7-general-k RibetMazur C≥B+k gives A^4≥13k B^12 from the 13-term sum; C≥B+3 gives A^4≥39 B^12; A≥3 B^3 stays uninhabited (39<81); B≤100 C=B+1,B+2 stay closed; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.19.7-general-k — C≥B+k gives A⁴≥13k B¹²; C≥B+3 gives A⁴≥39 B¹² (arrow stays a Prop)
+
+Lean change.  The 13-term cyclotomic sum is at least `13 B¹²` when `C ≥ B`, so `C ≥ B+k` gives `A⁴ ≥ 13 k B¹²`.  Specialising `k = 3` gives `A⁴ ≥ 39 B¹²`, hence in reals `A ≥ 39^{1/4} B³ ≈ 2.49 B³`, and for `B ≥ 1` already `A ≥ 2 B³ + 1`.  `A ≥ 3 B³` stays uninhabited because `39 < 81`.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `S_13_ge_13_mul_B_pow12` / `C13_sub_B13_ge_13_k_mul_B_pow12`: inhabited 13-term bound;
+- `beal_4_13_13_A_pow4_ge_13_k_mul_B12_of_C_ge_B_plus_k` / `_39_mul_B12_of_C_ge_B_plus_3`: inhabited;
+- `C_ge_B_plus_k_implies_A_pow4_ge_13kB12`: `C ≥ B` is implied;
+- `beal_4_13_13_A_ge_3_mul_B_pow_3_of_C_ge_B_plus_3` stays uninhabited;
+- v8.19.6 `B ≤ 100` `C = B+1,B+2` stay closed; `zsigmondy_13` stays inhabited;
+- `beal_from_ribet` / `beal_from_ribet_ell_mixed`: still *from* `ModularImpliesLevel2Newform`.
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.19.6-B-le-100-closed — B≤100 C∈{B+1,B+2} closed for odd A (arrow stays a Prop)
 

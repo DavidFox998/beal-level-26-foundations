@@ -799,6 +799,27 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.19.7-general-k — DONE (C≥B+k gives A⁴≥13k B¹²; C≥B+3 gives A⁴≥39 B¹²; A≥3 B³ uninhabited; arrow stays a Prop)
+
+Lean change.  The 13-term sum is
+at least `13 B¹²` when `C ≥ B`, so
+`C ≥ B+k` gives `A⁴ ≥ 13 k B¹²`.
+`k = 3` specialises to `A⁴ ≥ 39 B¹²`.
+`A ≥ 3 B³` stays uninhabited
+(`39 < 81`).  v8.19.6 `B ≤ 100`
+`C ∈ {B+1, B+2}` stays closed.
+`zsigmondy_13` stays inhabited.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** import `X0_26_Model` from
+`RibetMazur`.  Does **not** touch the
+24-module none chain.  No `False.elim`.
+No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.19.6-B-le-100-closed — DONE (B≤100 C∈{B+1,B+2} closed for odd A; C≥B+3 open; arrow stays a Prop)
 
 Lean change.  `B ≤ 100` and

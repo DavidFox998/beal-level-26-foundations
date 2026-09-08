@@ -191,6 +191,8 @@ test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.lea
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.md
 test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.md
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step7_General_k.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step7_General_k.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -820,6 +822,7 @@ do
   grep -q "v8.19.4-zsigmondy-13-step4" "$readme"
   grep -q "v8.19.5-p-mod-13-eq-1" "$readme"
   grep -q "v8.19.6-B-le-100-closed" "$readme"
+  grep -q "v8.19.7-general-k" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1385,6 +1388,24 @@ grep -q "theorem beal_odd_A_ge3_B_le_100_closed_C_le_B_plus_2" \
 grep -q "theorem beal_odd_A_ge3_B_le_100_slice_C_le_B_plus_2_closed" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.lean
 grep -q "def beal_odd_A_ge3_B_le_100_C_ge_B_plus_3_closed" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.lean
+grep -q "def S_13" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step7_General_k.lean
+grep -q "theorem S_13_ge_13_mul_B_pow12" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step7_General_k.lean
+grep -q "theorem C13_sub_B13_ge_13_k_mul_B_pow12" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step7_General_k.lean
+grep -q "theorem beal_4_13_13_A_pow4_ge_13_k_mul_B12_of_C_ge_B_plus_k" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step7_General_k.lean
+grep -q "theorem beal_4_13_13_A_pow4_ge_39_mul_B12_of_C_ge_B_plus_3" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step7_General_k.lean
+grep -q "theorem C_ge_B_plus_k_implies_A_pow4_ge_13kB12" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step7_General_k.lean
+grep -q "def beal_4_13_13_A_ge_3_mul_B_pow_3_of_C_ge_B_plus_3" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step7_General_k.lean
+grep -q "theorem zsigmondy_13" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13.lean
+grep -q "theorem beal_odd_A_ge3_B_le_100_closed_C_le_B_plus_2" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.lean
 grep -q "theorem zsigmondy_13" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13.lean

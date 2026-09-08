@@ -1,10 +1,13 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.19.6-B-le-100-closed`.
-Lean change: `B ≤ 100` and
-`C ∈ {B+1, B+2}` closes for odd `A`
-by `A ≥ 53`, `A ≥ B³`, and the
-decide tables.  `C ≥ B+3` stays open.
+Latest tag / HEAD: `v8.19.7-general-k`.
+Lean change: `C ≥ B+k` gives
+`A⁴ ≥ 13·k·B¹²` from the 13-term sum.
+`C ≥ B+3` specialises to `A⁴ ≥ 39·B¹²`
+(real size `A ≥ 39^{1/4} B³ ≈ 2.49 B³`).
+`A ≥ 3 B³` stays uninhabited (`39 < 81`).
+`B ≤ 100` with `C = B+1` or `C = B+2`
+stays closed.
 `zsigmondy_13` stays inhabited.
 The general `beal_4_13_13_size` stays
 uninhabited.

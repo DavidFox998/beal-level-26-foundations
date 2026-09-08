@@ -3,10 +3,12 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.19.6 — `B ≤ 100` slice closed
-for odd `A` when `C = B+1` or `C = B+2`,
-using `A ≥ 53`, `A ≥ B³`, and the decide
-tables.  `C ≥ B+3` stays open.
+Track B v8.19.7 — `C ≥ B+k` gives
+`A⁴ ≥ 13·k·B¹²` from the 13-term sum.
+`C ≥ B+3` specialises to `A⁴ ≥ 39·B¹²`.
+`A ≥ 3 B³` stays uninhabited (`39 < 81`).
+v8.19.6 `B ≤ 100` with `C = B+1` or
+`C = B+2` stays closed.
 v8.19.5 `p ≡ 1 [MOD 13]` / `A ≥ 53` stay.
 v8.19.3 `zsigmondy_13` stays inhabited.
 `ExistsNewformLevel2` stays `0 ≠ 0`.
@@ -140,6 +142,9 @@ What it *does* prove:
   closes for odd `A`;
   `beal_odd_A_ge3_B_le_100_C_ge_B_plus_3_closed`
   stays uninhabited;
+  `C ≥ B+k` gives `A⁴ ≥ 13 k B¹²`;
+  `C ≥ B+3` gives `A⁴ ≥ 39 B¹²`;
+  `A ≥ 3 B³` stays uninhabited (`39 < 81`);
   `beal_from_ribet_upside_down_odd_A_closed`
   stays uninhabited;
 * `exists_prime_one_mod_ell_all`: `Q₁` for every
@@ -200,6 +205,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step4
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -2720,6 +2726,40 @@ def beal_odd_A_ge3_B_le_100_closed_C_le_B_plus_2 :=
 def beal_odd_A_ge3_B_le_100_C_ge_B_plus_3_closed :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.beal_odd_A_ge3_B_le_100_C_ge_B_plus_3_closed
 
+/-! ## v8.19.7 — general `k` bound from the 13-term sum -/
+
+/-- Same 13-term sum as Step 4. -/
+def S_13_step7 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.S_13
+
+/-- Inhabited.  `C ≥ B` implies `S_13 ≥ 13 B^12`. -/
+def S_13_ge_13_mul_B_pow12 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.S_13_ge_13_mul_B_pow12
+
+/-- Inhabited.  `C ≥ B+k` implies `C^13 - B^13 ≥ 13 k B^12`. -/
+def C13_sub_B13_ge_13_k_mul_B_pow12 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.C13_sub_B13_ge_13_k_mul_B_pow12
+
+/-- Inhabited.  Beal `4/13/13` and `C ≥ B+k` give `A^4 ≥ 13 k B^12`. -/
+def beal_4_13_13_A_pow4_ge_13_k_mul_B12_of_C_ge_B_plus_k :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.beal_4_13_13_A_pow4_ge_13_k_mul_B12_of_C_ge_B_plus_k
+
+/-- Inhabited.  `C ≥ B+3` gives `A^4 ≥ 39 B^12`. -/
+def beal_4_13_13_A_pow4_ge_39_mul_B12_of_C_ge_B_plus_3 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.beal_4_13_13_A_pow4_ge_39_mul_B12_of_C_ge_B_plus_3
+
+/-- Inhabited.  `C ≥ B+k` already implies `C ≥ B`. -/
+def C_ge_B_plus_k_implies_A_pow4_ge_13kB12 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.C_ge_B_plus_k_implies_A_pow4_ge_13kB12
+
+/-- Inhabited for `B ≥ 1`.  `A ≥ 2 B^3 + 1` from `39 B^12 > 16 B^12`. -/
+def beal_4_13_13_A_ge_2_mul_B_pow_3_succ_of_C_ge_B_plus_3 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.beal_4_13_13_A_ge_2_mul_B_pow_3_succ_of_C_ge_B_plus_3
+
+/-- Uninhabited.  `39 B^12 < 81 B^12 = (3 B^3)^4`. -/
+def beal_4_13_13_A_ge_3_mul_B_pow_3_of_C_ge_B_plus_3 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.beal_4_13_13_A_ge_3_mul_B_pow_3_of_C_ge_B_plus_3
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -2939,6 +2979,14 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.beal_odd_A_ge3_B_le_100_closed_C_le_B_plus_2
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.beal_odd_A_ge3_B_le_100_slice_C_le_B_plus_2_closed
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.beal_odd_A_ge3_B_le_100_C_ge_B_plus_3_closed
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.S_13
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.S_13_ge_13_mul_B_pow12
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.C13_sub_B13_ge_13_k_mul_B_pow12
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.beal_4_13_13_A_pow4_ge_13_k_mul_B12_of_C_ge_B_plus_k
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.beal_4_13_13_A_pow4_ge_39_mul_B12_of_C_ge_B_plus_3
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.C_ge_B_plus_k_implies_A_pow4_ge_13kB12
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.beal_4_13_13_A_ge_2_mul_B_pow_3_succ_of_C_ge_B_plus_3
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.beal_4_13_13_A_ge_3_mul_B_pow_3_of_C_ge_B_plus_3
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -3071,5 +3119,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.beal_4_13_13_B_le_100_C_eq_B_plus_1_no_fourth_power
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.beal_4_13_13_B_le_100_C_eq_B_plus_2_no_fourth_power
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed.beal_odd_A_ge3_B_le_100_closed_C_le_B_plus_2
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.S_13_ge_13_mul_B_pow12
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.C13_sub_B13_ge_13_k_mul_B_pow12
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.beal_4_13_13_A_pow4_ge_13_k_mul_B12_of_C_ge_B_plus_k
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.beal_4_13_13_A_pow4_ge_39_mul_B12_of_C_ge_B_plus_3
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.C_ge_B_plus_k_implies_A_pow4_ge_13kB12
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k.beal_4_13_13_A_ge_2_mul_B_pow_3_succ_of_C_ge_B_plus_3
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur
