@@ -1,8 +1,8 @@
 [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.26.0-exists-p-order-ne-13-plan
+# Beal Level 26 Foundations — v8.27.0-two-primitive-primes-counting-plan
 
-**v8.26.0-exists-p-order-ne-13-plan — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.27.0-two-primitive-primes-counting-plan — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 GitHub will not render a README much over ~100KB, so the old wall
 stayed cached at v4.28.0.  This file is the short wall.  The full
@@ -13,7 +13,7 @@ and [`certs/README.md`](certs/README.md).
 - Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
   About Website stays [10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221).
 - Houseclean mint [10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
-  (`v8.19.9-fourth-power-residue` / `v8.26.0-exists-p-order-ne-13-plan`) under hook `22379293`.
+  (`v8.19.9-fourth-power-residue` / `v8.27.0-two-primitive-primes-counting-plan`) under hook `22379293`.
   Concept DOI [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).
 - Track B odd-A ladder (4,13,13): v8.19.6 `B ≤ 100` with `C = B+1` and
   `C = B+2` closed by `decide`; v8.19.7 `A⁴ ≥ 13 k B¹²`, `A⁴ ≥ 39 B¹²`,
@@ -45,8 +45,12 @@ and [`certs/README.md`](certs/README.md).
   `B=1 C=460 p=53` lift, `S_not_fourth`
   from order `≠ 13`;
   v8.26.0 exists-`p` plan: dichotomy wrap,
-  conditional `v_p=1`, two-primes-one-not-square.
-- Inhabited: `p_sq_dvd_S_iff_order_13_mod_p_sq_inhabited`,
+  conditional `v_p=1`, two-primes-one-not-square;
+  v8.27.0 `S` is not `13^k`; not-a-prime-power
+  and two-primitive-primes stay Props.
+- Inhabited: `S_not_power_of_thirteen`,
+  `exists_p_of_two_primes_one_not_square_inhabited`,
+  `p_sq_dvd_S_iff_order_13_mod_p_sq_inhabited`,
   `zsigmondy_vp_S_eq_one_of_order_ne_13`,
   `exists_p_of_two_primes_one_not_square`;
   `p_sq_dvd_S_iff_order_13_mod_p_sq`,
@@ -75,7 +79,8 @@ and [`certs/README.md`](certs/README.md).
   `k_le_A_pow4_div_13_B_pow12`, `B_gt_100_imp_k_bounded_by_A`;
   `genus_X0_2_rat=0`; `S_13_mod_k`, `gcd(k,S)|13`, `k_almost_fourth_power`;
   `B_le_100_closed`.
-- Uninhabited: `exists_p_with_order_ne_13_mod_p_sq_inhabited`,
+- Uninhabited: `S_not_prime_power_when_C_ge_B_plus_3`,
+  `exists_p_with_order_ne_13_mod_p_sq_inhabited`,
   `S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3`,
   `not_all_p_lift_when_two_primes`,
   `exists_p_with_order_ne_13_mod_p_sq`,
@@ -125,8 +130,8 @@ PARI 2-Descent Certificates image
 Still not `∀ ℕ`. No `False.elim`. no `False.elim`.
 `BealExponent13_Iter_Package` `d3cf8a7` `1d0044e`.
 
-HEAD also has Track B `v8.26.0-exists-p-order-ne-13-plan`
-(exists-`p` plan; two-prime split stays a Prop;
+HEAD also has Track B `v8.27.0-two-primitive-primes-counting-plan`
+(`S` not `13^k`; two-prime split stays a Prop;
 `exists_p_with_order_ne_13_mod_p_sq_inhabited` stays uninhabited);
 that does **not** change the Track A lock or the About Website.
 
@@ -256,3 +261,4 @@ v8.24.0-Zsigmondy-primitive-vp1-inhabited RibetMazur Step18 zsigmondy_exists_pri
 v8.24.1-odd-A-closed-for-real RibetMazur Step19 beal_odd_A_closed_via_zsig_hensel primitive_prime_not_dvd_bases beal_odd_A_ge3_closed_of_vp1_inhabited; beal_odd_A_closed_v8_24_0_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.25.0-Hensel-dichotomy-S-not-fourth-plan RibetMazur Step20 p_sq_dvd_S_iff_order_13_mod_p_sq hensel_lift_example_B1_C460_p53 S_not_fourth_of_order_ne_13; exists_p_with_order_ne_13_mod_p_sq stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.26.0-exists-p-order-ne-13-plan RibetMazur Step21 p_sq_dvd_S_iff_order_13_mod_p_sq_inhabited hensel_lift_example_B1_C460_p53 S_not_fourth_of_order_ne_13 zsigmondy_vp_S_eq_one_of_order_ne_13; exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.27.0-two-primitive-primes-counting-plan RibetMazur Step22 S_not_power_of_thirteen exists_p_of_two_primes_one_not_square_inhabited; S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3 exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.

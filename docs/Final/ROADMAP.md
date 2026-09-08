@@ -799,6 +799,32 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.27.0-two-primitive-primes-counting-plan — DONE (S not a power of 13 inhabited; not-a-prime-power, two primitive primes, not-both-lift, and exists_p stay uninhabited; arrow stays a Prop)
+
+Lean change.  Step22 file
+`Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.lean`
+inhabits
+`S_not_power_of_thirteen`,
+`exists_p_of_two_primes_one_not_square_inhabited`,
+`zsigmondy_vp_S_eq_one_of_order_ne_13_inhabited`,
+`S_not_fourth_of_order_ne_13_inhabited`.
+Zsigmondy gives one primitive prime, not
+two. `S` may still be `q^k`. Size does
+not kill two lifts.
+`S_not_prime_power_when_C_ge_B_plus_3`,
+`S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3`,
+`not_all_p_lift_when_two_primes`,
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`,
+`beal_odd_A_closed_v8_24_0_inhabited`
+stay uninhabited.
+Unconditional `¬ p² ∣ S` is false
+(Hensel; `B=1`, `C=460`, `p=53`).
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.26.0-exists-p-order-ne-13-plan — DONE (dichotomy wrap / conditional v_p=1 / two-primes-one-not-square inhabited; two-prime split, not-both-lift, and exists_p stay uninhabited; arrow stays a Prop)
 
 Lean change.  Step21 file

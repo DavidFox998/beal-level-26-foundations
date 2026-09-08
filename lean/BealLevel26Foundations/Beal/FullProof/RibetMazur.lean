@@ -3,14 +3,14 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.26.0 — exists-`p` order-`≠ 13`
-plan.
-`p_sq_dvd_S_iff_order_13_mod_p_sq_inhabited`,
-`zsigmondy_vp_S_eq_one_of_order_ne_13`,
-`exists_p_of_two_primes_one_not_square`
+Track B v8.27.0 — two-primitive-primes
+counting plan.
+`S_not_power_of_thirteen`,
+`exists_p_of_two_primes_one_not_square_inhabited`
 are inhabited.
-`exists_p_with_order_ne_13_mod_p_sq_inhabited`
-stays uninhabited.
+`S_not_prime_power_when_C_ge_B_plus_3`
+and `exists_p_with_order_ne_13_mod_p_sq_inhabited`
+stay uninhabited.
 `beal_odd_A_closed_v8_24_0_inhabited`
 stays uninhabited (`ExistsNewformLevel2`
 is `0 ≠ 0`).
@@ -324,6 +324,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step18_Zsig_primitive_vp
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -3448,6 +3449,28 @@ def exists_p_with_order_ne_13_mod_p_sq_inhabited :=
 def beal_odd_A_closed_via_zsig_hensel_inhabited :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.beal_odd_A_closed_via_zsig_hensel_inhabited
 
+/-! ## v8.27.0 — two-primitive-primes counting plan -/
+
+/-- Inhabited.  `S` is not a power of `13`. -/
+def S_not_power_of_thirteen :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.S_not_power_of_thirteen
+
+/-- Inhabited wrap of the two-primes-one-not-square glue. -/
+def exists_p_of_two_primes_one_not_square_inhabited :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.exists_p_of_two_primes_one_not_square_inhabited
+
+/-- Inhabited wrap of conditional `v_p=1`. -/
+def zsigmondy_vp_S_eq_one_of_order_ne_13_inhabited :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.zsigmondy_vp_S_eq_one_of_order_ne_13_inhabited
+
+/-- Inhabited wrap of `S_not_fourth` from order `≠ 13`. -/
+def S_not_fourth_of_order_ne_13_inhabited :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.S_not_fourth_of_order_ne_13_inhabited
+
+/-- Uninhabited.  `S` may still be `q^k`. -/
+def S_not_prime_power_when_C_ge_B_plus_3 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.S_not_prime_power_when_C_ge_B_plus_3
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -3830,6 +3853,16 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.beal_odd_A_closed_v8_24_0_inhabited
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.S_not_power_of_thirteen
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.exists_p_of_two_primes_one_not_square_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.zsigmondy_vp_S_eq_one_of_order_ne_13_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.S_not_fourth_of_order_ne_13_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.S_not_prime_power_when_C_ge_B_plus_3
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.exists_p_with_order_ne_13_mod_p_sq_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.beal_odd_A_closed_v8_24_0_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -4071,5 +4104,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.zsigmondy_vp_S_eq_one_of_order_ne_13
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.exists_p_of_two_primes_one_not_square
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.S_not_power_of_thirteen
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.exists_p_of_two_primes_one_not_square_inhabited
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.zsigmondy_vp_S_eq_one_of_order_ne_13_inhabited
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.S_not_fourth_of_order_ne_13_inhabited
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

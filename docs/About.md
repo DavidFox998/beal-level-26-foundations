@@ -1,12 +1,18 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.26.0-exists-p-order-ne-13-plan`
-Lean change: Step21 inhabits
-`p_sq_dvd_S_iff_order_13_mod_p_sq_inhabited`,
-`zsigmondy_vp_S_eq_one_of_order_ne_13`,
-`exists_p_of_two_primes_one_not_square`.
+Latest tag / HEAD: `v8.27.0-two-primitive-primes-counting-plan`
+Lean change: Step22 inhabits
+`S_not_power_of_thirteen`,
+`exists_p_of_two_primes_one_not_square_inhabited`,
+`zsigmondy_vp_S_eq_one_of_order_ne_13_inhabited`,
+`S_not_fourth_of_order_ne_13_inhabited`.
+Zsigmondy gives one primitive prime, not
+two. `S` may still be `q^k`, so
+`S_not_prime_power_when_C_ge_B_plus_3` stays
+uninhabited. Size does not kill two lifts.
+`S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3`,
 `exists_p_with_order_ne_13_mod_p_sq_inhabited`
-stays uninhabited (`ExistsNewformLevel2`
+stay uninhabited (`ExistsNewformLevel2`
 is `0 ≠ 0`).
 `beal_odd_A_closed_v8_24_0_inhabited`
 stays uninhabited.
