@@ -1,11 +1,11 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.25.0-Hensel-dichotomy-S-not-fourth-plan`
-Lean change: Step20 inhabits
-`p_sq_dvd_S_iff_order_13_mod_p_sq`,
-`hensel_lift_example_B1_C460_p53`,
-`S_not_fourth_of_order_ne_13`.
-`exists_p_with_order_ne_13_mod_p_sq`
+Latest tag / HEAD: `v8.26.0-exists-p-order-ne-13-plan`
+Lean change: Step21 inhabits
+`p_sq_dvd_S_iff_order_13_mod_p_sq_inhabited`,
+`zsigmondy_vp_S_eq_one_of_order_ne_13`,
+`exists_p_of_two_primes_one_not_square`.
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`
 stays uninhabited (`ExistsNewformLevel2`
 is `0 ≠ 0`).
 `beal_odd_A_closed_v8_24_0_inhabited`

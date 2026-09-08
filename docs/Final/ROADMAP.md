@@ -799,6 +799,27 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.26.0-exists-p-order-ne-13-plan — DONE (dichotomy wrap / conditional v_p=1 / two-primes-one-not-square inhabited; two-prime split, not-both-lift, and exists_p stay uninhabited; arrow stays a Prop)
+
+Lean change.  Step21 file
+`Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.lean`
+inhabits
+`p_sq_dvd_S_iff_order_13_mod_p_sq_inhabited`,
+`zsigmondy_vp_S_eq_one_of_order_ne_13`,
+`exists_p_of_two_primes_one_not_square`.
+`S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3`,
+`not_all_p_lift_when_two_primes`,
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`,
+`beal_odd_A_closed_v8_24_0_inhabited`
+stay uninhabited.
+Unconditional `¬ p² ∣ S` is false
+(Hensel; `B=1`, `C=460`, `p=53`).
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.25.0-Hensel-dichotomy-S-not-fourth-plan — DONE (Step11 p²|S iff order 13 in (Z/p²)×; B=1 C=460 p=53 lift inhabited; S_not_fourth from order ≠13; exists_p_with_order_ne_13_mod_p_sq and bare odd-A / full close stay uninhabited; arrow stays a Prop)
 
 Lean change.  Step20 file

@@ -1,3 +1,34 @@
+# FINAL v8.26.0 — exists-p order-ne-13 plan (arrow stays a Prop)
+
+Latest tag `v8.26.0-exists-p-order-ne-13-plan`.
+Lean change.
+Step21 inhabits
+`p_sq_dvd_S_iff_order_13_mod_p_sq_inhabited`,
+`zsigmondy_vp_S_eq_one_of_order_ne_13`,
+`exists_p_of_two_primes_one_not_square`.
+Zsigmondy gives one primitive prime, not
+two. Two Hensel lifts can both succeed.
+`S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3`,
+`not_all_p_lift_when_two_primes`,
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`,
+`beal_odd_A_closed_v8_24_0_inhabited`,
+`beal_4_13_13_full_closed_mod_modular_v8_24_0_inhabited`,
+`beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real`
+stay uninhabited.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` stays *from*
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
+(`v8.19.9-fourth-power-residue` houseclean archive).
+Track A none-chain mint stays
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221).
+This mint does **not** claim unconditional Beal `∀`.
+
 # FINAL v8.25.0 — Hensel dichotomy S_not_fourth plan (arrow stays a Prop)
 
 Latest tag `v8.25.0-Hensel-dichotomy-S-not-fourth-plan`.

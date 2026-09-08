@@ -12,13 +12,13 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.25.0)
+# FullProof track (v8.26.0)
 
-Aggregator for Track B.  Step20 inhabits
-`p_sq_dvd_S_iff_order_13_mod_p_sq`,
-`hensel_lift_example_B1_C460_p53`,
-`S_not_fourth_of_order_ne_13`.
-`exists_p_with_order_ne_13_mod_p_sq`
+Aggregator for Track B.  Step21 inhabits
+`p_sq_dvd_S_iff_order_13_mod_p_sq_inhabited`,
+`zsigmondy_vp_S_eq_one_of_order_ne_13`,
+`exists_p_of_two_primes_one_not_square`.
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`
 stays uninhabited.
 Bare odd-`A` / full close stay uninhabited.
 Step18 primitive / `of_vp1` stay.

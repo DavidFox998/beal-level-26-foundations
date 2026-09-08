@@ -3,13 +3,13 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.25.0 — Hensel dichotomy
-`S_not_fourth` plan.
-`p_sq_dvd_S_iff_order_13_mod_p_sq`,
-`hensel_lift_example_B1_C460_p53`,
-`S_not_fourth_of_order_ne_13`
+Track B v8.26.0 — exists-`p` order-`≠ 13`
+plan.
+`p_sq_dvd_S_iff_order_13_mod_p_sq_inhabited`,
+`zsigmondy_vp_S_eq_one_of_order_ne_13`,
+`exists_p_of_two_primes_one_not_square`
 are inhabited.
-`exists_p_with_order_ne_13_mod_p_sq`
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`
 stays uninhabited.
 `beal_odd_A_closed_v8_24_0_inhabited`
 stays uninhabited (`ExistsNewformLevel2`
@@ -323,6 +323,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step18_Zsig_primitive_vp1_inhabited
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -3417,6 +3418,36 @@ def beal_odd_A_closed_via_zsig_hensel_exists :=
 def exists_p_with_order_ne_13_mod_p_sq :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.exists_p_with_order_ne_13_mod_p_sq
 
+/-! ## v8.26.0 — exists-`p` order-`≠ 13` plan -/
+
+/-- Inhabited.  Step11 dichotomy wrap. -/
+def p_sq_dvd_S_iff_order_13_mod_p_sq_inhabited :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.p_sq_dvd_S_iff_order_13_mod_p_sq_inhabited
+
+/-- Inhabited.  Conditional `v_p=1` from order `≠ 13`. -/
+def zsigmondy_vp_S_eq_one_of_order_ne_13 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.zsigmondy_vp_S_eq_one_of_order_ne_13
+
+/-- Inhabited.  Two primes, one not square, gives order `≠ 13`. -/
+def exists_p_of_two_primes_one_not_square :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.exists_p_of_two_primes_one_not_square
+
+/-- Uninhabited.  Zsigmondy gives one primitive prime, not two. -/
+def S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3
+
+/-- Uninhabited.  Two lifts can both succeed. -/
+def not_all_p_lift_when_two_primes :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.not_all_p_lift_when_two_primes
+
+/-- Uninhabited.  Remaining Hensel lock. -/
+def exists_p_with_order_ne_13_mod_p_sq_inhabited :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.exists_p_with_order_ne_13_mod_p_sq_inhabited
+
+/-- Uninhabited.  Sketch odd-`A` close from bare `C ≥ B+3`. -/
+def beal_odd_A_closed_via_zsig_hensel_inhabited :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.beal_odd_A_closed_via_zsig_hensel_inhabited
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -3789,6 +3820,16 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.beal_odd_A_closed_v8_24_0_inhabited
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.p_sq_dvd_S_iff_order_13_mod_p_sq_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.zsigmondy_vp_S_eq_one_of_order_ne_13
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.exists_p_of_two_primes_one_not_square
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.not_all_p_lift_when_two_primes
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.exists_p_with_order_ne_13_mod_p_sq_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.beal_odd_A_closed_via_zsig_hensel_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.beal_odd_A_closed_v8_24_0_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -4026,5 +4067,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.S_not_fourth_of_order_ne_13
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.beal_odd_A_closed_via_zsig_hensel
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.p_sq_dvd_S_iff_order_13_mod_p_sq_inhabited
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.zsigmondy_vp_S_eq_one_of_order_ne_13
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.exists_p_of_two_primes_one_not_square
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur
