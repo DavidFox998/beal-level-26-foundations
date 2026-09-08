@@ -3,11 +3,13 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.19.2 — `C ≥ B+2` gives
-`A⁴ ≥ 26 B¹²` from the same 13-term sum
-times `C−B ≥ 2`.  The `C = B+2` table
-`B ∈ [1, 100]` kernel-checks that bound.
-`zsigmondy_13` stays uninhabited.
+Track B v8.19.3 — `zsigmondy_13` is
+inhabited: `C¹³ − B¹³` has a primitive
+prime divisor (`Φ₁₃` has a prime `p ≠ 13`;
+exceptions `(2,1,6)` and `n=2` fail by
+`decide`).  `beal_odd_A_ge3_size_gap`
+gives `p ∣ A` and `p ∤ (C−B)`.
+Mathlib 4.12 has no Zsigmondy module.
 `ExistsNewformLevel2` stays `0 ≠ 0`.
 `beal_from_ribet` still takes
 `ModularImpliesLevel2Newform`.  Builds on
@@ -124,9 +126,11 @@ What it *does* prove:
   inhabits `C ≥ B+2 → C¹³−B¹³ ≥ 26 B¹²`;
 * `beal_4_13_13_size` stays the general
   uninhabited Prop (no Zsigmondy);
-* `zsigmondy_13` / `beal_odd_A_ge3_size_gap` /
+* `zsigmondy_13` is inhabited;
+  `beal_odd_A_ge3_size_gap` gives
+  `p ∣ A` and `p ∤ (C−B)`;
   `beal_from_ribet_upside_down_odd_A_closed`
-  stay uninhabited;
+  stays uninhabited;
 * `exists_prime_one_mod_ell_all`: `Q₁` for every
   residual in the 166-row table `InTWEll1000`;
 * `Q1_not_dvd_N_of_Q1_gt_N`: `N < Q₁` and `0 < N`
@@ -181,6 +185,7 @@ import BealLevel26Foundations.Beal.FullProof.TWAuxEllFixed
 import BealLevel26Foundations.Beal.FullProof.X0_2_Genus
 import BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Size_Table
 import BealLevel26Foundations.Beal_4_13_13_Size_C_ge_B_plus_2
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -2627,30 +2632,28 @@ odd-`A` size gap (no Zsigmondy). -/
 def beal_from_ribet_upside_down : Prop :=
   ∀ _t : PositiveBealTriple, False
 
-/-! ## v8.19.1 — Zsigmondy skeleton; `C=B+1` table `B≤100` -/
+/-! ## v8.19.3 — inhabited Zsigmondy at `n=13`; `C=B+1` table `B≤100` -/
 
-/-- A prime dividing `aⁿ − bⁿ` that does not divide
-`aᵏ − bᵏ` for `0 < k < n`.  `k = 0` is excluded
-because `a⁰ − b⁰ = 0`. -/
-def has_primitive_prime_divisor (a b n : Nat) : Prop :=
-  ∃ p : Nat, Nat.Prime p ∧ p ∣ (a ^ n - b ^ n) ∧
-    ∀ k : Nat, 0 < k → k < n → ¬ p ∣ (a ^ k - b ^ k)
+/-- Re-export.  A prime dividing `aⁿ − bⁿ` that
+does not divide `aᵏ − bᵏ` for `0 < k < n`. -/
+def has_primitive_prime_divisor :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13.has_primitive_prime_divisor
 
-/-- Uninhabited.  Mathlib 4.12 has no Zsigmondy
-theorem.  The interval around `13^{1/4} B³` is wide. -/
-def zsigmondy_13 : Prop :=
-  ∀ C B : Nat, B < C → Nat.gcd C B = 1 →
-    has_primitive_prime_divisor C B 13
+/-- Inhabited.  `C¹³ − B¹³` has a primitive prime
+divisor when `B < C`, `0 < B`, and `C,B` coprime.
+Mathlib 4.12 has no Zsigmondy module; the `n=13`
+case is the cyclotomic `Φ₁₃` argument. -/
+def zsigmondy_13 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13.zsigmondy_13
 
-/-- Uninhabited.  Needs `zsigmondy_13`.  The
-inhabited facts are the lower bound and the
-`B ≤ 100`, `C = B+1` table. -/
-def beal_odd_A_ge3_size_gap : Prop :=
-  ∀ A B C : Nat,
-    A ^ 4 + B ^ 13 = C ^ 13 →
-    Odd A → 3 ≤ A → 0 < B → B < C → False
+/-- Inhabited.  From `A⁴ + B¹³ = C¹³` with odd
+`A ≥ 3` and coprime `C,B`, some prime `p` divides
+`A` and does not divide `C−B`. -/
+def beal_odd_A_ge3_size_gap :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13.beal_odd_A_ge3_size_gap
 
-/-- Uninhabited.  Same gap as `beal_odd_A_ge3_size_gap`. -/
+/-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
+yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
   ∀ A B C : Nat,
     A ^ 4 + B ^ 13 = C ^ 13 →
@@ -2845,6 +2848,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check has_primitive_prime_divisor
 #check zsigmondy_13
 #check beal_odd_A_ge3_size_gap
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13.zsigmondy_exception_not_2_1_6
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13.has_primitive_prime_divisor_13_of_C_gt_B
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13.primitive_prime_not_dvd_C_sub_B
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13

@@ -12,11 +12,11 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.19.2)
+# FullProof track (v8.19.3)
 
-Aggregator for Track B.  `C ≥ B+2` gives
-`A⁴ ≥ 26 B¹²`.  `zsigmondy_13` stays
-uninhabited.
+Aggregator for Track B.  `zsigmondy_13`
+is inhabited at `n=13`.  `beal_odd_A_ge3_size_gap`
+has `p ∣ A` and `p ∤ (C−B)`.
 `ExistsNewformLevel2` is still `0 ≠ 0`.
 `beal_from_ribet` stays *from*
 `ModularImpliesLevel2Newform`.  Not imported

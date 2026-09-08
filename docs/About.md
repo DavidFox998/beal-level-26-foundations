@@ -1,15 +1,14 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.19.2-C-ge-B+2`.
-Lean change: `C ≥ B+2` gives
-`C¹³ − B¹³ ≥ 26 B¹²` from the same
-13-term sum times `C−B ≥ 2`, so
-`A⁴ ≥ 26 B¹²`.  The `C = B+2` table
-`B ∈ [1, 100]` kernel-checks that
-bound.  That is **not** Zsigmondy
-and **not** `interval_cases` on
-unbounded `C−B`.  `zsigmondy_13` and
-the general `beal_4_13_13_size` stay
+Latest tag / HEAD: `v8.19.3-zsigmondy-13`.
+Lean change: `zsigmondy_13` is inhabited.
+`C¹³ − B¹³` has a primitive prime
+divisor from the cyclotomic sum `Φ₁₃`
+(Mathlib 4.12 has no Zsigmondy module;
+exceptions `(2,1,6)` and `n=2` fail by
+`decide`).  `beal_odd_A_ge3_size_gap`
+gives `p ∣ A` and `p ∤ (C−B)`.
+The general `beal_4_13_13_size` stays
 uninhabited.
 `genus_X0_2_rat = 0` and `BealAArm`
 from v8.19.0 stay.

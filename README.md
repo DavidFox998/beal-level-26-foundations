@@ -100,6 +100,19 @@ v8.17.0-twaux-26-and-10000 RibetMazur TWAuxEllFixed inhabited at N=26 and N=1000
 v8.18.0-product RibetMazur TWAuxEllFixed inhabited for every N≤10000 on InTWEll1000 by transporting the N=10000 row; not Nat.Prime completeness; not Q1≤N+21000 for small N; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.19.0-ExistsNewformLevel2 RibetMazur genus_X0_2_rat=0 over ℚ; BealAArm splits positive A; odd A≥3 not Mixed for 4,13,13; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop; mixed-pow2→newform and upside-down ∀ stay uninhabited. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.19.1-beal-4-13-13-size RibetMazur C=B+1 bound A^4≥13 B^12 and A≥B^3; B≤100 table not a 4th power by decide; Zsigmondy and general beal_4_13_13_size stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.19.2-C-ge-B+2 RibetMazur C≥B+2 gives A^4≥26 B^12 from the 13-term sum times C−B≥2; B≤100 C=B+2 table by decide; Zsigmondy stays uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.19.3-zsigmondy-13 RibetMazur n=13 primitive prime from Φ₁₃ (exceptions (2,1,6) and n=2 fail by decide); zsigmondy_13 inhabited; beal_odd_A_ge3_size_gap has p∣A p∤(C−B); ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.19.3-zsigmondy-13 — n=13 primitive prime; p∣A and p∤(C−B) (arrow stays a Prop)
+
+Lean change.  `zsigmondy_13` is inhabited by the cyclotomic `Φ₁₃` argument.  Mathlib 4.12 has no Zsigmondy module; exceptions `(2,1,6)` and `n=2` fail by `decide`.  `beal_odd_A_ge3_size_gap` gives `p ∣ A` and `p ∤ (C−B)`.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `has_primitive_prime_divisor_13_of_C_gt_B` / `zsigmondy_13`: inhabited for `B < C`, `0 < B`, coprime `C,B`;
+- `beal_odd_A_ge3_size_gap`: `∃ p, Prime p ∧ p ∣ A ∧ ¬ p ∣ (C−B)`;
+- general `beal_4_13_13_size` stays the uninhabited Prop;
+- `beal_from_ribet` / `beal_from_ribet_ell_mixed`: still *from* `ModularImpliesLevel2Newform`.
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.19.2-C-ge-B+2 — C≥B+2 gives A⁴≥26 B¹² (arrow stays a Prop)
 

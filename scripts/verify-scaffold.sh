@@ -183,6 +183,8 @@ test -f lean/BealLevel26Foundations/Beal_4_13_13_Size_C_ge_B_plus_2.lean
 test -f certs/Beal_4_13_13_Size_C_ge_B_plus_2_Table.lean
 test -f docs/Beal/Beal_4_13_13_Size_C_ge_B_plus_2.md
 test -f docs/Beal/Beal_4_13_13_Size.md
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -808,6 +810,7 @@ do
   grep -q "v8.19.0-ExistsNewformLevel2" "$readme"
   grep -q "v8.19.1-beal-4-13-13-size" "$readme"
   grep -q "v8.19.2-C-ge-B+2" "$readme"
+  grep -q "v8.19.3-zsigmondy-13" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1085,7 +1088,7 @@ if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|Heck
   echo "FAIL: none chain must not import GeometryScheme / HeckeAlgebra / RibetFunctor / X0_26_Model / HeckeAction / LevelLowering / RibetMazur / TWPrimes / TWPrimesPratt / TWPrimesQ2 / TWAuxEllFixed / X0_2_Genus / Beal_4_13_13_Size_Table"
   exit 1
 fi
-if grep -E -q "import BealLevel26Foundations.Beal_4_13_13_Size" \
+if grep -E -q "import BealLevel26Foundations.Beal_4_13_13_(Size|Zsigmondy)" \
     lean/BealLevel26Foundations.lean \
     lean/BealLevel26Foundations/Beal/BealForall.lean \
     lean/BealLevel26Foundations/Chain/BealForallInKernel.lean \
@@ -1093,7 +1096,7 @@ if grep -E -q "import BealLevel26Foundations.Beal_4_13_13_Size" \
     lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean \
     lean/BealLevel26Foundations/GaloisRep/GaloisBealForallClosedReal.lean \
     lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean; then
-  echo "FAIL: none chain must not import size tables"
+  echo "FAIL: none chain must not import size tables or Zsigmondy_13"
   exit 1
 fi
 grep -q "def X0_26_f" \
@@ -1328,6 +1331,16 @@ grep -q "def zsigmondy_13" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "def beal_odd_A_ge3_size_gap" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem zsigmondy_13" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13.lean
+grep -q "theorem has_primitive_prime_divisor_13_of_C_gt_B" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13.lean
+grep -q "theorem zsigmondy_exception_not_2_1_6" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13.lean
+grep -q "theorem beal_odd_A_ge3_size_gap" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13.lean
+grep -q "theorem primitive_prime_not_dvd_C_sub_B" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13.lean
 grep -q "def beal_size_B_le_100_table" \
   certs/Beal_4_13_13_Size_Table.lean
 grep -q "def beal_4_13_13_C_eq_B_plus_1_diff" \

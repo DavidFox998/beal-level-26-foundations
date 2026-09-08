@@ -799,6 +799,25 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.19.3-zsigmondy-13 — DONE (n=13 primitive prime; p∣A and p∤(C−B); arrow stays a Prop)
+
+Lean change.  `zsigmondy_13` is inhabited
+by the cyclotomic `Φ₁₃` argument.
+Exceptions `(2,1,6)` and `n=2` fail by
+`decide`.  Mathlib 4.12 has no Zsigmondy
+module.  `beal_odd_A_ge3_size_gap` gives
+`p ∣ A` and `p ∤ (C−B)`.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** import `X0_26_Model` from
+`RibetMazur`.  Does **not** touch the
+24-module none chain.  No `False.elim`.
+No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.19.2-C-ge-B+2 — DONE (C≥B+2 gives A⁴≥26 B¹²; Zsigmondy uninhabited; arrow stays a Prop)
 
 Lean change.  `C ≥ B+2` gives
