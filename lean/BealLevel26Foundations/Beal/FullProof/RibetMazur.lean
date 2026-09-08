@@ -3,15 +3,19 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.21.0 — plan a `B > 100` bound
-on `k` from `A ≥ 53` and `A⁴ = k · S`.
-`A_ge_53_of_S_prime`,
+Track B v8.21.1 — Modular W lift last lock.
+`frey_curve_conductor` is inhabited
+(`A = 2^r`, `B,C` odd → even radical `2`).
+`modular_W_lift`,
+`ribet_level_lowering_to_2`,
+`X0_2_no_newforms` stay uninhabited
+(`ExistsNewformLevel2` is `0 ≠ 0`).
+v8.21.0 `A_ge_53_of_S_prime`,
 `k_le_A_pow4_div_13_B_pow12`,
-`B_gt_100_imp_k_bounded_by_A`,
-`k_ge_B_imp_A_large`, `k_lt_B_imp_S_between`
-are inhabited.  Closing `B > 100` stays
-uninhabited (`S_not_fourth_power` is a
-Hensel hypothesis; `ExistsNewformLevel2`
+`B_gt_100_imp_k_bounded_by_A` stay.
+Closing `B > 100` stays uninhabited
+(`S_not_fourth_power` is a Hensel
+hypothesis; `ExistsNewformLevel2`
 is `0 ≠ 0`).
 v8.20.1 packages `B ≤ 100` for odd
 `A ≥ 3`.  `C = B+1` by Size_Table,
@@ -208,7 +212,12 @@ What it *does* prove:
 * `BealAArm.of_pos` splits a positive base;
   `beal_odd_A_ge3_not_mixed` for `4,13,13`;
 * `beal_mixed_pow2_implies_level_2_newform` /
-  `beal_from_ribet_upside_down` stay uninhabited.
+  `beal_from_ribet_upside_down` stay uninhabited;
+* `frey_curve_conductor` (`A = 2^r`, `B,C` odd
+  → even radical `2`); `modular_W_lift` /
+  `ribet_level_lowering_to_2` /
+  `X0_2_no_newforms` stay uninhabited
+  (`ExistsNewformLevel2` is `0 ≠ 0`).
 
 Does **not** import `X0_26_Model`.  FullProof-only.
 None chain does not import this file.
@@ -247,6 +256,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_pla
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -3009,6 +3019,39 @@ def beal_4_13_13_B_gt_100_closed_of_S_not_fourth_and_modular :=
 def beal_4_13_13_B_gt_100_slice_uninhabited :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.beal_4_13_13_B_gt_100_slice_uninhabited
 
+/-! ## v8.21.1 — Modular W lift last lock -/
+
+/-- Inhabited.  `A = 2^r` (`r > 0`), `B` and `C`
+odd → even radical `2`. -/
+def frey_curve_conductor :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.frey_curve_conductor
+
+/-- Displayed conductor slot after uninhabited
+Ribet lowering. -/
+def frey_curve_conductor_N :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.frey_curve_conductor_N
+
+/-- Uninhabited.  Wiles/BCDT lift ending at
+`ExistsNewformLevel2` (`0 ≠ 0`). -/
+def modular_W_lift :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.modular_W_lift
+
+/-- Uninhabited.  Ribet lowering to displayed
+`N = 2` still ends at `ExistsNewformLevel2`. -/
+def ribet_level_lowering_to_2_step13 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.ribet_level_lowering_to_2
+
+/-- Uninhabited last lock: Mathlib vanishing
+is still `ExistsNewformLevel2` (`0 ≠ 0`). -/
+def X0_2_no_newforms :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.X0_2_no_newforms
+
+/-- Uninhabited.  Closing every Beal `4/13/13`
+needs Modular W plus RibetMazur plus
+`S_not_fourth_power`. -/
+def beal_4_13_13_final_closed :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.beal_4_13_13_final_closed
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -3301,6 +3344,19 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.beal_4_13_13_B_gt_100_closed_of_S_not_fourth_and_modular
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.beal_4_13_13_B_gt_100_slice_uninhabited
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.frey_curve_conductor
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.A_ge_53_of_S_prime
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.k_le_A_pow4_div_13_B_pow12
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.B_gt_100_imp_k_bounded_by_A
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.genus_X0_2_rat_eq_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.beal_mixed_pow2_implies_level_2_newform
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.modular_W_lift
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.ribet_level_lowering_to_2
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.X0_2_no_newforms
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.beal_4_13_13_final_closed
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.beal_from_ribet_upside_down
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.beal_4_13_13_size
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -3492,5 +3548,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.k_lt_B_imp_S_between
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.genus_X0_2_rat_eq_zero
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.frey_curve_conductor
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.A_ge_53_of_S_prime
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.k_le_A_pow4_div_13_B_pow12
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.B_gt_100_imp_k_bounded_by_A
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.genus_X0_2_rat_eq_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

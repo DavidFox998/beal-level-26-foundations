@@ -1,3 +1,66 @@
+# FINAL v8.21.1 — Modular W lift last lock (arrow stays a Prop)
+
+Latest tag `v8.21.1-Modular-W-lift-last-lock`.
+Lean change.
+Step13 inhabits `frey_curve_conductor`
+(`A = 2^r`, `B,C` odd → even radical `2`).
+`modular_W_lift`,
+`ribet_level_lowering_to_2`,
+`X0_2_no_newforms` stay uninhabited
+(`ExistsNewformLevel2` is `0 ≠ 0`).
+`beal_mixed_pow2_implies_level_2_newform`,
+`beal_4_13_13_final_closed`,
+`beal_from_ribet_upside_down`,
+`beal_4_13_13_size` stay uninhabited.
+v8.21.0 `A_ge_53_of_S_prime`,
+`k_le_A_pow4_div_13_B_pow12`,
+`B_gt_100_imp_k_bounded_by_A`,
+`k_ge_B_imp_A_large` (`k ≥ B` → `A ≥ 9 B³`),
+`k_lt_B_imp_S_between` stay.
+Closing `B > 100` stays uninhabited
+(`S_not_fourth_power` is a Hensel
+hypothesis; `ExistsNewformLevel2` is
+`0 ≠ 0`).
+v8.20.1 packages `B ≤ 100` for odd `A ≥ 3`.
+`C = B+1` is the Size_Table.
+`C = B+2` is Size_C_ge_B_plus_2.
+`C ≥ B+3` is `k_almost_fourth_power`
+plus `S_not_fourth_power`.
+A primitive Zsigmondy prime divides `S`.
+The `(ℤ/p²)ˣ` order-13 dichotomy is
+`v_p_S_eq_one` (`order ≠ 13 → ¬ p² ∣ S`).
+Unconditional `¬ p² ∣ S` is false
+(Hensel lifts exist).
+v8.20.0 `gcd(k,S) ∣ 13` /
+`k` is `u⁴` or `13 u⁴` or `13³ u⁴` stay.
+v8.19.9 residue `k % 4 = 1` /
+`k % 8 = 1` stay.
+v8.19.8 `k` odd / coprime /
+`A⁴ ≡ k¹³` stay.
+v8.19.7 `A⁴ ≥ 13 k B¹²` / `39 B¹²`
+and `A ≥ 2 B³ + 1` stay.
+v8.19.6 `B ≤ 100` with `C = B+1` and
+`C = B+2` stays closed.
+`zsigmondy_13` stays inhabited.
+The general `beal_4_13_13_size` stays
+uninhabited.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` stays *from*
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
+(`v8.19.9-fourth-power-residue` houseclean archive).
+Track A none-chain mint stays
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221).
+This mint does **not** claim unconditional Beal `∀`.
+Three JPEG plates stay in `docs/assets/v6.7.0/`.
+Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+
 # FINAL v8.21.0 — B>100 bounded k via A≥53 (close stays uninhabited)
 
 Latest tag `v8.21.0-B-gt-100-bounded-k`.

@@ -5,11 +5,11 @@ type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v8.21.0-B-gt-100-bounded-k"
+version: "v8.21.1-Modular-W-lift-last-lock"
 date-released: "2026-09-08"
 doi: "10.5281/zenodo.22272382"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
-url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.21.0-B-gt-100-bounded-k"
+url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.21.1-Modular-W-lift-last-lock"
 license: MIT
 keywords:
   - beal-conjecture

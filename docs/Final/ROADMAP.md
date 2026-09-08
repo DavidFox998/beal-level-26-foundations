@@ -799,6 +799,27 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.21.1-Modular-W-lift-last-lock — DONE (frey even radical N=2 inhabited; Modular W / Ribet / X0_2_no_newforms stay uninhabited; arrow stays a Prop)
+
+Lean change.  Step13 file
+`Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.lean`
+inhabits `frey_curve_conductor`
+(`A = 2^r`, `B,C` odd → even radical `2`).
+`beal_mixed_pow2_implies_level_2_newform`,
+`modular_W_lift`,
+`ribet_level_lowering_to_2`,
+`X0_2_no_newforms`,
+`beal_4_13_13_final_closed`,
+`beal_from_ribet_upside_down`,
+`beal_4_13_13_size` stay uninhabited
+(Hensel lifts exist; `ExistsNewformLevel2`
+is `0 ≠ 0`).
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.21.0-B-gt-100-bounded-k — DONE (B>100 k bound from A≥53; close stays uninhabited; arrow stays a Prop)
 
 Lean change.  Step12 file
