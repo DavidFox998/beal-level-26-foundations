@@ -1,14 +1,24 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.20.1-B-le-100-closed`
-Lean change: package `B ≤ 100` for odd `A ≥ 3`.
+Latest tag / HEAD: `v8.21.0-B-gt-100-bounded-k`
+Lean change: plan a `B > 100` bound on `k`
+from `A ≥ 53` and `A⁴ = k · S`.
+`A_ge_53_of_S_prime`,
+`k_le_A_pow4_div_13_B_pow12`,
+`B_gt_100_imp_k_bounded_by_A`,
+`k_ge_B_imp_A_large`, `k_lt_B_imp_S_between`
+are inhabited.  Closing `B > 100` stays
+uninhabited (`S_not_fourth_power` is a
+Hensel hypothesis; `ExistsNewformLevel2`
+is `0 ≠ 0`).
+v8.20.1 packages `B ≤ 100` for odd `A ≥ 3`.
 `C = B+1` Size_Table, `C = B+2`
 Size_C_ge_B_plus_2, `C ≥ B+3` from
 `k_almost_fourth_power` plus
 `S_not_fourth_power`.
 `primitive_prime_dvd_S` and the
 `(ℤ/p²)ˣ` order-13 dichotomy
-`v_p_S_eq_one` are inhabited.
+`v_p_S_eq_one` stay inhabited.
 Unconditional `¬ p² ∣ S` is false
 (Hensel lifts exist).
 v8.20.0 `gcd(k,S) ∣ 13` /

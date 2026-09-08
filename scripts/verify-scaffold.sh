@@ -203,6 +203,8 @@ test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_upper_bound
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.md
 test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.md
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -839,6 +841,7 @@ do
   grep -q "v8.20.0-k-upper-bound-plan" "$readme"
   grep -q "v8.20.0-upper-bound-k" "$readme"
   grep -q "v8.20.1-B-le-100-closed" "$readme"
+  grep -q "v8.21.0-B-gt-100-bounded-k" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1529,6 +1532,26 @@ grep -q "theorem S_almost_fourth_power" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.lean
 grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.lean
+grep -q "theorem A_ge_53_of_S_prime" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.lean
+grep -q "theorem k_le_A_pow4_div_13_B_pow12" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.lean
+grep -q "theorem B_gt_100_imp_k_bounded_by_A" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.lean
+grep -q "theorem k_ge_B_imp_A_large" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.lean
+grep -q "theorem k_lt_B_imp_S_between" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.lean
+grep -q "def beal_4_13_13_B_gt_100_closed_of_S_not_fourth_and_modular" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.lean
+grep -q "def beal_4_13_13_B_gt_100_slice_uninhabited" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.lean
+grep -q "def beal_from_ribet_upside_down" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.lean
+grep -q "def beal_4_13_13_size" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.lean
+grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.lean
 grep -q "theorem beal_4_13_13_k_odd" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
 grep -q "theorem S_13_ge_13_mul_B_pow12" \

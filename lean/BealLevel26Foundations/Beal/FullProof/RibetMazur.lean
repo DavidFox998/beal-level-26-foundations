@@ -3,7 +3,17 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.20.1 — package `B ≤ 100` for odd
+Track B v8.21.0 — plan a `B > 100` bound
+on `k` from `A ≥ 53` and `A⁴ = k · S`.
+`A_ge_53_of_S_prime`,
+`k_le_A_pow4_div_13_B_pow12`,
+`B_gt_100_imp_k_bounded_by_A`,
+`k_ge_B_imp_A_large`, `k_lt_B_imp_S_between`
+are inhabited.  Closing `B > 100` stays
+uninhabited (`S_not_fourth_power` is a
+Hensel hypothesis; `ExistsNewformLevel2`
+is `0 ≠ 0`).
+v8.20.1 packages `B ≤ 100` for odd
 `A ≥ 3`.  `C = B+1` by Size_Table,
 `C = B+2` by Size_C_ge_B_plus_2,
 `C ≥ B+3` from v8.20.0
@@ -11,7 +21,7 @@ Track B v8.20.1 — package `B ≤ 100` for odd
 `S_not_fourth_power`.
 `primitive_prime_dvd_S` and the
 `(ℤ/p²)ˣ` order-13 dichotomy
-`v_p_S_eq_one` are inhabited.
+`v_p_S_eq_one` stay inhabited.
 v8.20.0 `gcd(k,S) ∣ 13` /
 `k_almost_fourth_power` stay.
 v8.19.9 residue `k % 4 = 1` /
@@ -236,6 +246,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -2966,6 +2977,38 @@ def beal_4_13_13_B_le_100_closed :=
 def S_almost_fourth_power :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.S_almost_fourth_power
 
+/-! ## v8.21.0 — `B > 100` bounded-`k` plan -/
+
+/-- Inhabited.  `p ≥ 53` and `p ∣ A` give `A ≥ 53`. -/
+def A_ge_53_of_S_prime :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.A_ge_53_of_S_prime
+
+/-- Inhabited.  `A⁴ = k · S` and `S ≥ 13 B¹²`. -/
+def k_le_A_pow4_div_13_B_pow12 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.k_le_A_pow4_div_13_B_pow12
+
+/-- Inhabited.  `B > 100` freezes the slot at `100¹²`. -/
+def B_gt_100_imp_k_bounded_by_A :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.B_gt_100_imp_k_bounded_by_A
+
+/-- Inhabited.  `k ≥ B` and `C ≥ 2 B` give `A ≥ 9 B³`. -/
+def k_ge_B_imp_A_large :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.k_ge_B_imp_A_large
+
+/-- Inhabited.  `k < B` sandwich `13 B¹² ≤ S ≤ 13 C¹²`. -/
+def k_lt_B_imp_S_between :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.k_lt_B_imp_S_between
+
+/-- Uninhabited.  Needs `S_not_fourth_power` (Hensel)
+and `Modular W → ExistsNewformLevel2` (`0 ≠ 0`). -/
+def beal_4_13_13_B_gt_100_closed_of_S_not_fourth_and_modular :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.beal_4_13_13_B_gt_100_closed_of_S_not_fourth_and_modular
+
+/-- Uninhabited.  Primitive `p ≡ 1 [MOD 13]` with
+`¬ p² ∣ S` is a hypothesis. -/
+def beal_4_13_13_B_gt_100_slice_uninhabited :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.beal_4_13_13_B_gt_100_slice_uninhabited
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -3250,6 +3293,14 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.beal_4_13_13_B_le_100_closed
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.S_almost_fourth_power
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.A_ge_53_of_S_prime
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.k_le_A_pow4_div_13_B_pow12
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.B_gt_100_imp_k_bounded_by_A
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.k_ge_B_imp_A_large
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.k_lt_B_imp_S_between
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.beal_4_13_13_B_gt_100_closed_of_S_not_fourth_and_modular
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.beal_4_13_13_B_gt_100_slice_uninhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -3434,5 +3485,12 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.beal_4_13_13_B_le_100_closed
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.genus_X0_2_rat_eq_zero
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.A_ge_53_of_S_prime
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.k_le_A_pow4_div_13_B_pow12
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.B_gt_100_imp_k_bounded_by_A
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.k_ge_B_imp_A_large
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.k_lt_B_imp_S_between
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.genus_X0_2_rat_eq_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

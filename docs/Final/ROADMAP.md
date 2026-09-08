@@ -799,6 +799,27 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.21.0-B-gt-100-bounded-k — DONE (B>100 k bound from A≥53; close stays uninhabited; arrow stays a Prop)
+
+Lean change.  Step12 file
+`Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.lean`
+inhabits `A_ge_53_of_S_prime`,
+`k_le_A_pow4_div_13_B_pow12`,
+`B_gt_100_imp_k_bounded_by_A`,
+`k_ge_B_imp_A_large`,
+`k_lt_B_imp_S_between`.
+`beal_4_13_13_B_gt_100_closed_of_S_not_fourth_and_modular`
+and `beal_4_13_13_B_gt_100_slice_uninhabited`
+stay uninhabited (Hensel lifts exist;
+`ExistsNewformLevel2` is `0 ≠ 0`).
+`beal_from_ribet_upside_down` and
+`beal_4_13_13_size` stay uninhabited.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.20.1-B-le-100-closed — DONE (package B≤100; C=B+1 Size_Table, C=B+2 Size_C_ge_B_plus_2, C≥B+3 from k_almost + S_not_fourth; arrow stays a Prop)
 
 Lean change.  Step11 file

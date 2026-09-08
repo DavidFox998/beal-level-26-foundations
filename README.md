@@ -1,8 +1,8 @@
 [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.20.1-B-le-100-closed
+# Beal Level 26 Foundations — v8.21.0-B-gt-100-bounded-k
 
-**v8.20.1-B-le-100-closed — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.21.0-B-gt-100-bounded-k — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 GitHub will not render a README much over ~100KB, so the old wall
 stayed cached at v4.28.0.  This file is the short wall.  The full
@@ -13,7 +13,7 @@ and [`certs/README.md`](certs/README.md).
 - Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
   About Website stays [10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221).
 - Houseclean mint [10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
-  (`v8.19.9-fourth-power-residue` / `v8.20.1-B-le-100-closed`) under hook `22379293`.
+  (`v8.19.9-fourth-power-residue` / `v8.21.0-B-gt-100-bounded-k`) under hook `22379293`.
   Concept DOI [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).
 - Track B odd-A ladder (4,13,13): v8.19.6 `B ≤ 100` with `C = B+1` and
   `C = B+2` closed by `decide`; v8.19.7 `A⁴ ≥ 13 k B¹²`, `A⁴ ≥ 39 B¹²`,
@@ -24,8 +24,11 @@ and [`certs/README.md`](certs/README.md).
   v8.20.1 `primitive_prime_dvd_S`, `(ℤ/p²)ˣ` order-13 `v_p_S_eq_one`,
   `S_not_fourth_power`; `B ≤ 100` splits `C = B+1` Size_Table,
   `C = B+2` Size_C_ge_B_plus_2, `C ≥ B+3` from `k_almost_fourth_power`
-  plus `S_not_fourth_power`.
-- Uninhabited: `B > 100`, `ExistsNewformLevel2` is `0 ≠ 0`, `beal_from_ribet` still needs
+  plus `S_not_fourth_power`;
+  v8.21.0 `A_ge_53_of_S_prime`, `k ≤ A⁴/(13 B¹²)`, `B>100` freezes
+  `k ≤ A⁴/(13·100¹²)`, `k≥B` gives `A≥9 B³`, `k<B` sandwiches `S`.
+- Uninhabited: `B > 100` close (`S_not_fourth_power` is a Hensel
+  hypothesis; `ExistsNewformLevel2` is `0 ≠ 0`), `beal_from_ribet` still needs
   `ModularImpliesLevel2Newform`, `beal_mixed_pow2_implies_level_2_newform`.
   Unconditional `¬ p² ∣ S` is false (Hensel lifts).
 - Build: `lake build BealLevel26Foundations` and
@@ -50,9 +53,8 @@ PARI 2-Descent Certificates image
 Still not `∀ ℕ`. No `False.elim`. no `False.elim`.
 `BealExponent13_Iter_Package` `d3cf8a7` `1d0044e`.
 
-HEAD also has Track B `v8.20.1-B-le-100-closed`
-(`B ≤ 100` packaged: `C = B+1` / `C = B+2` tables,
-`C ≥ B+3` from `k_almost_fourth_power` + `S_not_fourth_power`);
+HEAD also has Track B `v8.21.0-B-gt-100-bounded-k`
+(`B > 100` `k` bound from `A ≥ 53`; close stays uninhabited);
 that does **not** change the Track A lock or the About Website.
 
 ---
@@ -171,3 +173,4 @@ v8.19.9-fourth-power-residue houseclean Track B residue names fourth_pow_mod_4/8
 v8.20.0-k-upper-bound-plan RibetMazur gcd(k,S)|13 so k is u^4 or 13 u^4 or 13^3 u^4; B≤100 k≥3 S=v^4 stays uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.20.0-upper-bound-k RibetMazur Step10_upper_bound_k gcd(k,S)|13 k almost fourth power; B≤100 C≥B+3 of S not fourth stays uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.20.1-B-le-100-closed RibetMazur Step11 primitive_prime_dvd_S (Z/p²)× order-13 v_p_S_eq_one S_not_fourth_power; B≤100 splits C=B+1 Size_Table C=B+2 Size_C_ge_B_plus_2 C≥B+3 from k_almost_fourth_power + S_not_fourth_power; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.21.0-B-gt-100-bounded-k RibetMazur Step12 A_ge_53_of_S_prime k_le_A_pow4_div_13_B_pow12 B_gt_100_imp_k_bounded_by_A k_ge_B_imp_A_large k_lt_B_imp_S_between; B>100 closed of S_not_fourth+modular stays uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.

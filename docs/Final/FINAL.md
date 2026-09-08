@@ -1,8 +1,20 @@
-# FINAL v8.20.1 — package B≤100 (C=B+1, C=B+2 tables; C≥B+3 from k_almost + S_not_fourth)
+# FINAL v8.21.0 — B>100 bounded k via A≥53 (close stays uninhabited)
 
-Latest tag `v8.20.1-B-le-100-closed`.
+Latest tag `v8.21.0-B-gt-100-bounded-k`.
 Lean change.
-Packages `B ≤ 100` for odd `A ≥ 3`.
+Plans a `B > 100` bound on `k = C − B`
+from `A ≥ 53` and `A⁴ = k · S`,
+`S ≥ 13 B¹²`.
+`A_ge_53_of_S_prime`,
+`k_le_A_pow4_div_13_B_pow12`,
+`B_gt_100_imp_k_bounded_by_A`,
+`k_ge_B_imp_A_large` (`k ≥ B` → `A ≥ 9 B³`),
+`k_lt_B_imp_S_between` are inhabited.
+Closing `B > 100` stays uninhabited
+(`S_not_fourth_power` is a Hensel
+hypothesis; `ExistsNewformLevel2` is
+`0 ≠ 0`).
+v8.20.1 packages `B ≤ 100` for odd `A ≥ 3`.
 `C = B+1` is the Size_Table.
 `C = B+2` is Size_C_ge_B_plus_2.
 `C ≥ B+3` is `k_almost_fourth_power`

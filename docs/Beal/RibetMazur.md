@@ -1,9 +1,18 @@
-# v8.20.1 RibetMazur package B≤100
+# v8.21.0 RibetMazur B>100 bounded-k plan
 
-`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.lean`
+`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.lean`
 and `RibetMazur.lean`
 
-Packages `B ≤ 100` for odd `A ≥ 3`.
+Plans a `B > 100` bound on `k` from
+`A ≥ 53` and `A⁴ = k · S`.
+`A_ge_53_of_S_prime`,
+`k_le_A_pow4_div_13_B_pow12`,
+`B_gt_100_imp_k_bounded_by_A`,
+`k_ge_B_imp_A_large`, `k_lt_B_imp_S_between`
+are inhabited.  Closing `B > 100` stays
+uninhabited (Hensel; `0 ≠ 0`).
+
+v8.20.1 packages `B ≤ 100` for odd `A ≥ 3`.
 `C = B+1` Size_Table, `C = B+2`
 Size_C_ge_B_plus_2, `C ≥ B+3` from
 `k_almost_fourth_power` plus
@@ -30,15 +39,16 @@ Does **not** import `X0_26_Model`.
 
 | Name | Status |
 |---|---|
-| `primitive_prime_dvd_S` | inhabited |
-| `v_p_S_eq_one` | inhabited (`order ≠ 13 → ¬ p² ∣ S`) |
-| `S_not_fourth_power` | inhabited |
-| `B_le_100_k_ge_3_no_S_fourth_pow` | inhabited (Step11) |
-| `beal_4_13_13_B_le_100_C_ge_B_plus_3_closed` | inhabited |
-| `beal_4_13_13_B_le_100_closed` | inhabited (split) |
+| `A_ge_53_of_S_prime` | inhabited |
+| `k_le_A_pow4_div_13_B_pow12` | inhabited |
+| `B_gt_100_imp_k_bounded_by_A` | inhabited |
+| `k_ge_B_imp_A_large` | inhabited |
+| `k_lt_B_imp_S_between` | inhabited |
+| `beal_4_13_13_B_gt_100_closed_of_S_not_fourth_and_modular` | uninhabited |
+| `beal_4_13_13_B_gt_100_slice_uninhabited` | uninhabited |
+| `beal_4_13_13_B_le_100_closed` | stays inhabited (v8.20.1) |
 | `S_13_mod_k` / `gcd_k_S_dvd_13` | stays inhabited (v8.20.0) |
 | `k_almost_fourth_power` | stays inhabited (v8.20.0) |
-| `fourth_pow_mod_16` | stays inhabited |
 | `beal_mixed_pow2_implies_level_2_newform` | uninhabited |
 | `beal_from_ribet_upside_down` | uninhabited |
 | `ExistsNewformLevel2` | `0 ≠ 0` lock |
