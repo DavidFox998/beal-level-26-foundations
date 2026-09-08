@@ -1,3 +1,37 @@
+# FINAL v8.22.0 — X₀(26) RibetMazur plan for even not-pow2 A (arrow stays a Prop)
+
+Latest tag `v8.22.0-X0-26-RibetMazur-plan`.
+Lean change.
+Step14 inhabits
+`even_not_pow2_has_odd_prime`,
+`frey_conductor_even_A`
+(`rad A = 2 · rad(oddPart A)`),
+`minimal_level_26_of_13_dvd_A`,
+`level_at_least_6_of_even_not_pow2`.
+`ribet_level_lowering_to_Nprime`,
+`X0_26_no_matching_newform`,
+`conductor_26_elliptic_curves_list`,
+`beal_even_not_pow2_implies_level_26_newform`,
+`beal_even_not_pow2_13dvdA_False`,
+`beal_even_not_pow2_general_False`,
+`beal_even_A_closed`,
+`beal_4_13_13_X0_26_RibetMazur_plan`
+stay uninhabited.
+v8.21.1 `frey_curve_conductor` stays.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` stays *from*
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
+(`v8.19.9-fourth-power-residue` houseclean archive).
+Track A none-chain mint stays
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221).
+This mint does **not** claim unconditional Beal `∀`.
+
 # FINAL v8.21.1 — Modular W lift last lock (arrow stays a Prop)
 
 Latest tag `v8.21.1-Modular-W-lift-last-lock`.

@@ -3,13 +3,18 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.21.1 — Modular W lift last lock.
-`frey_curve_conductor` is inhabited
-(`A = 2^r`, `B,C` odd → even radical `2`).
-`modular_W_lift`,
-`ribet_level_lowering_to_2`,
-`X0_2_no_newforms` stay uninhabited
-(`ExistsNewformLevel2` is `0 ≠ 0`).
+Track B v8.22.0 — X₀(26) / RibetMazur plan
+for even not-pow2 `A`.
+`even_not_pow2_has_odd_prime`,
+`frey_conductor_even_A`,
+`minimal_level_26_of_13_dvd_A`,
+`level_at_least_6_of_even_not_pow2`
+are inhabited.
+`ribet_level_lowering_to_Nprime`,
+`X0_26_no_matching_newform` stay
+uninhabited (`ExistsNewformLevel2`
+is `0 ≠ 0`).
+v8.21.1 `frey_curve_conductor` stays.
 v8.21.0 `A_ge_53_of_S_prime`,
 `k_le_A_pow4_div_13_B_pow12`,
 `B_gt_100_imp_k_bounded_by_A` stay.
@@ -217,7 +222,16 @@ What it *does* prove:
   → even radical `2`); `modular_W_lift` /
   `ribet_level_lowering_to_2` /
   `X0_2_no_newforms` stay uninhabited
-  (`ExistsNewformLevel2` is `0 ≠ 0`).
+  (`ExistsNewformLevel2` is `0 ≠ 0`);
+* `even_not_pow2_has_odd_prime` /
+  `frey_conductor_even_A` /
+  `minimal_level_26_of_13_dvd_A` /
+  `level_at_least_6_of_even_not_pow2`
+  inhabit the even-not-pow2 radical
+  `N' = 2 · rad(oddPart A)`;
+  `ribet_level_lowering_to_Nprime` /
+  `X0_26_no_matching_newform` stay
+  uninhabited.
 
 Does **not** import `X0_26_Model`.  FullProof-only.
 None chain does not import this file.
@@ -257,6 +271,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -3052,6 +3067,56 @@ needs Modular W plus RibetMazur plus
 def beal_4_13_13_final_closed :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.beal_4_13_13_final_closed
 
+/-! ## v8.22.0 — X₀(26) / RibetMazur even-not-pow2 plan -/
+
+/-- Inhabited.  Even not-pow2 `A` has an odd prime. -/
+def even_not_pow2_has_odd_prime :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.even_not_pow2_has_odd_prime
+
+/-- Inhabited.  `rad A = 2 · rad(oddPart A)`. -/
+def frey_conductor_even_A :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.frey_conductor_even_A
+
+/-- Inhabited.  `13 ∣ A` even → `26 ∣ N'`. -/
+def minimal_level_26_of_13_dvd_A :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.minimal_level_26_of_13_dvd_A
+
+/-- Inhabited.  Displayed `N' ≥ 6`. -/
+def level_at_least_6_of_even_not_pow2 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.level_at_least_6_of_even_not_pow2
+
+/-- Uninhabited.  Ribet lowering to `N'`. -/
+def ribet_level_lowering_to_Nprime :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.ribet_level_lowering_to_Nprime
+
+/-- Uninhabited.  No matching newform at level 26. -/
+def X0_26_no_matching_newform :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.X0_26_no_matching_newform
+
+/-- Uninhabited.  Cremona `26a1`/`26b1` matching. -/
+def conductor_26_elliptic_curves_list :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.conductor_26_elliptic_curves_list
+
+/-- Uninhabited.  Even-not-pow2 with `13 ∣ A`. -/
+def beal_even_not_pow2_implies_level_26_newform :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.beal_even_not_pow2_implies_level_26_newform
+
+/-- Uninhabited.  `13 ∣ A` matching lock. -/
+def beal_even_not_pow2_13dvdA_False :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.beal_even_not_pow2_13dvdA_False
+
+/-- Uninhabited.  General `N' = 2 q`. -/
+def beal_even_not_pow2_general_False :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.beal_even_not_pow2_general_False
+
+/-- Uninhabited.  Closing even `A`. -/
+def beal_even_A_closed :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.beal_even_A_closed
+
+/-- Uninhabited public API. -/
+def beal_4_13_13_X0_26_RibetMazur_plan :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.beal_4_13_13_X0_26_RibetMazur_plan
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -3357,6 +3422,19 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.beal_from_ribet_upside_down
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.beal_4_13_13_size
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.even_not_pow2_has_odd_prime
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.frey_conductor_even_A
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.minimal_level_26_of_13_dvd_A
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.level_at_least_6_of_even_not_pow2
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.ribet_level_lowering_to_Nprime
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.X0_26_no_matching_newform
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.conductor_26_elliptic_curves_list
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.beal_even_not_pow2_implies_level_26_newform
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.beal_even_not_pow2_13dvdA_False
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.beal_even_not_pow2_general_False
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.beal_even_A_closed
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.beal_4_13_13_X0_26_RibetMazur_plan
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -3554,5 +3632,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.B_gt_100_imp_k_bounded_by_A
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.genus_X0_2_rat_eq_zero
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.even_not_pow2_has_odd_prime
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.frey_conductor_even_A
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.minimal_level_26_of_13_dvd_A
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.level_at_least_6_of_even_not_pow2
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

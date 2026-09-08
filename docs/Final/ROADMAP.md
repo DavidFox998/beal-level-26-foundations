@@ -799,6 +799,25 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.22.0-X0-26-RibetMazur-plan — DONE (even-not-pow2 radical N' inhabited; Ribet / X0(26) matching stay uninhabited; arrow stays a Prop)
+
+Lean change.  Step14 file
+`Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.lean`
+inhabits `even_not_pow2_has_odd_prime`,
+`frey_conductor_even_A`,
+`minimal_level_26_of_13_dvd_A`,
+`level_at_least_6_of_even_not_pow2`.
+`ribet_level_lowering_to_Nprime`,
+`X0_26_no_matching_newform`,
+`beal_even_A_closed`,
+`beal_4_13_13_X0_26_RibetMazur_plan`
+stay uninhabited.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.21.1-Modular-W-lift-last-lock — DONE (frey even radical N=2 inhabited; Modular W / Ribet / X0_2_no_newforms stay uninhabited; arrow stays a Prop)
 
 Lean change.  Step13 file

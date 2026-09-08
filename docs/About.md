@@ -1,13 +1,16 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.21.1-Modular-W-lift-last-lock`
-Lean change: Step13 inhabits
-`frey_curve_conductor` (`A = 2^r`,
-`B,C` odd → even radical `2`).
-`modular_W_lift`,
-`ribet_level_lowering_to_2`,
-`X0_2_no_newforms` stay uninhabited
-(`ExistsNewformLevel2` is `0 ≠ 0`).
+Latest tag / HEAD: `v8.22.0-X0-26-RibetMazur-plan`
+Lean change: Step14 inhabits
+`even_not_pow2_has_odd_prime`,
+`frey_conductor_even_A`,
+`minimal_level_26_of_13_dvd_A`,
+`level_at_least_6_of_even_not_pow2`.
+`ribet_level_lowering_to_Nprime`,
+`X0_26_no_matching_newform` stay
+uninhabited (`ExistsNewformLevel2`
+is `0 ≠ 0`).
+v8.21.1 `frey_curve_conductor` stays.
 v8.21.0 `A_ge_53_of_S_prime`,
 `k_le_A_pow4_div_13_B_pow12`,
 `B_gt_100_imp_k_bounded_by_A` stay.

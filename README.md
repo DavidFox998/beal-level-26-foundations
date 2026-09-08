@@ -1,8 +1,8 @@
 [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.21.1-Modular-W-lift-last-lock
+# Beal Level 26 Foundations — v8.22.0-X0-26-RibetMazur-plan
 
-**v8.21.1-Modular-W-lift-last-lock — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.22.0-X0-26-RibetMazur-plan — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 GitHub will not render a README much over ~100KB, so the old wall
 stayed cached at v4.28.0.  This file is the short wall.  The full
@@ -13,7 +13,7 @@ and [`certs/README.md`](certs/README.md).
 - Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
   About Website stays [10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221).
 - Houseclean mint [10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
-  (`v8.19.9-fourth-power-residue` / `v8.21.1-Modular-W-lift-last-lock`) under hook `22379293`.
+  (`v8.19.9-fourth-power-residue` / `v8.22.0-X0-26-RibetMazur-plan`) under hook `22379293`.
   Concept DOI [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).
 - Track B odd-A ladder (4,13,13): v8.19.6 `B ≤ 100` with `C = B+1` and
   `C = B+2` closed by `decide`; v8.19.7 `A⁴ ≥ 13 k B¹²`, `A⁴ ≥ 39 B¹²`,
@@ -27,12 +27,19 @@ and [`certs/README.md`](certs/README.md).
   plus `S_not_fourth_power`;
   v8.21.0 `A_ge_53_of_S_prime`, `k ≤ A⁴/(13 B¹²)`, `B>100` freezes
   `k ≤ A⁴/(13·100¹²)`, `k≥B` gives `A≥9 B³`, `k<B` sandwiches `S`;
-  v8.21.1 `frey_curve_conductor` (`A=2^r`, `B,C` odd → even radical `2`).
-- Inhabited: `frey_curve_conductor`; v8.21.0 `A_ge_53_of_S_prime`,
+  v8.21.1 `frey_curve_conductor` (`A=2^r`, `B,C` odd → even radical `2`);
+  v8.22.0 even not-pow2 radical `N' = 2 · rad(oddPart A)`, and
+  `13 ∣ A` even → `26 ∣ N'`.
+- Inhabited: `even_not_pow2_has_odd_prime`, `frey_conductor_even_A`,
+  `minimal_level_26_of_13_dvd_A`, `level_at_least_6_of_even_not_pow2`;
+  `frey_curve_conductor`; v8.21.0 `A_ge_53_of_S_prime`,
   `k_le_A_pow4_div_13_B_pow12`, `B_gt_100_imp_k_bounded_by_A`;
   `genus_X0_2_rat=0`; `S_13_mod_k`, `gcd(k,S)|13`, `k_almost_fourth_power`;
   `B_le_100_closed`.
-- Uninhabited: `beal_mixed_pow2_implies_level_2_newform` →
+- Uninhabited: `ribet_level_lowering_to_Nprime`,
+  `X0_26_no_matching_newform`, `beal_even_A_closed`,
+  `beal_4_13_13_X0_26_RibetMazur_plan`;
+  `beal_mixed_pow2_implies_level_2_newform` →
   `ExistsNewformLevel2`; `modular_W_lift`, `ribet_level_lowering_to_2`,
   `X0_2_no_newforms` (still `0 ≠ 0`); `beal_4_13_13_final_closed`,
   `beal_from_ribet_upside_down`, `beal_4_13_13_size`.
@@ -59,8 +66,8 @@ PARI 2-Descent Certificates image
 Still not `∀ ℕ`. No `False.elim`. no `False.elim`.
 `BealExponent13_Iter_Package` `d3cf8a7` `1d0044e`.
 
-HEAD also has Track B `v8.21.1-Modular-W-lift-last-lock`
-(Frey even radical `N=2` inhabited; Modular W last lock stays uninhabited);
+HEAD also has Track B `v8.22.0-X0-26-RibetMazur-plan`
+(even-not-pow2 radical `N'` inhabited; Ribet / X₀(26) matching stay uninhabited);
 that does **not** change the Track A lock or the About Website.
 
 ---
@@ -181,3 +188,4 @@ v8.20.0-upper-bound-k RibetMazur Step10_upper_bound_k gcd(k,S)|13 k almost fourt
 v8.20.1-B-le-100-closed RibetMazur Step11 primitive_prime_dvd_S (Z/p²)× order-13 v_p_S_eq_one S_not_fourth_power; B≤100 splits C=B+1 Size_Table C=B+2 Size_C_ge_B_plus_2 C≥B+3 from k_almost_fourth_power + S_not_fourth_power; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.21.0-B-gt-100-bounded-k RibetMazur Step12 A_ge_53_of_S_prime k_le_A_pow4_div_13_B_pow12 B_gt_100_imp_k_bounded_by_A k_ge_B_imp_A_large k_lt_B_imp_S_between; B>100 closed of S_not_fourth+modular stays uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.21.1-Modular-W-lift-last-lock RibetMazur Step13 frey_curve_conductor A=2^r B,C odd rad=2; modular_W_lift ribet_level_lowering_to_2 X0_2_no_newforms stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.22.0-X0-26-RibetMazur-plan RibetMazur Step14 even_not_pow2_has_odd_prime frey_conductor_even_A minimal_level_26_of_13_dvd_A level_at_least_6_of_even_not_pow2; ribet_level_lowering_to_Nprime X0_26_no_matching_newform stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.

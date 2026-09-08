@@ -207,6 +207,8 @@ test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bo
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step12_B_gt_100_bounded_k_plan.md
 test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.md
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -845,6 +847,7 @@ do
   grep -q "v8.20.1-B-le-100-closed" "$readme"
   grep -q "v8.21.0-B-gt-100-bounded-k" "$readme"
   grep -q "v8.21.1-Modular-W-lift-last-lock" "$readme"
+  grep -q "v8.22.0-X0-26-RibetMazur-plan" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1581,6 +1584,32 @@ grep -q "def beal_4_13_13_size" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.lean
 grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.lean
+grep -q "theorem even_not_pow2_has_odd_prime" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.lean
+grep -q "theorem frey_conductor_even_A" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.lean
+grep -q "theorem minimal_level_26_of_13_dvd_A" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.lean
+grep -q "theorem level_at_least_6_of_even_not_pow2" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.lean
+grep -q "def ribet_level_lowering_to_Nprime" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.lean
+grep -q "def X0_26_no_matching_newform" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.lean
+grep -q "def conductor_26_elliptic_curves_list" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.lean
+grep -q "def beal_even_not_pow2_implies_level_26_newform" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.lean
+grep -q "def beal_even_not_pow2_13dvdA_False" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.lean
+grep -q "def beal_even_not_pow2_general_False" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.lean
+grep -q "def beal_even_A_closed" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.lean
+grep -q "def beal_4_13_13_X0_26_RibetMazur_plan" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.lean
+grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.lean
 grep -q "theorem beal_4_13_13_k_odd" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
 grep -q "theorem S_13_ge_13_mul_B_pow12" \
