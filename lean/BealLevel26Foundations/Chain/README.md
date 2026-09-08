@@ -76,6 +76,7 @@ v8.12.0-fermat-four-plus-RinfTinf-ell RibetMazur fermat_four_lemma + FermatFourC
 v8.13.0-mixed-ell-plus-dirichlet RibetMazur FreyEllCase5Mixed covers m=4 n=13 p=13 when A=2^e; TWAuxEllFixed N<Q1 so Q1∤N; listed Q1 for ℓ in {5,7,11,13,17,19,23,29,31} not ∀ℓ≤1000; beal_from_ribet_ell_mixed still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.14.0-mixed-odd-A RibetMazur odd A^4≡1 mod16; odd B^13≡B mod8; A^4≡C-B mod13; only odd power of 2 is A=1 and 1+B^13=C^13 is impossible; Mixed covers 4,13,13 iff A=2^e not a cover for odd A≥3; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.15.0-dirichlet-up-to-1000 RibetMazur 166-row Q1≡1 mod ℓ table via InTWEll1000; Q1_not_dvd_N_of_Q1_gt_N when 0<N<Q1; Q2-∀ and ∀N≤10000 stay uninhabited; Mixed/odd-A facts unchanged; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.16.0-q2-table-100M RibetMazur 166-row Q2≡1 mod ℓ² table via Pratt, bound 1e8; 919→59119271; 56 missing at 5e6 now included; ∀N≤10000 stays uninhabited; Mixed/odd-A facts unchanged; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 
 ### v6.0.0 real algorithms (additional modules)
 

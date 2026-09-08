@@ -3,10 +3,10 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.15.0 — Finite `Q₁ ≡ 1 [MOD ℓ]` table for every
-prime `ℓ` with `5 ≤ ℓ ≤ 1000`.  Ten small Finsets; not
-Dirichlet and not `∀ N ≤ 10000`.  `Q₂ ≡ 1 [MOD ℓ²]`
-within `5·10⁶` fails for 56 residuals.
+Track B v8.16.0 — Finite `Q₁ ≡ 1 [MOD ℓ]` and `Q₂ ≡ 1 [MOD ℓ²]`
+tables for every residual in `InTWEll1000`.  Not Dirichlet and
+not `∀ N ≤ 10000`.  The 56 residuals that missed `Q₂ ≤ 5·10⁶`
+now have witnesses `≤ 10⁸` (largest: `ℓ = 919`, `Q₂ = 59119271`).
 
 Does **not** inhabit `ExistsNewformLevel2` (`0 ≠ 0`).
 Does **not** drop `ModularImpliesLevel2Newform`.
@@ -22,6 +22,16 @@ import BealLevel26Foundations.Beal.FullProof.TWPrimes_601_700
 import BealLevel26Foundations.Beal.FullProof.TWPrimes_701_800
 import BealLevel26Foundations.Beal.FullProof.TWPrimes_801_900
 import BealLevel26Foundations.Beal.FullProof.TWPrimes_901_1000
+import BealLevel26Foundations.Beal.FullProof.TWPrimesQ2_5_100
+import BealLevel26Foundations.Beal.FullProof.TWPrimesQ2_101_200
+import BealLevel26Foundations.Beal.FullProof.TWPrimesQ2_201_300
+import BealLevel26Foundations.Beal.FullProof.TWPrimesQ2_301_400
+import BealLevel26Foundations.Beal.FullProof.TWPrimesQ2_401_500
+import BealLevel26Foundations.Beal.FullProof.TWPrimesQ2_501_600
+import BealLevel26Foundations.Beal.FullProof.TWPrimesQ2_601_700
+import BealLevel26Foundations.Beal.FullProof.TWPrimesQ2_701_800
+import BealLevel26Foundations.Beal.FullProof.TWPrimesQ2_801_900
+import BealLevel26Foundations.Beal.FullProof.TWPrimesQ2_901_1000
 import Mathlib.Data.Nat.Prime.Basic
 import Mathlib.Tactic
 
@@ -37,6 +47,16 @@ open BealLevel26Foundations.Beal.FullProof.TWPrimes_601_700
 open BealLevel26Foundations.Beal.FullProof.TWPrimes_701_800
 open BealLevel26Foundations.Beal.FullProof.TWPrimes_801_900
 open BealLevel26Foundations.Beal.FullProof.TWPrimes_901_1000
+open BealLevel26Foundations.Beal.FullProof.TWPrimesQ2_5_100
+open BealLevel26Foundations.Beal.FullProof.TWPrimesQ2_101_200
+open BealLevel26Foundations.Beal.FullProof.TWPrimesQ2_201_300
+open BealLevel26Foundations.Beal.FullProof.TWPrimesQ2_301_400
+open BealLevel26Foundations.Beal.FullProof.TWPrimesQ2_401_500
+open BealLevel26Foundations.Beal.FullProof.TWPrimesQ2_501_600
+open BealLevel26Foundations.Beal.FullProof.TWPrimesQ2_601_700
+open BealLevel26Foundations.Beal.FullProof.TWPrimesQ2_701_800
+open BealLevel26Foundations.Beal.FullProof.TWPrimesQ2_801_900
+open BealLevel26Foundations.Beal.FullProof.TWPrimesQ2_901_1000
 
 /-- Membership in the 166-row table of primes in `[5, 1000]`.
 The converse (`Nat.Prime ℓ → 5 ≤ ℓ → ℓ ≤ 1000 → InTWEll1000 ℓ`)
@@ -67,6 +87,26 @@ theorem exists_prime_one_mod_ell_all {ℓ : Nat}
   · exact exists_prime_one_mod_ell_801_900 h
   · exact exists_prime_one_mod_ell_901_1000 h
 
+/-- Smallest prime `Q₂ ≤ 10⁸` with `Q₂ ≡ 1 [MOD ℓ²]`
+for every residual in the 166-row table.  The 56
+residuals that missed `5·10⁶` are included; the
+largest witness is `59119271` at `ℓ = 919`. -/
+theorem exists_prime_one_mod_ell_sq_all {ℓ : Nat}
+    (h : InTWEll1000 ℓ) :
+    ∃ Q2 : Nat, Q2.Prime ∧ Q2 % (ℓ * ℓ) = 1 ∧
+      Q2 ≤ 100000000 ∧ 5 ≤ Q2 := by
+  rcases h with h | h | h | h | h | h | h | h | h | h
+  · exact exists_prime_one_mod_ell_sq_5_100 h
+  · exact exists_prime_one_mod_ell_sq_101_200 h
+  · exact exists_prime_one_mod_ell_sq_201_300 h
+  · exact exists_prime_one_mod_ell_sq_301_400 h
+  · exact exists_prime_one_mod_ell_sq_401_500 h
+  · exact exists_prime_one_mod_ell_sq_501_600 h
+  · exact exists_prime_one_mod_ell_sq_601_700 h
+  · exact exists_prime_one_mod_ell_sq_701_800 h
+  · exact exists_prime_one_mod_ell_sq_801_900 h
+  · exact exists_prime_one_mod_ell_sq_901_1000 h
+
 theorem Q1_not_dvd_N_of_Q1_gt_N {Q1 N : Nat}
     (hN : 0 < N) (hgt : N < Q1) : ¬ Q1 ∣ N := by
   intro h
@@ -87,12 +127,6 @@ theorem find_next_prime_one_mod_gt_spec {ℓ N bound p : Nat}
     exact of_decide_eq_true this
   have hle : p ≤ bound := Nat.lt_succ_iff.mp (List.mem_range.mp hmem)
   exact ⟨hpred.1, hpred.2.1, hpred.2.2, hle⟩
-
-/-- Uninhabited.  56 primes `ℓ ≤ 1000` have no prime
-`Q₂ ≡ 1 [MOD ℓ²]` at most `5·10⁶`. -/
-def exists_prime_one_mod_ell_sq_all : Prop :=
-  ∀ ℓ : Nat, ℓ.Prime → 5 ≤ ℓ → ℓ ≤ 1000 →
-    ∃ Q2 : Nat, Q2.Prime ∧ Q2 % (ℓ * ℓ) = 1 ∧ Q2 ≤ 5000000
 
 /-- Uninhabited.  A prime `≡ 1 [MOD ℓ]` in `(N, N+20000]`
 for every `N ≤ 10000` is not a 166-row table. -/

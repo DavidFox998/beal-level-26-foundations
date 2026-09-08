@@ -790,6 +790,7 @@ do
   grep -q "v8.13.0-mixed-ell-plus-dirichlet" "$readme"
   grep -q "v8.14.0-mixed-odd-A" "$readme"
   grep -q "v8.15.0-dirichlet-up-to-1000" "$readme"
+  grep -q "v8.16.0-q2-table-100M" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1056,7 +1057,7 @@ if grep -q "import BealLevel26Foundations.Beal.FullProof.ModularImpliesNewform" 
   echo "FAIL: none chain must not import ModularImpliesNewform"
   exit 1
 fi
-if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|HeckeAlgebra|RibetFunctor|X0_26_Model|HeckeAction|LevelLowering|RibetMazur|TWPrimes)" \
+if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|HeckeAlgebra|RibetFunctor|X0_26_Model|HeckeAction|LevelLowering|RibetMazur|TWPrimes|TWPrimesPratt|TWPrimesQ2)" \
     lean/BealLevel26Foundations.lean \
     lean/BealLevel26Foundations/Beal/BealForall.lean \
     lean/BealLevel26Foundations/Chain/BealForallInKernel.lean \
@@ -1064,7 +1065,7 @@ if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|Heck
     lean/BealLevel26Foundations/GaloisRep/GaloisBealForallNoneReal.lean \
     lean/BealLevel26Foundations/GaloisRep/GaloisBealForallClosedReal.lean \
     lean/BealLevel26Foundations/Mazur/BealTheoremFromMazurChain26.lean; then
-  echo "FAIL: none chain must not import GeometryScheme / HeckeAlgebra / RibetFunctor / X0_26_Model / HeckeAction / LevelLowering / RibetMazur / TWPrimes"
+  echo "FAIL: none chain must not import GeometryScheme / HeckeAlgebra / RibetFunctor / X0_26_Model / HeckeAction / LevelLowering / RibetMazur / TWPrimes / TWPrimesPratt / TWPrimesQ2"
   exit 1
 fi
 grep -q "def X0_26_f" \
@@ -1241,10 +1242,14 @@ grep -q "def InTWEll1000" \
   lean/BealLevel26Foundations/Beal/FullProof/TWPrimes.lean
 grep -q "theorem Q1_not_dvd_N_of_Q1_gt_N" \
   lean/BealLevel26Foundations/Beal/FullProof/TWPrimes.lean
-grep -q "def exists_prime_one_mod_ell_sq_all" \
+grep -q "theorem exists_prime_one_mod_ell_sq_all" \
   lean/BealLevel26Foundations/Beal/FullProof/TWPrimes.lean
 grep -q "def find_next_prime_one_mod_gt_exists" \
   lean/BealLevel26Foundations/Beal/FullProof/TWPrimes.lean
+grep -q "theorem prime_of_pratt" \
+  lean/BealLevel26Foundations/Beal/FullProof/TWPrimesPratt.lean
+grep -q "theorem q2_witness_919" \
+  lean/BealLevel26Foundations/Beal/FullProof/TWPrimesQ2_901_1000.lean
 grep -q "def TWAuxEllFixed.of5_26" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "def TWAuxEllFixed.of7_26" \

@@ -1,18 +1,17 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.15.0-dirichlet-up-to-1000`.
-Lean change: `TWPrimes.lean` plus
-`RibetMazur.lean` give a 166-row table
-`InTWEll1000` of primes `Q₁ ≡ 1 [MOD ℓ]`
-with `Q₁ ≤ 20000`.  That is **not**
-Dirichlet, **not** `∀ N ≤ 10000`, and
-**not** `Q₂ ≡ 1 [MOD ℓ²]` for every
-residual (56 miss `5·10⁶`).
-`Q1_not_dvd_N_of_Q1_gt_N` needs `0 < N < Q₁`.
-`TWAuxEllFixed.of5_26` / `of7_26` / `of13_26`
-are explicit `N < Qᵢ` witnesses.
-Mixed / odd-`A` facts from v8.14.0 are
-unchanged.  `beal_from_ribet_ell_mixed` stays
+Latest tag / HEAD: `v8.16.0-q2-table-100M`.
+Lean change: Pratt certificates inhabit
+`exists_prime_one_mod_ell_sq_all` on
+`InTWEll1000` with `Q₂ ≤ 10⁸`.  The 56
+residuals that missed `5·10⁶` now have
+witnesses; largest is `919 → 59119271`.
+That is **not** Dirichlet and **not**
+`∀ N ≤ 10000`.  Smallest `Q₂` is often
+`< N`, so `TWAuxEllFixed` is still not
+inhabited for every `N ≤ 10000`.
+Mixed / odd-`A` facts are unchanged.
+`beal_from_ribet_ell_mixed` stays
 *from* `ModularImpliesLevel2Newform`.
 `ExistsNewformLevel2` is still `0 ≠ 0`.
 The unguarded sketch type is **false**

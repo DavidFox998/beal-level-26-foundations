@@ -3,12 +3,12 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.15.0 — Finite `Q₁ ≡ 1 [MOD ℓ]` table
+Track B v8.16.0 — Finite `Q₁` and `Q₂` tables
 for the 166 primes in `[5, 1000]`.  Builds on
-v8.14.0 odd-`A` residues and v8.13.0 mixed case.
-Not Dirichlet, not `∀ N ≤ 10000`, and not
-`Q₂ ≡ 1 [MOD ℓ²]` for every residual (56 miss
-the `5·10⁶` bound).
+v8.15.0.  Not Dirichlet and not `∀ N ≤ 10000`.
+Every table residual has `Q₂ ≡ 1 [MOD ℓ²]`
+with `Q₂ ≤ 10⁸` (56 missed `5·10⁶`; largest
+is `59119271` at `ℓ = 919`).
 
 Mathlib 4.12 has no Ribet functor and no arrow
     `Modular w → ExistsNewformLevel2`.  That label is
@@ -119,9 +119,10 @@ What it *does* prove:
   residual in the 166-row table `InTWEll1000`;
 * `Q1_not_dvd_N_of_Q1_gt_N`: `N < Q₁` and `0 < N`
   imply `Q₁ ∤ N` (the `∀ N` field stays false);
-* `exists_prime_one_mod_ell_sq_all` and
-  `find_next_prime_one_mod_gt_exists` stay
-  uninhabited Props.
+* `exists_prime_one_mod_ell_sq_all`: `Q₂` for
+  every residual in `InTWEll1000`, bound `10⁸`;
+* `find_next_prime_one_mod_gt_exists` stays
+  an uninhabited Prop (`∀ N ≤ 10000`).
 
 Does **not** import `X0_26_Model`.  FullProof-only.
 None chain does not import this file.
@@ -2604,9 +2605,14 @@ theorem TWAuxEllFixedExists_5_26 : TWAuxEllFixedExists 5 26 :=
 theorem TWAuxEllFixedExists_7_26 : TWAuxEllFixedExists 7 26 :=
   ⟨TWAuxEllFixed.of7_26⟩
 
-/-- Uninhabited.  `TWAuxEllFixed` needs a prime
-`Q₂ ≡ 1 [MOD ℓ²]` larger than `N`.  Fifty-six
-residuals have no such `Q₂ ≤ 5·10⁶`, and
+theorem exists_prime_one_mod_ell_sq_all_13 :
+    ∃ Q2 : Nat, Q2.Prime ∧ Q2 % (13 * 13) = 1 ∧
+      Q2 ≤ 100000000 ∧ 5 ≤ Q2 :=
+  exists_prime_one_mod_ell_sq_all InTWEll1000_13
+
+/-- Uninhabited.  The 166-row `Q₂` table gives a
+prime `≡ 1 [MOD ℓ²]`, but the smallest such
+prime is often `< N` (e.g. `101 < 10000`).
 `∀ N ≤ 10000` is not a 166-row table. -/
 def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
   ∀ ℓ N : Nat, ℓ.Prime → 5 ≤ ℓ → ℓ ≤ 1000 → N ≤ 10000 →
@@ -2685,6 +2691,7 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check TWAuxEllFixedExists_7_26
 #check exists_prime_one_mod_ell_all_13
 #check exists_prime_one_mod_ell_sq_all
+#check exists_prime_one_mod_ell_sq_all_13
 #check find_next_prime_one_mod_gt_exists
 #check TWAuxEllFixed_inhabited_for_every_ell_le_1000
 #check X0_N_Model
@@ -2759,6 +2766,8 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms FreyEllCase5Mixed_4_13_13_iff_pow2_A
 #print axioms not_FreyEllCase5Mixed_of_4_13_13_A_not_pow2
 #print axioms exists_prime_one_mod_ell_all
+#print axioms exists_prime_one_mod_ell_sq_all
+#print axioms exists_prime_one_mod_ell_sq_all_13
 #print axioms Q1_not_dvd_N_of_Q1_gt_N
 #print axioms exists_prime_one_mod_ell_all_13
 #print axioms TWAuxEllFixed.of5_26
