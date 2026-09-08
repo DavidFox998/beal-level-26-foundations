@@ -1,16 +1,19 @@
-# FINAL v8.20.0 — gcd(k,S)|13 so k is u⁴ or 13u⁴ or 13³u⁴ (arrow stays a Prop)
+# FINAL v8.20.1 — package B≤100 (C=B+1, C=B+2 tables; C≥B+3 from k_almost + S_not_fourth)
 
-Latest tag `v8.20.0-upper-bound-k`.
+Latest tag `v8.20.1-B-le-100-closed`.
 Lean change.
-With `C = B+k`, `S ≡ 13 B¹² [MOD k]`.
-Coprime `k B` forces `gcd(k,S) ∣ 13`,
-so that gcd is `1` or `13`.  Then
-`A⁴ = k·S` makes coprime factors
-fourth powers, and `k` is `u⁴` or
-`13 u⁴` or `13³ u⁴`.
-The unbounded claim that `S` is never
-a fourth power for `B ≤ 100` and
-`k ≥ 3` stays uninhabited.
+Packages `B ≤ 100` for odd `A ≥ 3`.
+`C = B+1` is the Size_Table.
+`C = B+2` is Size_C_ge_B_plus_2.
+`C ≥ B+3` is `k_almost_fourth_power`
+plus `S_not_fourth_power`.
+A primitive Zsigmondy prime divides `S`.
+The `(ℤ/p²)ˣ` order-13 dichotomy is
+`v_p_S_eq_one` (`order ≠ 13 → ¬ p² ∣ S`).
+Unconditional `¬ p² ∣ S` is false
+(Hensel lifts exist).
+v8.20.0 `gcd(k,S) ∣ 13` /
+`k` is `u⁴` or `13 u⁴` or `13³ u⁴` stay.
 v8.19.9 residue `k % 4 = 1` /
 `k % 8 = 1` stay.
 v8.19.8 `k` odd / coprime /

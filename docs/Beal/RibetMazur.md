@@ -1,23 +1,24 @@
-# v8.20.0 RibetMazur upper bound on k
+# v8.20.1 RibetMazur package B≤100
 
-`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.lean`,
-`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.lean`
+`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.lean`
 and `RibetMazur.lean`
 
-Upper bound shape of `k = C − B`.
-`S ≡ 13 B¹² [MOD k]`.  Coprime `k B`
-forces `gcd(k,S) ∣ 13`, so `k` is
-`u⁴` or `13 u⁴` or `13³ u⁴`.
-The unbounded `B ≤ 100`, `k ≥ 3`
-fourth-power claim on `S` stays
-uninhabited.
+Packages `B ≤ 100` for odd `A ≥ 3`.
+`C = B+1` Size_Table, `C = B+2`
+Size_C_ge_B_plus_2, `C ≥ B+3` from
+`k_almost_fourth_power` plus
+`S_not_fourth_power`.
+Primitive Zsigmondy prime on `S`.
+`(ℤ/p²)ˣ` order-13 dichotomy
+`v_p_S_eq_one`.  Unconditional
+`¬ p² ∣ S` is false (Hensel lifts).
 
+v8.20.0 `gcd(k,S) ∣ 13` /
+`k_almost_fourth_power` stay.
 v8.19.9 residue `k % 4 = 1` /
 `k % 8 = 1` stay.
 v8.19.8 `k` odd / coprime / `A⁴ ≡ k¹³`
 stay.  v8.19.7 bounds stay.
-v8.19.6 `B ≤ 100` with `C = B+1` or
-`C = B+2` stays closed.
 `zsigmondy_13` stays inhabited.
 
 `ExistsNewformLevel2` stays
@@ -29,21 +30,15 @@ Does **not** import `X0_26_Model`.
 
 | Name | Status |
 |---|---|
-| `S_13_mod_k` | inhabited |
-| `gcd_k_S_dvd_13` / `gcd_k_S_eq_1_or_13` | inhabited |
-| `k_mul_S_eq_A_pow4` | inhabited |
-| `coprime_mul_eq_fourth_pow` | inhabited |
-| `coprime_mul_eq_fourth_pow_imp_fourth_pow` | inhabited |
-| `k_almost_fourth_power` | inhabited |
-| `beal_4_13_13_k_almost_fourth_power` | inhabited |
-| `fourth_pow_mod_16` | inhabited |
-| `B_le_100_k_ge_3_no_S_fourth_pow` | uninhabited |
-| `beal_4_13_13_B_le_100_C_ge_B_plus_3_closed_of_S_not_fourth` | uninhabited |
-| `fourth_pow_mod_4` / `k % 4 = 1` | stays inhabited (v8.19.9) |
-| `beal_4_13_13_k_odd` | stays inhabited |
-| `zsigmondy_13` | stays inhabited |
-| `beal_from_ribet` / `beal_from_ribet_ell_mixed` | still *from* `ModularImpliesLevel2Newform` |
-
-`#print axioms` is `[propext, Classical.choice, Quot.sound]`.
-Track A About mint stays `22635221`.
-About houseclean mint stays `22654189`.
+| `primitive_prime_dvd_S` | inhabited |
+| `v_p_S_eq_one` | inhabited (`order ≠ 13 → ¬ p² ∣ S`) |
+| `S_not_fourth_power` | inhabited |
+| `B_le_100_k_ge_3_no_S_fourth_pow` | inhabited (Step11) |
+| `beal_4_13_13_B_le_100_C_ge_B_plus_3_closed` | inhabited |
+| `beal_4_13_13_B_le_100_closed` | inhabited (split) |
+| `S_13_mod_k` / `gcd_k_S_dvd_13` | stays inhabited (v8.20.0) |
+| `k_almost_fourth_power` | stays inhabited (v8.20.0) |
+| `fourth_pow_mod_16` | stays inhabited |
+| `beal_mixed_pow2_implies_level_2_newform` | uninhabited |
+| `beal_from_ribet_upside_down` | uninhabited |
+| `ExistsNewformLevel2` | `0 ≠ 0` lock |

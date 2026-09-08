@@ -3,14 +3,17 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.20.0 — upper bound shape of
-`k = C − B`.  Coprime `k B` forces
-`gcd(k,S) ∣ 13`, so `k` is `u⁴` or
-`13 u⁴` or `13³ u⁴`.  The unbounded
-`B ≤ 100`, `k ≥ 3` fourth-power claim
-on `S` stays uninhabited.
-`beal_4_13_13_B_le_100_C_ge_B_plus_3_closed_of_S_not_fourth`
-stays uninhabited.
+Track B v8.20.1 — package `B ≤ 100` for odd
+`A ≥ 3`.  `C = B+1` by Size_Table,
+`C = B+2` by Size_C_ge_B_plus_2,
+`C ≥ B+3` from v8.20.0
+`k_almost_fourth_power` plus
+`S_not_fourth_power`.
+`primitive_prime_dvd_S` and the
+`(ℤ/p²)ˣ` order-13 dichotomy
+`v_p_S_eq_one` are inhabited.
+v8.20.0 `gcd(k,S) ∣ 13` /
+`k_almost_fourth_power` stay.
 v8.19.9 residue `k % 4 = 1` /
 `k % 8 = 1` stay.
 v8.19.8 `k` odd / coprime / `A⁴ ≡ k¹³`
@@ -232,6 +235,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -2928,6 +2932,40 @@ def beal_odd_A_ge3_closed_of_k_upper_bound_plan :=
 def k_almost_fourth_power_without_gcd :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.k_almost_fourth_power_without_gcd
 
+/-! ## v8.20.1 — package `B ≤ 100` -/
+
+/-- Inhabited.  Primitive Zsigmondy prime on `S`. -/
+def primitive_prime_dvd_S :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.primitive_prime_dvd_S
+
+/-- Inhabited.  `order ≠ 13` in `(ℤ/p²)ˣ` gives `¬ p² ∣ S`. -/
+def v_p_S_eq_one :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.v_p_S_eq_one
+
+/-- Inhabited.  `S` is not `v⁴` / `13 v⁴` / `13³ v⁴`
+when some `p ≠ 13` has `v_p` not a multiple of `4`. -/
+def S_not_fourth_power :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.S_not_fourth_power
+
+/-- Inhabited.  `B ≤ 100`, `k ≥ 3` odd coprime uses
+`S_not_fourth_power`. -/
+def B_le_100_k_ge_3_no_S_fourth_pow_step11 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.B_le_100_k_ge_3_no_S_fourth_pow
+
+/-- Inhabited.  `C ≥ B+3` from `k_almost_fourth_power`
+and `S_not_fourth_power`. -/
+def beal_4_13_13_B_le_100_C_ge_B_plus_3_closed :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.beal_4_13_13_B_le_100_C_ge_B_plus_3_closed
+
+/-- Inhabited.  Split `C=B+1` Size_Table,
+`C=B+2` Size_C_ge_B_plus_2, `C≥B+3` above. -/
+def beal_4_13_13_B_le_100_closed :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.beal_4_13_13_B_le_100_closed
+
+/-- Inhabited.  Symmetric form of `k_almost_fourth_power`. -/
+def S_almost_fourth_power :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.S_almost_fourth_power
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -3204,6 +3242,14 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.beal_4_13_13_B_le_100_C_ge_B_plus_3_closed_of_S_not_fourth
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.beal_mixed_pow2_implies_level_2_newform
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.beal_from_ribet_upside_down
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.primitive_prime_dvd_S
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.v_p_S_eq_one
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.S_not_fourth_power
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.B_le_100_k_ge_3_no_S_fourth_pow
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.beal_4_13_13_B_le_100_C_ge_B_plus_3_closed
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.beal_4_13_13_B_le_100_closed
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.S_almost_fourth_power
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -3380,5 +3426,13 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.k_almost_fourth_power
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.genus_X0_2_rat_eq_zero
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.primitive_prime_dvd_S
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.v_p_S_eq_one
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.S_not_fourth_power
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.B_le_100_k_ge_3_no_S_fourth_pow
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.beal_4_13_13_B_le_100_C_ge_B_plus_3_closed
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.beal_4_13_13_B_le_100_closed
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.genus_X0_2_rat_eq_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

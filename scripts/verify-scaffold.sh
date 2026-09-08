@@ -201,6 +201,8 @@ test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bou
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.md
 test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.md
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -836,6 +838,7 @@ do
   grep -q "v8.19.9-fourth-power-residue" "$readme"
   grep -q "v8.20.0-k-upper-bound-plan" "$readme"
   grep -q "v8.20.0-upper-bound-k" "$readme"
+  grep -q "v8.20.1-B-le-100-closed" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1510,6 +1513,22 @@ grep -q "def beal_mixed_pow2_implies_level_2_newform" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.lean
 grep -q "def beal_from_ribet_upside_down" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_upper_bound_k.lean
+grep -q "theorem primitive_prime_dvd_S" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.lean
+grep -q "theorem v_p_S_eq_one" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.lean
+grep -q "theorem S_not_fourth_power" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.lean
+grep -q "theorem B_le_100_k_ge_3_no_S_fourth_pow" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.lean
+grep -q "theorem beal_4_13_13_B_le_100_C_ge_B_plus_3_closed" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.lean
+grep -q "theorem beal_4_13_13_B_le_100_closed" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.lean
+grep -q "theorem S_almost_fourth_power" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.lean
+grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.lean
 grep -q "theorem beal_4_13_13_k_odd" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
 grep -q "theorem S_13_ge_13_mul_B_pow12" \

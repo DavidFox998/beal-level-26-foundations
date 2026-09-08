@@ -12,18 +12,19 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.20.0)
+# FullProof track (v8.20.1)
 
-Aggregator for Track B.  Upper bound shape of
-`k = C − B`: `gcd(k,S) ∣ 13` and
-`k` is `u⁴` or `13 u⁴` or `13³ u⁴`.
-The unbounded `B ≤ 100`, `k ≥ 3` fourth-power
-claim on `S` stays uninhabited.
-`Step10_upper_bound_k` records the sketch names.
+Aggregator for Track B.  Packages `B ≤ 100`
+for odd `A ≥ 3`: `C = B+1` Size_Table,
+`C = B+2` Size_C_ge_B_plus_2, `C ≥ B+3`
+from `k_almost_fourth_power` plus
+`S_not_fourth_power`.  Primitive Zsigmondy
+prime on `S` and the `(ℤ/p²)ˣ` order-13
+dichotomy `v_p_S_eq_one` are inhabited.
+v8.20.0 `gcd(k,S) ∣ 13` stays.
 v8.19.9 residue `k % 4 = 1` / `k % 8 = 1` stay.
 v8.19.8 `k` odd / coprime stay.
 v8.19.7 `A⁴ ≥ 13 k B¹²` / `39 B¹²` stay.
-`B ≤ 100` and `C ∈ {B+1, B+2}` stay closed.
 `zsigmondy_13` stays inhabited.
 `ExistsNewformLevel2` is still `0 ≠ 0`.
 `beal_from_ribet` stays *from*

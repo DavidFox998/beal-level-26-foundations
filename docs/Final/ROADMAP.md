@@ -799,6 +799,26 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.20.1-B-le-100-closed — DONE (package B≤100; C=B+1 Size_Table, C=B+2 Size_C_ge_B_plus_2, C≥B+3 from k_almost + S_not_fourth; arrow stays a Prop)
+
+Lean change.  Step11 file
+`Beal_4_13_13_Zsigmondy_13_Step11_B_le_100_closed.lean`
+inhabits `primitive_prime_dvd_S`,
+`v_p_S_eq_one` (`order ≠ 13` in
+`(ℤ/p²)ˣ` gives `¬ p² ∣ S`),
+`S_not_fourth_power`,
+`B_le_100_k_ge_3_no_S_fourth_pow`,
+`beal_4_13_13_B_le_100_C_ge_B_plus_3_closed`,
+`beal_4_13_13_B_le_100_closed`.
+Unconditional `¬ p² ∣ S` is false
+(Hensel lifts of 13th roots exist).
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.20.0-upper-bound-k — DONE (Step10_upper_bound_k sketch names; gcd(k,S)|13; k almost fourth power; arrow stays a Prop)
 
 Lean change.  Sketch file

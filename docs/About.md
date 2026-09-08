@@ -1,20 +1,22 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.20.0-upper-bound-k`
-Lean change: upper bound shape of
-`k = C − B`.  Coprime `k B` forces
-`gcd(k,S) ∣ 13`, so `k` is `u⁴` or
-`13 u⁴` or `13³ u⁴`.  The unbounded
-`B ≤ 100`, `k ≥ 3` fourth-power claim
-on `S` stays uninhabited.
-`beal_4_13_13_B_le_100_C_ge_B_plus_3_closed_of_S_not_fourth`
-stays uninhabited.
+Latest tag / HEAD: `v8.20.1-B-le-100-closed`
+Lean change: package `B ≤ 100` for odd `A ≥ 3`.
+`C = B+1` Size_Table, `C = B+2`
+Size_C_ge_B_plus_2, `C ≥ B+3` from
+`k_almost_fourth_power` plus
+`S_not_fourth_power`.
+`primitive_prime_dvd_S` and the
+`(ℤ/p²)ˣ` order-13 dichotomy
+`v_p_S_eq_one` are inhabited.
+Unconditional `¬ p² ∣ S` is false
+(Hensel lifts exist).
+v8.20.0 `gcd(k,S) ∣ 13` /
+`k_almost_fourth_power` stay.
 v8.19.9 residue `k % 4 = 1` / `k % 8 = 1`
 stay.  v8.19.8 `k` odd / coprime
 stay.  v8.19.7 `A⁴ ≥ 13 k B¹²` / `39 B¹²`
-stay.  `B ≤ 100` with `C = B+1` or
-`C = B+2` stays closed.
-`zsigmondy_13` stays inhabited.
+stay.  `zsigmondy_13` stays inhabited.
 The general `beal_4_13_13_size` stays
 uninhabited.
 `genus_X0_2_rat = 0` and `BealAArm`
