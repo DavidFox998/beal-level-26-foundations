@@ -3024,7 +3024,7 @@ def beal_4_13_13_B_gt_100_slice_uninhabited :=
 /-- Inhabited.  `A = 2^r` (`r > 0`), `B` and `C`
 odd → even radical `2`. -/
 def frey_curve_conductor :=
-  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.frey_curve_conductor
+  @BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step13_Modular_W_lift_last_lock.frey_curve_conductor
 
 /-- Displayed conductor slot after uninhabited
 Ribet lowering. -/
