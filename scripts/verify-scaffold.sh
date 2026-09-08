@@ -211,6 +211,8 @@ test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step14_X0_26_Ribet
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step14_X0_26_RibetMazur_plan.md
 test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.md
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -851,6 +853,7 @@ do
   grep -q "v8.21.1-Modular-W-lift-last-lock" "$readme"
   grep -q "v8.22.0-X0-26-RibetMazur-plan" "$readme"
   grep -q "v8.22.1-X0-2q-Darmon-Merel-plan" "$readme"
+  grep -q "v8.23.0-odd-A-closure-plan" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png

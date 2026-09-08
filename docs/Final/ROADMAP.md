@@ -799,6 +799,26 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.23.0-odd-A-closure-plan — DONE (S bounds / k-shape / k bounds inhabited; Zsigmondy-of-S / S_not_fourth stay uninhabited; arrow stays a Prop)
+
+Lean change.  Step16 file
+`Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_plan.lean`
+inhabits `S_bounds_13_B12_le_S_le_13_C12`,
+`k_almost_fourth_power_shape`,
+`k_le_A4_div_13_B12`,
+`B_gt_100_k_bounded`,
+`k_ge_B_imp_A_ge_9B3`.
+`zsigmondy_prime_S`,
+`S_not_fourth_power_of_zsig`,
+`beal_odd_A_closed_v8_23_0`,
+`beal_4_13_13_Zsigmondy_13_odd_A_closure_plan`
+stay uninhabited.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.22.1-X0-2q-Darmon-Merel-plan — DONE (oddPart/rad and 2q radical inhabited; Kraus / X0(2q) matching stay uninhabited; arrow stays a Prop)
 
 Lean change.  Step15 file

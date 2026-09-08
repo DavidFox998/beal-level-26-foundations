@@ -5,11 +5,11 @@ type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v8.22.1-X0-2q-Darmon-Merel-plan"
+version: "v8.23.0-odd-A-closure-plan"
 date-released: "2026-09-08"
 doi: "10.5281/zenodo.22272382"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
-url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.22.1-X0-2q-Darmon-Merel-plan"
+url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.23.0-odd-A-closure-plan"
 license: MIT
 keywords:
   - beal-conjecture

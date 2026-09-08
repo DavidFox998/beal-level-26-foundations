@@ -1,15 +1,17 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.22.1-X0-2q-Darmon-Merel-plan`
-Lean change: Step15 inhabits
-`oddPart_rec`, `rad`, `oddPart_def`,
-`rad_dvd_pow`,
-`even_not_pow2_has_odd_prime_q`,
-`level_2q_of_odd_prime_dvd_A`.
-`kraus_criterion_q_ne_13`,
-`X0_2q_no_Frey_match` stay
+Latest tag / HEAD: `v8.23.0-odd-A-closure-plan`
+Lean change: Step16 inhabits
+`S_bounds_13_B12_le_S_le_13_C12`,
+`k_almost_fourth_power_shape`,
+`k_le_A4_div_13_B12`,
+`B_gt_100_k_bounded`,
+`k_ge_B_imp_A_ge_9B3`.
+`zsigmondy_prime_S`,
+`S_not_fourth_power_of_zsig` stay
 uninhabited (`ExistsNewformLevel2`
 is `0 ≠ 0`).
+v8.22.1 `oddPart_rec` / `2q` stay.
 v8.22.0 radical `N'` stays.
 v8.21.1 `frey_curve_conductor` stays.
 v8.21.0 `A_ge_53_of_S_prime`,

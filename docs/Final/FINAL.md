@@ -1,3 +1,38 @@
+# FINAL v8.23.0 — odd A closure plan for the last odd branch (arrow stays a Prop)
+
+Latest tag `v8.23.0-odd-A-closure-plan`.
+Lean change.
+Step16 inhabits
+`S_bounds_13_B12_le_S_le_13_C12`,
+`k_almost_fourth_power_shape`
+(`k = u⁴` or `13 u⁴` or `13³ u⁴`),
+`k_le_A4_div_13_B12`,
+`B_gt_100_k_bounded`,
+`k_ge_B_imp_A_ge_9B3`.
+`zsigmondy_prime_S`,
+`zsig_p_not_dvd_k`,
+`S_not_fourth_power_of_zsig`,
+`S_times_g_not_fourth`,
+`beal_odd_A_ge3_B_gt_100_closed`,
+`beal_odd_A_closed_v8_23_0`,
+`beal_4_13_13_full_closed_mod_modular`,
+`beal_4_13_13_Zsigmondy_13_odd_A_closure_plan`
+stay uninhabited.
+v8.22.1 `oddPart_rec` / `2q` stay.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` stays *from*
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
+(`v8.19.9-fourth-power-residue` houseclean archive).
+Track A none-chain mint stays
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221).
+This mint does **not** claim unconditional Beal `∀`.
+
 # FINAL v8.22.1 — X₀(2q) Darmon–Merel plan for even not-pow2 A, q≠13 (arrow stays a Prop)
 
 Latest tag `v8.22.1-X0-2q-Darmon-Merel-plan`.
