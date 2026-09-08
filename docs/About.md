@@ -31,6 +31,9 @@ is untouched.  Track B does **not** write a new Zenodo
 claiming an unconditional Beal `∀`.
 
 Latest parallel mint written
+[10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
+(`v8.19.9-fourth-power-residue` houseclean archive;
+**not** an unconditional Beal `∀`), after
 [10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221)
 (v7.1.1 About catch-up of v7.1.0 Beal `∀` none
 real + kernel separated none)

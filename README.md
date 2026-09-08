@@ -1,10 +1,11 @@
-[![v7.1.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22632209.svg)](https://doi.org/10.5281/zenodo.22632209) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
+[![v8.19.9 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
 # Beal Level 26 Foundations — v8.19.9-fourth-power-residue
 
 **v8.19.9-fourth-power-residue — Beal (4,13,13) odd-A ladder (Track B). Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
-- Track A: No new Beal-∀. Unconditional Beal is **not** claimed. About still writes `10.5281/zenodo.22635221`.
+- Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
+- Houseclean mint `10.5281/zenodo.22654189` (`v8.19.9-fourth-power-residue`) under hook `22379293`. Track A none-chain mint stays `10.5281/zenodo.22635221`.
 - What's new:
   - v8.19.6 `B ≤ 100` `C = B+1`, `C = B+2` closed by `decide`;
   - v8.19.7 `A⁴ ≥ 13 k B¹²`, `A⁴ ≥ 39 B¹²`, `A ≥ 2 B³ + 1`;
@@ -136,8 +137,9 @@ Docs-only houseclean of the v8.19.9 residue ladder.  Sketch names
 `beal_4_13_13_k_mod_4_eq_1_of_B_mod_4_0`,
 `beal_4_13_13_k_mod_8_eq_1_of_B_mod_8_0`,
 `beal_4_13_13_A4_cong_k13_mod_B_restricts_B` stay inhabited.
-Unconditional Beal is **not** claimed.  About still writes Track A
-mint `22635221` until the houseclean Zenodo version lands.
+Unconditional Beal is **not** claimed.  Houseclean mint
+`10.5281/zenodo.22654189`.  Track A none-chain mint stays
+`10.5281/zenodo.22635221`.
 
 ### v8.19.9-fourth-pow-residue — A⁴≡k¹³ mod B forces k%4=1 / k%8=1 when B%4=0 / B%8=0 (arrow stays a Prop)
 
