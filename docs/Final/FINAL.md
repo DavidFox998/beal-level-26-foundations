@@ -1,3 +1,44 @@
+# FINAL v8.20.0 — gcd(k,S)|13 so k is u⁴ or 13u⁴ or 13³u⁴ (arrow stays a Prop)
+
+Latest tag `v8.20.0-k-upper-bound-plan`.
+Lean change.
+With `C = B+k`, `S ≡ 13 B¹² [MOD k]`.
+Coprime `k B` forces `gcd(k,S) ∣ 13`,
+so that gcd is `1` or `13`.  Then
+`A⁴ = k·S` makes coprime factors
+fourth powers, and `k` is `u⁴` or
+`13 u⁴` or `13³ u⁴`.
+The unbounded claim that `S` is never
+a fourth power for `B ≤ 100` and
+`k ≥ 3` stays uninhabited.
+v8.19.9 residue `k % 4 = 1` /
+`k % 8 = 1` stay.
+v8.19.8 `k` odd / coprime /
+`A⁴ ≡ k¹³` stay.
+v8.19.7 `A⁴ ≥ 13 k B¹²` / `39 B¹²`
+and `A ≥ 2 B³ + 1` stay.
+v8.19.6 `B ≤ 100` with `C = B+1` and
+`C = B+2` stays closed.
+`zsigmondy_13` stays inhabited.
+The general `beal_4_13_13_size` stays
+uninhabited.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` stays *from*
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
+(`v8.19.9-fourth-power-residue` houseclean archive).
+Track A none-chain mint stays
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221).
+This mint does **not** claim unconditional Beal `∀`.
+Three JPEG plates stay in `docs/assets/v6.7.0/`.
+Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+
 # FINAL v8.19.9 — A⁴≡k¹³ mod B forces k%4=1 / k%8=1 when B%4=0 / B%8=0 (arrow stays a Prop)
 
 Latest tag `v8.19.9-fourth-power-residue`.

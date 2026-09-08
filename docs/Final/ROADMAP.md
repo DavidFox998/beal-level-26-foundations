@@ -799,6 +799,28 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.20.0-k-upper-bound-plan — DONE (gcd(k,S)|13, k is u⁴ or 13u⁴ or 13³u⁴; arrow stays a Prop)
+
+Lean change.  `C = B+k` gives
+`S ≡ 13 B¹² [MOD k]`.  Coprime `k B`
+forces `gcd(k,S) ∣ 13`.  Then
+`A⁴ = k·S` makes `k` equal to
+`u⁴` or `13 u⁴` or `13³ u⁴`.
+The unbounded `B ≤ 100`, `k ≥ 3`
+fourth-power claim on `S` stays
+uninhabited.  v8.19.9 residue stays.
+`zsigmondy_13` stays inhabited.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** import `X0_26_Model` from
+`RibetMazur`.  Does **not** touch the
+24-module none chain.  No `False.elim`.
+No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.19.9-fourth-pow-residue — DONE (k%4=1 when B%4=0; k%8=1 when B%8=0 for odd A; arrow stays a Prop)
 
 Lean change.  `A⁴ ≡ k¹³ [MOD B]` is a

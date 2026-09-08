@@ -90,8 +90,9 @@ v8.19.7-general-k RibetMazur C≥B+k gives A^4≥13k B^12 from the 13-term sum; 
 v8.19.8-k-odd-coprime RibetMazur odd A gives k=C-B odd; Coprime C B and C≥B give Coprime k B; Coprime C B gives Coprime A B; A^4 ≡ k^13 mod B; unrestricted gcd(k,B)=1 without C≥B stays uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.19.9-fourth-pow-residue RibetMazur A^4≡k^13 mod B and B%4=0 give k%4=1; B%8=0 give k%8=1 for odd A; without odd A stays uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.19.9-fourth-power-residue houseclean Track B residue names fourth_pow_mod_4/8 k%4=1 when B%4=0 k%8=1 when B%8=0; Track A no new Beal-∀ unconditional Beal NOT claimed. Still not Full Mathlib ∀.
+v8.20.0-k-upper-bound-plan RibetMazur gcd(k,S)|13 so k is u^4 or 13 u^4 or 13^3 u^4; B≤100 k≥3 S=v^4 stays uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 
-### File order v8.19.0–v8.19.9
+### File order v8.19.0–v8.20.0
 
 | Version | File |
 |---|---|
@@ -105,6 +106,7 @@ v8.19.9-fourth-power-residue houseclean Track B residue names fourth_pow_mod_4/8
 | v8.19.7 | `Beal_4_13_13_Zsigmondy_13_Step7_General_k.lean` |
 | v8.19.8 | `Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean` |
 | v8.19.9 | `Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.lean` |
+| v8.20.0 | `Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.lean` |
 
 Not imported by the 24-module none chain.  Track A: no new Beal-∀.
 

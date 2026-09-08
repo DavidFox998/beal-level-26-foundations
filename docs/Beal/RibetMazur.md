@@ -1,17 +1,18 @@
-# v8.19.9 RibetMazur fourth-power residue
+# v8.20.0 RibetMazur k-upper-bound plan
 
-`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.lean`
+`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.lean`
 and `RibetMazur.lean`
 
-`A⁴ ≡ k¹³ [MOD B]` is a fourth-power
-residue.  For odd `A`, `A⁴ ≡ 1 [MOD 4]`
-and `A⁴ ≡ 1 [MOD 8]`.  Odd `k` has
-`k¹³ ≡ k` at those moduli.  So
-`B % 4 = 0` forces `k % 4 = 1` and
-`B % 8 = 0` forces `k % 8 = 1`.
+Plan for an upper bound on `k = C − B`.
+`S ≡ 13 B¹² [MOD k]`.  Coprime `k B`
+forces `gcd(k,S) ∣ 13`, so `k` is
+`u⁴` or `13 u⁴` or `13³ u⁴`.
+The unbounded `B ≤ 100`, `k ≥ 3`
+fourth-power claim on `S` stays
+uninhabited.
 
-Without odd `A` the residue claim
-stays uninhabited.
+v8.19.9 residue `k % 4 = 1` /
+`k % 8 = 1` stay.
 v8.19.8 `k` odd / coprime / `A⁴ ≡ k¹³`
 stay.  v8.19.7 bounds stay.
 v8.19.6 `B ≤ 100` with `C = B+1` or
@@ -27,21 +28,19 @@ Does **not** import `X0_26_Model`.
 
 | Name | Status |
 |---|---|
-| `fourth_pow_mod_4` | inhabited (`0` or `1`) |
-| `fourth_pow_mod_8_odd` / `odd_fourth_mod8` | inhabited |
-| `odd_pow_mod_4` / `k_pow13_mod_8_odd` | inhabited |
-| `k_mod_4_eq_1_of_B_divisible_by_4` | inhabited |
-| `k_mod_8_eq_1_of_B_divisible_by_8` | inhabited |
-| `beal_4_13_13_k_mod_4_eq_1_of_B_mod_4_0` | inhabited (congruence form) |
-| `beal_4_13_13_k_mod_8_eq_1_of_B_mod_8_0` | inhabited (congruence form) |
-| `beal_4_13_13_A4_cong_k13_mod_B_restricts_B` | inhabited |
-| `odd_fourth_mod4` / `k_mod4_eq_1_of_fourth_pow_residue` | inhabited |
-| `beal_4_13_13_k_mod4_eq_1_of_B_mod4_eq_0` | inhabited (Beal form) |
-| `beal_4_13_13_k_mod8_eq_1_of_B_mod8_eq_0` | inhabited (Beal form) |
-| `k_mod4_eq_1_of_B_mod4_eq_0_without_odd_A` | uninhabited |
+| `S_13_mod_k` | inhabited |
+| `gcd_k_S_dvd_13` / `gcd_k_S_eq_1_or_13` | inhabited |
+| `k_mul_S_eq_A_pow4` | inhabited |
+| `coprime_mul_eq_fourth_pow` | inhabited |
+| `k_almost_fourth_power` | inhabited |
+| `beal_4_13_13_k_almost_fourth_power` | inhabited |
+| `fourth_pow_mod_16` | inhabited |
+| `B_le_100_k_ge_3_no_S_fourth_pow` | uninhabited |
+| `fourth_pow_mod_4` / `k % 4 = 1` | stays inhabited (v8.19.9) |
 | `beal_4_13_13_k_odd` | stays inhabited |
 | `zsigmondy_13` | stays inhabited |
 | `beal_from_ribet` / `beal_from_ribet_ell_mixed` | still *from* `ModularImpliesLevel2Newform` |
 
 `#print axioms` is `[propext, Classical.choice, Quot.sound]`.
 Track A About mint stays `22635221`.
+About houseclean mint stays `22654189`.

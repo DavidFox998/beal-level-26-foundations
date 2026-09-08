@@ -3,10 +3,14 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.19.9 — `A⁴ ≡ k¹³ [MOD B]` is
-a fourth-power residue: odd `A` and
-`B % 4 = 0` force `k % 4 = 1`;
-`B % 8 = 0` forces `k % 8 = 1`.
+Track B v8.20.0 — plan for an upper bound on
+`k = C − B`.  Coprime `k B` forces
+`gcd(k,S) ∣ 13`, so `k` is `u⁴` or
+`13 u⁴` or `13³ u⁴`.  The unbounded
+`B ≤ 100`, `k ≥ 3` fourth-power claim
+on `S` stays uninhabited.
+v8.19.9 residue `k % 4 = 1` /
+`k % 8 = 1` stay.
 v8.19.8 `k` odd / coprime / `A⁴ ≡ k¹³`
 stay.  v8.19.7 `C ≥ B+k` / `A⁴ ≥ 39 B¹²` stay.
 v8.19.6 `B ≤ 100` with `C = B+1` or
@@ -157,6 +161,10 @@ What it *does* prove:
   `B % 8 = 0` forces `k % 8 = 1` for
   odd `A`; without odd `A` that residue
   stays uninhabited;
+  coprime `k B` forces `gcd(k,S) ∣ 13`
+  and `k` is `u⁴` or `13 u⁴` or `13³ u⁴`;
+  `B ≤ 100`, `k ≥ 3`, `S = v⁴` stays
+  uninhabited;
   `beal_from_ribet_upside_down_odd_A_closed`
   stays uninhabited;
 * `exists_prime_one_mod_ell_all`: `Q₁` for every
@@ -220,6 +228,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -2862,6 +2871,52 @@ def beal_4_13_13_k_mod_8_eq_1_of_B_mod_8_0 :=
 def beal_4_13_13_A4_cong_k13_mod_B_restricts_B :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_A4_cong_k13_mod_B_restricts_B
 
+/-! ## v8.20.0 — gcd(k,S)∣13, k almost a fourth power -/
+
+/-- Inhabited.  `S ≡ 13 B¹² [MOD k]` when `C = B+k`. -/
+def S_13_mod_k :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.S_13_mod_k
+
+/-- Inhabited.  Coprime `k B` forces `gcd(k,S) ∣ 13`. -/
+def gcd_k_S_dvd_13 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.gcd_k_S_dvd_13
+
+/-- Inhabited.  Divisors of the prime `13` are `1` and `13`. -/
+def gcd_k_S_eq_1_or_13 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.gcd_k_S_eq_1_or_13
+
+/-- Inhabited.  `A⁴ = k · S_13` on a Beal `4/13/13` tuple. -/
+def k_mul_S_eq_A_pow4 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.k_mul_S_eq_A_pow4
+
+/-- Inhabited.  Coprime factors of a fourth power are fourth powers. -/
+def coprime_mul_eq_fourth_pow :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.coprime_mul_eq_fourth_pow
+
+/-- Inhabited.  `k = u⁴` or `13 u⁴` or `13³ u⁴`. -/
+def k_almost_fourth_power :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.k_almost_fourth_power
+
+/-- Inhabited packaged Beal form. -/
+def beal_4_13_13_k_almost_fourth_power :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.beal_4_13_13_k_almost_fourth_power
+
+/-- Inhabited.  Fourth powers are `0` or `1 [MOD 16]`. -/
+def fourth_pow_mod_16 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.fourth_pow_mod_16
+
+/-- Uninhabited.  `k ≥ 3` is unbounded. -/
+def B_le_100_k_ge_3_no_S_fourth_pow :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.B_le_100_k_ge_3_no_S_fourth_pow
+
+/-- Uninhabited.  The shape does not close the equation. -/
+def beal_odd_A_ge3_closed_of_k_upper_bound_plan :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.beal_odd_A_ge3_closed_of_k_upper_bound_plan
+
+/-- Uninhabited.  `k = 2` is not of the three shapes. -/
+def k_almost_fourth_power_without_gcd :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.k_almost_fourth_power_without_gcd
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -3116,6 +3171,17 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_k_mod_4_eq_1_of_B_mod_4_0
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_k_mod_8_eq_1_of_B_mod_8_0
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_A4_cong_k13_mod_B_restricts_B
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.S_13_mod_k
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.gcd_k_S_dvd_13
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.gcd_k_S_eq_1_or_13
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.k_mul_S_eq_A_pow4
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.coprime_mul_eq_fourth_pow
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.k_almost_fourth_power
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.beal_4_13_13_k_almost_fourth_power
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.fourth_pow_mod_16
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.B_le_100_k_ge_3_no_S_fourth_pow
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.beal_odd_A_ge3_closed_of_k_upper_bound_plan
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.k_almost_fourth_power_without_gcd
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -3276,5 +3342,13 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_k_mod_4_eq_1_of_B_mod_4_0
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_k_mod_8_eq_1_of_B_mod_8_0
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_A4_cong_k13_mod_B_restricts_B
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.S_13_mod_k
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.gcd_k_S_dvd_13
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.gcd_k_S_eq_1_or_13
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.k_mul_S_eq_A_pow4
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.coprime_mul_eq_fourth_pow
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.k_almost_fourth_power
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.beal_4_13_13_k_almost_fourth_power
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.fourth_pow_mod_16
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

@@ -1,13 +1,14 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.19.9-fourth-power-residue`
-(houseclean of `v8.19.9-fourth-pow-residue`).
-Lean change: `A⁴ ≡ k¹³ [MOD B]` is a
-fourth-power residue.  Odd `A` and
-`B % 4 = 0` force `k % 4 = 1`;
-`B % 8 = 0` forces `k % 8 = 1`.
-Without odd `A` that residue stays
-uninhabited.  v8.19.8 `k` odd / coprime
+Latest tag / HEAD: `v8.20.0-k-upper-bound-plan`
+Lean change: plan for an upper bound on
+`k = C − B`.  Coprime `k B` forces
+`gcd(k,S) ∣ 13`, so `k` is `u⁴` or
+`13 u⁴` or `13³ u⁴`.  The unbounded
+`B ≤ 100`, `k ≥ 3` fourth-power claim
+on `S` stays uninhabited.
+v8.19.9 residue `k % 4 = 1` / `k % 8 = 1`
+stay.  v8.19.8 `k` odd / coprime
 stay.  v8.19.7 `A⁴ ≥ 13 k B¹²` / `39 B¹²`
 stay.  `B ≤ 100` with `C = B+1` or
 `C = B+2` stays closed.

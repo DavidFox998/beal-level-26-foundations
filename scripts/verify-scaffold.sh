@@ -197,6 +197,8 @@ test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprim
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.md
 test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.md
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -830,6 +832,7 @@ do
   grep -q "v8.19.8-k-odd-coprime" "$readme"
   grep -q "v8.19.9-fourth-pow-residue" "$readme"
   grep -q "v8.19.9-fourth-power-residue" "$readme"
+  grep -q "v8.20.0-k-upper-bound-plan" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1460,6 +1463,28 @@ grep -q "theorem beal_4_13_13_k_mod_8_eq_1_of_B_mod_8_0" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.lean
 grep -q "theorem beal_4_13_13_A4_cong_k13_mod_B_restricts_B" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.lean
+grep -q "theorem S_13_mod_k" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.lean
+grep -q "theorem gcd_k_S_dvd_13" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.lean
+grep -q "theorem gcd_k_S_eq_1_or_13" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.lean
+grep -q "theorem k_mul_S_eq_A_pow4" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.lean
+grep -q "theorem coprime_mul_eq_fourth_pow" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.lean
+grep -q "theorem k_almost_fourth_power" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.lean
+grep -q "theorem beal_4_13_13_k_almost_fourth_power" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.lean
+grep -q "theorem fourth_pow_mod_16" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.lean
+grep -q "def B_le_100_k_ge_3_no_S_fourth_pow" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.lean
+grep -q "def beal_odd_A_ge3_closed_of_k_upper_bound_plan" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.lean
+grep -q "def k_almost_fourth_power_without_gcd" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step10_k_upper_bound_plan.lean
 grep -q "theorem beal_4_13_13_k_odd" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
 grep -q "theorem S_13_ge_13_mul_B_pow12" \
