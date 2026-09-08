@@ -1,18 +1,16 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.19.0-ExistsNewformLevel2`.
-Lean change: `genus_X0_2_rat = 0` over `ℚ`
-from `μ=3`, `ν₂=1`, `ν₃=0`, `ν∞=2`.
-`BealAArm.of_pos` splits a positive
-`4,13,13` base.  Odd `A ≥ 3` is not
-Mixed.  That is **not** a Mathlib
-`ModularForm` space and **not** a
-rewrite of `ExistsNewformLevel2`.
-`beal_mixed_pow2_implies_level_2_newform`
-and `beal_from_ribet_upside_down` stay
-uninhabited.  The v8.18.0 product
-transport and `of5_26` / `of7_26` /
-`of13_26` witnesses stay.
+Latest tag / HEAD: `v8.19.1-beal-4-13-13-size`.
+Lean change: `(B+1)¹³ − B¹³ ≥ 13 B¹²`,
+so a positive `4,13,13` solution has
+`A⁴ ≥ 13 B¹²` and `A ≥ B³`.  The
+`C = B+1` table `B ∈ [1, 100]` is not
+a fourth power.  That is **not**
+Zsigmondy and **not** `A ≥ 2 B³`.
+`zsigmondy_13` and the general
+`beal_4_13_13_size` stay uninhabited.
+`genus_X0_2_rat = 0` and `BealAArm`
+from v8.19.0 stay.
 `beal_from_ribet` / `beal_from_ribet_ell_mixed`
 stay *from* `ModularImpliesLevel2Newform`.
 `ExistsNewformLevel2` is still `0 ≠ 0`.

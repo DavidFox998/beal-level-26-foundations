@@ -1,3 +1,29 @@
+# FINAL v8.19.1 — C=B+1 size bound and B≤100 table (arrow stays a Prop)
+
+Latest tag `v8.19.1-beal-4-13-13-size`.
+Lean change.
+`(B+1)¹³ − B¹³ ≥ 13 B¹²` by the
+geometric-sum factorisation.  A positive
+`A⁴ + B¹³ = C¹³` has `A⁴ ≥ 13 B¹²`
+and `A ≥ B³`.  The `C = B+1` table
+`B ∈ [1, 100]` is not a fourth power.
+`zsigmondy_13` and the general
+`beal_4_13_13_size` stay uninhabited.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` stays *from*
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221)
+(v7.1.1 About catch-up, Track A).  Track B does **not**
+write a new mint claiming unconditional Beal `∀`.
+Three JPEG plates stay in `docs/assets/v6.7.0/`.
+Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+
 # FINAL v8.19.0 — Rational genus of X₀(2); BealAArm split (arrow stays a Prop)
 
 Latest tag `v8.19.0-ExistsNewformLevel2`.

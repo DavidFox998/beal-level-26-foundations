@@ -99,6 +99,20 @@ v8.16.0-q2-table-100M RibetMazur 166-row Q2≡1 mod ℓ² table via Pratt, bound
 v8.17.0-twaux-26-and-10000 RibetMazur TWAuxEllFixed inhabited at N=26 and N=10000 for InTWEll1000; Q1>N Q2>N; ℓ=941 needs Q1=30113 (N+21000); ∀N≤10000 stays uninhabited; completeness only [5,100] via Finset.filter; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.18.0-product RibetMazur TWAuxEllFixed inhabited for every N≤10000 on InTWEll1000 by transporting the N=10000 row; not Nat.Prime completeness; not Q1≤N+21000 for small N; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.19.0-ExistsNewformLevel2 RibetMazur genus_X0_2_rat=0 over ℚ; BealAArm splits positive A; odd A≥3 not Mixed for 4,13,13; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop; mixed-pow2→newform and upside-down ∀ stay uninhabited. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.19.1-beal-4-13-13-size RibetMazur C=B+1 bound A^4≥13 B^12 and A≥B^3; B≤100 table not a 4th power by decide; Zsigmondy and general beal_4_13_13_size stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.19.1-beal-4-13-13-size — C=B+1 size bound and B≤100 table (arrow stays a Prop)
+
+Lean change.  `(B+1)¹³ − B¹³ ≥ 13 B¹²` by the geometric-sum factorisation.  A positive `A⁴ + B¹³ = C¹³` has `A⁴ ≥ 13 B¹²` and `A ≥ B³`.  The `C = B+1` table `B ∈ [1, 100]` is not a fourth power.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `C13_sub_B13_ge_13_mul_B_pow_12` / `beal_4_13_13_size_lower_bound` / `beal_4_13_13_A_ge_B_pow_3`: inhabited for every `B`;
+- `beal_4_13_13_size_B_le_100_C_succ`: inhabited `C = B+1` slice, not `C ≥ B+2`;
+- `beal_4_13_13_size` stays the general uninhabited Prop;
+- `zsigmondy_13` / `beal_odd_A_ge3_size_gap` / `beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed` stay uninhabited (no Zsigmondy; `16 > 13`);
+- `genus_X0_2_rat = 0` and `BealAArm` from v8.19.0 stay;
+- `beal_from_ribet` / `beal_from_ribet_ell_mixed`: still *from* `ModularImpliesLevel2Newform`.
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.19.0-ExistsNewformLevel2 — Rational genus of X₀(2); BealAArm split (arrow stays a Prop)
 

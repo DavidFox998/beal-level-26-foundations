@@ -1,3 +1,7 @@
+-- Compiled proofs live in
+-- lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Size_Table.lean
+-- This certificate is the B=1..100 C=B+1 table.
+
 -- BealLevel26Foundations/Beal_4_13_13_Size_Table.lean
 -- Auto-generated B=1..100 C=B+1 table A^4 = (B+1)^13 - B^13 ≥13·B^12 by decide
 -- Extends v8.19.0-ExistsNewformLevel2 genus_X0_2_rat=0 μ=3 ν2=1 ν3=0 ν∞=2

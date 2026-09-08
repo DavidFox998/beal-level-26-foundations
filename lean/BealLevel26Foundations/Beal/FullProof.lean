@@ -12,12 +12,13 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.19.0)
+# FullProof track (v8.19.1)
 
-Aggregator for Track B.  Rational genus of
-`X₀(2)` is `0`.  `BealAArm` splits a
-positive `4,13,13` base.  `ExistsNewformLevel2`
-is still `0 ≠ 0`.  `beal_from_ribet` stays
-*from* `ModularImpliesLevel2Newform`.  Not
-imported by the 24-module none chain.
+Aggregator for Track B.  `C = B+1` gives
+`A⁴ ≥ 13 B¹²` and a `B ≤ 100` non-fourth-power
+table.  `zsigmondy_13` stays uninhabited.
+`ExistsNewformLevel2` is still `0 ≠ 0`.
+`beal_from_ribet` stays *from*
+`ModularImpliesLevel2Newform`.  Not imported
+by the 24-module none chain.
 -/

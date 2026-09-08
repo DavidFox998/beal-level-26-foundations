@@ -3,12 +3,16 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.19.0 — Rational genus of `X₀(2)`
-is `0`, and the `4,13,13` base `A` splits
-into `BealAArm`.  `ExistsNewformLevel2` stays
-`0 ≠ 0`.  `beal_from_ribet` still takes
+Track B v8.19.1 — Size skeleton for `4,13,13`.
+`(B+1)¹³ − B¹³ ≥ 13 B¹²`, so a positive
+solution has `A⁴ ≥ 13 B¹²` and `A ≥ B³`.
+The `C = B+1` table inhabits
+`beal_4_13_13_size` for `B ≤ 100`.
+`zsigmondy_13` stays uninhabited.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` still takes
 `ModularImpliesLevel2Newform`.  Builds on
-the v8.18.0 product transport.
+the v8.19.0 genus / `BealAArm` split.
 
 Mathlib 4.12 has no Ribet functor and no arrow
     `Modular w → ExistsNewformLevel2`.  That label is
@@ -112,9 +116,17 @@ What it *does* prove:
   `1 + B¹³ = C¹³` is impossible;
 * `FreyEllCase5Mixed_4_13_13_iff_pow2_A`: Mixed
   covers `4,13,13` **iff** `A=2^e`;
-* `beal_4_13_13_size` stays an uninhabited Prop
-  (odd `A ≥ 3` is not closed by mod 8, mod 13,
-  or `Cⁿ−(C−1)ⁿ > 1`);
+* `C13_sub_B13_ge_13_mul_B_pow_12` /
+  `beal_4_13_13_size_lower_bound` /
+  `beal_4_13_13_A_ge_B_pow_3` are inhabited;
+* `beal_4_13_13_size_B_le_100_C_succ` inhabits
+  the `C = B+1` slice `B ∈ [1, 100]`;
+* `beal_4_13_13_size` stays the general
+  uninhabited Prop (no Zsigmondy, no
+  `C ≥ B+2` search);
+* `zsigmondy_13` / `beal_odd_A_ge3_size_gap` /
+  `beal_from_ribet_upside_down_odd_A_closed`
+  stay uninhabited;
 * `exists_prime_one_mod_ell_all`: `Q₁` for every
   residual in the 166-row table `InTWEll1000`;
 * `Q1_not_dvd_N_of_Q1_gt_N`: `N < Q₁` and `0 < N`
@@ -167,6 +179,7 @@ import BealLevel26Foundations.Beal.FullProof.TWPrimes
 import BealLevel26Foundations.Beal.FullProof.TWAuxEllFixedCore
 import BealLevel26Foundations.Beal.FullProof.TWAuxEllFixed
 import BealLevel26Foundations.Beal.FullProof.X0_2_Genus
+import BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Size_Table
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -186,6 +199,7 @@ open BealLevel26Foundations.Beal.FullProof.TWAuxEllFixedCore
 open BealLevel26Foundations.Beal.FullProof.TWAuxEllFixed
 open BealLevel26Foundations.Beal.FullProof.TWAuxEllFixed_5_100
 open BealLevel26Foundations.Beal.FullProof.X0_2_Genus
+open BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Size_Table
 open CongruenceSubgroup
 
 /-! ## Explicit 101-coeff q-expansions (ledger as `ℚ`) -/
@@ -2550,9 +2564,12 @@ theorem FreyEllCase5Mixed_4_13_13_iff_pow2_A {A B C : Nat} :
   · intro hA
     exact mixed_covers_4_13_13 (A := A) (B := B) (C := C) hA
 
-/-- Uninhabited.  Odd `A ≥ 3` is not closed by mod 8,
-mod 13, or `(C+1)ⁿ − Cⁿ > 1`.  Mathlib 4.12 has no
-Zsigmondy, and the gap around `13^{1/4} B³` is wide. -/
+/-- Uninhabited in general.  The `C = B+1` slice
+`B ∈ [1, 100]` is `beal_4_13_13_size_B_le_100_C_succ`.
+Odd `A ≥ 3` is not closed by mod 8, mod 13, or
+`(C+1)ⁿ − Cⁿ > 1` for arbitrary `C`.  Mathlib 4.12
+has no Zsigmondy, and the gap around `13^{1/4} B³`
+is wide. -/
 def beal_4_13_13_size : Prop :=
   ∀ A B C : Nat,
     0 < A → 0 < B → 0 < C →
@@ -2606,7 +2623,44 @@ def beal_mixed_pow2_implies_level_2_newform : Prop :=
 still needs `ModularImpliesLevel2Newform` and the
 odd-`A` size gap (no Zsigmondy). -/
 def beal_from_ribet_upside_down : Prop :=
-  ∀ t : PositiveBealTriple, False
+  ∀ _t : PositiveBealTriple, False
+
+/-! ## v8.19.1 — Zsigmondy skeleton; `C=B+1` table `B≤100` -/
+
+/-- A prime dividing `aⁿ − bⁿ` that does not divide
+`aᵏ − bᵏ` for `0 < k < n`.  `k = 0` is excluded
+because `a⁰ − b⁰ = 0`. -/
+def has_primitive_prime_divisor (a b n : Nat) : Prop :=
+  ∃ p : Nat, Nat.Prime p ∧ p ∣ (a ^ n - b ^ n) ∧
+    ∀ k : Nat, 0 < k → k < n → ¬ p ∣ (a ^ k - b ^ k)
+
+/-- Uninhabited.  Mathlib 4.12 has no Zsigmondy
+theorem.  The interval around `13^{1/4} B³` is wide. -/
+def zsigmondy_13 : Prop :=
+  ∀ C B : Nat, B < C → Nat.gcd C B = 1 →
+    has_primitive_prime_divisor C B 13
+
+/-- Uninhabited.  Needs `zsigmondy_13`.  The
+inhabited facts are the lower bound and the
+`B ≤ 100`, `C = B+1` table. -/
+def beal_odd_A_ge3_size_gap : Prop :=
+  ∀ A B C : Nat,
+    A ^ 4 + B ^ 13 = C ^ 13 →
+    Odd A → 3 ≤ A → 0 < B → B < C → False
+
+/-- Uninhabited.  Same gap as `beal_odd_A_ge3_size_gap`. -/
+def beal_from_ribet_upside_down_odd_A_closed : Prop :=
+  ∀ A B C : Nat,
+    A ^ 4 + B ^ 13 = C ^ 13 →
+    Odd A → 3 ≤ A → False
+
+/-- Uninhabited.  `16 > 13`, so `A ≥ 2 B³` does not
+follow from `A⁴ ≥ 13 B¹²`.  The inhabited bound is
+`A ≥ B³`. -/
+def beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed : Prop :=
+  ∀ A B C : Nat,
+    A ^ 4 + B ^ 13 = C ^ 13 → 0 < B → B < C →
+    2 * B ^ 3 ≤ A
 
 /-! ## v8.15.0 — Finite `Q₁` table for residuals in `[5, 1000]` -/
 
@@ -2777,6 +2831,18 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check beal_odd_A_ge3_not_mixed
 #check beal_mixed_pow2_implies_level_2_newform
 #check beal_from_ribet_upside_down
+#check pow13_sub_pow13_lower_bound
+#check C13_sub_B13_ge_13_mul_B_pow_12
+#check beal_4_13_13_size_lower_bound
+#check beal_4_13_13_A_ge_B_pow_3
+#check size_table_lower_bound_B_le_100
+#check size_table_not_fourth_B_le_100
+#check beal_4_13_13_size_B_le_100_C_succ
+#check has_primitive_prime_divisor
+#check zsigmondy_13
+#check beal_odd_A_ge3_size_gap
+#check beal_from_ribet_upside_down_odd_A_closed
+#check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check exists_prime_one_mod_ell_all_13
 #check exists_prime_one_mod_ell_sq_all
 #check exists_prime_one_mod_ell_sq_all_13
@@ -2881,6 +2947,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms ExistsNewformLevel2_eq_zero_ne_zero
 #print axioms BealAArm.of_pos
 #print axioms beal_odd_A_ge3_not_mixed
+#print axioms C13_sub_B13_ge_13_mul_B_pow_12
+#print axioms beal_4_13_13_size_lower_bound
+#print axioms beal_4_13_13_A_ge_B_pow_3
+#print axioms size_table_lower_bound_B_le_100
+#print axioms beal_4_13_13_size_B_le_100_C_succ
 #print axioms InTWEll1000_of_prime_5_100
 #print axioms InTWEll1000_iff_mem
 #print axioms succ_pow_sub_pow_gt_one

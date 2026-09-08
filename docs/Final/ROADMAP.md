@@ -799,6 +799,24 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.19.1-beal-4-13-13-size — DONE (C=B+1 size bound; B≤100 table; Zsigmondy uninhabited; arrow stays a Prop)
+
+Lean change.  `(B+1)¹³ − B¹³ ≥ 13 B¹²`.
+`beal_4_13_13_size_B_le_100_C_succ` inhabits
+the `C = B+1` slice `B ∈ [1, 100]`.
+`zsigmondy_13` and the general
+`beal_4_13_13_size` stay uninhabited.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** import `X0_26_Model` from
+`RibetMazur`.  Does **not** touch the
+24-module none chain.  No `False.elim`.
+No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.19.0-ExistsNewformLevel2 — DONE (rational genus of X₀(2); BealAArm split; ExistsNewformLevel2 stays 0≠0; arrow stays a Prop)
 
 Lean change.  `genus_X0_2_rat = 0` over `ℚ`
