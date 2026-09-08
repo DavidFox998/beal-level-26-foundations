@@ -1,3 +1,39 @@
+# FINAL v8.19.9 — A⁴≡k¹³ mod B forces k%4=1 / k%8=1 when B%4=0 / B%8=0 (arrow stays a Prop)
+
+Latest tag `v8.19.9-fourth-pow-residue`.
+Lean change.
+For odd `A`, `A⁴ ≡ 1 [MOD 4]` and
+`A⁴ ≡ 1 [MOD 8]`.  Odd `k` has
+`k¹³ ≡ k` at those moduli.  So
+`A⁴ ≡ k¹³ [MOD B]` with `B % 4 = 0`
+forces `k % 4 = 1`, and `B % 8 = 0`
+forces `k % 8 = 1`.
+Without odd `A` the residue claim
+stays uninhabited.
+v8.19.8 `k` odd / coprime /
+`A⁴ ≡ k¹³` stay.
+v8.19.7 `A⁴ ≥ 13 k B¹²` / `39 B¹²`
+and `A ≥ 2 B³ + 1` stay.
+v8.19.6 `B ≤ 100` with `C = B+1` and
+`C = B+2` stays closed.
+`zsigmondy_13` stays inhabited.
+The general `beal_4_13_13_size` stays
+uninhabited.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` stays *from*
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221)
+(v7.1.1 About catch-up, Track A).  Track B does **not**
+write a new mint claiming unconditional Beal `∀`.
+Three JPEG plates stay in `docs/assets/v6.7.0/`.
+Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+
 # FINAL v8.19.8 — k=C−B odd, gcd(k,B)=1, gcd(A,B)=1, A⁴≡k¹³ mod B (arrow stays a Prop)
 
 Latest tag `v8.19.8-k-odd-coprime`.

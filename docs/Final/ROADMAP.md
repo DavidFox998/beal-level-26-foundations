@@ -799,6 +799,26 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.19.9-fourth-pow-residue — DONE (k%4=1 when B%4=0; k%8=1 when B%8=0 for odd A; arrow stays a Prop)
+
+Lean change.  `A⁴ ≡ k¹³ [MOD B]` is a
+fourth-power residue.  Odd `A` and
+`B % 4 = 0` force `k % 4 = 1`;
+`B % 8 = 0` forces `k % 8 = 1`.
+Without odd `A` that residue stays
+uninhabited.  v8.19.8 facts stay.
+`zsigmondy_13` stays inhabited.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** import `X0_26_Model` from
+`RibetMazur`.  Does **not** touch the
+24-module none chain.  No `False.elim`.
+No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.19.8-k-odd-coprime — DONE (k odd, gcd(k,B)=1 when C≥B, gcd(A,B)=1, A⁴≡k¹³ mod B; arrow stays a Prop)
 
 Lean change.  Odd `A` forces `k = C−B`

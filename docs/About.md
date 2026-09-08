@@ -1,15 +1,15 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.19.8-k-odd-coprime`.
-Lean change: odd `A` gives `k = C−B` odd;
-`Coprime C B` and `C ≥ B` give `Coprime k B`;
-`Coprime C B` gives `Coprime A B`;
-`A⁴ ≡ k¹³ [MOD B]`.
-Unrestricted `gcd(k,B)=1` without `C ≥ B`
-stays uninhabited (`C=1`, `B=2`).
-v8.19.7 `A⁴ ≥ 13 k B¹²` / `39 B¹²` stay.
-`B ≤ 100` with `C = B+1` or `C = B+2`
-stays closed.
+Latest tag / HEAD: `v8.19.9-fourth-pow-residue`.
+Lean change: `A⁴ ≡ k¹³ [MOD B]` is a
+fourth-power residue.  Odd `A` and
+`B % 4 = 0` force `k % 4 = 1`;
+`B % 8 = 0` forces `k % 8 = 1`.
+Without odd `A` that residue stays
+uninhabited.  v8.19.8 `k` odd / coprime
+stay.  v8.19.7 `A⁴ ≥ 13 k B¹²` / `39 B¹²`
+stay.  `B ≤ 100` with `C = B+1` or
+`C = B+2` stays closed.
 `zsigmondy_13` stays inhabited.
 The general `beal_4_13_13_size` stays
 uninhabited.

@@ -1,17 +1,19 @@
-# v8.19.8 RibetMazur k odd / coprime / A⁴ ≡ k¹³ mod B
+# v8.19.9 RibetMazur fourth-power residue
 
-`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean`
+`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.lean`
 and `RibetMazur.lean`
 
-Odd `A` forces `k = C−B` odd.
-`Coprime C B` and `C ≥ B` give
-`Coprime k B`.  `Coprime C B` plus
-the equation give `Coprime A B`.
-`A⁴ ≡ k¹³ [MOD B]`.
+`A⁴ ≡ k¹³ [MOD B]` is a fourth-power
+residue.  For odd `A`, `A⁴ ≡ 1 [MOD 4]`
+and `A⁴ ≡ 1 [MOD 8]`.  Odd `k` has
+`k¹³ ≡ k` at those moduli.  So
+`B % 4 = 0` forces `k % 4 = 1` and
+`B % 8 = 0` forces `k % 8 = 1`.
 
-Without `C ≥ B`, `gcd(C−B, B) = 1`
-is false (`C = 1`, `B = 2`).
-v8.19.7 `A⁴ ≥ 13 k B¹²` / `39 B¹²` stay.
+Without odd `A` the residue claim
+stays uninhabited.
+v8.19.8 `k` odd / coprime / `A⁴ ≡ k¹³`
+stay.  v8.19.7 bounds stay.
 v8.19.6 `B ≤ 100` with `C = B+1` or
 `C = B+2` stays closed.
 `zsigmondy_13` stays inhabited.
@@ -25,12 +27,13 @@ Does **not** import `X0_26_Model`.
 
 | Name | Status |
 |---|---|
-| `beal_4_13_13_k_odd` | inhabited |
-| `beal_4_13_13_gcd_k_B_eq_one` | inhabited with `C ≥ B` |
-| `beal_4_13_13_gcd_A_B_eq_one` | inhabited |
-| `beal_4_13_13_A_pow4_mod_B_eq_k_pow13` | inhabited |
-| `beal_4_13_13_gcd_k_B_eq_one_of_coprime_only` | uninhabited |
-| `beal_4_13_13_A_pow4_ge_39_mul_B12_of_C_ge_B_plus_3` | stays inhabited |
+| `odd_fourth_mod4` / `odd_fourth_mod8` | inhabited |
+| `k_mod4_eq_1_of_fourth_pow_residue` | inhabited |
+| `k_mod8_eq_1_of_fourth_pow_residue` | inhabited |
+| `beal_4_13_13_k_mod4_eq_1_of_B_mod4_eq_0` | inhabited |
+| `beal_4_13_13_k_mod8_eq_1_of_B_mod8_eq_0` | inhabited |
+| `k_mod4_eq_1_of_B_mod4_eq_0_without_odd_A` | uninhabited |
+| `beal_4_13_13_k_odd` | stays inhabited |
 | `zsigmondy_13` | stays inhabited |
 | `beal_from_ribet` / `beal_from_ribet_ell_mixed` | still *from* `ModularImpliesLevel2Newform` |
 

@@ -3,11 +3,12 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.19.8 — `k = C − B` is odd
-when `A` is odd; `gcd(k,B) = 1` when
-`Coprime C B` and `C ≥ B`; `gcd(A,B) = 1`
-from `Coprime C B`; `A⁴ ≡ k¹³ [MOD B]`.
-v8.19.7 `C ≥ B+k` / `A⁴ ≥ 39 B¹²` stay.
+Track B v8.19.9 — `A⁴ ≡ k¹³ [MOD B]` is
+a fourth-power residue: odd `A` and
+`B % 4 = 0` force `k % 4 = 1`;
+`B % 8 = 0` forces `k % 8 = 1`.
+v8.19.8 `k` odd / coprime / `A⁴ ≡ k¹³`
+stay.  v8.19.7 `C ≥ B+k` / `A⁴ ≥ 39 B¹²` stay.
 v8.19.6 `B ≤ 100` with `C = B+1` or
 `C = B+2` stays closed.
 v8.19.5 `p ≡ 1 [MOD 13]` / `A ≥ 53` stay.
@@ -149,9 +150,13 @@ What it *does* prove:
   odd `A` gives `k = C−B` odd;
   `Coprime C B` and `C ≥ B` give
   `Coprime k B`; `Coprime C B` gives
-  `Coprime A B`; `A⁴ ≡ k¹³ [MOD B]`;
+  `Coprime A B`;   `A⁴ ≡ k¹³ [MOD B]`;
   unrestricted `gcd(k,B)=1` without
   `C ≥ B` stays uninhabited;
+  `B % 4 = 0` forces `k % 4 = 1` and
+  `B % 8 = 0` forces `k % 8 = 1` for
+  odd `A`; without odd `A` that residue
+  stays uninhabited;
   `beal_from_ribet_upside_down_odd_A_closed`
   stays uninhabited;
 * `exists_prime_one_mod_ell_all`: `Q₁` for every
@@ -214,6 +219,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step6_B_le_100_closed
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step7_General_k
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -2794,6 +2800,32 @@ def beal_4_13_13_gcd_k_B_eq_one_of_coprime_only :=
 def beal_odd_A_ge3_closed_of_k_odd_coprime :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.beal_odd_A_ge3_closed_of_k_odd_coprime
 
+/-! ## v8.19.9 — fourth-power residue `k % 4 = 1` / `k % 8 = 1` -/
+
+/-- Inhabited.  Odd fourth powers are `1 [MOD 4]`. -/
+def odd_fourth_mod4_step9 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.odd_fourth_mod4
+
+/-- Inhabited.  Odd fourth powers are `1 [MOD 8]`. -/
+def odd_fourth_mod8_step9 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.odd_fourth_mod8
+
+/-- Inhabited.  `B % 4 = 0` and odd `A` give `k % 4 = 1`. -/
+def beal_4_13_13_k_mod4_eq_1_of_B_mod4_eq_0 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_k_mod4_eq_1_of_B_mod4_eq_0
+
+/-- Inhabited.  `B % 8 = 0` and odd `A` give `k % 8 = 1`. -/
+def beal_4_13_13_k_mod8_eq_1_of_B_mod8_eq_0 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_k_mod8_eq_1_of_B_mod8_eq_0
+
+/-- Uninhabited.  Without odd `A`, `B % 4 = 0` does not force `k % 4 = 1`. -/
+def k_mod4_eq_1_of_B_mod4_eq_0_without_odd_A :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.k_mod4_eq_1_of_B_mod4_eq_0_without_odd_A
+
+/-- Uninhabited.  The residue does not close the equation. -/
+def beal_odd_A_ge3_closed_of_fourth_pow_residue :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_odd_A_ge3_closed_of_fourth_pow_residue
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -3030,6 +3062,15 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.beal_4_13_13_gcd_A_B_eq_one
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.beal_4_13_13_A_pow4_mod_B_eq_k_pow13
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.beal_4_13_13_gcd_k_B_eq_one_of_coprime_only
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.odd_fourth_mod4
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.odd_fourth_mod8
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.odd_pow13_mod4
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.odd_pow13_mod8
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.k_mod4_eq_1_of_fourth_pow_residue
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.k_mod8_eq_1_of_fourth_pow_residue
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_k_mod4_eq_1_of_B_mod4_eq_0
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_k_mod8_eq_1_of_B_mod8_eq_0
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.k_mod4_eq_1_of_B_mod4_eq_0_without_odd_A
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -3175,5 +3216,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.beal_4_13_13_k_odd
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.beal_4_13_13_gcd_A_B_eq_one
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.beal_4_13_13_A_pow4_mod_B_eq_k_pow13
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.odd_fourth_mod4
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.odd_fourth_mod8
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.k_mod4_eq_1_of_fourth_pow_residue
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.k_mod8_eq_1_of_fourth_pow_residue
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_k_mod4_eq_1_of_B_mod4_eq_0
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step9_fourth_pow_residue.beal_4_13_13_k_mod8_eq_1_of_B_mod8_eq_0
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur
