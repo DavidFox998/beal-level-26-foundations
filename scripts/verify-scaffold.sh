@@ -219,6 +219,8 @@ test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step18_Zsig_primit
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step18_Zsig_primitive_vp1_inhabited.md
 test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.md
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -863,6 +865,7 @@ do
   grep -q "v8.23.1-Zsigmondy-S-vp1-plan" "$readme"
   grep -q "v8.24.0-Zsigmondy-primitive-vp1-inhabited" "$readme"
   grep -q "v8.24.1-odd-A-closed-for-real" "$readme"
+  grep -q "v8.25.0-Hensel-dichotomy-S-not-fourth-plan" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1753,6 +1756,26 @@ grep -q "def beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.lean
 grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.lean
+grep -q "theorem p_sq_dvd_S_iff_order_13_mod_p_sq" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.lean
+grep -q "theorem hensel_lift_example_B1_C460_p53" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.lean
+grep -q "theorem S_not_fourth_of_order_ne_13" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.lean
+grep -q "theorem beal_odd_A_closed_via_zsig_hensel" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.lean
+grep -q "def S_not_fourth" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.lean
+grep -q "def exists_p_with_order_ne_13_mod_p_sq" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.lean
+grep -q "def beal_odd_A_closed_v8_24_0_inhabited" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.lean
+grep -q "def beal_4_13_13_full_closed_mod_modular_v8_24_0_inhabited" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.lean
+grep -q "def beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.lean
+grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.lean
 grep -q "theorem beal_4_13_13_k_odd" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
 grep -q "theorem S_13_ge_13_mul_B_pow12" \

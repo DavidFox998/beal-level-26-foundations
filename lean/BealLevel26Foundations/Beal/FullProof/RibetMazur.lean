@@ -3,12 +3,14 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.24.1 — odd-`A` closed for real
-via the Hensel glue.
-`primitive_prime_not_dvd_bases`,
-`beal_odd_A_ge3_closed_of_vp1_inhabited`,
-`beal_odd_A_closed_via_zsig_hensel`
+Track B v8.25.0 — Hensel dichotomy
+`S_not_fourth` plan.
+`p_sq_dvd_S_iff_order_13_mod_p_sq`,
+`hensel_lift_example_B1_C460_p53`,
+`S_not_fourth_of_order_ne_13`
 are inhabited.
+`exists_p_with_order_ne_13_mod_p_sq`
+stays uninhabited.
 `beal_odd_A_closed_v8_24_0_inhabited`
 stays uninhabited (`ExistsNewformLevel2`
 is `0 ≠ 0`).
@@ -320,6 +322,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step16_Odd_A_closure_pla
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step17_Zsig_S_vp1_plan
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step18_Zsig_primitive_vp1_inhabited
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -3383,6 +3386,37 @@ def beal_4_13_13_full_closed_mod_modular_v8_24_0_inhabited :=
 def beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real
 
+/-! ## v8.25.0 — Hensel dichotomy `S_not_fourth` plan -/
+
+/-- Inhabited.  Step11 order dichotomy on `S_val`. -/
+def p_sq_dvd_S_iff_order_13_mod_p_sq :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.p_sq_dvd_S_iff_order_13_mod_p_sq
+
+/-- Inhabited.  `B=1`, `C=460`, `p=53` lifts: `p² ∣ S`. -/
+def hensel_lift_example_B1_C460_p53 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.hensel_lift_example_B1_C460_p53
+
+/-- Inhabited.  `C ∈ {B+1, B+2}` table close for `B ≤ 100`. -/
+def C_eq_B_plus_1_or_2_closed :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.C_eq_B_plus_1_or_2_closed
+
+/-- Exists-`p` form of a valuation not a multiple of 4. -/
+def S_not_fourth :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.S_not_fourth
+
+/-- Inhabited.  Order `≠ 13` in `(ℤ/p²)ˣ` gives `S_not_fourth`. -/
+def S_not_fourth_of_order_ne_13 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.S_not_fourth_of_order_ne_13
+
+/-- Inhabited exists-`p` Hensel close (Step20). -/
+def beal_odd_A_closed_via_zsig_hensel_exists :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.beal_odd_A_closed_via_zsig_hensel
+
+/-- Uninhabited.  Remaining Hensel lock for
+`B ≤ 100` with `C ≥ B+3` and for `B > 100`. -/
+def exists_p_with_order_ne_13_mod_p_sq :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.exists_p_with_order_ne_13_mod_p_sq
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -3745,6 +3779,16 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.beal_odd_A_closed_v8_24_0_inhabited
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.p_sq_dvd_S_iff_order_13_mod_p_sq
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.hensel_lift_example_B1_C460_p53
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.C_eq_B_plus_1_or_2_closed
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.S_not_fourth
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.S_not_fourth_of_order_ne_13
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.beal_odd_A_closed_via_zsig_hensel
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.exists_p_with_order_ne_13_mod_p_sq
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.beal_odd_A_closed_v8_24_0_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -3976,5 +4020,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.beal_odd_A_closed_via_zsig_hensel
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real_of_hensel
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step19_Odd_A_closed_for_real.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.p_sq_dvd_S_iff_order_13_mod_p_sq
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.hensel_lift_example_B1_C460_p53
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.C_eq_B_plus_1_or_2_closed
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.S_not_fourth_of_order_ne_13
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.beal_odd_A_closed_via_zsig_hensel
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

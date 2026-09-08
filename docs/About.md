@@ -1,13 +1,15 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.24.1-odd-A-closed-for-real`
-Lean change: Step19 inhabits
-`primitive_prime_not_dvd_bases`,
-`beal_odd_A_ge3_closed_of_vp1_inhabited`,
-`beal_odd_A_closed_via_zsig_hensel`.
-`beal_odd_A_closed_v8_24_0_inhabited`
+Latest tag / HEAD: `v8.25.0-Hensel-dichotomy-S-not-fourth-plan`
+Lean change: Step20 inhabits
+`p_sq_dvd_S_iff_order_13_mod_p_sq`,
+`hensel_lift_example_B1_C460_p53`,
+`S_not_fourth_of_order_ne_13`.
+`exists_p_with_order_ne_13_mod_p_sq`
 stays uninhabited (`ExistsNewformLevel2`
 is `0 ≠ 0`).
+`beal_odd_A_closed_v8_24_0_inhabited`
+stays uninhabited.
 v8.24.0 `zsigmondy_exists_primitive_inhabited`,
 `zsig_p_not_dvd_k_of_gcd_inhabited`,
 `S_times_g_not_fourth_of_vp1_inhabited`,

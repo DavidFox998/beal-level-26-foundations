@@ -799,6 +799,26 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.25.0-Hensel-dichotomy-S-not-fourth-plan — DONE (Step11 p²|S iff order 13 in (Z/p²)×; B=1 C=460 p=53 lift inhabited; S_not_fourth from order ≠13; exists_p_with_order_ne_13_mod_p_sq and bare odd-A / full close stay uninhabited; arrow stays a Prop)
+
+Lean change.  Step20 file
+`Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_S_not_fourth_plan.lean`
+inhabits
+`p_sq_dvd_S_iff_order_13_mod_p_sq`,
+`hensel_lift_example_B1_C460_p53`,
+`S_not_fourth_of_order_ne_13`.
+`exists_p_with_order_ne_13_mod_p_sq`,
+`beal_odd_A_closed_v8_24_0_inhabited`,
+`beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real`
+stay uninhabited.
+Unconditional `¬ p² ∣ S` is false
+(Hensel; `B=1`, `C=460`, `p=53`).
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.24.1-odd-A-closed-for-real — DONE (Hensel glue of primitive + v_p=1 + of_vp1 inhabited; bare odd-A / full close stay uninhabited; arrow stays a Prop)
 
 Lean change.  Step19 file
