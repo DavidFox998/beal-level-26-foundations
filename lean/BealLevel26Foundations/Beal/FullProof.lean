@@ -12,11 +12,13 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.19.3)
+# FullProof track (v8.19.4)
 
-Aggregator for Track B.  `zsigmondy_13`
-is inhabited at `n=13`.  `beal_odd_A_ge3_size_gap`
-has `p ∣ A` and `p ∤ (C−B)`.
+Aggregator for Track B.  `p ∣ S` from
+`p ∤ (C−B)`; `p ∣ B` contradicts
+`Coprime C B`.  `zsigmondy_13` stays
+inhabited.  `p ∣ S ∧ p ∣ A → p ∣ B`
+stays uninhabited.
 `ExistsNewformLevel2` is still `0 ≠ 0`.
 `beal_from_ribet` stays *from*
 `ModularImpliesLevel2Newform`.  Not imported

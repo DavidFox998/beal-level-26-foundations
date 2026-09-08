@@ -1,14 +1,14 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.19.3-zsigmondy-13`.
-Lean change: `zsigmondy_13` is inhabited.
-`C¹³ − B¹³` has a primitive prime
-divisor from the cyclotomic sum `Φ₁₃`
-(Mathlib 4.12 has no Zsigmondy module;
-exceptions `(2,1,6)` and `n=2` fail by
-`decide`).  `beal_odd_A_ge3_size_gap`
-gives `p ∣ A` and `p ∤ (C−B)`.
-The general `beal_4_13_13_size` stays
+Latest tag / HEAD: `v8.19.4-zsigmondy-13-step4`.
+Lean change: `p ∣ (C¹³ − B¹³)` and
+`p ∤ (C−B)` give `p ∣ S`.  Then
+`p ∣ B` and `p ∣ S` contradict
+`Coprime C B`.  The attempt
+`p ∣ S ∧ p ∣ A → p ∣ B` stays
+uninhabited.  `zsigmondy_13` stays
+inhabited.  The general
+`beal_4_13_13_size` stays
 uninhabited.
 `genus_X0_2_rat = 0` and `BealAArm`
 from v8.19.0 stay.

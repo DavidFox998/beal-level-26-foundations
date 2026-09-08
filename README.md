@@ -102,6 +102,20 @@ v8.19.0-ExistsNewformLevel2 RibetMazur genus_X0_2_rat=0 over ℚ; BealAArm split
 v8.19.1-beal-4-13-13-size RibetMazur C=B+1 bound A^4≥13 B^12 and A≥B^3; B≤100 table not a 4th power by decide; Zsigmondy and general beal_4_13_13_size stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.19.2-C-ge-B+2 RibetMazur C≥B+2 gives A^4≥26 B^12 from the 13-term sum times C−B≥2; B≤100 C=B+2 table by decide; Zsigmondy stays uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.19.3-zsigmondy-13 RibetMazur n=13 primitive prime from Φ₁₃ (exceptions (2,1,6) and n=2 fail by decide); zsigmondy_13 inhabited; beal_odd_A_ge3_size_gap has p∣A p∤(C−B); ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.19.4-zsigmondy-13-step4 RibetMazur p∣S from p∣(C^13-B^13) and p∤(C−B); p∣B and p∣S contradicts Coprime C B; p∣S∧p∣A→p∣B stays uninhabited; zsigmondy_13 stays inhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.19.4-zsigmondy-13-step4 — p∣S and Coprime C B contradiction (arrow stays a Prop)
+
+Lean change.  `p ∣ (C¹³ − B¹³)` and `p ∤ (C−B)` give `p ∣ S`.  Then `p ∣ B` and `p ∣ S` force `p ∣ C`, against `Coprime C B`.  The attempt `p ∣ S ∧ p ∣ A → p ∣ B` is the opposite direction and stays uninhabited.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `S_13` / `C13_sub_B13_eq_sub_mul_S` / `p_dvd_S_of_p_dvd_diff_and_not_dvd_sub`: inhabited factorization;
+- `primitive_prime_ne_13`: Fermat `x¹³ ≡ x [MOD 13]` plus `p ∣ (C¹³ − B¹³)`;
+- `beal_odd_A_ge3_p_dvd_B_contradiction`: `p ∣ B` and `p ∣ S` contradict `Coprime C B`;
+- `p_dvd_B_of_p_dvd_S_and_p_dvd_A_attempt` stays uninhabited;
+- `zsigmondy_13` stays inhabited; v8.19.2 `C ≥ B+2` and v8.19.0 `genus_X0_2_rat = 0` stay;
+- `beal_from_ribet` / `beal_from_ribet_ell_mixed`: still *from* `ModularImpliesLevel2Newform`.
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.19.3-zsigmondy-13 — n=13 primitive prime; p∣A and p∤(C−B) (arrow stays a Prop)
 

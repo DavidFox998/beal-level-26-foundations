@@ -185,6 +185,8 @@ test -f docs/Beal/Beal_4_13_13_Size_C_ge_B_plus_2.md
 test -f docs/Beal/Beal_4_13_13_Size.md
 test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13.md
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step4.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step4.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -811,6 +813,7 @@ do
   grep -q "v8.19.1-beal-4-13-13-size" "$readme"
   grep -q "v8.19.2-C-ge-B+2" "$readme"
   grep -q "v8.19.3-zsigmondy-13" "$readme"
+  grep -q "v8.19.4-zsigmondy-13-step4" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1340,6 +1343,18 @@ grep -q "theorem zsigmondy_exception_not_2_1_6" \
 grep -q "theorem beal_odd_A_ge3_size_gap" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13.lean
 grep -q "theorem primitive_prime_not_dvd_C_sub_B" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13.lean
+grep -q "def S_13" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step4.lean
+grep -q "theorem C13_sub_B13_eq_sub_mul_S" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step4.lean
+grep -q "theorem p_dvd_S_of_p_dvd_diff_and_not_dvd_sub" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step4.lean
+grep -q "theorem beal_odd_A_ge3_p_dvd_B_contradiction" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step4.lean
+grep -q "def p_dvd_B_of_p_dvd_S_and_p_dvd_A_attempt" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step4.lean
+grep -q "theorem zsigmondy_13" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13.lean
 grep -q "def beal_size_B_le_100_table" \
   certs/Beal_4_13_13_Size_Table.lean

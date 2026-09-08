@@ -799,6 +799,26 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.19.4-zsigmondy-13-step4 — DONE (p∣S and Coprime C B contradiction; p∣S∧p∣A→p∣B uninhabited; arrow stays a Prop)
+
+Lean change.  `p ∣ (C¹³ − B¹³)` and
+`p ∤ (C−B)` give `p ∣ S`.  Then
+`p ∣ B` and `p ∣ S` contradict
+`Coprime C B`.  The attempt
+`p ∣ S ∧ p ∣ A → p ∣ B` stays
+uninhabited.  `zsigmondy_13` stays
+inhabited.  `ExistsNewformLevel2`
+stays `0 ≠ 0`.
+`beal_from_ribet` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** import `X0_26_Model` from
+`RibetMazur`.  Does **not** touch the
+24-module none chain.  No `False.elim`.
+No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.19.3-zsigmondy-13 — DONE (n=13 primitive prime; p∣A and p∤(C−B); arrow stays a Prop)
 
 Lean change.  `zsigmondy_13` is inhabited

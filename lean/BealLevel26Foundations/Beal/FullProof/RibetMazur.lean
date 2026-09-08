@@ -3,13 +3,12 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.19.3 — `zsigmondy_13` is
-inhabited: `C¹³ − B¹³` has a primitive
-prime divisor (`Φ₁₃` has a prime `p ≠ 13`;
-exceptions `(2,1,6)` and `n=2` fail by
-`decide`).  `beal_odd_A_ge3_size_gap`
-gives `p ∣ A` and `p ∤ (C−B)`.
-Mathlib 4.12 has no Zsigmondy module.
+Track B v8.19.4 — `p ∣ S` from
+`p ∣ C¹³ − B¹³` and `p ∤ (C−B)`;
+`p ∣ B` and `p ∣ S` contradicts
+`Coprime C B`.  `p ∣ S ∧ p ∣ A → p ∣ B`
+stays uninhabited.  v8.19.3
+`zsigmondy_13` stays inhabited.
 `ExistsNewformLevel2` stays `0 ≠ 0`.
 `beal_from_ribet` still takes
 `ModularImpliesLevel2Newform`.  Builds on
@@ -129,6 +128,10 @@ What it *does* prove:
 * `zsigmondy_13` is inhabited;
   `beal_odd_A_ge3_size_gap` gives
   `p ∣ A` and `p ∤ (C−B)`;
+  `p ∣ S` and `p ∣ B` contradict
+  `Coprime C B`;
+  `p_dvd_B_of_p_dvd_S_and_p_dvd_A_attempt`
+  stays uninhabited;
   `beal_from_ribet_upside_down_odd_A_closed`
   stays uninhabited;
 * `exists_prime_one_mod_ell_all`: `Q₁` for every
@@ -186,6 +189,7 @@ import BealLevel26Foundations.Beal.FullProof.X0_2_Genus
 import BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Size_Table
 import BealLevel26Foundations.Beal_4_13_13_Size_C_ge_B_plus_2
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step4
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -2652,6 +2656,17 @@ def zsigmondy_13 :=
 def beal_odd_A_ge3_size_gap :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13.beal_odd_A_ge3_size_gap
 
+/-! ## v8.19.4 — `p ∣ S` and Coprime contradiction -/
+
+/-- Re-export.  The 13-term cyclotomic sum. -/
+def S_13 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step4.S_13
+
+/-- Uninhabited.  `p ∣ S` and `p ∣ A` do **not**
+force `p ∣ B`.  Coprimality goes the other way. -/
+def p_dvd_B_of_p_dvd_S_and_p_dvd_A_attempt :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step4.p_dvd_B_of_p_dvd_S_and_p_dvd_A_attempt
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -2851,6 +2866,12 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13.zsigmondy_exception_not_2_1_6
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13.has_primitive_prime_divisor_13_of_C_gt_B
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13.primitive_prime_not_dvd_C_sub_B
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step4.S_13
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step4.C13_sub_B13_eq_sub_mul_S
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step4.p_dvd_S_of_p_dvd_diff_and_not_dvd_sub
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step4.primitive_prime_ne_13
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step4.beal_odd_A_ge3_p_dvd_B_contradiction
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step4.p_dvd_B_of_p_dvd_S_and_p_dvd_A_attempt
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
