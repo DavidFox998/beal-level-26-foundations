@@ -1,21 +1,22 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.17.0-twaux-26-and-10000`.
-Lean change: `TWAuxEllFixed` is inhabited at
-`N = 26` and `N = 10000` for every residual
-in `InTWEll1000`, with `Qᵢ > N` so `Qᵢ ∤ N`.
+Latest tag / HEAD: `v8.18.0-product`.
+Lean change: `TWAuxEllFixedExists_all_N_le_10000`
+inhabits every `N ≤ 10000` on `InTWEll1000`
+by transporting the `N = 10000` witnesses
+(`Qᵢ > 10000 ≥ N`).  That is a function on
+the product, not a 1.66M-row `decide` table.
 `of5_26` / `of7_26` / `of13_26` keep
-`(31,101)` / `(29,197)` / `(53,677)` and
-are also `of5_26_gt` (`Q₁ > 26` already).
-`ℓ = 941` needs `Q₁ = 30113` (`N + 21000`,
-not `N + 20000`).  `ℓ = 29` at `N = 10000`
-uses `Q₁ = 10151` so `Q₁ ≠ Q₂ = 10093`.
+`(31,101)` / `(29,197)` / `(53,677)`.
+`ℓ = 941` still needs `Q₁ = 30113`.
 That is **not** Dirichlet and **not**
-`∀ N ≤ 10000`.  Completeness
-`Nat.Prime ℓ → 5 ≤ ℓ ≤ 1000` is
-kernel-checked only on `[5, 100]` via
-`Finset.filter` (`interval_cases` hits
-max recursion).  Mixed / odd-`A` facts
+`Nat.Prime ℓ → 5 ≤ ℓ ≤ 1000`.  The
+Prime-quantified
+`TWAuxEllFixed_inhabited_for_every_ell_le_1000`
+stays uninhabited.  Completeness is
+kernel-checked only on `[5, 100]`.
+Reused `Q₁` is not `≤ N + 21000` for
+small `N`.  Mixed / odd-`A` facts
 are unchanged.
 `beal_from_ribet_ell_mixed` stays
 *from* `ModularImpliesLevel2Newform`.

@@ -3,14 +3,13 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.17.0 — `TWAuxEllFixed` at `N = 26`
-and `N = 10000` for every residual in
-`InTWEll1000`.  `Qᵢ > N` so `Qᵢ ∤ N`.
-Not `∀ N ≤ 10000`.  `ℓ = 941` needs
-`Q₁ = 30113` (`N + 21000`).  Completeness
-`Nat.Prime → 5 ≤ ℓ ≤ 1000` is kernel-checked
-only on `[5, 100]` via `Finset.filter`.
-Builds on the v8.16.0 `Q₂ ≤ 10⁸` Pratt table.
+Track B v8.18.0 — `TWAuxEllFixed` for every
+`N ≤ 10000` on `InTWEll1000`, by transporting
+the `N = 10000` witnesses.  Not
+`Nat.Prime → 5 ≤ ℓ ≤ 1000`.  `ℓ = 941`
+needs `Q₁ = 30113`.  Completeness is
+kernel-checked only on `[5, 100]`.
+Builds on the v8.17.0 two-conductor tables.
 
 Mathlib 4.12 has no Ribet functor and no arrow
     `Modular w → ExistsNewformLevel2`.  That label is
@@ -125,15 +124,19 @@ What it *does* prove:
   every residual in `InTWEll1000`, bound `10⁸`;
 * `find_next_prime_one_mod_gt_exists` /
   `next_Q1_gt_N_exists` stay uninhabited
-  (`∀ N ≤ 10000`);
-* `TWAuxEllFixedExists_26_all` /
-  `TWAuxEllFixedExists_10000_all` inhabit
-  the two conductors on `InTWEll1000`;
+  (`Nat.Prime` plus `Q₁ ≤ N + 21000`);
+* `TWAuxEllFixedExists_all_N_le_10000` /
+  `TWAuxEllFixed_inhabited_for_every_ell_le_1000_product`
+  inhabit every `N ≤ 10000` on the table
+  by transporting the `N = 10000` row;
 * `of5_26` / `of7_26` / `of13_26` keep the
   same witnesses and are also `of5_26_gt`
   (`Q₁ > 26` already);
 * `primes_le_1000` is the Finset union;
-  `InTWEll1000_complete` stays uninhabited.
+  `InTWEll1000_complete` and the
+  Prime-quantified
+  `TWAuxEllFixed_inhabited_for_every_ell_le_1000`
+  stay uninhabited.
 
 Does **not** import `X0_26_Model`.  FullProof-only.
 None chain does not import this file.
@@ -2616,10 +2619,10 @@ theorem exists_prime_one_mod_ell_sq_all_13 :
       Q2 ≤ 100000000 ∧ 5 ≤ Q2 :=
   exists_prime_one_mod_ell_sq_all InTWEll1000_13
 
-/-- Uninhabited.  The 166-row `Q₂` table gives a
-prime `≡ 1 [MOD ℓ²]`, but the smallest such
-prime is often `< N` (e.g. `101 < 10000`).
-`∀ N ≤ 10000` is not a 166-row table. -/
+/-- Uninhabited.  Needs `Nat.Prime ℓ → 5 ≤ ℓ ≤ 1000`
+(`InTWEll1000_complete`).  The table-membership
+product is
+`TWAuxEllFixed_inhabited_for_every_ell_le_1000_product`. -/
 def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
   ∀ ℓ N : Nat, ℓ.Prime → 5 ≤ ℓ → ℓ ≤ 1000 → N ≤ 10000 →
     Nonempty (TWAuxEllFixed ℓ N)
@@ -2703,6 +2706,12 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check TWAuxEllFixedExists_7_26
 #check TWAuxEllFixedExists_26_all
 #check TWAuxEllFixedExists_10000_all
+#check TWAuxEllFixedExists_all_N_le_10000
+#check TWAuxEllFixed_inhabited_for_every_ell_le_1000_product
+#check of_ℓ_N_product
+#check product_all_mem
+#check find_next_prime_one_mod_gt_exists_product
+#check TWAuxEllFixed.of_N_le
 #check exists_prime_one_mod_ell_all_13
 #check exists_prime_one_mod_ell_sq_all
 #check exists_prime_one_mod_ell_sq_all_13
@@ -2799,6 +2808,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms TWAuxEllFixedExists_7_26
 #print axioms TWAuxEllFixedExists_26_all
 #print axioms TWAuxEllFixedExists_10000_all
+#print axioms TWAuxEllFixedExists_all_N_le_10000
+#print axioms TWAuxEllFixed_inhabited_for_every_ell_le_1000_product
+#print axioms TWAuxEllFixed.of_N_le
+#print axioms find_next_prime_one_mod_gt_exists_product
 #print axioms InTWEll1000_of_prime_5_100
 #print axioms InTWEll1000_iff_mem
 #print axioms succ_pow_sub_pow_gt_one

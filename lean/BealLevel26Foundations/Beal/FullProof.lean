@@ -12,12 +12,13 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.17.0)
+# FullProof track (v8.18.0)
 
 Aggregator for Track B.  `TWAuxEllFixed` is
-inhabited at `N = 26` and `N = 10000` for
-every residual in `InTWEll1000`.  Not
-Dirichlet and not `∀ N ≤ 10000`.  Mixed /
+inhabited for every `N ≤ 10000` on
+`InTWEll1000` by transporting the
+`N = 10000` witnesses.  Not Dirichlet and
+not `Nat.Prime ℓ → 5 ≤ ℓ ≤ 1000`.  Mixed /
 odd-`A` facts are unchanged.
 `beal_from_ribet_ell_mixed` stays *from*
 `ModularImpliesLevel2Newform`.

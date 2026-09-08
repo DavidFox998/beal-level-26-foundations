@@ -97,6 +97,21 @@ v8.14.0-mixed-odd-A RibetMazur odd A^4≡1 mod16; odd B^13≡B mod8; A^4≡C-B m
 v8.15.0-dirichlet-up-to-1000 RibetMazur 166-row Q1≡1 mod ℓ table via InTWEll1000; Q1_not_dvd_N_of_Q1_gt_N when 0<N<Q1; Q2-∀ and ∀N≤10000 stay uninhabited; Mixed/odd-A facts unchanged; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.16.0-q2-table-100M RibetMazur 166-row Q2≡1 mod ℓ² table via Pratt, bound 1e8; 919→59119271; 56 missing at 5e6 now included; ∀N≤10000 stays uninhabited; Mixed/odd-A facts unchanged; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.17.0-twaux-26-and-10000 RibetMazur TWAuxEllFixed inhabited at N=26 and N=10000 for InTWEll1000; Q1>N Q2>N; ℓ=941 needs Q1=30113 (N+21000); ∀N≤10000 stays uninhabited; completeness only [5,100] via Finset.filter; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.18.0-product RibetMazur TWAuxEllFixed inhabited for every N≤10000 on InTWEll1000 by transporting the N=10000 row; not Nat.Prime completeness; not Q1≤N+21000 for small N; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.18.0-product — TWAuxEllFixed for every N≤10000 on InTWEll1000 (arrow stays a Prop)
+
+Lean change.  `of_N_le` transports the `N = 10000` witnesses to every `N ≤ 10000` on `InTWEll1000`.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `TWAuxEllFixedExists_all_N_le_10000` / `TWAuxEllFixed_inhabited_for_every_ell_le_1000_product`: table-membership product, a function, not 1.66M `decide` goals;
+- `product_all_mem`: pair predicate; materialising `Finset.product` with `Icc 0 10000` hits max recursion;
+- Prime-quantified `TWAuxEllFixed_inhabited_for_every_ell_le_1000` / `InTWEll1000_complete` stay uninhabited;
+- `find_next_prime_one_mod_gt_exists` stays uninhabited (`Q₁ ≤ N + 21000` is false for reused `ℓ = 941`, `Q₁ = 30113`, at small `N`);
+- `of5_26_gt` / `of7_26_gt` / `of13_26_gt` unchanged;
+- Mixed / odd-`A` facts from v8.14.0–v8.17.0 are unchanged;
+- `beal_from_ribet_ell_mixed`: still *from* `ModularImpliesLevel2Newform`.
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.17.0-twaux-26-and-10000 — TWAuxEllFixed at N=26 and N=10000 (arrow stays a Prop)
 

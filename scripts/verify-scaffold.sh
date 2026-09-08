@@ -796,6 +796,7 @@ do
   grep -q "v8.15.0-dirichlet-up-to-1000" "$readme"
   grep -q "v8.16.0-q2-table-100M" "$readme"
   grep -q "v8.17.0-twaux-26-and-10000" "$readme"
+  grep -q "v8.18.0-product" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1275,6 +1276,14 @@ grep -q "theorem TWAuxEllFixedExists_26_all" \
   lean/BealLevel26Foundations/Beal/FullProof/TWAuxEllFixed.lean
 grep -q "theorem TWAuxEllFixedExists_10000_all" \
   lean/BealLevel26Foundations/Beal/FullProof/TWAuxEllFixed.lean
+grep -q "theorem TWAuxEllFixedExists_all_N_le_10000" \
+  lean/BealLevel26Foundations/Beal/FullProof/TWAuxEllFixed.lean
+grep -q "theorem TWAuxEllFixed_inhabited_for_every_ell_le_1000_product" \
+  lean/BealLevel26Foundations/Beal/FullProof/TWAuxEllFixed.lean
+grep -q "def of_ℓ_N_product" \
+  lean/BealLevel26Foundations/Beal/FullProof/TWAuxEllFixed.lean
+grep -q "def TWAuxEllFixed.of_N_le" \
+  lean/BealLevel26Foundations/Beal/FullProof/TWAuxEllFixedCore.lean
 grep -q "theorem primes5to100_eq_Icc_filter" \
   lean/BealLevel26Foundations/Beal/FullProof/TWPrimes_5_100.lean
 grep -q "def twaux_10000_941" \

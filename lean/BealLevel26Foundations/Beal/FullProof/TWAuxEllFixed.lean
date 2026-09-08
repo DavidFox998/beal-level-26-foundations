@@ -3,18 +3,20 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.17.0 — `TWAuxEllFixed` at the two conductors
-`N = 26` and `N = 10000` for every residual in
-`InTWEll1000`.  Not `∀ N ≤ 10000`.  Completeness
-`Nat.Prime ℓ → 5 ≤ ℓ ≤ 1000` is still only
-kernel-checked on `[5, 100]` via `Finset.filter`.
-`ℓ = 941` needs `Q₁ = 30113` (`N + 21000`).
-`ℓ = 29` at `N = 10000` uses `Q₁ = 10151`
-so `Q₁ ≠ Q₂ = 10093`.
+Track B v8.18.0 — `TWAuxEllFixed` for every
+`N ≤ 10000` on `InTWEll1000`, by transporting
+the `N = 10000` witnesses (`Qᵢ > 10000 ≥ N`).
+Not `Nat.Prime ℓ → 5 ≤ ℓ ≤ 1000` (that stays
+`InTWEll1000_complete`).  Not a 1.66M-row
+`decide` / `fin_cases` expansion.  Not
+`Q₁ ≤ N + 21000` for small `N` (the reused
+`ℓ = 941` witness is `30113`).
 -/
 
 import BealLevel26Foundations.Beal.FullProof.TWAuxEllFixedCore
 import BealLevel26Foundations.Beal.FullProof.TWPrimes
+import Mathlib.Data.Finset.Basic
+import Mathlib.Tactic
 import BealLevel26Foundations.Beal.FullProof.TWAuxEllFixed_5_100
 import BealLevel26Foundations.Beal.FullProof.TWAuxEllFixed_101_200
 import BealLevel26Foundations.Beal.FullProof.TWAuxEllFixed_201_300
@@ -240,5 +242,59 @@ theorem TWAuxEllFixedExists_10000_all {ℓ : Nat}
   · exact TWAuxEllFixedExists_10000_701_800 h
   · exact TWAuxEllFixedExists_10000_801_900 h
   · exact TWAuxEllFixedExists_10000_901_1000 h
+
+/-- Reuse the `N = 10000` table for every smaller
+conductor.  `166 × 10001` pairs, stored as a
+function, not a materialised `Finset.product`. -/
+noncomputable def of_ℓ_N_product {ℓ N : Nat}
+    (hℓ : InTWEll1000 ℓ) (hN : N ≤ 10000) :
+    TWAuxEllFixed ℓ N :=
+  TWAuxEllFixed.of_N_le
+    (Classical.choice (TWAuxEllFixedExists_10000_all hℓ)) hN
+
+theorem TWAuxEllFixedExists_all_N_le_10000 {ℓ N : Nat}
+    (hℓ : InTWEll1000 ℓ) (hN : N ≤ 10000) :
+    TWAuxEllFixedExists ℓ N :=
+  ⟨of_ℓ_N_product hℓ hN⟩
+
+theorem mem_Icc_0_10000 {N : Nat} :
+    N ∈ Finset.Icc 0 10000 ↔ N ≤ 10000 := by
+  simp [Finset.mem_Icc]
+
+/-- Pair predicate for the product.  Not a
+1.66M-element Finset: materialising
+`primes_le_1000.product (Icc 0 10000)` hits
+max recursion. -/
+def product_all_mem (ℓ N : Nat) : Prop :=
+  ℓ ∈ primes_le_1000 ∧ N ∈ Finset.Icc 0 10000
+
+theorem TWAuxEllFixedExists_all_N_le_10000_mem {ℓ N : Nat}
+    (hℓ : ℓ ∈ primes_le_1000) (hN : N ∈ Finset.Icc 0 10000) :
+    TWAuxEllFixedExists ℓ N :=
+  TWAuxEllFixedExists_all_N_le_10000 (InTWEll1000_iff_mem.mpr hℓ)
+    (mem_Icc_0_10000.mp hN)
+
+/-- Table-membership product.  Not
+`Nat.Prime ℓ → 5 ≤ ℓ ≤ 1000`; that stays
+`InTWEll1000_complete` / the Prime-quantified
+`TWAuxEllFixed_inhabited_for_every_ell_le_1000`. -/
+theorem TWAuxEllFixed_inhabited_for_every_ell_le_1000_product :
+    ∀ ℓ ∈ primes_le_1000, ∀ N ∈ Finset.Icc 0 10000,
+      TWAuxEllFixedExists ℓ N :=
+  fun _ hℓ _ hN => TWAuxEllFixedExists_all_N_le_10000_mem hℓ hN
+
+theorem TWAuxEllFixedExists_of_mem_product {ℓ N : Nat}
+    (h : product_all_mem ℓ N) : TWAuxEllFixedExists ℓ N :=
+  TWAuxEllFixedExists_all_N_le_10000_mem h.1 h.2
+
+/-- A prime `≡ 1 [MOD ℓ]` above `N`, reused from
+the `N = 10000` row.  The bound is `30113` at
+`ℓ = 941`, which is not `≤ N + 21000` for
+small `N`. -/
+theorem find_next_prime_one_mod_gt_exists_product {ℓ N : Nat}
+    (hℓ : InTWEll1000 ℓ) (hN : N ≤ 10000) :
+    ∃ Q1 : Nat, Q1.Prime ∧ Q1 % ℓ = 1 ∧ N < Q1 := by
+  rcases TWAuxEllFixedExists_all_N_le_10000 hℓ hN with ⟨tw⟩
+  exact ⟨tw.Q1ell, tw.Q1_prime, tw.Q1_mod, tw.Q1_gt_N⟩
 
 end BealLevel26Foundations.Beal.FullProof.TWAuxEllFixed
