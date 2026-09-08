@@ -1,3 +1,31 @@
+# FINAL v8.19.5 — order 13 forces p≡1 mod 13, p≥53, A≥53 (arrow stays a Prop)
+
+Latest tag `v8.19.5-p-mod-13-eq-1`.
+Lean change.
+A primitive prime of `C¹³ − B¹³`
+has multiplicative order 13, so
+`13 ∣ (p−1)`, `p ≡ 1 [MOD 13]`,
+`p ≥ 53`, and odd `A ≥ 3` has
+`A ≥ 53`.  `A ≥ 53` does not close
+`¬ A⁴ + B¹³ = C¹³`.
+`zsigmondy_13` stays inhabited.
+The general `beal_4_13_13_size` stays
+uninhabited.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` stays *from*
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+**No `sorry`**, **no `False.elim`**.
+Official none-chain build stays **24 modules**.
+Latest written mint
+[10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221)
+(v7.1.1 About catch-up, Track A).  Track B does **not**
+write a new mint claiming unconditional Beal `∀`.
+Three JPEG plates stay in `docs/assets/v6.7.0/`.
+Hook `22379293`.  `IsVersionOf` `22272382` metadata only.
+Original-family latest remains `22322627`.
+
 # FINAL v8.19.4 — p∣S and Coprime C B contradiction (arrow stays a Prop)
 
 Latest tag `v8.19.4-zsigmondy-13-step4`.

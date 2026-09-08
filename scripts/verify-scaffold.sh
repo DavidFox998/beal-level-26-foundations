@@ -187,6 +187,8 @@ test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13.md
 test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step4.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step4.md
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -814,6 +816,7 @@ do
   grep -q "v8.19.2-C-ge-B+2" "$readme"
   grep -q "v8.19.3-zsigmondy-13" "$readme"
   grep -q "v8.19.4-zsigmondy-13-step4" "$readme"
+  grep -q "v8.19.5-p-mod-13-eq-1" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1354,6 +1357,20 @@ grep -q "theorem beal_odd_A_ge3_p_dvd_B_contradiction" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step4.lean
 grep -q "def p_dvd_B_of_p_dvd_S_and_p_dvd_A_attempt" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step4.lean
+grep -q "noncomputable def order_mod_p" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.lean
+grep -q "theorem order_dvd_p_minus_one_of_prime" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.lean
+grep -q "theorem order_eq_13_of_primitive_prime_13" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.lean
+grep -q "theorem primitive_prime_mod_13_eq_1" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.lean
+grep -q "theorem primitive_prime_ge_53" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.lean
+grep -q "theorem beal_odd_A_ge3_A_ge_53" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.lean
+grep -q "def beal_odd_A_ge3_closed_of_A_ge_53" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.lean
 grep -q "theorem zsigmondy_13" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13.lean
 grep -q "def beal_size_B_le_100_table" \

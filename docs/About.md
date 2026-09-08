@@ -1,14 +1,13 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.19.4-zsigmondy-13-step4`.
-Lean change: `p ∣ (C¹³ − B¹³)` and
-`p ∤ (C−B)` give `p ∣ S`.  Then
-`p ∣ B` and `p ∣ S` contradict
-`Coprime C B`.  The attempt
-`p ∣ S ∧ p ∣ A → p ∣ B` stays
-uninhabited.  `zsigmondy_13` stays
-inhabited.  The general
-`beal_4_13_13_size` stays
+Latest tag / HEAD: `v8.19.5-p-mod-13-eq-1`.
+Lean change: a primitive prime of
+`C¹³ − B¹³` has order 13, so
+`p ≡ 1 [MOD 13]`, `p ≥ 53`, and
+odd `A ≥ 3` has `A ≥ 53`.
+`A ≥ 53` does not close the equation.
+`zsigmondy_13` stays inhabited.
+The general `beal_4_13_13_size` stays
 uninhabited.
 `genus_X0_2_rat = 0` and `BealAArm`
 from v8.19.0 stay.

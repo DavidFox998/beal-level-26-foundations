@@ -799,6 +799,25 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.19.5-p-mod-13-eq-1 — DONE (order 13 forces p≡1 mod 13, p≥53, A≥53; arrow stays a Prop)
+
+Lean change.  A primitive prime of
+`C¹³ − B¹³` has order 13, so
+`p ≡ 1 [MOD 13]`, `p ≥ 53`, and
+`A ≥ 53`.  `A ≥ 53` does not close
+the equation.  `zsigmondy_13` stays
+inhabited.  `ExistsNewformLevel2`
+stays `0 ≠ 0`.
+`beal_from_ribet` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** import `X0_26_Model` from
+`RibetMazur`.  Does **not** touch the
+24-module none chain.  No `False.elim`.
+No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.19.4-zsigmondy-13-step4 — DONE (p∣S and Coprime C B contradiction; p∣S∧p∣A→p∣B uninhabited; arrow stays a Prop)
 
 Lean change.  `p ∣ (C¹³ − B¹³)` and

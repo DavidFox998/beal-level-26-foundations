@@ -3,11 +3,11 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.19.4 — `p ∣ S` from
-`p ∣ C¹³ − B¹³` and `p ∤ (C−B)`;
-`p ∣ B` and `p ∣ S` contradicts
-`Coprime C B`.  `p ∣ S ∧ p ∣ A → p ∣ B`
-stays uninhabited.  v8.19.3
+Track B v8.19.5 — primitive `p` for
+`n=13` has order 13, so `p ≡ 1 [MOD 13]`,
+`p ≥ 53`, and `A ≥ 53`.  v8.19.4
+`S_13` / `p ∣ S` / `p ≠ 13` /
+`p ∣ A → ¬ p ∣ B` stay.  v8.19.3
 `zsigmondy_13` stays inhabited.
 `ExistsNewformLevel2` stays `0 ≠ 0`.
 `beal_from_ribet` still takes
@@ -132,6 +132,10 @@ What it *does* prove:
   `Coprime C B`;
   `p_dvd_B_of_p_dvd_S_and_p_dvd_A_attempt`
   stays uninhabited;
+  primitive `p` has order 13 so
+  `p ≡ 1 [MOD 13]`, `p ≥ 53`, `A ≥ 53`;
+  `beal_odd_A_ge3_closed_of_A_ge_53`
+  stays uninhabited;
   `beal_from_ribet_upside_down_odd_A_closed`
   stays uninhabited;
 * `exists_prime_one_mod_ell_all`: `Q₁` for every
@@ -190,6 +194,7 @@ import BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Size_Table
 import BealLevel26Foundations.Beal_4_13_13_Size_C_ge_B_plus_2
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step4
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -2667,6 +2672,28 @@ force `p ∣ B`.  Coprimality goes the other way. -/
 def p_dvd_B_of_p_dvd_S_and_p_dvd_A_attempt :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step4.p_dvd_B_of_p_dvd_S_and_p_dvd_A_attempt
 
+/-! ## v8.19.5 — order 13, `p ≡ 1 [MOD 13]`, `p ≥ 53` -/
+
+/-- Re-export.  Multiplicative order in `ZMod p`. -/
+noncomputable def order_mod_p :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.order_mod_p
+
+/-- Inhabited.  Order 13 forces `p ≡ 1 [MOD 13]`. -/
+def primitive_prime_mod_13_eq_1 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.primitive_prime_mod_13_eq_1
+
+/-- Inhabited.  A prime `≡ 1 [MOD 13]` is at least `53`. -/
+def primitive_prime_ge_53 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.primitive_prime_ge_53
+
+/-- Inhabited.  Odd `A ≥ 3` in `A⁴ + B¹³ = C¹³` has `A ≥ 53`. -/
+def beal_odd_A_ge3_A_ge_53 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.beal_odd_A_ge3_A_ge_53
+
+/-- Uninhabited.  `A ≥ 53` does not close the equation. -/
+def beal_odd_A_ge3_closed_of_A_ge_53 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.beal_odd_A_ge3_closed_of_A_ge_53
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -2872,6 +2899,14 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step4.primitive_prime_ne_13
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step4.beal_odd_A_ge3_p_dvd_B_contradiction
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step4.p_dvd_B_of_p_dvd_S_and_p_dvd_A_attempt
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.order_mod_p
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.order_dvd_p_minus_one_of_prime
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.order_eq_13_of_primitive_prime_13
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.primitive_prime_mod_13_eq_1
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.primitive_prime_ge_53
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.beal_odd_A_ge3_primitive_prime_ge_53
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.beal_odd_A_ge3_A_ge_53
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.beal_odd_A_ge3_closed_of_A_ge_53
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -2996,5 +3031,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms InTWEll1000_of_prime_5_100
 #print axioms InTWEll1000_iff_mem
 #print axioms succ_pow_sub_pow_gt_one
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.order_dvd_p_minus_one_of_prime
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.order_eq_13_of_primitive_prime_13
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.primitive_prime_mod_13_eq_1
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.primitive_prime_ge_53
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step5_P_mod_13.beal_odd_A_ge3_A_ge_53
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

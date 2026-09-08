@@ -103,6 +103,20 @@ v8.19.1-beal-4-13-13-size RibetMazur C=B+1 bound A^4≥13 B^12 and A≥B^3; B≤
 v8.19.2-C-ge-B+2 RibetMazur C≥B+2 gives A^4≥26 B^12 from the 13-term sum times C−B≥2; B≤100 C=B+2 table by decide; Zsigmondy stays uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.19.3-zsigmondy-13 RibetMazur n=13 primitive prime from Φ₁₃ (exceptions (2,1,6) and n=2 fail by decide); zsigmondy_13 inhabited; beal_odd_A_ge3_size_gap has p∣A p∤(C−B); ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.19.4-zsigmondy-13-step4 RibetMazur p∣S from p∣(C^13-B^13) and p∤(C−B); p∣B and p∣S contradicts Coprime C B; p∣S∧p∣A→p∣B stays uninhabited; zsigmondy_13 stays inhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.19.5-p-mod-13-eq-1 RibetMazur primitive p for n=13 has order 13 so p≡1 mod 13 and p≥53 and A≥53; zsigmondy_13 stays inhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+
+### v8.19.5-p-mod-13-eq-1 — order 13 forces p≡1 mod 13, p≥53, A≥53 (arrow stays a Prop)
+
+Lean change.  A primitive prime of `C¹³ − B¹³` has multiplicative order 13 in `(ℤ/pℤ)ˣ`, so `13 ∣ (p−1)`, `p ≡ 1 [MOD 13]`, `p ≥ 53`, and odd `A ≥ 3` has `A ≥ 53`.  `A ≥ 53` does not close the equation.  Does **not** inhabit `Beal.BealForall.beal_forall_from_Is13Case_sketch` and does **not** use `sorry` / `False.elim`.
+
+- `order_mod_p` / `order_dvd_p_minus_one_of_prime`: Fermat `a^(p−1) ≡ 1`;
+- `order_eq_13_of_primitive_prime_13`: `(C/B)^13 ≡ 1`, `C/B ≠ 1`, `13` prime;
+- `primitive_prime_mod_13_eq_1` / `primitive_prime_ge_53` / `beal_odd_A_ge3_A_ge_53`: inhabited;
+- `beal_odd_A_ge3_closed_of_A_ge_53` stays uninhabited;
+- v8.19.4 `S_13` and `p ∣ A → ¬ p ∣ B` stay; `zsigmondy_13` stays inhabited;
+- `beal_from_ribet` / `beal_from_ribet_ell_mixed`: still *from* `ModularImpliesLevel2Newform`.
+
+`ExistsNewformLevel2` stays `0 ≠ 0`.  About still writes Track A mint `22635221`; Track B does not write a new Zenodo claiming Beal `∀`.
 
 ### v8.19.4-zsigmondy-13-step4 — p∣S and Coprime C B contradiction (arrow stays a Prop)
 
