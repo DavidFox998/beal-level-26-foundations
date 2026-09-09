@@ -3601,8 +3601,9 @@ def IsProperPrimePower :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.IsProperPrimePower
 
 /-- Inhabited.  A prime is not a proper prime power. -/
-def not_isProperPrimePower_of_prime :=
-  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.not_isProperPrimePower_of_prime
+def not_isProperPrimePower_of_prime {n : Nat} (hn : Nat.Prime n) :
+    ¬ IsProperPrimePower n :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.not_isProperPrimePower_of_prime hn
 
 /-- Inhabited.  Proper prime power implies `p² ∣ n`. -/
 def proper_prime_power_imp_sq_dvd :=
