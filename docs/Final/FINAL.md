@@ -1,3 +1,21 @@
+# FINAL v8.44.0 — Kraus p=5 eliminates 26a1 (arrow stays a Prop)
+
+Latest tag `v8.44.0-Kraus-p5-elim-26a1`.
+Lean change.
+Step39 inhabits `kraus_elimination_26a1`
+(ledger `a₅(26a1) = -3` is not a Frey
+p=5 trace in `{-4, -2, 0, 2, 4}` nor
+`{-2, 0, 2}`).
+`kraus_elimination_26b1` stays inhabited.
+`kraus_elimination_q_13_level_26` stays
+a Prop. `B > 100000` Bugeaud `P(Φ₁₃) > C`
+and `rad > √13 C⁶` stay Props, so
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stays a Prop. The Hensel ∀ stays a Prop.
+The Ljunggren ∀ stays a Prop.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.43.0 — Kraus p=3 eliminates 26b1 (arrow stays a Prop)
 
 Latest tag `v8.43.0-Kraus-p3-elim-26b1`.

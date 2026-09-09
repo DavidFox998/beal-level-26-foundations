@@ -3,12 +3,17 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.43.0 — Kraus p=3 trace
+Track B v8.44.0 — Kraus p=5 trace
+eliminates displayed `26a1` (not a ∀ close).
+`kraus_elimination_26a1` is inhabited
+(`a₅(26a1) = -3 ∉ {-4, -2, 0, 2, 4}`
+and `∉ {-2, 0, 2}`).
+`kraus_elimination_26b1` stays inhabited.
+`kraus_elimination_q_13_level_26` stays uninhabited.
+v8.43.0 — Kraus p=3 trace
 eliminates displayed `26b1` (not a ∀ close).
 `kraus_elimination_26b1` is inhabited
 (`a₃(26b1) = -3 ∉ {-2, 0, 2}`).
-`kraus_elimination_26a1` and
-`kraus_elimination_q_13_level_26` stay uninhabited.
 v8.42.0 — B ≤ 100000 exp-one
 extension (300+ named gap-3 rows, not a ∀).
 `S_has_prime_with_exp_one_B_le_100000_table_rows`,
@@ -370,6 +375,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bo
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step37_B_le_100k_extension
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -3924,9 +3930,35 @@ Frey p=3 trace in `{-2, 0, 2}`. -/
 def kraus_elimination_26b1 :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.kraus_elimination_26b1
 
-/-- Uninhabited.  Remaining `26a1` matching lock. -/
-def kraus_elimination_26a1 : Prop :=
-  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.kraus_elimination_26a1
+/-! ## v8.44.0 — Kraus p=5 eliminates displayed 26a1 -/
+
+/-- Inhabited.  Ledger `a₅(26a1) = -3` is not a
+Frey p=5 trace in `{-4, -2, 0, 2, 4}` nor
+`{-2, 0, 2}`. -/
+def kraus_elimination_26a1 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.kraus_elimination_26a1
+
+/-- Inhabited.  Displayed Frey p=5 traces when `5 ∤ A`. -/
+def FreyP5TracesGood : List Int :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.FreyP5TracesGood
+
+/-- Inhabited.  Displayed Frey p=5 traces when `5 ∣ A`. -/
+def FreyP5TracesWhen5DvdA : List Int :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.FreyP5TracesWhen5DvdA
+
+/-- Inhabited.  Ledger `a₅(26a1) = -3`. -/
+def ap_26a1_5_eq :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.ap_26a1_5_eq
+
+/-- Inhabited.  Both displayed level-26 newforms
+miss the displayed Frey p=3 and p=5 traces. -/
+def s2_26_displayed_newforms_miss_frey_traces :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.s2_26_displayed_newforms_miss_frey_traces
+
+/-- Uninhabited.  Displayed misses do not prove
+Ribet level-lowering `26 → 2`. -/
+def level_lowering_26_to_2_from_no_match : Prop :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.level_lowering_26_to_2_from_no_match
 
 /-- Inhabited.  Displayed Frey p=3 traces. -/
 def FreyP3Traces : List Int :=
@@ -4441,6 +4473,13 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.FreyP3Traces
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.kraus_elimination_q_13_level_26
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.kraus_elimination_26a1
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.s2_26_displayed_newforms_miss_frey_traces
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.ap_26a1_5_eq
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.FreyP5TracesGood
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.kraus_elimination_q_13_level_26
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.level_lowering_26_to_2_from_no_match
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -4758,5 +4797,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.kraus_elimination_26b1
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.a3_26b1_not_in_frey_p3_traces
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.kraus_elimination_26a1
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.a5_26a1_not_in_frey_p5_traces
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.s2_26_displayed_newforms_miss_frey_traces
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

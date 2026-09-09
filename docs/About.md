@@ -1,12 +1,13 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.43.0-Kraus-p3-elim-26b1`
-Lean change: Step38 inhabits
-`kraus_elimination_26b1` (ledger
-`a₃(26b1) = -3` is not a Frey p=3
-trace in `{-2, 0, 2}`).
-`kraus_elimination_26a1` and
-`kraus_elimination_q_13_level_26` stay
+Latest tag / HEAD: `v8.44.0-Kraus-p5-elim-26a1`
+Lean change: Step39 inhabits
+`kraus_elimination_26a1` (ledger
+`a₅(26a1) = -3` is not a Frey p=5
+trace in `{-4, -2, 0, 2, 4}` nor
+`{-2, 0, 2}`).
+`kraus_elimination_26b1` stays inhabited.
+`kraus_elimination_q_13_level_26` stays
 uninhabited (matching lock at level 26).
 `bugeaud_P_phi13_gt_C_when_B_gt_100000`
 and `rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_100000`

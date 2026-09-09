@@ -120,6 +120,7 @@ v8.40.0-B-gt-50000-rad-bound RibetMazur Step35 S_le_13_C_pow12 rad_le_sqrt_of_sq
 v8.41.0-Kraus-X0-26-elimination RibetMazur Step36 ap_bound_level_26 X0_26_Q_displayed_points; kraus_elimination_q_13_level_26 bugeaud_P_phi13_gt_C_when_B_gt_50000 S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.42.0-B-le-100k-extension RibetMazur Step37 S_has_prime_with_exp_one_B_le_100000_table_rows; exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 kraus_elimination_q_13_level_26 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.43.0-Kraus-p3-elim-26b1 RibetMazur Step38 kraus_elimination_26b1; kraus_elimination_26a1 kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.44.0-Kraus-p5-elim-26a1 RibetMazur Step39 kraus_elimination_26a1; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 
 ### v4.28.0 X0(26)(Q) Cusps P-mem Locked — DOI 22452680
 

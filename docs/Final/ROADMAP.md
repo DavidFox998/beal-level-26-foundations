@@ -799,6 +799,33 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.44.0-Kraus-p5-elim-26a1 — DONE (kraus_elimination_26a1 inhabited, a5(26a1)=-3 not in Frey p=5 traces {-4,-2,0,2,4} nor {-2,0,2}; kraus_elimination_q_13_level_26 stays uninhabited; arrow stays a Prop)
+
+Lean change.  Step39 file
+`Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.lean`
+inhabits `kraus_elimination_26a1`
+(ledger `a₅(26a1) = -3` is not in
+displayed Frey p=5 traces `{-4, -2, 0, 2, 4}`
+nor `{-2, 0, 2}`).
+`s2_26_displayed_newforms_miss_frey_traces`
+packages both displayed misses.
+`kraus_elimination_q_13_level_26` stays
+uninhabited.
+`level_lowering_26_to_2_from_no_match`
+stays uninhabited.
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`
+stays uninhabited.
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stays uninhabited.
+`bugeaud_P_phi13_gt_C_when_B_gt_100000`
+stays uninhabited.
+`ExistsNewformLevel2` is `0 ≠ 0`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.43.0-Kraus-p3-elim-26b1 — DONE (kraus_elimination_26b1 inhabited, a3(26b1)=-3 not in Frey p=3 traces {-2,0,2}; kraus_elimination_26a1 and full Kraus q=13 stay uninhabited; arrow stays a Prop)
 
 Lean change.  Step38 file

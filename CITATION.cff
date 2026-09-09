@@ -5,11 +5,11 @@ type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v8.43.0-Kraus-p3-elim-26b1"
+version: "v8.44.0-Kraus-p5-elim-26a1"
 date-released: "2026-09-09"
 doi: "10.5281/zenodo.22272382"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
-url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.43.0-Kraus-p3-elim-26b1"
+url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.44.0-Kraus-p5-elim-26a1"
 license: MIT
 keywords:
   - beal-conjecture

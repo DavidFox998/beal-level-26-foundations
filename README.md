@@ -1,8 +1,8 @@
 [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.43.0-Kraus-p3-elim-26b1
+# Beal Level 26 Foundations — v8.44.0-Kraus-p5-elim-26a1
 
-**v8.43.0-Kraus-p3-elim-26b1 — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.44.0-Kraus-p5-elim-26a1 — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 GitHub will not render a README much over ~100KB, so the old wall
 stayed cached at v4.28.0.  This file is the short wall.  The full
@@ -13,7 +13,7 @@ and [`certs/README.md`](certs/README.md).
 - Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
   About Website stays [10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221).
 - Houseclean mint [10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
-  (`v8.19.9-fourth-power-residue` / `v8.43.0-Kraus-p3-elim-26b1`) under hook `22379293`.
+  (`v8.19.9-fourth-power-residue` / `v8.44.0-Kraus-p5-elim-26a1`) under hook `22379293`.
   Concept DOI [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).
 - Track B odd-A ladder (4,13,13): v8.19.6 `B ≤ 100` with `C = B+1` and
   `C = B+2` closed by `decide`; v8.19.7 `A⁴ ≥ 13 k B¹²`, `A⁴ ≥ 39 B¹²`,
@@ -113,7 +113,14 @@ and [`certs/README.md`](certs/README.md).
   `a₃(26b1) = -3` is not in displayed Frey
   traces `{-2, 0, 2}`; `kraus_elimination_26b1`
   inhabited; `kraus_elimination_26a1` stays Prop.
-- Inhabited: `kraus_elimination_26b1`,
+  v8.44.0 Kraus p=5 trace: ledger
+  `a₅(26a1) = -3` is not in displayed Frey
+  traces `{-4, -2, 0, 2, 4}` nor `{-2, 0, 2}`;
+  `kraus_elimination_26a1` inhabited;
+  `kraus_elimination_q_13_level_26` stays Prop.
+- Inhabited: `kraus_elimination_26a1`,
+  `s2_26_displayed_newforms_miss_frey_traces`,
+  `kraus_elimination_26b1`,
   `S_has_prime_with_exp_one_B_le_100000_table_rows`,
   `exists_p_with_order_ne_13_B_le_100000_from_exp_one_table_rows`,
   `S_not_fourth_B_le_100000_from_exp_one_table_rows`,
@@ -199,8 +206,8 @@ and [`certs/README.md`](certs/README.md).
   `k_le_A_pow4_div_13_B_pow12`, `B_gt_100_imp_k_bounded_by_A`;
   `genus_X0_2_rat=0`; `S_13_mod_k`, `gcd(k,S)|13`, `k_almost_fourth_power`;
   `B_le_100_closed`.
-- Uninhabited:   `kraus_elimination_26a1`,
-  `kraus_elimination_q_13_level_26`,
+- Uninhabited:   `kraus_elimination_q_13_level_26`,
+  `level_lowering_26_to_2_from_no_match`,
   `bugeaud_P_phi13_gt_C_when_B_gt_100000`,
   `rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_100000`,
   `bugeaud_P_phi13_gt_C_when_B_gt_50000`,
@@ -264,9 +271,9 @@ PARI 2-Descent Certificates image
 Still not `∀ ℕ`. No `False.elim`. no `False.elim`.
 `BealExponent13_Iter_Package` `d3cf8a7` `1d0044e`.
 
-HEAD also has Track B `v8.43.0-Kraus-p3-elim-26b1`
-(`kraus_elimination_26b1` inhabited;
-`kraus_elimination_26a1` stays a Prop;
+HEAD also has Track B `v8.44.0-Kraus-p5-elim-26a1`
+(`kraus_elimination_26a1` inhabited;
+`kraus_elimination_q_13_level_26` stays a Prop;
 318 named `B ≤ 100000` gap-3 exp-one
 rows stay; `B > 100000` Bugeaud / rad stay
 Props; Hensel forall stays a Prop);
@@ -415,3 +422,4 @@ v8.40.0-B-gt-50000-rad-bound RibetMazur Step35 S_le_13_C_pow12 rad_le_sqrt_of_sq
 v8.41.0-Kraus-X0-26-elimination RibetMazur Step36 ap_bound_level_26 X0_26_Q_displayed_points; kraus_elimination_q_13_level_26 bugeaud_P_phi13_gt_C_when_B_gt_50000 S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.42.0-B-le-100k-extension RibetMazur Step37 S_has_prime_with_exp_one_B_le_100000_table_rows; exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 kraus_elimination_q_13_level_26 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.43.0-Kraus-p3-elim-26b1 RibetMazur Step38 kraus_elimination_26b1; kraus_elimination_26a1 kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.44.0-Kraus-p5-elim-26a1 RibetMazur Step39 kraus_elimination_26a1; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
