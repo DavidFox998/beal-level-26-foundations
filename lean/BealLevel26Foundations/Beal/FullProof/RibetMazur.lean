@@ -3,13 +3,13 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.30.0 — Chebotarev lift
-density plan.
-`primes_eq1_mod13_infinite`,
-`density_p_div_S`, `thin_set_p_sq_div_S`
-and the Step24 wraps are inhabited.
-`chebotarev_gives_p_with_p_div_not_p_sq_div_when_C_ge_B_plus_3`
-and `exists_p_with_order_ne_13_mod_p_sq_inhabited`
+Track B v8.31.0 — S not a prime power
+on C ≥ B+3 is false (gap-3 fast track).
+`S_val_1_5_prime` and
+`S_not_prime_power_when_C_ge_B_plus_3_fast_refuted`
+are inhabited.  The sketch `_fast`
+foralls and
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`
 stay uninhabited.
 `norm_eq_S`, `zeta13_class_number_one`,
 `zeta13_prime_ideal_factorization_exists`,
@@ -335,6 +335,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_pri
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -3555,6 +3556,44 @@ def thin_set_p_sq_div_S :=
 def chebotarev_gives_p_with_p_div_not_p_sq_div_when_C_ge_B_plus_3 :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.chebotarev_gives_p_with_p_div_not_p_sq_div_when_C_ge_B_plus_3
 
+/-! ## v8.31.0 — S not a prime power gap-3 fast track -/
+
+/-- Inhabited.  `S_val 1 5 = 305175781`. -/
+def S_val_1_5 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.S_val_1_5
+
+/-- Inhabited.  Pratt primality of `S_val 1 5`. -/
+def S_val_1_5_prime :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.S_val_1_5_prime
+
+/-- Inhabited.  Gap-3 pair on which `S` is `p^1`. -/
+def S_prime_power_example_B1_C5 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.S_prime_power_example_B1_C5
+
+/-- Inhabited.  If `S = q^k` then every prime of `S` equals `q`. -/
+def prime_power_S_eq_zsigmondy_prime :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.prime_power_S_eq_zsigmondy_prime
+
+/-- Uninhabited sketch.  False: `S_val 1 5` is prime. -/
+def S_not_prime_power_when_C_ge_B_plus_3_fast :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.S_not_prime_power_when_C_ge_B_plus_3_fast
+
+/-- Uninhabited sketch.  False on `B = 1`, `C = 5`. -/
+def S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3_fast :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3_fast
+
+/-- Inhabited.  The gap-3 “never a prime power” sketch is false. -/
+def S_not_prime_power_when_C_ge_B_plus_3_fast_refuted :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.S_not_prime_power_when_C_ge_B_plus_3_fast_refuted
+
+/-- Inhabited.  The gap-3 two-primitive-primes sketch is false. -/
+def S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3_fast_refuted :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3_fast_refuted
+
+/-- Inhabited.  On `B = 1`, `C = 5` the unique prime of `S` has order ≠ 13. -/
+def exists_p_with_order_ne_13_mod_p_sq_example_B1_C5 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.exists_p_with_order_ne_13_mod_p_sq_example_B1_C5
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -3973,6 +4012,18 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.exists_p_with_order_ne_13_mod_p_sq_inhabited
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.beal_odd_A_closed_v8_24_0_inhabited
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.S_val_1_5
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.S_val_1_5_prime
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.S_prime_power_example_B1_C5
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.prime_power_S_eq_zsigmondy_prime
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.S_not_prime_power_when_C_ge_B_plus_3_fast
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3_fast
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.S_not_prime_power_when_C_ge_B_plus_3_fast_refuted
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3_fast_refuted
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.exists_p_with_order_ne_13_mod_p_sq_example_B1_C5
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.exists_p_with_order_ne_13_mod_p_sq_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.beal_odd_A_closed_v8_24_0_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -4235,5 +4286,13 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.density_p_div_S
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.thin_set_p_sq_div_S
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.S_val_1_5
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.S_val_1_5_prime
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.S_prime_power_example_B1_C5
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.prime_power_S_eq_zsigmondy_prime
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.S_not_prime_power_when_C_ge_B_plus_3_fast_refuted
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3_fast_refuted
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.exists_p_with_order_ne_13_mod_p_sq_example_B1_C5
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

@@ -5,11 +5,11 @@ type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v8.30.0-Chebotarev-lift-density-plan"
+version: "v8.31.0-S-not-prime-power-gap3-fast-track"
 date-released: "2026-09-09"
 doi: "10.5281/zenodo.22272382"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
-url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.30.0-Chebotarev-lift-density-plan"
+url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.31.0-S-not-prime-power-gap3-fast-track"
 license: MIT
 keywords:
   - beal-conjecture

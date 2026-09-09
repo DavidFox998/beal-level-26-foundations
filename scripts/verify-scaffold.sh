@@ -231,6 +231,8 @@ test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step24_Phi13_deriv
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.md
 test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.md
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -881,6 +883,7 @@ do
   grep -q "v8.28.0-Phi13-Zeta13-prime-ideal-plan" "$readme"
   grep -q "v8.29.0-Phi13-derivative-LTE-plan" "$readme"
   grep -q "v8.30.0-Chebotarev-lift-density-plan" "$readme"
+  grep -q "v8.31.0-S-not-prime-power-gap3-fast-track" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1911,6 +1914,32 @@ grep -q "def beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.lean
 grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.lean
+grep -q "theorem S_val_1_5_prime" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.lean
+grep -q "theorem S_not_prime_power_when_C_ge_B_plus_3_fast_refuted" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.lean
+grep -q "theorem S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3_fast_refuted" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.lean
+grep -q "theorem exists_p_with_order_ne_13_mod_p_sq_example_B1_C5" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.lean
+grep -q "def S_not_prime_power_when_C_ge_B_plus_3_fast" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.lean
+grep -q "def S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3_fast" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.lean
+grep -q "def exists_p_with_order_ne_13_mod_p_sq_inhabited" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.lean
+grep -q "def not_all_p_lift_when_two_primes" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.lean
+grep -q "def chebotarev_gives_p_with_p_div_not_p_sq_div_when_C_ge_B_plus_3" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.lean
+grep -q "def beal_odd_A_closed_v8_24_0_inhabited" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.lean
+grep -q "def beal_4_13_13_full_closed_mod_modular_v8_24_0_inhabited" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.lean
+grep -q "def beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.lean
+grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.lean
 grep -q "theorem beal_4_13_13_k_odd" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
 grep -q "theorem S_13_ge_13_mul_B_pow12" \

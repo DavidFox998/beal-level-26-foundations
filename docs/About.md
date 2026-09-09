@@ -1,17 +1,17 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.30.0-Chebotarev-lift-density-plan`
-Lean change: Step25 inhabits
-`primes_eq1_mod13_infinite`,
-`density_p_div_S`, `thin_set_p_sq_div_S`
-and the Step24 wraps.
-Density support is `p ≡ 1 [MOD 13]`,
-not Chebotarev density `1/13`.
-The fibre in `ZMod (p²)` has card `p`.
-`chebotarev_gives_p_with_p_div_not_p_sq_div_when_C_ge_B_plus_3`
-and `exists_p_with_order_ne_13_mod_p_sq_inhabited`
-stay uninhabited (`ExistsNewformLevel2`
+Latest tag / HEAD: `v8.31.0-S-not-prime-power-gap3-fast-track`
+Lean change: Step26 inhabits the Pratt
+prime `S_val 1 5 = 305175781` and
+refutes the gap-3 “S never a prime
+power” sketch (`B = 1`, `C = 5`).
+The sketch `_fast` foralls stay
+uninhabited (now known false).
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`
+stays uninhabited (`ExistsNewformLevel2`
 is `0 ≠ 0`).
+The gap-3 `ω ≥ 2` claim is false,
+not closed.
 `beal_odd_A_closed_v8_24_0_inhabited`
 stays uninhabited.
 v8.24.0 `zsigmondy_exists_primitive_inhabited`,

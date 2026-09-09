@@ -799,6 +799,30 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.31.0-S-not-prime-power-gap3-fast-track — DONE (S_val 1 5 Pratt-prime; gap-3 never-prime-power sketch refuted; exists_p stays uninhabited; arrow stays a Prop)
+
+Lean change.  Step26 file
+`Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.lean`
+inhabits
+`S_val_1_5_prime`,
+`S_not_prime_power_when_C_ge_B_plus_3_fast_refuted`,
+`S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3_fast_refuted`,
+and the pair example
+`exists_p_with_order_ne_13_mod_p_sq_example_B1_C5`.
+The sketch `_fast` foralls stay
+uninhabited (now known false:
+`B = 1`, `C = 5`, `S` prime).
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`
+stays uninhabited.
+`beal_odd_A_closed_v8_24_0_inhabited` stays
+uninhabited.  `ExistsNewformLevel2` stays
+`0 ≠ 0`.  No new Beal `∀`.
+The gap-3 `ω ≥ 2` claim is false, not
+closed.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.30.0-Chebotarev-lift-density-plan — DONE (primes == 1 mod 13 infinite, Phi13-support, fibre card p inhabited; Chebotarev close and exists_p stay uninhabited; arrow stays a Prop)
 
 Lean change.  Step25 file

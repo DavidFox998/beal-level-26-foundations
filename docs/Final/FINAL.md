@@ -1,3 +1,20 @@
+# FINAL v8.31.0 — S not prime power gap3 fast track (arrow stays a Prop)
+
+Latest tag `v8.31.0-S-not-prime-power-gap3-fast-track`.
+Lean change.
+Step26 inhabits the Pratt prime
+`S_val 1 5 = 305175781` and refutes
+the sketch forall “if C ≥ B+3 then S
+is never a prime power”. The pair
+`B = 1`, `C = 5` is a gap-3 coprime
+counterexample, so the two-primitive-primes
+sketch is also false. The `_fast`
+foralls stay Props (known false).
+`exists_p` stays a Prop: one pair is
+not a forall. The gap-3 `ω ≥ 2` claim
+is false, not closed. No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.30.0 — Chebotarev lift density plan (arrow stays a Prop)
 
 Latest tag `v8.30.0-Chebotarev-lift-density-plan`.

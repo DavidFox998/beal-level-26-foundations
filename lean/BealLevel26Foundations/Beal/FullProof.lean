@@ -12,13 +12,13 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.30.0)
+# FullProof track (v8.31.0)
 
-Aggregator for Track B.  Step25 inhabits
-`primes_eq1_mod13_infinite`,
-`density_p_div_S`, `thin_set_p_sq_div_S`
-and the Step24 wraps.  Chebotarev close
-and `exists_p_with_order_ne_13_mod_p_sq_inhabited`
+Aggregator for Track B.  Step26 inhabits
+the Pratt prime `S_val 1 5` and refutes
+the gap-3 “S never a prime power”
+sketch.  The sketch `_fast` foralls and
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`
 stay uninhabited.
 Bare odd-`A` / full close stay uninhabited.
 Step18 primitive / `of_vp1` stay.
