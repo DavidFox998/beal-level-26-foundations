@@ -3929,7 +3929,7 @@ def kraus_elimination_26a1 : Prop :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.kraus_elimination_26a1
 
 /-- Inhabited.  Displayed Frey p=3 traces. -/
-def FreyP3Traces :=
+def FreyP3Traces : List Int :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.FreyP3Traces
 
 /-- Inhabited.  Ledger `a₃(26b1) = -3`. -/
