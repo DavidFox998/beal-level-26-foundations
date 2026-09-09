@@ -799,6 +799,32 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.42.0-B-le-100k-extension — DONE (318 named B<=100000 gap-3 exp-one rows; B>100000 Bugeaud/rad stay Props; Kraus q=13 matching lock stays uninhabited; arrow stays a Prop)
+
+Lean change.  Step37 file
+`Beal_4_13_13_Zsigmondy_13_Step37_B_le_100k_extension.lean`
+inhabits
+`S_has_prime_with_exp_one_B_le_100000_table_rows`,
+`exists_p_with_order_ne_13_B_le_100000_from_exp_one_table_rows`,
+and `S_not_fourth_B_le_100000_from_exp_one_table_rows`
+(188 inherited Step34 rows plus 130 new
+rows with `50000 < B ≤ 100000`, real
+`p ≤ 547`).  Not a forall.
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`
+stays uninhabited.
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stays uninhabited.
+`bugeaud_P_phi13_gt_C_when_B_gt_100000`
+stays uninhabited.
+`kraus_elimination_q_13_level_26` stays
+uninhabited (matching lock).
+`ExistsNewformLevel2` is `0 ≠ 0`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.41.0-Kraus-X0-26-elimination — DONE (ap_bound_level_26, X0(26)(Q) displayed points, 26=2*13; Kraus elimination q=13 stays uninhabited; Bugeaud/rad/exp-one forall stay Props; arrow stays a Prop)
 
 Lean change.  Step36 file

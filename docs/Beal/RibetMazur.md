@@ -1,23 +1,25 @@
-# v8.41.0 RibetMazur Kraus X0(26) elimination
+# v8.42.0 RibetMazur B≤100k exp-one extension
 
-`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination.lean`
+`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step37_B_le_100k_extension.lean`
 and `RibetMazur.lean`
 
-Step36 inhabits Kraus / X₀(26)
-infrastructure for `q = 13`:
-`ap_bound_level_26` (ledger Hasse
-`a_p² ≤ 4p`), `X0_26_Q_displayed_points`
-(four cusps plus `26a1` / `26b1`),
-`level_26_eq_2_mul_13`, and
-`S2_level_26_dim_two`.
+Step37 inhabits 318 named gap-3 rows
+with `B ≤ 100000` (`C = B+3`):
+`S_has_prime_with_exp_one_B_le_100000_table_rows`,
+`exists_p_with_order_ne_13_B_le_100000_from_exp_one_table_rows`,
+and `S_not_fourth_B_le_100000_from_exp_one_table_rows`.
+Inherited Step34 188 rows plus 130 new
+rows in `(50000, 100000]`.  Real small
+witnesses `p ≤ 547`.  Endpoint
+`(100000,100003)` is `p = 547`.
 
 This is not a forall close.
 `kraus_elimination_q_13_level_26` stays
 uninhabited (matching lock, not vanishing:
 newforms at level 26 exist).
-`bugeaud_P_phi13_gt_C_when_B_gt_50000`
+`bugeaud_P_phi13_gt_C_when_B_gt_100000`
 stays uninhabited.
-`rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_50000`
+`rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_100000`
 stays uninhabited.
 `S_has_prime_with_exp_one_when_C_ge_B_plus_3`
 stays uninhabited.

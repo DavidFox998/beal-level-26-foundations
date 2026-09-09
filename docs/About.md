@@ -1,13 +1,14 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.41.0-Kraus-X0-26-elimination`
-Lean change: Step36 inhabits
-`ap_bound_level_26`, `X0_26_Q_displayed_points`,
-`level_26_eq_2_mul_13`, and `S2_level_26_dim_two`.
+Latest tag / HEAD: `v8.42.0-B-le-100k-extension`
+Lean change: Step37 inhabits 318 named
+`B ≤ 100000` gap-3 exp-one rows
+(`S_has_prime_with_exp_one_B_le_100000_table_rows`
+and the order / `S_not_fourth` packs).
 `kraus_elimination_q_13_level_26` stays
 uninhabited (matching lock at level 26).
-`bugeaud_P_phi13_gt_C_when_B_gt_50000`
-and `rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_50000`
+`bugeaud_P_phi13_gt_C_when_B_gt_100000`
+and `rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_100000`
 stay uninhabited, so
 `S_has_prime_with_exp_one_when_C_ge_B_plus_3`
 stays a Prop.  The Hensel ∀

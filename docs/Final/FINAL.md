@@ -1,3 +1,23 @@
+# FINAL v8.42.0 — B ≤ 100k exp-one extension (arrow stays a Prop)
+
+Latest tag `v8.42.0-B-le-100k-extension`.
+Lean change.
+Step37 inhabits 318 named gap-3 rows
+with `B ≤ 100000`:
+`S_has_prime_with_exp_one_B_le_100000_table_rows`,
+`exists_p_with_order_ne_13_B_le_100000_from_exp_one_table_rows`,
+and `S_not_fourth_B_le_100000_from_exp_one_table_rows`.
+Not every `B ≤ 100000`. `B > 100000`
+Bugeaud `P(Φ₁₃) > C` and
+`rad > √13 C⁶` stay Props, so
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stays a Prop. Kraus elimination at
+`q = 13`, level 26 stays a Prop.
+The Hensel ∀ stays a Prop. The
+Ljunggren ∀ stays a Prop.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.41.0 — Kraus X0(26) elimination infrastructure (arrow stays a Prop)
 
 Latest tag `v8.41.0-Kraus-X0-26-elimination`.
