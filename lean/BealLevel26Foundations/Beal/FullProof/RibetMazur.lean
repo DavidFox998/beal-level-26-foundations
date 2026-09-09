@@ -3,7 +3,18 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.49.0 — B ≤ 400000 exp-one
+Track B v8.50.0 — B ≤ 500000 exp-one
+extension (1498 named gap-3 rows, not a ∀).
+`S_has_prime_with_exp_one_B_le_500000_table_rows`
+is inhabited (1199 Step44 rows including
+`(200000,200003)` p=12186951011 plus
+299 sampled `(400000, 500000]` rows,
+first `(400001,400004)` p=53, last
+`(500000,500003)` p=547).  The s2_26 pack
+stays a coefficient check, not Ribet.
+`kraus_elimination_q_13_level_26` stays uninhabited.
+`B > 500000` Bugeaud stays a Prop.
+v8.49.0 — B ≤ 400000 exp-one
 extension (1199 named gap-3 rows, not a ∀).
 `S_has_prime_with_exp_one_B_le_400000_table_rows`
 is inhabited (900 Step43 rows including
@@ -431,6 +442,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step41_B_le_200k_extensi
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step43_B_le_300k_extension
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step44_B_le_400k_299
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -4124,6 +4136,37 @@ def bugeaud_P_phi13_gt_C_when_B_gt_400000 : Prop :=
 def rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_400000 : Prop :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step44_B_le_400k_299.rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_400000
 
+/-! ## v8.50.0 — B ≤ 500000 exp-one extension (1498 rows) -/
+
+/-- Inhabited.  1199 inherited `B ≤ 400000` rows plus 299
+sampled `400000 < B ≤ 500000` gap-3 rows have exp one. -/
+def S_has_prime_with_exp_one_B_le_500000_table_rows :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.S_has_prime_with_exp_one_B_le_500000_table_rows
+
+/-- Inhabited.  Those rows have a primitive prime with order ≠ 13. -/
+def exists_p_with_order_ne_13_B_le_500000_from_exp_one_table_rows :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.exists_p_with_order_ne_13_B_le_500000_from_exp_one_table_rows
+
+/-- Inhabited.  Those rows have `S` not a fourth power. -/
+def S_not_fourth_B_le_500000_from_exp_one_table_rows :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.S_not_fourth_B_le_500000_from_exp_one_table_rows
+
+/-- Inhabited.  First new-window row, p=53. -/
+def row_400001_400004 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.row_400001_400004
+
+/-- Inhabited.  Named endpoint `B = 500000`, p=547. -/
+def row_500000_500003 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.row_500000_500003
+
+/-- Uninhabited.  Bugeaud `P(Φ₁₃) > C` on `B > 500000`. -/
+def bugeaud_P_phi13_gt_C_when_B_gt_500000 : Prop :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.bugeaud_P_phi13_gt_C_when_B_gt_500000
+
+/-- Uninhabited.  Squarefull + `B > 500000` would need `rad > √(13 C¹²)`. -/
+def rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_500000 : Prop :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_500000
+
 /-- Inhabited.  Displayed Frey p=3 traces. -/
 def FreyP3Traces : List Int :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.FreyP3Traces
@@ -4684,6 +4727,14 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step44_B_le_400k_299.kraus_elimination_q_13_level_26
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step44_B_le_400k_299.bugeaud_P_phi13_gt_C_when_B_gt_400000
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step44_B_le_400k_299.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.S_has_prime_with_exp_one_B_le_500000_table_rows
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.exists_p_with_order_ne_13_B_le_500000_from_exp_one_table_rows
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.S_not_fourth_B_le_500000_from_exp_one_table_rows
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.row_400001_400004
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.row_500000_500003
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.kraus_elimination_q_13_level_26
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.bugeaud_P_phi13_gt_C_when_B_gt_500000
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -5031,5 +5082,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step44_B_le_400k_299.row_300003_300006
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step44_B_le_400k_299.row_400000_400003
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step44_B_le_400k_299.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.S_has_prime_with_exp_one_B_le_500000_table_rows
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.exists_p_with_order_ne_13_B_le_500000_from_exp_one_table_rows
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.S_not_fourth_B_le_500000_from_exp_one_table_rows
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.row_400001_400004
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.row_500000_500003
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur
