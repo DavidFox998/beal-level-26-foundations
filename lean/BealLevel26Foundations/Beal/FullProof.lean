@@ -12,11 +12,11 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.37.0)
+# FullProof track (v8.38.0)
 
-Aggregator for Track B.  Step32 inhabits
-`S_has_prime_with_exp_one_B_le_1000_table_rows`
-and `S_not_fourth_B_le_1000_from_exp_one_table_rows`.
+Aggregator for Track B.  Step33 inhabits
+`S_has_prime_with_exp_one_B_le_10000_table_rows`
+and `S_not_fourth_B_le_10000_from_exp_one_table_rows`.
 `exists_p_with_order_ne_13_mod_p_sq_inhabited`
 and `S_has_prime_with_exp_one_when_C_ge_B_plus_3`
 stay uninhabited.

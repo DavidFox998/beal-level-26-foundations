@@ -1,22 +1,22 @@
-# v8.37.0 RibetMazur B<=1000 exp-one extension
+# v8.38.0 RibetMazur B<=10000 exp-one extension
 
-`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step32_B_le_1000_exp_one_extension.lean`
+`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step33_B_le_10000_exp_one_extension.lean`
 and `RibetMazur.lean`
 
-Step32 inhabits 64 named gap-3 rows
-with `B <= 1000`, packed as
-`S_has_prime_with_exp_one_B_le_1000_table_rows`,
-`exists_p_with_order_ne_13_B_le_1000_from_exp_one_table_rows`,
-and `S_not_fourth_B_le_1000_from_exp_one_table_rows`.
+Step33 inhabits 256 named gap-3 rows
+with `B <= 10000`, packed as
+`S_has_prime_with_exp_one_B_le_10000_table_rows`,
+`exists_p_with_order_ne_13_B_le_10000_from_exp_one_table_rows`,
+and `S_not_fourth_B_le_10000_from_exp_one_table_rows`.
 Step11 dichotomy: `p^2` does not
 divide `S` implies order != 13.
 
-This is not every `B <= 1000`.
+This is not every `B <= 10000`.
 `exists_p_with_order_ne_13_mod_p_sq_inhabited`
 stays uninhabited.
 `S_has_prime_with_exp_one_when_C_ge_B_plus_3`
 stays uninhabited (Bugeaud-type for
-`B > 1000`).
+`B > 10000`).
 `S_not_proper_prime_power_when_C_ge_B_plus_3`
 stays uninhabited (Ljunggren).
 

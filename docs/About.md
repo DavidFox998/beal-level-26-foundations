@@ -1,16 +1,16 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.37.0-B-le-1000-exp-one-extension`
-Lean change: Step32 inhabits
-`S_has_prime_with_exp_one_B_le_1000_table_rows`,
-`exists_p_with_order_ne_13_B_le_1000_from_exp_one_table_rows`,
+Latest tag / HEAD: `v8.38.0-B-le-10000-exp-one-extension`
+Lean change: Step33 inhabits
+`S_has_prime_with_exp_one_B_le_10000_table_rows`,
+`exists_p_with_order_ne_13_B_le_10000_from_exp_one_table_rows`,
 and
-`S_not_fourth_B_le_1000_from_exp_one_table_rows`
-(64 named `B ≤ 1000` gap-3 rows:
+`S_not_fourth_B_le_10000_from_exp_one_table_rows`
+(256 named `B ≤ 10000` gap-3 rows:
 `p² ∤ S` ⇒ order ≠ 13).
-Not every `B ≤ 1000`.  The Hensel ∀
+Not every `B ≤ 10000`.  The Hensel ∀
 `exists_p_with_order_ne_13_mod_p_sq_inhabited`
-stays uninhabited.  `B > 1000`
+stays uninhabited.  `B > 10000`
 is Bugeaud-type.  The Ljunggren ∀
 and the gap-3 exp-one ∀ stay
 uninhabited (`ExistsNewformLevel2`

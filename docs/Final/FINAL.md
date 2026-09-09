@@ -1,3 +1,18 @@
+# FINAL v8.38.0 — B ≤ 10000 exp-one extension (arrow stays a Prop)
+
+Latest tag `v8.38.0-B-le-10000-exp-one-extension`.
+Lean change.
+Step33 inhabits 256 named gap-3 rows
+with `B ≤ 10000`, packed as
+`S_has_prime_with_exp_one_B_le_10000_table_rows`
+and
+`S_not_fourth_B_le_10000_from_exp_one_table_rows`.
+Not every `B ≤ 10000`. The Hensel ∀
+stays a Prop. `B > 10000` is Bugeaud-type.
+The Ljunggren ∀ stays a Prop.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.37.0 — B ≤ 1000 exp-one extension (arrow stays a Prop)
 
 Latest tag `v8.37.0-B-le-1000-exp-one-extension`.
