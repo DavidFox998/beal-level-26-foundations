@@ -1,3 +1,20 @@
+# FINAL v8.40.0 — B > 50000 rad bound (arrow stays a Prop)
+
+Latest tag `v8.40.0-B-gt-50000-rad-bound`.
+Lean change.
+Step35 inhabits `S_le_13_C_pow12`,
+`sqrt_S_le_4_C6`,
+`rad_le_sqrt_of_squarefull`, and
+`rad_gt_C_of_P_phi13_gt_C`.
+Bugeaud `P(Φ₁₃) > C` and
+`rad > √13 C⁶` stay Props, so
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stays a Prop. The Hensel ∀
+stays a Prop. The Ljunggren ∀
+stays a Prop.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.39.0 — B ≤ 50000 exp-one real witnesses (arrow stays a Prop)
 
 Latest tag `v8.39.0-B-le-50000-exp-one-real-witnesses`.

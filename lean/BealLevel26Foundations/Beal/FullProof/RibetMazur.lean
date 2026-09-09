@@ -3,14 +3,21 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.39.0 — B ≤ 50000 exp-one
-extension (188 named rows, not a ∀).
-`S_has_prime_with_exp_one_B_le_50000_table_rows`,
-`exists_p_with_order_ne_13_B_le_50000_from_exp_one_table_rows`
-and `S_not_fourth_B_le_50000_from_exp_one_table_rows`
-are inhabited.  The Ljunggren ∀ and
+Track B v8.40.0 — B > 50000 rad-bound
+infrastructure (not a ∀ close).
+`S_le_13_C_pow12`, `sqrt_S_le_4_C6`,
+`rad_le_sqrt_of_squarefull` and
+`rad_gt_C_of_P_phi13_gt_C` are inhabited.
+`bugeaud_P_phi13_gt_C_when_B_gt_50000`,
+`rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_50000`
+and `S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stay uninhabited.  The Ljunggren ∀ and
 `exists_p_with_order_ne_13_mod_p_sq_inhabited`
 stay uninhabited.
+v8.39.0 `S_has_prime_with_exp_one_B_le_50000_table_rows`,
+`exists_p_with_order_ne_13_B_le_50000_from_exp_one_table_rows`
+and `S_not_fourth_B_le_50000_from_exp_one_table_rows`
+stay inhabited.
 `norm_eq_S`, `zeta13_class_number_one`,
 `zeta13_prime_ideal_factorization_exists`,
 `S_not_power_of_thirteen_inhabited`
@@ -344,6 +351,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step31_B_le_100_order_ne
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step32_B_le_1000_exp_one_extension
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step33_B_le_10000_exp_one_extension
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -3814,6 +3822,28 @@ def S_not_fourth_B_le_50000_from_exp_one_table_rows :=
 def row_50000_50003 :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension.row_50000_50003
 
+/-! ## v8.40.0 — B > 50000 rad-bound infrastructure -/
+
+/-- Inhabited.  `S ≤ 13 C¹²` when `B < C`. -/
+def S_le_13_C_pow12 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.S_le_13_C_pow12
+
+/-- Inhabited.  Nat envelope `√S ≤ 4 C⁶`. -/
+def sqrt_S_le_4_C6 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.sqrt_S_le_4_C6
+
+/-- Inhabited.  Squarefull ⇒ `rad ≤ √n`. -/
+def rad_le_sqrt_of_squarefull :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.rad_le_sqrt_of_squarefull
+
+/-- Greatest prime factor of `S = Φ₁₃(C,B)`. -/
+def P_phi13 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.P_phi13
+
+/-- Inhabited.  `P(Φ₁₃) > C` ⇒ `rad(S) > C`. -/
+def rad_gt_C_of_P_phi13_gt_C :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.rad_gt_C_of_P_phi13_gt_C
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -4289,6 +4319,14 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension.S_not_fourth_B_le_50000_from_exp_one_table_rows
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension.exists_p_with_order_ne_13_mod_p_sq_inhabited
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.S_le_13_C_pow12
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.sqrt_S_le_4_C6
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.rad_le_sqrt_of_squarefull
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.rad_gt_C_of_P_phi13_gt_C
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.bugeaud_P_phi13_gt_C_when_B_gt_50000
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_50000
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.S_has_prime_with_exp_one_when_C_ge_B_plus_3
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -4590,5 +4628,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension.exists_p_with_order_ne_13_B_le_50000_from_exp_one_table_rows
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension.S_not_fourth_B_le_50000_from_exp_one_table_rows
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.S_le_13_C_pow12
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.sqrt_S_le_4_C6
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.rad_le_sqrt_of_squarefull
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.rad_gt_C_of_P_phi13_gt_C
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

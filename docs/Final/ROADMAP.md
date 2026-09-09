@@ -799,6 +799,29 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.40.0-B-gt-50000-rad-bound — DONE (S<=13 C^12, rad<=sqrt S if squarefull, P(Phi13)>C gives rad>C; Bugeaud and rad>sqrt13 C^6 stay uninhabited; exp-one forall stays a Prop; arrow stays a Prop)
+
+Lean change.  Step35 file
+`Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.lean`
+inhabits
+`S_le_13_C_pow12`,
+`sqrt_S_le_4_C6`,
+`rad_le_sqrt_of_squarefull`, and
+`rad_gt_C_of_P_phi13_gt_C`.
+`bugeaud_P_phi13_gt_C_when_B_gt_50000`
+stays uninhabited.
+`rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_50000`
+stays uninhabited.
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stays uninhabited.
+`S_not_proper_prime_power_when_C_ge_B_plus_3`
+stays uninhabited.
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`
+stays uninhabited.
+`beal_odd_A_closed_v8_24_0_inhabited` stays
+uninhabited (`ExistsNewformLevel2` is `0 ≠ 0`).
+No new Beal `∀`.  No `False.elim`.
+
 ### v8.39.0-B-le-50000-exp-one-real-witnesses — DONE (188 named B<=50000 gap-3 rows exp-one, order!=13, S_not_fourth; exists_p forall stays uninhabited; arrow stays a Prop)
 
 Lean change.  Step34 file

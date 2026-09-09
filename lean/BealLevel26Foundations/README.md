@@ -123,8 +123,9 @@ v8.36.0-B-le-100-order-ne-13-from-exp-one RibetMazur Step31 exists_p_with_order_
 v8.37.0-B-le-1000-exp-one-extension RibetMazur Step32 S_has_prime_with_exp_one_B_le_1000_table_rows; exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.38.0-B-le-10000-exp-one-extension RibetMazur Step33 S_has_prime_with_exp_one_B_le_10000_table_rows; exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.39.0-B-le-50000-exp-one-real-witnesses RibetMazur Step34 S_has_prime_with_exp_one_B_le_50000_table_rows; exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.40.0-B-gt-50000-rad-bound RibetMazur Step35 S_le_13_C_pow12 rad_le_sqrt_of_squarefull rad_gt_C_of_P_phi13_gt_C; bugeaud_P_phi13_gt_C_when_B_gt_50000 rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_50000 S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 
-### File order v8.19.0–v8.39.0
+### File order v8.19.0–v8.40.0
 
 | Version | File |
 |---|---|
@@ -163,6 +164,7 @@ v8.39.0-B-le-50000-exp-one-real-witnesses RibetMazur Step34 S_has_prime_with_exp
 | v8.37.0 | `Beal_4_13_13_Zsigmondy_13_Step32_B_le_1000_exp_one_extension.lean` |
 | v8.38.0 | `Beal_4_13_13_Zsigmondy_13_Step33_B_le_10000_exp_one_extension.lean` |
 | v8.39.0 | `Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension.lean` |
+| v8.40.0 | `Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.lean` |
 
 Not imported by the 24-module none chain.  Track A: no new Beal-∀.
 
@@ -314,9 +316,9 @@ v4.14.0-iter-citation-contradiction-locked: `CITATION.cff` locks `c2c47db` / fou
 
 [![v8.19.9 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.39.0-B-le-50000-exp-one-real-witnesses
+# Beal Level 26 Foundations — v8.40.0-B-gt-50000-rad-bound
 
-**v8.39.0-B-le-50000-exp-one-real-witnesses — Beal (4,13,13) B<=50000 exp-one real witnesses (Track B). Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.40.0-B-gt-50000-rad-bound — Beal (4,13,13) B>50000 rad-bound infrastructure (Track B). Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 - Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
 - Houseclean mint `10.5281/zenodo.22654189` (`v8.19.9-fourth-power-residue`) under hook `22379293`. Track A none-chain mint stays `10.5281/zenodo.22635221`.
@@ -350,6 +352,7 @@ v4.14.0-iter-citation-contradiction-locked: `CITATION.cff` locks `c2c47db` / fou
   - v8.37.0 `S_has_prime_with_exp_one_B_le_1000_table_rows` / `exists_p_with_order_ne_13_B_le_1000_from_exp_one_table_rows` / `S_not_fourth_B_le_1000_from_exp_one_table_rows` (64 named rows). Not every `B <= 1000`. `exists_p_with_order_ne_13_mod_p_sq_inhabited` / `S_has_prime_with_exp_one_when_C_ge_B_plus_3` stay uninhabited. Bugeaud-type for `B > 1000`.
   - v8.38.0 `S_has_prime_with_exp_one_B_le_10000_table_rows` / `exists_p_with_order_ne_13_B_le_10000_from_exp_one_table_rows` / `S_not_fourth_B_le_10000_from_exp_one_table_rows` (256 named rows). Not every `B <= 10000`. `exists_p_with_order_ne_13_mod_p_sq_inhabited` / `S_has_prime_with_exp_one_when_C_ge_B_plus_3` stay uninhabited. Bugeaud-type for `B > 10000`.
   - v8.39.0 `S_has_prime_with_exp_one_B_le_50000_table_rows` / `exists_p_with_order_ne_13_B_le_50000_from_exp_one_table_rows` / `S_not_fourth_B_le_50000_from_exp_one_table_rows` (188 named rows). Not every `B <= 50000`. `exists_p_with_order_ne_13_mod_p_sq_inhabited` / `S_has_prime_with_exp_one_when_C_ge_B_plus_3` stay uninhabited. Bugeaud-type for `B > 50000`.
+  - v8.40.0 `S_le_13_C_pow12` / `sqrt_S_le_4_C6` / `rad_le_sqrt_of_squarefull` / `rad_gt_C_of_P_phi13_gt_C`. `bugeaud_P_phi13_gt_C_when_B_gt_50000` / `rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_50000` / `S_has_prime_with_exp_one_when_C_ge_B_plus_3` stay uninhabited. Still need `rad > √13 C⁶` for contradiction.
 - Uninhabited: bare odd-`A` close, unconditional `v_p(S)=1`, Zsigmondy-of-`S`, unconditional `S_not_fourth`, Kraus / X₀(2q) matching, Ribet to `N'`, X₀(26) matching, Modular W last lock, `B > 100` close, `ExistsNewformLevel2` is `0 ≠ 0`, `beal_from_ribet` still needs `ModularImpliesLevel2Newform`.
 - Build: `lake build BealLevel26Foundations` and `BealLevel26FoundationsFullProof` green twice, `scripts/verify-scaffold.sh` passed, `#print axioms` `[propext, Classical.choice, Quot.sound]`.
 
@@ -492,6 +495,7 @@ v8.36.0-B-le-100-order-ne-13-from-exp-one RibetMazur Step31 exists_p_with_order_
 v8.37.0-B-le-1000-exp-one-extension RibetMazur Step32 S_has_prime_with_exp_one_B_le_1000_table_rows; exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.38.0-B-le-10000-exp-one-extension RibetMazur Step33 S_has_prime_with_exp_one_B_le_10000_table_rows; exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.39.0-B-le-50000-exp-one-real-witnesses RibetMazur Step34 S_has_prime_with_exp_one_B_le_50000_table_rows; exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.40.0-B-gt-50000-rad-bound RibetMazur Step35 S_le_13_C_pow12 rad_le_sqrt_of_squarefull rad_gt_C_of_P_phi13_gt_C; bugeaud_P_phi13_gt_C_when_B_gt_50000 rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_50000 S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 
 ### v8.19.9-fourth-power-residue — houseclean (Track A no new Beal-∀)
 
