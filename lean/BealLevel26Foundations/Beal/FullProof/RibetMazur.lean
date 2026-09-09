@@ -3833,8 +3833,10 @@ def sqrt_S_le_4_C6 :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.sqrt_S_le_4_C6
 
 /-- Inhabited.  Squarefull ⇒ `rad ≤ √n`. -/
-def rad_le_sqrt_of_squarefull :=
-  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.rad_le_sqrt_of_squarefull
+def rad_le_sqrt_of_squarefull {n : Nat} (hn : 0 < n)
+    (hsq : BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step28_S_has_prime_with_exp_one_gap3.IsSquarefull n) :
+    BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step15_X0_2q_Darmon_Merel_plan.rad n ≤ Nat.sqrt n :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.rad_le_sqrt_of_squarefull hn hsq
 
 /-- Greatest prime factor of `S = Φ₁₃(C,B)`. -/
 def P_phi13 :=
