@@ -1,3 +1,19 @@
+# FINAL v8.30.0 — Chebotarev lift density plan (arrow stays a Prop)
+
+Latest tag `v8.30.0-Chebotarev-lift-density-plan`.
+Lean change.
+Step25 inhabits
+`primes_eq1_mod13_infinite`,
+`density_p_div_S` (support in the
+class `p ≡ 1 (mod 13)`, not density
+1/13), `thin_set_p_sq_div_S`
+(fibre card `p`), and the Step24
+wraps. Chebotarev close stays a Prop:
+density is not a proof, and Mathlib
+4.12 has no effective Chebotarev.
+`exists_p` stays a Prop. No new Beal
+`∀`. Still not Full Mathlib `∀`.
+
 # FINAL v8.29.0 — Phi13 derivative LTE plan (arrow stays a Prop)
 
 Latest tag `v8.29.0-Phi13-derivative-LTE-plan`.

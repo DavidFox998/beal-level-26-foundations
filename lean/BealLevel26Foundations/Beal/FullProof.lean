@@ -12,14 +12,13 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.29.0)
+# FullProof track (v8.30.0)
 
-Aggregator for Track B.  Step23 inhabits
-`norm_eq_S`, `zeta13_class_number_one`,
-`zeta13_prime_ideal_factorization_exists`,
-`S_not_power_of_thirteen_inhabited`.
-`S_has_two_distinct_prime_ideals_in_Z_zeta13_when_C_ge_B_plus_3`,
-`exists_p_with_order_ne_13_mod_p_sq_inhabited`
+Aggregator for Track B.  Step25 inhabits
+`primes_eq1_mod13_infinite`,
+`density_p_div_S`, `thin_set_p_sq_div_S`
+and the Step24 wraps.  Chebotarev close
+and `exists_p_with_order_ne_13_mod_p_sq_inhabited`
 stay uninhabited.
 Bare odd-`A` / full close stay uninhabited.
 Step18 primitive / `of_vp1` stay.

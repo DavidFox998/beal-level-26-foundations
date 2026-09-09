@@ -799,6 +799,26 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.30.0-Chebotarev-lift-density-plan — DONE (primes == 1 mod 13 infinite, Phi13-support, fibre card p inhabited; Chebotarev close and exists_p stay uninhabited; arrow stays a Prop)
+
+Lean change.  Step25 file
+`Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.lean`
+inhabits
+`primes_eq1_mod13_infinite`,
+`density_p_div_S`, `thin_set_p_sq_div_S`
+and the Step24 wraps.
+`chebotarev_gives_p_with_p_div_not_p_sq_div_when_C_ge_B_plus_3`
+stays uninhabited (need effective
+Chebotarev).
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`
+stays uninhabited.
+`beal_odd_A_closed_v8_24_0_inhabited` stays
+uninhabited.  `ExistsNewformLevel2` stays
+`0 ≠ 0`.  No new Beal `∀`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.29.0-Phi13-derivative-LTE-plan — DONE (Phi13 derivative separable, unique Hensel class in ZMod (p^2), p^2 | S iff the ratio equals that class; exists_p stays uninhabited; arrow stays a Prop)
 
 Lean change.  Step24 file

@@ -113,8 +113,9 @@ v8.26.0-exists-p-order-ne-13-plan RibetMazur Step21 p_sq_dvd_S_iff_order_13_mod_
 v8.27.0-two-primitive-primes-counting-plan RibetMazur Step22 S_not_power_of_thirteen exists_p_of_two_primes_one_not_square_inhabited; S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3 exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.28.0-Phi13-Zeta13-prime-ideal-plan RibetMazur Step23 S_not_power_of_thirteen_inhabited norm_eq_S zeta13_class_number_one zeta13_prime_ideal_factorization_exists; S_has_two_distinct_prime_ideals_in_Z_zeta13_when_C_ge_B_plus_3 exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.29.0-Phi13-derivative-LTE-plan RibetMazur Step24 phi13_derivative_separable_mod_p hensel_unique_lift_of_phi13_root p_sq_dvd_S_iff_CB_eq_lifted_root; exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.30.0-Chebotarev-lift-density-plan RibetMazur Step25 primes_eq1_mod13_infinite density_p_div_S thin_set_p_sq_div_S; chebotarev_gives_p_with_p_div_not_p_sq_div_when_C_ge_B_plus_3 exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 
-### File order v8.19.0–v8.29.0
+### File order v8.19.0–v8.30.0
 
 | Version | File |
 |---|---|
@@ -143,6 +144,7 @@ v8.29.0-Phi13-derivative-LTE-plan RibetMazur Step24 phi13_derivative_separable_m
 | v8.27.0 | `Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.lean` |
 | v8.28.0 | `Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.lean` |
 | v8.29.0 | `Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.lean` |
+| v8.30.0 | `Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.lean` |
 
 Not imported by the 24-module none chain.  Track A: no new Beal-∀.
 
@@ -294,9 +296,9 @@ v4.14.0-iter-citation-contradiction-locked: `CITATION.cff` locks `c2c47db` / fou
 
 [![v8.19.9 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.29.0-Phi13-derivative-LTE-plan
+# Beal Level 26 Foundations — v8.30.0-Chebotarev-lift-density-plan
 
-**v8.29.0-Phi13-derivative-LTE-plan — Beal (4,13,13) Phi13 derivative LTE plan (Track B). Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.30.0-Chebotarev-lift-density-plan — Beal (4,13,13) Chebotarev lift density plan (Track B). Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 - Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
 - Houseclean mint `10.5281/zenodo.22654189` (`v8.19.9-fourth-power-residue`) under hook `22379293`. Track A none-chain mint stays `10.5281/zenodo.22635221`.
@@ -320,6 +322,7 @@ v4.14.0-iter-citation-contradiction-locked: `CITATION.cff` locks `c2c47db` / fou
   - v8.27.0 `S_not_power_of_thirteen`, `exists_p_of_two_primes_one_not_square_inhabited`. `S_not_prime_power_when_C_ge_B_plus_3` / `S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3` / `exists_p_with_order_ne_13_mod_p_sq_inhabited` stay uninhabited.
   - v8.28.0 `norm_eq_S`, `zeta13_class_number_one`, `zeta13_prime_ideal_factorization_exists`. `S_has_two_distinct_prime_ideals_in_Z_zeta13_when_C_ge_B_plus_3` / `exists_p_with_order_ne_13_mod_p_sq_inhabited` stay uninhabited.
   - v8.29.0 `phi13_derivative_separable_mod_p`, `hensel_unique_lift_of_phi13_root`, `p_sq_dvd_S_iff_CB_eq_lifted_root`. `exists_p_with_order_ne_13_mod_p_sq_inhabited` stays uninhabited (need the ratio not equal to t* mod p^2 for at least one primitive p). Size S <= 13 C^12 does not kill two lifts.
+  - v8.30.0 `primes_eq1_mod13_infinite`, `density_p_div_S`, `thin_set_p_sq_div_S`. `chebotarev_gives_p_with_p_div_not_p_sq_div_when_C_ge_B_plus_3` / `exists_p_with_order_ne_13_mod_p_sq_inhabited` stay uninhabited. Density heuristic is not a proof.
 - Uninhabited: bare odd-`A` close, unconditional `v_p(S)=1`, Zsigmondy-of-`S`, unconditional `S_not_fourth`, Kraus / X₀(2q) matching, Ribet to `N'`, X₀(26) matching, Modular W last lock, `B > 100` close, `ExistsNewformLevel2` is `0 ≠ 0`, `beal_from_ribet` still needs `ModularImpliesLevel2Newform`.
 - Build: `lake build BealLevel26Foundations` and `BealLevel26FoundationsFullProof` green twice, `scripts/verify-scaffold.sh` passed, `#print axioms` `[propext, Classical.choice, Quot.sound]`.
 
@@ -452,6 +455,7 @@ v8.26.0-exists-p-order-ne-13-plan RibetMazur Step21 p_sq_dvd_S_iff_order_13_mod_
 v8.27.0-two-primitive-primes-counting-plan RibetMazur Step22 S_not_power_of_thirteen exists_p_of_two_primes_one_not_square_inhabited; S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3 exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.28.0-Phi13-Zeta13-prime-ideal-plan RibetMazur Step23 S_not_power_of_thirteen_inhabited norm_eq_S zeta13_class_number_one zeta13_prime_ideal_factorization_exists; S_has_two_distinct_prime_ideals_in_Z_zeta13_when_C_ge_B_plus_3 exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.29.0-Phi13-derivative-LTE-plan RibetMazur Step24 phi13_derivative_separable_mod_p hensel_unique_lift_of_phi13_root p_sq_dvd_S_iff_CB_eq_lifted_root; exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.30.0-Chebotarev-lift-density-plan RibetMazur Step25 primes_eq1_mod13_infinite density_p_div_S thin_set_p_sq_div_S; chebotarev_gives_p_with_p_div_not_p_sq_div_when_C_ge_B_plus_3 exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 
 ### v8.19.9-fourth-power-residue — houseclean (Track A no new Beal-∀)
 

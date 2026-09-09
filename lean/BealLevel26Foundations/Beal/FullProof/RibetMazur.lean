@@ -3,12 +3,14 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.29.0 — Phi13 derivative /
-LTE plan.
-`phi13_derivative_separable_mod_p`,
-`hensel_unique_lift_of_phi13_root`,
-`p_sq_dvd_S_iff_CB_eq_lifted_root`
-are inhabited.
+Track B v8.30.0 — Chebotarev lift
+density plan.
+`primes_eq1_mod13_infinite`,
+`density_p_div_S`, `thin_set_p_sq_div_S`
+and the Step24 wraps are inhabited.
+`chebotarev_gives_p_with_p_div_not_p_sq_div_when_C_ge_B_plus_3`
+and `exists_p_with_order_ne_13_mod_p_sq_inhabited`
+stay uninhabited.
 `norm_eq_S`, `zeta13_class_number_one`,
 `zeta13_prime_ideal_factorization_exists`,
 `S_not_power_of_thirteen_inhabited`
@@ -332,6 +334,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -3522,6 +3525,36 @@ def hensel_unique_lift_of_phi13_root :=
 def p_sq_dvd_S_iff_CB_eq_lifted_root :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.p_sq_dvd_S_iff_CB_eq_lifted_root
 
+/-! ## v8.30.0 — Chebotarev lift density plan -/
+
+/-- Inhabited wrap.  A Phi13-root is simple when `p ≠ 13`. -/
+def phi13_derivative_separable_mod_p_inhabited :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.phi13_derivative_separable_mod_p_inhabited
+
+/-- Inhabited wrap.  Unique Hensel class in `ZMod (p²)`. -/
+def hensel_unique_lift_of_phi13_root_inhabited :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.hensel_unique_lift_of_phi13_root_inhabited
+
+/-- Inhabited wrap.  `p² ∣ S` iff the ratio equals that class. -/
+def p_sq_dvd_S_iff_CB_eq_lifted_root_inhabited :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.p_sq_dvd_S_iff_CB_eq_lifted_root_inhabited
+
+/-- Inhabited.  Infinitely many primes `p ≡ 1 [MOD 13]`. -/
+def primes_eq1_mod13_infinite :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.primes_eq1_mod13_infinite
+
+/-- Inhabited.  Support: `p | Phi13 t` and `p ≠ 13` force `p ≡ 1 [MOD 13]`. -/
+def density_p_div_S :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.density_p_div_S
+
+/-- Inhabited.  The residue fibre in `ZMod (p²)` has card `p`. -/
+def thin_set_p_sq_div_S :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.thin_set_p_sq_div_S
+
+/-- Uninhabited.  Density heuristic, not effective Chebotarev. -/
+def chebotarev_gives_p_with_p_div_not_p_sq_div_when_C_ge_B_plus_3 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.chebotarev_gives_p_with_p_div_not_p_sq_div_when_C_ge_B_plus_3
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -3930,6 +3963,16 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.exists_p_with_order_ne_13_mod_p_sq_inhabited
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.beal_odd_A_closed_v8_24_0_inhabited
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.phi13_derivative_separable_mod_p_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.hensel_unique_lift_of_phi13_root_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.p_sq_dvd_S_iff_CB_eq_lifted_root_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.primes_eq1_mod13_infinite
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.density_p_div_S
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.thin_set_p_sq_div_S
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.chebotarev_gives_p_with_p_div_not_p_sq_div_when_C_ge_B_plus_3
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.exists_p_with_order_ne_13_mod_p_sq_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.beal_odd_A_closed_v8_24_0_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -4185,5 +4228,12 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.hensel_unique_lift_of_phi13_root
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.p_sq_dvd_S_iff_CB_eq_lifted_root
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.phi13_derivative_separable_mod_p_inhabited
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.hensel_unique_lift_of_phi13_root_inhabited
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.p_sq_dvd_S_iff_CB_eq_lifted_root_inhabited
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.primes_eq1_mod13_infinite
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.density_p_div_S
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.thin_set_p_sq_div_S
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur
