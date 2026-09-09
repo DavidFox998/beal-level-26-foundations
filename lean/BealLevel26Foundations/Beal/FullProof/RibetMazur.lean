@@ -3,7 +3,15 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.44.0 — Kraus p=5 trace
+Track B v8.45.0 — displayed level-lowering
+pack `26 → 2` (not a ∀ close).
+`level_lowering_26_to_2_from_no_match` is inhabited
+(displayed Frey-trace misses plus
+`s2_gamma0_2_dim = 0`).
+`kraus_elimination_26a1` and
+`kraus_elimination_26b1` stay inhabited.
+`kraus_elimination_q_13_level_26` stays uninhabited.
+v8.44.0 — Kraus p=5 trace
 eliminates displayed `26a1` (not a ∀ close).
 `kraus_elimination_26a1` is inhabited
 (`a₅(26a1) = -3 ∉ {-4, -2, 0, 2, 4}`
@@ -376,6 +384,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimi
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step37_B_le_100k_extension
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step40_level_lowering_26_to_2
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -3955,10 +3964,22 @@ miss the displayed Frey p=3 and p=5 traces. -/
 def s2_26_displayed_newforms_miss_frey_traces :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.s2_26_displayed_newforms_miss_frey_traces
 
-/-- Uninhabited.  Displayed misses do not prove
-Ribet level-lowering `26 → 2`. -/
-def level_lowering_26_to_2_from_no_match : Prop :=
-  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.level_lowering_26_to_2_from_no_match
+/-! ## v8.45.0 — displayed level-lowering pack 26 → 2 -/
+
+/-- Inhabited.  Displayed coefficient misses at
+level 26 together with displayed `S₂(Γ₀(2))`
+dimension `0`.  Not Mathlib Ribet. -/
+def level_lowering_26_to_2_from_no_match :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step40_level_lowering_26_to_2.level_lowering_26_to_2_from_no_match
+
+/-- Inhabited.  Displayed `s2_gamma0_2_dim = 0`. -/
+def s2_gamma0_2_dim_displayed_zero :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step40_level_lowering_26_to_2.s2_gamma0_2_dim_displayed_zero
+
+/-- Uninhabited.  Missing Mathlib Ribet arrow
+`26 → 2` from a displayed miss. -/
+def ribet_26_to_2_from_displayed_miss : Prop :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step40_level_lowering_26_to_2.ribet_26_to_2_from_displayed_miss
 
 /-- Inhabited.  Displayed Frey p=3 traces. -/
 def FreyP3Traces : List Int :=
@@ -4480,6 +4501,12 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.kraus_elimination_q_13_level_26
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.level_lowering_26_to_2_from_no_match
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step40_level_lowering_26_to_2.level_lowering_26_to_2_from_no_match
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step40_level_lowering_26_to_2.s2_gamma0_2_dim_displayed_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step40_level_lowering_26_to_2.not_ExistsNewformLevel2
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step40_level_lowering_26_to_2.kraus_elimination_q_13_level_26
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step40_level_lowering_26_to_2.ribet_26_to_2_from_displayed_miss
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step40_level_lowering_26_to_2.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -4801,5 +4828,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.a5_26a1_not_in_frey_p5_traces
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.s2_26_displayed_newforms_miss_frey_traces
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step40_level_lowering_26_to_2.level_lowering_26_to_2_from_no_match
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step40_level_lowering_26_to_2.s2_gamma0_2_dim_displayed_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step40_level_lowering_26_to_2.not_ExistsNewformLevel2
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step40_level_lowering_26_to_2.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

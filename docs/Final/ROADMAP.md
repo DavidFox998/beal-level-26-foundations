@@ -799,6 +799,31 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.45.0-level-lowering-26-to-2 — DONE (level_lowering_26_to_2_from_no_match inhabited as displayed misses + S2(Gamma0(2))=0; kraus_elimination_q_13_level_26 stays uninhabited; arrow stays a Prop)
+
+Lean change.  Step40 file
+`Beal_4_13_13_Zsigmondy_13_Step40_level_lowering_26_to_2.lean`
+inhabits `level_lowering_26_to_2_from_no_match`
+(displayed level-26 Frey-trace misses plus
+displayed `s2_gamma0_2_dim = 0`).
+Not Mathlib Ribet.
+`kraus_elimination_q_13_level_26` stays
+uninhabited.
+`ribet_26_to_2_from_displayed_miss`
+stays uninhabited.
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`
+stays uninhabited.
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stays uninhabited.
+`bugeaud_P_phi13_gt_C_when_B_gt_100000`
+stays uninhabited.
+`ExistsNewformLevel2` is `0 ≠ 0`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.44.0-Kraus-p5-elim-26a1 — DONE (kraus_elimination_26a1 inhabited, a5(26a1)=-3 not in Frey p=5 traces {-4,-2,0,2,4} nor {-2,0,2}; kraus_elimination_q_13_level_26 stays uninhabited; arrow stays a Prop)
 
 Lean change.  Step39 file

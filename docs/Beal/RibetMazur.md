@@ -1,25 +1,22 @@
-# v8.44.0 RibetMazur Kraus p=5 eliminates 26a1
+# v8.45.0 RibetMazur displayed 26→2 pack
 
-`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.lean`
+`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step40_level_lowering_26_to_2.lean`
 and `RibetMazur.lean`
 
-Step39 inhabits the displayed p=5
-Kraus miss of `26a1`:
-`kraus_elimination_26a1`
-(`a₅(26a1) = -3` not in Frey traces
-`{-4, -2, 0, 2, 4}` nor `{-2, 0, 2}`,
-also as a residue mod 13).
-Step38 already inhabits
-`kraus_elimination_26b1`.
-`s2_26_displayed_newforms_miss_frey_traces`
-packages both displayed misses.
+Step40 inhabits the displayed
+level-lowering pack
+`level_lowering_26_to_2_from_no_match`:
+both displayed level-26 newforms miss
+the displayed Frey traces, and
+`ExistsNewformLevel2` is `0 ≠ 0`
+(`s2_gamma0_2_dim = 0`).
 
 This is not a forall close.
 `kraus_elimination_q_13_level_26` stays
 uninhabited (matching lock: Frey
 modularity of level 26 and residual
 isomorphism).
-`level_lowering_26_to_2_from_no_match`
+`ribet_26_to_2_from_displayed_miss`
 stays uninhabited.
 `bugeaud_P_phi13_gt_C_when_B_gt_100000`
 stays uninhabited.
@@ -31,5 +28,7 @@ stays uninhabited.
 `beal_odd_A_closed_v8_24_0_inhabited`
 stays uninhabited (`ExistsNewformLevel2`
 is `0 != 0`).
+`beal_from_ribet` still takes
+`ModularImpliesLevel2Newform`.
 No new Beal forall.
 Not Full Mathlib forall.
