@@ -3,17 +3,21 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.40.0 — B > 50000 rad-bound
-infrastructure (not a ∀ close).
-`S_le_13_C_pow12`, `sqrt_S_le_4_C6`,
-`rad_le_sqrt_of_squarefull` and
-`rad_gt_C_of_P_phi13_gt_C` are inhabited.
+Track B v8.41.0 — Kraus / X₀(26) elimination
+infrastructure for `q = 13` (not a ∀ close).
+`ap_bound_level_26`, `X0_26_Q_displayed_points`,
+`level_26_eq_2_mul_13` and `S2_level_26_dim_two`
+are inhabited.
+`kraus_elimination_q_13_level_26` stays uninhabited.
 `bugeaud_P_phi13_gt_C_when_B_gt_50000`,
 `rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_50000`
 and `S_has_prime_with_exp_one_when_C_ge_B_plus_3`
 stay uninhabited.  The Ljunggren ∀ and
 `exists_p_with_order_ne_13_mod_p_sq_inhabited`
 stay uninhabited.
+v8.40.0 `S_le_13_C_pow12`, `sqrt_S_le_4_C6`,
+`rad_le_sqrt_of_squarefull` and
+`rad_gt_C_of_P_phi13_gt_C` stay inhabited.
 v8.39.0 `S_has_prime_with_exp_one_B_le_50000_table_rows`,
 `exists_p_with_order_ne_13_B_le_50000_from_exp_one_table_rows`
 and `S_not_fourth_B_le_50000_from_exp_one_table_rows`
@@ -352,6 +356,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step32_B_le_1000_exp_one
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step33_B_le_10000_exp_one_extension
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -3846,6 +3851,32 @@ def P_phi13 :=
 def rad_gt_C_of_P_phi13_gt_C :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.rad_gt_C_of_P_phi13_gt_C
 
+/-! ## v8.41.0 — Kraus / X₀(26) elimination infrastructure -/
+
+/-- Inhabited.  `26 = 2 · 13`. -/
+def level_26_eq_2_mul_13 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination.level_26_eq_2_mul_13
+
+/-- Inhabited.  Displayed cusps `[1, 2, 13, 26]`. -/
+def fourCuspsList_eq_step36 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination.fourCuspsList_eq
+
+/-- Inhabited.  Four cusps plus `26a1` / `26b1`. -/
+def X0_26_Q_displayed_points :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination.X0_26_Q_displayed_points
+
+/-- Inhabited.  Ledger Hasse `a_p² ≤ 4p` at Kraus primes. -/
+def ap_bound_level_26 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination.ap_bound_level_26
+
+/-- Inhabited.  Displayed `S₂(Γ₀(26))` dimension `2`. -/
+def S2_level_26_dim_two :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination.S2_level_26_dim_two
+
+/-- Uninhabited.  Kraus matching at `q = 13`, level 26. -/
+def kraus_elimination_q_13_level_26 : Prop :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination.kraus_elimination_q_13_level_26
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -4329,6 +4360,13 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_50000
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.S_has_prime_with_exp_one_when_C_ge_B_plus_3
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination.ap_bound_level_26
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination.X0_26_Q_displayed_points
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination.level_26_eq_2_mul_13
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination.kraus_elimination_q_13_level_26
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination.bugeaud_P_phi13_gt_C_when_B_gt_50000
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination.S_has_prime_with_exp_one_when_C_ge_B_plus_3
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -4635,5 +4673,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.rad_le_sqrt_of_squarefull
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.rad_gt_C_of_P_phi13_gt_C
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination.ap_bound_level_26
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination.level_26_eq_2_mul_13
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination.two_sqrt_sq_le_four_p
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

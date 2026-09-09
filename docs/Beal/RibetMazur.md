@@ -1,25 +1,26 @@
-# v8.40.0 RibetMazur B>50000 rad bound
+# v8.41.0 RibetMazur Kraus X0(26) elimination
 
-`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound.lean`
+`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination.lean`
 and `RibetMazur.lean`
 
-Step35 inhabits the rad-bound
-infrastructure: `S_le_13_C_pow12`,
-`sqrt_S_le_4_C6`,
-`rad_le_sqrt_of_squarefull`, and
-`rad_gt_C_of_P_phi13_gt_C`
-(`P(Φ₁₃) > C` ⇒ `rad(S) > C`).
+Step36 inhabits Kraus / X₀(26)
+infrastructure for `q = 13`:
+`ap_bound_level_26` (ledger Hasse
+`a_p² ≤ 4p`), `X0_26_Q_displayed_points`
+(four cusps plus `26a1` / `26b1`),
+`level_26_eq_2_mul_13`, and
+`S2_level_26_dim_two`.
 
 This is not a forall close.
+`kraus_elimination_q_13_level_26` stays
+uninhabited (matching lock, not vanishing:
+newforms at level 26 exist).
 `bugeaud_P_phi13_gt_C_when_B_gt_50000`
 stays uninhabited.
 `rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_50000`
-stays uninhabited (need
-`rad > √13 C⁶` for contradiction).
+stays uninhabited.
 `S_has_prime_with_exp_one_when_C_ge_B_plus_3`
 stays uninhabited.
-`S_not_proper_prime_power_when_C_ge_B_plus_3`
-stays uninhabited (Ljunggren).
 `exists_p_with_order_ne_13_mod_p_sq_inhabited`
 stays uninhabited.
 

@@ -1,11 +1,11 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.40.0-B-gt-50000-rad-bound`
-Lean change: Step35 inhabits
-`S_le_13_C_pow12`, `sqrt_S_le_4_C6`,
-`rad_le_sqrt_of_squarefull`, and
-`rad_gt_C_of_P_phi13_gt_C`
-(`P(Φ₁₃) > C` ⇒ `rad(S) > C`).
+Latest tag / HEAD: `v8.41.0-Kraus-X0-26-elimination`
+Lean change: Step36 inhabits
+`ap_bound_level_26`, `X0_26_Q_displayed_points`,
+`level_26_eq_2_mul_13`, and `S2_level_26_dim_two`.
+`kraus_elimination_q_13_level_26` stays
+uninhabited (matching lock at level 26).
 `bugeaud_P_phi13_gt_C_when_B_gt_50000`
 and `rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_50000`
 stay uninhabited, so

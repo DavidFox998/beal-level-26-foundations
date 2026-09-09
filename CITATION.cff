@@ -5,11 +5,11 @@ type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v8.40.0-B-gt-50000-rad-bound"
+version: "v8.41.0-Kraus-X0-26-elimination"
 date-released: "2026-09-09"
 doi: "10.5281/zenodo.22272382"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
-url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.40.0-B-gt-50000-rad-bound"
+url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.41.0-Kraus-X0-26-elimination"
 license: MIT
 keywords:
   - beal-conjecture

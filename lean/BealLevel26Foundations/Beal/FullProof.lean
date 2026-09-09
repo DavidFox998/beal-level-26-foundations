@@ -12,19 +12,19 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.40.0)
+# FullProof track (v8.41.0)
 
-Aggregator for Track B.  Step35 inhabits
-`S_le_13_C_pow12`, `sqrt_S_le_4_C6`,
-`rad_le_sqrt_of_squarefull` and
-`rad_gt_C_of_P_phi13_gt_C`.
+Aggregator for Track B.  Step36 inhabits
+`ap_bound_level_26`, `X0_26_Q_displayed_points`,
+`level_26_eq_2_mul_13` and `S2_level_26_dim_two`.
+`kraus_elimination_q_13_level_26` stays uninhabited.
 `bugeaud_P_phi13_gt_C_when_B_gt_50000`
 and `rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_50000`
 stay uninhabited.
 `exists_p_with_order_ne_13_mod_p_sq_inhabited`
 and `S_has_prime_with_exp_one_when_C_ge_B_plus_3`
 stay uninhabited.
-Step34 table rows stay inhabited.
+Step35 rad-bound infrastructure stays inhabited.
 Bare odd-`A` / full close stay uninhabited.
 Step18 primitive / `of_vp1` stay.
 `zsigmondy_vp_S_eq_one_inhabited` is

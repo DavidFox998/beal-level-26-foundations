@@ -1,3 +1,21 @@
+# FINAL v8.41.0 — Kraus X0(26) elimination infrastructure (arrow stays a Prop)
+
+Latest tag `v8.41.0-Kraus-X0-26-elimination`.
+Lean change.
+Step36 inhabits `ap_bound_level_26`,
+`X0_26_Q_displayed_points`,
+`level_26_eq_2_mul_13`, and
+`S2_level_26_dim_two`.
+Kraus elimination at `q = 13`, level 26
+stays a Prop. Bugeaud `P(Φ₁₃) > C` and
+`rad > √13 C⁶` stay Props, so
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stays a Prop. The Hensel ∀
+stays a Prop. The Ljunggren ∀
+stays a Prop.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.40.0 — B > 50000 rad bound (arrow stays a Prop)
 
 Latest tag `v8.40.0-B-gt-50000-rad-bound`.
