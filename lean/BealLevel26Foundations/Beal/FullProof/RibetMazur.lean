@@ -3,11 +3,11 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.38.0 — B ≤ 10000 exp-one
-extension (256 named rows, not a ∀).
-`S_has_prime_with_exp_one_B_le_10000_table_rows`,
-`exists_p_with_order_ne_13_B_le_10000_from_exp_one_table_rows`
-and `S_not_fourth_B_le_10000_from_exp_one_table_rows`
+Track B v8.39.0 — B ≤ 50000 exp-one
+extension (188 named rows, not a ∀).
+`S_has_prime_with_exp_one_B_le_50000_table_rows`,
+`exists_p_with_order_ne_13_B_le_50000_from_exp_one_table_rows`
+and `S_not_fourth_B_le_50000_from_exp_one_table_rows`
 are inhabited.  The Ljunggren ∀ and
 `exists_p_with_order_ne_13_mod_p_sq_inhabited`
 stay uninhabited.
@@ -343,6 +343,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step30_S_not_proper_powe
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step31_B_le_100_order_ne_13_from_exp_one
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step32_B_le_1000_exp_one_extension
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step33_B_le_10000_exp_one_extension
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -3795,6 +3796,24 @@ def S_not_fourth_B_le_10000_from_exp_one_table_rows :=
 def row_10000_10003 :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step33_B_le_10000_exp_one_extension.row_10000_10003
 
+/-! ## v8.39.0 — B ≤ 50000 exp-one extension (188 rows) -/
+
+/-- Inhabited.  188 named `B ≤ 50000` gap-3 rows have exp one. -/
+def S_has_prime_with_exp_one_B_le_50000_table_rows :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension.S_has_prime_with_exp_one_B_le_50000_table_rows
+
+/-- Inhabited.  Those rows have a primitive prime with order ≠ 13. -/
+def exists_p_with_order_ne_13_B_le_50000_from_exp_one_table_rows :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension.exists_p_with_order_ne_13_B_le_50000_from_exp_one_table_rows
+
+/-- Inhabited.  Those rows have `S` not a fourth power. -/
+def S_not_fourth_B_le_50000_from_exp_one_table_rows :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension.S_not_fourth_B_le_50000_from_exp_one_table_rows
+
+/-- Inhabited.  `(50000,50003)` p=313. -/
+def row_50000_50003 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension.row_50000_50003
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -4265,6 +4284,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step33_B_le_10000_exp_one_extension.S_not_fourth_B_le_10000_from_exp_one_table_rows
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step33_B_le_10000_exp_one_extension.exists_p_with_order_ne_13_mod_p_sq_inhabited
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step33_B_le_10000_exp_one_extension.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension.S_has_prime_with_exp_one_B_le_50000_table_rows
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension.exists_p_with_order_ne_13_B_le_50000_from_exp_one_table_rows
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension.S_not_fourth_B_le_50000_from_exp_one_table_rows
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension.exists_p_with_order_ne_13_mod_p_sq_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -4562,5 +4586,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step33_B_le_10000_exp_one_extension.exists_p_with_order_ne_13_B_le_10000_from_exp_one_table_rows
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step33_B_le_10000_exp_one_extension.S_not_fourth_B_le_10000_from_exp_one_table_rows
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step33_B_le_10000_exp_one_extension.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension.S_has_prime_with_exp_one_B_le_50000_table_rows
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension.exists_p_with_order_ne_13_B_le_50000_from_exp_one_table_rows
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension.S_not_fourth_B_le_50000_from_exp_one_table_rows
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_one_extension.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

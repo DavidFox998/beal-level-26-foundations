@@ -1,8 +1,8 @@
 [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.38.0-B-le-10000-exp-one-extension
+# Beal Level 26 Foundations — v8.39.0-B-le-50000-exp-one-real-witnesses
 
-**v8.38.0-B-le-10000-exp-one-extension — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.39.0-B-le-50000-exp-one-real-witnesses — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 GitHub will not render a README much over ~100KB, so the old wall
 stayed cached at v4.28.0.  This file is the short wall.  The full
@@ -13,7 +13,7 @@ and [`certs/README.md`](certs/README.md).
 - Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
   About Website stays [10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221).
 - Houseclean mint [10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
-  (`v8.19.9-fourth-power-residue` / `v8.38.0-B-le-10000-exp-one-extension`) under hook `22379293`.
+  (`v8.19.9-fourth-power-residue` / `v8.39.0-B-le-50000-exp-one-real-witnesses`) under hook `22379293`.
   Concept DOI [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).
 - Track B odd-A ladder (4,13,13): v8.19.6 `B ≤ 100` with `C = B+1` and
   `C = B+2` closed by `decide`; v8.19.7 `A⁴ ≥ 13 k B¹²`, `A⁴ ≥ 39 B¹²`,
@@ -90,8 +90,15 @@ and [`certs/README.md`](certs/README.md).
   v8.38.0 two hundred fifty-six named
   `B ≤ 10000` gap-3 rows have exp-one,
   order ≠ 13 and `S_not_fourth`; not
-  every `B ≤ 10000`; `B > 10000` stays Prop.
-- Inhabited: `S_has_prime_with_exp_one_B_le_10000_table_rows`,
+  every `B ≤ 10000`; `B > 10000` stays Prop;
+  v8.39.0 one hundred eighty-eight named
+  `B ≤ 50000` gap-3 rows have exp-one,
+  order ≠ 13 and `S_not_fourth`; not
+  every `B ≤ 50000`; `B > 50000` stays Prop.
+- Inhabited: `S_has_prime_with_exp_one_B_le_50000_table_rows`,
+  `exists_p_with_order_ne_13_B_le_50000_from_exp_one_table_rows`,
+  `S_not_fourth_B_le_50000_from_exp_one_table_rows`,
+  `S_has_prime_with_exp_one_B_le_10000_table_rows`,
   `exists_p_with_order_ne_13_B_le_10000_from_exp_one_table_rows`,
   `S_not_fourth_B_le_10000_from_exp_one_table_rows`,
   `S_has_prime_with_exp_one_B_le_1000_table_rows`,
@@ -221,8 +228,8 @@ PARI 2-Descent Certificates image
 Still not `∀ ℕ`. No `False.elim`. no `False.elim`.
 `BealExponent13_Iter_Package` `d3cf8a7` `1d0044e`.
 
-HEAD also has Track B `v8.38.0-B-le-10000-exp-one-extension`
-(two hundred fifty-six named `B ≤ 10000`
+HEAD also has Track B `v8.39.0-B-le-50000-exp-one-real-witnesses`
+(one hundred eighty-eight named `B ≤ 50000`
 gap-3 rows have exp-one, order ≠ 13 and
 `S_not_fourth`; Hensel forall stays a
 Prop; `exists_p` stays uninhabited);
@@ -365,3 +372,5 @@ v8.34.0-B-le-100-exp-one-table RibetMazur Step29 S_has_prime_with_exp_one_B_le_1
 v8.35.0-S-not-proper-power-B-le-100-from-exp-one RibetMazur Step30 S_not_proper_prime_power_B_le_100_from_exp_one_table_rows; S_not_proper_prime_power_when_C_ge_B_plus_3 exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.36.0-B-le-100-order-ne-13-from-exp-one RibetMazur Step31 exists_p_with_order_ne_13_B_le_100_from_exp_one_table_rows; exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.37.0-B-le-1000-exp-one-extension RibetMazur Step32 S_has_prime_with_exp_one_B_le_1000_table_rows; exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.38.0-B-le-10000-exp-one-extension RibetMazur Step33 S_has_prime_with_exp_one_B_le_10000_table_rows; exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.39.0-B-le-50000-exp-one-real-witnesses RibetMazur Step34 S_has_prime_with_exp_one_B_le_50000_table_rows; exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.

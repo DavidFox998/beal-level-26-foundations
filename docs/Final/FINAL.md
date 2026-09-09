@@ -1,3 +1,18 @@
+# FINAL v8.39.0 — B ≤ 50000 exp-one real witnesses (arrow stays a Prop)
+
+Latest tag `v8.39.0-B-le-50000-exp-one-real-witnesses`.
+Lean change.
+Step34 inhabits 188 named gap-3 rows
+with `B ≤ 50000`, packed as
+`S_has_prime_with_exp_one_B_le_50000_table_rows`
+and
+`S_not_fourth_B_le_50000_from_exp_one_table_rows`.
+Not every `B ≤ 50000`. The Hensel ∀
+stays a Prop. `B > 50000` is Bugeaud-type.
+The Ljunggren ∀ stays a Prop.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.38.0 — B ≤ 10000 exp-one extension (arrow stays a Prop)
 
 Latest tag `v8.38.0-B-le-10000-exp-one-extension`.
