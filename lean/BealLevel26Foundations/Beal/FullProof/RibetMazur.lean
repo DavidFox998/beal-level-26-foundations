@@ -3,8 +3,12 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.28.0 — Phi13 / Zeta13
-prime-ideal plan.
+Track B v8.29.0 — Phi13 derivative /
+LTE plan.
+`phi13_derivative_separable_mod_p`,
+`hensel_unique_lift_of_phi13_root`,
+`p_sq_dvd_S_iff_CB_eq_lifted_root`
+are inhabited.
 `norm_eq_S`, `zeta13_class_number_one`,
 `zeta13_prime_ideal_factorization_exists`,
 `S_not_power_of_thirteen_inhabited`
@@ -327,6 +331,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step20_Hensel_dichotomy_
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step21_exists_p_order_ne_13_plan
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -3499,6 +3504,24 @@ def S_has_two_distinct_prime_ideals_in_Z_zeta13_when_C_ge_B_plus_3 :=
 def zeta13_two_prime_ideals_give_two_rational_primes :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.zeta13_two_prime_ideals_give_two_rational_primes
 
+/-! ## v8.29.0 — Phi13 derivative / LTE plan -/
+
+/-- Univariate cyclotomic 13-sum. -/
+def Phi13 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.Phi13
+
+/-- Inhabited.  A Phi13-root is simple when `p ≠ 13`. -/
+def phi13_derivative_separable_mod_p :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.phi13_derivative_separable_mod_p
+
+/-- Inhabited.  Unique Hensel class in `ZMod (p²)`. -/
+def hensel_unique_lift_of_phi13_root :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.hensel_unique_lift_of_phi13_root
+
+/-- Inhabited.  `p² ∣ S` iff the ratio equals that class. -/
+def p_sq_dvd_S_iff_CB_eq_lifted_root :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.p_sq_dvd_S_iff_CB_eq_lifted_root
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -3900,6 +3923,13 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.exists_p_with_order_ne_13_mod_p_sq_inhabited
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.beal_odd_A_closed_v8_24_0_inhabited
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.Phi13
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.phi13_derivative_separable_mod_p
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.hensel_unique_lift_of_phi13_root
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.p_sq_dvd_S_iff_CB_eq_lifted_root
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.exists_p_with_order_ne_13_mod_p_sq_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.beal_odd_A_closed_v8_24_0_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -4151,5 +4181,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.zeta13_prime_ideal_factorization_exists
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.S_not_power_of_thirteen_inhabited
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.phi13_derivative_separable_mod_p
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.hensel_unique_lift_of_phi13_root
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.p_sq_dvd_S_iff_CB_eq_lifted_root
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

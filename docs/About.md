@@ -1,15 +1,15 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.28.0-Phi13-Zeta13-prime-ideal-plan`
-Lean change: Step23 inhabits
-`norm_eq_S`, `zeta13_class_number_one`,
-`zeta13_prime_ideal_factorization_exists`,
-`S_not_power_of_thirteen_inhabited`.
-Displayed `Φ₁₃(C,B)` equals `S_val`.
-Class number 1 is recorded, not Mathlib.
-One primitive prime of the displayed
-norm exists. Two prime ideals stay a
-Prop (same lock as two rational primes).
+Latest tag / HEAD: `v8.29.0-Phi13-derivative-LTE-plan`
+Lean change: Step24 inhabits
+`phi13_derivative_separable_mod_p`,
+`hensel_unique_lift_of_phi13_root`,
+`p_sq_dvd_S_iff_CB_eq_lifted_root`.
+A `Φ₁₃`-root modulo `p ≠ 13` is simple.
+Hensel locks one class in `ZMod (p²)`.
+`p² ∣ S` iff `C · B⁻¹` equals that class.
+`B = 1`, `C = 460`, `p = 53` shows a lift
+can succeed.
 `exists_p_with_order_ne_13_mod_p_sq_inhabited`
 stays uninhabited (`ExistsNewformLevel2`
 is `0 ≠ 0`).

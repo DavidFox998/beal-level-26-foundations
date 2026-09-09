@@ -12,7 +12,7 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.28.0)
+# FullProof track (v8.29.0)
 
 Aggregator for Track B.  Step23 inhabits
 `norm_eq_S`, `zeta13_class_number_one`,

@@ -799,6 +799,26 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.29.0-Phi13-derivative-LTE-plan — DONE (Phi13 derivative separable, unique Hensel class in ZMod (p^2), p^2 | S iff the ratio equals that class; exists_p stays uninhabited; arrow stays a Prop)
+
+Lean change.  Step24 file
+`Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.lean`
+inhabits
+`phi13_derivative_separable_mod_p`,
+`hensel_unique_lift_of_phi13_root`,
+`p_sq_dvd_S_iff_CB_eq_lifted_root`.
+Uniqueness is in `ZMod (p²)`, not `Nat`.
+`B = 1`, `C = 460`, `p = 53` shows a
+lift can succeed.
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`
+stays uninhabited.
+`beal_odd_A_closed_v8_24_0_inhabited` stays
+uninhabited.  `ExistsNewformLevel2` stays
+`0 ≠ 0`.  No new Beal `∀`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.28.0-Phi13-Zeta13-prime-ideal-plan — DONE (displayed Phi13 norm equals S, recorded class number 1, one primitive prime of the norm inhabited; two prime ideals and exists_p stay uninhabited; arrow stays a Prop)
 
 Lean change.  Step23 file

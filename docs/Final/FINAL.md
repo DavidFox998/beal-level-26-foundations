@@ -1,3 +1,20 @@
+# FINAL v8.29.0 — Phi13 derivative LTE plan (arrow stays a Prop)
+
+Latest tag `v8.29.0-Phi13-derivative-LTE-plan`.
+Lean change.
+Step24 inhabits
+`phi13_derivative_separable_mod_p`,
+`hensel_unique_lift_of_phi13_root`
+(unique class in `ZMod (p²)`),
+`p_sq_dvd_S_iff_CB_eq_lifted_root`.
+A `Φ₁₃`-root modulo `p ≠ 13` is simple.
+The square test is the fibre
+`C · B⁻¹ ≡ t* (mod p²)`.
+`B = 1`, `C = 460`, `p = 53` shows a
+lift can succeed. Size does not kill
+two lifts. `exists_p` stays a Prop.
+No new Beal `∀`. Still not Full Mathlib `∀`.
+
 # FINAL v8.28.0 — Phi13 Zeta13 prime-ideal plan (arrow stays a Prop)
 
 Latest tag `v8.28.0-Phi13-Zeta13-prime-ideal-plan`.

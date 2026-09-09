@@ -227,6 +227,8 @@ test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step22_two_primiti
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step22_two_primitive_primes_counting_plan.md
 test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.md
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -875,6 +877,7 @@ do
   grep -q "v8.26.0-exists-p-order-ne-13-plan" "$readme"
   grep -q "v8.27.0-two-primitive-primes-counting-plan" "$readme"
   grep -q "v8.28.0-Phi13-Zeta13-prime-ideal-plan" "$readme"
+  grep -q "v8.29.0-Phi13-derivative-LTE-plan" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1855,6 +1858,28 @@ grep -q "def beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.lean
 grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prime_ideal_plan.lean
+grep -q "theorem phi13_derivative_separable_mod_p" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.lean
+grep -q "theorem hensel_unique_lift_of_phi13_root" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.lean
+grep -q "theorem p_sq_dvd_S_iff_CB_eq_lifted_root" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.lean
+grep -q "def Phi13" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.lean
+grep -q "def S_not_prime_power_when_C_ge_B_plus_3" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.lean
+grep -q "def S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.lean
+grep -q "def exists_p_with_order_ne_13_mod_p_sq_inhabited" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.lean
+grep -q "def beal_odd_A_closed_v8_24_0_inhabited" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.lean
+grep -q "def beal_4_13_13_full_closed_mod_modular_v8_24_0_inhabited" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.lean
+grep -q "def beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.lean
+grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan.lean
 grep -q "theorem beal_4_13_13_k_odd" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
 grep -q "theorem S_13_ge_13_mul_B_pow12" \
