@@ -1,3 +1,18 @@
+# FINAL v8.35.0 — S not proper power B≤100 from exp-one (arrow stays a Prop)
+
+Latest tag `v8.35.0-S-not-proper-power-B-le-100-from-exp-one`.
+Lean change.
+Step30 inhabits
+`not_proper_prime_power_of_has_exp_one`
+(`HasPrimeWithExpOne` ⇒ `¬ IsProperPrimePower`)
+and eight named rows packed as
+`S_not_proper_prime_power_B_le_100_from_exp_one_table_rows`.
+Not every `B ≤ 100`. The Ljunggren ∀
+stays a Prop. `B > 100` is Bugeaud-type.
+The gap-3 exp-one ∀ and `exists_p`
+stay Props. No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.34.0 — B ≤ 100 exp-one table (arrow stays a Prop)
 
 Latest tag `v8.34.0-B-le-100-exp-one-table`.

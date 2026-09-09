@@ -1,15 +1,18 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.34.0-B-le-100-exp-one-table`
-Lean change: Step29 inhabits
-`S_has_prime_with_exp_one_B_le_100_table_rows`
-(eight named `B ≤ 100` gap-3 rows).
-Not every `B ≤ 100`.  The gap-3 ∀
-`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+Latest tag / HEAD: `v8.35.0-S-not-proper-power-B-le-100-from-exp-one`
+Lean change: Step30 inhabits
+`not_proper_prime_power_of_has_exp_one`
+and
+`S_not_proper_prime_power_B_le_100_from_exp_one_table_rows`
+(eight named `B ≤ 100` rows from the
+v8.34 exp-one table).
+Not every `B ≤ 100`.  The Ljunggren ∀
+`S_not_proper_prime_power_when_C_ge_B_plus_3`
 stays uninhabited.  `B > 100`
-squarefull rarity is Bugeaud-type.
-`exists_p_with_order_ne_13_mod_p_sq_inhabited`
-stays uninhabited (`ExistsNewformLevel2`
+is Bugeaud-type.  The gap-3 exp-one ∀
+and `exists_p_with_order_ne_13_mod_p_sq_inhabited`
+stay uninhabited (`ExistsNewformLevel2`
 is `0 ≠ 0`).
 Step28 glue
 `exists_p_with_order_ne_13_of_has_exp_one`

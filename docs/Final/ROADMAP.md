@@ -799,6 +799,29 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.35.0-S-not-proper-power-B-le-100-from-exp-one — DONE (eight named B<=100 rows not proper prime powers from exp-one; Ljunggren forall and exists_p stay uninhabited; arrow stays a Prop)
+
+Lean change.  Step30 file
+`Beal_4_13_13_Zsigmondy_13_Step30_S_not_proper_power_B_le_100_from_exp_one.lean`
+inhabits
+`not_proper_prime_power_of_has_exp_one`
+and
+`S_not_proper_prime_power_B_le_100_from_exp_one_table_rows`.
+Not every `B ≤ 100`.
+`S_not_proper_prime_power_when_C_ge_B_plus_3`
+stays uninhabited (Ljunggren / Bugeaud
+for `B > 100`).
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+and
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`
+stay uninhabited.
+`beal_odd_A_closed_v8_24_0_inhabited` stays
+uninhabited.  `ExistsNewformLevel2` stays
+`0 ≠ 0`.  No new Beal `∀`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.34.0-B-le-100-exp-one-table — DONE (eight named B<=100 exp-one rows; gap-3 forall and exists_p stay uninhabited; arrow stays a Prop)
 
 Lean change.  Step29 file

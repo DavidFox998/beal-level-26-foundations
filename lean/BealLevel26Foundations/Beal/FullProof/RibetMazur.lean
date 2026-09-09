@@ -3,12 +3,13 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.34.0 — B ≤ 100 exp-one table
-(eight named rows, not a ∀).
-`S_has_prime_with_exp_one_B_le_100_table_rows`
-is inhabited.  Step28 glue
-`exists_p_with_order_ne_13_of_has_exp_one`
-stays.  The gap-3 ∀ and
+Track B v8.35.0 — S not a proper prime
+power on the B ≤ 100 exp-one table
+(from Step29, not a ∀).
+`S_not_proper_prime_power_B_le_100_from_exp_one_table_rows`
+is inhabited.  Glue
+`not_proper_prime_power_of_has_exp_one`
+stays.  The Ljunggren ∀ and
 `exists_p_with_order_ne_13_mod_p_sq_inhabited`
 stay uninhabited.
 `norm_eq_S`, `zeta13_class_number_one`,
@@ -339,6 +340,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step28_S_has_prime_with_exp_one_gap3
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step29_B_le_100_exp_one_table
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step30_S_not_proper_power_B_le_100_from_exp_one
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -3694,6 +3696,33 @@ def S_val_100_103_has_prime_with_exp_one :=
 def exists_p_with_order_ne_13_mod_p_sq_example_B1_C4 :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step29_B_le_100_exp_one_table.exists_p_with_order_ne_13_mod_p_sq_example_B1_C4
 
+/-! ## v8.35.0 — S not a proper prime power from the exp-one table -/
+
+/-- Inhabited.  Exp-one implies not `q^k` for `k ≥ 2`. -/
+def not_proper_prime_power_of_has_exp_one {n : Nat}
+    (h : HasPrimeWithExpOne n) : ¬ IsProperPrimePower n :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step30_S_not_proper_power_B_le_100_from_exp_one.not_proper_prime_power_of_has_exp_one h
+
+/-- Inhabited.  Eight named `B ≤ 100` rows are not proper prime powers. -/
+def S_not_proper_prime_power_B_le_100_from_exp_one_table_rows :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step30_S_not_proper_power_B_le_100_from_exp_one.S_not_proper_prime_power_B_le_100_from_exp_one_table_rows
+
+/-- Inhabited.  `(1,4)` from exp-one. -/
+def S_val_1_4_not_proper_prime_power :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step30_S_not_proper_power_B_le_100_from_exp_one.S_val_1_4_not_proper_prime_power
+
+/-- Inhabited.  `(1,8)` from exp-one. -/
+def S_val_1_8_not_proper_prime_power :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step30_S_not_proper_power_B_le_100_from_exp_one.S_val_1_8_not_proper_prime_power
+
+/-- Inhabited.  `(2,5)` from exp-one. -/
+def S_val_2_5_not_proper_prime_power :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step30_S_not_proper_power_B_le_100_from_exp_one.S_val_2_5_not_proper_prime_power
+
+/-- Inhabited.  `(100,103)` from exp-one. -/
+def S_val_100_103_not_proper_prime_power :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step30_S_not_proper_power_B_le_100_from_exp_one.S_val_100_103_not_proper_prime_power
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -4143,6 +4172,12 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step29_B_le_100_exp_one_table.S_has_prime_with_exp_one_when_C_ge_B_plus_3
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step29_B_le_100_exp_one_table.exists_p_with_order_ne_13_mod_p_sq_inhabited
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step29_B_le_100_exp_one_table.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step30_S_not_proper_power_B_le_100_from_exp_one.not_proper_prime_power_of_has_exp_one
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step30_S_not_proper_power_B_le_100_from_exp_one.S_not_proper_prime_power_B_le_100_from_exp_one_table_rows
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step30_S_not_proper_power_B_le_100_from_exp_one.S_val_1_4_not_proper_prime_power
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step30_S_not_proper_power_B_le_100_from_exp_one.S_not_proper_prime_power_when_C_ge_B_plus_3
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step30_S_not_proper_power_B_le_100_from_exp_one.exists_p_with_order_ne_13_mod_p_sq_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step30_S_not_proper_power_B_le_100_from_exp_one.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -4424,5 +4459,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step29_B_le_100_exp_one_table.S_has_prime_with_exp_one_B_le_100_table_rows
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step29_B_le_100_exp_one_table.exists_p_with_order_ne_13_mod_p_sq_example_B1_C4
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step29_B_le_100_exp_one_table.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step30_S_not_proper_power_B_le_100_from_exp_one.not_proper_prime_power_of_has_exp_one
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step30_S_not_proper_power_B_le_100_from_exp_one.S_not_proper_prime_power_B_le_100_from_exp_one_table_rows
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step30_S_not_proper_power_B_le_100_from_exp_one.S_val_1_4_not_proper_prime_power
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step30_S_not_proper_power_B_le_100_from_exp_one.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur
