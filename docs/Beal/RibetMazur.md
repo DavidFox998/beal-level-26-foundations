@@ -1,15 +1,14 @@
-# v8.47.0 RibetMazur B=200k outlier p=12186951011
+# v8.48.0 RibetMazur B≤300k 900 named gap-3 rows
 
-`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.lean`
+`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step43_B_le_300k_extension.lean`
 and `RibetMazur.lean`
 
-Step42 inhabits `row_200000_200003` with
-Pratt prime `p = 12186951011`:
-`S` mod p = 0, `S` mod p² ≠ 0, gap = 3,
-order ≠ 13, `S_not_fourth`.
-The 600 Step41 rows plus this outlier
-are packed as 601 named `B ≤ 200000`
-gap-3 rows.
+Step43 inhabits 900 named `B ≤ 300000`
+gap-3 rows (601 Step42 including
+`(200000,200003)` p=12186951011 plus
+299 new `200000 < B ≤ 300000` rows
+with p≤547).  Named new-window
+endpoint `(299999,300002)` p=131.
 
 The modular side stays a coefficient
 check, not Ribet:
@@ -27,7 +26,7 @@ modularity of level 26 and residual
 isomorphism).
 `ribet_26_to_2_from_displayed_miss`
 stays uninhabited.
-`bugeaud_P_phi13_gt_C_when_B_gt_200000`
+`bugeaud_P_phi13_gt_C_when_B_gt_300000`
 stays uninhabited.
 `S_has_prime_with_exp_one_when_C_ge_B_plus_3`
 stays uninhabited.

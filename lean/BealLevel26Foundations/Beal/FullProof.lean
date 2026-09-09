@@ -12,28 +12,25 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.47.0)
+# FullProof track (v8.48.0)
 
-Aggregator for Track B.  Step42 inhabits
+Aggregator for Track B.  Step43 inhabits
+900 named `B ≤ 300000` gap-3 rows
+(601 Step42 including the inhabited
+outlier `(200000,200003)` plus 299 new
+`200000 < B ≤ 300000` rows, most p≤547).
+The s2_26 pack stays a coefficient check,
+not Ribet.  Step42 inhabits
 `row_200000_200003` (p = 12186951011 Pratt)
 and re-packs 601 named `B ≤ 200000` gap-3
-rows.  The s2_26 pack stays a coefficient check,
-not Ribet.  Step40
+rows.  Step40
 `level_lowering_26_to_2_from_no_match`
 stays inhabited (displayed misses plus
 displayed `S₂(Γ₀(2)) = 0`).  Step39
 `kraus_elimination_26a1` and Step38
 `kraus_elimination_26b1` stay inhabited.
 `kraus_elimination_q_13_level_26` stays uninhabited.
-`B > 200000` Bugeaud stays uninhabited.
-not Ribet.  Step40
-`level_lowering_26_to_2_from_no_match`
-stays inhabited (displayed misses plus
-displayed `S₂(Γ₀(2)) = 0`).  Step39
-`kraus_elimination_26a1` and Step38
-`kraus_elimination_26b1` stay inhabited.
-`kraus_elimination_q_13_level_26` stays uninhabited.
-`B > 200000` Bugeaud stays uninhabited.
+`B > 300000` Bugeaud stays uninhabited.
 `bugeaud_P_phi13_gt_C_when_B_gt_50000`
 and `rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_50000`
 stay uninhabited.
