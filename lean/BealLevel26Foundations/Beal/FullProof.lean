@@ -12,15 +12,20 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.45.0)
+# FullProof track (v8.46.0)
 
-Aggregator for Track B.  Step40 inhabits
+Aggregator for Track B.  Step41 inhabits
+600 named `B ≤ 200000` gap-3 rows
+(`S_has_prime_with_exp_one_B_le_200000_table_rows`).
+The s2_26 pack stays a coefficient check,
+not Ribet.  Step40
 `level_lowering_26_to_2_from_no_match`
-(displayed level-26 Frey-trace misses plus
+stays inhabited (displayed misses plus
 displayed `S₂(Γ₀(2)) = 0`).  Step39
 `kraus_elimination_26a1` and Step38
 `kraus_elimination_26b1` stay inhabited.
 `kraus_elimination_q_13_level_26` stays uninhabited.
+`B > 200000` Bugeaud stays uninhabited.
 `bugeaud_P_phi13_gt_C_when_B_gt_50000`
 and `rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_50000`
 stay uninhabited.

@@ -1,19 +1,28 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.45.0-level-lowering-26-to-2`
-Lean change: Step40 inhabits
-`level_lowering_26_to_2_from_no_match`
-(displayed level-26 Frey-trace misses plus
-displayed `S₂(Γ₀(2)) = 0`).
-`kraus_elimination_26a1` and
-`kraus_elimination_26b1` stay inhabited.
+Latest tag / HEAD: `v8.46.0-B-le-200k-600-rows`
+Lean change: Step41 inhabits 600 named
+`B ≤ 200000` gap-3 rows with real
+`p ≤ 547` witnesses.  Named endpoint
+`(199996,199999)` p=131.  Pair
+`(200000,200003)` has no `p ≤ 547`
+dividing `S` and stays a Prop.
+The s2_26 pack stays a coefficient
+check, not Ribet.
 `kraus_elimination_q_13_level_26` stays
-uninhabited (matching lock at level 26).
-`bugeaud_P_phi13_gt_C_when_B_gt_100000`
-and `rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_100000`
+uninhabited.  `B > 200000` Bugeaud
+`P(Φ₁₃) > C` and
+`rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_200000`
 stay uninhabited, so
 `S_has_prime_with_exp_one_when_C_ge_B_plus_3`
-stays a Prop.  The Hensel ∀
+stays a Prop.
+Step40 `level_lowering_26_to_2_from_no_match`
+stays inhabited (displayed pack).
+`kraus_elimination_26a1` and
+`kraus_elimination_26b1` stay inhabited.
+`bugeaud_P_phi13_gt_C_when_B_gt_100000`
+and `rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_100000`
+stay uninhabited.  The Hensel ∀
 `exists_p_with_order_ne_13_mod_p_sq_inhabited`
 stays uninhabited.  The Ljunggren ∀
 and the gap-3 exp-one ∀ stay

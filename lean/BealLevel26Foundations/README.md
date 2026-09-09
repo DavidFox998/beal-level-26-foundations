@@ -129,8 +129,9 @@ v8.42.0-B-le-100k-extension RibetMazur Step37 S_has_prime_with_exp_one_B_le_1000
 v8.43.0-Kraus-p3-elim-26b1 RibetMazur Step38 kraus_elimination_26b1; kraus_elimination_26a1 kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.44.0-Kraus-p5-elim-26a1 RibetMazur Step39 kraus_elimination_26a1; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.45.0-level-lowering-26-to-2 RibetMazur Step40 level_lowering_26_to_2_from_no_match; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.46.0-B-le-200k-600-rows RibetMazur Step41 S_has_prime_with_exp_one_B_le_200000_table_rows; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 
-### File order v8.19.0–v8.45.0
+### File order v8.19.0–v8.46.0
 
 | Version | File |
 |---|---|
@@ -175,6 +176,7 @@ v8.45.0-level-lowering-26-to-2 RibetMazur Step40 level_lowering_26_to_2_from_no_
 | v8.43.0 | `Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.lean` |
 | v8.44.0 | `Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1.lean` |
 | v8.45.0 | `Beal_4_13_13_Zsigmondy_13_Step40_level_lowering_26_to_2.lean` |
+| v8.46.0 | `Beal_4_13_13_Zsigmondy_13_Step41_B_le_200k_extension.lean` |
 
 Not imported by the 24-module none chain.  Track A: no new Beal-∀.
 
@@ -326,12 +328,12 @@ v4.14.0-iter-citation-contradiction-locked: `CITATION.cff` locks `c2c47db` / fou
 
 [![v8.19.9 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.45.0-level-lowering-26-to-2
+# Beal Level 26 Foundations — v8.46.0-B-le-200k-600-rows
 
-**v8.45.0-level-lowering-26-to-2 — Beal (4,13,13) displayed 26→2 pack (Track B). Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.46.0-B-le-200k-600-rows — Beal (4,13,13) B≤200k 600 named gap-3 rows (Track B). Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 - Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
-- Houseclean mint `10.5281/zenodo.22654189` (`v8.19.9-fourth-power-residue` / `v8.45.0-level-lowering-26-to-2`) under hook `22379293`. Track A none-chain mint stays `10.5281/zenodo.22635221`.
+- Houseclean mint `10.5281/zenodo.22654189` (`v8.19.9-fourth-power-residue` / `v8.46.0-B-le-200k-600-rows`) under hook `22379293`. Track A none-chain mint stays `10.5281/zenodo.22635221`.
 - What's new:
   - v8.19.6 `B ≤ 100` `C = B+1`, `C = B+2` closed by `decide`;
   - v8.19.7 `A⁴ ≥ 13 k B¹²`, `A⁴ ≥ 39 B¹²`, `A ≥ 2 B³ + 1`;
@@ -368,6 +370,7 @@ v4.14.0-iter-citation-contradiction-locked: `CITATION.cff` locks `c2c47db` / fou
   - v8.43.0 `kraus_elimination_26b1` (ledger `a₃(26b1) = -3` not in Frey p=3 traces `{-2, 0, 2}`). `kraus_elimination_26a1` / `kraus_elimination_q_13_level_26` stay uninhabited. `ExistsNewformLevel2` stays `0 ≠ 0`.
   - v8.44.0 `kraus_elimination_26a1` (ledger `a₅(26a1) = -3` not in Frey p=5 traces `{-4, -2, 0, 2, 4}` nor `{-2, 0, 2}`). `s2_26_displayed_newforms_miss_frey_traces` inhabited. `kraus_elimination_q_13_level_26` stays uninhabited. `ExistsNewformLevel2` stays `0 ≠ 0`.
   - v8.45.0 `level_lowering_26_to_2_from_no_match` (displayed level-26 Frey-trace misses plus displayed `S₂(Γ₀(2)) = 0`). `kraus_elimination_q_13_level_26` stays uninhabited. `ExistsNewformLevel2` stays `0 ≠ 0`.
+  - v8.46.0 `S_has_prime_with_exp_one_B_le_200000_table_rows` / `exists_p_with_order_ne_13_B_le_200000_from_exp_one_table_rows` / `S_not_fourth_B_le_200000_from_exp_one_table_rows` (600 named rows). Named endpoint `(199996,199999)` p=131. `(200000,200003)` has no `p ≤ 547` dividing `S` and stays a Prop. s2_26 pack still coefficient check not Ribet. `kraus_elimination_q_13_level_26` stays uninhabited. Bugeaud-type for `B > 200000`. `ExistsNewformLevel2` stays `0 ≠ 0`.
 - Uninhabited: bare odd-`A` close, unconditional `v_p(S)=1`, Zsigmondy-of-`S`, unconditional `S_not_fourth`, Kraus / X₀(2q) matching, Ribet to `N'`, X₀(26) matching, Modular W last lock, `B > 100` close, `ExistsNewformLevel2` is `0 ≠ 0`, `beal_from_ribet` still needs `ModularImpliesLevel2Newform`.
 - Build: `lake build BealLevel26Foundations` and `BealLevel26FoundationsFullProof` green twice, `scripts/verify-scaffold.sh` passed, `#print axioms` `[propext, Classical.choice, Quot.sound]`.
 
@@ -516,6 +519,7 @@ v8.42.0-B-le-100k-extension RibetMazur Step37 S_has_prime_with_exp_one_B_le_1000
 v8.43.0-Kraus-p3-elim-26b1 RibetMazur Step38 kraus_elimination_26b1; kraus_elimination_26a1 kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.44.0-Kraus-p5-elim-26a1 RibetMazur Step39 kraus_elimination_26a1; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.45.0-level-lowering-26-to-2 RibetMazur Step40 level_lowering_26_to_2_from_no_match; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.46.0-B-le-200k-600-rows RibetMazur Step41 S_has_prime_with_exp_one_B_le_200000_table_rows; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 
 ### v8.19.9-fourth-power-residue — houseclean (Track A no new Beal-∀)
 
