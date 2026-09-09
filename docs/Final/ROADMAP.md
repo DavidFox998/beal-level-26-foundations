@@ -799,6 +799,29 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.47.0-B-200k-outlier-12186951011 — DONE (row_200000_200003 inhabited with Pratt p=12186951011; 601 named B<=200k gap-3 rows; s2_26 pack still coefficient check not Ribet; kraus_elimination_q_13_level_26 stays uninhabited; B>200k Bugeaud remains Prop; arrow stays a Prop)
+
+Lean change.  Step42 file
+`Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.lean`
+inhabits `row_200000_200003` with Pratt
+prime `12186951011` (`p-1` factors
+`2,5,13,29,47,109,631`, 64-step modPow).
+`S` mod p = 0, `S` mod p² ≠ 0, gap = 3,
+order ≠ 13, `S_not_fourth`.
+Wraps 600 Step41 rows and packs 601.
+The s2_26 pack stays a coefficient
+check, not residual iso, so
+`kraus_elimination_q_13_level_26` stays
+uninhabited.
+`bugeaud_P_phi13_gt_C_when_B_gt_200000`
+stays uninhabited.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.46.0-B-le-200k-600-rows — DONE (S_has_prime_with_exp_one_B_le_200000_table_rows inhabited, 600 named gap-3 rows p<=547; (200000,200003) has no p<=547 dividing S so named endpoint is (199996,199999) p=131; s2_26 pack still coefficient check not Ribet; kraus_elimination_q_13_level_26 stays uninhabited; B>200k Bugeaud remains Prop; arrow stays a Prop)
 
 Lean change.  Step41 file

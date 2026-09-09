@@ -12,12 +12,20 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.46.0)
+# FullProof track (v8.47.0)
 
-Aggregator for Track B.  Step41 inhabits
-600 named `B ≤ 200000` gap-3 rows
-(`S_has_prime_with_exp_one_B_le_200000_table_rows`).
-The s2_26 pack stays a coefficient check,
+Aggregator for Track B.  Step42 inhabits
+`row_200000_200003` (p = 12186951011 Pratt)
+and re-packs 601 named `B ≤ 200000` gap-3
+rows.  The s2_26 pack stays a coefficient check,
+not Ribet.  Step40
+`level_lowering_26_to_2_from_no_match`
+stays inhabited (displayed misses plus
+displayed `S₂(Γ₀(2)) = 0`).  Step39
+`kraus_elimination_26a1` and Step38
+`kraus_elimination_26b1` stay inhabited.
+`kraus_elimination_q_13_level_26` stays uninhabited.
+`B > 200000` Bugeaud stays uninhabited.
 not Ribet.  Step40
 `level_lowering_26_to_2_from_no_match`
 stays inhabited (displayed misses plus

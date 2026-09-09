@@ -1,3 +1,22 @@
+# FINAL v8.47.0 — B=200k outlier p=12186951011 (arrow stays a Prop)
+
+Latest tag `v8.47.0-B-200k-outlier-12186951011`.
+Lean change.
+Step42 inhabits `row_200000_200003`
+(Pratt prime `p = 12186951011`,
+`S` mod p = 0, `S` mod p² ≠ 0).
+601 named `B ≤ 200000` gap-3 rows.
+The s2_26 pack stays a coefficient
+check, not Ribet.
+`kraus_elimination_q_13_level_26` stays
+a Prop. `B > 200000` Bugeaud `P(Φ₁₃) > C`
+and `rad > √13 C⁶` stay Props, so
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stays a Prop. The Hensel ∀ stays a Prop.
+The Ljunggren ∀ stays a Prop.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.46.0 — B≤200k 600 named gap-3 rows (arrow stays a Prop)
 
 Latest tag `v8.46.0-B-le-200k-600-rows`.

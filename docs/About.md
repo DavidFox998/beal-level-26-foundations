@@ -1,12 +1,11 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.46.0-B-le-200k-600-rows`
-Lean change: Step41 inhabits 600 named
-`B ≤ 200000` gap-3 rows with real
-`p ≤ 547` witnesses.  Named endpoint
-`(199996,199999)` p=131.  Pair
-`(200000,200003)` has no `p ≤ 547`
-dividing `S` and stays a Prop.
+Latest tag / HEAD: `v8.47.0-B-200k-outlier-12186951011`
+Lean change: Step42 inhabits
+`row_200000_200003` with Pratt prime
+`p = 12186951011` (`S` mod p = 0,
+`S` mod p² ≠ 0).  601 named
+`B ≤ 200000` gap-3 rows.
 The s2_26 pack stays a coefficient
 check, not Ribet.
 `kraus_elimination_q_13_level_26` stays

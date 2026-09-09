@@ -1,15 +1,15 @@
-# v8.46.0 RibetMazur B≤200k 600 named gap-3 rows
+# v8.47.0 RibetMazur B=200k outlier p=12186951011
 
-`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step41_B_le_200k_extension.lean`
+`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.lean`
 and `RibetMazur.lean`
 
-Step41 inhabits 600 named `B ≤ 200000`
-gap-3 rows with real `p ≤ 547`
-witnesses: `p ∤ gap`, `p² ∤ S` ⇒
-order ≠ 13 ⇒ `S_not_fourth`.
-Named endpoint `(199996,199999)` p=131.
-`(200000,200003)` has no `p ≤ 547`
-dividing `S` and stays a Prop.
+Step42 inhabits `row_200000_200003` with
+Pratt prime `p = 12186951011`:
+`S` mod p = 0, `S` mod p² ≠ 0, gap = 3,
+order ≠ 13, `S_not_fourth`.
+The 600 Step41 rows plus this outlier
+are packed as 601 named `B ≤ 200000`
+gap-3 rows.
 
 The modular side stays a coefficient
 check, not Ribet:

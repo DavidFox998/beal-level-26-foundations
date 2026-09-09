@@ -3,7 +3,16 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.46.0 — B ≤ 200000 exp-one
+Track B v8.47.0 — B = 200000 outlier
+p = 12186951011 (not a ∀).
+`row_200000_200003` is inhabited (Pratt
+prime, `S` mod p = 0, `S` mod p² ≠ 0).
+601 named `B ≤ 200000` gap-3 rows.
+The s2_26 pack stays a coefficient
+check, not Ribet.
+`kraus_elimination_q_13_level_26` stays uninhabited.
+`B > 200000` Bugeaud stays a Prop.
+v8.46.0 — B ≤ 200000 exp-one
 extension (600 named gap-3 rows, not a ∀).
 `S_has_prime_with_exp_one_B_le_200000_table_rows`,
 `exists_p_with_order_ne_13_B_le_200000_from_exp_one_table_rows`
@@ -398,6 +407,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step39_Kraus_p5_elim_26a1
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step40_level_lowering_26_to_2
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step41_B_le_200k_extension
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -3997,25 +4007,33 @@ def ribet_26_to_2_from_displayed_miss : Prop :=
 /-! ## v8.46.0 — B ≤ 200000 exp-one extension (600 rows) -/
 
 /-- Inhabited.  318 inherited `B ≤ 100000` rows plus 282 new
-`100000 < B ≤ 200000` gap-3 rows have exp one. -/
+`100000 < B ≤ 200000` gap-3 rows have exp one.  Step42
+re-packs these 600 plus the outlier as 601 rows. -/
 def S_has_prime_with_exp_one_B_le_200000_table_rows :=
-  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step41_B_le_200k_extension.S_has_prime_with_exp_one_B_le_200000_table_rows
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.S_has_prime_with_exp_one_B_le_200000_table_rows
 
 /-- Inhabited.  Those rows have a primitive prime with order ≠ 13. -/
 def exists_p_with_order_ne_13_B_le_200000_from_exp_one_table_rows :=
-  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step41_B_le_200k_extension.exists_p_with_order_ne_13_B_le_200000_from_exp_one_table_rows
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.exists_p_with_order_ne_13_B_le_200000_from_exp_one_table_rows
 
 /-- Inhabited.  Those rows have `S` not a fourth power. -/
 def S_not_fourth_B_le_200000_from_exp_one_table_rows :=
-  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step41_B_le_200k_extension.S_not_fourth_B_le_200000_from_exp_one_table_rows
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.S_not_fourth_B_le_200000_from_exp_one_table_rows
 
 /-- Inhabited.  Largest `B ≤ 200000` with a `p ≤ 547` witness. -/
 def row_199996_199999 :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step41_B_le_200k_extension.row_199996_199999
 
-/-- Uninhabited.  `(200000,200003)` has no prime `p ≤ 547` dividing `S`. -/
-def row_200000_200003 : Prop :=
-  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step41_B_le_200k_extension.row_200000_200003
+/-! ## v8.47.0 — B = 200000 outlier p = 12186951011 -/
+
+/-- Inhabited.  Pratt prime `12186951011`, `S` mod p = 0,
+`S` mod p² ≠ 0, gap = 3. -/
+def row_200000_200003 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.row_200000_200003
+
+/-- Inhabited.  Pratt certificate for the outlier prime. -/
+def prime_12186951011 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.prime_12186951011
 
 /-- Uninhabited.  Bugeaud `P(Φ₁₃) > C` on `B > 200000`. -/
 def bugeaud_P_phi13_gt_C_when_B_gt_200000 : Prop :=
@@ -4562,6 +4580,14 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step41_B_le_200k_extension.exists_p_with_order_ne_13_mod_p_sq_inhabited
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step41_B_le_200k_extension.ExistsNewformLevel2_eq_zero_ne_zero
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step41_B_le_200k_extension.level_lowering_26_to_2_from_no_match
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.prime_12186951011
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.row_200000_200003
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.S_has_prime_with_exp_one_B_le_200000_table_rows
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.exists_p_with_order_ne_13_B_le_200000_from_exp_one_table_rows
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.S_not_fourth_B_le_200000_from_exp_one_table_rows
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.kraus_elimination_q_13_level_26
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.bugeaud_P_phi13_gt_C_when_B_gt_200000
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -4892,5 +4918,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step41_B_le_200k_extension.S_not_fourth_B_le_200000_from_exp_one_table_rows
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step41_B_le_200k_extension.ExistsNewformLevel2_eq_zero_ne_zero
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step41_B_le_200k_extension.row_199996_199999
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.prime_12186951011
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.row_200000_200003
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.S_has_prime_with_exp_one_B_le_200000_table_rows
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.exists_p_with_order_ne_13_B_le_200000_from_exp_one_table_rows
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.S_not_fourth_B_le_200000_from_exp_one_table_rows
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step42_B_200k_outlier_12186951011.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur
