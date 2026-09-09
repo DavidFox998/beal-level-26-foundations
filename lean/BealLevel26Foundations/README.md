@@ -116,8 +116,10 @@ v8.29.0-Phi13-derivative-LTE-plan RibetMazur Step24 phi13_derivative_separable_m
 v8.30.0-Chebotarev-lift-density-plan RibetMazur Step25 primes_eq1_mod13_infinite density_p_div_S thin_set_p_sq_div_S; chebotarev_gives_p_with_p_div_not_p_sq_div_when_C_ge_B_plus_3 exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.31.0-S-not-prime-power-gap3-fast-track RibetMazur Step26 S_val_1_5_prime S_not_prime_power_when_C_ge_B_plus_3_fast_refuted; S_not_prime_power_when_C_ge_B_plus_3_fast exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.32.0-S-not-proper-prime-power-gap3 RibetMazur Step27 S_val_1_5_not_proper_prime_power; S_not_proper_prime_power_when_C_ge_B_plus_3 exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.33.0-S-has-prime-with-exp-one-gap3 RibetMazur Step28 S_val_1_5_has_prime_with_exp_one exists_p_with_order_ne_13_of_has_exp_one; S_has_prime_with_exp_one_when_C_ge_B_plus_3 exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.34.0-B-le-100-exp-one-table RibetMazur Step29 S_has_prime_with_exp_one_B_le_100_table_rows; S_has_prime_with_exp_one_when_C_ge_B_plus_3 exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 
-### File order v8.19.0–v8.32.0
+### File order v8.19.0–v8.34.0
 
 | Version | File |
 |---|---|
@@ -149,6 +151,8 @@ v8.32.0-S-not-proper-prime-power-gap3 RibetMazur Step27 S_val_1_5_not_proper_pri
 | v8.30.0 | `Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan.lean` |
 | v8.31.0 | `Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.lean` |
 | v8.32.0 | `Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.lean` |
+| v8.33.0 | `Beal_4_13_13_Zsigmondy_13_Step28_S_has_prime_with_exp_one_gap3.lean` |
+| v8.34.0 | `Beal_4_13_13_Zsigmondy_13_Step29_B_le_100_exp_one_table.lean` |
 
 Not imported by the 24-module none chain.  Track A: no new Beal-∀.
 
@@ -300,9 +304,9 @@ v4.14.0-iter-citation-contradiction-locked: `CITATION.cff` locks `c2c47db` / fou
 
 [![v8.19.9 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.32.0-S-not-proper-prime-power-gap3
+# Beal Level 26 Foundations — v8.34.0-B-le-100-exp-one-table
 
-**v8.32.0-S-not-proper-prime-power-gap3 — Beal (4,13,13) S not proper prime power gap3 (Track B). Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.34.0-B-le-100-exp-one-table — Beal (4,13,13) B<=100 exp-one table (Track B). Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 - Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
 - Houseclean mint `10.5281/zenodo.22654189` (`v8.19.9-fourth-power-residue`) under hook `22379293`. Track A none-chain mint stays `10.5281/zenodo.22635221`.
@@ -329,6 +333,8 @@ v4.14.0-iter-citation-contradiction-locked: `CITATION.cff` locks `c2c47db` / fou
   - v8.30.0 `primes_eq1_mod13_infinite`, `density_p_div_S`, `thin_set_p_sq_div_S`. `chebotarev_gives_p_with_p_div_not_p_sq_div_when_C_ge_B_plus_3` / `exists_p_with_order_ne_13_mod_p_sq_inhabited` stay uninhabited. Density heuristic is not a proof.
   - v8.31.0 `S_val_1_5_prime`, `S_not_prime_power_when_C_ge_B_plus_3_fast_refuted`. The gap-3 never-prime-power sketch is false (`B=1`, `C=5`). `S_not_prime_power_when_C_ge_B_plus_3_fast` / `exists_p_with_order_ne_13_mod_p_sq_inhabited` stay uninhabited. The gap-3 omega>=2 claim is false, not closed.
   - v8.32.0 `S_val_1_5_not_proper_prime_power`. A prime is not a proper prime power (`k >= 2`). `S_not_proper_prime_power_when_C_ge_B_plus_3` / `S_has_prime_with_exp_one` / `exists_p_with_order_ne_13_mod_p_sq_inhabited` stay uninhabited. Ljunggren-type; `B=1 C=5` is `k=1`.
+  - v8.33.0 `S_val_1_5_has_prime_with_exp_one` and glue `exists_p_with_order_ne_13_of_has_exp_one`. `S_has_prime_with_exp_one_when_C_ge_B_plus_3` / `exists_p_with_order_ne_13_mod_p_sq_inhabited` stay uninhabited.
+  - v8.34.0 `S_has_prime_with_exp_one_B_le_100_table_rows` (eight named rows). Not every `B <= 100`. `S_has_prime_with_exp_one_when_C_ge_B_plus_3` / `exists_p_with_order_ne_13_mod_p_sq_inhabited` stay uninhabited. Bugeaud-type for `B > 100`.
 - Uninhabited: bare odd-`A` close, unconditional `v_p(S)=1`, Zsigmondy-of-`S`, unconditional `S_not_fourth`, Kraus / X₀(2q) matching, Ribet to `N'`, X₀(26) matching, Modular W last lock, `B > 100` close, `ExistsNewformLevel2` is `0 ≠ 0`, `beal_from_ribet` still needs `ModularImpliesLevel2Newform`.
 - Build: `lake build BealLevel26Foundations` and `BealLevel26FoundationsFullProof` green twice, `scripts/verify-scaffold.sh` passed, `#print axioms` `[propext, Classical.choice, Quot.sound]`.
 
@@ -464,6 +470,8 @@ v8.29.0-Phi13-derivative-LTE-plan RibetMazur Step24 phi13_derivative_separable_m
 v8.30.0-Chebotarev-lift-density-plan RibetMazur Step25 primes_eq1_mod13_infinite density_p_div_S thin_set_p_sq_div_S; chebotarev_gives_p_with_p_div_not_p_sq_div_when_C_ge_B_plus_3 exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.31.0-S-not-prime-power-gap3-fast-track RibetMazur Step26 S_val_1_5_prime S_not_prime_power_when_C_ge_B_plus_3_fast_refuted; S_not_prime_power_when_C_ge_B_plus_3_fast exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.32.0-S-not-proper-prime-power-gap3 RibetMazur Step27 S_val_1_5_not_proper_prime_power; S_not_proper_prime_power_when_C_ge_B_plus_3 exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.33.0-S-has-prime-with-exp-one-gap3 RibetMazur Step28 S_val_1_5_has_prime_with_exp_one exists_p_with_order_ne_13_of_has_exp_one; S_has_prime_with_exp_one_when_C_ge_B_plus_3 exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.34.0-B-le-100-exp-one-table RibetMazur Step29 S_has_prime_with_exp_one_B_le_100_table_rows; S_has_prime_with_exp_one_when_C_ge_B_plus_3 exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 
 ### v8.19.9-fourth-power-residue — houseclean (Track A no new Beal-∀)
 

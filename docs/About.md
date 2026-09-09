@@ -1,18 +1,19 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.32.0-S-not-proper-prime-power-gap3`
-Lean change: Step27 inhabits
-`S_val_1_5_not_proper_prime_power`.
-A prime is not a proper prime power
-(`k ≥ 2`).  The Ljunggren ∀
-`S_not_proper_prime_power_when_C_ge_B_plus_3`
-stays uninhabited.  `B = 1`, `C = 5`
-is `k = 1`, not a counterexample.
+Latest tag / HEAD: `v8.34.0-B-le-100-exp-one-table`
+Lean change: Step29 inhabits
+`S_has_prime_with_exp_one_B_le_100_table_rows`
+(eight named `B ≤ 100` gap-3 rows).
+Not every `B ≤ 100`.  The gap-3 ∀
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stays uninhabited.  `B > 100`
+squarefull rarity is Bugeaud-type.
 `exists_p_with_order_ne_13_mod_p_sq_inhabited`
 stays uninhabited (`ExistsNewformLevel2`
 is `0 ≠ 0`).
-Need `S_has_prime_with_exp_one`.
-`beal_odd_A_closed_v8_24_0_inhabited`
+Step28 glue
+`exists_p_with_order_ne_13_of_has_exp_one`
+stays.  `beal_odd_A_closed_v8_24_0_inhabited`
 stays uninhabited.
 v8.24.0 `zsigmondy_exists_primitive_inhabited`,
 `zsig_p_not_dvd_k_of_gcd_inhabited`,

@@ -799,6 +799,44 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.34.0-B-le-100-exp-one-table — DONE (eight named B<=100 exp-one rows; gap-3 forall and exists_p stay uninhabited; arrow stays a Prop)
+
+Lean change.  Step29 file
+`Beal_4_13_13_Zsigmondy_13_Step29_B_le_100_exp_one_table.lean`
+inhabits
+`S_has_prime_with_exp_one_B_le_100_table_rows`
+and the `(1,4)` glue example.
+Not every `B ≤ 100`.
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stays uninhabited (Bugeaud-type for
+`B > 100`).
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`
+stays uninhabited.
+`beal_odd_A_closed_v8_24_0_inhabited` stays
+uninhabited.  `ExistsNewformLevel2` stays
+`0 ≠ 0`.  No new Beal `∀`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
+### v8.33.0-S-has-prime-with-exp-one-gap3 — DONE (S_val 1 5 has exp one; glue exp-one => order != 13; gap-3 forall stays uninhabited; arrow stays a Prop)
+
+Lean change.  Step28 file
+`Beal_4_13_13_Zsigmondy_13_Step28_S_has_prime_with_exp_one_gap3.lean`
+inhabits
+`HasPrimeWithExpOne`,
+`S_val_1_5_has_prime_with_exp_one`,
+`exists_p_with_order_ne_13_of_has_exp_one`.
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stays uninhabited.
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`
+stays uninhabited.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+No new Beal `∀`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.32.0-S-not-proper-prime-power-gap3 — DONE (S_val 1 5 not a proper prime power; Ljunggren forall and exists_p stay uninhabited; arrow stays a Prop)
 
 Lean change.  Step27 file

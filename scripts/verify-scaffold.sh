@@ -235,6 +235,10 @@ test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.md
 test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.md
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step28_S_has_prime_with_exp_one_gap3.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step28_S_has_prime_with_exp_one_gap3.md
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step29_B_le_100_exp_one_table.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step29_B_le_100_exp_one_table.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -887,6 +891,8 @@ do
   grep -q "v8.30.0-Chebotarev-lift-density-plan" "$readme"
   grep -q "v8.31.0-S-not-prime-power-gap3-fast-track" "$readme"
   grep -q "v8.32.0-S-not-proper-prime-power-gap3" "$readme"
+  grep -q "v8.33.0-S-has-prime-with-exp-one-gap3" "$readme"
+  grep -q "v8.34.0-B-le-100-exp-one-table" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1969,6 +1975,34 @@ grep -q "def beal_4_13_13_Zsigmondy_13_odd_A_closed_for_real" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.lean
 grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.lean
+grep -q "def HasPrimeWithExpOne" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step28_S_has_prime_with_exp_one_gap3.lean
+grep -q "theorem S_val_1_5_has_prime_with_exp_one" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step28_S_has_prime_with_exp_one_gap3.lean
+grep -q "theorem exists_p_with_order_ne_13_of_has_exp_one" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step28_S_has_prime_with_exp_one_gap3.lean
+grep -q "def S_has_prime_with_exp_one_when_C_ge_B_plus_3" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step28_S_has_prime_with_exp_one_gap3.lean
+grep -q "def exists_p_with_order_ne_13_mod_p_sq_inhabited" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step28_S_has_prime_with_exp_one_gap3.lean
+grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step28_S_has_prime_with_exp_one_gap3.lean
+grep -q "theorem S_val_1_4_has_prime_with_exp_one" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step29_B_le_100_exp_one_table.lean
+grep -q "theorem S_val_2_5_has_prime_with_exp_one" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step29_B_le_100_exp_one_table.lean
+grep -q "theorem S_val_100_103_has_prime_with_exp_one" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step29_B_le_100_exp_one_table.lean
+grep -q "theorem S_has_prime_with_exp_one_B_le_100_table_rows" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step29_B_le_100_exp_one_table.lean
+grep -q "theorem exists_p_with_order_ne_13_mod_p_sq_example_B1_C4" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step29_B_le_100_exp_one_table.lean
+grep -q "def S_has_prime_with_exp_one_when_C_ge_B_plus_3" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step29_B_le_100_exp_one_table.lean
+grep -q "def exists_p_with_order_ne_13_mod_p_sq_inhabited" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step29_B_le_100_exp_one_table.lean
+grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step29_B_le_100_exp_one_table.lean
 grep -q "theorem beal_4_13_13_k_odd" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
 grep -q "theorem S_13_ge_13_mul_B_pow12" \

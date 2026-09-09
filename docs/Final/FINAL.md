@@ -1,3 +1,31 @@
+# FINAL v8.34.0 — B ≤ 100 exp-one table (arrow stays a Prop)
+
+Latest tag `v8.34.0-B-le-100-exp-one-table`.
+Lean change.
+Step29 inhabits eight named
+`HasPrimeWithExpOne` rows on gap-3
+coprime pairs with `B ≤ 100`, packed
+as `S_has_prime_with_exp_one_B_le_100_table_rows`.
+Not every `B ≤ 100`. The gap-3 ∀
+stays a Prop. `B > 100` squarefull
+rarity is Bugeaud-type. Glue
+`exists_p_with_order_ne_13_of_has_exp_one`
+is already inhabited. `exists_p`
+stays a Prop. No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
+# FINAL v8.33.0 — S has prime with exp one gap3 (arrow stays a Prop)
+
+Latest tag `v8.33.0-S-has-prime-with-exp-one-gap3`.
+Lean change.
+Step28 inhabits `HasPrimeWithExpOne`
+on `S_val 1 5` and the glue
+`exists_p_with_order_ne_13_of_has_exp_one`
+(Step11 dichotomy backwards). The
+gap-3 ∀ stays a Prop. A `B ≤ 100`
+table is Step29. No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.32.0 — S not proper prime power gap3 (arrow stays a Prop)
 
 Latest tag `v8.32.0-S-not-proper-prime-power-gap3`.
