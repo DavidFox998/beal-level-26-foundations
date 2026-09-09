@@ -3,12 +3,11 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.31.0 — S not a prime power
-on C ≥ B+3 is false (gap-3 fast track).
-`S_val_1_5_prime` and
-`S_not_prime_power_when_C_ge_B_plus_3_fast_refuted`
-are inhabited.  The sketch `_fast`
-foralls and
+Track B v8.32.0 — S not a proper prime
+power on C ≥ B+3 stays a Prop, with
+B = 1, C = 5 as the prime example.
+`S_val_1_5_not_proper_prime_power` is
+inhabited.  The Ljunggren ∀ and
 `exists_p_with_order_ne_13_mod_p_sq_inhabited`
 stay uninhabited.
 `norm_eq_S`, `zeta13_class_number_one`,
@@ -336,6 +335,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step23_Phi13_Zeta13_prim
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step24_Phi13_derivative_LTE_plan
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step25_Chebotarev_lift_density_plan
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -3594,6 +3594,32 @@ def S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3_fast_refuted :=
 def exists_p_with_order_ne_13_mod_p_sq_example_B1_C5 :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.exists_p_with_order_ne_13_mod_p_sq_example_B1_C5
 
+/-! ## v8.32.0 — S not a proper prime power gap-3 -/
+
+/-- Inhabited.  `n = p^k` with `k ≥ 2`. -/
+def IsProperPrimePower :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.IsProperPrimePower
+
+/-- Inhabited.  A prime is not a proper prime power. -/
+def not_isProperPrimePower_of_prime :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.not_isProperPrimePower_of_prime
+
+/-- Inhabited.  Proper prime power implies `p² ∣ n`. -/
+def proper_prime_power_imp_sq_dvd :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.proper_prime_power_imp_sq_dvd
+
+/-- Inhabited.  `S_val 1 5` is prime, hence not a proper prime power. -/
+def S_val_1_5_not_proper_prime_power :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.S_val_1_5_not_proper_prime_power
+
+/-- Uninhabited.  Ljunggren-type; `B = 1`, `C = 5` is `k = 1`. -/
+def S_not_proper_prime_power_when_C_ge_B_plus_3 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.S_not_proper_prime_power_when_C_ge_B_plus_3
+
+/-- Uninhabited.  Need some prime with factorization exponent 1. -/
+def S_has_prime_with_exp_one :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.S_has_prime_with_exp_one
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -4024,6 +4050,15 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.exists_p_with_order_ne_13_mod_p_sq_inhabited
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.beal_odd_A_closed_v8_24_0_inhabited
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.IsProperPrimePower
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.not_isProperPrimePower_of_prime
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.proper_prime_power_imp_sq_dvd
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.S_val_1_5_not_proper_prime_power
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.S_not_proper_prime_power_when_C_ge_B_plus_3
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.S_has_prime_with_exp_one
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.exists_p_with_order_ne_13_mod_p_sq_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.beal_odd_A_closed_v8_24_0_inhabited
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -4294,5 +4329,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3_fast_refuted
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.exists_p_with_order_ne_13_mod_p_sq_example_B1_C5
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step26_S_not_prime_power_gap3_fast_track.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.not_isProperPrimePower_of_prime
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.proper_prime_power_imp_sq_dvd
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.S_val_1_5_not_proper_prime_power
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

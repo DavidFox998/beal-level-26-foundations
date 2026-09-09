@@ -799,6 +799,28 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.32.0-S-not-proper-prime-power-gap3 — DONE (S_val 1 5 not a proper prime power; Ljunggren forall and exists_p stay uninhabited; arrow stays a Prop)
+
+Lean change.  Step27 file
+`Beal_4_13_13_Zsigmondy_13_Step27_S_not_proper_prime_power_gap3.lean`
+inhabits
+`IsProperPrimePower`,
+`not_isProperPrimePower_of_prime`,
+`proper_prime_power_imp_sq_dvd`,
+`S_val_1_5_not_proper_prime_power`.
+`S_not_proper_prime_power_when_C_ge_B_plus_3`
+stays uninhabited (Ljunggren-type;
+`B = 1`, `C = 5` is `k = 1`).
+`S_has_prime_with_exp_one` and
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`
+stay uninhabited.
+`beal_odd_A_closed_v8_24_0_inhabited` stays
+uninhabited.  `ExistsNewformLevel2` stays
+`0 ≠ 0`.  No new Beal `∀`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.31.0-S-not-prime-power-gap3-fast-track — DONE (S_val 1 5 Pratt-prime; gap-3 never-prime-power sketch refuted; exists_p stays uninhabited; arrow stays a Prop)
 
 Lean change.  Step26 file

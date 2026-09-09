@@ -1,3 +1,22 @@
+# FINAL v8.32.0 — S not proper prime power gap3 (arrow stays a Prop)
+
+Latest tag `v8.32.0-S-not-proper-prime-power-gap3`.
+Lean change.
+Step27 inhabits
+`IsProperPrimePower` (`k ≥ 2`),
+`not_isProperPrimePower_of_prime`,
+`proper_prime_power_imp_sq_dvd`, and
+`S_val_1_5_not_proper_prime_power`.
+The pair `B = 1`, `C = 5` is prime
+(`k = 1`), so it is not a proper
+prime power. The Ljunggren ∀ stays a
+Prop. `exists_p` stays a Prop: even
+without a proper prime power,
+`S = p1² · p2²` would still lift on
+every prime. Need an exponent-1
+prime. No new Beal `∀`. Still not
+Full Mathlib `∀`.
+
 # FINAL v8.31.0 — S not prime power gap3 fast track (arrow stays a Prop)
 
 Latest tag `v8.31.0-S-not-prime-power-gap3-fast-track`.

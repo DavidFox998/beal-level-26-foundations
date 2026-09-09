@@ -1,17 +1,17 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.31.0-S-not-prime-power-gap3-fast-track`
-Lean change: Step26 inhabits the Pratt
-prime `S_val 1 5 = 305175781` and
-refutes the gap-3 “S never a prime
-power” sketch (`B = 1`, `C = 5`).
-The sketch `_fast` foralls stay
-uninhabited (now known false).
+Latest tag / HEAD: `v8.32.0-S-not-proper-prime-power-gap3`
+Lean change: Step27 inhabits
+`S_val_1_5_not_proper_prime_power`.
+A prime is not a proper prime power
+(`k ≥ 2`).  The Ljunggren ∀
+`S_not_proper_prime_power_when_C_ge_B_plus_3`
+stays uninhabited.  `B = 1`, `C = 5`
+is `k = 1`, not a counterexample.
 `exists_p_with_order_ne_13_mod_p_sq_inhabited`
 stays uninhabited (`ExistsNewformLevel2`
 is `0 ≠ 0`).
-The gap-3 `ω ≥ 2` claim is false,
-not closed.
+Need `S_has_prime_with_exp_one`.
 `beal_odd_A_closed_v8_24_0_inhabited`
 stays uninhabited.
 v8.24.0 `zsigmondy_exists_primitive_inhabited`,

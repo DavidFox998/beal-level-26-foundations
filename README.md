@@ -1,8 +1,8 @@
 [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.31.0-S-not-prime-power-gap3-fast-track
+# Beal Level 26 Foundations — v8.32.0-S-not-proper-prime-power-gap3
 
-**v8.31.0-S-not-prime-power-gap3-fast-track — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.32.0-S-not-proper-prime-power-gap3 — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 GitHub will not render a README much over ~100KB, so the old wall
 stayed cached at v4.28.0.  This file is the short wall.  The full
@@ -13,7 +13,7 @@ and [`certs/README.md`](certs/README.md).
 - Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
   About Website stays [10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221).
 - Houseclean mint [10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
-  (`v8.19.9-fourth-power-residue` / `v8.31.0-S-not-prime-power-gap3-fast-track`) under hook `22379293`.
+  (`v8.19.9-fourth-power-residue` / `v8.32.0-S-not-proper-prime-power-gap3`) under hook `22379293`.
   Concept DOI [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).
 - Track B odd-A ladder (4,13,13): v8.19.6 `B ≤ 100` with `C = B+1` and
   `C = B+2` closed by `decide`; v8.19.7 `A⁴ ≥ 13 k B¹²`, `A⁴ ≥ 39 B¹²`,
@@ -63,8 +63,16 @@ and [`certs/README.md`](certs/README.md).
   gap-3 “never a prime power” sketch
   refuted (`B=1`, `C=5`); the `_fast`
   foralls stay Props (known false);
-  `exists_p` stays a Prop.
-- Inhabited: `S_val_1_5_prime`,
+  `exists_p` stays a Prop;
+  v8.32.0 `S_val 1 5` is not a proper
+  prime power (`k ≥ 2`); the Ljunggren
+  ∀ stays a Prop; need an exponent-1
+  prime (`S_has_prime_with_exp_one`).
+- Inhabited: `S_val_1_5_not_proper_prime_power`,
+  `IsProperPrimePower`,
+  `not_isProperPrimePower_of_prime`,
+  `proper_prime_power_imp_sq_dvd`,
+  `S_val_1_5_prime`,
   `S_not_prime_power_when_C_ge_B_plus_3_fast_refuted`,
   `S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3_fast_refuted`,
   `exists_p_with_order_ne_13_mod_p_sq_example_B1_C5`,
@@ -112,7 +120,9 @@ and [`certs/README.md`](certs/README.md).
   `k_le_A_pow4_div_13_B_pow12`, `B_gt_100_imp_k_bounded_by_A`;
   `genus_X0_2_rat=0`; `S_13_mod_k`, `gcd(k,S)|13`, `k_almost_fourth_power`;
   `B_le_100_closed`.
-- Uninhabited:   `S_not_prime_power_when_C_ge_B_plus_3_fast`,
+- Uninhabited:   `S_not_proper_prime_power_when_C_ge_B_plus_3`,
+  `S_has_prime_with_exp_one`,
+  `S_not_prime_power_when_C_ge_B_plus_3_fast`,
   `S_has_two_distinct_primitive_primes_when_C_ge_B_plus_3_fast`,
   `chebotarev_gives_p_with_p_div_not_p_sq_div_when_C_ge_B_plus_3`,
   `S_has_two_distinct_prime_ideals_in_Z_zeta13_when_C_ge_B_plus_3`,
@@ -168,10 +178,9 @@ PARI 2-Descent Certificates image
 Still not `∀ ℕ`. No `False.elim`. no `False.elim`.
 `BealExponent13_Iter_Package` `d3cf8a7` `1d0044e`.
 
-HEAD also has Track B `v8.31.0-S-not-prime-power-gap3-fast-track`
-(Pratt prime `S_val 1 5`; gap-3 never-prime-power
-sketch refuted; `_fast` foralls stay Props;
-`exists_p_with_order_ne_13_mod_p_sq_inhabited` stays uninhabited);
+HEAD also has Track B `v8.32.0-S-not-proper-prime-power-gap3`
+(`S_val 1 5` not a proper prime power; Ljunggren
+forall stays a Prop; `exists_p` stays uninhabited);
 that does **not** change the Track A lock or the About Website.
 
 ---
@@ -305,3 +314,4 @@ v8.28.0-Phi13-Zeta13-prime-ideal-plan RibetMazur Step23 S_not_power_of_thirteen_
 v8.29.0-Phi13-derivative-LTE-plan RibetMazur Step24 phi13_derivative_separable_mod_p hensel_unique_lift_of_phi13_root p_sq_dvd_S_iff_CB_eq_lifted_root; exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.30.0-Chebotarev-lift-density-plan RibetMazur Step25 primes_eq1_mod13_infinite density_p_div_S thin_set_p_sq_div_S; chebotarev_gives_p_with_p_div_not_p_sq_div_when_C_ge_B_plus_3 exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.31.0-S-not-prime-power-gap3-fast-track RibetMazur Step26 S_val_1_5_prime S_not_prime_power_when_C_ge_B_plus_3_fast_refuted; S_not_prime_power_when_C_ge_B_plus_3_fast exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.32.0-S-not-proper-prime-power-gap3 RibetMazur Step27 S_val_1_5_not_proper_prime_power; S_not_proper_prime_power_when_C_ge_B_plus_3 exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
