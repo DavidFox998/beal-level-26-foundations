@@ -5,11 +5,11 @@ type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v8.36.0-B-le-100-order-ne-13-from-exp-one"
+version: "v8.37.0-B-le-1000-exp-one-extension"
 date-released: "2026-09-09"
 doi: "10.5281/zenodo.22272382"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
-url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.36.0-B-le-100-order-ne-13-from-exp-one"
+url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.37.0-B-le-1000-exp-one-extension"
 license: MIT
 keywords:
   - beal-conjecture

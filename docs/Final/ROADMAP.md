@@ -799,6 +799,30 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.37.0-B-le-1000-exp-one-extension — DONE (64 named B<=1000 gap-3 rows exp-one, order!=13, S_not_fourth; exists_p forall stays uninhabited; arrow stays a Prop)
+
+Lean change.  Step32 file
+`Beal_4_13_13_Zsigmondy_13_Step32_B_le_1000_exp_one_extension.lean`
+inhabits
+`S_has_prime_with_exp_one_B_le_1000_table_rows`,
+`exists_p_with_order_ne_13_B_le_1000_from_exp_one_table_rows`,
+and
+`S_not_fourth_B_le_1000_from_exp_one_table_rows`.
+Not every `B ≤ 1000`.
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`
+stays uninhabited.
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stays uninhabited (Bugeaud-type for
+`B > 1000`).
+`S_not_proper_prime_power_when_C_ge_B_plus_3`
+stays uninhabited.
+`beal_odd_A_closed_v8_24_0_inhabited` stays
+uninhabited.  `ExistsNewformLevel2` stays
+`0 ≠ 0`.  No new Beal `∀`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.36.0-B-le-100-order-ne-13-from-exp-one — DONE (eight named B<=100 rows order!=13 and S_not_fourth from exp-one; exists_p forall stays uninhabited; arrow stays a Prop)
 
 Lean change.  Step31 file

@@ -243,6 +243,8 @@ test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step30_S_not_prope
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step30_S_not_proper_power_B_le_100_from_exp_one.md
 test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step31_B_le_100_order_ne_13_from_exp_one.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step31_B_le_100_order_ne_13_from_exp_one.md
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step32_B_le_1000_exp_one_extension.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step32_B_le_1000_exp_one_extension.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -899,6 +901,7 @@ do
   grep -q "v8.34.0-B-le-100-exp-one-table" "$readme"
   grep -q "v8.35.0-S-not-proper-power-B-le-100-from-exp-one" "$readme"
   grep -q "v8.36.0-B-le-100-order-ne-13-from-exp-one" "$readme"
+  grep -q "v8.37.0-B-le-1000-exp-one-extension" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -2033,6 +2036,18 @@ grep -q "def S_has_prime_with_exp_one_when_C_ge_B_plus_3" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step31_B_le_100_order_ne_13_from_exp_one.lean
 grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step31_B_le_100_order_ne_13_from_exp_one.lean
+grep -q "theorem S_has_prime_with_exp_one_B_le_1000_table_rows" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step32_B_le_1000_exp_one_extension.lean
+grep -q "theorem exists_p_with_order_ne_13_B_le_1000_from_exp_one_table_rows" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step32_B_le_1000_exp_one_extension.lean
+grep -q "theorem S_not_fourth_B_le_1000_from_exp_one_table_rows" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step32_B_le_1000_exp_one_extension.lean
+grep -q "def exists_p_with_order_ne_13_mod_p_sq_inhabited" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step32_B_le_1000_exp_one_extension.lean
+grep -q "def S_has_prime_with_exp_one_when_C_ge_B_plus_3" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step32_B_le_1000_exp_one_extension.lean
+grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step32_B_le_1000_exp_one_extension.lean
 grep -q "theorem beal_4_13_13_k_odd" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
 grep -q "theorem S_13_ge_13_mul_B_pow12" \
