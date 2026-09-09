@@ -12,13 +12,13 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.42.0)
+# FullProof track (v8.43.0)
 
-Aggregator for Track B.  Step37 inhabits
-318 named `B ≤ 100000` gap-3 exp-one rows
-(`S_has_prime_with_exp_one_B_le_100000_table_rows`
-and the order / `S_not_fourth` packs).
-`kraus_elimination_q_13_level_26` stays uninhabited.
+Aggregator for Track B.  Step38 inhabits
+`kraus_elimination_26b1` (`a₃(26b1) = -3`
+not in Frey p=3 traces `{-2, 0, 2}`).
+`kraus_elimination_26a1` and
+`kraus_elimination_q_13_level_26` stay uninhabited.
 `bugeaud_P_phi13_gt_C_when_B_gt_50000`
 and `rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_50000`
 stay uninhabited.

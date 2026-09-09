@@ -255,6 +255,8 @@ test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination.md
 test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step37_B_le_100k_extension.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step37_B_le_100k_extension.md
+test -f lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -917,6 +919,7 @@ do
   grep -q "v8.40.0-B-gt-50000-rad-bound" "$readme"
   grep -q "v8.41.0-Kraus-X0-26-elimination" "$readme"
   grep -q "v8.42.0-B-le-100k-extension" "$readme"
+  grep -q "v8.43.0-Kraus-p3-elim-26b1" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -2139,6 +2142,18 @@ grep -q "def bugeaud_P_phi13_gt_C_when_B_gt_100000" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step37_B_le_100k_extension.lean
 grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step37_B_le_100k_extension.lean
+grep -q "theorem kraus_elimination_26b1" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.lean
+grep -q "def kraus_elimination_26a1" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.lean
+grep -q "def kraus_elimination_q_13_level_26" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.lean
+grep -q "def exists_p_with_order_ne_13_mod_p_sq_inhabited" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.lean
+grep -q "def S_has_prime_with_exp_one_when_C_ge_B_plus_3" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.lean
+grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
+  lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.lean
 grep -q "theorem beal_4_13_13_k_odd" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
 grep -q "theorem S_13_ge_13_mul_B_pow12" \

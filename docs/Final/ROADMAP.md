@@ -799,6 +799,29 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.43.0-Kraus-p3-elim-26b1 — DONE (kraus_elimination_26b1 inhabited, a3(26b1)=-3 not in Frey p=3 traces {-2,0,2}; kraus_elimination_26a1 and full Kraus q=13 stay uninhabited; arrow stays a Prop)
+
+Lean change.  Step38 file
+`Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.lean`
+inhabits `kraus_elimination_26b1`
+(ledger `a₃(26b1) = -3` is not in
+displayed Frey p=3 traces `{-2, 0, 2}`).
+`kraus_elimination_26a1` stays uninhabited.
+`kraus_elimination_q_13_level_26` stays
+uninhabited.
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`
+stays uninhabited.
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stays uninhabited.
+`bugeaud_P_phi13_gt_C_when_B_gt_100000`
+stays uninhabited.
+`ExistsNewformLevel2` is `0 ≠ 0`.
+Does **not** inhabit
+`Beal.BealForall.beal_forall_from_Is13Case_sketch`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.42.0-B-le-100k-extension — DONE (318 named B<=100000 gap-3 exp-one rows; B>100000 Bugeaud/rad stay Props; Kraus q=13 matching lock stays uninhabited; arrow stays a Prop)
 
 Lean change.  Step37 file

@@ -3,7 +3,13 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.42.0 — B ≤ 100000 exp-one
+Track B v8.43.0 — Kraus p=3 trace
+eliminates displayed `26b1` (not a ∀ close).
+`kraus_elimination_26b1` is inhabited
+(`a₃(26b1) = -3 ∉ {-2, 0, 2}`).
+`kraus_elimination_26a1` and
+`kraus_elimination_q_13_level_26` stay uninhabited.
+v8.42.0 — B ≤ 100000 exp-one
 extension (300+ named gap-3 rows, not a ∀).
 `S_has_prime_with_exp_one_B_le_100000_table_rows`,
 `exists_p_with_order_ne_13_B_le_100000_from_exp_one_table_rows`
@@ -363,6 +369,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step34_B_le_50000_exp_on
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step35_B_gt_50000_rad_bound
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step36_Kraus_X0_26_elimination
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step37_B_le_100k_extension
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -3910,6 +3917,25 @@ def bugeaud_P_phi13_gt_C_when_B_gt_100000 : Prop :=
 def rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_100000 : Prop :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step37_B_le_100k_extension.rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_100000
 
+/-! ## v8.43.0 — Kraus p=3 eliminates displayed 26b1 -/
+
+/-- Inhabited.  Ledger `a₃(26b1) = -3` is not a
+Frey p=3 trace in `{-2, 0, 2}`. -/
+def kraus_elimination_26b1 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.kraus_elimination_26b1
+
+/-- Uninhabited.  Remaining `26a1` matching lock. -/
+def kraus_elimination_26a1 : Prop :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.kraus_elimination_26a1
+
+/-- Inhabited.  Displayed Frey p=3 traces. -/
+def FreyP3Traces :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.FreyP3Traces
+
+/-- Inhabited.  Ledger `a₃(26b1) = -3`. -/
+def ap_26b1_3_eq :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.ap_26b1_3_eq
+
 /-- Uninhabited.  `p ∣ A` and `p ∤ (C−B)` does not
 yet close `¬ A⁴ + B¹³ = C¹³`. -/
 def beal_from_ribet_upside_down_odd_A_closed : Prop :=
@@ -4409,6 +4435,12 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step37_B_le_100k_extension.S_has_prime_with_exp_one_when_C_ge_B_plus_3
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step37_B_le_100k_extension.exists_p_with_order_ne_13_mod_p_sq_inhabited
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step37_B_le_100k_extension.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.kraus_elimination_26b1
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.kraus_elimination_26a1
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.ap_26b1_3_eq
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.FreyP3Traces
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.kraus_elimination_q_13_level_26
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -4723,5 +4755,8 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step37_B_le_100k_extension.exists_p_with_order_ne_13_B_le_100000_from_exp_one_table_rows
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step37_B_le_100k_extension.S_not_fourth_B_le_100000_from_exp_one_table_rows
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step37_B_le_100k_extension.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.kraus_elimination_26b1
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.a3_26b1_not_in_frey_p3_traces
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

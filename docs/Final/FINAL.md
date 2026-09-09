@@ -1,3 +1,20 @@
+# FINAL v8.43.0 — Kraus p=3 eliminates 26b1 (arrow stays a Prop)
+
+Latest tag `v8.43.0-Kraus-p3-elim-26b1`.
+Lean change.
+Step38 inhabits `kraus_elimination_26b1`
+(ledger `a₃(26b1) = -3` is not a Frey
+p=3 trace in `{-2, 0, 2}`).
+`kraus_elimination_26a1` stays a Prop.
+`kraus_elimination_q_13_level_26` stays
+a Prop. `B > 100000` Bugeaud `P(Φ₁₃) > C`
+and `rad > √13 C⁶` stay Props, so
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stays a Prop. The Hensel ∀ stays a Prop.
+The Ljunggren ∀ stays a Prop.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.42.0 — B ≤ 100k exp-one extension (arrow stays a Prop)
 
 Latest tag `v8.42.0-B-le-100k-extension`.
