@@ -1,8 +1,8 @@
 [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.35.0-S-not-proper-power-B-le-100-from-exp-one
+# Beal Level 26 Foundations — v8.36.0-B-le-100-order-ne-13-from-exp-one
 
-**v8.35.0-S-not-proper-power-B-le-100-from-exp-one — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.36.0-B-le-100-order-ne-13-from-exp-one — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 GitHub will not render a README much over ~100KB, so the old wall
 stayed cached at v4.28.0.  This file is the short wall.  The full
@@ -13,7 +13,7 @@ and [`certs/README.md`](certs/README.md).
 - Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
   About Website stays [10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221).
 - Houseclean mint [10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
-  (`v8.19.9-fourth-power-residue` / `v8.35.0-S-not-proper-power-B-le-100-from-exp-one`) under hook `22379293`.
+  (`v8.19.9-fourth-power-residue` / `v8.36.0-B-le-100-order-ne-13-from-exp-one`) under hook `22379293`.
   Concept DOI [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).
 - Track B odd-A ladder (4,13,13): v8.19.6 `B ≤ 100` with `C = B+1` and
   `C = B+2` closed by `decide`; v8.19.7 `A⁴ ≥ 13 k B¹²`, `A⁴ ≥ 39 B¹²`,
@@ -78,8 +78,15 @@ and [`certs/README.md`](certs/README.md).
   v8.35.0 those eight rows are not
   proper prime powers via
   `not_proper_prime_power_of_has_exp_one`;
-  Ljunggren ∀ stays a Prop.
-- Inhabited: `S_not_proper_prime_power_B_le_100_from_exp_one_table_rows`,
+  Ljunggren ∀ stays a Prop;
+  v8.36.0 those eight rows have
+  order ≠ 13 and `S_not_fourth`
+  via the Step11 dichotomy;
+  Hensel ∀ stays a Prop.
+- Inhabited: `exists_p_with_order_ne_13_B_le_100_from_exp_one_table_rows`,
+  `S_not_fourth_B_le_100_from_exp_one_table_rows`,
+  `order_ne_13_B1_C4`,
+  `S_not_proper_prime_power_B_le_100_from_exp_one_table_rows`,
   `not_proper_prime_power_of_has_exp_one`,
   `S_val_1_4_not_proper_prime_power`,
   `S_has_prime_with_exp_one_B_le_100_table_rows`,
@@ -200,11 +207,11 @@ PARI 2-Descent Certificates image
 Still not `∀ ℕ`. No `False.elim`. no `False.elim`.
 `BealExponent13_Iter_Package` `d3cf8a7` `1d0044e`.
 
-HEAD also has Track B `v8.35.0-S-not-proper-power-B-le-100-from-exp-one`
-(eight named `B ≤ 100` rows not proper
-prime powers from the exp-one table;
-Ljunggren forall stays a Prop; `exists_p`
-stays uninhabited);
+HEAD also has Track B `v8.36.0-B-le-100-order-ne-13-from-exp-one`
+(eight named `B ≤ 100` rows have
+order ≠ 13 and `S_not_fourth` from the
+exp-one table; Hensel forall stays a
+Prop; `exists_p` stays uninhabited);
 that does **not** change the Track A lock or the About Website.
 
 ---
@@ -342,3 +349,4 @@ v8.32.0-S-not-proper-prime-power-gap3 RibetMazur Step27 S_val_1_5_not_proper_pri
 v8.33.0-S-has-prime-with-exp-one-gap3 RibetMazur Step28 S_val_1_5_has_prime_with_exp_one exists_p_with_order_ne_13_of_has_exp_one; S_has_prime_with_exp_one_when_C_ge_B_plus_3 exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.34.0-B-le-100-exp-one-table RibetMazur Step29 S_has_prime_with_exp_one_B_le_100_table_rows; S_has_prime_with_exp_one_when_C_ge_B_plus_3 exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.35.0-S-not-proper-power-B-le-100-from-exp-one RibetMazur Step30 S_not_proper_prime_power_B_le_100_from_exp_one_table_rows; S_not_proper_prime_power_when_C_ge_B_plus_3 exists_p_with_order_ne_13_mod_p_sq_inhabited stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.36.0-B-le-100-order-ne-13-from-exp-one RibetMazur Step31 exists_p_with_order_ne_13_B_le_100_from_exp_one_table_rows; exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.

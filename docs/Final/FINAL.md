@@ -1,3 +1,19 @@
+# FINAL v8.36.0 — B ≤ 100 order ≠ 13 from exp-one (arrow stays a Prop)
+
+Latest tag `v8.36.0-B-le-100-order-ne-13-from-exp-one`.
+Lean change.
+Step31 inhabits
+`exists_p_with_order_ne_13_B_le_100_from_exp_one_table_rows`
+and
+`S_not_fourth_B_le_100_from_exp_one_table_rows`
+via the Step11 dichotomy
+(`p² ∤ S` ⇒ order ≠ 13).
+Not every `B ≤ 100`. The Hensel ∀
+stays a Prop. `B > 100` is Bugeaud-type.
+The Ljunggren ∀ and exp-one ∀ stay
+Props. No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.35.0 — S not proper power B≤100 from exp-one (arrow stays a Prop)
 
 Latest tag `v8.35.0-S-not-proper-power-B-le-100-from-exp-one`.

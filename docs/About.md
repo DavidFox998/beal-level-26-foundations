@@ -1,18 +1,19 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.35.0-S-not-proper-power-B-le-100-from-exp-one`
-Lean change: Step30 inhabits
-`not_proper_prime_power_of_has_exp_one`
+Latest tag / HEAD: `v8.36.0-B-le-100-order-ne-13-from-exp-one`
+Lean change: Step31 inhabits
+`exists_p_with_order_ne_13_B_le_100_from_exp_one_table_rows`
 and
-`S_not_proper_prime_power_B_le_100_from_exp_one_table_rows`
+`S_not_fourth_B_le_100_from_exp_one_table_rows`
 (eight named `B ≤ 100` rows from the
-v8.34 exp-one table).
-Not every `B ≤ 100`.  The Ljunggren ∀
-`S_not_proper_prime_power_when_C_ge_B_plus_3`
+v8.34 exp-one table: `p² ∤ S` ⇒
+order ≠ 13).
+Not every `B ≤ 100`.  The Hensel ∀
+`exists_p_with_order_ne_13_mod_p_sq_inhabited`
 stays uninhabited.  `B > 100`
-is Bugeaud-type.  The gap-3 exp-one ∀
-and `exists_p_with_order_ne_13_mod_p_sq_inhabited`
-stay uninhabited (`ExistsNewformLevel2`
+is Bugeaud-type.  The Ljunggren ∀
+and the gap-3 exp-one ∀ stay
+uninhabited (`ExistsNewformLevel2`
 is `0 ≠ 0`).
 Step28 glue
 `exists_p_with_order_ne_13_of_has_exp_one`
