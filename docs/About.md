@@ -1,18 +1,15 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.68.1-frey-ap-53-443`
-Lean change: `List.take 500` of the
-certified-model 500-lists.
-`a₅₃(26a1)=0`, `a₅₃(26b1)=12`,
-`a₄₄₃(26a1)=21`, `a₄₄₃(26b1)=-39`.
-`a53_E_196 = -2` and `a443_E_1500003 = 24`
-by point-count `decide`.  Both miss the
-locked traces at `ℓ = 13`.  The placeholder
-integer 2 is not used.
-`level26_a_eliminated_by_53`,
-`level26_b_eliminated_by_443`, and
-`kraus_elimination_q_13_level_26_proof_sketch`
-stay uninhabited.  A Φ₁₃ hit is not Kraus.
+Latest tag / HEAD: `v8.69.0-kraus-elim-theorem`
+Lean change: Level26_Newforms
+`level26_a_eliminated_by_53` /
+`level26_b_eliminated_by_443` /
+`kraus_elimination_q_13_level_26` are
+inhabited Int-mod-13 misses (`-2` vs `0`/`12`,
+`24` vs `21`/`-39`).  Density/Step
+`kraus_elimination_q_13_level_26` stays the
+uninhabited `∀`.  `ExistsNewformLevel2`
+stays `0 ≠ 0`.  No new Beal `∀`.
 The s2_26 pack stays a coefficient
 check, not Ribet.
 `kraus_elimination_q_13_level_26` stays

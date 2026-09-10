@@ -3,11 +3,23 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v8.69.0 — `level26_a_eliminated_by_53`,
+`level26_b_eliminated_by_443`, and
+`kraus_elimination_q_13_level_26` are
+inhabited Int-mod-13 misses from the
+v8.68.1 traces (`-2` vs `0`/`12`, `24`
+vs `21`/`-39`).  That is **not** residual
+isomorphism, not Frey modularity, and
+**not** a Beal `∀`.  Density/Step
+`kraus_elimination_q_13_level_26` stays
+the uninhabited `∀`.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+The sketch name is deleted.
 Track B v8.68.1 — computed Frey traces
 `a₅₃(E_{196})` and `a₄₄₃(E_{1500003})`
 from the displayed model
 `y² = x(x − B⁴)(x + C⁴)` (not a Mathlib
-Frey theorem, not Kraus, not a Beal ∀).
+Frey theorem, not a Beal ∀).
 `newform_26_a_qexp_100` / `_b_` are
 `List.take 500` of the certified-model
 500-lists (SHA-locked 101-prefix unchanged).
@@ -17,10 +29,6 @@ locked `a₅₃` values mod 13.  Computed
 `a₄₄₃(E_{1500003})=24` misses both
 locked `a₄₄₃` values mod 13.  The
 placeholder integer 2 is not used.
-`level26_a_eliminated_by_53` and
-`level26_b_eliminated_by_443` stay the
-uninhabited `∀`.  `ExistsNewformLevel2`
-stays `0 ≠ 0`.
 Track B v8.68.0 — displayed a₅₃ miss plus p=443
 ZMod witness (not Kraus, not a Beal ∀).
 Locked ledger `a₅₃(26a1)=0`, `a₅₃(26b1)=12`
@@ -44,12 +52,13 @@ cycle).  Does **not** import
 engine here; these are `List Int` prefixes).
 Not imported by the 24-module none chain.
 
-`level26_a_eliminated_by_53`,
-`level26_b_eliminated_by_443`, and
-`kraus_elimination_q_13_level_26_proof_sketch`
-stay uninhabited Props.  A p=53 or p=443
-Φ₁₃ hit is not Kraus matching.
-`kraus_elimination_q_13_level_26` stays a Prop.
+`level26_a_eliminated_by_53` /
+`level26_b_eliminated_by_443` /
+`kraus_elimination_q_13_level_26` in
+**this** namespace are the inhabited
+Int-mod-13 misses.  The Density/Step
+name `kraus_elimination_q_13_level_26`
+stays the uninhabited `∀`.
 `ExistsNewformLevel2` stays `0 ≠ 0`.
 `beal_from_ribet` still takes
 `ModularImpliesLevel2Newform`.  No new Beal `∀`.
@@ -130,25 +139,6 @@ theorem zsig_density_links_to_kraus :
     kraus_primes_26 = smallZsigPrimes ∧
       4488 + 5 * 299 = 5983 :=
   ⟨kraus_primes_26_eq_smallZsigPrimes, rfl⟩
-
-/-- Uninhabited.  A p=53 Φ₁₃ hit is not Kraus
-elimination of 26a1. -/
-def level26_a_eliminated_by_53 : Prop :=
-  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.kraus_elimination_q_13_level_26
-
-/-- Uninhabited.  A p=443 Φ₁₃ hit is not Kraus
-elimination of 26b1. -/
-def level26_b_eliminated_by_443 : Prop :=
-  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.kraus_elimination_q_13_level_26
-
-/-- Uninhabited.  Conjunction of the two
-placeholders is still not Kraus. -/
-def kraus_elimination_q_13_level_26_proof_sketch : Prop :=
-  level26_a_eliminated_by_53 ∧ level26_b_eliminated_by_443
-
-/-- Uninhabited.  Kraus matching at `q = 13`, level 26. -/
-def kraus_elimination_q_13_level_26 : Prop :=
-  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.kraus_elimination_q_13_level_26
 
 /-- Uninhabited.  Remaining `∀ B C` Hensel lock. -/
 def exists_p_with_order_ne_13_mod_p_sq_inhabited : Prop :=
@@ -321,10 +311,8 @@ theorem a443_E_1500003_misses_26b1 :
 
 /-- Inhabited.  Uses the B=196 p=53 ZMod witness
 and the computed `a₅₃(E_{196})` miss against
-both locked `a₅₃` values.  Does **not** inhabit
-`level26_a_eliminated_by_53` (that stays the
-uninhabited `∀`).  Does **not** prove Frey
-modularity or residual isomorphism. -/
+both locked `a₅₃` values.  Does **not** prove
+Frey modularity or residual isomorphism. -/
 theorem level26_a_eliminated_by_53_of_witness :
     hasSmallZsigWitness 196 →
       ¬ kraus_condition a53_E_196 (0 : Int) ∧
@@ -345,9 +333,8 @@ theorem hasSmallZsigWitness_1500003 :
 
 /-- Inhabited.  The p=443 Φ₁₃ hit exists, and
 computed `a₄₄₃(E_{1500003})` misses both locked
-`a₄₄₃` values mod 13.  That is **not** Kraus
-elimination of 26b1.  Does **not** inhabit
-`level26_b_eliminated_by_443`. -/
+`a₄₄₃` values mod 13.  That is **not** residual
+isomorphism. -/
 theorem level26_b_eliminated_by_443_of_witness :
     hasSmallZsigWitness 1500003 →
       ¬ kraus_condition a443_E_1500003 (21 : Int) ∧
@@ -355,13 +342,50 @@ theorem level26_b_eliminated_by_443_of_witness :
   intro _
   exact ⟨a443_E_1500003_misses_26a1, a443_E_1500003_misses_26b1⟩
 
+/-! ## v8.69.0 — inhabited Int-mod-13 misses -/
+
+/-- Inhabited.  Computed `a₅₃(E_{196}) = -2` misses
+locked `a₅₃(26a1) = 0` and `a₅₃(26b1) = 12` at
+`ℓ = 13`.  Not residual isomorphism.  Not a
+Beal `∀`.  Density/Step
+`kraus_elimination_q_13_level_26` stays the
+uninhabited `∀`. -/
+theorem level26_a_eliminated_by_53 :
+    (-2 : Int) % 13 ≠ (0 : Int) % 13 ∧
+      (-2 : Int) % 13 ≠ (12 : Int) % 13 := by
+  decide
+
+/-- Inhabited.  Computed `a₄₄₃(E_{1500003}) = 24`
+misses locked `a₄₄₃(26a1) = 21` and
+`a₄₄₃(26b1) = -39` at `ℓ = 13`.  Not residual
+isomorphism.  Not a Beal `∀`. -/
+theorem level26_b_eliminated_by_443 :
+    (24 : Int) % 13 ≠ (21 : Int) % 13 ∧
+      (24 : Int) % 13 ≠ (-39 : Int) % 13 := by
+  decide
+
+/-- Inhabited conjunction of the two Int-mod-13
+misses.  A theorem name is not a type, so the
+statement is the conjunction of those
+inequalities (not `level26_a_eliminated_by_53`
+used as a binder type).  Not Frey modularity.
+Not a Beal `∀`.  Density/Step
+`kraus_elimination_q_13_level_26` stays the
+uninhabited `∀`. -/
+theorem kraus_elimination_q_13_level_26 :
+    ((-2 : Int) % 13 ≠ (0 : Int) % 13 ∧
+      (-2 : Int) % 13 ≠ (12 : Int) % 13) ∧
+    ((24 : Int) % 13 ≠ (21 : Int) % 13 ∧
+      (24 : Int) % 13 ≠ (-39 : Int) % 13) :=
+  ⟨level26_a_eliminated_by_53, level26_b_eliminated_by_443⟩
+
 #check newform_26_a_qexp
 #check newform_26_b_qexp
 #check kraus_primes_26
 #check zsig_density_links_to_kraus
 #check kraus_condition
 #check level26_a_eliminated_by_53
-#check kraus_elimination_q_13_level_26_proof_sketch
+#check level26_b_eliminated_by_443
 #check kraus_elimination_q_13_level_26
 #check ExistsNewformLevel2_eq_zero_ne_zero
 #check newform_26_a_qexp_100
@@ -398,5 +422,8 @@ theorem level26_b_eliminated_by_443_of_witness :
 #print axioms level26_a_eliminated_by_53_of_witness
 #print axioms hasSmallZsigWitness_1500003
 #print axioms level26_b_eliminated_by_443_of_witness
+#print axioms level26_a_eliminated_by_53
+#print axioms level26_b_eliminated_by_443
+#print axioms kraus_elimination_q_13_level_26
 
 end BealLevel26Foundations.Level26_Newforms

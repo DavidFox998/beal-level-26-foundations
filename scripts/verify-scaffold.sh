@@ -994,6 +994,7 @@ do
   grep -q "v8.67.0-level26-newforms-skeleton" "$readme"
   grep -q "v8.68.0-kraus-elim-53-443" "$readme"
   grep -q "v8.68.1-frey-ap-53-443" "$readme"
+  grep -q "v8.69.0-kraus-elim-theorem" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -2670,12 +2671,16 @@ grep -q "theorem zsig_density_links_to_kraus" \
   lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
 grep -q "def kraus_condition" \
   lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
-grep -q "def level26_a_eliminated_by_53" \
+grep -q "theorem level26_a_eliminated_by_53" \
   lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
-grep -q "def kraus_elimination_q_13_level_26_proof_sketch" \
+grep -q "theorem level26_b_eliminated_by_443" \
   lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "theorem kraus_elimination_q_13_level_26" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+test ! -n "$(grep -E 'def kraus_elimination_q_13_level_26_proof_sketch' \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean || true)"
 grep -q "def kraus_elimination_q_13_level_26" \
-  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+  lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_Density_2M.lean
 grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
   lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
 grep -q "def newform_26_a_qexp_100" \

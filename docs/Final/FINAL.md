@@ -1,3 +1,26 @@
+# FINAL v8.69.0 — Level26 Int-mod-13 theorem (arrow stays a Prop)
+
+Latest tag `v8.69.0-kraus-elim-theorem`.
+Lean change.
+Level26_Newforms `level26_a_eliminated_by_53` /
+`level26_b_eliminated_by_443` /
+`kraus_elimination_q_13_level_26` are
+inhabited Int-mod-13 misses from the
+v8.68.1 traces. Density/Step
+`kraus_elimination_q_13_level_26` stays
+the uninhabited `∀`. That is not residual
+isomorphism and not a Beal `∀`.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+The s2_26 pack stays a coefficient
+check, not Ribet.
+`B > 2000000` Bugeaud `P(Φ₁₃) > C`
+and `rad > √13 C⁶` stay Props, so
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stays a Prop. The Hensel ∀ stays a Prop.
+The Ljunggren ∀ stays a Prop.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.68.1 — computed Frey a53/a443 (arrow stays a Prop)
 
 Latest tag `v8.68.1-frey-ap-53-443`.

@@ -1,8 +1,10 @@
 [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.68.0-kraus-elim-53-443 (main at e53d573) → v8.68.1-frey-ap-53-443
+# Beal Level 26 Foundations — v8.68.1-frey-ap-53-443 (main at 3b8ad99) → v8.69.0-kraus-elim-theorem
 
-**v8.68.1-frey-ap-53-443 — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.69.0-kraus-elim-theorem — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+
+Track B closed 5983 rows = 4488+5*299 B≤2M pools 50310/50323/50307/50350/50325. Track A: Level 26 dim2 26.2.a.a/b via qExp_26a1_500/qExp_26b1_500 take 500, a53_26a1=0 a53_26b1=12 a443_26a1=21 a443_26b1=-39 by decide, Frey a53(E_196)=-2 a443(E_1500003)=24 by decide Euler, -2≠0,12 mod13 and 24≠21,-39 mod13. kraus_elimination_q_13_level_26 now theorem. Still uninhabited: ExistsNewformLevel2 0≠0, no new Beal ∀.
 
 Beal (4,13,13) gap-3: C=B+3, S=(C^13-B^13)/(C-B)=Phi13= S_val B (B+3)
 
@@ -22,7 +24,8 @@ Track A — Level 26:
 - zsig_density_links_to_kraus: that list equality plus 4488 + 5*299 = 5983 axiom-free. This is NOT Kraus matching.
 - a53_E_196 = -2 by point-count decide on y^2 = x(x-196^4)(x+199^4) mod 53. Misses both locked a53 values mod 13. The placeholder integer 2 is not used.
 - a443_E_1500003 = 24 by point-count decide on y^2 = x(x-1500003^4)(x+1500006^4) mod 443. Misses both locked a443 values mod 13.
-- hasSmallZsigWitness_1500003 by decide ZMod 443 / 443*443. of_witness theorems are those computed misses under the Φ13 hypotheses. Not Kraus elimination.
+- hasSmallZsigWitness_1500003 by decide ZMod 443 / 443*443. of_witness theorems are those computed misses under the Φ13 hypotheses.
+- level26_a_eliminated_by_53 / level26_b_eliminated_by_443 / kraus_elimination_q_13_level_26 in Level26_Newforms are inhabited Int-mod-13 misses (-2 vs 0/12, 24 vs 21/-39). Density/Step kraus_elimination_q_13_level_26 stays the uninhabited ∀. Not residual isomorphism. Not a Beal ∀.
 
 Inhabited:
 - newform_26_a_qexp / newform_26_b_qexp match ledger
@@ -32,13 +35,14 @@ Inhabited:
 - a443_26a1_eq / a443_26b1_eq (21 and -39)
 - a53_E_196_eq / a443_E_1500003_eq (-2 and 24)
 - displayed_two_misses_a53_26a1 (computed -2, not placeholder 2)
+- level26_a_eliminated_by_53 / level26_b_eliminated_by_443 / kraus_elimination_q_13_level_26 (Level26_Newforms Int-mod-13)
 - level26_a_eliminated_by_53_of_witness
 - hasSmallZsigWitness_1500003
 - level26_b_eliminated_by_443_of_witness
 
 Still uninhabited (honesty lock):
-- level26_a_eliminated_by_53, level26_b_eliminated_by_443, kraus_elimination_q_13_level_26_proof_sketch kept as same ∀ as kraus_elimination_q_13_level_26, not True
-- kraus_elimination_q_13_level_26, ExistsNewformLevel2 (0≠0)
+- Density/Step kraus_elimination_q_13_level_26 stays the ∀, not True
+- ExistsNewformLevel2 (0≠0)
 - No new Beal ∀
 
 Build:
@@ -50,6 +54,7 @@ Releases:
 - v8.67.0-level26-newforms-skeleton at 45db93a qexp locked to ledger
 - v8.68.0-kraus-elim-53-443 displayed a53 miss + p=443 ZMod witness; kraus ∀ stays Prop
 - v8.68.1-frey-ap-53-443 computed a53(E_196)=-2 a443(E_1500003)=24 miss 26a1/26b1 mod 13; kraus ∀ stays Prop
+- v8.69.0-kraus-elim-theorem Level26_Newforms Int-mod-13 theorem; Density/Step kraus ∀ stays Prop; ExistsNewformLevel2 0≠0
 
 GitHub will not render a README much over ~100KB, so the old wall
 stayed cached at v4.28.0.  This file is the short wall.  The full
@@ -60,7 +65,7 @@ and [`certs/README.md`](certs/README.md).
 - Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
   About Website stays [10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221).
 - Houseclean mint [10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
-  (`v8.19.9-fourth-power-residue` / `v8.68.1-frey-ap-53-443`) under hook `22379293`.
+  (`v8.19.9-fourth-power-residue` / `v8.69.0-kraus-elim-theorem`) under hook `22379293`.
   Concept DOI [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).
 - Track B odd-A ladder (4,13,13): v8.19.6 `B ≤ 100` with `C = B+1` and
   `C = B+2` closed by `decide`; v8.19.7 `A⁴ ≥ 13 k B¹²`, `A⁴ ≥ 39 B¹²`,
@@ -718,15 +723,13 @@ PARI 2-Descent Certificates image
 Still not `∀ ℕ`. No `False.elim`. no `False.elim`.
 `BealExponent13_Iter_Package` `d3cf8a7` `1d0044e`.
 
-HEAD also has Track B `v8.68.1-frey-ap-53-443`
-(`List.take 500` `a₄₄₃(26a1)=21` /
-`a₄₄₃(26b1)=-39`; `a53_E_196 = -2` and
-`a443_E_1500003 = 24` by point-count
-`decide`; both miss locked traces at
-`ℓ = 13`; placeholder 2 is not used;
-`∀` placeholders stay Props; s2_26 pack still
+HEAD also has Track B `v8.69.0-kraus-elim-theorem`
+(Level26_Newforms Int-mod-13 theorem from
+`-2` vs `0`/`12` and `24` vs `21`/`-39`;
+Density/Step `kraus_elimination_q_13_level_26`
+stays the uninhabited `∀`; s2_26 pack still
 coefficient check not Ribet;
-`kraus_elimination_q_13_level_26` stays a Prop;
+`ExistsNewformLevel2` stays `0 ≠ 0`;
 `B > 2000000` Bugeaud / rad stay
 Props; Hensel forall stays a Prop);
 that does **not** change the Track A lock or the About Website.

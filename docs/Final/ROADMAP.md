@@ -799,6 +799,27 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.69.0-kraus-elim-theorem — DONE (Level26_Newforms level26_a_eliminated_by_53 / level26_b_eliminated_by_443 / kraus_elimination_q_13_level_26 are inhabited Int-mod-13 misses; Density/Step kraus_elimination_q_13_level_26 stays the uninhabited ∀; ExistsNewformLevel2 stays 0≠0; no new Beal ∀; arrow stays a Prop)
+
+Lean change.  `Level26_Newforms.lean` inhabits
+`level26_a_eliminated_by_53` as
+`-2 % 13 ≠ 0 % 13 ∧ -2 % 13 ≠ 12 % 13`,
+`level26_b_eliminated_by_443` as
+`24 % 13 ≠ 21 % 13 ∧ 24 % 13 ≠ -39 % 13`,
+and `kraus_elimination_q_13_level_26` as
+their conjunction.  Those numerals are the
+v8.68.1 traces.  This is **not** residual
+isomorphism and **not** a Beal `∀`.
+Density/Step `kraus_elimination_q_13_level_26`
+stays the uninhabited `∀`.
+The sketch name is deleted.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.68.1-frey-ap-53-443 — DONE (List.take 500 a443_26a1=21 a443_26b1=-39; a53_E_196=-2 a443_E_1500003=24 by point-count decide; both miss locked traces mod 13; placeholder 2 not used; of_witness theorems do not inhabit the ∀; kraus_elimination_q_13_level_26 stays uninhabited; ExistsNewformLevel2 stays 0≠0; arrow stays a Prop)
 
 Lean change.  `Level26_Newforms.lean` records

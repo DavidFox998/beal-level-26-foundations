@@ -12,8 +12,16 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.68.1)
+# FullProof track (v8.69.0)
 
+Aggregator for Track B.  v8.69.0 inhabits
+Level26_Newforms `level26_a_eliminated_by_53` /
+`level26_b_eliminated_by_443` /
+`kraus_elimination_q_13_level_26` as
+Int-mod-13 misses.  Density/Step
+`kraus_elimination_q_13_level_26` stays
+the uninhabited `∀`.  `ExistsNewformLevel2`
+stays `0 ≠ 0`.  No new Beal `∀`.
 Aggregator for Track B.  v8.68.1 records
 `List.take 500` locked `a₄₄₃(26a1)=21` /
 `a₄₄₃(26b1)=-39`, computes `a53_E_196 = -2`
