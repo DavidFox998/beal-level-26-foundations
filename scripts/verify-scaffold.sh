@@ -295,6 +295,8 @@ test -f lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Ste
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step56_B_le_1600k_299.md
 test -f lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Step57_B_le_1700k_299.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step57_B_le_1700k_299.md
+test -f lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Step58_B_le_1800k_299.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step58_B_le_1800k_299.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -977,6 +979,7 @@ do
   grep -q "v8.60.0-B-le-1500k-4488-rows" "$readme"
   grep -q "v8.61.0-B-le-1600k-4787-rows" "$readme"
   grep -q "v8.62.0-B-le-1700k-5086-rows" "$readme"
+  grep -q "v8.63.0-B-le-1800k-5385-rows" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -2567,6 +2570,26 @@ grep -q "def S_has_prime_with_exp_one_when_C_ge_B_plus_3" \
   lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Step57_B_le_1700k_299.lean
 grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
   lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Step57_B_le_1700k_299.lean
+grep -q "S_has_prime_with_exp_one_B_le_1800000_table_rows" \
+  lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Step58_B_le_1800k_299.lean
+grep -q "exists_p_with_order_ne_13_B_le_1800000_from_exp_one_table_rows" \
+  lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Step58_B_le_1800k_299.lean
+grep -q "S_not_fourth_B_le_1800000_from_exp_one_table_rows" \
+  lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Step58_B_le_1800k_299.lean
+grep -q "theorem row_1700007_1700010" \
+  lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Step58_B_le_1800k_299.lean
+grep -q "theorem row_1800000_1800003" \
+  lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Step58_B_le_1800k_299.lean
+grep -q "def kraus_elimination_q_13_level_26" \
+  lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Step58_B_le_1800k_299.lean
+grep -q "def bugeaud_P_phi13_gt_C_when_B_gt_1800000" \
+  lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Step58_B_le_1800k_299.lean
+grep -q "def exists_p_with_order_ne_13_mod_p_sq_inhabited" \
+  lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Step58_B_le_1800k_299.lean
+grep -q "def S_has_prime_with_exp_one_when_C_ge_B_plus_3" \
+  lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Step58_B_le_1800k_299.lean
+grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
+  lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Step58_B_le_1800k_299.lean
 grep -q "theorem beal_4_13_13_k_odd" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
 grep -q "theorem S_13_ge_13_mul_B_pow12" \

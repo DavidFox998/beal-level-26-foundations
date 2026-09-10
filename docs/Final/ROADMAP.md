@@ -799,6 +799,34 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.63.0-B-le-1800k-5385-rows — DONE (S_has_prime_with_exp_one_B_le_1800000_table_rows inhabited, 5385 named gap-3 rows, 299 sampled (1700k,1800k] p<=547 from 50307 pool; first (1700007,1700010) p=53 last (1800000,1800003) p=79; s2_26 pack still coefficient check not Ribet; kraus_elimination_q_13_level_26 stays uninhabited; B>1800k Bugeaud remains Prop; arrow stays a Prop)
+
+Lean change.  Step58 file
+`Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Step58_B_le_1800k_299.lean`
+wraps 5086 Step57 rows and adds 299
+evenly sampled gap-3 pairs with
+`1700000 < B ≤ 1800000` and real witnesses
+`p ≤ 547` from a 50307-row pool.
+Packed as the Step57 5086-pack paired
+with a 299-row new pack:
+`S_has_prime_with_exp_one_B_le_1800000_table_rows`,
+`exists_p_with_order_ne_13_B_le_1800000_from_exp_one_table_rows`,
+`S_not_fourth_B_le_1800000_from_exp_one_table_rows`.
+First new row `row_1700007_1700010` uses p=53.
+Named last row `row_1800000_1800003` uses p=79.
+The s2_26 pack stays a coefficient
+check, not residual iso, so
+`kraus_elimination_q_13_level_26` stays
+uninhabited.
+`bugeaud_P_phi13_gt_C_when_B_gt_1800000`
+stays uninhabited.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.62.0-B-le-1700k-5086-rows — DONE (S_has_prime_with_exp_one_B_le_1700000_table_rows inhabited, 5086 named gap-3 rows, 299 sampled (1600k,1700k] p<=547 from 50323 pool; first (1600001,1600004) p=53 last (1700000,1700003) p=547; s2_26 pack still coefficient check not Ribet; kraus_elimination_q_13_level_26 stays uninhabited; B>1700k Bugeaud remains Prop; arrow stays a Prop)
 
 Lean change.  Step57 file
