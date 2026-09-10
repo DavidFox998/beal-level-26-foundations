@@ -1,13 +1,12 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.65.0-B-le-2000k-5983-rows`
-Lean change: Step60 inhabits 5983 named
-`B ≤ 2000000` gap-3 rows (5684 Step59
-including `(200000,200003)` p=12186951011
-plus 299 sampled `(1900000, 2000000]`
-rows from a 50325-row p≤547 pool, first
-`(1900001,1900004)` p=53, last
-`(2000000,2000003)` p=53).
+Latest tag / HEAD: `v8.66.0-B-le-2000k-density-capstone`
+Lean change: density capstone records
+`smallZsigPrimes` `{53,79,131,157,313,443,521,547}`,
+inhabits `4488 + 5 * 299 = 5983`, and
+inhabits `hasSmallZsigWitness_196` by `decide`
+on `ZMod 53`.  `beal_4_13_13_gap3_B_le_2M_eliminated`
+is `Classical.em`, not Kraus and not a Beal `∀`.
 The s2_26 pack stays a coefficient
 check, not Ribet.
 `kraus_elimination_q_13_level_26` stays

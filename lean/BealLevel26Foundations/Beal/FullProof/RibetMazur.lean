@@ -3,6 +3,18 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v8.66.0 — B ≤ 2000000 density capstone
+(5983 named gap-3 rows plus pool summary, not a ∀).
+`smallZsigPrimes` is the list
+`[53, 79, 131, 157, 313, 443, 521, 547]`.
+`zsig_density_2M_stats` is `4488 + 5 * 299 = 5983`.
+`hasSmallZsigWitness_196` is inhabited by `decide`
+on `ZMod 53` / numeral `53*53`.
+`beal_4_13_13_gap3_B_le_2M_eliminated` is
+`Classical.em`, not Kraus.  The s2_26 pack
+stays a coefficient check, not Ribet.
+`kraus_elimination_q_13_level_26` stays uninhabited.
+`B > 2000000` Bugeaud stays a Prop.
 Track B v8.65.0 — B ≤ 2000000 exp-one
 extension (5983 named gap-3 rows, not a ∀).
 `S_has_prime_with_exp_one_B_le_2000000_table_rows`
@@ -623,6 +635,7 @@ import BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Zsigmondy_13_Step57_B_
 import BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Zsigmondy_13_Step58_B_le_1800k_299
 import BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Zsigmondy_13_Step59_B_le_1900k_299
 import BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Zsigmondy_13_Step60_B_le_2000k_299
+import BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Zsigmondy_Density_2M
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -4812,6 +4825,29 @@ def bugeaud_P_phi13_gt_C_when_B_gt_2000000 : Prop :=
 def rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_2000000 : Prop :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step60_B_le_2000k_299.rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_2000000
 
+/-! ## v8.66.0 — B ≤ 2000000 density capstone -/
+
+/-- Inhabited.  Small primes used as `decide` witnesses. -/
+def smallZsigPrimes :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.smallZsigPrimes
+
+/-- Inhabited.  `Phi13 B = S_val B (B+3)`. -/
+def Phi13 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.Phi13
+
+/-- Inhabited.  `4488 + 5 * 299 = 5983`. -/
+def zsig_density_2M_stats :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.zsig_density_2M_stats
+
+/-- Inhabited.  Named row `(196,199)` hits `p = 53`. -/
+def hasSmallZsigWitness_196 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.hasSmallZsigWitness_196
+
+/-- Inhabited as `Classical.em` on the small-prime
+ZMod predicate.  Not Kraus.  Not a Beal `∀`. -/
+def beal_4_13_13_gap3_B_le_2M_eliminated :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.beal_4_13_13_gap3_B_le_2M_eliminated
+
 /-- Inhabited.  Displayed Frey p=3 traces. -/
 def FreyP3Traces : List Int :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.FreyP3Traces
@@ -5500,6 +5536,12 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step60_B_le_2000k_299.kraus_elimination_q_13_level_26
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step60_B_le_2000k_299.bugeaud_P_phi13_gt_C_when_B_gt_2000000
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step60_B_le_2000k_299.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.smallZsigPrimes
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.zsig_density_2M_stats
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.hasSmallZsigWitness_196
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.beal_4_13_13_gap3_B_le_2M_eliminated
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.kraus_elimination_q_13_level_26
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -5943,5 +5985,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step60_B_le_2000k_299.row_1900001_1900004
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step60_B_le_2000k_299.row_2000000_2000003
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step60_B_le_2000k_299.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.zsig_density_2M_stats
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.hasSmallZsigWitness_196
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.beal_4_13_13_gap3_B_le_2M_eliminated
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

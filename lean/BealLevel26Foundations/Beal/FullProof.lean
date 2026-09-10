@@ -12,9 +12,14 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.65.0)
+# FullProof track (v8.66.0)
 
-Aggregator for Track B.  Step60 inhabits
+Aggregator for Track B.  Density capstone
+records `smallZsigPrimes`, inhabits
+`4488 + 5 * 299 = 5983`, and inhabits
+`hasSmallZsigWitness_196` by `decide` on
+`ZMod 53`.  `beal_4_13_13_gap3_B_le_2M_eliminated`
+is `Classical.em`, not Kraus.  Step60 inhabits
 5983 named `B ≤ 2000000` gap-3 rows
 (5684 Step59 including the inhabited
 outlier `(200000,200003)` plus 299

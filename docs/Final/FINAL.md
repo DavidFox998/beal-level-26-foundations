@@ -1,3 +1,23 @@
+# FINAL v8.66.0 — B≤2.0M density capstone (arrow stays a Prop)
+
+Latest tag `v8.66.0-B-le-2000k-density-capstone`.
+Lean change.
+Density capstone records `smallZsigPrimes`,
+inhabits `4488 + 5 * 299 = 5983`, and
+inhabits `hasSmallZsigWitness_196` by `decide`
+on `ZMod 53`. `beal_4_13_13_gap3_B_le_2M_eliminated`
+is `Classical.em`, not Kraus and not a Beal `∀`.
+The s2_26 pack stays a coefficient
+check, not Ribet.
+`kraus_elimination_q_13_level_26` stays
+a Prop. `B > 2000000` Bugeaud `P(Φ₁₃) > C`
+and `rad > √13 C⁶` stay Props, so
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stays a Prop. The Hensel ∀ stays a Prop.
+The Ljunggren ∀ stays a Prop.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.65.0 — B≤2.0M 5983 named gap-3 rows (arrow stays a Prop)
 
 Latest tag `v8.65.0-B-le-2000k-5983-rows`.

@@ -1,16 +1,15 @@
-# v8.65.0 RibetMazur B≤2.0M 5983 named gap-3 rows
+# v8.66.0 RibetMazur B≤2.0M density capstone
 
-`lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Step60_B_le_2000k_299.lean`
+`lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_Density_2M.lean`
 and `RibetMazur.lean`
 
-Step60 inhabits 5983 named `B ≤ 2000000`
-gap-3 rows (5684 Step59 including
-`(200000,200003)` p=12186951011 plus
-299 sampled `(1900000, 2000000]` rows
-with p≤547 from a 50325-row pool).
-First new row `(1900001,1900004)` p=53.
-Named last row `(2000000,2000003)` p=53.
-`B=2000000` is in the pool.
+Density capstone on the 5983 named
+`B ≤ 2000000` gap-3 rows.  Inhabits
+`smallZsigPrimes`, `zsig_density_2M_stats`
+(`4488 + 5 * 299 = 5983`), and
+`hasSmallZsigWitness_196` (p=53 `decide`).
+`beal_4_13_13_gap3_B_le_2M_eliminated` is
+`Classical.em`, not Kraus and not a Beal `∀`.
 
 The modular side stays a coefficient
 check, not Ribet:

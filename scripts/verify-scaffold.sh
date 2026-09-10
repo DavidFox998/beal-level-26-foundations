@@ -301,6 +301,8 @@ test -f lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Ste
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step59_B_le_1900k_299.md
 test -f lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Step60_B_le_2000k_299.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step60_B_le_2000k_299.md
+test -f lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_Density_2M.lean
+test -f docs/Beal/Beal_4_13_13_Zsigmondy_Density_2M.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -986,6 +988,7 @@ do
   grep -q "v8.63.0-B-le-1800k-5385-rows" "$readme"
   grep -q "v8.64.0-B-le-1900k-5684-rows" "$readme"
   grep -q "v8.65.0-B-le-2000k-5983-rows" "$readme"
+  grep -q "v8.66.0-B-le-2000k-density-capstone" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -2636,6 +2639,22 @@ grep -q "def S_has_prime_with_exp_one_when_C_ge_B_plus_3" \
   lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Step60_B_le_2000k_299.lean
 grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
   lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Step60_B_le_2000k_299.lean
+grep -q "def smallZsigPrimes" \
+  lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_Density_2M.lean
+grep -q "theorem zsig_density_2M_stats" \
+  lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_Density_2M.lean
+grep -q "theorem hasSmallZsigWitness_196" \
+  lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_Density_2M.lean
+grep -q "theorem beal_4_13_13_gap3_B_le_2M_eliminated" \
+  lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_Density_2M.lean
+grep -q "def kraus_elimination_q_13_level_26" \
+  lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_Density_2M.lean
+grep -q "def exists_p_with_order_ne_13_mod_p_sq_inhabited" \
+  lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_Density_2M.lean
+grep -q "def S_has_prime_with_exp_one_when_C_ge_B_plus_3" \
+  lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_Density_2M.lean
+grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
+  lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_Density_2M.lean
 grep -q "theorem beal_4_13_13_k_odd" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
 grep -q "theorem S_13_ge_13_mul_B_pow12" \

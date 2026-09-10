@@ -799,6 +799,31 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.66.0-B-le-2000k-density-capstone — DONE (density capstone: smallZsigPrimes inhabited, zsig_density_2M_stats 4488+5*299=5983, hasSmallZsigWitness_196 p=53 decide; beal_4_13_13_gap3_B_le_2M_eliminated is Classical.em not Kraus; s2_26 pack still coefficient check not Ribet; kraus_elimination_q_13_level_26 stays uninhabited; B>2000k Bugeaud remains Prop; arrow stays a Prop)
+
+Lean change.  Density file
+`Beal/FullProof/Beal_4_13_13_Zsigmondy_Density_2M.lean`
+records the small-prime list used by
+Steps 56–60 and the named-row identity
+`4488 + 5 * 299 = 5983`.
+`hasSmallZsigWitness_196` uses `decide`
+on `ZMod 53` / numeral `53*53`, not
+`native_decide`.
+`beal_4_13_13_gap3_B_le_2M_eliminated` is
+`Classical.em` on the small-prime ZMod
+predicate, not a scan of every `B ≤ 2M`
+and not Kraus.
+The s2_26 pack stays a coefficient
+check, not residual iso, so
+`kraus_elimination_q_13_level_26` stays
+uninhabited.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.65.0-B-le-2000k-5983-rows — DONE (S_has_prime_with_exp_one_B_le_2000000_table_rows inhabited, 5983 named gap-3 rows, 299 sampled (1900k,2000k] p<=547 from 50325 pool; first (1900001,1900004) p=53 last (2000000,2000003) p=53; s2_26 pack still coefficient check not Ribet; kraus_elimination_q_13_level_26 stays uninhabited; B>2000k Bugeaud remains Prop; arrow stays a Prop)
 
 Lean change.  Step60 file
