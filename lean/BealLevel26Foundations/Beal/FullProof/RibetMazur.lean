@@ -3,7 +3,18 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.51.0 — B ≤ 600000 exp-one
+Track B v8.52.0 — B ≤ 700000 exp-one
+extension (2096 named gap-3 rows, not a ∀).
+`S_has_prime_with_exp_one_B_le_700000_table_rows`
+is inhabited (1797 Step46 rows including
+`(200000,200003)` p=12186951011 plus
+299 sampled `(600000, 700000]` rows,
+first `(600001,600004)` p=157, last
+`(700000,700003)` p=521).  The s2_26 pack
+stays a coefficient check, not Ribet.
+`kraus_elimination_q_13_level_26` stays uninhabited.
+`B > 700000` Bugeaud stays a Prop.
+v8.51.0 — B ≤ 600000 exp-one
 extension (1797 named gap-3 rows, not a ∀).
 `S_has_prime_with_exp_one_B_le_600000_table_rows`
 is inhabited (1498 Step45 rows including
@@ -455,6 +466,7 @@ import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step43_B_le_300k_extensi
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step44_B_le_400k_299
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299
 import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step46_B_le_600k_299
+import BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -4210,6 +4222,37 @@ def bugeaud_P_phi13_gt_C_when_B_gt_600000 : Prop :=
 def rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_600000 : Prop :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step46_B_le_600k_299.rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_600000
 
+/-! ## v8.52.0 — B ≤ 700000 exp-one extension (2096 rows) -/
+
+/-- Inhabited.  1797 inherited `B ≤ 600000` rows plus 299
+sampled `600000 < B ≤ 700000` gap-3 rows have exp one. -/
+def S_has_prime_with_exp_one_B_le_700000_table_rows :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.S_has_prime_with_exp_one_B_le_700000_table_rows
+
+/-- Inhabited.  Those rows have a primitive prime with order ≠ 13. -/
+def exists_p_with_order_ne_13_B_le_700000_from_exp_one_table_rows :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.exists_p_with_order_ne_13_B_le_700000_from_exp_one_table_rows
+
+/-- Inhabited.  Those rows have `S` not a fourth power. -/
+def S_not_fourth_B_le_700000_from_exp_one_table_rows :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.S_not_fourth_B_le_700000_from_exp_one_table_rows
+
+/-- Inhabited.  First new-window row, p=157. -/
+def row_600001_600004 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.row_600001_600004
+
+/-- Inhabited.  Named endpoint `B = 700000`, p=521. -/
+def row_700000_700003 :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.row_700000_700003
+
+/-- Uninhabited.  Bugeaud `P(Φ₁₃) > C` on `B > 700000`. -/
+def bugeaud_P_phi13_gt_C_when_B_gt_700000 : Prop :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.bugeaud_P_phi13_gt_C_when_B_gt_700000
+
+/-- Uninhabited.  Squarefull + `B > 700000` would need `rad > √(13 C¹²)`. -/
+def rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_700000 : Prop :=
+  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_700000
+
 /-- Inhabited.  Displayed Frey p=3 traces. -/
 def FreyP3Traces : List Int :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.FreyP3Traces
@@ -4786,6 +4829,14 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step46_B_le_600k_299.kraus_elimination_q_13_level_26
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step46_B_le_600k_299.bugeaud_P_phi13_gt_C_when_B_gt_600000
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step46_B_le_600k_299.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.S_has_prime_with_exp_one_B_le_700000_table_rows
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.exists_p_with_order_ne_13_B_le_700000_from_exp_one_table_rows
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.S_not_fourth_B_le_700000_from_exp_one_table_rows
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.row_600001_600004
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.row_700000_700003
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.kraus_elimination_q_13_level_26
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.bugeaud_P_phi13_gt_C_when_B_gt_700000
+#check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -5145,5 +5196,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step46_B_le_600k_299.row_500003_500006
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step46_B_le_600k_299.row_600000_600003
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step46_B_le_600k_299.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.S_has_prime_with_exp_one_B_le_700000_table_rows
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.exists_p_with_order_ne_13_B_le_700000_from_exp_one_table_rows
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.S_not_fourth_B_le_700000_from_exp_one_table_rows
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.row_600001_600004
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.row_700000_700003
+#print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

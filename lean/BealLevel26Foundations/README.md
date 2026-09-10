@@ -187,6 +187,7 @@ v8.51.0-B-le-600k-1797-rows RibetMazur Step46 S_has_prime_with_exp_one_B_le_6000
 | v8.49.0 | `Beal_4_13_13_Zsigmondy_13_Step44_B_le_400k_299.lean` |
 | v8.50.0 | `Beal_4_13_13_Zsigmondy_13_Step45_B_le_500k_299.lean` |
 | v8.51.0 | `Beal_4_13_13_Zsigmondy_13_Step46_B_le_600k_299.lean` |
+| v8.52.0 | `Beal_4_13_13_Zsigmondy_13_Step47_B_le_700k_299.lean` |
 
 Not imported by the 24-module none chain.  Track A: no new Beal-∀.
 
@@ -338,12 +339,12 @@ v4.14.0-iter-citation-contradiction-locked: `CITATION.cff` locks `c2c47db` / fou
 
 [![v8.19.9 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.51.0-B-le-600k-1797-rows
+# Beal Level 26 Foundations — v8.52.0-B-le-700k-2096-rows
 
-**v8.51.0-B-le-600k-1797-rows — Beal (4,13,13) B≤600k 1797 named gap-3 rows (Track B). Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.52.0-B-le-700k-2096-rows — Beal (4,13,13) B≤700k 2096 named gap-3 rows (Track B). Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 - Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
-- Houseclean mint `10.5281/zenodo.22654189` (`v8.19.9-fourth-power-residue` / `v8.51.0-B-le-600k-1797-rows`) under hook `22379293`. Track A none-chain mint stays `10.5281/zenodo.22635221`.
+- Houseclean mint `10.5281/zenodo.22654189` (`v8.19.9-fourth-power-residue` / `v8.52.0-B-le-700k-2096-rows`) under hook `22379293`. Track A none-chain mint stays `10.5281/zenodo.22635221`.
 - What's new:
   - v8.19.6 `B ≤ 100` `C = B+1`, `C = B+2` closed by `decide`;
   - v8.19.7 `A⁴ ≥ 13 k B¹²`, `A⁴ ≥ 39 B¹²`, `A ≥ 2 B³ + 1`;
@@ -386,6 +387,7 @@ v4.14.0-iter-citation-contradiction-locked: `CITATION.cff` locks `c2c47db` / fou
   - v8.49.0 `S_has_prime_with_exp_one_B_le_400000_table_rows` / `exists_p_with_order_ne_13_B_le_400000_from_exp_one_table_rows` / `S_not_fourth_B_le_400000_from_exp_one_table_rows` (1199 named rows). Exact 299 `(300000, 400000]`: first `(300003,300006)` p=157, endpoint `(400000,400003)` p=79. s2_26 pack still coefficient check not Ribet. `kraus_elimination_q_13_level_26` stays uninhabited. Bugeaud-type for `B > 400000`. `ExistsNewformLevel2` stays `0 ≠ 0`.
   - v8.50.0 `S_has_prime_with_exp_one_B_le_500000_table_rows` / `exists_p_with_order_ne_13_B_le_500000_from_exp_one_table_rows` / `S_not_fourth_B_le_500000_from_exp_one_table_rows` (1498 named rows). Sampled 299 `(400000, 500000]` from 50313-row p≤547 pool: first `(400001,400004)` p=53, endpoint `(500000,500003)` p=547. s2_26 pack still coefficient check not Ribet. `kraus_elimination_q_13_level_26` stays uninhabited. Bugeaud-type for `B > 500000`. `ExistsNewformLevel2` stays `0 ≠ 0`.
   - v8.51.0 `S_has_prime_with_exp_one_B_le_600000_table_rows` / `exists_p_with_order_ne_13_B_le_600000_from_exp_one_table_rows` / `S_not_fourth_B_le_600000_from_exp_one_table_rows` (1797 named rows). Sampled 299 `(500000, 600000]` from 50339-row p≤547 pool: first `(500003,500006)` p=79, endpoint `(600000,600003)` p=53. s2_26 pack still coefficient check not Ribet. `kraus_elimination_q_13_level_26` stays uninhabited. Bugeaud-type for `B > 600000`. `ExistsNewformLevel2` stays `0 ≠ 0`.
+  - v8.52.0 `S_has_prime_with_exp_one_B_le_700000_table_rows` / `exists_p_with_order_ne_13_B_le_700000_from_exp_one_table_rows` / `S_not_fourth_B_le_700000_from_exp_one_table_rows` (2096 named rows). Sampled 299 `(600000, 700000]` from 50358-row p≤547 pool: first `(600001,600004)` p=157, endpoint `(700000,700003)` p=521. s2_26 pack still coefficient check not Ribet. `kraus_elimination_q_13_level_26` stays uninhabited. Bugeaud-type for `B > 700000`. `ExistsNewformLevel2` stays `0 ≠ 0`.
 - Uninhabited: bare odd-`A` close, unconditional `v_p(S)=1`, Zsigmondy-of-`S`, unconditional `S_not_fourth`, Kraus / X₀(2q) matching, Ribet to `N'`, X₀(26) matching, Modular W last lock, `B > 100` close, `ExistsNewformLevel2` is `0 ≠ 0`, `beal_from_ribet` still needs `ModularImpliesLevel2Newform`.
 - Build: `lake build BealLevel26Foundations` and `BealLevel26FoundationsFullProof` green twice, `scripts/verify-scaffold.sh` passed, `#print axioms` `[propext, Classical.choice, Quot.sound]`.
 
