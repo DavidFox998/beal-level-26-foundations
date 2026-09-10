@@ -1,3 +1,14 @@
+# v8.71.0 Ribet-Mazur pack uses these misses
+
+RibetMazur imports this file (not reverse).
+`kraus_elimination_q_13_level_26_density`
+and `ribet_mazur_pack_q_13_level_26` live
+in RibetMazur and apply the v8.69.0
+theorems at `B = 196` and `B = 1500003`
+only.  Density/Step
+`kraus_elimination_q_13_level_26` stays
+the uninhabited `∀`.
+
 # v8.69.0-kraus-elim-theorem Int-mod-13 misses
 
 `lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean`

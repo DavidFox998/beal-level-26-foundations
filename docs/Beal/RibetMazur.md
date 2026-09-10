@@ -1,3 +1,26 @@
+# v8.71.0 RibetMazur pack (MCOM)
+
+`lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean`
+already imports `Level26_Newforms`.  The reverse
+import would cycle.
+
+`kraus_elimination_q_13_level_26_density`
+and `ribet_mazur_pack_q_13_level_26` are
+inhabited from the v8.69.0 Int-mod-13
+misses at `B = 196` (`-2` vs `0`/`12`)
+and `B = 1500003` (`24` vs `21`/`-39`).
+That is **not** `∀ B` modular
+contradiction, not residual isomorphism,
+and **not** a Beal `∀`.
+This file's pack
+`kraus_elimination_q_13_level_26` stays
+the Step36 uninhabited `∀`.
+`zsig_density_links_to_kraus` stays
+list equality plus `4488+5*299=5983`.
+`ExistsNewformLevel2` stays `0 != 0`.
+No new Beal forall.
+Not Full Mathlib forall.
+
 # v8.69.0 RibetMazur Level26 Int-mod-13 theorem
 
 `lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean`

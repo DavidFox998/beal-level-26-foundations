@@ -1,3 +1,22 @@
+# FINAL v8.71.0 — Ribet-Mazur pack (arrow stays a Prop)
+
+Latest tag `v8.71.0-ribet-mazur-pack`.
+Lean change.
+RibetMazur `kraus_elimination_q_13_level_26_density`
+and `ribet_mazur_pack_q_13_level_26` are
+inhabited from the v8.69.0 Int-mod-13
+misses at `B = 196` and `B = 1500003`
+only. That is not `∀ B` modular
+contradiction and not a Beal `∀`.
+Density/Step
+`kraus_elimination_q_13_level_26` stays
+the uninhabited `∀`.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_4_13_13_gap3_B_le_2M_eliminated`
+stays `Classical.em`.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.69.0 — Level26 Int-mod-13 theorem (arrow stays a Prop)
 
 Latest tag `v8.69.0-kraus-elim-theorem`.

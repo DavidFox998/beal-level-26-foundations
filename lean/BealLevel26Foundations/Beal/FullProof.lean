@@ -12,8 +12,17 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.69.0)
+# FullProof track (v8.71.0)
 
+Aggregator for Track B.  v8.71.0 inhabits
+RibetMazur `kraus_elimination_q_13_level_26_density`
+and `ribet_mazur_pack_q_13_level_26` from the
+v8.69.0 Int-mod-13 misses (`B = 196` and
+`B = 1500003` only).  That is not `∀ B`
+modular contradiction.  Density/Step
+`kraus_elimination_q_13_level_26` stays
+the uninhabited `∀`.  `ExistsNewformLevel2`
+stays `0 ≠ 0`.  No new Beal `∀`.
 Aggregator for Track B.  v8.69.0 inhabits
 Level26_Newforms `level26_a_eliminated_by_53` /
 `level26_b_eliminated_by_443` /

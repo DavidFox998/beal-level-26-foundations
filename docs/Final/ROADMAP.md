@@ -799,6 +799,21 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.71.0-ribet-mazur-pack — DONE (RibetMazur kraus_elimination_q_13_level_26_density / ribet_mazur_pack_q_13_level_26 inhabited from v8.69.0 Int-mod-13 at B=196 and B=1500003 only; Density/Step kraus_elimination_q_13_level_26 stays the uninhabited ∀; ExistsNewformLevel2 stays 0≠0; no new Beal ∀; arrow stays a Prop)
+
+Lean change.  `RibetMazur.lean` already
+imports `Level26_Newforms`.  The reverse
+would cycle.  The new theorems apply the
+v8.69.0 misses at the two named witnesses.
+This is **not** `∀ B` modular
+contradiction and **not** a Beal `∀`.
+`zsig_density_links_to_kraus` stays
+list equality plus count.  Full gap-3
+density still uses `Classical.em`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.69.0-kraus-elim-theorem — DONE (Level26_Newforms level26_a_eliminated_by_53 / level26_b_eliminated_by_443 / kraus_elimination_q_13_level_26 are inhabited Int-mod-13 misses; Density/Step kraus_elimination_q_13_level_26 stays the uninhabited ∀; ExistsNewformLevel2 stays 0≠0; no new Beal ∀; arrow stays a Prop)
 
 Lean change.  `Level26_Newforms.lean` inhabits

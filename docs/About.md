@@ -1,12 +1,13 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.69.0-kraus-elim-theorem`
-Lean change: Level26_Newforms
-`level26_a_eliminated_by_53` /
-`level26_b_eliminated_by_443` /
-`kraus_elimination_q_13_level_26` are
-inhabited Int-mod-13 misses (`-2` vs `0`/`12`,
-`24` vs `21`/`-39`).  Density/Step
+Latest tag / HEAD: `v8.71.0-ribet-mazur-pack`
+Lean change: RibetMazur
+`kraus_elimination_q_13_level_26_density`
+and `ribet_mazur_pack_q_13_level_26` are
+inhabited from the v8.69.0 Int-mod-13
+misses at `B = 196` and `B = 1500003`
+only.  That is not `∀ B` modular
+contradiction.  Density/Step
 `kraus_elimination_q_13_level_26` stays the
 uninhabited `∀`.  `ExistsNewformLevel2`
 stays `0 ≠ 0`.  No new Beal `∀`.

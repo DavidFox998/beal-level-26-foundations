@@ -3,6 +3,21 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v8.71.0 — MCOM Ribet-Mazur pack.
+`kraus_elimination_q_13_level_26_density`
+and `ribet_mazur_pack_q_13_level_26` are
+inhabited from the v8.69.0 Int-mod-13
+misses (`B = 196` and `B = 1500003`
+only).  That is **not** `∀ B` modular
+contradiction, not residual
+isomorphism, and **not** a Beal `∀`.
+This pack `kraus_elimination_q_13_level_26`
+stays the Step36 uninhabited `∀`.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+No new Beal `∀`.
+This file already imports
+`Level26_Newforms`.  The reverse import
+would cycle.
 Track B v8.69.0 — Level26_Newforms
 `level26_a_eliminated_by_53` /
 `level26_b_eliminated_by_443` /
@@ -4958,6 +4973,75 @@ the Step36 uninhabited `∀`. -/
 def kraus_elimination_q_13_level_26_newforms :=
   BealLevel26Foundations.Level26_Newforms.kraus_elimination_q_13_level_26
 
+/-! ## v8.71.0 — MCOM Ribet-Mazur pack from v8.69.0 misses -/
+
+/-- Inhabited for the two named witnesses only.
+`Phi13` here is the Density univariate
+`Φ₁₃(B) = S_val B (B+3)`, not Step24's
+polynomial pack.  The `B = 196` / `B = 1500003`
+branches are the v8.69.0 Int-mod-13 misses.
+Not residual isomorphism.  Not a Beal `∀`.
+Density/Step `kraus_elimination_q_13_level_26`
+stays the uninhabited `∀`. -/
+theorem kraus_elimination_q_13_level_26_density
+    (B C : Nat)
+    (hC : C = B + 3)
+    (hS :
+      BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.Phi13 B =
+        S_val B C)
+    (_hWit :
+      BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.hasSmallZsigWitness
+        B) :
+    (B = 196 →
+      (-2 : Int) % 13 ≠ (0 : Int) % 13 ∧
+        (-2 : Int) % 13 ≠ (12 : Int) % 13) ∧
+    (B = 1500003 →
+      (24 : Int) % 13 ≠ (21 : Int) % 13 ∧
+        (24 : Int) % 13 ≠ (-39 : Int) % 13) := by
+  have hPhi :
+      BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.Phi13 B =
+        S_val B (B + 3) := by
+    rw [hC] at hS
+    exact hS
+  let _ := hPhi
+  constructor
+  · intro _hB
+    exact BealLevel26Foundations.Level26_Newforms.level26_a_eliminated_by_53
+  · intro _hB
+    exact BealLevel26Foundations.Level26_Newforms.level26_b_eliminated_by_443
+
+/-- MCOM pack.  This is **not**
+`∀ B` modular implies contradiction.
+The hypothesis is the Level26_Newforms
+conjunction (v8.69.0), not this file's
+uninhabited `kraus_elimination_q_13_level_26`
+`∀`.  A theorem name is not a type, and
+the two witness inequalities have different
+right-hand sides, so the conclusion is the
+conjunction of the two `B =` implications
+(not a shared `∃ f ∈ S₂(26)` binder —
+Mathlib 4.12 is not used as a modular-forms
+engine here).  Not residual isomorphism.
+Not a Beal `∀`. -/
+theorem ribet_mazur_pack_q_13_level_26 :
+    (((-2 : Int) % 13 ≠ (0 : Int) % 13 ∧
+      (-2 : Int) % 13 ≠ (12 : Int) % 13) ∧
+      ((24 : Int) % 13 ≠ (21 : Int) % 13 ∧
+        (24 : Int) % 13 ≠ (-39 : Int) % 13)) →
+      ∀ B,
+        (B = 196 →
+          (-2 : Int) % 13 ≠ (0 : Int) % 13 ∧
+            (-2 : Int) % 13 ≠ (12 : Int) % 13) ∧
+        (B = 1500003 →
+          (24 : Int) % 13 ≠ (21 : Int) % 13 ∧
+            (24 : Int) % 13 ≠ (-39 : Int) % 13) := by
+  intro hK _B
+  constructor
+  · intro _h
+    exact hK.left
+  · intro _h
+    exact hK.right
+
 /-! ## v8.68.0 — displayed a₅₃ miss and p=443 ZMod witness -/
 
 /-- Inhabited.  First 100 locked coefficients. -/
@@ -5744,6 +5828,8 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Level26_Newforms.level26_a_eliminated_by_53_of_witness
 #check BealLevel26Foundations.Level26_Newforms.hasSmallZsigWitness_1500003
 #check BealLevel26Foundations.Level26_Newforms.level26_b_eliminated_by_443_of_witness
+#check kraus_elimination_q_13_level_26_density
+#check ribet_mazur_pack_q_13_level_26
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -6209,5 +6295,7 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Level26_Newforms.level26_a_eliminated_by_53
 #print axioms BealLevel26Foundations.Level26_Newforms.level26_b_eliminated_by_443
 #print axioms BealLevel26Foundations.Level26_Newforms.kraus_elimination_q_13_level_26
+#print axioms kraus_elimination_q_13_level_26_density
+#print axioms ribet_mazur_pack_q_13_level_26
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur
