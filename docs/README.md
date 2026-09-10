@@ -352,3 +352,4 @@ v4.18.0-iter-typed-forall-package-locked: `typed_and_forall` / `certified_typed_
 v4.19.0-iter-readme-typed-forall-locked: README theorem table locks Typed ∧ Forall none. `hGeomForbid_typed_true` depends on no axioms (`hNotIn hInList`). Not `∀ ℕ` and no `False.elim`.
 
 v4.20.0-iter-package-none-docs-locked: `docs/BealExponent13_Iter_Package.md` locks `typed_and_forall` none. `hGeomForbid_typed_true` depends on no axioms (`hNotIn hInList`). Not `∀ ℕ` and no `False.elim`.
+v8.54.0-B-le-900k-2694-rows RibetMazur Step49 S_has_prime_with_exp_one_B_le_900000_table_rows; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.

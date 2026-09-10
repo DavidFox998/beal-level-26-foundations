@@ -1,3 +1,25 @@
+# FINAL v8.54.0 — B≤900k 2694 named gap-3 rows (arrow stays a Prop)
+
+Latest tag `v8.54.0-B-le-900k-2694-rows`.
+Lean change.
+Step49 inhabits 2694 named `B ≤ 900000`
+gap-3 rows (2395 Step48 including
+`(200000,200003)` p=12186951011 plus
+299 sampled `(800000, 900000]` rows
+from a 50307-row p≤547 pool, first
+`(800005,800008)` p=131, last
+`(899999,900002)` p=53).
+The s2_26 pack stays a coefficient
+check, not Ribet.
+`kraus_elimination_q_13_level_26` stays
+a Prop. `B > 900000` Bugeaud `P(Φ₁₃) > C`
+and `rad > √13 C⁶` stay Props, so
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stays a Prop. The Hensel ∀ stays a Prop.
+The Ljunggren ∀ stays a Prop.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.53.0 — B≤800k 2395 named gap-3 rows (arrow stays a Prop)
 
 Latest tag `v8.53.0-B-le-800k-2395-rows`.
