@@ -12,9 +12,17 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.52.0)
+# FullProof track (v8.53.0)
 
-Aggregator for Track B.  Step47 inhabits
+Aggregator for Track B.  Step48 inhabits
+2395 named `B ≤ 800000` gap-3 rows
+(2096 Step47 including the inhabited
+outlier `(200000,200003)` plus 299
+sampled `(700000, 800000]` rows, first
+`(700001,700004)` p=131, last
+`(800000,800003)` p=53).
+The s2_26 pack stays a coefficient check,
+not Ribet.  Step47 inhabits
 2096 named `B ≤ 700000` gap-3 rows
 (1797 Step46 including the inhabited
 outlier `(200000,200003)` plus 299

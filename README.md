@@ -1,8 +1,8 @@
 [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.52.0-B-le-700k-2096-rows
+# Beal Level 26 Foundations — v8.53.0-B-le-800k-2395-rows
 
-**v8.52.0-B-le-700k-2096-rows — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.53.0-B-le-800k-2395-rows — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 GitHub will not render a README much over ~100KB, so the old wall
 stayed cached at v4.28.0.  This file is the short wall.  The full
@@ -13,7 +13,7 @@ and [`certs/README.md`](certs/README.md).
 - Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
   About Website stays [10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221).
 - Houseclean mint [10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
-  (`v8.19.9-fourth-power-residue` / `v8.52.0-B-le-700k-2096-rows`) under hook `22379293`.
+  (`v8.19.9-fourth-power-residue` / `v8.53.0-B-le-800k-2395-rows`) under hook `22379293`.
   Concept DOI [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).
 - Track B odd-A ladder (4,13,13): v8.19.6 `B ≤ 100` with `C = B+1` and
   `C = B+2` closed by `decide`; v8.19.7 `A⁴ ≥ 13 k B¹²`, `A⁴ ≥ 39 B¹²`,
@@ -187,7 +187,22 @@ and [`certs/README.md`](certs/README.md).
   stays a coefficient check, not Ribet;
   `kraus_elimination_q_13_level_26` stays Prop;
   `B > 700000` Bugeaud stays Prop.
-- Inhabited: `S_has_prime_with_exp_one_B_le_700000_table_rows`,
+  v8.53.0 two thousand three hundred ninety-five
+  named `B ≤ 800000` gap-3 rows have exp-one,
+  order ≠ 13 and `S_not_fourth` (2096 inherited
+  plus 299 sampled `(700000, 800000]` from a
+  50350-row p≤547 pool, first
+  `(700001,700004)` p=131, endpoint
+  `(800000,800003)` p=53); s2_26 pack
+  stays a coefficient check, not Ribet;
+  `kraus_elimination_q_13_level_26` stays Prop;
+  `B > 800000` Bugeaud stays Prop.
+- Inhabited: `S_has_prime_with_exp_one_B_le_800000_table_rows`,
+  `exists_p_with_order_ne_13_B_le_800000_from_exp_one_table_rows`,
+  `S_not_fourth_B_le_800000_from_exp_one_table_rows`,
+  `row_700001_700004`,
+  `row_800000_800003`,
+  `S_has_prime_with_exp_one_B_le_700000_table_rows`,
   `exists_p_with_order_ne_13_B_le_700000_from_exp_one_table_rows`,
   `S_not_fourth_B_le_700000_from_exp_one_table_rows`,
   `row_600001_600004`,
@@ -308,6 +323,8 @@ and [`certs/README.md`](certs/README.md).
   `B_le_100_closed`.
 - Uninhabited:   `kraus_elimination_q_13_level_26`,
   `ribet_26_to_2_from_displayed_miss`,
+  `bugeaud_P_phi13_gt_C_when_B_gt_800000`,
+  `rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_800000`,
   `bugeaud_P_phi13_gt_C_when_B_gt_700000`,
   `rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_700000`,
   `bugeaud_P_phi13_gt_C_when_B_gt_600000`,
@@ -383,15 +400,15 @@ PARI 2-Descent Certificates image
 Still not `∀ ℕ`. No `False.elim`. no `False.elim`.
 `BealExponent13_Iter_Package` `d3cf8a7` `1d0044e`.
 
-HEAD also has Track B `v8.52.0-B-le-700k-2096-rows`
-(2096 named `B ≤ 700000` gap-3 exp-one
+HEAD also has Track B `v8.53.0-B-le-800k-2395-rows`
+(2395 named `B ≤ 800000` gap-3 exp-one
 rows, including inherited outlier
 `(200000,200003)` p=12186951011 and
-new-window endpoint `(700000,700003)`
-p=521; s2_26 pack still
+new-window endpoint `(800000,800003)`
+p=53; s2_26 pack still
 coefficient check not Ribet;
 `kraus_elimination_q_13_level_26` stays a Prop;
-`B > 700000` Bugeaud / rad stay
+`B > 800000` Bugeaud / rad stay
 Props; Hensel forall stays a Prop);
 that does **not** change the Track A lock or the About Website.
 
@@ -547,3 +564,4 @@ v8.49.0-B-le-400k-1199-rows RibetMazur Step44 S_has_prime_with_exp_one_B_le_4000
 v8.50.0-B-le-500k-1498-rows RibetMazur Step45 S_has_prime_with_exp_one_B_le_500000_table_rows; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.51.0-B-le-600k-1797-rows RibetMazur Step46 S_has_prime_with_exp_one_B_le_600000_table_rows; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.52.0-B-le-700k-2096-rows RibetMazur Step47 S_has_prime_with_exp_one_B_le_700000_table_rows; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.53.0-B-le-800k-2395-rows RibetMazur Step48 S_has_prime_with_exp_one_B_le_800000_table_rows; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
