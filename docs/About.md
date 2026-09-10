@@ -1,19 +1,19 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.64.0-B-le-1900k-5684-rows`
-Lean change: Step59 inhabits 5684 named
-`B ≤ 1900000` gap-3 rows (5385 Step58
+Latest tag / HEAD: `v8.65.0-B-le-2000k-5983-rows`
+Lean change: Step60 inhabits 5983 named
+`B ≤ 2000000` gap-3 rows (5684 Step59
 including `(200000,200003)` p=12186951011
-plus 299 sampled `(1800000, 1900000]`
-rows from a 50350-row p≤547 pool, first
-`(1800004,1800007)` p=53, last
-`(1899995,1899998)` p=443).
+plus 299 sampled `(1900000, 2000000]`
+rows from a 50325-row p≤547 pool, first
+`(1900001,1900004)` p=53, last
+`(2000000,2000003)` p=53).
 The s2_26 pack stays a coefficient
 check, not Ribet.
 `kraus_elimination_q_13_level_26` stays
-uninhabited.  `B > 1900000` Bugeaud
+uninhabited.  `B > 2000000` Bugeaud
 `P(Φ₁₃) > C` and
-`rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_1900000`
+`rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_2000000`
 stay uninhabited, so
 `S_has_prime_with_exp_one_when_C_ge_B_plus_3`
 stays a Prop.
