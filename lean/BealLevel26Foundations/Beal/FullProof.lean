@@ -12,8 +12,14 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.67.0)
+# FullProof track (v8.68.0)
 
+Aggregator for Track B.  v8.68.0 records
+locked `a₅₃(26a1)=0` / `a₅₃(26b1)=12`,
+inhabits `hasSmallZsigWitness_1500003` by
+`decide` on `ZMod 443` / numeral `443*443`,
+and inhabits displayed `2 ≢ 0 [MOD 13]`.
+The `∀` placeholders stay Props.
 Aggregator for Track B.  Level 26 newforms
 skeleton records displayed ledger prefixes
 `newform_26_a_qexp` / `newform_26_b_qexp`

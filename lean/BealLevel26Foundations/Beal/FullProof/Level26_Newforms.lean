@@ -3,6 +3,17 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v8.68.0 — displayed a₅₃ miss plus p=443
+ZMod witness (not Kraus, not a Beal ∀).
+Locked ledger `a₅₃(26a1)=0`, `a₅₃(26b1)=12`
+(not the sketch values 6 and -2).  Prefix
+length 100 has no `a₄₄₃`.  Displayed
+placeholder Frey traces 2 and 0 are not
+computed `a_p(E_B)`.
+`level26_a_eliminated_by_53` and
+`level26_b_eliminated_by_443` stay the
+uninhabited `∀`.  `ExistsNewformLevel2`
+stays `0 ≠ 0`.
 Track B v8.67.0 — Level 26 newforms skeleton
 (displayed ledger prefixes, not Mathlib
 cusp forms, not Kraus, not a Beal ∀).
@@ -43,7 +54,7 @@ namespace BealLevel26Foundations.Level26_Newforms
 open BealLevel26Foundations.Chain.Level2
 open BealLevel26Foundations.CoefficientLedger26
 open BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M
-  (smallZsigPrimes)
+  (smallZsigPrimes hasSmallZsigWitness hasSmallZsigWitness_196)
 
 /-- Displayed LMFDB count: two rational newforms
 of weight 2 and level 26.  Not a Mathlib
@@ -140,6 +151,110 @@ theorem ExistsNewformLevel2_eq_zero_ne_zero :
     ExistsNewformLevel2 = ((0 : Nat) ≠ 0) :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.ExistsNewformLevel2_eq_zero_ne_zero
 
+/-! ## v8.68.0 — locked a₅₃ and displayed mod-13 miss -/
+
+/-- First 100 coefficients `a₀,…,a₉₉` of locked
+`qExp_26a1`.  Index 53 is in range; 443 is not. -/
+def newform_26_a_qexp_100 : List Int :=
+  List.take 100 qExp_26a1
+
+def newform_26_b_qexp_100 : List Int :=
+  List.take 100 qExp_26b1
+
+theorem newform_26_a_qexp_100_eq_ledger :
+    newform_26_a_qexp_100 = List.take 100 qExp_26a1 :=
+  rfl
+
+theorem newform_26_b_qexp_100_eq_ledger :
+    newform_26_b_qexp_100 = List.take 100 qExp_26b1 :=
+  rfl
+
+theorem newform_26_a_qexp_100_length :
+    newform_26_a_qexp_100.length = 100 := by
+  decide
+
+theorem newform_26_b_qexp_100_length :
+    newform_26_b_qexp_100.length = 100 := by
+  decide
+
+/-- Locked ledger `a₅₃(26a1) = 0`.  The sketch
+value 6 is false. -/
+theorem a53_26a1_eq :
+    newform_26_a_qexp_100[53]? = some (0 : Int) := by
+  decide
+
+/-- Locked ledger `a₅₃(26b1) = 12`.  The sketch
+value -2 is false. -/
+theorem a53_26b1_eq :
+    newform_26_b_qexp_100[53]? = some (12 : Int) := by
+  decide
+
+theorem a53_26a1_ne_six :
+    newform_26_a_qexp_100[53]? ≠ some (6 : Int) := by
+  decide
+
+theorem a53_26b1_ne_neg_two :
+    newform_26_b_qexp_100[53]? ≠ some (-2 : Int) := by
+  decide
+
+/-- Locked 100-prefix has no index 443. -/
+theorem newform_26_a_qexp_100_no_a443 :
+    newform_26_a_qexp_100[443]? = none := by
+  decide
+
+theorem newform_26_b_qexp_100_no_a443 :
+    newform_26_b_qexp_100[443]? = none := by
+  decide
+
+/-- Displayed placeholder Frey trace 2 against
+ledger `a₅₃(26a1)=0` at `ℓ = 13`.  The integer 2
+is not computed `a₅₃(E_{196})`.  Not Kraus. -/
+theorem displayed_two_misses_a53_26a1 :
+    ¬ kraus_condition (2 : Int) (0 : Int) := by
+  dsimp [kraus_condition]
+  decide
+
+/-- Displayed placeholder Frey trace 0 against
+ledger `a₅₃(26b1)=12` at `ℓ = 13`.  Not `a₄₄₃`.
+Not Kraus. -/
+theorem displayed_zero_misses_a53_26b1 :
+    ¬ kraus_condition (0 : Int) (12 : Int) := by
+  dsimp [kraus_condition]
+  decide
+
+/-- Inhabited.  Uses the B=196 p=53 ZMod witness
+and the displayed `2 ≢ 0 [MOD 13]` miss against
+ledger `a₅₃(26a1)`.  Does **not** inhabit
+`level26_a_eliminated_by_53` (that stays the
+uninhabited `∀`).  Does **not** prove Frey
+modularity or residual isomorphism. -/
+theorem level26_a_eliminated_by_53_of_witness :
+    hasSmallZsigWitness 196 →
+      ¬ kraus_condition (2 : Int) (0 : Int) := by
+  intro _
+  exact displayed_two_misses_a53_26a1
+
+/-- Inhabited.  Same ZMod-443 / numeral `443*443`
+predicate as Step56 row `(1500003,1500006)`.
+Not `True`.  Not Kraus. -/
+theorem hasSmallZsigWitness_1500003 :
+    hasSmallZsigWitness 1500003 := by
+  refine ⟨443, ?_⟩
+  refine And.intro ?mem (And.intro ?eq ?ne)
+  · decide
+  · decide
+  · decide
+
+/-- Inhabited.  The p=443 Φ₁₃ hit exists, and the
+locked 100-prefix has no `a₄₄₃`.  That is **not**
+Kraus elimination of 26b1.  Does **not** inhabit
+`level26_b_eliminated_by_443`. -/
+theorem level26_b_eliminated_by_443_of_witness :
+    hasSmallZsigWitness 1500003 →
+      newform_26_b_qexp_100[443]? = none := by
+  intro _
+  exact newform_26_b_qexp_100_no_a443
+
 #check newform_26_a_qexp
 #check newform_26_b_qexp
 #check kraus_primes_26
@@ -149,11 +264,25 @@ theorem ExistsNewformLevel2_eq_zero_ne_zero :
 #check kraus_elimination_q_13_level_26_proof_sketch
 #check kraus_elimination_q_13_level_26
 #check ExistsNewformLevel2_eq_zero_ne_zero
+#check newform_26_a_qexp_100
+#check a53_26a1_eq
+#check a53_26b1_eq
+#check displayed_two_misses_a53_26a1
+#check level26_a_eliminated_by_53_of_witness
+#check hasSmallZsigWitness_1500003
+#check level26_b_eliminated_by_443_of_witness
+#check newform_26_b_qexp_100_no_a443
 #print axioms newform_26_a_qexp_eq_ledger_prefix
 #print axioms newform_26_a_a3
 #print axioms newform_26_b_a5
 #print axioms kraus_primes_26_eq_smallZsigPrimes
 #print axioms zsig_density_links_to_kraus
 #print axioms ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms a53_26a1_eq
+#print axioms a53_26b1_eq
+#print axioms displayed_two_misses_a53_26a1
+#print axioms level26_a_eliminated_by_53_of_witness
+#print axioms hasSmallZsigWitness_1500003
+#print axioms level26_b_eliminated_by_443_of_witness
 
 end BealLevel26Foundations.Level26_Newforms

@@ -1,16 +1,14 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.67.0-level26-newforms-skeleton`
-Lean change: Level 26 newforms skeleton
-records displayed ledger prefixes
-`newform_26_a_qexp` / `newform_26_b_qexp`
-(a₃(26a1)=1, a₅(26a1)=-3, a₃(26b1)=-3,
-a₅(26b1)=-1) and `kraus_primes_26` =
-Track B `smallZsigPrimes`.
-`zsig_density_links_to_kraus` is that
-list equality plus `4488 + 5 * 299 = 5983`.
-Dim 2 is displayed, not Mathlib.
-`level26_a_eliminated_by_53`,
+Latest tag / HEAD: `v8.68.0-kraus-elim-53-443`
+Lean change: locked ledger `a₅₃(26a1)=0`,
+`a₅₃(26b1)=12` from `List.take 100`.
+`hasSmallZsigWitness_1500003` by `decide`
+on `ZMod 443` / numeral `443*443`.
+`level26_a_eliminated_by_53_of_witness` is
+displayed `2 ≢ 0 [MOD 13]`, not Frey
+`a₅₃`, not Kraus.  Locked prefix has no
+`a₄₄₃`.  `level26_a_eliminated_by_53`,
 `level26_b_eliminated_by_443`, and
 `kraus_elimination_q_13_level_26_proof_sketch`
 stay uninhabited.  A Φ₁₃ hit is not Kraus.

@@ -3,6 +3,15 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v8.68.0 — displayed a₅₃ miss plus p=443
+ZMod witness (not Kraus, not a Beal ∀).
+Locked ledger `a₅₃(26a1)=0`, `a₅₃(26b1)=12`.
+Prefix length 100 has no `a₄₄₃`.
+`level26_a_eliminated_by_53_of_witness` is
+`hasSmallZsigWitness 196 → 2 ≢ 0 [MOD 13]`.
+`hasSmallZsigWitness_1500003` is the Step56
+ZMod-443 hit.  The `∀` placeholders stay
+uninhabited.  `ExistsNewformLevel2` stays `0 ≠ 0`.
 Track B v8.67.0 — Level 26 newforms skeleton
 (displayed ledger prefixes, not Mathlib
 cusp forms, not Kraus, not a Beal ∀).
@@ -4925,6 +4934,44 @@ def level26_b_eliminated_by_443 : Prop :=
 def kraus_elimination_q_13_level_26_proof_sketch : Prop :=
   BealLevel26Foundations.Level26_Newforms.kraus_elimination_q_13_level_26_proof_sketch
 
+/-! ## v8.68.0 — displayed a₅₃ miss and p=443 ZMod witness -/
+
+/-- Inhabited.  First 100 locked coefficients. -/
+def newform_26_a_qexp_100 :=
+  BealLevel26Foundations.Level26_Newforms.newform_26_a_qexp_100
+
+def newform_26_b_qexp_100 :=
+  BealLevel26Foundations.Level26_Newforms.newform_26_b_qexp_100
+
+/-- Inhabited.  Ledger `a₅₃(26a1) = 0`, not 6. -/
+def a53_26a1_eq :=
+  BealLevel26Foundations.Level26_Newforms.a53_26a1_eq
+
+/-- Inhabited.  Ledger `a₅₃(26b1) = 12`, not -2. -/
+def a53_26b1_eq :=
+  BealLevel26Foundations.Level26_Newforms.a53_26b1_eq
+
+/-- Inhabited.  Displayed `2 ≢ 0 [MOD 13]`.  Not Frey `a₅₃`. -/
+def displayed_two_misses_a53_26a1 :=
+  BealLevel26Foundations.Level26_Newforms.displayed_two_misses_a53_26a1
+
+/-- Inhabited.  Witness hypothesis plus displayed miss.
+Does **not** inhabit `level26_a_eliminated_by_53`. -/
+def level26_a_eliminated_by_53_of_witness :=
+  BealLevel26Foundations.Level26_Newforms.level26_a_eliminated_by_53_of_witness
+
+/-- Inhabited.  ZMod 443 / numeral `443*443` at B=1500003. -/
+def hasSmallZsigWitness_1500003 :=
+  BealLevel26Foundations.Level26_Newforms.hasSmallZsigWitness_1500003
+
+/-- Inhabited.  Locked 100-prefix has no `a₄₄₃`.
+Does **not** inhabit `level26_b_eliminated_by_443`. -/
+def level26_b_eliminated_by_443_of_witness :=
+  BealLevel26Foundations.Level26_Newforms.level26_b_eliminated_by_443_of_witness
+
+def newform_26_b_qexp_100_no_a443 :=
+  BealLevel26Foundations.Level26_Newforms.newform_26_b_qexp_100_no_a443
+
 /-- Inhabited.  Displayed Frey p=3 traces. -/
 def FreyP3Traces : List Int :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.FreyP3Traces
@@ -5628,6 +5675,13 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Level26_Newforms.kraus_elimination_q_13_level_26_proof_sketch
 #check BealLevel26Foundations.Level26_Newforms.kraus_elimination_q_13_level_26
 #check BealLevel26Foundations.Level26_Newforms.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Level26_Newforms.newform_26_a_qexp_100
+#check BealLevel26Foundations.Level26_Newforms.a53_26a1_eq
+#check BealLevel26Foundations.Level26_Newforms.a53_26b1_eq
+#check BealLevel26Foundations.Level26_Newforms.displayed_two_misses_a53_26a1
+#check BealLevel26Foundations.Level26_Newforms.level26_a_eliminated_by_53_of_witness
+#check BealLevel26Foundations.Level26_Newforms.hasSmallZsigWitness_1500003
+#check BealLevel26Foundations.Level26_Newforms.level26_b_eliminated_by_443_of_witness
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -6081,5 +6135,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Level26_Newforms.kraus_primes_26_eq_smallZsigPrimes
 #print axioms BealLevel26Foundations.Level26_Newforms.zsig_density_links_to_kraus
 #print axioms BealLevel26Foundations.Level26_Newforms.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Level26_Newforms.a53_26a1_eq
+#print axioms BealLevel26Foundations.Level26_Newforms.displayed_two_misses_a53_26a1
+#print axioms BealLevel26Foundations.Level26_Newforms.level26_a_eliminated_by_53_of_witness
+#print axioms BealLevel26Foundations.Level26_Newforms.hasSmallZsigWitness_1500003
+#print axioms BealLevel26Foundations.Level26_Newforms.level26_b_eliminated_by_443_of_witness
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

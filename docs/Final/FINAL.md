@@ -1,3 +1,26 @@
+# FINAL v8.68.0 — displayed a53 miss (arrow stays a Prop)
+
+Latest tag `v8.68.0-kraus-elim-53-443`.
+Lean change.
+Locked ledger `a₅₃(26a1)=0`, `a₅₃(26b1)=12`
+from `List.take 100`. Index 443 is out of
+range. `hasSmallZsigWitness_1500003` by
+`decide` on `ZMod 443` / `443*443`.
+`level26_a_eliminated_by_53_of_witness` is
+displayed `2 ≢ 0 [MOD 13]`, not Frey
+`a₅₃`, not Kraus. The `∀` placeholders
+stay Props.
+The s2_26 pack stays a coefficient
+check, not Ribet.
+`kraus_elimination_q_13_level_26` stays
+a Prop. `B > 2000000` Bugeaud `P(Φ₁₃) > C`
+and `rad > √13 C⁶` stay Props, so
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stays a Prop. The Hensel ∀ stays a Prop.
+The Ljunggren ∀ stays a Prop.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.67.0 — Level 26 newforms skeleton (arrow stays a Prop)
 
 Latest tag `v8.67.0-level26-newforms-skeleton`.

@@ -1,18 +1,18 @@
-# v8.67.0 RibetMazur Level 26 newforms skeleton
+# v8.68.0 RibetMazur displayed a53 miss
 
 `lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean`
 and `RibetMazur.lean`
 
-Displayed ledger prefixes
-`newform_26_a_qexp` / `newform_26_b_qexp`
-(a₃(26a1)=1, a₅(26a1)=-3, a₃(26b1)=-3,
-a₅(26b1)=-1) and `kraus_primes_26` =
-Track B `smallZsigPrimes`.
-`zsig_density_links_to_kraus` is that
-list equality plus `4488 + 5 * 299 = 5983`.
-Dim 2 is displayed, not Mathlib.
-`kraus_condition` is a displayed
-congruence, not matching.
+Locked `a₅₃(26a1)=0`, `a₅₃(26b1)=12` from
+`List.take 100` of the coefficient ledger.
+`hasSmallZsigWitness_1500003` is ZMod 443
+/ `443*443` at B=1500003.
+`level26_a_eliminated_by_53_of_witness` is
+a displayed `2 ≢ 0 [MOD 13]` implication,
+not Frey traces, not Kraus.
+`level26_b_eliminated_by_443_of_witness`
+records that the locked 100-prefix has no
+`a₄₄₃`.  Dim 2 is displayed, not Mathlib.
 
 The modular side stays a coefficient
 check, not Ribet:

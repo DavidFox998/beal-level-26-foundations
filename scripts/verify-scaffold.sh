@@ -992,6 +992,7 @@ do
   grep -q "v8.65.0-B-le-2000k-5983-rows" "$readme"
   grep -q "v8.66.0-B-le-2000k-density-capstone" "$readme"
   grep -q "v8.67.0-level26-newforms-skeleton" "$readme"
+  grep -q "v8.68.0-kraus-elim-53-443" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -2675,6 +2676,20 @@ grep -q "def kraus_elimination_q_13_level_26_proof_sketch" \
 grep -q "def kraus_elimination_q_13_level_26" \
   lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
 grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "def newform_26_a_qexp_100" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "theorem a53_26a1_eq" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "theorem a53_26b1_eq" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "theorem displayed_two_misses_a53_26a1" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "theorem level26_a_eliminated_by_53_of_witness" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "theorem hasSmallZsigWitness_1500003" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "theorem level26_b_eliminated_by_443_of_witness" \
   lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
 grep -q "theorem beal_4_13_13_k_odd" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean

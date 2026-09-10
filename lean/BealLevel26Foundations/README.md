@@ -150,6 +150,8 @@ v8.63.0-B-le-1800k-5385-rows RibetMazur Step58 S_has_prime_with_exp_one_B_le_180
 v8.64.0-B-le-1900k-5684-rows RibetMazur Step59 S_has_prime_with_exp_one_B_le_1900000_table_rows; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.65.0-B-le-2000k-5983-rows RibetMazur Step60 S_has_prime_with_exp_one_B_le_2000000_table_rows; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.66.0-B-le-2000k-density-capstone RibetMazur Density_2M smallZsigPrimes zsig_density_2M_stats; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.67.0-level26-newforms-skeleton RibetMazur Level26_Newforms kraus_primes_26 zsig_density_links_to_kraus; kraus_elimination_q_13_level_26 level26_a_eliminated_by_53 kraus_elimination_q_13_level_26_proof_sketch stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.68.0-kraus-elim-53-443 RibetMazur Level26_Newforms a53_26a1_eq level26_a_eliminated_by_53_of_witness hasSmallZsigWitness_1500003; kraus_elimination_q_13_level_26 level26_a_eliminated_by_53 kraus_elimination_q_13_level_26_proof_sketch stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 
 ### File order v8.19.0–v8.47.0
 
@@ -218,6 +220,7 @@ v8.66.0-B-le-2000k-density-capstone RibetMazur Density_2M smallZsigPrimes zsig_d
 | v8.65.0 | `Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Step60_B_le_2000k_299.lean` |
 | v8.66.0 | `Beal/FullProof/Beal_4_13_13_Zsigmondy_Density_2M.lean` |
 | v8.67.0 | `Beal/FullProof/Level26_Newforms.lean` |
+| v8.68.0 | `Beal/FullProof/Level26_Newforms.lean` (a₅₃ + p=443 witness) |
 
 Not imported by the 24-module none chain.  Track A: no new Beal-∀.
 
@@ -369,12 +372,12 @@ v4.14.0-iter-citation-contradiction-locked: `CITATION.cff` locks `c2c47db` / fou
 
 [![v8.19.9 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.67.0-level26-newforms-skeleton
+# Beal Level 26 Foundations — v8.68.0-kraus-elim-53-443
 
-**v8.67.0-level26-newforms-skeleton — Beal (4,13,13) Level 26 newforms skeleton (Track B). Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.68.0-kraus-elim-53-443 — Beal (4,13,13) displayed a₅₃ miss + p=443 ZMod witness (Track B). Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 - Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
-- Houseclean mint `10.5281/zenodo.22654189` (`v8.19.9-fourth-power-residue` / `v8.67.0-level26-newforms-skeleton`) under hook `22379293`. Track A none-chain mint stays `10.5281/zenodo.22635221`.
+- Houseclean mint `10.5281/zenodo.22654189` (`v8.19.9-fourth-power-residue` / `v8.68.0-kraus-elim-53-443`) under hook `22379293`. Track A none-chain mint stays `10.5281/zenodo.22635221`.
 - What's new:
   - v8.19.6 `B ≤ 100` `C = B+1`, `C = B+2` closed by `decide`;
   - v8.19.7 `A⁴ ≥ 13 k B¹²`, `A⁴ ≥ 39 B¹²`, `A ≥ 2 B³ + 1`;
@@ -433,6 +436,7 @@ v4.14.0-iter-citation-contradiction-locked: `CITATION.cff` locks `c2c47db` / fou
   - v8.65.0 `S_has_prime_with_exp_one_B_le_2000000_table_rows` / `exists_p_with_order_ne_13_B_le_2000000_from_exp_one_table_rows` / `S_not_fourth_B_le_2000000_from_exp_one_table_rows` (5983 named rows). Sampled 299 `(1900000, 2000000]` from 50325-row p≤547 pool: first `(1900001,1900004)` p=53, last `(2000000,2000003)` p=53. s2_26 pack still coefficient check not Ribet. `kraus_elimination_q_13_level_26` stays uninhabited. Bugeaud-type for `B > 2000000`. `ExistsNewformLevel2` stays `0 ≠ 0`.
   - v8.66.0 density capstone `smallZsigPrimes` / `zsig_density_2M_stats` (`4488 + 5 * 299 = 5983`) / `hasSmallZsigWitness_196` (p=53 `decide` on `ZMod`). `beal_4_13_13_gap3_B_le_2M_eliminated` is `Classical.em`, not Kraus. s2_26 pack still coefficient check not Ribet. `kraus_elimination_q_13_level_26` stays uninhabited. Bugeaud-type for `B > 2000000`. `ExistsNewformLevel2` stays `0 ≠ 0`.
   - v8.67.0 Level 26 newforms skeleton `newform_26_a_qexp` / `newform_26_b_qexp` from locked ledger (a₃(26a1)=1, a₅(26a1)=-3, a₃(26b1)=-3, a₅(26b1)=-1), `kraus_primes_26` = `smallZsigPrimes`, `zsig_density_links_to_kraus` is list equality plus `4488 + 5 * 299 = 5983`. Dim 2 displayed not Mathlib. `level26_a_eliminated_by_53` / `level26_b_eliminated_by_443` / `kraus_elimination_q_13_level_26_proof_sketch` stay uninhabited. s2_26 pack still coefficient check not Ribet. `kraus_elimination_q_13_level_26` stays uninhabited. `ExistsNewformLevel2` stays `0 ≠ 0`.
+  - v8.68.0 locked `a₅₃(26a1)=0` / `a₅₃(26b1)=12` from `List.take 100` (sketch 6 / -2 false). `hasSmallZsigWitness_1500003` by `decide` on `ZMod 443` / `443*443`. `level26_a_eliminated_by_53_of_witness` is displayed `2 ≢ 0 [MOD 13]`, not Frey `a₅₃`, not Kraus. Locked prefix has no `a₄₄₃`. `∀` placeholders stay uninhabited. `ExistsNewformLevel2` stays `0 ≠ 0`.
 - Uninhabited: bare odd-`A` close, unconditional `v_p(S)=1`, Zsigmondy-of-`S`, unconditional `S_not_fourth`, Kraus / X₀(2q) matching, Ribet to `N'`, X₀(26) matching, Modular W last lock, `B > 100` close, `ExistsNewformLevel2` is `0 ≠ 0`, `beal_from_ribet` still needs `ModularImpliesLevel2Newform`.
 - Build: `lake build BealLevel26Foundations` and `BealLevel26FoundationsFullProof` green twice, `scripts/verify-scaffold.sh` passed, `#print axioms` `[propext, Classical.choice, Quot.sound]`.
 
@@ -602,6 +606,8 @@ v8.63.0-B-le-1800k-5385-rows RibetMazur Step58 S_has_prime_with_exp_one_B_le_180
 v8.64.0-B-le-1900k-5684-rows RibetMazur Step59 S_has_prime_with_exp_one_B_le_1900000_table_rows; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.65.0-B-le-2000k-5983-rows RibetMazur Step60 S_has_prime_with_exp_one_B_le_2000000_table_rows; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.66.0-B-le-2000k-density-capstone RibetMazur Density_2M smallZsigPrimes zsig_density_2M_stats; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.67.0-level26-newforms-skeleton RibetMazur Level26_Newforms kraus_primes_26 zsig_density_links_to_kraus; kraus_elimination_q_13_level_26 level26_a_eliminated_by_53 kraus_elimination_q_13_level_26_proof_sketch stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.68.0-kraus-elim-53-443 RibetMazur Level26_Newforms a53_26a1_eq level26_a_eliminated_by_53_of_witness hasSmallZsigWitness_1500003; kraus_elimination_q_13_level_26 level26_a_eliminated_by_53 kraus_elimination_q_13_level_26_proof_sketch stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 
 ### v8.19.9-fourth-power-residue — houseclean (Track A no new Beal-∀)
 
