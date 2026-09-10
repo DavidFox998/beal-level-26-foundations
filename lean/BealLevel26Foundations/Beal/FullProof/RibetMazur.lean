@@ -4831,10 +4831,6 @@ def rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_2000000 : Prop :=
 def smallZsigPrimes :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.smallZsigPrimes
 
-/-- Inhabited.  `Phi13 B = S_val B (B+3)`. -/
-def Phi13 :=
-  BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.Phi13
-
 /-- Inhabited.  `4488 + 5 * 299 = 5983`. -/
 def zsig_density_2M_stats :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.zsig_density_2M_stats
