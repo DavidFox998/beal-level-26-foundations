@@ -1,18 +1,25 @@
-# v8.68.0 RibetMazur displayed a53 miss
+# v8.68.1 RibetMazur computed Frey a_p
 
 `lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean`
 and `RibetMazur.lean`
 
 Locked `a₅₃(26a1)=0`, `a₅₃(26b1)=12` from
-`List.take 100` of the coefficient ledger.
+`List.take 500` of the certified-model
+500-lists (SHA-locked 101-prefix unchanged).
+`a₄₄₃(26a1)=21`, `a₄₄₃(26b1)=-39`.
+`a53_E_196 = -2` and `a443_E_1500003 = 24`
+by point-count `decide` on the displayed
+Frey model `y² = x(x − B⁴)(x + C⁴)`.
+Both miss the locked newform traces at
+`ℓ = 13`.  The placeholder integer 2 is
+not used.
 `hasSmallZsigWitness_1500003` is ZMod 443
 / `443*443` at B=1500003.
-`level26_a_eliminated_by_53_of_witness` is
-a displayed `2 ≢ 0 [MOD 13]` implication,
-not Frey traces, not Kraus.
+`level26_a_eliminated_by_53_of_witness` and
 `level26_b_eliminated_by_443_of_witness`
-records that the locked 100-prefix has no
-`a₄₄₃`.  Dim 2 is displayed, not Mathlib.
+are those computed misses under the Φ₁₃
+witness hypotheses, not Kraus.
+Dim 2 is displayed, not Mathlib.
 
 The modular side stays a coefficient
 check, not Ribet:

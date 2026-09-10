@@ -12,8 +12,15 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.68.0)
+# FullProof track (v8.68.1)
 
+Aggregator for Track B.  v8.68.1 records
+`List.take 500` locked `a₄₄₃(26a1)=21` /
+`a₄₄₃(26b1)=-39`, computes `a53_E_196 = -2`
+and `a443_E_1500003 = 24` by point-count
+`decide`, and shows both miss the locked
+traces at `ℓ = 13`.  The placeholder 2 is
+not used.  The `∀` placeholders stay Props.
 Aggregator for Track B.  v8.68.0 records
 locked `a₅₃(26a1)=0` / `a₅₃(26b1)=12`,
 inhabits `hasSmallZsigWitness_1500003` by

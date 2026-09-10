@@ -799,6 +799,31 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.68.1-frey-ap-53-443 — DONE (List.take 500 a443_26a1=21 a443_26b1=-39; a53_E_196=-2 a443_E_1500003=24 by point-count decide; both miss locked traces mod 13; placeholder 2 not used; of_witness theorems do not inhabit the ∀; kraus_elimination_q_13_level_26 stays uninhabited; ExistsNewformLevel2 stays 0≠0; arrow stays a Prop)
+
+Lean change.  `Level26_Newforms.lean` records
+`List.take 500` of `qExp_26a1_500` /
+`qExp_26b1_500` (SHA-locked 101-prefix
+unchanged).  `a₅₃(26a1)=0`, `a₅₃(26b1)=12`,
+`a₄₄₃(26a1)=21`, `a₄₄₃(26b1)=-39`.
+`a53_E_196` / `a443_E_1500003` are
+point-count traces of the displayed model
+`y² = x(x − B⁴)(x + C⁴)` at `(196,199)`
+and `(1500003,1500006)`, proved by
+`decide` (not `native_decide`).
+Those miss both locked forms at `ℓ = 13`.
+The placeholder integer 2 is not used.
+Does **not** inhabit
+`level26_a_eliminated_by_53` /
+`level26_b_eliminated_by_443` /
+`kraus_elimination_q_13_level_26`.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.68.0-kraus-elim-53-443 — DONE (locked a53(26a1)=0 a53(26b1)=12; hasSmallZsigWitness_1500003 ZMod 443 decide; displayed 2≢0 mod 13; of_witness theorems do not inhabit the ∀; kraus_elimination_q_13_level_26 stays uninhabited; ExistsNewformLevel2 stays 0≠0; arrow stays a Prop)
 
 Lean change.  `Level26_Newforms.lean` records

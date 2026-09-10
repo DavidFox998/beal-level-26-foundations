@@ -1,14 +1,15 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.68.0-kraus-elim-53-443`
-Lean change: locked ledger `a₅₃(26a1)=0`,
-`a₅₃(26b1)=12` from `List.take 100`.
-`hasSmallZsigWitness_1500003` by `decide`
-on `ZMod 443` / numeral `443*443`.
-`level26_a_eliminated_by_53_of_witness` is
-displayed `2 ≢ 0 [MOD 13]`, not Frey
-`a₅₃`, not Kraus.  Locked prefix has no
-`a₄₄₃`.  `level26_a_eliminated_by_53`,
+Latest tag / HEAD: `v8.68.1-frey-ap-53-443`
+Lean change: `List.take 500` of the
+certified-model 500-lists.
+`a₅₃(26a1)=0`, `a₅₃(26b1)=12`,
+`a₄₄₃(26a1)=21`, `a₄₄₃(26b1)=-39`.
+`a53_E_196 = -2` and `a443_E_1500003 = 24`
+by point-count `decide`.  Both miss the
+locked traces at `ℓ = 13`.  The placeholder
+integer 2 is not used.
+`level26_a_eliminated_by_53`,
 `level26_b_eliminated_by_443`, and
 `kraus_elimination_q_13_level_26_proof_sketch`
 stay uninhabited.  A Φ₁₃ hit is not Kraus.

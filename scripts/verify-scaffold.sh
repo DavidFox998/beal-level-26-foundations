@@ -993,6 +993,7 @@ do
   grep -q "v8.66.0-B-le-2000k-density-capstone" "$readme"
   grep -q "v8.67.0-level26-newforms-skeleton" "$readme"
   grep -q "v8.68.0-kraus-elim-53-443" "$readme"
+  grep -q "v8.68.1-frey-ap-53-443" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -2684,6 +2685,24 @@ grep -q "theorem a53_26a1_eq" \
 grep -q "theorem a53_26b1_eq" \
   lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
 grep -q "theorem displayed_two_misses_a53_26a1" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "theorem a443_26a1_eq" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "theorem a443_26b1_eq" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "def a53_E_196" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "def a443_E_1500003" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "theorem a53_E_196_eq" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "theorem a443_E_1500003_eq" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "theorem a443_E_1500003_misses_26a1" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "theorem a443_E_1500003_misses_26b1" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "List.take 500 qExp_26a1_500" \
   lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
 grep -q "theorem level26_a_eliminated_by_53_of_witness" \
   lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean

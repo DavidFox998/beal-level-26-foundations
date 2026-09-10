@@ -1,3 +1,27 @@
+# FINAL v8.68.1 — computed Frey a53/a443 (arrow stays a Prop)
+
+Latest tag `v8.68.1-frey-ap-53-443`.
+Lean change.
+`List.take 500` of the certified-model
+500-lists: `a₅₃(26a1)=0`, `a₅₃(26b1)=12`,
+`a₄₄₃(26a1)=21`, `a₄₄₃(26b1)=-39`.
+`a53_E_196 = -2` and `a443_E_1500003 = 24`
+by point-count `decide` on
+`y² = x(x − B⁴)(x + C⁴)`. Both miss the
+locked traces at `ℓ = 13`. The placeholder
+integer 2 is not used. The `∀` placeholders
+stay Props.
+The s2_26 pack stays a coefficient
+check, not Ribet.
+`kraus_elimination_q_13_level_26` stays
+a Prop. `B > 2000000` Bugeaud `P(Φ₁₃) > C`
+and `rad > √13 C⁶` stay Props, so
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stays a Prop. The Hensel ∀ stays a Prop.
+The Ljunggren ∀ stays a Prop.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.68.0 — displayed a53 miss (arrow stays a Prop)
 
 Latest tag `v8.68.0-kraus-elim-53-443`.

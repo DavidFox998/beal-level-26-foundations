@@ -1,8 +1,8 @@
 [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.67.0-level26-newforms-skeleton (main at 45db93a) → v8.68.0-kraus-elim-53-443
+# Beal Level 26 Foundations — v8.68.0-kraus-elim-53-443 (main at e53d573) → v8.68.1-frey-ap-53-443
 
-**v8.68.0-kraus-elim-53-443 — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.68.1-frey-ap-53-443 — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 Beal (4,13,13) gap-3: C=B+3, S=(C^13-B^13)/(C-B)=Phi13= S_val B (B+3)
 
@@ -17,18 +17,21 @@ Track B — CLOSED at B≤2.0M:
 Track A — Level 26:
 - Level26_Newforms.lean is imported by RibetMazur.lean, not the other way. Does NOT import Mathlib modular forms. Does NOT import RibetMazur (would cycle). Steps 44-60 reachable via Step60 import. 24-module none chain does not import this file.
 - newform_26_a_qexp / newform_26_b_qexp match qExp_26a1.take 20 / qExp_26b1.take 20 locked ledger: a3(26a1)=1, a5(26a1)=-3, a3(26b1)=-3, a5(26b1)=-1
-- newform_26_a_qexp_100 / newform_26_b_qexp_100 are List.take 100. Locked a53(26a1)=0, a53(26b1)=12 (sketch 6 / -2 are false). Index 443 is absent from the 100-prefix.
+- newform_26_a_qexp_100 / newform_26_b_qexp_100 are List.take 500 of qExp_26a1_500 / qExp_26b1_500 (SHA-locked 101-prefix unchanged). Locked a53(26a1)=0, a53(26b1)=12, a443(26a1)=21, a443(26b1)=-39 (sketch 6 / -2 are false).
 - kraus_primes_26 = Track B smallZsigPrimes {53,79,131,157,313,443,521,547}
 - zsig_density_links_to_kraus: that list equality plus 4488 + 5*299 = 5983 axiom-free. This is NOT Kraus matching.
-- level26_a_eliminated_by_53_of_witness is hasSmallZsigWitness 196 → displayed 2 ≢ 0 [MOD 13]. The integer 2 is a placeholder, not computed a53(E_196).
-- hasSmallZsigWitness_1500003 by decide ZMod 443 / 443*443. level26_b_eliminated_by_443_of_witness is that witness → no a443 in the locked 100-prefix. Not Kraus elimination of 26b1.
+- a53_E_196 = -2 by point-count decide on y^2 = x(x-196^4)(x+199^4) mod 53. Misses both locked a53 values mod 13. The placeholder integer 2 is not used.
+- a443_E_1500003 = 24 by point-count decide on y^2 = x(x-1500003^4)(x+1500006^4) mod 443. Misses both locked a443 values mod 13.
+- hasSmallZsigWitness_1500003 by decide ZMod 443 / 443*443. of_witness theorems are those computed misses under the Φ13 hypotheses. Not Kraus elimination.
 
 Inhabited:
 - newform_26_a_qexp / newform_26_b_qexp match ledger
 - kraus_primes_26 = smallZsigPrimes
 - zsig_density_links_to_kraus
 - a53_26a1_eq / a53_26b1_eq (0 and 12)
-- displayed_two_misses_a53_26a1
+- a443_26a1_eq / a443_26b1_eq (21 and -39)
+- a53_E_196_eq / a443_E_1500003_eq (-2 and 24)
+- displayed_two_misses_a53_26a1 (computed -2, not placeholder 2)
 - level26_a_eliminated_by_53_of_witness
 - hasSmallZsigWitness_1500003
 - level26_b_eliminated_by_443_of_witness
@@ -46,6 +49,7 @@ Releases:
 - v8.66.0-B-le-2000k-density-capstone at 5d2ca35 Classical.em capstone
 - v8.67.0-level26-newforms-skeleton at 45db93a qexp locked to ledger
 - v8.68.0-kraus-elim-53-443 displayed a53 miss + p=443 ZMod witness; kraus ∀ stays Prop
+- v8.68.1-frey-ap-53-443 computed a53(E_196)=-2 a443(E_1500003)=24 miss 26a1/26b1 mod 13; kraus ∀ stays Prop
 
 GitHub will not render a README much over ~100KB, so the old wall
 stayed cached at v4.28.0.  This file is the short wall.  The full
@@ -56,7 +60,7 @@ and [`certs/README.md`](certs/README.md).
 - Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
   About Website stays [10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221).
 - Houseclean mint [10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
-  (`v8.19.9-fourth-power-residue` / `v8.68.0-kraus-elim-53-443`) under hook `22379293`.
+  (`v8.19.9-fourth-power-residue` / `v8.68.1-frey-ap-53-443`) under hook `22379293`.
   Concept DOI [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).
 - Track B odd-A ladder (4,13,13): v8.19.6 `B ≤ 100` with `C = B+1` and
   `C = B+2` closed by `decide`; v8.19.7 `A⁴ ≥ 13 k B¹²`, `A⁴ ≥ 39 B¹²`,
@@ -395,9 +399,22 @@ and [`certs/README.md`](certs/README.md).
   s2_26 pack stays a coefficient check, not Ribet;
   `kraus_elimination_q_13_level_26` stays Prop;
   `B > 2000000` Bugeaud stays Prop.
+  v8.68.1 records `List.take 500` with
+  `a₄₄₃(26a1)=21` / `a₄₄₃(26b1)=-39`;
+  `a53_E_196 = -2` and `a443_E_1500003 = 24`
+  by point-count `decide`; both miss locked
+  traces at `ℓ = 13`; placeholder 2 is not used;
+  `level26_a_eliminated_by_53` stays the `∀`;
+  s2_26 pack stays a coefficient check, not Ribet;
+  `kraus_elimination_q_13_level_26` stays Prop;
+  `B > 2000000` Bugeaud stays Prop.
 - Inhabited: `newform_26_a_qexp_100`,
   `a53_26a1_eq`,
   `a53_26b1_eq`,
+  `a443_26a1_eq`,
+  `a443_26b1_eq`,
+  `a53_E_196_eq`,
+  `a443_E_1500003_eq`,
   `displayed_two_misses_a53_26a1`,
   `level26_a_eliminated_by_53_of_witness`,
   `hasSmallZsigWitness_1500003`,
@@ -701,12 +718,13 @@ PARI 2-Descent Certificates image
 Still not `∀ ℕ`. No `False.elim`. no `False.elim`.
 `BealExponent13_Iter_Package` `d3cf8a7` `1d0044e`.
 
-HEAD also has Track B `v8.68.0-kraus-elim-53-443`
-(locked `a₅₃(26a1)=0` / `a₅₃(26b1)=12`;
-`hasSmallZsigWitness_1500003` ZMod 443;
-displayed `2 ≢ 0 [MOD 13]` is not Frey
-`a₅₃` and not Kraus; `∀` placeholders stay
-Props; s2_26 pack still
+HEAD also has Track B `v8.68.1-frey-ap-53-443`
+(`List.take 500` `a₄₄₃(26a1)=21` /
+`a₄₄₃(26b1)=-39`; `a53_E_196 = -2` and
+`a443_E_1500003 = 24` by point-count
+`decide`; both miss locked traces at
+`ℓ = 13`; placeholder 2 is not used;
+`∀` placeholders stay Props; s2_26 pack still
 coefficient check not Ribet;
 `kraus_elimination_q_13_level_26` stays a Prop;
 `B > 2000000` Bugeaud / rad stay
@@ -881,3 +899,4 @@ v8.65.0-B-le-2000k-5983-rows RibetMazur Step60 S_has_prime_with_exp_one_B_le_200
 v8.66.0-B-le-2000k-density-capstone RibetMazur Density_2M smallZsigPrimes zsig_density_2M_stats; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.67.0-level26-newforms-skeleton RibetMazur Level26_Newforms kraus_primes_26 zsig_density_links_to_kraus; kraus_elimination_q_13_level_26 level26_a_eliminated_by_53 kraus_elimination_q_13_level_26_proof_sketch stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.68.0-kraus-elim-53-443 RibetMazur Level26_Newforms a53_26a1_eq level26_a_eliminated_by_53_of_witness hasSmallZsigWitness_1500003; kraus_elimination_q_13_level_26 level26_a_eliminated_by_53 kraus_elimination_q_13_level_26_proof_sketch stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.68.1-frey-ap-53-443 RibetMazur Level26_Newforms a53_E_196 a443_E_1500003 a443_26a1_eq; kraus_elimination_q_13_level_26 level26_a_eliminated_by_53 kraus_elimination_q_13_level_26_proof_sketch stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.

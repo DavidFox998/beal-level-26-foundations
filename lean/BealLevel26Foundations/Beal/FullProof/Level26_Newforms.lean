@@ -3,17 +3,28 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v8.68.0 — displayed a₅₃ miss plus p=443
-ZMod witness (not Kraus, not a Beal ∀).
-Locked ledger `a₅₃(26a1)=0`, `a₅₃(26b1)=12`
-(not the sketch values 6 and -2).  Prefix
-length 100 has no `a₄₄₃`.  Displayed
-placeholder Frey traces 2 and 0 are not
-computed `a_p(E_B)`.
+Track B v8.68.1 — computed Frey traces
+`a₅₃(E_{196})` and `a₄₄₃(E_{1500003})`
+from the displayed model
+`y² = x(x − B⁴)(x + C⁴)` (not a Mathlib
+Frey theorem, not Kraus, not a Beal ∀).
+`newform_26_a_qexp_100` / `_b_` are
+`List.take 500` of the certified-model
+500-lists (SHA-locked 101-prefix unchanged).
+`a₄₄₃(26a1)=21`, `a₄₄₃(26b1)=-39`.
+Computed `a₅₃(E_{196})=-2` misses both
+locked `a₅₃` values mod 13.  Computed
+`a₄₄₃(E_{1500003})=24` misses both
+locked `a₄₄₃` values mod 13.  The
+placeholder integer 2 is not used.
 `level26_a_eliminated_by_53` and
 `level26_b_eliminated_by_443` stay the
 uninhabited `∀`.  `ExistsNewformLevel2`
 stays `0 ≠ 0`.
+Track B v8.68.0 — displayed a₅₃ miss plus p=443
+ZMod witness (not Kraus, not a Beal ∀).
+Locked ledger `a₅₃(26a1)=0`, `a₅₃(26b1)=12`
+(not the sketch values 6 and -2).
 Track B v8.67.0 — Level 26 newforms skeleton
 (displayed ledger prefixes, not Mathlib
 cusp forms, not Kraus, not a Beal ∀).
@@ -151,30 +162,42 @@ theorem ExistsNewformLevel2_eq_zero_ne_zero :
     ExistsNewformLevel2 = ((0 : Nat) ≠ 0) :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.ExistsNewformLevel2_eq_zero_ne_zero
 
-/-! ## v8.68.0 — locked a₅₃ and displayed mod-13 miss -/
+/-! ## v8.68.1 — take 500, computed Frey `a_p`, locked `a₄₄₃` -/
 
-/-- First 100 coefficients `a₀,…,a₉₉` of locked
-`qExp_26a1`.  Index 53 is in range; 443 is not. -/
+/-- First 500 coefficients `a₀,…,a₄₉₉` of the
+certified-model 500-list.  Index 53 and 443
+are both in range.  Prefix `a₀,…,a₁₀₀` matches
+the SHA-locked JSON. -/
 def newform_26_a_qexp_100 : List Int :=
-  List.take 100 qExp_26a1
+  List.take 500 qExp_26a1_500
 
 def newform_26_b_qexp_100 : List Int :=
-  List.take 100 qExp_26b1
+  List.take 500 qExp_26b1_500
+
+set_option maxRecDepth 4096
 
 theorem newform_26_a_qexp_100_eq_ledger :
-    newform_26_a_qexp_100 = List.take 100 qExp_26a1 :=
+    newform_26_a_qexp_100 = List.take 500 qExp_26a1_500 :=
   rfl
 
 theorem newform_26_b_qexp_100_eq_ledger :
-    newform_26_b_qexp_100 = List.take 100 qExp_26b1 :=
+    newform_26_b_qexp_100 = List.take 500 qExp_26b1_500 :=
   rfl
 
 theorem newform_26_a_qexp_100_length :
-    newform_26_a_qexp_100.length = 100 := by
+    newform_26_a_qexp_100.length = 500 := by
   decide
 
 theorem newform_26_b_qexp_100_length :
-    newform_26_b_qexp_100.length = 100 := by
+    newform_26_b_qexp_100.length = 500 := by
+  decide
+
+theorem newform_26_a_qexp_100_prefix_locked :
+    List.take 101 newform_26_a_qexp_100 = qExp_26a1 := by
+  decide
+
+theorem newform_26_b_qexp_100_prefix_locked :
+    List.take 101 newform_26_b_qexp_100 = qExp_26b1 := by
   decide
 
 /-- Locked ledger `a₅₃(26a1) = 0`.  The sketch
@@ -197,42 +220,117 @@ theorem a53_26b1_ne_neg_two :
     newform_26_b_qexp_100[53]? ≠ some (-2 : Int) := by
   decide
 
-/-- Locked 100-prefix has no index 443. -/
-theorem newform_26_a_qexp_100_no_a443 :
-    newform_26_a_qexp_100[443]? = none := by
+/-- Certified-model ledger `a₄₄₃(26a1) = 21`. -/
+theorem a443_26a1_eq :
+    newform_26_a_qexp_100[443]? = some (21 : Int) := by
   decide
 
-theorem newform_26_b_qexp_100_no_a443 :
-    newform_26_b_qexp_100[443]? = none := by
+/-- Certified-model ledger `a₄₄₃(26b1) = -39`. -/
+theorem a443_26b1_eq :
+    newform_26_b_qexp_100[443]? = some (-39 : Int) := by
   decide
 
-/-- Displayed placeholder Frey trace 2 against
-ledger `a₅₃(26a1)=0` at `ℓ = 13`.  The integer 2
-is not computed `a₅₃(E_{196})`.  Not Kraus. -/
+/-- Euler criterion on `𝔽₅₃`: `0`, `1`, or `-1`. -/
+def eulerChi53 (a : ZMod 53) : Int :=
+  let e : ZMod 53 := a ^ 26
+  if e = 0 then (0 : Int) else if e = 1 then (1 : Int) else (-1 : Int)
+
+/-- Displayed Frey cubic `x(x − B⁴)(x + C⁴)` at
+`B = 196`, `C = 199`, reduced mod 53. -/
+def freyCubic_E_196 (x : ZMod 53) : ZMod 53 :=
+  let b4 : ZMod 53 := (196 : ZMod 53) ^ 4
+  let c4 : ZMod 53 := (199 : ZMod 53) ^ 4
+  x * (x - b4) * (x + c4)
+
+/-- Point-count trace `a₅₃(E_{196}) = −∑ χ(f(x))`
+for the displayed model
+`y² = x(x − 196⁴)(x + 199⁴)`.  Not a theorem
+that this equals the Beal Frey curve. -/
+def a53_E_196 : Int :=
+  -((List.range 53).foldl
+      (fun s n => s + eulerChi53 (freyCubic_E_196 (n : ZMod 53)))
+      (0 : Int))
+
+theorem a53_E_196_eq : a53_E_196 = (-2 : Int) := by
+  decide
+
+/-- Euler criterion on `𝔽₄₄₃`. -/
+def eulerChi443 (a : ZMod 443) : Int :=
+  let e : ZMod 443 := a ^ 221
+  if e = 0 then (0 : Int) else if e = 1 then (1 : Int) else (-1 : Int)
+
+/-- Displayed Frey cubic at `B = 1500003`,
+`C = 1500006`, reduced mod 443. -/
+def freyCubic_E_1500003 (x : ZMod 443) : ZMod 443 :=
+  let b4 : ZMod 443 := (1500003 : ZMod 443) ^ 4
+  let c4 : ZMod 443 := (1500006 : ZMod 443) ^ 4
+  x * (x - b4) * (x + c4)
+
+/-- Point-count trace `a₄₄₃(E_{1500003})`.
+Not a theorem that this equals the Beal Frey
+curve. -/
+def a443_E_1500003 : Int :=
+  -((List.range 443).foldl
+      (fun s n => s + eulerChi443 (freyCubic_E_1500003 (n : ZMod 443)))
+      (0 : Int))
+
+set_option maxHeartbeats 800000 in
+theorem a443_E_1500003_eq : a443_E_1500003 = (24 : Int) := by
+  decide
+
+/-- Computed `a₅₃(E_{196}) ≡ −2 ≢ 0 ≡ a₅₃(26a1)`
+at `ℓ = 13`.  Does **not** use the placeholder 2.
+Not Kraus. -/
 theorem displayed_two_misses_a53_26a1 :
-    ¬ kraus_condition (2 : Int) (0 : Int) := by
+    ¬ kraus_condition a53_E_196 (0 : Int) := by
+  rw [a53_E_196_eq]
   dsimp [kraus_condition]
   decide
 
-/-- Displayed placeholder Frey trace 0 against
-ledger `a₅₃(26b1)=12` at `ℓ = 13`.  Not `a₄₄₃`.
-Not Kraus. -/
+/-- Computed `a₅₃(E_{196}) ≡ −2 ≢ 12 ≡ a₅₃(26b1)`
+at `ℓ = 13`.  Not Kraus. -/
 theorem displayed_zero_misses_a53_26b1 :
-    ¬ kraus_condition (0 : Int) (12 : Int) := by
+    ¬ kraus_condition a53_E_196 (12 : Int) := by
+  rw [a53_E_196_eq]
+  dsimp [kraus_condition]
+  decide
+
+theorem a53_E_196_misses_26a1 :
+    ¬ kraus_condition a53_E_196 (0 : Int) :=
+  displayed_two_misses_a53_26a1
+
+theorem a53_E_196_misses_26b1 :
+    ¬ kraus_condition a53_E_196 (12 : Int) :=
+  displayed_zero_misses_a53_26b1
+
+/-- Computed `a₄₄₃(E_{1500003}) ≡ 24 ≢ 21 ≡ a₄₄₃(26a1)`
+at `ℓ = 13`.  Not Kraus. -/
+theorem a443_E_1500003_misses_26a1 :
+    ¬ kraus_condition a443_E_1500003 (21 : Int) := by
+  rw [a443_E_1500003_eq]
+  dsimp [kraus_condition]
+  decide
+
+/-- Computed `a₄₄₃(E_{1500003}) ≡ 24 ≢ −39 ≡ a₄₄₃(26b1)`
+at `ℓ = 13`.  Not Kraus. -/
+theorem a443_E_1500003_misses_26b1 :
+    ¬ kraus_condition a443_E_1500003 (-39 : Int) := by
+  rw [a443_E_1500003_eq]
   dsimp [kraus_condition]
   decide
 
 /-- Inhabited.  Uses the B=196 p=53 ZMod witness
-and the displayed `2 ≢ 0 [MOD 13]` miss against
-ledger `a₅₃(26a1)`.  Does **not** inhabit
+and the computed `a₅₃(E_{196})` miss against
+both locked `a₅₃` values.  Does **not** inhabit
 `level26_a_eliminated_by_53` (that stays the
 uninhabited `∀`).  Does **not** prove Frey
 modularity or residual isomorphism. -/
 theorem level26_a_eliminated_by_53_of_witness :
     hasSmallZsigWitness 196 →
-      ¬ kraus_condition (2 : Int) (0 : Int) := by
+      ¬ kraus_condition a53_E_196 (0 : Int) ∧
+        ¬ kraus_condition a53_E_196 (12 : Int) := by
   intro _
-  exact displayed_two_misses_a53_26a1
+  exact ⟨displayed_two_misses_a53_26a1, displayed_zero_misses_a53_26b1⟩
 
 /-- Inhabited.  Same ZMod-443 / numeral `443*443`
 predicate as Step56 row `(1500003,1500006)`.
@@ -245,15 +343,17 @@ theorem hasSmallZsigWitness_1500003 :
   · decide
   · decide
 
-/-- Inhabited.  The p=443 Φ₁₃ hit exists, and the
-locked 100-prefix has no `a₄₄₃`.  That is **not**
-Kraus elimination of 26b1.  Does **not** inhabit
+/-- Inhabited.  The p=443 Φ₁₃ hit exists, and
+computed `a₄₄₃(E_{1500003})` misses both locked
+`a₄₄₃` values mod 13.  That is **not** Kraus
+elimination of 26b1.  Does **not** inhabit
 `level26_b_eliminated_by_443`. -/
 theorem level26_b_eliminated_by_443_of_witness :
     hasSmallZsigWitness 1500003 →
-      newform_26_b_qexp_100[443]? = none := by
+      ¬ kraus_condition a443_E_1500003 (21 : Int) ∧
+        ¬ kraus_condition a443_E_1500003 (-39 : Int) := by
   intro _
-  exact newform_26_b_qexp_100_no_a443
+  exact ⟨a443_E_1500003_misses_26a1, a443_E_1500003_misses_26b1⟩
 
 #check newform_26_a_qexp
 #check newform_26_b_qexp
@@ -267,11 +367,19 @@ theorem level26_b_eliminated_by_443_of_witness :
 #check newform_26_a_qexp_100
 #check a53_26a1_eq
 #check a53_26b1_eq
+#check a443_26a1_eq
+#check a443_26b1_eq
+#check a53_E_196
+#check a53_E_196_eq
+#check a443_E_1500003
+#check a443_E_1500003_eq
 #check displayed_two_misses_a53_26a1
+#check a53_E_196_misses_26b1
+#check a443_E_1500003_misses_26a1
+#check a443_E_1500003_misses_26b1
 #check level26_a_eliminated_by_53_of_witness
 #check hasSmallZsigWitness_1500003
 #check level26_b_eliminated_by_443_of_witness
-#check newform_26_b_qexp_100_no_a443
 #print axioms newform_26_a_qexp_eq_ledger_prefix
 #print axioms newform_26_a_a3
 #print axioms newform_26_b_a5
@@ -280,7 +388,13 @@ theorem level26_b_eliminated_by_443_of_witness :
 #print axioms ExistsNewformLevel2_eq_zero_ne_zero
 #print axioms a53_26a1_eq
 #print axioms a53_26b1_eq
+#print axioms a443_26a1_eq
+#print axioms a443_26b1_eq
+#print axioms a53_E_196_eq
+#print axioms a443_E_1500003_eq
 #print axioms displayed_two_misses_a53_26a1
+#print axioms a53_E_196_misses_26b1
+#print axioms a443_E_1500003_misses_26a1
 #print axioms level26_a_eliminated_by_53_of_witness
 #print axioms hasSmallZsigWitness_1500003
 #print axioms level26_b_eliminated_by_443_of_witness

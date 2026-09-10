@@ -3,6 +3,15 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v8.68.1 — computed Frey traces
+`a₅₃(E_{196})=-2` and `a₄₄₃(E_{1500003})=24`
+via point count `decide` (not Kraus, not a
+Beal ∀).  `List.take 500` exposes locked
+`a₄₄₃(26a1)=21`, `a₄₄₃(26b1)=-39`.
+Both miss the computed traces mod 13.
+The placeholder integer 2 is not used.
+The `∀` placeholders stay uninhabited.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
 Track B v8.68.0 — displayed a₅₃ miss plus p=443
 ZMod witness (not Kraus, not a Beal ∀).
 Locked ledger `a₅₃(26a1)=0`, `a₅₃(26b1)=12`.
@@ -4951,7 +4960,7 @@ def a53_26a1_eq :=
 def a53_26b1_eq :=
   BealLevel26Foundations.Level26_Newforms.a53_26b1_eq
 
-/-- Inhabited.  Displayed `2 ≢ 0 [MOD 13]`.  Not Frey `a₅₃`. -/
+/-- Inhabited.  Computed `a₅₃(E_{196}) ≢ a₅₃(26a1)` at `ℓ = 13`. -/
 def displayed_two_misses_a53_26a1 :=
   BealLevel26Foundations.Level26_Newforms.displayed_two_misses_a53_26a1
 
@@ -4964,13 +4973,47 @@ def level26_a_eliminated_by_53_of_witness :=
 def hasSmallZsigWitness_1500003 :=
   BealLevel26Foundations.Level26_Newforms.hasSmallZsigWitness_1500003
 
-/-- Inhabited.  Locked 100-prefix has no `a₄₄₃`.
-Does **not** inhabit `level26_b_eliminated_by_443`. -/
+/-- Inhabited.  Computed `a₄₄₃(E_{1500003})` misses
+both locked `a₄₄₃` values.  Does **not** inhabit
+`level26_b_eliminated_by_443`. -/
 def level26_b_eliminated_by_443_of_witness :=
   BealLevel26Foundations.Level26_Newforms.level26_b_eliminated_by_443_of_witness
 
-def newform_26_b_qexp_100_no_a443 :=
-  BealLevel26Foundations.Level26_Newforms.newform_26_b_qexp_100_no_a443
+/-! ## v8.68.1 — computed Frey `a_p` and locked `a₄₄₃` -/
+
+/-- Inhabited.  Point-count `a₅₃(E_{196}) = -2`. -/
+def a53_E_196 :=
+  BealLevel26Foundations.Level26_Newforms.a53_E_196
+
+def a53_E_196_eq :=
+  BealLevel26Foundations.Level26_Newforms.a53_E_196_eq
+
+/-- Inhabited.  Point-count `a₄₄₃(E_{1500003}) = 24`. -/
+def a443_E_1500003 :=
+  BealLevel26Foundations.Level26_Newforms.a443_E_1500003
+
+def a443_E_1500003_eq :=
+  BealLevel26Foundations.Level26_Newforms.a443_E_1500003_eq
+
+/-- Inhabited.  `List.take 500` ledger `a₄₄₃(26a1) = 21`. -/
+def a443_26a1_eq :=
+  BealLevel26Foundations.Level26_Newforms.a443_26a1_eq
+
+/-- Inhabited.  `List.take 500` ledger `a₄₄₃(26b1) = -39`. -/
+def a443_26b1_eq :=
+  BealLevel26Foundations.Level26_Newforms.a443_26b1_eq
+
+def a53_E_196_misses_26a1 :=
+  BealLevel26Foundations.Level26_Newforms.a53_E_196_misses_26a1
+
+def a53_E_196_misses_26b1 :=
+  BealLevel26Foundations.Level26_Newforms.a53_E_196_misses_26b1
+
+def a443_E_1500003_misses_26a1 :=
+  BealLevel26Foundations.Level26_Newforms.a443_E_1500003_misses_26a1
+
+def a443_E_1500003_misses_26b1 :=
+  BealLevel26Foundations.Level26_Newforms.a443_E_1500003_misses_26b1
 
 /-- Inhabited.  Displayed Frey p=3 traces. -/
 def FreyP3Traces : List Int :=
@@ -5679,6 +5722,12 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Level26_Newforms.a53_26a1_eq
 #check BealLevel26Foundations.Level26_Newforms.a53_26b1_eq
 #check BealLevel26Foundations.Level26_Newforms.displayed_two_misses_a53_26a1
+#check BealLevel26Foundations.Level26_Newforms.a53_E_196_eq
+#check BealLevel26Foundations.Level26_Newforms.a443_26a1_eq
+#check BealLevel26Foundations.Level26_Newforms.a443_26b1_eq
+#check BealLevel26Foundations.Level26_Newforms.a443_E_1500003_eq
+#check BealLevel26Foundations.Level26_Newforms.a443_E_1500003_misses_26a1
+#check BealLevel26Foundations.Level26_Newforms.a443_E_1500003_misses_26b1
 #check BealLevel26Foundations.Level26_Newforms.level26_a_eliminated_by_53_of_witness
 #check BealLevel26Foundations.Level26_Newforms.hasSmallZsigWitness_1500003
 #check BealLevel26Foundations.Level26_Newforms.level26_b_eliminated_by_443_of_witness
@@ -6137,6 +6186,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Level26_Newforms.ExistsNewformLevel2_eq_zero_ne_zero
 #print axioms BealLevel26Foundations.Level26_Newforms.a53_26a1_eq
 #print axioms BealLevel26Foundations.Level26_Newforms.displayed_two_misses_a53_26a1
+#print axioms BealLevel26Foundations.Level26_Newforms.a53_E_196_eq
+#print axioms BealLevel26Foundations.Level26_Newforms.a443_26a1_eq
+#print axioms BealLevel26Foundations.Level26_Newforms.a443_E_1500003_eq
+#print axioms BealLevel26Foundations.Level26_Newforms.a443_E_1500003_misses_26a1
 #print axioms BealLevel26Foundations.Level26_Newforms.level26_a_eliminated_by_53_of_witness
 #print axioms BealLevel26Foundations.Level26_Newforms.hasSmallZsigWitness_1500003
 #print axioms BealLevel26Foundations.Level26_Newforms.level26_b_eliminated_by_443_of_witness
