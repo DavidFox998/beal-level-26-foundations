@@ -1,16 +1,16 @@
-# v8.56.0 RibetMazur B≤1.1M 3292 named gap-3 rows
+# v8.57.0 RibetMazur B≤1.2M 3591 named gap-3 rows
 
-`lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step51_B_le_1100k_299.lean`
+`lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Step52_B_le_1200k_299.lean`
 and `RibetMazur.lean`
 
-Step51 inhabits 3292 named `B ≤ 1100000`
-gap-3 rows (2993 Step50 including
+Step52 inhabits 3591 named `B ≤ 1200000`
+gap-3 rows (3292 Step51 including
 `(200000,200003)` p=12186951011 plus
-299 sampled `(1000000, 1100000]` rows
-with p≤547 from a 50322-row pool).
-First new row `(1000003,1000006)` p=157.
-Named last row `(1099999,1100002)` p=53.
-`B=1100000` is not in the pool.
+299 sampled `(1100000, 1200000]` rows
+with p≤547 from a 50366-row pool).
+First new row `(1100002,1100005)` p=53.
+Named last row `(1199998,1200001)` p=131.
+`B=1200000` is not in the pool.
 
 The modular side stays a coefficient
 check, not Ribet:
@@ -28,7 +28,7 @@ modularity of level 26 and residual
 isomorphism).
 `ribet_26_to_2_from_displayed_miss`
 stays uninhabited.
-`bugeaud_P_phi13_gt_C_when_B_gt_1100000`
+`bugeaud_P_phi13_gt_C_when_B_gt_1200000`
 stays uninhabited.
 `S_has_prime_with_exp_one_when_C_ge_B_plus_3`
 stays uninhabited.
