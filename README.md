@@ -1,12 +1,16 @@
 [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.70.0-zenodo-doi → v8.71.0-ribet-mazur-pack
+# Beal Level 26 Foundations — v8.71.0-ribet-mazur-pack → v8.72.0-mcom-draft
 
-**v8.71.0-ribet-mazur-pack — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.72.0-mcom-draft — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 Track B closed 5983 rows = 4488+5*299 B≤2M pools 50310/50323/50307/50350/50325. Track A: Level 26 dim2 26.2.a.a/b via qExp_26a1_500/qExp_26b1_500 take 500, a53_26a1=0 a53_26b1=12 a443_26a1=21 a443_26b1=-39 by decide, Frey a53(E_196)=-2 a443(E_1500003)=24 by decide Euler, -2≠0,12 mod13 and 24≠21,-39 mod13. kraus_elimination_q_13_level_26 (Level26_Newforms) is a theorem. ribet_mazur_pack_q_13_level_26 is the first inhabited Ribet-Mazur pack (B=196 and B=1500003 only). Still uninhabited: ExistsNewformLevel2 0≠0, Density/Step kraus ∀, no new Beal ∀.
 
 ## MCOM
+
+Draft paper: [`paper/mcom-draft.tex`](paper/mcom-draft.tex) (`latexmk -pdf mcom-draft.tex`). See [`paper/README.md`](paper/README.md).
+
+DOI placeholder: **TBD** — insert the Zenodo DOI minted from [`v8.70.0-zenodo-doi`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.70.0-zenodo-doi) after Zenodo publishes it.
 
 v8.71.0 is the first inhabited Ribet-Mazur pack. It is **not** `∀ B` modular contradiction. The two witnesses are `B = 196` (`-2` vs `0`/`12` mod 13) and `B = 1500003` (`24` vs `21`/`-39` mod 13). Full gap-3 density on the 5983 named rows still uses `Classical.em` (`beal_4_13_13_gap3_B_le_2M_eliminated`), not a scan and not Kraus matching.
 
@@ -70,6 +74,7 @@ Releases:
 - v8.69.0-kraus-elim-theorem Level26_Newforms Int-mod-13 theorem; Density/Step kraus ∀ stays Prop; ExistsNewformLevel2 0≠0
 - v8.70.0-zenodo-doi `.zenodo.json` DOI trigger for the v8.69.0 theorem
 - v8.71.0-ribet-mazur-pack first inhabited Ribet-Mazur pack at B=196 and B=1500003; full density ∀ stays Classical.em; ExistsNewformLevel2 0≠0
+- v8.72.0-mcom-draft LaTeX paper in `paper/mcom-draft.tex`; DOI placeholder pending Zenodo mint from v8.70.0-zenodo-doi
 
 GitHub will not render a README much over ~100KB, so the old wall
 stayed cached at v4.28.0.  This file is the short wall.  The full

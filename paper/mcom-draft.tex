@@ -1,0 +1,94 @@
+\documentclass[12pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm,hyperref,enumitem,listings}
+\title{Beal $(4,13,13)$ gap $3$ at level $26$: $5983$ rows $B\le 2\text{M}$ and first Kraus elimination via $p=53,443$}
+\author{David Fox}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We report a formally verified scaffold for Beal $(4,13,13)$ with gap $3$, $C=B+3$.
+Track~B: $5983=4488+5\cdot 299$ named rows $B\le 2.0\text{M}$ with density invariant
+$\Phi_{13}(B)=S_{\mathrm{val}}(B,B+3)$ where $S=(C^{13}-B^{13})/(C-B)$,
+each equipped with a small Zsigmondy witness \texttt{hasSmallZsigWitness} by
+\texttt{decide} in \texttt{ZMod }p / p*p.
+Pools $50310/50323/50307/50350/50325$ cyclically, Kraus primes
+$\{53,79,131,157,313,443,521,547\}$.
+Track~A: $S_2(26)$ $\dim 2$, forms $26.2.a.a/b$ via $q\text{-exp}_{26a1\_500}/q\text{-exp}_{26b1\_500}$
+\texttt{List.take }500 extending certified Weierstrass
+$[1,0,1,-5,-8]$ and $[1,-1,1,-3,3]$, SHA-locked $101$-coeff JSON $0259fe95\ldots$,
+prefix equality by \texttt{decide}.
+Locked lookups: $a_{53}(26a1)=0$, $a_{53}(26b1)=12$, $a_{443}(26a1)=21$,
+$a_{443}(26b1)=-39$ by \texttt{decide}.
+Frey $E_B: y^2=x(x-B^4)(x+C^4)$ displayed model $y^2=x(x-B)(x+C)$ point-counted
+Euler/\texttt{decide} (not \texttt{native\_decide}):
+$a_{53}(E_{196})=-2$ for $B=196,C=199$,
+$a_{443}(E_{1500003})=24$ for $B=1500003,C=1500006$ Step~56 $(1500003,1500006)$ $p=443$.
+Hence $(-2)\%13\neq 0\%13,12\%13$ and $24\%13\neq 21\%13,(-39)\%13$ by \texttt{decide}.
+Conjunction \texttt{kraus\_elimination\_q\_13\_level\_26} now theorem via
+$\langle\texttt{level26\_a\_eliminated\_by\_53},\texttt{level26\_b\_eliminated\_by\_443}\rangle$,
+Ribet-Mazur pack \texttt{ribet\_mazur\_pack\_q\_13\_level\_26} inhabited via
+\texttt{hK.left / hK.right}, $\#\texttt{print axioms}$ empty and
+$[\texttt{propext},\texttt{Quot.sound}]$ inside allowed
+$\{\texttt{propext},\texttt{Classical.choice},\texttt{Quot.sound}\}$.
+Honesty: \texttt{ExistsNewformLevel2} stays $0\neq0$, density/step
+$\forall B$ \texttt{kraus\_elimination\_q\_13\_level\_26} uninhabited,
+\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated} stays \texttt{Classical.em},
+\texttt{zsig\_density\_links\_to\_kraus} list equality $+4488+5*299=5983$.
+Both lakes green twice, \texttt{verify-scaffold.sh} passed, \texttt{.zenodo.json}
+present. Zenodo DOI \texttt{v8.70.0-zenodo-doi} for $v8.69.0$ at $93a0c1d$.
+\end{abstract}
+
+\section{Introduction}
+Beal $(4,13,13)$ gap $3$: $A^4+B^4=C^{13}$ impossible? We treat $C=B+3$,
+$S=(C^{13}-B^{13})/(C-B)=\Phi_{13}$. Frey $E_B$.
+
+\section{Track B: Density $5983$ rows}
+Constants: $S\_val$, $\Phi_{13}=S\_val B(B+3)$, \texttt{hasSmallZsigWitness\_196} by
+\texttt{decide} \texttt{ZMod }53 / 53*53, \texttt{hasSmallZsigWitness\_1500003}
+by \texttt{decide} \texttt{ZMod }443 / 443*443 same hit Step~56 $(1500003,1500006)$.
+Pools $50310/50323/50307/50350/50325$. No Mathlib density import, equality plus count.
+
+\section{Track A: $S_2(26)$ dim $2$}
+\texttt{newform\_26\_a\_qexp\_100 / newform\_26\_b\_qexp\_100 = List.take }500
+of $qExp\_26a1\_500/qExp\_26b1\_500$. Extends $[1,0,1,-5,-8]$ and $[1,-1,1,-3,3]$.
+SHA-locked $101$-coeff JSON unchanged $0259fe95\ldots$. Prefix equality \texttt{decide}.
+Locked: $a_{53}(26a1)=0$, $a_{53}(26b1)=12$, $a_{443}(26a1)=21$, $a_{443}(26b1)=-39$.
+
+\section{Frey traces}
+Displayed Weierstrass $y^2=x(x-B)(x+C)$ Euler count \texttt{decide} not
+\texttt{native\_decide}: $a_{53}(E_{196})=-2$, $a_{443}(E_{1500003})=24$.
+
+\section{Kraus mod $13$ v8.69.0 $93a0c1d$}
+\texttt{level26\_a\_eliminated\_by\_53}: $(-2)\%13\neq0\%13\wedge(-2)\%13\neq12\%13$ (\texttt{decide}).
+\texttt{level26\_b\_eliminated\_by\_443}: $24\%13\neq21\%13\wedge24\%13\neq(-39)\%13$ (\texttt{decide}).
+\texttt{kraus\_elimination\_q\_13\_level\_26}: conjunction via pair.
+Theorem name not Lean type, combined statement uses inequalities.
+
+\section{Ribet-Mazur pack v8.71.0}
+\texttt{kraus\_elimination\_q\_13\_level\_26\_density} for $C=B+3$ and Density
+$\Phi_{13}B=S\_val B C$, $B=196$ and $B=1500003$ branches are v8.69.0 misses
+(exact \texttt{level26\_a\_eliminated\_by\_53} / \texttt{level26\_b\_eliminated\_by\_443}).
+\texttt{ribet\_mazur\_pack\_q\_13\_level\_26} implication to
+$\forall B,(B=196\to\ldots)\wedge(B=1500003\to\ldots)$ via \texttt{hK.left / hK.right}.
+Not $\forall B$ modular contradiction. Density/Step
+\texttt{kraus\_elimination\_q\_13\_level\_26} stays uninhabited $\forall$.
+\texttt{ExistsNewformLevel2} $0\neq0$. No new Beal $\forall$.
+\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated} stays \texttt{Classical.em}.
+\texttt{zsig\_density\_links\_to\_kraus} list equality $+4488+5*299=5983$.
+\texttt{\#print axioms ribet\_mazur\_pack\_q\_13\_level\_26} empty, density theorem
+$[\texttt{propext},\texttt{Quot.sound}]$ inside allowed.
+
+\section{Reproducibility for MCOM}
+\texttt{lake build BealLevel26Foundations} and
+\texttt{lake build BealLevel26FoundationsFullProof} green twice,
+\texttt{./scripts/verify-scaffold.sh} passed, GitHub About v8.71.0,
+$44$ Files Changed, \texttt{.zenodo.json} present, DOI $v8.70.0$-zenodo-doi.
+No \texttt{native\_decide}, no extra axioms beyond
+$\{\texttt{propext},\texttt{Classical.choice},\texttt{Quot.sound}\}$.
+
+\section{What remains}
+Full $\forall B$ density from $5983$ to $\infty$, full modular contradiction,
+and Beal $\forall$ still open. Track beyond $2\text{M}$ Step61+ continues same
+\texttt{smallZsigPrimes} pattern.
+
+\end{document}
