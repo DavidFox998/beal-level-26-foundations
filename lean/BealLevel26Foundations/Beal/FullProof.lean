@@ -12,9 +12,18 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.66.0)
+# FullProof track (v8.67.0)
 
-Aggregator for Track B.  Density capstone
+Aggregator for Track B.  Level 26 newforms
+skeleton records displayed ledger prefixes
+`newform_26_a_qexp` / `newform_26_b_qexp`
+(a₃(26a1)=1, a₅(26a1)=-3, a₃(26b1)=-3,
+a₅(26b1)=-1) and links `kraus_primes_26`
+to Track B `smallZsigPrimes`.
+`zsig_density_links_to_kraus` is that list
+equality plus `4488 + 5 * 299 = 5983`.
+Elimination placeholders stay Props.
+Density capstone
 records `smallZsigPrimes`, inhabits
 `4488 + 5 * 299 = 5983`, and inhabits
 `hasSmallZsigWitness_196` by `decide` on
@@ -150,17 +159,24 @@ The s2_26 pack stays a coefficient check,
 not Ribet.  Step44 inhabits
 1199 named `B ≤ 400000` gap-3 rows
 (900 Step43 including the inhabited
-outlier `(200000,200003)` plus the exact
-299 `(300000, 400000]` rows, first
+outlier `(200000,200003)` plus 299
+exact `(300000, 400000]` rows, first
 `(300003,300006)` p=157, last
 `(400000,400003)` p=79).
 The s2_26 pack stays a coefficient check,
 not Ribet.  Step43 inhabits
-900 named `B ≤ 300000` gap-3 rows.
-Step42 inhabits
-`row_200000_200003` (p = 12186951011 Pratt)
-and re-packs 601 named `B ≤ 200000` gap-3
-rows.  Step40
+900 named `B ≤ 300000` gap-3 rows
+(601 Step42 including the inhabited
+outlier `(200000,200003)` plus 299
+`(200000, 300000]` rows, last
+`(299999,300002)` p=131).
+The s2_26 pack stays a coefficient check,
+not Ribet.  Step42 inhabits the
+`(200000,200003)` outlier at
+`p = 12186951011`.  Step41 inhabits
+600 named `B ≤ 200000` gap-3 rows.
+The s2_26 pack stays a coefficient check,
+not Ribet.  Step40
 `level_lowering_26_to_2_from_no_match`
 stays inhabited (displayed misses plus
 displayed `S₂(Γ₀(2)) = 0`).  Step39

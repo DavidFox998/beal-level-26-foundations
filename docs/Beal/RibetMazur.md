@@ -1,15 +1,18 @@
-# v8.66.0 RibetMazur B≤2.0M density capstone
+# v8.67.0 RibetMazur Level 26 newforms skeleton
 
-`lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_Density_2M.lean`
+`lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean`
 and `RibetMazur.lean`
 
-Density capstone on the 5983 named
-`B ≤ 2000000` gap-3 rows.  Inhabits
-`smallZsigPrimes`, `zsig_density_2M_stats`
-(`4488 + 5 * 299 = 5983`), and
-`hasSmallZsigWitness_196` (p=53 `decide`).
-`beal_4_13_13_gap3_B_le_2M_eliminated` is
-`Classical.em`, not Kraus and not a Beal `∀`.
+Displayed ledger prefixes
+`newform_26_a_qexp` / `newform_26_b_qexp`
+(a₃(26a1)=1, a₅(26a1)=-3, a₃(26b1)=-3,
+a₅(26b1)=-1) and `kraus_primes_26` =
+Track B `smallZsigPrimes`.
+`zsig_density_links_to_kraus` is that
+list equality plus `4488 + 5 * 299 = 5983`.
+Dim 2 is displayed, not Mathlib.
+`kraus_condition` is a displayed
+congruence, not matching.
 
 The modular side stays a coefficient
 check, not Ribet:
@@ -21,6 +24,10 @@ vanishing theorem.  Those do not prove
 rho from level 2.
 
 This is not a forall close.
+`level26_a_eliminated_by_53`,
+`level26_b_eliminated_by_443`, and
+`kraus_elimination_q_13_level_26_proof_sketch`
+stay uninhabited.
 `kraus_elimination_q_13_level_26` stays
 uninhabited (matching lock: Frey
 modularity of level 26 and residual

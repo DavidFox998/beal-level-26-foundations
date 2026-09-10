@@ -1,8 +1,8 @@
 [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.66.0-B-le-2000k-density-capstone
+# Beal Level 26 Foundations — v8.67.0-level26-newforms-skeleton
 
-**v8.66.0-B-le-2000k-density-capstone — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.67.0-level26-newforms-skeleton — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 GitHub will not render a README much over ~100KB, so the old wall
 stayed cached at v4.28.0.  This file is the short wall.  The full
@@ -13,7 +13,7 @@ and [`certs/README.md`](certs/README.md).
 - Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
   About Website stays [10.5281/zenodo.22635221](https://doi.org/10.5281/zenodo.22635221).
 - Houseclean mint [10.5281/zenodo.22654189](https://doi.org/10.5281/zenodo.22654189)
-  (`v8.19.9-fourth-power-residue` / `v8.66.0-B-le-2000k-density-capstone`) under hook `22379293`.
+  (`v8.19.9-fourth-power-residue` / `v8.67.0-level26-newforms-skeleton`) under hook `22379293`.
   Concept DOI [10.5281/zenodo.22272382](https://doi.org/10.5281/zenodo.22272382).
 - Track B odd-A ladder (4,13,13): v8.19.6 `B ≤ 100` with `C = B+1` and
   `C = B+2` closed by `decide`; v8.19.7 `A⁴ ≥ 13 k B¹²`, `A⁴ ≥ 39 B¹²`,
@@ -326,7 +326,26 @@ and [`certs/README.md`](certs/README.md).
   s2_26 pack stays a coefficient check, not Ribet;
   `kraus_elimination_q_13_level_26` stays Prop;
   `B > 2000000` Bugeaud stays Prop.
-- Inhabited: `smallZsigPrimes`,
+  v8.67.0 Level 26 newforms skeleton records
+  displayed ledger prefixes `newform_26_a_qexp`
+  / `newform_26_b_qexp` (a₃(26a1)=1,
+  a₅(26a1)=-3, a₃(26b1)=-3, a₅(26b1)=-1)
+  and `kraus_primes_26` = Track B
+  `smallZsigPrimes`; `zsig_density_links_to_kraus`
+  is that list equality plus
+  `4488 + 5 * 299 = 5983`; dim 2 is displayed,
+  not Mathlib; `level26_a_eliminated_by_53`,
+  `level26_b_eliminated_by_443`, and
+  `kraus_elimination_q_13_level_26_proof_sketch`
+  stay Prop (a Φ₁₃ hit is not Kraus);
+  s2_26 pack stays a coefficient check, not Ribet;
+  `kraus_elimination_q_13_level_26` stays Prop;
+  `B > 2000000` Bugeaud stays Prop.
+- Inhabited: `newform_26_a_qexp`,
+  `newform_26_b_qexp`,
+  `kraus_primes_26`,
+  `zsig_density_links_to_kraus`,
+  `smallZsigPrimes`,
   `Phi13`,
   `zsig_density_2M_stats`,
   `hasSmallZsigWitness_196`,
@@ -515,7 +534,10 @@ and [`certs/README.md`](certs/README.md).
   `k_le_A_pow4_div_13_B_pow12`, `B_gt_100_imp_k_bounded_by_A`;
   `genus_X0_2_rat=0`; `S_13_mod_k`, `gcd(k,S)|13`, `k_almost_fourth_power`;
   `B_le_100_closed`.
-- Uninhabited:   `kraus_elimination_q_13_level_26`,
+- Uninhabited:   `level26_a_eliminated_by_53`,
+  `level26_b_eliminated_by_443`,
+  `kraus_elimination_q_13_level_26_proof_sketch`,
+  `kraus_elimination_q_13_level_26`,
   `ribet_26_to_2_from_displayed_miss`,
   `bugeaud_P_phi13_gt_C_when_B_gt_2000000`,
   `rad_S_gt_sqrt_13_C12_when_squarefull_B_gt_2000000`,
@@ -618,12 +640,12 @@ PARI 2-Descent Certificates image
 Still not `∀ ℕ`. No `False.elim`. no `False.elim`.
 `BealExponent13_Iter_Package` `d3cf8a7` `1d0044e`.
 
-HEAD also has Track B `v8.66.0-B-le-2000k-density-capstone`
-(density capstone on 5983 named `B ≤ 2000000`
-gap-3 rows; `zsig_density_2M_stats` is
-`4488 + 5 * 299 = 5983`;
-`beal_4_13_13_gap3_B_le_2M_eliminated` is
-`Classical.em` not Kraus; s2_26 pack still
+HEAD also has Track B `v8.67.0-level26-newforms-skeleton`
+(displayed 26a1/26b1 qexp prefixes from the
+locked ledger; `kraus_primes_26` equals
+`smallZsigPrimes`; `zsig_density_links_to_kraus`
+is list equality plus `4488 + 5 * 299 = 5983`;
+elimination placeholders stay Props; s2_26 pack still
 coefficient check not Ribet;
 `kraus_elimination_q_13_level_26` stays a Prop;
 `B > 2000000` Bugeaud / rad stay
@@ -796,3 +818,4 @@ v8.63.0-B-le-1800k-5385-rows RibetMazur Step58 S_has_prime_with_exp_one_B_le_180
 v8.64.0-B-le-1900k-5684-rows RibetMazur Step59 S_has_prime_with_exp_one_B_le_1900000_table_rows; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.65.0-B-le-2000k-5983-rows RibetMazur Step60 S_has_prime_with_exp_one_B_le_2000000_table_rows; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
 v8.66.0-B-le-2000k-density-capstone RibetMazur Density_2M smallZsigPrimes zsig_density_2M_stats; kraus_elimination_q_13_level_26 exists_p_with_order_ne_13_mod_p_sq_inhabited S_has_prime_with_exp_one_when_C_ge_B_plus_3 stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.
+v8.67.0-level26-newforms-skeleton RibetMazur Level26_Newforms kraus_primes_26 zsig_density_links_to_kraus; kraus_elimination_q_13_level_26 level26_a_eliminated_by_53 kraus_elimination_q_13_level_26_proof_sketch stay uninhabited; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Sketch stays uninhabited. Still not Full Mathlib ∀.

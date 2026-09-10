@@ -799,6 +799,36 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.67.0-level26-newforms-skeleton — DONE (displayed 26a1/26b1 qexp prefixes from locked ledger, kraus_primes_26 = smallZsigPrimes, zsig_density_links_to_kraus is list equality plus 4488+5*299=5983; dim 2 displayed not Mathlib; level26_a_eliminated_by_53 / level26_b_eliminated_by_443 / kraus_elimination_q_13_level_26_proof_sketch stay uninhabited; s2_26 pack still coefficient check not Ribet; kraus_elimination_q_13_level_26 stays uninhabited; arrow stays a Prop)
+
+Lean change.  New FullProof module
+`Beal/FullProof/Level26_Newforms.lean`
+records the first 20 coefficients of
+locked `qExp_26a1` / `qExp_26b1`
+(ledger lock `a₃(26a1)=1`, `a₅(26a1)=-3`,
+`a₃(26b1)=-3`, `a₅(26b1)=-1`).
+`kraus_primes_26` equals Track B
+`smallZsigPrimes`.
+`zsig_density_links_to_kraus` is that
+list equality plus `4488 + 5 * 299 = 5983`.
+That does **not** inhabit Kraus matching.
+`kraus_condition` is a displayed
+`ZMod 13` equality, not Frey=newform.
+Does **not** import
+`Mathlib.NumberTheory.ModularForms.Basic`.
+Does **not** import `RibetMazur` from
+the newforms file (cycle).
+The s2_26 pack stays a coefficient
+check, not residual iso, so
+`kraus_elimination_q_13_level_26` stays
+uninhabited.
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+`beal_from_ribet` still takes
+`ModularImpliesLevel2Newform`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo claiming
+unconditional Beal `∀`.
+
 ### v8.66.0-B-le-2000k-density-capstone — DONE (density capstone: smallZsigPrimes inhabited, zsig_density_2M_stats 4488+5*299=5983, hasSmallZsigWitness_196 p=53 decide; beal_4_13_13_gap3_B_le_2M_eliminated is Classical.em not Kraus; s2_26 pack still coefficient check not Ribet; kraus_elimination_q_13_level_26 stays uninhabited; B>2000k Bugeaud remains Prop; arrow stays a Prop)
 
 Lean change.  Density file

@@ -1,3 +1,31 @@
+# FINAL v8.67.0 — Level 26 newforms skeleton (arrow stays a Prop)
+
+Latest tag `v8.67.0-level26-newforms-skeleton`.
+Lean change.
+Displayed ledger prefixes
+`newform_26_a_qexp` / `newform_26_b_qexp`
+match locked `qExp_26a1` / `qExp_26b1`
+(a₃(26a1)=1, a₅(26a1)=-3, a₃(26b1)=-3,
+a₅(26b1)=-1). `kraus_primes_26` equals
+`smallZsigPrimes`. `zsig_density_links_to_kraus`
+is that list equality plus
+`4488 + 5 * 299 = 5983`. Dim 2 is
+displayed, not Mathlib.
+`level26_a_eliminated_by_53`,
+`level26_b_eliminated_by_443`, and
+`kraus_elimination_q_13_level_26_proof_sketch`
+stay Props. A Φ₁₃ hit is not Kraus.
+The s2_26 pack stays a coefficient
+check, not Ribet.
+`kraus_elimination_q_13_level_26` stays
+a Prop. `B > 2000000` Bugeaud `P(Φ₁₃) > C`
+and `rad > √13 C⁶` stay Props, so
+`S_has_prime_with_exp_one_when_C_ge_B_plus_3`
+stays a Prop. The Hensel ∀ stays a Prop.
+The Ljunggren ∀ stays a Prop.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.66.0 — B≤2.0M density capstone (arrow stays a Prop)
 
 Latest tag `v8.66.0-B-le-2000k-density-capstone`.

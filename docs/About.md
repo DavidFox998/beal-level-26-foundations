@@ -1,12 +1,19 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.66.0-B-le-2000k-density-capstone`
-Lean change: density capstone records
-`smallZsigPrimes` `{53,79,131,157,313,443,521,547}`,
-inhabits `4488 + 5 * 299 = 5983`, and
-inhabits `hasSmallZsigWitness_196` by `decide`
-on `ZMod 53`.  `beal_4_13_13_gap3_B_le_2M_eliminated`
-is `Classical.em`, not Kraus and not a Beal `∀`.
+Latest tag / HEAD: `v8.67.0-level26-newforms-skeleton`
+Lean change: Level 26 newforms skeleton
+records displayed ledger prefixes
+`newform_26_a_qexp` / `newform_26_b_qexp`
+(a₃(26a1)=1, a₅(26a1)=-3, a₃(26b1)=-3,
+a₅(26b1)=-1) and `kraus_primes_26` =
+Track B `smallZsigPrimes`.
+`zsig_density_links_to_kraus` is that
+list equality plus `4488 + 5 * 299 = 5983`.
+Dim 2 is displayed, not Mathlib.
+`level26_a_eliminated_by_53`,
+`level26_b_eliminated_by_443`, and
+`kraus_elimination_q_13_level_26_proof_sketch`
+stay uninhabited.  A Φ₁₃ hit is not Kraus.
 The s2_26 pack stays a coefficient
 check, not Ribet.
 `kraus_elimination_q_13_level_26` stays

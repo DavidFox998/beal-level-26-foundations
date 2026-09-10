@@ -3,6 +3,23 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v8.67.0 — Level 26 newforms skeleton
+(displayed ledger prefixes, not Mathlib
+cusp forms, not Kraus, not a Beal ∀).
+`newform_26_a_qexp` / `newform_26_b_qexp` are
+the first 20 coefficients of locked
+`qExp_26a1` / `qExp_26b1` (a₃(26a1)=1,
+a₅(26a1)=-3, a₃(26b1)=-3, a₅(26b1)=-1).
+`kraus_primes_26` equals Track B
+`smallZsigPrimes`.  `zsig_density_links_to_kraus`
+is that list equality plus `4488+5*299=5983`.
+`level26_a_eliminated_by_53`,
+`level26_b_eliminated_by_443`, and
+`kraus_elimination_q_13_level_26_proof_sketch`
+stay uninhabited.  Dim 2 is displayed, not a
+Mathlib cusp-form theorem.  The s2_26 pack
+stays a coefficient check, not Ribet.
+`kraus_elimination_q_13_level_26` stays uninhabited.
 Track B v8.66.0 — B ≤ 2000000 density capstone
 (5983 named gap-3 rows plus pool summary, not a ∀).
 `smallZsigPrimes` is the list
@@ -636,6 +653,7 @@ import BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Zsigmondy_13_Step58_B_
 import BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Zsigmondy_13_Step59_B_le_1900k_299
 import BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Zsigmondy_13_Step60_B_le_2000k_299
 import BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Zsigmondy_Density_2M
+import BealLevel26Foundations.Beal.FullProof.Level26_Newforms
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -4844,6 +4862,69 @@ ZMod predicate.  Not Kraus.  Not a Beal `∀`. -/
 def beal_4_13_13_gap3_B_le_2M_eliminated :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.beal_4_13_13_gap3_B_le_2M_eliminated
 
+/-! ## v8.67.0 — Level 26 newforms skeleton -/
+
+/-- Inhabited.  Displayed dim `S₂(Γ₀(26)) = 2`, not Mathlib. -/
+def s2_gamma0_26_dim_displayed :=
+  BealLevel26Foundations.Level26_Newforms.s2_gamma0_26_dim_displayed
+
+/-- Inhabited.  Prefix `a₀,…,a₁₉` of locked `qExp_26a1`. -/
+def newform_26_a_qexp :=
+  BealLevel26Foundations.Level26_Newforms.newform_26_a_qexp
+
+/-- Inhabited.  Prefix `a₀,…,a₁₉` of locked `qExp_26b1`. -/
+def newform_26_b_qexp :=
+  BealLevel26Foundations.Level26_Newforms.newform_26_b_qexp
+
+/-- Inhabited.  Those prefixes match the ledger. -/
+def newform_26_a_qexp_eq_ledger_prefix :=
+  BealLevel26Foundations.Level26_Newforms.newform_26_a_qexp_eq_ledger_prefix
+
+def newform_26_b_qexp_eq_ledger_prefix :=
+  BealLevel26Foundations.Level26_Newforms.newform_26_b_qexp_eq_ledger_prefix
+
+/-- Inhabited.  Ledger lock `a₃(26a1) = 1`, `a₅(26a1) = -3`. -/
+def newform_26_a_a3 :=
+  BealLevel26Foundations.Level26_Newforms.newform_26_a_a3
+
+def newform_26_a_a5 :=
+  BealLevel26Foundations.Level26_Newforms.newform_26_a_a5
+
+/-- Inhabited.  Ledger lock `a₃(26b1) = -3`, `a₅(26b1) = -1`. -/
+def newform_26_b_a3 :=
+  BealLevel26Foundations.Level26_Newforms.newform_26_b_a3
+
+def newform_26_b_a5 :=
+  BealLevel26Foundations.Level26_Newforms.newform_26_b_a5
+
+/-- Inhabited.  Same list as Track B `smallZsigPrimes`. -/
+def kraus_primes_26 :=
+  BealLevel26Foundations.Level26_Newforms.kraus_primes_26
+
+def kraus_primes_26_eq_smallZsigPrimes :=
+  BealLevel26Foundations.Level26_Newforms.kraus_primes_26_eq_smallZsigPrimes
+
+/-- Displayed congruence predicate at `ℓ = 13`.  Not matching. -/
+def kraus_condition :=
+  BealLevel26Foundations.Level26_Newforms.kraus_condition
+
+/-- Inhabited.  List equality plus `4488 + 5 * 299 = 5983`.
+Not Kraus matching. -/
+def zsig_density_links_to_kraus :=
+  BealLevel26Foundations.Level26_Newforms.zsig_density_links_to_kraus
+
+/-- Uninhabited.  A p=53 Φ₁₃ hit is not elimination of 26a1. -/
+def level26_a_eliminated_by_53 : Prop :=
+  BealLevel26Foundations.Level26_Newforms.level26_a_eliminated_by_53
+
+/-- Uninhabited.  A p=443 Φ₁₃ hit is not elimination of 26b1. -/
+def level26_b_eliminated_by_443 : Prop :=
+  BealLevel26Foundations.Level26_Newforms.level26_b_eliminated_by_443
+
+/-- Uninhabited.  Conjunction of the two placeholders. -/
+def kraus_elimination_q_13_level_26_proof_sketch : Prop :=
+  BealLevel26Foundations.Level26_Newforms.kraus_elimination_q_13_level_26_proof_sketch
+
 /-- Inhabited.  Displayed Frey p=3 traces. -/
 def FreyP3Traces : List Int :=
   BealLevel26Foundations.Beal_4_13_13_Zsigmondy_13_Step38_Kraus_p3_elim_26b1.FreyP3Traces
@@ -5538,6 +5619,15 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.beal_4_13_13_gap3_B_le_2M_eliminated
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.kraus_elimination_q_13_level_26
 #check BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.ExistsNewformLevel2_eq_zero_ne_zero
+#check BealLevel26Foundations.Level26_Newforms.newform_26_a_qexp
+#check BealLevel26Foundations.Level26_Newforms.newform_26_b_qexp
+#check BealLevel26Foundations.Level26_Newforms.kraus_primes_26
+#check BealLevel26Foundations.Level26_Newforms.zsig_density_links_to_kraus
+#check BealLevel26Foundations.Level26_Newforms.kraus_condition
+#check BealLevel26Foundations.Level26_Newforms.level26_a_eliminated_by_53
+#check BealLevel26Foundations.Level26_Newforms.kraus_elimination_q_13_level_26_proof_sketch
+#check BealLevel26Foundations.Level26_Newforms.kraus_elimination_q_13_level_26
+#check BealLevel26Foundations.Level26_Newforms.ExistsNewformLevel2_eq_zero_ne_zero
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -5985,5 +6075,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.hasSmallZsigWitness_196
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.beal_4_13_13_gap3_B_le_2M_eliminated
 #print axioms BealLevel26Foundations.Beal_4_13_13_Zsigmondy_Density_2M.ExistsNewformLevel2_eq_zero_ne_zero
+#print axioms BealLevel26Foundations.Level26_Newforms.newform_26_a_qexp_eq_ledger_prefix
+#print axioms BealLevel26Foundations.Level26_Newforms.newform_26_a_a3
+#print axioms BealLevel26Foundations.Level26_Newforms.newform_26_b_a5
+#print axioms BealLevel26Foundations.Level26_Newforms.kraus_primes_26_eq_smallZsigPrimes
+#print axioms BealLevel26Foundations.Level26_Newforms.zsig_density_links_to_kraus
+#print axioms BealLevel26Foundations.Level26_Newforms.ExistsNewformLevel2_eq_zero_ne_zero
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

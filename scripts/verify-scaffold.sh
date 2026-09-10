@@ -303,6 +303,8 @@ test -f lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_13_Ste
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_13_Step60_B_le_2000k_299.md
 test -f lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_Density_2M.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_Density_2M.md
+test -f lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+test -f docs/Beal/Level26_Newforms.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
 test -f docs/Beal/TrueConductor.md
 test -f docs/Beal/ModularityRibet.md
@@ -989,6 +991,7 @@ do
   grep -q "v8.64.0-B-le-1900k-5684-rows" "$readme"
   grep -q "v8.65.0-B-le-2000k-5983-rows" "$readme"
   grep -q "v8.66.0-B-le-2000k-density-capstone" "$readme"
+  grep -q "v8.67.0-level26-newforms-skeleton" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -2655,6 +2658,24 @@ grep -q "def S_has_prime_with_exp_one_when_C_ge_B_plus_3" \
   lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_Density_2M.lean
 grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
   lean/BealLevel26Foundations/Beal/FullProof/Beal_4_13_13_Zsigmondy_Density_2M.lean
+grep -q "def newform_26_a_qexp" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "def newform_26_b_qexp" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "def kraus_primes_26" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "theorem zsig_density_links_to_kraus" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "def kraus_condition" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "def level26_a_eliminated_by_53" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "def kraus_elimination_q_13_level_26_proof_sketch" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "def kraus_elimination_q_13_level_26" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
 grep -q "theorem beal_4_13_13_k_odd" \
   lean/BealLevel26Foundations/Beal_4_13_13_Zsigmondy_13_Step8_k_odd_coprime.lean
 grep -q "theorem S_13_ge_13_mul_B_pow12" \
