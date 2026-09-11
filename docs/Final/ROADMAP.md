@@ -799,6 +799,16 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.86.0-paper-B14-final-DOI — DONE (paper-only DOI write; .zenodo.json title is the 352-row residue cover; CITATION/paper cite math 22712897 and paper 22713047; B14_honest stays uninhabited Prop; no Lean change; no Classical.em; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus ∀ stays uninhabited; arrow stays a Prop)
+
+Paper metadata only.
+Does **not** change Lean.
+Does **not** inhabit `B14_honest`.
+Does **not** add `axiom BCDT_B14`.
+Does **not** inhabit BCDT.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Beal `∀`.
+
 ### v8.85.0-paper-B14-full — DONE (paper unification; beal_..._B14_full covers 352 named B≡14 rows by 266+77+9 residue kills; #print axioms empty; KrausB14 eliminated_full stays 2-element mod16; B14_honest stays uninhabited Prop; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus ∀ stays uninhabited; arrow stays a Prop)
 
 Lean + paper.  Composes existing residue kills.

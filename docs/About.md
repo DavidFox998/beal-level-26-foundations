@@ -1,6 +1,8 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.85.0-paper-B14-full`
+Latest tag / HEAD: `v8.86.0-paper-B14-final-DOI`
+Paper-only DOI write.  No Lean change.
+Base: `v8.85.0-paper-B14-full`.
 Lean change: BealFreyModQKill / paper
 `beal_..._B14_full` covers all 352 named
 `B ≡ 14` rows (266 mod 53, 77 at q=29,

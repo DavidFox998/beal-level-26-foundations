@@ -1,3 +1,11 @@
+# FINAL v8.86.0 — paper-only final-DOI write (arrow stays a Prop)
+
+Latest tag `v8.86.0-paper-B14-final-DOI`.
+Paper-only.  No Lean change.
+Cites math `10.5281/zenodo.22712897` and
+paper `10.5281/zenodo.22713047`.
+`B14_honest` stays the uninhabited Prop.
+
 # FINAL v8.85.0 — paper unification; 352-row residue cover (arrow stays a Prop)
 
 Latest tag `v8.85.0-paper-B14-full`.

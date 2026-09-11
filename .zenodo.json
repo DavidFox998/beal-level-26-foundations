@@ -1,5 +1,5 @@
 {
-  "title": "Beal Level 26 Foundations — v8.69.0 First Kraus Elimination at Level 26 (4,13,13) gap 3",
+  "title": "Beal Level-26 Foundations — B≡14 residue cover 352 (266 mod53 + 77 mod29 + 9 mod109) empty axioms",
   "description": "Track B closed 5983 rows B≤2M = 4488+5*299 pools 50310/50323/50307/50350/50325 Phi13=S_val B(B+3) witnesses decide ZMod p / p*p. Track A: S2(26) dim2 26.2.a.a/b qExp_26a1_500/qExp_26b1_500 take500 Weierstrass [1,0,1,-5,-8] [1,-1,1,-3,3] SHA 0259fe95... a53_26a1=0 a53_26b1=12 a443_26a1=21 a443_26b1=-39 by decide, Frey y^2=x(x-B)(x+C) a53(E_196)=-2 B=196 C=199, a443(E_1500003)=24 B=1500003 C=1500006 Step56 (1500003,1500006) p=443. -2!=0,12 mod13 and 24!=21,-39 mod13. kraus_elimination_q_13_level_26 now theorem via <level26_a_eliminated_by_53, level26_b_eliminated_by_443> decide, #print axioms empty inside {propext,Classical.choice,Quot.sound}. Still uninhabited ExistsNewformLevel2 0≠0, density ∀, RibetMazur pack, no Beal ∀. Both lakes green twice verify-scaffold.sh passed.",
   "license": "MIT",
   "keywords": ["beal-conjecture","kraus","level-26","zsigmondy","frey-curve","lean4"],
