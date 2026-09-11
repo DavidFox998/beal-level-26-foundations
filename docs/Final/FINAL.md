@@ -1,3 +1,20 @@
+# FINAL v8.82.0 — Euler a53 value set on the 86 survivors (arrow stays a Prop)
+
+Latest tag `v8.82.0-B14-a53-miss-86`.
+Lean change.
+Euler `a53` of the Beal Frey cubic on the
+86 mod-53 survivors is in `{-10,-2,1,6,14}`
+and misses `0,12` at ℓ=13 under `hEq`
+(`beal_frey_a53_miss_86`).
+Axioms `[propext, Quot.sound]`.
+That is not `¬ ∃ A` for those 86.
+`beal_..._B14_honest` stays the uninhabited
+`∀` on all 352.  Not BCDT, not Ribet.
+Not `Classical.em`.
+Chain `ExistsNewformLevel2` stays `0 ≠ 0`.
+No new Beal `∀` on the full 352.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.81.0 — 266 of 352 B≡14 rows die mod 53; 86 remain (arrow stays a Prop)
 
 Latest tag `v8.81.0-B14-mod53-kill`.

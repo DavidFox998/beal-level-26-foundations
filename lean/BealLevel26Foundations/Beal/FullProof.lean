@@ -19,8 +19,18 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyASearch
 import BealLevel26Foundations.Beal.FullProof.BealFreyMod53Kill
 
 /-!
-# FullProof track (v8.81.0)
+# FullProof track (v8.82.0)
 
+Aggregator for Track B.  v8.82.0 inhabits
+Euler `a₅₃` of the Beal Frey cubic on the
+86 mod-53 survivors: the value is in
+`{-10,-2,1,6,14}` and misses `0,12` at
+ℓ=13 under the Beal equation
+(`beal_frey_a53_miss_86`).  Axioms
+`[propext, Quot.sound]`.  That is **not**
+`¬ ∃ A` for those 86.  `B14_honest` stays
+the uninhabited `∀` on all 352.  Not Ribet,
+not BCDT.
 Aggregator for Track B.  v8.81.0 kills 266 of the
 352 named `B ≡ 14` rows because `(B+3)¹³ − B⁴`
 is not a fourth power modulo 53

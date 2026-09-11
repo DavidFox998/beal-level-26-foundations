@@ -225,6 +225,26 @@ are in $\{\texttt{propext},\texttt{Quot.sound},\texttt{Classical.choice}\}$;
 the cubic $2$-torsion and rewrite use
 \texttt{propext} only.  Not \texttt{Classical.em}.
 
+\section{$B\equiv 14$ Euler $a_{53}$ value set on the $86$ survivors}
+\texttt{a53\_res\_in\_table} records that every
+fourth-power pair has Euler $a_{53}$ in
+$\{-10,-2,0,1,6,14\}$
+(axioms \texttt{propext}, \texttt{Quot.sound}).
+Under $A^4+B^4=(B+3)^{13}$ the singular cell
+$(0,0)$ is excluded, so
+\texttt{beal\_frey\_a53\_value\_of\_eq} and
+\texttt{beal\_frey\_a53\_miss\_86} inhabit
+$a_{53}\in\{-10,-2,1,6,14\}$ together with the
+miss of locked $0$ and $12$ at $\ell=13$
+on the $86$ named rows that survive the
+mod-$53$ fourth-power test
+(axioms \texttt{propext}, \texttt{Quot.sound}).
+There is no Mathlib $a_{53}(\texttt{beal\_frey\_curve})$.
+That is not $\neg\exists A$ for those $86$.
+\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_B14\_honest}
+stays the uninhabited $\forall$ on all $352$ rows.
+Not BCDT and not Ribet.  Not \texttt{Classical.em}.
+
 \section{$B\equiv 14$ A-mod-$53$ search, not BCDT}
 Fourth powers modulo $53$ are the $14$ residues
 $\{0,1,10,13,15,16,24,28,36,42,44,46,47,49\}$.
@@ -275,8 +295,10 @@ The two displayed named rows are eliminated that way.
 $266$ of $352$ named $B\equiv 14$ rows are eliminated by
 fourth-power non-residues modulo $53$.
 The remaining $86$ named $B\equiv 14$ rows still have
-an Euler $a_{53}$ miss under the Beal equation;
-that miss does not inhabit $\neg\exists A$.
+an Euler $a_{53}$ in $\{-10,-2,1,6,14\}$ that misses
+$0,12$ under the Beal equation
+(\texttt{beal\_frey\_a53\_miss\_86});
+that pack does not inhabit $\neg\exists A$.
 The old \texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated}
 stays \texttt{Classical.em}.
 Full $\forall B$ including $B\equiv 14$, density from the

@@ -5,6 +5,13 @@ Author: David Fox
 
 Beal Frey cubic for gap-3 (4,13,13), distinguished from the displayed cubic.
 
+v8.82.0-B14-a53-miss-86. Euler `a₅₃` of the Beal Frey cubic
+on the 86 mod-53 survivors lies in `{-10,-2,1,6,14}` and
+misses `0,12` at ℓ=13 under the Beal equation
+(`beal_frey_a53_miss_86`, axioms `[propext, Quot.sound]`).
+That is **not** `¬ ∃ A` for those 86.  `B14_honest` stays
+the uninhabited `∀` on all 352.  Not Ribet.  Not BCDT.
+
 v8.81.0-B14-mod53-kill. 266 of the 352 named `B ≡ 14` rows
 die because `(B+3)¹³ − B⁴` is not a fourth power mod 53
 (`direct_mod53_kill` / `beal_..._B14_mod53`, empty axioms).
@@ -35,6 +42,9 @@ What this file inhabits
 * 266 of 352 named `B ≡ 14` rows have `¬ ∃ A` by the mod-53
   fourth-power non-residue test (`direct_mod53_kill`).  Empty
   axioms.  The other 86 stay.
+* On those 86, Euler `a₅₃` of the Beal Frey cubic is in
+  `{-10,-2,1,6,14}` and misses `0,12` at ℓ=13 under `hEq`
+  (`beal_frey_a53_miss_86`).  Not a Beal negation.
 
 What this file does **not** inhabit
 * BCDT / Wiles / `beal_frey_modular` as a modularity theorem. There is no
@@ -48,6 +58,8 @@ What this file does **not** inhabit
   `a53(E) ≡ a53(f)`.  The Zsig pool does not prove `N | 26`.
 * `∀ B ∈ step60_b14_list, ¬∃ A`. That stays the uninhabited Prop
   `beal_4_13_13_gap3_B_le_2M_eliminated_B14_honest`.
+* `¬ ∃ A` for the 86 mod-53 survivors. The Euler miss is an
+  integer inequality, not a Beal negation.
 * A 5983-row Beal elimination. The 5983 identity remains
   `zsig_density_2M_stats`. `eliminated_5983_honest` is the uninhabited
   conjunction of the 2-element kill with the 352-row Prop.
@@ -321,6 +333,35 @@ theorem beal_frey_a53_miss_B14 (A B : Nat)
       a53_beal_frey A B % 13 ≠ (12 : Int) % 13 :=
   BealLevel26Foundations.BealFreyASearch.beal_frey_a53_miss_B14 A B hMem hEq
 
+/-- Re-export: 86 named `B ≡ 14` rows that survive the
+    fourth-power non-residue test modulo 53. -/
+def survivors_86_list :=
+  BealLevel26Foundations.BealFreyMod53Kill.survivors_86_list
+
+/-- Re-export: non-singular Euler table values. -/
+def a53_nonzero_values :=
+  BealLevel26Foundations.BealFreyASearch.a53_nonzero_values
+
+/-- Re-export: Euler value set plus miss under the Beal equation. -/
+theorem beal_frey_a53_value_of_eq (A B : Nat)
+    (hEq : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    a53_beal_frey A B ∈ a53_nonzero_values ∧
+      a53_beal_frey A B % 13 ≠ (0 : Int) % 13 ∧
+        a53_beal_frey A B % 13 ≠ (12 : Int) % 13 :=
+  BealLevel26Foundations.BealFreyASearch.beal_frey_a53_value_of_eq A B hEq
+
+/-- Euler `a₅₃` of the Beal Frey cubic on the 86 mod-53
+    survivors is in `{-10,-2,1,6,14}` and misses `0,12`
+    at ℓ=13 under the Beal equation.  Not `¬ ∃ A`.
+    There is no Mathlib `a53 (beal_frey_curve A B)`. -/
+theorem beal_frey_a53_miss_86 (A B : Nat)
+    (_hMem : B ∈ survivors_86_list)
+    (hEq : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    a53_beal_frey A B ∈ a53_nonzero_values ∧
+      a53_beal_frey A B % 13 ≠ (0 : Int) % 13 ∧
+        a53_beal_frey A B % 13 ≠ (12 : Int) % 13 :=
+  beal_frey_a53_value_of_eq A B hEq
+
 /-- Re-export: residue search at a named row. -/
 theorem b14_A_search_miss (B A_mod : Nat)
     (hMem : B ∈ step60_b14_list)
@@ -377,6 +418,9 @@ theorem beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
 #check a53_beal_frey
 #check beal_frey_a53_miss_of_eq
 #check beal_frey_a53_miss_B14
+#check beal_frey_a53_value_of_eq
+#check beal_frey_a53_miss_86
+#check survivors_86_list
 #check b14_A_search_miss
 #check direct_mod53_kill
 #check step60_b14_killed_mod53
@@ -390,6 +434,8 @@ theorem beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
 #print axioms step60_b14_list_length_eq
 #print axioms beal_frey_a53_miss_of_eq
 #print axioms beal_frey_a53_miss_B14
+#print axioms beal_frey_a53_value_of_eq
+#print axioms beal_frey_a53_miss_86
 #print axioms b14_A_search_miss
 #print axioms direct_mod53_kill
 #print axioms beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53

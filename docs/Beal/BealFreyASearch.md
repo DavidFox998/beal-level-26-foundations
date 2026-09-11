@@ -1,3 +1,19 @@
+# v8.82.0 Euler a53 value set under the Beal equation
+
+`lean/BealLevel26Foundations/Beal/FullProof/BealFreyASearch.lean`
+
+`a53_res_in_table` records that every
+fourth-power pair has Euler `a₅₃` in
+`{-10,-2,0,1,6,14}` (axioms
+`[propext, Quot.sound]`, `List.Mem` decide).
+`beal_frey_a53_value_of_eq` drops the
+singular `0` cell under the Beal equation,
+so the value lies in `{-10,-2,1,6,14}`
+and still misses `0,12` at ℓ=13.
+Axioms `[propext, Quot.sound]`.
+Not `¬ ∃ A`.  The 86-row pack
+`beal_frey_a53_miss_86` lives in BealFreyB14.
+
 # v8.80.0 A-mod-53 Euler search on the Beal Frey cubic
 
 `lean/BealLevel26Foundations/Beal/FullProof/BealFreyASearch.lean`

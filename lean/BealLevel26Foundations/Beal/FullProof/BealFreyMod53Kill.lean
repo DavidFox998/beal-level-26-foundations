@@ -1253,6 +1253,10 @@ def step60_b14_survives_mod53 : List Nat :=
     1858398
   ]
 
+/-- Named alias for the 86 surviving `B ≡ 14` rows. -/
+def survivors_86_list : List Nat :=
+  step60_b14_survives_mod53
+
 set_option maxRecDepth 32768
 set_option maxHeartbeats 4000000
 
@@ -1263,6 +1267,10 @@ theorem step60_b14_killed_mod53_length :
 theorem step60_b14_survives_mod53_length :
     step60_b14_survives_mod53.length = 86 :=
   rfl
+
+theorem survivors_86_list_length :
+    survivors_86_list.length = 86 :=
+  step60_b14_survives_mod53_length
 
 /-- Conjunction over a list: each residue `rhs_mod53_res (x % 53)`
     is not a fourth power. -/
@@ -1309,6 +1317,8 @@ theorem beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
 #check rhs_mod53
 #check direct_mod53_kill
 #check step60_b14_killed_mod53
+#check step60_b14_survives_mod53
+#check survivors_86_list
 #check beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
 #print axioms add53_mod
 #print axioms mul_mod53

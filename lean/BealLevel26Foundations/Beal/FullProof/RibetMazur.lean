@@ -3,6 +3,12 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v8.82.0 — Euler a53 of the Beal Frey
+cubic on the 86 mod-53 survivors is in
+{-10,-2,1,6,14} and misses 0,12 at ℓ=13
+under hEq.  Not ¬∃ A for those 86.
+B14_honest stays the uninhabited ∀.
+Not Ribet.  Not Classical.em.
 Track B v8.81.0 — 266 of 352 named B≡14 rows
 die by the mod-53 fourth-power non-residue
 test.  Empty axioms.  86 remain.
@@ -5230,6 +5236,22 @@ def step60_b14_killed_mod53 :=
 def beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53 :=
   BealLevel26Foundations.BealFreyB14.beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
 
+/-! ## v8.82.0 — Euler a53 value set on the 86 mod-53 survivors -/
+
+def survivors_86_list :=
+  BealLevel26Foundations.BealFreyB14.survivors_86_list
+
+def a53_nonzero_values :=
+  BealLevel26Foundations.BealFreyB14.a53_nonzero_values
+
+/-- Value set plus miss under the Beal equation.  Not `¬ ∃ A`. -/
+def beal_frey_a53_value_of_eq :=
+  BealLevel26Foundations.BealFreyB14.beal_frey_a53_value_of_eq
+
+/-- Same pack on the 86 survivors.  Not `¬ ∃ A`.  Not Ribet. -/
+def beal_frey_a53_miss_86 :=
+  BealLevel26Foundations.BealFreyB14.beal_frey_a53_miss_86
+
 /-! ## v8.71.0 — MCOM Ribet-Mazur pack from v8.69.0 misses -/
 
 /-- Inhabited for the two named witnesses only.
@@ -6126,6 +6148,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check direct_mod53_kill
 #check step60_b14_killed_mod53
 #check beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
+#check survivors_86_list
+#check a53_nonzero_values
+#check beal_frey_a53_value_of_eq
+#check beal_frey_a53_miss_86
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -6617,5 +6643,7 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms b14_A_search_miss
 #print axioms direct_mod53_kill
 #print axioms beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
+#print axioms beal_frey_a53_value_of_eq
+#print axioms beal_frey_a53_miss_86
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

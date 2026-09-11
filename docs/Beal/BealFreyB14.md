@@ -1,3 +1,17 @@
+# v8.82.0 Euler a53 value set on the 86 survivors
+
+`lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean`
+
+`beal_frey_a53_miss_86` inhabits the Euler
+value set of the Beal Frey cubic on the 86
+mod-53 survivors: `a53_beal_frey A B` lies in
+`{-10,-2,1,6,14}` and misses `0,12` at ℓ=13
+under the Beal equation.  Axioms
+`[propext, Quot.sound]`.  There is no Mathlib
+`a53 (beal_frey_curve A B)`.
+That is **not** `¬ ∃ A` for those 86.
+`B14_honest` stays the uninhabited `∀` on all 352.
+
 # v8.81.0 266 of 352 B≡14 rows die mod 53
 
 `lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean`

@@ -1,3 +1,18 @@
+# v8.82.0 Euler a53 value set on the 86 mod-53 survivors
+
+Euler `a53` of the Beal Frey cubic on the
+86 named `B ≡ 14` rows that survive the
+mod-53 fourth-power test is in
+`{-10,-2,1,6,14}` and misses `0,12` at
+ℓ=13 under the Beal equation
+(`beal_frey_a53_miss_86`).
+Axioms `[propext, Quot.sound]`.
+That is **not** `¬ ∃ A` for those 86.
+`B14_honest` stays the uninhabited `∀` on all
+352.  Not Ribet.  Not BCDT.  Not `Classical.em`.
+Chain `ExistsNewformLevel2` stays `0 != 0`.
+No new Beal forall on the full 352.
+
 # v8.81.0 fourth-power non-residue kill modulo 53; 266 of 352 die
 
 266 of the 352 named `B ≡ 14` rows die because

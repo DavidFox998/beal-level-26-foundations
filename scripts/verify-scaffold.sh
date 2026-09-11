@@ -2807,6 +2807,12 @@ grep -q "theorem a53_res_miss_or_zero" \
   lean/BealLevel26Foundations/Beal/FullProof/BealFreyASearch.lean
 grep -q "theorem beal_frey_a53_miss_B14" \
   lean/BealLevel26Foundations/Beal/FullProof/BealFreyASearch.lean
+grep -q "theorem a53_res_in_table" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyASearch.lean
+grep -q "theorem beal_frey_a53_value_of_eq" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyASearch.lean
+grep -q "def a53_nonzero_values" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyASearch.lean
 grep -q "def beal_4_13_13_gap3_B_le_2M_eliminated_B14_honest" \
   lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean
 test ! -n "$(grep -E '^axiom |import BealLevel26Foundations.Beal.FullProof.RibetMazur' \
@@ -2824,6 +2830,12 @@ grep -q "theorem beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53" \
   lean/BealLevel26Foundations/Beal/FullProof/BealFreyMod53Kill.lean
 grep -q "def step60_b14_killed_mod53" \
   lean/BealLevel26Foundations/Beal/FullProof/BealFreyMod53Kill.lean
+grep -q "def survivors_86_list" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyMod53Kill.lean
+grep -q "theorem beal_frey_a53_miss_86" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean
+grep -q "def beal_frey_a53_miss_86" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 test ! -n "$(grep -E '^axiom |import BealLevel26Foundations.Beal.FullProof.RibetMazur' \
   lean/BealLevel26Foundations/Beal/FullProof/BealFreyMod53Kill.lean || true)"
 test ! -n "$(grep -E 'import BealLevel26Foundations.Modularity.FreyModularity_13' \

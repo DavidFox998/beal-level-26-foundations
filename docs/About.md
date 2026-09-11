@@ -1,11 +1,13 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.81.0-B14-mod53-kill`
-Lean change: BealFreyMod53Kill
-266 of 352 named `B ≡ 14` rows die because
-`(B+3)¹³ − B⁴` is not a fourth power mod 53.
-Empty axioms.  The count is 266, not 287.
-The remaining 86 survive this test.
+Latest tag / HEAD: `v8.82.0-B14-a53-miss-86`
+Lean change: BealFreyASearch / BealFreyB14
+Euler `a₅₃` of the Beal Frey cubic on the
+86 mod-53 survivors is in `{-10,-2,1,6,14}`
+and misses `0,12` at ℓ=13 under the Beal
+equation (`beal_frey_a53_miss_86`).
+Axioms `[propext, Quot.sound]`.
+That is **not** `¬ ∃ A` for those 86.
 `B14_honest` stays the uninhabited `∀` on all
 352.  Not Ribet.  Not BCDT.
 `full_honest` is the two-element

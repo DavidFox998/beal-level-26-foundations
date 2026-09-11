@@ -3,6 +3,13 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v8.82.0 — Euler `a₅₃` of the Beal Frey
+cubic lies in `{-10,-2,1,6,14}` under the Beal
+equation (the `(0,0)` cell is excluded because
+both residues cannot be `0`).  That inhabits
+the value set, not `¬ ∃ A`.  Axioms
+`[propext, Quot.sound]`.  The 86-row pack
+`beal_frey_a53_miss_86` lives in BealFreyB14.
 Track B v8.80.0 — A-mod-53 Euler search on the
 Beal Frey cubic `y² = x(x − A⁴)(x + B⁴)`.
 
@@ -149,6 +156,86 @@ theorem a53_res_miss_or_zero :
           a53_beal_frey_res p.1 p.2 % 13 ≠ (12 : Int) % 13 := by
   decide
 
+/-- Computed 14×14 table of Euler traces. -/
+def a53_table_values : List Int :=
+  [-10, -2, 0, 1, 6, 14]
+
+/-- Non-singular cells: `0` only at `(A⁴,B⁴)≡(0,0)`. -/
+def a53_nonzero_values : List Int :=
+  [-10, -2, 1, 6, 14]
+
+set_option maxRecDepth 16384
+set_option maxHeartbeats 4000000
+
+/-- Finite search: every fourth-power pair has Euler
+`a₅₃` in the six-element table.  Empty on `decide`
+like `a53_res_miss_or_zero`. -/
+theorem a53_res_in_table :
+    ∀ p : Nat × Nat, p ∈ fourth_power_pairs →
+      a53_beal_frey_res p.1 p.2 ∈ a53_table_values := by
+  decide
+
+theorem a53_nonzero_neg10 :
+    (-10 : Int) ∈ a53_nonzero_values :=
+  List.Mem.head _
+
+theorem a53_nonzero_neg2 :
+    (-2 : Int) ∈ a53_nonzero_values :=
+  List.Mem.tail _ (List.Mem.head _)
+
+theorem a53_nonzero_1 :
+    (1 : Int) ∈ a53_nonzero_values :=
+  List.Mem.tail _ (List.Mem.tail _ (List.Mem.head _))
+
+theorem a53_nonzero_6 :
+    (6 : Int) ∈ a53_nonzero_values :=
+  List.Mem.tail _ (List.Mem.tail _ (List.Mem.tail _ (List.Mem.head _)))
+
+theorem a53_nonzero_14 :
+    (14 : Int) ∈ a53_nonzero_values :=
+  List.Mem.tail _
+    (List.Mem.tail _ (List.Mem.tail _ (List.Mem.tail _ (List.Mem.head _))))
+
+/-- `Mem` does not refine the element parameter; split cons instead. -/
+theorem mem_cons_or {α : Type} (x y : α) (ys : List α) :
+    x ∈ (y :: ys) → x = y ∨ x ∈ ys
+  | List.Mem.head _ => Or.inl rfl
+  | List.Mem.tail _ h => Or.inr h
+
+theorem subst_mem_nonzero {a b : Int}
+    (h : a = b) (hb : b ∈ a53_nonzero_values) :
+    a ∈ a53_nonzero_values :=
+  Eq.rec (motive := fun t (_ : b = t) => t ∈ a53_nonzero_values) hb h.symm
+
+/-- Drop the singular `0` cell using the ℓ=13 miss. -/
+theorem mem_nonzero_of_miss (a : Int)
+    (hMem : a ∈ a53_table_values)
+    (hMiss0 : a % 13 ≠ (0 : Int) % 13) :
+    a ∈ a53_nonzero_values :=
+  let h0 : a ∈ ([-10, -2, 0, 1, 6, 14] : List Int) := hMem
+  match mem_cons_or a (-10) [-2, 0, 1, 6, 14] h0 with
+  | Or.inl heq => subst_mem_nonzero heq a53_nonzero_neg10
+  | Or.inr h1 =>
+    match mem_cons_or a (-2) [0, 1, 6, 14] h1 with
+    | Or.inl heq => subst_mem_nonzero heq a53_nonzero_neg2
+    | Or.inr h2 =>
+      match mem_cons_or a (0 : Int) [1, 6, 14] h2 with
+      | Or.inl heq =>
+          let hMiss00 : (0 : Int) % 13 ≠ (0 : Int) % 13 :=
+            Eq.rec (motive := fun t (_ : a = t) =>
+                t % 13 ≠ (0 : Int) % 13) hMiss0 heq
+          absurd (rfl : (0 : Int) % 13 = (0 : Int) % 13) hMiss00
+      | Or.inr h3 =>
+        match mem_cons_or a (1 : Int) [6, 14] h3 with
+        | Or.inl heq => subst_mem_nonzero heq a53_nonzero_1
+        | Or.inr h4 =>
+          match mem_cons_or a (6 : Int) [14] h4 with
+          | Or.inl heq => subst_mem_nonzero heq a53_nonzero_6
+          | Or.inr h5 =>
+            match mem_cons_or a (14 : Int) [] h5 with
+            | Or.inl heq => subst_mem_nonzero heq a53_nonzero_14
+            | Or.inr hempty => nomatch hempty
+
 /-! ## `Nat.pow` reduction modulo 53 -/
 
 theorem pow_mod53 (n : Nat) :
@@ -260,6 +347,22 @@ theorem beal_frey_a53_miss_of_eq (A B : Nat)
     | Or.inl hAne => absurd hA0 hAne
     | Or.inr hBne => absurd hB0 hBne
 
+/-- Under the Beal equation, Euler `a₅₃` of the Beal
+Frey cubic lies in `{-10,-2,1,6,14}` and misses
+locked `0` and `12` at ℓ=13.  Not `¬ ∃ A`.  There
+is no Mathlib `a53 (beal_frey_curve A B)`. -/
+theorem beal_frey_a53_value_of_eq (A B : Nat)
+    (hEq : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    a53_beal_frey A B ∈ a53_nonzero_values ∧
+      a53_beal_frey A B % 13 ≠ (0 : Int) % 13 ∧
+        a53_beal_frey A B % 13 ≠ (12 : Int) % 13 :=
+  let hMiss := beal_frey_a53_miss_of_eq A B hEq
+  let hTab : a53_beal_frey A B ∈ a53_table_values :=
+    a53_res_in_table
+      (Nat.pow A 4 % 53, Nat.pow B 4 % 53)
+      (mem_fourth_power_pairs (fourth_pow_mod53_mem A) (fourth_pow_mod53_mem B))
+  ⟨mem_nonzero_of_miss (a53_beal_frey A B) hTab hMiss.1, hMiss⟩
+
 /-- Same miss, restricted to the 352 named `B ≡ 14` rows.
 Still not `¬ ∃ A`. -/
 theorem beal_frey_a53_miss_B14 (A B : Nat)
@@ -300,15 +403,22 @@ theorem b14_A_search_miss (B A_mod : Nat)
 #check a53_res_miss_or_zero
 #check fourth_pow_mod53_mem
 #check beal_not_both_fourth_zero_mod53
+#check a53_table_values
+#check a53_nonzero_values
+#check a53_res_in_table
 #check beal_frey_a53_miss_of_eq
+#check beal_frey_a53_value_of_eq
 #check beal_frey_a53_miss_B14
 #check b14_A_search_miss
 #print axioms fourth_pow_mod53_of_lt
 #print axioms a53_beal_frey_res_1_1
 #print axioms a53_res_miss_or_zero
+#print axioms a53_res_in_table
+#print axioms mem_nonzero_of_miss
 #print axioms fourth_pow_mod53_mem
 #print axioms beal_not_both_fourth_zero_mod53
 #print axioms beal_frey_a53_miss_of_eq
+#print axioms beal_frey_a53_value_of_eq
 #print axioms beal_frey_a53_miss_B14
 #print axioms b14_A_search_miss
 
