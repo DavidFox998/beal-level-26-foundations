@@ -1,8 +1,12 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.86.0-paper-B14-final-DOI`
-Paper-only DOI write.  No Lean change.
-Base: `v8.85.0-paper-B14-full`.
+Latest tag / HEAD: `v8.87.0-general-conductor-bound`
+`frey_conductor_general` inhabits the Mathlib
+Weierstrass `|Δ| = 2^e * N0` bound
+(`e ≤ 5`, `N0 ∣ (ABC)^26 * 13`).
+Not Tate.  `conductor_86` stays a Prop.
+266+86 residue kills unchanged.
+Base: `v8.86.0-paper-B14-final-DOI`.
 Lean change: BealFreyModQKill / paper
 `beal_..._B14_full` covers all 352 named
 `B ≡ 14` rows (266 mod 53, 77 at q=29,

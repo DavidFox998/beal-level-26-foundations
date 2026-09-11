@@ -799,6 +799,18 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.87.0-general-conductor-bound — DONE (frey_conductor_general: Mathlib Weierstrass |Δ|=2^e N0, e≤5, N0∣(ABC)^26*13; [propext, Quot.sound]; not Tate; conductor_86 stays Prop; N0∣rad(B*C) stays uninhabited; 266+86 empty-axiom residue kills unchanged; B14_honest stays Prop; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus ∀ stays uninhabited; arrow stays a Prop)
+
+Lean change.  New file
+`BealFreyConductorGeneral.lean`.
+Uses existing `freyCurve` Weierstrass instance.
+Does **not** add `axiom BCDT_B14`.
+Does **not** inhabit `conductor_86`.
+Does **not** inhabit Tate `N(E)`.
+Does **not** inhabit `N0 ∣ rad(B*C)`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Beal `∀`.
+
 ### v8.86.0-paper-B14-final-DOI — DONE (paper-only DOI write; .zenodo.json title is the 352-row residue cover; CITATION/paper cite math 22712897 and paper 22713047; B14_honest stays uninhabited Prop; no Lean change; no Classical.em; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus ∀ stays uninhabited; arrow stays a Prop)
 
 Paper metadata only.

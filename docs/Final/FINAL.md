@@ -1,3 +1,14 @@
+# FINAL v8.87.0 — general Weierstrass Δ bound (arrow stays a Prop)
+
+Latest tag `v8.87.0-general-conductor-bound`.
+`frey_conductor_general` inhabits
+`|Δ| = 2^e * N0` with `e ≤ 5` and
+`N0 ∣ (ABC)^26 * 13` from the Mathlib
+Weierstrass instance.  `[propext, Quot.sound]`.
+Not Tate.  `conductor_86` stays a Prop.
+`B14_honest` stays the uninhabited Prop.
+266+86 residue kills unchanged.
+
 # FINAL v8.86.0 — paper-only final-DOI write (arrow stays a Prop)
 
 Latest tag `v8.86.0-paper-B14-final-DOI`.

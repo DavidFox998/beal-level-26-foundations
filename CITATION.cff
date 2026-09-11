@@ -5,15 +5,15 @@ type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v8.86.0-paper-B14-final-DOI"
+version: "v8.87.0-general-conductor-bound"
 date-released: "2026-09-11"
 doi: "10.5281/zenodo.22713047"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
 url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.84.0-B14-modq-kill"
-# Base: v8.85.0-paper-B14-full / 10.5281/zenodo.22713047.
+# v8.87.0-general-conductor-bound inhabits frey_conductor_general (Weierstrass Δ).
 # Math release: v8.84.0-B14-modq-kill / 10.5281/zenodo.22712897.
-# This tag v8.86.0-paper-B14-final-DOI will mint the final paper DOI.
-# https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.86.0-paper-B14-final-DOI
+# Paper: v8.85.0-paper-B14-full / 10.5281/zenodo.22713047.
+# https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.87.0-general-conductor-bound
 license: MIT
 keywords:
   - beal-conjecture

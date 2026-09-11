@@ -771,6 +771,7 @@ import BealLevel26Foundations.Beal.FullProof.BealMod16
 import BealLevel26Foundations.Beal.FullProof.KrausB14
 import BealLevel26Foundations.Beal.FullProof.LevelLoweringB14
 import BealLevel26Foundations.Beal.FullProof.BealFreyB14
+import BealLevel26Foundations.Beal.FullProof.BealFreyConductorGeneral
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -5335,6 +5336,31 @@ def beal_4_13_13_gap3_B_le_2M_eliminated_86_modq :=
 def beal_4_13_13_gap3_B_le_2M_eliminated_B14_full :=
   BealLevel26Foundations.BealFreyB14.beal_4_13_13_gap3_B_le_2M_eliminated_B14_full
 
+/-! ## v8.87.0 — general Weierstrass Δ bound; not Tate -/
+
+def rad :=
+  BealLevel26Foundations.BealFreyConductorGeneral.rad
+
+def bealFreyWeierstrass :=
+  BealLevel26Foundations.BealFreyConductorGeneral.bealFreyWeierstrass
+
+/-- `|Δ| = 2^e * N0` with `e ≤ 5` and
+    `N0 ∣ (ABC)²⁶ * 13`.  Not Tate.  Not
+    `conductor_86`.  Not BCDT. -/
+theorem frey_conductor_general (A B C : Nat)
+    (h : Nat.pow A 4 + Nat.pow B 4 = Nat.pow C 13)
+    (hGap : C = B + 3) :
+    ∃ (e N0 : Nat),
+      Int.natAbs (bealFreyWeierstrass A B).Δ = Nat.pow 2 e * N0 ∧
+      N0 ∣ Nat.pow (A * B * C) 26 * 13 ∧
+      e ≤ 5 :=
+  BealLevel26Foundations.BealFreyConductorGeneral.frey_conductor_general
+    A B C h hGap
+
+/-- Uninhabited rad form.  `|Δ|` keeps primes of `A`. -/
+def frey_conductor_N0_dvd_rad_BC : Prop :=
+  BealLevel26Foundations.BealFreyConductorGeneral.frey_conductor_N0_dvd_rad_BC
+
 /-! ## v8.71.0 — MCOM Ribet-Mazur pack from v8.69.0 misses -/
 
 /-- Inhabited for the two named witnesses only.
@@ -6248,6 +6274,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check direct_mod109_kill
 #check beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
 #check beal_4_13_13_gap3_B_le_2M_eliminated_B14_full
+#check frey_conductor_general
+#check frey_conductor_N0_dvd_rad_BC
+#check bealFreyWeierstrass
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -6749,5 +6778,6 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms direct_mod109_kill
 #print axioms beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
 #print axioms beal_4_13_13_gap3_B_le_2M_eliminated_B14_full
+#print axioms frey_conductor_general
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

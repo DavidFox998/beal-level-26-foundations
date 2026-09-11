@@ -18,8 +18,20 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyB14
 import BealLevel26Foundations.Beal.FullProof.BealFreyASearch
 import BealLevel26Foundations.Beal.FullProof.BealFreyMod53Kill
 import BealLevel26Foundations.Beal.FullProof.BealFreyModQKill
+import BealLevel26Foundations.Beal.FullProof.BealFreyConductorGeneral
 
 /-!
+# FullProof track (v8.87.0)
+
+Aggregator for Track B.  v8.87.0 inhabits
+`frey_conductor_general`: Mathlib Weierstrass
+`Δ` of `Y² = X(X−A⁴)(X+B⁴)` is `2^e * N0`
+with `e = 4 ≤ 5` and `N0 ∣ (ABC)²⁶ * 13`.
+Axioms `[propext, Quot.sound]`.  That is
+**not** Tate `N(E)`, **not** `N ∣ 2⁵*3*13`,
+**not** `N0 ∣ rad(B*C)`.  `conductor_86`
+stays a Prop.  Not BCDT.
+
 # FullProof track (v8.85.0)
 
 Aggregator for Track B.  v8.85.0 unifies the
