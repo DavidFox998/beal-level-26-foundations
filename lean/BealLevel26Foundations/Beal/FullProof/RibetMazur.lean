@@ -727,6 +727,7 @@ import BealLevel26Foundations.Beal.FullProof.FreyModularity
 import BealLevel26Foundations.Beal.FullProof.BealElim
 import BealLevel26Foundations.Beal.FullProof.BealMod16
 import BealLevel26Foundations.Beal.FullProof.KrausB14
+import BealLevel26Foundations.Beal.FullProof.LevelLoweringB14
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -5113,6 +5114,27 @@ def b14_kraus_pack_recorded :=
 def b14_witnesses :=
   BealLevel26Foundations.B14Witnesses.b14_witnesses
 
+/-! ## v8.78.0 — extracted B≡14 list; lowering stays Prop -/
+
+def step60_b14_list :=
+  BealLevel26Foundations.Step60B14List.step60_b14_list
+
+/-- Displayed cubic 2-torsion.  Not Wiles. -/
+def frey_modular_B14 :=
+  BealLevel26Foundations.LevelLoweringB14.frey_modular_B14
+
+/-- Uninhabited.  Pack is a miss, not Ribet. -/
+def level_lowering_to_26_B14 :=
+  BealLevel26Foundations.LevelLoweringB14.level_lowering_to_26_B14
+
+/-- Uninhabited `∀` on the 352 named rows. -/
+def beal_4_13_13_gap3_B_le_2M_eliminated_B14_honest :=
+  BealLevel26Foundations.LevelLoweringB14.beal_4_13_13_gap3_B_le_2M_eliminated_B14_honest
+
+/-- Displayed two-element list via mod 16. -/
+def beal_4_13_13_gap3_B_le_2M_eliminated_full_honest :=
+  BealLevel26Foundations.LevelLoweringB14.beal_4_13_13_gap3_B_le_2M_eliminated_full_honest
+
 /-! ## v8.71.0 — MCOM Ribet-Mazur pack from v8.69.0 misses -/
 
 /-- Inhabited for the two named witnesses only.
@@ -5988,6 +6010,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check beal_4_13_13_gap3_B_le_2M_eliminated_full
 #check b14_kraus_pack_recorded
 #check b14_witnesses
+#check step60_b14_list
+#check frey_modular_B14
+#check level_lowering_to_26_B14
+#check beal_4_13_13_gap3_B_le_2M_eliminated_B14_honest
+#check beal_4_13_13_gap3_B_le_2M_eliminated_full_honest
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -6469,5 +6496,7 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms beal_4_13_13_gap3_B_le_2M_eliminated_B14_kraus
 #print axioms beal_4_13_13_gap3_B_le_2M_eliminated_full
 #print axioms b14_kraus_pack_recorded
+#print axioms frey_modular_B14
+#print axioms beal_4_13_13_gap3_B_le_2M_eliminated_full_honest
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

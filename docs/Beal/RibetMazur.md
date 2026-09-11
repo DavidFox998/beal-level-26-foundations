@@ -1,3 +1,15 @@
+# v8.78.0 B≡14 list; lowering stays Prop
+
+`step60_b14_list` is 352 named numerals.
+`frey_modular_B14` is displayed cubic
+2-torsion, not Wiles.
+`level_lowering_to_26_B14` stays a Prop.
+`beal_..._B14_honest` stays the uninhabited
+forall.  `full_honest` is the two-element
+list via mod 16.  `#print axioms` empty.
+Chain `ExistsNewformLevel2` stays `0 != 0`.
+No new Beal forall.
+
 # v8.77.0 B≡14 Kraus sweep
 
 `beal_4_13_13_gap3_B_le_2M_eliminated_B14_kraus`

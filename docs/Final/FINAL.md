@@ -1,3 +1,18 @@
+# FINAL v8.78.0 — B≡14 list; lowering stays a Prop (arrow stays a Prop)
+
+Latest tag `v8.78.0-B14-level-lowering-honest`.
+Lean change.
+`step60_b14_list` is 352 named numerals.
+`frey_modular_B14` is displayed cubic
+2-torsion, not Wiles.
+`level_lowering_to_26_B14` stays a Prop.
+`beal_..._B14_honest` stays the uninhabited
+`∀`.  `full_honest` is the two-element
+list via mod 16. `#print axioms` empty.
+Chain `ExistsNewformLevel2` stays `0 ≠ 0`.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.77.0 — B≡14 Kraus sweep (arrow stays a Prop)
 
 Latest tag `v8.77.0-B14-kraus-sweep`.

@@ -166,11 +166,32 @@ is those two rows via the v8.76.0 residues.
 The v8.69.0--v8.74.0 pack ($-2$ vs $0/12$, $24$ vs $21/-39$)
 stays recorded.
 
+\section{$B\equiv 14$ list and displayed 2-torsion}
+\texttt{step60\_b14\_list} is the $352$ named Step60
+numerals, all $\equiv 14\pmod{16}$.
+\texttt{b14\_witnesses} is the matching
+$(B,53,a_{53})$ list with
+$a_{53}\in\{-2,-10,1,6,14\}$.
+The displayed cubic
+$x(x-B^4)(x+(B+3)^4)$ has roots
+$0$, $B^4$, $-(B+3)^4$
+(\texttt{frey\_modular\_B14}, axiom \texttt{propext}).
+That is not Wiles and not BCDT.
+\texttt{level\_lowering\_to\_26\_B14} stays a Prop:
+the recorded pack is a miss, not a congruence
+$a_E\equiv a_f\pmod{13}$.
+\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_B14\_honest}
+stays the uninhabited $\forall$ on those $352$ rows.
+\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_full\_honest}
+is the displayed two-element list via mod $16$;
+\texttt{\#print axioms} empty.
+
 \section{What remains}
 $15/16$ of $B\le 2\text{M}$ is eliminated by mod-$16$ residues.
 The two displayed named rows are eliminated that way.
-$352$ named $B\equiv 14$ rows have recorded $a_{53}$ misses;
-those misses do not inhabit $\neg\exists A$.
+$352$ named $B\equiv 14$ rows have recorded $a_{53}$ misses
+and displayed cubic $2$-torsion;
+those facts do not inhabit $\neg\exists A$.
 The old \texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated}
 stays \texttt{Classical.em}.
 Full $\forall B$ including $B\equiv 14$, density from the

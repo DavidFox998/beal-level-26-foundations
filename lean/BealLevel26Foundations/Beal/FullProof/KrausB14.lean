@@ -164,26 +164,34 @@ set_option maxRecDepth 16384
 set_option maxHeartbeats 2000000
 
 theorem b14_witnesses_mod14 :
-    ∀ pair : Nat × Int, pair ∈ b14_witnesses →
-      pair.1 % 16 = 14 := by
+    ∀ trip : Nat × Nat × Int, trip ∈ b14_witnesses →
+      trip.1 % 16 = 14 := by
+  decide
+
+set_option maxRecDepth 16384
+set_option maxHeartbeats 2000000
+
+theorem b14_witnesses_p53 :
+    ∀ trip : Nat × Nat × Int, trip ∈ b14_witnesses →
+      trip.2.1 = 53 := by
   decide
 
 set_option maxRecDepth 16384
 set_option maxHeartbeats 2000000
 
 theorem b14_witnesses_miss :
-    ∀ pair : Nat × Int, pair ∈ b14_witnesses →
-      pair.2 % 13 ≠ (0 : Int) % 13 ∧
-        pair.2 % 13 ≠ (12 : Int) % 13 := by
+    ∀ trip : Nat × Nat × Int, trip ∈ b14_witnesses →
+      trip.2.2 % 13 ≠ (0 : Int) % 13 ∧
+        trip.2.2 % 13 ≠ (12 : Int) % 13 := by
   decide
 
-/-- Recorded miss at a named B≡14 pair.
+/-- Recorded miss at a named B≡14 triple.
 Not Ribet.  Not `¬ ∃ A`. -/
-theorem b14_elim_at_p (B : Nat) (a : Int)
-    (hMem : (B, a) ∈ b14_witnesses) :
+theorem b14_elim_at_p (B p : Nat) (a : Int)
+    (hMem : (B, p, a) ∈ b14_witnesses) :
     a % 13 ≠ (0 : Int) % 13 ∧
       a % 13 ≠ (12 : Int) % 13 :=
-  b14_witnesses_miss (B, a) hMem
+  b14_witnesses_miss (B, p, a) hMem
 
 /-- Displayed pack: two Euler counts plus
 the integer misses for the five a₅₃

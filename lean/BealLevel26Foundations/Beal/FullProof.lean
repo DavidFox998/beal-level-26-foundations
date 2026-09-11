@@ -13,10 +13,23 @@ import BealLevel26Foundations.Beal.FullProof.RibetMazur
 import BealLevel26Foundations.Beal.FullProof.BealElim
 import BealLevel26Foundations.Beal.FullProof.BealMod16
 import BealLevel26Foundations.Beal.FullProof.KrausB14
+import BealLevel26Foundations.Beal.FullProof.LevelLoweringB14
 
 /-!
-# FullProof track (v8.77.0)
+# FullProof track (v8.78.0)
 
+Aggregator for Track B.  v8.78.0 extracts
+`step60_b14_list` (352 named B≡14 rows)
+and records displayed cubic 2-torsion.
+That is **not** Wiles and **not** `¬ ∃ A`.
+`level_lowering_to_26_B14` stays a Prop.
+`beal_4_13_13_gap3_B_le_2M_eliminated_B14_honest`
+stays the uninhabited `∀`.
+`beal_4_13_13_gap3_B_le_2M_eliminated_full_honest`
+is the displayed two-element list via
+mod 16.  The old
+`beal_4_13_13_gap3_B_le_2M_eliminated`
+stays `Classical.em`.
 Aggregator for Track B.  v8.77.0 records
 `a₅₃` misses for the 352 named Step60
 rows with `B ≡ 14 [MOD 16]`.

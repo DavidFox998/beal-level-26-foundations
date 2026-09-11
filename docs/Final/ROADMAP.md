@@ -799,6 +799,15 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.78.0-B14-level-lowering-honest — DONE (extract step60_b14_list 352 numerals; frey_modular_B14 is displayed cubic 2-torsion not Wiles; level_lowering_to_26_B14 stays Prop; B14_honest stays uninhabited ∀; full_honest is mod16 on the 2-element list; #print axioms empty; not Ribet; not ¬∃ A for those 352; Chain ExistsNewformLevel2 stays 0≠0; no new Beal ∀; arrow stays a Prop)
+
+Lean change.  Lists plus polynomial 2-torsion.
+Does **not** import `RibetMazur`.
+Does **not** import the axiom
+`frey_modular_13`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Beal `∀`.
+
 ### v8.77.0-B14-kraus-sweep — DONE (KrausB14 records a53 misses for 352 named Step60 B≡14 rows vs 0/12; B14_kraus vacuous on displayed 2-element list; eliminated_full is mod16 on that list; #print axioms empty; not Ribet; not ¬∃ A for those 352; old 2M capstone stays Classical.em; Chain ExistsNewformLevel2 stays 0≠0; no new Beal ∀; arrow stays a Prop)
 
 Lean change.  Recorded Int-mod-13 misses.
