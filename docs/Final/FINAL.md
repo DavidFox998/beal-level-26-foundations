@@ -1,3 +1,17 @@
+# FINAL v8.73.0 — displayed dim-2 (arrow stays a Prop)
+
+Latest tag `v8.73.0-modularity-exists-level2`.
+Lean change.
+`exists_newform_level_26_dim2` is inhabited
+(`0 ≠ 12` at `p = 53`). That is not a
+Mathlib cusp-form theorem.
+Chain `ExistsNewformLevel2` stays `0 ≠ 0`.
+Density/Step
+`kraus_elimination_q_13_level_26` stays
+the uninhabited `∀`.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.71.0 — Ribet-Mazur pack (arrow stays a Prop)
 
 Latest tag `v8.71.0-ribet-mazur-pack`.

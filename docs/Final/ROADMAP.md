@@ -799,6 +799,16 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.73.0-modularity-exists-level2 — DONE (Level26_Newforms exists_newform_level_26_dim2 displayed dim2 via 0≠12 at p=53; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus ∀ stays uninhabited; no new Beal ∀; arrow stays a Prop)
+
+Lean change.  Displayed `Newform` records
+for locked `26a1` / `26b1`.  Distinct by
+`a₅₃` (`0 ≠ 12`).  Not Mathlib cusp forms.
+Does **not** inhabit Chain
+`ExistsNewformLevel2`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Beal `∀`.
+
 ### v8.71.0-ribet-mazur-pack — DONE (RibetMazur kraus_elimination_q_13_level_26_density / ribet_mazur_pack_q_13_level_26 inhabited from v8.69.0 Int-mod-13 at B=196 and B=1500003 only; Density/Step kraus_elimination_q_13_level_26 stays the uninhabited ∀; ExistsNewformLevel2 stays 0≠0; no new Beal ∀; arrow stays a Prop)
 
 Lean change.  `RibetMazur.lean` already

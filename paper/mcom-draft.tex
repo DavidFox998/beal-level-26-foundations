@@ -30,7 +30,9 @@ Ribet-Mazur pack \texttt{ribet\_mazur\_pack\_q\_13\_level\_26} inhabited via
 \texttt{hK.left / hK.right}, $\#\texttt{print axioms}$ empty and
 $[\texttt{propext},\texttt{Quot.sound}]$ inside allowed
 $\{\texttt{propext},\texttt{Classical.choice},\texttt{Quot.sound}\}$.
-Honesty: \texttt{ExistsNewformLevel2} stays $0\neq0$, density/step
+Honesty: displayed \texttt{exists\_newform\_level\_26\_dim2} inhabited
+($0\neq12$ at $p=53$); Chain \texttt{ExistsNewformLevel2} stays $0\neq0$
+(no newform at level $2$); density/step
 $\forall B$ \texttt{kraus\_elimination\_q\_13\_level\_26} uninhabited,
 \texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated} stays \texttt{Classical.em},
 \texttt{zsig\_density\_links\_to\_kraus} list equality $+4488+5*299=5983$.
@@ -54,6 +56,14 @@ of $qExp\_26a1\_500/qExp\_26b1\_500$. Extends $[1,0,1,-5,-8]$ and $[1,-1,1,-3,3]
 SHA-locked $101$-coeff JSON unchanged $0259fe95\ldots$. Prefix equality \texttt{decide}.
 Locked: $a_{53}(26a1)=0$, $a_{53}(26b1)=12$, $a_{443}(26a1)=21$, $a_{443}(26b1)=-39$.
 
+Displayed structure \texttt{Newform} is a pair $(\mathrm{level},q\text{-exp})$, not a Mathlib modular form.
+\texttt{newform\_26\_a}/\texttt{newform\_26\_b} have level $26$ by \texttt{rfl}.
+\texttt{exists\_newform\_level\_26\_dim2}: $\exists f\,g,\;\mathrm{level}\,f=26\wedge\mathrm{level}\,g=26\wedge f\neq g$.
+Proof: use those two witnesses; if $f=g$ then $q$-expansions agree, so
+$a_{53}(26a1)=a_{53}(26b1)$, but $0\neq12$ by \texttt{decide}, contradiction.
+\texttt{\#print axioms exists\_newform\_level\_26\_dim2} empty.
+This does \emph{not} inhabit Chain \texttt{ExistsNewformLevel2} ($S_2(\Gamma_0(2))$ displayed dimension $0$).
+
 \section{Frey traces}
 Displayed Weierstrass $y^2=x(x-B)(x+C)$ Euler count \texttt{decide} not
 \texttt{native\_decide}: $a_{53}(E_{196})=-2$, $a_{443}(E_{1500003})=24$.
@@ -72,7 +82,8 @@ $\Phi_{13}B=S\_val B C$, $B=196$ and $B=1500003$ branches are v8.69.0 misses
 $\forall B,(B=196\to\ldots)\wedge(B=1500003\to\ldots)$ via \texttt{hK.left / hK.right}.
 Not $\forall B$ modular contradiction. Density/Step
 \texttt{kraus\_elimination\_q\_13\_level\_26} stays uninhabited $\forall$.
-\texttt{ExistsNewformLevel2} $0\neq0$. No new Beal $\forall$.
+Displayed \texttt{exists\_newform\_level\_26\_dim2} inhabited.
+Chain \texttt{ExistsNewformLevel2} stays $0\neq0$. No new Beal $\forall$.
 \texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated} stays \texttt{Classical.em}.
 \texttt{zsig\_density\_links\_to\_kraus} list equality $+4488+5*299=5983$.
 \texttt{\#print axioms ribet\_mazur\_pack\_q\_13\_level\_26} empty, density theorem

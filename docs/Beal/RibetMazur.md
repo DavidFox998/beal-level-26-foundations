@@ -1,3 +1,11 @@
+# v8.73.0 displayed dim-2 pack
+
+`exists_newform_level_26_dim2` /
+`ExistsNewformLevel26_inhabited` alias
+the Level26_Newforms dim-2 witness.
+Chain `ExistsNewformLevel2` stays `0 != 0`.
+No new Beal forall.
+
 # v8.71.0 RibetMazur pack (MCOM)
 
 `lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean`

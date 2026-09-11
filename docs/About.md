@@ -1,16 +1,13 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.71.0-ribet-mazur-pack`
-Lean change: RibetMazur
-`kraus_elimination_q_13_level_26_density`
-and `ribet_mazur_pack_q_13_level_26` are
-inhabited from the v8.69.0 Int-mod-13
-misses at `B = 196` and `B = 1500003`
-only.  That is not `∀ B` modular
-contradiction.  Density/Step
+Latest tag / HEAD: `v8.73.0-modularity-exists-level2`
+Lean change: Level26_Newforms
+`exists_newform_level_26_dim2` is the
+displayed dim-2 witness (`0 ≠ 12` at
+`p = 53`).  Chain `ExistsNewformLevel2`
+stays `0 ≠ 0`.  Density/Step
 `kraus_elimination_q_13_level_26` stays the
-uninhabited `∀`.  `ExistsNewformLevel2`
-stays `0 ≠ 0`.  No new Beal `∀`.
+uninhabited `∀`.  No new Beal `∀`.
 The s2_26 pack stays a coefficient
 check, not Ribet.
 `kraus_elimination_q_13_level_26` stays

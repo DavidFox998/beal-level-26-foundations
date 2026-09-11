@@ -996,6 +996,7 @@ do
   grep -q "v8.68.1-frey-ap-53-443" "$readme"
   grep -q "v8.69.0-kraus-elim-theorem" "$readme"
   grep -q "v8.71.0-ribet-mazur-pack" "$readme"
+  grep -q "v8.73.0-modularity-exists-level2" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -2684,6 +2685,14 @@ grep -q "theorem kraus_elimination_q_13_level_26_density" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem ribet_mazur_pack_q_13_level_26" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "structure Newform" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "theorem exists_newform_level_26_dim2" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "theorem ExistsNewformLevel26_inhabited" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
+  lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
 grep -q "import BealLevel26Foundations.Beal.FullProof.Level26_Newforms" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 test ! -n "$(grep -E 'import BealLevel26Foundations.Beal.FullProof.RibetMazur' \

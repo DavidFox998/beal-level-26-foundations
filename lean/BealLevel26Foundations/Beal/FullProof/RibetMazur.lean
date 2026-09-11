@@ -3,6 +3,11 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v8.73.0 — displayed `S₂(26)` dim-2
+witness `exists_newform_level_26_dim2`
+(`0 ≠ 12` at `p = 53`).  Chain
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+No new Beal `∀`.
 Track B v8.71.0 — MCOM Ribet-Mazur pack.
 `kraus_elimination_q_13_level_26_density`
 and `ribet_mazur_pack_q_13_level_26` are
@@ -4973,6 +4978,23 @@ the Step36 uninhabited `∀`. -/
 def kraus_elimination_q_13_level_26_newforms :=
   BealLevel26Foundations.Level26_Newforms.kraus_elimination_q_13_level_26
 
+/-! ## v8.73.0 — displayed dim-2 witness at level 26 -/
+
+/-- Inhabited.  Displayed `26a1` / `26b1`. -/
+def newform_26_a :=
+  BealLevel26Foundations.Level26_Newforms.newform_26_a
+
+def newform_26_b :=
+  BealLevel26Foundations.Level26_Newforms.newform_26_b
+
+/-- Inhabited.  Two locked prefixes, `0 ≠ 12` at
+`p = 53`.  Not Chain `ExistsNewformLevel2`. -/
+def exists_newform_level_26_dim2 :=
+  BealLevel26Foundations.Level26_Newforms.exists_newform_level_26_dim2
+
+def ExistsNewformLevel26_inhabited :=
+  BealLevel26Foundations.Level26_Newforms.ExistsNewformLevel26_inhabited
+
 /-! ## v8.71.0 — MCOM Ribet-Mazur pack from v8.69.0 misses -/
 
 /-- Inhabited for the two named witnesses only.
@@ -5830,6 +5852,8 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check BealLevel26Foundations.Level26_Newforms.level26_b_eliminated_by_443_of_witness
 #check kraus_elimination_q_13_level_26_density
 #check ribet_mazur_pack_q_13_level_26
+#check exists_newform_level_26_dim2
+#check ExistsNewformLevel26_inhabited
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -6297,5 +6321,7 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms BealLevel26Foundations.Level26_Newforms.kraus_elimination_q_13_level_26
 #print axioms kraus_elimination_q_13_level_26_density
 #print axioms ribet_mazur_pack_q_13_level_26
+#print axioms exists_newform_level_26_dim2
+#print axioms ExistsNewformLevel26_inhabited
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

@@ -1,3 +1,11 @@
+# v8.73.0 displayed dim-2 witness
+
+`exists_newform_level_26_dim2` inhabits
+two displayed `Newform` records at level
+26, distinct by locked `a₅₃` (`0 ≠ 12`).
+Not a Mathlib cusp-form theorem.
+Chain `ExistsNewformLevel2` stays `0 != 0`.
+
 # v8.71.0 Ribet-Mazur pack uses these misses
 
 RibetMazur imports this file (not reverse).

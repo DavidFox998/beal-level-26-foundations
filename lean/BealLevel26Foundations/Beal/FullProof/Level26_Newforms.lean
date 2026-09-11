@@ -3,6 +3,13 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v8.73.0 — displayed `S₂(26)` dim-2
+witness `exists_newform_level_26_dim2`
+(`0 ≠ 12` at `p = 53`).  That is **not**
+a Mathlib cusp-form theorem and **not**
+Chain `ExistsNewformLevel2` (`s2_gamma0_2_dim ≠ 0`
+i.e. `0 ≠ 0`), which stays uninhabited.
+No new Beal `∀`.
 Track B v8.69.0 — `level26_a_eliminated_by_53`,
 `level26_b_eliminated_by_443`, and
 `kraus_elimination_q_13_level_26` are
@@ -379,6 +386,64 @@ theorem kraus_elimination_q_13_level_26 :
       (24 : Int) % 13 ≠ (-39 : Int) % 13) :=
   ⟨level26_a_eliminated_by_53, level26_b_eliminated_by_443⟩
 
+/-! ## v8.73.0 — displayed dim-2 witness at level 26 -/
+
+/-- Displayed newform: conductor plus locked
+q-expansion prefix.  Not a Mathlib
+`ModularForm`.  LMFDB labels `26.2.a.a` /
+`26.2.a.b` are displayed names. -/
+structure Newform where
+  level : Nat
+  qexp : List Int
+
+/-- Displayed `26a1` / `26.2.a.a`.  Weierstrass
+`[1,0,1,-5,-8]`. -/
+def newform_26_a : Newform :=
+  { level := 26, qexp := newform_26_a_qexp_100 }
+
+/-- Displayed `26b1` / `26.2.a.b`.  Weierstrass
+`[1,-1,1,-3,3]`. -/
+def newform_26_b : Newform :=
+  { level := 26, qexp := newform_26_b_qexp_100 }
+
+theorem newform_26_a_level : newform_26_a.level = 26 :=
+  rfl
+
+theorem newform_26_b_level : newform_26_b.level = 26 :=
+  rfl
+
+theorem a53_26a1_ne_a53_26b1 :
+    (0 : Int) ≠ (12 : Int) := by
+  decide
+
+/-- Inhabited.  Two locked level-26 prefixes
+differ at `a₅₃` (`0 ≠ 12`).  This is **not**
+Chain `ExistsNewformLevel2` (`0 ≠ 0` at
+level 2) and **not** a Mathlib dimension
+theorem.  Density/Step Kraus `∀` stays
+uninhabited.  No new Beal `∀`. -/
+theorem exists_newform_level_26_dim2 :
+    ∃ f g : Newform, f.level = 26 ∧ g.level = 26 ∧ f ≠ g := by
+  refine ⟨newform_26_a, newform_26_b, rfl, rfl, ?neq⟩
+  intro h
+  have hq : newform_26_a_qexp_100 = newform_26_b_qexp_100 :=
+    congrArg Newform.qexp h
+  have hsome : some (0 : Int) = some (12 : Int) := by
+    have ha := a53_26a1_eq
+    have hb := a53_26b1_eq
+    rw [hq] at ha
+    rw [ha] at hb
+    exact hb
+  injection hsome with h0
+  exact a53_26a1_ne_a53_26b1 h0
+
+/-- Displayed dim-2 instance at level 26.
+Does **not** replace Chain
+`ExistsNewformLevel2`, which stays `0 ≠ 0`. -/
+theorem ExistsNewformLevel26_inhabited :
+    ∃ f g : Newform, f.level = 26 ∧ g.level = 26 ∧ f ≠ g :=
+  exists_newform_level_26_dim2
+
 #check newform_26_a_qexp
 #check newform_26_b_qexp
 #check kraus_primes_26
@@ -404,6 +469,10 @@ theorem kraus_elimination_q_13_level_26 :
 #check level26_a_eliminated_by_53_of_witness
 #check hasSmallZsigWitness_1500003
 #check level26_b_eliminated_by_443_of_witness
+#check newform_26_a
+#check newform_26_b
+#check exists_newform_level_26_dim2
+#check ExistsNewformLevel26_inhabited
 #print axioms newform_26_a_qexp_eq_ledger_prefix
 #print axioms newform_26_a_a3
 #print axioms newform_26_b_a5
@@ -425,5 +494,8 @@ theorem kraus_elimination_q_13_level_26 :
 #print axioms level26_a_eliminated_by_53
 #print axioms level26_b_eliminated_by_443
 #print axioms kraus_elimination_q_13_level_26
+#print axioms a53_26a1_ne_a53_26b1
+#print axioms exists_newform_level_26_dim2
+#print axioms ExistsNewformLevel26_inhabited
 
 end BealLevel26Foundations.Level26_Newforms
