@@ -313,6 +313,7 @@ test -f lean/BealLevel26Foundations/Beal/FullProof/BealFreyMod53Kill.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/BealFreyModQKill.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/BealFreyConductorGeneral.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/BealGap3ZsigBeyond2M.lean
+test -f lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_Density_2M.md
 test -f docs/Beal/KrausB14.md
 test -f docs/Beal/LevelLoweringB14.md
@@ -322,6 +323,7 @@ test -f docs/Beal/BealFreyMod53Kill.md
 test -f docs/Beal/BealFreyModQKill.md
 test -f docs/Beal/BealFreyConductorGeneral.md
 test -f docs/Beal/BealGap3ZsigBeyond2M.md
+test -f docs/Beal/BealGap3BakerUpperBound.md
 test -f lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
 test -f docs/Beal/Level26_Newforms.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
@@ -1200,6 +1202,8 @@ grep -q "import BealLevel26Foundations.Beal.FullProof.BealFreyConductorGeneral" 
   lean/BealLevel26Foundations/Beal/FullProof.lean
 grep -q "import BealLevel26Foundations.Beal.FullProof.BealGap3ZsigBeyond2M" \
   lean/BealLevel26Foundations/Beal/FullProof.lean
+grep -q "import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound" \
+  lean/BealLevel26Foundations/Beal/FullProof.lean
 grep -q "theorem wiles_modularity_Frey" \
   lean/BealLevel26Foundations/Beal/FullProof/ModularityRibet.lean
 grep -q "theorem ribet_level_lowering_general" \
@@ -1288,7 +1292,7 @@ if grep -q "import BealLevel26Foundations.Beal.FullProof.ModularImpliesNewform" 
   echo "FAIL: none chain must not import ModularImpliesNewform"
   exit 1
 fi
-if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|HeckeAlgebra|RibetFunctor|X0_26_Model|HeckeAction|LevelLowering|LevelLoweringB14|BealFreyB14|BealFreyASearch|BealFreyMod53Kill|BealFreyModQKill|BealFreyConductorGeneral|BealGap3ZsigBeyond2M|RibetMazur|TWPrimes|TWPrimesPratt|TWPrimesQ2|TWAuxEllFixed|X0_2_Genus|Beal_4_13_13_Size_Table|BealElim|BealMod16|KrausB14|B14Witnesses|Step60B14List|FreyModularity|Level26_Newforms)" \
+if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|HeckeAlgebra|RibetFunctor|X0_26_Model|HeckeAction|LevelLowering|LevelLoweringB14|BealFreyB14|BealFreyASearch|BealFreyMod53Kill|BealFreyModQKill|BealFreyConductorGeneral|BealGap3ZsigBeyond2M|BealGap3BakerUpperBound|RibetMazur|TWPrimes|TWPrimesPratt|TWPrimesQ2|TWAuxEllFixed|X0_2_Genus|Beal_4_13_13_Size_Table|BealElim|BealMod16|KrausB14|B14Witnesses|Step60B14List|FreyModularity|Level26_Newforms)" \
     lean/BealLevel26Foundations.lean \
     lean/BealLevel26Foundations/Beal/BealForall.lean \
     lean/BealLevel26Foundations/Chain/BealForallInKernel.lean \
@@ -2883,6 +2887,10 @@ grep -q "theorem beal_4_13_13_gap3_B_le_2M_eliminated_B14_full" \
   lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean
 grep -q "beal_4_13_13_gap3_B_le_2M_eliminated_B14_full" \
   paper/mcom-draft.tex
+grep -q "baker_bound_gap3" \
+  paper/mcom-draft.tex
+grep -q "needs Baker, not Zsig" \
+  paper/mcom-draft.tex
 test ! -n "$(grep -E '^axiom |import BealLevel26Foundations.Beal.FullProof.RibetMazur' \
   lean/BealLevel26Foundations/Beal/FullProof/BealFreyModQKill.lean || true)"
 test ! -n "$(grep -E 'import BealLevel26Foundations.Modularity.FreyModularity_13' \
@@ -2939,6 +2947,27 @@ test ! -n "$(grep -E '^\s*(sorry|admit)\b|False\.elim|native_decide|^axiom ' \
   lean/BealLevel26Foundations/Beal/FullProof/BealGap3ZsigBeyond2M.lean || true)"
 test ! -n "$(grep -E 'import BealLevel26Foundations.Beal.FullProof.BealFreyB14' \
   lean/BealLevel26Foundations/Beal/FullProof/BealGap3ZsigBeyond2M.lean || true)"
+test -f lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
+grep -q "def baker_bound_gap3" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
+grep -q "def baker_B0" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
+grep -q "needs Baker, not Zsig" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealGap3ZsigBeyond2M.lean
+grep -q "def baker_bound_gap3" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem beal_4_13_13_gap3_B_le_2M_eliminated_B14_full" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyModQKill.lean
+grep -q "def conductor_86" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean
+test ! -n "$(grep -E '^axiom |import BealLevel26Foundations.Beal.FullProof.RibetMazur' \
+  lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean || true)"
+test ! -n "$(grep -E 'import BealLevel26Foundations.Modularity.FreyModularity_13' \
+  lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean || true)"
+test ! -n "$(grep -E '^\s*(sorry|admit)\b|False\.elim|native_decide|^axiom ' \
+  lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean || true)"
+test ! -n "$(grep -E 'import BealLevel26Foundations.Beal.FullProof.BealFreyB14' \
+  lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean || true)"
 grep -q "import BealLevel26Foundations.Beal.FullProof.Level26_Newforms" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 test ! -n "$(grep -E 'import BealLevel26Foundations.Beal.FullProof.RibetMazur' \

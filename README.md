@@ -1,8 +1,8 @@
 [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.87.0-general-conductor-bound → v8.88.0-Zsig-Bgt2M-gap3
+# Beal Level 26 Foundations — v8.88.0-Zsig-Bgt2M-gap3 → v9.0.0-Baker-bound-gap3
 
-**v8.88.0-Zsig-Bgt2M-gap3 — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v9.0.0-Baker-bound-gap3 — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 Track B closed 5983 rows = 4488+5*299 B≤2M pools 50310/50323/50307/50350/50325. Track A: Level 26 dim2 26.2.a.a/b via qExp_26a1_500/qExp_26b1_500 take 500, a53_26a1=0 a53_26b1=12 a443_26a1=21 a443_26b1=-39 by decide, Frey a53(E_196)=-2 a443(E_1500003)=24 by decide Euler, -2≠0,12 mod13 and 24≠21,-39 mod13. kraus_elimination_q_13_level_26 (Level26_Newforms) is a theorem. ribet_mazur_pack_q_13_level_26 is the first inhabited Ribet-Mazur pack (B=196 and B=1500003 only). Displayed exists_newform_level_26_dim2 inhabited (0≠12 at p=53). Displayed frey_mod13_irreducible inhabited at B=196 and B=1500003 (trace miss, not Mazur). Still uninhabited: Chain ExistsNewformLevel2 0≠0, Density/Step kraus ∀, level_lowering_to_26, no new Beal ∀. frey_modular stays Classical.em.
 
@@ -80,6 +80,8 @@ Still uninhabited (honesty lock):
 - beal_4_13_13_gap3_B_le_2M_eliminated_B14_honest (352-row ∀)
 - beal_4_13_13_gap3_B_le_2M_eliminated_86 (86-row ∀)
 - beal_gap3_B_gt_2M_eliminated (B > 2M ∀; 5983 pools do not produce q > 2M)
+- baker_bound_gap3 (missing Baker/Bugeaud bound at B0=10^6; sorry not used)
+- exists_zsig_q_gt_2M_dvd_C13_sub_B4 (needs Baker, not Zsig)
 - No new Beal ∀
 
 Build:
@@ -98,6 +100,7 @@ Releases:
 - v8.72.1-doi-badge inserts real Zenodo DOI `10.5281/zenodo.22698257` from the v8.70.0 mint
 - v8.73.0-modularity-exists-level2 displayed S2(26) dim2 via 0≠12 at p=53; Chain ExistsNewformLevel2 stays 0≠0; DOI 10.5281/zenodo.22698257 still cites v8.69.0
 - v8.74.0-frey-irreducible-mod13 displayed frey_mod13_irreducible at B=196 and B=1500003; frey_modular Classical.em; level_lowering_to_26 stays Prop
+- v9.0.0-Baker-bound-gap3 `baker_bound_gap3` is the missing Baker/Bugeaud Prop (B0=10^6); `sorry` not used; needs Baker, not Zsig; v8.86.0 residue cover unchanged; `exists_zsig_q_gt_2M` stays Prop; `conductor_86` / `B14_honest` stay Prop
 - v8.88.0-Zsig-Bgt2M-gap3 Zsig 5983 + LTE ledger for B>2M; `beal_gap3_B_gt_2M_eliminated` stays Prop (named-row pools are B≤2M; q|A gives q⁴|(C¹³−B⁴) not q⁴|C¹³); `frey_conductor_general` unchanged; `conductor_86` / `B14_honest` stay Prop; not BCDT
 - v8.87.0-general-conductor-bound `frey_conductor_general`: Mathlib Weierstrass `|Δ| = 2^e * N0` with `e ≤ 5` and `N0 ∣ (ABC)^26 * 13`; `[propext, Quot.sound]`; not Tate; `conductor_86` stays Prop; 266+86 residue kills unchanged
 - v8.86.0-paper-B14-final-DOI paper-only DOI write: `.zenodo.json` title is the 352-row residue cover; CITATION/paper cite math `10.5281/zenodo.22712897` and paper `10.5281/zenodo.22713047`; `B14_honest` stays a Prop; no Lean change
@@ -780,7 +783,7 @@ PARI 2-Descent Certificates image
 Still not `∀ ℕ`. No `False.elim`. no `False.elim`.
 `BealExponent13_Iter_Package` `d3cf8a7` `1d0044e`.
 
-HEAD also has Track B `v8.88.0-Zsig-Bgt2M-gap3`
+HEAD also has Track B `v9.0.0-Baker-bound-gap3`
 (RibetMazur pack from v8.69.0 Int-mod-13
 misses at `B = 196` and `B = 1500003`;
 Density/Step `kraus_elimination_q_13_level_26`

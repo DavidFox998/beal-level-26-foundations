@@ -20,8 +20,21 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyMod53Kill
 import BealLevel26Foundations.Beal.FullProof.BealFreyModQKill
 import BealLevel26Foundations.Beal.FullProof.BealFreyConductorGeneral
 import BealLevel26Foundations.Beal.FullProof.BealGap3ZsigBeyond2M
+import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
 
 /-!
+# FullProof track (v9.0.0)
+
+Aggregator for Track B.  v9.0.0 records the
+missing Baker / Bugeaud effective bound as the
+uninhabited Prop `baker_bound_gap3`
+(exists B0 = 10^6, no gap-3 solution past B0).
+`sorry` is not used.  Needs Baker, not Zsig.
+Keeps the v8.86.0 empty-axiom residue cover.
+`exists_zsig_q_gt_2M_dvd_C13_sub_B4` stays a Prop.
+`conductor_86` stays a Prop.  `B14_honest`
+stays a Prop.  Not BCDT.
+
 # FullProof track (v8.88.0)
 
 Aggregator for Track B.  v8.88.0 records the

@@ -1,6 +1,14 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.88.0-Zsig-Bgt2M-gap3`
+Latest tag / HEAD: `v9.0.0-Baker-bound-gap3`
+`baker_bound_gap3` is the missing Baker/Bugeaud
+effective bound (exists B0 = 10^6).  Uninhabited
+Prop; `sorry` is not used.  Needs Baker, not Zsig.
+Keeps the v8.86.0 empty-axiom residue cover.
+`exists_zsig_q_gt_2M_dvd_C13_sub_B4` stays a Prop.
+`conductor_86` stays a Prop.  `B14_honest` stays
+a Prop.  Chain `ExistsNewformLevel2` stays `0 ≠ 0`.
+Base: `v8.88.0-Zsig-Bgt2M-gap3`.
 Zsigmondy 5983 + LTE ledger for B > 2M gap-3.
 `beal_gap3_B_gt_2M_eliminated` stays an
 uninhabited Prop: named-row pools are B ≤ 2M,

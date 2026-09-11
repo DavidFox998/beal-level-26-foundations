@@ -362,6 +362,40 @@ The Zsigmondy count $5983=4488+5\cdot 299$
 is unchanged (\texttt{zsig\_density\_2M\_stats}).
 Not BCDT and not Ribet.  Not \texttt{Classical.em}.
 
+\section{MCOM submission (v8.86.0 residue theorem)}
+\begin{theorem}[gap $3$ at $B\le 2\mathrm{M}$]
+The empty-axiom residue cover of \texttt{v8.86.0-paper-B14-final-DOI}
+eliminates the named $B\le 2\mathrm{M}$ gap-$3$ rows:
+if $B\le 2000000$ and $B\not\equiv 14\pmod{16}$, there is no $A$
+with $A^4+B^4=(B+3)^{13}$
+(\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_mod16});
+if $B$ is one of the $352$ named $B\equiv 14$ rows, there is no $A$
+via fourth-power non-residues modulo $53$, $29$, and $109$
+(\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_B14\_full}).
+\texttt{\#print axioms} empty on both.
+\end{theorem}
+The $5983=4488+5\cdot 299$ census is $B\le 2\mathrm{M}$ density,
+not a $>2\mathrm{M}$ bound.
+The identity $63982=2\cdot 31991$ shows that the displayed
+survivor is not $\{2,3,13\}$-smooth, so
+\texttt{conductor\_86}, \texttt{B14\_honest},
+density/step \texttt{kraus\_elimination\_q\_13\_level\_26},
+and Chain \texttt{ExistsNewformLevel2} ($0\neq 0$)
+remain Props intentionally.
+\texttt{frey\_conductor\_general} gives
+$|\Delta|=2^4\cdot N_0$ with $N_0\mid (ABC)^{26}\cdot 13$
+(axioms \texttt{propext}, \texttt{Quot.sound});
+that is not Tate $N(E)$.
+
+$B>2\mathrm{M}$ gap $3$ is the open Prop
+\texttt{baker\_bound\_gap3}
+(Baker/Bugeaud linear forms in logarithms,
+displayed cutoff $B_0=10^6$).
+It is not closable from the $5983$ census.
+\texttt{exists\_zsig\_q\_gt\_2M\_dvd\_C13\_sub\_B4}
+needs Baker, not Zsig, and stays a Prop.
+\texttt{sorry} is not used.
+
 \section{What remains}
 $15/16$ of $B\le 2\text{M}$ is eliminated by mod-$16$ residues.
 The two displayed named rows $[196,1500003]$ are
@@ -383,7 +417,11 @@ The old \texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated}
 stays \texttt{Classical.em}.
 Density from the named-row count to $\infty$,
 full modular contradiction, and Beal $\forall$
-still open. Track beyond $2\text{M}$
-Step61+ continues same \texttt{smallZsigPrimes} pattern.
+still open.
+$B>2\mathrm{M}$ is the Baker/Bugeaud Prop
+\texttt{baker\_bound\_gap3}, not a Zsigmondy theorem.
+Track beyond $2\text{M}$ Step61+ continues the same
+\texttt{smallZsigPrimes} pattern and does not close
+the Baker bound.
 
 \end{document}

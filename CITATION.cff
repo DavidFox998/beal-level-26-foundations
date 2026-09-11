@@ -5,11 +5,12 @@ type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v8.88.0-Zsig-Bgt2M-gap3"
+version: "v9.0.0-Baker-bound-gap3"
 date-released: "2026-09-11"
 doi: "10.5281/zenodo.22713047"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
 url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.84.0-B14-modq-kill"
+# v9.0.0-Baker-bound-gap3 records baker_bound_gap3 as an uninhabited Prop.
 # v8.88.0-Zsig-Bgt2M-gap3 records the 5983 + LTE ledger; B>2M forall stays Prop.
 # v8.87.0-general-conductor-bound inhabits frey_conductor_general (Weierstrass Δ).
 # Math release: v8.84.0-B14-modq-kill / 10.5281/zenodo.22712897.

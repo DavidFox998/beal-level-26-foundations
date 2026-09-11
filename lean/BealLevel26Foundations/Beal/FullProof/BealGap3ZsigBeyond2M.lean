@@ -305,11 +305,10 @@ theorem exists_primitive_prime_Phi13_gap3
 
 /-! ## Requested statements that stay Props -/
 
-/-- Requested lemma 2.  The 5983 / five-pool lemmas
-    are named rows at B <= 2M.  They do not produce
-    q > 2M dividing C^13 - B^4.  The inhabited
-    primitive prime divides C^13 - B^13 and is
-    == 1 [MOD 13], not [MOD 4]. -/
+/-- Requested lemma 2.  Needs Baker, not Zsig.
+    Not closable from the 5983 census; would need
+    a q > 2M bound not in Zsig.  The 5983 / five-pool
+    lemmas are named rows at B <= 2M. -/
 def exists_zsig_q_gt_2M_dvd_C13_sub_B4 : Prop :=
   ∀ A B : Nat,
     2000000 < B →
@@ -321,7 +320,7 @@ def exists_zsig_q_gt_2M_dvd_C13_sub_B4 : Prop :=
       ¬ q ∣ B * (B + 3)
 
 /-- The false punchline.  q | A gives q^4 | C^13 - B^4,
-    not q^4 | C^13. -/
+    not q^4 | C^13.  Not closable from the 5983 census. -/
 def q_pow4_dvd_C13_of_dvd_A : Prop :=
   ∀ A B q : Nat,
     Nat.Prime q →
@@ -329,12 +328,11 @@ def q_pow4_dvd_C13_of_dvd_A : Prop :=
     Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 →
     Nat.pow q 4 ∣ Nat.pow (B + 3) 13
 
-/-- Requested theorem 4.  Uninhabited: the Zsig 5983
-    census and the inhabited Phi13 primitive prime do
-    not close B > 2M, and the LTE punchline
-    q^4 | C^13 from q | A is false.  Not BCDT.
-    Allowed axioms on inhabited theorems in this
-    file stay in `{propext, Classical.choice, Quot.sound}`. -/
+/-- Requested theorem 4.  Uninhabited intentionally:
+    not closable from the 5983 census; would need a
+    q > 2M bound not in Zsig (needs Baker).
+    The LTE punchline q^4 | C^13 from q | A is false.
+    Not BCDT. -/
 def beal_gap3_B_gt_2M_eliminated : Prop :=
   ∀ B : Nat, 2000000 < B →
     ¬ ∃ A, Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13

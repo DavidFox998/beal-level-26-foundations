@@ -773,6 +773,7 @@ import BealLevel26Foundations.Beal.FullProof.LevelLoweringB14
 import BealLevel26Foundations.Beal.FullProof.BealFreyB14
 import BealLevel26Foundations.Beal.FullProof.BealFreyConductorGeneral
 import BealLevel26Foundations.Beal.FullProof.BealGap3ZsigBeyond2M
+import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -5408,6 +5409,19 @@ def q_pow4_dvd_C13_of_dvd_A : Prop :=
 def beal_gap3_B_gt_2M_eliminated : Prop :=
   BealLevel26Foundations.BealGap3ZsigBeyond2M.beal_gap3_B_gt_2M_eliminated
 
+/-! ## v9.0.0 — Baker / Bugeaud effective bound; uninhabited -/
+
+def baker_B0 :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.baker_B0
+
+theorem baker_B0_eq : baker_B0 = 1000000 :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.baker_B0_eq
+
+/-- Uninhabited.  Missing Baker/Bugeaud bound.
+    Needs Baker, not Zsig.  `sorry` is not used. -/
+def baker_bound_gap3 : Prop :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.baker_bound_gap3
+
 /-! ## v8.71.0 — MCOM Ribet-Mazur pack from v8.69.0 misses -/
 
 /-- Inhabited for the two named witnesses only.
@@ -6334,6 +6348,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check exists_zsig_q_gt_2M_dvd_C13_sub_B4
 #check q_pow4_dvd_C13_of_dvd_A
 #check beal_gap3_B_gt_2M_eliminated
+#check baker_B0
+#check baker_B0_eq
+#check baker_bound_gap3
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -6843,5 +6860,6 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms padicValNat_C13_lt_four_of_q_gt_C
 #print axioms no_Beal_of_pow4_dvd_C13_of_q_gt_C
 #print axioms exists_primitive_prime_Phi13_gap3
+#print axioms baker_B0_eq
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

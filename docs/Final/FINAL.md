@@ -1,3 +1,15 @@
+# FINAL v9.0.0 — Baker / Bugeaud effective bound stays a Prop
+
+Latest tag `v9.0.0-Baker-bound-gap3`.
+New file `BealGap3BakerUpperBound.lean`.
+`baker_bound_gap3` is the missing effective bound
+(exists B0 = 10^6).  Uninhabited Prop.
+`sorry` is not used.  Needs Baker, not Zsig.
+Keeps the v8.86.0 empty-axiom residue cover.
+`exists_zsig_q_gt_2M_dvd_C13_sub_B4` stays a Prop.
+`conductor_86` stays a Prop.  `B14_honest` stays
+a Prop.  Not BCDT.
+
 # FINAL v8.88.0 — Zsigmondy 5983 + LTE ledger for B > 2M (arrow stays a Prop)
 
 Latest tag `v8.88.0-Zsig-Bgt2M-gap3`.
