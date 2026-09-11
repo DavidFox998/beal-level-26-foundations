@@ -12,8 +12,16 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 
 /-!
-# FullProof track (v8.73.0)
+# FullProof track (v8.74.0)
 
+Aggregator for Track B.  v8.74.0 inhabits
+displayed `frey_mod13_irreducible` at
+`B = 196` and `B = 1500003`.  That is
+not Mazur and not Ribet.  `frey_modular`
+stays `Classical.em`.
+`level_lowering_to_26` stays a Prop.
+Chain `ExistsNewformLevel2` stays `0 ≠ 0`.
+No new Beal `∀`.
 Aggregator for Track B.  v8.73.0 inhabits
 displayed `exists_newform_level_26_dim2`
 (`0 ≠ 12` at `p = 53`).  Chain

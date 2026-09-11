@@ -1,3 +1,15 @@
+# v8.74.0 displayed Frey mod-13 miss
+
+`frey_mod13_irreducible` aliases the
+FreyModularity trace miss.
+`frey_modular` stays `Classical.em`.
+`level_lowering_to_26` stays a Prop.
+The inhabited pack remains
+`ribet_mazur_pack_q_13_level_26` via
+`hK.left` / `hK.right`.
+Chain `ExistsNewformLevel2` stays `0 != 0`.
+No new Beal forall.
+
 # v8.73.0 displayed dim-2 pack
 
 `exists_newform_level_26_dim2` /

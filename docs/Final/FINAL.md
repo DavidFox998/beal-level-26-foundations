@@ -1,3 +1,17 @@
+# FINAL v8.74.0 — displayed Frey mod-13 miss (arrow stays a Prop)
+
+Latest tag `v8.74.0-frey-irreducible-mod13`.
+Lean change.
+`frey_mod13_irreducible` is inhabited at
+`B = 196` and `B = 1500003` as the
+v8.69.0 Int-mod-13 miss. That is not
+Mazur and not Ribet.
+`frey_modular` stays `Classical.em`.
+`level_lowering_to_26` stays a Prop.
+Chain `ExistsNewformLevel2` stays `0 ≠ 0`.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.73.0 — displayed dim-2 (arrow stays a Prop)
 
 Latest tag `v8.73.0-modularity-exists-level2`.

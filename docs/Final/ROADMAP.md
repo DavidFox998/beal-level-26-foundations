@@ -799,6 +799,15 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.74.0-frey-irreducible-mod13 — DONE (FreyModularity frey_mod13_irreducible displayed Int-mod-13 miss at B=196 and B=1500003; frey_modular Classical.em; level_lowering_to_26 stays Prop; Chain ExistsNewformLevel2 stays 0≠0; no new Beal ∀; arrow stays a Prop)
+
+Lean change.  Displayed trace miss, not Mazur,
+not Borel, not Ribet.  Does **not** import
+`RibetMazur`.  Does **not** import the axiom
+`frey_modular_13`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Beal `∀`.
+
 ### v8.73.0-modularity-exists-level2 — DONE (Level26_Newforms exists_newform_level_26_dim2 displayed dim2 via 0≠12 at p=53; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus ∀ stays uninhabited; no new Beal ∀; arrow stays a Prop)
 
 Lean change.  Displayed `Newform` records

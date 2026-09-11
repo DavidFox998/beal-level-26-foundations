@@ -1,11 +1,14 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.73.0-modularity-exists-level2`
-Lean change: Level26_Newforms
-`exists_newform_level_26_dim2` is the
-displayed dim-2 witness (`0 ≠ 12` at
-`p = 53`).  Chain `ExistsNewformLevel2`
-stays `0 ≠ 0`.  Density/Step
+Latest tag / HEAD: `v8.74.0-frey-irreducible-mod13`
+Lean change: FreyModularity
+`frey_mod13_irreducible` is the displayed
+Int-mod-13 miss at `B = 196` and
+`B = 1500003`.  Not Mazur, not Ribet.
+`frey_modular` stays `Classical.em`.
+`level_lowering_to_26` stays a Prop.
+Chain `ExistsNewformLevel2` stays `0 ≠ 0`.
+Density/Step
 `kraus_elimination_q_13_level_26` stays the
 uninhabited `∀`.  No new Beal `∀`.
 The s2_26 pack stays a coefficient

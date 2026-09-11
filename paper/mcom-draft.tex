@@ -68,6 +68,18 @@ This does \emph{not} inhabit Chain \texttt{ExistsNewformLevel2} ($S_2(\Gamma_0(2
 Displayed Weierstrass $y^2=x(x-B)(x+C)$ Euler count \texttt{decide} not
 \texttt{native\_decide}: $a_{53}(E_{196})=-2$, $a_{443}(E_{1500003})=24$.
 
+\section{Frey mod $13$ irreducible via $p=53,443$ traces $-2$ and $24$}
+\texttt{frey\_mod13\_irreducible} at $B=196$ or $B=1500003$ is the displayed
+Int-mod-$13$ miss: $(-2)\%13\neq0\%13,12\%13$ and $24\%13\neq21\%13,(-39)\%13$,
+via \texttt{irreducible\_of\_trace\_mismatch} applied to
+\texttt{level26\_a\_eliminated\_by\_53} / \texttt{level26\_b\_eliminated\_by\_443}.
+This is \emph{not} Mazur, not Borel image, and not a Mathlib residual representation.
+\texttt{\#print axioms frey\_mod13\_irreducible} empty.
+\texttt{frey\_modular} stays \texttt{Classical.em}.
+\texttt{level\_lowering\_to\_26} stays an uninhabited \texttt{Prop};
+the inhabited pack remains \texttt{ribet\_mazur\_pack\_q\_13\_level\_26} via
+\texttt{hK.left / hK.right}.
+
 \section{Kraus mod $13$ v8.69.0 $93a0c1d$}
 \texttt{level26\_a\_eliminated\_by\_53}: $(-2)\%13\neq0\%13\wedge(-2)\%13\neq12\%13$ (\texttt{decide}).
 \texttt{level26\_b\_eliminated\_by\_443}: $24\%13\neq21\%13\wedge24\%13\neq(-39)\%13$ (\texttt{decide}).

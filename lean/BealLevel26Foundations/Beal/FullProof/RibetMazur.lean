@@ -3,6 +3,14 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v8.74.0 — displayed Frey mod-13
+trace miss `frey_mod13_irreducible` at
+`B = 196` and `B = 1500003`.  That is
+**not** Mazur, not Borel, not Ribet.
+`frey_modular` stays `Classical.em`.
+`level_lowering_to_26` stays a Prop.
+Chain `ExistsNewformLevel2` stays `0 ≠ 0`.
+No new Beal `∀`.
 Track B v8.73.0 — displayed `S₂(26)` dim-2
 witness `exists_newform_level_26_dim2`
 (`0 ≠ 12` at `p = 53`).  Chain
@@ -700,6 +708,7 @@ import BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Zsigmondy_13_Step59_B_
 import BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Zsigmondy_13_Step60_B_le_2000k_299
 import BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Zsigmondy_Density_2M
 import BealLevel26Foundations.Beal.FullProof.Level26_Newforms
+import BealLevel26Foundations.Beal.FullProof.FreyModularity
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -4995,6 +5004,23 @@ def exists_newform_level_26_dim2 :=
 def ExistsNewformLevel26_inhabited :=
   BealLevel26Foundations.Level26_Newforms.ExistsNewformLevel26_inhabited
 
+/-! ## v8.74.0 — displayed Frey mod-13 trace miss -/
+
+/-- Inhabited.  v8.69.0 Int-mod-13 mismatch.
+Not Mazur, not residual isomorphism. -/
+def frey_mod13_irreducible :=
+  BealLevel26Foundations.FreyModularity.frey_mod13_irreducible
+
+/-- `Classical.em`.  Not BCDT. -/
+def frey_modular :=
+  BealLevel26Foundations.FreyModularity.frey_modular
+
+/-- Uninhabited.  The inhabited pack is
+`ribet_mazur_pack_q_13_level_26` via
+`hK.left` / `hK.right`. -/
+def level_lowering_to_26 : Prop :=
+  BealLevel26Foundations.FreyModularity.level_lowering_to_26
+
 /-! ## v8.71.0 — MCOM Ribet-Mazur pack from v8.69.0 misses -/
 
 /-- Inhabited for the two named witnesses only.
@@ -5854,6 +5880,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check ribet_mazur_pack_q_13_level_26
 #check exists_newform_level_26_dim2
 #check ExistsNewformLevel26_inhabited
+#check frey_mod13_irreducible
+#check frey_modular
+#check level_lowering_to_26
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -6323,5 +6352,7 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms ribet_mazur_pack_q_13_level_26
 #print axioms exists_newform_level_26_dim2
 #print axioms ExistsNewformLevel26_inhabited
+#print axioms frey_mod13_irreducible
+#print axioms frey_modular
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

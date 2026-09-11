@@ -997,6 +997,7 @@ do
   grep -q "v8.69.0-kraus-elim-theorem" "$readme"
   grep -q "v8.71.0-ribet-mazur-pack" "$readme"
   grep -q "v8.73.0-modularity-exists-level2" "$readme"
+  grep -q "v8.74.0-frey-irreducible-mod13" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -2693,6 +2694,18 @@ grep -q "theorem ExistsNewformLevel26_inhabited" \
   lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
 grep -q "theorem ExistsNewformLevel2_eq_zero_ne_zero" \
   lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
+grep -q "theorem frey_mod13_irreducible" \
+  lean/BealLevel26Foundations/Beal/FullProof/FreyModularity.lean
+grep -q "theorem frey_modular" \
+  lean/BealLevel26Foundations/Beal/FullProof/FreyModularity.lean
+grep -q "def level_lowering_to_26" \
+  lean/BealLevel26Foundations/Beal/FullProof/FreyModularity.lean
+grep -q "Classical.em" \
+  lean/BealLevel26Foundations/Beal/FullProof/FreyModularity.lean
+test ! -n "$(grep -E 'import BealLevel26Foundations.Beal.FullProof.RibetMazur' \
+  lean/BealLevel26Foundations/Beal/FullProof/FreyModularity.lean || true)"
+test ! -n "$(grep -E 'import BealLevel26Foundations.Modularity.FreyModularity_13' \
+  lean/BealLevel26Foundations/Beal/FullProof/FreyModularity.lean || true)"
 grep -q "import BealLevel26Foundations.Beal.FullProof.Level26_Newforms" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 test ! -n "$(grep -E 'import BealLevel26Foundations.Beal.FullProof.RibetMazur' \
