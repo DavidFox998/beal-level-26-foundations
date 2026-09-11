@@ -5268,9 +5268,6 @@ def survivor_63982_eq_two_mul_31991 :=
   BealLevel26Foundations.BealFreyB14.survivor_63982_eq_two_mul_31991
 
 /-- Displayed miss, not Mazur. -/
-def irreducible_of_a53_miss_not_0_12 :=
-  BealLevel26Foundations.BealFreyB14.irreducible_of_a53_miss_not_0_12
-
 def irreducible_86 :=
   BealLevel26Foundations.BealFreyB14.irreducible_86
 
