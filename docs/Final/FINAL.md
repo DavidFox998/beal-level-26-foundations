@@ -1,3 +1,17 @@
+# FINAL v9.1.0 — Tate Step 2; full N-bound stays a Prop
+
+Latest tag `v9.1.0-Tate-conductor`.
+New file `BealFreyTateConductor.lean`.
+Tate Step 2 on Frey `Y² = X(X−A⁴)(X+B⁴)`:
+odd primes of `ABC` have local exponent `1`
+under pairwise coprimeness; `v₂(c₄) ≥ 4` so
+Step 2 does not finish at `2`.
+`frey_tate_conductor` stays an uninhabited
+Prop (Mathlib has no `N(E)`).
+Keeps `baker_bound_gap3` Prop, the Zsig Props,
+`conductor_86` Prop, `B14_honest` Prop.
+Not BCDT.  Not `|Δ|`.
+
 # FINAL v9.0.0 — Baker / Bugeaud effective bound stays a Prop
 
 Latest tag `v9.0.0-Baker-bound-gap3`.

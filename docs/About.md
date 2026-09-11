@@ -1,6 +1,18 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v9.0.0-Baker-bound-gap3`
+Latest tag / HEAD: `v9.1.0-Tate-conductor`
+Tate Step 2 on Frey `Y² = X(X−A⁴)(X+B⁴)`:
+odd primes of `ABC` have local exponent `1`
+under pairwise coprimeness; `v₂(c₄) ≥ 4` so
+Step 2 does not finish at `2`.
+`frey_tate_conductor` (`N ∣ 2⁵ * rad(AB(B+3)) * 13`
+for a Tate `N(E)`) stays an uninhabited Prop.
+Mathlib 4.12 has no `N(E)`.  Allowed axioms
+`[propext, Quot.sound, Classical.choice]`.
+Keeps `baker_bound_gap3` Prop, the Zsig Props,
+`conductor_86` Prop, `B14_honest` Prop.
+Not BCDT.  Not `|Δ|`.
+Base: `v9.0.0-Baker-bound-gap3`.
 `baker_bound_gap3` is the missing Baker/Bugeaud
 effective bound (exists B0 = 10^6).  Uninhabited
 Prop; `sorry` is not used.  Needs Baker, not Zsig.

@@ -799,6 +799,19 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v9.1.0-Tate-conductor — DONE (Tate Step 2 on Frey Y^2=X(X-A^4)(X+B^4); odd primes of ABC have exponent 1 under coprimeness; v2(c4)>=4 so Step 2 does not finish at 2; frey_tate_conductor N|2^5*rad(AB(B+3))*13 stays uninhabited Prop; Mathlib has no N(E); baker_bound_gap3 stays Prop; Zsig Props stay Prop; conductor_86 stays Prop; B14_honest stays Prop; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus ∀ stays uninhabited; arrow stays a Prop)
+
+Lean change.  New file
+`BealFreyTateConductor.lean`.
+Does **not** inhabit `frey_tate_conductor`.
+Does **not** identify `|Δ|` with Tate `N(E)`.
+Does **not** inhabit `baker_bound_gap3`.
+Does **not** inhabit `conductor_86`.
+Does **not** inhabit the three Zsig Props.
+Does **not** add `axiom BCDT_B14`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Beal `∀`.
+
 ### v9.0.0-Baker-bound-gap3 — DONE (baker_bound_gap3 is the missing Baker/Bugeaud Prop at B0=10^6; sorry not used; needs Baker not Zsig; exists_zsig_q_gt_2M stays Prop; v8.86.0 residue cover unchanged empty-axiom; conductor_86 stays Prop; B14_honest stays Prop; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus ∀ stays uninhabited; arrow stays a Prop)
 
 Lean change.  New file

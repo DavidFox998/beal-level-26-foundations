@@ -774,6 +774,7 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyB14
 import BealLevel26Foundations.Beal.FullProof.BealFreyConductorGeneral
 import BealLevel26Foundations.Beal.FullProof.BealGap3ZsigBeyond2M
 import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
+import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -5422,6 +5423,43 @@ theorem baker_B0_eq : baker_B0 = 1000000 :=
 def baker_bound_gap3 : Prop :=
   BealLevel26Foundations.BealGap3BakerUpperBound.baker_bound_gap3
 
+/-! ## v9.1.0 — Tate Step 2 for Frey Y² = X(X−A⁴)(X+B⁴) -/
+
+def tate_rhs :=
+  BealLevel26Foundations.BealFreyTateConductor.tate_rhs
+
+theorem v2_c4_ge_four {A B : Nat} (hAB : A ≠ 0 ∨ B ≠ 0) :
+    4 ≤ padicValInt 2 (bealFreyWeierstrass A B).c₄ :=
+  BealLevel26Foundations.BealFreyTateConductor.v2_c4_ge_four hAB
+
+theorem tate_odd_prime_exponent_one {A B q : Nat}
+    (hA : 0 < A) (hB : 0 < B)
+    (hEq : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (hAB : Nat.Coprime A B)
+    (hAC : Nat.Coprime A (B + 3))
+    (hBC : Nat.Coprime B (B + 3))
+    (hq : q.Prime) (hodd : q ≠ 2)
+    (hdvd : q ∣ A * B * (B + 3)) :
+    BealLevel26Foundations.BealFreyTateConductor.conductorExponentTate
+      (padicValInt q (bealFreyWeierstrass A B).c₄)
+      (padicValInt q (bealFreyWeierstrass A B).Δ) = 1 :=
+  BealLevel26Foundations.BealFreyTateConductor.tate_odd_prime_exponent_one
+    hA hB hEq hAB hAC hBC hq hodd hdvd
+
+theorem rad_dvd_tate_rhs (A B : Nat) :
+    rad (A * B * (B + 3)) ∣ tate_rhs A B :=
+  BealLevel26Foundations.BealFreyTateConductor.rad_dvd_tate_rhs A B
+
+theorem packedOddStep2_dvd_tate_rhs (A B : Nat) :
+    BealLevel26Foundations.BealFreyTateConductor.packedOddStep2 A B ∣
+      tate_rhs A B :=
+  BealLevel26Foundations.BealFreyTateConductor.packedOddStep2_dvd_tate_rhs A B
+
+/-- Uninhabited.  Mathlib 4.12 has no Tate `N(E)`.
+    Step 2 does not finish at 2.  Not `|Δ|`. -/
+def frey_tate_conductor : Prop :=
+  BealLevel26Foundations.BealFreyTateConductor.frey_tate_conductor
+
 /-! ## v8.71.0 — MCOM Ribet-Mazur pack from v8.69.0 misses -/
 
 /-- Inhabited for the two named witnesses only.
@@ -6351,6 +6389,12 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check baker_B0
 #check baker_B0_eq
 #check baker_bound_gap3
+#check tate_rhs
+#check v2_c4_ge_four
+#check tate_odd_prime_exponent_one
+#check rad_dvd_tate_rhs
+#check packedOddStep2_dvd_tate_rhs
+#check frey_tate_conductor
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -6861,5 +6905,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms no_Beal_of_pow4_dvd_C13_of_q_gt_C
 #print axioms exists_primitive_prime_Phi13_gap3
 #print axioms baker_B0_eq
+#print axioms v2_c4_ge_four
+#print axioms tate_odd_prime_exponent_one
+#print axioms rad_dvd_tate_rhs
+#print axioms packedOddStep2_dvd_tate_rhs
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

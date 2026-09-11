@@ -21,8 +21,24 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyModQKill
 import BealLevel26Foundations.Beal.FullProof.BealFreyConductorGeneral
 import BealLevel26Foundations.Beal.FullProof.BealGap3ZsigBeyond2M
 import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
+import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 
 /-!
+# FullProof track (v9.1.0)
+
+Aggregator for Track B.  v9.1.0 records Tate
+Step 2 on Frey `Y² = X(X−A⁴)(X+B⁴)`:
+odd primes of `ABC` have local exponent `1`
+under pairwise coprimeness, and `v₂(c₄) ≥ 4`
+so Step 2 does not finish at `2`.
+`frey_tate_conductor` (`N ∣ 2⁵ * rad(AB(B+3)) * 13`
+for a Tate `N(E)`) stays an uninhabited Prop.
+Mathlib 4.12 has no `N(E)`.  Allowed axioms
+`[propext, Quot.sound, Classical.choice]`.
+Keeps `baker_bound_gap3` Prop, the Zsig Props,
+`conductor_86` Prop, `B14_honest` Prop.
+Not BCDT.  Not `|Δ|`.
+
 # FullProof track (v9.0.0)
 
 Aggregator for Track B.  v9.0.0 records the
