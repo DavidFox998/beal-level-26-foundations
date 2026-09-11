@@ -3,6 +3,11 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v8.80.0 — Euler a53 of the Beal Frey
+cubic searched mod 53.  Miss under the Beal
+equation.  BCDT / irreducibility / level
+lowering / B14_honest stay Props.  Not
+`Classical.em`.  Not `¬ ∃ A` for the 352 rows.
 Track B v8.79.0 — Beal Frey cubic
 `x(x-A^4)(x+B^4)` distinguished from the
 displayed cubic.  BCDT / irreducibility /
@@ -5180,6 +5185,26 @@ def level_lowering_to_26_B14_honest :=
 def beal_4_13_13_gap3_B_le_2M_eliminated_5983_honest :=
   BealLevel26Foundations.BealFreyB14.beal_4_13_13_gap3_B_le_2M_eliminated_5983_honest
 
+/-! ## v8.80.0 — Euler a53 of the Beal Frey cubic, searched mod 53 -/
+
+def fourth_powers_mod53 :=
+  BealLevel26Foundations.BealFreyB14.fourth_powers_mod53
+
+def a53_beal_frey :=
+  BealLevel26Foundations.BealFreyB14.a53_beal_frey
+
+/-- Euler miss under the Beal equation.  Not `¬ ∃ A`. -/
+def beal_frey_a53_miss_of_eq :=
+  BealLevel26Foundations.BealFreyB14.beal_frey_a53_miss_of_eq
+
+/-- Same miss on the 352 named rows.  Not `¬ ∃ A`. -/
+def beal_frey_a53_miss_B14 :=
+  BealLevel26Foundations.BealFreyB14.beal_frey_a53_miss_B14
+
+/-- Residue search at a named row.  Singular `(0,0)` excluded. -/
+def b14_A_search_miss :=
+  BealLevel26Foundations.BealFreyB14.b14_A_search_miss
+
 /-! ## v8.71.0 — MCOM Ribet-Mazur pack from v8.69.0 misses -/
 
 /-- Inhabited for the two named witnesses only.
@@ -6068,6 +6093,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check beal_frey_mod13_irreducible_B14
 #check level_lowering_to_26_B14_honest
 #check beal_4_13_13_gap3_B_le_2M_eliminated_5983_honest
+#check fourth_powers_mod53
+#check a53_beal_frey
+#check beal_frey_a53_miss_of_eq
+#check beal_frey_a53_miss_B14
+#check b14_A_search_miss
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -6554,5 +6584,8 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms beal_frey_has_full_2_torsion
 #print axioms beal_frey_rewrite
 #print axioms displayed_cubic_ne_beal_frey_example
+#print axioms beal_frey_a53_miss_of_eq
+#print axioms beal_frey_a53_miss_B14
+#print axioms b14_A_search_miss
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

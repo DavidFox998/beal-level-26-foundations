@@ -15,10 +15,19 @@ import BealLevel26Foundations.Beal.FullProof.BealMod16
 import BealLevel26Foundations.Beal.FullProof.KrausB14
 import BealLevel26Foundations.Beal.FullProof.LevelLoweringB14
 import BealLevel26Foundations.Beal.FullProof.BealFreyB14
+import BealLevel26Foundations.Beal.FullProof.BealFreyASearch
 
 /-!
-# FullProof track (v8.79.0)
+# FullProof track (v8.80.0)
 
+Aggregator for Track B.  v8.80.0 searches Euler
+`a₅₃` of the Beal Frey cubic over the 14
+fourth-power residues mod 53.  Under the
+Beal equation that trace misses `0,12`.
+That is **not** `¬ ∃ A`, **not** BCDT,
+**not** Ribet.  `B14_honest` stays a Prop.
+`#print axioms` on the miss is
+`[propext, Quot.sound]`.  Not `Classical.em`.
 Aggregator for Track B.  v8.79.0 defines the
 Beal Frey cubic `x(x-A^4)(x+B^4)` and
 distinguishes it from the displayed cubic

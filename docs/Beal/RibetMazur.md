@@ -1,3 +1,16 @@
+# v8.80.0 A-mod-53 Euler search; ¬∃ A stays Prop
+
+Euler `a53` of the Beal Frey cubic is
+searched over 14 fourth-power residues
+mod 53.  Under the Beal equation that
+trace misses `0,12`.  Axioms
+`[propext, Quot.sound]`.
+`beal_frey_modular` and `B14_honest` stay
+Props.  Not BCDT, not Ribet, not `¬ ∃ A`
+for the 352 rows.  Not `Classical.em`.
+Chain `ExistsNewformLevel2` stays `0 != 0`.
+No new Beal forall.
+
 # v8.79.0 Beal Frey cubic; BCDT stays Prop
 
 The Beal Frey cubic `x(x-A^4)(x+B^4)` is

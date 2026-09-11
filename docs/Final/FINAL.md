@@ -1,3 +1,20 @@
+# FINAL v8.80.0 — A-mod-53 Euler search; ¬∃ A stays a Prop (arrow stays a Prop)
+
+Latest tag `v8.80.0-B14-A-search-honest`.
+Lean change.
+Euler `a53` of the Beal Frey cubic is
+searched over 14 fourth-power residues
+mod 53.  Under the Beal equation that
+trace misses `0,12`.
+Axioms `[propext, Quot.sound]`.
+`beal_frey_modular`, level lowering, and
+`beal_..._B14_honest` stay Props.
+Not BCDT, not Ribet, not `¬ ∃ A` for the
+352 rows.  Not `Classical.em`.
+Chain `ExistsNewformLevel2` stays `0 ≠ 0`.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.79.0 — Beal Frey cubic distinguished; BCDT stays a Prop (arrow stays a Prop)
 
 Latest tag `v8.79.0-B14-honest-elim`.

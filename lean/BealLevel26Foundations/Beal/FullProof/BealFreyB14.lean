@@ -5,6 +5,12 @@ Author: David Fox
 
 Beal Frey cubic for gap-3 (4,13,13), distinguished from the displayed cubic.
 
+v8.80.0-B14-A-search-honest. Euler `a₅₃` of `y² = x(x-A^4)(x+B^4)`
+is searched over the 14 fourth-power residues mod 53.  Under the
+Beal equation that trace misses locked `0` and `12` at ℓ=13
+(`beal_frey_a53_miss_B14`, axioms `[propext, Quot.sound]`).
+That is **not** `¬ ∃ A`, **not** BCDT, **not** Ribet.
+
 v8.79.0-B14-honest-elim. The *Beal Frey cubic* is the integer polynomial
 `x * (x - A^4) * (x + B^4)` with roots `0`, `A^4`, `-B^4`. The *displayed
 cubic* already in `LevelLoweringB14` is `x * (x - B^4) * (x + (B+3)^4)`
@@ -17,17 +23,19 @@ What this file inhabits
 * The two cubics disagree at `x = B^4` when `B > 0` and `A^4 ≠ B^4`.
 * The displayed-cubic 2-torsion lemma is re-exported (`frey_modular_B14`).
 * The 2-element `[196, 1500003]` kill stays `beal_4_13_13_gap3_B_le_2M_eliminated_full`.
+* Euler `a₅₃` of the Beal Frey cubic misses `0,12` under the Beal
+  equation (`beal_frey_a53_miss_of_eq`).  Not a Beal negation.
 
 What this file does **not** inhabit
 * BCDT / Wiles / `beal_frey_modular` as a modularity theorem. There is no
   BCDT theorem in this graph. `Classical.choice` is not Wiles.
-  `Classical.em` is not used here (v8.74 `frey_modular` stays the other file).
-* Residual irreducibility of `ρ_{E,13}` for the Beal Frey curve. The
-  recorded `a53 ∈ {-2,-10,1,6,14}` values are Euler counts of the
-  *displayed* cubic, not of `y² = x(x-A^4)(x+B^4)`.
+  A custom `axiom BCDT_B14` would print as `BCDT_B14`, not as
+  `Classical.choice`.  `Classical.em` is not used here.
+* Residual irreducibility of `ρ_{E,13}`.  The Euler miss is an
+  integer inequality, not Mazur/Borel.
 * Ribet–Mazur level lowering to 26. The pack
   `ribet_mazur_pack_q_13_level_26` is a miss pair, not a congruence
-  `a53(E) ≡ a53(f)`. The Zsig pool does not prove `N | 26`.
+  `a53(E) ≡ a53(f)`.  The Zsig pool does not prove `N | 26`.
 * `∀ B ∈ step60_b14_list, ¬∃ A`. That stays the uninhabited Prop
   `beal_4_13_13_gap3_B_le_2M_eliminated_B14_honest`.
 * A 5983-row Beal elimination. The 5983 identity remains
@@ -40,6 +48,7 @@ Does not import `RibetMazur` or `Modularity/FreyModularity_13.lean`.
 
 import BealLevel26Foundations.Beal.FullProof.LevelLoweringB14
 import BealLevel26Foundations.Beal.FullProof.KrausB14
+import BealLevel26Foundations.Beal.FullProof.BealFreyASearch
 import BealLevel26Foundations.Beal.FullProof.BealMod16
 import BealLevel26Foundations.Beal.FullProof.Step60B14List
 import BealLevel26Foundations.Beal.FullProof.B14Witnesses
@@ -49,6 +58,7 @@ namespace BealLevel26Foundations.BealFreyB14
 
 open BealLevel26Foundations.LevelLoweringB14
 open BealLevel26Foundations.KrausB14
+open BealLevel26Foundations.BealFreyASearch
 open BealLevel26Foundations.BealMod16
 open BealLevel26Foundations.Step60B14List
 open BealLevel26Foundations.B14Witnesses
@@ -277,6 +287,40 @@ theorem b14_elim_at_p (B p : Nat) (a : Int)
 theorem step60_b14_list_length_eq : step60_b14_list.length = 352 :=
   step60_b14_list_length
 
+/-- Re-export: 14 fourth-power residues mod 53. -/
+def fourth_powers_mod53 :=
+  BealLevel26Foundations.BealFreyASearch.fourth_powers_mod53
+
+/-- Re-export: Euler `a₅₃` of the Beal Frey cubic. -/
+def a53_beal_frey :=
+  BealLevel26Foundations.BealFreyASearch.a53_beal_frey
+
+/-- Re-export: Euler miss under the Beal equation. Not `¬ ∃ A`. -/
+theorem beal_frey_a53_miss_of_eq (A B : Nat)
+    (hEq : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    a53_beal_frey A B % 13 ≠ (0 : Int) % 13 ∧
+      a53_beal_frey A B % 13 ≠ (12 : Int) % 13 :=
+  BealLevel26Foundations.BealFreyASearch.beal_frey_a53_miss_of_eq A B hEq
+
+/-- Re-export: same miss on the 352 named rows. Not `¬ ∃ A`. -/
+theorem beal_frey_a53_miss_B14 (A B : Nat)
+    (hMem : B ∈ step60_b14_list)
+    (hEq : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    a53_beal_frey A B % 13 ≠ (0 : Int) % 13 ∧
+      a53_beal_frey A B % 13 ≠ (12 : Int) % 13 :=
+  BealLevel26Foundations.BealFreyASearch.beal_frey_a53_miss_B14 A B hMem hEq
+
+/-- Re-export: residue search at a named row. -/
+theorem b14_A_search_miss (B A_mod : Nat)
+    (hMem : B ∈ step60_b14_list)
+    (hLt : A_mod < 53)
+    (hne : Nat.pow B 4 % 53 ≠ 0 ∨ A_mod ≠ 0) :
+    a53_beal_frey_res (Nat.pow A_mod 4 % 53) (Nat.pow B 4 % 53) % 13 ≠
+        (0 : Int) % 13 ∧
+      a53_beal_frey_res (Nat.pow A_mod 4 % 53) (Nat.pow B 4 % 53) % 13 ≠
+        (12 : Int) % 13 :=
+  BealLevel26Foundations.BealFreyASearch.b14_A_search_miss B A_mod hMem hLt hne
+
 #check displayed_cubic
 #check bealFreyCubic
 #check beal_frey_curve
@@ -289,6 +333,10 @@ theorem step60_b14_list_length_eq : step60_b14_list.length = 352 :=
 #check beal_4_13_13_gap3_B_le_2M_eliminated_B14_honest
 #check beal_4_13_13_gap3_B_le_2M_eliminated_full_honest
 #check beal_4_13_13_gap3_B_le_2M_eliminated_5983_honest
+#check a53_beal_frey
+#check beal_frey_a53_miss_of_eq
+#check beal_frey_a53_miss_B14
+#check b14_A_search_miss
 #print axioms displayed_cubic_full_2_torsion
 #print axioms beal_frey_has_full_2_torsion
 #print axioms beal_frey_rewrite
@@ -296,6 +344,9 @@ theorem step60_b14_list_length_eq : step60_b14_list.length = 352 :=
 #print axioms beal_4_13_13_gap3_B_le_2M_eliminated_full_honest
 #print axioms b14_elim_at_p
 #print axioms step60_b14_list_length_eq
+#print axioms beal_frey_a53_miss_of_eq
+#print axioms beal_frey_a53_miss_B14
+#print axioms b14_A_search_miss
 
 end BealLevel26Foundations.BealFreyB14
 

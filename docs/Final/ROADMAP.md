@@ -799,6 +799,15 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.80.0-B14-A-search-honest — DONE (BealFreyASearch Euler a53 of Beal Frey cubic searched over 14 fourth-power residues mod 53; miss under Beal equation; BCDT/level_lowering/B14_honest stay Prop; #print axioms propext Quot.sound on the miss, empty on the 14x14 table; not Ribet; not ¬∃ A for those 352; Chain ExistsNewformLevel2 stays 0≠0; no new Beal ∀; arrow stays a Prop)
+
+Lean change.  Finite Euler search, Props.
+Does **not** import `RibetMazur`.
+Does **not** add `axiom BCDT_B14`.
+Does **not** inhabit BCDT.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Beal `∀`.
+
 ### v8.79.0-B14-honest-elim — DONE (BealFreyB14 beal Frey cubic x(x-A^4)(x+B^4) distinguished from displayed cubic; BCDT/level_lowering/B14_honest stay Prop; full_honest stays 2-element mod16; #print axioms propext on cubic lemmas, empty on full_honest; not Ribet; not ¬∃ A for those 352; Chain ExistsNewformLevel2 stays 0≠0; no new Beal ∀; arrow stays a Prop)
 
 Lean change.  Two cubics, rewrite, Props.

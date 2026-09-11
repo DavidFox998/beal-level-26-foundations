@@ -1,10 +1,12 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.79.0-B14-honest-elim`
-Lean change: BealFreyB14
-The Beal Frey cubic `x(x-A^4)(x+B^4)` is
-distinguished from the displayed cubic.
-Roots and rewrite use `propext`.
+Latest tag / HEAD: `v8.80.0-B14-A-search-honest`
+Lean change: BealFreyASearch
+Euler `a53` of the Beal Frey cubic is
+searched over 14 fourth-power residues
+mod 53.  Under the Beal equation that
+trace misses `0,12`.  Axioms
+`[propext, Quot.sound]`.
 `beal_frey_modular` / level lowering /
 `beal_..._B14_honest` stay Props.
 `full_honest` is the two-element

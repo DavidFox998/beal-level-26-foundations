@@ -225,12 +225,36 @@ are in $\{\texttt{propext},\texttt{Quot.sound},\texttt{Classical.choice}\}$;
 the cubic $2$-torsion and rewrite use
 \texttt{propext} only.  Not \texttt{Classical.em}.
 
+\section{$B\equiv 14$ A-mod-$53$ search, not BCDT}
+Fourth powers modulo $53$ are the $14$ residues
+$\{0,1,10,13,15,16,24,28,36,42,44,46,47,49\}$.
+Euler $a_{53}$ of the Beal Frey cubic
+$y^2=x(x-A^4)(x+B^4)$ on $\mathbb{F}_{53}$
+is searched on that $14\times 14$ table
+(\texttt{a53\_res\_miss\_or\_zero}, empty axioms).
+Values lie in $\{-10,-2,0,1,6,14\}$.
+The cell $(A^4,B^4)\equiv(0,0)$ is the
+singular cubic $y^2=x^3$ and gives $a_{53}=0$.
+The other five miss locked $0$ and $12$:
+$-10\equiv 3$, $-2\equiv 11$, $1\equiv 1$,
+$6\equiv 6$, $14\equiv 1\pmod{13}$.
+Under $A^4+B^4=(B+3)^{13}$ both residues cannot
+be $0$ (that would force $53\mid 3$), so
+\texttt{beal\_frey\_a53\_miss\_B14} inhabits the
+miss on the $352$ named rows
+(axioms \texttt{propext}, \texttt{Quot.sound}).
+A custom \texttt{axiom BCDT\_B14} would print as
+\texttt{BCDT\_B14}, not as \texttt{Classical.choice}.
+\texttt{beal\_frey\_modular} and
+\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_B14\_honest}
+stay Props.  Not \texttt{Classical.em}.
+
 \section{What remains}
 $15/16$ of $B\le 2\text{M}$ is eliminated by mod-$16$ residues.
 The two displayed named rows are eliminated that way.
-$352$ named $B\equiv 14$ rows have recorded $a_{53}$ misses,
-displayed cubic $2$-torsion, and a distinguished
-Beal Frey cubic $x(x-A^4)(x+B^4)$;
+$352$ named $B\equiv 14$ rows have an Euler $a_{53}$
+search on the Beal Frey cubic that misses $0,12$
+under the Beal equation;
 those facts do not inhabit $\neg\exists A$.
 The old \texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated}
 stays \texttt{Classical.em}.
