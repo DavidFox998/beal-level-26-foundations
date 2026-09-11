@@ -1,3 +1,18 @@
+# v8.84.0 fourth-power kill of the 86 at q=17/29/109
+
+`lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean`
+
+Re-exports `direct_mod17_kill`,
+`direct_mod29_kill`, `direct_mod109_kill`,
+and `beal_..._86_modq`.  Empty axioms.
+q=29 kills 77 of the 86; q=109 kills the
+remaining 9.  q=17 kills 57.
+That is **not** Ribet.
+The pack `beal_..._eliminated_86` stays
+the uninhabited Prop.
+`B14_honest` stays the uninhabited `∀`
+on all 352.
+
 # v8.83.0 gcd | 3 and displayed miss; 86-row arrows stay Props
 
 `lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean`

@@ -313,16 +313,44 @@ This is the same kind of arithmetic obstruction as
 the mod-$16$ sweep, not BCDT and not Ribet.
 Not \texttt{Classical.em}.
 
+\section{The remaining $86$ at $q=17,29,109$}
+If $(B+3)^{13}-B^4$ is not a fourth power in
+$\mathbb{F}_q$, there is no $A$ with
+$A^4+B^4=(B+3)^{13}$
+(\texttt{direct\_mod17\_kill},
+\texttt{direct\_mod29\_kill},
+\texttt{direct\_mod109\_kill}).
+Fourth powers modulo $17$ are
+$\{0,1,4,13,16\}$.
+On the $86$ mod-$53$ survivors the verified
+counts are $57$ killed at $q=17$, $77$ at
+$q=29$, and the remaining $9$ at $q=109$.
+\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_86\_modq}
+inhabits $\neg\exists A$ on all $86$ named rows;
+\texttt{\#print axioms} empty.
+The pack name
+\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_86}
+stays the uninhabited Prop.
+\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_B14\_honest}
+stays the uninhabited $\forall$ on all $352$ rows.
+This is the same kind of arithmetic obstruction as
+the mod-$53$ sweep, not BCDT and not Ribet.
+Not \texttt{Classical.em}.
+
 \section{What remains}
 $15/16$ of $B\le 2\text{M}$ is eliminated by mod-$16$ residues.
 The two displayed named rows are eliminated that way.
 $266$ of $352$ named $B\equiv 14$ rows are eliminated by
 fourth-power non-residues modulo $53$.
-The remaining $86$ named $B\equiv 14$ rows still have
-an Euler $a_{53}$ in $\{-10,-2,1,6,14\}$ that misses
-$0,12$ under the Beal equation
+The remaining $86$ named $B\equiv 14$ rows are
+eliminated by fourth-power non-residues at
+$q=29$ and $q=109$
+(\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_86\_modq}).
+Those $86$ still have an Euler $a_{53}$ in
+$\{-10,-2,1,6,14\}$ that misses $0,12$ under
+the Beal equation
 (\texttt{beal\_frey\_a53\_miss\_86});
-that pack does not inhabit $\neg\exists A$.
+that pack is not the Beal negation.
 \texttt{conductor\_86} and
 \texttt{level\_lowering\_86} stay Props.
 \texttt{Classical.choice} is not BCDT.

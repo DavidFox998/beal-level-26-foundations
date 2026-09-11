@@ -799,6 +799,17 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.84.0-B14-modq-kill — DONE (BealFreyModQKill fourth-power non-residue kill of the 86 mod-53 survivors at q=17/29/109; 29 kills 77 and 109 kills the remaining 9; #print axioms empty on direct_modQ_kill and beal_..._86_modq; not Ribet; B14_honest / 352-row ∀ stays uninhabited Prop; eliminated_86 pack stays the uninhabited Prop; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus ∀ stays uninhabited; arrow stays a Prop)
+
+Lean change.  Arithmetic residue kill, like mod 53.
+Does **not** import `RibetMazur`.
+Does **not** add `axiom BCDT_B14`.
+Does **not** inhabit BCDT.
+Does **not** inhabit the 352-row `∀`.
+Does **not** inhabit the pack name `eliminated_86`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Beal `∀` on all 352.
+
 ### v8.83.0-B14-86-props-honest — DONE (BealFreyB14 gcd(B,B+3)∣3 inhabited; IrreducibleMod13Trace of Euler a53 miss on the 86 (not Mazur); conductor_86 / level_lowering_86 / eliminated_86 stay uninhabited Props; Classical.choice is not BCDT/Ribet; Zsig 5983 is not N|32*3*13; Chain ExistsNewformLevel2 stays 0≠0; no new Beal ∀ on the 86; arrow stays a Prop)
 
 Lean change.  Elementary gcd plus displayed miss.

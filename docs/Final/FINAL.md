@@ -1,18 +1,18 @@
-# FINAL v8.83.0 — gcd | 3 and displayed miss; 86-row arrows stay Props (arrow stays a Prop)
+# FINAL v8.84.0 — fourth-power kill of the 86 at q=17/29/109 (arrow stays a Prop)
 
-Latest tag `v8.83.0-B14-86-props-honest`.
+Latest tag `v8.84.0-B14-modq-kill`.
 Lean change.
-`gcd(B,B+3)∣3` is inhabited (`propext`).
-`irreducible_86` is `IrreducibleMod13Trace`
-of the Euler miss, not Mazur.
-`conductor_86`, `level_lowering_86`, and
-`beal_..._eliminated_86` stay uninhabited
-Props.  `Classical.choice` is not BCDT
-and not Ribet.  Zsigmondy `5983` does
-not prove `N ∣ 2^5 * 3 * 13`.
-Not `Classical.em` on those Props.
+The 86 mod-53 survivors die because
+`(B+3)¹³ − B⁴` is not a fourth power at
+q=29 (77 rows) or q=109 (the remaining 9).
+q=17 kills 57 of them
+(`direct_mod_q_17_kill`).
+`beal_..._86_modq` inhabits `¬∃ A` on all
+86.  Empty axioms.  Not Ribet.  Not BCDT.
+The pack `beal_..._eliminated_86` and
+`B14_honest` stay uninhabited Props.
 Chain `ExistsNewformLevel2` stays `0 ≠ 0`.
-No new Beal `∀` on the 86 or the 352.
+No new Beal `∀` on the full 352.
 Still not Full Mathlib `∀`.
 
 # FINAL v8.82.0 — Euler a53 value set on the 86 survivors (arrow stays a Prop)

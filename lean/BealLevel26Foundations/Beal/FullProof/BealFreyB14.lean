@@ -5,6 +5,15 @@ Author: David Fox
 
 Beal Frey cubic for gap-3 (4,13,13), distinguished from the displayed cubic.
 
+v8.84.0-B14-modq-kill. The 86 mod-53 survivors
+die by fourth-power non-residues at q=17 (57),
+q=29 (77), and q=109 (the remaining 9).
+`beal_..._86_modq` inhabits `¬∃ A` on all 86
+(empty axioms).  That is **not** Ribet.
+The pack name `beal_..._eliminated_86` stays
+the uninhabited Prop.  `B14_honest` stays
+the uninhabited `∀` on all 352.
+
 v8.83.0-B14-86-props-honest. `gcd(B,B+3)∣3` is
 inhabited.  `irreducible_86` is the Euler `a₅₃`
 miss displayed as `IrreducibleMod13Trace`, not
@@ -57,6 +66,11 @@ What this file inhabits
 * `gcd_B_Bplus3_dvd_three`: `Nat.gcd B (B+3) ∣ 3`.
 * `irreducible_86` is that same miss as
   `IrreducibleMod13Trace`, not residual irreducibility.
+* All 86 mod-53 survivors have `¬ ∃ A` by
+  fourth-power non-residues at q=29 (77) or
+  q=109 (9) (`beal_..._86_modq`).  Empty
+  axioms.  q=17 kills 57 of them
+  (`direct_mod17_kill`).  Not Ribet.
 
 What this file does **not** inhabit
 * BCDT / Wiles / `beal_frey_modular` as a modularity theorem. There is no
@@ -70,9 +84,10 @@ What this file does **not** inhabit
   `a53(E) ≡ a53(f)`.  The Zsig pool does not prove `N | 26`.
 * `∀ B ∈ step60_b14_list, ¬∃ A`. That stays the uninhabited Prop
   `beal_4_13_13_gap3_B_le_2M_eliminated_B14_honest`.
-* `¬ ∃ A` for the 86 mod-53 survivors. The Euler miss is an
-  integer inequality, not a Beal negation.  The name
-  `beal_4_13_13_gap3_B_le_2M_eliminated_86` stays that Prop.
+* The pack name `beal_4_13_13_gap3_B_le_2M_eliminated_86`
+  stays the uninhabited Prop.  The arithmetic
+  `¬ ∃ A` on those 86 is
+  `beal_4_13_13_gap3_B_le_2M_eliminated_86_modq`.
 * Mathlib conductor of `beal_frey_curve`. There is none:
   the curve is an integer polynomial.  `conductor_86` stays
   a Prop.  Zsig pools do not prove `N ∣ 2^5 * 3 * 13`.
@@ -88,6 +103,7 @@ import BealLevel26Foundations.Beal.FullProof.LevelLoweringB14
 import BealLevel26Foundations.Beal.FullProof.KrausB14
 import BealLevel26Foundations.Beal.FullProof.BealFreyASearch
 import BealLevel26Foundations.Beal.FullProof.BealFreyMod53Kill
+import BealLevel26Foundations.Beal.FullProof.BealFreyModQKill
 import BealLevel26Foundations.Beal.FullProof.BealMod16
 import BealLevel26Foundations.Beal.FullProof.Step60B14List
 import BealLevel26Foundations.Beal.FullProof.B14Witnesses
@@ -495,6 +511,48 @@ theorem beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
   BealLevel26Foundations.BealFreyMod53Kill.beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
     B hB
 
+/-- Re-export: fourth powers modulo 17 as a `List`. -/
+def fourth_powers_mod_q_17 :=
+  BealLevel26Foundations.BealFreyModQKill.fourth_powers_mod_q_17
+
+def rhs_mod17 :=
+  BealLevel26Foundations.BealFreyModQKill.rhs_mod17
+
+def IsFourthMod17 :=
+  BealLevel26Foundations.BealFreyModQKill.IsFourthMod17
+
+/-- If `(B+3)¹³ − B⁴` is not a fourth power mod 17,
+    there is no `A`.  Empty axioms.  Not Ribet. -/
+theorem direct_mod17_kill (B : Nat)
+    (h : ¬ IsFourthMod17 (rhs_mod17 B)) :
+    ¬ ∃ A, Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 :=
+  BealLevel26Foundations.BealFreyModQKill.direct_mod17_kill B h
+
+theorem direct_mod_q_17_kill (B : Nat)
+    (h : ¬ IsFourthMod17 (rhs_mod17 B)) :
+    ¬ ∃ A, Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 :=
+  BealLevel26Foundations.BealFreyModQKill.direct_mod_q_17_kill B h
+
+theorem direct_mod29_kill (B : Nat)
+    (h : ¬ BealLevel26Foundations.BealFreyModQKill.IsFourthMod29
+      (BealLevel26Foundations.BealFreyModQKill.rhs_mod29 B)) :
+    ¬ ∃ A, Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 :=
+  BealLevel26Foundations.BealFreyModQKill.direct_mod29_kill B h
+
+theorem direct_mod109_kill (B : Nat)
+    (h : ¬ BealLevel26Foundations.BealFreyModQKill.IsFourthMod109
+      (BealLevel26Foundations.BealFreyModQKill.rhs_mod109 B)) :
+    ¬ ∃ A, Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 :=
+  BealLevel26Foundations.BealFreyModQKill.direct_mod109_kill B h
+
+/-- All 86 mod-53 survivors.  Empty axioms.  Not Ribet.
+    The pack name `beal_..._eliminated_86` stays a Prop. -/
+theorem beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
+    (B : Nat) (hB : B ∈ survivors_86_list) :
+    ¬ ∃ A, Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 :=
+  BealLevel26Foundations.BealFreyModQKill.beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
+    B hB
+
 #check displayed_cubic
 #check bealFreyCubic
 #check beal_frey_curve
@@ -525,6 +583,12 @@ theorem beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
 #check direct_mod53_kill
 #check step60_b14_killed_mod53
 #check beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
+#check fourth_powers_mod_q_17
+#check direct_mod17_kill
+#check direct_mod_q_17_kill
+#check direct_mod29_kill
+#check direct_mod109_kill
+#check beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
 #print axioms displayed_cubic_full_2_torsion
 #print axioms beal_frey_has_full_2_torsion
 #print axioms beal_frey_rewrite
@@ -543,6 +607,11 @@ theorem beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
 #print axioms b14_A_search_miss
 #print axioms direct_mod53_kill
 #print axioms beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
+#print axioms direct_mod17_kill
+#print axioms direct_mod_q_17_kill
+#print axioms direct_mod29_kill
+#print axioms direct_mod109_kill
+#print axioms beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
 
 end BealLevel26Foundations.BealFreyB14
 

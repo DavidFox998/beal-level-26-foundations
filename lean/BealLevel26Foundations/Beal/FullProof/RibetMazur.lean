@@ -3,6 +3,12 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v8.84.0 — fourth-power non-residue
+kill of the 86 at q=17/29/109.  29 kills 77
+and 109 kills the remaining 9.
+`beal_..._86_modq` is `¬∃ A` (empty axioms).
+Not Ribet.  The pack `eliminated_86` and
+`B14_honest` stay uninhabited Props.
 Track B v8.83.0 — gcd(B,B+3)∣3 inhabited;
 IrreducibleMod13Trace of the Euler miss on
 the 86 (not Mazur).  conductor_86 /
@@ -5287,6 +5293,35 @@ def level_lowering_86 :=
 def beal_4_13_13_gap3_B_le_2M_eliminated_86 :=
   BealLevel26Foundations.BealFreyB14.beal_4_13_13_gap3_B_le_2M_eliminated_86
 
+/-! ## v8.84.0 — fourth-power non-residue kill of the 86 -/
+
+def fourth_powers_mod_q_17 :=
+  BealLevel26Foundations.BealFreyB14.fourth_powers_mod_q_17
+
+def rhs_mod17 :=
+  BealLevel26Foundations.BealFreyB14.rhs_mod17
+
+def IsFourthMod17 :=
+  BealLevel26Foundations.BealFreyB14.IsFourthMod17
+
+/-- Empty-axiom arithmetic kill.  Not Ribet. -/
+def direct_mod17_kill :=
+  BealLevel26Foundations.BealFreyB14.direct_mod17_kill
+
+def direct_mod_q_17_kill :=
+  BealLevel26Foundations.BealFreyB14.direct_mod_q_17_kill
+
+def direct_mod29_kill :=
+  BealLevel26Foundations.BealFreyB14.direct_mod29_kill
+
+def direct_mod109_kill :=
+  BealLevel26Foundations.BealFreyB14.direct_mod109_kill
+
+/-- All 86 mod-53 survivors.  Empty axioms.
+    The pack name `eliminated_86` stays a Prop. -/
+def beal_4_13_13_gap3_B_le_2M_eliminated_86_modq :=
+  BealLevel26Foundations.BealFreyB14.beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
+
 /-! ## v8.71.0 — MCOM Ribet-Mazur pack from v8.69.0 misses -/
 
 /-- Inhabited for the two named witnesses only.
@@ -6193,6 +6228,12 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check beal_frey_modular_allowed
 #check level_lowering_86
 #check beal_4_13_13_gap3_B_le_2M_eliminated_86
+#check fourth_powers_mod_q_17
+#check direct_mod17_kill
+#check direct_mod_q_17_kill
+#check direct_mod29_kill
+#check direct_mod109_kill
+#check beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -6688,5 +6729,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms beal_frey_a53_miss_86
 #print axioms gcd_B_Bplus3_dvd_three
 #print axioms irreducible_86
+#print axioms direct_mod17_kill
+#print axioms direct_mod_q_17_kill
+#print axioms direct_mod29_kill
+#print axioms direct_mod109_kill
+#print axioms beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

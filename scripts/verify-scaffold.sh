@@ -310,12 +310,14 @@ test -f lean/BealLevel26Foundations/Beal/FullProof/LevelLoweringB14.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/BealFreyASearch.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/BealFreyMod53Kill.lean
+test -f lean/BealLevel26Foundations/Beal/FullProof/BealFreyModQKill.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_Density_2M.md
 test -f docs/Beal/KrausB14.md
 test -f docs/Beal/LevelLoweringB14.md
 test -f docs/Beal/BealFreyB14.md
 test -f docs/Beal/BealFreyASearch.md
 test -f docs/Beal/BealFreyMod53Kill.md
+test -f docs/Beal/BealFreyModQKill.md
 test -f lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
 test -f docs/Beal/Level26_Newforms.md
 test -f lean/BealLevel26Foundations/Beal/FullProof.lean
@@ -1278,7 +1280,7 @@ if grep -q "import BealLevel26Foundations.Beal.FullProof.ModularImpliesNewform" 
   echo "FAIL: none chain must not import ModularImpliesNewform"
   exit 1
 fi
-if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|HeckeAlgebra|RibetFunctor|X0_26_Model|HeckeAction|LevelLowering|LevelLoweringB14|BealFreyB14|BealFreyASearch|BealFreyMod53Kill|RibetMazur|TWPrimes|TWPrimesPratt|TWPrimesQ2|TWAuxEllFixed|X0_2_Genus|Beal_4_13_13_Size_Table|BealElim|BealMod16|KrausB14|B14Witnesses|Step60B14List|FreyModularity|Level26_Newforms)" \
+if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|HeckeAlgebra|RibetFunctor|X0_26_Model|HeckeAction|LevelLowering|LevelLoweringB14|BealFreyB14|BealFreyASearch|BealFreyMod53Kill|BealFreyModQKill|RibetMazur|TWPrimes|TWPrimesPratt|TWPrimesQ2|TWAuxEllFixed|X0_2_Genus|Beal_4_13_13_Size_Table|BealElim|BealMod16|KrausB14|B14Witnesses|Step60B14List|FreyModularity|Level26_Newforms)" \
     lean/BealLevel26Foundations.lean \
     lean/BealLevel26Foundations/Beal/BealForall.lean \
     lean/BealLevel26Foundations/Chain/BealForallInKernel.lean \
@@ -2852,6 +2854,29 @@ test ! -n "$(grep -E 'import BealLevel26Foundations.Modularity.FreyModularity_13
   lean/BealLevel26Foundations/Beal/FullProof/BealFreyMod53Kill.lean || true)"
 test ! -n "$(grep -E '^\s*(sorry|admit)\b|False\.elim|native_decide|^axiom ' \
   lean/BealLevel26Foundations/Beal/FullProof/BealFreyMod53Kill.lean || true)"
+test -f lean/BealLevel26Foundations/Beal/FullProof/BealFreyModQKill.lean
+grep -q "def fourth_powers_mod_q_17" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyModQKill.lean
+grep -q "theorem direct_mod17_kill" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyModQKill.lean
+grep -q "theorem direct_mod_q_17_kill" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyModQKill.lean
+grep -q "theorem direct_mod29_kill" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyModQKill.lean
+grep -q "theorem direct_mod109_kill" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyModQKill.lean
+grep -q "theorem beal_4_13_13_gap3_B_le_2M_eliminated_86_modq" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyModQKill.lean
+grep -q "theorem beal_4_13_13_gap3_B_le_2M_eliminated_86_modq" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean
+test ! -n "$(grep -E '^axiom |import BealLevel26Foundations.Beal.FullProof.RibetMazur' \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyModQKill.lean || true)"
+test ! -n "$(grep -E 'import BealLevel26Foundations.Modularity.FreyModularity_13' \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyModQKill.lean || true)"
+test ! -n "$(grep -E '^\s*(sorry|admit)\b|False\.elim|native_decide|^axiom ' \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyModQKill.lean || true)"
+test ! -n "$(grep -E 'import BealLevel26Foundations.Beal.FullProof.BealFreyModQKill' \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean || true)"
 grep -q "import BealLevel26Foundations.Beal.FullProof.Level26_Newforms" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 test ! -n "$(grep -E 'import BealLevel26Foundations.Beal.FullProof.RibetMazur' \

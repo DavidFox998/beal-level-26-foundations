@@ -17,10 +17,19 @@ import BealLevel26Foundations.Beal.FullProof.LevelLoweringB14
 import BealLevel26Foundations.Beal.FullProof.BealFreyB14
 import BealLevel26Foundations.Beal.FullProof.BealFreyASearch
 import BealLevel26Foundations.Beal.FullProof.BealFreyMod53Kill
+import BealLevel26Foundations.Beal.FullProof.BealFreyModQKill
 
 /-!
-# FullProof track (v8.83.0)
+# FullProof track (v8.84.0)
 
+Aggregator for Track B.  v8.84.0 kills the
+86 mod-53 survivors by fourth-power
+non-residues at q=17 (57), q=29 (77), and
+q=109 (the remaining 9).
+`beal_..._86_modq` inhabits `¬ ∃ A` on all
+86 (empty axioms).  That is **not** Ribet.
+The pack `beal_..._eliminated_86` and
+`B14_honest` stay uninhabited Props.
 Aggregator for Track B.  v8.83.0 inhabits
 `gcd(B,B+3)∣3` and the Euler miss as
 `IrreducibleMod13Trace` on the 86 survivors.
