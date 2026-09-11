@@ -18,8 +18,10 @@ import BealLevel26Foundations.Beal.FullProof.BealElim
 Aggregator for Track B.  v8.75.0 inhabits
 `beal_4_13_13_gap3_B_196_eliminated` and
 `beal_4_13_13_gap3_B_1500003_eliminated`
-by fourth-power residues modulo 16.
-That is not Ribet and not a Beal `∀`.
+by fourth-power residues modulo 16
+(`A^4 + B^4 = C^13`; `#print axioms`
+empty).  That is not Ribet and not a
+Beal `∀`.
 `beal_4_13_13_gap3_B_le_2M_eliminated`
 stays `Classical.em`.
 `frey_modular` stays `Classical.em`.

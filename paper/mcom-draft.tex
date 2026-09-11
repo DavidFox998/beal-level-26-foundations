@@ -113,14 +113,15 @@ $\{\texttt{propext},\texttt{Classical.choice},\texttt{Quot.sound}\}$.
 Two named gap-3 rows are now honest Beal eliminations, not
 \texttt{Classical.em}:
 \texttt{beal\_4\_13\_13\_gap3\_B\_196\_eliminated} is
-$\neg\exists A,\;A^4+196^{13}=199^{13}$, and
+$\neg\exists A,\;A^4+196^{4}=199^{13}$, and
 \texttt{beal\_4\_13\_13\_gap3\_B\_1500003\_eliminated} is
-$\neg\exists A,\;A^4+1500003^{13}=1500006^{13}$.
+$\neg\exists A,\;A^4+1500003^{4}=1500006^{13}$.
 The kill is fourth-power residues modulo $16$
-($A^4\equiv 0$ or $1$, but the two rows force $7$ and $13$).
+($A^4\equiv 0$ or $1$, but the two rows force $7$ and $15$).
 That is not Mazur, not Borel, and not Ribet.
-\texttt{\#print axioms} is $[\texttt{propext},\texttt{Quot.sound}]$
-inside the allowed set, not \texttt{Classical.choice}.
+\texttt{\#print axioms} is empty
+(Lean statements use kernel \texttt{Nat.pow}; Mathlib power notation
+is \texttt{HPow} and would inject \texttt{propext}).
 The displayed Frey/Kraus pack at these two $B$ remains the
 v8.69.0--v8.74.0 Int-mod-$13$ miss; it does not inhabit the
 Beal negation.

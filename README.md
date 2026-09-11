@@ -44,7 +44,7 @@ Track A — Level 26:
 - kraus_elimination_q_13_level_26_density / ribet_mazur_pack_q_13_level_26 in RibetMazur are inhabited from those misses at B=196 and B=1500003 only. Not ∀ B modular contradiction. zsig_density_links_to_kraus stays list equality plus 4488+5*299=5983, not Kraus matching.
 - exists_newform_level_26_dim2 / ExistsNewformLevel26_inhabited: displayed Newform pair at level 26, distinct by a53 0≠12. Not Mathlib cusp forms. Chain ExistsNewformLevel2 stays 0≠0.
 - frey_mod13_irreducible: displayed Int-mod-13 miss at B=196 and B=1500003 via irreducible_of_trace_mismatch. Not Mazur, not residual isomorphism. frey_modular stays Classical.em. level_lowering_to_26 stays Prop.
-- beal_4_13_13_gap3_B_196_eliminated / beal_4_13_13_gap3_B_1500003_eliminated: honest `¬ ∃ A` gap-3 rows via fourth-power residues mod 16 (7 and 13). Not Ribet, not Classical.em. The 2M capstone stays Classical.em.
+- beal_4_13_13_gap3_B_196_eliminated / beal_4_13_13_gap3_B_1500003_eliminated: honest `¬ ∃ A` gap-3 rows via fourth-power residues mod 16 (7 and 15) on `A^4 + B^4 = C^13`. Not Ribet, not Classical.em. `#print axioms` empty (`Nat.pow`). The 2M capstone stays Classical.em.
 
 Inhabited:
 - newform_26_a_qexp / newform_26_b_qexp match ledger
@@ -58,7 +58,7 @@ Inhabited:
 - kraus_elimination_q_13_level_26_density / ribet_mazur_pack_q_13_level_26 (RibetMazur, B=196 and B=1500003 only)
 - exists_newform_level_26_dim2 / ExistsNewformLevel26_inhabited (displayed dim2, 0≠12 at p=53)
 - frey_mod13_irreducible (displayed trace miss at B=196 and B=1500003)
-- beal_4_13_13_gap3_B_196_eliminated / beal_4_13_13_gap3_B_1500003_eliminated / beal_4_13_13_gap3_first_honest_rows (fourth powers mod 16; not Classical.em)
+- beal_4_13_13_gap3_B_196_eliminated / beal_4_13_13_gap3_B_1500003_eliminated / beal_4_13_13_gap3_first_honest_rows (fourth powers mod 16; `#print axioms` empty; not Classical.em)
 - level26_a_eliminated_by_53_of_witness
 - hasSmallZsigWitness_1500003
 - level26_b_eliminated_by_443_of_witness

@@ -5,8 +5,10 @@ Lean change: BealElim
 `beal_4_13_13_gap3_B_196_eliminated` and
 `beal_4_13_13_gap3_B_1500003_eliminated`
 are honest `¬ ∃ A` gap-3 rows via
-fourth-power residues modulo 16.
-Not Ribet, not `Classical.em`.
+fourth-power residues modulo 16
+(`A^4 + B^4 = C^13`; residues 7 and 15).
+`#print axioms` empty. Not Ribet, not
+`Classical.em`.
 `beal_4_13_13_gap3_B_le_2M_eliminated`
 stays `Classical.em`.
 `frey_modular` stays `Classical.em`.

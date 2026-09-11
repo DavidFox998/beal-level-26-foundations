@@ -3,7 +3,9 @@
 `beal_4_13_13_gap3_B_196_eliminated` /
 `beal_4_13_13_gap3_B_1500003_eliminated`
 alias the BealElim fourth-power residue
-kills.  Not Ribet.  Not `Classical.em`.
+kills (`A^4 + B^4 = C^13`; residues 7
+and 15).  `#print axioms` empty.
+Not Ribet.  Not `Classical.em`.
 The 2M capstone stays `Classical.em`.
 Chain `ExistsNewformLevel2` stays `0 != 0`.
 No new Beal forall.

@@ -5,7 +5,9 @@ Lean change.
 `beal_4_13_13_gap3_B_196_eliminated` and
 `beal_4_13_13_gap3_B_1500003_eliminated`
 are honest `¬ ∃ A` via fourth-power
-residues modulo 16. Not Ribet and not
+residues modulo 16 (`A^4 + B^4 = C^13`,
+residues 7 and 15). `#print axioms`
+empty. Not Ribet and not
 `Classical.em`. The 2M capstone stays
 `Classical.em`. Chain
 `ExistsNewformLevel2` stays `0 ≠ 0`.

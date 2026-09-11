@@ -3,20 +3,21 @@
 `lean/BealLevel26Foundations/Beal/FullProof/BealElim.lean`
 
 `beal_4_13_13_gap3_B_196_eliminated` is
-`¬ ∃ A, A^4 + 196^13 = 199^13`.
+`¬ ∃ A, Nat.pow A 4 + Nat.pow 196 4 = Nat.pow 199 13`.
 `beal_4_13_13_gap3_B_1500003_eliminated` is
-`¬ ∃ A, A^4 + 1500003^13 = 1500006^13`.
+`¬ ∃ A, Nat.pow A 4 + Nat.pow 1500003 4 = Nat.pow 1500006 13`.
 
 The kill is fourth-power residues modulo 16
 (`A^4 ≡ 0` or `1`; the two rows force `7`
-and `13`).  That is **not** Mazur, not
+and `15`).  That is **not** Mazur, not
 Borel, not a Mathlib residual
 representation, and **not** Ribet.
 
-`#print axioms` is `[propext, Quot.sound]`
-inside the allowed set
-`{propext, Classical.choice, Quot.sound}`.
-Not `Classical.em`.  Not `Classical.choice`.
+`#print axioms` is empty.  Mathlib `^` is
+`HPow` and would inject `propext` in this
+import graph; the statements use kernel
+`Nat.pow`.  Not `Classical.em`.  Not
+`Classical.choice`.
 
 The displayed v8.69.0–v8.74.0 pack
 (`exists_newform_level_26_dim2`,
