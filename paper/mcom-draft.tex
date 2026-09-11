@@ -110,8 +110,24 @@ No \texttt{native\_decide}, no extra axioms beyond
 $\{\texttt{propext},\texttt{Classical.choice},\texttt{Quot.sound}\}$.
 
 \section{What remains}
-Full $\forall B$ density from $5983$ to $\infty$, full modular contradiction,
-and Beal $\forall$ still open. Track beyond $2\text{M}$ Step61+ continues same
-\texttt{smallZsigPrimes} pattern.
+Two named gap-3 rows are now honest Beal eliminations, not
+\texttt{Classical.em}:
+\texttt{beal\_4\_13\_13\_gap3\_B\_196\_eliminated} is
+$\neg\exists A,\;A^4+196^{13}=199^{13}$, and
+\texttt{beal\_4\_13\_13\_gap3\_B\_1500003\_eliminated} is
+$\neg\exists A,\;A^4+1500003^{13}=1500006^{13}$.
+The kill is fourth-power residues modulo $16$
+($A^4\equiv 0$ or $1$, but the two rows force $7$ and $13$).
+That is not Mazur, not Borel, and not Ribet.
+\texttt{\#print axioms} is $[\texttt{propext},\texttt{Quot.sound}]$
+inside the allowed set, not \texttt{Classical.choice}.
+The displayed Frey/Kraus pack at these two $B$ remains the
+v8.69.0--v8.74.0 Int-mod-$13$ miss; it does not inhabit the
+Beal negation.
+\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated} stays
+\texttt{Classical.em} for the remaining named rows.
+Full $\forall B$ density from $5983$ to $\infty$, full modular
+contradiction, and Beal $\forall$ still open. Track beyond
+$2\text{M}$ Step61+ continues same \texttt{smallZsigPrimes} pattern.
 
 \end{document}

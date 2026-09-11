@@ -998,6 +998,7 @@ do
   grep -q "v8.71.0-ribet-mazur-pack" "$readme"
   grep -q "v8.73.0-modularity-exists-level2" "$readme"
   grep -q "v8.74.0-frey-irreducible-mod13" "$readme"
+  grep -q "v8.75.0-first-honest-beal-rows" "$readme"
 done
 test -f docs/assets/v6.7.0/ribet_26_to_2.jpg
 test -f docs/assets/v6.7.0/ribet_26_to_2.png
@@ -1264,7 +1265,7 @@ if grep -q "import BealLevel26Foundations.Beal.FullProof.ModularImpliesNewform" 
   echo "FAIL: none chain must not import ModularImpliesNewform"
   exit 1
 fi
-if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|HeckeAlgebra|RibetFunctor|X0_26_Model|HeckeAction|LevelLowering|RibetMazur|TWPrimes|TWPrimesPratt|TWPrimesQ2|TWAuxEllFixed|X0_2_Genus|Beal_4_13_13_Size_Table)" \
+if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|HeckeAlgebra|RibetFunctor|X0_26_Model|HeckeAction|LevelLowering|RibetMazur|TWPrimes|TWPrimesPratt|TWPrimesQ2|TWAuxEllFixed|X0_2_Genus|Beal_4_13_13_Size_Table|BealElim|FreyModularity|Level26_Newforms)" \
     lean/BealLevel26Foundations.lean \
     lean/BealLevel26Foundations/Beal/BealForall.lean \
     lean/BealLevel26Foundations/Chain/BealForallInKernel.lean \
@@ -2706,6 +2707,18 @@ test ! -n "$(grep -E 'import BealLevel26Foundations.Beal.FullProof.RibetMazur' \
   lean/BealLevel26Foundations/Beal/FullProof/FreyModularity.lean || true)"
 test ! -n "$(grep -E 'import BealLevel26Foundations.Modularity.FreyModularity_13' \
   lean/BealLevel26Foundations/Beal/FullProof/FreyModularity.lean || true)"
+grep -q "theorem beal_4_13_13_gap3_B_196_eliminated" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealElim.lean
+grep -q "theorem beal_4_13_13_gap3_B_1500003_eliminated" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealElim.lean
+grep -q "theorem beal_4_13_13_gap3_first_honest_rows" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealElim.lean
+grep -q "Classical.em" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealElim.lean
+test ! -n "$(grep -E 'import BealLevel26Foundations.Beal.FullProof.RibetMazur' \
+  lean/BealLevel26Foundations/Beal/FullProof/BealElim.lean || true)"
+test ! -n "$(grep -E 'import BealLevel26Foundations.Modularity.FreyModularity_13' \
+  lean/BealLevel26Foundations/Beal/FullProof/BealElim.lean || true)"
 grep -q "import BealLevel26Foundations.Beal.FullProof.Level26_Newforms" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 test ! -n "$(grep -E 'import BealLevel26Foundations.Beal.FullProof.RibetMazur' \

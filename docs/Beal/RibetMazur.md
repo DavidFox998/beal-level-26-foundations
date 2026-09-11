@@ -1,3 +1,13 @@
+# v8.75.0 first honest Beal rows
+
+`beal_4_13_13_gap3_B_196_eliminated` /
+`beal_4_13_13_gap3_B_1500003_eliminated`
+alias the BealElim fourth-power residue
+kills.  Not Ribet.  Not `Classical.em`.
+The 2M capstone stays `Classical.em`.
+Chain `ExistsNewformLevel2` stays `0 != 0`.
+No new Beal forall.
+
 # v8.74.0 displayed Frey mod-13 miss
 
 `frey_mod13_irreducible` aliases the

@@ -799,6 +799,16 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.75.0-first-honest-beal-rows — DONE (BealElim beal_4_13_13_gap3_B_196_eliminated and B_1500003_eliminated via fourth-power residues mod 16; not Classical.em; not Ribet; 2M capstone stays Classical.em; Chain ExistsNewformLevel2 stays 0≠0; no new Beal ∀; arrow stays a Prop)
+
+Lean change.  Two named gap-3 rows are
+`¬ ∃ A` by `A^4 ≡ 0` or `1 [MOD 16]`.
+Does **not** import `RibetMazur`.
+Does **not** import the axiom
+`frey_modular_13`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Beal `∀`.
+
 ### v8.74.0-frey-irreducible-mod13 — DONE (FreyModularity frey_mod13_irreducible displayed Int-mod-13 miss at B=196 and B=1500003; frey_modular Classical.em; level_lowering_to_26 stays Prop; Chain ExistsNewformLevel2 stays 0≠0; no new Beal ∀; arrow stays a Prop)
 
 Lean change.  Displayed trace miss, not Mazur,

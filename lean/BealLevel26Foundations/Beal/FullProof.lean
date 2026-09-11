@@ -10,10 +10,22 @@ import BealLevel26Foundations.Beal.FullProof.X0_26_Model
 import BealLevel26Foundations.Beal.FullProof.HeckeAction
 import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
+import BealLevel26Foundations.Beal.FullProof.BealElim
 
 /-!
-# FullProof track (v8.74.0)
+# FullProof track (v8.75.0)
 
+Aggregator for Track B.  v8.75.0 inhabits
+`beal_4_13_13_gap3_B_196_eliminated` and
+`beal_4_13_13_gap3_B_1500003_eliminated`
+by fourth-power residues modulo 16.
+That is not Ribet and not a Beal `∀`.
+`beal_4_13_13_gap3_B_le_2M_eliminated`
+stays `Classical.em`.
+`frey_modular` stays `Classical.em`.
+`level_lowering_to_26` stays a Prop.
+Chain `ExistsNewformLevel2` stays `0 ≠ 0`.
+No new Beal `∀`.
 Aggregator for Track B.  v8.74.0 inhabits
 displayed `frey_mod13_irreducible` at
 `B = 196` and `B = 1500003`.  That is

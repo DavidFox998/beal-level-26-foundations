@@ -3,6 +3,17 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v8.75.0 — first honest Beal rows
+`beal_4_13_13_gap3_B_196_eliminated` and
+`beal_4_13_13_gap3_B_1500003_eliminated`
+via fourth-power residues modulo 16.
+That is **not** Ribet and **not** a
+Beal `∀`.  The 2M capstone stays
+`Classical.em`.  `frey_modular` stays
+`Classical.em`.  `level_lowering_to_26`
+stays a Prop.  Chain
+`ExistsNewformLevel2` stays `0 ≠ 0`.
+No new Beal `∀`.
 Track B v8.74.0 — displayed Frey mod-13
 trace miss `frey_mod13_irreducible` at
 `B = 196` and `B = 1500003`.  That is
@@ -709,6 +720,7 @@ import BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Zsigmondy_13_Step60_B_
 import BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Zsigmondy_Density_2M
 import BealLevel26Foundations.Beal.FullProof.Level26_Newforms
 import BealLevel26Foundations.Beal.FullProof.FreyModularity
+import BealLevel26Foundations.Beal.FullProof.BealElim
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -5021,6 +5033,26 @@ def frey_modular :=
 def level_lowering_to_26 : Prop :=
   BealLevel26Foundations.FreyModularity.level_lowering_to_26
 
+/-! ## v8.75.0 — first honest Beal rows -/
+
+/-- Inhabited.  Fourth powers modulo 16
+at `B = 196`, `C = 199`.  Not Ribet.
+Not a Beal `∀`. -/
+def beal_4_13_13_gap3_B_196_eliminated :=
+  BealLevel26Foundations.BealElim.beal_4_13_13_gap3_B_196_eliminated
+
+/-- Inhabited.  Fourth powers modulo 16
+at `B = 1500003`, `C = 1500006`.  Not
+Ribet.  Not a Beal `∀`. -/
+def beal_4_13_13_gap3_B_1500003_eliminated :=
+  BealLevel26Foundations.BealElim.beal_4_13_13_gap3_B_1500003_eliminated
+
+/-- Inhabited conjunction of the two
+honest rows.  The 2M capstone stays
+`Classical.em`. -/
+def beal_4_13_13_gap3_first_honest_rows :=
+  BealLevel26Foundations.BealElim.beal_4_13_13_gap3_first_honest_rows
+
 /-! ## v8.71.0 — MCOM Ribet-Mazur pack from v8.69.0 misses -/
 
 /-- Inhabited for the two named witnesses only.
@@ -5883,6 +5915,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check frey_mod13_irreducible
 #check frey_modular
 #check level_lowering_to_26
+#check beal_4_13_13_gap3_B_196_eliminated
+#check beal_4_13_13_gap3_B_1500003_eliminated
+#check beal_4_13_13_gap3_first_honest_rows
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -6354,5 +6389,8 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms ExistsNewformLevel26_inhabited
 #print axioms frey_mod13_irreducible
 #print axioms frey_modular
+#print axioms beal_4_13_13_gap3_B_196_eliminated
+#print axioms beal_4_13_13_gap3_B_1500003_eliminated
+#print axioms beal_4_13_13_gap3_first_honest_rows
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

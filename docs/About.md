@@ -1,10 +1,14 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.74.0-frey-irreducible-mod13`
-Lean change: FreyModularity
-`frey_mod13_irreducible` is the displayed
-Int-mod-13 miss at `B = 196` and
-`B = 1500003`.  Not Mazur, not Ribet.
+Latest tag / HEAD: `v8.75.0-first-honest-beal-rows`
+Lean change: BealElim
+`beal_4_13_13_gap3_B_196_eliminated` and
+`beal_4_13_13_gap3_B_1500003_eliminated`
+are honest `¬ ∃ A` gap-3 rows via
+fourth-power residues modulo 16.
+Not Ribet, not `Classical.em`.
+`beal_4_13_13_gap3_B_le_2M_eliminated`
+stays `Classical.em`.
 `frey_modular` stays `Classical.em`.
 `level_lowering_to_26` stays a Prop.
 Chain `ExistsNewformLevel2` stays `0 ≠ 0`.

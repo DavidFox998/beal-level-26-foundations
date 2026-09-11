@@ -157,6 +157,7 @@ v8.69.0-kraus-elim-theorem RibetMazur Level26_Newforms level26_a_eliminated_by_5
 v8.71.0-ribet-mazur-pack RibetMazur kraus_elimination_q_13_level_26_density ribet_mazur_pack_q_13_level_26 inhabited from Level26_Newforms v8.69.0 Int-mod-13; Density/Step kraus_elimination_q_13_level_26 stays the uninhabited ∀; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Still not Full Mathlib ∀.
 v8.73.0-modularity-exists-level2 Level26_Newforms exists_newform_level_26_dim2 displayed dim2 via 0≠12 at p=53; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus_elimination_q_13_level_26 stays the uninhabited ∀; beal_from_ribet still from the Prop. Still not Full Mathlib ∀.
 v8.74.0-frey-irreducible-mod13 FreyModularity frey_mod13_irreducible displayed Int-mod-13 miss at B=196 and B=1500003; frey_modular stays Classical.em; level_lowering_to_26 stays Prop; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus_elimination_q_13_level_26 stays the uninhabited ∀; beal_from_ribet still from the Prop. Still not Full Mathlib ∀.
+v8.75.0-first-honest-beal-rows BealElim beal_4_13_13_gap3_B_196_eliminated beal_4_13_13_gap3_B_1500003_eliminated fourth-power residues mod 16; not Classical.em; not Ribet; beal_4_13_13_gap3_B_le_2M_eliminated stays Classical.em; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus_elimination_q_13_level_26 stays the uninhabited ∀; beal_from_ribet still from the Prop. Still not Full Mathlib ∀.
 
 ### File order v8.19.0–v8.47.0
 
@@ -379,12 +380,12 @@ v4.14.0-iter-citation-contradiction-locked: `CITATION.cff` locks `c2c47db` / fou
 
 [![v8.19.9 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.74.0-frey-irreducible-mod13
+# Beal Level 26 Foundations — v8.75.0-first-honest-beal-rows
 
-**v8.74.0-frey-irreducible-mod13 — Beal (4,13,13) displayed Frey mod-13 miss (Track B). Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.75.0-first-honest-beal-rows — Beal (4,13,13) two honest gap-3 rows (Track B). Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 - Track A: No new Beal-∀. Unconditional Beal is **not** claimed.
-- Houseclean mint `10.5281/zenodo.22654189` (`v8.19.9-fourth-power-residue` / `v8.74.0-frey-irreducible-mod13`) under hook `22379293`. Track A none-chain mint stays `10.5281/zenodo.22635221`.
+- Houseclean mint `10.5281/zenodo.22654189` (`v8.19.9-fourth-power-residue` / `v8.75.0-first-honest-beal-rows`) under hook `22379293`. Track A none-chain mint stays `10.5281/zenodo.22635221`.
 - Version DOI `10.5281/zenodo.22698257` still cites v8.69.0.
 - What's new:
   - v8.19.6 `B ≤ 100` `C = B+1`, `C = B+2` closed by `decide`;
@@ -623,6 +624,7 @@ v8.69.0-kraus-elim-theorem RibetMazur Level26_Newforms level26_a_eliminated_by_5
 v8.71.0-ribet-mazur-pack RibetMazur kraus_elimination_q_13_level_26_density ribet_mazur_pack_q_13_level_26 inhabited from Level26_Newforms v8.69.0 Int-mod-13; Density/Step kraus_elimination_q_13_level_26 stays the uninhabited ∀; ExistsNewformLevel2 stays 0≠0; beal_from_ribet still from the Prop. Still not Full Mathlib ∀.
 v8.73.0-modularity-exists-level2 Level26_Newforms exists_newform_level_26_dim2 displayed dim2 via 0≠12 at p=53; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus_elimination_q_13_level_26 stays the uninhabited ∀; beal_from_ribet still from the Prop. Still not Full Mathlib ∀.
 v8.74.0-frey-irreducible-mod13 FreyModularity frey_mod13_irreducible displayed Int-mod-13 miss at B=196 and B=1500003; frey_modular stays Classical.em; level_lowering_to_26 stays Prop; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus_elimination_q_13_level_26 stays the uninhabited ∀; beal_from_ribet still from the Prop. Still not Full Mathlib ∀.
+v8.75.0-first-honest-beal-rows BealElim beal_4_13_13_gap3_B_196_eliminated beal_4_13_13_gap3_B_1500003_eliminated fourth-power residues mod 16; not Classical.em; not Ribet; beal_4_13_13_gap3_B_le_2M_eliminated stays Classical.em; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus_elimination_q_13_level_26 stays the uninhabited ∀; beal_from_ribet still from the Prop. Still not Full Mathlib ∀.
 
 ### v8.19.9-fourth-power-residue — houseclean (Track A no new Beal-∀)
 
