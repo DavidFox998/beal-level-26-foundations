@@ -1,12 +1,14 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.76.0-mod16-sweeps-2M`
-Lean change: BealMod16
-`beal_4_13_13_gap3_B_le_2M_eliminated_mod16`
-kills `B ≤ 2000000` with `B % 16 ≠ 14`
-via fourth-power residues. `#print axioms`
-empty. `B ≡ 14` survives. The old 2M
-capstone stays `Classical.em`. Not Ribet.
+Latest tag / HEAD: `v8.77.0-B14-kraus-sweep`
+Lean change: KrausB14
+352 named Step60 `B ≡ 14` rows record
+`a53` misses vs `0/12`. Not Ribet.
+Not `¬ ∃ A` for those rows.
+`beal_4_13_13_gap3_B_le_2M_eliminated_full`
+is the displayed two-element list via
+mod 16. `#print axioms` empty.
+The old 2M capstone stays `Classical.em`. Not Ribet.
 `beal_4_13_13_gap3_B_196_eliminated` and
 `beal_4_13_13_gap3_B_1500003_eliminated`
 are instances.

@@ -1,3 +1,20 @@
+# FINAL v8.77.0 — B≡14 Kraus sweep (arrow stays a Prop)
+
+Latest tag `v8.77.0-B14-kraus-sweep`.
+Lean change.
+352 named Step60 rows with `B ≡ 14`
+record `a53 ∈ {-2,-10,1,6,14}` missing
+`0/12`. That is not Ribet and not `¬ ∃ A`.
+`beal_4_13_13_gap3_B_le_2M_eliminated_B14_kraus`
+is vacuous on `[196, 1500003]`.
+`beal_4_13_13_gap3_B_le_2M_eliminated_full`
+is those two rows via mod 16.
+`#print axioms` empty.
+The old 2M capstone stays `Classical.em`.
+Chain `ExistsNewformLevel2` stays `0 ≠ 0`.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.76.0 — mod-16 sweep of the 2M class (arrow stays a Prop)
 
 Latest tag `v8.76.0-mod16-sweeps-2M`.

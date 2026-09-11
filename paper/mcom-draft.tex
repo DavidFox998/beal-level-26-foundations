@@ -132,22 +132,50 @@ is that kill on $B\le 2000000$ with $B\not\equiv 14$;
 The named-row count $4488+5*299=5983$ is the existing
 density identity, not an enumeration of $5983$ numerals.
 $B=196$ ($4\not\equiv 14$) and $B=1500003$ (odd) are instances.
-Remaining $B\equiv 14\pmod{16}$ (about $1/16$ of any named-row
-class, $\sim 374$ of $5983$) need the v8.69.0--v8.74.0 Kraus
-pack ($-2$ vs $0/12$, $24$ vs $21/-39$).  That pack is
-recorded and does not inhabit those remaining rows.
+Remaining $B\equiv 14\pmod{16}$ are not killed by residues.
+The displayed list \texttt{density\_5983\_list}$=[196,1500003]$
+has no such member.
+
+\section{$B\equiv 14$ Kraus sweep}
+Step60 names $352$ rows with $B\equiv 14\pmod{16}$
+(not $\sim 374$ of a $5983$-numeral dump).
+Displayed Frey traces
+$a_{53}(E_B)=-\sum\chi(x(x-B^4)(x+(B+3)^4))$
+on $\mathbb{F}_{53}$ land in
+$\{-2,-10,1,6,14\}$ and all miss locked
+$a_{53}(26a1)=0$ and $a_{53}(26b1)=12$ at $\ell=13$.
+
+\begin{center}
+\begin{tabular}{rccc}
+$B$ & $a_{53}(E_B)$ & vs $0/12$ & note \\
+\hline
+$6046$ & $6$ & $6\not\equiv 0,12$ & Euler \texttt{decide} \\
+$18526$ & $-2$ & $-2\not\equiv 0,12$ & Euler \texttt{decide} \\
+$350$ other named rows & $\{-2,-10,1,6,14\}$ & all miss & recorded
+\end{tabular}
+\end{center}
+
+That is an Int-mod-$13$ miss pack, not Ribet and not
+$\neg\exists A$.
+\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_B14\_kraus}
+is the vacuous implication on the displayed two-element list
+(neither member is $\equiv 14$).
+\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_full}
+is those two rows via the v8.76.0 residues.
+\texttt{\#print axioms} is empty on both.
+The v8.69.0--v8.74.0 pack ($-2$ vs $0/12$, $24$ vs $21/-39$)
+stays recorded.
 
 \section{What remains}
-$15/16$ of the $2\text{M}$ named-row class is eliminated by
-mod-$16$ residues, not \texttt{Classical.em}.
+$15/16$ of $B\le 2\text{M}$ is eliminated by mod-$16$ residues.
+The two displayed named rows are eliminated that way.
+$352$ named $B\equiv 14$ rows have recorded $a_{53}$ misses;
+those misses do not inhabit $\neg\exists A$.
 The old \texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated}
-stays \texttt{Classical.em} on \texttt{hasSmallZsigWitness}.
-Rows with $B\equiv 14\pmod{16}$ remain.
-The displayed Frey/Kraus pack is recorded and not needed for
-the $15/16$ kill.
-Full $\forall B$ including $B\equiv 14$, density from $5983$
-to $\infty$, full modular contradiction, and Beal $\forall$
-still open. Track beyond $2\text{M}$ Step61+ continues same
-\texttt{smallZsigPrimes} pattern.
+stays \texttt{Classical.em}.
+Full $\forall B$ including $B\equiv 14$, density from the
+named-row count to $\infty$, full modular contradiction,
+and Beal $\forall$ still open. Track beyond $2\text{M}$
+Step61+ continues same \texttt{smallZsigPrimes} pattern.
 
 \end{document}

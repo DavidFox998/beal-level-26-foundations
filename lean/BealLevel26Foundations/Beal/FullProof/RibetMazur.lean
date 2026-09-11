@@ -726,6 +726,7 @@ import BealLevel26Foundations.Beal.FullProof.Level26_Newforms
 import BealLevel26Foundations.Beal.FullProof.FreyModularity
 import BealLevel26Foundations.Beal.FullProof.BealElim
 import BealLevel26Foundations.Beal.FullProof.BealMod16
+import BealLevel26Foundations.Beal.FullProof.KrausB14
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -5087,6 +5088,31 @@ def density_5983_list :=
 def displayed_kraus_pack_recorded :=
   BealLevel26Foundations.BealMod16.displayed_kraus_pack_recorded
 
+/-! ## v8.77.0 — recorded a₅₃ misses for named B≡14 rows -/
+
+/-- Recorded Int-mod-13 miss at a named
+B≡14 pair.  Not Ribet.  Not `¬ ∃ A`. -/
+def b14_elim_at_p :=
+  BealLevel26Foundations.KrausB14.b14_elim_at_p
+
+/-- Vacuous on the displayed two-element
+list.  Neither member is ≡ 14. -/
+def beal_4_13_13_gap3_B_le_2M_eliminated_B14_kraus :=
+  BealLevel26Foundations.KrausB14.beal_4_13_13_gap3_B_le_2M_eliminated_B14_kraus
+
+/-- The two displayed named rows via
+mod 16.  Not 5983 numerals. -/
+def beal_4_13_13_gap3_B_le_2M_eliminated_full :=
+  BealLevel26Foundations.KrausB14.beal_4_13_13_gap3_B_le_2M_eliminated_full
+
+/-- Displayed Euler counts plus integer
+misses.  Recorded, not used as Ribet. -/
+def b14_kraus_pack_recorded :=
+  BealLevel26Foundations.KrausB14.b14_kraus_pack_recorded
+
+def b14_witnesses :=
+  BealLevel26Foundations.B14Witnesses.b14_witnesses
+
 /-! ## v8.71.0 — MCOM Ribet-Mazur pack from v8.69.0 misses -/
 
 /-- Inhabited for the two named witnesses only.
@@ -5957,6 +5983,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check beal_4_13_13_gap3_B_le_2M_eliminated_mod16
 #check density_5983_list
 #check displayed_kraus_pack_recorded
+#check b14_elim_at_p
+#check beal_4_13_13_gap3_B_le_2M_eliminated_B14_kraus
+#check beal_4_13_13_gap3_B_le_2M_eliminated_full
+#check b14_kraus_pack_recorded
+#check b14_witnesses
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -6434,5 +6465,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms beal_gap3_mod16_elim
 #print axioms beal_4_13_13_gap3_B_le_2M_eliminated_mod16
 #print axioms displayed_kraus_pack_recorded
+#print axioms b14_elim_at_p
+#print axioms beal_4_13_13_gap3_B_le_2M_eliminated_B14_kraus
+#print axioms beal_4_13_13_gap3_B_le_2M_eliminated_full
+#print axioms b14_kraus_pack_recorded
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

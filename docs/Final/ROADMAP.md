@@ -799,6 +799,15 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.77.0-B14-kraus-sweep — DONE (KrausB14 records a53 misses for 352 named Step60 B≡14 rows vs 0/12; B14_kraus vacuous on displayed 2-element list; eliminated_full is mod16 on that list; #print axioms empty; not Ribet; not ¬∃ A for those 352; old 2M capstone stays Classical.em; Chain ExistsNewformLevel2 stays 0≠0; no new Beal ∀; arrow stays a Prop)
+
+Lean change.  Recorded Int-mod-13 misses.
+Does **not** import `RibetMazur`.
+Does **not** import the axiom
+`frey_modular_13`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Beal `∀`.
+
 ### v8.76.0-mod16-sweeps-2M — DONE (BealMod16 beal_4_13_13_gap3_B_le_2M_eliminated_mod16 kills B≤2M with B%16≠14 via fourth-power residues; #print axioms empty; B≡14 survives; old 2M capstone stays Classical.em; Kraus pack recorded; Chain ExistsNewformLevel2 stays 0≠0; no new Beal ∀; arrow stays a Prop)
 
 Lean change.  15 of 16 residue classes.

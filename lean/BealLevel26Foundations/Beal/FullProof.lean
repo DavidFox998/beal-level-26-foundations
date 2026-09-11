@@ -12,16 +12,29 @@ import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 import BealLevel26Foundations.Beal.FullProof.BealElim
 import BealLevel26Foundations.Beal.FullProof.BealMod16
+import BealLevel26Foundations.Beal.FullProof.KrausB14
 
 /-!
-# FullProof track (v8.76.0)
+# FullProof track (v8.77.0)
 
+Aggregator for Track B.  v8.77.0 records
+`a₅₃` misses for the 352 named Step60
+rows with `B ≡ 14 [MOD 16]`.
+`beal_4_13_13_gap3_B_le_2M_eliminated_B14_kraus`
+is vacuous on the displayed two-element
+list (neither member is ≡ 14).
+`beal_4_13_13_gap3_B_le_2M_eliminated_full`
+is those two rows via mod 16.
+That is not Ribet and not 5983 Beal
+negations.  The old
+`beal_4_13_13_gap3_B_le_2M_eliminated`
+stays `Classical.em`.
 Aggregator for Track B.  v8.76.0 inhabits
 `beal_4_13_13_gap3_B_le_2M_eliminated_mod16`
 (`B ≤ 2000000`, `B % 16 ≠ 14`) by
 fourth-power residues modulo 16.
 `#print axioms` empty.  `B ≡ 14 [MOD 16]`
-survives; the old
+survives as a Beal negation; the old
 `beal_4_13_13_gap3_B_le_2M_eliminated`
 stays `Classical.em`.  That is not Ribet
 and not a Beal `∀`.

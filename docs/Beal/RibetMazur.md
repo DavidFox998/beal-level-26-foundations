@@ -1,3 +1,16 @@
+# v8.77.0 B≡14 Kraus sweep
+
+`beal_4_13_13_gap3_B_le_2M_eliminated_B14_kraus`
+is vacuous on the displayed two-element list.
+`beal_4_13_13_gap3_B_le_2M_eliminated_full`
+is those two rows via mod 16.
+`#print axioms` empty.  352 named Step60
+`B ≡ 14` rows record `a53` misses vs `0/12`.
+Not Ribet.  Not `¬ ∃ A` for those 352.
+The old 2M capstone stays `Classical.em`.
+Chain `ExistsNewformLevel2` stays `0 != 0`.
+No new Beal forall.
+
 # v8.76.0 mod-16 sweep of the 2M class
 
 `beal_4_13_13_gap3_B_le_2M_eliminated_mod16`
