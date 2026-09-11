@@ -1,3 +1,17 @@
+# FINAL v8.88.0 — Zsigmondy 5983 + LTE ledger for B > 2M (arrow stays a Prop)
+
+Latest tag `v8.88.0-Zsig-Bgt2M-gap3`.
+New file `BealGap3ZsigBeyond2M.lean`.
+Re-exports `4488 + 5 * 299 = 5983` and pools
+50310/50323/50307/50350/50325.
+Inhabits `q > B+3 ⇒ ¬ q ∣ C¹³` and
+`q ∣ A ⇒ q⁴ ∣ C¹³ − B⁴`.
+`beal_gap3_B_gt_2M_eliminated` stays an
+uninhabited Prop.  Not BCDT.
+`frey_conductor_general` unchanged.
+`conductor_86` stays a Prop.
+`B14_honest` stays a Prop.
+
 # FINAL v8.87.0 — general Weierstrass Δ bound (arrow stays a Prop)
 
 Latest tag `v8.87.0-general-conductor-bound`.

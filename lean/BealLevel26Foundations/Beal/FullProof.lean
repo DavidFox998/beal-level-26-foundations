@@ -19,8 +19,21 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyASearch
 import BealLevel26Foundations.Beal.FullProof.BealFreyMod53Kill
 import BealLevel26Foundations.Beal.FullProof.BealFreyModQKill
 import BealLevel26Foundations.Beal.FullProof.BealFreyConductorGeneral
+import BealLevel26Foundations.Beal.FullProof.BealGap3ZsigBeyond2M
 
 /-!
+# FullProof track (v8.88.0)
+
+Aggregator for Track B.  v8.88.0 records the
+Zsigmondy 5983 + LTE ledger for B > 2M gap-3.
+`beal_gap3_B_gt_2M_eliminated` stays an
+uninhabited Prop: the 5983 / five-pool lemmas
+are named rows at B ≤ 2M, and q | A gives
+q⁴ | C¹³ − B⁴, not q⁴ | C¹³.  Not BCDT.
+`frey_conductor_general` is unchanged.
+`conductor_86` stays a Prop.  `B14_honest`
+stays a Prop.
+
 # FullProof track (v8.87.0)
 
 Aggregator for Track B.  v8.87.0 inhabits

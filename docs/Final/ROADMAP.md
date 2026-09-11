@@ -799,6 +799,20 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.88.0-Zsig-Bgt2M-gap3 — DONE (Zsig 5983 + LTE ledger for B>2M; beal_gap3_B_gt_2M_eliminated stays uninhabited Prop; q|A gives q^4|(C^13-B^4) not q^4|C^13; named-row pools are B≤2M; frey_conductor_general unchanged; conductor_86 stays Prop; B14_honest stays Prop; not BCDT; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus ∀ stays uninhabited; arrow stays a Prop)
+
+Lean change.  New file
+`BealGap3ZsigBeyond2M.lean`.
+Uses existing 5983 / five-pool lemmas and
+Step18 `zsigmondy_exists_primitive_inhabited`.
+Does **not** inhabit `beal_gap3_B_gt_2M_eliminated`.
+Does **not** inhabit the false `q^4 | C^13` step.
+Does **not** change `frey_conductor_general`.
+Does **not** inhabit `conductor_86`.
+Does **not** add `axiom BCDT_B14`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Beal `∀`.
+
 ### v8.87.0-general-conductor-bound — DONE (frey_conductor_general: Mathlib Weierstrass |Δ|=2^e N0, e≤5, N0∣(ABC)^26*13; [propext, Quot.sound]; not Tate; conductor_86 stays Prop; N0∣rad(B*C) stays uninhabited; 266+86 empty-axiom residue kills unchanged; B14_honest stays Prop; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus ∀ stays uninhabited; arrow stays a Prop)
 
 Lean change.  New file

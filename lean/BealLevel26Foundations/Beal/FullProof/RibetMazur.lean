@@ -772,6 +772,7 @@ import BealLevel26Foundations.Beal.FullProof.KrausB14
 import BealLevel26Foundations.Beal.FullProof.LevelLoweringB14
 import BealLevel26Foundations.Beal.FullProof.BealFreyB14
 import BealLevel26Foundations.Beal.FullProof.BealFreyConductorGeneral
+import BealLevel26Foundations.Beal.FullProof.BealGap3ZsigBeyond2M
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -5361,6 +5362,52 @@ theorem frey_conductor_general (A B C : Nat)
 def frey_conductor_N0_dvd_rad_BC : Prop :=
   BealLevel26Foundations.BealFreyConductorGeneral.frey_conductor_N0_dvd_rad_BC
 
+/-! ## v8.88.0 — Zsigmondy 5983 + LTE ledger for B > 2M; not a closed ∀ -/
+
+theorem zsig_5983_eq_4488_plus_5_times_299 :
+    4488 + 5 * 299 = 5983 :=
+  BealLevel26Foundations.BealGap3ZsigBeyond2M.zsig_5983_eq_4488_plus_5_times_299
+
+def zsig_five_pools :=
+  BealLevel26Foundations.BealGap3ZsigBeyond2M.zsig_five_pools
+
+theorem not_prime_dvd_C13_of_gt {B q : Nat}
+    (hq : Nat.Prime q) (hgt : B + 3 < q) :
+    ¬ q ∣ Nat.pow (B + 3) 13 :=
+  BealLevel26Foundations.BealGap3ZsigBeyond2M.not_prime_dvd_C13_of_gt hq hgt
+
+theorem q_pow4_dvd_C13_sub_B4_of_dvd_A {A B q : Nat}
+    (hEq : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (hA : q ∣ A) :
+    Nat.pow q 4 ∣ Nat.pow (B + 3) 13 - Nat.pow B 4 :=
+  BealLevel26Foundations.BealGap3ZsigBeyond2M.q_pow4_dvd_C13_sub_B4_of_dvd_A hEq hA
+
+theorem padicValNat_C13_lt_four_of_q_gt_C {B q : Nat}
+    (hq : Nat.Prime q) (hgt : B + 3 < q) :
+    padicValNat q (Nat.pow (B + 3) 13) < 4 :=
+  BealLevel26Foundations.BealGap3ZsigBeyond2M.padicValNat_C13_lt_four_of_q_gt_C hq hgt
+
+theorem no_Beal_of_pow4_dvd_C13_of_q_gt_C {B q : Nat}
+    (hq : Nat.Prime q) (hgt : B + 3 < q)
+    (hdiv : Nat.pow q 4 ∣ Nat.pow (B + 3) 13) :
+    False :=
+  BealLevel26Foundations.BealGap3ZsigBeyond2M.no_Beal_of_pow4_dvd_C13_of_q_gt_C hq hgt hdiv
+
+def exists_primitive_prime_Phi13_gap3 :=
+  BealLevel26Foundations.BealGap3ZsigBeyond2M.exists_primitive_prime_Phi13_gap3
+
+/-- Uninhabited.  Named-row pools do not produce q > 2M. -/
+def exists_zsig_q_gt_2M_dvd_C13_sub_B4 : Prop :=
+  BealLevel26Foundations.BealGap3ZsigBeyond2M.exists_zsig_q_gt_2M_dvd_C13_sub_B4
+
+/-- Uninhabited.  q | A gives q⁴ | C¹³ − B⁴, not q⁴ | C¹³. -/
+def q_pow4_dvd_C13_of_dvd_A : Prop :=
+  BealLevel26Foundations.BealGap3ZsigBeyond2M.q_pow4_dvd_C13_of_dvd_A
+
+/-- Uninhabited.  Zsig 5983 + LTE does not close B > 2M.  Not BCDT. -/
+def beal_gap3_B_gt_2M_eliminated : Prop :=
+  BealLevel26Foundations.BealGap3ZsigBeyond2M.beal_gap3_B_gt_2M_eliminated
+
 /-! ## v8.71.0 — MCOM Ribet-Mazur pack from v8.69.0 misses -/
 
 /-- Inhabited for the two named witnesses only.
@@ -6277,6 +6324,16 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check frey_conductor_general
 #check frey_conductor_N0_dvd_rad_BC
 #check bealFreyWeierstrass
+#check zsig_5983_eq_4488_plus_5_times_299
+#check zsig_five_pools
+#check not_prime_dvd_C13_of_gt
+#check q_pow4_dvd_C13_sub_B4_of_dvd_A
+#check padicValNat_C13_lt_four_of_q_gt_C
+#check no_Beal_of_pow4_dvd_C13_of_q_gt_C
+#check exists_primitive_prime_Phi13_gap3
+#check exists_zsig_q_gt_2M_dvd_C13_sub_B4
+#check q_pow4_dvd_C13_of_dvd_A
+#check beal_gap3_B_gt_2M_eliminated
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -6779,5 +6836,12 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
 #print axioms beal_4_13_13_gap3_B_le_2M_eliminated_B14_full
 #print axioms frey_conductor_general
+#print axioms zsig_5983_eq_4488_plus_5_times_299
+#print axioms zsig_five_pools
+#print axioms not_prime_dvd_C13_of_gt
+#print axioms q_pow4_dvd_C13_sub_B4_of_dvd_A
+#print axioms padicValNat_C13_lt_four_of_q_gt_C
+#print axioms no_Beal_of_pow4_dvd_C13_of_q_gt_C
+#print axioms exists_primitive_prime_Phi13_gap3
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

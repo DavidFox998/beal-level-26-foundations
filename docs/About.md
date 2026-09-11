@@ -1,6 +1,14 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.87.0-general-conductor-bound`
+Latest tag / HEAD: `v8.88.0-Zsig-Bgt2M-gap3`
+Zsigmondy 5983 + LTE ledger for B > 2M gap-3.
+`beal_gap3_B_gt_2M_eliminated` stays an
+uninhabited Prop: named-row pools are B ≤ 2M,
+and q | A gives q⁴ | C¹³ − B⁴, not q⁴ | C¹³.
+`frey_conductor_general` unchanged.
+`conductor_86` stays a Prop.
+`B14_honest` stays a Prop.
+Base: `v8.87.0-general-conductor-bound`.
 `frey_conductor_general` inhabits the Mathlib
 Weierstrass `|Δ| = 2^e * N0` bound
 (`e ≤ 5`, `N0 ∣ (ABC)^26 * 13`).
