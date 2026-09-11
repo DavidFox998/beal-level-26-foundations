@@ -1,3 +1,14 @@
+# v8.85.0 paper unification; 352-row residue cover
+
+`lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean`
+
+Re-exports `beal_..._B14_full`: all 352 named
+`B ≡ 14` rows have `¬∃ A` by 266 mod-53,
+77 at q=29, and 9 at q=109.  Empty axioms.
+Not Ribet.  KrausB14 `eliminated_full` stays
+the two-element mod-16 kill.
+`B14_honest` stays the uninhabited Prop.
+
 # v8.84.0 fourth-power kill of the 86 at q=17/29/109
 
 `lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean`

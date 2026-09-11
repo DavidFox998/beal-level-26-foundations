@@ -3,6 +3,12 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v8.85.0 — paper unification.
+`beal_..._B14_full` covers the 352 named
+`B ≡ 14` rows (266+77+9, empty axioms).
+Not Ribet.  KrausB14.`eliminated_full`
+stays the two-element mod-16 kill.
+`B14_honest` stays the uninhabited Prop.
 Track B v8.84.0 — fourth-power non-residue
 kill of the 86 at q=17/29/109.  29 kills 77
 and 109 kills the remaining 9.
@@ -5322,6 +5328,13 @@ def direct_mod109_kill :=
 def beal_4_13_13_gap3_B_le_2M_eliminated_86_modq :=
   BealLevel26Foundations.BealFreyB14.beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
 
+/-! ## v8.85.0 — 352-row residue cover; paper unification -/
+
+/-- 266 + 77 + 9.  Empty axioms.  Not Ribet.
+    Does not replace KrausB14.`eliminated_full`. -/
+def beal_4_13_13_gap3_B_le_2M_eliminated_B14_full :=
+  BealLevel26Foundations.BealFreyB14.beal_4_13_13_gap3_B_le_2M_eliminated_B14_full
+
 /-! ## v8.71.0 — MCOM Ribet-Mazur pack from v8.69.0 misses -/
 
 /-- Inhabited for the two named witnesses only.
@@ -6234,6 +6247,7 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check direct_mod29_kill
 #check direct_mod109_kill
 #check beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
+#check beal_4_13_13_gap3_B_le_2M_eliminated_B14_full
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -6734,5 +6748,6 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms direct_mod29_kill
 #print axioms direct_mod109_kill
 #print axioms beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
+#print axioms beal_4_13_13_gap3_B_le_2M_eliminated_B14_full
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

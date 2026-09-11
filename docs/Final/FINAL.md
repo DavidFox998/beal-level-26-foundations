@@ -1,18 +1,15 @@
-# FINAL v8.84.0 — fourth-power kill of the 86 at q=17/29/109 (arrow stays a Prop)
+# FINAL v8.85.0 — paper unification; 352-row residue cover (arrow stays a Prop)
 
-Latest tag `v8.84.0-B14-modq-kill`.
-Lean change.
-The 86 mod-53 survivors die because
-`(B+3)¹³ − B⁴` is not a fourth power at
-q=29 (77 rows) or q=109 (the remaining 9).
-q=17 kills 57 of them
-(`direct_mod_q_17_kill`).
-`beal_..._86_modq` inhabits `¬∃ A` on all
-86.  Empty axioms.  Not Ribet.  Not BCDT.
-The pack `beal_..._eliminated_86` and
-`B14_honest` stay uninhabited Props.
+Latest tag `v8.85.0-paper-B14-full`.
+Lean change / paper.
+`beal_..._B14_full` inhabits `¬∃ A` on all
+352 named `B ≡ 14` rows (266+77+9).
+Empty axioms.  Not Ribet.  Not BCDT.
+KrausB14 `eliminated_full` stays the
+two-element mod-16 kill.
+`B14_honest` stays the uninhabited Prop.
 Chain `ExistsNewformLevel2` stays `0 ≠ 0`.
-No new Beal `∀` on the full 352.
+Math release remains `v8.84.0-B14-modq-kill`.
 Still not Full Mathlib `∀`.
 
 # FINAL v8.82.0 — Euler a53 value set on the 86 survivors (arrow stays a Prop)

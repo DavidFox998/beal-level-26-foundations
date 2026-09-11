@@ -1,13 +1,14 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.84.0-B14-modq-kill`
-Lean change: BealFreyModQKill
-The 86 mod-53 survivors die by fourth-power
-non-residues at q=17/29/109.  q=29 kills 77;
-q=109 kills the remaining 9.  q=17 kills 57.
-`beal_..._86_modq` is `¬∃ A` (empty axioms).
-Not Ribet.  The pack `eliminated_86` and
-`B14_honest` stay uninhabited Props.
+Latest tag / HEAD: `v8.85.0-paper-B14-full`
+Lean change: BealFreyModQKill / paper
+`beal_..._B14_full` covers all 352 named
+`B ≡ 14` rows (266 mod 53, 77 at q=29,
+9 at q=109).  Empty axioms.  Not Ribet.
+KrausB14 `eliminated_full` stays the
+two-element mod-16 kill of `[196, 1500003]`.
+`B14_honest` stays the uninhabited Prop.
+Math release: `v8.84.0-B14-modq-kill`.
 `gcd(B, B+3) ∣ 3` is inhabited (`propext`).
 `irreducible_86` is the Euler `a₅₃` miss
 displayed as `IrreducibleMod13Trace`, not Mazur.

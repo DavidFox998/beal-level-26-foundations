@@ -2,6 +2,12 @@
 \usepackage{amsmath,amssymb,amsthm,hyperref,enumitem,listings}
 \title{Beal $(4,13,13)$ gap $3$ at level $26$: $5983$ rows $B\le 2\text{M}$ and first Kraus elimination via $p=53,443$}
 \author{David Fox}
+\thanks{Code: \url{https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.85.0-paper-B14-full}.
+The Lean residue cover of the $352$ named $B\equiv 14$ rows is in
+\texttt{v8.84.0-B14-modq-kill} and this paper-unification tag.
+Zenodo version DOI of the $v8.69.0$ Kraus theorem:
+\url{https://doi.org/10.5281/zenodo.22698257}.
+No new Zenodo version DOI is minted in this release.}
 \begin{document}
 \maketitle
 
@@ -293,72 +299,90 @@ A custom \texttt{axiom BCDT\_B14} would print as
 \texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_B14\_honest}
 stay Props.  Not \texttt{Classical.em}.
 
-\section{$B\equiv 14$ fourth-power kill modulo $53$}
+\section{$B\equiv 14$ fourth-power residue cover}
+Fourth powers modulo $53$ are the $14$ residues
+$\{0,1,10,13,15,16,24,28,36,42,44,46,47,49\}$.
 If $(B+3)^{13}-B^4$ is not a fourth power in
 $\mathbb{F}_{53}$, there is no $A$ with
 $A^4+B^4=(B+3)^{13}$
 (\texttt{direct\_mod53\_kill}).
-Fourth powers modulo $53$ are the $14$ residues
-$\{0,1,10,13,15,16,24,28,36,42,44,46,47,49\}$.
-On the $352$ named $B\equiv 14$ rows the verified
-count is $266$ killed and $86$ remaining, not $287$.
-\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_B14\_mod53}
-inhabits $\neg\exists A$ on those $266$ named rows;
-\texttt{\#print axioms} empty.
-The remaining $86$ have $(B+3)^{13}-B^4$ a fourth
-power mod $53$, so this test does not kill them.
-\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_B14\_honest}
-stays the uninhabited $\forall$ on all $352$ rows.
-This is the same kind of arithmetic obstruction as
-the mod-$16$ sweep, not BCDT and not Ribet.
-Not \texttt{Classical.em}.
+On the $352$ named $B\equiv 14$ rows this kills
+$266$; \texttt{\#print axioms} empty.  The count
+is $266$, not $287$.
 
-\section{The remaining $86$ at $q=17,29,109$}
-If $(B+3)^{13}-B^4$ is not a fourth power in
-$\mathbb{F}_q$, there is no $A$ with
-$A^4+B^4=(B+3)^{13}$
-(\texttt{direct\_mod17\_kill},
-\texttt{direct\_mod29\_kill},
-\texttt{direct\_mod109\_kill}).
-Fourth powers modulo $17$ are
-$\{0,1,4,13,16\}$.
-On the $86$ mod-$53$ survivors the verified
-counts are $57$ killed at $q=17$, $77$ at
-$q=29$, and the remaining $9$ at $q=109$.
+The remaining $86$ die at further primes
+(\texttt{direct\_modq}).
+$q=29$ kills $77$.
+$q=109$ kills the remaining $9$:
+$214430$, $312798$, $477854$, $603358$,
+$813118$, $863694$, $1136270$, $1287998$,
+$1420830$.
+$q=17$ is the named demo: fourth powers
+$\{0,1,4,13,16\}$, $57$ killed
+(\texttt{direct\_mod17\_kill}).
 \texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_86\_modq}
-inhabits $\neg\exists A$ on all $86$ named rows;
+inhabits $\neg\exists A$ on all $86$;
 \texttt{\#print axioms} empty.
-The pack name
-\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_86}
-stays the uninhabited Prop.
+
+\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_B14\_full}
+composes those three residue tests and inhabits
+$\forall B\in\texttt{step60\_b14\_list},\;\neg\exists A$
+($266+77+9=352$); \texttt{\#print axioms} empty.
+The user's \texttt{by\_cases}/\texttt{decide} draft
+is rewritten as that empty-axiom cover.
+This name is not KrausB14's
+\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_full},
+which remains the two-element mod-$16$ kill of
+$[196,1500003]$
+(\texttt{full\_honest}).
+
+\texttt{beal\_frey\_a53\_miss\_86} still records
+Euler $a_{53}\in\{-10,-2,1,6,14\}$ missing
+$0,12$ at $\ell=13$
+(axioms \texttt{propext}, \texttt{Quot.sound}).
+That pack is an Euler miss, not Ribet and not
+the Beal negation.
+
+\texttt{conductor\_86} stays a Prop.
+The first survivor identity
+$63982=2\cdot 31991$ is empty.
+\texttt{gcd\_B\_Bplus3\_dvd\_three} is only
+$\mathrm{gcd}(B,B+3)\mid 3$ (axiom \texttt{propext}),
+not a conductor.
+
 \texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_B14\_honest}
-stays the uninhabited $\forall$ on all $352$ rows.
-This is the same kind of arithmetic obstruction as
-the mod-$53$ sweep, not BCDT and not Ribet.
-Not \texttt{Classical.em}.
+(the $352$-row pack $\forall$),
+density/step
+\texttt{kraus\_elimination\_q\_13\_level\_26},
+and Chain \texttt{ExistsNewformLevel2}
+($0\neq 0$) stay uninhabited Props
+intentionally.
+The Zsigmondy count $5983=4488+5\cdot 299$
+is unchanged (\texttt{zsig\_density\_2M\_stats}).
+Not BCDT and not Ribet.  Not \texttt{Classical.em}.
 
 \section{What remains}
 $15/16$ of $B\le 2\text{M}$ is eliminated by mod-$16$ residues.
-The two displayed named rows are eliminated that way.
-$266$ of $352$ named $B\equiv 14$ rows are eliminated by
-fourth-power non-residues modulo $53$.
-The remaining $86$ named $B\equiv 14$ rows are
-eliminated by fourth-power non-residues at
-$q=29$ and $q=109$
-(\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_86\_modq}).
-Those $86$ still have an Euler $a_{53}$ in
-$\{-10,-2,1,6,14\}$ that misses $0,12$ under
-the Beal equation
+The two displayed named rows $[196,1500003]$ are
+eliminated that way (\texttt{full\_honest}).
+All $352$ named $B\equiv 14$ rows are eliminated by
+fourth-power non-residues
+(\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_B14\_full}).
+Those $86$ that survive mod $53$ still have an Euler
+$a_{53}$ in $\{-10,-2,1,6,14\}$ that misses $0,12$
+under the Beal equation
 (\texttt{beal\_frey\_a53\_miss\_86});
-that pack is not the Beal negation.
+that pack is not Ribet.
 \texttt{conductor\_86} and
 \texttt{level\_lowering\_86} stay Props.
+\texttt{B14\_honest} stays the uninhabited pack
+$\forall$.
 \texttt{Classical.choice} is not BCDT.
 The old \texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated}
 stays \texttt{Classical.em}.
-Full $\forall B$ including $B\equiv 14$, density from the
-named-row count to $\infty$, full modular contradiction,
-and Beal $\forall$ still open. Track beyond $2\text{M}$
+Density from the named-row count to $\infty$,
+full modular contradiction, and Beal $\forall$
+still open. Track beyond $2\text{M}$
 Step61+ continues same \texttt{smallZsigPrimes} pattern.
 
 \end{document}

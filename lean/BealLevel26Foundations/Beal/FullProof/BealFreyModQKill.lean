@@ -3,6 +3,13 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v8.85.0 — paper unification.  The 352 named
+`B ≡ 14` rows are covered by composing the existing
+residue kills: 266 mod 53, 77 at q=29, 9 at q=109.
+`beal_..._B14_full` inhabits that `∀` (empty axioms).
+KrausB14.`eliminated_full` stays the two-element
+mod-16 kill.  `B14_honest` stays the uninhabited Prop.
+
 Track B v8.84.0 — fourth-power non-residue kill of the
 86 mod-53 survivors at q = 17, 29, 109.
 
@@ -40,6 +47,7 @@ Not imported by the 24-module none chain.
 -/
 
 import BealLevel26Foundations.Beal.FullProof.BealFreyMod53Kill
+import BealLevel26Foundations.Beal.FullProof.Step60B14List
 
 namespace BealLevel26Foundations.BealFreyModQKill
 
@@ -2832,6 +2840,1123 @@ theorem beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
       hMem survivors_86_concrete_eq.symm
   no_A_of_all survivors_86_concrete all_no_A_survivors_86 B h'
 
+open BealLevel26Foundations.Step60B14List
+
+theorem not_fourth_rhs_mod53_of_res (B r : Nat)
+    (hr : B % 53 = r)
+    (hnot : ¬ BealLevel26Foundations.BealFreyMod53Kill.IsFourthMod53
+      (BealLevel26Foundations.BealFreyMod53Kill.rhs_mod53_res r)) :
+    ¬ BealLevel26Foundations.BealFreyMod53Kill.IsFourthMod53
+      (BealLevel26Foundations.BealFreyMod53Kill.rhs_mod53 B) :=
+  let h1 : BealLevel26Foundations.BealFreyMod53Kill.rhs_mod53 B =
+      BealLevel26Foundations.BealFreyMod53Kill.rhs_mod53_res (B % 53) :=
+    BealLevel26Foundations.BealFreyMod53Kill.rhs_mod53_eq_res B
+  let h2 :
+      BealLevel26Foundations.BealFreyMod53Kill.rhs_mod53_res (B % 53) =
+        BealLevel26Foundations.BealFreyMod53Kill.rhs_mod53_res r :=
+    congrArg BealLevel26Foundations.BealFreyMod53Kill.rhs_mod53_res hr
+  Eq.rec (motive := fun (t : Nat) (_ :
+      BealLevel26Foundations.BealFreyMod53Kill.rhs_mod53_res r = t) =>
+      ¬ BealLevel26Foundations.BealFreyMod53Kill.IsFourthMod53 t)
+    hnot (h2.symm.trans h1.symm)
+
+def step60_b14_concrete : List Nat :=
+  [
+  6046,
+  15406,
+  18526,
+  19310,
+  19694,
+  22814,
+  31006,
+  37246,
+  54302,
+  63982,
+  67038,
+  71710,
+  77118,
+  77902,
+  79454,
+  85662,
+  86798,
+  87582,
+  89934,
+  102126,
+  115246,
+  117374,
+  119502,
+  136878,
+  143614,
+  145742,
+  147870,
+  149998,
+  158862,
+  163118,
+  167726,
+  174110,
+  175886,
+  176238,
+  180494,
+  185102,
+  201678,
+  203022,
+  214430,
+  214766,
+  226174,
+  226846,
+  228190,
+  239934,
+  240942,
+  251678,
+  252014,
+  262078,
+  263758,
+  264430,
+  265774,
+  276174,
+  276510,
+  276846,
+  277518,
+  277854,
+  287918,
+  288590,
+  288926,
+  306110,
+  312798,
+  314126,
+  324222,
+  327902,
+  329918,
+  331598,
+  344990,
+  348718,
+  349038,
+  349358,
+  351710,
+  356750,
+  362750,
+  368462,
+  372814,
+  376814,
+  379534,
+  403358,
+  411086,
+  413758,
+  415454,
+  416462,
+  417790,
+  418446,
+  423854,
+  427198,
+  429214,
+  432878,
+  442958,
+  457006,
+  459358,
+  463390,
+  463742,
+  464430,
+  465118,
+  466478,
+  471150,
+  476158,
+  476510,
+  477518,
+  477854,
+  502318,
+  514734,
+  517038,
+  518398,
+  523790,
+  534814,
+  543534,
+  552590,
+  556638,
+  563390,
+  569774,
+  576110,
+  589982,
+  591326,
+  603358,
+  607406,
+  610782,
+  613790,
+  614446,
+  623486,
+  626174,
+  627166,
+  629566,
+  630558,
+  632910,
+  647294,
+  653342,
+  661054,
+  671502,
+  676174,
+  682542,
+  685902,
+  687582,
+  694286,
+  698974,
+  707694,
+  715086,
+  716430,
+  719774,
+  723118,
+  735518,
+  737214,
+  738910,
+  743918,
+  763070,
+  775822,
+  777838,
+  782558,
+  782894,
+  786222,
+  787246,
+  787582,
+  792606,
+  799006,
+  800334,
+  813118,
+  821166,
+  826174,
+  829870,
+  832190,
+  834590,
+  835902,
+  836238,
+  845614,
+  851966,
+  853630,
+  857982,
+  862014,
+  863694,
+  874462,
+  878814,
+  880190,
+  885198,
+  887854,
+  894254,
+  901006,
+  904702,
+  905038,
+  914094,
+  916430,
+  921806,
+  936526,
+  939934,
+  946958,
+  958670,
+  960350,
+  967054,
+  975470,
+  988974,
+  991614,
+  998990,
+  1001342,
+  1020798,
+  1040222,
+  1050254,
+  1056062,
+  1056398,
+  1058030,
+  1058366,
+  1061422,
+  1078190,
+  1078526,
+  1084254,
+  1088926,
+  1091582,
+  1093646,
+  1096318,
+  1098014,
+  1099662,
+  1101358,
+  1102062,
+  1105742,
+  1111102,
+  1118126,
+  1124798,
+  1133550,
+  1136270,
+  1144302,
+  1155358,
+  1156046,
+  1156718,
+  1165118,
+  1169118,
+  1170126,
+  1176878,
+  1180574,
+  1180910,
+  1181566,
+  1183230,
+  1184238,
+  1192958,
+  1193294,
+  1199998,
+  1203742,
+  1205742,
+  1214446,
+  1215790,
+  1219854,
+  1223566,
+  1227262,
+  1236958,
+  1249374,
+  1257790,
+  1258446,
+  1261838,
+  1268542,
+  1273902,
+  1281934,
+  1283598,
+  1287998,
+  1293006,
+  1294334,
+  1296366,
+  1298334,
+  1299998,
+  1302350,
+  1316174,
+  1320862,
+  1328238,
+  1333278,
+  1341342,
+  1355374,
+  1357038,
+  1359054,
+  1364078,
+  1366766,
+  1372462,
+  1374782,
+  1375806,
+  1385902,
+  1386910,
+  1394974,
+  1401326,
+  1420830,
+  1425166,
+  1430878,
+  1433214,
+  1434590,
+  1441310,
+  1441646,
+  1442958,
+  1445342,
+  1449326,
+  1453374,
+  1457358,
+  1469774,
+  1471134,
+  1473774,
+  1475134,
+  1496654,
+  1514382,
+  1515726,
+  1517406,
+  1518398,
+  1520766,
+  1523742,
+  1533166,
+  1534510,
+  1536878,
+  1555710,
+  1557038,
+  1571806,
+  1575838,
+  1588238,
+  1588574,
+  1598974,
+  1607358,
+  1608702,
+  1609390,
+  1611374,
+  1617790,
+  1628206,
+  1648238,
+  1660366,
+  1670462,
+  1675150,
+  1678846,
+  1683870,
+  1694622,
+  1697966,
+  1701022,
+  1707710,
+  1708062,
+  1709070,
+  1710062,
+  1743678,
+  1745006,
+  1752702,
+  1760478,
+  1769214,
+  1777582,
+  1783918,
+  1786254,
+  1789294,
+  1790286,
+  1800350,
+  1807374,
+  1809390,
+  1810414,
+  1812398,
+  1818478,
+  1818814,
+  1824782,
+  1828510,
+  1842254,
+  1847278,
+  1858398,
+  1863102,
+  1864126,
+  1879214,
+  1879886
+  ]
+
+theorem step60_b14_concrete_length :
+    step60_b14_concrete.length = 352 :=
+  rfl
+
+theorem step60_b14_concrete_eq :
+    step60_b14_concrete = step60_b14_list :=
+  rfl
+
+set_option maxRecDepth 32768
+set_option maxHeartbeats 8000000
+
+theorem all_no_A_step60 :
+    all_no_A step60_b14_concrete :=
+  ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 6046
+      (not_fourth_rhs_mod53_of_res 6046 4 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_8),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 15406
+      (not_fourth_rhs_mod53_of_res 15406 36 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_37),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 18526
+      (not_fourth_rhs_mod53_of_res 18526 29 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 19310
+      (not_fourth_rhs_mod53_of_res 19310 18 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_40),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 19694
+      (not_fourth_rhs_mod53_of_res 19694 31 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_27),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 22814
+      (not_fourth_rhs_mod53_of_res 22814 24 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_27),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 31006
+      (not_fourth_rhs_mod53_of_res 31006 1 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_51),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 37246
+      (not_fourth_rhs_mod53_of_res 37246 40 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_5),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 54302
+      (not_fourth_rhs_mod53_of_res 54302 30 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_22),
+    ⟨direct_mod29_kill 63982
+      (not_fourth_rhs_mod29_of_res 63982 8 rfl not_is_fourth_29_14),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 67038
+      (not_fourth_rhs_mod53_of_res 67038 46 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_38),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 71710
+      (not_fourth_rhs_mod53_of_res 71710 1 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_51),
+    ⟨direct_mod29_kill 77118
+      (not_fourth_rhs_mod29_of_res 77118 7 rfl not_is_fourth_29_3),
+    ⟨direct_mod29_kill 77902
+      (not_fourth_rhs_mod29_of_res 77902 8 rfl not_is_fourth_29_14),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 79454
+      (not_fourth_rhs_mod53_of_res 79454 7 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_38),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 85662
+      (not_fourth_rhs_mod53_of_res 85662 14 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_8),
+    ⟨direct_mod29_kill 86798
+      (not_fourth_rhs_mod29_of_res 86798 1 rfl not_is_fourth_29_21),
+    ⟨direct_mod29_kill 87582
+      (not_fourth_rhs_mod29_of_res 87582 2 rfl not_is_fourth_29_19),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 89934
+      (not_fourth_rhs_mod53_of_res 89934 46 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_38),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 102126
+      (not_fourth_rhs_mod53_of_res 102126 48 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 115246
+      (not_fourth_rhs_mod53_of_res 115246 24 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_27),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 117374
+      (not_fourth_rhs_mod53_of_res 117374 32 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_6),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 119502
+      (not_fourth_rhs_mod53_of_res 119502 40 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_5),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 136878
+      (not_fourth_rhs_mod53_of_res 136878 32 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_6),
+    ⟨direct_mod29_kill 143614
+      (not_fourth_rhs_mod29_of_res 143614 6 rfl not_is_fourth_29_22),
+    ⟨direct_mod29_kill 145742
+      (not_fourth_rhs_mod29_of_res 145742 17 rfl not_is_fourth_29_15),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 147870
+      (not_fourth_rhs_mod53_of_res 147870 0 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_30),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 149998
+      (not_fourth_rhs_mod53_of_res 149998 8 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_37),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 158862
+      (not_fourth_rhs_mod53_of_res 158862 21 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_30),
+    ⟨direct_mod29_kill 163118
+      (not_fourth_rhs_mod29_of_res 163118 22 rfl not_is_fourth_29_13),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 167726
+      (not_fourth_rhs_mod53_of_res 167726 34 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_5),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 174110
+      (not_fourth_rhs_mod53_of_res 174110 5 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 175886
+      (not_fourth_rhs_mod53_of_res 175886 32 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_6),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 176238
+      (not_fourth_rhs_mod53_of_res 176238 13 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_7),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 180494
+      (not_fourth_rhs_mod53_of_res 180494 29 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨direct_mod29_kill 185102
+      (not_fourth_rhs_mod29_of_res 185102 24 rfl not_is_fourth_29_28),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 201678
+      (not_fourth_rhs_mod53_of_res 201678 13 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_7),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 203022
+      (not_fourth_rhs_mod53_of_res 203022 32 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_6),
+    ⟨direct_mod109_kill 214430
+      (not_fourth_rhs_mod109_of_res 214430 27 rfl not_is_fourth_109_32),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 214766
+      (not_fourth_rhs_mod53_of_res 214766 10 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_18),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 226174
+      (not_fourth_rhs_mod53_of_res 226174 23 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_29),
+    ⟨direct_mod29_kill 226846
+      (not_fourth_rhs_mod29_of_res 226846 8 rfl not_is_fourth_29_14),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 228190
+      (not_fourth_rhs_mod53_of_res 228190 25 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_39),
+    ⟨direct_mod29_kill 239934
+      (not_fourth_rhs_mod29_of_res 239934 17 rfl not_is_fourth_29_15),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 240942
+      (not_fourth_rhs_mod53_of_res 240942 4 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_8),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 251678
+      (not_fourth_rhs_mod53_of_res 251678 34 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_5),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 252014
+      (not_fourth_rhs_mod53_of_res 252014 52 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_29),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 262078
+      (not_fourth_rhs_mod53_of_res 262078 46 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_38),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 263758
+      (not_fourth_rhs_mod53_of_res 263758 30 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_22),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 264430
+      (not_fourth_rhs_mod53_of_res 264430 13 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_7),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 265774
+      (not_fourth_rhs_mod53_of_res 265774 32 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_6),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 276174
+      (not_fourth_rhs_mod53_of_res 276174 44 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_12),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 276510
+      (not_fourth_rhs_mod53_of_res 276510 9 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 276846
+      (not_fourth_rhs_mod53_of_res 276846 27 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_20),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 277518
+      (not_fourth_rhs_mod53_of_res 277518 10 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_18),
+    ⟨direct_mod29_kill 277854
+      (not_fourth_rhs_mod29_of_res 277854 5 rfl not_is_fourth_29_2),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 287918
+      (not_fourth_rhs_mod53_of_res 287918 22 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_3),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 288590
+      (not_fourth_rhs_mod53_of_res 288590 5 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 288926
+      (not_fourth_rhs_mod53_of_res 288926 23 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_29),
+    ⟨direct_mod29_kill 306110
+      (not_fourth_rhs_mod29_of_res 306110 15 rfl not_is_fourth_29_17),
+    ⟨direct_mod109_kill 312798
+      (not_fourth_rhs_mod109_of_res 312798 77 rfl not_is_fourth_109_52),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 314126
+      (not_fourth_rhs_mod53_of_res 314126 48 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 324222
+      (not_fourth_rhs_mod53_of_res 324222 21 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_30),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 327902
+      (not_fourth_rhs_mod53_of_res 327902 44 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_12),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 329918
+      (not_fourth_rhs_mod53_of_res 329918 46 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_38),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 331598
+      (not_fourth_rhs_mod53_of_res 331598 30 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_22),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 344990
+      (not_fourth_rhs_mod53_of_res 344990 13 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_7),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 348718
+      (not_fourth_rhs_mod53_of_res 348718 31 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_27),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 349038
+      (not_fourth_rhs_mod53_of_res 349038 33 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_8),
+    ⟨direct_mod29_kill 349358
+      (not_fourth_rhs_mod29_of_res 349358 24 rfl not_is_fourth_29_28),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 351710
+      (not_fourth_rhs_mod53_of_res 351710 2 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_7),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 356750
+      (not_fourth_rhs_mod53_of_res 356750 7 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_38),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 362750
+      (not_fourth_rhs_mod53_of_res 362750 18 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_40),
+    ⟨direct_mod29_kill 368462
+      (not_fourth_rhs_mod29_of_res 368462 17 rfl not_is_fourth_29_15),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 372814
+      (not_fourth_rhs_mod53_of_res 372814 12 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_41),
+    ⟨direct_mod29_kill 376814
+      (not_fourth_rhs_mod29_of_res 376814 17 rfl not_is_fourth_29_15),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 379534
+      (not_fourth_rhs_mod53_of_res 379534 1 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_51),
+    ⟨direct_mod29_kill 403358
+      (not_fourth_rhs_mod29_of_res 403358 26 rfl not_is_fourth_29_6),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 411086
+      (not_fourth_rhs_mod53_of_res 411086 18 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_40),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 413758
+      (not_fourth_rhs_mod53_of_res 413758 40 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_5),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 415454
+      (not_fourth_rhs_mod53_of_res 415454 40 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_5),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 416462
+      (not_fourth_rhs_mod53_of_res 416462 41 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_41),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 417790
+      (not_fourth_rhs_mod53_of_res 417790 44 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_12),
+    ⟨direct_mod29_kill 418446
+      (not_fourth_rhs_mod29_of_res 418446 5 rfl not_is_fourth_29_2),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 423854
+      (not_fourth_rhs_mod53_of_res 423854 13 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_7),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 427198
+      (not_fourth_rhs_mod53_of_res 427198 18 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_40),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 429214
+      (not_fourth_rhs_mod53_of_res 429214 20 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_30),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 432878
+      (not_fourth_rhs_mod53_of_res 432878 27 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_20),
+    ⟨direct_mod29_kill 442958
+      (not_fourth_rhs_mod29_of_res 442958 12 rfl not_is_fourth_29_26),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 457006
+      (not_fourth_rhs_mod53_of_res 457006 40 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_5),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 459358
+      (not_fourth_rhs_mod53_of_res 459358 7 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_38),
+    ⟨direct_mod29_kill 463390
+      (not_fourth_rhs_mod29_of_res 463390 28 rfl not_is_fourth_29_13),
+    ⟨direct_mod29_kill 463742
+      (not_fourth_rhs_mod29_of_res 463742 3 rfl not_is_fourth_29_11),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 464430
+      (not_fourth_rhs_mod53_of_res 464430 44 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_12),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 465118
+      (not_fourth_rhs_mod53_of_res 465118 43 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_18),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 466478
+      (not_fourth_rhs_mod53_of_res 466478 25 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_39),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 471150
+      (not_fourth_rhs_mod53_of_res 471150 33 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_8),
+    ⟨direct_mod29_kill 476158
+      (not_fourth_rhs_mod29_of_res 476158 7 rfl not_is_fourth_29_3),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 476510
+      (not_fourth_rhs_mod53_of_res 476510 40 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_5),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 477518
+      (not_fourth_rhs_mod53_of_res 477518 41 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_41),
+    ⟨direct_mod109_kill 477854
+      (not_fourth_rhs_mod109_of_res 477854 107 rfl not_is_fourth_109_94),
+    ⟨direct_mod29_kill 502318
+      (not_fourth_rhs_mod29_of_res 502318 9 rfl not_is_fourth_29_5),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 514734
+      (not_fourth_rhs_mod53_of_res 514734 51 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_38),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 517038
+      (not_fourth_rhs_mod53_of_res 517038 23 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_29),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 518398
+      (not_fourth_rhs_mod53_of_res 518398 5 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 523790
+      (not_fourth_rhs_mod53_of_res 523790 44 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_12),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 534814
+      (not_fourth_rhs_mod53_of_res 534814 44 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_12),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 543534
+      (not_fourth_rhs_mod53_of_res 543534 19 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_29),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 552590
+      (not_fourth_rhs_mod53_of_res 552590 12 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_41),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 556638
+      (not_fourth_rhs_mod53_of_res 556638 32 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_6),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 563390
+      (not_fourth_rhs_mod53_of_res 563390 0 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_30),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 569774
+      (not_fourth_rhs_mod53_of_res 569774 24 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_27),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 576110
+      (not_fourth_rhs_mod53_of_res 576110 0 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_30),
+    ⟨direct_mod29_kill 589982
+      (not_fourth_rhs_mod29_of_res 589982 6 rfl not_is_fourth_29_22),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 591326
+      (not_fourth_rhs_mod53_of_res 591326 5 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨direct_mod109_kill 603358
+      (not_fourth_rhs_mod109_of_res 603358 43 rfl not_is_fourth_109_30),
+    ⟨direct_mod29_kill 607406
+      (not_fourth_rhs_mod29_of_res 607406 1 rfl not_is_fourth_29_21),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 610782
+      (not_fourth_rhs_mod53_of_res 610782 10 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_18),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 613790
+      (not_fourth_rhs_mod53_of_res 613790 50 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_25),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 614446
+      (not_fourth_rhs_mod53_of_res 614446 17 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_37),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 623486
+      (not_fourth_rhs_mod53_of_res 623486 47 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_52),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 626174
+      (not_fourth_rhs_mod53_of_res 626174 32 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_6),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 627166
+      (not_fourth_rhs_mod53_of_res 627166 17 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_37),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 629566
+      (not_fourth_rhs_mod53_of_res 629566 32 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_6),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 630558
+      (not_fourth_rhs_mod53_of_res 630558 17 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_37),
+    ⟨direct_mod29_kill 632910
+      (not_fourth_rhs_mod29_of_res 632910 14 rfl not_is_fourth_29_26),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 647294
+      (not_fourth_rhs_mod53_of_res 647294 5 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨direct_mod29_kill 653342
+      (not_fourth_rhs_mod29_of_res 653342 1 rfl not_is_fourth_29_21),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 661054
+      (not_fourth_rhs_mod53_of_res 661054 38 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_20),
+    ⟨direct_mod29_kill 671502
+      (not_fourth_rhs_mod29_of_res 671502 7 rfl not_is_fourth_29_3),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 676174
+      (not_fourth_rhs_mod53_of_res 676174 0 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_30),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 682542
+      (not_fourth_rhs_mod53_of_res 682542 8 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_37),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 685902
+      (not_fourth_rhs_mod53_of_res 685902 29 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 687582
+      (not_fourth_rhs_mod53_of_res 687582 13 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_7),
+    ⟨direct_mod29_kill 694286
+      (not_fourth_rhs_mod29_of_res 694286 26 rfl not_is_fourth_29_6),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 698974
+      (not_fourth_rhs_mod53_of_res 698974 10 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_18),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 707694
+      (not_fourth_rhs_mod53_of_res 707694 38 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_20),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 715086
+      (not_fourth_rhs_mod53_of_res 715086 10 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_18),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 716430
+      (not_fourth_rhs_mod53_of_res 716430 29 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 719774
+      (not_fourth_rhs_mod53_of_res 719774 34 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_5),
+    ⟨direct_mod29_kill 723118
+      (not_fourth_rhs_mod29_of_res 723118 3 rfl not_is_fourth_29_11),
+    ⟨direct_mod29_kill 735518
+      (not_fourth_rhs_mod29_of_res 735518 20 rfl not_is_fourth_29_17),
+    ⟨direct_mod29_kill 737214
+      (not_fourth_rhs_mod29_of_res 737214 5 rfl not_is_fourth_29_2),
+    ⟨direct_mod29_kill 738910
+      (not_fourth_rhs_mod29_of_res 738910 19 rfl not_is_fourth_29_9),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 743918
+      (not_fourth_rhs_mod53_of_res 743918 10 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_18),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 763070
+      (not_fourth_rhs_mod53_of_res 763070 29 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 775822
+      (not_fourth_rhs_mod53_of_res 775822 8 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_37),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 777838
+      (not_fourth_rhs_mod53_of_res 777838 10 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_18),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 782558
+      (not_fourth_rhs_mod53_of_res 782558 13 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_7),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 782894
+      (not_fourth_rhs_mod53_of_res 782894 31 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_27),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 786222
+      (not_fourth_rhs_mod53_of_res 786222 20 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_30),
+    ⟨direct_mod29_kill 787246
+      (not_fourth_rhs_mod29_of_res 787246 12 rfl not_is_fourth_29_26),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 787582
+      (not_fourth_rhs_mod53_of_res 787582 2 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_7),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 792606
+      (not_fourth_rhs_mod53_of_res 792606 44 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_12),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 799006
+      (not_fourth_rhs_mod53_of_res 799006 31 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_27),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 800334
+      (not_fourth_rhs_mod53_of_res 800334 34 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_5),
+    ⟨direct_mod109_kill 813118
+      (not_fourth_rhs_mod109_of_res 813118 87 rfl not_is_fourth_109_96),
+    ⟨direct_mod29_kill 821166
+      (not_fourth_rhs_mod29_of_res 821166 2 rfl not_is_fourth_29_19),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 826174
+      (not_fourth_rhs_mod53_of_res 826174 10 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_18),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 829870
+      (not_fourth_rhs_mod53_of_res 829870 49 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_8),
+    ⟨direct_mod29_kill 832190
+      (not_fourth_rhs_mod29_of_res 832190 6 rfl not_is_fourth_29_22),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 834590
+      (not_fourth_rhs_mod53_of_res 834590 52 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_29),
+    ⟨direct_mod29_kill 835902
+      (not_fourth_rhs_mod29_of_res 835902 6 rfl not_is_fourth_29_22),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 836238
+      (not_fourth_rhs_mod53_of_res 836238 4 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_8),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 845614
+      (not_fourth_rhs_mod53_of_res 845614 52 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_29),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 851966
+      (not_fourth_rhs_mod53_of_res 851966 44 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_12),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 853630
+      (not_fourth_rhs_mod53_of_res 853630 12 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_41),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 857982
+      (not_fourth_rhs_mod53_of_res 857982 18 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_40),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 862014
+      (not_fourth_rhs_mod53_of_res 862014 22 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_3),
+    ⟨direct_mod109_kill 863694
+      (not_fourth_rhs_mod109_of_res 863694 87 rfl not_is_fourth_109_96),
+    ⟨direct_mod29_kill 874462
+      (not_fourth_rhs_mod29_of_res 874462 25 rfl not_is_fourth_29_4),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 878814
+      (not_fourth_rhs_mod53_of_res 878814 21 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_30),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 880190
+      (not_fourth_rhs_mod53_of_res 880190 19 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_29),
+    ⟨direct_mod29_kill 885198
+      (not_fourth_rhs_mod29_of_res 885198 2 rfl not_is_fourth_29_19),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 887854
+      (not_fourth_rhs_mod53_of_res 887854 51 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_38),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 894254
+      (not_fourth_rhs_mod53_of_res 894254 38 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_20),
+    ⟨direct_mod29_kill 901006
+      (not_fourth_rhs_mod29_of_res 901006 5 rfl not_is_fourth_29_2),
+    ⟨direct_mod29_kill 904702
+      (not_fourth_rhs_mod29_of_res 904702 18 rfl not_is_fourth_29_15),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 905038
+      (not_fourth_rhs_mod53_of_res 905038 10 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_18),
+    ⟨direct_mod29_kill 914094
+      (not_fourth_rhs_mod29_of_res 914094 14 rfl not_is_fourth_29_26),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 916430
+      (not_fourth_rhs_mod53_of_res 916430 7 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_38),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 921806
+      (not_fourth_rhs_mod53_of_res 921806 30 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_22),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 936526
+      (not_fourth_rhs_mod53_of_res 936526 16 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_2),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 939934
+      (not_fourth_rhs_mod53_of_res 939934 32 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_6),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 946958
+      (not_fourth_rhs_mod53_of_res 946958 7 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_38),
+    ⟨direct_mod29_kill 958670
+      (not_fourth_rhs_mod29_of_res 958670 17 rfl not_is_fourth_29_15),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 960350
+      (not_fourth_rhs_mod53_of_res 960350 43 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_18),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 967054
+      (not_fourth_rhs_mod53_of_res 967054 16 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_2),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 975470
+      (not_fourth_rhs_mod53_of_res 975470 5 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 988974
+      (not_fourth_rhs_mod53_of_res 988974 47 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_52),
+    ⟨direct_mod29_kill 991614
+      (not_fourth_rhs_mod29_of_res 991614 17 rfl not_is_fourth_29_15),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 998990
+      (not_fourth_rhs_mod53_of_res 998990 46 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_38),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1001342
+      (not_fourth_rhs_mod53_of_res 1001342 13 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_7),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1020798
+      (not_fourth_rhs_mod53_of_res 1020798 18 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_40),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1040222
+      (not_fourth_rhs_mod53_of_res 1040222 44 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_12),
+    ⟨direct_mod29_kill 1050254
+      (not_fourth_rhs_mod29_of_res 1050254 19 rfl not_is_fourth_29_9),
+    ⟨direct_mod29_kill 1056062
+      (not_fourth_rhs_mod29_of_res 1056062 27 rfl not_is_fourth_29_14),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1056398
+      (not_fourth_rhs_mod53_of_res 1056398 2 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_7),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1058030
+      (not_fourth_rhs_mod53_of_res 1058030 44 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_12),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1058366
+      (not_fourth_rhs_mod53_of_res 1058366 9 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1061422
+      (not_fourth_rhs_mod53_of_res 1061422 44 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_12),
+    ⟨direct_mod29_kill 1078190
+      (not_fourth_rhs_mod29_of_res 1078190 28 rfl not_is_fourth_29_13),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1078526
+      (not_fourth_rhs_mod53_of_res 1078526 29 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1084254
+      (not_fourth_rhs_mod53_of_res 1084254 33 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_8),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1088926
+      (not_fourth_rhs_mod53_of_res 1088926 41 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_41),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1091582
+      (not_fourth_rhs_mod53_of_res 1091582 47 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_52),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1093646
+      (not_fourth_rhs_mod53_of_res 1093646 44 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_12),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1096318
+      (not_fourth_rhs_mod53_of_res 1096318 13 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_7),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1098014
+      (not_fourth_rhs_mod53_of_res 1098014 13 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_7),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1099662
+      (not_fourth_rhs_mod53_of_res 1099662 18 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_40),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1101358
+      (not_fourth_rhs_mod53_of_res 1101358 18 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_40),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1102062
+      (not_fourth_rhs_mod53_of_res 1102062 33 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_8),
+    ⟨direct_mod29_kill 1105742
+      (not_fourth_rhs_mod29_of_res 1105742 1 rfl not_is_fourth_29_21),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1111102
+      (not_fourth_rhs_mod53_of_res 1111102 10 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_18),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1118126
+      (not_fourth_rhs_mod53_of_res 1118126 38 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_20),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1124798
+      (not_fourth_rhs_mod53_of_res 1124798 32 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_6),
+    ⟨direct_mod29_kill 1133550
+      (not_fourth_rhs_mod29_of_res 1133550 27 rfl not_is_fourth_29_14),
+    ⟨direct_mod109_kill 1136270
+      (not_fourth_rhs_mod109_of_res 1136270 54 rfl not_is_fourth_109_74),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1144302
+      (not_fourth_rhs_mod53_of_res 1144302 32 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_6),
+    ⟨direct_mod29_kill 1155358
+      (not_fourth_rhs_mod29_of_res 1155358 27 rfl not_is_fourth_29_14),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1156046
+      (not_fourth_rhs_mod53_of_res 1156046 10 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_18),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1156718
+      (not_fourth_rhs_mod53_of_res 1156718 46 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_38),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1165118
+      (not_fourth_rhs_mod53_of_res 1165118 19 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_29),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1169118
+      (not_fourth_rhs_mod53_of_res 1169118 44 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_12),
+    ⟨direct_mod29_kill 1170126
+      (not_fourth_rhs_mod29_of_res 1170126 5 rfl not_is_fourth_29_2),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1176878
+      (not_fourth_rhs_mod53_of_res 1176878 13 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_7),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1180574
+      (not_fourth_rhs_mod53_of_res 1180574 52 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_29),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1180910
+      (not_fourth_rhs_mod53_of_res 1180910 17 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_37),
+    ⟨direct_mod29_kill 1181566
+      (not_fourth_rhs_mod29_of_res 1181566 19 rfl not_is_fourth_29_9),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1183230
+      (not_fourth_rhs_mod53_of_res 1183230 5 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨direct_mod29_kill 1184238
+      (not_fourth_rhs_mod29_of_res 1184238 23 rfl not_is_fourth_29_19),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1192958
+      (not_fourth_rhs_mod53_of_res 1192958 34 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_5),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1193294
+      (not_fourth_rhs_mod53_of_res 1193294 52 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_29),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1199998
+      (not_fourth_rhs_mod53_of_res 1199998 25 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_39),
+    ⟨direct_mod29_kill 1203742
+      (not_fourth_rhs_mod29_of_res 1203742 10 rfl not_is_fourth_29_14),
+    ⟨direct_mod29_kill 1205742
+      (not_fourth_rhs_mod29_of_res 1205742 9 rfl not_is_fourth_29_5),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1214446
+      (not_fourth_rhs_mod53_of_res 1214446 4 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_8),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1215790
+      (not_fourth_rhs_mod53_of_res 1215790 23 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_29),
+    ⟨direct_mod29_kill 1219854
+      (not_fourth_rhs_mod29_of_res 1219854 27 rfl not_is_fourth_29_14),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1223566
+      (not_fourth_rhs_mod53_of_res 1223566 8 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_37),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1227262
+      (not_fourth_rhs_mod53_of_res 1227262 47 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_52),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1236958
+      (not_fourth_rhs_mod53_of_res 1236958 44 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_12),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1249374
+      (not_fourth_rhs_mod53_of_res 1249374 5 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1257790
+      (not_fourth_rhs_mod53_of_res 1257790 47 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_52),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1258446
+      (not_fourth_rhs_mod53_of_res 1258446 14 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_8),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1261838
+      (not_fourth_rhs_mod53_of_res 1261838 14 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_8),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1268542
+      (not_fourth_rhs_mod53_of_res 1268542 40 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_5),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1273902
+      (not_fourth_rhs_mod53_of_res 1273902 47 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_52),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1281934
+      (not_fourth_rhs_mod53_of_res 1281934 23 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_29),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1283598
+      (not_fourth_rhs_mod53_of_res 1283598 44 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_12),
+    ⟨direct_mod109_kill 1287998
+      (not_fourth_rhs_mod109_of_res 1287998 54 rfl not_is_fourth_109_74),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1293006
+      (not_fourth_rhs_mod53_of_res 1293006 18 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_40),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1294334
+      (not_fourth_rhs_mod53_of_res 1294334 21 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_30),
+    ⟨direct_mod29_kill 1296366
+      (not_fourth_rhs_mod29_of_res 1296366 8 rfl not_is_fourth_29_14),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1298334
+      (not_fourth_rhs_mod53_of_res 1298334 46 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_38),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1299998
+      (not_fourth_rhs_mod53_of_res 1299998 14 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_8),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1302350
+      (not_fourth_rhs_mod53_of_res 1302350 34 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_5),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1316174
+      (not_fourth_rhs_mod53_of_res 1316174 25 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_39),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1320862
+      (not_fourth_rhs_mod53_of_res 1320862 49 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_8),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1328238
+      (not_fourth_rhs_mod53_of_res 1328238 5 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1333278
+      (not_fourth_rhs_mod53_of_res 1333278 10 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_18),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1341342
+      (not_fourth_rhs_mod53_of_res 1341342 18 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_40),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1355374
+      (not_fourth_rhs_mod53_of_res 1355374 5 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨direct_mod29_kill 1357038
+      (not_fourth_rhs_mod29_of_res 1357038 12 rfl not_is_fourth_29_26),
+    ⟨direct_mod29_kill 1359054
+      (not_fourth_rhs_mod29_of_res 1359054 27 rfl not_is_fourth_29_14),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1364078
+      (not_fourth_rhs_mod53_of_res 1364078 17 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_37),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1366766
+      (not_fourth_rhs_mod53_of_res 1366766 2 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_7),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1372462
+      (not_fourth_rhs_mod53_of_res 1372462 27 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_20),
+    ⟨direct_mod29_kill 1374782
+      (not_fourth_rhs_mod29_of_res 1374782 8 rfl not_is_fourth_29_14),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1375806
+      (not_fourth_rhs_mod53_of_res 1375806 32 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_6),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1385902
+      (not_fourth_rhs_mod53_of_res 1385902 5 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨direct_mod29_kill 1386910
+      (not_fourth_rhs_mod29_of_res 1386910 14 rfl not_is_fourth_29_26),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1394974
+      (not_fourth_rhs_mod53_of_res 1394974 14 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_8),
+    ⟨direct_mod29_kill 1401326
+      (not_fourth_rhs_mod29_of_res 1401326 17 rfl not_is_fourth_29_15),
+    ⟨direct_mod109_kill 1420830
+      (not_fourth_rhs_mod109_of_res 1420830 15 rfl not_is_fourth_109_102),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1425166
+      (not_fourth_rhs_mod53_of_res 1425166 49 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_8),
+    ⟨direct_mod29_kill 1430878
+      (not_fourth_rhs_mod29_of_res 1430878 18 rfl not_is_fourth_29_15),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1433214
+      (not_fourth_rhs_mod53_of_res 1433214 41 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_41),
+    ⟨direct_mod29_kill 1434590
+      (not_fourth_rhs_mod29_of_res 1434590 18 rfl not_is_fourth_29_15),
+    ⟨direct_mod29_kill 1441310
+      (not_fourth_rhs_mod29_of_res 1441310 10 rfl not_is_fourth_29_14),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1441646
+      (not_fourth_rhs_mod53_of_res 1441646 46 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_38),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1442958
+      (not_fourth_rhs_mod53_of_res 1442958 33 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_8),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1445342
+      (not_fourth_rhs_mod53_of_res 1445342 32 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_6),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1449326
+      (not_fourth_rhs_mod53_of_res 1449326 41 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_41),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1453374
+      (not_fourth_rhs_mod53_of_res 1453374 8 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_37),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1457358
+      (not_fourth_rhs_mod53_of_res 1457358 17 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_37),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1469774
+      (not_fourth_rhs_mod53_of_res 1469774 31 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_27),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1471134
+      (not_fourth_rhs_mod53_of_res 1471134 13 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_7),
+    ⟨direct_mod29_kill 1473774
+      (not_fourth_rhs_mod29_of_res 1473774 23 rfl not_is_fourth_29_19),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1475134
+      (not_fourth_rhs_mod53_of_res 1475134 38 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_20),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1496654
+      (not_fourth_rhs_mod53_of_res 1496654 40 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_5),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1514382
+      (not_fourth_rhs_mod53_of_res 1514382 13 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_7),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1515726
+      (not_fourth_rhs_mod53_of_res 1515726 32 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_6),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1517406
+      (not_fourth_rhs_mod53_of_res 1517406 16 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_2),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1518398
+      (not_fourth_rhs_mod53_of_res 1518398 1 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_51),
+    ⟨direct_mod29_kill 1520766
+      (not_fourth_rhs_mod29_of_res 1520766 6 rfl not_is_fourth_29_22),
+    ⟨direct_mod29_kill 1523742
+      (not_fourth_rhs_mod29_of_res 1523742 24 rfl not_is_fourth_29_28),
+    ⟨direct_mod29_kill 1533166
+      (not_fourth_rhs_mod29_of_res 1533166 23 rfl not_is_fourth_29_19),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1534510
+      (not_fourth_rhs_mod53_of_res 1534510 1 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_51),
+    ⟨direct_mod29_kill 1536878
+      (not_fourth_rhs_mod29_of_res 1536878 23 rfl not_is_fourth_29_19),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1555710
+      (not_fourth_rhs_mod53_of_res 1555710 1 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_51),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1557038
+      (not_fourth_rhs_mod53_of_res 1557038 4 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_8),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1571806
+      (not_fourth_rhs_mod53_of_res 1571806 38 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_20),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1575838
+      (not_fourth_rhs_mod53_of_res 1575838 42 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_17),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1588238
+      (not_fourth_rhs_mod53_of_res 1588238 40 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_5),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1588574
+      (not_fourth_rhs_mod53_of_res 1588574 5 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1598974
+      (not_fourth_rhs_mod53_of_res 1598974 17 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_37),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1607358
+      (not_fourth_rhs_mod53_of_res 1607358 27 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_20),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1608702
+      (not_fourth_rhs_mod53_of_res 1608702 46 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_38),
+    ⟨direct_mod29_kill 1609390
+      (not_fourth_rhs_mod29_of_res 1609390 6 rfl not_is_fourth_29_22),
+    ⟨direct_mod29_kill 1611374
+      (not_fourth_rhs_mod29_of_res 1611374 18 rfl not_is_fourth_29_15),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1617790
+      (not_fourth_rhs_mod53_of_res 1617790 18 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_40),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1628206
+      (not_fourth_rhs_mod53_of_res 1628206 46 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_38),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1648238
+      (not_fourth_rhs_mod53_of_res 1648238 44 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_12),
+    ⟨direct_mod29_kill 1660366
+      (not_fourth_rhs_mod29_of_res 1660366 0 rfl not_is_fourth_29_19),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1670462
+      (not_fourth_rhs_mod53_of_res 1670462 8 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_37),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1675150
+      (not_fourth_rhs_mod53_of_res 1675150 32 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_6),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1678846
+      (not_fourth_rhs_mod53_of_res 1678846 18 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_40),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1683870
+      (not_fourth_rhs_mod53_of_res 1683870 7 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_38),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1694622
+      (not_fourth_rhs_mod53_of_res 1694622 0 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_30),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1697966
+      (not_fourth_rhs_mod53_of_res 1697966 5 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1701022
+      (not_fourth_rhs_mod53_of_res 1701022 40 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_5),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1707710
+      (not_fourth_rhs_mod53_of_res 1707710 50 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_25),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1708062
+      (not_fourth_rhs_mod53_of_res 1708062 31 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_27),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1709070
+      (not_fourth_rhs_mod53_of_res 1709070 32 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_6),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1710062
+      (not_fourth_rhs_mod53_of_res 1710062 17 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_37),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1743678
+      (not_fourth_rhs_mod53_of_res 1743678 31 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_27),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1745006
+      (not_fourth_rhs_mod53_of_res 1745006 34 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_5),
+    ⟨direct_mod29_kill 1752702
+      (not_fourth_rhs_mod29_of_res 1752702 0 rfl not_is_fourth_29_19),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1760478
+      (not_fourth_rhs_mod53_of_res 1760478 30 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_22),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1769214
+      (not_fourth_rhs_mod53_of_res 1769214 21 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_30),
+    ⟨direct_mod29_kill 1777582
+      (not_fourth_rhs_mod29_of_res 1777582 27 rfl not_is_fourth_29_14),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1783918
+      (not_fourth_rhs_mod53_of_res 1783918 44 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_12),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1786254
+      (not_fourth_rhs_mod53_of_res 1786254 48 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1789294
+      (not_fourth_rhs_mod53_of_res 1789294 14 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_8),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1790286
+      (not_fourth_rhs_mod53_of_res 1790286 52 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_29),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1800350
+      (not_fourth_rhs_mod53_of_res 1800350 46 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_38),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1807374
+      (not_fourth_rhs_mod53_of_res 1807374 21 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_30),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1809390
+      (not_fourth_rhs_mod53_of_res 1809390 23 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_29),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1810414
+      (not_fourth_rhs_mod53_of_res 1810414 40 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_5),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1812398
+      (not_fourth_rhs_mod53_of_res 1812398 10 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_18),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1818478
+      (not_fourth_rhs_mod53_of_res 1818478 48 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1818814
+      (not_fourth_rhs_mod53_of_res 1818814 13 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_7),
+    ⟨direct_mod29_kill 1824782
+      (not_fourth_rhs_mod29_of_res 1824782 15 rfl not_is_fourth_29_17),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1828510
+      (not_fourth_rhs_mod53_of_res 1828510 10 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_18),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1842254
+      (not_fourth_rhs_mod53_of_res 1842254 27 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_20),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1847278
+      (not_fourth_rhs_mod53_of_res 1847278 16 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_2),
+    ⟨direct_mod29_kill 1858398
+      (not_fourth_rhs_mod29_of_res 1858398 20 rfl not_is_fourth_29_17),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1863102
+      (not_fourth_rhs_mod53_of_res 1863102 46 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_38),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1864126
+      (not_fourth_rhs_mod53_of_res 1864126 10 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_18),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1879214
+      (not_fourth_rhs_mod53_of_res 1879214 46 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_38),
+    ⟨BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill 1879886
+      (not_fourth_rhs_mod53_of_res 1879886 29 rfl BealLevel26Foundations.BealFreyMod53Kill.not_is_fourth_34),
+    True.intro⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩⟩
+
+/-- 352 named `B ≡ 14` rows: 266 by mod 53, 77 by
+    q=29, 9 by q=109.  Empty axioms.  Not Ribet.
+    Does not replace KrausB14.`eliminated_full`
+    (the two-element mod-16 kill).
+    `B14_honest` stays the uninhabited Prop. -/
+theorem beal_4_13_13_gap3_B_le_2M_eliminated_B14_full
+    (B : Nat) (hMem : B ∈ step60_b14_list) :
+    ¬ ∃ A, Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 :=
+  let h' : B ∈ step60_b14_concrete :=
+    Eq.rec (motive := fun t (_ : step60_b14_list = t) => B ∈ t)
+      hMem step60_b14_concrete_eq.symm
+  no_A_of_all step60_b14_concrete all_no_A_step60 B h'
+
+/-- User draft name, in this namespace only.
+    KrausB14 / RibetMazur keep `eliminated_full`
+    as the two-element `[196, 1500003]` kill. -/
+theorem beal_4_13_13_gap3_B_le_2M_eliminated_full
+    (B : Nat) (hMem : B ∈ step60_b14_list) :
+    ¬ ∃ A, Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 :=
+  beal_4_13_13_gap3_B_le_2M_eliminated_B14_full B hMem
+
+
 #check fourth_powers_mod17
 #check fourth_powers_mod_q_17
 #check fourth_powers_mod29
@@ -2858,5 +3983,11 @@ theorem beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
 #print axioms beal_4_13_13_gap3_B_le_2M_eliminated_86_mod29
 #print axioms beal_4_13_13_gap3_B_le_2M_eliminated_86_mod109
 #print axioms beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
+#check step60_b14_concrete
+#check beal_4_13_13_gap3_B_le_2M_eliminated_B14_full
+#check beal_4_13_13_gap3_B_le_2M_eliminated_full
+#print axioms not_fourth_rhs_mod53_of_res
+#print axioms beal_4_13_13_gap3_B_le_2M_eliminated_B14_full
+#print axioms beal_4_13_13_gap3_B_le_2M_eliminated_full
 
 end BealLevel26Foundations.BealFreyModQKill

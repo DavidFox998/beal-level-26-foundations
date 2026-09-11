@@ -1,8 +1,8 @@
 [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.83.0-B14-86-props-honest → v8.84.0-B14-modq-kill
+# Beal Level 26 Foundations — v8.84.0-B14-modq-kill → v8.85.0-paper-B14-full
 
-**v8.84.0-B14-modq-kill — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.85.0-paper-B14-full — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 Track B closed 5983 rows = 4488+5*299 B≤2M pools 50310/50323/50307/50350/50325. Track A: Level 26 dim2 26.2.a.a/b via qExp_26a1_500/qExp_26b1_500 take 500, a53_26a1=0 a53_26b1=12 a443_26a1=21 a443_26b1=-39 by decide, Frey a53(E_196)=-2 a443(E_1500003)=24 by decide Euler, -2≠0,12 mod13 and 24≠21,-39 mod13. kraus_elimination_q_13_level_26 (Level26_Newforms) is a theorem. ribet_mazur_pack_q_13_level_26 is the first inhabited Ribet-Mazur pack (B=196 and B=1500003 only). Displayed exists_newform_level_26_dim2 inhabited (0≠12 at p=53). Displayed frey_mod13_irreducible inhabited at B=196 and B=1500003 (trace miss, not Mazur). Still uninhabited: Chain ExistsNewformLevel2 0≠0, Density/Step kraus ∀, level_lowering_to_26, no new Beal ∀. frey_modular stays Classical.em.
 
@@ -97,6 +97,7 @@ Releases:
 - v8.72.1-doi-badge inserts real Zenodo DOI `10.5281/zenodo.22698257` from the v8.70.0 mint
 - v8.73.0-modularity-exists-level2 displayed S2(26) dim2 via 0≠12 at p=53; Chain ExistsNewformLevel2 stays 0≠0; DOI 10.5281/zenodo.22698257 still cites v8.69.0
 - v8.74.0-frey-irreducible-mod13 displayed frey_mod13_irreducible at B=196 and B=1500003; frey_modular Classical.em; level_lowering_to_26 stays Prop
+- v8.85.0-paper-B14-full paper unification; `beal_..._B14_full` covers the 352 named `B≡14` rows (266+77+9, empty axioms); KrausB14 `eliminated_full` stays the two-element mod-16 kill; `B14_honest` stays a Prop; math release remains https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.84.0-B14-modq-kill
 - v8.84.0-B14-modq-kill the 86 mod-53 survivors die by fourth-power non-residues at q=17/29/109; 29 kills 77 and 109 kills the remaining 9; `beal_..._86_modq` is `¬∃ A` (empty axioms); not Ribet; the pack `eliminated_86` and `B14_honest` stay Props
 - v8.83.0-B14-86-props-honest `gcd(B,B+3)∣3` inhabited; Euler miss displayed as `IrreducibleMod13Trace` on the 86 (not Mazur); `conductor_86` / `level_lowering_86` / `eliminated_86` stay Props; Classical.choice is not BCDT/Ribet; Zsig 5983 is not `N|32*3*13`
 - v8.82.0-B14-a53-miss-86 Euler `a53` of Beal Frey cubic on the 86 mod-53 survivors is in `{-10,-2,1,6,14}` and misses `0,12` at ℓ=13 under hEq; `[propext, Quot.sound]`; not `¬∃ A` for those 86; B14_honest stays Prop; not Ribet
@@ -775,7 +776,7 @@ PARI 2-Descent Certificates image
 Still not `∀ ℕ`. No `False.elim`. no `False.elim`.
 `BealExponent13_Iter_Package` `d3cf8a7` `1d0044e`.
 
-HEAD also has Track B `v8.84.0-B14-modq-kill`
+HEAD also has Track B `v8.85.0-paper-B14-full`
 (RibetMazur pack from v8.69.0 Int-mod-13
 misses at `B = 196` and `B = 1500003`;
 Density/Step `kraus_elimination_q_13_level_26`

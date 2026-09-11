@@ -799,6 +799,17 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.85.0-paper-B14-full — DONE (paper unification; beal_..._B14_full covers 352 named B≡14 rows by 266+77+9 residue kills; #print axioms empty; KrausB14 eliminated_full stays 2-element mod16; B14_honest stays uninhabited Prop; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus ∀ stays uninhabited; arrow stays a Prop)
+
+Lean + paper.  Composes existing residue kills.
+Does **not** import `RibetMazur` from ModQKill.
+Does **not** add `axiom BCDT_B14`.
+Does **not** inhabit BCDT.
+Does **not** inhabit the pack name `B14_honest`.
+Does **not** replace KrausB14 `eliminated_full`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Beal `∀` beyond the 352 named rows.
+
 ### v8.84.0-B14-modq-kill — DONE (BealFreyModQKill fourth-power non-residue kill of the 86 mod-53 survivors at q=17/29/109; 29 kills 77 and 109 kills the remaining 9; #print axioms empty on direct_modQ_kill and beal_..._86_modq; not Ribet; B14_honest / 352-row ∀ stays uninhabited Prop; eliminated_86 pack stays the uninhabited Prop; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus ∀ stays uninhabited; arrow stays a Prop)
 
 Lean change.  Arithmetic residue kill, like mod 53.

@@ -20,8 +20,15 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyMod53Kill
 import BealLevel26Foundations.Beal.FullProof.BealFreyModQKill
 
 /-!
-# FullProof track (v8.84.0)
+# FullProof track (v8.85.0)
 
+Aggregator for Track B.  v8.85.0 unifies the
+paper and inhabits `beal_..._B14_full` on all
+352 named `B ≡ 14` rows (266 mod 53, 77 at
+q=29, 9 at q=109).  Empty axioms.  Not Ribet.
+KrausB14.`eliminated_full` stays the
+two-element mod-16 kill.  `B14_honest` stays
+the uninhabited Prop.
 Aggregator for Track B.  v8.84.0 kills the
 86 mod-53 survivors by fourth-power
 non-residues at q=17 (57), q=29 (77), and

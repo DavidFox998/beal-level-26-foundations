@@ -1,3 +1,14 @@
+# v8.85.0 352-row residue cover
+
+`beal_4_13_13_gap3_B_le_2M_eliminated_B14_full`
+inhabits `¬∃ A` on all 352 named `B ≡ 14`
+rows (266 mod 53, 77 at q=29, 9 at q=109).
+Empty axioms.  Not Ribet.
+The user's `by_cases` / `decide` draft is
+that cover.  KrausB14 `eliminated_full`
+stays the two-element mod-16 kill.
+`B14_honest` stays the uninhabited Prop.
+
 # v8.84.0 fourth-power non-residue kill of the 86
 
 `lean/BealLevel26Foundations/Beal/FullProof/BealFreyModQKill.lean`

@@ -2869,6 +2869,12 @@ grep -q "theorem beal_4_13_13_gap3_B_le_2M_eliminated_86_modq" \
   lean/BealLevel26Foundations/Beal/FullProof/BealFreyModQKill.lean
 grep -q "theorem beal_4_13_13_gap3_B_le_2M_eliminated_86_modq" \
   lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean
+grep -q "theorem beal_4_13_13_gap3_B_le_2M_eliminated_B14_full" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyModQKill.lean
+grep -q "theorem beal_4_13_13_gap3_B_le_2M_eliminated_B14_full" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean
+grep -q "beal_4_13_13_gap3_B_le_2M_eliminated_B14_full" \
+  paper/mcom-draft.tex
 test ! -n "$(grep -E '^axiom |import BealLevel26Foundations.Beal.FullProof.RibetMazur' \
   lean/BealLevel26Foundations/Beal/FullProof/BealFreyModQKill.lean || true)"
 test ! -n "$(grep -E 'import BealLevel26Foundations.Modularity.FreyModularity_13' \

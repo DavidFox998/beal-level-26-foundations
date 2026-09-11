@@ -5,6 +5,14 @@ Author: David Fox
 
 Beal Frey cubic for gap-3 (4,13,13), distinguished from the displayed cubic.
 
+v8.85.0-paper-B14-full. The 352 named `B ≡ 14`
+rows have `¬∃ A` by composing residue kills
+(`beal_..._B14_full`, empty axioms): 266 mod 53,
+77 at q=29, 9 at q=109.  Not Ribet.
+KrausB14.`eliminated_full` stays the two-element
+mod-16 kill of `[196, 1500003]`.
+`B14_honest` stays the uninhabited Prop.
+
 v8.84.0-B14-modq-kill. The 86 mod-53 survivors
 die by fourth-power non-residues at q=17 (57),
 q=29 (77), and q=109 (the remaining 9).
@@ -59,7 +67,7 @@ What this file inhabits
   equation (`beal_frey_a53_miss_of_eq`).  Not a Beal negation.
 * 266 of 352 named `B ≡ 14` rows have `¬ ∃ A` by the mod-53
   fourth-power non-residue test (`direct_mod53_kill`).  Empty
-  axioms.  The other 86 stay.
+  axioms.  The other 86 die at q=29/109.
 * On those 86, Euler `a₅₃` of the Beal Frey cubic is in
   `{-10,-2,1,6,14}` and misses `0,12` at ℓ=13 under `hEq`
   (`beal_frey_a53_miss_86`).  Not a Beal negation.
@@ -71,6 +79,10 @@ What this file inhabits
   q=109 (9) (`beal_..._86_modq`).  Empty
   axioms.  q=17 kills 57 of them
   (`direct_mod17_kill`).  Not Ribet.
+* All 352 named `B ≡ 14` rows have `¬ ∃ A`
+  by composing those residue kills
+  (`beal_..._B14_full`).  Empty axioms.
+  Not Ribet.  `B14_honest` stays the Prop.
 
 What this file does **not** inhabit
 * BCDT / Wiles / `beal_frey_modular` as a modularity theorem. There is no
@@ -82,8 +94,11 @@ What this file does **not** inhabit
 * Ribet–Mazur level lowering to 26. The pack
   `ribet_mazur_pack_q_13_level_26` is a miss pair, not a congruence
   `a53(E) ≡ a53(f)`.  The Zsig pool does not prove `N | 26`.
-* `∀ B ∈ step60_b14_list, ¬∃ A`. That stays the uninhabited Prop
-  `beal_4_13_13_gap3_B_le_2M_eliminated_B14_honest`.
+* The pack name
+  `beal_4_13_13_gap3_B_le_2M_eliminated_B14_honest`
+  stays the uninhabited Prop.  The arithmetic
+  `∀ B ∈ step60_b14_list, ¬∃ A` is
+  `beal_4_13_13_gap3_B_le_2M_eliminated_B14_full`.
 * The pack name `beal_4_13_13_gap3_B_le_2M_eliminated_86`
   stays the uninhabited Prop.  The arithmetic
   `¬ ∃ A` on those 86 is
@@ -553,6 +568,16 @@ theorem beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
   BealLevel26Foundations.BealFreyModQKill.beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
     B hB
 
+/-- 352 named `B ≡ 14` rows by residue cover.
+    Empty axioms.  Not Ribet.
+    Does not replace KrausB14.`eliminated_full`.
+    `B14_honest` stays the uninhabited Prop. -/
+theorem beal_4_13_13_gap3_B_le_2M_eliminated_B14_full
+    (B : Nat) (hB : B ∈ step60_b14_list) :
+    ¬ ∃ A, Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 :=
+  BealLevel26Foundations.BealFreyModQKill.beal_4_13_13_gap3_B_le_2M_eliminated_B14_full
+    B hB
+
 #check displayed_cubic
 #check bealFreyCubic
 #check beal_frey_curve
@@ -589,6 +614,7 @@ theorem beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
 #check direct_mod29_kill
 #check direct_mod109_kill
 #check beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
+#check beal_4_13_13_gap3_B_le_2M_eliminated_B14_full
 #print axioms displayed_cubic_full_2_torsion
 #print axioms beal_frey_has_full_2_torsion
 #print axioms beal_frey_rewrite
@@ -612,6 +638,7 @@ theorem beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
 #print axioms direct_mod29_kill
 #print axioms direct_mod109_kill
 #print axioms beal_4_13_13_gap3_B_le_2M_eliminated_86_modq
+#print axioms beal_4_13_13_gap3_B_le_2M_eliminated_B14_full
 
 end BealLevel26Foundations.BealFreyB14
 

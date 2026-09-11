@@ -5,11 +5,14 @@ type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v8.84.0-B14-modq-kill"
+version: "v8.85.0-paper-B14-full"
 date-released: "2026-09-11"
 doi: "10.5281/zenodo.22698257"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
 url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.84.0-B14-modq-kill"
+# v8.85.0-paper-B14-full unifies the MCOM draft around the 352-row
+# residue cover.  Cite the v8.84.0 math release above; paper tag:
+# https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.85.0-paper-B14-full
 license: MIT
 keywords:
   - beal-conjecture
