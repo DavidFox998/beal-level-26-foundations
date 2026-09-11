@@ -1,13 +1,13 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.78.0-B14-level-lowering-honest`
-Lean change: LevelLoweringB14
-`step60_b14_list` is 352 named numerals.
-`frey_modular_B14` is displayed cubic
-2-torsion, not Wiles.
-`level_lowering_to_26_B14` stays a Prop.
-`beal_..._B14_honest` stays the uninhabited
-`∀`.  `full_honest` is the two-element
+Latest tag / HEAD: `v8.79.0-B14-honest-elim`
+Lean change: BealFreyB14
+The Beal Frey cubic `x(x-A^4)(x+B^4)` is
+distinguished from the displayed cubic.
+Roots and rewrite use `propext`.
+`beal_frey_modular` / level lowering /
+`beal_..._B14_honest` stay Props.
+`full_honest` is the two-element
 list via mod 16. `#print axioms` empty.
 The old 2M capstone stays `Classical.em`. Not Ribet.
 `beal_4_13_13_gap3_B_196_eliminated` and

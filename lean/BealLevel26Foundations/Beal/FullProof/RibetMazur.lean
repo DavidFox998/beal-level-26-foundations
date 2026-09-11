@@ -3,6 +3,13 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v8.79.0 — Beal Frey cubic
+`x(x-A^4)(x+B^4)` distinguished from the
+displayed cubic.  BCDT / irreducibility /
+level lowering / B14_honest stay Props.
+`full_honest` stays the two-element
+mod-16 kill.  Not `Classical.em`.
+Not `¬ ∃ A` for the 352 rows.
 Track B v8.76.0 — mod-16 sweep of the 2M
 class (`B % 16 ≠ 14`).  Empty axioms.
 The old 2M capstone stays `Classical.em`.
@@ -728,6 +735,7 @@ import BealLevel26Foundations.Beal.FullProof.BealElim
 import BealLevel26Foundations.Beal.FullProof.BealMod16
 import BealLevel26Foundations.Beal.FullProof.KrausB14
 import BealLevel26Foundations.Beal.FullProof.LevelLoweringB14
+import BealLevel26Foundations.Beal.FullProof.BealFreyB14
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -5135,6 +5143,43 @@ def beal_4_13_13_gap3_B_le_2M_eliminated_B14_honest :=
 def beal_4_13_13_gap3_B_le_2M_eliminated_full_honest :=
   BealLevel26Foundations.LevelLoweringB14.beal_4_13_13_gap3_B_le_2M_eliminated_full_honest
 
+/-! ## v8.79.0 — Beal Frey cubic distinguished from displayed cubic -/
+
+def bealFreyCubic :=
+  BealLevel26Foundations.BealFreyB14.bealFreyCubic
+
+def beal_frey_curve :=
+  BealLevel26Foundations.BealFreyB14.beal_frey_curve
+
+/-- Beal Frey cubic 2-torsion.  Not BCDT. -/
+def beal_frey_has_full_2_torsion :=
+  BealLevel26Foundations.BealFreyB14.beal_frey_has_full_2_torsion
+
+/-- Algebraic rewrite under the Beal equation.  Not a conductor. -/
+def beal_frey_rewrite :=
+  BealLevel26Foundations.BealFreyB14.beal_frey_rewrite
+
+/-- The two cubics disagree at a concrete point. -/
+def displayed_cubic_ne_beal_frey_example :=
+  BealLevel26Foundations.BealFreyB14.displayed_cubic_ne_beal_frey_example
+
+/-- Uninhabited BCDT claim.  Not `Classical.em`. -/
+def beal_frey_modular :=
+  BealLevel26Foundations.BealFreyB14.beal_frey_modular
+
+/-- Uninhabited residual irreducibility of the Beal Frey curve. -/
+def beal_frey_mod13_irreducible_B14 :=
+  BealLevel26Foundations.BealFreyB14.beal_frey_mod13_irreducible_B14
+
+/-- Uninhabited Ribet–Mazur lowering of the Beal Frey curve. -/
+def level_lowering_to_26_B14_honest :=
+  BealLevel26Foundations.BealFreyB14.level_lowering_to_26_B14_honest
+
+/-- Uninhabited conjunction: 2-element kill plus 352-row Prop.
+    Not 5983 inhabited Beal eliminations. -/
+def beal_4_13_13_gap3_B_le_2M_eliminated_5983_honest :=
+  BealLevel26Foundations.BealFreyB14.beal_4_13_13_gap3_B_le_2M_eliminated_5983_honest
+
 /-! ## v8.71.0 — MCOM Ribet-Mazur pack from v8.69.0 misses -/
 
 /-- Inhabited for the two named witnesses only.
@@ -6015,6 +6060,14 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check level_lowering_to_26_B14
 #check beal_4_13_13_gap3_B_le_2M_eliminated_B14_honest
 #check beal_4_13_13_gap3_B_le_2M_eliminated_full_honest
+#check bealFreyCubic
+#check beal_frey_has_full_2_torsion
+#check beal_frey_rewrite
+#check displayed_cubic_ne_beal_frey_example
+#check beal_frey_modular
+#check beal_frey_mod13_irreducible_B14
+#check level_lowering_to_26_B14_honest
+#check beal_4_13_13_gap3_B_le_2M_eliminated_5983_honest
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -6498,5 +6551,8 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms b14_kraus_pack_recorded
 #print axioms frey_modular_B14
 #print axioms beal_4_13_13_gap3_B_le_2M_eliminated_full_honest
+#print axioms beal_frey_has_full_2_torsion
+#print axioms beal_frey_rewrite
+#print axioms displayed_cubic_ne_beal_frey_example
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

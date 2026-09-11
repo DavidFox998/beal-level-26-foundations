@@ -1,3 +1,20 @@
+# FINAL v8.79.0 — Beal Frey cubic distinguished; BCDT stays a Prop (arrow stays a Prop)
+
+Latest tag `v8.79.0-B14-honest-elim`.
+Lean change.
+The Beal Frey cubic `x(x-A^4)(x+B^4)` is
+distinguished from the displayed cubic.
+Roots and the Beal rewrite use `propext`.
+`beal_frey_modular`, level lowering, and
+`beal_..._B14_honest` stay Props.
+`full_honest` stays the two-element
+mod-16 kill. `#print axioms` empty there.
+Not BCDT, not Ribet, not `¬ ∃ A` for the
+352 rows.  Not `Classical.em`.
+Chain `ExistsNewformLevel2` stays `0 ≠ 0`.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.78.0 — B≡14 list; lowering stays a Prop (arrow stays a Prop)
 
 Latest tag `v8.78.0-B14-level-lowering-honest`.

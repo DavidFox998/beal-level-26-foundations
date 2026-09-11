@@ -799,6 +799,16 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.79.0-B14-honest-elim — DONE (BealFreyB14 beal Frey cubic x(x-A^4)(x+B^4) distinguished from displayed cubic; BCDT/level_lowering/B14_honest stay Prop; full_honest stays 2-element mod16; #print axioms propext on cubic lemmas, empty on full_honest; not Ribet; not ¬∃ A for those 352; Chain ExistsNewformLevel2 stays 0≠0; no new Beal ∀; arrow stays a Prop)
+
+Lean change.  Two cubics, rewrite, Props.
+Does **not** import `RibetMazur`.
+Does **not** import the axiom
+`frey_modular_13`.
+Does **not** inhabit BCDT.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Beal `∀`.
+
 ### v8.78.0-B14-level-lowering-honest — DONE (extract step60_b14_list 352 numerals; frey_modular_B14 is displayed cubic 2-torsion not Wiles; level_lowering_to_26_B14 stays Prop; B14_honest stays uninhabited ∀; full_honest is mod16 on the 2-element list; #print axioms empty; not Ribet; not ¬∃ A for those 352; Chain ExistsNewformLevel2 stays 0≠0; no new Beal ∀; arrow stays a Prop)
 
 Lean change.  Lists plus polynomial 2-torsion.

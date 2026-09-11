@@ -186,11 +186,51 @@ stays the uninhabited $\forall$ on those $352$ rows.
 is the displayed two-element list via mod $16$;
 \texttt{\#print axioms} empty.
 
+\section{$B\equiv 14$ honest: Beal Frey cubic, not BCDT}
+The Beal Frey cubic is the integer polynomial
+$x(x-A^4)(x+B^4)$ with roots $0$, $A^4$, $-B^4$
+(\texttt{beal\_frey\_curve} /
+\texttt{beal\_frey\_has\_full\_2\_torsion},
+axiom \texttt{propext}).
+That is not the displayed cubic
+$x(x-B^4)(x+(B+3)^4)$ of the previous section
+(\texttt{displayed\_cubic\_ne\_beal\_frey\_example},
+empty axioms).
+If $A^4+B^4=(B+3)^{13}$, the last factor
+rewrites as $x-A^4+(B+3)^{13}$
+(\texttt{beal\_frey\_rewrite}, axiom \texttt{propext}).
+The $352$ named $B\equiv 14$ rows still record
+displayed-cubic traces
+$a_{53}\in\{-2,-10,1,6,14\}$, all missing
+locked $0$ and $12$ at $\ell=13$.
+Those Euler counts are not
+$a_{53}$ of the Beal Frey cubic.
+\texttt{beal\_frey\_modular},
+\texttt{beal\_frey\_mod13\_irreducible\_B14},
+and \texttt{level\_lowering\_to\_26\_B14\_honest}
+stay Props: there is no BCDT theorem in this
+graph, \texttt{Classical.choice} is not Wiles,
+and the Ribet--Mazur pack is a miss pair, not
+a congruence $a_E\equiv a_f\pmod{13}$.
+\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_B14\_honest}
+stays the uninhabited $\forall$ on those
+$352$ rows.
+\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_5983\_honest}
+is the uninhabited conjunction of the
+two-element mod-$16$ kill with that Prop.
+The $5983=4488+5\cdot 299$ identity remains
+\texttt{zsig\_density\_2M\_stats}.
+Allowed axioms on the inhabited cubic lemmas
+are in $\{\texttt{propext},\texttt{Quot.sound},\texttt{Classical.choice}\}$;
+the cubic $2$-torsion and rewrite use
+\texttt{propext} only.  Not \texttt{Classical.em}.
+
 \section{What remains}
 $15/16$ of $B\le 2\text{M}$ is eliminated by mod-$16$ residues.
 The two displayed named rows are eliminated that way.
-$352$ named $B\equiv 14$ rows have recorded $a_{53}$ misses
-and displayed cubic $2$-torsion;
+$352$ named $B\equiv 14$ rows have recorded $a_{53}$ misses,
+displayed cubic $2$-torsion, and a distinguished
+Beal Frey cubic $x(x-A^4)(x+B^4)$;
 those facts do not inhabit $\neg\exists A$.
 The old \texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated}
 stays \texttt{Classical.em}.

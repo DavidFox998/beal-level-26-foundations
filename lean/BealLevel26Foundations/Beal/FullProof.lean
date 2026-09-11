@@ -14,10 +14,29 @@ import BealLevel26Foundations.Beal.FullProof.BealElim
 import BealLevel26Foundations.Beal.FullProof.BealMod16
 import BealLevel26Foundations.Beal.FullProof.KrausB14
 import BealLevel26Foundations.Beal.FullProof.LevelLoweringB14
+import BealLevel26Foundations.Beal.FullProof.BealFreyB14
 
 /-!
-# FullProof track (v8.78.0)
+# FullProof track (v8.79.0)
 
+Aggregator for Track B.  v8.79.0 defines the
+Beal Frey cubic `x(x-A^4)(x+B^4)` and
+distinguishes it from the displayed cubic
+`x(x-B^4)(x+(B+3)^4)`.  Roots, the Beal
+rewrite, and a concrete disagreement are
+inhabited.  BCDT / `beal_frey_modular`,
+residual irreducibility, level lowering,
+and `beal_..._B14_honest` stay Props.
+`full_honest` stays the two-element
+mod-16 kill.  `eliminated_5983_honest`
+is the uninhabited conjunction.
+That is **not** Wiles, **not** Ribet,
+and **not** `¬ ∃ A` for the 352 rows.
+`#print axioms` on the cubic lemmas is
+in the allowed set.  Not `Classical.em`.
+The old
+`beal_4_13_13_gap3_B_le_2M_eliminated`
+stays `Classical.em`.
 Aggregator for Track B.  v8.78.0 extracts
 `step60_b14_list` (352 named B≡14 rows)
 and records displayed cubic 2-torsion.

@@ -1,3 +1,17 @@
+# v8.79.0 Beal Frey cubic; BCDT stays Prop
+
+The Beal Frey cubic `x(x-A^4)(x+B^4)` is
+distinguished from the displayed cubic.
+`beal_frey_modular`, irreducibility,
+level lowering, and `B14_honest` stay
+Props.  `full_honest` is the two-element
+list via mod 16.  `#print axioms` empty
+there.  Cubic lemmas use `propext`.
+Not BCDT, not Ribet, not `¬ ∃ A` for
+the 352 rows.  Not `Classical.em`.
+Chain `ExistsNewformLevel2` stays `0 != 0`.
+No new Beal forall.
+
 # v8.78.0 B≡14 list; lowering stays Prop
 
 `step60_b14_list` is 352 named numerals.
