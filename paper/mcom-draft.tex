@@ -388,10 +388,20 @@ $|\Delta|=2^4\cdot N_0$ with $N_0\mid (ABC)^{26}\cdot 13$
 (axioms \texttt{propext}, \texttt{Quot.sound});
 that is not Tate $N(E)$.
 % frey_tate_conductor
+% tate_2adic_exponent_le5
+% tate_conductor_bound_rhs
 Tate Step 2 at an odd prime of $ABC$ gives
 local exponent $1$ when the bases are pairwise
 coprime (\texttt{tate\_odd\_prime\_exponent\_one});
 $v_2(c_4)\ge 4$ so Step 2 does not finish at $2$.
+Tate Steps 6--7 at $2$ give
+\texttt{tate\_2adic\_exponent\_le5}
+($v_2(c_6)$ from $A,B$ parity;
+local exponent $\le 5$).
+The packed intermediate
+\texttt{tate\_conductor\_bound\_rhs}
+is $2^5\mathrm{rad}(AB(B+3))\cdot 13$
+with $v_q\le 1$ odd and $v_2\le 5$.
 The full bound $N\mid 2^5\mathrm{rad}(AB(B+3))\cdot 13$
 stays the uninhabited Prop
 \texttt{frey\_tate\_conductor}.

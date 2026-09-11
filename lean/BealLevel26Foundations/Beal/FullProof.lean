@@ -24,6 +24,21 @@ import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
 import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 
 /-!
+# FullProof track (v9.2.0)
+
+Aggregator for Track B.  v9.2.0 records Tate
+Steps 6-7 at 2: `v₂(c₄) ≥ 4`, `v₂(c₆)` from
+A,B parity, `conductorExponentTate2 ≤ 5`.
+`tate_conductor_bound_rhs = 2⁵ * rad * 13`
+with packed `v_q ≤ 1` odd and `v₂ ≤ 5`.
+`frey_tate_conductor` stays an uninhabited
+Prop (Mathlib has no `N(E)`).  Odd-q
+exponent-1 lemmas stay.  Allowed axioms
+`[propext, Quot.sound, Classical.choice]`.
+Keeps `baker_bound_gap3` Prop, the Zsig
+Props, `conductor_86` Prop, `B14_honest`
+Prop.  Not BCDT.  Not `|Δ|`.
+
 # FullProof track (v9.1.0)
 
 Aggregator for Track B.  v9.1.0 records Tate

@@ -2981,6 +2981,12 @@ grep -q "theorem v2_c4_ge_four" \
   lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean
 grep -q "def tate_rhs" \
   lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean
+grep -q "theorem tate_2adic_exponent_le5" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean
+grep -q "def tate_conductor_bound_rhs" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean
+grep -q "theorem tate_odd_exponent_le_one" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean
 grep -q "def baker_bound_gap3" \
   lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
 grep -q "def conductor_86" \
@@ -2989,7 +2995,15 @@ grep -q "def frey_tate_conductor" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem tate_odd_prime_exponent_one" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem tate_2adic_exponent_le5" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "def tate_conductor_bound_rhs" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "frey_tate_conductor" \
+  paper/mcom-draft.tex
+grep -q "tate_2adic_exponent_le5" \
+  paper/mcom-draft.tex
+grep -q "tate_conductor_bound_rhs" \
   paper/mcom-draft.tex
 test ! -n "$(grep -E '^axiom |import BealLevel26Foundations.Beal.FullProof.RibetMazur' \
   lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean || true)"

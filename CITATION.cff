@@ -5,11 +5,12 @@ type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v9.1.0-Tate-conductor"
+version: "v9.2.0-Tate-2adic-conductor"
 date-released: "2026-09-11"
 doi: "10.5281/zenodo.22713047"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
 url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v8.84.0-B14-modq-kill"
+# v9.2.0-Tate-2adic-conductor records Tate Steps 6-7 at 2; frey_tate_conductor stays Prop.
 # v9.1.0-Tate-conductor records Tate Step 2; frey_tate_conductor stays Prop.
 # v9.0.0-Baker-bound-gap3 records baker_bound_gap3 as an uninhabited Prop.
 # v8.88.0-Zsig-Bgt2M-gap3 records the 5983 + LTE ledger; B>2M forall stays Prop.

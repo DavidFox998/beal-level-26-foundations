@@ -5460,6 +5460,43 @@ theorem packedOddStep2_dvd_tate_rhs (A B : Nat) :
 def frey_tate_conductor : Prop :=
   BealLevel26Foundations.BealFreyTateConductor.frey_tate_conductor
 
+/-! ## v9.2.0 — Tate Steps 6-7 at 2 -/
+
+theorem tate_odd_exponent_le_one {A B q : Nat}
+    (hA : 0 < A) (hB : 0 < B)
+    (hEq : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (hAB : Nat.Coprime A B)
+    (hAC : Nat.Coprime A (B + 3))
+    (hBC : Nat.Coprime B (B + 3))
+    (hq : q.Prime) (hodd : q ≠ 2)
+    (hdvd : q ∣ A * B * (B + 3)) :
+    BealLevel26Foundations.BealFreyTateConductor.conductorExponentTate
+      (padicValInt q (bealFreyWeierstrass A B).c₄)
+      (padicValInt q (bealFreyWeierstrass A B).Δ) ≤ 1 :=
+  BealLevel26Foundations.BealFreyTateConductor.tate_odd_exponent_le_one
+    hA hB hEq hAB hAC hBC hq hodd hdvd
+
+theorem tate_2adic_exponent_le5 {A B : Nat}
+    (hA : 0 < A) (hB : 0 < B)
+    (hEq : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    BealLevel26Foundations.BealFreyTateConductor.conductorExponentTate2
+      (padicValInt 2 (bealFreyWeierstrass A B).c₄)
+      (padicValInt 2 (bealFreyWeierstrass A B).c₆)
+      (padicValInt 2 (bealFreyWeierstrass A B).Δ) ≤ 5 :=
+  BealLevel26Foundations.BealFreyTateConductor.tate_2adic_exponent_le5
+    hA hB hEq
+
+def tate_conductor_bound_rhs :=
+  BealLevel26Foundations.BealFreyTateConductor.tate_conductor_bound_rhs
+
+theorem tatePackedValuationBound_dvd_rhs {A B : Nat}
+    (hA : 0 < A) (hB : 0 < B)
+    (hEq : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    BealLevel26Foundations.BealFreyTateConductor.tatePackedValuationBound A B ∣
+      tate_conductor_bound_rhs A B :=
+  BealLevel26Foundations.BealFreyTateConductor.tatePackedValuationBound_dvd_rhs
+    hA hB hEq
+
 /-! ## v8.71.0 — MCOM Ribet-Mazur pack from v8.69.0 misses -/
 
 /-- Inhabited for the two named witnesses only.
@@ -6395,6 +6432,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check rad_dvd_tate_rhs
 #check packedOddStep2_dvd_tate_rhs
 #check frey_tate_conductor
+#check tate_odd_exponent_le_one
+#check tate_2adic_exponent_le5
+#check tate_conductor_bound_rhs
+#check tatePackedValuationBound_dvd_rhs
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -6909,5 +6950,8 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms tate_odd_prime_exponent_one
 #print axioms rad_dvd_tate_rhs
 #print axioms packedOddStep2_dvd_tate_rhs
+#print axioms tate_odd_exponent_le_one
+#print axioms tate_2adic_exponent_le5
+#print axioms tatePackedValuationBound_dvd_rhs
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

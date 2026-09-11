@@ -1,3 +1,19 @@
+# FINAL v9.2.0 — Tate Steps 6-7 at 2; N(E) bound stays a Prop
+
+Latest tag `v9.2.0-Tate-2adic-conductor`.
+File `BealFreyTateConductor.lean`.
+`tate_2adic_exponent_le5`: `v₂(c₄) ≥ 4`,
+`v₂(c₆)` from A,B parity, Tate Steps 6-7
+give `conductorExponentTate2 ≤ 5`.
+`tate_conductor_bound_rhs = 2⁵ * rad * 13`
+with proof `v_q ≤ 1` odd and `v₂ ≤ 5`.
+`frey_tate_conductor` stays an uninhabited
+Prop (Mathlib has no `N(E)`).  Odd-q
+exponent-1 lemmas stay.
+Keeps `baker_bound_gap3` Prop, the Zsig
+Props, `conductor_86` Prop, `B14_honest`
+Prop.  Not BCDT.  Not `|Δ|`.
+
 # FINAL v9.1.0 — Tate Step 2; full N-bound stays a Prop
 
 Latest tag `v9.1.0-Tate-conductor`.

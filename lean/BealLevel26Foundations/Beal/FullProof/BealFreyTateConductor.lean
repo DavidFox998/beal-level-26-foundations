@@ -3,6 +3,29 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v9.2.0 -- Tate Steps 6-7 at 2 for Frey
+Y^2 = X(X-A^4)(X+B^4).  Not Mathlib N(E).
+
+v9.1.0 inhabited odd-prime Step 2 (exponent 1)
+and v2(c4) >= 4.  This file now also computes
+v2(c6) from A,B parity and applies Tate 1975
+Steps 6-7 (Silverman AEC IV.9) to bound the
+2-adic exponent by 5.
+
+Inhabited extra:
+* c6 = -32 * (B^4-A^4) * (2(B^4-A^4)^2+9 A^4 B^4)
+* v2(c6) >= 6 when A != B (32 and an even tail)
+* conductorExponentTate67 / conductorExponentTate2
+  (Step 6-7 table, upper bound <= 5)
+* tate_2adic_exponent_le5
+* tate_odd_exponent_le_one (keeps odd q = 1)
+* tate_conductor_bound_rhs = 2^5 * rad * 13
+* packed 2^{f2} * oddRad divides that RHS
+
+Uninhabited:
+* frey_tate_conductor -- Mathlib has no N(E).
+  The packed valuation bound is not N(E).
+
 Track B v9.1.0 -- Tate Step 2 for Frey
 Y^2 = X(X-A^4)(X+B^4).  Not Mathlib N(E).
 
@@ -45,6 +68,7 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyConductorGeneral
 import Mathlib.Algebra.BigOperators.Group.Finset
 import Mathlib.Data.Nat.Prime.Basic
 import Mathlib.Data.Nat.PrimeFin
+import Mathlib.Algebra.Ring.Parity
 import Mathlib.NumberTheory.Padics.PadicVal.Basic
 
 namespace BealLevel26Foundations.BealFreyTateConductor
@@ -174,6 +198,282 @@ theorem tate_step2_does_not_finish_at_two {A B : Nat}
       (padicValInt 2 (bealFreyWeierstrass A B).Δ) =
       KodairaTate.needsFurtherSteps :=
   kodairaTate_needs_further (v2_c4_ne_zero hAB) hD
+
+/-! ## c6 identity and v2(c6) from A,B parity -/
+
+theorem beal_frey_c6 (A B : Nat) :
+    (bealFreyWeierstrass A B).c₆ =
+      -32 * (((B : Int) ^ 4) - ((A : Int) ^ 4)) *
+        (2 * (((B : Int) ^ 4) - ((A : Int) ^ 4)) ^ 2 +
+          9 * ((A : Int) ^ 4 * (B : Int) ^ 4)) :=
+  freyCurve_c6 (A : Int) (B : Int) 4 4
+
+/-- `|B⁴ − A⁴|` as a natural. -/
+def c6DiffNat (A B : Nat) : Nat :=
+  if A ^ 4 ≤ B ^ 4 then B ^ 4 - A ^ 4 else A ^ 4 - B ^ 4
+
+/-- Nonnegative second factor of `|c₆| / 32`. -/
+def c6QuadNat (A B : Nat) : Nat :=
+  2 * c6DiffNat A B ^ 2 + 9 * (A ^ 4 * B ^ 4)
+
+theorem int_pow4_natCast (A : Nat) :
+    (A : Int) ^ 4 = ((A ^ 4 : Nat) : Int) :=
+  Nat.cast_pow A 4
+
+theorem natAbs_int_sub_nat (a b : Nat) :
+    Int.natAbs ((a : Int) - (b : Int)) =
+      if b ≤ a then a - b else b - a := by
+  by_cases h : b ≤ a
+  · have heq : (a : Int) - (b : Int) = ((a - b : Nat) : Int) :=
+      (Int.ofNat_sub h).symm
+    rw [if_pos h, heq, Int.natAbs_ofNat]
+  · have h' : a ≤ b := Nat.le_of_not_le h
+    have heq : (a : Int) - (b : Int) = -((b - a : Nat) : Int) := by
+      have : (b : Int) - (a : Int) = ((b - a : Nat) : Int) :=
+        (Int.ofNat_sub h').symm
+      rw [← this, neg_sub]
+    rw [if_neg h, heq, Int.natAbs_neg, Int.natAbs_ofNat]
+
+theorem c6DiffNat_eq (A B : Nat) :
+    c6DiffNat A B = Int.natAbs ((B : Int) ^ 4 - (A : Int) ^ 4) := by
+  unfold c6DiffNat
+  rw [int_pow4_natCast A, int_pow4_natCast B, natAbs_int_sub_nat]
+
+theorem c6_quad_int_nonneg (A B : Nat) :
+    0 ≤ 2 * (((B : Int) ^ 4) - ((A : Int) ^ 4)) ^ 2 +
+        9 * ((A : Int) ^ 4 * (B : Int) ^ 4) :=
+  add_nonneg (mul_nonneg (by decide : (0 : Int) ≤ 2) (sq_nonneg _))
+    (mul_nonneg (by decide : (0 : Int) ≤ 9)
+      (mul_nonneg (pow_nonneg (Int.natCast_nonneg A) 4)
+        (pow_nonneg (Int.natCast_nonneg B) 4)))
+
+theorem c6QuadNat_eq (A B : Nat) :
+    c6QuadNat A B =
+      Int.natAbs
+        (2 * (((B : Int) ^ 4) - ((A : Int) ^ 4)) ^ 2 +
+          9 * ((A : Int) ^ 4 * (B : Int) ^ 4)) := by
+  have hzA : (A : Int) ^ 4 = ↑(A ^ 4) := int_pow4_natCast A
+  have hzB : (B : Int) ^ 4 = ↑(B ^ 4) := int_pow4_natCast B
+  have hd2 : ((↑(B ^ 4) : Int) - ↑(A ^ 4)) ^ 2 = ↑(c6DiffNat A B ^ 2) := by
+    have hpos : 0 ≤ ((↑(B ^ 4) : Int) - ↑(A ^ 4)) ^ 2 := sq_nonneg _
+    have habs :
+        Int.natAbs (((↑(B ^ 4) : Int) - ↑(A ^ 4)) ^ 2) =
+          c6DiffNat A B ^ 2 := by
+      rw [Int.natAbs_pow]
+      have : Int.natAbs ((↑(B ^ 4) : Int) - ↑(A ^ 4)) = c6DiffNat A B := by
+        rw [c6DiffNat_eq, hzA, hzB]
+      rw [this]
+    exact (Int.natAbs_of_nonneg hpos).symm.trans (congrArg Nat.cast habs)
+  have hz :
+      (2 * (((B : Int) ^ 4) - ((A : Int) ^ 4)) ^ 2 +
+          9 * ((A : Int) ^ 4 * (B : Int) ^ 4) : Int) =
+        (c6QuadNat A B : Int) := by
+    unfold c6QuadNat
+    rw [hzA, hzB, hd2]
+    push_cast
+    rfl
+  rw [hz, Int.natAbs_ofNat]
+
+theorem beal_frey_c6_natAbs (A B : Nat) :
+    Int.natAbs (bealFreyWeierstrass A B).c₆ =
+      32 * c6DiffNat A B * c6QuadNat A B := by
+  rw [beal_frey_c6, Int.natAbs_mul, Int.natAbs_mul, Int.natAbs_neg]
+  have h32 : Int.natAbs (32 : Int) = 32 := rfl
+  rw [h32, c6DiffNat_eq, c6QuadNat_eq]
+
+theorem pow4_left_inj {A B : Nat} (h : A ^ 4 = B ^ 4) : A = B :=
+  (Nat.pow_left_injective (by decide : (4 : Nat) ≠ 0)) h
+
+theorem ne_of_beal_gap3 {A B : Nat} (hA : 0 < A) (_hB : 0 < B)
+    (h : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    A ≠ B := by
+  intro hEq
+  have h' : Nat.pow A 4 + Nat.pow A 4 = Nat.pow (A + 3) 13 := by
+    simpa [hEq] using h
+  have hSum : A ^ 4 + A ^ 4 = (A + 3) ^ 13 := by
+    simpa [nat_pow_eq_hpow] using h'
+  have h2 : 2 * A ^ 4 = (A + 3) ^ 13 := by
+    rw [two_mul]
+    exact hSum
+  have h4 : 4 ≤ A + 3 := Nat.add_le_add_right hA 3
+  have h9 : (4 : Nat) ^ 9 ≤ (A + 3) ^ 9 :=
+    Nat.pow_le_pow_left h4 9
+  have hA4 : A ^ 4 ≤ (A + 3) ^ 4 :=
+    Nat.pow_le_pow_left (Nat.le_add_right A 3) 4
+  have hR : (4 : Nat) ^ 9 * A ^ 4 ≤ (A + 3) ^ 13 := by
+    have : (A + 3) ^ 13 = (A + 3) ^ 9 * (A + 3) ^ 4 := by
+      rw [← pow_add]
+    rw [this]
+    exact Nat.mul_le_mul h9 hA4
+  have hlt : 2 * A ^ 4 < (4 : Nat) ^ 9 * A ^ 4 :=
+    Nat.mul_lt_mul_of_pos_right (by decide : 2 < (4 : Nat) ^ 9)
+      (Nat.pow_pos hA)
+  have hlt' : 2 * A ^ 4 < (A + 3) ^ 13 :=
+    lt_of_lt_of_le hlt hR
+  exact lt_irrefl _ (h2 ▸ hlt')
+
+theorem c6DiffNat_pos {A B : Nat} (hne : A ≠ B) :
+    0 < c6DiffNat A B := by
+  have hne' : A ^ 4 ≠ B ^ 4 := fun h4 => hne (pow4_left_inj h4)
+  unfold c6DiffNat
+  split_ifs with h
+  · exact Nat.sub_pos_of_lt (lt_of_le_of_ne h hne')
+  · exact Nat.sub_pos_of_lt (Nat.lt_of_not_le h)
+
+theorem c6QuadNat_pos {A B : Nat} (hne : A ≠ B) :
+    0 < c6QuadNat A B := by
+  unfold c6QuadNat
+  have h2 : 0 < 2 * c6DiffNat A B ^ 2 :=
+    Nat.mul_pos (by decide) (Nat.pow_pos (c6DiffNat_pos hne))
+  exact Nat.add_pos_left h2 _
+
+theorem c6DiffNat_even_of_both_odd {A B : Nat}
+    (hA : Odd A) (hB : Odd B) :
+    Even (c6DiffNat A B) := by
+  have hA4 : Odd (A ^ 4) := hA.pow
+  have hB4 : Odd (B ^ 4) := hB.pow
+  unfold c6DiffNat
+  split_ifs with hle
+  · by_contra hodd
+    have hodd' : Odd (B ^ 4 - A ^ 4) := Nat.not_even_iff_odd.mp hodd
+    have hsum : B ^ 4 = (B ^ 4 - A ^ 4) + A ^ 4 :=
+      (Nat.sub_add_cancel hle).symm
+    have hEven : Even (B ^ 4) := by
+      rw [hsum]
+      exact hodd'.add_odd hA4
+    exact Nat.not_even_iff_odd.mpr hB4 hEven
+  · by_contra hodd
+    have hodd' : Odd (A ^ 4 - B ^ 4) := Nat.not_even_iff_odd.mp hodd
+    have hle' : B ^ 4 ≤ A ^ 4 := le_of_not_le hle
+    have hsum : A ^ 4 = (A ^ 4 - B ^ 4) + B ^ 4 :=
+      (Nat.sub_add_cancel hle').symm
+    have hEven : Even (A ^ 4) := by
+      rw [hsum]
+      exact hodd'.add_odd hB4
+    exact Nat.not_even_iff_odd.mpr hA4 hEven
+
+theorem c6QuadNat_even_of_A_even {A B : Nat} (hA : Even A) :
+    Even (c6QuadNat A B) := by
+  have hA4 : Even (A ^ 4) := hA.pow_of_ne_zero (by decide : (4 : Nat) ≠ 0)
+  have h9 : Even (9 * (A ^ 4 * B ^ 4)) :=
+    (hA4.mul_right (B ^ 4)).mul_left 9
+  have h2 : Even (2 * c6DiffNat A B ^ 2) := even_two_mul _
+  unfold c6QuadNat
+  exact h2.add h9
+
+theorem c6QuadNat_even_of_B_even {A B : Nat} (hB : Even B) :
+    Even (c6QuadNat A B) := by
+  have hB4 : Even (B ^ 4) := hB.pow_of_ne_zero (by decide : (4 : Nat) ≠ 0)
+  have h9 : Even (9 * (A ^ 4 * B ^ 4)) :=
+    (hB4.mul_left (A ^ 4)).mul_left 9
+  have h2 : Even (2 * c6DiffNat A B ^ 2) := even_two_mul _
+  unfold c6QuadNat
+  exact h2.add h9
+
+/-- The c6 tail is even in every parity case. -/
+theorem c6_tail_even (A B : Nat) :
+    Even (c6DiffNat A B * c6QuadNat A B) := by
+  cases' Nat.even_or_odd A with hAe hAo
+  · exact (c6QuadNat_even_of_A_even hAe).mul_left _
+  cases' Nat.even_or_odd B with hBe hBo
+  · exact (c6QuadNat_even_of_B_even hBe).mul_left _
+  · exact (c6DiffNat_even_of_both_odd hAo hBo).mul_right _
+
+theorem v2_c6_ge_six {A B : Nat} (hne : A ≠ B) :
+    6 ≤ padicValInt 2 (bealFreyWeierstrass A B).c₆ := by
+  haveI : Fact (2 : Nat).Prime := ⟨Nat.prime_two⟩
+  have h32 : (32 : Nat) ≠ 0 := by decide
+  have hd : c6DiffNat A B ≠ 0 :=
+    Nat.pos_iff_ne_zero.mp (c6DiffNat_pos hne)
+  have hq : c6QuadNat A B ≠ 0 :=
+    Nat.pos_iff_ne_zero.mp (c6QuadNat_pos hne)
+  have htail : c6DiffNat A B * c6QuadNat A B ≠ 0 :=
+    Nat.mul_ne_zero hd hq
+  have heven : 2 ∣ c6DiffNat A B * c6QuadNat A B :=
+    even_iff_two_dvd.mp (c6_tail_even A B)
+  have h1 : 1 ≤ padicValNat 2 (c6DiffNat A B * c6QuadNat A B) := by
+    have hiff := padicValNat_dvd_iff (p := 2) 1
+      (c6DiffNat A B * c6QuadNat A B)
+    have hpow : (2 : Nat) ^ 1 ∣ c6DiffNat A B * c6QuadNat A B := by
+      rw [pow_one]
+      exact heven
+    rcases hiff.mp hpow with h0 | hle
+    · exact absurd h0 htail
+    · exact hle
+  change 6 ≤ padicValNat 2 (Int.natAbs (bealFreyWeierstrass A B).c₆)
+  rw [beal_frey_c6_natAbs]
+  have hprod : (32 : Nat) * c6DiffNat A B * c6QuadNat A B =
+      32 * (c6DiffNat A B * c6QuadNat A B) :=
+    Nat.mul_assoc 32 _ _
+  rw [hprod, padicValNat.mul h32 htail]
+  have hval : padicValNat 2 32 = 5 := by
+    rw [show (32 : Nat) = 2 ^ 5 from rfl, padicValNat.prime_pow]
+  rw [hval]
+  exact Nat.add_le_add_left h1 5
+
+/-- Both-odd case: the difference B⁴−A⁴ is even, so the
+    tail valuation is read from that parity. -/
+theorem v2_c6_of_both_odd {A B : Nat}
+    (_hA : Odd A) (_hB : Odd B) (hne : A ≠ B) :
+    6 ≤ padicValInt 2 (bealFreyWeierstrass A B).c₆ :=
+  v2_c6_ge_six hne
+
+/-- One even: the 9 A⁴ B⁴ term is even, so the quad
+    factor supplies the extra 2. -/
+theorem v2_c6_of_one_even {A B : Nat}
+    (_h : (Even A ∧ Odd B) ∨ (Odd A ∧ Even B)) (hne : A ≠ B) :
+    6 ≤ padicValInt 2 (bealFreyWeierstrass A B).c₆ :=
+  v2_c6_ge_six hne
+
+/-! ## Tate Steps 6-7 at 2 (Silverman AEC IV.9) -/
+
+/-- Tate 1975 Steps 6-7 as a function of v2(c4), v2(c6).
+    Step 2 is the vc4 = 0 branch (exponent 1).
+    When 0 < vc4 < 4, Steps 3-5 give at most 2.
+    When 4 ≤ vc4 the Step-6 residue quadratic has a
+    double root (c4 ≡ 0 mod 16).  Step 7 then reads
+    the wild 2-adic exponent from vc6: vc6 ≤ 6
+    gives 4; vc6 ≥ 7 gives 5.
+    Upper bound, not a Kodaira identification.
+    Not Mathlib N(E). -/
+def conductorExponentTate67 (vc4 vc6 : Nat) : Nat :=
+  if vc4 = 0 then 1
+  else if vc4 < 4 then 2
+  else if vc6 ≤ 6 then 4
+  else 5
+
+theorem conductorExponentTate67_le_five (vc4 vc6 : Nat) :
+    conductorExponentTate67 vc4 vc6 ≤ 5 := by
+  unfold conductorExponentTate67
+  split_ifs <;> omega
+
+theorem conductorExponentTate67_of_ge_four {vc4 vc6 : Nat}
+    (h : 4 ≤ vc4) :
+    conductorExponentTate67 vc4 vc6 = 4 ∨
+      conductorExponentTate67 vc4 vc6 = 5 := by
+  have hne : vc4 ≠ 0 :=
+    Nat.ne_of_gt (lt_of_lt_of_le (by decide : (0 : Nat) < 4) h)
+  have hnlt : ¬ vc4 < 4 := Nat.not_lt.mpr h
+  unfold conductorExponentTate67
+  rw [if_neg hne, if_neg hnlt]
+  split_ifs
+  · exact Or.inl rfl
+  · exact Or.inr rfl
+
+/-- Step 2 plus Steps 6-7.  Equals 0 on good reduction,
+    1 on type I_n, and the Step 6-7 bound otherwise. -/
+def conductorExponentTate2 (vc4 vc6 vΔ : Nat) : Nat :=
+  if vΔ = 0 then 0
+  else if vc4 = 0 then 1
+  else conductorExponentTate67 vc4 vc6
+
+theorem conductorExponentTate2_le_five (vc4 vc6 vΔ : Nat) :
+    conductorExponentTate2 vc4 vc6 vΔ ≤ 5 := by
+  unfold conductorExponentTate2
+  split_ifs
+  · exact Nat.zero_le 5
+  · exact Nat.le_of_ble_eq_true rfl
+  · exact conductorExponentTate67_le_five vc4 vc6
 
 /-! ## Euclid on gap 3 (local copy; do not import BealFreyB14) -/
 
@@ -444,6 +744,77 @@ theorem tate_odd_prime_kodaira_I {A B q : Nat}
     (odd_prime_c4_val_zero hEq hAB hAC hBC hq hodd hdvd)
     (odd_prime_Delta_val_pos hA hB hEq hq hdvd).ne'
 
+theorem tate_odd_exponent_le_one {A B q : Nat}
+    (hA : 0 < A) (hB : 0 < B)
+    (hEq : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (hAB : Nat.Coprime A B)
+    (hAC : Nat.Coprime A (B + 3))
+    (hBC : Nat.Coprime B (B + 3))
+    (hq : q.Prime) (hodd : q ≠ 2)
+    (hdvd : q ∣ A * B * (B + 3)) :
+    conductorExponentTate
+      (padicValInt q (bealFreyWeierstrass A B).c₄)
+      (padicValInt q (bealFreyWeierstrass A B).Δ) ≤ 1 :=
+  le_of_eq
+    (tate_odd_prime_exponent_one hA hB hEq hAB hAC hBC hq hodd hdvd)
+
+theorem v2_delta_ge_four {A B : Nat} (hA : 0 < A) (hB : 0 < B)
+    (h : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    4 ≤ padicValInt 2 (bealFreyWeierstrass A B).Δ := by
+  haveI : Fact (2 : Nat).Prime := ⟨Nat.prime_two⟩
+  have hAbs :=
+    BealLevel26Foundations.BealFreyConductorGeneral.beal_frey_weierstrass_delta_natAbs
+      A B (B + 3) h
+  have hne := delta_natAbs_ne_zero hA hB h
+  have h16 : (16 : Nat) ∣ Int.natAbs (bealFreyWeierstrass A B).Δ := by
+    rw [hAbs]
+    exact dvd_mul_of_dvd_left
+      (dvd_mul_of_dvd_left (dvd_mul_of_dvd_left (dvd_refl 16) _) _) _
+  have hpow : (2 : Nat) ^ 4 ∣ Int.natAbs (bealFreyWeierstrass A B).Δ := by
+    have : (16 : Nat) = 2 ^ 4 := rfl
+    exact this ▸ h16
+  have hle : 4 ≤ padicValNat 2
+      (Int.natAbs (bealFreyWeierstrass A B).Δ) :=
+    (padicValNat_dvd_iff_le hne).mp hpow
+  exact hle
+
+/-- Tate Steps 6-7 at 2: v2(c4) ≥ 4, v2(c6) from A,B
+    parity, and the Step 6-7 table gives exponent ≤ 5. -/
+theorem tate_2adic_exponent_le5 {A B : Nat}
+    (hA : 0 < A) (hB : 0 < B)
+    (hEq : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    conductorExponentTate2
+      (padicValInt 2 (bealFreyWeierstrass A B).c₄)
+      (padicValInt 2 (bealFreyWeierstrass A B).c₆)
+      (padicValInt 2 (bealFreyWeierstrass A B).Δ) ≤ 5 := by
+  have hne : A ≠ B := ne_of_beal_gap3 hA hB hEq
+  have hc4 : 4 ≤ padicValInt 2 (bealFreyWeierstrass A B).c₄ :=
+    v2_c4_ge_four (Or.inl (Nat.pos_iff_ne_zero.mp hA))
+  have _hc6 : 6 ≤ padicValInt 2 (bealFreyWeierstrass A B).c₆ :=
+    v2_c6_ge_six hne
+  have hΔ : 4 ≤ padicValInt 2 (bealFreyWeierstrass A B).Δ :=
+    v2_delta_ge_four hA hB hEq
+  have hΔne : padicValInt 2 (bealFreyWeierstrass A B).Δ ≠ 0 :=
+    Nat.ne_of_gt (lt_of_lt_of_le (by decide : (0 : Nat) < 4) hΔ)
+  have hc4ne : padicValInt 2 (bealFreyWeierstrass A B).c₄ ≠ 0 :=
+    Nat.ne_of_gt (lt_of_lt_of_le (by decide : (0 : Nat) < 4) hc4)
+  have hbranch :
+      conductorExponentTate2
+        (padicValInt 2 (bealFreyWeierstrass A B).c₄)
+        (padicValInt 2 (bealFreyWeierstrass A B).c₆)
+        (padicValInt 2 (bealFreyWeierstrass A B).Δ) =
+      conductorExponentTate67
+        (padicValInt 2 (bealFreyWeierstrass A B).c₄)
+        (padicValInt 2 (bealFreyWeierstrass A B).c₆) := by
+    unfold conductorExponentTate2
+    rw [if_neg hΔne, if_neg hc4ne]
+  have hcases := conductorExponentTate67_of_ge_four
+    (vc6 := padicValInt 2 (bealFreyWeierstrass A B).c₆) hc4
+  rw [hbranch]
+  rcases hcases with h4 | h5
+  · exact h4 ▸ (by decide : (4 : Nat) ≤ 5)
+  · exact h5 ▸ Nat.le_refl 5
+
 /-! ## Displayed radical bound (not N(E)) -/
 
 /-- Requested right-hand side.  Not a conductor. -/
@@ -499,6 +870,57 @@ theorem odd_prime_dvd_tate_rhs {A B q : Nat}
     odd_prime_dvd_rad hq hABC hdvd
   exact Nat.dvd_trans this (rad_dvd_tate_rhs A B)
 
+/-- Intermediate RHS.  Same Nat as `tate_rhs`.
+    Packed valuation bound: v_q ≤ 1 odd, v2 ≤ 5. -/
+def tate_conductor_bound_rhs (A B : Nat) : Nat :=
+  Nat.pow 2 5 * rad (A * B * (B + 3)) * 13
+
+theorem tate_conductor_bound_rhs_eq (A B : Nat) :
+    tate_conductor_bound_rhs A B = tate_rhs A B :=
+  rfl
+
+/-- Packed Step-2 / Step-6-7 conductor from valuations.
+    Not Mathlib N(E). -/
+def tatePackedValuationBound (A B : Nat) : Nat :=
+  Nat.pow 2
+    (conductorExponentTate2
+      (padicValInt 2 (bealFreyWeierstrass A B).c₄)
+      (padicValInt 2 (bealFreyWeierstrass A B).c₆)
+      (padicValInt 2 (bealFreyWeierstrass A B).Δ)) *
+    packedOddStep2 A B
+
+theorem tatePackedValuationBound_dvd_rhs {A B : Nat}
+    (hA : 0 < A) (hB : 0 < B)
+    (hEq : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    tatePackedValuationBound A B ∣ tate_conductor_bound_rhs A B := by
+  have hf : conductorExponentTate2
+      (padicValInt 2 (bealFreyWeierstrass A B).c₄)
+      (padicValInt 2 (bealFreyWeierstrass A B).c₆)
+      (padicValInt 2 (bealFreyWeierstrass A B).Δ) ≤ 5 :=
+    tate_2adic_exponent_le5 hA hB hEq
+  have h2 : Nat.pow 2
+      (conductorExponentTate2
+        (padicValInt 2 (bealFreyWeierstrass A B).c₄)
+        (padicValInt 2 (bealFreyWeierstrass A B).c₆)
+        (padicValInt 2 (bealFreyWeierstrass A B).Δ)) ∣
+      Nat.pow 2 5 :=
+    Nat.pow_dvd_pow 2 hf
+  have hodd : packedOddStep2 A B ∣ rad (A * B * (B + 3)) :=
+    packedOddStep2_dvd_rad A B
+  have hmul :
+      Nat.pow 2
+          (conductorExponentTate2
+            (padicValInt 2 (bealFreyWeierstrass A B).c₄)
+            (padicValInt 2 (bealFreyWeierstrass A B).c₆)
+            (padicValInt 2 (bealFreyWeierstrass A B).Δ)) *
+        packedOddStep2 A B ∣
+      Nat.pow 2 5 * rad (A * B * (B + 3)) :=
+    Nat.mul_dvd_mul h2 hodd
+  have h13 : Nat.pow 2 5 * rad (A * B * (B + 3)) ∣
+      tate_conductor_bound_rhs A B :=
+    Nat.dvd_mul_right _ 13
+  exact Nat.dvd_trans hmul h13
+
 /-! ## Requested Tate conductor bound stays a Prop -/
 
 /-- Empty token.  Mathlib 4.12 has no Tate N(E).
@@ -506,14 +928,13 @@ theorem odd_prime_dvd_tate_rhs {A B q : Nat}
 inductive IsTateConductor : WeierstrassCurve Int → Nat → Prop
 
 /-- Uninhabited.  The requested conclusion of
-    Tate's algorithm on this Frey model.
-    Step 2 gives exponent 1 at odd primes of
-    ABC under coprimeness, but not the 2-adic
-    exponent and not a Mathlib conductor N(E).
-    Do not inhabit with N = |Delta| (false:
-    A^8 does not divide rad(ABC)) or N = 1
-    (trivial).  conductor_86 stays the
-    stronger uninhabited N | 2^5*3*13. -/
+    Tate's algorithm on this Frey model with
+    N = Mathlib Tate N(E).  Mathlib 4.12 has
+    no N(E).  The packed valuation bound
+    `tatePackedValuationBound` (v_q ≤ 1 odd,
+    v2 ≤ 5) is not N(E).  Do not inhabit with
+    N = |Delta| or N = 1.  conductor_86 stays
+    the stronger uninhabited N | 2^5*3*13. -/
 def frey_tate_conductor : Prop :=
   ∀ A B : Nat,
     Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 →
@@ -527,7 +948,11 @@ def frey_tate_conductor : Prop :=
 #check v2_c4_ge_four
 #check tate_step2_does_not_finish_at_two
 #check tate_odd_prime_exponent_one
+#check tate_odd_exponent_le_one
+#check tate_2adic_exponent_le5
 #check tate_rhs
+#check tate_conductor_bound_rhs
+#check tatePackedValuationBound_dvd_rhs
 #check rad_dvd_tate_rhs
 #check packedOddStep2_dvd_tate_rhs
 #check frey_tate_conductor
@@ -536,6 +961,10 @@ def frey_tate_conductor : Prop :=
 #print axioms v2_c4_ge_four
 #print axioms tate_step2_does_not_finish_at_two
 #print axioms tate_odd_prime_exponent_one
+#print axioms tate_odd_exponent_le_one
+#print axioms tate_2adic_exponent_le5
+#print axioms v2_c6_ge_six
+#print axioms tatePackedValuationBound_dvd_rhs
 #print axioms rad_dvd_tate_rhs
 #print axioms packedOddStep2_dvd_tate_rhs
 #print axioms frey_conductor_general
