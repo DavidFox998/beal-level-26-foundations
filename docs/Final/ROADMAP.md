@@ -799,6 +799,17 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.83.0-B14-86-props-honest — DONE (BealFreyB14 gcd(B,B+3)∣3 inhabited; IrreducibleMod13Trace of Euler a53 miss on the 86 (not Mazur); conductor_86 / level_lowering_86 / eliminated_86 stay uninhabited Props; Classical.choice is not BCDT/Ribet; Zsig 5983 is not N|32*3*13; Chain ExistsNewformLevel2 stays 0≠0; no new Beal ∀ on the 86; arrow stays a Prop)
+
+Lean change.  Elementary gcd plus displayed miss.
+Does **not** inhabit Mathlib conductor.
+Does **not** inhabit BCDT.
+Does **not** inhabit Ribet.
+Does **not** inhabit `¬∃ A` for those 86.
+Does **not** add `axiom BCDT_B14`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Beal `∀` on the 86.
+
 ### v8.82.0-B14-a53-miss-86 — DONE (BealFreyASearch/BealFreyB14 Euler a53 of Beal Frey cubic on the 86 mod-53 survivors is in {-10,-2,1,6,14} and misses 0,12 at ℓ=13 under hEq; [propext, Quot.sound]; not ¬∃ A for those 86; B14_honest stays Prop; not Ribet; Chain ExistsNewformLevel2 stays 0≠0; no new Beal ∀ on the full 352; arrow stays a Prop)
 
 Lean change.  Value-set pack on the 86 survivors.

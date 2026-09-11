@@ -3,6 +3,13 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v8.83.0 — gcd(B,B+3)∣3 inhabited;
+IrreducibleMod13Trace of the Euler miss on
+the 86 (not Mazur).  conductor_86 /
+level_lowering_86 / eliminated_86 stay
+uninhabited Props.  Classical.choice is
+not BCDT and not Ribet.  Zsig 5983 is
+not N | 32*3*13.
 Track B v8.82.0 — Euler a53 of the Beal Frey
 cubic on the 86 mod-53 survivors is in
 {-10,-2,1,6,14} and misses 0,12 at ℓ=13
@@ -5252,6 +5259,37 @@ def beal_frey_a53_value_of_eq :=
 def beal_frey_a53_miss_86 :=
   BealLevel26Foundations.BealFreyB14.beal_frey_a53_miss_86
 
+/-! ## v8.83.0 — gcd | 3 and displayed miss; 86-row arrows stay Props -/
+
+def gcd_B_Bplus3_dvd_three :=
+  BealLevel26Foundations.BealFreyB14.gcd_B_Bplus3_dvd_three
+
+def survivor_63982_eq_two_mul_31991 :=
+  BealLevel26Foundations.BealFreyB14.survivor_63982_eq_two_mul_31991
+
+/-- Displayed miss, not Mazur. -/
+def irreducible_of_a53_miss_not_0_12 :=
+  BealLevel26Foundations.BealFreyB14.irreducible_of_a53_miss_not_0_12
+
+def irreducible_86 :=
+  BealLevel26Foundations.BealFreyB14.irreducible_86
+
+/-- Uninhabited.  Not a Mathlib conductor. -/
+def conductor_86 :=
+  BealLevel26Foundations.BealFreyB14.conductor_86
+
+/-- Uninhabited.  Not BCDT. -/
+def beal_frey_modular_allowed :=
+  BealLevel26Foundations.BealFreyB14.beal_frey_modular_allowed
+
+/-- Uninhabited.  Not Ribet. -/
+def level_lowering_86 :=
+  BealLevel26Foundations.BealFreyB14.level_lowering_86
+
+/-- Uninhabited.  Not `¬ ∃ A` for the 86. -/
+def beal_4_13_13_gap3_B_le_2M_eliminated_86 :=
+  BealLevel26Foundations.BealFreyB14.beal_4_13_13_gap3_B_le_2M_eliminated_86
+
 /-! ## v8.71.0 — MCOM Ribet-Mazur pack from v8.69.0 misses -/
 
 /-- Inhabited for the two named witnesses only.
@@ -6152,6 +6190,12 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check a53_nonzero_values
 #check beal_frey_a53_value_of_eq
 #check beal_frey_a53_miss_86
+#check gcd_B_Bplus3_dvd_three
+#check irreducible_86
+#check conductor_86
+#check beal_frey_modular_allowed
+#check level_lowering_86
+#check beal_4_13_13_gap3_B_le_2M_eliminated_86
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -6645,5 +6689,7 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
 #print axioms beal_frey_a53_value_of_eq
 #print axioms beal_frey_a53_miss_86
+#print axioms gcd_B_Bplus3_dvd_three
+#print axioms irreducible_86
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

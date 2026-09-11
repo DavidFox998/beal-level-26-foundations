@@ -1,13 +1,15 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.82.0-B14-a53-miss-86`
-Lean change: BealFreyASearch / BealFreyB14
-Euler `a₅₃` of the Beal Frey cubic on the
-86 mod-53 survivors is in `{-10,-2,1,6,14}`
-and misses `0,12` at ℓ=13 under the Beal
-equation (`beal_frey_a53_miss_86`).
-Axioms `[propext, Quot.sound]`.
-That is **not** `¬ ∃ A` for those 86.
+Latest tag / HEAD: `v8.83.0-B14-86-props-honest`
+Lean change: BealFreyB14
+`gcd(B, B+3) ∣ 3` is inhabited (`propext`).
+`irreducible_86` is the Euler `a₅₃` miss
+displayed as `IrreducibleMod13Trace`, not Mazur.
+`conductor_86`, `level_lowering_86`, and
+`beal_..._eliminated_86` stay uninhabited Props.
+`Classical.choice` is not BCDT and not Ribet.
+Zsigmondy `5983=4488+5·299` does not prove
+`N ∣ 2^5 * 3 * 13`: survivor `63982 = 2*31991`.
 `B14_honest` stays the uninhabited `∀` on all
 352.  Not Ribet.  Not BCDT.
 `full_honest` is the two-element

@@ -225,6 +225,30 @@ are in $\{\texttt{propext},\texttt{Quot.sound},\texttt{Classical.choice}\}$;
 the cubic $2$-torsion and rewrite use
 \texttt{propext} only.  Not \texttt{Classical.em}.
 
+\section{Gap-3 gcd and displayed miss; 86-row arrows stay Props}
+\texttt{gcd\_B\_Bplus3\_dvd\_three} inhabits
+$\gcd(B,B+3)\mid 3$ (axiom \texttt{propext}).
+That is not a conductor computation.
+\texttt{irreducible\_86} is
+\texttt{IrreducibleMod13Trace} of Euler
+$a_{53}$, the same integer miss as
+\texttt{beal\_frey\_a53\_miss\_86}, not Mazur
+and not a Mathlib residual representation.
+\texttt{conductor\_86},
+\texttt{beal\_frey\_modular\_allowed},
+\texttt{level\_lowering\_86}, and
+\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_86}
+stay uninhabited Props.
+\texttt{Classical.choice} is not Wiles and not Ribet.
+A custom \texttt{axiom BCDT\_B14} would print as
+\texttt{BCDT\_B14}.
+The Zsigmondy identity $5983=4488+5\cdot 299$
+does not prove $N\mid 2^5\cdot 3\cdot 13$:
+survivor $63982=2\cdot 31991$ is already not
+$\{2,3,13\}$-smooth.
+\texttt{beal\_frey\_curve} is an integer polynomial,
+so there is no Mathlib \texttt{.conductor}.
+
 \section{$B\equiv 14$ Euler $a_{53}$ value set on the $86$ survivors}
 \texttt{a53\_res\_in\_table} records that every
 fourth-power pair has Euler $a_{53}$ in
@@ -299,6 +323,9 @@ an Euler $a_{53}$ in $\{-10,-2,1,6,14\}$ that misses
 $0,12$ under the Beal equation
 (\texttt{beal\_frey\_a53\_miss\_86});
 that pack does not inhabit $\neg\exists A$.
+\texttt{conductor\_86} and
+\texttt{level\_lowering\_86} stay Props.
+\texttt{Classical.choice} is not BCDT.
 The old \texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated}
 stays \texttt{Classical.em}.
 Full $\forall B$ including $B\equiv 14$, density from the

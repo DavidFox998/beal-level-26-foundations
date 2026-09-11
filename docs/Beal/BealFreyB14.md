@@ -1,3 +1,23 @@
+# v8.83.0 gcd | 3 and displayed miss; 86-row arrows stay Props
+
+`lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean`
+
+`gcd_B_Bplus3_dvd_three` inhabits
+`Nat.gcd B (B+3) ∣ 3` (`propext`).
+That is not a conductor.
+`irreducible_86` is `IrreducibleMod13Trace`
+of Euler `a53_beal_frey`, the same miss as
+`beal_frey_a53_miss_86`.  Not Mazur.
+`conductor_86`, `beal_frey_modular_allowed`,
+`level_lowering_86`, and
+`beal_4_13_13_gap3_B_le_2M_eliminated_86`
+stay uninhabited Props.
+`Classical.choice` is not BCDT and not Ribet.
+Survivor `63982 = 2*31991` shows the Zsigmondy
+pools do not make `rad(B(B+3))` `{2,3,13}`-smooth.
+The count `5983=4488+5·299` is
+`zsig_density_2M_stats`, not `N ∣ 2^5 * 3 * 13`.
+
 # v8.82.0 Euler a53 value set on the 86 survivors
 
 `lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean`

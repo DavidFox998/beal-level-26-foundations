@@ -5,6 +5,15 @@ Author: David Fox
 
 Beal Frey cubic for gap-3 (4,13,13), distinguished from the displayed cubic.
 
+v8.83.0-B14-86-props-honest. `gcd(B,B+3)∣3` is
+inhabited.  `irreducible_86` is the Euler `a₅₃`
+miss displayed as `IrreducibleMod13Trace`, not
+Mazur.  `conductor_86`, `level_lowering_86`, and
+`beal_..._eliminated_86` stay uninhabited Props.
+`Classical.choice` is not BCDT and not Ribet.
+The Zsigmondy count `5983=4488+5·299` does not
+prove `N ∣ 2^5 * 3 * 13`: survivor `63982 = 2*31991`.
+
 v8.82.0-B14-a53-miss-86. Euler `a₅₃` of the Beal Frey cubic
 on the 86 mod-53 survivors lies in `{-10,-2,1,6,14}` and
 misses `0,12` at ℓ=13 under the Beal equation
@@ -45,6 +54,9 @@ What this file inhabits
 * On those 86, Euler `a₅₃` of the Beal Frey cubic is in
   `{-10,-2,1,6,14}` and misses `0,12` at ℓ=13 under `hEq`
   (`beal_frey_a53_miss_86`).  Not a Beal negation.
+* `gcd_B_Bplus3_dvd_three`: `Nat.gcd B (B+3) ∣ 3`.
+* `irreducible_86` is that same miss as
+  `IrreducibleMod13Trace`, not residual irreducibility.
 
 What this file does **not** inhabit
 * BCDT / Wiles / `beal_frey_modular` as a modularity theorem. There is no
@@ -59,7 +71,11 @@ What this file does **not** inhabit
 * `∀ B ∈ step60_b14_list, ¬∃ A`. That stays the uninhabited Prop
   `beal_4_13_13_gap3_B_le_2M_eliminated_B14_honest`.
 * `¬ ∃ A` for the 86 mod-53 survivors. The Euler miss is an
-  integer inequality, not a Beal negation.
+  integer inequality, not a Beal negation.  The name
+  `beal_4_13_13_gap3_B_le_2M_eliminated_86` stays that Prop.
+* Mathlib conductor of `beal_frey_curve`. There is none:
+  the curve is an integer polynomial.  `conductor_86` stays
+  a Prop.  Zsig pools do not prove `N ∣ 2^5 * 3 * 13`.
 * A 5983-row Beal elimination. The 5983 identity remains
   `zsig_density_2M_stats`. `eliminated_5983_honest` is the uninhabited
   conjunction of the 2-element kill with the 352-row Prop.
@@ -362,6 +378,82 @@ theorem beal_frey_a53_miss_86 (A B : Nat)
         a53_beal_frey A B % 13 ≠ (12 : Int) % 13 :=
   beal_frey_a53_value_of_eq A B hEq
 
+/-! ## Gap-3 gcd, displayed miss, and uninhabited 86-row arrows
+
+`Nat.gcd B (B+3) ∣ 3` is elementary.  It is **not** a
+conductor computation.  Survivor `63982 = 2 * 31991`
+shows the Zsigmondy pools do not make `rad(B(B+3))`
+`{2,3,13}`-smooth.  The identity `5983 = 4488 + 5*299`
+is `zsig_density_2M_stats`, not `N ∣ 2^5 * 3 * 13`.
+
+`irreducible_86` is `IrreducibleMod13Trace` of the Euler
+miss.  That is the same integer inequality as
+`beal_frey_a53_miss_86`, not Mazur, not Borel, not a
+Mathlib residual representation.
+
+`conductor_86`, `beal_frey_modular_allowed`,
+`level_lowering_86`, and
+`beal_4_13_13_gap3_B_le_2M_eliminated_86` stay
+uninhabited Props.  `Classical.choice` is not Wiles.
+A custom `axiom BCDT_B14` would print as `BCDT_B14`.
+-/
+
+/-- Euclid: `gcd(B, B+3) = gcd(B, 3)`, so the gcd divides 3. -/
+theorem gcd_B_Bplus3_dvd_three (B : Nat) :
+    Nat.gcd B (B + 3) ∣ 3 :=
+  let d := Nat.gcd B (B + 3)
+  let hB : d ∣ B := Nat.gcd_dvd_left B (B + 3)
+  let hB3 : d ∣ B + 3 := Nat.gcd_dvd_right B (B + 3)
+  let h3B : d ∣ 3 + B :=
+    Eq.rec (motive := fun t (_ : B + 3 = t) => d ∣ t)
+      hB3 (Nat.add_comm B 3)
+  (Nat.dvd_add_iff_left hB).mpr h3B
+
+/-- Concrete witness that the 86-list is not `{2,3,13}`-smooth. -/
+theorem survivor_63982_eq_two_mul_31991 :
+    (63982 : Nat) = 2 * 31991 :=
+  rfl
+
+/-- Identity on a locked-trace mismatch.  Not Mazur. -/
+theorem irreducible_of_a53_miss_not_0_12 {a : Int}
+    (h : a % 13 ≠ (0 : Int) % 13 ∧
+      a % 13 ≠ (12 : Int) % 13) :
+    IrreducibleMod13Trace a 0 12 :=
+  irreducible_of_trace_mismatch h
+
+/-- Displayed residual-trace miss of Euler `a₅₃` on the 86.
+    Not residual irreducibility of `ρ_{E,13}`.
+    There is no Mathlib `IrreducibleMod13 (beal_frey_curve A B)`. -/
+theorem irreducible_86 (A B : Nat)
+    (hMem : B ∈ survivors_86_list)
+    (hEq : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    IrreducibleMod13Trace (a53_beal_frey A B) 0 12 :=
+  irreducible_of_a53_miss_not_0_12
+    (beal_frey_a53_miss_86 A B hMem hEq).2
+
+/-- Uninhabited.  `beal_frey_curve` is `Int → Int`, not a
+    Mathlib elliptic curve, so there is no `.conductor`.
+    Zsig pools do not prove `N ∣ 2^5 * 3 * 13`. -/
+def conductor_86 : Prop :=
+  FreyModularity.level_lowering_to_26
+
+/-- Uninhabited.  Not BCDT.  `Classical.choice` is not Wiles. -/
+def beal_frey_modular_allowed : Prop :=
+  FreyModularity.level_lowering_to_26
+
+/-- Uninhabited.  Not Ribet.  The Euler miss is not a
+    congruence `a53(E) ≡ a53(f) [MOD 13]`, and there is
+    no Mathlib `S₂(Γ₀(26))` membership here. -/
+def level_lowering_86 : Prop :=
+  FreyModularity.level_lowering_to_26
+
+/-- Uninhabited.  The Euler miss does not prove `¬ ∃ A`
+    for the 86 survivors.  Not `Classical.em`. -/
+def beal_4_13_13_gap3_B_le_2M_eliminated_86 : Prop :=
+  ∀ B : Nat, B ∈ survivors_86_list →
+    ¬ ∃ A : Nat,
+      Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13
+
 /-- Re-export: residue search at a named row. -/
 theorem b14_A_search_miss (B A_mod : Nat)
     (hMem : B ∈ step60_b14_list)
@@ -421,6 +513,14 @@ theorem beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
 #check beal_frey_a53_value_of_eq
 #check beal_frey_a53_miss_86
 #check survivors_86_list
+#check gcd_B_Bplus3_dvd_three
+#check survivor_63982_eq_two_mul_31991
+#check irreducible_of_a53_miss_not_0_12
+#check irreducible_86
+#check conductor_86
+#check beal_frey_modular_allowed
+#check level_lowering_86
+#check beal_4_13_13_gap3_B_le_2M_eliminated_86
 #check b14_A_search_miss
 #check direct_mod53_kill
 #check step60_b14_killed_mod53
@@ -436,6 +536,10 @@ theorem beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
 #print axioms beal_frey_a53_miss_B14
 #print axioms beal_frey_a53_value_of_eq
 #print axioms beal_frey_a53_miss_86
+#print axioms gcd_B_Bplus3_dvd_three
+#print axioms survivor_63982_eq_two_mul_31991
+#print axioms irreducible_of_a53_miss_not_0_12
+#print axioms irreducible_86
 #print axioms b14_A_search_miss
 #print axioms direct_mod53_kill
 #print axioms beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53

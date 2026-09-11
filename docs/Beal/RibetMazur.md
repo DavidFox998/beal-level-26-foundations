@@ -1,3 +1,16 @@
+# v8.83.0 gcd | 3 and displayed miss; 86-row arrows stay Props
+
+`gcd(B,B+3)∣3` is inhabited.  The Euler miss
+on the 86 is displayed as
+`IrreducibleMod13Trace`, not Mazur.
+`conductor_86`, `level_lowering_86`, and
+`beal_..._eliminated_86` stay uninhabited
+Props.  `Classical.choice` is not BCDT
+and not Ribet.  Zsigmondy `5983` does not
+prove `N ∣ 2^5 * 3 * 13`.
+Chain `ExistsNewformLevel2` stays `0 != 0`.
+No new Beal forall on the 86.
+
 # v8.82.0 Euler a53 value set on the 86 mod-53 survivors
 
 Euler `a53` of the Beal Frey cubic on the

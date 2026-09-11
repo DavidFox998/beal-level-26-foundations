@@ -19,8 +19,19 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyASearch
 import BealLevel26Foundations.Beal.FullProof.BealFreyMod53Kill
 
 /-!
-# FullProof track (v8.82.0)
+# FullProof track (v8.83.0)
 
+Aggregator for Track B.  v8.83.0 inhabits
+`gcd(B,B+3)∣3` and the Euler miss as
+`IrreducibleMod13Trace` on the 86 survivors.
+That is **not** Mazur, **not** a Mathlib
+conductor, **not** Ribet, and **not**
+`¬ ∃ A` for those 86.  `conductor_86`,
+`level_lowering_86`, and
+`beal_..._eliminated_86` stay uninhabited
+Props.  `Classical.choice` is not BCDT.
+The Zsigmondy identity `5983=4488+5·299`
+does not prove `N ∣ 2^5 * 3 * 13`.
 Aggregator for Track B.  v8.82.0 inhabits
 Euler `a₅₃` of the Beal Frey cubic on the
 86 mod-53 survivors: the value is in

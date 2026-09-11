@@ -2834,6 +2834,16 @@ grep -q "def survivors_86_list" \
   lean/BealLevel26Foundations/Beal/FullProof/BealFreyMod53Kill.lean
 grep -q "theorem beal_frey_a53_miss_86" \
   lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean
+grep -q "theorem gcd_B_Bplus3_dvd_three" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean
+grep -q "theorem irreducible_86" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean
+grep -q "def conductor_86" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean
+grep -q "def level_lowering_86" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean
+grep -q "def beal_4_13_13_gap3_B_le_2M_eliminated_86" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean
 grep -q "def beal_frey_a53_miss_86" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 test ! -n "$(grep -E '^axiom |import BealLevel26Foundations.Beal.FullProof.RibetMazur' \

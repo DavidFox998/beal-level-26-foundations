@@ -1,3 +1,20 @@
+# FINAL v8.83.0 — gcd | 3 and displayed miss; 86-row arrows stay Props (arrow stays a Prop)
+
+Latest tag `v8.83.0-B14-86-props-honest`.
+Lean change.
+`gcd(B,B+3)∣3` is inhabited (`propext`).
+`irreducible_86` is `IrreducibleMod13Trace`
+of the Euler miss, not Mazur.
+`conductor_86`, `level_lowering_86`, and
+`beal_..._eliminated_86` stay uninhabited
+Props.  `Classical.choice` is not BCDT
+and not Ribet.  Zsigmondy `5983` does
+not prove `N ∣ 2^5 * 3 * 13`.
+Not `Classical.em` on those Props.
+Chain `ExistsNewformLevel2` stays `0 ≠ 0`.
+No new Beal `∀` on the 86 or the 352.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.82.0 — Euler a53 value set on the 86 survivors (arrow stays a Prop)
 
 Latest tag `v8.82.0-B14-a53-miss-86`.
