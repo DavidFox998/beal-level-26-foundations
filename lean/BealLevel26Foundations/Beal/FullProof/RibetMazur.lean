@@ -3,6 +3,10 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v8.76.0 — mod-16 sweep of the 2M
+class (`B % 16 ≠ 14`).  Empty axioms.
+The old 2M capstone stays `Classical.em`.
+`B ≡ 14 [MOD 16]` survives.
 Track B v8.75.0 — first honest Beal rows
 `beal_4_13_13_gap3_B_196_eliminated` and
 `beal_4_13_13_gap3_B_1500003_eliminated`
@@ -721,6 +725,7 @@ import BealLevel26Foundations.Beal.FullProof.Beal_4_13_13_Zsigmondy_Density_2M
 import BealLevel26Foundations.Beal.FullProof.Level26_Newforms
 import BealLevel26Foundations.Beal.FullProof.FreyModularity
 import BealLevel26Foundations.Beal.FullProof.BealElim
+import BealLevel26Foundations.Beal.FullProof.BealMod16
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -5053,6 +5058,35 @@ honest rows.  The 2M capstone stays
 def beal_4_13_13_gap3_first_honest_rows :=
   BealLevel26Foundations.BealElim.beal_4_13_13_gap3_first_honest_rows
 
+/-! ## v8.76.0 — mod-16 sweep of the 2M class -/
+
+/-- Inhabited.  Every odd `B`.  Empty axioms.
+Not Ribet.  Not a Beal `∀`. -/
+def beal_gap3_mod16_elim :=
+  BealLevel26Foundations.BealMod16.beal_gap3_mod16_elim
+
+/-- Inhabited.  Every even `B` with
+`B % 16 ≠ 14`.  Empty axioms. -/
+def beal_gap3_mod16_elim_even_not14 :=
+  BealLevel26Foundations.BealMod16.beal_gap3_mod16_elim_even_not14
+
+/-- Inhabited.  `B ≤ 2000000` and
+`B % 16 ≠ 14`.  Empty axioms.  The old
+capstone stays `Classical.em`.  `B ≡ 14`
+survives. -/
+def beal_4_13_13_gap3_B_le_2M_eliminated_mod16 :=
+  BealLevel26Foundations.BealMod16.beal_4_13_13_gap3_B_le_2M_eliminated_mod16
+
+/-- Displayed inhabited named rows.  Count
+`4488+5*299=5983` stays the density
+identity. -/
+def density_5983_list :=
+  BealLevel26Foundations.BealMod16.density_5983_list
+
+/-- Recorded v8.69–v8.74 pack.  Not Ribet. -/
+def displayed_kraus_pack_recorded :=
+  BealLevel26Foundations.BealMod16.displayed_kraus_pack_recorded
+
 /-! ## v8.71.0 — MCOM Ribet-Mazur pack from v8.69.0 misses -/
 
 /-- Inhabited for the two named witnesses only.
@@ -5918,6 +5952,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check beal_4_13_13_gap3_B_196_eliminated
 #check beal_4_13_13_gap3_B_1500003_eliminated
 #check beal_4_13_13_gap3_first_honest_rows
+#check beal_gap3_mod16_elim
+#check beal_gap3_mod16_elim_even_not14
+#check beal_4_13_13_gap3_B_le_2M_eliminated_mod16
+#check density_5983_list
+#check displayed_kraus_pack_recorded
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -6392,5 +6431,8 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms beal_4_13_13_gap3_B_196_eliminated
 #print axioms beal_4_13_13_gap3_B_1500003_eliminated
 #print axioms beal_4_13_13_gap3_first_honest_rows
+#print axioms beal_gap3_mod16_elim
+#print axioms beal_4_13_13_gap3_B_le_2M_eliminated_mod16
+#print axioms displayed_kraus_pack_recorded
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

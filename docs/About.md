@@ -1,14 +1,15 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.75.0-first-honest-beal-rows`
-Lean change: BealElim
+Latest tag / HEAD: `v8.76.0-mod16-sweeps-2M`
+Lean change: BealMod16
+`beal_4_13_13_gap3_B_le_2M_eliminated_mod16`
+kills `B ≤ 2000000` with `B % 16 ≠ 14`
+via fourth-power residues. `#print axioms`
+empty. `B ≡ 14` survives. The old 2M
+capstone stays `Classical.em`. Not Ribet.
 `beal_4_13_13_gap3_B_196_eliminated` and
 `beal_4_13_13_gap3_B_1500003_eliminated`
-are honest `¬ ∃ A` gap-3 rows via
-fourth-power residues modulo 16
-(`A^4 + B^4 = C^13`; residues 7 and 15).
-`#print axioms` empty. Not Ribet, not
-`Classical.em`.
+are instances.
 `beal_4_13_13_gap3_B_le_2M_eliminated`
 stays `Classical.em`.
 `frey_modular` stays `Classical.em`.

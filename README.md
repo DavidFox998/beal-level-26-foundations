@@ -1,8 +1,8 @@
 [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.74.0-frey-irreducible-mod13 → v8.75.0-first-honest-beal-rows
+# Beal Level 26 Foundations — v8.75.0-first-honest-beal-rows → v8.76.0-mod16-sweeps-2M
 
-**v8.75.0-first-honest-beal-rows — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.76.0-mod16-sweeps-2M — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 Track B closed 5983 rows = 4488+5*299 B≤2M pools 50310/50323/50307/50350/50325. Track A: Level 26 dim2 26.2.a.a/b via qExp_26a1_500/qExp_26b1_500 take 500, a53_26a1=0 a53_26b1=12 a443_26a1=21 a443_26b1=-39 by decide, Frey a53(E_196)=-2 a443(E_1500003)=24 by decide Euler, -2≠0,12 mod13 and 24≠21,-39 mod13. kraus_elimination_q_13_level_26 (Level26_Newforms) is a theorem. ribet_mazur_pack_q_13_level_26 is the first inhabited Ribet-Mazur pack (B=196 and B=1500003 only). Displayed exists_newform_level_26_dim2 inhabited (0≠12 at p=53). Displayed frey_mod13_irreducible inhabited at B=196 and B=1500003 (trace miss, not Mazur). Still uninhabited: Chain ExistsNewformLevel2 0≠0, Density/Step kraus ∀, level_lowering_to_26, no new Beal ∀. frey_modular stays Classical.em.
 
@@ -12,7 +12,7 @@ Draft paper: [`paper/mcom-draft.tex`](paper/mcom-draft.tex) (`latexmk -pdf mcom-
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22698257.svg)](https://doi.org/10.5281/zenodo.22698257)
 
-v8.71.0 is the first inhabited Ribet-Mazur pack. It is **not** `∀ B` modular contradiction. The two witnesses are `B = 196` (`-2` vs `0`/`12` mod 13) and `B = 1500003` (`24` vs `21`/`-39` mod 13). Full gap-3 density on the 5983 named rows still uses `Classical.em` (`beal_4_13_13_gap3_B_le_2M_eliminated`), not a scan and not Kraus matching.
+v8.71.0 is the first inhabited Ribet-Mazur pack. It is **not** `∀ B` modular contradiction. The two witnesses are `B = 196` (`-2` vs `0`/`12` mod 13) and `B = 1500003` (`24` vs `21`/`-39` mod 13). Fifteen of sixteen residue classes on `B ≤ 2000000` are now honest (`beal_4_13_13_gap3_B_le_2M_eliminated_mod16`, `B % 16 ≠ 14`). The old capstone stays `Classical.em`. Rows with `B ≡ 14` remain.
 
 Reproducibility:
 - `lake build BealLevel26Foundations` and `lake build BealLevel26FoundationsFullProof` green twice
@@ -29,6 +29,7 @@ Track B — CLOSED at B≤2.0M:
 - Pools generator constants: 50310 / 50323 / 50307 / 50350 / 50325, not Mathlib density theorem
 - First news: (1500003,1500006) p=443 pool 50310 Step56, (1900001,1900004) p=53 pool 50325 Step60
 - Witnesses: S≡0 mod p and S≢0 mod p*p via decide on ZMod p / numeral p*p (not native_decide), unfolding S_val is huge so Nat-modulo of Phi13 not used
+- beal_4_13_13_gap3_B_le_2M_eliminated_mod16: honest B≤2M with B%16≠14 via fourth powers mod 16; empty axioms; B≡14 survives
 - beal_4_13_13_gap3_B_le_2M_eliminated as Classical.em on small-prime ZMod predicate, not full ∀ B≤2M scan, not Kraus, not Beal ∀
 
 Track A — Level 26:
@@ -44,7 +45,8 @@ Track A — Level 26:
 - kraus_elimination_q_13_level_26_density / ribet_mazur_pack_q_13_level_26 in RibetMazur are inhabited from those misses at B=196 and B=1500003 only. Not ∀ B modular contradiction. zsig_density_links_to_kraus stays list equality plus 4488+5*299=5983, not Kraus matching.
 - exists_newform_level_26_dim2 / ExistsNewformLevel26_inhabited: displayed Newform pair at level 26, distinct by a53 0≠12. Not Mathlib cusp forms. Chain ExistsNewformLevel2 stays 0≠0.
 - frey_mod13_irreducible: displayed Int-mod-13 miss at B=196 and B=1500003 via irreducible_of_trace_mismatch. Not Mazur, not residual isomorphism. frey_modular stays Classical.em. level_lowering_to_26 stays Prop.
-- beal_4_13_13_gap3_B_196_eliminated / beal_4_13_13_gap3_B_1500003_eliminated: honest `¬ ∃ A` gap-3 rows via fourth-power residues mod 16 (7 and 15) on `A^4 + B^4 = C^13`. Not Ribet, not Classical.em. `#print axioms` empty (`Nat.pow`). The 2M capstone stays Classical.em.
+- beal_4_13_13_gap3_B_le_2M_eliminated_mod16: honest `B ≤ 2000000` and `B % 16 ≠ 14` via fourth-power residues. `#print axioms` empty. `B ≡ 14` survives. Old 2M capstone stays Classical.em.
+- beal_4_13_13_gap3_B_196_eliminated / beal_4_13_13_gap3_B_1500003_eliminated: instances of the mod-16 kill (`4 ≠ 14` and odd). Not Ribet, not Classical.em.
 
 Inhabited:
 - newform_26_a_qexp / newform_26_b_qexp match ledger
@@ -58,6 +60,7 @@ Inhabited:
 - kraus_elimination_q_13_level_26_density / ribet_mazur_pack_q_13_level_26 (RibetMazur, B=196 and B=1500003 only)
 - exists_newform_level_26_dim2 / ExistsNewformLevel26_inhabited (displayed dim2, 0≠12 at p=53)
 - frey_mod13_irreducible (displayed trace miss at B=196 and B=1500003)
+- beal_4_13_13_gap3_B_le_2M_eliminated_mod16 / beal_gap3_mod16_elim / beal_gap3_mod16_elim_even_not14 (15/16 residue classes; `#print axioms` empty)
 - beal_4_13_13_gap3_B_196_eliminated / beal_4_13_13_gap3_B_1500003_eliminated / beal_4_13_13_gap3_first_honest_rows (fourth powers mod 16; `#print axioms` empty; not Classical.em)
 - level26_a_eliminated_by_53_of_witness
 - hasSmallZsigWitness_1500003
@@ -85,6 +88,7 @@ Releases:
 - v8.72.1-doi-badge inserts real Zenodo DOI `10.5281/zenodo.22698257` from the v8.70.0 mint
 - v8.73.0-modularity-exists-level2 displayed S2(26) dim2 via 0≠12 at p=53; Chain ExistsNewformLevel2 stays 0≠0; DOI 10.5281/zenodo.22698257 still cites v8.69.0
 - v8.74.0-frey-irreducible-mod13 displayed frey_mod13_irreducible at B=196 and B=1500003; frey_modular Classical.em; level_lowering_to_26 stays Prop
+- v8.76.0-mod16-sweeps-2M `B ≤ 2M` with `B % 16 ≠ 14` via fourth powers mod 16; `#print axioms` empty; `B ≡ 14` survives; old 2M capstone stays Classical.em; not Ribet
 - v8.75.0-first-honest-beal-rows two named gap-3 rows `¬ ∃ A` via fourth powers mod 16; 2M capstone stays Classical.em; not Ribet
 
 GitHub will not render a README much over ~100KB, so the old wall
@@ -754,7 +758,7 @@ PARI 2-Descent Certificates image
 Still not `∀ ℕ`. No `False.elim`. no `False.elim`.
 `BealExponent13_Iter_Package` `d3cf8a7` `1d0044e`.
 
-HEAD also has Track B `v8.75.0-first-honest-beal-rows`
+HEAD also has Track B `v8.76.0-mod16-sweeps-2M`
 (RibetMazur pack from v8.69.0 Int-mod-13
 misses at `B = 196` and `B = 1500003`;
 Density/Step `kraus_elimination_q_13_level_26`

@@ -1,3 +1,14 @@
+# v8.76.0 mod-16 sweep of the 2M class
+
+`beal_4_13_13_gap3_B_le_2M_eliminated_mod16`
+aliases the BealMod16 kill: every
+`B <= 2000000` with `B % 16 != 14`.
+`#print axioms` empty.  `B ≡ 14` survives.
+The old 2M capstone stays `Classical.em`.
+Kraus pack recorded, not used as Ribet.
+Chain `ExistsNewformLevel2` stays `0 != 0`.
+No new Beal forall.
+
 # v8.75.0 first honest Beal rows
 
 `beal_4_13_13_gap3_B_196_eliminated` /

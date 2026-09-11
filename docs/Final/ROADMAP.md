@@ -799,6 +799,15 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.76.0-mod16-sweeps-2M — DONE (BealMod16 beal_4_13_13_gap3_B_le_2M_eliminated_mod16 kills B≤2M with B%16≠14 via fourth-power residues; #print axioms empty; B≡14 survives; old 2M capstone stays Classical.em; Kraus pack recorded; Chain ExistsNewformLevel2 stays 0≠0; no new Beal ∀; arrow stays a Prop)
+
+Lean change.  15 of 16 residue classes.
+Does **not** import `RibetMazur`.
+Does **not** import the axiom
+`frey_modular_13`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Beal `∀`.
+
 ### v8.75.0-first-honest-beal-rows — DONE (BealElim beal_4_13_13_gap3_B_196_eliminated and B_1500003_eliminated via fourth-power residues mod 16 on A^4+B^4=C^13; #print axioms empty; not Classical.em; not Ribet; 2M capstone stays Classical.em; Chain ExistsNewformLevel2 stays 0≠0; no new Beal ∀; arrow stays a Prop)
 
 Lean change.  Two named gap-3 rows are

@@ -109,26 +109,45 @@ $44$ Files Changed, \texttt{.zenodo.json} present, DOI $v8.70.0$-zenodo-doi.
 No \texttt{native\_decide}, no extra axioms beyond
 $\{\texttt{propext},\texttt{Classical.choice},\texttt{Quot.sound}\}$.
 
+\section{Mod16}
+Fourth powers modulo $16$ are $0$ or $1$.
+Odd thirteenth powers satisfy $c^{13}\equiv c\pmod{16}$;
+even thirteenth powers with exponent $\ge 4$ are $0$.
+
+\begin{center}
+\begin{tabular}{rccc}
+$B\bmod 16$ & $B^4$ & $(B+3)^{13}$ & $A^4+B^4\equiv(B+3)^{13}$? \\
+\hline
+odd & $1$ & $0$ & no ($A^4+1\equiv 0$) \\
+$0,2,4,6,8,10,12$ & $0$ & $3,5,7,9,11,13,15$ & no \\
+$14$ & $0$ & $1$ & open ($A^4\equiv 1$)
+\end{tabular}
+\end{center}
+
+Thus $15$ of $16$ residue classes are eliminated by
+\texttt{decide} on residues (kernel \texttt{Nat.pow}).
+\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_mod16}
+is that kill on $B\le 2000000$ with $B\not\equiv 14$;
+\texttt{\#print axioms} is empty.
+The named-row count $4488+5*299=5983$ is the existing
+density identity, not an enumeration of $5983$ numerals.
+$B=196$ ($4\not\equiv 14$) and $B=1500003$ (odd) are instances.
+Remaining $B\equiv 14\pmod{16}$ (about $1/16$ of any named-row
+class, $\sim 374$ of $5983$) need the v8.69.0--v8.74.0 Kraus
+pack ($-2$ vs $0/12$, $24$ vs $21/-39$).  That pack is
+recorded and does not inhabit those remaining rows.
+
 \section{What remains}
-Two named gap-3 rows are now honest Beal eliminations, not
-\texttt{Classical.em}:
-\texttt{beal\_4\_13\_13\_gap3\_B\_196\_eliminated} is
-$\neg\exists A,\;A^4+196^{4}=199^{13}$, and
-\texttt{beal\_4\_13\_13\_gap3\_B\_1500003\_eliminated} is
-$\neg\exists A,\;A^4+1500003^{4}=1500006^{13}$.
-The kill is fourth-power residues modulo $16$
-($A^4\equiv 0$ or $1$, but the two rows force $7$ and $15$).
-That is not Mazur, not Borel, and not Ribet.
-\texttt{\#print axioms} is empty
-(Lean statements use kernel \texttt{Nat.pow}; Mathlib power notation
-is \texttt{HPow} and would inject \texttt{propext}).
-The displayed Frey/Kraus pack at these two $B$ remains the
-v8.69.0--v8.74.0 Int-mod-$13$ miss; it does not inhabit the
-Beal negation.
-\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated} stays
-\texttt{Classical.em} for the remaining named rows.
-Full $\forall B$ density from $5983$ to $\infty$, full modular
-contradiction, and Beal $\forall$ still open. Track beyond
-$2\text{M}$ Step61+ continues same \texttt{smallZsigPrimes} pattern.
+$15/16$ of the $2\text{M}$ named-row class is eliminated by
+mod-$16$ residues, not \texttt{Classical.em}.
+The old \texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated}
+stays \texttt{Classical.em} on \texttt{hasSmallZsigWitness}.
+Rows with $B\equiv 14\pmod{16}$ remain.
+The displayed Frey/Kraus pack is recorded and not needed for
+the $15/16$ kill.
+Full $\forall B$ including $B\equiv 14$, density from $5983$
+to $\infty$, full modular contradiction, and Beal $\forall$
+still open. Track beyond $2\text{M}$ Step61+ continues same
+\texttt{smallZsigPrimes} pattern.
 
 \end{document}

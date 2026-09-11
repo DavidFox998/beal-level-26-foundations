@@ -11,10 +11,20 @@ import BealLevel26Foundations.Beal.FullProof.HeckeAction
 import BealLevel26Foundations.Beal.FullProof.LevelLowering
 import BealLevel26Foundations.Beal.FullProof.RibetMazur
 import BealLevel26Foundations.Beal.FullProof.BealElim
+import BealLevel26Foundations.Beal.FullProof.BealMod16
 
 /-!
-# FullProof track (v8.75.0)
+# FullProof track (v8.76.0)
 
+Aggregator for Track B.  v8.76.0 inhabits
+`beal_4_13_13_gap3_B_le_2M_eliminated_mod16`
+(`B ≤ 2000000`, `B % 16 ≠ 14`) by
+fourth-power residues modulo 16.
+`#print axioms` empty.  `B ≡ 14 [MOD 16]`
+survives; the old
+`beal_4_13_13_gap3_B_le_2M_eliminated`
+stays `Classical.em`.  That is not Ribet
+and not a Beal `∀`.
 Aggregator for Track B.  v8.75.0 inhabits
 `beal_4_13_13_gap3_B_196_eliminated` and
 `beal_4_13_13_gap3_B_1500003_eliminated`

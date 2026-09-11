@@ -1,3 +1,17 @@
+# FINAL v8.76.0 — mod-16 sweep of the 2M class (arrow stays a Prop)
+
+Latest tag `v8.76.0-mod16-sweeps-2M`.
+Lean change.
+`beal_4_13_13_gap3_B_le_2M_eliminated_mod16`
+kills `B ≤ 2000000` with `B % 16 ≠ 14`
+via fourth-power residues. `#print axioms`
+empty. `B ≡ 14` survives. The old 2M
+capstone stays `Classical.em`. Kraus pack
+recorded, not needed for the 15/16 kill.
+Chain `ExistsNewformLevel2` stays `0 ≠ 0`.
+No new Beal `∀`.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.75.0 — first honest Beal rows (arrow stays a Prop)
 
 Latest tag `v8.75.0-first-honest-beal-rows`.
