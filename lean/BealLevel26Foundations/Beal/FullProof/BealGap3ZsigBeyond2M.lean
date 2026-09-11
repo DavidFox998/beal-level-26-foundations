@@ -305,7 +305,7 @@ theorem exists_primitive_prime_Phi13_gap3
 
 /-! ## Requested statements that stay Props -/
 
-/-- Requested lemma 2.  Needs Baker, not Zsig.
+/-- Requested lemma 2.  needs Baker, not Zsig.
     Not closable from the 5983 census; would need
     a q > 2M bound not in Zsig.  The 5983 / five-pool
     lemmas are named rows at B <= 2M. -/
