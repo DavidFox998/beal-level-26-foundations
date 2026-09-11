@@ -1,3 +1,19 @@
+# FINAL v8.81.0 — 266 of 352 B≡14 rows die mod 53; 86 remain (arrow stays a Prop)
+
+Latest tag `v8.81.0-B14-mod53-kill`.
+Lean change.
+`(B+3)¹³ − B⁴` not a fourth power modulo 53
+kills 266 of the 352 named `B ≡ 14` rows
+(`direct_mod53_kill`, empty axioms).
+The count is 266, not 287.  The remaining
+86 survive this residue test.
+`beal_..._B14_honest` stays the uninhabited
+`∀` on all 352.  Not BCDT, not Ribet.
+Not `Classical.em`.
+Chain `ExistsNewformLevel2` stays `0 ≠ 0`.
+No new Beal `∀` on the full 352.
+Still not Full Mathlib `∀`.
+
 # FINAL v8.80.0 — A-mod-53 Euler search; ¬∃ A stays a Prop (arrow stays a Prop)
 
 Latest tag `v8.80.0-B14-A-search-honest`.

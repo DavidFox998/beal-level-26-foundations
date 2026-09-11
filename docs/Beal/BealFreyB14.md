@@ -1,3 +1,13 @@
+# v8.81.0 266 of 352 B≡14 rows die mod 53
+
+`lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean`
+
+Re-exports `direct_mod53_kill` and the 266-row
+`beal_..._B14_mod53` kill.  Empty axioms.
+The remaining 86 named `B ≡ 14` rows are not
+killed by this residue test.
+`B14_honest` stays the uninhabited `∀` on all 352.
+
 # v8.79.0 Beal Frey cubic distinguished from displayed cubic
 
 `lean/BealLevel26Foundations/Beal/FullProof/BealFreyB14.lean`

@@ -16,10 +16,19 @@ import BealLevel26Foundations.Beal.FullProof.KrausB14
 import BealLevel26Foundations.Beal.FullProof.LevelLoweringB14
 import BealLevel26Foundations.Beal.FullProof.BealFreyB14
 import BealLevel26Foundations.Beal.FullProof.BealFreyASearch
+import BealLevel26Foundations.Beal.FullProof.BealFreyMod53Kill
 
 /-!
-# FullProof track (v8.80.0)
+# FullProof track (v8.81.0)
 
+Aggregator for Track B.  v8.81.0 kills 266 of the
+352 named `B ≡ 14` rows because `(B+3)¹³ − B⁴`
+is not a fourth power modulo 53
+(`direct_mod53_kill`, empty axioms).  The
+count is **266**, not 287.  The remaining 86
+rows survive this residue test.
+`B14_honest` stays the uninhabited `∀` on all
+352.  That is **not** Ribet, **not** BCDT.
 Aggregator for Track B.  v8.80.0 searches Euler
 `a₅₃` of the Beal Frey cubic over the 14
 fourth-power residues mod 53.  Under the

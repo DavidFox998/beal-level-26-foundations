@@ -3,6 +3,11 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v8.81.0 — 266 of 352 named B≡14 rows
+die by the mod-53 fourth-power non-residue
+test.  Empty axioms.  86 remain.
+`B14_honest` stays the uninhabited `∀`.
+Not Ribet.  Not `Classical.em`.
 Track B v8.80.0 — Euler a53 of the Beal Frey
 cubic searched mod 53.  Miss under the Beal
 equation.  BCDT / irreducibility / level
@@ -5205,6 +5210,26 @@ def beal_frey_a53_miss_B14 :=
 def b14_A_search_miss :=
   BealLevel26Foundations.BealFreyB14.b14_A_search_miss
 
+/-! ## v8.81.0 — fourth-power non-residue kill modulo 53 -/
+
+def rhs_mod53 :=
+  BealLevel26Foundations.BealFreyB14.rhs_mod53
+
+def IsFourthMod53 :=
+  BealLevel26Foundations.BealFreyB14.IsFourthMod53
+
+/-- Empty-axiom arithmetic kill.  Not Ribet. -/
+def direct_mod53_kill :=
+  BealLevel26Foundations.BealFreyB14.direct_mod53_kill
+
+def step60_b14_killed_mod53 :=
+  BealLevel26Foundations.BealFreyB14.step60_b14_killed_mod53
+
+/-- 266 of 352 named `B ≡ 14` rows.  Empty axioms.
+    The other 86 stay.  Not the full 352-row `∀`. -/
+def beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53 :=
+  BealLevel26Foundations.BealFreyB14.beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
+
 /-! ## v8.71.0 — MCOM Ribet-Mazur pack from v8.69.0 misses -/
 
 /-- Inhabited for the two named witnesses only.
@@ -6098,6 +6123,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check beal_frey_a53_miss_of_eq
 #check beal_frey_a53_miss_B14
 #check b14_A_search_miss
+#check direct_mod53_kill
+#check step60_b14_killed_mod53
+#check beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
 #check beal_from_ribet_upside_down_odd_A_closed
 #check beal_4_13_13_A_ge_13_pow_quarter_mul_B_cubed
 #check C_pow13_sub_B_pow13
@@ -6587,5 +6615,7 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms beal_frey_a53_miss_of_eq
 #print axioms beal_frey_a53_miss_B14
 #print axioms b14_A_search_miss
+#print axioms direct_mod53_kill
+#print axioms beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

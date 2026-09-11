@@ -1,14 +1,13 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v8.80.0-B14-A-search-honest`
-Lean change: BealFreyASearch
-Euler `a53` of the Beal Frey cubic is
-searched over 14 fourth-power residues
-mod 53.  Under the Beal equation that
-trace misses `0,12`.  Axioms
-`[propext, Quot.sound]`.
-`beal_frey_modular` / level lowering /
-`beal_..._B14_honest` stay Props.
+Latest tag / HEAD: `v8.81.0-B14-mod53-kill`
+Lean change: BealFreyMod53Kill
+266 of 352 named `B ≡ 14` rows die because
+`(B+3)¹³ − B⁴` is not a fourth power mod 53.
+Empty axioms.  The count is 266, not 287.
+The remaining 86 survive this test.
+`B14_honest` stays the uninhabited `∀` on all
+352.  Not Ribet.  Not BCDT.
 `full_honest` is the two-element
 list via mod 16. `#print axioms` empty.
 The old 2M capstone stays `Classical.em`. Not Ribet.

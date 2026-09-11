@@ -799,6 +799,16 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v8.81.0-B14-mod53-kill — DONE (BealFreyMod53Kill 266 of 352 named B≡14 rows die because (B+3)^13-B^4 is not a fourth power mod 53; #print axioms empty; 86 survive this test; B14_honest stays uninhabited ∀ on all 352; not Ribet; not ¬∃ A for the remaining 86; Chain ExistsNewformLevel2 stays 0≠0; no new Beal ∀ on the full 352; arrow stays a Prop)
+
+Lean change.  Arithmetic residue kill, like mod 16.
+Does **not** import `RibetMazur`.
+Does **not** add `axiom BCDT_B14`.
+Does **not** inhabit BCDT.
+Does **not** inhabit the 352-row `∀`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Beal `∀` on all 352.
+
 ### v8.80.0-B14-A-search-honest — DONE (BealFreyASearch Euler a53 of Beal Frey cubic searched over 14 fourth-power residues mod 53; miss under Beal equation; BCDT/level_lowering/B14_honest stay Prop; #print axioms propext Quot.sound on the miss, empty on the 14x14 table; not Ribet; not ¬∃ A for those 352; Chain ExistsNewformLevel2 stays 0≠0; no new Beal ∀; arrow stays a Prop)
 
 Lean change.  Finite Euler search, Props.

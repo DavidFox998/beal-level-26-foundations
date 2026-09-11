@@ -5,6 +5,13 @@ Author: David Fox
 
 Beal Frey cubic for gap-3 (4,13,13), distinguished from the displayed cubic.
 
+v8.81.0-B14-mod53-kill. 266 of the 352 named `B ≡ 14` rows
+die because `(B+3)¹³ − B⁴` is not a fourth power mod 53
+(`direct_mod53_kill` / `beal_..._B14_mod53`, empty axioms).
+The count is **266**, not 287.  The remaining 86 rows
+survive this test.  `B14_honest` stays the uninhabited `∀`
+on all 352.  Not Ribet.  Not BCDT.
+
 v8.80.0-B14-A-search-honest. Euler `a₅₃` of `y² = x(x-A^4)(x+B^4)`
 is searched over the 14 fourth-power residues mod 53.  Under the
 Beal equation that trace misses locked `0` and `12` at ℓ=13
@@ -25,6 +32,9 @@ What this file inhabits
 * The 2-element `[196, 1500003]` kill stays `beal_4_13_13_gap3_B_le_2M_eliminated_full`.
 * Euler `a₅₃` of the Beal Frey cubic misses `0,12` under the Beal
   equation (`beal_frey_a53_miss_of_eq`).  Not a Beal negation.
+* 266 of 352 named `B ≡ 14` rows have `¬ ∃ A` by the mod-53
+  fourth-power non-residue test (`direct_mod53_kill`).  Empty
+  axioms.  The other 86 stay.
 
 What this file does **not** inhabit
 * BCDT / Wiles / `beal_frey_modular` as a modularity theorem. There is no
@@ -49,6 +59,7 @@ Does not import `RibetMazur` or `Modularity/FreyModularity_13.lean`.
 import BealLevel26Foundations.Beal.FullProof.LevelLoweringB14
 import BealLevel26Foundations.Beal.FullProof.KrausB14
 import BealLevel26Foundations.Beal.FullProof.BealFreyASearch
+import BealLevel26Foundations.Beal.FullProof.BealFreyMod53Kill
 import BealLevel26Foundations.Beal.FullProof.BealMod16
 import BealLevel26Foundations.Beal.FullProof.Step60B14List
 import BealLevel26Foundations.Beal.FullProof.B14Witnesses
@@ -321,6 +332,36 @@ theorem b14_A_search_miss (B A_mod : Nat)
         (12 : Int) % 13 :=
   BealLevel26Foundations.BealFreyASearch.b14_A_search_miss B A_mod hMem hLt hne
 
+/-- Re-export: `(B+3)¹³ − B⁴` not a fourth power mod 53 implies `¬ ∃ A`.
+    Empty axioms.  Not Ribet. -/
+def rhs_mod53 :=
+  BealLevel26Foundations.BealFreyMod53Kill.rhs_mod53
+
+def IsFourthMod53 :=
+  BealLevel26Foundations.BealFreyMod53Kill.IsFourthMod53
+
+theorem direct_mod53_kill (B : Nat)
+    (h : ¬ IsFourthMod53 (rhs_mod53 B)) :
+    ¬ ∃ A, Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 :=
+  BealLevel26Foundations.BealFreyMod53Kill.direct_mod53_kill B h
+
+/-- Re-export: 266 named `B ≡ 14` rows. Empty axioms. Not 352. -/
+def step60_b14_killed_mod53 :=
+  BealLevel26Foundations.BealFreyMod53Kill.step60_b14_killed_mod53
+
+theorem step60_b14_killed_mod53_length_eq :
+    step60_b14_killed_mod53.length = 266 :=
+  BealLevel26Foundations.BealFreyMod53Kill.step60_b14_killed_mod53_length
+
+/-- 266 of 352 named `B ≡ 14` rows die by the mod-53
+    fourth-power test.  Empty axioms.  The other 86 stay.
+    `B14_honest` stays the uninhabited `∀` on all 352. -/
+theorem beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
+    (B : Nat) (hB : B ∈ step60_b14_killed_mod53) :
+    ¬ ∃ A, Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 :=
+  BealLevel26Foundations.BealFreyMod53Kill.beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
+    B hB
+
 #check displayed_cubic
 #check bealFreyCubic
 #check beal_frey_curve
@@ -337,6 +378,9 @@ theorem b14_A_search_miss (B A_mod : Nat)
 #check beal_frey_a53_miss_of_eq
 #check beal_frey_a53_miss_B14
 #check b14_A_search_miss
+#check direct_mod53_kill
+#check step60_b14_killed_mod53
+#check beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
 #print axioms displayed_cubic_full_2_torsion
 #print axioms beal_frey_has_full_2_torsion
 #print axioms beal_frey_rewrite
@@ -347,6 +391,8 @@ theorem b14_A_search_miss (B A_mod : Nat)
 #print axioms beal_frey_a53_miss_of_eq
 #print axioms beal_frey_a53_miss_B14
 #print axioms b14_A_search_miss
+#print axioms direct_mod53_kill
+#print axioms beal_4_13_13_gap3_B_le_2M_eliminated_B14_mod53
 
 end BealLevel26Foundations.BealFreyB14
 

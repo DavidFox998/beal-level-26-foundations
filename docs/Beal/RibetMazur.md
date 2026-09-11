@@ -1,3 +1,14 @@
+# v8.81.0 fourth-power non-residue kill modulo 53; 266 of 352 die
+
+266 of the 352 named `B ≡ 14` rows die because
+`(B+3)¹³ − B⁴` is not a fourth power mod 53.
+Empty axioms.  The count is 266, not 287.
+The remaining 86 rows survive this test.
+`B14_honest` stays the uninhabited `∀` on all
+352.  Not Ribet.  Not BCDT.  Not `Classical.em`.
+Chain `ExistsNewformLevel2` stays `0 != 0`.
+No new Beal forall on the full 352.
+
 # v8.80.0 A-mod-53 Euler search; ¬∃ A stays Prop
 
 Euler `a53` of the Beal Frey cubic is

@@ -249,13 +249,34 @@ A custom \texttt{axiom BCDT\_B14} would print as
 \texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_B14\_honest}
 stay Props.  Not \texttt{Classical.em}.
 
+\section{$B\equiv 14$ fourth-power kill modulo $53$}
+If $(B+3)^{13}-B^4$ is not a fourth power in
+$\mathbb{F}_{53}$, there is no $A$ with
+$A^4+B^4=(B+3)^{13}$
+(\texttt{direct\_mod53\_kill}).
+Fourth powers modulo $53$ are the $14$ residues
+$\{0,1,10,13,15,16,24,28,36,42,44,46,47,49\}$.
+On the $352$ named $B\equiv 14$ rows the verified
+count is $266$ killed and $86$ remaining, not $287$.
+\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_B14\_mod53}
+inhabits $\neg\exists A$ on those $266$ named rows;
+\texttt{\#print axioms} empty.
+The remaining $86$ have $(B+3)^{13}-B^4$ a fourth
+power mod $53$, so this test does not kill them.
+\texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated\_B14\_honest}
+stays the uninhabited $\forall$ on all $352$ rows.
+This is the same kind of arithmetic obstruction as
+the mod-$16$ sweep, not BCDT and not Ribet.
+Not \texttt{Classical.em}.
+
 \section{What remains}
 $15/16$ of $B\le 2\text{M}$ is eliminated by mod-$16$ residues.
 The two displayed named rows are eliminated that way.
-$352$ named $B\equiv 14$ rows have an Euler $a_{53}$
-search on the Beal Frey cubic that misses $0,12$
-under the Beal equation;
-those facts do not inhabit $\neg\exists A$.
+$266$ of $352$ named $B\equiv 14$ rows are eliminated by
+fourth-power non-residues modulo $53$.
+The remaining $86$ named $B\equiv 14$ rows still have
+an Euler $a_{53}$ miss under the Beal equation;
+that miss does not inhabit $\neg\exists A$.
 The old \texttt{beal\_4\_13\_13\_gap3\_B\_le\_2M\_eliminated}
 stays \texttt{Classical.em}.
 Full $\forall B$ including $B\equiv 14$, density from the

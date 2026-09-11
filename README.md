@@ -1,8 +1,8 @@
 [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v8.79.0-B14-honest-elim → v8.80.0-B14-A-search-honest
+# Beal Level 26 Foundations — v8.80.0-B14-A-search-honest → v8.81.0-B14-mod53-kill
 
-**v8.80.0-B14-A-search-honest — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v8.81.0-B14-mod53-kill — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
 Track B closed 5983 rows = 4488+5*299 B≤2M pools 50310/50323/50307/50350/50325. Track A: Level 26 dim2 26.2.a.a/b via qExp_26a1_500/qExp_26b1_500 take 500, a53_26a1=0 a53_26b1=12 a443_26a1=21 a443_26b1=-39 by decide, Frey a53(E_196)=-2 a443(E_1500003)=24 by decide Euler, -2≠0,12 mod13 and 24≠21,-39 mod13. kraus_elimination_q_13_level_26 (Level26_Newforms) is a theorem. ribet_mazur_pack_q_13_level_26 is the first inhabited Ribet-Mazur pack (B=196 and B=1500003 only). Displayed exists_newform_level_26_dim2 inhabited (0≠12 at p=53). Displayed frey_mod13_irreducible inhabited at B=196 and B=1500003 (trace miss, not Mazur). Still uninhabited: Chain ExistsNewformLevel2 0≠0, Density/Step kraus ∀, level_lowering_to_26, no new Beal ∀. frey_modular stays Classical.em.
 
@@ -30,7 +30,7 @@ Track B — CLOSED at B≤2.0M:
 - First news: (1500003,1500006) p=443 pool 50310 Step56, (1900001,1900004) p=53 pool 50325 Step60
 - Witnesses: S≡0 mod p and S≢0 mod p*p via decide on ZMod p / numeral p*p (not native_decide), unfolding S_val is huge so Nat-modulo of Phi13 not used
 - beal_4_13_13_gap3_B_le_2M_eliminated_mod16: honest B≤2M with B%16≠14 via fourth powers mod 16; empty axioms; B≡14 survives as a Beal negation
-- 352 named Step60 B≡14 rows: recorded a53 ∈ {-2,-10,1,6,14} miss 0/12; not Ribet; not ¬∃ A
+- 352 named Step60 B≡14 rows: recorded a53 ∈ {-2,-10,1,6,14} miss 0/12; not Ribet; 266 of those 352 die by the mod-53 fourth-power test (empty axioms); 86 survive; B14_honest stays the uninhabited ∀
 - beal_4_13_13_gap3_B_le_2M_eliminated_full: displayed [196, 1500003] via mod 16; empty axioms; not 5983 numerals
 - beal_4_13_13_gap3_B_le_2M_eliminated as Classical.em on small-prime ZMod predicate, not full ∀ B≤2M scan, not Kraus, not Beal ∀
 
@@ -96,6 +96,7 @@ Releases:
 - v8.72.1-doi-badge inserts real Zenodo DOI `10.5281/zenodo.22698257` from the v8.70.0 mint
 - v8.73.0-modularity-exists-level2 displayed S2(26) dim2 via 0≠12 at p=53; Chain ExistsNewformLevel2 stays 0≠0; DOI 10.5281/zenodo.22698257 still cites v8.69.0
 - v8.74.0-frey-irreducible-mod13 displayed frey_mod13_irreducible at B=196 and B=1500003; frey_modular Classical.em; level_lowering_to_26 stays Prop
+- v8.81.0-B14-mod53-kill 266 of 352 named B≡14 rows die because (B+3)^13-B^4 is not a fourth power mod 53; empty axioms; 86 survive; B14_honest stays Prop; not Ribet
 - v8.80.0-B14-A-search-honest Euler `a53` of Beal Frey cubic searched over 14 fourth-power residues mod 53; miss under Beal equation; BCDT / B14_honest stay Prop; not `¬∃ A` for 352
 - v8.79.0-B14-honest-elim Beal Frey cubic `x(x-A^4)(x+B^4)` distinguished from displayed cubic; BCDT / level lowering / B14_honest stay Prop; full_honest stays 2-element mod16; not Ribet; not `¬∃ A` for 352
 - v8.78.0-B14-level-lowering-honest `step60_b14_list` 352 numerals; `frey_modular_B14` is displayed cubic 2-torsion not Wiles; level lowering stays Prop; B14_honest stays uninhabited ∀; full_honest is mod16 on [196, 1500003]
@@ -770,7 +771,7 @@ PARI 2-Descent Certificates image
 Still not `∀ ℕ`. No `False.elim`. no `False.elim`.
 `BealExponent13_Iter_Package` `d3cf8a7` `1d0044e`.
 
-HEAD also has Track B `v8.80.0-B14-A-search-honest`
+HEAD also has Track B `v8.81.0-B14-mod53-kill`
 (RibetMazur pack from v8.69.0 Int-mod-13
 misses at `B = 196` and `B = 1500003`;
 Density/Step `kraus_elimination_q_13_level_26`
