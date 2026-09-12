@@ -27,3 +27,6 @@ the named implication (not inhabited).
 This is not a Mathlib Matveev theorem and
 does not inhabit an unconditional gap-3
 forall. Does not use sorry.
+
+Zenodo DOI `10.5281/zenodo.22729309`
+(concept `10.5281/zenodo.22379293`).

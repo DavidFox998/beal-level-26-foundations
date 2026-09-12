@@ -10,10 +10,12 @@ Latest tag `v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization`.
 `c4 = 16 * c4Paren`. `baker_bound_gap3` stays
 uninhabited def Prop. Tate / Baker / v14 J0 /
 v15 B0 / v17 reduction Lean 0 lines vs v18
-`430189e` / `10.5281/zenodo.22729129`.
+`430189e`. Zenodo DOI
+`10.5281/zenodo.22729309`
+(concept `10.5281/zenodo.22379293`;
+previous v18 `10.5281/zenodo.22729129`).
 Most current as of 2026-09-12, **not** a
-final Beal proof. Series concept
-`10.5281/zenodo.22379293`.
+final Beal proof.
 Honesty lock: Tate 0 since v11, Baker 0
 since v12, v14 displayed certs unchanged,
 `baker_bound_gap3` uninhabited def Prop,

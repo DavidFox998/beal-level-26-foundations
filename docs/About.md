@@ -8,9 +8,10 @@ with `matveev_C1_pos` / `matveev_explicit_gap3_constants_hold`
 by `decide` (no axioms). `baker_bound_gap3` stays
 uninhabited def Prop. Tate / Baker / v14 J0 /
 v15 B0 / v17 reduction Lean 0 lines vs v18
-`430189e`. Previous v18 DOI
-`10.5281/zenodo.22729129`
-(concept `10.5281/zenodo.22379293`).
+`430189e`. Zenodo DOI
+`10.5281/zenodo.22729309`
+(concept `10.5281/zenodo.22379293`;
+previous v18 `10.5281/zenodo.22729129`).
 Honesty lock: `baker_bound_gap3` stays Prop;
 `baker_B0_certificate_holds` and
 `baker_reduction_certificate_holds` decide,
