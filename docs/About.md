@@ -11,9 +11,9 @@ an uninhabited def Prop. Tate / Baker /
 v14 J0 / v15 B0 / v17 LLL / v19 constants /
 v20 Bugeaud LLL / v21 inequality / v22
 Real skeleton Lean 0 lines vs v22
-`1db061a`. Previous v22 DOI
-`10.5281/zenodo.22729980`
-(concept `10.5281/zenodo.22379293`).
+`1db061a`. Zenodo DOI `10.5281/zenodo.22730338`
+(concept `10.5281/zenodo.22379293`;
+previous v22 `10.5281/zenodo.22729980`).
 Honesty lock: `baker_bound_gap3` stays Prop;
 `matveev_height_B0_gt_onee12` decide,
 no axioms; main pack

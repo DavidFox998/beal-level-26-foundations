@@ -2,6 +2,9 @@
 
 Lean: [`lean/BealLevel26Foundations/Beal/FullProof/BealBakerBoundGap3.lean`](../../lean/BealLevel26Foundations/Beal/FullProof/BealBakerBoundGap3.lean)
 
+Zenodo DOI [`10.5281/zenodo.22730338`](https://doi.org/10.5281/zenodo.22730338)
+at tag commit `c44f161` (concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293)).
+
 ## What is kernel-real here
 
 - `matveev_height_B0_gt_onee12` : `10^12 < height_B0` by `decide`, no axioms.
