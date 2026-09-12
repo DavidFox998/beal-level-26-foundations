@@ -24,6 +24,26 @@ import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
 import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 
 /-!
+# FullProof track (v11.0.0)
+
+Defined packed Tate conductor:
+`tateConductor A B = 2^{f₂} * rad(AB(B+3)) * 13`
+with `f₂ = conductorExponentTate2`.
+`tate_conductor_bound_rhs` is the same Nat.
+`frey_tate_conductor` is that Nat (not a Prop).
+`frey_tate_conductor_inhabited` proves
+`tateConductor ∣ 2⁵ * rad * 13` with
+`v_q ≤ 1` odd and `v₂ ≤ 5`.
+Axioms `[propext, Classical.choice, Quot.sound]`.
+Not Mathlib `N(E)`.
+`conductor_86` stays Prop
+(`63982 = 2*31991` proves `N` does not
+divide `2⁵*3*13`; we use `2⁵*rad*13`).
+`B14_honest` stays Prop; `B ≤ 1e6` is
+inhabited via the Baker chunks.
+`baker_bound_gap3` stays Prop (Bugeaud).
+Baker census file unchanged.
+
 # FullProof track (v10.0.0)
 
 Paper archive of the v9.4.0 census and

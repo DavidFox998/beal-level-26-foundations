@@ -799,6 +799,19 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v11.0.0-Tate-N-def — DONE (tateConductor = 2^{f2}*rad*13; frey_tate_conductor is that Nat; frey_tate_conductor_inhabited proves tateConductor | 2^5*rad*13 with v_q<=1 odd and v2<=5; baker_bound_gap3 / conductor_86 / B14_honest stay Prop; B<=1e6 inhabited via Baker chunks; Baker file unchanged; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus ∀ stays uninhabited; arrow stays a Prop)
+
+Lean change.  File
+`BealFreyTateConductor.lean`.
+Does **not** inhabit `baker_bound_gap3`.
+Does **not** inhabit `conductor_86`.
+Does **not** inhabit `B14_honest`.
+Does **not** identify `|Δ|` with Tate `N(E)`.
+Does **not** add `axiom BCDT_B14`.
+Does **not** touch `BealGap3BakerUpperBound.lean`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No unconditional Beal `∀`.
+
 ### v10.0.0-paper-B14-Baker-1e6-DOI — DONE (paper archive of v9.4.0 census 62500 / 25 chunks, Baker-conditional forall B, Tate bound 2^5*rad*13; archives math DOI 10.5281/zenodo.22712897 and paper DOI 10.5281/zenodo.22713047; baker_bound_gap3 / frey_tate_conductor / conductor_86 / B14_honest stay Prop; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus ∀ stays uninhabited; arrow stays a Prop)
 
 Paper / DOI write.  Keeps

@@ -1,3 +1,15 @@
+# FINAL v11.0.0 — defined packed Tate conductor
+
+Latest tag `v11.0.0-Tate-N-def`.
+`tateConductor A B = 2^{f₂} * rad * 13`.
+`frey_tate_conductor` is that Nat, not a Prop.
+`frey_tate_conductor_inhabited` proves the
+divisibility `∣ 2⁵ * rad * 13` with
+`v_q ≤ 1` odd and `v₂ ≤ 5`.
+`baker_bound_gap3`, `conductor_86`,
+`B14_honest` stay Prop.
+Baker census file unchanged.
+
 # FINAL v10.0.0 — paper archive B14 + Baker 1e6 + Tate DOI
 
 Latest tag `v10.0.0-paper-B14-Baker-1e6-DOI`.

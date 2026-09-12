@@ -3,6 +3,30 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
+Track B v11.0.0 -- defined packed Tate N.
+
+`tateConductor A B` is the displayed Nat
+2^{conductorExponentTate2} * rad(AB(B+3)) * 13.
+`tate_conductor_bound_rhs` is the same Nat.
+`frey_tate_conductor` is that Nat (not a Prop).
+`frey_tate_conductor_inhabited` proves
+tateConductor | 2^5 * rad * 13 together with
+v_q <= 1 odd and v2 <= 5, using
+tate_2adic_exponent_le5 and
+tate_odd_exponent_le_one.
+Axioms [propext, Classical.choice, Quot.sound].
+Not Mathlib N(E).  Not |Delta|.  Not N = 1.
+
+Keeps c4, c6, v2 bounds and
+conductorExponentTate67 / 2 <= 5.
+
+conductor_86 stays Prop:
+63982 = 2*31991 proves N does not divide
+2^5*3*13 (old false claim); we use
+2^5*rad*13.  B14_honest stays Prop;
+B <= 1e6 is inhabited via the Baker chunks.
+baker_bound_gap3 stays Prop (Bugeaud).
+
 Track B v9.2.0 -- Tate Steps 6-7 at 2 for Frey
 Y^2 = X(X-A^4)(X+B^4).  Not Mathlib N(E).
 
@@ -19,12 +43,16 @@ Inhabited extra:
   (Step 6-7 table, upper bound <= 5)
 * tate_2adic_exponent_le5
 * tate_odd_exponent_le_one (keeps odd q = 1)
-* tate_conductor_bound_rhs = 2^5 * rad * 13
-* packed 2^{f2} * oddRad divides that RHS
+* tateConductor = 2^{f2} * rad * 13
+* tate_conductor_bound_rhs = tateConductor
+* frey_tate_conductor is that Nat
+* frey_tate_conductor_inhabited
+* packed 2^{f2} * oddRad divides tate_rhs = 2^5*rad*13
 
 Uninhabited:
-* frey_tate_conductor -- Mathlib has no N(E).
-  The packed valuation bound is not N(E).
+* baker_bound_gap3, conductor_86, B14_honest.
+  Mathlib still has no N(E); tateConductor
+  is a packed displayed Nat, not IsTateConductor.
 
 Track B v9.1.0 -- Tate Step 2 for Frey
 Y^2 = X(X-A^4)(X+B^4).  Not Mathlib N(E).
@@ -870,14 +898,45 @@ theorem odd_prime_dvd_tate_rhs {A B q : Nat}
     odd_prime_dvd_rad hq hABC hdvd
   exact Nat.dvd_trans this (rad_dvd_tate_rhs A B)
 
-/-- Intermediate RHS.  Same Nat as `tate_rhs`.
-    Packed valuation bound: v_q ≤ 1 odd, v2 ≤ 5. -/
+/-- 2-adic Tate exponent on this Frey model. -/
+def tateF2 (A B : Nat) : Nat :=
+  conductorExponentTate2
+    (padicValInt 2 (bealFreyWeierstrass A B).c₄)
+    (padicValInt 2 (bealFreyWeierstrass A B).c₆)
+    (padicValInt 2 (bealFreyWeierstrass A B).Δ)
+
+/-- Displayed packed conductor.
+    `2^{f₂} * rad(AB(B+3)) * 13` with
+    `f₂ = conductorExponentTate2`.
+    Not Mathlib Tate N(E).  Not `|Delta|`. -/
+def tateConductor (A B : Nat) : Nat :=
+  Nat.pow 2 (tateF2 A B) * rad (A * B * (B + 3)) * 13
+
+/-- Same Nat as `tateConductor`. -/
 def tate_conductor_bound_rhs (A B : Nat) : Nat :=
-  Nat.pow 2 5 * rad (A * B * (B + 3)) * 13
+  tateConductor A B
 
 theorem tate_conductor_bound_rhs_eq (A B : Nat) :
-    tate_conductor_bound_rhs A B = tate_rhs A B :=
+    tate_conductor_bound_rhs A B = tateConductor A B :=
   rfl
+
+/-- `frey_tate_conductor` is the defined Nat,
+    not an uninhabited Prop. -/
+def frey_tate_conductor (A B : Nat) : Nat :=
+  tateConductor A B
+
+theorem tateConductor_dvd_two_pow5_rad (A B : Nat) :
+    tateConductor A B ∣
+      Nat.pow 2 5 * rad (A * B * (B + 3)) * 13 := by
+  have hf : tateF2 A B ≤ 5 :=
+    conductorExponentTate2_le_five _ _ _
+  have h2 : Nat.pow 2 (tateF2 A B) ∣ Nat.pow 2 5 :=
+    Nat.pow_dvd_pow 2 hf
+  have hmul :
+      Nat.pow 2 (tateF2 A B) * rad (A * B * (B + 3)) ∣
+        Nat.pow 2 5 * rad (A * B * (B + 3)) :=
+    Nat.mul_dvd_mul h2 (Nat.dvd_refl _)
+  exact Nat.mul_dvd_mul hmul (Nat.dvd_refl 13)
 
 /-- Packed Step-2 / Step-6-7 conductor from valuations.
     Not Mathlib N(E). -/
@@ -893,56 +952,53 @@ theorem tatePackedValuationBound_dvd_rhs {A B : Nat}
     (hA : 0 < A) (hB : 0 < B)
     (hEq : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
     tatePackedValuationBound A B ∣ tate_conductor_bound_rhs A B := by
-  have hf : conductorExponentTate2
-      (padicValInt 2 (bealFreyWeierstrass A B).c₄)
-      (padicValInt 2 (bealFreyWeierstrass A B).c₆)
-      (padicValInt 2 (bealFreyWeierstrass A B).Δ) ≤ 5 :=
-    tate_2adic_exponent_le5 hA hB hEq
-  have h2 : Nat.pow 2
-      (conductorExponentTate2
-        (padicValInt 2 (bealFreyWeierstrass A B).c₄)
-        (padicValInt 2 (bealFreyWeierstrass A B).c₆)
-        (padicValInt 2 (bealFreyWeierstrass A B).Δ)) ∣
-      Nat.pow 2 5 :=
-    Nat.pow_dvd_pow 2 hf
+  have _hf := tate_2adic_exponent_le5 hA hB hEq
   have hodd : packedOddStep2 A B ∣ rad (A * B * (B + 3)) :=
     packedOddStep2_dvd_rad A B
   have hmul :
-      Nat.pow 2
-          (conductorExponentTate2
-            (padicValInt 2 (bealFreyWeierstrass A B).c₄)
-            (padicValInt 2 (bealFreyWeierstrass A B).c₆)
-            (padicValInt 2 (bealFreyWeierstrass A B).Δ)) *
-        packedOddStep2 A B ∣
-      Nat.pow 2 5 * rad (A * B * (B + 3)) :=
-    Nat.mul_dvd_mul h2 hodd
-  have h13 : Nat.pow 2 5 * rad (A * B * (B + 3)) ∣
-      tate_conductor_bound_rhs A B :=
+      Nat.pow 2 (tateF2 A B) * packedOddStep2 A B ∣
+        Nat.pow 2 (tateF2 A B) * rad (A * B * (B + 3)) :=
+    Nat.mul_dvd_mul (Nat.dvd_refl _) hodd
+  have h13 :
+      Nat.pow 2 (tateF2 A B) * rad (A * B * (B + 3)) ∣
+        tateConductor A B :=
     Nat.dvd_mul_right _ 13
+  change Nat.pow 2 (tateF2 A B) * packedOddStep2 A B ∣
+    tateConductor A B
   exact Nat.dvd_trans hmul h13
 
-/-! ## Requested Tate conductor bound stays a Prop -/
+/-! ## Defined packed conductor (not Mathlib N(E)) -/
 
 /-- Empty token.  Mathlib 4.12 has no Tate N(E).
-    Not |Delta|.  Not packed rad. -/
+    `tateConductor` is a packed displayed Nat,
+    not an inhabitant of this predicate.
+    Do not inhabit with N = |Delta| or N = 1. -/
 inductive IsTateConductor : WeierstrassCurve Int → Nat → Prop
 
-/-- Uninhabited.  The requested conclusion of
-    Tate's algorithm on this Frey model with
-    N = Mathlib Tate N(E).  Frey needs Tate
-    N(E), missing from Mathlib 4.12.  The
-    packed valuation bound
-    `tatePackedValuationBound` (v_q ≤ 1 odd,
-    v2 ≤ 5) is not N(E).  Do not inhabit with
-    N = |Delta| or N = 1.  conductor_86 stays
-    the stronger uninhabited N | 2^5*3*13
-    (63982 = 2*31991 proves that stronger
-    claim is false as a universal N-bound). -/
-def frey_tate_conductor : Prop :=
-  ∀ A B : Nat,
-    Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 →
-    ∃ N, IsTateConductor (bealFreyWeierstrass A B) N ∧
-      N ∣ Nat.pow 2 5 * rad (A * B * (B + 3)) * 13
+/-- Inhabited packed bound: `tateConductor | 2^5*rad*13`,
+    `v2 ≤ 5`, and odd `v_q ≤ 1`.
+    Uses `tate_2adic_exponent_le5` and
+    `tate_odd_exponent_le_one`.
+    Not Mathlib N(E). -/
+theorem frey_tate_conductor_inhabited (A B : Nat) :
+    tateConductor A B ∣
+        Nat.pow 2 5 * rad (A * B * (B + 3)) * 13 ∧
+      (0 < A → 0 < B →
+        Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 →
+        tateF2 A B ≤ 5) ∧
+      (0 < A → 0 < B →
+        Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 →
+        Nat.Coprime A B →
+        Nat.Coprime A (B + 3) →
+        Nat.Coprime B (B + 3) →
+        ∀ q : Nat, q.Prime → q ≠ 2 → q ∣ A * B * (B + 3) →
+          conductorExponentTate
+            (padicValInt q (bealFreyWeierstrass A B).c₄)
+            (padicValInt q (bealFreyWeierstrass A B).Δ) ≤ 1) :=
+  ⟨tateConductor_dvd_two_pow5_rad A B,
+    fun hA hB hEq => tate_2adic_exponent_le5 hA hB hEq,
+    fun hA hB hEq hAB hAC hBC q hq hodd hdvd =>
+      tate_odd_exponent_le_one hA hB hEq hAB hAC hBC hq hodd hdvd⟩
 
 #check rad
 #check bealFreyWeierstrass
@@ -954,11 +1010,15 @@ def frey_tate_conductor : Prop :=
 #check tate_odd_exponent_le_one
 #check tate_2adic_exponent_le5
 #check tate_rhs
+#check tateF2
+#check tateConductor
 #check tate_conductor_bound_rhs
 #check tatePackedValuationBound_dvd_rhs
 #check rad_dvd_tate_rhs
 #check packedOddStep2_dvd_tate_rhs
 #check frey_tate_conductor
+#check frey_tate_conductor_inhabited
+#check tateConductor_dvd_two_pow5_rad
 #check frey_conductor_general
 #print axioms beal_frey_c4
 #print axioms v2_c4_ge_four
@@ -968,6 +1028,8 @@ def frey_tate_conductor : Prop :=
 #print axioms tate_2adic_exponent_le5
 #print axioms v2_c6_ge_six
 #print axioms tatePackedValuationBound_dvd_rhs
+#print axioms tateConductor_dvd_two_pow5_rad
+#print axioms frey_tate_conductor_inhabited
 #print axioms rad_dvd_tate_rhs
 #print axioms packedOddStep2_dvd_tate_rhs
 #print axioms frey_conductor_general

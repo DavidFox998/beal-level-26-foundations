@@ -462,11 +462,10 @@ theorem irreducible_86 (A B : Nat)
   irreducible_of_a53_miss_not_0_12
     (beal_frey_a53_miss_86 A B hMem hEq).2
 
-/-- Uninhabited.  `beal_frey_curve` is `Int → Int`, not a
-    Mathlib elliptic curve, so there is no `.conductor`.
-    Survivor `63982 = 2*31991` proves `N` does not
-    divide `2^5 * 3 * 13`.  Zsig pools do not close
-    that stronger bound.  Do not inhabit. -/
+/-- Uninhabited.  `63982 = 2*31991` proves `N`
+    does not divide `2^5 * 3 * 13` (old false
+    claim).  We use `2^5 * rad * 13` as the
+    packed Tate bound.  Do not inhabit. -/
 def conductor_86 : Prop :=
   FreyModularity.level_lowering_to_26
 

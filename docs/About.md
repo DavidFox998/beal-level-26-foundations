@@ -1,6 +1,15 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v10.0.0-paper-B14-Baker-1e6-DOI`
+Latest tag / HEAD: `v11.0.0-Tate-N-def`
+`tateConductor A B = 2^{f₂} * rad(AB(B+3)) * 13`.
+`frey_tate_conductor` is that Nat.
+`frey_tate_conductor_inhabited` proves
+`tateConductor ∣ 2⁵ * rad * 13` with
+`v_q ≤ 1` odd and `v₂ ≤ 5`.
+`baker_bound_gap3`, `conductor_86`,
+`B14_honest` stay Prop.  `B ≤ 1e6` is
+inhabited via the Baker chunks.
+Base: `v10.0.0-paper-B14-Baker-1e6-DOI`
 Paper archive of the v9.4.0 census (62500
 values / 25 chunks), Baker-conditional
 `∀ B`, and Tate bound `2⁵ * rad * 13`.

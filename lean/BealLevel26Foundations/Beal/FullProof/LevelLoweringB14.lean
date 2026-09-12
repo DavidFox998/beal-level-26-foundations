@@ -139,7 +139,9 @@ def level_lowering_to_26_B14 : Prop :=
 
 /-- Uninhabited.  A recorded a₅₃ miss does
 not prove `¬ ∃ A`.  Residue cover is not
-a Lean `∀ B ≤ 2M`.  Do not inhabit. -/
+a Lean `∀ B ≤ 2M`.  `B ≤ 1e6` is inhabited
+via the Baker chunks (`allKilled_1e6`).
+Do not inhabit this 352-row pack. -/
 def beal_4_13_13_gap3_B_le_2M_eliminated_B14_honest : Prop :=
   ∀ B : Nat, B ∈ step60_b14_list →
     ¬ ∃ A : Nat,

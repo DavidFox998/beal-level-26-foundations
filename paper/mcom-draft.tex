@@ -390,6 +390,8 @@ $|\Delta|=2^4\cdot N_0$ with $N_0\mid (ABC)^{26}\cdot 13$
 (axioms \texttt{propext}, \texttt{Quot.sound});
 that is not Tate $N(E)$.
 % frey_tate_conductor
+% frey_tate_conductor_inhabited
+% tateConductor
 % tate_2adic_exponent_le5
 % tate_conductor_bound_rhs
 Tate Step 2 at an odd prime of $ABC$ gives
@@ -400,16 +402,21 @@ Tate Steps 6--7 at $2$ give
 \texttt{tate\_2adic\_exponent\_le5}
 ($v_2(c_6)$ from $A,B$ parity;
 local exponent $\le 5$).
-The packed intermediate
-\texttt{tate\_conductor\_bound\_rhs}
-is $2^5\mathrm{rad}(AB(B+3))\cdot 13$
+The defined packed conductor
+\texttt{tateConductor}
+is $2^{f_2}\mathrm{rad}(AB(B+3))\cdot 13$
+with $f_2=\texttt{conductorExponentTate2}$;
+\texttt{tate\_conductor\_bound\_rhs} is the
+same Nat.
+\texttt{frey\_tate\_conductor\_inhabited}
+proves $\texttt{tateConductor}\mid 2^5\mathrm{rad}\cdot 13$
 with $v_q\le 1$ odd and $v_2\le 5$.
-The full bound $N\mid 2^5\mathrm{rad}(AB(B+3))\cdot 13$
-stays the uninhabited Prop
-\texttt{frey\_tate\_conductor}.
-Mathlib 4.12 has no Tate $N(E)$.
+This is a packed displayed Nat, not Mathlib
+Tate $N(E)$.
 \texttt{conductor\_86} stays the stronger
-uninhabited $N\mid 2^5\cdot 3\cdot 13$.
+uninhabited $N\mid 2^5\cdot 3\cdot 13$
+($63982=2\cdot 31991$ proves that old claim
+is false; we use $2^5\mathrm{rad}\cdot 13$).
 
 $B>2\mathrm{M}$ gap $3$ is the open Prop
 \texttt{baker\_bound\_gap3}

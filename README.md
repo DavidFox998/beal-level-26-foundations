@@ -1,8 +1,15 @@
 [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v9.4.0-chunked-1e6-final → v10.0.0-paper-B14-Baker-1e6-DOI
+# Beal Level 26 Foundations — v10.0.0-paper-B14-Baker-1e6-DOI → v11.0.0-Tate-N-def
 
-**v10.0.0-paper-B14-Baker-1e6-DOI — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+**v11.0.0-Tate-N-def — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+
+Defined packed Tate conductor:
+- `tateConductor A B = 2^{f₂} * rad(AB(B+3)) * 13` with `f₂ = conductorExponentTate2`
+- `tate_conductor_bound_rhs` is the same Nat; `frey_tate_conductor` is that Nat (not a Prop)
+- `frey_tate_conductor_inhabited`: `tateConductor ∣ 2⁵ * rad * 13`, odd `v_q ≤ 1`, `v₂ ≤ 5`, using `tate_2adic_exponent_le5` and `tate_odd_exponent_le_one` (`[propext, Classical.choice, Quot.sound]`)
+- Still Props: `baker_bound_gap3` (Bugeaud), `conductor_86` (`63982 = 2*31991` proves `N` does not divide `2⁵*3*13`; we use `2⁵*rad*13`), `B14_honest` (`B ≤ 1e6` inhabited via Baker chunks)
+- Baker census file unchanged (`allKilled_chunk_0..24`, `allKilled_1e6`, `baker_conditional_gap3_full`)
 
 Paper archive of the v9.4.0 census and v9.2.0 Tate bound:
 - Census: 62500 values `B ≡ 14` (mod 16) up to `10⁶` in 25 kernel chunks `allKilled_chunk_0` .. `allKilled_chunk_24`, conjoined as `allKilled_62500` / `allKilled_1e6`
@@ -10,7 +17,7 @@ Paper archive of the v9.4.0 census and v9.2.0 Tate bound:
 - Tate bound: `tate_conductor_bound_rhs = 2⁵ * rad * 13` (`c₄ = 16*(A⁸+A⁴B⁴+B⁸)`, `v₂(c₄) ≥ 4`, `v₂(c₆) ≥ 6`, `conductorExponentTate67/2 ≤ 5`, `tate_2adic_exponent_le5`, `tate_odd_exponent_le_one`; axioms `[propext, Classical.choice, Quot.sound]`)
 - Archive Zenodo DOI: math [`10.5281/zenodo.22712897`](https://doi.org/10.5281/zenodo.22712897) (`v8.84.0-B14-modq-kill`), paper [`10.5281/zenodo.22713047`](https://doi.org/10.5281/zenodo.22713047) (`v8.85.0-paper-B14-full`). Concept [`10.5281/zenodo.22272382`](https://doi.org/10.5281/zenodo.22272382). Kraus [`10.5281/zenodo.22698257`](https://doi.org/10.5281/zenodo.22698257).
 
-`baker_bound_gap3`, `frey_tate_conductor`, `conductor_86`, `B14_honest` stay uninhabited Props.
+`baker_bound_gap3`, `conductor_86`, `B14_honest` stay uninhabited Props. `frey_tate_conductor` is now the defined Nat.
 
 Track B closed 5983 rows = 4488+5*299 B≤2M pools 50310/50323/50307/50350/50325. Track A: Level 26 dim2 26.2.a.a/b via qExp_26a1_500/qExp_26b1_500 take 500, a53_26a1=0 a53_26b1=12 a443_26a1=21 a443_26b1=-39 by decide, Frey a53(E_196)=-2 a443(E_1500003)=24 by decide Euler, -2≠0,12 mod13 and 24≠21,-39 mod13. kraus_elimination_q_13_level_26 (Level26_Newforms) is a theorem. ribet_mazur_pack_q_13_level_26 is the first inhabited Ribet-Mazur pack (B=196 and B=1500003 only). Displayed exists_newform_level_26_dim2 inhabited (0≠12 at p=53). Displayed frey_mod13_irreducible inhabited at B=196 and B=1500003 (trace miss, not Mazur). Still uninhabited: Chain ExistsNewformLevel2 0≠0, Density/Step kraus ∀, level_lowering_to_26, no new Beal ∀. frey_modular stays Classical.em.
 
@@ -59,6 +66,7 @@ Track A — Level 26:
 - beal_4_13_13_gap3_B_196_eliminated / beal_4_13_13_gap3_B_1500003_eliminated: instances of the mod-16 kill (`4 ≠ 14` and odd). Not Ribet, not Classical.em.
 
 Inhabited:
+- tateConductor / frey_tate_conductor / frey_tate_conductor_inhabited (packed 2^{f₂}*rad*13 divides 2⁵*rad*13; odd v_q≤1, v₂≤5; not Mathlib N(E))
 - allKilled_chunk_0 .. allKilled_chunk_24 / allKilled_62500 / allKilled_1e6 (25 kernel slices of the 62500 values B≡14 mod 16 up to 10⁶; conjunction)
 - baker_conditional_gap3_full (conditional on baker_bound_gap3; not unconditional Beal ∀)
 - newform_26_a_qexp / newform_26_b_qexp match ledger
@@ -91,7 +99,7 @@ Still uninhabited (honesty lock):
 - beal_4_13_13_gap3_B_le_2M_eliminated_86 (86-row ∀)
 - beal_gap3_B_gt_2M_eliminated (B > 2M ∀; 5983 pools do not produce q > 2M)
 - baker_bound_gap3 (Baker needs Bugeaud, not in Mathlib 4.12; B0=10^6; sorry not used)
-- frey_tate_conductor (Tate N(E) missing from Mathlib 4.12)
+- frey_tate_conductor is now the defined Nat `tateConductor` (packed, not Mathlib N(E))
 - exists_zsig_q_gt_2M_dvd_C13_sub_B4 (needs Baker, not Zsig)
 - No new Beal ∀
 
@@ -111,6 +119,7 @@ Releases:
 - v8.72.1-doi-badge inserts real Zenodo DOI `10.5281/zenodo.22698257` from the v8.70.0 mint
 - v8.73.0-modularity-exists-level2 displayed S2(26) dim2 via 0≠12 at p=53; Chain ExistsNewformLevel2 stays 0≠0; DOI 10.5281/zenodo.22698257 still cites v8.69.0
 - v8.74.0-frey-irreducible-mod13 displayed frey_mod13_irreducible at B=196 and B=1500003; frey_modular Classical.em; level_lowering_to_26 stays Prop
+- v11.0.0-Tate-N-def `tateConductor = 2^{f₂}*rad*13`; `frey_tate_conductor` is that Nat; `frey_tate_conductor_inhabited` proves `∣ 2⁵*rad*13` with odd `v_q ≤ 1` and `v₂ ≤ 5`; `baker_bound_gap3` / `conductor_86` / `B14_honest` stay Prop; Baker file unchanged
 - v10.0.0-paper-B14-Baker-1e6-DOI paper archive of the v9.4.0 census (62500 / 25 chunks), Baker conditional `∀ B`, and Tate bound `2⁵*rad*13`; archives math DOI `10.5281/zenodo.22712897` and paper DOI `10.5281/zenodo.22713047`; `baker_bound_gap3` / `frey_tate_conductor` / `conductor_86` / `B14_honest` stay Prop
 - v9.4.0-chunked-1e6-final `allKilled_chunk_0` .. `allKilled_chunk_24`: each `allKilled start 2500 = true` by rfl / kernel decide on one 2500-slice of the 62500 values `B ≡ 14` (mod 16) up to `10⁶`; `allKilled_62500` / `allKilled_1e6` are the conjunction; `baker_conditional_gap3_full` stays inhabited; `baker_bound_gap3` stays Prop (Baker needs Bugeaud, not in Mathlib 4.12); `frey_tate_conductor` stays Prop (Tate `N(E)` missing); `conductor_86` stays Prop (`63982 = 2*31991` proves `N` does not divide `2^5*3*13`); `B14_honest` stays Prop
 - v9.3.0-Baker-conditional-gap3-full `baker_conditional_gap3_full`: `baker_bound_gap3 → ∀ B, ¬∃ A`; `B ≤ 10⁶` by the expanded residue cover; `B > 10⁶` by the Baker premise; `baker_bound_gap3` stays Prop; Tate 2-adic lemmas stay; `frey_tate_conductor` / Zsig Props / `conductor_86` / `B14_honest` stay Prop
@@ -799,7 +808,7 @@ PARI 2-Descent Certificates image
 Still not `∀ ℕ`. No `False.elim`. no `False.elim`.
 `BealExponent13_Iter_Package` `d3cf8a7` `1d0044e`.
 
-HEAD also has Track B `v10.0.0-paper-B14-Baker-1e6-DOI`
+HEAD also has Track B `v11.0.0-Tate-N-def`
 (RibetMazur pack from v8.69.0 Int-mod-13
 misses at `B = 196` and `B = 1500003`;
 Density/Step `kraus_elimination_q_13_level_26`

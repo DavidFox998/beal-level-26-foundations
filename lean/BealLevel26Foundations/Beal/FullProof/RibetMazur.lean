@@ -5603,10 +5603,31 @@ theorem packedOddStep2_dvd_tate_rhs (A B : Nat) :
       tate_rhs A B :=
   BealLevel26Foundations.BealFreyTateConductor.packedOddStep2_dvd_tate_rhs A B
 
-/-- Uninhabited.  Mathlib 4.12 has no Tate `N(E)`.
-    Step 2 does not finish at 2.  Not `|Δ|`. -/
-def frey_tate_conductor : Prop :=
+/-- Defined packed conductor.  Same Nat as `tateConductor`.
+    Not Mathlib `N(E)`. -/
+def tateConductor :=
+  BealLevel26Foundations.BealFreyTateConductor.tateConductor
+
+def frey_tate_conductor :=
   BealLevel26Foundations.BealFreyTateConductor.frey_tate_conductor
+
+theorem frey_tate_conductor_inhabited (A B : Nat) :
+    tateConductor A B ∣
+        Nat.pow 2 5 * rad (A * B * (B + 3)) * 13 ∧
+      (0 < A → 0 < B →
+        Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 →
+        BealLevel26Foundations.BealFreyTateConductor.tateF2 A B ≤ 5) ∧
+      (0 < A → 0 < B →
+        Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 →
+        Nat.Coprime A B →
+        Nat.Coprime A (B + 3) →
+        Nat.Coprime B (B + 3) →
+        ∀ q : Nat, q.Prime → q ≠ 2 → q ∣ A * B * (B + 3) →
+          BealLevel26Foundations.BealFreyTateConductor.conductorExponentTate
+            (padicValInt q (bealFreyWeierstrass A B).c₄)
+            (padicValInt q (bealFreyWeierstrass A B).Δ) ≤ 1) :=
+  BealLevel26Foundations.BealFreyTateConductor.frey_tate_conductor_inhabited
+    A B
 
 /-! ## v9.2.0 — Tate Steps 6-7 at 2 -/
 
@@ -6586,6 +6607,8 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check rad_dvd_tate_rhs
 #check packedOddStep2_dvd_tate_rhs
 #check frey_tate_conductor
+#check tateConductor
+#check frey_tate_conductor_inhabited
 #check tate_odd_exponent_le_one
 #check tate_2adic_exponent_le5
 #check tate_conductor_bound_rhs
@@ -7111,6 +7134,7 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms packedOddStep2_dvd_tate_rhs
 #print axioms tate_odd_exponent_le_one
 #print axioms tate_2adic_exponent_le5
+#print axioms frey_tate_conductor_inhabited
 #print axioms tatePackedValuationBound_dvd_rhs
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur
