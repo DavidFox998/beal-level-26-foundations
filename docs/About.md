@@ -1,6 +1,26 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v22.0.0-Beal-44-13-Level-26-Matveev-Inequality-Real`
+Latest tag / HEAD: `v23.0.0-Beal-44-13-Level-26-Matveev-C-Exp-Bound-Compare`
+Most current as of 2026-09-12, **not** final.
+`matveev_C_exp_bound_lt_neg_onee12` is
+`C_exp_bound < -10^12`.
+`matveev_log_form_ne_zero_of_gap3` is
+the Real form nonzero on a gap-3
+solution. `baker_bound_gap3` stays
+an uninhabited def Prop. Tate / Baker /
+v14 J0 / v15 B0 / v17 LLL / v19 constants /
+v20 Bugeaud LLL / v21 inequality / v22
+Real skeleton Lean 0 lines vs v22
+`1db061a`. Previous v22 DOI
+`10.5281/zenodo.22729980`
+(concept `10.5281/zenodo.22379293`).
+Honesty lock: `baker_bound_gap3` stays Prop;
+`matveev_height_B0_gt_onee12` decide,
+no axioms; main pack
+`[propext, Classical.choice, Quot.sound]`
+only; not Mathlib Matveev or LLL.
+
+Latest prior tag: `v22.0.0-Beal-44-13-Level-26-Matveev-Inequality-Real`
 Most current as of 2026-09-12, **not** final.
 `matveev_C_exp_bound` is the Real
 exponent `-(C1_floor : Real) *

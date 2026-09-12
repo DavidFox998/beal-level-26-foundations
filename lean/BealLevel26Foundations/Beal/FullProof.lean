@@ -26,11 +26,23 @@ import BealLevel26Foundations.Beal.FullProof.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
 import BealLevel26Foundations.Beal.FullProof.BealMatveevInequality
 import BealLevel26Foundations.Beal.FullProof.BealMatveevInequalityReal
+import BealLevel26Foundations.Beal.FullProof.BealBakerBoundGap3
 import BealLevel26Foundations.Beal.FullProof.BealBugeaudLLLFormal
 import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
 /-!
+# FullProof track (v23.0.0)
+
+Baker bound gap-3 attempt.
+`matveev_C_exp_bound_lt_neg_onee12` and
+`matveev_log_form_ne_zero_of_gap3` are
+kernel theorems.  `baker_bound_gap3`
+stays an uninhabited def Prop
+(Mathlib 4.12 has no Matveev 2000
+Thm 1.4).  Locked Lean files stay
+exactly v22 except this new file.
+
 # FullProof track (v22.0.0)
 
 Matveev Real inequality skeleton.
