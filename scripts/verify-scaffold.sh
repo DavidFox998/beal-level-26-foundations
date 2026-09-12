@@ -3145,7 +3145,7 @@ grep -q "theorem MwrankCertificateSoundness_26_holds" \
   lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
 grep -q "theorem FormalImmersionSoundness_26_holds" \
   lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
-grep -q "rank := 2, gens := [0, 12]" \
+grep -qF 'rank := 2, gens := [0, 12]' \
   lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
 test "$(git diff v13.0.0-Beal-44-13-Level-26-Modular-Elimination -- lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean | wc -l)" -eq 0
 test "$(git diff v13.0.0-Beal-44-13-Level-26-Modular-Elimination -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
