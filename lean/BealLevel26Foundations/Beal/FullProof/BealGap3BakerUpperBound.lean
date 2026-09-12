@@ -31,7 +31,7 @@ Zsig Props, frey_tate_conductor Prop,
 conductor_86 Prop, B14_honest Prop.
 Does not import RibetMazur, BealFreyB14,
 or FreyModularity_13.  Not BCDT.
-sorry is not used.
+Does not use sorry.
 -/
 
 import BealLevel26Foundations.Beal.FullProof.BealMod16
