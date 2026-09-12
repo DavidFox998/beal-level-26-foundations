@@ -21,10 +21,29 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyModQKill
 import BealLevel26Foundations.Beal.FullProof.BealFreyConductorGeneral
 import BealLevel26Foundations.Beal.FullProof.BealGap3ZsigBeyond2M
 import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
+import BealLevel26Foundations.Beal.FullProof.BealBakerB0Certificate
 import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
 /-!
+# FullProof track (v15.0.0)
+
+Baker B0 PARI certificate.
+`baker_B0_PARI = 1000000` matches
+`baker_B0`.  `baker_B0_certificate_displayed`
+is the Matveev 2000 Thm 1.4 / BMS
+Table 1 integer trace from
+`scripts/baker_b0_gap3.gp`.
+`baker_B0_certificate_holds` is kernel
+`decide` (no axioms).
+`baker_bound_gap3` stays a def Prop.
+`baker_bound_gap3_of_PARI` is the named
+implication (def Prop, not inhabited).
+Tate / Baker-upper-bound files stay
+exactly v14 / `3089bec` (0 lines).
+v14 displayed J0 / mwrank / formal
+certs stay the same inhabitants.
+
 # FullProof track (v14.0.0)
 
 J0 / mwrank / formal displayed certs

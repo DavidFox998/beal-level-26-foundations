@@ -314,6 +314,7 @@ test -f lean/BealLevel26Foundations/Beal/FullProof/BealFreyModQKill.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/BealFreyConductorGeneral.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/BealGap3ZsigBeyond2M.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
+test -f lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_Density_2M.md
@@ -326,6 +327,7 @@ test -f docs/Beal/BealFreyModQKill.md
 test -f docs/Beal/BealFreyConductorGeneral.md
 test -f docs/Beal/BealGap3ZsigBeyond2M.md
 test -f docs/Beal/BealGap3BakerUpperBound.md
+test -f docs/Beal/BealBakerB0Certificate.md
 test -f docs/Beal/BealFreyTateConductor.md
 test -f docs/Beal/BealLevel26ModularElimination.md
 test -f lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
@@ -1208,6 +1210,8 @@ grep -q "import BealLevel26Foundations.Beal.FullProof.BealGap3ZsigBeyond2M" \
   lean/BealLevel26Foundations/Beal/FullProof.lean
 grep -q "import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound" \
   lean/BealLevel26Foundations/Beal/FullProof.lean
+grep -q "import BealLevel26Foundations.Beal.FullProof.BealBakerB0Certificate" \
+  lean/BealLevel26Foundations/Beal/FullProof.lean
 grep -q "import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor" \
   lean/BealLevel26Foundations/Beal/FullProof.lean
 grep -q "import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination" \
@@ -1300,7 +1304,7 @@ if grep -q "import BealLevel26Foundations.Beal.FullProof.ModularImpliesNewform" 
   echo "FAIL: none chain must not import ModularImpliesNewform"
   exit 1
 fi
-if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|HeckeAlgebra|RibetFunctor|X0_26_Model|HeckeAction|LevelLowering|LevelLoweringB14|BealFreyB14|BealFreyASearch|BealFreyMod53Kill|BealFreyModQKill|BealFreyConductorGeneral|BealGap3ZsigBeyond2M|BealGap3BakerUpperBound|BealFreyTateConductor|BealLevel26ModularElimination|RibetMazur|TWPrimes|TWPrimesPratt|TWPrimesQ2|TWAuxEllFixed|X0_2_Genus|Beal_4_13_13_Size_Table|BealElim|BealMod16|KrausB14|B14Witnesses|Step60B14List|FreyModularity|Level26_Newforms)" \
+if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|HeckeAlgebra|RibetFunctor|X0_26_Model|HeckeAction|LevelLowering|LevelLoweringB14|BealFreyB14|BealFreyASearch|BealFreyMod53Kill|BealFreyModQKill|BealFreyConductorGeneral|BealGap3ZsigBeyond2M|BealGap3BakerUpperBound|BealBakerB0Certificate|BealFreyTateConductor|BealLevel26ModularElimination|RibetMazur|TWPrimes|TWPrimesPratt|TWPrimesQ2|TWAuxEllFixed|X0_2_Genus|Beal_4_13_13_Size_Table|BealElim|BealMod16|KrausB14|B14Witnesses|Step60B14List|FreyModularity|Level26_Newforms)" \
     lean/BealLevel26Foundations.lean \
     lean/BealLevel26Foundations/Beal/BealForall.lean \
     lean/BealLevel26Foundations/Chain/BealForallInKernel.lean \
@@ -3151,6 +3155,32 @@ test "$(git diff v13.0.0-Beal-44-13-Level-26-Modular-Elimination -- lean/BealLev
 test "$(git diff v13.0.0-Beal-44-13-Level-26-Modular-Elimination -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 test "$(git diff cea155c -- lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean | wc -l)" -eq 0
 test "$(git diff cea155c -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
+test "$(git diff v14.0.0-J0-Mwrank-Formal-Verified -- lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean | wc -l)" -eq 0
+test "$(git diff v14.0.0-J0-Mwrank-Formal-Verified -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
+test -f scripts/baker_b0_gap3.gp
+test -f scripts/baker_B0_certificate.json
+test -f baker_B0_certificate.json
+test -f lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean
+grep -q "def baker_B0_PARI" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean
+grep -q "def baker_B0_certificate_displayed" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean
+grep -q "theorem baker_B0_certificate_holds" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean
+grep -q "def baker_bound_gap3_of_PARI" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean
+test "$(python3 -c "import json; print(json.load(open('scripts/baker_B0_certificate.json'))['B0'])")" = "1000000"
+test "$(grep -c '^axiom ' lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean)" -eq 0
+test ! -n "$(grep -E '^\s*(sorry|admit)\b|False\.elim|native_decide|^axiom ' \
+  lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean || true)"
+grep -q "import BealLevel26Foundations.Beal.FullProof.BealBakerB0Certificate" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
+grep -q "baker_B0_PARI" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
+grep -q "theorem baker_B0_certificate_holds" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "baker_B0_certificate" \
+  paper/mcom-draft.tex
 grep -q "beal_44_13_level_26_modular_elimination" \
   paper/mcom-draft.tex
 grep -q "kraus_a53_elimination" \
@@ -3344,6 +3374,7 @@ if grep -nE '^[[:space:]]*False\.elim|^[[:space:]]*exact[[:space:]]+False\.elim'
     lean/BealLevel26Foundations/Beal/FullProof/LevelLowering.lean \
     lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean \
     lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean \
+    lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean \
     lean/BealLevel26Foundations/Beal/FullProof.lean; then
   echo "FAIL: FullProof track must not use False.elim"
   exit 1

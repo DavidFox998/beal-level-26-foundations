@@ -1,6 +1,15 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v14.0.0-J0-Mwrank-Formal-Verified`
+Latest tag / HEAD: `v15.0.0-Baker-B0-PARI-Certificate`
+PARI `baker_B0_PARI = 1000000` and
+`baker_B0_certificate_displayed` List/Int
+trace from `scripts/baker_b0_gap3.gp`.
+`baker_B0_certificate_holds` prints no
+axioms.  `baker_bound_gap3` stays Prop.
+Tate / Baker-upper-bound files stay
+exactly v14 `3089bec` (0 lines).
+Previous v14 DOI `10.5281/zenodo.22722140`.
+Base: `v14.0.0-J0-Mwrank-Formal-Verified`
 Displayed J0 `[[1,0,1,-5,-8],[1,-1,1,-3,3]]`,
 mwrank `{0,12}` rank 2, formal M3 `[[1,1],[0,2]]`.
 Holds theorems print no axioms.

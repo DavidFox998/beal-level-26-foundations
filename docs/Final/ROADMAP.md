@@ -799,6 +799,19 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v15.0.0-Baker-B0-PARI-Certificate — DONE (PARI gp B0=1e6 Matveev 2000 Thm 1.4 / BMS Table 1 baker_B0_certificate.json transparent List/Int cert; baker_B0_certificate_holds decide no axioms; baker_bound_gap3 stays def Prop; baker_bound_gap3_of_PARI named implication not inhabited; Tate/Baker 0 lines vs v14 3089bec; v14 displayed certs same inhabitants; Chain ExistsNewformLevel2 stays 0≠0)
+
+Lean + PARI.  New file
+`BealBakerB0Certificate.lean`.
+Does **not** inhabit `baker_bound_gap3`.
+Does **not** inhabit `conductor_86`.
+Does **not** inhabit `B14_honest`.
+Does **not** touch `BealFreyTateConductor.lean`.
+Does **not** touch `BealGap3BakerUpperBound.lean`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo
+claiming unconditional Beal `∀`.
+
 ### v14.0.0-J0-Mwrank-Formal-Verified — DONE (explicit displayed certs J0 [[1,0,1,-5,-8],[1,-1,1,-3,3]] mwrank {0,12} rank 2 gens {0,12} formal M3 [[1,1],[0,2]]; holds theorems decide/rfl no axioms; Frey/Level reuse Tate c4/tateF2/tateConductor f2≤5; kraus decide []; baker_bound_gap3 stays Prop; Tate and Baker 0 lines vs v13 cea155c; ^axiom count 0; Chain ExistsNewformLevel2 stays 0≠0)
 
 Lean change.  Same file

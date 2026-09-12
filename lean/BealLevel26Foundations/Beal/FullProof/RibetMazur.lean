@@ -774,6 +774,7 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyB14
 import BealLevel26Foundations.Beal.FullProof.BealFreyConductorGeneral
 import BealLevel26Foundations.Beal.FullProof.BealGap3ZsigBeyond2M
 import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
+import BealLevel26Foundations.Beal.FullProof.BealBakerB0Certificate
 import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
@@ -5689,6 +5690,27 @@ theorem tatePackedValuationBound_dvd_rhs {A B : Nat}
   BealLevel26Foundations.BealFreyTateConductor.tatePackedValuationBound_dvd_rhs
     hA hB hEq
 
+/-! ## v15.0.0 — Baker B0 PARI certificate -/
+
+def baker_B0_PARI :=
+  BealLevel26Foundations.BealBakerB0Certificate.baker_B0_PARI
+
+def baker_B0_certificate_displayed :=
+  BealLevel26Foundations.BealBakerB0Certificate.baker_B0_certificate_displayed
+
+def baker_B0_certificate :=
+  BealLevel26Foundations.BealBakerB0Certificate.baker_B0_certificate
+
+theorem baker_B0_certificate_holds :
+    baker_B0_certificate_displayed ≠ [] :=
+  BealLevel26Foundations.BealBakerB0Certificate.baker_B0_certificate_holds
+
+def baker_bound_gap3_of_PARI : Prop :=
+  BealLevel26Foundations.BealBakerB0Certificate.baker_bound_gap3_of_PARI
+
+theorem baker_B0_PARI_eq : baker_B0_PARI = baker_B0 :=
+  BealLevel26Foundations.BealBakerB0Certificate.baker_B0_PARI_eq
+
 /-! ## v14.0.0 — J0 / mwrank / formal displayed certs -/
 
 def J0DecompositionCert_26 :=
@@ -6734,6 +6756,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check S2_26_a5_values
 #check kraus_a53_elimination
 #check tateConductor_eq_frey
+#check baker_B0_PARI
+#check baker_B0_certificate_displayed
+#check baker_B0_certificate_holds
+#check baker_bound_gap3_of_PARI
 #check J0DecompositionCert_26
 #check J0DecompositionCert_26_displayed
 #check J0DecompositionSoundness_26
@@ -7288,6 +7314,7 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms tatePackedValuationBound_dvd_rhs
 #print axioms kraus_a53_elimination
 #print axioms tateConductor_eq_frey
+#print axioms baker_B0_certificate_holds
 #print axioms J0DecompositionSoundness_26_holds
 #print axioms MwrankCertificateSoundness_26_holds
 #print axioms FormalImmersionSoundness_26_holds

@@ -1,6 +1,17 @@
 [![v13 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721843.svg)](https://doi.org/10.5281/zenodo.22721843) [![v12 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721089.svg)](https://doi.org/10.5281/zenodo.22721089) [![v11 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721420.svg)](https://doi.org/10.5281/zenodo.22721420) [![math DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22712897.svg)](https://doi.org/10.5281/zenodo.22712897) [![paper DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22713047.svg)](https://doi.org/10.5281/zenodo.22713047) [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v13.0.0-Beal-44-13-Level-26-Modular-Elimination → v14.0.0-J0-Mwrank-Formal-Verified
+# Beal Level 26 Foundations — v14.0.0-J0-Mwrank-Formal-Verified → v15.0.0-Baker-B0-PARI-Certificate
+
+**v15.0.0-Baker-B0-PARI-Certificate — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+
+Transparent PARI / Matveev 2000 Thm 1.4 integer cert for the displayed Baker cutoff:
+- `gp -q < scripts/baker_b0_gap3.gp` prints `B0=1000000` and writes `baker_B0_certificate.json`
+- `baker_B0_PARI = 1000000` equals Lean `baker_B0`; `baker_B0_certificate_displayed` is the List/Int trace
+- `baker_B0_certificate_holds` is kernel `decide` (**no axioms**)
+- `baker_bound_gap3` stays a def Prop; `baker_bound_gap3_of_PARI` is the named implication (def Prop, not inhabited)
+- Tate and Baker-upper-bound files stay exactly v14 / `3089bec` (0 lines)
+- v14 displayed J0 / mwrank / formal certs stay the same inhabitants
+- Previous v14 DOI [`10.5281/zenodo.22722140`](https://doi.org/10.5281/zenodo.22722140)
 
 **v14.0.0-J0-Mwrank-Formal-Verified — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 

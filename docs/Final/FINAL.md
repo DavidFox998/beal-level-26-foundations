@@ -1,3 +1,17 @@
+# FINAL v15.0.0 — Baker B0 PARI certificate
+
+Latest tag `v15.0.0-Baker-B0-PARI-Certificate`.
+`baker_B0_PARI = 1000000` equals `baker_B0`.
+`baker_B0_certificate_displayed` is the
+PARI / Matveev 2000 Thm 1.4 integer trace.
+`baker_B0_certificate_holds` prints no
+axioms.  `baker_bound_gap3` stays a def
+Prop.  `baker_bound_gap3_of_PARI` is the
+named implication (def Prop).
+Tate and Baker-upper-bound files stay
+exactly v14 `3089bec` (0 lines).
+Previous v14 DOI `10.5281/zenodo.22722140`.
+
 # FINAL v14.0.0 — J0 / mwrank / formal displayed certs
 
 Latest tag `v14.0.0-J0-Mwrank-Formal-Verified`.

@@ -45,9 +45,14 @@ S2(26) traces {0,12}.
 beal_44_13_level_26_modular_elimination
 takes the three displayed soundness
 Props and baker_bound_gap3 (still a
-def Prop: Mathlib 4.12 has no Matveev /
-BMS Table 1, so large-B stays that
-honest bound):
+def Prop).  B > 1e6 uses
+baker_conditional_gap3_full with the
+PARI displayed cutoff baker_B0_PARI
+and the transparent List/Int cert
+baker_B0_certificate_displayed
+(scripts/baker_b0_gap3.gp).
+The cert does not inhabit
+baker_bound_gap3.
 * C = B+3 is the gap-3 equation
 * B <= 1e6 contradicts allKilled_1e6
   (25 chunks B == 14) via
@@ -70,6 +75,7 @@ Does not use sorry.
 import BealLevel26Foundations.Beal.FullProof.BealFreyConductorGeneral
 import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
+import BealLevel26Foundations.Beal.FullProof.BealBakerB0Certificate
 
 set_option maxRecDepth 200000
 set_option maxHeartbeats 4000000000
@@ -79,6 +85,7 @@ namespace BealLevel26Foundations.BealLevel26ModularElimination
 open BealLevel26Foundations.BealFreyConductorGeneral
 open BealLevel26Foundations.BealFreyTateConductor
 open BealLevel26Foundations.BealGap3BakerUpperBound
+open BealLevel26Foundations.BealBakerB0Certificate
 
 /-! ## Transparent J0(26) decomposition cert -/
 
@@ -265,11 +272,11 @@ theorem tateConductor_eq_frey (A B : Nat) :
 /-! ## Conditional (4,4,13) gap3 elimination -/
 
 /-- Three displayed soundness Props plus
-    baker_bound_gap3 (large-B Matveev still a
-    def Prop: Mathlib 4.12 has no Matveev).
+    baker_bound_gap3 (still a def Prop).
     Uses the holds lemmas, allKilled_1e6,
     baker_conditional_gap3_full (B > 1e6
-    via matveev_explicit_gap3), and
+    via matveev_explicit_gap3 and the
+    PARI baker_B0_PARI cert), and
     kraus_a53_elimination.
     Does not use sorry. -/
 theorem beal_44_13_level_26_modular_elimination
@@ -294,6 +301,9 @@ theorem beal_44_13_level_26_modular_elimination
   let _hC : C = B + 3 := hCeq
   let _kraus := kraus_a53_elimination
   let _chunks := allKilled_1e6
+  let _pariB0 := baker_B0_PARI
+  let _pariEq := baker_B0_PARI_eq
+  let _pariCert := baker_B0_certificate_holds
   exact baker_conditional_gap3_full hBaker B ⟨A, hEq⟩
 
 #check J0DecompositionCert_26
@@ -321,6 +331,10 @@ theorem beal_44_13_level_26_modular_elimination
 #check S2_26_a5_values
 #check kraus_a53_elimination
 #check tateConductor_eq_frey
+#check baker_B0_PARI
+#check baker_B0_certificate_displayed
+#check baker_B0_certificate_holds
+#check baker_bound_gap3_of_PARI
 #check beal_44_13_level_26_modular_elimination
 #print axioms J0DecompositionSoundness_26_holds
 #print axioms MwrankCertificateSoundness_26_holds
@@ -332,6 +346,7 @@ theorem beal_44_13_level_26_modular_elimination
 #print axioms LevelLowering_26_of_tate
 #print axioms kraus_a53_elimination
 #print axioms tateConductor_eq_frey
+#print axioms baker_B0_certificate_holds
 #print axioms beal_44_13_level_26_modular_elimination
 
 end BealLevel26Foundations.BealLevel26ModularElimination
