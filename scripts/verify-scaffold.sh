@@ -2893,6 +2893,8 @@ grep -q "beal_4_13_13_gap3_B_le_2M_eliminated_B14_full" \
   paper/mcom-draft.tex
 grep -q "baker_bound_gap3" \
   paper/mcom-draft.tex
+grep -q "matveev_explicit_gap3" \
+  paper/mcom-draft.tex
 grep -q "baker_conditional_gap3_full" \
   paper/mcom-draft.tex
 grep -q "allKilled_62500" \
@@ -2980,6 +2982,12 @@ grep -q "def baker_B0" \
   lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
 grep -q "theorem baker_conditional_gap3_full" \
   lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
+grep -q "theorem matveev_explicit_gap3" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
+grep -q "explicit Matveev for (4,4,13) gap3, not general Bugeaud" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
+grep -q "theorem matveev_no_solution_A_le_B" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
 grep -q "theorem allKilled_chunk_0" \
   lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
 grep -q "theorem allKilled_chunk_24" \
@@ -2999,6 +3007,8 @@ grep -q "needs Baker, not Zsig" \
 grep -q "def baker_bound_gap3" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem baker_conditional_gap3_full" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem matveev_explicit_gap3" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem allKilled_chunk_0" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean

@@ -1,6 +1,17 @@
 [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v10.0.0-paper-B14-Baker-1e6-DOI → v11.0.0-Tate-N-def
+# Beal Level 26 Foundations — v11.0.0-Tate-N-def → v12.0.0-Baker-Matveev-explicit
+
+**v12.0.0-Baker-Matveev-explicit — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+
+explicit Matveev for (4,4,13) gap3, not general Bugeaud:
+- `matveev_explicit_gap3`: `baker_bound_gap3 → (A^4+B^4=(B+3)^13 → B ≤ baker_B0)`
+- `matveev_log_form_nat`: on a solution, `(B+3)^13 = A^4 + B^4` (Nat form of `Λ = 13*log(B+3)-4*log B+log(1+(A/B)^4)`)
+- `matveev_no_solution_A_le_B` inhabited: `A ≤ B` never solves gap-3
+- `baker_conditional_gap3_full` uses the 25 chunks for `B ≤ 1e6` and `matveev_explicit_gap3` for `B > 1e6`
+- `baker_bound_gap3` stays Prop (Matveev / BMS Table 1 not in Mathlib 4.12)
+- Tate file stays exactly v11 (`tateConductor`, `frey_tate_conductor_inhabited`)
+- Keeps `allKilled_chunk_0` .. `allKilled_chunk_24`, `allKilled_1e6`
 
 **v11.0.0-Tate-N-def — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
@@ -119,6 +130,7 @@ Releases:
 - v8.72.1-doi-badge inserts real Zenodo DOI `10.5281/zenodo.22698257` from the v8.70.0 mint
 - v8.73.0-modularity-exists-level2 displayed S2(26) dim2 via 0≠12 at p=53; Chain ExistsNewformLevel2 stays 0≠0; DOI 10.5281/zenodo.22698257 still cites v8.69.0
 - v8.74.0-frey-irreducible-mod13 displayed frey_mod13_irreducible at B=196 and B=1500003; frey_modular Classical.em; level_lowering_to_26 stays Prop
+- v12.0.0-Baker-Matveev-explicit explicit Matveev for (4,4,13) gap3, not general Bugeaud; `matveev_explicit_gap3` turns `baker_bound_gap3` into `eq → B ≤ baker_B0`; `matveev_no_solution_A_le_B` inhabited; `baker_bound_gap3` stays Prop (Matveev not in Mathlib 4.12); Tate file unchanged; 25 chunks kept
 - v11.0.0-Tate-N-def `tateConductor = 2^{f₂}*rad*13`; `frey_tate_conductor` is that Nat; `frey_tate_conductor_inhabited` proves `∣ 2⁵*rad*13` with odd `v_q ≤ 1` and `v₂ ≤ 5`; `baker_bound_gap3` / `conductor_86` / `B14_honest` stay Prop; Baker file unchanged
 - v10.0.0-paper-B14-Baker-1e6-DOI paper archive of the v9.4.0 census (62500 / 25 chunks), Baker conditional `∀ B`, and Tate bound `2⁵*rad*13`; archives math DOI `10.5281/zenodo.22712897` and paper DOI `10.5281/zenodo.22713047`; `baker_bound_gap3` / `frey_tate_conductor` / `conductor_86` / `B14_honest` stay Prop
 - v9.4.0-chunked-1e6-final `allKilled_chunk_0` .. `allKilled_chunk_24`: each `allKilled start 2500 = true` by rfl / kernel decide on one 2500-slice of the 62500 values `B ≡ 14` (mod 16) up to `10⁶`; `allKilled_62500` / `allKilled_1e6` are the conjunction; `baker_conditional_gap3_full` stays inhabited; `baker_bound_gap3` stays Prop (Baker needs Bugeaud, not in Mathlib 4.12); `frey_tate_conductor` stays Prop (Tate `N(E)` missing); `conductor_86` stays Prop (`63982 = 2*31991` proves `N` does not divide `2^5*3*13`); `B14_honest` stays Prop
@@ -808,7 +820,7 @@ PARI 2-Descent Certificates image
 Still not `∀ ℕ`. No `False.elim`. no `False.elim`.
 `BealExponent13_Iter_Package` `d3cf8a7` `1d0044e`.
 
-HEAD also has Track B `v11.0.0-Tate-N-def`
+HEAD also has Track B `v12.0.0-Baker-Matveev-explicit`
 (RibetMazur pack from v8.69.0 Int-mod-13
 misses at `B = 196` and `B = 1500003`;
 Density/Step `kraus_elimination_q_13_level_26`

@@ -1,3 +1,23 @@
+# v12.0.0 Baker-Matveev-explicit
+
+`matveev_explicit_gap3` turns
+`baker_bound_gap3` into
+`A^4+B^4=(B+3)^13 → B ≤ baker_B0`.
+explicit Matveev for (4,4,13) gap3, not general Bugeaud.
+The linear form is the Nat identity
+`(B+3)^13 = A^4+B^4` on a solution
+(`matveev_log_form_nat`).
+`matveev_no_solution_A_le_B` is inhabited:
+`A ≤ B` never solves gap-3.
+`baker_conditional_gap3_full` uses the
+25 chunks for `B ≤ 1e6` and
+`matveev_explicit_gap3` for `B > 1e6`.
+`baker_bound_gap3` stays Prop (Matveev /
+BMS Table 1 not in Mathlib 4.12).
+Tate file stays exactly v11.
+Keeps `allKilled_chunk_0` ..
+`allKilled_chunk_24`, `allKilled_1e6`.
+
 # v10.0.0 paper archive / v9.4.0 chunked 1e6 kernel census
 
 Paper archive tag `v10.0.0-paper-B14-Baker-1e6-DOI`.

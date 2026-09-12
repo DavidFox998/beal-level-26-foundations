@@ -5418,16 +5418,38 @@ def baker_B0 :=
 theorem baker_B0_eq : baker_B0 = 1000000 :=
   BealLevel26Foundations.BealGap3BakerUpperBound.baker_B0_eq
 
-/-- Uninhabited.  Missing Baker/Bugeaud bound.
+/-- Uninhabited.  Explicit Matveev for (4,4,13)
+    gap3, not general Bugeaud.  Mathlib 4.12
+    has no Matveev / BMS Table 1.
     Bugeaud linear forms external, not in
     Mathlib 4.12.  Needs Baker, not Zsig.
     `sorry` is not used. -/
 def baker_bound_gap3 : Prop :=
   BealLevel26Foundations.BealGap3BakerUpperBound.baker_bound_gap3
 
+theorem matveev_log_form_nat {A B : Nat}
+    (h : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    Nat.pow (B + 3) 13 = Nat.pow A 4 + Nat.pow B 4 :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.matveev_log_form_nat h
+
+theorem matveev_no_solution_A_le_B {A B : Nat}
+    (hAle : A ≤ B)
+    (h : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    False :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.matveev_no_solution_A_le_B
+    hAle h
+
+theorem matveev_explicit_gap3
+    (hBaker : baker_bound_gap3) :
+    ∀ A B : Nat,
+      Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 →
+      B ≤ baker_B0 :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.matveev_explicit_gap3
+    hBaker
+
 /-- Conditional gap-3 forall.  `B ≤ B0` by the
-    expanded residue cover; `B > B0` by the
-    Baker premise. -/
+    expanded residue cover / allKilled_1e6;
+    `B > B0` by matveev_explicit_gap3. -/
 theorem baker_conditional_gap3_full
     (hBaker : baker_bound_gap3) :
     ∀ B : Nat,
@@ -6595,6 +6617,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check baker_B0
 #check baker_B0_eq
 #check baker_bound_gap3
+#check matveev_log_form_nat
+#check matveev_no_solution_A_le_B
+#check matveev_explicit_gap3
 #check baker_conditional_gap3_full
 #check allKilled
 #check allKilled_chunk_0
@@ -7123,6 +7148,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms no_Beal_of_pow4_dvd_C13_of_q_gt_C
 #print axioms exists_primitive_prime_Phi13_gap3
 #print axioms baker_B0_eq
+#print axioms matveev_log_form_nat
+#print axioms matveev_no_solution_A_le_B
+#print axioms matveev_explicit_gap3
 #print axioms baker_conditional_gap3_full
 #print axioms allKilled_chunk_0
 #print axioms allKilled_chunk_24

@@ -1,6 +1,13 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v11.0.0-Tate-N-def`
+Latest tag / HEAD: `v12.0.0-Baker-Matveev-explicit`
+explicit Matveev for (4,4,13) gap3, not general Bugeaud.
+`matveev_explicit_gap3` turns `baker_bound_gap3`
+into `A^4+B^4=(B+3)^13 → B ≤ baker_B0`.
+`matveev_no_solution_A_le_B` is inhabited.
+`baker_bound_gap3` stays Prop (Matveev not
+in Mathlib 4.12).  Tate file stays v11.
+Base: `v11.0.0-Tate-N-def`
 `tateConductor A B = 2^{f₂} * rad(AB(B+3)) * 13`.
 `frey_tate_conductor` is that Nat.
 `frey_tate_conductor_inhabited` proves

@@ -420,8 +420,14 @@ is false; we use $2^5\mathrm{rad}\cdot 13$).
 
 $B>2\mathrm{M}$ gap $3$ is the open Prop
 \texttt{baker\_bound\_gap3}
-(Baker/Bugeaud linear forms in logarithms,
-displayed cutoff $B_0=10^6$).
+(explicit Matveev for $(4,4,13)$ gap3, not
+general Bugeaud; Mathlib~4.12 has no
+Matveev / BMS Table~1).
+% matveev_explicit_gap3
+\texttt{matveev\_explicit\_gap3} turns that
+Prop into $A^4+B^4=(B+3)^{13}\Rightarrow B\le B_0$.
+\texttt{matveev\_no\_solution\_A\_le\_B} is
+inhabited: $A\le B$ never solves gap~$3$.
 It is not closable from the $5983$ census.
 % baker_conditional_gap3_full
 % allKilled_62500

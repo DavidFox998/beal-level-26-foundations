@@ -24,6 +24,25 @@ import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
 import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 
 /-!
+# FullProof track (v12.0.0)
+
+explicit Matveev for (4,4,13) gap3, not
+general Bugeaud.
+`matveev_explicit_gap3` turns
+`baker_bound_gap3` into
+`A^4+B^4=(B+3)^13 → B ≤ baker_B0`.
+`matveev_no_solution_A_le_B` is inhabited:
+`A ≤ B` never solves gap-3.
+`baker_conditional_gap3_full` uses the
+25 chunks for `B ≤ 1e6` and
+`matveev_explicit_gap3` for `B > 1e6`.
+`baker_bound_gap3` stays Prop (Matveev /
+BMS Table 1 not in Mathlib 4.12).
+Tate file stays exactly v11.
+Keeps `allKilled_chunk_0` ..
+`allKilled_chunk_24`, `allKilled_1e6`.
+`conductor_86` / `B14_honest` stay Prop.
+
 # FullProof track (v11.0.0)
 
 Defined packed Tate conductor:

@@ -799,6 +799,17 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v12.0.0-Baker-Matveev-explicit — DONE (explicit Matveev for (4,4,13) gap3, not general Bugeaud; matveev_explicit_gap3 turns baker_bound_gap3 into eq → B ≤ baker_B0; matveev_no_solution_A_le_B inhabited; baker_conditional_gap3_full uses 25 chunks + that implication; baker_bound_gap3 stays Prop because Matveev / BMS Table 1 are not in Mathlib 4.12; Tate file stays v11; conductor_86 / B14_honest stay Prop; Chain ExistsNewformLevel2 stays 0≠0)
+
+Lean change.  File
+`BealGap3BakerUpperBound.lean`.
+Does **not** inhabit `baker_bound_gap3`.
+Does **not** inhabit `conductor_86`.
+Does **not** inhabit `B14_honest`.
+Does **not** import Real.log / native_decide.
+Keeps `allKilled_chunk_0` .. `allKilled_chunk_24`.
+Tate file unchanged.
+
 ### v11.0.0-Tate-N-def — DONE (tateConductor = 2^{f2}*rad*13; frey_tate_conductor is that Nat; frey_tate_conductor_inhabited proves tateConductor | 2^5*rad*13 with v_q<=1 odd and v2<=5; baker_bound_gap3 / conductor_86 / B14_honest stay Prop; B<=1e6 inhabited via Baker chunks; Baker file unchanged; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus ∀ stays uninhabited; arrow stays a Prop)
 
 Lean change.  File

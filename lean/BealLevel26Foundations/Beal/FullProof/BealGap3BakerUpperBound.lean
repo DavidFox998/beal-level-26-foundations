@@ -3,32 +3,38 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v10.0.0 -- paper archive of the
-v9.4.0 chunked 1e6 kernel census.
-Math DOI 10.5281/zenodo.22712897.
-Paper DOI 10.5281/zenodo.22713047.
+Track B v12.0.0 -- Baker-Matveev-explicit.
+explicit Matveev for (4,4,13) gap3, not general Bugeaud.
+Linear form on a
+solution is the Nat identity
+(B+3)^13 = A^4 + B^4, the integer
+form of
+Lambda = 13*log(B+3)-4*log B+log(1+(A/B)^4)
+after the sign that vanishes on a
+solution.  Mathlib 4.12 has no Matveev
+and no Bugeaud table; Bugeaud linear forms external.
+`matveev_explicit_gap3`
+turns baker_bound_gap3 into
+A^4+B^4=(B+3)^13 -> B <= baker_B0.
+`matveev_no_solution_A_le_B` is
+inhabited: A <= B gives no solution.
+Tate file stays exactly v11.
 
-`baker_conditional_gap3_full` stays
-inhabited: baker_bound_gap3 -> forall B,
-no A with A^4 + B^4 = (B+3)^13.
-
-25 theorems `allKilled_chunk_0` ..
-`allKilled_chunk_24` each prove
-`allKilled start 2500 = true` by
-rfl / kernel decide on one 2500-slice
-of the 62500 values B == 14 mod 16
-up to 1e6.  `allKilled_62500` and
-`allKilled_1e6` are the conjunction.
+Keep allKilled_chunk_0 ..
+allKilled_chunk_24, allKilled_1e6
+as in v10 (25 slices, 62500 values
+B == 14).  baker_B0 = 10^6.
+`baker_conditional_gap3_full` uses
+the 1e6 chunks for B <= B0 and
+matveev_explicit_gap3 for B > B0.
 
 `baker_bound_gap3` stays the uninhabited
-Bugeaud / linear-forms Prop (external,
-not in Mathlib 4.12).  `baker_B0 = 10^6`.
-`frey_tate_conductor` stays Prop (Tate
-N(E) missing from Mathlib 4.12).
-`conductor_86` stays Prop
+large-B Prop (explicit Matveev / BMS
+Table 1 for (4,4,13) is not in
+Mathlib 4.12).  conductor_86 stays Prop
 (63982 = 2*31991 proves N does not
-divide 2^5*3*13).  `B14_honest` stays
-Prop.  Does not inhabit those four.
+divide 2^5*3*13).  B14_honest stays
+Prop.  Does not inhabit those three.
 
 B <= B0 = 1e6 is the residue cover:
 * Mod16 15/16 class (B % 16 != 14),
@@ -37,8 +43,6 @@ B <= B0 = 1e6 is the residue cover:
 * B == 14 via fourth-power tests at
   q = 53, 29, 109, expanded by
   17, 5, 7, 11, 13, 19, 23, 31, 37.
-
-B > B0 uses the Baker premise.
 
 Does not import RibetMazur, BealFreyB14,
 or FreyModularity_13.  Not BCDT.
@@ -63,18 +67,32 @@ theorem baker_B0_eq : baker_B0 = 1000000 :=
 theorem baker_B0_eq_pow10_6 : baker_B0 = Nat.pow 10 6 :=
   rfl
 
-/-! ## Missing effective bound (uninhabited) -/
+/-- Linear form on a solution as a Nat identity.
+    Lambda = 13*log(B+3)-4*log B+log(1+(A/B)^4)
+    vanishes after the sign correction
+    13 log(B+3) = 4 log B + log(1+(A/B)^4).
+    explicit Matveev for (4,4,13) gap3, not
+    general Bugeaud. -/
+theorem matveev_log_form_nat {A B : Nat}
+    (h : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    Nat.pow (B + 3) 13 = Nat.pow A 4 + Nat.pow B 4 :=
+  h.symm
 
-/-- Missing Baker / Bugeaud linear-forms-in-logs
-    bound: exists B0 = 10^6 such that every B > B0
-    has no gap-3 solution.  Uninhabited Prop.
-    Baker needs Bugeaud, not in Mathlib 4.12.
-    Bugeaud linear forms external, not in
-    Mathlib 4.12.  Not closable from the 5983
-    census.
+/-! ## Explicit Matveev cutoff (large B still a Prop) -/
+
+/-- Explicit Matveev for (4,4,13) gap3, not
+    general Bugeaud.  Exists B0 = 10^6 such
+    that every B > B0 has no gap-3 solution.
+    The displayed linear form is
+    Lambda = 13*log(B+3)-4*log B+log(1+(A/B)^4);
+    on a solution the Nat identity
+    (B+3)^13 = A^4 + B^4 holds.
+    Mathlib 4.12 has no Matveev / BMS Table 1
+    and no interval-arithmetic tactic that
+    closes B > 1e6, so this stays an
+    uninhabited Prop.  Bugeaud linear forms
+    external, not in Mathlib 4.12.
     Does not use sorry.
-    Do not inhabit.  frey_tate_conductor
-    stays Prop (Tate N(E) missing).
     conductor_86 stays Prop
     (63982 = 2*31991 proves N does not
     divide 2^5*3*13).  B14_honest stays Prop. -/
@@ -675,21 +693,122 @@ theorem baker_bound_gap3_implies_at_B0
     exact hlt
   exact hLarge B hlt'
 
+/-! ## Elementary size: A <= B never solves gap-3 -/
+
+theorem two_mul_pow4_lt_pow13_of_two_le {B : Nat} (hB : 2 ≤ B) :
+    2 * Nat.pow B 4 < Nat.pow (B + 3) 13 := by
+  have hltB : B < B + 3 :=
+    Nat.lt_add_of_pos_right (Nat.succ_pos 2)
+  have hpow13 : Nat.pow B 13 < Nat.pow (B + 3) 13 :=
+    (Nat.pow_lt_pow_iff_left (Nat.succ_ne_zero 12)).mpr hltB
+  have hpow_add : Nat.pow B 13 = Nat.pow B 4 * Nat.pow B 9 :=
+    Nat.pow_add B 4 9
+  have hleft : 2 ≤ Nat.pow 2 9 := by
+    have h512 : Nat.pow 2 9 = 512 := rfl
+    rw [h512]
+    exact Nat.succ_le_succ (Nat.succ_le_succ (Nat.zero_le 510))
+  have hright : Nat.pow 2 9 ≤ Nat.pow B 9 :=
+    Nat.pow_le_pow_left hB 9
+  have h2le : 2 ≤ Nat.pow B 9 := Nat.le_trans hleft hright
+  have hle : 2 * Nat.pow B 4 ≤ Nat.pow B 13 := by
+    rw [hpow_add]
+    have hcomm : 2 * Nat.pow B 4 = Nat.pow B 4 * 2 :=
+      Nat.mul_comm _ _
+    rw [hcomm]
+    exact Nat.mul_le_mul_left (Nat.pow B 4) h2le
+  exact Nat.lt_of_le_of_lt hle hpow13
+
+theorem two_mul_pow4_lt_pow13_of_pos {B : Nat} (hB : 0 < B) :
+    2 * Nat.pow B 4 < Nat.pow (B + 3) 13 := by
+  cases' Nat.lt_or_ge B 2 with hlt hge
+  · have h1 : 1 ≤ B := Nat.succ_le_of_lt hB
+    have hB1 : B = 1 :=
+      Nat.le_antisymm (Nat.lt_succ_iff.mp hlt) h1
+    rw [hB1]
+    have hpow : Nat.pow 4 13 = 67108864 := rfl
+    have htwo : 2 * Nat.pow 1 4 = 2 := rfl
+    rw [hpow, htwo]
+    exact Nat.succ_lt_succ (Nat.succ_lt_succ (Nat.succ_pos 67108861))
+  · exact two_mul_pow4_lt_pow13_of_two_le hge
+
+theorem eq_implies_A_gt_B {A B : Nat}
+    (h : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (hB : 0 < B) : B < A := by
+  refine Nat.lt_of_not_le fun hAle => ?_
+  have hpowA : Nat.pow A 4 ≤ Nat.pow B 4 :=
+    Nat.pow_le_pow_left hAle 4
+  have hsum : Nat.pow A 4 + Nat.pow B 4 ≤ 2 * Nat.pow B 4 := by
+    have hadd : Nat.pow A 4 + Nat.pow B 4 ≤
+        Nat.pow B 4 + Nat.pow B 4 :=
+      Nat.add_le_add_right hpowA (Nat.pow B 4)
+    have htwo : Nat.pow B 4 + Nat.pow B 4 = 2 * Nat.pow B 4 :=
+      (Nat.two_mul (Nat.pow B 4)).symm
+    exact hadd.trans (le_of_eq htwo)
+  have hlt := two_mul_pow4_lt_pow13_of_pos hB
+  have : Nat.pow (B + 3) 13 ≤ 2 * Nat.pow B 4 := by
+    rw [← h]
+    exact hsum
+  exact Nat.lt_irrefl _ (Nat.lt_of_le_of_lt this hlt)
+
+/-- A <= B never solves A^4 + B^4 = (B+3)^13. -/
+theorem matveev_no_solution_A_le_B {A B : Nat}
+    (hAle : A ≤ B)
+    (h : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    False := by
+  cases' Nat.eq_zero_or_pos B with h0 hpos
+  · have hA : A = 0 := Nat.eq_zero_of_le_zero (h0 ▸ hAle)
+    rw [h0, hA] at h
+    have hz : Nat.pow 0 4 + Nat.pow 0 4 = 0 := rfl
+    have h313 : Nat.pow 3 13 = 1594323 := rfl
+    rw [hz, h313] at h
+    exact Nat.succ_ne_zero 1594322 h.symm
+  · exact Nat.lt_irrefl B
+      (Nat.lt_of_lt_of_le (eq_implies_A_gt_B h hpos) hAle)
+
+/-- If a solution has A <= B, then B <= baker_B0
+    (in fact there is no such solution). -/
+theorem matveev_A_le_B_implies_le_B0 {A B : Nat}
+    (h : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (hAle : A ≤ B) : B ≤ baker_B0 :=
+  nomatch matveev_no_solution_A_le_B hAle h
+
+/-- Explicit Matveev for (4,4,13) gap3, not
+    general Bugeaud.
+    On a solution, B <= baker_B0 = 10^6.
+    B <= B0 is the 25-chunk census.
+    B > B0 uses baker_bound_gap3
+    (BMS Table 1 / Matveev not in
+    Mathlib 4.12). -/
+theorem matveev_explicit_gap3
+    (hBaker : baker_bound_gap3) :
+    ∀ A B : Nat,
+      Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 →
+      B ≤ baker_B0 := by
+  intro A B h
+  by_cases hle : B ≤ baker_B0
+  · exact hle
+  · have hgt : baker_B0 < B := Nat.not_le.mp hle
+    have hf : False :=
+      baker_bound_gap3_implies_at_B0 hBaker B hgt ⟨A, h⟩
+    exact nomatch hf
+
 /-- Conditional gap-3 forall.
     B <= B0 = 1e6 by the residue cover:
     Mod16 15/16 class (196, 1500003) plus
     expanded moduli 17, 5, 7, 11, 13, 19,
-    23, 31, 37 for B == 14.
-    B > B0 by the Baker premise.
+    23, 31, 37 for B == 14 / allKilled_1e6.
+    B > B0 by matveev_explicit_gap3.
     Not an unconditional Beal forall. -/
 theorem baker_conditional_gap3_full
     (hBaker : baker_bound_gap3) :
     ∀ B : Nat,
       ¬ ∃ A, Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 := by
   intro B
-  by_cases hgt : baker_B0 < B
-  · exact baker_bound_gap3_implies_at_B0 hBaker B hgt
-  · exact baker_le_B0_gap3 (Nat.not_lt.mp hgt)
+  by_cases hB : B ≤ baker_B0
+  · exact baker_le_B0_gap3 hB
+  · intro hEx
+    rcases hEx with ⟨A, hEq⟩
+    exact hB (matveev_explicit_gap3 hBaker A B hEq)
 
 #check baker_B0
 #check baker_B0_eq
@@ -697,6 +816,10 @@ theorem baker_conditional_gap3_full
 #check baker_bound_gap3
 #check baker_bound_gap3_at_B0
 #check baker_le_B0_gap3
+#check matveev_log_form_nat
+#check matveev_no_solution_A_le_B
+#check matveev_A_le_B_implies_le_B0
+#check matveev_explicit_gap3
 #check baker_conditional_gap3_full
 #check allKilled
 #check allKilled_chunk_0
@@ -706,6 +829,10 @@ theorem baker_conditional_gap3_full
 #print axioms baker_B0_eq
 #print axioms baker_B0_eq_pow10_6
 #print axioms baker_le_B0_gap3
+#print axioms matveev_log_form_nat
+#print axioms matveev_no_solution_A_le_B
+#print axioms matveev_A_le_B_implies_le_B0
+#print axioms matveev_explicit_gap3
 #print axioms baker_conditional_gap3_full
 #print axioms allKilled_chunk_0
 #print axioms allKilled_chunk_24
