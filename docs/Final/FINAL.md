@@ -8,6 +8,8 @@ Most current as of 2026-09-12, **not** a
 final Beal proof. Series concept
 `10.5281/zenodo.22379293`.
 See `docs/CUMULATIVE_ARCHIVE_v10_v17.md`.
+Zenodo DOI `10.5281/zenodo.22729129`
+(concept `10.5281/zenodo.22379293`).
 Honesty lock: Tate 0 since v11, Baker 0
 since v12, v14 displayed certs unchanged,
 `baker_bound_gap3` uninhabited def Prop,

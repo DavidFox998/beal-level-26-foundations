@@ -6,8 +6,9 @@ Most current cumulative archive v10–v17 as of 2026-09-12,
 Lean files 0 lines vs
 `v17.0.0-Beal-44-13-Level-26-Baker-B0-Reduction-Certificate`.
 See `docs/CUMULATIVE_ARCHIVE_v10_v17.md`.
-Previous v17 DOI `10.5281/zenodo.22729067`
+Zenodo DOI `10.5281/zenodo.22729129`
 (concept `10.5281/zenodo.22379293`).
+Previous v17 DOI `10.5281/zenodo.22729067`.
 Honesty lock: `baker_bound_gap3` stays Prop;
 `baker_B0_certificate_holds` and
 `baker_reduction_certificate_holds` decide,

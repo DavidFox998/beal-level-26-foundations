@@ -3,6 +3,8 @@
 `v18.0.0-Beal-44-13-Level-26-Cumulative-Archive-v10-v17` is the most
 current snapshot as of 2026-09-12. It is **not** a final Beal proof.
 Descriptive title only.
+This archive DOI
+[`10.5281/zenodo.22729129`](https://doi.org/10.5281/zenodo.22729129).
 
 Docs-only versus v17 tag
 `v17.0.0-Beal-44-13-Level-26-Baker-B0-Reduction-Certificate`
