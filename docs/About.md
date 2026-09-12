@@ -1,6 +1,21 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v24.0.2-Beal-44-13-Level-26-Matveev-Exp-Bound-Properties`
+Latest tag / HEAD: `v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product`
+Most current as of 2026-09-12, **not** final.
+`BealMatveevThm14.lean` adds the height
+product identity.
+`C1_floor * 729000000 = height_B0`.
+The 7-digit typo `72900000` is `30^6 / 10`
+and `C1_floor * 72900000 = height_B0 / 10`.
+Target and `baker_bound_gap3` stay
+uninhabited def Props. Stay in v24.x
+until `|Λ| > exp(-C)` is a theorem.
+Locked Lean 0 vs v24.0.2 `73c5993` except
+`BealMatveevThm14.lean`. Previous v24.0.2
+DOI `10.5281/zenodo.22730548`
+(concept `10.5281/zenodo.22379293`).
+
+Latest prior tag: `v24.0.2-Beal-44-13-Level-26-Matveev-Exp-Bound-Properties`
 Most current as of 2026-09-12, **not** final.
 `BealMatveevThm14.lean` adds Real.exp
 properties of the displayed Matveev
@@ -11,9 +26,10 @@ positive number. Target and
 def Props. Stay in v24.x until
 `|Λ| > exp(-C)` is a theorem. Locked
 Lean 0 vs v24.0.1 `4d66383` except
-`BealMatveevThm14.lean`. Previous v24.0.1
-DOI `10.5281/zenodo.22730460`
-(concept `10.5281/zenodo.22379293`).
+`BealMatveevThm14.lean`. Zenodo DOI
+`10.5281/zenodo.22730548`
+(concept `10.5281/zenodo.22379293`;
+previous v24.0.1 `10.5281/zenodo.22730460`).
 
 Latest prior tag: `v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone`
 Most current as of 2026-09-12, **not** final.

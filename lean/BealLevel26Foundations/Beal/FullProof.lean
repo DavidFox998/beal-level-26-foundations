@@ -33,6 +33,20 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
 /-!
+# FullProof track (v24.1.0)
+
+Height product identity.
+`C1_floor * thirty_pow = height_B0`
+with thirty_pow = 729000000 = 30^6.
+The 7-digit typo 72900000 is 30^6 / 10
+and its product is height_B0 / 10.
+`matveev_inequality_real_target` and
+`baker_bound_gap3` stay uninhabited
+def Props.  Stay in v24.x until
+|Lambda| > exp(-C) is a theorem.
+Locked Lean files stay exactly v24.0.2
+except BealMatveevThm14.lean.
+
 # FullProof track (v24.0.2)
 
 Real.exp properties of the displayed

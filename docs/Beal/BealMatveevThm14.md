@@ -1,10 +1,29 @@
 # BealMatveevThm14 — v24.0.0 Matveev 2000 Thm 1.4 formalization start
 
-**Tag.** `v24.0.2-Beal-44-13-Level-26-Matveev-Exp-Bound-Properties`.
+**Tag.** `v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product`.
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
-**Parent.** v24.0.1 `4d66383` / `v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone` / DOI `10.5281/zenodo.22730460`.
+**Parent.** v24.0.2 `73c5993` / `v24.0.2-Beal-44-13-Level-26-Matveev-Exp-Bound-Properties` / DOI `10.5281/zenodo.22730548`.
 **Concept.** `10.5281/zenodo.22379293`.
+
+## v24.1.0 — height product identity
+
+```lean
+theorem matveev_C1_floor_mul_thirty_pow_div10 :
+    C1_floor * 72900000 = 10438275101931000000
+theorem matveev_C1_floor_mul_thirty_pow :
+    C1_floor * 729000000 = 104382751019310000000
+theorem matveev_C1_floor_mul_thirty_pow_div10_times_ten :
+    C1_floor * 72900000 * 10 = height_B0
+theorem matveev_C1_floor_mul_thirty_pow_div10_ne_height :
+    C1_floor * 72900000 ≠ height_B0
+theorem matveev_height_product_link :
+    height_B0 = C1_floor * thirty_pow
+```
+
+`thirty_pow = 729000000 = 30^6`. The 7-digit typo `72900000` is `30^6 / 10`. The correct product **is** `height_B0`. The typo product is `height_B0 / 10`. This is **not** `|Λ| > exp(-C)`.
+
+`matveev_inequality_real_target` and `baker_bound_gap3` stay uninhabited.
 
 ## v24.0.2 — exp of the displayed bound
 

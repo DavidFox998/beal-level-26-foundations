@@ -1,3 +1,19 @@
+# FINAL v24.1.0 — Matveev height product identity (not final)
+
+Latest tag `v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product`.
+`C1_floor * 729000000 = height_B0`.
+The typo product `C1_floor * 72900000`
+is `height_B0 / 10`. Target and
+`baker_bound_gap3` stay uninhabited
+def Props. Stay in v24.x until
+`|Λ| > exp(-C)` is a theorem.
+Locked Lean 0 vs v24.0.2 `73c5993` /
+`10.5281/zenodo.22730548` except
+`BealMatveevThm14.lean`.
+Most current as of 2026-09-12, **not** a
+final Beal proof. Series concept
+`10.5281/zenodo.22379293`.
+
 # FINAL v24.0.2 — Matveev exp bound properties (not final)
 
 Latest tag `v24.0.2-Beal-44-13-Level-26-Matveev-Exp-Bound-Properties`.

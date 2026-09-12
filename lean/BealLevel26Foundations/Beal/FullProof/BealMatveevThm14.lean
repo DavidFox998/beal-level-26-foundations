@@ -3,16 +3,18 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v24.0.2 -- Real.exp properties of
-the displayed Matveev exponent, toward
-Matveev 2000 Thm 1.4.
-Keeps v24.0.0 / v24.0.1 lemmas and adds
-exp(C_exp_bound) in (0, 1) plus the
-named target lower bound.
+Track B v24.1.0 -- height product identity
+that controls the displayed Matveev
+exponent.  Keeps v24.0.0 / v24.0.1 /
+v24.0.2 lemmas.
 
 thirty_pow is 30^6 = 729000000, not
 the 7-digit typo 72900000 (= 30^6 / 10).
-Both numerals stay decide theorems.
+C1_floor * 729000000 = height_B0
+= 104382751019310000000.
+C1_floor * 72900000 = height_B0 / 10
+= 10438275101931000000.
+Both products stay decide theorems.
 
 Does NOT inhabit baker_bound_gap3.
 Does NOT inhabit
@@ -234,6 +236,45 @@ theorem matveev_target_exp_lower_lt_one :
     matveev_target_exp_lower < 1 :=
   matveev_exp_of_bound_pos_lt_one
 
+/-! ## v24.1.0 — height product identity
+
+    The displayed exponent is
+    -(C1_floor * thirty_pow * log height_B0)
+    with thirty_pow = 30^6 = 729000000.
+    That product equals height_B0.
+    The 7-digit typo 72900000 is 30^6 / 10
+    and its product is height_B0 / 10.
+    Does not use sorry. -/
+
+/-- Typo product: C1_floor * (30^6 / 10).
+    This is height_B0 / 10, not height_B0. -/
+theorem matveev_C1_floor_mul_thirty_pow_div10 :
+    matveev_C1_floor * 72900000 = 10438275101931000000 := by
+  decide
+
+/-- Correct 30^6 product. This is height_B0. -/
+theorem matveev_C1_floor_mul_thirty_pow :
+    matveev_C1_floor * 729000000 = 104382751019310000000 := by
+  decide
+
+/-- Typo product times ten recovers height_B0. -/
+theorem matveev_C1_floor_mul_thirty_pow_div10_times_ten :
+    matveev_C1_floor * 72900000 * 10 = matveev_height_B0 := by
+  decide
+
+/-- The typo product is not the displayed height. -/
+theorem matveev_C1_floor_mul_thirty_pow_div10_ne_height :
+    matveev_C1_floor * 72900000 ≠ matveev_height_B0 := by
+  decide
+
+/-- Product that controls the displayed exponent.
+    height_B0 = C1_floor * thirty_pow
+    with thirty_pow = 729000000 = 30^6.
+    Not height_B0 * 10. -/
+theorem matveev_height_product_link :
+    matveev_height_B0 = matveev_C1_floor * matveev_thirty_pow := by
+  decide
+
 /-- Integer trace of the Thm 1.4 start. -/
 def matveev_thm14_constants : List Int :=
   [143186215390, 729000000, 104382751019310000000,
@@ -287,6 +328,11 @@ def baker_bound_gap3_remaining_thm14 : Prop :=
 #check matveev_exp_of_bound_pos
 #check matveev_C_exp_bound_le_neg_onee12
 #check matveev_target_exp_lower
+#check matveev_C1_floor_mul_thirty_pow_div10
+#check matveev_C1_floor_mul_thirty_pow
+#check matveev_C1_floor_mul_thirty_pow_div10_times_ten
+#check matveev_C1_floor_mul_thirty_pow_div10_ne_height
+#check matveev_height_product_link
 #check matveev_inequality_real_target
 #check baker_bound_gap3_remaining_thm14
 #print axioms matveev_C1_floor_eq
@@ -315,6 +361,11 @@ def baker_bound_gap3_remaining_thm14 : Prop :=
 #print axioms matveev_C_exp_bound_le_neg_onee12
 #print axioms matveev_target_exp_lower_pos
 #print axioms matveev_target_exp_lower_lt_one
+#print axioms matveev_C1_floor_mul_thirty_pow_div10
+#print axioms matveev_C1_floor_mul_thirty_pow
+#print axioms matveev_C1_floor_mul_thirty_pow_div10_times_ten
+#print axioms matveev_C1_floor_mul_thirty_pow_div10_ne_height
+#print axioms matveev_height_product_link
 #print axioms matveev_thm14_C_exp_bound_lt_neg_onee12
 #print axioms matveev_thm14_constants_hold
 
