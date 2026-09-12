@@ -13,7 +13,7 @@ Kernel lemmas making the product that controls the displayed exponent explicit:
 - Do **not** claim `30^6 = 72900000`. Do **not** claim `height_B0 * 10 = C1_floor * thirty_pow`
 - `matveev_inequality_real_target` and `baker_bound_gap3` stay uninhabited def Props (Mathlib 4.12 has no Matveev 2000 Thm 1.4)
 - Locked Lean 0 vs v24.0.2 / `73c5993` except `BealMatveevThm14.lean`
-- Previous v24.0.2 DOI [`10.5281/zenodo.22730548`](https://doi.org/10.5281/zenodo.22730548) (concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293))
+- Zenodo DOI [`10.5281/zenodo.22730776`](https://doi.org/10.5281/zenodo.22730776) (concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293); previous v24.0.2 [`10.5281/zenodo.22730548`](https://doi.org/10.5281/zenodo.22730548))
 
 **v24.0.2-Beal-44-13-Level-26-Matveev-Exp-Bound-Properties — properties of the Matveev exponential bound. Stay in v24 until `|Λ| > exp(-C)` is a theorem. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
@@ -148,7 +148,7 @@ PARI LLL reduction of the huge Matveev integer `B0_raw` to the displayed cutoff 
 | v24.0.0 | [`10.5281/zenodo.22730408`](https://doi.org/10.5281/zenodo.22730408) | `d39c6d5` | `BealMatveevThm14.lean` starts Matveev 1.4; `matveev_height_log_pos` / `matveev_exp_bound_neg`; target and `baker_bound_gap3` stay Prop |
 | v24.0.1 | [`10.5281/zenodo.22730460`](https://doi.org/10.5281/zenodo.22730460) | `4d66383` | height / log monotone: `matveev_height_B0_gt_two` / `matveev_log_height_monotone` / `C_exp_bound < 0 ↔ log height_B0 > 0` |
 | v24.0.2 | [`10.5281/zenodo.22730548`](https://doi.org/10.5281/zenodo.22730548) | `73c5993` | `exp(C_exp_bound)` in `(0,1)`; `C_exp_bound ≤ -10^12`; named `matveev_target_exp_lower` |
-| v24.1.0 | pending webhook | — | `C1_floor * 729000000 = height_B0`; typo `C1_floor * 72900000 = height_B0 / 10`; `matveev_height_product_link` |
+| v24.1.0 | [`10.5281/zenodo.22730776`](https://doi.org/10.5281/zenodo.22730776) | `7962905` | `C1_floor * 729000000 = height_B0`; typo `C1_floor * 72900000 = height_B0 / 10`; `matveev_height_product_link` |
 
 Most current snapshot as of 2026-09-12, **not** a final Beal proof. Concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293). See [`docs/CUMULATIVE_ARCHIVE_v10_v17.md`](docs/CUMULATIVE_ARCHIVE_v10_v17.md).
 
@@ -320,7 +320,7 @@ Releases:
 - v8.72.1-doi-badge inserts real Zenodo DOI `10.5281/zenodo.22698257` from the v8.70.0 mint
 - v8.73.0-modularity-exists-level2 displayed S2(26) dim2 via 0≠12 at p=53; Chain ExistsNewformLevel2 stays 0≠0; DOI 10.5281/zenodo.22698257 still cites v8.69.0
 - v8.74.0-frey-irreducible-mod13 displayed frey_mod13_irreducible at B=196 and B=1500003; frey_modular Classical.em; level_lowering_to_26 stays Prop
-- v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product `C1_floor * 729000000 = height_B0`; typo `C1_floor * 72900000 = height_B0 / 10`; `matveev_height_product_link`; target and `baker_bound_gap3` stay uninhabited; locked Lean 0 vs v24.0.2 `73c5993` except `BealMatveevThm14.lean`
+- v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product `C1_floor * 729000000 = height_B0`; typo `C1_floor * 72900000 = height_B0 / 10`; `matveev_height_product_link`; target and `baker_bound_gap3` stay uninhabited; locked Lean 0 vs v24.0.2 `73c5993` except `BealMatveevThm14.lean`; DOI `10.5281/zenodo.22730776`
 - v24.0.2-Beal-44-13-Level-26-Matveev-Exp-Bound-Properties `0 < exp(C_exp_bound) < 1`; `C_exp_bound ≤ -10^12`; named `matveev_target_exp_lower`; target and `baker_bound_gap3` stay uninhabited; locked Lean 0 vs v24.0.1 `4d66383` except `BealMatveevThm14.lean`; DOI `10.5281/zenodo.22730548`
 - v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone height / log monotone lemmas; `matveev_height_B0_gt_two` / `matveev_log_height_monotone` / `matveev_C_exp_bound_lt_zero_of_pos_log`; target and `baker_bound_gap3` stay uninhabited; locked Lean 0 vs v24.0.0 `d39c6d5` except `BealMatveevThm14.lean`; DOI `10.5281/zenodo.22730460`
 - v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start start Matveev 2000 Thm 1.4 formalization; `matveev_height_log_pos` / `matveev_exp_bound_neg`; `matveev_inequality_real_target` and `baker_bound_gap3` stay uninhabited; stay in v24 until baker inhabited; locked Lean 0 vs v23 `c44f161`; DOI `10.5281/zenodo.22730408`

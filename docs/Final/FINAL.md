@@ -7,12 +7,13 @@ is `height_B0 / 10`. Target and
 `baker_bound_gap3` stay uninhabited
 def Props. Stay in v24.x until
 `|Λ| > exp(-C)` is a theorem.
-Locked Lean 0 vs v24.0.2 `73c5993` /
-`10.5281/zenodo.22730548` except
-`BealMatveevThm14.lean`.
+Locked Lean 0 vs v24.0.2 `73c5993` except
+`BealMatveevThm14.lean`. Zenodo DOI
+`10.5281/zenodo.22730776`
+(concept `10.5281/zenodo.22379293`;
+previous v24.0.2 `10.5281/zenodo.22730548`).
 Most current as of 2026-09-12, **not** a
-final Beal proof. Series concept
-`10.5281/zenodo.22379293`.
+final Beal proof.
 
 # FINAL v24.0.2 — Matveev exp bound properties (not final)
 

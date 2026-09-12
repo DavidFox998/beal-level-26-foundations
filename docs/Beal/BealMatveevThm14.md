@@ -4,6 +4,7 @@
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
 **Parent.** v24.0.2 `73c5993` / `v24.0.2-Beal-44-13-Level-26-Matveev-Exp-Bound-Properties` / DOI `10.5281/zenodo.22730548`.
+**This version.** `7962905` / DOI `10.5281/zenodo.22730776`.
 **Concept.** `10.5281/zenodo.22379293`.
 
 ## v24.1.0 — height product identity

@@ -7,10 +7,10 @@ authors:
     given-names: David
 version: "v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product"
 date-released: "2026-09-12"
-doi: "10.5281/zenodo.22730548"
+doi: "10.5281/zenodo.22730776"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
 url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product"
-# v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product: C1_floor*729000000=height_B0=104382751019310000000 by decide; typo C1_floor*72900000=height_B0/10; matveev_height_product_link; target and baker_bound_gap3 stay def Prop; stay in v24 until |Lambda|>exp(-C); locked Lean 0 vs v24.0.2 73c5993 except BealMatveevThm14.lean. Previous v24.0.2 DOI 10.5281/zenodo.22730548. Series concept 10.5281/zenodo.22379293.
+# v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product DOI 10.5281/zenodo.22730776 at 7962905: C1_floor*729000000=height_B0=104382751019310000000 by decide; typo C1_floor*72900000=height_B0/10; matveev_height_product_link; target and baker_bound_gap3 stay def Prop; stay in v24 until |Lambda|>exp(-C); locked Lean 0 vs v24.0.2 73c5993 except BealMatveevThm14.lean. Previous v24.0.2 DOI 10.5281/zenodo.22730548. Series concept 10.5281/zenodo.22379293.
 # v24.0.2-Beal-44-13-Level-26-Matveev-Exp-Bound-Properties DOI 10.5281/zenodo.22730548 at 73c5993: Real.exp properties of C_exp_bound; exp(C)<1 and 0<exp(C); C_exp_bound <= -10^12; named matveev_target_exp_lower; target and baker_bound_gap3 stay def Prop; stay in v24 until |Lambda|>exp(-C); locked Lean 0 vs v24.0.1 4d66383 except BealMatveevThm14.lean. Previous v24.0.1 DOI 10.5281/zenodo.22730460. Series concept 10.5281/zenodo.22379293.
 # v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone DOI 10.5281/zenodo.22730460 at 4d66383: height/log monotone lemmas; matveev_height_B0_gt_two / matveev_log_height_monotone / matveev_C_exp_bound_lt_zero_of_pos_log; C1_floor>0 thirty_pow>0 by decide; target and baker_bound_gap3 stay def Prop; stay in v24 until |Lambda|>exp(-C); locked Lean 0 vs v24.0.0 d39c6d5 except BealMatveevThm14.lean. Previous v24.0.0 DOI 10.5281/zenodo.22730408. Series concept 10.5281/zenodo.22379293.
 # v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start DOI 10.5281/zenodo.22730408 at d39c6d5: BealMatveevThm14.lean starts Matveev 2000 Thm 1.4 |Lambda|>exp(-C); matveev_height_log_pos / matveev_exp_bound_neg inhabited; thirty_pow=729000000 and ≠72900000 by decide; matveev_inequality_real_target and baker_bound_gap3 stay def Prop; stay in v24 until baker_bound_gap3 inhabited; locked Lean 0 vs v23 c44f161. Previous v23 DOI 10.5281/zenodo.22730338. Series concept 10.5281/zenodo.22379293.
@@ -67,6 +67,12 @@ abstract: >-
   d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260
   image >=300KB hook 22379293 honest
 identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22730776
+    description: v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product height product identity
+  - type: doi
+    value: 10.5281/zenodo.22730548
+    description: v24.0.2-Beal-44-13-Level-26-Matveev-Exp-Bound-Properties properties of the Matveev exponential bound
   - type: doi
     value: 10.5281/zenodo.22730460
     description: v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone height and log monotone

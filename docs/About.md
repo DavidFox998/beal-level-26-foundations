@@ -11,9 +11,10 @@ Target and `baker_bound_gap3` stay
 uninhabited def Props. Stay in v24.x
 until `|Λ| > exp(-C)` is a theorem.
 Locked Lean 0 vs v24.0.2 `73c5993` except
-`BealMatveevThm14.lean`. Previous v24.0.2
-DOI `10.5281/zenodo.22730548`
-(concept `10.5281/zenodo.22379293`).
+`BealMatveevThm14.lean`. Zenodo DOI
+`10.5281/zenodo.22730776`
+(concept `10.5281/zenodo.22379293`;
+previous v24.0.2 `10.5281/zenodo.22730548`).
 
 Latest prior tag: `v24.0.2-Beal-44-13-Level-26-Matveev-Exp-Bound-Properties`
 Most current as of 2026-09-12, **not** final.
