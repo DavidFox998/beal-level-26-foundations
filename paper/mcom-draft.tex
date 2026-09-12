@@ -415,12 +415,19 @@ $B>2\mathrm{M}$ gap $3$ is the open Prop
 displayed cutoff $B_0=10^6$).
 It is not closable from the $5983$ census.
 % baker_conditional_gap3_full
+% allKilled_62500
+% allKilled_1e6
 Conditionally,
 \texttt{baker\_conditional\_gap3\_full}
 gives $\forall B$ from that premise:
 $B\le B_0$ by the expanded residue cover
 (mod~$16$ plus fourth powers at
 $53,29,109$ and $17,5,7,11,13,19,23,31,37$);
+the $62500$ values $B\equiv 14\pmod{16}$
+up to $10^6$ are the $25$ kernel slices
+\texttt{allKilled\_chunk\_0}--\texttt{allKilled\_chunk\_24},
+conjoined as \texttt{allKilled\_62500}
+and \texttt{allKilled\_1e6};
 $B>B_0$ by Baker.
 \texttt{exists\_zsig\_q\_gt\_2M\_dvd\_C13\_sub\_B4}
 needs Baker, not Zsig, and stays a Prop.

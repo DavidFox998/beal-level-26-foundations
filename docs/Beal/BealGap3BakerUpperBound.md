@@ -1,4 +1,4 @@
-# v9.3.0 Baker-conditional gap-3 forall
+# v9.4.0 chunked 1e6 kernel census
 
 `lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean`
 
@@ -8,29 +8,37 @@
 Baker / Bugeaud linear-forms-in-logs Prop:
 exists `B0 = 10^6` such that every `B > B0`
 has no `A` with `A^4 + B^4 = (B+3)^13`.
-Bugeaud linear forms are external, not in
-Mathlib 4.12.  `sorry` is not used.
+Baker needs Bugeaud, not in Mathlib 4.12.
+Bugeaud linear forms are external.
+Does not use sorry.  Do not inhabit.
 
 Inhabited:
 
+- `allKilled_chunk_0` .. `allKilled_chunk_24`:
+  each `allKilled start 2500 = true` by
+  rfl / kernel decide on one 2500-slice of
+  the 62500 values `B ≡ 14` (mod 16) up to
+  `10^6`
+- `allKilled_62500` / `allKilled_1e6`:
+  the conjunction of those 25 slices
 - `baker_conditional_gap3_full`:
   `baker_bound_gap3 → ∀ B, ¬∃ A`.
   `B ≤ B0` by the residue cover extended
   to `10^6`:
   - `B % 16 ≠ 14` via `beal_gap3_mod16_elim_not14`
-    (15/16, including `[196, 1500003]`)
-  - `B ≡ 14` via fourth-power tests at
-    `q = 53, 29, 109` expanded by
-    `17, 5, 7, 11, 13, 19, 23, 31, 37`
-    (kernel census of the 62500 values
-    `14, 30, …, 999998`)
+  - `B ≡ 14` via the chunked kernel census
+    (fourth-power tests at
+    `q = 53, 29, 109, 17, 5, 7, 11, 13, 19, 23, 31, 37`)
   - `B > B0` by the Baker premise
 - Allowed axioms
-  `[propext, Quot.sound, Classical.choice]`
+  `[propext, Quot.sound]`
 
 Keeps the three Zsig Props (needs Baker,
-not Zsig), `frey_tate_conductor` Prop,
-`conductor_86` Prop, `B14_honest` Prop.
+not Zsig).  `frey_tate_conductor` stays
+Prop (Tate `N(E)` missing from Mathlib 4.12).
+`conductor_86` stays Prop
+(`63982 = 2*31991` proves `N` does not
+divide `2^5*3*13`).  `B14_honest` stays Prop.
 Tate `tate_2adic_exponent_le5` /
 `tate_odd_exponent_le_one` /
 `tate_conductor_bound_rhs` stay.

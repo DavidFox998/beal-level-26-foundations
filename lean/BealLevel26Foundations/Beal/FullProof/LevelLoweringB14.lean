@@ -138,7 +138,8 @@ def level_lowering_to_26_B14 : Prop :=
   BealLevel26Foundations.FreyModularity.level_lowering_to_26
 
 /-- Uninhabited.  A recorded a₅₃ miss does
-not prove `¬ ∃ A`. -/
+not prove `¬ ∃ A`.  Residue cover is not
+a Lean `∀ B ≤ 2M`.  Do not inhabit. -/
 def beal_4_13_13_gap3_B_le_2M_eliminated_B14_honest : Prop :=
   ∀ B : Nat, B ∈ step60_b14_list →
     ¬ ∃ A : Nat,

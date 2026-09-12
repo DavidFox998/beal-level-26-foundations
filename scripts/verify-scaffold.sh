@@ -2895,6 +2895,10 @@ grep -q "baker_bound_gap3" \
   paper/mcom-draft.tex
 grep -q "baker_conditional_gap3_full" \
   paper/mcom-draft.tex
+grep -q "allKilled_62500" \
+  paper/mcom-draft.tex
+grep -q "allKilled_1e6" \
+  paper/mcom-draft.tex
 grep -q "needs Baker, not Zsig" \
   paper/mcom-draft.tex
 test ! -n "$(grep -E '^axiom |import BealLevel26Foundations.Beal.FullProof.RibetMazur' \
@@ -2960,6 +2964,18 @@ grep -q "def baker_B0" \
   lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
 grep -q "theorem baker_conditional_gap3_full" \
   lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
+grep -q "theorem allKilled_chunk_0" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
+grep -q "theorem allKilled_chunk_24" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
+grep -q "theorem allKilled_62500" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
+grep -q "theorem allKilled_1e6" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
+grep -q "set_option maxRecDepth 200000" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
+grep -q "set_option maxHeartbeats 4000000000" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
 grep -q "Bugeaud linear forms external" \
   lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
 grep -q "needs Baker, not Zsig" \
@@ -2967,6 +2983,14 @@ grep -q "needs Baker, not Zsig" \
 grep -q "def baker_bound_gap3" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem baker_conditional_gap3_full" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem allKilled_chunk_0" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem allKilled_chunk_24" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem allKilled_62500" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem allKilled_1e6" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem beal_4_13_13_gap3_B_le_2M_eliminated_B14_full" \
   lean/BealLevel26Foundations/Beal/FullProof/BealFreyModQKill.lean

@@ -3,32 +3,38 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v9.3.0 -- Baker-conditional gap-3 forall.
+Track B v9.4.0 -- chunked 1e6 kernel census.
+
+`baker_conditional_gap3_full` stays
+inhabited: baker_bound_gap3 -> forall B,
+no A with A^4 + B^4 = (B+3)^13.
+
+25 theorems `allKilled_chunk_0` ..
+`allKilled_chunk_24` each prove
+`allKilled start 2500 = true` by
+rfl / kernel decide on one 2500-slice
+of the 62500 values B == 14 mod 16
+up to 1e6.  `allKilled_62500` and
+`allKilled_1e6` are the conjunction.
 
 `baker_bound_gap3` stays the uninhabited
 Bugeaud / linear-forms Prop (external,
 not in Mathlib 4.12).  `baker_B0 = 10^6`.
+`frey_tate_conductor` stays Prop (Tate
+N(E) missing from Mathlib 4.12).
+`conductor_86` stays Prop
+(63982 = 2*31991 proves N does not
+divide 2^5*3*13).  `B14_honest` stays
+Prop.  Does not inhabit those four.
 
-`baker_conditional_gap3_full` inhabits
-  baker_bound_gap3 -> forall B, no A
-  with A^4 + B^4 = (B+3)^13.
-
-B <= B0 is the existing residue cover,
-extended to 10^6:
+B <= B0 is the residue cover to 10^6:
 * B % 16 != 14 via beal_gap3_mod16_elim_not14
-  (the 15/16 class, including the named
-  rows 196 and 1500003).
-* B == 14 via the 352-pattern fourth-power
-  tests at q = 53, 29, 109, expanded by
-  q = 17, 5, 7, 11, 13, 19, 23, 31, 37.
-  Kernel-checked on the 62500 values
-  14, 30, ..., 999998.
+* B == 14 via fourth-power tests at
+  q = 53, 29, 109, 17, 5, 7, 11, 13,
+  19, 23, 31, 37.
 
 B > B0 uses the Baker premise.
 
-Keeps baker_bound_gap3 Prop, the three
-Zsig Props, frey_tate_conductor Prop,
-conductor_86 Prop, B14_honest Prop.
 Does not import RibetMazur, BealFreyB14,
 or FreyModularity_13.  Not BCDT.
 Does not use sorry.
@@ -57,9 +63,16 @@ theorem baker_B0_eq_pow10_6 : baker_B0 = Nat.pow 10 6 :=
 /-- Missing Baker / Bugeaud linear-forms-in-logs
     bound: exists B0 = 10^6 such that every B > B0
     has no gap-3 solution.  Uninhabited Prop.
+    Baker needs Bugeaud, not in Mathlib 4.12.
     Bugeaud linear forms external, not in
     Mathlib 4.12.  Not closable from the 5983
-    census.  `sorry` is not used. -/
+    census.
+    Does not use sorry.
+    Do not inhabit.  frey_tate_conductor
+    stays Prop (Tate N(E) missing).
+    conductor_86 stays Prop
+    (63982 = 2*31991 proves N does not
+    divide 2^5*3*13).  B14_honest stays Prop. -/
 def baker_bound_gap3 : Prop :=
   ∃ B0 : Nat, B0 = Nat.pow 10 6 ∧
     ∀ B : Nat, B0 < B →
@@ -400,6 +413,178 @@ theorem allKilledRange_chunk_24 :
     allKilledRange 60000 2500 = true :=
   rfl
 
+/-- Named two-argument census.  `allKilled start count`
+    is the kernel slice `allKilledRange start count`. -/
+def allKilled (start count : Nat) : Bool :=
+  allKilledRange start count
+
+/-- Chunk 0: B = 14 + 16 * k for k in [0, 2500). -/
+theorem allKilled_chunk_0 : allKilled 0 2500 = true :=
+  allKilledRange_chunk_0
+
+/-- Chunk 1: k in [2500, 5000). -/
+theorem allKilled_chunk_1 : allKilled 2500 2500 = true :=
+  allKilledRange_chunk_1
+
+/-- Chunk 2: k in [5000, 7500). -/
+theorem allKilled_chunk_2 : allKilled 5000 2500 = true :=
+  allKilledRange_chunk_2
+
+/-- Chunk 3: k in [7500, 10000). -/
+theorem allKilled_chunk_3 : allKilled 7500 2500 = true :=
+  allKilledRange_chunk_3
+
+/-- Chunk 4: k in [10000, 12500). -/
+theorem allKilled_chunk_4 : allKilled 10000 2500 = true :=
+  allKilledRange_chunk_4
+
+/-- Chunk 5: k in [12500, 15000). -/
+theorem allKilled_chunk_5 : allKilled 12500 2500 = true :=
+  allKilledRange_chunk_5
+
+/-- Chunk 6: k in [15000, 17500). -/
+theorem allKilled_chunk_6 : allKilled 15000 2500 = true :=
+  allKilledRange_chunk_6
+
+/-- Chunk 7: k in [17500, 20000). -/
+theorem allKilled_chunk_7 : allKilled 17500 2500 = true :=
+  allKilledRange_chunk_7
+
+/-- Chunk 8: k in [20000, 22500). -/
+theorem allKilled_chunk_8 : allKilled 20000 2500 = true :=
+  allKilledRange_chunk_8
+
+/-- Chunk 9: k in [22500, 25000). -/
+theorem allKilled_chunk_9 : allKilled 22500 2500 = true :=
+  allKilledRange_chunk_9
+
+/-- Chunk 10: k in [25000, 27500). -/
+theorem allKilled_chunk_10 : allKilled 25000 2500 = true :=
+  allKilledRange_chunk_10
+
+/-- Chunk 11: k in [27500, 30000). -/
+theorem allKilled_chunk_11 : allKilled 27500 2500 = true :=
+  allKilledRange_chunk_11
+
+/-- Chunk 12: k in [30000, 32500). -/
+theorem allKilled_chunk_12 : allKilled 30000 2500 = true :=
+  allKilledRange_chunk_12
+
+/-- Chunk 13: k in [32500, 35000). -/
+theorem allKilled_chunk_13 : allKilled 32500 2500 = true :=
+  allKilledRange_chunk_13
+
+/-- Chunk 14: k in [35000, 37500). -/
+theorem allKilled_chunk_14 : allKilled 35000 2500 = true :=
+  allKilledRange_chunk_14
+
+/-- Chunk 15: k in [37500, 40000). -/
+theorem allKilled_chunk_15 : allKilled 37500 2500 = true :=
+  allKilledRange_chunk_15
+
+/-- Chunk 16: k in [40000, 42500). -/
+theorem allKilled_chunk_16 : allKilled 40000 2500 = true :=
+  allKilledRange_chunk_16
+
+/-- Chunk 17: k in [42500, 45000). -/
+theorem allKilled_chunk_17 : allKilled 42500 2500 = true :=
+  allKilledRange_chunk_17
+
+/-- Chunk 18: k in [45000, 47500). -/
+theorem allKilled_chunk_18 : allKilled 45000 2500 = true :=
+  allKilledRange_chunk_18
+
+/-- Chunk 19: k in [47500, 50000). -/
+theorem allKilled_chunk_19 : allKilled 47500 2500 = true :=
+  allKilledRange_chunk_19
+
+/-- Chunk 20: k in [50000, 52500). -/
+theorem allKilled_chunk_20 : allKilled 50000 2500 = true :=
+  allKilledRange_chunk_20
+
+/-- Chunk 21: k in [52500, 55000). -/
+theorem allKilled_chunk_21 : allKilled 52500 2500 = true :=
+  allKilledRange_chunk_21
+
+/-- Chunk 22: k in [55000, 57500). -/
+theorem allKilled_chunk_22 : allKilled 55000 2500 = true :=
+  allKilledRange_chunk_22
+
+/-- Chunk 23: k in [57500, 60000). -/
+theorem allKilled_chunk_23 : allKilled 57500 2500 = true :=
+  allKilledRange_chunk_23
+
+/-- Chunk 24: k in [60000, 62500). -/
+theorem allKilled_chunk_24 : allKilled 60000 2500 = true :=
+  allKilledRange_chunk_24
+
+/-- Conjunction of the 25 kernel slices (62500 values). -/
+theorem allKilled_62500 :
+    allKilled 0 2500 = true ∧
+    allKilled 2500 2500 = true ∧
+    allKilled 5000 2500 = true ∧
+    allKilled 7500 2500 = true ∧
+    allKilled 10000 2500 = true ∧
+    allKilled 12500 2500 = true ∧
+    allKilled 15000 2500 = true ∧
+    allKilled 17500 2500 = true ∧
+    allKilled 20000 2500 = true ∧
+    allKilled 22500 2500 = true ∧
+    allKilled 25000 2500 = true ∧
+    allKilled 27500 2500 = true ∧
+    allKilled 30000 2500 = true ∧
+    allKilled 32500 2500 = true ∧
+    allKilled 35000 2500 = true ∧
+    allKilled 37500 2500 = true ∧
+    allKilled 40000 2500 = true ∧
+    allKilled 42500 2500 = true ∧
+    allKilled 45000 2500 = true ∧
+    allKilled 47500 2500 = true ∧
+    allKilled 50000 2500 = true ∧
+    allKilled 52500 2500 = true ∧
+    allKilled 55000 2500 = true ∧
+    allKilled 57500 2500 = true ∧
+    allKilled 60000 2500 = true :=
+  ⟨allKilled_chunk_0, allKilled_chunk_1, allKilled_chunk_2,
+    allKilled_chunk_3, allKilled_chunk_4, allKilled_chunk_5,
+    allKilled_chunk_6, allKilled_chunk_7, allKilled_chunk_8,
+    allKilled_chunk_9, allKilled_chunk_10, allKilled_chunk_11,
+    allKilled_chunk_12, allKilled_chunk_13, allKilled_chunk_14,
+    allKilled_chunk_15, allKilled_chunk_16, allKilled_chunk_17,
+    allKilled_chunk_18, allKilled_chunk_19, allKilled_chunk_20,
+    allKilled_chunk_21, allKilled_chunk_22, allKilled_chunk_23,
+    allKilled_chunk_24⟩
+
+/-- Same 25-slice conjunction; covers B ≡ 14 (mod 16)
+    up to baker_B0 = 10^6. -/
+theorem allKilled_1e6 :
+    allKilled 0 2500 = true ∧
+    allKilled 2500 2500 = true ∧
+    allKilled 5000 2500 = true ∧
+    allKilled 7500 2500 = true ∧
+    allKilled 10000 2500 = true ∧
+    allKilled 12500 2500 = true ∧
+    allKilled 15000 2500 = true ∧
+    allKilled 17500 2500 = true ∧
+    allKilled 20000 2500 = true ∧
+    allKilled 22500 2500 = true ∧
+    allKilled 25000 2500 = true ∧
+    allKilled 27500 2500 = true ∧
+    allKilled 30000 2500 = true ∧
+    allKilled 32500 2500 = true ∧
+    allKilled 35000 2500 = true ∧
+    allKilled 37500 2500 = true ∧
+    allKilled 40000 2500 = true ∧
+    allKilled 42500 2500 = true ∧
+    allKilled 45000 2500 = true ∧
+    allKilled 47500 2500 = true ∧
+    allKilled 50000 2500 = true ∧
+    allKilled 52500 2500 = true ∧
+    allKilled 55000 2500 = true ∧
+    allKilled 57500 2500 = true ∧
+    allKilled 60000 2500 = true :=
+  allKilled_62500
+
 theorem chunk_of_quot :
     ∀ i : Nat, i < 25 → allKilledRange (i * 2500) 2500 = true
   | 0, _ => allKilledRange_chunk_0
@@ -505,9 +690,18 @@ theorem baker_conditional_gap3_full
 #check baker_bound_gap3_at_B0
 #check baker_le_B0_gap3
 #check baker_conditional_gap3_full
+#check allKilled
+#check allKilled_chunk_0
+#check allKilled_chunk_24
+#check allKilled_62500
+#check allKilled_1e6
 #print axioms baker_B0_eq
 #print axioms baker_B0_eq_pow10_6
 #print axioms baker_le_B0_gap3
 #print axioms baker_conditional_gap3_full
+#print axioms allKilled_chunk_0
+#print axioms allKilled_chunk_24
+#print axioms allKilled_62500
+#print axioms allKilled_1e6
 
 end BealLevel26Foundations.BealGap3BakerUpperBound

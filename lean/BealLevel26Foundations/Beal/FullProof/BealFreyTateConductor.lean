@@ -929,12 +929,15 @@ inductive IsTateConductor : WeierstrassCurve Int → Nat → Prop
 
 /-- Uninhabited.  The requested conclusion of
     Tate's algorithm on this Frey model with
-    N = Mathlib Tate N(E).  Mathlib 4.12 has
-    no N(E).  The packed valuation bound
+    N = Mathlib Tate N(E).  Frey needs Tate
+    N(E), missing from Mathlib 4.12.  The
+    packed valuation bound
     `tatePackedValuationBound` (v_q ≤ 1 odd,
     v2 ≤ 5) is not N(E).  Do not inhabit with
     N = |Delta| or N = 1.  conductor_86 stays
-    the stronger uninhabited N | 2^5*3*13. -/
+    the stronger uninhabited N | 2^5*3*13
+    (63982 = 2*31991 proves that stronger
+    claim is false as a universal N-bound). -/
 def frey_tate_conductor : Prop :=
   ∀ A B : Nat,
     Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 →

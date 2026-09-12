@@ -5435,6 +5435,142 @@ theorem baker_conditional_gap3_full
   BealLevel26Foundations.BealGap3BakerUpperBound.baker_conditional_gap3_full
     hBaker
 
+/-! ## v9.4.0 — chunked 1e6 kernel census -/
+
+def allKilled :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled
+
+theorem allKilled_chunk_0 : allKilled 0 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_0
+
+theorem allKilled_chunk_1 : allKilled 2500 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_1
+
+theorem allKilled_chunk_2 : allKilled 5000 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_2
+
+theorem allKilled_chunk_3 : allKilled 7500 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_3
+
+theorem allKilled_chunk_4 : allKilled 10000 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_4
+
+theorem allKilled_chunk_5 : allKilled 12500 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_5
+
+theorem allKilled_chunk_6 : allKilled 15000 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_6
+
+theorem allKilled_chunk_7 : allKilled 17500 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_7
+
+theorem allKilled_chunk_8 : allKilled 20000 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_8
+
+theorem allKilled_chunk_9 : allKilled 22500 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_9
+
+theorem allKilled_chunk_10 : allKilled 25000 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_10
+
+theorem allKilled_chunk_11 : allKilled 27500 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_11
+
+theorem allKilled_chunk_12 : allKilled 30000 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_12
+
+theorem allKilled_chunk_13 : allKilled 32500 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_13
+
+theorem allKilled_chunk_14 : allKilled 35000 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_14
+
+theorem allKilled_chunk_15 : allKilled 37500 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_15
+
+theorem allKilled_chunk_16 : allKilled 40000 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_16
+
+theorem allKilled_chunk_17 : allKilled 42500 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_17
+
+theorem allKilled_chunk_18 : allKilled 45000 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_18
+
+theorem allKilled_chunk_19 : allKilled 47500 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_19
+
+theorem allKilled_chunk_20 : allKilled 50000 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_20
+
+theorem allKilled_chunk_21 : allKilled 52500 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_21
+
+theorem allKilled_chunk_22 : allKilled 55000 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_22
+
+theorem allKilled_chunk_23 : allKilled 57500 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_23
+
+theorem allKilled_chunk_24 : allKilled 60000 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_chunk_24
+
+theorem allKilled_62500 :
+    allKilled 0 2500 = true ∧
+    allKilled 2500 2500 = true ∧
+    allKilled 5000 2500 = true ∧
+    allKilled 7500 2500 = true ∧
+    allKilled 10000 2500 = true ∧
+    allKilled 12500 2500 = true ∧
+    allKilled 15000 2500 = true ∧
+    allKilled 17500 2500 = true ∧
+    allKilled 20000 2500 = true ∧
+    allKilled 22500 2500 = true ∧
+    allKilled 25000 2500 = true ∧
+    allKilled 27500 2500 = true ∧
+    allKilled 30000 2500 = true ∧
+    allKilled 32500 2500 = true ∧
+    allKilled 35000 2500 = true ∧
+    allKilled 37500 2500 = true ∧
+    allKilled 40000 2500 = true ∧
+    allKilled 42500 2500 = true ∧
+    allKilled 45000 2500 = true ∧
+    allKilled 47500 2500 = true ∧
+    allKilled 50000 2500 = true ∧
+    allKilled 52500 2500 = true ∧
+    allKilled 55000 2500 = true ∧
+    allKilled 57500 2500 = true ∧
+    allKilled 60000 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_62500
+
+theorem allKilled_1e6 :
+    allKilled 0 2500 = true ∧
+    allKilled 2500 2500 = true ∧
+    allKilled 5000 2500 = true ∧
+    allKilled 7500 2500 = true ∧
+    allKilled 10000 2500 = true ∧
+    allKilled 12500 2500 = true ∧
+    allKilled 15000 2500 = true ∧
+    allKilled 17500 2500 = true ∧
+    allKilled 20000 2500 = true ∧
+    allKilled 22500 2500 = true ∧
+    allKilled 25000 2500 = true ∧
+    allKilled 27500 2500 = true ∧
+    allKilled 30000 2500 = true ∧
+    allKilled 32500 2500 = true ∧
+    allKilled 35000 2500 = true ∧
+    allKilled 37500 2500 = true ∧
+    allKilled 40000 2500 = true ∧
+    allKilled 42500 2500 = true ∧
+    allKilled 45000 2500 = true ∧
+    allKilled 47500 2500 = true ∧
+    allKilled 50000 2500 = true ∧
+    allKilled 52500 2500 = true ∧
+    allKilled 55000 2500 = true ∧
+    allKilled 57500 2500 = true ∧
+    allKilled 60000 2500 = true :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.allKilled_1e6
+
 /-! ## v9.1.0 — Tate Step 2 for Frey Y² = X(X−A⁴)(X+B⁴) -/
 
 def tate_rhs :=
@@ -6439,6 +6575,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check baker_B0_eq
 #check baker_bound_gap3
 #check baker_conditional_gap3_full
+#check allKilled
+#check allKilled_chunk_0
+#check allKilled_chunk_24
+#check allKilled_62500
+#check allKilled_1e6
 #check tate_rhs
 #check v2_c4_ge_four
 #check tate_odd_prime_exponent_one
@@ -6960,6 +7101,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms exists_primitive_prime_Phi13_gap3
 #print axioms baker_B0_eq
 #print axioms baker_conditional_gap3_full
+#print axioms allKilled_chunk_0
+#print axioms allKilled_chunk_24
+#print axioms allKilled_62500
+#print axioms allKilled_1e6
 #print axioms v2_c4_ge_four
 #print axioms tate_odd_prime_exponent_one
 #print axioms rad_dvd_tate_rhs

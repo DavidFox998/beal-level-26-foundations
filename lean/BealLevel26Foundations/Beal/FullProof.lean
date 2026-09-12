@@ -24,6 +24,26 @@ import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
 import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 
 /-!
+# FullProof track (v9.4.0)
+
+Aggregator for Track B.  v9.4.0 names the
+chunked 1e6 kernel census:
+`allKilled_chunk_0` .. `allKilled_chunk_24`
+each prove `allKilled start 2500 = true`
+by rfl / kernel decide on one 2500-slice
+of the 62500 values `B ≡ 14` (mod 16)
+up to `10⁶`.  `allKilled_62500` and
+`allKilled_1e6` are the conjunction.
+`baker_conditional_gap3_full` stays
+inhabited.  `baker_bound_gap3` stays
+Prop (Baker needs Bugeaud, not in
+Mathlib 4.12).  `frey_tate_conductor`
+stays Prop (Tate `N(E)` missing).
+`conductor_86` stays Prop
+(`63982 = 2*31991` proves `N` does not
+divide `2^5*3*13`).  `B14_honest` stays
+Prop.  Not BCDT.
+
 # FullProof track (v9.3.0)
 
 Aggregator for Track B.  v9.3.0 inhabits

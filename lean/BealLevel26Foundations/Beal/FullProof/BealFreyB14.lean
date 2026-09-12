@@ -464,7 +464,9 @@ theorem irreducible_86 (A B : Nat)
 
 /-- Uninhabited.  `beal_frey_curve` is `Int → Int`, not a
     Mathlib elliptic curve, so there is no `.conductor`.
-    Zsig pools do not prove `N ∣ 2^5 * 3 * 13`. -/
+    Survivor `63982 = 2*31991` proves `N` does not
+    divide `2^5 * 3 * 13`.  Zsig pools do not close
+    that stronger bound.  Do not inhabit. -/
 def conductor_86 : Prop :=
   FreyModularity.level_lowering_to_26
 

@@ -799,6 +799,21 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v9.4.0-chunked-1e6-final — DONE (allKilled_chunk_0..24: allKilled start 2500 = true by rfl/kernel decide on each 2500-slice of the 62500 values B≡14 mod16 up to 1e6; allKilled_62500 and allKilled_1e6 are the conjunction; baker_conditional_gap3_full stays inhabited; baker_bound_gap3 stays Prop Baker needs Bugeaud not in Mathlib 4.12; frey_tate_conductor stays Prop Tate N(E) missing; conductor_86 stays Prop 63982=2*31991 proves N does not divide 2^5*3*13; B14_honest stays Prop; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus ∀ stays uninhabited; arrow stays a Prop)
+
+Lean change.  File
+`BealGap3BakerUpperBound.lean`.
+Keeps `set_option maxRecDepth 200000`
+and `maxHeartbeats 4000000000`.
+Does **not** inhabit `baker_bound_gap3`.
+Does **not** inhabit `frey_tate_conductor`.
+Does **not** inhabit `conductor_86`.
+Does **not** inhabit the three Zsig Props.
+Does **not** inhabit `B14_honest`.
+Does **not** add `axiom BCDT_B14`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No unconditional Beal `∀`.
+
 ### v9.3.0-Baker-conditional-gap3-full — DONE (baker_conditional_gap3_full: baker_bound_gap3 -> forall B, no A; B<=B0 by expanded residue cover; B>B0 by Baker premise; baker_bound_gap3 stays uninhabited Prop; Bugeaud linear forms external, not in Mathlib 4.12; Tate 2-adic lemmas stay; frey_tate_conductor stays Prop; Zsig Props stay Prop needs Baker not Zsig; conductor_86 stays Prop; B14_honest stays Prop; Chain ExistsNewformLevel2 stays 0≠0; Density/Step kraus ∀ stays uninhabited; arrow stays a Prop)
 
 Lean change.  File
