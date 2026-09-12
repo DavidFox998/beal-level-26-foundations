@@ -13,10 +13,12 @@ qflll basis; `bugeaud_LLL_basis_holds` by
 `baker_bound_gap3` stays uninhabited
 def Prop. Tate / Baker / v14 J0 / v15 B0 /
 v17 LLL / v19 constants Lean 0 lines vs v19
-`8fe96fd` / `10.5281/zenodo.22729309`.
+`8fe96fd`. Zenodo DOI
+`10.5281/zenodo.22729515`
+(concept `10.5281/zenodo.22379293`;
+previous v19 `10.5281/zenodo.22729309`).
 Most current as of 2026-09-12, **not** a
-final Beal proof. Series concept
-`10.5281/zenodo.22379293`.
+final Beal proof.
 Honesty lock: Tate 0 since v11, Baker 0
 since v12, v14 displayed certs unchanged,
 `baker_bound_gap3` uninhabited def Prop,

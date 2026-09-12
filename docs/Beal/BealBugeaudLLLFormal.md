@@ -20,3 +20,6 @@ Integer LLL lattice matching the v17 PARI qflll cert:
 `baker_bound_gap3` stays a **def Prop**.
 Mathlib 4.12 has no LLL reduction theorem.
 Does not use sorry.
+
+Zenodo DOI `10.5281/zenodo.22729515`
+(concept `10.5281/zenodo.22379293`).

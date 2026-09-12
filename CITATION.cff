@@ -7,10 +7,10 @@ authors:
     given-names: David
 version: "v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization"
 date-released: "2026-09-12"
-doi: "10.5281/zenodo.22729309"
+doi: "10.5281/zenodo.22729515"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
 url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization"
-# v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization: BealMatveevInequality.lean matveev_log_form Real.log; matveev_lower_bound def Prop; matveev_inequality_constants_hold decide no axioms; BealBugeaudLLLFormal.lean bugeaud_K=10^20 bugeaud_LLL_basis_holds decide no axioms; bugeaud_reduction_formal def Prop; baker_bound_gap3 stays def Prop; Tate/Baker/v14 J0/v15 B0/v17 LLL/v19 constants 0 lines vs v19 8fe96fd / 10.5281/zenodo.22729309. Series concept 10.5281/zenodo.22379293.
+# v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization DOI 10.5281/zenodo.22729515 at 768ed7f: BealMatveevInequality.lean matveev_log_form Real.log; matveev_lower_bound def Prop; matveev_inequality_constants_hold decide no axioms; BealBugeaudLLLFormal.lean bugeaud_K=10^20 bugeaud_LLL_basis_holds decide no axioms; bugeaud_reduction_formal def Prop; baker_bound_gap3 stays def Prop; Tate/Baker/v14 J0/v15 B0/v17 LLL/v19 constants 0 lines vs v19 8fe96fd / 10.5281/zenodo.22729309. Series concept 10.5281/zenodo.22379293.
 # v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization DOI 10.5281/zenodo.22729309 at 8fe96fd: BealMatveevConstants.lean matveev_C1_floor=143186215390 theorem decide Nat/Int constants (not Props); matveev_explicit_gap3_constants_hold decide no axioms; baker_bound_gap3 stays def Prop; Tate/Baker/v14 J0/v15 B0/v17 reduction 0 lines vs v18 430189e / 10.5281/zenodo.22729129. Series concept 10.5281/zenodo.22379293.
 # v18.0.0-Beal-44-13-Level-26-Cumulative-Archive-v10-v17 DOI 10.5281/zenodo.22729129 at 430189e: docs-only cumulative archive v10-v17 most current NOT final; Lean 0 lines vs v17 3fbafa6 / 10.5281/zenodo.22729067. Series concept 10.5281/zenodo.22379293.
 # v17.0.0-Beal-44-13-Level-26-Baker-B0-Reduction-Certificate DOI 10.5281/zenodo.22729067 at 3fbafa6: PARI LLL qflll B0_raw to B0_reduced=1e6 baker_B0_reduction_certificate.json List (List Int); baker_reduction_certificate_holds decide no axioms; baker_bound_gap3 stays def Prop; Tate/Baker/v15 B0/v14 modular 0 lines vs v16 9ce2980. Previous v16 DOI 10.5281/zenodo.22728705. Series concept 10.5281/zenodo.22379293.
@@ -60,6 +60,9 @@ abstract: >-
   d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260
   image >=300KB hook 22379293 honest
 identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22729515
+    description: v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization Real.log LLL skeleton
   - type: doi
     value: 10.5281/zenodo.22729309
     description: v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization Matveev C Nat/Int theorems

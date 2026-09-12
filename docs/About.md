@@ -11,9 +11,10 @@ Most current as of 2026-09-12, **not** final.
 stays def Prop. `baker_bound_gap3` stays
 uninhabited def Prop. Tate / Baker / v14 J0 /
 v15 B0 / v17 LLL / v19 constants Lean 0 lines
-vs v19 `8fe96fd`. Previous v19 DOI
-`10.5281/zenodo.22729309`
-(concept `10.5281/zenodo.22379293`).
+vs v19 `8fe96fd`. Zenodo DOI
+`10.5281/zenodo.22729515`
+(concept `10.5281/zenodo.22379293`;
+previous v19 `10.5281/zenodo.22729309`).
 Honesty lock: `baker_bound_gap3` stays Prop;
 `baker_B0_certificate_holds` and
 `baker_reduction_certificate_holds` decide,
