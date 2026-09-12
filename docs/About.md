@@ -15,8 +15,9 @@ def Props. Stay in v24.x until the
 Real inequality is a theorem. Locked
 Lean 0 vs v24.0.0 `d39c6d5` except
 `BealMatveevThm14.lean`. Previous v24.0.0
-DOI `10.5281/zenodo.22730408`
-(concept `10.5281/zenodo.22379293`).
+Zenodo DOI `10.5281/zenodo.22730460`
+(concept `10.5281/zenodo.22379293`;
+previous v24.0.0 `10.5281/zenodo.22730408`).
 
 Latest prior tag: `v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start`
 Most current as of 2026-09-12, **not** final.

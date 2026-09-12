@@ -4,6 +4,7 @@
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
 **Parent.** v24.0.0 `d39c6d5` / `v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start` / DOI `10.5281/zenodo.22730408`.
+**This version.** `4d66383` / DOI `10.5281/zenodo.22730460`.
 **Concept.** `10.5281/zenodo.22379293`.
 
 ## v24.0.1 — height and log monotone

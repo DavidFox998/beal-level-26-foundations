@@ -10,12 +10,13 @@ decide, no axioms. Target and
 `baker_bound_gap3` stay uninhabited
 def Props. Stay in v24.x until
 `|Λ| > exp(-C)` is a theorem.
-Locked Lean 0 vs v24.0.0 `d39c6d5` /
-`10.5281/zenodo.22730408` except
-`BealMatveevThm14.lean`.
+Locked Lean 0 vs v24.0.0 `d39c6d5` except
+`BealMatveevThm14.lean`. Zenodo DOI
+`10.5281/zenodo.22730460`
+(concept `10.5281/zenodo.22379293`;
+previous v24.0.0 `10.5281/zenodo.22730408`).
 Most current as of 2026-09-12, **not** a
-final Beal proof. Series concept
-`10.5281/zenodo.22379293`.
+final Beal proof.
 
 # FINAL v24.0.0 — Matveev Thm 1.4 formalization start (not final)
 
