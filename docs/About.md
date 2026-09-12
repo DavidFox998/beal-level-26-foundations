@@ -1,6 +1,7 @@
 # About — Beal Level 26 Foundations
 
 Latest tag / HEAD: `v13.0.0-Beal-44-13-Level-26-Modular-Elimination`
+Zenodo DOI `10.5281/zenodo.22721843`.
 Frey `Y² = X(X-A⁴)(X+B⁴)` for (4,4,13) gap3.
 Conductor is `tateConductor = 2^{f₂}*rad*13`
 with `f₂≤5`, not `2⁵*3*13`
