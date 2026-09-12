@@ -1,3 +1,23 @@
+# FINAL v18.0.0 — Cumulative archive v10–v17 (not final)
+
+Latest tag `v18.0.0-Beal-44-13-Level-26-Cumulative-Archive-v10-v17`.
+Docs-only versus v17 `3fbafa6` /
+`10.5281/zenodo.22729067`.
+Lean files 0 lines vs that tag.
+Most current as of 2026-09-12, **not** a
+final Beal proof. Series concept
+`10.5281/zenodo.22379293`.
+See `docs/CUMULATIVE_ARCHIVE_v10_v17.md`.
+Honesty lock: Tate 0 since v11, Baker 0
+since v12, v14 displayed certs unchanged,
+`baker_bound_gap3` uninhabited def Prop,
+`baker_B0_certificate_holds` and
+`baker_reduction_certificate_holds`
+kernel decide no axioms, main pack
+`[propext, Classical.choice, Quot.sound]`
+only. PARI external certs like mwrank
+`{0,12}`, not Mathlib Matveev or LLL.
+
 # FINAL v17.0.0 — Baker B0 PARI LLL reduction
 
 Latest tag `v17.0.0-Beal-44-13-Level-26-Baker-B0-Reduction-Certificate`.

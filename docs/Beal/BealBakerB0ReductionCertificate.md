@@ -1,5 +1,9 @@
 # v17.0.0 Baker B0 PARI LLL reduction certificate
 
+Zenodo DOI [`10.5281/zenodo.22729067`](https://doi.org/10.5281/zenodo.22729067)
+(concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293)).
+Archived in v18 `docs/CUMULATIVE_ARCHIVE_v10_v17.md`.
+
 `lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean`
 
 PARI script `scripts/baker_b0_reduction.gp` writes

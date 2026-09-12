@@ -1,6 +1,22 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v17.0.0-Beal-44-13-Level-26-Baker-B0-Reduction-Certificate`
+Latest tag / HEAD: `v18.0.0-Beal-44-13-Level-26-Cumulative-Archive-v10-v17`
+Most current cumulative archive v10–v17 as of 2026-09-12,
+**not** final. Docs-only versus v17 `3fbafa6`.
+Lean files 0 lines vs
+`v17.0.0-Beal-44-13-Level-26-Baker-B0-Reduction-Certificate`.
+See `docs/CUMULATIVE_ARCHIVE_v10_v17.md`.
+Previous v17 DOI `10.5281/zenodo.22729067`
+(concept `10.5281/zenodo.22379293`).
+Honesty lock: `baker_bound_gap3` stays Prop;
+`baker_B0_certificate_holds` and
+`baker_reduction_certificate_holds` decide,
+no axioms; main pack
+`[propext, Classical.choice, Quot.sound]`
+only; PARI external certs like mwrank
+`{0,12}`, not Mathlib Matveev or LLL.
+
+Latest prior tag: `v17.0.0-Beal-44-13-Level-26-Baker-B0-Reduction-Certificate`
 Most current, descriptive title only.
 PARI `qflll` reduces `B0_raw` to
 `baker_B0_reduced_PARI = 1000000`.
