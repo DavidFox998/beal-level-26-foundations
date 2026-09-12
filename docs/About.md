@@ -1,15 +1,18 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization`
+Latest tag / HEAD: `v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization`
 Most current as of 2026-09-12, **not** final.
-`BealMatveevConstants.lean` records Matveev
-`C = 143186215390` as `matveev_C1_floor : Nat`
-with `matveev_C1_pos` / `matveev_explicit_gap3_constants_hold`
-by `decide` (no axioms). `baker_bound_gap3` stays
+`BealMatveevInequality.lean` names
+`matveev_log_form` with Mathlib `Real.log`.
+`matveev_lower_bound` stays uninhabited def Prop.
+`matveev_inequality_constants_hold` and
+`bugeaud_LLL_basis_holds` by `decide`
+(no axioms). `bugeaud_reduction_formal`
+stays def Prop. `baker_bound_gap3` stays
 uninhabited def Prop. Tate / Baker / v14 J0 /
-v15 B0 / v17 reduction Lean 0 lines vs v18
-`430189e`. Previous v18 DOI
-`10.5281/zenodo.22729129`
+v15 B0 / v17 LLL / v19 constants Lean 0 lines
+vs v19 `8fe96fd`. Previous v19 DOI
+`10.5281/zenodo.22729309`
 (concept `10.5281/zenodo.22379293`).
 Honesty lock: `baker_bound_gap3` stays Prop;
 `baker_B0_certificate_holds` and

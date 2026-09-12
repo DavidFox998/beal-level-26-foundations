@@ -317,6 +317,8 @@ test -f lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean
+test -f lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean
+test -f lean/BealLevel26Foundations/Beal/FullProof/BealBugeaudLLLFormal.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean
 test -f lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
 test -f docs/Beal/Beal_4_13_13_Zsigmondy_Density_2M.md
@@ -332,6 +334,8 @@ test -f docs/Beal/BealGap3BakerUpperBound.md
 test -f docs/Beal/BealBakerB0Certificate.md
 test -f docs/Beal/BealBakerB0ReductionCertificate.md
 test -f docs/Beal/BealMatveevConstants.md
+test -f docs/Beal/BealMatveevInequality.md
+test -f docs/Beal/BealBugeaudLLLFormal.md
 test -f docs/Beal/BealFreyTateConductor.md
 test -f docs/Beal/BealLevel26ModularElimination.md
 test -f lean/BealLevel26Foundations/Beal/FullProof/Level26_Newforms.lean
@@ -1220,6 +1224,10 @@ grep -q "import BealLevel26Foundations.Beal.FullProof.BealBakerB0ReductionCertif
   lean/BealLevel26Foundations/Beal/FullProof.lean
 grep -q "import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants" \
   lean/BealLevel26Foundations/Beal/FullProof.lean
+grep -q "import BealLevel26Foundations.Beal.FullProof.BealMatveevInequality" \
+  lean/BealLevel26Foundations/Beal/FullProof.lean
+grep -q "import BealLevel26Foundations.Beal.FullProof.BealBugeaudLLLFormal" \
+  lean/BealLevel26Foundations/Beal/FullProof.lean
 grep -q "import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor" \
   lean/BealLevel26Foundations/Beal/FullProof.lean
 grep -q "import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination" \
@@ -1312,7 +1320,7 @@ if grep -q "import BealLevel26Foundations.Beal.FullProof.ModularImpliesNewform" 
   echo "FAIL: none chain must not import ModularImpliesNewform"
   exit 1
 fi
-if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|HeckeAlgebra|RibetFunctor|X0_26_Model|HeckeAction|LevelLowering|LevelLoweringB14|BealFreyB14|BealFreyASearch|BealFreyMod53Kill|BealFreyModQKill|BealFreyConductorGeneral|BealGap3ZsigBeyond2M|BealGap3BakerUpperBound|BealBakerB0Certificate|BealBakerB0ReductionCertificate|BealMatveevConstants|BealFreyTateConductor|BealLevel26ModularElimination|RibetMazur|TWPrimes|TWPrimesPratt|TWPrimesQ2|TWAuxEllFixed|X0_2_Genus|Beal_4_13_13_Size_Table|BealElim|BealMod16|KrausB14|B14Witnesses|Step60B14List|FreyModularity|Level26_Newforms)" \
+if grep -E -q "import BealLevel26Foundations.Beal.FullProof.(GeometryScheme|HeckeAlgebra|RibetFunctor|X0_26_Model|HeckeAction|LevelLowering|LevelLoweringB14|BealFreyB14|BealFreyASearch|BealFreyMod53Kill|BealFreyModQKill|BealFreyConductorGeneral|BealGap3ZsigBeyond2M|BealGap3BakerUpperBound|BealBakerB0Certificate|BealBakerB0ReductionCertificate|BealMatveevConstants|BealMatveevInequality|BealBugeaudLLLFormal|BealFreyTateConductor|BealLevel26ModularElimination|RibetMazur|TWPrimes|TWPrimesPratt|TWPrimesQ2|TWAuxEllFixed|X0_2_Genus|Beal_4_13_13_Size_Table|BealElim|BealMod16|KrausB14|B14Witnesses|Step60B14List|FreyModularity|Level26_Newforms)" \
     lean/BealLevel26Foundations.lean \
     lean/BealLevel26Foundations/Beal/BealForall.lean \
     lean/BealLevel26Foundations/Chain/BealForallInKernel.lean \
@@ -3228,6 +3236,42 @@ grep -q "theorem matveev_C1_pos" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem matveev_explicit_gap3_constants_hold" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+test -f lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean
+grep -q "def matveev_log_form" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean
+grep -q "def matveev_lower_bound" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean
+grep -q "theorem matveev_inequality_constants_hold" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean
+test "$(grep -c '^axiom ' lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean)" -eq 0
+test ! -n "$(grep -E '^\s*(sorry|admit)\b|False\.elim|native_decide|^axiom ' \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean || true)"
+test ! -n "$(grep -E 'import BealLevel26Foundations.Beal.FullProof.RibetMazur' \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean || true)"
+test -f lean/BealLevel26Foundations/Beal/FullProof/BealBugeaudLLLFormal.lean
+grep -q "def bugeaud_K" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealBugeaudLLLFormal.lean
+grep -q "def bugeaud_lattice" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealBugeaudLLLFormal.lean
+grep -q "theorem bugeaud_LLL_basis_holds" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealBugeaudLLLFormal.lean
+grep -q "def bugeaud_reduction_formal" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealBugeaudLLLFormal.lean
+test "$(grep -c '^axiom ' lean/BealLevel26Foundations/Beal/FullProof/BealBugeaudLLLFormal.lean)" -eq 0
+test ! -n "$(grep -E '^\s*(sorry|admit)\b|False\.elim|native_decide|^axiom ' \
+  lean/BealLevel26Foundations/Beal/FullProof/BealBugeaudLLLFormal.lean || true)"
+test ! -n "$(grep -E 'import BealLevel26Foundations.Beal.FullProof.RibetMazur' \
+  lean/BealLevel26Foundations/Beal/FullProof/BealBugeaudLLLFormal.lean || true)"
+grep -q "theorem matveev_inequality_constants_hold" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem bugeaud_LLL_basis_holds" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+test "$(git diff v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean | wc -l)" -eq 0
+test "$(git diff v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
+test "$(git diff v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
+test "$(git diff v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean | wc -l)" -eq 0
+test "$(git diff v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean | wc -l)" -eq 0
+test "$(git diff v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean | wc -l)" -eq 0
 test "$(git diff v18.0.0-Beal-44-13-Level-26-Cumulative-Archive-v10-v17 -- lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean | wc -l)" -eq 0
 test "$(git diff v18.0.0-Beal-44-13-Level-26-Cumulative-Archive-v10-v17 -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 test "$(git diff v18.0.0-Beal-44-13-Level-26-Cumulative-Archive-v10-v17 -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
@@ -3238,6 +3282,10 @@ grep -q "baker_B0_certificate" \
 grep -q "baker_B0_reduction_certificate" \
   paper/mcom-draft.tex
 grep -q "matveev_C1_floor" \
+  paper/mcom-draft.tex
+grep -q "matveev_log_form" \
+  paper/mcom-draft.tex
+grep -q "bugeaud_LLL_basis_holds" \
   paper/mcom-draft.tex
 grep -q "beal_44_13_level_26_modular_elimination" \
   paper/mcom-draft.tex
@@ -3435,6 +3483,8 @@ if grep -nE '^[[:space:]]*False\.elim|^[[:space:]]*exact[[:space:]]+False\.elim'
     lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean \
     lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean \
     lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean \
+    lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean \
+    lean/BealLevel26Foundations/Beal/FullProof/BealBugeaudLLLFormal.lean \
     lean/BealLevel26Foundations/Beal/FullProof.lean; then
   echo "FAIL: FullProof track must not use False.elim"
   exit 1

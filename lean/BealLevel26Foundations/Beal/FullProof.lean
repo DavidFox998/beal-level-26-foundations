@@ -24,10 +24,24 @@ import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
 import BealLevel26Foundations.Beal.FullProof.BealBakerB0Certificate
 import BealLevel26Foundations.Beal.FullProof.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
+import BealLevel26Foundations.Beal.FullProof.BealMatveevInequality
+import BealLevel26Foundations.Beal.FullProof.BealBugeaudLLLFormal
 import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
 /-!
+# FullProof track (v20.0.0)
+
+Matveev inequality / Bugeaud LLL skeleton.
+`matveev_log_form` is Mathlib `Real.log`.
+`matveev_lower_bound` and
+`bugeaud_reduction_formal` stay def Prop
+(uninhabited).  `matveev_inequality_constants_hold`
+and `bugeaud_LLL_basis_holds` are kernel
+`decide` (no axioms).
+`baker_bound_gap3` stays a def Prop.
+Locked Lean files stay exactly v19.
+
 # FullProof track (v19.0.0)
 
 Matveev constants formalization.

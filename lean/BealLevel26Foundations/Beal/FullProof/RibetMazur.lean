@@ -777,6 +777,8 @@ import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
 import BealLevel26Foundations.Beal.FullProof.BealBakerB0Certificate
 import BealLevel26Foundations.Beal.FullProof.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
+import BealLevel26Foundations.Beal.FullProof.BealMatveevInequality
+import BealLevel26Foundations.Beal.FullProof.BealBugeaudLLLFormal
 import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
@@ -5762,6 +5764,47 @@ theorem matveev_height_B0_eq :
 def baker_bound_gap3_of_matveev_constants : Prop :=
   BealLevel26Foundations.BealMatveevConstants.baker_bound_gap3_of_matveev_constants
 
+/-! ## v20.0.0 — Matveev inequality / Bugeaud LLL skeleton -/
+
+noncomputable def matveev_log_form :=
+  BealLevel26Foundations.BealMatveevInequality.matveev_log_form
+
+def matveev_lower_bound : Prop :=
+  BealLevel26Foundations.BealMatveevInequality.matveev_lower_bound
+
+def matveev_inequality_constants :=
+  BealLevel26Foundations.BealMatveevInequality.matveev_inequality_constants
+
+theorem matveev_inequality_constants_hold :
+    matveev_inequality_constants ≠ [] :=
+  BealLevel26Foundations.BealMatveevInequality.matveev_inequality_constants_hold
+
+theorem matveev_lower_bound_scale_pos :
+    BealLevel26Foundations.BealMatveevInequality.matveev_lower_bound_scale > 0 :=
+  BealLevel26Foundations.BealMatveevInequality.matveev_lower_bound_scale_pos
+
+def baker_bound_gap3_of_matveev_inequality : Prop :=
+  BealLevel26Foundations.BealMatveevInequality.baker_bound_gap3_of_matveev_inequality
+
+def bugeaud_K :=
+  BealLevel26Foundations.BealBugeaudLLLFormal.bugeaud_K
+
+def bugeaud_LLL_basis :=
+  BealLevel26Foundations.BealBugeaudLLLFormal.bugeaud_LLL_basis
+
+theorem bugeaud_K_eq : bugeaud_K = Nat.pow 10 20 :=
+  BealLevel26Foundations.BealBugeaudLLLFormal.bugeaud_K_eq
+
+theorem bugeaud_LLL_basis_holds :
+    bugeaud_LLL_basis ≠ [] :=
+  BealLevel26Foundations.BealBugeaudLLLFormal.bugeaud_LLL_basis_holds
+
+def bugeaud_reduction_formal : Prop :=
+  BealLevel26Foundations.BealBugeaudLLLFormal.bugeaud_reduction_formal
+
+def baker_bound_gap3_of_bugeaud_LLL : Prop :=
+  BealLevel26Foundations.BealBugeaudLLLFormal.baker_bound_gap3_of_bugeaud_LLL
+
 /-! ## v14.0.0 — J0 / mwrank / formal displayed certs -/
 
 def J0DecompositionCert_26 :=
@@ -6820,6 +6863,15 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check matveev_C1_pos
 #check matveev_explicit_gap3_constants
 #check matveev_explicit_gap3_constants_hold
+#check matveev_log_form
+#check matveev_lower_bound
+#check matveev_inequality_constants
+#check matveev_inequality_constants_hold
+#check bugeaud_K
+#check bugeaud_K_eq
+#check bugeaud_LLL_basis
+#check bugeaud_LLL_basis_holds
+#check bugeaud_reduction_formal
 #check J0DecompositionCert_26
 #check J0DecompositionCert_26_displayed
 #check J0DecompositionSoundness_26
@@ -7378,6 +7430,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms baker_reduction_certificate_holds
 #print axioms matveev_C1_pos
 #print axioms matveev_explicit_gap3_constants_hold
+#print axioms matveev_inequality_constants_hold
+#print axioms matveev_lower_bound_scale_pos
+#print axioms bugeaud_K_eq
+#print axioms bugeaud_LLL_basis_holds
 #print axioms J0DecompositionSoundness_26_holds
 #print axioms MwrankCertificateSoundness_26_holds
 #print axioms FormalImmersionSoundness_26_holds
