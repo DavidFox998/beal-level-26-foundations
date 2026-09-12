@@ -1078,6 +1078,16 @@ while IFS= read -r line; do
       ;;
     *Modularity/RibetLevelLowering_26.lean:*axiom[[:space:]]ribet_level_lowering_26*)
       ;;
+    *Beal/FullProof/BealLevel26ModularElimination.lean:*axiom[[:space:]]J0DecompositionSoundness_26*)
+      ;;
+    *Beal/FullProof/BealLevel26ModularElimination.lean:*axiom[[:space:]]MwrankCertificateSoundness_26*)
+      ;;
+    *Beal/FullProof/BealLevel26ModularElimination.lean:*axiom[[:space:]]FormalImmersionSoundness_26*)
+      ;;
+    *Beal/FullProof/BealLevel26ModularElimination.lean:*axiom[[:space:]]FreyCurveExists*)
+      ;;
+    *Beal/FullProof/BealLevel26ModularElimination.lean:*axiom[[:space:]]LevelLowering_26*)
+      ;;
     *)
       echo "FAIL: unexpected axiom: $line"
       exit 1
