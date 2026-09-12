@@ -102,6 +102,7 @@ def J0DecompositionSoundness_26_displayed : Prop :=
 
 theorem J0DecompositionSoundness_26_holds :
     J0DecompositionSoundness_26_displayed := by
+  unfold J0DecompositionSoundness_26_displayed J0DecompositionCert_26_displayed
   decide
 
 def J0DecompositionSoundness_26 : Prop :=
@@ -165,6 +166,7 @@ def FormalImmersionSoundness_26_displayed : Prop :=
 
 theorem FormalImmersionSoundness_26_holds :
     FormalImmersionSoundness_26_displayed := by
+  unfold FormalImmersionSoundness_26_displayed FormalImmersionCert_26_displayed
   decide
 
 def FormalImmersionSoundness_26 : Prop :=
