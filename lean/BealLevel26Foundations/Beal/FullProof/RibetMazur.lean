@@ -778,6 +778,7 @@ import BealLevel26Foundations.Beal.FullProof.BealBakerB0Certificate
 import BealLevel26Foundations.Beal.FullProof.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
 import BealLevel26Foundations.Beal.FullProof.BealMatveevInequality
+import BealLevel26Foundations.Beal.FullProof.BealMatveevInequalityReal
 import BealLevel26Foundations.Beal.FullProof.BealBugeaudLLLFormal
 import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
@@ -5833,6 +5834,31 @@ theorem matveev_census_B0_le_height :
       matveev_height_B0 :=
   BealLevel26Foundations.BealMatveevInequality.matveev_census_B0_le_height
 
+/-! ## v22.0.0 — Matveev Real inequality skeleton -/
+
+noncomputable def matveev_C_exp_bound :=
+  BealLevel26Foundations.BealMatveevInequalityReal.matveev_C_exp_bound
+
+def matveev_inequality_real_formal : Prop :=
+  BealLevel26Foundations.BealMatveevInequalityReal.matveev_inequality_real_formal
+
+def matveev_inequality_real_lower : Prop :=
+  BealLevel26Foundations.BealMatveevInequalityReal.matveev_inequality_real_lower
+
+theorem matveev_C_exp_bound_decide :
+    matveev_C1_floor = 143186215390 ∧
+      BealLevel26Foundations.BealMatveevConstants.matveev_thirty_pow =
+        729000000 :=
+  BealLevel26Foundations.BealMatveevInequalityReal.matveev_C_exp_bound_decide
+
+theorem matveev_inequality_real_constants_hold :
+    BealLevel26Foundations.BealMatveevInequalityReal.matveev_inequality_real_constants ≠
+      [] :=
+  BealLevel26Foundations.BealMatveevInequalityReal.matveev_inequality_real_constants_hold
+
+def baker_bound_gap3_of_matveev_inequality_real : Prop :=
+  BealLevel26Foundations.BealMatveevInequalityReal.baker_bound_gap3_of_matveev_inequality_real
+
 /-! ## v14.0.0 — J0 / mwrank / formal displayed certs -/
 
 def J0DecompositionCert_26 :=
@@ -6905,6 +6931,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check matveev_log_form_ne_zero_zero
 #check matveev_height_le_log_B0
 #check matveev_census_B0_le_height
+#check matveev_C_exp_bound
+#check matveev_C_exp_bound_decide
+#check matveev_inequality_real_formal
+#check matveev_inequality_real_lower
+#check matveev_inequality_real_constants_hold
 #check J0DecompositionCert_26
 #check J0DecompositionCert_26_displayed
 #check J0DecompositionSoundness_26
@@ -7472,6 +7503,8 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms matveev_log_form_ne_zero
 #print axioms matveev_height_le_log_B0
 #print axioms matveev_census_B0_le_height
+#print axioms matveev_C_exp_bound_decide
+#print axioms matveev_inequality_real_constants_hold
 #print axioms J0DecompositionSoundness_26_holds
 #print axioms MwrankCertificateSoundness_26_holds
 #print axioms FormalImmersionSoundness_26_holds

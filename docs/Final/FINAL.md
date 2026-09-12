@@ -1,3 +1,32 @@
+# FINAL v22.0.0 — Matveev Real inequality skeleton (not final)
+
+Latest tag `v22.0.0-Beal-44-13-Level-26-Matveev-Inequality-Real`.
+`matveev_C_exp_bound` is
+`-(C1_floor : Real) * (thirty_pow : Real) *
+Real.log (height_B0 : Real)`.
+`matveev_C_exp_bound_decide` by decide
+(no axioms): `C1_floor = 143186215390`
+and `thirty_pow = 729000000`.
+`matveev_inequality_real_formal` /
+`matveev_inequality_real_lower` stay
+uninhabited def Prop. `baker_bound_gap3`
+stays an uninhabited def Prop.
+Tate / Baker / v14 J0 / v15 B0 / v17 LLL /
+v19 constants / v20 Bugeaud LLL / v21
+inequality Lean 0 lines vs v21
+`3079d82` / `10.5281/zenodo.22729724`.
+Most current as of 2026-09-12, **not** a
+final Beal proof. Series concept
+`10.5281/zenodo.22379293`.
+Honesty lock: Tate 0 since v11, Baker 0
+since v12, v14 displayed certs unchanged,
+`baker_bound_gap3` uninhabited def Prop,
+`matveev_C_exp_bound_decide` kernel
+decide no axioms, main pack
+`[propext, Classical.choice, Quot.sound]`
+only. PARI external certs like mwrank
+`{0,12}`, not Mathlib Matveev or LLL.
+
 # FINAL v21.0.0 — Matveev log-form nonzero (not final)
 
 Latest tag `v21.0.0-Beal-44-13-Level-26-Matveev-Log-Form-Nonzero`.

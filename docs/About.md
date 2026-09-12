@@ -1,6 +1,29 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v21.0.0-Beal-44-13-Level-26-Matveev-Log-Form-Nonzero`
+Latest tag / HEAD: `v22.0.0-Beal-44-13-Level-26-Matveev-Inequality-Real`
+Most current as of 2026-09-12, **not** final.
+`matveev_C_exp_bound` is the Real
+exponent `-(C1_floor : Real) *
+(thirty_pow : Real) * Real.log (height_B0)`.
+`matveev_C_exp_bound_decide` by decide
+(no axioms): `C1_floor = 143186215390`
+and `thirty_pow = 729000000`.
+`matveev_inequality_real_formal` stays
+an uninhabited def Prop. `baker_bound_gap3`
+stays an uninhabited def Prop.
+Tate / Baker / v14 J0 / v15 B0 / v17 LLL /
+v19 constants / v20 Bugeaud LLL / v21
+inequality Lean 0 lines vs v21 `3079d82`.
+Previous v21 DOI `10.5281/zenodo.22729724`
+(concept `10.5281/zenodo.22379293`).
+Honesty lock: `baker_bound_gap3` stays Prop;
+`matveev_C_exp_bound_decide` decide,
+no axioms; main pack
+`[propext, Classical.choice, Quot.sound]`
+only; PARI external certs like mwrank
+`{0,12}`, not Mathlib Matveev or LLL.
+
+Latest prior tag: `v21.0.0-Beal-44-13-Level-26-Matveev-Log-Form-Nonzero`
 Most current as of 2026-09-12, **not** final.
 `matveev_log_form_int` is the Tate c4-scale
 integer form; `matveev_log_form_ne_zero`
@@ -14,7 +37,8 @@ uninhabited def Prop. Tate / Baker /
 v14 J0 / v15 B0 / v17 LLL / v19 constants /
 v20 Bugeaud LLL Lean 0 lines vs v20
 `768ed7f`. Previous v20 DOI
-`10.5281/zenodo.22729515`
+`10.5281/zenodo.22729515`; v21 DOI
+`10.5281/zenodo.22729724`
 (concept `10.5281/zenodo.22379293`).
 Honesty lock: `baker_bound_gap3` stays Prop;
 `baker_B0_certificate_holds` and
