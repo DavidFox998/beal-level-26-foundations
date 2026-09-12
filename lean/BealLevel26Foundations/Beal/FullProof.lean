@@ -32,12 +32,14 @@ gap3.  Frey `Y² = X(X-A⁴)(X+B⁴)`.
 Conductor is `tateConductor` =
 `2^{f₂}*rad(AB(B+3))*13` with `f₂≤5`,
 NOT `2⁵*3*13` (witness `63982=2*31991`).
-Five cert Props
-`J0DecompositionSoundness_26`,
-`MwrankCertificateSoundness_26`,
-`FormalImmersionSoundness_26`,
-`FreyCurveExists`, `LevelLowering_26`
-are honest premises, not inhabited.
+Five certs are transparent structures
+(`J0DecompositionCert_26`,
+`MwrankCertificate_26`,
+`FormalImmersionCert_26`,
+`FreyCurveCert`, `LevelLoweringCert_26`)
+with Nat/Int/List fields, not opaque
+axioms.  Soundness is a computable
+existential over those records.
 `kraus_a53_elimination` is kernel decide
 (`{-10,-2,1,6,14}` miss S₂(26) `{0,12}`).
 `beal_44_13_level_26_modular_elimination`

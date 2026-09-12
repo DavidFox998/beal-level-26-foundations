@@ -5,9 +5,9 @@ Frey `Y² = X(X-A⁴)(X+B⁴)` for (4,4,13) gap3.
 Conductor is `tateConductor = 2^{f₂}*rad*13`
 with `f₂≤5`, not `2⁵*3*13`
 (witness `63982=2*31991`).
-Five cert Props `J0` / `Mwrank` / `Formal` /
-`FreyCurveExists` / `LevelLowering_26`
-are honest premises.  `kraus_a53_elimination`
+Five certs are transparent `List`/`Nat`
+structures, not opaque axioms.
+`kraus_a53_elimination`
 is kernel decide (`{-10,-2,1,6,14}` miss
 `{0,12}`).  The pack uses 25 chunks for
 `B≤1e6` and `matveev_explicit_gap3` for

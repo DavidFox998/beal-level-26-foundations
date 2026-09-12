@@ -1078,16 +1078,6 @@ while IFS= read -r line; do
       ;;
     *Modularity/RibetLevelLowering_26.lean:*axiom[[:space:]]ribet_level_lowering_26*)
       ;;
-    *Beal/FullProof/BealLevel26ModularElimination.lean:*axiom[[:space:]]J0DecompositionSoundness_26*)
-      ;;
-    *Beal/FullProof/BealLevel26ModularElimination.lean:*axiom[[:space:]]MwrankCertificateSoundness_26*)
-      ;;
-    *Beal/FullProof/BealLevel26ModularElimination.lean:*axiom[[:space:]]FormalImmersionSoundness_26*)
-      ;;
-    *Beal/FullProof/BealLevel26ModularElimination.lean:*axiom[[:space:]]FreyCurveExists*)
-      ;;
-    *Beal/FullProof/BealLevel26ModularElimination.lean:*axiom[[:space:]]LevelLowering_26*)
-      ;;
     *)
       echo "FAIL: unexpected axiom: $line"
       exit 1
@@ -3098,15 +3088,25 @@ test ! -n "$(grep -E '^\s*(sorry|admit)\b|False\.elim|native_decide|^axiom ' \
 test ! -n "$(grep -E 'import BealLevel26Foundations.Beal.FullProof.BealFreyB14' \
   lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean || true)"
 test -f lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
-grep -q "axiom J0DecompositionSoundness_26" \
+grep -q "structure J0DecompositionCert_26" \
   lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
-grep -q "axiom MwrankCertificateSoundness_26" \
+grep -q "def J0DecompositionSoundness_26" \
   lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
-grep -q "axiom FormalImmersionSoundness_26" \
+grep -q "structure MwrankCertificate_26" \
   lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
-grep -q "axiom FreyCurveExists" \
+grep -q "def MwrankCertificateSoundness_26" \
   lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
-grep -q "axiom LevelLowering_26" \
+grep -q "structure FormalImmersionCert_26" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
+grep -q "def FormalImmersionSoundness_26" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
+grep -q "structure FreyCurveCert" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
+grep -q "def FreyCurveExists" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
+grep -q "structure LevelLoweringCert_26" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
+grep -q "def LevelLowering_26" \
   lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
 grep -q "def kraus_a53_values" \
   lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
@@ -3122,12 +3122,12 @@ grep -q "set_option maxHeartbeats 4000000000" \
   lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
 grep -q "63982" \
   lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
-test "$(grep -c '^axiom ' lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean)" -eq 5
+test "$(grep -c '^axiom ' lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean)" -eq 0
 grep -q "theorem kraus_a53_elimination" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem beal_44_13_level_26_modular_elimination" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
-grep -q "axiom J0DecompositionSoundness_26" \
+grep -q "structure J0DecompositionCert_26" \
   lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
 grep -q "beal_44_13_level_26_modular_elimination" \
   paper/mcom-draft.tex

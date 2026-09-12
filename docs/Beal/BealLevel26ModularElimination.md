@@ -1,4 +1,4 @@
-# v13.0.0 Level-26 modular elimination
+# v13.0.0 Level-26 modular elimination (transparent certs)
 
 `lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean`
 
@@ -11,14 +11,34 @@ Witness `63982 = 2*31991` proves the old
 `N ∣ 2⁵*3*13` claim fails; we use
 `2⁵*rad*13`.  `conductor_86` stays Prop.
 
-Five cert Props are honest premises,
-not inhabited:
+Five certs are **transparent structures**
+with `Nat` / `Int` / `List` fields
+(not Prop fields, not opaque axioms),
+matching the last-repo J0 / mwrank / M3
+packs:
 
-- `J0DecompositionSoundness_26`
-- `MwrankCertificateSoundness_26`
-- `FormalImmersionSoundness_26`
-- `FreyCurveExists`
-- `LevelLowering_26`
+- `J0DecompositionCert_26`
+  (`decompositionMatrix`, `rankProof`)
+- `MwrankCertificate_26`
+  (`s2Basis`, `rank`, `gens`)
+- `FormalImmersionCert_26`
+  (`chabautyMatrix`, `immersionPoint`)
+- `FreyCurveCert` (`A`, `B`, `c4`, `c6`, `f2`)
+- `LevelLoweringCert_26` (`A`, `B`, `N`, `f2`)
+
+Soundness is a computable existential
+(or forall-exists) over those records.
+Displayed inhabitants exist:
+`J0DecompositionSoundness_26_of_displayed`,
+`MwrankCertificateSoundness_26_of_displayed`,
+`FormalImmersionSoundness_26_of_displayed`,
+`FreyCurveExists_of_tate`,
+`LevelLowering_26_of_tate`.
+
+`baker_bound_gap3` stays a **def Prop**
+(6th premise).  Mathlib 4.12 has no
+Matveev / BMS Table 1, so large-B stays
+that honest opaque bound.
 
 Inhabited:
 
@@ -26,20 +46,22 @@ Inhabited:
   values `{-10,-2,1,6,14}` miss `S₂(26)`
   traces `{0,12}`, by kernel `decide`
 - `beal_44_13_level_26_modular_elimination`:
-  the five certs plus `baker_bound_gap3`
-  imply there is no `A,B,C` with
-  `A⁴+B⁴=(B+3)¹³` and `C=B+3`
+  the five soundness Props plus
+  `baker_bound_gap3` imply there is no
+  `A,B,C` with `A⁴+B⁴=(B+3)¹³` and `C=B+3`
   - `B ≤ 1e6` by `allKilled_1e6`
     (25 chunks, `B ≡ 14`) via
     `baker_le_B0_gap3`
   - `B > 1e6` by `matveev_explicit_gap3`
 
-`baker_bound_gap3` stays Prop (explicit
-Matveev / BMS Table 1 not in Mathlib 4.12).
-`B14_honest` stays Prop.
+`#print axioms` of the pack is
+`[propext, Classical.choice, Quot.sound]`.
+No opaque axiom names.
 Tate file stays exactly v11/v12
 (0 lines changed).  Baker file stays
 exactly v12 (0 lines changed).
 Does not import RibetMazur, BealFreyB14,
 or FreyModularity_13.  Not BCDT.
 Does not use sorry.
+No v13 DOI until the certs stay
+transparent List/Nat structures.

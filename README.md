@@ -6,7 +6,7 @@
 
 Frey `Y² = X(X-A⁴)(X+B⁴)` for (4,4,13) gap3:
 - Conductor is `tateConductor A B = 2^{f₂}*rad(AB(B+3))*13` with `f₂≤5`, **not** `2⁵*3*13` (witness `63982=2*31991`)
-- Five cert Props `J0DecompositionSoundness_26`, `MwrankCertificateSoundness_26`, `FormalImmersionSoundness_26`, `FreyCurveExists`, `LevelLowering_26` are honest premises, not inhabited
+- Five certs are transparent structures (`J0DecompositionCert_26`, `MwrankCertificate_26`, `FormalImmersionCert_26`, `FreyCurveCert`, `LevelLoweringCert_26`) with `Nat`/`Int`/`List` fields, not opaque axioms; soundness is a computable existential
 - `kraus_a53_elimination`: Kraus `a₅₃` values `{-10,-2,1,6,14}` miss `S₂(26)` traces `{0,12}` by kernel `decide`
 - `beal_44_13_level_26_modular_elimination` uses 25 chunks for `B≤1e6` and `matveev_explicit_gap3` for `B>1e6` (`baker_bound_gap3` stays Prop)
 - Tate and Baker files stay exactly v12 (0 lines changed)
@@ -142,7 +142,7 @@ Releases:
 - v8.72.1-doi-badge inserts real Zenodo DOI `10.5281/zenodo.22698257` from the v8.70.0 mint
 - v8.73.0-modularity-exists-level2 displayed S2(26) dim2 via 0≠12 at p=53; Chain ExistsNewformLevel2 stays 0≠0; DOI 10.5281/zenodo.22698257 still cites v8.69.0
 - v8.74.0-frey-irreducible-mod13 displayed frey_mod13_irreducible at B=196 and B=1500003; frey_modular Classical.em; level_lowering_to_26 stays Prop
-- v13.0.0-Beal-44-13-Level-26-Modular-Elimination Frey `Y²=X(X-A⁴)(X+B⁴)`; `tateConductor=2^{f₂}*rad*13` `f₂≤5` not `2⁵*3*13` (witness `63982=2*31991`); Kraus `a₅₃` `{-10,-2,1,6,14}` vs `S₂(26)` `{0,12}` by decide; 5 cert Props J0/Mwrank/Formal/Frey/LevelLowering_26 honest premises; 25 chunks `B≡14` for `B≤1e6`; `baker_bound_gap3` / `conductor_86` / `B14_honest` stay Prop; Tate and Baker files 0 lines changed
+- v13.0.0-Beal-44-13-Level-26-Modular-Elimination Frey `Y²=X(X-A⁴)(X+B⁴)`; `tateConductor=2^{f₂}*rad*13` `f₂≤5` not `2⁵*3*13` (witness `63982=2*31991`); Kraus `a₅₃` `{-10,-2,1,6,14}` vs `S₂(26)` `{0,12}` by decide; five transparent List/Nat cert structures J0/Mwrank/Formal/Frey/LevelLowering (not opaque axioms); 25 chunks `B≡14` for `B≤1e6`; `baker_bound_gap3` / `conductor_86` / `B14_honest` stay Prop; Tate and Baker files 0 lines changed
 - v12.0.0-Baker-Matveev-explicit explicit Matveev for (4,4,13) gap3, not general Bugeaud; `matveev_explicit_gap3` turns `baker_bound_gap3` into `eq → B ≤ baker_B0`; `matveev_no_solution_A_le_B` inhabited; `baker_bound_gap3` stays Prop (Matveev not in Mathlib 4.12); Tate file unchanged; 25 chunks kept; DOI `10.5281/zenodo.22721089`
 - v11.0.0-Tate-N-def `tateConductor = 2^{f₂}*rad*13`; `frey_tate_conductor` is that Nat; `frey_tate_conductor_inhabited` proves `∣ 2⁵*rad*13` with odd `v_q ≤ 1` and `v₂ ≤ 5`; `baker_bound_gap3` / `conductor_86` / `B14_honest` stay Prop; Baker file unchanged; DOI `10.5281/zenodo.22721420`
 - v10.0.0-paper-B14-Baker-1e6-DOI paper archive of the v9.4.0 census (62500 / 25 chunks), Baker conditional `∀ B`, and Tate bound `2⁵*rad*13`; archives math DOI `10.5281/zenodo.22712897` and paper DOI `10.5281/zenodo.22713047`; `baker_bound_gap3` / `frey_tate_conductor` / `conductor_86` / `B14_honest` stay Prop

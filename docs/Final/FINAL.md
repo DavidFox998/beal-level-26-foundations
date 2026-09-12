@@ -6,7 +6,8 @@ Frey `Y² = X(X-A⁴)(X+B⁴)`.
 `tateConductor = 2^{f₂}*rad(AB(B+3))*13`
 with `f₂≤5`, not `2⁵*3*13`
 (witness `63982=2*31991`).
-Five cert Props are honest premises.
+Five certs are transparent `List`/`Nat`
+structures, not opaque axioms.
 `kraus_a53_elimination` is kernel decide.
 `beal_44_13_level_26_modular_elimination`
 uses 25 chunks for `B≤1e6` and
