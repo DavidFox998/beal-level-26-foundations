@@ -1,6 +1,24 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start`
+Latest tag / HEAD: `v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone`
+Most current as of 2026-09-12, **not** final.
+`BealMatveevThm14.lean` adds height /
+log monotone lemmas toward Matveev
+2000 Thm 1.4. `matveev_height_B0_gt_two`,
+`matveev_log_height_monotone`, and
+`matveev_C_exp_bound_lt_zero_of_pos_log`
+are kernel theorems. `C1_floor > 0` and
+`thirty_pow > 0` by decide, no axioms.
+`matveev_inequality_real_target` and
+`baker_bound_gap3` stay uninhabited
+def Props. Stay in v24.x until the
+Real inequality is a theorem. Locked
+Lean 0 vs v24.0.0 `d39c6d5` except
+`BealMatveevThm14.lean`. Previous v24.0.0
+DOI `10.5281/zenodo.22730408`
+(concept `10.5281/zenodo.22379293`).
+
+Latest prior tag: `v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start`
 Most current as of 2026-09-12, **not** final.
 `BealMatveevThm14.lean` starts Matveev
 2000 Thm 1.4 formalization.

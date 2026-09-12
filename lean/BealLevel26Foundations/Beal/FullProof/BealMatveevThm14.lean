@@ -3,17 +3,17 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v24.0.0 -- start Matveev 2000 Thm 1.4
-formalization.  Names the target
-  |Lambda| > exp(-C1_floor * 30^{n+3} *
-                log height_B0)
-on a gap-3 solution and inhabits only
-the kernel-real pieces already available
-from v19-v23.
+Track B v24.0.1 -- height / log monotone
+lemmas toward Matveev 2000 Thm 1.4.
+Keeps v24.0.0 matveev_height_log_pos and
+matveev_exp_bound_neg, and adds
+height_B0 > 2, Real.log_lt_log wrap,
+C1_floor / thirty_pow positivity, and
+C_exp_bound < 0 iff log height_B0 > 0.
 
 thirty_pow is 30^6 = 729000000, not
-72900000.  Both numerals are decide
-theorems so the typo cannot slip back.
+the 7-digit typo 72900000 (= 30^6 / 10).
+Both numerals stay decide theorems.
 
 Does NOT inhabit baker_bound_gap3.
 Does NOT inhabit
@@ -64,9 +64,23 @@ theorem matveev_thirty_pow_eq_729000000 :
     matveev_thirty_pow = 729000000 := by
   decide
 
-/-- The recurring typo 72900000 is not 30^6. -/
+/-- The recurring typo 72900000 is not 30^6.
+    30^6 = 729000000 = 72900000 * 10. -/
 theorem matveev_thirty_pow_ne_72900000 :
     matveev_thirty_pow ≠ 72900000 := by
+  decide
+
+/-- Numeral check: the typo times ten is 30^6. -/
+theorem matveev_thirty_pow_eq_typo_times_ten :
+    matveev_thirty_pow = 72900000 * 10 := by
+  decide
+
+theorem matveev_C1_floor_pos :
+    matveev_C1_floor > 0 := by
+  decide
+
+theorem matveev_thirty_pow_pos :
+    matveev_thirty_pow > 0 := by
   decide
 
 theorem matveev_height_B0_eq_numeral :
@@ -129,6 +143,56 @@ theorem matveev_exp_bound_neg :
     matveev_C_exp_bound < 0 :=
   matveev_C_exp_bound_neg
 
+/-- height_B0 > 2 as a Real, from
+    height_B0 > 10^12. -/
+theorem matveev_height_B0_gt_two :
+    (2 : Real) < (matveev_height_B0 : Real) := by
+  have hcast : ((2 : Nat) : Real) < (matveev_height_B0 : Real) :=
+    Nat.cast_lt.mpr
+      (Nat.lt_trans (by decide : 2 < ten_pow_12)
+        matveev_height_B0_gt_onee12)
+  simpa using hcast
+
+/-- Real.log is strictly monotone on positives. -/
+theorem matveev_log_height_monotone :
+    ∀ (h1 h2 : Real),
+      (0 : Real) < h1 → h1 < h2 →
+        Real.log h1 < Real.log h2 :=
+  fun _ _ hpos hlt => Real.log_lt_log hpos hlt
+
+/-- C_exp_bound < 0 iff log(height_B0) > 0,
+    since C1_floor > 0 and thirty_pow > 0. -/
+theorem matveev_C_exp_bound_lt_zero_of_pos_log :
+    matveev_C_exp_bound < 0 ↔
+      (0 : Real) < Real.log (matveev_height_B0 : Real) := by
+  have hC : (0 : Real) < (matveev_C1_floor : Real) :=
+    Nat.cast_pos.mpr matveev_C1_floor_pos
+  have hT : (0 : Real) < (matveev_thirty_pow : Real) :=
+    Nat.cast_pos.mpr matveev_thirty_pow_pos
+  have hCT : (0 : Real) <
+      (matveev_C1_floor : Real) * (matveev_thirty_pow : Real) :=
+    mul_pos hC hT
+  have hdef :
+      matveev_C_exp_bound =
+        -((matveev_C1_floor : Real) * (matveev_thirty_pow : Real) *
+            Real.log (matveev_height_B0 : Real)) :=
+    rfl
+  constructor
+  · intro hneg
+    have hprod : (0 : Real) <
+        (matveev_C1_floor : Real) * (matveev_thirty_pow : Real) *
+          Real.log (matveev_height_B0 : Real) := by
+      rw [hdef] at hneg
+      exact neg_lt_zero.mp hneg
+    exact pos_of_mul_pos_right hprod (le_of_lt hCT)
+  · intro hlog
+    have hmul : (0 : Real) <
+        (matveev_C1_floor : Real) * (matveev_thirty_pow : Real) *
+          Real.log (matveev_height_B0 : Real) :=
+      mul_pos hCT hlog
+    rw [hdef]
+    exact neg_neg_of_pos hmul
+
 theorem matveev_thm14_C_exp_bound_lt_neg_onee12 :
     matveev_C_exp_bound < -((ten_pow_12 : Nat) : Real) :=
   matveev_C_exp_bound_lt_neg_onee12
@@ -173,14 +237,23 @@ def baker_bound_gap3_remaining_thm14 : Prop :=
 #check matveev_height_B0_eq_numeral
 #check tate_survivor_63982
 #check matveev_thm14_bugeaud_LLL_basis_holds
+#check matveev_C1_floor_pos
+#check matveev_thirty_pow_pos
+#check matveev_thirty_pow_eq_typo_times_ten
 #check matveev_height_log_pos
 #check matveev_exp_bound_neg
+#check matveev_height_B0_gt_two
+#check matveev_log_height_monotone
+#check matveev_C_exp_bound_lt_zero_of_pos_log
 #check matveev_inequality_real_target
 #check baker_bound_gap3_remaining_thm14
 #print axioms matveev_C1_floor_eq
 #print axioms matveev_thirty_pow_eq_30_pow_6
 #print axioms matveev_thirty_pow_eq_729000000
 #print axioms matveev_thirty_pow_ne_72900000
+#print axioms matveev_thirty_pow_eq_typo_times_ten
+#print axioms matveev_C1_floor_pos
+#print axioms matveev_thirty_pow_pos
 #print axioms matveev_height_B0_eq_numeral
 #print axioms matveev_c4_scale_eq_16
 #print axioms tate_survivor_63982
@@ -191,6 +264,9 @@ def baker_bound_gap3_remaining_thm14 : Prop :=
 #print axioms matveev_thm14_height_gt_onee12
 #print axioms matveev_height_log_pos
 #print axioms matveev_exp_bound_neg
+#print axioms matveev_height_B0_gt_two
+#print axioms matveev_log_height_monotone
+#print axioms matveev_C_exp_bound_lt_zero_of_pos_log
 #print axioms matveev_thm14_C_exp_bound_lt_neg_onee12
 #print axioms matveev_thm14_constants_hold
 

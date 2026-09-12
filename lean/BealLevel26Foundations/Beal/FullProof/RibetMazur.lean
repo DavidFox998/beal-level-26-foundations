@@ -5915,6 +5915,31 @@ theorem matveev_thm14_constants_hold :
       [] :=
   BealLevel26Foundations.BealMatveevThm14.matveev_thm14_constants_hold
 
+/-! ## v24.0.1 — height / log monotone -/
+
+theorem matveev_C1_floor_pos :
+    BealLevel26Foundations.BealMatveevConstants.matveev_C1_floor > 0 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_C1_floor_pos
+
+theorem matveev_thirty_pow_pos :
+    BealLevel26Foundations.BealMatveevConstants.matveev_thirty_pow > 0 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_thirty_pow_pos
+
+theorem matveev_height_B0_gt_two :
+    (2 : Real) < (matveev_height_B0 : Real) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_height_B0_gt_two
+
+theorem matveev_log_height_monotone :
+    ∀ (h1 h2 : Real),
+      (0 : Real) < h1 → h1 < h2 →
+        Real.log h1 < Real.log h2 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_log_height_monotone
+
+theorem matveev_C_exp_bound_lt_zero_of_pos_log :
+    matveev_C_exp_bound < 0 ↔
+      (0 : Real) < Real.log (matveev_height_B0 : Real) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_C_exp_bound_lt_zero_of_pos_log
+
 /-! ## v14.0.0 — J0 / mwrank / formal displayed certs -/
 
 def J0DecompositionCert_26 :=
@@ -7000,6 +7025,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check matveev_exp_bound_neg
 #check matveev_inequality_real_target
 #check matveev_thm14_constants_hold
+#check matveev_C1_floor_pos
+#check matveev_thirty_pow_pos
+#check matveev_height_B0_gt_two
+#check matveev_log_height_monotone
+#check matveev_C_exp_bound_lt_zero_of_pos_log
 #check J0DecompositionCert_26
 #check J0DecompositionCert_26_displayed
 #check J0DecompositionSoundness_26
@@ -7577,6 +7607,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms matveev_height_log_pos
 #print axioms matveev_exp_bound_neg
 #print axioms matveev_thm14_constants_hold
+#print axioms matveev_C1_floor_pos
+#print axioms matveev_thirty_pow_pos
+#print axioms matveev_height_B0_gt_two
+#print axioms matveev_log_height_monotone
+#print axioms matveev_C_exp_bound_lt_zero_of_pos_log
 #print axioms J0DecompositionSoundness_26_holds
 #print axioms MwrankCertificateSoundness_26_holds
 #print axioms FormalImmersionSoundness_26_holds

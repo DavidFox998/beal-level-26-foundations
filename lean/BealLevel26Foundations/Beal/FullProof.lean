@@ -33,6 +33,21 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
 /-!
+# FullProof track (v24.0.1)
+
+Height / log monotone lemmas toward
+Matveev 2000 Thm 1.4.
+`matveev_height_B0_gt_two`,
+`matveev_log_height_monotone`, and
+`matveev_C_exp_bound_lt_zero_of_pos_log`
+are kernel theorems.
+`matveev_inequality_real_target` and
+`baker_bound_gap3` stay uninhabited
+def Props.  Stay in v24.x until the
+Real inequality is a theorem.
+Locked Lean files stay exactly v24.0.0
+except BealMatveevThm14.lean.
+
 # FullProof track (v24.0.0)
 
 Start Matveev 2000 Thm 1.4 formalization.

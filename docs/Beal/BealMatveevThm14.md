@@ -1,10 +1,47 @@
 # BealMatveevThm14 — v24.0.0 Matveev 2000 Thm 1.4 formalization start
 
-**Tag.** `v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start`.
+**Tag.** `v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone`.
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
-**Parent.** v23 `c44f161` / `v23.0.0-Beal-44-13-Level-26-Matveev-C-Exp-Bound-Compare` / DOI `10.5281/zenodo.22730338`.
+**Parent.** v24.0.0 `d39c6d5` / `v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start` / DOI `10.5281/zenodo.22730408`.
 **Concept.** `10.5281/zenodo.22379293`.
+
+## v24.0.1 — height and log monotone
+
+Keeps the v24.0.0 lemmas and adds:
+
+```lean
+theorem matveev_C1_floor_pos : matveev_C1_floor > 0
+theorem matveev_thirty_pow_pos : matveev_thirty_pow > 0
+theorem matveev_thirty_pow_eq_typo_times_ten :
+    matveev_thirty_pow = 72900000 * 10
+```
+
+`decide`, no axioms. `thirty_pow = 729000000 = 30^6`. The 7-digit numeral `72900000` is `30^6 / 10`, not `30^6`.
+
+```lean
+theorem matveev_height_B0_gt_two :
+    (2 : Real) < (matveev_height_B0 : Real)
+```
+
+From `height_B0 > 10^12`. Pack axioms from Real coercion.
+
+```lean
+theorem matveev_log_height_monotone :
+    ∀ h1 h2 : Real, 0 < h1 → h1 < h2 → Real.log h1 < Real.log h2
+```
+
+`Real.log_lt_log`. Pack axioms.
+
+```lean
+theorem matveev_C_exp_bound_lt_zero_of_pos_log :
+    matveev_C_exp_bound < 0 ↔
+      0 < Real.log (matveev_height_B0 : Real)
+```
+
+Because `C1_floor > 0` and `thirty_pow > 0`, the product in `-C1_floor * thirty_pow * log height_B0` is negative iff the log is positive. Pack axioms.
+
+`matveev_inequality_real_target` and `baker_bound_gap3` stay uninhabited.
 
 This is the first v24 file. It starts a real in-kernel formalization of the Matveev 2000 Theorem 1.4 lower bound
 

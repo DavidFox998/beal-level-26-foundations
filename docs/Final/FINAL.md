@@ -1,3 +1,22 @@
+# FINAL v24.0.1 — Matveev height and log monotone (not final)
+
+Latest tag `v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone`.
+`BealMatveevThm14.lean` adds
+`matveev_height_B0_gt_two`,
+`matveev_log_height_monotone`, and
+`matveev_C_exp_bound_lt_zero_of_pos_log`.
+`C1_floor > 0` and `thirty_pow > 0` by
+decide, no axioms. Target and
+`baker_bound_gap3` stay uninhabited
+def Props. Stay in v24.x until
+`|Λ| > exp(-C)` is a theorem.
+Locked Lean 0 vs v24.0.0 `d39c6d5` /
+`10.5281/zenodo.22730408` except
+`BealMatveevThm14.lean`.
+Most current as of 2026-09-12, **not** a
+final Beal proof. Series concept
+`10.5281/zenodo.22379293`.
+
 # FINAL v24.0.0 — Matveev Thm 1.4 formalization start (not final)
 
 Latest tag `v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start`.
