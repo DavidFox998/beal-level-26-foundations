@@ -1,3 +1,19 @@
+# FINAL v9.3.0 — Baker-conditional gap-3 forall
+
+Latest tag `v9.3.0-Baker-conditional-gap3-full`.
+File `BealGap3BakerUpperBound.lean`.
+`baker_conditional_gap3_full`:
+`baker_bound_gap3 → ∀ B, ¬∃ A`.
+`B ≤ 10⁶` by the expanded residue cover
+(mod 16 plus fourth powers at
+53/29/109/17/5/7/11/13/19/23/31/37).
+`B > 10⁶` by the Baker premise.
+`baker_bound_gap3` stays Prop.
+Keeps Tate 2-adic lemmas,
+`frey_tate_conductor` Prop, the Zsig
+Props, `conductor_86` Prop, `B14_honest`
+Prop.  Not BCDT.  Not unconditional Beal.
+
 # FINAL v9.2.0 — Tate Steps 6-7 at 2; N(E) bound stays a Prop
 
 Latest tag `v9.2.0-Tate-2adic-conductor`.

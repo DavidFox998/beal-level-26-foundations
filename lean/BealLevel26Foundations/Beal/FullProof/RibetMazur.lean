@@ -5419,9 +5419,21 @@ theorem baker_B0_eq : baker_B0 = 1000000 :=
   BealLevel26Foundations.BealGap3BakerUpperBound.baker_B0_eq
 
 /-- Uninhabited.  Missing Baker/Bugeaud bound.
-    Needs Baker, not Zsig.  `sorry` is not used. -/
+    Bugeaud linear forms external, not in
+    Mathlib 4.12.  Needs Baker, not Zsig.
+    `sorry` is not used. -/
 def baker_bound_gap3 : Prop :=
   BealLevel26Foundations.BealGap3BakerUpperBound.baker_bound_gap3
+
+/-- Conditional gap-3 forall.  `B ≤ B0` by the
+    expanded residue cover; `B > B0` by the
+    Baker premise. -/
+theorem baker_conditional_gap3_full
+    (hBaker : baker_bound_gap3) :
+    ∀ B : Nat,
+      ¬ ∃ A, Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 :=
+  BealLevel26Foundations.BealGap3BakerUpperBound.baker_conditional_gap3_full
+    hBaker
 
 /-! ## v9.1.0 — Tate Step 2 for Frey Y² = X(X−A⁴)(X+B⁴) -/
 
@@ -6426,6 +6438,7 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check baker_B0
 #check baker_B0_eq
 #check baker_bound_gap3
+#check baker_conditional_gap3_full
 #check tate_rhs
 #check v2_c4_ge_four
 #check tate_odd_prime_exponent_one
@@ -6946,6 +6959,7 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms no_Beal_of_pow4_dvd_C13_of_q_gt_C
 #print axioms exists_primitive_prime_Phi13_gap3
 #print axioms baker_B0_eq
+#print axioms baker_conditional_gap3_full
 #print axioms v2_c4_ge_four
 #print axioms tate_odd_prime_exponent_one
 #print axioms rad_dvd_tate_rhs

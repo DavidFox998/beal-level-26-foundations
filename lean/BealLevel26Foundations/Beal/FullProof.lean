@@ -24,6 +24,22 @@ import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
 import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 
 /-!
+# FullProof track (v9.3.0)
+
+Aggregator for Track B.  v9.3.0 inhabits
+`baker_conditional_gap3_full`:
+`baker_bound_gap3 → ∀ B, ¬∃ A` with
+`A⁴ + B⁴ = (B+3)¹³`.  `B ≤ B0 = 10⁶` by
+the expanded residue cover (mod 16 plus
+fourth powers at 53/29/109/17/5/7/11/13/19/23/31/37).
+`B > B0` by the Baker premise.
+`baker_bound_gap3` stays an uninhabited
+Prop (Bugeaud linear forms external, not
+in Mathlib 4.12).  Tate 2-adic lemmas
+stay.  `frey_tate_conductor` stays Prop.
+Keeps the Zsig Props, `conductor_86`
+Prop, `B14_honest` Prop.  Not BCDT.
+
 # FullProof track (v9.2.0)
 
 Aggregator for Track B.  v9.2.0 records Tate

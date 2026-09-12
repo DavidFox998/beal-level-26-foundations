@@ -1,6 +1,18 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v9.2.0-Tate-2adic-conductor`
+Latest tag / HEAD: `v9.3.0-Baker-conditional-gap3-full`
+`baker_conditional_gap3_full`:
+`baker_bound_gap3 → ∀ B, ¬∃ A` with
+`A⁴ + B⁴ = (B+3)¹³`.  `B ≤ B0 = 10⁶` by
+the expanded residue cover; `B > B0` by
+the Baker premise.  `baker_bound_gap3`
+stays an uninhabited Prop (Bugeaud linear
+forms external, not in Mathlib 4.12).
+Tate 2-adic lemmas stay.
+`frey_tate_conductor` stays Prop.
+Keeps the Zsig Props, `conductor_86`
+Prop, `B14_honest` Prop.  Not BCDT.
+Base: `v9.2.0-Tate-2adic-conductor`.
 Tate Steps 6-7 at 2 on Frey `Y² = X(X−A⁴)(X+B⁴)`:
 `v₂(c₄) ≥ 4`, `v₂(c₆)` from A,B parity,
 `conductorExponentTate2 ≤ 5`.
