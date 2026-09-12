@@ -8,8 +8,9 @@ is the qflll basis plus convergents.
 prints no axioms.  `baker_bound_gap3`
 stays a def Prop.  Locked Lean files
 0 lines vs v16 `9ce2980`.
-Previous v16 DOI `10.5281/zenodo.22728705`
+Zenodo DOI `10.5281/zenodo.22729067`
 (concept `10.5281/zenodo.22379293`).
+Previous v16 DOI `10.5281/zenodo.22728705`.
 
 # FINAL v16.0.0 — Cumulative archive v10–v15 (not final)
 

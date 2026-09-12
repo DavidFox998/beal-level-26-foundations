@@ -9,7 +9,8 @@ prints no axioms.  `baker_bound_gap3`
 stays Prop.  Tate / Baker / v15 B0 /
 v14 modular files 0 lines vs v16
 `9ce2980`.  Previous v16 DOI
-`10.5281/zenodo.22728705`
+`10.5281/zenodo.22728705`.
+Zenodo DOI `10.5281/zenodo.22729067`
 (concept `10.5281/zenodo.22379293`).
 
 Latest prior tag: `v16.0.0-Beal-44-13-Level-26-Cumulative-Archive`
