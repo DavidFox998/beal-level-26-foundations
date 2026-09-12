@@ -10,7 +10,9 @@ Tate and Baker files stay exactly v13
 `cea155c` (0 lines changed).
 `baker_bound_gap3` / `conductor_86` /
 `B14_honest` stay Prop.
-No new v14 DOI; previous v13 DOI
+Zenodo DOI `10.5281/zenodo.22722140`
+(concept `10.5281/zenodo.22379293`).
+Previous v13 DOI
 `10.5281/zenodo.22721843`.
 Base: `v13.0.0-Beal-44-13-Level-26-Modular-Elimination`
 Zenodo DOI `10.5281/zenodo.22721843`.

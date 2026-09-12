@@ -17,7 +17,9 @@ and `baker_conditional_gap3_full`
 Tate and Baker files stay exactly v13
 `cea155c` (0 lines changed).
 `conductor_86` / `B14_honest` stay Prop.
-`^axiom` count 0.  No new v14 DOI.
+`^axiom` count 0.
+Zenodo DOI `10.5281/zenodo.22722140`
+(concept `10.5281/zenodo.22379293`).
 
 # FINAL v13.0.0 — Level-26 modular elimination
 

@@ -1,5 +1,9 @@
 # v14.0.0 J0 / mwrank / formal displayed certs
 
+Zenodo DOI [`10.5281/zenodo.22722140`](https://doi.org/10.5281/zenodo.22722140)
+(concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293))
+at `3089bec`.
+
 `lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean`
 
 Frey curve `Y² = X(X-A⁴)(X+B⁴)` for
