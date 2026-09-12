@@ -1,18 +1,20 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization`
+Latest tag / HEAD: `v21.0.0-Beal-44-13-Level-26-Matveev-Log-Form-Nonzero`
 Most current as of 2026-09-12, **not** final.
-`BealMatveevInequality.lean` names
-`matveev_log_form` with Mathlib `Real.log`.
-`matveev_lower_bound` stays uninhabited def Prop.
-`matveev_inequality_constants_hold` and
-`bugeaud_LLL_basis_holds` by `decide`
-(no axioms). `bugeaud_reduction_formal`
-stays def Prop. `baker_bound_gap3` stays
-uninhabited def Prop. Tate / Baker / v14 J0 /
-v15 B0 / v17 LLL / v19 constants Lean 0 lines
-vs v19 `8fe96fd`. Previous v19 DOI
-`10.5281/zenodo.22729309`
+`matveev_log_form_int` is the Tate c4-scale
+integer form; `matveev_log_form_ne_zero`
+on `B % 14 = 0`. Decide witnesses at
+`B = 0` and `B = 14` (no axioms).
+`matveev_height_le_log_B0` records
+`B ≤ 104382751019310000000`.
+`baker_bound_gap3` and
+`bugeaud_reduction_formal` stay
+uninhabited def Prop. Tate / Baker /
+v14 J0 / v15 B0 / v17 LLL / v19 constants /
+v20 Bugeaud LLL Lean 0 lines vs v20
+`768ed7f`. Previous v20 DOI
+`10.5281/zenodo.22729515`
 (concept `10.5281/zenodo.22379293`).
 Honesty lock: `baker_bound_gap3` stays Prop;
 `baker_B0_certificate_holds` and

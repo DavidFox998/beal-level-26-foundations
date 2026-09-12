@@ -30,6 +30,21 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
 /-!
+# FullProof track (v21.0.0)
+
+Integer log-form nonzero and height bound.
+`matveev_log_form_int` is the Tate c4-scale
+16 times (4B − 13(B+3)); no Real.log.
+`matveev_log_form_ne_zero` on B % 14 = 0.
+`matveev_height_le_log_B0` is B ≤ B0_raw
+as the v19 numeral 104382751019310000000.
+`matveev_log_form_ne_zero_zero` /
+`matveev_census_B0_le_height` by decide
+(no axioms).  `baker_bound_gap3` and
+`bugeaud_reduction_formal` stay def Prop.
+Locked Lean files stay exactly v20 except
+the appended v21 theorems.
+
 # FullProof track (v20.0.0)
 
 Matveev inequality / Bugeaud LLL skeleton.

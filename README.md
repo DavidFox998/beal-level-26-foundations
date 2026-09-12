@@ -1,6 +1,17 @@
 [![v17 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22729067.svg)](https://doi.org/10.5281/zenodo.22729067) [![v16 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22728705.svg)](https://doi.org/10.5281/zenodo.22728705) [![v15 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22728624.svg)](https://doi.org/10.5281/zenodo.22728624) [![v14 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22722140.svg)](https://doi.org/10.5281/zenodo.22722140) [![v13 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721843.svg)](https://doi.org/10.5281/zenodo.22721843) [![v12 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721089.svg)](https://doi.org/10.5281/zenodo.22721089) [![v11 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721420.svg)](https://doi.org/10.5281/zenodo.22721420) [![math DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22712897.svg)](https://doi.org/10.5281/zenodo.22712897) [![paper DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22713047.svg)](https://doi.org/10.5281/zenodo.22713047) [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization
+# Beal Level 26 Foundations — v21.0.0-Beal-44-13-Level-26-Matveev-Log-Form-Nonzero
+
+**v21.0.0-Beal-44-13-Level-26-Matveev-Log-Form-Nonzero — integer log-form nonzero + height bound. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+
+First brick toward inhabiting `∀` in-kernel without PARI:
+- `matveev_log_form_int B = 16 * (4B − 13(B+3))` using Tate c4 scale 16; **no Real.log**
+- `matveev_log_form_ne_zero` on `B % 14 = 0`; decide witnesses at `B = 0` and `B = 14` (**no axioms**)
+- `matveev_height_le_log_B0`: `B ≤ B0_raw` is `B ≤ 104382751019310000000` (v19 numeral)
+- `matveev_census_B0_le_height` (`baker_B0 ≤ height_B0`) by `decide` (**no axioms**)
+- `baker_bound_gap3` and `bugeaud_reduction_formal` stay uninhabited def Props
+- Tate / Baker / v14 J0 / v15 B0 / v17 LLL / v19 constants / v20 Bugeaud LLL stay exactly v20 / `768ed7f` (0 lines)
+- Previous v20 DOI [`10.5281/zenodo.22729515`](https://doi.org/10.5281/zenodo.22729515) (concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293))
 
 **v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization — attempt Matveev inequality and Bugeaud LLL formalization. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
@@ -54,11 +65,12 @@ PARI LLL reduction of the huge Matveev integer `B0_raw` to the displayed cutoff 
 | v17 | [`10.5281/zenodo.22729067`](https://doi.org/10.5281/zenodo.22729067) | `3fbafa6` | PARI LLL `qflll` `C=143186215390` `B0_raw=104382751019310000000` → `B0_reduced=1e6` `baker_B0_reduction_certificate.json` `List (List Int)` decide no axioms |
 | v18 | [`10.5281/zenodo.22729129`](https://doi.org/10.5281/zenodo.22729129) | `430189e` | Cumulative Archive v10–v17 docs-only most current |
 | v19 | [`10.5281/zenodo.22729309`](https://doi.org/10.5281/zenodo.22729309) | `8fe96fd` | `BealMatveevConstants.lean` `matveev_C1_floor=143186215390` Nat/Int theorems by decide; `baker_bound_gap3` stays Prop |
-| v20 | pending webhook | — | `matveev_log_form` Real.log; `matveev_lower_bound` / `bugeaud_reduction_formal` def Prop; `bugeaud_LLL_basis_holds` decide no axioms |
+| v20 | [`10.5281/zenodo.22729515`](https://doi.org/10.5281/zenodo.22729515) | `768ed7f` | `matveev_log_form` Real.log; `matveev_lower_bound` / `bugeaud_reduction_formal` def Prop; `bugeaud_LLL_basis_holds` decide no axioms |
+| v21 | pending webhook | — | `matveev_log_form_int` Tate c4×(4B−13(B+3)); `matveev_log_form_ne_zero` on B%14=0; `matveev_height_le_log_B0` |
 
 Most current snapshot as of 2026-09-12, **not** a final Beal proof. Concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293). See [`docs/CUMULATIVE_ARCHIVE_v10_v17.md`](docs/CUMULATIVE_ARCHIVE_v10_v17.md).
 
-**Honesty lock (most current).** `git diff v19 -- BealFreyTateConductor.lean BealGap3BakerUpperBound.lean BealLevel26ModularElimination.lean BealBakerB0Certificate.lean BealBakerB0ReductionCertificate.lean BealMatveevConstants.lean` = 0. Tate 0 lines since v11. Baker-upper-bound 0 lines since v12. v14 displayed J0 / mwrank / formal unchanged. `baker_bound_gap3` stays an uninhabited def Prop. `matveev_lower_bound` and `bugeaud_reduction_formal` stay uninhabited def Props. `matveev_C1_pos` / `matveev_inequality_constants_hold` / `bugeaud_LLL_basis_holds` / `baker_B0_certificate_holds` / `baker_reduction_certificate_holds` are kernel `decide` on `Nat` / nonempty `List Int` (no axioms). Main `beal_44_13_level_26_modular_elimination` prints `[propext, Classical.choice, Quot.sound]` only. Mathlib 4.12 has `Real.log` but no Matveev / LLL theorem. Raw Matveev 2000 Thm 1.4 does not force `B≤1e6`.
+**Honesty lock (most current).** `git diff v20 -- BealFreyTateConductor.lean BealGap3BakerUpperBound.lean BealLevel26ModularElimination.lean BealBakerB0Certificate.lean BealBakerB0ReductionCertificate.lean BealMatveevConstants.lean BealBugeaudLLLFormal.lean` = 0. Tate 0 lines since v11. Baker-upper-bound 0 lines since v12. v14 displayed J0 / mwrank / formal unchanged. `baker_bound_gap3` and `bugeaud_reduction_formal` stay uninhabited def Props. `matveev_log_form_ne_zero_zero` / `matveev_census_B0_le_height` / `bugeaud_LLL_basis_holds` are kernel `decide` (no axioms). Main pack prints `[propext, Classical.choice, Quot.sound]` only. The integer form is not the Real Matveev inequality; `|Λ| > exp(-C…)` stays for v22.
 
 **v15.0.0-Baker-B0-PARI-Certificate — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
@@ -226,7 +238,8 @@ Releases:
 - v8.72.1-doi-badge inserts real Zenodo DOI `10.5281/zenodo.22698257` from the v8.70.0 mint
 - v8.73.0-modularity-exists-level2 displayed S2(26) dim2 via 0≠12 at p=53; Chain ExistsNewformLevel2 stays 0≠0; DOI 10.5281/zenodo.22698257 still cites v8.69.0
 - v8.74.0-frey-irreducible-mod13 displayed frey_mod13_irreducible at B=196 and B=1500003; frey_modular Classical.em; level_lowering_to_26 stays Prop
-- v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization `matveev_log_form` Mathlib `Real.log`; `matveev_lower_bound` / `bugeaud_reduction_formal` stay def Prop; `matveev_inequality_constants_hold` / `bugeaud_LLL_basis_holds` by decide (no axioms); `bugeaud_K=10^20`; locked Lean 0 vs v19 `8fe96fd`
+- v21.0.0-Beal-44-13-Level-26-Matveev-Log-Form-Nonzero `matveev_log_form_int` Tate c4 scale; `matveev_log_form_ne_zero` on B%14=0; decide witnesses B=0,14; `matveev_height_le_log_B0`; locked Lean 0 vs v20 `768ed7f` except appended theorems
+- v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization `matveev_log_form` Mathlib `Real.log`; `matveev_lower_bound` / `bugeaud_reduction_formal` stay def Prop; `matveev_inequality_constants_hold` / `bugeaud_LLL_basis_holds` by decide (no axioms); `bugeaud_K=10^20`; locked Lean 0 vs v19 `8fe96fd`; DOI `10.5281/zenodo.22729515`
 - v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization `matveev_C1_floor=143186215390` explicit Nat; `matveev_C1_pos` / `matveev_explicit_gap3_constants_hold` by decide (no axioms); `matveev_height_B0=C1_floor*30^{n+3}`; Tate c4 scale 16; `baker_bound_gap3` stays def Prop; locked Lean 0 vs v18 `430189e`; DOI `10.5281/zenodo.22729309`
 - v18.0.0-Beal-44-13-Level-26-Cumulative-Archive-v10-v17 docs-only cumulative archive of v10–v17; Lean 0 lines vs v17 `3fbafa6`; most current, not final; DOI `10.5281/zenodo.22729129` (concept `10.5281/zenodo.22379293`)
 - v17.0.0-Beal-44-13-Level-26-Baker-B0-Reduction-Certificate PARI `qflll` reduces Matveev `B0_raw` to `B0_reduced=1e6`; `baker_B0_reduction_certificate.json` `List (List Int)` LLL basis + convergents; `baker_reduction_certificate_holds` by decide (no axioms); `baker_bound_gap3` stays def Prop; Tate / Baker / v15 B0 / v14 modular 0 lines vs v16 `9ce2980`; DOI `10.5281/zenodo.22729067`

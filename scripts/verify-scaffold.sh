@@ -3243,6 +3243,12 @@ grep -q "def matveev_lower_bound" \
   lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean
 grep -q "theorem matveev_inequality_constants_hold" \
   lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean
+grep -q "def matveev_log_form_int" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean
+grep -q "theorem matveev_log_form_ne_zero" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean
+grep -q "theorem matveev_height_le_log_B0" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean
 test "$(grep -c '^axiom ' lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean)" -eq 0
 test ! -n "$(grep -E '^\s*(sorry|admit)\b|False\.elim|native_decide|^axiom ' \
   lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean || true)"
@@ -3266,6 +3272,17 @@ grep -q "theorem matveev_inequality_constants_hold" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem bugeaud_LLL_basis_holds" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem matveev_log_form_ne_zero" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem matveev_height_le_log_B0" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+test "$(git diff v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean | wc -l)" -eq 0
+test "$(git diff v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
+test "$(git diff v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
+test "$(git diff v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean | wc -l)" -eq 0
+test "$(git diff v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean | wc -l)" -eq 0
+test "$(git diff v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean | wc -l)" -eq 0
+test "$(git diff v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealBugeaudLLLFormal.lean | wc -l)" -eq 0
 test "$(git diff v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean | wc -l)" -eq 0
 test "$(git diff v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 test "$(git diff v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
@@ -3284,6 +3301,10 @@ grep -q "baker_B0_reduction_certificate" \
 grep -q "matveev_C1_floor" \
   paper/mcom-draft.tex
 grep -q "matveev_log_form" \
+  paper/mcom-draft.tex
+grep -q "matveev_log_form_ne_zero" \
+  paper/mcom-draft.tex
+grep -q "matveev_height_le_log_B0" \
   paper/mcom-draft.tex
 grep -q "bugeaud_LLL_basis_holds" \
   paper/mcom-draft.tex

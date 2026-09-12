@@ -5805,6 +5805,34 @@ def bugeaud_reduction_formal : Prop :=
 def baker_bound_gap3_of_bugeaud_LLL : Prop :=
   BealLevel26Foundations.BealBugeaudLLLFormal.baker_bound_gap3_of_bugeaud_LLL
 
+/-! ## v21.0.0 — integer log form ≠ 0 and height bound -/
+
+def matveev_log_form_int :=
+  BealLevel26Foundations.BealMatveevInequality.matveev_log_form_int
+
+theorem matveev_log_form_ne_zero_zero :
+    matveev_log_form_int 0 ≠ 0 :=
+  BealLevel26Foundations.BealMatveevInequality.matveev_log_form_ne_zero_zero
+
+theorem matveev_log_form_ne_zero_fourteen :
+    matveev_log_form_int 14 ≠ 0 :=
+  BealLevel26Foundations.BealMatveevInequality.matveev_log_form_ne_zero_fourteen
+
+theorem matveev_log_form_ne_zero (B : Nat)
+    (hB : B % 14 = 0) :
+    matveev_log_form_int B ≠ 0 :=
+  BealLevel26Foundations.BealMatveevInequality.matveev_log_form_ne_zero B hB
+
+theorem matveev_height_le_log_B0 {B : Nat}
+    (hB : B ≤ matveev_height_B0) :
+    B ≤ 104382751019310000000 :=
+  BealLevel26Foundations.BealMatveevInequality.matveev_height_le_log_B0 hB
+
+theorem matveev_census_B0_le_height :
+    BealLevel26Foundations.BealMatveevConstants.matveev_B0 ≤
+      matveev_height_B0 :=
+  BealLevel26Foundations.BealMatveevInequality.matveev_census_B0_le_height
+
 /-! ## v14.0.0 — J0 / mwrank / formal displayed certs -/
 
 def J0DecompositionCert_26 :=
@@ -6872,6 +6900,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check bugeaud_LLL_basis
 #check bugeaud_LLL_basis_holds
 #check bugeaud_reduction_formal
+#check matveev_log_form_int
+#check matveev_log_form_ne_zero
+#check matveev_log_form_ne_zero_zero
+#check matveev_height_le_log_B0
+#check matveev_census_B0_le_height
 #check J0DecompositionCert_26
 #check J0DecompositionCert_26_displayed
 #check J0DecompositionSoundness_26
@@ -7434,6 +7467,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms matveev_lower_bound_scale_pos
 #print axioms bugeaud_K_eq
 #print axioms bugeaud_LLL_basis_holds
+#print axioms matveev_log_form_ne_zero_zero
+#print axioms matveev_log_form_ne_zero_fourteen
+#print axioms matveev_log_form_ne_zero
+#print axioms matveev_height_le_log_B0
+#print axioms matveev_census_B0_le_height
 #print axioms J0DecompositionSoundness_26_holds
 #print axioms MwrankCertificateSoundness_26_holds
 #print axioms FormalImmersionSoundness_26_holds

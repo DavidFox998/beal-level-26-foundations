@@ -1,6 +1,16 @@
-# v20.0.0 Matveev inequality skeleton
+# v21.0.0 Matveev log-form nonzero + height bound
 
 `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean`
+
+v21 integer brick (no Real.log):
+
+- `matveev_log_form_int B = 16 * (4B − 13(B+3))` using Tate c4 scale
+- `matveev_log_form_ne_zero_zero` / `_fourteen` by decide (**no axioms**)
+- `matveev_log_form_ne_zero` on `B % 14 = 0`
+- `matveev_height_le_log_B0`: `B ≤ B0_raw` is `B ≤ 104382751019310000000`
+- `matveev_census_B0_le_height` (`1e6 ≤ B0_raw`) by decide (**no axioms**)
+
+v20 Real.log skeleton unchanged:
 
 Names the linear form with Mathlib `Real.log`:
 

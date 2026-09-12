@@ -1,19 +1,19 @@
-# FINAL v20.0.0 — Matveev inequality / Bugeaud LLL skeleton (not final)
+# FINAL v21.0.0 — Matveev log-form nonzero (not final)
 
-Latest tag `v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization`.
-`BealMatveevInequality.lean` names
-`matveev_log_form = 4 log A - 13 log(B+3)`
-with Mathlib `Real.log`.
-`matveev_lower_bound` stays uninhabited
-def Prop. `BealBugeaudLLLFormal.lean`
-records `bugeaud_K = 10^20` and the v17
-qflll basis; `bugeaud_LLL_basis_holds` by
-`decide` (no axioms).
-`bugeaud_reduction_formal` stays def Prop.
-`baker_bound_gap3` stays uninhabited
-def Prop. Tate / Baker / v14 J0 / v15 B0 /
-v17 LLL / v19 constants Lean 0 lines vs v19
-`8fe96fd` / `10.5281/zenodo.22729309`.
+Latest tag `v21.0.0-Beal-44-13-Level-26-Matveev-Log-Form-Nonzero`.
+Integer brick: `matveev_log_form_int B =
+16 * (4B − 13(B+3))` using Tate c4 scale,
+no Real.log. `matveev_log_form_ne_zero`
+on `B % 14 = 0`. Decide witnesses at 0
+and 14 (no axioms).
+`matveev_height_le_log_B0` is
+`B ≤ 104382751019310000000`.
+`baker_bound_gap3` and
+`bugeaud_reduction_formal` stay
+uninhabited def Prop. Tate / Baker /
+v14 J0 / v15 B0 / v17 LLL / v19 constants /
+v20 Bugeaud LLL Lean 0 lines vs v20
+`768ed7f` / `10.5281/zenodo.22729515`.
 Most current as of 2026-09-12, **not** a
 final Beal proof. Series concept
 `10.5281/zenodo.22379293`.
