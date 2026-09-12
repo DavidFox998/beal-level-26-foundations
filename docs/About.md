@@ -1,6 +1,20 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v15.0.0-Baker-B0-PARI-Certificate`
+Latest tag / HEAD: `v16.0.0-Beal-44-13-Level-26-Cumulative-Archive`
+Most current cumulative archive v10–v15 as of 2026-09-12,
+**not** final. Docs-only versus v15 `6443f81`.
+Lean files 0 lines vs
+`v15.0.0-Baker-B0-PARI-Certificate`.
+See `docs/CUMULATIVE_ARCHIVE_v10_v15.md`.
+Series concept `10.5281/zenodo.22379293`.
+v15 DOI `10.5281/zenodo.22728624`.
+Honesty lock: `baker_bound_gap3` stays Prop;
+`baker_bound_gap3_of_PARI` not inhabited;
+`baker_B0_certificate_holds` decide, no axioms;
+main pack `[propext, Classical.choice, Quot.sound]`
+only; raw Matveev does not force `B≤1e6`.
+
+Latest prior tag: `v15.0.0-Baker-B0-PARI-Certificate`
 PARI `baker_B0_PARI = 1000000` and
 `baker_B0_certificate_displayed` List/Int
 trace from `scripts/baker_b0_gap3.gp`.

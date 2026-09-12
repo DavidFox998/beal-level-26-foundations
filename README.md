@@ -1,6 +1,21 @@
-[![v13 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721843.svg)](https://doi.org/10.5281/zenodo.22721843) [![v12 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721089.svg)](https://doi.org/10.5281/zenodo.22721089) [![v11 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721420.svg)](https://doi.org/10.5281/zenodo.22721420) [![math DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22712897.svg)](https://doi.org/10.5281/zenodo.22712897) [![paper DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22713047.svg)](https://doi.org/10.5281/zenodo.22713047) [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
+[![v15 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22728624.svg)](https://doi.org/10.5281/zenodo.22728624) [![v14 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22722140.svg)](https://doi.org/10.5281/zenodo.22722140) [![v13 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721843.svg)](https://doi.org/10.5281/zenodo.22721843) [![v12 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721089.svg)](https://doi.org/10.5281/zenodo.22721089) [![v11 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721420.svg)](https://doi.org/10.5281/zenodo.22721420) [![math DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22712897.svg)](https://doi.org/10.5281/zenodo.22712897) [![paper DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22713047.svg)](https://doi.org/10.5281/zenodo.22713047) [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v14.0.0-J0-Mwrank-Formal-Verified → v15.0.0-Baker-B0-PARI-Certificate
+# Beal Level 26 Foundations — v16.0.0-Beal-44-13-Level-26-Cumulative-Archive
+
+**v16.0.0-Beal-44-13-Level-26-Cumulative-Archive — most current cumulative archive, NOT final. Track A: no new Beal-∀, unconditional Beal NOT claimed.** Docs-only versus v15 `6443f81`. Lean files 0 lines vs `v15.0.0-Baker-B0-PARI-Certificate`. See [`docs/CUMULATIVE_ARCHIVE_v10_v15.md`](docs/CUMULATIVE_ARCHIVE_v10_v15.md).
+
+| Version | DOI | Commit | Transparent content |
+| --- | --- | --- | --- |
+| v10 | [`10.5281/zenodo.22712897`](https://doi.org/10.5281/zenodo.22712897) / [`22713047`](https://doi.org/10.5281/zenodo.22713047) | — | 25 chunks `B≡14` 62500 values `allKilled_1e6` [] `B≤1e6` |
+| v11 | [`10.5281/zenodo.22721420`](https://doi.org/10.5281/zenodo.22721420) | — | Tate `tateConductor=2^{f2}*rad(AB(B+3))*13` `f2≤5` witness `63982=2*31991` `c4=16*(A^8+A^4B^4+B^8)` |
+| v12 | [`10.5281/zenodo.22721089`](https://doi.org/10.5281/zenodo.22721089) | — | Baker explicit `matveev_explicit_gap3` def Prop |
+| v13 | [`10.5281/zenodo.22721843`](https://doi.org/10.5281/zenodo.22721843) | `cea155c` | transparent List/Nat/Int certs; opaque deleted |
+| v14 | [`10.5281/zenodo.22722140`](https://doi.org/10.5281/zenodo.22722140) | `3089bec` | J0 `[[1,0,1,-5,-8],[1,-1,1,-3,3]]` mwrank `{0,12}` formal M3 `[[1,1],[0,2]]` displayed holds no axioms; kraus `{-10,-2,1,6,14}` vs `{0,12}` decide [] |
+| v15 | [`10.5281/zenodo.22728624`](https://doi.org/10.5281/zenodo.22728624) | `6443f81` | PARI gp `B0=1e6` `baker_B0_certificate.json` List Int decide no axioms |
+
+Cumulative archive v10–v15 most current as of 2026-09-12, concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293).
+
+**Honesty lock (most current).** Tate 0 lines since v11. Baker-upper-bound 0 lines since v12. v14 displayed certs unchanged. `baker_bound_gap3` stays a def Prop, uninhabited. `baker_bound_gap3_of_PARI` is the implication type, not inhabited. `baker_B0_certificate_holds` is kernel `decide` on a nonempty `List Int` (no axioms). Main `beal_44_13_level_26_modular_elimination` prints `[propext, Classical.choice, Quot.sound]` only. `B>1e6` goes through `baker_conditional_gap3_full` with `baker_B0_PARI=1000000`. PARI is an external cert like mwrank `{0,12}`, not a Mathlib Matveev proof. Raw Matveev 2000 Thm 1.4 does not force `B≤1e6`.
 
 **v15.0.0-Baker-B0-PARI-Certificate — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
@@ -11,7 +26,7 @@ Transparent PARI / Matveev 2000 Thm 1.4 integer cert for the displayed Baker cut
 - `baker_bound_gap3` stays a def Prop; `baker_bound_gap3_of_PARI` is the named implication (def Prop, not inhabited)
 - Tate and Baker-upper-bound files stay exactly v14 / `3089bec` (0 lines)
 - v14 displayed J0 / mwrank / formal certs stay the same inhabitants
-- Previous v14 DOI [`10.5281/zenodo.22722140`](https://doi.org/10.5281/zenodo.22722140)
+- Zenodo DOI [`10.5281/zenodo.22728624`](https://doi.org/10.5281/zenodo.22728624) (concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293); previous v14 [`10.5281/zenodo.22722140`](https://doi.org/10.5281/zenodo.22722140))
 
 **v14.0.0-J0-Mwrank-Formal-Verified — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
@@ -74,7 +89,7 @@ Track B closed 5983 rows = 4488+5*299 B≤2M pools 50310/50323/50307/50350/50325
 
 Draft paper: [`paper/mcom-draft.tex`](paper/mcom-draft.tex) (`latexmk -pdf mcom-draft.tex`). See [`paper/README.md`](paper/README.md).
 
-[![v13 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721843.svg)](https://doi.org/10.5281/zenodo.22721843) [![v12 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721089.svg)](https://doi.org/10.5281/zenodo.22721089) [![v11 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721420.svg)](https://doi.org/10.5281/zenodo.22721420) [![math DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22712897.svg)](https://doi.org/10.5281/zenodo.22712897) [![paper DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22713047.svg)](https://doi.org/10.5281/zenodo.22713047)
+[![v15 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22728624.svg)](https://doi.org/10.5281/zenodo.22728624) [![v14 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22722140.svg)](https://doi.org/10.5281/zenodo.22722140) [![v13 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721843.svg)](https://doi.org/10.5281/zenodo.22721843) [![v12 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721089.svg)](https://doi.org/10.5281/zenodo.22721089) [![v11 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721420.svg)](https://doi.org/10.5281/zenodo.22721420) [![math DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22712897.svg)](https://doi.org/10.5281/zenodo.22712897) [![paper DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22713047.svg)](https://doi.org/10.5281/zenodo.22713047)
 
 v8.71.0 is the first inhabited Ribet-Mazur pack. It is **not** `∀ B` modular contradiction. The two witnesses are `B = 196` (`-2` vs `0`/`12` mod 13) and `B = 1500003` (`24` vs `21`/`-39` mod 13). Fifteen of sixteen residue classes on `B ≤ 2000000` are honest (`beal_4_13_13_gap3_B_le_2M_eliminated_mod16`, `B % 16 ≠ 14`). 352 named Step60 `B ≡ 14` rows record `a53` misses vs `0/12` (not Ribet, not `¬ ∃ A`). The displayed two-element list is killed by mod 16 (`beal_4_13_13_gap3_B_le_2M_eliminated_full`). The old capstone stays `Classical.em`.
 
@@ -168,6 +183,9 @@ Releases:
 - v8.72.1-doi-badge inserts real Zenodo DOI `10.5281/zenodo.22698257` from the v8.70.0 mint
 - v8.73.0-modularity-exists-level2 displayed S2(26) dim2 via 0≠12 at p=53; Chain ExistsNewformLevel2 stays 0≠0; DOI 10.5281/zenodo.22698257 still cites v8.69.0
 - v8.74.0-frey-irreducible-mod13 displayed frey_mod13_irreducible at B=196 and B=1500003; frey_modular Classical.em; level_lowering_to_26 stays Prop
+- v16.0.0-Beal-44-13-Level-26-Cumulative-Archive docs-only cumulative archive of v10–v15; Lean 0 lines vs v15 `6443f81`; most current, not final; concept `10.5281/zenodo.22379293`
+- v15.0.0-Baker-B0-PARI-Certificate PARI gp Matveev 2000 Thm 1.4 / BMS Table 1 integer cert `baker_B0_PARI=1000000` and `baker_B0_certificate.json`; `baker_B0_certificate_holds` by decide (no axioms); `baker_bound_gap3` stays def Prop; Tate / Baker-upper-bound 0 lines vs v14 `3089bec`; v14 displayed J0/mwrank/formal certs unchanged; DOI `10.5281/zenodo.22728624`
+- v14.0.0-J0-Mwrank-Formal-Verified displayed J0 `[[1,0,1,-5,-8],[1,-1,1,-3,3]]` mwrank `{0,12}` formal M3 `[[1,1],[0,2]]`; holds theorems decide/rfl no axioms; Tate / Baker 0 lines vs v13 `cea155c`; DOI `10.5281/zenodo.22722140`
 - v13.0.0-Beal-44-13-Level-26-Modular-Elimination Frey `Y²=X(X-A⁴)(X+B⁴)`; `tateConductor=2^{f₂}*rad*13` `f₂≤5` not `2⁵*3*13` (witness `63982=2*31991`); Kraus `a₅₃` `{-10,-2,1,6,14}` vs `S₂(26)` `{0,12}` by decide; five transparent List/Nat cert structures J0/Mwrank/Formal/Frey/LevelLowering (not opaque axioms); 25 chunks `B≡14` for `B≤1e6`; `baker_bound_gap3` / `conductor_86` / `B14_honest` stay Prop; Tate and Baker files 0 lines changed; DOI `10.5281/zenodo.22721843`
 - v12.0.0-Baker-Matveev-explicit explicit Matveev for (4,4,13) gap3, not general Bugeaud; `matveev_explicit_gap3` turns `baker_bound_gap3` into `eq → B ≤ baker_B0`; `matveev_no_solution_A_le_B` inhabited; `baker_bound_gap3` stays Prop (Matveev not in Mathlib 4.12); Tate file unchanged; 25 chunks kept; DOI `10.5281/zenodo.22721089`
 - v11.0.0-Tate-N-def `tateConductor = 2^{f₂}*rad*13`; `frey_tate_conductor` is that Nat; `frey_tate_conductor_inhabited` proves `∣ 2⁵*rad*13` with odd `v_q ≤ 1` and `v₂ ≤ 5`; `baker_bound_gap3` / `conductor_86` / `B14_honest` stay Prop; Baker file unchanged; DOI `10.5281/zenodo.22721420`

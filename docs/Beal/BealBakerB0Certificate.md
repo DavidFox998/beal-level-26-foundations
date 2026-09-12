@@ -1,5 +1,9 @@
 # v15.0.0 Baker B0 PARI certificate
 
+Zenodo DOI [`10.5281/zenodo.22728624`](https://doi.org/10.5281/zenodo.22728624)
+(concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293)).
+Archived in v16 `docs/CUMULATIVE_ARCHIVE_v10_v15.md`.
+
 `lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean`
 
 PARI script `scripts/baker_b0_gap3.gp` writes

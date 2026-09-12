@@ -1,3 +1,23 @@
+# FINAL v16.0.0 — Cumulative archive v10–v15 (not final)
+
+Latest tag `v16.0.0-Beal-44-13-Level-26-Cumulative-Archive`.
+Docs-only versus v15 `6443f81` /
+`10.5281/zenodo.22728624`.
+Lean files 0 lines vs that tag.
+Most current as of 2026-09-12, **not** a final
+Beal proof. Series concept
+`10.5281/zenodo.22379293`.
+See `docs/CUMULATIVE_ARCHIVE_v10_v15.md`.
+Honesty lock: Tate 0 since v11, Baker 0 since
+v12, v14 displayed certs unchanged,
+`baker_bound_gap3` uninhabited def Prop,
+`baker_bound_gap3_of_PARI` implication type
+not inhabited, `baker_B0_certificate_holds`
+kernel decide no axioms, main pack
+`[propext, Classical.choice, Quot.sound]`
+only. Raw Matveev 2000 Thm 1.4 does not
+force `B≤1e6`.
+
 # FINAL v15.0.0 — Baker B0 PARI certificate
 
 Latest tag `v15.0.0-Baker-B0-PARI-Certificate`.

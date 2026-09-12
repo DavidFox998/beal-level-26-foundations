@@ -1,16 +1,17 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite the corrected v1.0.1-computable release (10.5281/zenodo.22272714) and this package under concept DOI 10.5281/zenodo.22272382."
+message: "If you use this software, please cite this cumulative archive under concept DOI 10.5281/zenodo.22379293 (series) and the corrected v1.0.1-computable release 10.5281/zenodo.22272714 / package concept 10.5281/zenodo.22272382."
 title: "Beal Level 26 Foundations — X0(26)(Q) Cusps P-mem [1,2,13,26] + README Sweep 22452680 → 22456594 + Beal13-Forall-Bridge Triple None"
 type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v15.0.0-Baker-B0-PARI-Certificate"
+version: "v16.0.0-Beal-44-13-Level-26-Cumulative-Archive"
 date-released: "2026-09-12"
-doi: "10.5281/zenodo.22722140"
+doi: "10.5281/zenodo.22728624"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
-url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v15.0.0-Baker-B0-PARI-Certificate"
-# v15.0.0-Baker-B0-PARI-Certificate: PARI gp B0=1e6 Matveev explicit Table 1 baker_B0_certificate.json transparent List/Int cert; baker_bound_gap3 stays def Prop; Tate/Baker 0 lines vs v14 3089bec. Previous v14 DOI 10.5281/zenodo.22722140.
+url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v16.0.0-Beal-44-13-Level-26-Cumulative-Archive"
+# v16.0.0-Beal-44-13-Level-26-Cumulative-Archive: docs-only cumulative archive v10-v15 most current NOT final; Lean 0 lines vs v15 6443f81 / 10.5281/zenodo.22728624. Series concept 10.5281/zenodo.22379293.
+# v15.0.0-Baker-B0-PARI-Certificate DOI 10.5281/zenodo.22728624 at 6443f81: PARI gp B0=1e6 Matveev explicit Table 1 baker_B0_certificate.json transparent List/Int cert; baker_bound_gap3 stays def Prop; Tate/Baker 0 lines vs v14 3089bec.
 # v14.0.0-J0-Mwrank-Formal-Verified DOI 10.5281/zenodo.22722140 at 3089bec: explicit displayed certs J0 [[1,0,1,-5,-8],[1,-1,1,-3,3]] mwrank {0,12} formal M3 [[1,1],[0,2]] reuse Tate c4/tateF2 f2<=5; holds theorems decide/rfl no axioms.
 # v13.0.0-Beal-44-13-Level-26-Modular-Elimination DOI 10.5281/zenodo.22721843: Frey Y^2=X(X-A^4)(X+B^4) tateConductor 2^{f2}*rad*13 f2<=5 + Kraus a53 vs S2(26) + five transparent List/Nat cert structures (not opaque axioms). Concept DOI still 10.5281/zenodo.22272382; v12 DOI 10.5281/zenodo.22721089.
 # v12.0.0-Baker-Matveev-explicit DOI 10.5281/zenodo.22721089: explicit Matveev for (4,4,13) gap3, not general Bugeaud; matveev_explicit_gap3 turns baker_bound_gap3 into eq → B ≤ baker_B0; matveev_no_solution_A_le_B inhabited; baker_bound_gap3 stays Prop; Tate file unchanged.
@@ -56,17 +57,32 @@ abstract: >-
   image >=300KB hook 22379293 honest
 identifiers:
   - type: doi
+    value: 10.5281/zenodo.22379293
+    description: Series concept DOI (v10-v16 webhook versions)
+  - type: doi
     value: 10.5281/zenodo.22272382
-    description: Zenodo concept DOI
+    description: Older package concept DOI
   - type: doi
     value: 10.5281/zenodo.22272714
     description: v1.0.1-computable citation DOI
   - type: doi
     value: 10.5281/zenodo.22712897
-    description: v8.84.0-B14-modq-kill math release
+    description: v10 / v8.84.0-B14-modq-kill math release
   - type: doi
     value: 10.5281/zenodo.22713047
-    description: v8.85.0-paper-B14-full paper version DOI
+    description: v10 / v8.85.0-paper-B14-full paper version DOI
+  - type: doi
+    value: 10.5281/zenodo.22721420
+    description: v11.0.0-Tate-N-def
+  - type: doi
+    value: 10.5281/zenodo.22721089
+    description: v12.0.0-Baker-Matveev-explicit
   - type: doi
     value: 10.5281/zenodo.22721843
     description: v13.0.0-Beal-44-13-Level-26-Modular-Elimination transparent certs
+  - type: doi
+    value: 10.5281/zenodo.22722140
+    description: v14.0.0-J0-Mwrank-Formal-Verified displayed J0/mwrank/formal certs
+  - type: doi
+    value: 10.5281/zenodo.22728624
+    description: v15.0.0-Baker-B0-PARI-Certificate PARI Matveev B0 cert
