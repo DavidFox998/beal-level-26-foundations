@@ -22,10 +22,24 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyConductorGeneral
 import BealLevel26Foundations.Beal.FullProof.BealGap3ZsigBeyond2M
 import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
 import BealLevel26Foundations.Beal.FullProof.BealBakerB0Certificate
+import BealLevel26Foundations.Beal.FullProof.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
 /-!
+# FullProof track (v17.0.0)
+
+Baker B0 PARI LLL reduction certificate.
+`baker_B0_reduced_PARI = 1000000` matches
+`baker_B0`.  `baker_reduction_certificate_displayed`
+is the qflll basis plus convergents from
+`scripts/baker_b0_reduction.gp`.
+`baker_reduction_certificate_holds` is kernel
+`decide` (no axioms).
+`baker_bound_gap3` stays a def Prop.
+Tate / Baker / v15 B0 / v14 displayed cert
+files stay exactly v16 (0 lines).
+
 # FullProof track (v15.0.0)
 
 Baker B0 PARI certificate.

@@ -775,6 +775,7 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyConductorGeneral
 import BealLevel26Foundations.Beal.FullProof.BealGap3ZsigBeyond2M
 import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
 import BealLevel26Foundations.Beal.FullProof.BealBakerB0Certificate
+import BealLevel26Foundations.Beal.FullProof.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
@@ -5711,6 +5712,30 @@ def baker_bound_gap3_of_PARI : Prop :=
 theorem baker_B0_PARI_eq : baker_B0_PARI = baker_B0 :=
   BealLevel26Foundations.BealBakerB0Certificate.baker_B0_PARI_eq
 
+/-! ## v17.0.0 — Baker B0 PARI LLL reduction certificate -/
+
+def baker_B0_reduced_PARI :=
+  BealLevel26Foundations.BealBakerB0ReductionCertificate.baker_B0_reduced_PARI
+
+def baker_B0_raw_PARI :=
+  BealLevel26Foundations.BealBakerB0ReductionCertificate.baker_B0_raw_PARI
+
+def baker_reduction_certificate_displayed :=
+  BealLevel26Foundations.BealBakerB0ReductionCertificate.baker_reduction_certificate_displayed
+
+def baker_reduction_certificate :=
+  BealLevel26Foundations.BealBakerB0ReductionCertificate.baker_reduction_certificate
+
+theorem baker_reduction_certificate_holds :
+    baker_reduction_certificate_displayed ≠ [] :=
+  BealLevel26Foundations.BealBakerB0ReductionCertificate.baker_reduction_certificate_holds
+
+def baker_bound_gap3_of_LLL : Prop :=
+  BealLevel26Foundations.BealBakerB0ReductionCertificate.baker_bound_gap3_of_LLL
+
+theorem baker_B0_reduced_PARI_eq : baker_B0_reduced_PARI = baker_B0 :=
+  BealLevel26Foundations.BealBakerB0ReductionCertificate.baker_B0_reduced_PARI_eq
+
 /-! ## v14.0.0 — J0 / mwrank / formal displayed certs -/
 
 def J0DecompositionCert_26 :=
@@ -6760,6 +6785,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check baker_B0_certificate_displayed
 #check baker_B0_certificate_holds
 #check baker_bound_gap3_of_PARI
+#check baker_B0_reduced_PARI
+#check baker_B0_raw_PARI
+#check baker_reduction_certificate_displayed
+#check baker_reduction_certificate_holds
+#check baker_bound_gap3_of_LLL
 #check J0DecompositionCert_26
 #check J0DecompositionCert_26_displayed
 #check J0DecompositionSoundness_26
@@ -7315,6 +7345,7 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms kraus_a53_elimination
 #print axioms tateConductor_eq_frey
 #print axioms baker_B0_certificate_holds
+#print axioms baker_reduction_certificate_holds
 #print axioms J0DecompositionSoundness_26_holds
 #print axioms MwrankCertificateSoundness_26_holds
 #print axioms FormalImmersionSoundness_26_holds

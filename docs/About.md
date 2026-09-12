@@ -1,6 +1,18 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v16.0.0-Beal-44-13-Level-26-Cumulative-Archive`
+Latest tag / HEAD: `v17.0.0-Beal-44-13-Level-26-Baker-B0-Reduction-Certificate`
+Most current, descriptive title only.
+PARI `qflll` reduces `B0_raw` to
+`baker_B0_reduced_PARI = 1000000`.
+`baker_reduction_certificate_holds`
+prints no axioms.  `baker_bound_gap3`
+stays Prop.  Tate / Baker / v15 B0 /
+v14 modular files 0 lines vs v16
+`9ce2980`.  Previous v16 DOI
+`10.5281/zenodo.22728705`
+(concept `10.5281/zenodo.22379293`).
+
+Latest prior tag: `v16.0.0-Beal-44-13-Level-26-Cumulative-Archive`
 Most current cumulative archive v10–v15 as of 2026-09-12,
 **not** final. Docs-only versus v15 `6443f81`.
 Lean files 0 lines vs

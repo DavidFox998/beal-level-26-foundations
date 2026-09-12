@@ -1,3 +1,16 @@
+# FINAL v17.0.0 — Baker B0 PARI LLL reduction
+
+Latest tag `v17.0.0-Beal-44-13-Level-26-Baker-B0-Reduction-Certificate`.
+`baker_B0_reduced_PARI = 1000000`.
+`baker_reduction_certificate_displayed`
+is the qflll basis plus convergents.
+`baker_reduction_certificate_holds`
+prints no axioms.  `baker_bound_gap3`
+stays a def Prop.  Locked Lean files
+0 lines vs v16 `9ce2980`.
+Previous v16 DOI `10.5281/zenodo.22728705`
+(concept `10.5281/zenodo.22379293`).
+
 # FINAL v16.0.0 — Cumulative archive v10–v15 (not final)
 
 Latest tag `v16.0.0-Beal-44-13-Level-26-Cumulative-Archive`.
