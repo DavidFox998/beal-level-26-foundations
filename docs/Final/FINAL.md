@@ -14,11 +14,12 @@ inequality is a theorem; v25 only when
 Tate / Baker / v14 J0 / v15 B0 / v17 LLL /
 v19 constants / v20 Bugeaud LLL / v21
 inequality / v22 Real skeleton / v23
-compare Lean 0 lines vs v23 `c44f161` /
-`10.5281/zenodo.22730338`.
+compare Lean 0 lines vs v23 `c44f161`.
+Zenodo DOI `10.5281/zenodo.22730408`
+(concept `10.5281/zenodo.22379293`;
+previous v23 `10.5281/zenodo.22730338`).
 Most current as of 2026-09-12, **not** a
-final Beal proof. Series concept
-`10.5281/zenodo.22379293`.
+final Beal proof.
 Honesty lock: Tate 0 since v11, Baker 0
 since v12, v14 displayed certs unchanged,
 `baker_bound_gap3` uninhabited def Prop,

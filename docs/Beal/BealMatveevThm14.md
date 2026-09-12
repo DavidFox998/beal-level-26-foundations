@@ -4,6 +4,7 @@
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
 **Parent.** v23 `c44f161` / `v23.0.0-Beal-44-13-Level-26-Matveev-C-Exp-Bound-Compare` / DOI `10.5281/zenodo.22730338`.
+**This version.** `d39c6d5` / DOI `10.5281/zenodo.22730408`.
 **Concept.** `10.5281/zenodo.22379293`.
 
 This is the first v24 file. It starts a real in-kernel formalization of the Matveev 2000 Theorem 1.4 lower bound

@@ -7,10 +7,10 @@ authors:
     given-names: David
 version: "v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start"
 date-released: "2026-09-12"
-doi: "10.5281/zenodo.22730338"
+doi: "10.5281/zenodo.22730408"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
 url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start"
-# v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start: BealMatveevThm14.lean starts Matveev 2000 Thm 1.4 |Lambda|>exp(-C); matveev_height_log_pos / matveev_exp_bound_neg inhabited; thirty_pow=729000000 and ≠72900000 by decide; matveev_inequality_real_target and baker_bound_gap3 stay def Prop; stay in v24 until baker_bound_gap3 inhabited; locked Lean 0 vs v23 c44f161. Previous v23 DOI 10.5281/zenodo.22730338. Series concept 10.5281/zenodo.22379293.
+# v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start DOI 10.5281/zenodo.22730408 at d39c6d5: BealMatveevThm14.lean starts Matveev 2000 Thm 1.4 |Lambda|>exp(-C); matveev_height_log_pos / matveev_exp_bound_neg inhabited; thirty_pow=729000000 and ≠72900000 by decide; matveev_inequality_real_target and baker_bound_gap3 stay def Prop; stay in v24 until baker_bound_gap3 inhabited; locked Lean 0 vs v23 c44f161. Previous v23 DOI 10.5281/zenodo.22730338. Series concept 10.5281/zenodo.22379293.
 # v23.0.0-Beal-44-13-Level-26-Matveev-C-Exp-Bound-Compare DOI 10.5281/zenodo.22730338 at c44f161: matveev_C_exp_bound_lt_neg_onee12 and matveev_log_form_ne_zero_of_gap3 inhabited; baker_bound_gap3 stays def Prop; Matveev 2000 Thm 1.4 not in Mathlib 4.12; locked Lean 0 vs v22 1db061a. Previous v22 DOI 10.5281/zenodo.22729980. Series concept 10.5281/zenodo.22379293.
 # v22.0.0-Beal-44-13-Level-26-Matveev-Inequality-Real DOI 10.5281/zenodo.22729980 at 1db061a: matveev_C_exp_bound Real exponent -(C1_floor:Real)*(thirty_pow:Real)*Real.log(height_B0); matveev_C_exp_bound_decide C1_floor=143186215390 ∧ thirty_pow=729000000 by decide no axioms; matveev_inequality_real_formal / matveev_inequality_real_lower stay def Prop; baker_bound_gap3 stays def Prop; baker_bound_gap3_of_matveev_inequality_real implication only; locked Lean 0 vs v21 3079d82. Previous v21 DOI 10.5281/zenodo.22729724. Series concept 10.5281/zenodo.22379293.
 # v21.0.0-Beal-44-13-Level-26-Matveev-Log-Form-Nonzero DOI 10.5281/zenodo.22729724 at 3079d82: matveev_log_form_int=16*(4B-13(B+3)) Tate c4 scale; matveev_log_form_ne_zero on B%14=0; decide witnesses B=0,14 no axioms; matveev_height_le_log_B0 B<=104382751019310000000; baker_bound_gap3 and bugeaud_reduction_formal stay def Prop; locked Lean 0 vs v20 768ed7f except appended theorems. Previous v20 DOI 10.5281/zenodo.22729515. Series concept 10.5281/zenodo.22379293.
@@ -64,6 +64,9 @@ abstract: >-
   d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260
   image >=300KB hook 22379293 honest
 identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22730408
+    description: v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start Matveev 1.4 start
   - type: doi
     value: 10.5281/zenodo.22730338
     description: v23.0.0-Beal-44-13-Level-26-Matveev-C-Exp-Bound-Compare exponent compare

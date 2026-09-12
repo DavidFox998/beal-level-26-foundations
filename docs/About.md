@@ -16,9 +16,9 @@ Baker / v14 J0 / v15 B0 / v17 LLL /
 v19 constants / v20 Bugeaud LLL /
 v21 inequality / v22 Real skeleton /
 v23 compare Lean 0 lines vs v23
-`c44f161`. Previous v23 DOI
-`10.5281/zenodo.22730338`
-(concept `10.5281/zenodo.22379293`).
+`c44f161`. Zenodo DOI `10.5281/zenodo.22730408`
+(concept `10.5281/zenodo.22379293`;
+previous v23 `10.5281/zenodo.22730338`).
 Honesty lock: `baker_bound_gap3` stays Prop;
 `thirty_pow = 729000000` and `≠ 72900000`
 decide, no axioms; main pack
