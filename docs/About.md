@@ -11,9 +11,10 @@ positive number. Target and
 def Props. Stay in v24.x until
 `|Λ| > exp(-C)` is a theorem. Locked
 Lean 0 vs v24.0.1 `4d66383` except
-`BealMatveevThm14.lean`. Previous v24.0.1
-DOI `10.5281/zenodo.22730460`
-(concept `10.5281/zenodo.22379293`).
+`BealMatveevThm14.lean`. Zenodo DOI
+`10.5281/zenodo.22730548`
+(concept `10.5281/zenodo.22379293`;
+previous v24.0.1 `10.5281/zenodo.22730460`).
 
 Latest prior tag: `v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone`
 Most current as of 2026-09-12, **not** final.

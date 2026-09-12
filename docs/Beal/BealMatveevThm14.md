@@ -4,6 +4,7 @@
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
 **Parent.** v24.0.1 `4d66383` / `v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone` / DOI `10.5281/zenodo.22730460`.
+**This version.** `73c5993` / DOI `10.5281/zenodo.22730548`.
 **Concept.** `10.5281/zenodo.22379293`.
 
 ## v24.0.2 — exp of the displayed bound
