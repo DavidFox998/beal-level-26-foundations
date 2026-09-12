@@ -73,17 +73,16 @@ axiom MwrankCertificateSoundness_26 : Prop
 axiom FormalImmersionSoundness_26 : Prop
 
 /-- Frey curve Y^2 = X(X-A^4)(X+B^4) on a
-    gap-3 solution.  Honest, not inhabited. -/
-axiom FreyCurveExists : forall A B : Nat,
-    Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 -> True
+    gap-3 solution A^4+B^4=(B+3)^13.
+    Honest cert Prop, not inhabited. -/
+axiom FreyCurveExists : Prop
 
 /-- Level lowering of tateConductor
     = 2^{tateF2}*rad(AB(B+3))*13
     (f2 <= 5, NOT 2^5*3*13;
     witness 63982 = 2*31991) to S2(26).
-    Honest, not inhabited. -/
-axiom LevelLowering_26 : forall A B : Nat,
-    tateConductor A B = frey_tate_conductor A B -> True
+    Honest cert Prop, not inhabited. -/
+axiom LevelLowering_26 : Prop
 
 /-! ## Kraus a53 sieve versus S2(26) -/
 
@@ -124,8 +123,9 @@ theorem beal_44_13_level_26_modular_elimination :
   let _hJ0 : J0DecompositionSoundness_26 := hJ0
   let _hMw : MwrankCertificateSoundness_26 := hMw
   let _hFI : FormalImmersionSoundness_26 := hFI
-  let _hFrey : True := hFrey A B hEq
-  let _hLevel : True := hLevel A B (tateConductor_eq_frey A B)
+  let _hFrey : FreyCurveExists := hFrey
+  let _hLevel : LevelLowering_26 := hLevel
+  let _hPacked := tateConductor_eq_frey A B
   let _hC : C = B + 3 := hCeq
   let _kraus := kraus_a53_elimination
   let _chunks := allKilled_1e6
