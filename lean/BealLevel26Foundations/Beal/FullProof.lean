@@ -23,10 +23,24 @@ import BealLevel26Foundations.Beal.FullProof.BealGap3ZsigBeyond2M
 import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
 import BealLevel26Foundations.Beal.FullProof.BealBakerB0Certificate
 import BealLevel26Foundations.Beal.FullProof.BealBakerB0ReductionCertificate
+import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
 import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
 /-!
+# FullProof track (v19.0.0)
+
+Matveev constants formalization.
+`matveev_C1_floor = 143186215390` is an
+explicit Nat.  `matveev_C1_pos` and
+`matveev_explicit_gap3_constants_hold`
+are kernel `decide` (no axioms).
+`matveev_height_B0 = C1_floor * 30^{n+3}`.
+Tate c4 scale 16 is reused from
+`BealFreyTateConductor`.
+`baker_bound_gap3` stays a def Prop.
+Locked Lean files stay exactly v18.
+
 # FullProof track (v17.0.0)
 
 Baker B0 PARI LLL reduction certificate.

@@ -1,12 +1,15 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v18.0.0-Beal-44-13-Level-26-Cumulative-Archive-v10-v17`
-Most current cumulative archive v10–v17 as of 2026-09-12,
-**not** final. Docs-only versus v17 `3fbafa6`.
-Lean files 0 lines vs
-`v17.0.0-Beal-44-13-Level-26-Baker-B0-Reduction-Certificate`.
-See `docs/CUMULATIVE_ARCHIVE_v10_v17.md`.
-Previous v17 DOI `10.5281/zenodo.22729067`
+Latest tag / HEAD: `v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization`
+Most current as of 2026-09-12, **not** final.
+`BealMatveevConstants.lean` records Matveev
+`C = 143186215390` as `matveev_C1_floor : Nat`
+with `matveev_C1_pos` / `matveev_explicit_gap3_constants_hold`
+by `decide` (no axioms). `baker_bound_gap3` stays
+uninhabited def Prop. Tate / Baker / v14 J0 /
+v15 B0 / v17 reduction Lean 0 lines vs v18
+`430189e`. Previous v18 DOI
+`10.5281/zenodo.22729129`
 (concept `10.5281/zenodo.22379293`).
 Honesty lock: `baker_bound_gap3` stays Prop;
 `baker_B0_certificate_holds` and

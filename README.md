@@ -1,8 +1,20 @@
 [![v17 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22729067.svg)](https://doi.org/10.5281/zenodo.22729067) [![v16 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22728705.svg)](https://doi.org/10.5281/zenodo.22728705) [![v15 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22728624.svg)](https://doi.org/10.5281/zenodo.22728624) [![v14 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22722140.svg)](https://doi.org/10.5281/zenodo.22722140) [![v13 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721843.svg)](https://doi.org/10.5281/zenodo.22721843) [![v12 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721089.svg)](https://doi.org/10.5281/zenodo.22721089) [![v11 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721420.svg)](https://doi.org/10.5281/zenodo.22721420) [![math DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22712897.svg)](https://doi.org/10.5281/zenodo.22712897) [![paper DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22713047.svg)](https://doi.org/10.5281/zenodo.22713047) [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v18.0.0-Beal-44-13-Level-26-Cumulative-Archive-v10-v17
+# Beal Level 26 Foundations — v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization
 
-**v18.0.0-Beal-44-13-Level-26-Cumulative-Archive-v10-v17 — most current, descriptive title only, NOT final. Track A: no new Beal-∀, unconditional Beal NOT claimed.** Docs-only versus v17 `3fbafa6`. Lean files 0 lines vs `v17.0.0-Beal-44-13-Level-26-Baker-B0-Reduction-Certificate`. See [`docs/CUMULATIVE_ARCHIVE_v10_v17.md`](docs/CUMULATIVE_ARCHIVE_v10_v17.md). Previous v17 DOI [`10.5281/zenodo.22729067`](https://doi.org/10.5281/zenodo.22729067) (concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293)).
+**v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization — attempt Matveev constants formalization. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+
+Moves `C = 143186215390` from a PARI list entry to an explicit `Nat` plus kernel theorems:
+- `matveev_C1_floor = 143186215390`; `matveev_C1_pos` by `decide` (**no axioms**)
+- `matveev_n = 3`, `matveev_D = 1`, `matveev_thirty_pow = 30^6 = 729000000`
+- `matveev_height_B0 = C1_floor * 30^{n+3} = 104382751019310000000` by `decide`
+- Tate c4 scale `16` from `BealFreyTateConductor` (`matveev_c4_height`)
+- `matveev_explicit_gap3_constants_hold` is kernel `decide` on a nonempty `List Int` (**no axioms**)
+- `baker_bound_gap3` stays a def Prop; `baker_bound_gap3_of_matveev_constants` is the named implication (not inhabited)
+- Tate / Baker / v14 modular / v15 B0 / v17 LLL files stay exactly v18 / `430189e` (0 lines)
+- Previous v18 DOI [`10.5281/zenodo.22729129`](https://doi.org/10.5281/zenodo.22729129) (concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293))
+
+**v18.0.0-Beal-44-13-Level-26-Cumulative-Archive-v10-v17 — most current, descriptive title only, NOT final. Track A: no new Beal-∀, unconditional Beal NOT claimed.** Docs-only versus v17 `3fbafa6`. Lean files 0 lines vs `v17.0.0-Beal-44-13-Level-26-Baker-B0-Reduction-Certificate`. See [`docs/CUMULATIVE_ARCHIVE_v10_v17.md`](docs/CUMULATIVE_ARCHIVE_v10_v17.md). Zenodo DOI [`10.5281/zenodo.22729129`](https://doi.org/10.5281/zenodo.22729129) (concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293)).
 
 **v17.0.0-Beal-44-13-Level-26-Baker-B0-Reduction-Certificate — most current, descriptive title only. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
@@ -27,10 +39,12 @@ PARI LLL reduction of the huge Matveev integer `B0_raw` to the displayed cutoff 
 | v15 | [`10.5281/zenodo.22728624`](https://doi.org/10.5281/zenodo.22728624) | `6443f81` | PARI gp `B0=1e6` `baker_B0_certificate.json` List Int decide no axioms |
 | v16 | [`10.5281/zenodo.22728705`](https://doi.org/10.5281/zenodo.22728705) | `9ce2980` | Cumulative Archive v10–v15 docs-only most current |
 | v17 | [`10.5281/zenodo.22729067`](https://doi.org/10.5281/zenodo.22729067) | `3fbafa6` | PARI LLL `qflll` `C=143186215390` `B0_raw=104382751019310000000` → `B0_reduced=1e6` `baker_B0_reduction_certificate.json` `List (List Int)` decide no axioms |
+| v18 | [`10.5281/zenodo.22729129`](https://doi.org/10.5281/zenodo.22729129) | `430189e` | Cumulative Archive v10–v17 docs-only most current |
+| v19 | pending webhook | — | `BealMatveevConstants.lean` `matveev_C1_floor=143186215390` Nat/Int theorems by decide; `baker_bound_gap3` stays Prop |
 
 Most current snapshot as of 2026-09-12, **not** a final Beal proof. Concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293). See [`docs/CUMULATIVE_ARCHIVE_v10_v17.md`](docs/CUMULATIVE_ARCHIVE_v10_v17.md).
 
-**Honesty lock (most current).** `git diff v16 -- BealFreyTateConductor.lean BealGap3BakerUpperBound.lean BealLevel26ModularElimination.lean BealBakerB0Certificate.lean` = 0. `git diff v17 --` those files plus `BealBakerB0ReductionCertificate.lean` = 0. Tate 0 lines since v11. Baker-upper-bound 0 lines since v12. v14 displayed J0 / mwrank / formal unchanged. `baker_bound_gap3` stays an uninhabited def Prop. `baker_B0_certificate_holds` and `baker_reduction_certificate_holds` are kernel `decide` on a nonempty `List Int` (no axioms). Main `beal_44_13_level_26_modular_elimination` prints `[propext, Classical.choice, Quot.sound]` only. `B>1e6` goes through `baker_conditional_gap3_full` with `baker_B0_PARI=1000000`. PARI is an external cert like mwrank `{0,12}`, not a Mathlib Matveev or LLL proof. Raw Matveev 2000 Thm 1.4 does not force `B≤1e6`.
+**Honesty lock (most current).** `git diff v18 -- BealFreyTateConductor.lean BealGap3BakerUpperBound.lean BealLevel26ModularElimination.lean BealBakerB0Certificate.lean BealBakerB0ReductionCertificate.lean` = 0. Tate 0 lines since v11. Baker-upper-bound 0 lines since v12. v14 displayed J0 / mwrank / formal unchanged. `baker_bound_gap3` stays an uninhabited def Prop. `matveev_C1_pos` / `matveev_explicit_gap3_constants_hold` / `baker_B0_certificate_holds` / `baker_reduction_certificate_holds` are kernel `decide` on `Nat` / nonempty `List Int` (no axioms). Main `beal_44_13_level_26_modular_elimination` prints `[propext, Classical.choice, Quot.sound]` only. `B>1e6` goes through `baker_conditional_gap3_full` with `baker_B0_PARI=1000000`. Constants formalization is not a Mathlib Matveev proof. Raw Matveev 2000 Thm 1.4 does not force `B≤1e6`.
 
 **v15.0.0-Baker-B0-PARI-Certificate — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
@@ -198,7 +212,8 @@ Releases:
 - v8.72.1-doi-badge inserts real Zenodo DOI `10.5281/zenodo.22698257` from the v8.70.0 mint
 - v8.73.0-modularity-exists-level2 displayed S2(26) dim2 via 0≠12 at p=53; Chain ExistsNewformLevel2 stays 0≠0; DOI 10.5281/zenodo.22698257 still cites v8.69.0
 - v8.74.0-frey-irreducible-mod13 displayed frey_mod13_irreducible at B=196 and B=1500003; frey_modular Classical.em; level_lowering_to_26 stays Prop
-- v18.0.0-Beal-44-13-Level-26-Cumulative-Archive-v10-v17 docs-only cumulative archive of v10–v17; Lean 0 lines vs v17 `3fbafa6`; most current, not final; concept `10.5281/zenodo.22379293`
+- v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization `matveev_C1_floor=143186215390` explicit Nat; `matveev_C1_pos` / `matveev_explicit_gap3_constants_hold` by decide (no axioms); `matveev_height_B0=C1_floor*30^{n+3}`; Tate c4 scale 16; `baker_bound_gap3` stays def Prop; locked Lean 0 vs v18 `430189e`
+- v18.0.0-Beal-44-13-Level-26-Cumulative-Archive-v10-v17 docs-only cumulative archive of v10–v17; Lean 0 lines vs v17 `3fbafa6`; most current, not final; DOI `10.5281/zenodo.22729129` (concept `10.5281/zenodo.22379293`)
 - v17.0.0-Beal-44-13-Level-26-Baker-B0-Reduction-Certificate PARI `qflll` reduces Matveev `B0_raw` to `B0_reduced=1e6`; `baker_B0_reduction_certificate.json` `List (List Int)` LLL basis + convergents; `baker_reduction_certificate_holds` by decide (no axioms); `baker_bound_gap3` stays def Prop; Tate / Baker / v15 B0 / v14 modular 0 lines vs v16 `9ce2980`; DOI `10.5281/zenodo.22729067`
 - v16.0.0-Beal-44-13-Level-26-Cumulative-Archive docs-only cumulative archive of v10–v15; Lean 0 lines vs v15 `6443f81`; most current, not final; DOI `10.5281/zenodo.22728705` (concept `10.5281/zenodo.22379293`)
 - v15.0.0-Baker-B0-PARI-Certificate PARI gp Matveev 2000 Thm 1.4 / BMS Table 1 integer cert `baker_B0_PARI=1000000` and `baker_B0_certificate.json`; `baker_B0_certificate_holds` by decide (no axioms); `baker_bound_gap3` stays def Prop; Tate / Baker-upper-bound 0 lines vs v14 `3089bec`; v14 displayed J0/mwrank/formal certs unchanged; DOI `10.5281/zenodo.22728624`

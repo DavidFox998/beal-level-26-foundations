@@ -776,6 +776,7 @@ import BealLevel26Foundations.Beal.FullProof.BealGap3ZsigBeyond2M
 import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
 import BealLevel26Foundations.Beal.FullProof.BealBakerB0Certificate
 import BealLevel26Foundations.Beal.FullProof.BealBakerB0ReductionCertificate
+import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
 import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
@@ -5736,6 +5737,31 @@ def baker_bound_gap3_of_LLL : Prop :=
 theorem baker_B0_reduced_PARI_eq : baker_B0_reduced_PARI = baker_B0 :=
   BealLevel26Foundations.BealBakerB0ReductionCertificate.baker_B0_reduced_PARI_eq
 
+/-! ## v19.0.0 — Matveev constants formalization -/
+
+def matveev_C1_floor :=
+  BealLevel26Foundations.BealMatveevConstants.matveev_C1_floor
+
+def matveev_height_B0 :=
+  BealLevel26Foundations.BealMatveevConstants.matveev_height_B0
+
+def matveev_explicit_gap3_constants :=
+  BealLevel26Foundations.BealMatveevConstants.matveev_explicit_gap3_constants
+
+theorem matveev_C1_pos : matveev_C1_floor > 0 :=
+  BealLevel26Foundations.BealMatveevConstants.matveev_C1_pos
+
+theorem matveev_explicit_gap3_constants_hold :
+    matveev_explicit_gap3_constants ≠ [] :=
+  BealLevel26Foundations.BealMatveevConstants.matveev_explicit_gap3_constants_hold
+
+theorem matveev_height_B0_eq :
+    matveev_height_B0 = matveev_C1_floor * 729000000 :=
+  BealLevel26Foundations.BealMatveevConstants.matveev_height_B0_eq
+
+def baker_bound_gap3_of_matveev_constants : Prop :=
+  BealLevel26Foundations.BealMatveevConstants.baker_bound_gap3_of_matveev_constants
+
 /-! ## v14.0.0 — J0 / mwrank / formal displayed certs -/
 
 def J0DecompositionCert_26 :=
@@ -6790,6 +6816,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check baker_reduction_certificate_displayed
 #check baker_reduction_certificate_holds
 #check baker_bound_gap3_of_LLL
+#check matveev_C1_floor
+#check matveev_C1_pos
+#check matveev_explicit_gap3_constants
+#check matveev_explicit_gap3_constants_hold
 #check J0DecompositionCert_26
 #check J0DecompositionCert_26_displayed
 #check J0DecompositionSoundness_26
@@ -7346,6 +7376,8 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms tateConductor_eq_frey
 #print axioms baker_B0_certificate_holds
 #print axioms baker_reduction_certificate_holds
+#print axioms matveev_C1_pos
+#print axioms matveev_explicit_gap3_constants_hold
 #print axioms J0DecompositionSoundness_26_holds
 #print axioms MwrankCertificateSoundness_26_holds
 #print axioms FormalImmersionSoundness_26_holds

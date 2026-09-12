@@ -1,13 +1,19 @@
-# FINAL v18.0.0 — Cumulative archive v10–v17 (not final)
+# FINAL v19.0.0 — Matveev constants formalization (not final)
 
-Latest tag `v18.0.0-Beal-44-13-Level-26-Cumulative-Archive-v10-v17`.
-Docs-only versus v17 `3fbafa6` /
-`10.5281/zenodo.22729067`.
-Lean files 0 lines vs that tag.
+Latest tag `v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization`.
+`BealMatveevConstants.lean` moves
+`C = 143186215390` from a PARI comment to
+`matveev_C1_floor : Nat` with
+`matveev_C1_pos` and
+`matveev_explicit_gap3_constants_hold` by
+`decide` (no axioms). Heights from Tate
+`c4 = 16 * c4Paren`. `baker_bound_gap3` stays
+uninhabited def Prop. Tate / Baker / v14 J0 /
+v15 B0 / v17 reduction Lean 0 lines vs v18
+`430189e` / `10.5281/zenodo.22729129`.
 Most current as of 2026-09-12, **not** a
 final Beal proof. Series concept
 `10.5281/zenodo.22379293`.
-See `docs/CUMULATIVE_ARCHIVE_v10_v17.md`.
 Honesty lock: Tate 0 since v11, Baker 0
 since v12, v14 displayed certs unchanged,
 `baker_bound_gap3` uninhabited def Prop,
