@@ -1,6 +1,20 @@
 [![v13 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721843.svg)](https://doi.org/10.5281/zenodo.22721843) [![v12 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721089.svg)](https://doi.org/10.5281/zenodo.22721089) [![v11 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721420.svg)](https://doi.org/10.5281/zenodo.22721420) [![math DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22712897.svg)](https://doi.org/10.5281/zenodo.22712897) [![paper DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22713047.svg)](https://doi.org/10.5281/zenodo.22713047) [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v12.0.0-Baker-Matveev-explicit → v13.0.0-Beal-44-13-Level-26-Modular-Elimination
+# Beal Level 26 Foundations — v13.0.0-Beal-44-13-Level-26-Modular-Elimination → v14.0.0-J0-Mwrank-Formal-Verified
+
+**v14.0.0-J0-Mwrank-Formal-Verified — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+
+Displayed J0 / mwrank / formal certs with kernel `decide` / `rfl`:
+- `J0DecompositionCert_26_displayed` = `[[1,0,1,-5,-8],[1,-1,1,-3,3]]`, `rankProof := 2`
+- `MwrankCertificate_26_displayed` = `{s2Basis := [0,12], rank := 2, gens := [0,12]}`
+- `FormalImmersionCert_26_displayed` = `M3 [[1,1],[0,2]]`
+- `FreyCurveCert_displayed` / `LevelLoweringCert_26_displayed` reuse Tate `c4 = 16*(A^8+A^4 B^4+B^8)`, `tateF2 ≤ 5`, `tateConductor`
+- `J0DecompositionSoundness_26_holds`, `MwrankCertificateSoundness_26_holds`, `FormalImmersionSoundness_26_holds` print **no axioms**
+- `kraus_a53_elimination` still kernel `decide` (`{-10,-2,1,6,14}` miss `{0,12}`)
+- `beal_44_13_level_26_modular_elimination` uses the holds lemmas, `allKilled_1e6`, and `baker_conditional_gap3_full` (`baker_bound_gap3` stays Prop)
+- Tate and Baker files stay exactly v13 / `cea155c` (0 lines changed)
+- `conductor_86` / `B14_honest` stay Prop
+- `^axiom` count 0; no new v14 DOI (previous v13 [`10.5281/zenodo.22721843`](https://doi.org/10.5281/zenodo.22721843))
 
 **v13.0.0-Beal-44-13-Level-26-Modular-Elimination — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 

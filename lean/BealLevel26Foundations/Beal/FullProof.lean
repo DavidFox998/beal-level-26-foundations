@@ -25,6 +25,32 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
 /-!
+# FullProof track (v14.0.0)
+
+J0 / mwrank / formal displayed certs
+with kernel `decide` / `rfl` soundness.
+`J0DecompositionCert_26_displayed` =
+`[[1,0,1,-5,-8],[1,-1,1,-3,3]]`.
+`MwrankCertificate_26_displayed` =
+`{s2Basis := [0,12], rank := 2, gens := [0,12]}`.
+`FormalImmersionCert_26_displayed` =
+`M3 [[1,1],[0,2]]`.
+Frey / Level reuse Tate `c4` / `tateF2` /
+`tateConductor` (`f₂≤5`).
+`J0DecompositionSoundness_26_holds`,
+`MwrankCertificateSoundness_26_holds`,
+`FormalImmersionSoundness_26_holds`
+print no axioms.
+`kraus_a53_elimination` is kernel decide
+(`{-10,-2,1,6,14}` miss S₂(26) `{0,12}`).
+`beal_44_13_level_26_modular_elimination`
+uses the holds lemmas, `allKilled_1e6`,
+and `baker_conditional_gap3_full`
+(`baker_bound_gap3` stays Prop).
+Tate and Baker files stay exactly v13
+cea155c (0 lines changed).
+`conductor_86` / `B14_honest` stay Prop.
+
 # FullProof track (v13.0.0)
 
 Level-26 modular elimination for (4,4,13)

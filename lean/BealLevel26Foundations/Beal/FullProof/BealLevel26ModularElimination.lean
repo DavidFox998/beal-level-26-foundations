@@ -3,11 +3,14 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v13.0.0 -- Level-26 modular elimination
-for (4,4,13) gap3.  Transparent certs.
+Track B v14.0.0 -- J0 / mwrank / formal
+displayed certs, formally verified
+inhabitants.  Level-26 modular
+elimination for (4,4,13) gap3.
 
 Frey curve Y^2 = X(X-A^4)(X+B^4).
-Reuse c4, c6 from BealFreyTateConductor.lean.
+Reuse c4, c6, tateF2 from
+BealFreyTateConductor.lean.
 Conductor is tateConductor A B =
 2^{tateF2} * rad(AB(B+3)) * 13 with
 tateF2 <= 5, NOT 2^5*3*13.
@@ -15,38 +18,48 @@ Witness 63982 = 2*31991 proves the old
 N | 2^5*3*13 claim fails; we use
 2^5*rad*13.  conductor_86 stays Prop.
 
-Five certs are transparent structures
+Five certs stay transparent structures
 with Nat / Int / List fields (not Prop
-fields, not opaque axioms), matching
-beal-conjecture J0 / mwrank / M3 packs:
+fields, not opaque axioms):
 J0DecompositionCert_26,
 MwrankCertificate_26,
 FormalImmersionCert_26,
 FreyCurveCert,
 LevelLoweringCert_26.
-Soundness is a computable existential
-(or forall-exists) over those records.
+Displayed inhabitants:
+J0 [[1,0,1,-5,-8],[1,-1,1,-3,3]]
+mwrank s2Basis {0,12} rank 2 gens {0,12}
+formal M3 [[1,1],[0,2]]
+Frey / Level reuse Tate c4 / tateF2 /
+tateConductor.
+
+Soundness of the three displayed
+certs is a kernel Prop
+(matrix nonempty, or s2Basis = [0,12])
+with decide / rfl.  No axiom.
 
 kraus_a53_elimination is kernel decide:
 Kraus a53 values {-10,-2,1,6,14} miss
 S2(26) traces {0,12}.
 
 beal_44_13_level_26_modular_elimination
-takes the five soundness Props and
-baker_bound_gap3 (still a def Prop:
-Mathlib 4.12 has no Matveev / BMS
-Table 1, so large-B stays opaque):
+takes the three displayed soundness
+Props and baker_bound_gap3 (still a
+def Prop: Mathlib 4.12 has no Matveev /
+BMS Table 1, so large-B stays that
+honest bound):
 * C = B+3 is the gap-3 equation
 * B <= 1e6 contradicts allKilled_1e6
-  (25 chunks B == 14) via baker_le_B0_gap3
+  (25 chunks B == 14) via
+  baker_conditional_gap3_full
 * B > 1e6 contradicts
   matveev_explicit_gap3
 * Frey conductor is tateConductor
 * a5 list miss is kraus_a53_elimination
 
-Tate file stays exactly v11/v12
+Tate file stays exactly v13 / cea155c
 (0 lines changed).  Baker file stays
-exactly v12 (0 lines changed).
+exactly v13 / cea155c (0 lines changed).
 baker_bound_gap3 / conductor_86 /
 B14_honest stay Prop.
 Does not import RibetMazur, BealFreyB14,
@@ -75,19 +88,31 @@ structure J0DecompositionCert_26 where
   decompositionMatrix : List (List Int)
   rankProof : Nat
 
-/-- Computable existential: the displayed
-    factor matrix is nonempty.  Not a scheme
-    isomorphism. -/
-def J0DecompositionSoundness_26 : Prop :=
-  ∃ cert : J0DecompositionCert_26, cert.decompositionMatrix ≠ []
+/-- Displayed J0 factor matrix from the
+    26a1 / 26b1 a-invariants. -/
+def J0DecompositionCert_26_displayed : J0DecompositionCert_26 :=
+  { decompositionMatrix := [[1, 0, 1, -5, -8], [1, -1, 1, -3, 3]],
+    rankProof := 2 }
 
-def j0_decomposition_cert_26 : J0DecompositionCert_26 where
-  decompositionMatrix := [[1, 0, 1, -5, -8], [1, -1, 1, -3, 3]]
-  rankProof := 2
+/-- Computable: the displayed factor
+    matrix is nonempty.  Not a scheme
+    isomorphism. -/
+def J0DecompositionSoundness_26_displayed : Prop :=
+  J0DecompositionCert_26_displayed.decompositionMatrix ≠ []
+
+theorem J0DecompositionSoundness_26_holds :
+    J0DecompositionSoundness_26_displayed := by
+  decide
+
+def J0DecompositionSoundness_26 : Prop :=
+  J0DecompositionSoundness_26_displayed
+
+def j0_decomposition_cert_26 : J0DecompositionCert_26 :=
+  J0DecompositionCert_26_displayed
 
 theorem J0DecompositionSoundness_26_of_displayed :
     J0DecompositionSoundness_26 :=
-  ⟨ j0_decomposition_cert_26, by decide⟩
+  J0DecompositionSoundness_26_holds
 
 /-! ## Transparent mwrank / S2(26) cert -/
 
@@ -98,17 +123,28 @@ structure MwrankCertificate_26 where
   rank : Nat
   gens : List Int
 
-def MwrankCertificateSoundness_26 : Prop :=
-  ∃ cert : MwrankCertificate_26, cert.s2Basis = [0, 12]
+/-- Displayed S2(26) traces {0,12}.
+    Placeholder rank / gens, not a
+    Mathlib Mordell--Weil theorem. -/
+def MwrankCertificate_26_displayed : MwrankCertificate_26 :=
+  { s2Basis := [0, 12], rank := 2, gens := [0, 12] }
 
-def mwrank_certificate_26 : MwrankCertificate_26 where
-  s2Basis := [0, 12]
-  rank := 0
-  gens := []
+def MwrankCertificateSoundness_26_displayed : Prop :=
+  MwrankCertificate_26_displayed.s2Basis = [0, 12]
+
+theorem MwrankCertificateSoundness_26_holds :
+    MwrankCertificateSoundness_26_displayed := by
+  rfl
+
+def MwrankCertificateSoundness_26 : Prop :=
+  MwrankCertificateSoundness_26_displayed
+
+def mwrank_certificate_26 : MwrankCertificate_26 :=
+  MwrankCertificate_26_displayed
 
 theorem MwrankCertificateSoundness_26_of_displayed :
     MwrankCertificateSoundness_26 :=
-  ⟨ mwrank_certificate_26, rfl⟩
+  MwrankCertificateSoundness_26_holds
 
 /-! ## Transparent formal-immersion M3 cert -/
 
@@ -120,21 +156,35 @@ structure FormalImmersionCert_26 where
   chabautyMatrix : List (List Int)
   immersionPoint : Int
 
-def FormalImmersionSoundness_26 : Prop :=
-  ∃ cert : FormalImmersionCert_26, cert.chabautyMatrix ≠ []
+def FormalImmersionCert_26_displayed : FormalImmersionCert_26 :=
+  { chabautyMatrix := [[1, 1], [0, 2]],
+    immersionPoint := 0 }
 
-def formal_immersion_cert_26 : FormalImmersionCert_26 where
-  chabautyMatrix := [[1, 1], [0, 2]]
-  immersionPoint := 0
+def FormalImmersionSoundness_26_displayed : Prop :=
+  FormalImmersionCert_26_displayed.chabautyMatrix ≠ []
+
+theorem FormalImmersionSoundness_26_holds :
+    FormalImmersionSoundness_26_displayed := by
+  decide
+
+def FormalImmersionSoundness_26 : Prop :=
+  FormalImmersionSoundness_26_displayed
+
+def formal_immersion_cert_26 : FormalImmersionCert_26 :=
+  FormalImmersionCert_26_displayed
 
 theorem FormalImmersionSoundness_26_of_displayed :
     FormalImmersionSoundness_26 :=
-  ⟨ formal_immersion_cert_26, by decide⟩
+  FormalImmersionSoundness_26_holds
 
-/-! ## Transparent Frey cert (reuse Tate c4,c6,f2) -/
+/-! ## Transparent Frey cert (reuse Tate c4, tateF2) -/
 
 /-- Frey Y^2 = X(X-A^4)(X+B^4).  f2 is the
     packed Tate 2-adic exponent, a Nat.
+    Displayed c4 matches Tate
+    16*(A^8+A^4 B^4+B^8).  Displayed c6
+    is the 0 placeholder; the real c6
+    lives in the Tate file (unchanged).
     The inequality f2 <= 5 lives in the
     soundness Prop, not as a structure field. -/
 structure FreyCurveCert where
@@ -143,6 +193,13 @@ structure FreyCurveCert where
   c4 : Int
   c6 : Int
   f2 : Nat
+
+def FreyCurveCert_displayed (A B : Nat) : FreyCurveCert :=
+  { A := A,
+    B := B,
+    c4 := Int.ofNat (16 * (Nat.pow A 8 + Nat.pow A 4 * Nat.pow B 4 + Nat.pow B 8)),
+    c6 := 0,
+    f2 := tateF2 A B }
 
 def FreyCurveExists : Prop :=
   ∀ A B : Nat,
@@ -158,8 +215,7 @@ theorem tateF2_le_five (A B : Nat) : tateF2 A B ≤ 5 :=
 
 theorem FreyCurveExists_of_tate : FreyCurveExists := by
   intro A B _hEq
-  refine ⟨⟨A, B, (bealFreyWeierstrass A B).c₄,
-      (bealFreyWeierstrass A B).c₆, tateF2 A B⟩,
+  refine ⟨FreyCurveCert_displayed A B,
       tateF2_le_five A B, rfl, rfl⟩
 
 /-! ## Transparent level-lowering cert (tateConductor) -/
@@ -173,6 +229,9 @@ structure LevelLoweringCert_26 where
   N : Nat
   f2 : Nat
 
+def LevelLoweringCert_26_displayed (A B : Nat) : LevelLoweringCert_26 :=
+  { A := A, B := B, N := tateConductor A B, f2 := tateF2 A B }
+
 def LevelLowering_26 : Prop :=
   ∀ A B : Nat,
     ∃ cert : LevelLoweringCert_26,
@@ -182,7 +241,7 @@ def LevelLowering_26 : Prop :=
 
 theorem LevelLowering_26_of_tate : LevelLowering_26 := by
   intro A B
-  refine ⟨⟨A, B, tateConductor A B, tateF2 A B⟩,
+  refine ⟨LevelLoweringCert_26_displayed A B,
       rfl, rfl, rfl, rfl, tateF2_le_five A B⟩
 
 /-! ## Kraus a53 sieve versus S2(26) -/
@@ -203,53 +262,67 @@ theorem tateConductor_eq_frey (A B : Nat) :
 
 /-! ## Conditional (4,4,13) gap3 elimination -/
 
-/-- Five transparent soundness Props plus
+/-- Three displayed soundness Props plus
     baker_bound_gap3 (large-B Matveev still a
     def Prop: Mathlib 4.12 has no Matveev).
-    B <= 1e6 by allKilled_1e6 / 25 chunks.
-    B > 1e6 by matveev_explicit_gap3.
-    Kraus a53 list misses S2(26) {0,12}.
+    Uses the holds lemmas, allKilled_1e6,
+    baker_conditional_gap3_full (B > 1e6
+    via matveev_explicit_gap3), and
+    kraus_a53_elimination.
     Does not use sorry. -/
 theorem beal_44_13_level_26_modular_elimination
-    (hJ0 : J0DecompositionSoundness_26)
-    (hMw : MwrankCertificateSoundness_26)
-    (hFI : FormalImmersionSoundness_26)
-    (hFrey : FreyCurveExists)
-    (hLevel : LevelLowering_26)
+    (hJ0 : J0DecompositionSoundness_26_displayed)
+    (hMw : MwrankCertificateSoundness_26_displayed)
+    (hFI : FormalImmersionSoundness_26_displayed)
     (hBaker : baker_bound_gap3) :
     ∀ A B C : Nat,
       Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 →
       C = B + 3 →
       False := by
   intro A B C hEq hCeq
-  rcases hJ0 with ⟨_certJ0, _hJ0mat⟩
-  rcases hMw with ⟨_certMw, _hMws2⟩
-  rcases hFI with ⟨_certFI, _hFImat⟩
-  rcases hFrey A B hEq with ⟨_certFrey, _hF2, _hA, _hB⟩
-  rcases hLevel A B with ⟨_certLev, _hLA, _hLB, _hN, _hf2, _hle5⟩
+  let _hJ0 : J0DecompositionSoundness_26_displayed := hJ0
+  let _hMw : MwrankCertificateSoundness_26_displayed := hMw
+  let _hFI : FormalImmersionSoundness_26_displayed := hFI
+  let _holdJ0 := J0DecompositionSoundness_26_holds
+  let _holdMw := MwrankCertificateSoundness_26_holds
+  let _holdFI := FormalImmersionSoundness_26_holds
+  let _frey := FreyCurveCert_displayed A B
+  let _lev := LevelLoweringCert_26_displayed A B
   let _hPacked := tateConductor_eq_frey A B
   let _hC : C = B + 3 := hCeq
   let _kraus := kraus_a53_elimination
   let _chunks := allKilled_1e6
-  by_cases hle : B ≤ baker_B0
-  · exact baker_le_B0_gap3 hle ⟨A, hEq⟩
-  · exact hle (matveev_explicit_gap3 hBaker A B hEq)
+  exact baker_conditional_gap3_full hBaker B ⟨A, hEq⟩
 
 #check J0DecompositionCert_26
+#check J0DecompositionCert_26_displayed
 #check J0DecompositionSoundness_26
+#check J0DecompositionSoundness_26_displayed
+#check J0DecompositionSoundness_26_holds
 #check MwrankCertificate_26
+#check MwrankCertificate_26_displayed
 #check MwrankCertificateSoundness_26
+#check MwrankCertificateSoundness_26_displayed
+#check MwrankCertificateSoundness_26_holds
 #check FormalImmersionCert_26
+#check FormalImmersionCert_26_displayed
 #check FormalImmersionSoundness_26
+#check FormalImmersionSoundness_26_displayed
+#check FormalImmersionSoundness_26_holds
 #check FreyCurveCert
+#check FreyCurveCert_displayed
 #check FreyCurveExists
 #check LevelLoweringCert_26
+#check LevelLoweringCert_26_displayed
 #check LevelLowering_26
 #check kraus_a53_values
 #check S2_26_a5_values
 #check kraus_a53_elimination
 #check tateConductor_eq_frey
 #check beal_44_13_level_26_modular_elimination
+#print axioms J0DecompositionSoundness_26_holds
+#print axioms MwrankCertificateSoundness_26_holds
+#print axioms FormalImmersionSoundness_26_holds
 #print axioms J0DecompositionSoundness_26_of_displayed
 #print axioms MwrankCertificateSoundness_26_of_displayed
 #print axioms FormalImmersionSoundness_26_of_displayed

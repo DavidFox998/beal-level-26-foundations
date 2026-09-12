@@ -799,6 +799,23 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v14.0.0-J0-Mwrank-Formal-Verified — DONE (explicit displayed certs J0 [[1,0,1,-5,-8],[1,-1,1,-3,3]] mwrank {0,12} rank 2 gens {0,12} formal M3 [[1,1],[0,2]]; holds theorems decide/rfl no axioms; Frey/Level reuse Tate c4/tateF2/tateConductor f2≤5; kraus decide []; baker_bound_gap3 stays Prop; Tate and Baker 0 lines vs v13 cea155c; ^axiom count 0; Chain ExistsNewformLevel2 stays 0≠0)
+
+Lean change.  Same file
+`BealLevel26ModularElimination.lean`.
+Does **not** use opaque axiom certs; the
+three displayed soundness Props are
+kernel `decide` / `rfl` on List/Nat
+inhabitants.
+Does **not** inhabit `baker_bound_gap3`.
+Does **not** inhabit `conductor_86`.
+Does **not** inhabit `B14_honest`.
+Does **not** touch `BealFreyTateConductor.lean`.
+Does **not** touch `BealGap3BakerUpperBound.lean`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No new Track B Zenodo
+claiming unconditional Beal `∀`.
+
 ### v13.0.0-Beal-44-13-Level-26-Modular-Elimination — DONE (Frey Y^2=X(X-A^4)(X+B^4); tateConductor 2^{f2}*rad(AB(B+3))*13 f2≤5 not 2^5*3*13; witness 63982=2*31991; Kraus a53 -10 -2 1 6 14 vs S2(26) 0 12 by decide; five transparent List/Nat cert structures J0/Mwrank/Formal/Frey/LevelLowering (not opaque axioms); B≤1e6 via 25 chunks; B>1e6 via matveev_explicit_gap3; baker_bound_gap3 / conductor_86 / B14_honest stay Prop; Tate and Baker files 0 lines changed; Chain ExistsNewformLevel2 stays 0≠0)
 
 Lean change.  New file

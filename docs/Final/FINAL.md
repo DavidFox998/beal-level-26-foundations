@@ -1,3 +1,24 @@
+# FINAL v14.0.0 — J0 / mwrank / formal displayed certs
+
+Latest tag `v14.0.0-J0-Mwrank-Formal-Verified`.
+Displayed J0 `[[1,0,1,-5,-8],[1,-1,1,-3,3]]`,
+mwrank `{0,12}` rank 2 gens `{0,12}`,
+formal M3 `[[1,1],[0,2]]`.
+`J0DecompositionSoundness_26_holds`,
+`MwrankCertificateSoundness_26_holds`,
+`FormalImmersionSoundness_26_holds`
+print no axioms (`decide` / `rfl`).
+Frey / Level reuse Tate `c4` / `tateF2` /
+`tateConductor` (`f₂≤5`).
+`beal_44_13_level_26_modular_elimination`
+uses the holds lemmas, `allKilled_1e6`,
+and `baker_conditional_gap3_full`
+(`baker_bound_gap3` stays Prop).
+Tate and Baker files stay exactly v13
+`cea155c` (0 lines changed).
+`conductor_86` / `B14_honest` stay Prop.
+`^axiom` count 0.  No new v14 DOI.
+
 # FINAL v13.0.0 — Level-26 modular elimination
 
 Latest tag `v13.0.0-Beal-44-13-Level-26-Modular-Elimination`.

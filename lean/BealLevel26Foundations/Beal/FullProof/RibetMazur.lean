@@ -5689,34 +5689,70 @@ theorem tatePackedValuationBound_dvd_rhs {A B : Nat}
   BealLevel26Foundations.BealFreyTateConductor.tatePackedValuationBound_dvd_rhs
     hA hB hEq
 
-/-! ## v13.0.0 — Level-26 modular elimination (transparent certs) -/
+/-! ## v14.0.0 — J0 / mwrank / formal displayed certs -/
 
 def J0DecompositionCert_26 :=
   BealLevel26Foundations.BealLevel26ModularElimination.J0DecompositionCert_26
 
+def J0DecompositionCert_26_displayed :=
+  BealLevel26Foundations.BealLevel26ModularElimination.J0DecompositionCert_26_displayed
+
+def J0DecompositionSoundness_26_displayed : Prop :=
+  BealLevel26Foundations.BealLevel26ModularElimination.J0DecompositionSoundness_26_displayed
+
 def J0DecompositionSoundness_26 : Prop :=
   BealLevel26Foundations.BealLevel26ModularElimination.J0DecompositionSoundness_26
+
+theorem J0DecompositionSoundness_26_holds :
+    J0DecompositionSoundness_26_displayed :=
+  BealLevel26Foundations.BealLevel26ModularElimination.J0DecompositionSoundness_26_holds
 
 def MwrankCertificate_26 :=
   BealLevel26Foundations.BealLevel26ModularElimination.MwrankCertificate_26
 
+def MwrankCertificate_26_displayed :=
+  BealLevel26Foundations.BealLevel26ModularElimination.MwrankCertificate_26_displayed
+
+def MwrankCertificateSoundness_26_displayed : Prop :=
+  BealLevel26Foundations.BealLevel26ModularElimination.MwrankCertificateSoundness_26_displayed
+
 def MwrankCertificateSoundness_26 : Prop :=
   BealLevel26Foundations.BealLevel26ModularElimination.MwrankCertificateSoundness_26
+
+theorem MwrankCertificateSoundness_26_holds :
+    MwrankCertificateSoundness_26_displayed :=
+  BealLevel26Foundations.BealLevel26ModularElimination.MwrankCertificateSoundness_26_holds
 
 def FormalImmersionCert_26 :=
   BealLevel26Foundations.BealLevel26ModularElimination.FormalImmersionCert_26
 
+def FormalImmersionCert_26_displayed :=
+  BealLevel26Foundations.BealLevel26ModularElimination.FormalImmersionCert_26_displayed
+
+def FormalImmersionSoundness_26_displayed : Prop :=
+  BealLevel26Foundations.BealLevel26ModularElimination.FormalImmersionSoundness_26_displayed
+
 def FormalImmersionSoundness_26 : Prop :=
   BealLevel26Foundations.BealLevel26ModularElimination.FormalImmersionSoundness_26
 
+theorem FormalImmersionSoundness_26_holds :
+    FormalImmersionSoundness_26_displayed :=
+  BealLevel26Foundations.BealLevel26ModularElimination.FormalImmersionSoundness_26_holds
+
 def FreyCurveCert :=
   BealLevel26Foundations.BealLevel26ModularElimination.FreyCurveCert
+
+def FreyCurveCert_displayed :=
+  BealLevel26Foundations.BealLevel26ModularElimination.FreyCurveCert_displayed
 
 def FreyCurveExists :=
   BealLevel26Foundations.BealLevel26ModularElimination.FreyCurveExists
 
 def LevelLoweringCert_26 :=
   BealLevel26Foundations.BealLevel26ModularElimination.LevelLoweringCert_26
+
+def LevelLoweringCert_26_displayed :=
+  BealLevel26Foundations.BealLevel26ModularElimination.LevelLoweringCert_26_displayed
 
 def LevelLowering_26 :=
   BealLevel26Foundations.BealLevel26ModularElimination.LevelLowering_26
@@ -5735,14 +5771,12 @@ theorem tateConductor_eq_frey (A B : Nat) :
     tateConductor A B = frey_tate_conductor A B :=
   BealLevel26Foundations.BealLevel26ModularElimination.tateConductor_eq_frey A B
 
-/-- Five cert Props plus `baker_bound_gap3`.
-    Tate / Baker files unchanged.  Not BCDT. -/
+/-- Three displayed cert Props plus `baker_bound_gap3`.
+    Tate / Baker files unchanged vs v13.  Not BCDT. -/
 theorem beal_44_13_level_26_modular_elimination :
-    J0DecompositionSoundness_26 →
-    MwrankCertificateSoundness_26 →
-    FormalImmersionSoundness_26 →
-    FreyCurveExists →
-    LevelLowering_26 →
+    J0DecompositionSoundness_26_displayed →
+    MwrankCertificateSoundness_26_displayed →
+    FormalImmersionSoundness_26_displayed →
     baker_bound_gap3 →
     ∀ A B C : Nat,
       Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 →
@@ -6701,14 +6735,25 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check kraus_a53_elimination
 #check tateConductor_eq_frey
 #check J0DecompositionCert_26
+#check J0DecompositionCert_26_displayed
 #check J0DecompositionSoundness_26
+#check J0DecompositionSoundness_26_displayed
+#check J0DecompositionSoundness_26_holds
 #check MwrankCertificate_26
+#check MwrankCertificate_26_displayed
 #check MwrankCertificateSoundness_26
+#check MwrankCertificateSoundness_26_displayed
+#check MwrankCertificateSoundness_26_holds
 #check FormalImmersionCert_26
+#check FormalImmersionCert_26_displayed
 #check FormalImmersionSoundness_26
+#check FormalImmersionSoundness_26_displayed
+#check FormalImmersionSoundness_26_holds
 #check FreyCurveCert
+#check FreyCurveCert_displayed
 #check FreyCurveExists
 #check LevelLoweringCert_26
+#check LevelLoweringCert_26_displayed
 #check LevelLowering_26
 #check beal_44_13_level_26_modular_elimination
 #check tate_odd_exponent_le_one
@@ -7243,6 +7288,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms tatePackedValuationBound_dvd_rhs
 #print axioms kraus_a53_elimination
 #print axioms tateConductor_eq_frey
+#print axioms J0DecompositionSoundness_26_holds
+#print axioms MwrankCertificateSoundness_26_holds
+#print axioms FormalImmersionSoundness_26_holds
 #print axioms beal_44_13_level_26_modular_elimination
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

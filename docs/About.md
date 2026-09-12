@@ -1,6 +1,18 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v13.0.0-Beal-44-13-Level-26-Modular-Elimination`
+Latest tag / HEAD: `v14.0.0-J0-Mwrank-Formal-Verified`
+Displayed J0 `[[1,0,1,-5,-8],[1,-1,1,-3,3]]`,
+mwrank `{0,12}` rank 2, formal M3 `[[1,1],[0,2]]`.
+Holds theorems print no axioms.
+Frey / Level reuse Tate `c4` / `tateF2` /
+`tateConductor` (`f₂≤5`).
+Tate and Baker files stay exactly v13
+`cea155c` (0 lines changed).
+`baker_bound_gap3` / `conductor_86` /
+`B14_honest` stay Prop.
+No new v14 DOI; previous v13 DOI
+`10.5281/zenodo.22721843`.
+Base: `v13.0.0-Beal-44-13-Level-26-Modular-Elimination`
 Zenodo DOI `10.5281/zenodo.22721843`.
 Frey `Y² = X(X-A⁴)(X+B⁴)` for (4,4,13) gap3.
 Conductor is `tateConductor = 2^{f₂}*rad*13`

@@ -3129,6 +3129,28 @@ grep -q "theorem beal_44_13_level_26_modular_elimination" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "structure J0DecompositionCert_26" \
   lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
+grep -q "def J0DecompositionCert_26_displayed" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
+grep -q "def MwrankCertificate_26_displayed" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
+grep -q "def FormalImmersionCert_26_displayed" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
+grep -q "def FreyCurveCert_displayed" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
+grep -q "def LevelLoweringCert_26_displayed" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
+grep -q "theorem J0DecompositionSoundness_26_holds" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
+grep -q "theorem MwrankCertificateSoundness_26_holds" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
+grep -q "theorem FormalImmersionSoundness_26_holds" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
+grep -q "rank := 2, gens := [0, 12]" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
+test "$(git diff v13.0.0-Beal-44-13-Level-26-Modular-Elimination -- lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean | wc -l)" -eq 0
+test "$(git diff v13.0.0-Beal-44-13-Level-26-Modular-Elimination -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
+test "$(git diff cea155c -- lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean | wc -l)" -eq 0
+test "$(git diff cea155c -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 grep -q "beal_44_13_level_26_modular_elimination" \
   paper/mcom-draft.tex
 grep -q "kraus_a53_elimination" \
