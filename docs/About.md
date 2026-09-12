@@ -13,9 +13,10 @@ on `B % 14 = 0`. Decide witnesses at
 uninhabited def Prop. Tate / Baker /
 v14 J0 / v15 B0 / v17 LLL / v19 constants /
 v20 Bugeaud LLL Lean 0 lines vs v20
-`768ed7f`. Previous v20 DOI
-`10.5281/zenodo.22729515`
-(concept `10.5281/zenodo.22379293`).
+`768ed7f`. Zenodo DOI
+`10.5281/zenodo.22729724`
+(concept `10.5281/zenodo.22379293`;
+previous v20 `10.5281/zenodo.22729515`).
 Honesty lock: `baker_bound_gap3` stays Prop;
 `baker_B0_certificate_holds` and
 `baker_reduction_certificate_holds` decide,

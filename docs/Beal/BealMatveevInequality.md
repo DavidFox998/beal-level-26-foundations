@@ -28,3 +28,6 @@ Names the linear form with Mathlib `Real.log`:
 `baker_bound_gap3_of_matveev_inequality` is the named
 implication (not inhabited). Mathlib 4.12 has no
 Matveev 2000 Thm 1.4. Does not use sorry.
+
+Zenodo DOI `10.5281/zenodo.22729724`
+(concept `10.5281/zenodo.22379293`).
