@@ -8,6 +8,8 @@ trace from `scripts/baker_b0_gap3.gp`.
 axioms.  `baker_bound_gap3` stays Prop.
 Tate / Baker-upper-bound files stay
 exactly v14 `3089bec` (0 lines).
+Zenodo DOI `10.5281/zenodo.22728624`
+(concept `10.5281/zenodo.22379293`).
 Previous v14 DOI `10.5281/zenodo.22722140`.
 Base: `v14.0.0-J0-Mwrank-Formal-Verified`
 Displayed J0 `[[1,0,1,-5,-8],[1,-1,1,-3,3]]`,
