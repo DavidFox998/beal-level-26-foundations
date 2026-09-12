@@ -14,7 +14,7 @@ are kernel theorems. `C1_floor > 0` and
 def Props. Stay in v24.x until the
 Real inequality is a theorem. Locked
 Lean 0 vs v24.0.0 `d39c6d5` except
-`BealMatveevThm14.lean`. Previous v24.0.0
+`BealMatveevThm14.lean`.
 Zenodo DOI `10.5281/zenodo.22730460`
 (concept `10.5281/zenodo.22379293`;
 previous v24.0.0 `10.5281/zenodo.22730408`).
