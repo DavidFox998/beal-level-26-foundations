@@ -775,6 +775,7 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyConductorGeneral
 import BealLevel26Foundations.Beal.FullProof.BealGap3ZsigBeyond2M
 import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
 import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
+import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
 namespace BealLevel26Foundations.Beal.FullProof.RibetMazur
 
@@ -5688,6 +5689,52 @@ theorem tatePackedValuationBound_dvd_rhs {A B : Nat}
   BealLevel26Foundations.BealFreyTateConductor.tatePackedValuationBound_dvd_rhs
     hA hB hEq
 
+/-! ## v13.0.0 — Level-26 modular elimination -/
+
+def J0DecompositionSoundness_26 : Prop :=
+  BealLevel26Foundations.BealLevel26ModularElimination.J0DecompositionSoundness_26
+
+def MwrankCertificateSoundness_26 : Prop :=
+  BealLevel26Foundations.BealLevel26ModularElimination.MwrankCertificateSoundness_26
+
+def FormalImmersionSoundness_26 : Prop :=
+  BealLevel26Foundations.BealLevel26ModularElimination.FormalImmersionSoundness_26
+
+def FreyCurveExists :=
+  BealLevel26Foundations.BealLevel26ModularElimination.FreyCurveExists
+
+def LevelLowering_26 :=
+  BealLevel26Foundations.BealLevel26ModularElimination.LevelLowering_26
+
+def kraus_a53_values :=
+  BealLevel26Foundations.BealLevel26ModularElimination.kraus_a53_values
+
+def S2_26_a5_values :=
+  BealLevel26Foundations.BealLevel26ModularElimination.S2_26_a5_values
+
+theorem kraus_a53_elimination :
+    ∀ a : Int, a ∈ kraus_a53_values → a ∉ S2_26_a5_values :=
+  BealLevel26Foundations.BealLevel26ModularElimination.kraus_a53_elimination
+
+theorem tateConductor_eq_frey (A B : Nat) :
+    tateConductor A B = frey_tate_conductor A B :=
+  BealLevel26Foundations.BealLevel26ModularElimination.tateConductor_eq_frey A B
+
+/-- Five cert Props plus `baker_bound_gap3`.
+    Tate / Baker files unchanged.  Not BCDT. -/
+theorem beal_44_13_level_26_modular_elimination :
+    J0DecompositionSoundness_26 →
+    MwrankCertificateSoundness_26 →
+    FormalImmersionSoundness_26 →
+    FreyCurveExists →
+    LevelLowering_26 →
+    baker_bound_gap3 →
+    ∀ A B C : Nat,
+      Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 →
+      C = B + 3 →
+      False :=
+  BealLevel26Foundations.BealLevel26ModularElimination.beal_44_13_level_26_modular_elimination
+
 /-! ## v8.71.0 — MCOM Ribet-Mazur pack from v8.69.0 misses -/
 
 /-- Inhabited for the two named witnesses only.
@@ -6634,6 +6681,16 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check frey_tate_conductor
 #check tateConductor
 #check frey_tate_conductor_inhabited
+#check kraus_a53_values
+#check S2_26_a5_values
+#check kraus_a53_elimination
+#check tateConductor_eq_frey
+#check J0DecompositionSoundness_26
+#check MwrankCertificateSoundness_26
+#check FormalImmersionSoundness_26
+#check FreyCurveExists
+#check LevelLowering_26
+#check beal_44_13_level_26_modular_elimination
 #check tate_odd_exponent_le_one
 #check tate_2adic_exponent_le5
 #check tate_conductor_bound_rhs
@@ -7164,5 +7221,8 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms tate_2adic_exponent_le5
 #print axioms frey_tate_conductor_inhabited
 #print axioms tatePackedValuationBound_dvd_rhs
+#print axioms kraus_a53_elimination
+#print axioms tateConductor_eq_frey
+#print axioms beal_44_13_level_26_modular_elimination
 
 end BealLevel26Foundations.Beal.FullProof.RibetMazur

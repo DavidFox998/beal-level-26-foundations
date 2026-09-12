@@ -1,3 +1,21 @@
+# FINAL v13.0.0 — Level-26 modular elimination
+
+Latest tag `v13.0.0-Beal-44-13-Level-26-Modular-Elimination`.
+New file `BealLevel26ModularElimination.lean`.
+Frey `Y² = X(X-A⁴)(X+B⁴)`.
+`tateConductor = 2^{f₂}*rad(AB(B+3))*13`
+with `f₂≤5`, not `2⁵*3*13`
+(witness `63982=2*31991`).
+Five cert Props are honest premises.
+`kraus_a53_elimination` is kernel decide.
+`beal_44_13_level_26_modular_elimination`
+uses 25 chunks for `B≤1e6` and
+`matveev_explicit_gap3` for `B>1e6`.
+Tate and Baker files stay exactly v12
+(0 lines changed).
+`baker_bound_gap3` / `conductor_86` /
+`B14_honest` stay Prop.
+
 # FINAL v12.0.0 — Baker-Matveev-explicit
 
 Latest tag `v12.0.0-Baker-Matveev-explicit`.

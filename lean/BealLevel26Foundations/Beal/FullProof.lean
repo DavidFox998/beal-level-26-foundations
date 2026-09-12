@@ -22,8 +22,32 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyConductorGeneral
 import BealLevel26Foundations.Beal.FullProof.BealGap3ZsigBeyond2M
 import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
 import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
+import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
 /-!
+# FullProof track (v13.0.0)
+
+Level-26 modular elimination for (4,4,13)
+gap3.  Frey `Y² = X(X-A⁴)(X+B⁴)`.
+Conductor is `tateConductor` =
+`2^{f₂}*rad(AB(B+3))*13` with `f₂≤5`,
+NOT `2⁵*3*13` (witness `63982=2*31991`).
+Five cert Props
+`J0DecompositionSoundness_26`,
+`MwrankCertificateSoundness_26`,
+`FormalImmersionSoundness_26`,
+`FreyCurveExists`, `LevelLowering_26`
+are honest premises, not inhabited.
+`kraus_a53_elimination` is kernel decide
+(`{-10,-2,1,6,14}` miss S₂(26) `{0,12}`).
+`beal_44_13_level_26_modular_elimination`
+uses the 25 chunks for `B≤1e6` and
+`matveev_explicit_gap3` for `B>1e6`
+(`baker_bound_gap3` stays Prop).
+Tate and Baker files stay exactly v12
+(0 lines changed).
+`conductor_86` / `B14_honest` stay Prop.
+
 # FullProof track (v12.0.0)
 
 explicit Matveev for (4,4,13) gap3, not

@@ -5,11 +5,12 @@ type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v12.0.0-Baker-Matveev-explicit"
+version: "v13.0.0-Beal-44-13-Level-26-Modular-Elimination"
 date-released: "2026-09-12"
 doi: "10.5281/zenodo.22721089"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
-url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v12.0.0-Baker-Matveev-explicit"
+url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v13.0.0-Beal-44-13-Level-26-Modular-Elimination"
+# v13.0.0-Beal-44-13-Level-26-Modular-Elimination: Frey Y^2=X(X-A^4)(X+B^4) tateConductor 2^{f2}*rad*13 f2<=5 + Kraus a53 vs S2(26) + 5 cert Props; Tate and Baker files unchanged. Concept DOI still 10.5281/zenodo.22272382; v12 DOI 10.5281/zenodo.22721089.
 # v12.0.0-Baker-Matveev-explicit DOI 10.5281/zenodo.22721089: explicit Matveev for (4,4,13) gap3, not general Bugeaud; matveev_explicit_gap3 turns baker_bound_gap3 into eq → B ≤ baker_B0; matveev_no_solution_A_le_B inhabited; baker_bound_gap3 stays Prop; Tate file unchanged.
 # v11.0.0-Tate-N-def DOI 10.5281/zenodo.22721420: defines tateConductor / frey_tate_conductor as 2^{f2}*rad*13 and inhabits frey_tate_conductor_inhabited; baker_bound_gap3 / conductor_86 / B14_honest stay Prop.
 # v10.0.0-paper-B14-Baker-1e6-DOI archives math DOI 10.5281/zenodo.22712897 and paper DOI 10.5281/zenodo.22713047 for the v9.4.0 census (62500 / 25 chunks), Baker conditional forall B, and Tate 2^5*rad*13.

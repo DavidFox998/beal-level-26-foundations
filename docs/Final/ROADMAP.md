@@ -799,6 +799,19 @@ Does **not** touch the 24-module none chain.
 No `False.elim`.  No new Track B Zenodo claiming
 unconditional Beal `∀`.
 
+### v13.0.0-Beal-44-13-Level-26-Modular-Elimination — DONE (Frey Y^2=X(X-A^4)(X+B^4); tateConductor 2^{f2}*rad(AB(B+3))*13 f2≤5 not 2^5*3*13; witness 63982=2*31991; Kraus a53 -10 -2 1 6 14 vs S2(26) 0 12 by decide; 5 cert Props J0/Mwrank/Formal/Frey/LevelLowering_26 honest premises; B≤1e6 via 25 chunks; B>1e6 via matveev_explicit_gap3; baker_bound_gap3 / conductor_86 / B14_honest stay Prop; Tate and Baker files 0 lines changed; Chain ExistsNewformLevel2 stays 0≠0)
+
+Lean change.  New file
+`BealLevel26ModularElimination.lean`.
+Does **not** inhabit the five cert Props.
+Does **not** inhabit `baker_bound_gap3`.
+Does **not** inhabit `conductor_86`.
+Does **not** inhabit `B14_honest`.
+Does **not** touch `BealFreyTateConductor.lean`.
+Does **not** touch `BealGap3BakerUpperBound.lean`.
+Does **not** touch the 24-module none chain.
+No `False.elim`.  No unconditional Beal `∀`.
+
 ### v12.0.0-Baker-Matveev-explicit — DONE (explicit Matveev for (4,4,13) gap3, not general Bugeaud; matveev_explicit_gap3 turns baker_bound_gap3 into eq → B ≤ baker_B0; matveev_no_solution_A_le_B inhabited; baker_conditional_gap3_full uses 25 chunks + that implication; baker_bound_gap3 stays Prop because Matveev / BMS Table 1 are not in Mathlib 4.12; Tate file stays v11; conductor_86 / B14_honest stay Prop; Chain ExistsNewformLevel2 stays 0≠0)
 
 Lean change.  File

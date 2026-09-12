@@ -447,6 +447,29 @@ $B>B_0$ by Baker.
 \texttt{exists\_zsig\_q\_gt\_2M\_dvd\_C13\_sub\_B4}
 needs Baker, not Zsig, and stays a Prop.
 \texttt{sorry} is not used.
+% kraus_a53_elimination
+% beal_44_13_level_26_modular_elimination
+The level-$26$ modular-elimination pack
+\texttt{beal\_44\_13\_level\_26\_modular\_elimination}
+takes five honest cert Props
+(\texttt{J0DecompositionSoundness\_26},
+\texttt{MwrankCertificateSoundness\_26},
+\texttt{FormalImmersionSoundness\_26},
+\texttt{FreyCurveExists},
+\texttt{LevelLowering\_26})
+and the still-uninhabited
+\texttt{baker\_bound\_gap3}.
+The Frey model is
+$Y^2=X(X-A^4)(X+B^4)$ with packed
+conductor \texttt{tateConductor}
+$=2^{f_2}\mathrm{rad}(AB(B+3))\cdot 13$,
+$f_2\le 5$, not $2^5\cdot 3\cdot 13$
+($63982=2\cdot 31991$).
+\texttt{kraus\_a53\_elimination} is the
+kernel decide that
+$a_{53}\in\{-10,-2,1,6,14\}$ misses
+$S_2(26)$ traces $\{0,12\}$.
+Tate and Baker files are unchanged.
 
 \section{What remains}
 $15/16$ of $B\le 2\text{M}$ is eliminated by mod-$16$ residues.

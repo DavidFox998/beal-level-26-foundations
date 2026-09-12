@@ -1,6 +1,20 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v12.0.0-Baker-Matveev-explicit`
+Latest tag / HEAD: `v13.0.0-Beal-44-13-Level-26-Modular-Elimination`
+Frey `Y² = X(X-A⁴)(X+B⁴)` for (4,4,13) gap3.
+Conductor is `tateConductor = 2^{f₂}*rad*13`
+with `f₂≤5`, not `2⁵*3*13`
+(witness `63982=2*31991`).
+Five cert Props `J0` / `Mwrank` / `Formal` /
+`FreyCurveExists` / `LevelLowering_26`
+are honest premises.  `kraus_a53_elimination`
+is kernel decide (`{-10,-2,1,6,14}` miss
+`{0,12}`).  The pack uses 25 chunks for
+`B≤1e6` and `matveev_explicit_gap3` for
+`B>1e6`.  Tate and Baker files unchanged.
+`baker_bound_gap3` / `conductor_86` /
+`B14_honest` stay Prop.
+Base: `v12.0.0-Baker-Matveev-explicit`
 explicit Matveev for (4,4,13) gap3, not general Bugeaud.
 `matveev_explicit_gap3` turns `baker_bound_gap3`
 into `A^4+B^4=(B+3)^13 → B ≤ baker_B0`.
