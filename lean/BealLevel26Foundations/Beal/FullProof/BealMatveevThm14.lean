@@ -1,0 +1,197 @@
+/-
+Copyright (c) 2026 David Fox. All rights reserved.
+Released under MIT license as described in the file LICENSE.
+Authors: David Fox
+
+Track B v24.0.0 -- start Matveev 2000 Thm 1.4
+formalization.  Names the target
+  |Lambda| > exp(-C1_floor * 30^{n+3} *
+                log height_B0)
+on a gap-3 solution and inhabits only
+the kernel-real pieces already available
+from v19-v23.
+
+thirty_pow is 30^6 = 729000000, not
+72900000.  Both numerals are decide
+theorems so the typo cannot slip back.
+
+Does NOT inhabit baker_bound_gap3.
+Does NOT inhabit
+  |Lambda| > exp(matveev_C_exp_bound).
+Mathlib 4.12 has no Matveev 2000 Thm 1.4.
+Stay in v24.x until that inequality is a
+real theorem.  v25 is only when
+baker_bound_gap3 greens and
+baker_conditional_gap3_full drops hBaker.
+
+Does not import RibetMazur, BealFreyB14,
+or FreyModularity_13.
+Does not use sorry.
+-/
+
+import Mathlib.Analysis.SpecialFunctions.Log.Basic
+import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
+import BealLevel26Foundations.Beal.FullProof.BealMatveevInequality
+import BealLevel26Foundations.Beal.FullProof.BealMatveevInequalityReal
+import BealLevel26Foundations.Beal.FullProof.BealBakerBoundGap3
+import BealLevel26Foundations.Beal.FullProof.BealBugeaudLLLFormal
+import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
+
+set_option maxRecDepth 200000
+set_option maxHeartbeats 4000000000
+
+namespace BealLevel26Foundations.BealMatveevThm14
+
+open BealLevel26Foundations.BealMatveevConstants
+open BealLevel26Foundations.BealMatveevInequality
+open BealLevel26Foundations.BealMatveevInequalityReal
+open BealLevel26Foundations.BealBakerBoundGap3
+open BealLevel26Foundations.BealBugeaudLLLFormal
+open BealLevel26Foundations.BealGap3BakerUpperBound
+
+/-! ## v19 constants, both thirty_pow numerals -/
+
+theorem matveev_C1_floor_eq :
+    matveev_C1_floor = 143186215390 := by
+  decide
+
+/-- 30^6 = 729000000. -/
+theorem matveev_thirty_pow_eq_30_pow_6 :
+    matveev_thirty_pow = Nat.pow 30 6 := by
+  decide
+
+theorem matveev_thirty_pow_eq_729000000 :
+    matveev_thirty_pow = 729000000 := by
+  decide
+
+/-- The recurring typo 72900000 is not 30^6. -/
+theorem matveev_thirty_pow_ne_72900000 :
+    matveev_thirty_pow ≠ 72900000 := by
+  decide
+
+theorem matveev_height_B0_eq_numeral :
+    matveev_height_B0 = 104382751019310000000 := by
+  decide
+
+theorem matveev_c4_scale_eq_16 :
+    matveev_c4_scale = 16 :=
+  rfl
+
+/-- Tate survivor reused as a Nat identity.
+    Does not import BealFreyB14. -/
+theorem tate_survivor_63982 :
+    (63982 : Nat) = 2 * 31991 := by
+  decide
+
+/-! ## v20 Bugeaud LLL integer skeleton -/
+
+theorem matveev_thm14_bugeaud_K_eq :
+    bugeaud_K = Nat.pow 10 20 :=
+  bugeaud_K_eq
+
+theorem matveev_thm14_bugeaud_LLL_basis_holds :
+    bugeaud_LLL_basis ≠ [] :=
+  bugeaud_LLL_basis_holds
+
+/-! ## v21 integer log-form nonzero -/
+
+theorem matveev_thm14_log_form_int_ne_zero_zero :
+    matveev_log_form_int 0 ≠ 0 :=
+  matveev_log_form_ne_zero_zero
+
+theorem matveev_thm14_log_form_int_ne_zero_fourteen :
+    matveev_log_form_int 14 ≠ 0 :=
+  matveev_log_form_ne_zero_fourteen
+
+/-! ## v22 / v23 Real exponent -/
+
+noncomputable def matveev_C_exp_bound_thm14 :=
+  matveev_C_exp_bound
+
+theorem matveev_thm14_height_gt_onee12 :
+    ten_pow_12 < matveev_height_B0 :=
+  matveev_height_B0_gt_onee12
+
+/-- log(height_B0) > 0 from height > 10^12
+    and Real.log_pos. -/
+theorem matveev_height_log_pos :
+    (0 : Real) < Real.log (matveev_height_B0 : Real) := by
+  have hone : (1 : Real) < (matveev_height_B0 : Real) := by
+    have hcast : ((1 : Nat) : Real) < (matveev_height_B0 : Real) :=
+      Nat.cast_lt.mpr
+        (Nat.lt_trans (by decide : 1 < ten_pow_12)
+          matveev_height_B0_gt_onee12)
+    simpa using hcast
+  exact Real.log_pos hone
+
+/-- Restate v23: displayed exponent is negative. -/
+theorem matveev_exp_bound_neg :
+    matveev_C_exp_bound < 0 :=
+  matveev_C_exp_bound_neg
+
+theorem matveev_thm14_C_exp_bound_lt_neg_onee12 :
+    matveev_C_exp_bound < -((ten_pow_12 : Nat) : Real) :=
+  matveev_C_exp_bound_lt_neg_onee12
+
+/-- Integer trace of the Thm 1.4 start. -/
+def matveev_thm14_constants : List Int :=
+  [143186215390, 729000000, 104382751019310000000,
+    16, 63982, 1000000000000]
+
+theorem matveev_thm14_constants_hold :
+    matveev_thm14_constants ≠ [] := by
+  decide
+
+/-! ## Named Matveev 2000 Thm 1.4 target
+
+    On a gap-3 solution the v23 theorem
+    already gives Lambda != 0.  The uniform
+    lower bound |Lambda| > exp(C_exp_bound)
+    is Matveev 2000 Thm 1.4 and is not in
+    Mathlib 4.12.  Stays a def Prop.
+    Does not inhabit baker_bound_gap3. -/
+
+def matveev_inequality_real_target : Prop :=
+  ∀ (A B : Nat),
+    0 < B →
+      Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 →
+        |matveev_log_form A B| > Real.exp matveev_C_exp_bound
+
+/-- Same target under the v22 name, still
+    uninhabited. -/
+def matveev_inequality_real_formal_remaining : Prop :=
+  matveev_inequality_real_formal
+
+/-- baker_bound_gap3 stays a def Prop. -/
+def baker_bound_gap3_remaining_thm14 : Prop :=
+  baker_bound_gap3
+
+#check matveev_C1_floor_eq
+#check matveev_thirty_pow_eq_30_pow_6
+#check matveev_thirty_pow_eq_729000000
+#check matveev_thirty_pow_ne_72900000
+#check matveev_height_B0_eq_numeral
+#check tate_survivor_63982
+#check matveev_thm14_bugeaud_LLL_basis_holds
+#check matveev_height_log_pos
+#check matveev_exp_bound_neg
+#check matveev_inequality_real_target
+#check baker_bound_gap3_remaining_thm14
+#print axioms matveev_C1_floor_eq
+#print axioms matveev_thirty_pow_eq_30_pow_6
+#print axioms matveev_thirty_pow_eq_729000000
+#print axioms matveev_thirty_pow_ne_72900000
+#print axioms matveev_height_B0_eq_numeral
+#print axioms matveev_c4_scale_eq_16
+#print axioms tate_survivor_63982
+#print axioms matveev_thm14_bugeaud_K_eq
+#print axioms matveev_thm14_bugeaud_LLL_basis_holds
+#print axioms matveev_thm14_log_form_int_ne_zero_zero
+#print axioms matveev_thm14_log_form_int_ne_zero_fourteen
+#print axioms matveev_thm14_height_gt_onee12
+#print axioms matveev_height_log_pos
+#print axioms matveev_exp_bound_neg
+#print axioms matveev_thm14_C_exp_bound_lt_neg_onee12
+#print axioms matveev_thm14_constants_hold
+
+end BealLevel26Foundations.BealMatveevThm14

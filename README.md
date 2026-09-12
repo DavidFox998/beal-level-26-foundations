@@ -1,6 +1,20 @@
 [![v17 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22729067.svg)](https://doi.org/10.5281/zenodo.22729067) [![v16 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22728705.svg)](https://doi.org/10.5281/zenodo.22728705) [![v15 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22728624.svg)](https://doi.org/10.5281/zenodo.22728624) [![v14 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22722140.svg)](https://doi.org/10.5281/zenodo.22722140) [![v13 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721843.svg)](https://doi.org/10.5281/zenodo.22721843) [![v12 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721089.svg)](https://doi.org/10.5281/zenodo.22721089) [![v11 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721420.svg)](https://doi.org/10.5281/zenodo.22721420) [![math DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22712897.svg)](https://doi.org/10.5281/zenodo.22712897) [![paper DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22713047.svg)](https://doi.org/10.5281/zenodo.22713047) [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v23.0.0-Beal-44-13-Level-26-Matveev-C-Exp-Bound-Compare
+# Beal Level 26 Foundations — v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start
+
+**v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start — start formalizing Matveev 2000 Thm 1.4 `|Λ| > exp(-C)`. Stay in v24 until `baker_bound_gap3` is inhabited. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+
+First in-kernel file toward the uniform lower bound on a gap-3 solution:
+- New file `BealMatveevThm14.lean` (does **not** import Ribet / Frey modularity / `BealFreyB14`)
+- Reuses v19 `C1_floor = 143186215390`, `thirty_pow = 729000000` (`30^6`; typo `72900000` is `decide` `≠`), `height_B0 = 104382751019310000000`
+- Reuses v20 `bugeaud_K = 10^20` and `bugeaud_LLL_basis_holds` by `decide` (**no axioms**)
+- Reuses v21 Int log-form nonzero and Tate witness `63982 = 2 * 31991` by `decide` (**no axioms**)
+- Reuses v22 `matveev_C_exp_bound` and v23 `C_exp_bound < -10^12` / `height_B0_gt_onee12`
+- New: `matveev_height_log_pos` (`0 < Real.log height_B0`) and `matveev_exp_bound_neg` (`C_exp_bound < 0`)
+- `matveev_inequality_real_target` stays an uninhabited def Prop (Mathlib 4.12 has no Matveev 2000 Thm 1.4)
+- `baker_bound_gap3` stays an uninhabited def Prop; we stay in v24.x until that inequality is a theorem
+- Tate / Baker / v14 J0 / v15 B0 / v17 LLL / v19 constants / v20 Bugeaud / v21 inequality / v22 Real skeleton / v23 compare stay exactly v23 / `c44f161` (0 lines)
+- Previous v23 DOI [`10.5281/zenodo.22730338`](https://doi.org/10.5281/zenodo.22730338) (concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293))
 
 **v23.0.0-Beal-44-13-Level-26-Matveev-C-Exp-Bound-Compare — displayed exponent `< -10^12` and Real log-form nonzero on a gap-3 solution. `baker_bound_gap3` stays Prop. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
@@ -11,7 +25,7 @@ What Mathlib 4.12 can close from the v19/v21/v22 integer skeleton:
 - `|Λ| > exp(C_exp_bound)` and `baker_bound_gap3` stay uninhabited def Props
 - `baker_conditional_gap3_full` still takes `hBaker : baker_bound_gap3`
 - Tate / Baker / v14 J0 / v15 B0 / v17 LLL / v19 constants / v20 Bugeaud / v21 inequality / v22 Real skeleton stay exactly v22 / `1db061a` (0 lines)
-- Previous v22 DOI [`10.5281/zenodo.22729980`](https://doi.org/10.5281/zenodo.22729980) (concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293))
+- Zenodo DOI [`10.5281/zenodo.22730338`](https://doi.org/10.5281/zenodo.22730338) (concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293); previous v22 [`10.5281/zenodo.22729980`](https://doi.org/10.5281/zenodo.22729980))
 
 **v22.0.0-Beal-44-13-Level-26-Matveev-Inequality-Real — Matveev `|Λ| > exp(-C1_floor · 30^{n+3})` Real bound skeleton from integer constants. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
@@ -91,11 +105,12 @@ PARI LLL reduction of the huge Matveev integer `B0_raw` to the displayed cutoff 
 | v20 | [`10.5281/zenodo.22729515`](https://doi.org/10.5281/zenodo.22729515) | `768ed7f` | `matveev_log_form` Real.log; `matveev_lower_bound` / `bugeaud_reduction_formal` def Prop; `bugeaud_LLL_basis_holds` decide no axioms |
 | v21 | [`10.5281/zenodo.22729724`](https://doi.org/10.5281/zenodo.22729724) | `3079d82` | `matveev_log_form_int` Tate c4×(4B−13(B+3)); `matveev_log_form_ne_zero` on B%14=0; `matveev_height_le_log_B0` |
 | v22 | [`10.5281/zenodo.22729980`](https://doi.org/10.5281/zenodo.22729980) | `1db061a` | `matveev_C_exp_bound` Real exponent; `matveev_C_exp_bound_decide` no axioms; `matveev_inequality_real_formal` def Prop |
-| v23 | pending webhook | — | `C_exp_bound < -10^12`; Real log-form nonzero on a gap-3 solution; `baker_bound_gap3` stays Prop |
+| v23 | [`10.5281/zenodo.22730338`](https://doi.org/10.5281/zenodo.22730338) | `c44f161` | `C_exp_bound < -10^12`; Real log-form nonzero on a gap-3 solution; `baker_bound_gap3` stays Prop |
+| v24 | pending webhook | — | `BealMatveevThm14.lean` starts Matveev 1.4; `matveev_height_log_pos` / `matveev_exp_bound_neg`; target and `baker_bound_gap3` stay Prop |
 
 Most current snapshot as of 2026-09-12, **not** a final Beal proof. Concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293). See [`docs/CUMULATIVE_ARCHIVE_v10_v17.md`](docs/CUMULATIVE_ARCHIVE_v10_v17.md).
 
-**Honesty lock (most current).** `git diff v22 -- BealFreyTateConductor.lean BealGap3BakerUpperBound.lean BealLevel26ModularElimination.lean BealBakerB0Certificate.lean BealBakerB0ReductionCertificate.lean BealMatveevConstants.lean BealBugeaudLLLFormal.lean BealMatveevInequality.lean BealMatveevInequalityReal.lean` = 0. Tate 0 lines since v11. Baker-upper-bound 0 lines since v12. v14 displayed J0 / mwrank / formal unchanged. `baker_bound_gap3`, `bugeaud_reduction_formal`, and `matveev_inequality_real_formal` stay uninhabited def Props. `matveev_height_B0_gt_onee12` / `matveev_C_exp_bound_decide` / `bugeaud_LLL_basis_holds` are kernel `decide` (no axioms). Main pack prints `[propext, Classical.choice, Quot.sound]` only. `C_exp_bound < -10^12` is not `|Λ| > exp(-C…)`; Matveev 1.4 remains for v24.
+**Honesty lock (most current).** `git diff v23 -- BealFreyTateConductor.lean BealGap3BakerUpperBound.lean BealLevel26ModularElimination.lean BealBakerB0Certificate.lean BealBakerB0ReductionCertificate.lean BealMatveevConstants.lean BealBugeaudLLLFormal.lean BealMatveevInequality.lean BealMatveevInequalityReal.lean BealBakerBoundGap3.lean` = 0. Tate 0 lines since v11. Baker-upper-bound 0 lines since v12. v14 displayed J0 / mwrank / formal unchanged. `baker_bound_gap3`, `bugeaud_reduction_formal`, `matveev_inequality_real_formal`, and `matveev_inequality_real_target` stay uninhabited def Props. `matveev_thirty_pow = 729000000` and `≠ 72900000` / `matveev_height_B0_gt_onee12` / `bugeaud_LLL_basis_holds` are kernel `decide` (no axioms). Main pack prints `[propext, Classical.choice, Quot.sound]` only. Stay in v24 until `|Λ| > exp(-C)` is a theorem; v25 only when `baker_bound_gap3` is inhabited.
 
 **v15.0.0-Baker-B0-PARI-Certificate — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
@@ -263,7 +278,8 @@ Releases:
 - v8.72.1-doi-badge inserts real Zenodo DOI `10.5281/zenodo.22698257` from the v8.70.0 mint
 - v8.73.0-modularity-exists-level2 displayed S2(26) dim2 via 0≠12 at p=53; Chain ExistsNewformLevel2 stays 0≠0; DOI 10.5281/zenodo.22698257 still cites v8.69.0
 - v8.74.0-frey-irreducible-mod13 displayed frey_mod13_irreducible at B=196 and B=1500003; frey_modular Classical.em; level_lowering_to_26 stays Prop
-- v23.0.0-Beal-44-13-Level-26-Matveev-C-Exp-Bound-Compare `C_exp_bound < -10^12`; Real log-form nonzero on a gap-3 solution; `baker_bound_gap3` stays uninhabited; locked Lean 0 vs v22 `1db061a`
+- v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start start Matveev 2000 Thm 1.4 formalization; `matveev_height_log_pos` / `matveev_exp_bound_neg`; `matveev_inequality_real_target` and `baker_bound_gap3` stay uninhabited; stay in v24 until baker inhabited; locked Lean 0 vs v23 `c44f161`
+- v23.0.0-Beal-44-13-Level-26-Matveev-C-Exp-Bound-Compare `C_exp_bound < -10^12`; Real log-form nonzero on a gap-3 solution; `baker_bound_gap3` stays uninhabited; locked Lean 0 vs v22 `1db061a`; DOI `10.5281/zenodo.22730338`
 - v22.0.0-Beal-44-13-Level-26-Matveev-Inequality-Real `matveev_C_exp_bound` Real exponent from v19 Nat/Int; `matveev_C_exp_bound_decide` by decide (no axioms); `matveev_inequality_real_formal` stays def Prop; `baker_bound_gap3` stays uninhabited; locked Lean 0 vs v21 `3079d82`; DOI `10.5281/zenodo.22729980`
 - v21.0.0-Beal-44-13-Level-26-Matveev-Log-Form-Nonzero `matveev_log_form_int` Tate c4 scale; `matveev_log_form_ne_zero` on B%14=0; decide witnesses B=0,14; `matveev_height_le_log_B0`; locked Lean 0 vs v20 `768ed7f` except appended theorems; DOI `10.5281/zenodo.22729724`
 - v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization `matveev_log_form` Mathlib `Real.log`; `matveev_lower_bound` / `bugeaud_reduction_formal` stay def Prop; `matveev_inequality_constants_hold` / `bugeaud_LLL_basis_holds` by decide (no axioms); `bugeaud_K=10^20`; locked Lean 0 vs v19 `8fe96fd`; DOI `10.5281/zenodo.22729515`

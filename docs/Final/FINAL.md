@@ -1,3 +1,32 @@
+# FINAL v24.0.0 — Matveev Thm 1.4 formalization start (not final)
+
+Latest tag `v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start`.
+`BealMatveevThm14.lean` starts the
+in-kernel formalization of Matveev 2000
+Thm 1.4 `|Λ| > exp(-C)`.
+`matveev_height_log_pos` and
+`matveev_exp_bound_neg` are kernel
+theorems. `matveev_inequality_real_target`
+and `baker_bound_gap3` stay uninhabited
+def Props. Stay in v24.x until the Real
+inequality is a theorem; v25 only when
+`baker_bound_gap3` greens with no `hBaker`.
+Tate / Baker / v14 J0 / v15 B0 / v17 LLL /
+v19 constants / v20 Bugeaud LLL / v21
+inequality / v22 Real skeleton / v23
+compare Lean 0 lines vs v23 `c44f161` /
+`10.5281/zenodo.22730338`.
+Most current as of 2026-09-12, **not** a
+final Beal proof. Series concept
+`10.5281/zenodo.22379293`.
+Honesty lock: Tate 0 since v11, Baker 0
+since v12, v14 displayed certs unchanged,
+`baker_bound_gap3` uninhabited def Prop,
+`thirty_pow = 729000000` and `≠ 72900000`
+kernel decide no axioms, main pack
+`[propext, Classical.choice, Quot.sound]`
+only. Not Mathlib Matveev or LLL.
+
 # FINAL v23.0.0 — C_exp_bound compare (not final)
 
 Latest tag `v23.0.0-Beal-44-13-Level-26-Matveev-C-Exp-Bound-Compare`.

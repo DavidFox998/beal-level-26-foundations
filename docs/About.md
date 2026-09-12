@@ -1,6 +1,31 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v23.0.0-Beal-44-13-Level-26-Matveev-C-Exp-Bound-Compare`
+Latest tag / HEAD: `v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start`
+Most current as of 2026-09-12, **not** final.
+`BealMatveevThm14.lean` starts Matveev
+2000 Thm 1.4 formalization.
+`matveev_height_log_pos` is
+`0 < Real.log height_B0`.
+`matveev_exp_bound_neg` restates
+`C_exp_bound < 0`.
+`matveev_inequality_real_target` and
+`baker_bound_gap3` stay uninhabited
+def Props. Stay in v24.x until the
+Real inequality is a theorem. Tate /
+Baker / v14 J0 / v15 B0 / v17 LLL /
+v19 constants / v20 Bugeaud LLL /
+v21 inequality / v22 Real skeleton /
+v23 compare Lean 0 lines vs v23
+`c44f161`. Previous v23 DOI
+`10.5281/zenodo.22730338`
+(concept `10.5281/zenodo.22379293`).
+Honesty lock: `baker_bound_gap3` stays Prop;
+`thirty_pow = 729000000` and `≠ 72900000`
+decide, no axioms; main pack
+`[propext, Classical.choice, Quot.sound]`
+only; not Mathlib Matveev or LLL.
+
+Latest prior tag: `v23.0.0-Beal-44-13-Level-26-Matveev-C-Exp-Bound-Compare`
 Most current as of 2026-09-12, **not** final.
 `matveev_C_exp_bound_lt_neg_onee12` is
 `C_exp_bound < -10^12`.
@@ -13,7 +38,8 @@ v20 Bugeaud LLL / v21 inequality / v22
 Real skeleton Lean 0 lines vs v22
 `1db061a`. Previous v22 DOI
 `10.5281/zenodo.22729980`
-(concept `10.5281/zenodo.22379293`).
+(concept `10.5281/zenodo.22379293`;
+v23 DOI `10.5281/zenodo.22730338`).
 Honesty lock: `baker_bound_gap3` stays Prop;
 `matveev_height_B0_gt_onee12` decide,
 no axioms; main pack

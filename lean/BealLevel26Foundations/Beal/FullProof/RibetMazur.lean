@@ -780,6 +780,7 @@ import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
 import BealLevel26Foundations.Beal.FullProof.BealMatveevInequality
 import BealLevel26Foundations.Beal.FullProof.BealMatveevInequalityReal
 import BealLevel26Foundations.Beal.FullProof.BealBakerBoundGap3
+import BealLevel26Foundations.Beal.FullProof.BealMatveevThm14
 import BealLevel26Foundations.Beal.FullProof.BealBugeaudLLLFormal
 import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
@@ -5886,6 +5887,34 @@ def baker_bound_gap3_remaining : Prop :=
 def baker_conditional_gap3_full_unconditional : Prop :=
   BealLevel26Foundations.BealBakerBoundGap3.baker_conditional_gap3_full_unconditional
 
+/-! ## v24.0.0 — Matveev 2000 Thm 1.4 start -/
+
+theorem matveev_thirty_pow_eq_729000000 :
+    BealLevel26Foundations.BealMatveevConstants.matveev_thirty_pow =
+      729000000 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_thirty_pow_eq_729000000
+
+theorem matveev_thirty_pow_ne_72900000 :
+    BealLevel26Foundations.BealMatveevConstants.matveev_thirty_pow ≠
+      72900000 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_thirty_pow_ne_72900000
+
+theorem matveev_height_log_pos :
+    (0 : Real) < Real.log (matveev_height_B0 : Real) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_height_log_pos
+
+theorem matveev_exp_bound_neg :
+    matveev_C_exp_bound < 0 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_exp_bound_neg
+
+def matveev_inequality_real_target : Prop :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_inequality_real_target
+
+theorem matveev_thm14_constants_hold :
+    BealLevel26Foundations.BealMatveevThm14.matveev_thm14_constants ≠
+      [] :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_thm14_constants_hold
+
 /-! ## v14.0.0 — J0 / mwrank / formal displayed certs -/
 
 def J0DecompositionCert_26 :=
@@ -6967,6 +6996,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check matveev_C_exp_bound_lt_neg_onee12
 #check matveev_log_form_ne_zero_of_gap3
 #check baker_bound_gap3_remaining
+#check matveev_height_log_pos
+#check matveev_exp_bound_neg
+#check matveev_inequality_real_target
+#check matveev_thm14_constants_hold
 #check J0DecompositionCert_26
 #check J0DecompositionCert_26_displayed
 #check J0DecompositionSoundness_26
@@ -7539,6 +7572,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms matveev_height_B0_gt_onee12
 #print axioms matveev_C_exp_bound_lt_neg_onee12
 #print axioms matveev_log_form_ne_zero_of_gap3
+#print axioms matveev_thirty_pow_eq_729000000
+#print axioms matveev_thirty_pow_ne_72900000
+#print axioms matveev_height_log_pos
+#print axioms matveev_exp_bound_neg
+#print axioms matveev_thm14_constants_hold
 #print axioms J0DecompositionSoundness_26_holds
 #print axioms MwrankCertificateSoundness_26_holds
 #print axioms FormalImmersionSoundness_26_holds
