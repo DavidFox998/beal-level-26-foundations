@@ -2,6 +2,9 @@
 
 Lean: [`lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequalityReal.lean`](../../lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequalityReal.lean)
 
+Zenodo DOI [`10.5281/zenodo.22729980`](https://doi.org/10.5281/zenodo.22729980)
+at tag commit `1db061a` (concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293)).
+
 ## What is kernel-real here
 
 - `matveev_C_exp_bound : Real` is the explicit exponent

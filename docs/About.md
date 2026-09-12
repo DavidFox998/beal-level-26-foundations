@@ -14,8 +14,9 @@ stays an uninhabited def Prop.
 Tate / Baker / v14 J0 / v15 B0 / v17 LLL /
 v19 constants / v20 Bugeaud LLL / v21
 inequality Lean 0 lines vs v21 `3079d82`.
-Previous v21 DOI `10.5281/zenodo.22729724`
-(concept `10.5281/zenodo.22379293`).
+Zenodo DOI `10.5281/zenodo.22729980`
+(concept `10.5281/zenodo.22379293`;
+previous v21 `10.5281/zenodo.22729724`).
 Honesty lock: `baker_bound_gap3` stays Prop;
 `matveev_C_exp_bound_decide` decide,
 no axioms; main pack

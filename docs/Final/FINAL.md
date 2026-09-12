@@ -14,10 +14,12 @@ stays an uninhabited def Prop.
 Tate / Baker / v14 J0 / v15 B0 / v17 LLL /
 v19 constants / v20 Bugeaud LLL / v21
 inequality Lean 0 lines vs v21
-`3079d82` / `10.5281/zenodo.22729724`.
+`3079d82`. Zenodo DOI
+`10.5281/zenodo.22729980`
+(concept `10.5281/zenodo.22379293`;
+previous v21 `10.5281/zenodo.22729724`).
 Most current as of 2026-09-12, **not** a
-final Beal proof. Series concept
-`10.5281/zenodo.22379293`.
+final Beal proof.
 Honesty lock: Tate 0 since v11, Baker 0
 since v12, v14 displayed certs unchanged,
 `baker_bound_gap3` uninhabited def Prop,
