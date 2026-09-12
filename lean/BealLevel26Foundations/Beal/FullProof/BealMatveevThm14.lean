@@ -3,13 +3,12 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v24.0.1 -- height / log monotone
-lemmas toward Matveev 2000 Thm 1.4.
-Keeps v24.0.0 matveev_height_log_pos and
-matveev_exp_bound_neg, and adds
-height_B0 > 2, Real.log_lt_log wrap,
-C1_floor / thirty_pow positivity, and
-C_exp_bound < 0 iff log height_B0 > 0.
+Track B v24.0.2 -- Real.exp properties of
+the displayed Matveev exponent, toward
+Matveev 2000 Thm 1.4.
+Keeps v24.0.0 / v24.0.1 lemmas and adds
+exp(C_exp_bound) in (0, 1) plus the
+named target lower bound.
 
 thirty_pow is 30^6 = 729000000, not
 the 7-digit typo 72900000 (= 30^6 / 10).
@@ -197,6 +196,44 @@ theorem matveev_thm14_C_exp_bound_lt_neg_onee12 :
     matveev_C_exp_bound < -((ten_pow_12 : Nat) : Real) :=
   matveev_C_exp_bound_lt_neg_onee12
 
+/-! ## v24.0.2 — exp of the displayed bound -/
+
+/-- Direct restatement of v24.0.1 negativity. -/
+theorem matveev_exp_bound_lt_zero :
+    matveev_C_exp_bound < 0 :=
+  matveev_exp_bound_neg
+
+/-- exp(C_exp_bound) < 1 because the
+    exponent is negative. -/
+theorem matveev_exp_of_bound_pos_lt_one :
+    Real.exp matveev_C_exp_bound < 1 :=
+  Real.exp_lt_one_iff.mpr matveev_exp_bound_lt_zero
+
+/-- exp is always positive. -/
+theorem matveev_exp_of_bound_pos :
+    (0 : Real) < Real.exp matveev_C_exp_bound :=
+  Real.exp_pos matveev_C_exp_bound
+
+/-- Strengthen v23 strict comparison to ≤
+    for AMS-facing statements. -/
+theorem matveev_C_exp_bound_le_neg_onee12 :
+    matveev_C_exp_bound ≤ -((ten_pow_12 : Nat) : Real) :=
+  le_of_lt matveev_C_exp_bound_lt_neg_onee12
+
+/-- Named uniform lower-bound shape.
+    0 < target < 1; this is not yet
+    |Lambda| > target. -/
+noncomputable def matveev_target_exp_lower : Real :=
+  Real.exp matveev_C_exp_bound
+
+theorem matveev_target_exp_lower_pos :
+    (0 : Real) < matveev_target_exp_lower :=
+  matveev_exp_of_bound_pos
+
+theorem matveev_target_exp_lower_lt_one :
+    matveev_target_exp_lower < 1 :=
+  matveev_exp_of_bound_pos_lt_one
+
 /-- Integer trace of the Thm 1.4 start. -/
 def matveev_thm14_constants : List Int :=
   [143186215390, 729000000, 104382751019310000000,
@@ -245,6 +282,11 @@ def baker_bound_gap3_remaining_thm14 : Prop :=
 #check matveev_height_B0_gt_two
 #check matveev_log_height_monotone
 #check matveev_C_exp_bound_lt_zero_of_pos_log
+#check matveev_exp_bound_lt_zero
+#check matveev_exp_of_bound_pos_lt_one
+#check matveev_exp_of_bound_pos
+#check matveev_C_exp_bound_le_neg_onee12
+#check matveev_target_exp_lower
 #check matveev_inequality_real_target
 #check baker_bound_gap3_remaining_thm14
 #print axioms matveev_C1_floor_eq
@@ -267,6 +309,12 @@ def baker_bound_gap3_remaining_thm14 : Prop :=
 #print axioms matveev_height_B0_gt_two
 #print axioms matveev_log_height_monotone
 #print axioms matveev_C_exp_bound_lt_zero_of_pos_log
+#print axioms matveev_exp_bound_lt_zero
+#print axioms matveev_exp_of_bound_pos_lt_one
+#print axioms matveev_exp_of_bound_pos
+#print axioms matveev_C_exp_bound_le_neg_onee12
+#print axioms matveev_target_exp_lower_pos
+#print axioms matveev_target_exp_lower_lt_one
 #print axioms matveev_thm14_C_exp_bound_lt_neg_onee12
 #print axioms matveev_thm14_constants_hold
 

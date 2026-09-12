@@ -33,6 +33,20 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
 /-!
+# FullProof track (v24.0.2)
+
+Real.exp properties of the displayed
+Matveev exponent.  `exp(C_exp_bound)`
+is in (0, 1).  The named target
+`matveev_target_exp_lower` is not yet
+|Lambda| > exp(-C).
+`matveev_inequality_real_target` and
+`baker_bound_gap3` stay uninhabited
+def Props.  Stay in v24.x until the
+Real inequality is a theorem.
+Locked Lean files stay exactly v24.0.1
+except BealMatveevThm14.lean.
+
 # FullProof track (v24.0.1)
 
 Height / log monotone lemmas toward

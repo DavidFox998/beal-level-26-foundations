@@ -1,10 +1,28 @@
 # BealMatveevThm14 — v24.0.0 Matveev 2000 Thm 1.4 formalization start
 
-**Tag.** `v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone`.
+**Tag.** `v24.0.2-Beal-44-13-Level-26-Matveev-Exp-Bound-Properties`.
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
-**Parent.** v24.0.0 `d39c6d5` / `v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start` / DOI `10.5281/zenodo.22730408`.
+**Parent.** v24.0.1 `4d66383` / `v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone` / DOI `10.5281/zenodo.22730460`.
 **Concept.** `10.5281/zenodo.22379293`.
+
+## v24.0.2 — exp of the displayed bound
+
+```lean
+theorem matveev_exp_bound_lt_zero : matveev_C_exp_bound < 0
+theorem matveev_exp_of_bound_pos_lt_one :
+    Real.exp matveev_C_exp_bound < 1
+theorem matveev_exp_of_bound_pos :
+    0 < Real.exp matveev_C_exp_bound
+theorem matveev_C_exp_bound_le_neg_onee12 :
+    matveev_C_exp_bound ≤ -((ten_pow_12 : Nat) : Real)
+noncomputable def matveev_target_exp_lower : Real :=
+  Real.exp matveev_C_exp_bound
+```
+
+`0 < matveev_target_exp_lower < 1`. This names the Matveev lower-bound shape. It does **not** prove `|Λ| > matveev_target_exp_lower`. Mathlib 4.12 has no Matveev 2000 Thm 1.4.
+
+`matveev_inequality_real_target` and `baker_bound_gap3` stay uninhabited.
 
 ## v24.0.1 — height and log monotone
 

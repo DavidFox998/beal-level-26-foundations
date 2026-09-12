@@ -3335,6 +3335,16 @@ grep -q "theorem matveev_log_height_monotone" \
   lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
 grep -q "theorem matveev_C_exp_bound_lt_zero_of_pos_log" \
   lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
+grep -q "theorem matveev_exp_bound_lt_zero" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
+grep -q "theorem matveev_exp_of_bound_pos_lt_one" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
+grep -q "theorem matveev_exp_of_bound_pos" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
+grep -q "theorem matveev_C_exp_bound_le_neg_onee12" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
+grep -q "def matveev_target_exp_lower" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
 test "$(grep -c '^axiom ' lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean)" -eq 0
 test ! -n "$(grep -E '^\s*(sorry|admit)\b|False\.elim|native_decide|^axiom ' \
   lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean || true)"
@@ -3348,6 +3358,20 @@ grep -q "theorem matveev_log_height_monotone" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem matveev_C_exp_bound_lt_zero_of_pos_log" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem matveev_exp_of_bound_pos_lt_one" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem matveev_exp_of_bound_pos" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+test "$(git diff v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone -- lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean | wc -l)" -eq 0
+test "$(git diff v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
+test "$(git diff v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
+test "$(git diff v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean | wc -l)" -eq 0
+test "$(git diff v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean | wc -l)" -eq 0
+test "$(git diff v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean | wc -l)" -eq 0
+test "$(git diff v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone -- lean/BealLevel26Foundations/Beal/FullProof/BealBugeaudLLLFormal.lean | wc -l)" -eq 0
+test "$(git diff v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean | wc -l)" -eq 0
+test "$(git diff v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequalityReal.lean | wc -l)" -eq 0
+test "$(git diff v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerBoundGap3.lean | wc -l)" -eq 0
 test "$(git diff v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start -- lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean | wc -l)" -eq 0
 test "$(git diff v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 test "$(git diff v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
@@ -3434,6 +3458,12 @@ grep -q "matveev_height_B0_gt_two" \
 grep -q "matveev_log_height_monotone" \
   paper/mcom-draft.tex
 grep -q "matveev_C_exp_bound_lt_zero_of_pos_log" \
+  paper/mcom-draft.tex
+grep -q "matveev_exp_of_bound_pos_lt_one" \
+  paper/mcom-draft.tex
+grep -q "matveev_exp_of_bound_pos" \
+  paper/mcom-draft.tex
+grep -q "matveev_target_exp_lower" \
   paper/mcom-draft.tex
 grep -q "bugeaud_LLL_basis_holds" \
   paper/mcom-draft.tex

@@ -1,6 +1,21 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone`
+Latest tag / HEAD: `v24.0.2-Beal-44-13-Level-26-Matveev-Exp-Bound-Properties`
+Most current as of 2026-09-12, **not** final.
+`BealMatveevThm14.lean` adds Real.exp
+properties of the displayed Matveev
+exponent. `0 < exp(C_exp_bound) < 1`.
+`matveev_target_exp_lower` names that
+positive number. Target and
+`baker_bound_gap3` stay uninhabited
+def Props. Stay in v24.x until
+`|Λ| > exp(-C)` is a theorem. Locked
+Lean 0 vs v24.0.1 `4d66383` except
+`BealMatveevThm14.lean`. Previous v24.0.1
+DOI `10.5281/zenodo.22730460`
+(concept `10.5281/zenodo.22379293`).
+
+Latest prior tag: `v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone`
 Most current as of 2026-09-12, **not** final.
 `BealMatveevThm14.lean` adds height /
 log monotone lemmas toward Matveev

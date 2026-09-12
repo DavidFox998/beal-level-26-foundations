@@ -1,3 +1,20 @@
+# FINAL v24.0.2 — Matveev exp bound properties (not final)
+
+Latest tag `v24.0.2-Beal-44-13-Level-26-Matveev-Exp-Bound-Properties`.
+`0 < Real.exp C_exp_bound < 1`.
+`matveev_C_exp_bound ≤ -10^12`.
+`matveev_target_exp_lower` names the
+displayed lower-bound shape. Target and
+`baker_bound_gap3` stay uninhabited
+def Props. Stay in v24.x until
+`|Λ| > exp(-C)` is a theorem.
+Locked Lean 0 vs v24.0.1 `4d66383` /
+`10.5281/zenodo.22730460` except
+`BealMatveevThm14.lean`.
+Most current as of 2026-09-12, **not** a
+final Beal proof. Series concept
+`10.5281/zenodo.22379293`.
+
 # FINAL v24.0.1 — Matveev height and log monotone (not final)
 
 Latest tag `v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone`.
