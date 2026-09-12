@@ -1,3 +1,9 @@
+# v10.0.0 paper archive / v9.4.0 chunked 1e6 kernel census
+
+Paper archive tag `v10.0.0-paper-B14-Baker-1e6-DOI`.
+Math DOI `10.5281/zenodo.22712897`.
+Paper DOI `10.5281/zenodo.22713047`.
+
 # v9.4.0 chunked 1e6 kernel census
 
 `lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean`
@@ -23,12 +29,13 @@ Inhabited:
   the conjunction of those 25 slices
 - `baker_conditional_gap3_full`:
   `baker_bound_gap3 → ∀ B, ¬∃ A`.
-  `B ≤ B0` by the residue cover extended
-  to `10^6`:
-  - `B % 16 ≠ 14` via `beal_gap3_mod16_elim_not14`
+  `B ≤ B0 = 10^6` by the residue cover:
+  - Mod16 15/16 class (`196`, `1500003`)
+    via `beal_gap3_mod16_elim_not14`
   - `B ≡ 14` via the chunked kernel census
     (fourth-power tests at
-    `q = 53, 29, 109, 17, 5, 7, 11, 13, 19, 23, 31, 37`)
+    `q = 53, 29, 109` expanded by
+    `17, 5, 7, 11, 13, 19, 23, 31, 37`)
   - `B > B0` by the Baker premise
 - Allowed axioms
   `[propext, Quot.sound]`

@@ -1,3 +1,20 @@
+# FINAL v10.0.0 — paper archive B14 + Baker 1e6 + Tate DOI
+
+Latest tag `v10.0.0-paper-B14-Baker-1e6-DOI`.
+Paper archive of the v9.4.0 census
+(62500 values / 25 chunks
+`allKilled_chunk_0` .. `allKilled_chunk_24`,
+`allKilled_62500`, `allKilled_1e6`),
+Baker-conditional `∀ B`
+(`baker_conditional_gap3_full`), and
+Tate bound `tate_conductor_bound_rhs = 2⁵ * rad * 13`.
+Archive Zenodo DOI: math
+`10.5281/zenodo.22712897`, paper
+`10.5281/zenodo.22713047`.
+`baker_bound_gap3`, `frey_tate_conductor`,
+`conductor_86`, `B14_honest` stay Prop.
+Not BCDT.  Not unconditional Beal.
+
 # FINAL v9.4.0 — chunked 1e6 kernel census
 
 Latest tag `v9.4.0-chunked-1e6-final`.

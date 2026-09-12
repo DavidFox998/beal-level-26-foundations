@@ -2899,6 +2899,22 @@ grep -q "allKilled_62500" \
   paper/mcom-draft.tex
 grep -q "allKilled_1e6" \
   paper/mcom-draft.tex
+grep -q "v10.0.0-paper-B14-Baker-1e6-DOI" \
+  README.md
+grep -q "10.5281/zenodo.22712897" \
+  README.md
+grep -q "10.5281/zenodo.22713047" \
+  README.md
+grep -q "62500" \
+  README.md
+grep -q "tate_conductor_bound_rhs" \
+  README.md
+grep -q "10.5281/zenodo.22712897" \
+  .zenodo.json
+grep -q "10.5281/zenodo.22713047" \
+  .zenodo.json
+grep -q "v10.0.0-paper-B14-Baker-1e6-DOI" \
+  paper/mcom-draft.tex
 grep -q "needs Baker, not Zsig" \
   paper/mcom-draft.tex
 test ! -n "$(grep -E '^axiom |import BealLevel26Foundations.Beal.FullProof.RibetMazur' \

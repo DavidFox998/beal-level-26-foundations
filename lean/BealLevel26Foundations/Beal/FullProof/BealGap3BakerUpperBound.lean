@@ -3,7 +3,10 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v9.4.0 -- chunked 1e6 kernel census.
+Track B v10.0.0 -- paper archive of the
+v9.4.0 chunked 1e6 kernel census.
+Math DOI 10.5281/zenodo.22712897.
+Paper DOI 10.5281/zenodo.22713047.
 
 `baker_conditional_gap3_full` stays
 inhabited: baker_bound_gap3 -> forall B,
@@ -27,11 +30,13 @@ N(E) missing from Mathlib 4.12).
 divide 2^5*3*13).  `B14_honest` stays
 Prop.  Does not inhabit those four.
 
-B <= B0 is the residue cover to 10^6:
-* B % 16 != 14 via beal_gap3_mod16_elim_not14
+B <= B0 = 1e6 is the residue cover:
+* Mod16 15/16 class (B % 16 != 14),
+  including the named rows 196 and
+  1500003, via beal_gap3_mod16_elim_not14
 * B == 14 via fourth-power tests at
-  q = 53, 29, 109, 17, 5, 7, 11, 13,
-  19, 23, 31, 37.
+  q = 53, 29, 109, expanded by
+  17, 5, 7, 11, 13, 19, 23, 31, 37.
 
 B > B0 uses the Baker premise.
 
@@ -670,10 +675,13 @@ theorem baker_bound_gap3_implies_at_B0
     exact hlt
   exact hLarge B hlt'
 
-/-- Conditional gap-3 forall.  B <= B0 by the
-    expanded residue cover; B > B0 by the
-    Baker / Bugeaud premise.  Not an
-    unconditional Beal forall. -/
+/-- Conditional gap-3 forall.
+    B <= B0 = 1e6 by the residue cover:
+    Mod16 15/16 class (196, 1500003) plus
+    expanded moduli 17, 5, 7, 11, 13, 19,
+    23, 31, 37 for B == 14.
+    B > B0 by the Baker premise.
+    Not an unconditional Beal forall. -/
 theorem baker_conditional_gap3_full
     (hBaker : baker_bound_gap3) :
     ∀ B : Nat,

@@ -1,6 +1,15 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v9.4.0-chunked-1e6-final`
+Latest tag / HEAD: `v10.0.0-paper-B14-Baker-1e6-DOI`
+Paper archive of the v9.4.0 census (62500
+values / 25 chunks), Baker-conditional
+`∀ B`, and Tate bound `2⁵ * rad * 13`.
+Archive Zenodo DOI: math
+`10.5281/zenodo.22712897`, paper
+`10.5281/zenodo.22713047`.
+`baker_bound_gap3`, `frey_tate_conductor`,
+`conductor_86`, `B14_honest` stay Prop.
+Base: `v9.4.0-chunked-1e6-final`
 `allKilled_chunk_0` .. `allKilled_chunk_24`:
 each `allKilled start 2500 = true` by
 rfl / kernel decide on one 2500-slice of

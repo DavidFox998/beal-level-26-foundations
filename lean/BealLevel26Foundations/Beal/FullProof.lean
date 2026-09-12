@@ -24,6 +24,24 @@ import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
 import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 
 /-!
+# FullProof track (v10.0.0)
+
+Paper archive of the v9.4.0 census and
+v9.2.0 Tate bound.  Math DOI
+`10.5281/zenodo.22712897`.  Paper DOI
+`10.5281/zenodo.22713047`.
+Keeps `allKilled_chunk_0` ..
+`allKilled_chunk_24`, `allKilled_62500`,
+`allKilled_1e6`, and
+`baker_conditional_gap3_full`.
+Keeps Tate `c₄ = 16*(A⁸+A⁴B⁴+B⁸)`,
+`tate_2adic_exponent_le5`,
+`tate_odd_exponent_le_one`,
+`tate_conductor_bound_rhs = 2⁵*rad*13`.
+`baker_bound_gap3`, `frey_tate_conductor`,
+`conductor_86`, `B14_honest` stay Prop.
+Not BCDT.
+
 # FullProof track (v9.4.0)
 
 Aggregator for Track B.  v9.4.0 names the
