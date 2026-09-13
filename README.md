@@ -27,12 +27,18 @@ On a gap-3 solution, `B < A` and `A ≈ (B+3)^{13/4}`. The old
 
 - `gap3_A_bounds` — `0 < A`, `1 < A`, `1 < B+3`, `A^4 < (B+3)^13`,
   `log A < (13/4) log(B+3)` (proved)
-- `matveev_theorem_1_4_general` — Matveev 2000 Thm 1.4 on
-  `α1 = A`, `α2 = B+3` (uninhabited `def Prop`; not in Mathlib 4.12)
+- `matveev_theorem_1_4_general` — Matveev 2000 Thm 1.4 n=2 on
+  `α1 = A`, `α2 = B+3`, `b1=4`, `b2=-13`, `D=1`, `B=13`
+  (uninhabited `def Prop`; not in Mathlib 4.12)
 - `matveev_product_bound_gap3` — unrestricted product on every
   solution (uninhabited `def Prop`: LHS is `O((log(B+3))³)`, RHS constant)
 - `matveev_product_bound_of_B3_le_height` — the product that *is*
   a theorem, when `B+3 ≤ height_B0` (includes `B ≤ 10^6`)
+- `matveev_gap3_lower_of_general_of_B_le_B0` — `hGen` + `B ≤ 10^6`
+  ⇒ `|Λ| > exp(C_exp_bound)` (proved; does not inhabit `hGen`)
+- `matveev_gap3_conditional_B_of_general` — `hGen` ⇒
+  `B^4(1+δ) > δ(B+3)^13` with Matveev `δ`. Does **not** give
+  `B ≤ 10^6` (that is LLL / `baker_bound_gap3`)
 - `matveev_gap3_lower_of` — general + unrestricted product ⇒ target
   (proved; does not inhabit the hypotheses)
 - `matveev_gap3_lower` — the v25 goal (`sorry`)

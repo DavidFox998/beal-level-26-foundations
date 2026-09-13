@@ -5,7 +5,8 @@ conditional B^4(1+exp(C))>exp(C)(B+3)^13 toward B0=10^6
 Goal: inhabit matveev_inequality_real_target = matveev_theorem_1_4_gap3_target
 for v25 B≤B0 unconditional
 Axioms: [propext, Classical.choice, Quot.sound] only
-0 sorry except matveev_gap3_lower. Product inhabited only for B+3 ≤ height_B0.
+0 sorry except matveev_gap3_lower. hGen is def Prop (not in Mathlib).
+Product inhabited only for B+3 ≤ height_B0. hGen ⇏ B ≤ 10^6.
 -/
 import Mathlib
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
@@ -272,17 +273,49 @@ lemma log_height_B0_lt_sixty_three :
     _ < (21 : ℝ) * 3 := h21
     _ = 63 := h63
 
-/-! ## Matveev 2000 Thm 1.4 general, gap-3 n=2 heights
+/-! ## Matveev 2000 Thm 1.4, n=2 displayed data
 
-    α₁ = A, α₂ = B+3 (not the Nat `B`), b₁ = 4, b₂ = −13, D = 1.
-    `1 < B` is the wrong hyp: Nat `B = 1` occurs, while `1 < B+3`.
-    Heights are the displayed logs (not Mathlib Weil heights).
-    Still a def Prop. Mathlib 4.12 has no Matveev theorem. -/
+    Λ = b₁ log α₁ + b₂ log α₂ = 4 log A − 13 log(B+3),
+    α₁ = A, α₂ = B+3 (not the Nat `B`), D = 1, κ = 1,
+    |bᵢ| max B = 13. Heights are the displayed logs
+    (not Mathlib Weil heights). `1 < B` is the wrong hyp:
+    Nat `B = 1` occurs, while `1 < B+3`.
+
+    The inequality itself is still a def Prop.
+    Mathlib 4.12 has no linear-forms-in-logs theorem
+    of Matveev / Baker / Bugeaud type. -/
+
+def matveev_n : ℕ := 2
+def matveev_D : ℕ := 1
+def matveev_kappa : ℕ := 1
+def matveev_b1 : ℤ := 4
+def matveev_b2 : ℤ := -13
+def matveev_B_max : ℕ := 13
+
+theorem matveev_n_eq : matveev_n = 2 := rfl
+theorem matveev_D_eq : matveev_D = 1 := rfl
+theorem matveev_kappa_eq : matveev_kappa = 1 := rfl
+theorem matveev_b1_eq : matveev_b1 = 4 := rfl
+theorem matveev_b2_eq : matveev_b2 = -13 := rfl
+theorem matveev_B_max_eq : matveev_B_max = 13 := rfl
+
+theorem matveev_B_max_eq_max_abs :
+    max (|matveev_b1|) (|matveev_b2|) = (13 : ℤ) := by
+  decide
+
+noncomputable def matveev_B0_term (α1 α2 : ℝ) : ℝ :=
+  Real.log (13 : ℝ) + Real.log (Real.log (13 : ℝ)) +
+    Real.log α1 + Real.log α2
 
 noncomputable def matveev_height_product (α1 α2 : ℝ) : ℝ :=
-  C1_floor_real * Real.log α1 * Real.log α2 *
-    (Real.log (13 : ℝ) + Real.log (Real.log (13 : ℝ)) +
-      Real.log α1 + Real.log α2)
+  C1_floor_real * Real.log α1 * Real.log α2 * matveev_B0_term α1 α2
+
+theorem matveev_height_product_expanded (α1 α2 : ℝ) :
+    matveev_height_product α1 α2 =
+      C1_floor_real * Real.log α1 * Real.log α2 *
+        (Real.log (13 : ℝ) + Real.log (Real.log (13 : ℝ)) +
+          Real.log α1 + Real.log α2) :=
+  rfl
 
 def matveev_theorem_1_4_general : Prop :=
   ∀ (α1 α2 : ℝ) (_h1 : 1 < α1) (_h2 : 1 < α2),
@@ -526,28 +559,153 @@ lemma Lambda_gap3_real_eq_alpha (A B : ℕ) :
   unfold Lambda_gap3_real
   rfl
 
+lemma Lambda_gap3_ne_zero (A B : ℕ)
+    (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hB : 0 < B) :
+    Lambda_gap3_real (A : ℝ) (B : ℝ) ≠ 0 := by
+  have hpow : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 := hsol
+  have hlt := (matveev_gap3_log_form_upper_bound hpow hB).1
+  rw [Lambda_gap3_real_nat]
+  exact ne_of_lt hlt
+
+lemma abs_Lambda_le_ratio (A B : ℕ)
+    (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) :
+    |Lambda_gap3_real (A : ℝ) (B : ℝ)| ≤
+      (B : ℝ) ^ 4 / (A : ℝ) ^ 4 := by
+  have hpow : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 := hsol
+  rw [Lambda_gap3_real_nat]
+  exact matveev_gap3_abs_lambda_le_ratio hpow
+
+/-- Apply the uninhabited general theorem on a gap-3 solution. -/
+theorem matveev_general_on_gap3
+    (hGen : matveev_theorem_1_4_general)
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hB : 0 < B) :
+    |Lambda_gap3_real (A : ℝ) (B : ℝ)| >
+      Real.exp (-matveev_height_product (A : ℝ) (B + 3 : ℝ)) := by
+  have hb := gap3_A_bounds A B hsol hB
+  have hA1 : (1 : ℝ) < (A : ℝ) := by exact_mod_cast hb.2.1
+  have hA2 : (1 : ℝ) < (B + 3 : ℝ) := by exact_mod_cast hb.2.2.1
+  have hG := hGen (A : ℝ) (B + 3 : ℝ) hA1 hA2
+  simpa [Lambda_gap3_real_eq_alpha] using hG
+
+lemma exp_C_le_exp_neg_product
+    {A B : ℕ}
+    (hP : matveev_height_product (A : ℝ) (B + 3 : ℝ) ≤
+      height_B0_real * Real.log height_B0_real) :
+    Real.exp C_exp_bound_real ≤
+      Real.exp (-matveev_height_product (A : ℝ) (B + 3 : ℝ)) := by
+  have hneg : -matveev_height_product (A : ℝ) (B + 3 : ℝ) ≥
+      C_exp_bound_real := by
+    unfold C_exp_bound_real
+    have := neg_le_neg hP
+    simpa [neg_mul] using this
+  exact Real.exp_le_exp.mpr hneg
+
+/-- `hGen` plus the *proved* product on `B+3 ≤ height_B0`.
+    This is the honest chain: no unrestricted product. -/
+theorem matveev_gap3_lower_of_general_of_B3_le_height
+    (hGen : matveev_theorem_1_4_general)
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13)
+    (hB : 0 < B) (hB3 : B + 3 ≤ height_B0_nat) :
+    |Lambda_gap3_real (A : ℝ) (B : ℝ)| > Real.exp C_exp_bound_real :=
+  lt_of_le_of_lt
+    (exp_C_le_exp_neg_product
+      (matveev_product_bound_of_B3_le_height A B hsol hB hB3))
+    (matveev_general_on_gap3 hGen hsol hB)
+
+/-- v25 range: `hGen` and `B ≤ 10^6` give the uniform lower bound. -/
+theorem matveev_gap3_lower_of_general_of_B_le_B0
+    (hGen : matveev_theorem_1_4_general)
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13)
+    (hB : 0 < B) (hB0 : B ≤ 1000000) :
+    |Lambda_gap3_real (A : ℝ) (B : ℝ)| > Real.exp C_exp_bound_real :=
+  lt_of_le_of_lt
+    (exp_C_le_exp_neg_product
+      (matveev_product_bound_of_B_le_B0 A B hsol hB hB0))
+    (matveev_general_on_gap3 hGen hsol hB)
+
+/-- v24.4.0 conditional with the Matveev δ, not the uniform `C_exp_bound`.
+    `hGen` gives |Λ| > δ := exp(−C1·A1·A2·B0_term). Combined with
+    |Λ| ≤ B^4/A^4 this is B^4(1+δ) > δ(B+3)^13.
+    This does **not** force `B ≤ 10^6`: raw Matveev vs B^4/A^4 only
+    contradicts astronomically large B. LLL / Bugeaud is still
+    `baker_bound_gap3`. -/
+theorem matveev_gap3_conditional_B_of_general
+    (hGen : matveev_theorem_1_4_general)
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hB : 0 < B) :
+    Real.exp (-matveev_height_product (A : ℝ) (B + 3 : ℝ)) *
+        ((B + 3 : ℕ) : ℝ) ^ 13 <
+      (B : ℝ) ^ 4 *
+        (1 + Real.exp (-matveev_height_product (A : ℝ) (B + 3 : ℝ))) := by
+  have hpow : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 := hsol
+  have hG := matveev_general_on_gap3 hGen hsol hB
+  have hle := abs_Lambda_le_ratio A B hsol
+  have hδ : Real.exp (-matveev_height_product (A : ℝ) (B + 3 : ℝ)) <
+      (B : ℝ) ^ 4 / (A : ℝ) ^ 4 :=
+    hG.trans_le hle
+  have hratio := matveev_gap3_ratio_explicit hpow
+  rw [hratio] at hδ
+  have hA4_pos := matveev_gap3_A_pow_pos hpow
+  have hdenom_eq := matveev_gap3_A_pow_eq_B3_pow_sub_B_pow hpow
+  have hdenom_pos : (0 : ℝ) <
+      ((B + 3 : ℕ) : ℝ) ^ 13 - (B : ℝ) ^ 4 := by
+    rw [← hdenom_eq]
+    exact hA4_pos
+  have hmul :
+      Real.exp (-matveev_height_product (A : ℝ) (B + 3 : ℝ)) *
+          (((B + 3 : ℕ) : ℝ) ^ 13 - (B : ℝ) ^ 4) <
+        (B : ℝ) ^ 4 :=
+    (lt_div_iff hdenom_pos).mp hδ
+  have h1 :
+      Real.exp (-matveev_height_product (A : ℝ) (B + 3 : ℝ)) *
+            ((B + 3 : ℕ) : ℝ) ^ 13 -
+          Real.exp (-matveev_height_product (A : ℝ) (B + 3 : ℝ)) *
+            (B : ℝ) ^ 4 <
+        (B : ℝ) ^ 4 := by
+    calc
+      Real.exp (-matveev_height_product (A : ℝ) (B + 3 : ℝ)) *
+            ((B + 3 : ℕ) : ℝ) ^ 13 -
+          Real.exp (-matveev_height_product (A : ℝ) (B + 3 : ℝ)) *
+            (B : ℝ) ^ 4
+          = Real.exp (-matveev_height_product (A : ℝ) (B + 3 : ℝ)) *
+              (((B + 3 : ℕ) : ℝ) ^ 13 - (B : ℝ) ^ 4) := by
+        ring
+      _ < (B : ℝ) ^ 4 := hmul
+  calc
+    Real.exp (-matveev_height_product (A : ℝ) (B + 3 : ℝ)) *
+        ((B + 3 : ℕ) : ℝ) ^ 13
+        = Real.exp (-matveev_height_product (A : ℝ) (B + 3 : ℝ)) *
+              ((B + 3 : ℕ) : ℝ) ^ 13 -
+            Real.exp (-matveev_height_product (A : ℝ) (B + 3 : ℝ)) *
+              (B : ℝ) ^ 4 +
+          Real.exp (-matveev_height_product (A : ℝ) (B + 3 : ℝ)) *
+            (B : ℝ) ^ 4 := by
+      ring
+    _ < (B : ℝ) ^ 4 +
+          Real.exp (-matveev_height_product (A : ℝ) (B + 3 : ℝ)) *
+            (B : ℝ) ^ 4 :=
+      add_lt_add_right h1 _
+    _ = (B : ℝ) ^ 4 *
+          (1 + Real.exp (-matveev_height_product (A : ℝ) (B + 3 : ℝ))) := by
+      ring
+
+/-- `hGen` does not inhabit `baker_bound_gap3`. The LLL / Bugeaud
+    step from the conditional B inequality down to `B ≤ 10^6`
+    is still a def Prop. -/
+def baker_bound_gap3_of_matveev_general : Prop :=
+  matveev_theorem_1_4_general → baker_bound_gap3
+
 /-- Composition: Matveev 1.4 general + unrestricted product ⇒ target.
-    Sorry-free. Does not inhabit either hypothesis. -/
+    Sorry-free. Does not inhabit either hypothesis.
+    Prefer `matveev_gap3_lower_of_general_of_B3_le_height`: the
+    unrestricted product is not a theorem. -/
 theorem matveev_gap3_lower_of
     (hGen : matveev_theorem_1_4_general)
     (hProd : matveev_product_bound_gap3) :
     matveev_theorem_1_4_gap3_target := by
   have hexpanded : matveev_theorem_1_4_gap3_target_expanded := by
     intro A B hB hsol
-    have hb := gap3_A_bounds A B hsol hB
-    have hA1 : (1 : ℝ) < (A : ℝ) := by exact_mod_cast hb.2.1
-    have hA2 : (1 : ℝ) < (B + 3 : ℝ) := by exact_mod_cast hb.2.2.1
-    have hG := hGen (A : ℝ) (B + 3 : ℝ) hA1 hA2
-    have hP := hProd A B hsol hB
-    have hneg : -matveev_height_product (A : ℝ) (B + 3 : ℝ) ≥
-        C_exp_bound_real := by
-      unfold C_exp_bound_real
-      have := neg_le_neg hP
-      simpa [neg_mul] using this
-    have hexp : Real.exp C_exp_bound_real ≤
-        Real.exp (-matveev_height_product (A : ℝ) (B + 3 : ℝ)) :=
-      Real.exp_le_exp.mpr hneg
-    exact lt_of_le_of_lt hexp hG
+    exact lt_of_le_of_lt (exp_C_le_exp_neg_product (hProd A B hsol hB))
+      (matveev_general_on_gap3 hGen hsol hB)
   change matveev_inequality_real_target
   exact gap3_target_expanded_eq_level26 ▸ hexpanded
 
@@ -586,10 +744,16 @@ theorem gap3_forall_of_baker
 #check C_exp_bound_real
 #check Lambda_gap3_real
 #check gap3_A_bounds
+#check matveev_n
+#check matveev_B_max
 #check matveev_theorem_1_4_general
 #check matveev_product_bound_gap3
 #check matveev_product_bound_of_B3_le_height
 #check matveev_product_bound_of_B_le_B0
+#check matveev_general_on_gap3
+#check matveev_gap3_lower_of_general_of_B3_le_height
+#check matveev_gap3_lower_of_general_of_B_le_B0
+#check matveev_gap3_conditional_B_of_general
 #check matveev_gap3_lower_of
 #check matveev_theorem_1_4_gap3_target
 #check matveev_gap3_lower
@@ -600,11 +764,18 @@ theorem gap3_forall_of_baker
 #print axioms logA_lt_thirteen_fourths_logB3
 #print axioms gap3_A_bounds
 #print axioms abs_Lambda_eq_log_one_plus
+#print axioms Lambda_gap3_ne_zero
+#print axioms abs_Lambda_le_ratio
 #print axioms log_thirteen_lt_three
 #print axioms log_log_thirteen_lt_one
 #print axioms log_height_B0_lt_sixty_three
 #print axioms matveev_product_bound_of_B3_le_height
 #print axioms matveev_product_bound_of_B_le_B0
+#print axioms matveev_B_max_eq_max_abs
+#print axioms matveev_general_on_gap3
+#print axioms matveev_gap3_lower_of_general_of_B3_le_height
+#print axioms matveev_gap3_lower_of_general_of_B_le_B0
+#print axioms matveev_gap3_conditional_B_of_general
 #print axioms matveev_gap3_lower_of
 #print axioms gap3_target_eq_matveev_inequality
 #print axioms C_exp_bound_real_eq_level26
