@@ -1,6 +1,7 @@
 # BealMatveevThm14 — v24.0.0 Matveev 2000 Thm 1.4 formalization start
 
 **Tag.** `v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower`.
+**DOI.** `10.5281/zenodo.22731634`.
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
 **Parent.** v24.2.2 `ffd8343` / `v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le` / DOI `10.5281/zenodo.22731508`.

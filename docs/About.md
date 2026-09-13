@@ -10,8 +10,8 @@ $A^4 + B^4 = (B+3)^{13}$, THEN $B^4/A^4 > \exp(C_{\mathrm{exp\_bound}})$:
 `matveev_gap3_ratio_lower_bound_conditional` (solution ∧ target $\implies B^4/A^4 > \exp(C_{\mathrm{exp\_bound}})$).
 Target and `baker_bound_gap3` stay uninhabited def Props.
 Locked Lean 0 vs v24.2.2 `ffd8343` except `BealMatveevThm14.lean`
-and `RibetMazur.lean`. Previous v24.2.2 DOI `10.5281/zenodo.22731508`
-(concept `10.5281/zenodo.22379293`).
+and `RibetMazur.lean`. DOI `10.5281/zenodo.22731634` (previous v24.2.2 DOI `10.5281/zenodo.22731508`,
+concept `10.5281/zenodo.22379293`).
 
 Latest prior tag: `v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le`
 Most current as of 2026-09-13, **not** final.

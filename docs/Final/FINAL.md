@@ -1,6 +1,7 @@
 # FINAL v24.2.3 — Conditional Lower Bound Implies Ratio Bound (not final)
 
 Latest tag `v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower`.
+DOI `10.5281/zenodo.22731634`.
 On $A^4 + B^4 = (B+3)^{13}$:
 $|\Lambda| > \text{target} \implies B^4/A^4 > \text{target}$ via `matveev_conditional_lower_implies_ratio_gt_exp`,
 unconditioned form via `matveev_conditional_lower_implies_ratio_gt_exp_of_solution`,
