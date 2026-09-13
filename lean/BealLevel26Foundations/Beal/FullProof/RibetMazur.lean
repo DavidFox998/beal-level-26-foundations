@@ -6125,6 +6125,24 @@ theorem matveev_gap3_abs_lambda_lt_one_of_small_ratio {A B : Nat}
     |matveev_log_form A B| < 1 :=
   BealLevel26Foundations.BealMatveevThm14.matveev_gap3_abs_lambda_lt_one_of_small_ratio hsol hsmall
 
+theorem matveev_conditional_lower_implies_ratio_gt_exp {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (hlower : matveev_target_exp_lower < |matveev_log_form A B|) :
+    matveev_target_exp_lower < (B : Real) ^ 4 / (A : Real) ^ 4 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_conditional_lower_implies_ratio_gt_exp hsol hlower
+
+theorem matveev_conditional_lower_implies_ratio_gt_exp_of_solution {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    matveev_target_exp_lower < |matveev_log_form A B| →
+      matveev_target_exp_lower < (B : Real) ^ 4 / (A : Real) ^ 4 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_conditional_lower_implies_ratio_gt_exp_of_solution hsol
+
+theorem matveev_gap3_ratio_lower_bound_conditional {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (htarget : matveev_inequality_real_target) :
+    Real.exp matveev_C_exp_bound < (B : Real) ^ 4 / (A : Real) ^ 4 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_gap3_ratio_lower_bound_conditional hsol htarget
+
 /-! ## v14.0.0 — J0 / mwrank / formal displayed certs -/
 
 def J0DecompositionCert_26 :=
@@ -7247,6 +7265,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check matveev_gap3_abs_lambda_nonneg
 #check matveev_gap3_abs_lambda_le_ratio
 #check matveev_gap3_abs_lambda_lt_one_of_small_ratio
+#check matveev_conditional_lower_implies_ratio_gt_exp
+#check matveev_conditional_lower_implies_ratio_gt_exp_of_solution
+#check matveev_gap3_ratio_lower_bound_conditional
 #check J0DecompositionCert_26
 #check J0DecompositionCert_26_displayed
 #check J0DecompositionSoundness_26
@@ -7860,6 +7881,9 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms matveev_gap3_abs_lambda_nonneg
 #print axioms matveev_gap3_abs_lambda_le_ratio
 #print axioms matveev_gap3_abs_lambda_lt_one_of_small_ratio
+#print axioms matveev_conditional_lower_implies_ratio_gt_exp
+#print axioms matveev_conditional_lower_implies_ratio_gt_exp_of_solution
+#print axioms matveev_gap3_ratio_lower_bound_conditional
 #print axioms J0DecompositionSoundness_26_holds
 #print axioms MwrankCertificateSoundness_26_holds
 #print axioms FormalImmersionSoundness_26_holds

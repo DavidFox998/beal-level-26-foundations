@@ -1,3 +1,19 @@
+# FINAL v24.2.3 — Conditional Lower Bound Implies Ratio Bound (not final)
+
+Latest tag `v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower`.
+On $A^4 + B^4 = (B+3)^{13}$:
+$|\Lambda| > \text{target} \implies B^4/A^4 > \text{target}$ via `matveev_conditional_lower_implies_ratio_gt_exp`,
+unconditioned form via `matveev_conditional_lower_implies_ratio_gt_exp_of_solution`,
+`matveev_gap3_ratio_lower_bound_conditional` (solution ∧ target $\implies B^4/A^4 > \exp(C_{\mathrm{exp\_bound}})$).
+Target and `baker_bound_gap3` stay uninhabited
+def Props. Links conditional lower bound to ratio toward Baker B0 without claiming lower bound itself.
+Locked Lean 0 vs v24.2.2 `ffd8343` /
+`10.5281/zenodo.22731508` except
+`BealMatveevThm14.lean` and `RibetMazur.lean`.
+Most current as of 2026-09-13, **not** a
+final Beal proof. Series concept
+`10.5281/zenodo.22379293`.
+
 # FINAL v24.2.2 — Logarithmic Bound log(1+x) ≤ x on Gap-3 (not final)
 
 Latest tag `v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le`.

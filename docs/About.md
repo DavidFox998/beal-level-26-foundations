@@ -1,6 +1,19 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le`
+Latest tag / HEAD: `v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower`
+Most current as of 2026-09-13, **not** final.
+`BealMatveevThm14.lean` shows that IF the Matveev lower bound target
+$|\Lambda| > \exp(C_{\mathrm{exp\_bound}})$ were true on a gap-3 solution
+$A^4 + B^4 = (B+3)^{13}$, THEN $B^4/A^4 > \exp(C_{\mathrm{exp\_bound}})$:
+`matveev_conditional_lower_implies_ratio_gt_exp` ($|\Lambda| > \text{target} \implies B^4/A^4 > \text{target}$),
+`matveev_conditional_lower_implies_ratio_gt_exp_of_solution`,
+`matveev_gap3_ratio_lower_bound_conditional` (solution ∧ target $\implies B^4/A^4 > \exp(C_{\mathrm{exp\_bound}})$).
+Target and `baker_bound_gap3` stay uninhabited def Props.
+Locked Lean 0 vs v24.2.2 `ffd8343` except `BealMatveevThm14.lean`
+and `RibetMazur.lean`. Previous v24.2.2 DOI `10.5281/zenodo.22731508`
+(concept `10.5281/zenodo.22379293`).
+
+Latest prior tag: `v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le`
 Most current as of 2026-09-13, **not** final.
 `BealMatveevThm14.lean` shows $|\Lambda| = \log(1 + B^4/A^4) \le B^4/A^4$
 on gap-3 solutions via the classical upper bound $\log(1+x) \le x$:

@@ -1,6 +1,18 @@
 [![v17 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22729067.svg)](https://doi.org/10.5281/zenodo.22729067) [![v16 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22728705.svg)](https://doi.org/10.5281/zenodo.22728705) [![v15 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22728624.svg)](https://doi.org/10.5281/zenodo.22728624) [![v14 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22722140.svg)](https://doi.org/10.5281/zenodo.22722140) [![v13 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721843.svg)](https://doi.org/10.5281/zenodo.22721843) [![v12 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721089.svg)](https://doi.org/10.5281/zenodo.22721089) [![v11 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721420.svg)](https://doi.org/10.5281/zenodo.22721420) [![math DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22712897.svg)](https://doi.org/10.5281/zenodo.22712897) [![paper DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22713047.svg)](https://doi.org/10.5281/zenodo.22713047) [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le
+# Beal Level 26 Foundations — v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower
+
+**v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower — Conditional Lower Bound Implies Ratio Bound. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+
+Kernel lemmas showing that IF the Matveev lower bound target $|\Lambda| > \exp(C_{\mathrm{exp\_bound}})$ were true on a gap-3 solution $A^4 + B^4 = (B+3)^{13}$, THEN $B^4/A^4 > \exp(C_{\mathrm{exp\_bound}})$, toward the Baker $B_0 = 10^6$ reduction link without claiming the lower bound itself:
+- Keeps all v24.0.0 through v24.2.2 lemmas
+- `matveev_conditional_lower_implies_ratio_gt_exp`: on $A^4 + B^4 = (B+3)^{13}$, if $|\Lambda| > \text{matveev\_target\_exp\_lower}$ then $B^4/A^4 > \text{matveev\_target\_exp\_lower}$ via $|\Lambda| \le B^4/A^4$
+- `matveev_conditional_lower_implies_ratio_gt_exp_of_solution`: unconditioned implication form on solutions
+- `matveev_gap3_ratio_lower_bound_conditional`: on $A^4 + B^4 = (B+3)^{13}$, if `matveev_inequality_real_target` holds then $B^4/A^4 > \exp(C_{\mathrm{exp\_bound}})$
+- `matveev_inequality_real_target` and `baker_bound_gap3` stay uninhabited def Props (Mathlib 4.12 has no Matveev 2000 Thm 1.4)
+- Standard Real axiom pack only: `[propext, Classical.choice, Quot.sound]`, 0 axioms for decide theorems, no sorry
+- Locked Lean 0 vs v24.2.2 / `ffd8343` except `BealMatveevThm14.lean` and `RibetMazur.lean`
+- Previous v24.2.2 DOI [`10.5281/zenodo.22731508`](https://doi.org/10.5281/zenodo.22731508) (concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293))
 
 **v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le — Logarithmic Bound $\log(1+x) \le x$ on Gap-3 Solutions. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
@@ -210,11 +222,12 @@ PARI LLL reduction of the huge Matveev integer `B0_raw` to the displayed cutoff 
 | v24.1.1 | [`10.5281/zenodo.22730846`](https://doi.org/10.5281/zenodo.22730846) | `21df092` | `matveev_C_exp_bound = -(height_B0 * log height_B0)`; `matveev_target_exp_lower_eq`; `0 < height_B0 * log height_B0` |
 | v24.2.0 | [`10.5281/zenodo.22731054`](https://doi.org/10.5281/zenodo.22731054) | `d755428` | log form upper bound: `matveev_gap3_B_pos_of_solution`, `matveev_gap3_A_pos`, `matveev_gap3_log_form_upper_bound`, `matveev_exp_lower_lt_one_and_pos` |
 | v24.2.1 | [`10.5281/zenodo.22731160`](https://doi.org/10.5281/zenodo.22731160) | `ac100cf` | log form as log of ratio: `matveev_gap3_A_pow_pos`, `matveev_gap3_B3_pow_pos`, `matveev_gap3_ratio_eq_one_plus_ratio`, `matveev_gap3_log_form_eq_log_ratio`, `matveev_gap3_abs_lambda_eq_log_one_plus_ratio` |
-| v24.2.2 | pending webhook | — | log bound $\log(1+x)\le x$: `matveev_log_one_plus_le_self`, `matveev_gap3_B_pow_div_A_pow_pos`, `matveev_gap3_abs_lambda_nonneg`, `matveev_gap3_abs_lambda_le_ratio`, `matveev_gap3_abs_lambda_lt_one_of_small_ratio` |
+| v24.2.2 | [`10.5281/zenodo.22731508`](https://doi.org/10.5281/zenodo.22731508) | `ffd8343` | log bound $\log(1+x)\le x$: `matveev_log_one_plus_le_self`, `matveev_gap3_B_pow_div_A_pow_pos`, `matveev_gap3_abs_lambda_nonneg`, `matveev_gap3_abs_lambda_le_ratio`, `matveev_gap3_abs_lambda_lt_one_of_small_ratio` |
+| v24.2.3 | pending webhook | — | conditional lower implies ratio bound: `matveev_conditional_lower_implies_ratio_gt_exp`, `matveev_conditional_lower_implies_ratio_gt_exp_of_solution`, `matveev_gap3_ratio_lower_bound_conditional` |
 
 Most current snapshot as of 2026-09-13, **not** a final Beal proof. Concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293). See [`docs/CUMULATIVE_ARCHIVE_v10_v17.md`](docs/CUMULATIVE_ARCHIVE_v10_v17.md).
 
-**Honesty lock (most current).** `git diff v24.2.1 -- BealFreyTateConductor.lean BealGap3BakerUpperBound.lean BealLevel26ModularElimination.lean BealBakerB0Certificate.lean BealBakerB0ReductionCertificate.lean BealMatveevConstants.lean BealBugeaudLLLFormal.lean BealMatveevInequality.lean BealMatveevInequalityReal.lean BealBakerBoundGap3.lean` = 0. Only `BealMatveevThm14.lean` and `RibetMazur.lean` are extended. Tate 0 lines since v11. Baker-upper-bound 0 lines since v12. v14 displayed J0 / mwrank / formal unchanged. `baker_bound_gap3` and `matveev_inequality_real_target` stay uninhabited def Props. Main pack prints `[propext, Classical.choice, Quot.sound]` only.
+**Honesty lock (most current).** `git diff v24.2.2 -- BealFreyTateConductor.lean BealGap3BakerUpperBound.lean BealLevel26ModularElimination.lean BealBakerB0Certificate.lean BealBakerB0ReductionCertificate.lean BealMatveevConstants.lean BealBugeaudLLLFormal.lean BealMatveevInequality.lean BealMatveevInequalityReal.lean BealBakerBoundGap3.lean` = 0. Only `BealMatveevThm14.lean` and `RibetMazur.lean` are extended. Tate 0 lines since v11. Baker-upper-bound 0 lines since v12. v14 displayed J0 / mwrank / formal unchanged. `baker_bound_gap3` and `matveev_inequality_real_target` stay uninhabited def Props. Main pack prints `[propext, Classical.choice, Quot.sound]` only.
 
 **v15.0.0-Baker-B0-PARI-Certificate — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
@@ -382,6 +395,7 @@ Releases:
 - v8.72.1-doi-badge inserts real Zenodo DOI `10.5281/zenodo.22698257` from the v8.70.0 mint
 - v8.73.0-modularity-exists-level2 displayed S2(26) dim2 via 0≠12 at p=53; Chain ExistsNewformLevel2 stays 0≠0; DOI 10.5281/zenodo.22698257 still cites v8.69.0
 - v8.74.0-frey-irreducible-mod13 displayed frey_mod13_irreducible at B=196 and B=1500003; frey_modular Classical.em; level_lowering_to_26 stays Prop
+- v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower `matveev_conditional_lower_implies_ratio_gt_exp`, `matveev_conditional_lower_implies_ratio_gt_exp_of_solution`, `matveev_gap3_ratio_lower_bound_conditional`; target and `baker_bound_gap3` stay uninhabited; locked Lean 0 vs v24.2.2 `ffd8343` except `BealMatveevThm14.lean` and `RibetMazur.lean`
 - v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le `matveev_log_one_plus_le_self`, `matveev_gap3_B_pow_div_A_pow_pos`, `matveev_gap3_abs_lambda_nonneg`, `matveev_gap3_abs_lambda_le_ratio`, `matveev_gap3_abs_lambda_lt_one_of_small_ratio`; target and `baker_bound_gap3` stay uninhabited; locked Lean 0 vs v24.2.1 `ac100cf` except `BealMatveevThm14.lean` and `RibetMazur.lean`
 - v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio `matveev_gap3_A_pow_pos`, `matveev_gap3_B3_pow_pos`, `matveev_gap3_ratio_eq_one_plus_ratio`, `matveev_gap3_log_form_eq_log_ratio`, `matveev_gap3_abs_lambda_eq_log_one_plus_ratio`; target and `baker_bound_gap3` stay uninhabited; locked Lean 0 vs v24.2.0 `d755428` except `BealMatveevThm14.lean` and `RibetMazur.lean`; DOI `10.5281/zenodo.22731160`
 - v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound `matveev_gap3_B_pos_of_solution`, `matveev_gap3_A_pos`, `matveev_gap3_log_form_upper_bound`, `matveev_exp_lower_lt_one_and_pos`; target and `baker_bound_gap3` stay uninhabited; locked Lean 0 vs v24.1.1 `21df092` except `BealMatveevThm14.lean` and `RibetMazur.lean`; DOI `10.5281/zenodo.22731054`

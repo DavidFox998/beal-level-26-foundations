@@ -604,6 +604,40 @@ def matveev_inequality_real_formal_remaining : Prop :=
 def baker_bound_gap3_remaining_thm14 : Prop :=
   baker_bound_gap3
 
+/-! ## v24.2.3 — Conditional lower bound implies ratio bound
+
+    If the Matveev lower bound target |Lambda| > exp(C_exp_bound)
+    were true on a gap-3 solution, then
+    B^4 / A^4 > exp(C_exp_bound).
+    Uses |Lambda| ≤ B^4 / A^4 from v24.2.2.
+    matveev_inequality_real_target stays an uninhabited def Prop. -/
+
+/-- On a gap-3 solution, if |Lambda| > target then B^4 / A^4 > target. -/
+theorem matveev_conditional_lower_implies_ratio_gt_exp {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (hlower : matveev_target_exp_lower < |matveev_log_form A B|) :
+    matveev_target_exp_lower < (B : Real) ^ 4 / (A : Real) ^ 4 :=
+  hlower.trans_le (matveev_gap3_abs_lambda_le_ratio hsol)
+
+/-- Same conditional ratio bound in unconditioned form on a solution. -/
+theorem matveev_conditional_lower_implies_ratio_gt_exp_of_solution {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    matveev_target_exp_lower < |matveev_log_form A B| →
+      matveev_target_exp_lower < (B : Real) ^ 4 / (A : Real) ^ 4 :=
+  fun hlower => matveev_conditional_lower_implies_ratio_gt_exp hsol hlower
+
+/-- Explicit implication from the uninhabited Prop `matveev_inequality_real_target`
+    and a solution to B^4 / A^4 > exp(C_exp_bound). -/
+theorem matveev_gap3_ratio_lower_bound_conditional {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (htarget : matveev_inequality_real_target) :
+    Real.exp matveev_C_exp_bound < (B : Real) ^ 4 / (A : Real) ^ 4 := by
+  have hB : 0 < B := matveev_gap3_B_pos_of_solution hsol
+  have hgt : |matveev_log_form A B| > Real.exp matveev_C_exp_bound :=
+    htarget A B hB hsol
+  have hle := matveev_gap3_abs_lambda_le_ratio hsol
+  exact gt_of_ge_of_gt hle hgt
+
 #check matveev_C1_floor_eq
 #check matveev_thirty_pow_eq_30_pow_6
 #check matveev_thirty_pow_eq_729000000
@@ -651,6 +685,9 @@ def baker_bound_gap3_remaining_thm14 : Prop :=
 #check matveev_gap3_abs_lambda_nonneg
 #check matveev_gap3_abs_lambda_le_ratio
 #check matveev_gap3_abs_lambda_lt_one_of_small_ratio
+#check matveev_conditional_lower_implies_ratio_gt_exp
+#check matveev_conditional_lower_implies_ratio_gt_exp_of_solution
+#check matveev_gap3_ratio_lower_bound_conditional
 #check matveev_inequality_real_target
 #check baker_bound_gap3_remaining_thm14
 #print axioms matveev_C1_floor_eq
@@ -706,6 +743,9 @@ def baker_bound_gap3_remaining_thm14 : Prop :=
 #print axioms matveev_gap3_abs_lambda_nonneg
 #print axioms matveev_gap3_abs_lambda_le_ratio
 #print axioms matveev_gap3_abs_lambda_lt_one_of_small_ratio
+#print axioms matveev_conditional_lower_implies_ratio_gt_exp
+#print axioms matveev_conditional_lower_implies_ratio_gt_exp_of_solution
+#print axioms matveev_gap3_ratio_lower_bound_conditional
 #print axioms matveev_thm14_C_exp_bound_lt_neg_onee12
 #print axioms matveev_thm14_constants_hold
 

@@ -1,10 +1,34 @@
 # BealMatveevThm14 — v24.0.0 Matveev 2000 Thm 1.4 formalization start
 
-**Tag.** `v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le`.
+**Tag.** `v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower`.
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
-**Parent.** v24.2.1 `ac100cf` / `v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio` / DOI `10.5281/zenodo.22731160`.
+**Parent.** v24.2.2 `ffd8343` / `v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le` / DOI `10.5281/zenodo.22731508`.
 **Concept.** `10.5281/zenodo.22379293`.
+
+## v24.2.3 — conditional lower bound implies ratio bound on gap-3 solutions
+
+```lean
+theorem matveev_conditional_lower_implies_ratio_gt_exp :
+    A^4 + B^4 = (B+3)^13 →
+      matveev_target_exp_lower < |matveev_log_form A B| →
+        matveev_target_exp_lower < (B:Real)^4 / (A:Real)^4
+theorem matveev_conditional_lower_implies_ratio_gt_exp_of_solution :
+    A^4 + B^4 = (B+3)^13 →
+      matveev_target_exp_lower < |matveev_log_form A B| →
+        matveev_target_exp_lower < (B:Real)^4 / (A:Real)^4
+theorem matveev_gap3_ratio_lower_bound_conditional :
+    A^4 + B^4 = (B+3)^13 →
+      matveev_inequality_real_target →
+        Real.exp matveev_C_exp_bound < (B:Real)^4 / (A:Real)^4
+```
+
+On a gap-3 solution $A^4 + B^4 = (B+3)^{13}$:
+- `matveev_conditional_lower_implies_ratio_gt_exp`: IF $|\Lambda| > \exp(C_{\mathrm{exp\_bound}})$ were true, THEN $B^4/A^4 > \exp(C_{\mathrm{exp\_bound}})$ via $|\Lambda| \le B^4/A^4$.
+- `matveev_conditional_lower_implies_ratio_gt_exp_of_solution`: unconditioned implication form.
+- `matveev_gap3_ratio_lower_bound_conditional`: explicit connection from the uninhabited `def Prop` `matveev_inequality_real_target` to the ratio lower bound.
+- Connects the conditional lower bound toward the Baker $B_0 = 10^6$ reduction without claiming the lower bound itself.
+- `matveev_inequality_real_target` and `baker_bound_gap3` stay uninhabited def Props.
 
 ## v24.2.2 — logarithmic bound log(1 + x) ≤ x on gap-3 solutions
 
