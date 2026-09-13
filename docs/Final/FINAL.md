@@ -1,6 +1,7 @@
 # FINAL v24.3.2 — Numerical Tiny Bound exp(C) << 10^{-12} Toward B0 (not final)
 
 Latest tag `v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound`.
+DOI `10.5281/zenodo.22732045`.
 $\mathrm{height}_{B_0} > 10^{20}$ via `matveev_height_B0_gt_onee20`,
 $\log 10 > 2.3$ via `matveev_log_ten_gt_23_div_10` ($2^{83} < 10^{25}$),
 $\log(\mathrm{height}_{B_0}) > 46$ via `matveev_log_height_B0_gt_46`,

@@ -2,6 +2,7 @@
 
 Latest tag / HEAD: `v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound`
 Most current as of 2026-09-13, **not** final.
+DOI `10.5281/zenodo.22732045`.
 `BealMatveevThm14.lean` evaluates the displayed Matveev exponential as
 an extremely small number $0 < \exp(C_{\mathrm{exp\_bound}}) < 10^{-12}$:
 `matveev_height_B0_gt_onee20` ($\mathrm{height}_{B_0} > 10^{20}$),
