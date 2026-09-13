@@ -34,10 +34,25 @@ on `LEAN_PATH`).
 - Higher-order Schwarz: a zero of order `T` at `0` gives
   `|f|_r ≤ (r/R)^T |f|_R` (`schwarz_lemma_of_order`), via iterated
   `dslope` and Mathlib max-modulus. Jensen is not in Mathlib 4.12.
+- Cauchy estimates: `|iteratedDslope f n 0| ≤ M / R^n`
+  (`cauchy_estimate_iteratedDslope`); first-derivative form
+  `|f'(0)| ≤ M/R`. Specialised to `Φ` as
+  `matveevPhi_cauchy_estimate`.
+- Polynomial vanishing: `T ≤ rootMultiplicity 0 p` implies the first
+  `T` iterated dslopes of `p.eval` vanish
+  (`polynomial_iteratedDslope_vanishes`). Schwarz and the analytic
+  small bound are therefore inhabited on `𝐆_a`
+  (`schwarz_lemma_of_order_polynomial`,
+  `matveev_interpolation_analytic_small_bound_polynomial`).
+- Binomial matrix entries are those Taylor coefficients:
+  `C(j,i) = iteratedDslope (1+z)^j i 0`
+  (`iteratedDslope_one_add_pow`).
 - Conditional analytic smallness
   `matveev_interpolation_analytic_small_bound`: if the order is `T`
   and `T log 2 ≥ c L K + log M`, then `|f| ≤ exp(−c L K)` on
-  `|z| ≤ R/2`. Determinant form
+  `|z| ≤ R/2`. With displayed `T = L K` and `c = log 2`, this
+  absorbs once `M ≤ 1` (`analytic_T_absorbs_unit_bound`).
+  Determinant form
   `matveev_interpolation_analytic_small_bound_det` for Schwarz-small
   entries. Unconditional `|Δ| ≤ exp(−c L K)` is false
   (`interpolationDeterminant_L0_not_exp_small`).
@@ -62,8 +77,9 @@ Axioms: `[propext, Classical.choice, Quot.sound]` only.
   has no Wüstholz theorem for exponential polynomials.
 - `size_upper_bound` — unconditional `|Δ| ≤ exp(−c n²)` on a generic
   interpolation matrix. False for `L=0` (`Δ=1`). The *conditional*
-  Schwarz bound is a theorem; vanishing of Matveev's exponential
-  `Φ` still needs Wüstholz (not in Mathlib 4.12).
+  Schwarz bound is a theorem; vanishing of a *polynomial* is
+  inhabited. Vanishing of Matveev's exponential `Φ` still needs
+  Wüstholz (not in Mathlib 4.12).
 
 Unrestricted `matveev_theorem_1_4_gap3_target` and
 `baker_bound_gap3` stay `def Prop`. No minted

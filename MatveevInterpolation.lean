@@ -39,6 +39,9 @@ Proved, axioms `[propext, Classical.choice, Quot.sound]` only:
 * Track 1 integer bound (`matveev_thm14_n2_explicit_of_nat`);
 * Matveev §3 `Φ` (entire exponential polynomial);
 * higher-order Schwarz `|f|_r ≤ (r/R)^T |f|_R`;
+* Cauchy `|iteratedDslope f n 0| ≤ M / R^n`;
+* polynomial vanishing → `iteratedDslope` (so Schwarz is inhabited
+  on `𝐆_a`); binomial matrix entries are those Taylor coefficients;
 * conditional analytic smallness
   `matveev_interpolation_analytic_small_bound`.
 
@@ -46,7 +49,8 @@ Wüstholz for exponential polynomials stays `def Prop`. The analytic
 smallness `|Δ| ≤ exp(−c L K)` is proved **conditionally**
 (`matveev_interpolation_analytic_small_bound`) from a vanishing-order
 hypothesis and Schwarz; it is not an unconditional bound on a generic
-interpolation matrix (`α1=α2=1` gives `Δ=1`). Not v25.
+interpolation matrix (`α1=α2=1` gives `Δ=1`). Polynomial vanishing is
+inhabited; exponential `Φ` vanishing is not. Not v25.
 -/
 
 noncomputable section
@@ -828,6 +832,7 @@ and `log M`.
 -/
 
 open Metric
+open scoped NNReal
 
 /-- One exponential-polynomial term `c · z^ℓ · α1^{k1 z} · α2^{k2 z}`. -/
 structure PhiTerm where
@@ -1053,6 +1058,22 @@ def analytic_T (L K : ℕ) : ℕ := L * K
 
 theorem analytic_T_eq (L K : ℕ) : analytic_T L K = L * K := rfl
 
+theorem analytic_T_mul_c1 (L K : ℕ) :
+    (analytic_T L K : ℝ) * analytic_c1 = (L : ℝ) * (K : ℝ) * log 2 := by
+  unfold analytic_T analytic_c1
+  rw [Nat.cast_mul]
+
+/-- With displayed parameters `T = L K` and `c = log 2`, Schwarz decay
+    `2^{−T}` absorbs `exp(−c L K)` once `M ≤ 1`. -/
+theorem analytic_T_absorbs_unit_bound {L K : ℕ} {M : ℝ}
+    (hM : 0 < M) (hM1 : M ≤ 1) :
+    (analytic_T L K : ℝ) * log 2 ≥
+      analytic_c1 * (L : ℝ) * (K : ℝ) + log M := by
+  unfold analytic_T analytic_c1
+  rw [Nat.cast_mul]
+  have hlog : log M ≤ 0 := Real.log_nonpos (le_of_lt hM) hM1
+  linarith
+
 /-- Conditional analytic smallness on `Φ` (or any holomorphic `f`).
     A zero of order `T` at `0` and `|f| ≤ M` on `|z| = R` imply
     `|f(z)| ≤ exp(−c L K)` on `|z| ≤ R/2` once `T log 2` absorbs
@@ -1173,6 +1194,313 @@ theorem interpolationDeterminant_L0_not_exp_small (K : ℕ) {c : ℝ}
   rw [this]
   have hlt : exp (-1 : ℝ) < 1 := (Real.exp_lt_one_iff).2 (by norm_num)
   exact not_le.2 hlt
+
+/-! ## Cauchy estimates and polynomial vanishing -/
+
+/-- Formal power series of a polynomial: the coefficients are `p.coeff`. -/
+def polyFormalSeries (p : ℂ[X]) : FormalMultilinearSeries ℂ ℂ ℂ :=
+  fun n => ContinuousMultilinearMap.mkPiRing ℂ (Fin n) (p.coeff n)
+
+theorem polyFormalSeries_coeff (p : ℂ[X]) (n : ℕ) :
+    (polyFormalSeries p).coeff n = p.coeff n := by
+  unfold polyFormalSeries FormalMultilinearSeries.coeff
+  simp [ContinuousMultilinearMap.mkPiRing_apply, Pi.one_apply]
+
+theorem polynomial_hasFPowerSeriesAt_eval (p : ℂ[X]) :
+    HasFPowerSeriesAt (fun z => p.eval z) (polyFormalSeries p) 0 := by
+  rw [hasFPowerSeriesAt_iff]
+  refine Filter.Eventually.of_forall fun z => ?_
+  have hzero : ∀ n, n ∉ Finset.range (p.natDegree + 1) →
+      z ^ n • (polyFormalSeries p).coeff n = 0 := by
+    intro n hn
+    have : ¬ n < p.natDegree + 1 := mt Finset.mem_range.2 hn
+    have hn' : p.natDegree < n := Nat.lt_of_succ_le (Nat.le_of_not_lt this)
+    rw [polyFormalSeries_coeff, Polynomial.coeff_eq_zero_of_natDegree_lt hn', smul_zero]
+  have hsum : HasSum (fun n => z ^ n • (polyFormalSeries p).coeff n)
+      (∑ n ∈ Finset.range (p.natDegree + 1),
+        z ^ n • (polyFormalSeries p).coeff n) :=
+    hasSum_sum_of_ne_finset_zero hzero
+  have heval :
+      (∑ n ∈ Finset.range (p.natDegree + 1),
+          z ^ n • (polyFormalSeries p).coeff n) =
+        p.eval z := by
+    rw [Polynomial.eval_eq_sum_range]
+    refine Finset.sum_congr rfl fun n _ => ?_
+    rw [polyFormalSeries_coeff, smul_eq_mul, mul_comm]
+  rw [zero_add, ← heval]
+  exact hsum
+
+theorem iteratedDslope_zero_eq_coeff {f : ℂ → ℂ}
+    {p : FormalMultilinearSeries ℂ ℂ ℂ}
+    (hp : HasFPowerSeriesAt f p 0) (n : ℕ) :
+    iteratedDslope f n 0 = p.coeff n := by
+  induction n generalizing f p with
+  | zero =>
+    change f 0 = p.coeff 0
+    exact (hp.coeff_zero (fun _ : Fin 0 => (1 : ℂ))).symm
+  | succ n ih =>
+    have hds : HasFPowerSeriesAt (dslope f 0) p.fslope 0 :=
+      hp.has_fpower_series_dslope_fslope
+    rw [iteratedDslope_succ_eq, ih hds, FormalMultilinearSeries.coeff_fslope]
+
+theorem iteratedDslope_polynomial_coeff (p : ℂ[X]) (n : ℕ) :
+    iteratedDslope (fun z => p.eval z) n 0 = p.coeff n := by
+  rw [iteratedDslope_zero_eq_coeff (polynomial_hasFPowerSeriesAt_eval p) n,
+    polyFormalSeries_coeff]
+
+/-- Binomial matrix entries are Taylor coefficients of `(1+z)^j`. -/
+theorem iteratedDslope_one_add_pow (j i : ℕ) :
+    iteratedDslope (fun z : ℂ => (1 + z) ^ j) i 0 = (j.choose i : ℂ) := by
+  have hfun : (fun z : ℂ => (1 + z) ^ j) =
+      fun z => ((1 + X : ℂ[X]) ^ j).eval z := by
+    funext z
+    simp [eval_pow, eval_add, eval_one, eval_X]
+  rw [hfun, iteratedDslope_polynomial_coeff, coeff_one_add_X_pow]
+
+theorem binomialInterpMatrix_eq_iteratedDslope (n : ℕ) (i j : Fin n) :
+    ((binomialInterpMatrix n i j : ℤ) : ℂ) =
+      iteratedDslope (fun z : ℂ => (1 + z) ^ (j : ℕ)) (i : ℕ) 0 := by
+  unfold binomialInterpMatrix
+  simp [iteratedDslope_one_add_pow]
+
+theorem matveevEntry_eq_iteratedDslope_binomial
+    (α1 α2 : ℝ) (l1 l2 k i : ℕ) :
+    (matveevEntry α1 α2 ⟨l1, l2, k⟩ i : ℂ) =
+      iteratedDslope (fun z : ℂ => (1 + z) ^ k) i 0 *
+        (α1 ^ l1 : ℂ) * (α2 ^ l2 : ℂ) := by
+  unfold matveevEntry
+  rw [iteratedDslope_one_add_pow]
+  push_cast
+  ring
+
+theorem dslope_id_mul (g : ℂ → ℂ) (hg : Differentiable ℂ g) :
+    dslope (fun z => z * g z) 0 = g := by
+  funext z
+  by_cases hz : z = 0
+  · subst z
+    rw [dslope_same]
+    have hmul :=
+      deriv_mul
+        (differentiable_id.differentiableAt : DifferentiableAt ℂ id (0 : ℂ))
+        (hg.differentiableAt : DifferentiableAt ℂ g 0)
+    simpa using hmul
+  · have := dslope_sub_smul_of_ne (f := g) (a := (0 : ℂ)) hz
+    simpa [sub_zero, smul_eq_mul] using this
+
+theorem dslope_pow_mul (g : ℂ → ℂ) {n : ℕ} (hn : 0 < n)
+    (hg : Differentiable ℂ g) :
+    dslope (fun z => z ^ n * g z) 0 = fun z => z ^ (n - 1) * g z := by
+  have hdecomp : (fun z : ℂ => z ^ n * g z) =
+      fun z => z * (z ^ (n - 1) * g z) := by
+    funext z
+    calc
+      z ^ n * g z = z ^ (n - 1 + 1) * g z := by
+        rw [Nat.sub_add_cancel (Nat.succ_le_of_lt hn)]
+      _ = z ^ (n - 1) * z * g z := by rw [pow_succ]
+      _ = z * (z ^ (n - 1) * g z) := by ring
+  have hg' : Differentiable ℂ fun z => z ^ (n - 1) * g z :=
+    (differentiable_id.pow _).mul hg
+  rw [hdecomp, dslope_id_mul _ hg']
+
+theorem iteratedDslope_pow_mul (g : ℂ → ℂ) (T : ℕ)
+    (hg : Differentiable ℂ g) :
+    ∀ k ≤ T, iteratedDslope (fun z => z ^ T * g z) k =
+      fun z => z ^ (T - k) * g z := by
+  intro k
+  induction k with
+  | zero =>
+    intro _
+    simp [iteratedDslope]
+  | succ k ih =>
+    intro hk
+    have hkT : k ≤ T := Nat.le_of_succ_le hk
+    have hpos : 0 < T - k := Nat.sub_pos_of_lt (Nat.lt_of_succ_le hk)
+    rw [iteratedDslope_succ, ih hkT, dslope_pow_mul g hpos hg]
+    have : T - k - 1 = T - (k + 1) := Nat.sub_sub _ _ _
+    rw [this]
+
+theorem iteratedDslope_pow_mul_vanishes (g : ℂ → ℂ) (T : ℕ)
+    (hg : Differentiable ℂ g) {k : ℕ} (hk : k < T) :
+    iteratedDslope (fun z => z ^ T * g z) k 0 = 0 := by
+  have hle : k ≤ T := Nat.le_of_lt hk
+  rw [iteratedDslope_pow_mul g T hg k hle]
+  have hpos : 0 < T - k := Nat.sub_pos_of_lt hk
+  simp [zero_pow hpos.ne']
+
+theorem polynomial_eq_X_pow_mul {p : ℂ[X]} {T : ℕ}
+    (hT : T ≤ p.rootMultiplicity 0) :
+    ∃ q : ℂ[X], p = X ^ T * q := by
+  by_cases hp : p = 0
+  · exact ⟨0, by simp [hp]⟩
+  · have : (X - C (0 : ℂ)) ^ T ∣ p := (le_rootMultiplicity_iff hp).1 hT
+    simpa [map_zero, sub_zero] using this
+
+theorem polynomial_eval_eq_pow_mul {p : ℂ[X]} {T : ℕ}
+    (hT : T ≤ p.rootMultiplicity 0) :
+    ∃ q : ℂ[X], ∀ z, p.eval z = z ^ T * q.eval z := by
+  obtain ⟨q, hq⟩ := polynomial_eq_X_pow_mul hT
+  refine ⟨q, fun z => ?_⟩
+  rw [hq, eval_mul, eval_pow, eval_X]
+
+theorem polynomial_iteratedDslope_vanishes {p : ℂ[X]} {T : ℕ}
+    (hT : T ≤ p.rootMultiplicity 0) :
+    ∀ k < T, iteratedDslope (fun z => p.eval z) k 0 = 0 := by
+  obtain ⟨q, hq⟩ := polynomial_eval_eq_pow_mul hT
+  intro k hk
+  have hfun : (fun z => p.eval z) = fun z => z ^ T * q.eval z := funext hq
+  rw [hfun]
+  exact iteratedDslope_pow_mul_vanishes (fun z => q.eval z) T q.differentiable hk
+
+theorem polynomial_iteratedDslope_vanishes_real {p : ℝ[X]} {T : ℕ}
+    (hT : T ≤ p.rootMultiplicity 0) :
+    ∀ k < T,
+      iteratedDslope (fun z : ℂ => (p.map (algebraMap ℝ ℂ)).eval z) k 0 = 0 := by
+  have hinj : Function.Injective (algebraMap ℝ ℂ) := Complex.ofReal_injective
+  have hmap : T ≤ (p.map (algebraMap ℝ ℂ)).rootMultiplicity 0 := by
+    have : p.rootMultiplicity 0 =
+        (p.map (algebraMap ℝ ℂ)).rootMultiplicity (algebraMap ℝ ℂ 0) :=
+      eq_rootMultiplicity_map hinj 0
+    simpa [map_zero] using (this ▸ hT)
+  exact polynomial_iteratedDslope_vanishes hmap
+
+/-- Higher-order Schwarz, inhabited for polynomials (`𝐆_a`). -/
+theorem schwarz_lemma_of_order_polynomial {p : ℂ[X]} {R r M : ℝ} {T : ℕ}
+    (hR : 0 < R) (hr : 0 ≤ r) (hrR : r ≤ R) (hM : 0 ≤ M)
+    (hT : T ≤ p.rootMultiplicity 0)
+    (hbound : ∀ w, w ∈ sphere 0 R → ‖p.eval w‖ ≤ M)
+    {z : ℂ} (hz : ‖z‖ ≤ r) :
+    ‖p.eval z‖ ≤ (r / R) ^ T * M :=
+  schwarz_lemma_of_order hR hr hrR hM p.differentiable.diffContOnCl
+    (polynomial_iteratedDslope_vanishes hT) hbound hz
+
+theorem schwarz_lemma_of_order_polynomial_real {p : ℝ[X]} {R r M : ℝ} {T : ℕ}
+    (hR : 0 < R) (hr : 0 ≤ r) (hrR : r ≤ R) (hM : 0 ≤ M)
+    (hT : T ≤ p.rootMultiplicity 0)
+    (hbound : ∀ w, w ∈ sphere 0 R →
+      ‖(p.map (algebraMap ℝ ℂ)).eval w‖ ≤ M)
+    {z : ℂ} (hz : ‖z‖ ≤ r) :
+    ‖(p.map (algebraMap ℝ ℂ)).eval z‖ ≤ (r / R) ^ T * M :=
+  schwarz_lemma_of_order hR hr hrR hM
+    (p.map (algebraMap ℝ ℂ)).differentiable.diffContOnCl
+    (polynomial_iteratedDslope_vanishes_real hT) hbound hz
+
+/-- Analytic smallness on `𝐆_a`: multiplicity supplies the vanishing
+    that Schwarz needs. Exponential `Φ` still needs Wüstholz. -/
+theorem matveev_interpolation_analytic_small_bound_polynomial
+    {p : ℝ[X]} {R M c : ℝ} {L K T : ℕ}
+    (hR : 0 < R) (hM : 0 < M) (hc : 0 ≤ c)
+    (hT : T ≤ p.rootMultiplicity 0)
+    (hbound : ∀ w, w ∈ sphere 0 R →
+      ‖(p.map (algebraMap ℝ ℂ)).eval w‖ ≤ M)
+    (hTlog : (T : ℝ) * log 2 ≥ c * (L : ℝ) * (K : ℝ) + log M)
+    {z : ℂ} (hz : ‖z‖ ≤ R / 2) :
+    ‖(p.map (algebraMap ℝ ℂ)).eval z‖ ≤
+      exp (-c * (L : ℝ) * (K : ℝ)) :=
+  matveev_interpolation_analytic_small_bound hR hM hc
+    (p.map (algebraMap ℝ ℂ)).differentiable.diffContOnCl
+    (polynomial_iteratedDslope_vanishes_real hT) hbound hTlog hz
+
+theorem schwarz_half_radius {f : ℂ → ℂ} {R M : ℝ} {T : ℕ}
+    (hR : 0 < R) (hM : 0 ≤ M)
+    (hf : DiffContOnCl ℂ f (ball 0 R))
+    (hvan : ∀ k < T, iteratedDslope f k 0 = 0)
+    (hbound : ∀ w, w ∈ sphere 0 R → ‖f w‖ ≤ M)
+    {z : ℂ} (hz : ‖z‖ ≤ R / 2) :
+    ‖f z‖ ≤ (1 / 2 : ℝ) ^ T * M := by
+  have hr : (0 : ℝ) ≤ R / 2 := div_nonneg hR.le (by norm_num)
+  have hrR : R / 2 ≤ R := by
+    have : (1 / 2 : ℝ) ≤ 1 := by norm_num
+    have := mul_le_mul_of_nonneg_left this hR.le
+    linarith
+  have hsch := schwarz_lemma_of_order hR hr hrR hM hf hvan hbound hz
+  have hhalf : (R / 2) / R = (1 / 2 : ℝ) := by
+    field_simp [hR.ne']
+    ring
+  rwa [hhalf] at hsch
+
+/-- First-derivative Cauchy estimate at the centre. -/
+theorem cauchy_estimate_first_deriv {f : ℂ → ℂ} {R M : ℝ}
+    (hR : 0 < R)
+    (hf : DiffContOnCl ℂ f (ball 0 R))
+    (hbound : ∀ w, w ∈ sphere 0 R → ‖f w‖ ≤ M) :
+    ‖deriv f 0‖ ≤ M / R :=
+  Complex.norm_deriv_le_of_forall_mem_sphere_norm_le hR hf hbound
+
+/-- Cauchy estimate for Taylor coefficients:
+    `|f^{(n)}(0) / n!| = |iteratedDslope f n 0| ≤ M / R^n`. -/
+theorem cauchy_estimate_iteratedDslope {f : ℂ → ℂ} {R M : ℝ} (n : ℕ)
+    (hR : 0 < R) (_hM : 0 ≤ M)
+    (hf : DiffContOnCl ℂ f (ball 0 R))
+    (hbound : ∀ w, w ∈ sphere 0 R → ‖f w‖ ≤ M) :
+    ‖iteratedDslope f n 0‖ ≤ M / R ^ n := by
+  have hRnn : (0 : ℝ≥0) < R.toNNReal := Real.toNNReal_pos.mpr hR
+  have hf' : DiffContOnCl ℂ f (ball (0 : ℂ) (R.toNNReal : ℝ)) := by
+    rwa [Real.coe_toNNReal R hR.le]
+  have hps := hf'.hasFPowerSeriesOnBall hRnn
+  have hat := hps.hasFPowerSeriesAt
+  have heq : iteratedDslope f n 0 =
+      (cauchyPowerSeries f 0 (R.toNNReal : ℝ)).coeff n :=
+    iteratedDslope_zero_eq_coeff hat n
+  rw [heq, ← FormalMultilinearSeries.norm_apply_eq_norm_coef]
+  refine le_trans (norm_cauchyPowerSeries_le f 0 (R.toNNReal : ℝ) n) ?_
+  have hR0 : (0 : ℝ) ≤ R := hR.le
+  have hfcl : ContinuousOn f (closedBall 0 R) := by
+    have : closure (ball (0 : ℂ) R) = closedBall 0 R :=
+      closure_ball _ hR.ne'
+    simpa [this] using hf.continuousOn
+  have hcomp : Continuous fun θ : ℝ => f (circleMap 0 R θ) :=
+    hfcl.comp_continuous (continuous_circleMap 0 R)
+      (fun θ => circleMap_mem_closedBall 0 hR0 θ)
+  have hnorm : Continuous fun θ : ℝ => ‖f (circleMap 0 R θ)‖ :=
+    hcomp.norm
+  have hinterg :
+      ∫ θ in (0)..2 * π, ‖f (circleMap 0 R θ)‖ ≤ 2 * π * M := by
+    have hle :
+        ∫ θ in (0)..2 * π, ‖f (circleMap 0 R θ)‖ ≤
+          ∫ _θ in (0)..2 * π, M :=
+      intervalIntegral.integral_mono Real.two_pi_pos.le
+        (hnorm.intervalIntegrable _ _)
+        (continuous_const.intervalIntegrable _ _)
+        (fun θ => hbound _ (circleMap_mem_sphere 0 hR0 θ))
+    have hconst : (∫ _θ in (0)..2 * π, M) = 2 * π * M := by
+      rw [intervalIntegral.integral_const]
+      simp [smul_eq_mul]
+    exact hle.trans_eq hconst
+  have hRnn_coe : (R.toNNReal : ℝ) = R := Real.coe_toNNReal R hR.le
+  have hI :
+      (2 * π)⁻¹ *
+          ∫ θ in (0)..2 * π, ‖f (circleMap 0 (R.toNNReal : ℝ) θ)‖ ≤
+        M := by
+    rw [hRnn_coe]
+    have :
+        (2 * π)⁻¹ * ∫ θ in (0)..2 * π, ‖f (circleMap 0 R θ)‖ ≤
+          (2 * π)⁻¹ * (2 * π * M) :=
+      mul_le_mul_of_nonneg_left hinterg (inv_nonneg.2 Real.two_pi_pos.le)
+    have hsimp : (2 * π)⁻¹ * (2 * π * M) = M := by
+      field_simp [Real.two_pi_pos.ne']
+    exact this.trans_eq hsimp
+  have habs : |(R.toNNReal : ℝ)| = R := by
+    rw [hRnn_coe, abs_of_pos hR]
+  have hpow : |(R.toNNReal : ℝ)|⁻¹ ^ n = R⁻¹ ^ n := by
+    rw [habs]
+  have hmul :
+      ((2 * π)⁻¹ *
+          ∫ θ in (0)..2 * π, ‖f (circleMap 0 (R.toNNReal : ℝ) θ)‖) *
+        |(R.toNNReal : ℝ)|⁻¹ ^ n ≤
+        M / R ^ n := by
+    rw [hpow, inv_pow, ← div_eq_mul_inv]
+    have hnonneg : (0 : ℝ) ≤ R⁻¹ ^ n := pow_nonneg (inv_nonneg.2 hR.le) n
+    have := mul_le_mul_of_nonneg_right hI hnonneg
+    rwa [inv_pow, ← div_eq_mul_inv] at this
+  exact hmul
+
+theorem matveevPhi_cauchy_estimate
+    {α1 α2 : ℝ} {terms : List PhiTerm} {R M : ℝ} (n : ℕ)
+    (hR : 0 < R) (hM : 0 ≤ M)
+    (hbound : ∀ w, w ∈ sphere 0 R → ‖matveevPhi α1 α2 terms w‖ ≤ M) :
+    ‖iteratedDslope (matveevPhi α1 α2 terms) n 0‖ ≤ M / R ^ n :=
+  cauchy_estimate_iteratedDslope n hR hM
+    (matveevPhi_diffContOnCl α1 α2 terms) hbound
 
 /-! ## Remaining steps (not in Mathlib 4.12) -/
 
@@ -1407,6 +1735,11 @@ theorem matveev_thm14_n2_of_interpolation
 #check matveev_interpolation_analytic_small_bound
 #check matveev_interpolation_analytic_small_bound_det
 #check interpolationDeterminant_L0_not_exp_small
+#check cauchy_estimate_iteratedDslope
+#check polynomial_iteratedDslope_vanishes
+#check schwarz_lemma_of_order_polynomial
+#check iteratedDslope_one_add_pow
+#check matveev_interpolation_analytic_small_bound_polynomial
 #print axioms interpolation_det_ne_zero
 #print axioms binomial_interpolation_det_eq_one
 #print axioms interpolationDeterminant_L0_eq_one
@@ -1416,5 +1749,9 @@ theorem matveev_thm14_n2_of_interpolation
 #print axioms schwarz_lemma_of_order
 #print axioms matveev_interpolation_analytic_small_bound
 #print axioms matveevPhi_differentiable
+#print axioms cauchy_estimate_iteratedDslope
+#print axioms polynomial_iteratedDslope_vanishes
+#print axioms iteratedDslope_one_add_pow
+#print axioms schwarz_lemma_of_order_polynomial
 
 end BealMatveevBeal.MatveevInterpolation

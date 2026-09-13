@@ -12,9 +12,10 @@ does not force $B\le 10^6$. `MatveevInterpolation.lean` starts
 Matveev 2000 p.5 interpolation and proves the bare-real ∀-reals
 claim is false; higher-order Schwarz gives a *conditional*
 $|\Phi|\le\exp(-cLK)$ under a vanishing-order hypothesis.
-Unconditional $|\Delta|\le\exp(-cLK)$ is false; exponential
-Wüstholz stays `def Prop`. Not the unrestricted kernel target, not
-v25. Concept DOI `10.5281/zenodo.22379293`.
+Cauchy estimates and polynomial vanishing inhabit Schwarz on
+$\mathbf{G}_a$; exponential Wüstholz stays `def Prop`.
+Unconditional $|\Delta|\le\exp(-cLK)$ is false. Not the unrestricted
+kernel target, not v25. Concept DOI `10.5281/zenodo.22379293`.
 
 # FINAL v24.4.0 — v24.x Final Summary Linking Log Upper Bound to Conditional Matveev Ratio Toward B0 (not final)
 
