@@ -1,6 +1,21 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product`
+Latest tag / HEAD: `v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite`
+Most current as of 2026-09-13, **not** final.
+`BealMatveevThm14.lean` rewrites the
+displayed Matveev exponent `matveev_C_exp_bound`
+via the height_B0 product identity:
+`matveev_C_exp_bound = -(height_B0 * log height_B0)`.
+`matveev_target_exp_lower_eq` rewrites the
+target lower bound shape.
+Target and `baker_bound_gap3` stay
+uninhabited def Props.
+Locked Lean 0 vs v24.1.0 `7962905` except
+`BealMatveevThm14.lean`. Previous v24.1.0
+DOI `10.5281/zenodo.22730776`
+(concept `10.5281/zenodo.22379293`).
+
+Latest prior tag: `v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product`
 Most current as of 2026-09-12, **not** final.
 `BealMatveevThm14.lean` adds the height
 product identity.

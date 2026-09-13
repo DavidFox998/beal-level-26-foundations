@@ -5993,6 +5993,36 @@ theorem matveev_height_product_link :
         BealLevel26Foundations.BealMatveevConstants.matveev_thirty_pow :=
   BealLevel26Foundations.BealMatveevThm14.matveev_height_product_link
 
+/-! ## v24.1.1 — rewriting C_exp_bound via height_B0 -/
+
+theorem matveev_C_exp_bound_eq_neg_height_mul_log :
+    matveev_C_exp_bound =
+      -(((matveev_height_B0 : Real) *
+          Real.log (matveev_height_B0 : Real))) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_C_exp_bound_eq_neg_height_mul_log
+
+theorem matveev_C_exp_bound_eq_neg_height_log :
+    matveev_C_exp_bound =
+      -(matveev_height_B0 : Real) * Real.log (matveev_height_B0 : Real) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_C_exp_bound_eq_neg_height_log
+
+theorem matveev_target_exp_lower_eq :
+    matveev_target_exp_lower =
+      Real.exp (-((matveev_height_B0 : Real) *
+        Real.log (matveev_height_B0 : Real))) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_target_exp_lower_eq
+
+theorem matveev_height_B0_mul_log_pos :
+    (0 : Real) < (matveev_height_B0 : Real) *
+      Real.log (matveev_height_B0 : Real) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_height_B0_mul_log_pos
+
+theorem matveev_C_exp_bound_neg_of_mul_log_pos :
+    matveev_C_exp_bound < 0 ↔
+      (0 : Real) < (matveev_height_B0 : Real) *
+        Real.log (matveev_height_B0 : Real) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_C_exp_bound_neg_of_mul_log_pos
+
 /-! ## v14.0.0 — J0 / mwrank / formal displayed certs -/
 
 def J0DecompositionCert_26 :=
@@ -7093,6 +7123,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check matveev_C1_floor_mul_thirty_pow_div10_times_ten
 #check matveev_C1_floor_mul_thirty_pow_div10_ne_height
 #check matveev_height_product_link
+#check matveev_C_exp_bound_eq_neg_height_mul_log
+#check matveev_C_exp_bound_eq_neg_height_log
+#check matveev_target_exp_lower_eq
+#check matveev_height_B0_mul_log_pos
+#check matveev_C_exp_bound_neg_of_mul_log_pos
 #check J0DecompositionCert_26
 #check J0DecompositionCert_26_displayed
 #check J0DecompositionSoundness_26
@@ -7684,6 +7719,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms matveev_C1_floor_mul_thirty_pow_div10_times_ten
 #print axioms matveev_C1_floor_mul_thirty_pow_div10_ne_height
 #print axioms matveev_height_product_link
+#print axioms matveev_C_exp_bound_eq_neg_height_mul_log
+#print axioms matveev_C_exp_bound_eq_neg_height_log
+#print axioms matveev_target_exp_lower_eq
+#print axioms matveev_height_B0_mul_log_pos
+#print axioms matveev_C_exp_bound_neg_of_mul_log_pos
 #print axioms J0DecompositionSoundness_26_holds
 #print axioms MwrankCertificateSoundness_26_holds
 #print axioms FormalImmersionSoundness_26_holds

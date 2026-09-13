@@ -1,7 +1,24 @@
 {
-  "title": "Beal Level 26 Foundations v24.1.0: Matveev Height Product Identity",
-  "description": "Branch v24-matveev-height-product from v24.0.2 73c5993 / 10.5281/zenodo.22730548. Extends BealMatveevThm14.lean with the Nat product that controls the displayed Matveev exponent: C1_floor * thirty_pow = height_B0 = 104382751019310000000, where thirty_pow = 729000000 = 30^6. Keeps all v24.0.0 / v24.0.1 / v24.0.2 lemmas. New decide theorems (no axioms): matveev_C1_floor_mul_thirty_pow (C1_floor * 729000000 = height_B0), matveev_C1_floor_mul_thirty_pow_div10 (C1_floor * 72900000 = height_B0 / 10; the 7-digit typo is 30^6 / 10, not 30^6), matveev_C1_floor_mul_thirty_pow_div10_times_ten, matveev_C1_floor_mul_thirty_pow_div10_ne_height, matveev_height_product_link (height_B0 = C1_floor * thirty_pow). Does not claim 30^6 = 72900000 and does not claim height_B0 * 10 = C1_floor * thirty_pow. matveev_inequality_real_target and baker_bound_gap3 stay uninhabited def Prop (Mathlib 4.12 has no Matveev 2000 Thm 1.4). Stay in v24.x until |Lambda| > exp(-C) is a theorem; v25 only when baker_bound_gap3 greens via baker_conditional_gap3_full with no hBaker. Locked Lean 0 vs v24.0.2 73c5993 on Tate / Baker / modular-elim / v15 B0 / v17 LLL / v19 constants / v20 Bugeaud LLL / v21 inequality / v22 Real skeleton / v23 compare / v24.0.0-0.2 except BealMatveevThm14.lean. Builds on v24.0.2 10.5281/zenodo.22730548, v24.0.1 10.5281/zenodo.22730460, v24.0.0 10.5281/zenodo.22730408, v23 10.5281/zenodo.22730338, v22 10.5281/zenodo.22729980, v21 10.5281/zenodo.22729724, v20 10.5281/zenodo.22729515, v19 10.5281/zenodo.22729309, v18 10.5281/zenodo.22729129, v17 10.5281/zenodo.22729067, v16 10.5281/zenodo.22728705, v15 10.5281/zenodo.22728624, v14 10.5281/zenodo.22722140, v13 10.5281/zenodo.22721843, v12 10.5281/zenodo.22721089, v11 10.5281/zenodo.22721420, v10 10.5281/zenodo.22712897 / 10.5281/zenodo.22713047. Concept 10.5281/zenodo.22379293.",
-  "license": "MIT",
-  "keywords": ["beal-conjecture","kraus","level-26","frey-curve","lean4","baker","tate","pari","matveev","bugeaud","lll","transparent-certs"],
-  "creators": [{"name": "Fox, David"}]
+  "title": "Beal Level 26 Foundations v24.1.1: Rewriting the Matveev Exponent via Height Identity",
+  "description": "Branch v24-matveev-c-exp-rewrite from v24.1.0 7962905 / 10.5281/zenodo.22730776. Extends BealMatveevThm14.lean by rewriting the displayed Matveev exponent C_exp_bound via the height_B0 product identity: matveev_C_exp_bound = - (height_B0 * log height_B0) using matveev_C1_floor * thirty_pow = height_B0 from v24.1.0. Keeps all v24.0.0-1.0 lemmas. New kernel theorems (Real, pack [propext, Classical.choice, Quot.sound] only): matveev_C_exp_bound_eq_neg_height_mul_log, matveev_C_exp_bound_eq_neg_height_log, matveev_target_exp_lower_eq (matveev_target_exp_lower = Real.exp (-(height_B0 * log height_B0))), matveev_height_B0_mul_log_pos (0 < height_B0 * log height_B0), matveev_C_exp_bound_neg_of_mul_log_pos (matveev_C_exp_bound < 0 <-> 0 < height_B0 * log height_B0). Target and baker_bound_gap3 stay uninhabited def Prop (Mathlib 4.12 has no Matveev 2000 Thm 1.4; this file only rewrites the displayed exponent). Locked Lean 0 vs v24.1.0 7962905 on Tate / Baker / modular-elim / v15 B0 / v17 LLL / v19 constants / v20 Bugeaud LLL / v21 inequality / v22 Real skeleton / v23 compare / v24.0.0-1.0 except BealMatveevThm14.lean. Builds on v24.1.0 10.5281/zenodo.22730776, v24.0.2 10.5281/zenodo.22730548, v24.0.1 10.5281/zenodo.22730460, v24.0.0 10.5281/zenodo.22730408, v23 10.5281/zenodo.22730338, v22 10.5281/zenodo.22729980, v21 10.5281/zenodo.22729724, v20 10.5281/zenodo.22729515, v19 10.5281/zenodo.22729309, v18 10.5281/zenodo.22729129, v17 10.5281/zenodo.22729067, v16 10.5281/zenodo.22728705, v15 10.5281/zenodo.22728624, v14 10.5281/zenodo.22722140, v13 10.5281/zenodo.22721843, v12 10.5281/zenodo.22721089, v11 10.5281/zenodo.22721420, v10 10.5281/zenodo.22712897 / 10.5281/zenodo.22713047. Concept 10.5281/zenodo.22379293.",
+  "creators": [
+    {
+      "name": "Fox, David"
+    }
+  ],
+  "keywords": [
+    "beal-conjecture",
+    "kraus",
+    "level-26",
+    "frey-curve",
+    "lean4",
+    "baker",
+    "tate",
+    "pari",
+    "matveev",
+    "bugeaud",
+    "lll",
+    "transparent-certs"
+  ],
+  "license": "MIT"
 }

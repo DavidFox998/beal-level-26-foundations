@@ -3,10 +3,9 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v24.1.0 -- height product identity
-that controls the displayed Matveev
-exponent.  Keeps v24.0.0 / v24.0.1 /
-v24.0.2 lemmas.
+Track B v24.1.1 -- rewrite C_exp_bound via
+the height_B0 product identity.
+Keeps all v24.0.0-1.0 lemmas.
 
 thirty_pow is 30^6 = 729000000, not
 the 7-digit typo 72900000 (= 30^6 / 10).
@@ -20,8 +19,7 @@ Does NOT inhabit baker_bound_gap3.
 Does NOT inhabit
   |Lambda| > exp(matveev_C_exp_bound).
 Mathlib 4.12 has no Matveev 2000 Thm 1.4.
-Stay in v24.x until that inequality is a
-real theorem.  v25 is only when
+v25 is only when
 baker_bound_gap3 greens and
 baker_conditional_gap3_full drops hBaker.
 
@@ -275,6 +273,64 @@ theorem matveev_height_product_link :
     matveev_height_B0 = matveev_C1_floor * matveev_thirty_pow := by
   decide
 
+/-! ## v24.1.1 — rewriting C_exp_bound via height_B0
+
+    Uses `matveev_height_product_link`
+    (`height_B0 = C1_floor * thirty_pow`) to rewrite
+    `matveev_C_exp_bound` to
+    `-((height_B0 : Real) * Real.log (height_B0 : Real))`.
+    Does not use sorry. -/
+
+/-- Rewrite C_exp_bound using the height_B0 product identity. -/
+theorem matveev_C_exp_bound_eq_neg_height_mul_log :
+    matveev_C_exp_bound =
+      -(((matveev_height_B0 : Real) *
+          Real.log (matveev_height_B0 : Real))) := by
+  have hprod : ((matveev_C1_floor : Real) * (matveev_thirty_pow : Real)) =
+      (matveev_height_B0 : Real) := by
+    have hnat : matveev_C1_floor * matveev_thirty_pow = matveev_height_B0 :=
+      matveev_height_product_link.symm
+    exact_mod_cast hnat
+  unfold matveev_C_exp_bound
+  rw [hprod]
+
+/-- Associativity version of the rewrite for AMS statements:
+    -(height_B0 : Real) * log height_B0. -/
+theorem matveev_C_exp_bound_eq_neg_height_log :
+    matveev_C_exp_bound =
+      -(matveev_height_B0 : Real) * Real.log (matveev_height_B0 : Real) := by
+  rw [matveev_C_exp_bound_eq_neg_height_mul_log]
+  ring
+
+/-- Target lower bound written with height_B0 directly. -/
+theorem matveev_target_exp_lower_eq :
+    matveev_target_exp_lower =
+      Real.exp (-((matveev_height_B0 : Real) *
+        Real.log (matveev_height_B0 : Real))) := by
+  unfold matveev_target_exp_lower
+  rw [matveev_C_exp_bound_eq_neg_height_mul_log]
+
+/-- height_B0 * log height_B0 is strictly positive. -/
+theorem matveev_height_B0_mul_log_pos :
+    (0 : Real) < (matveev_height_B0 : Real) *
+      Real.log (matveev_height_B0 : Real) := by
+  have hpos_h : (0 : Real) < (matveev_height_B0 : Real) := by
+    have hcast : ((0 : Nat) : Real) < (matveev_height_B0 : Real) :=
+      Nat.cast_lt.mpr
+        (Nat.lt_trans (by decide : 0 < 2)
+          (Nat.lt_trans (by decide : 2 < ten_pow_12)
+            matveev_height_B0_gt_onee12))
+    simpa using hcast
+  exact mul_pos hpos_h matveev_height_log_pos
+
+/-- Equivalence of C_exp_bound < 0 with 0 < height_B0 * log height_B0. -/
+theorem matveev_C_exp_bound_neg_of_mul_log_pos :
+    matveev_C_exp_bound < 0 ↔
+      (0 : Real) < (matveev_height_B0 : Real) *
+        Real.log (matveev_height_B0 : Real) := by
+  rw [matveev_C_exp_bound_eq_neg_height_mul_log]
+  exact neg_lt_zero
+
 /-- Integer trace of the Thm 1.4 start. -/
 def matveev_thm14_constants : List Int :=
   [143186215390, 729000000, 104382751019310000000,
@@ -333,6 +389,11 @@ def baker_bound_gap3_remaining_thm14 : Prop :=
 #check matveev_C1_floor_mul_thirty_pow_div10_times_ten
 #check matveev_C1_floor_mul_thirty_pow_div10_ne_height
 #check matveev_height_product_link
+#check matveev_C_exp_bound_eq_neg_height_mul_log
+#check matveev_C_exp_bound_eq_neg_height_log
+#check matveev_target_exp_lower_eq
+#check matveev_height_B0_mul_log_pos
+#check matveev_C_exp_bound_neg_of_mul_log_pos
 #check matveev_inequality_real_target
 #check baker_bound_gap3_remaining_thm14
 #print axioms matveev_C1_floor_eq
@@ -366,6 +427,11 @@ def baker_bound_gap3_remaining_thm14 : Prop :=
 #print axioms matveev_C1_floor_mul_thirty_pow_div10_times_ten
 #print axioms matveev_C1_floor_mul_thirty_pow_div10_ne_height
 #print axioms matveev_height_product_link
+#print axioms matveev_C_exp_bound_eq_neg_height_mul_log
+#print axioms matveev_C_exp_bound_eq_neg_height_log
+#print axioms matveev_target_exp_lower_eq
+#print axioms matveev_height_B0_mul_log_pos
+#print axioms matveev_C_exp_bound_neg_of_mul_log_pos
 #print axioms matveev_thm14_C_exp_bound_lt_neg_onee12
 #print axioms matveev_thm14_constants_hold
 

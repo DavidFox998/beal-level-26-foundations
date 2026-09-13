@@ -1,10 +1,28 @@
 # BealMatveevThm14 — v24.0.0 Matveev 2000 Thm 1.4 formalization start
 
-**Tag.** `v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product`.
+**Tag.** `v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite`.
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
-**Parent.** v24.0.2 `73c5993` / `v24.0.2-Beal-44-13-Level-26-Matveev-Exp-Bound-Properties` / DOI `10.5281/zenodo.22730548`.
+**Parent.** v24.1.0 `7962905` / `v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product` / DOI `10.5281/zenodo.22730776`.
 **Concept.** `10.5281/zenodo.22379293`.
+
+## v24.1.1 — rewriting C_exp_bound via height_B0
+
+```lean
+theorem matveev_C_exp_bound_eq_neg_height_mul_log :
+    matveev_C_exp_bound = -(((height_B0 : Real) * Real.log (height_B0 : Real)))
+theorem matveev_C_exp_bound_eq_neg_height_log :
+    matveev_C_exp_bound = -(height_B0 : Real) * Real.log (height_B0 : Real)
+theorem matveev_target_exp_lower_eq :
+    matveev_target_exp_lower = Real.exp (-((height_B0 : Real) * Real.log (height_B0 : Real)))
+theorem matveev_height_B0_mul_log_pos :
+    0 < (height_B0 : Real) * Real.log (height_B0 : Real)
+theorem matveev_C_exp_bound_neg_of_mul_log_pos :
+    matveev_C_exp_bound < 0 ↔ 0 < (height_B0 : Real) * Real.log (height_B0 : Real)
+```
+
+Rewrites the displayed exponent `matveev_C_exp_bound` using the product identity `matveev_height_product_link` (`height_B0 = C1_floor * thirty_pow`).
+`matveev_inequality_real_target` and `baker_bound_gap3` stay uninhabited def Props.
 
 ## v24.1.0 — height product identity
 
@@ -159,11 +177,11 @@ v23 already showed `Λ ≠ 0` on a solution and `C_exp_bound < -10^{12}`. Those 
 
 ## Honesty lock
 
-`git diff v23.0.0-Beal-44-13-Level-26-Matveev-C-Exp-Bound-Compare` is empty on:
+`git diff v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product` is empty on:
 
 - Tate (`BealFreyTateConductor.lean`)
 - Baker (`BealGap3BakerUpperBound.lean`)
-- modular-elim (`BealModularElimination.lean`)
+- modular-elim (`BealLevel26ModularElimination.lean`)
 - v15 B0 (`BealBakerB0Certificate.lean`)
 - v17 LLL (`BealBakerB0ReductionCertificate.lean`)
 - v19 constants (`BealMatveevConstants.lean`)
@@ -173,10 +191,3 @@ v23 already showed `Λ ≠ 0` on a solution and `C_exp_bound < -10^{12}`. Those 
 - v23 compare (`BealBakerBoundGap3.lean`)
 
 v14 J0 `[[1,0,1,-5,-8],[1,-1,1,-3,3]]` mwrank `{0,12}` M3 `[[1,1],[0,2]]` unchanged, holds, no axioms. J0 formal unchanged since v11 `3089bec`.
-
-## Versioning
-
-We stay in v24 until `matveev_inequality_real_target` is a theorem and `baker_bound_gap3` is inhabited:
-
-- `v24.0.1`, `v24.1.0`, `v24.2.0`, … — iterative Real / Matveev work
-- `v25` — only when `baker_bound_gap3` greens via `baker_conditional_gap3_full` with no `hBaker`

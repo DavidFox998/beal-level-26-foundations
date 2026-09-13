@@ -33,6 +33,21 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
 /-!
+# FullProof track (v24.1.1)
+
+Rewriting the displayed Matveev exponent
+via the height_B0 product identity.
+`matveev_C_exp_bound` equals
+`-((height_B0 : Real) * Real.log height_B0)`
+and `-(height_B0 : Real) * Real.log height_B0`.
+`matveev_target_exp_lower_eq` rewrites the
+lower bound shape.
+`matveev_inequality_real_target` and
+`baker_bound_gap3` stay uninhabited
+def Props.
+Locked Lean files stay exactly v24.1.0
+except BealMatveevThm14.lean.
+
 # FullProof track (v24.1.0)
 
 Height product identity.
