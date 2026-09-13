@@ -67,6 +67,17 @@ on `LEAN_PATH`).
   `|Δ| ≤ exp(−c L K)` holds degenerately
   (`interpolationDeterminant_L_pos_exp_small`). The `L=0`
   binomial has `Δ=1`.
+- Frequencies `k1 log α1 + k2 log α2` are distinct if `α1,α2`
+  are multiplicatively independent (`freq_injective_of_indep`).
+- Jet invertibility on `W`:
+  `wuestholz_product_theorem_exp_Gm` / `exp_poly_jet_zero`.
+  If `α1,α2` are multiplicatively independent, a nonzero integer
+  coefficient vector of degree at most `(L,N1,N2)` cannot make
+  `Φ(z)=P(z,α1^z,α2^z)` vanish to order `(L+1)(N1+1)(N2+1)` at
+  `0`. Gap-3 rules out the single relation `A^4=(B+3)^13`;
+  remaining relations are Baker (`baker_bound_gap3`). This does
+  **not** close Matveev 2000 / `C1_floor`. Track 1 stays the
+  elementary `1/max` bound.
 - Conditional analytic smallness
   `matveev_interpolation_analytic_small_bound`: if the order is `T`
   and `T log 2 ≥ c L K + log M`, then `|f| ≤ exp(−c L K)` on
@@ -95,13 +106,16 @@ Axioms: `[propext, Classical.choice, Quot.sound]` only.
 - `wuestholz_product_theorem` — inhabited only as the polynomial
   special case (`wuestholz_product_theorem_polynomial`). Mathlib 4.12
   has no Wüstholz theorem for exponential polynomials.
-- `wuestholz_product_theorem_exp` — multiplicity of `P` along `W`
-  bounded by degree unless `α1,α2` are multiplicatively dependent.
-  Not in Mathlib 4.12; inhabited only on `𝐆_a`.
+- `wuestholz_product_theorem_exp` — the Wüstholz *subgroup*
+  theorem for `P` along `W ⊂ 𝐆_a × 𝐆_m²`. Not in Mathlib 4.12.
+  The inhabited theorem is the jet criterion
+  `wuestholz_product_theorem_exp_Gm`, not this `def Prop`.
 - `size_upper_bound` — unconditional `|Δ| ≤ exp(−c n²)` on a generic
   interpolation matrix. False for `L=0` (`Δ=1`). The *conditional*
   Schwarz bound is a theorem; the G_a jet of `Φ` vanishes after
-  Siegel. Exponential-jet Wüstholz stays open.
+  Siegel. The inhabited Gm statement is jet invertibility
+  (`wuestholz_product_theorem_exp_Gm`). The subgroup theorem
+  `wuestholz_product_theorem_exp` stays a `def Prop`.
 
 Unrestricted `matveev_theorem_1_4_gap3_target` and
 `baker_bound_gap3` stay `def Prop`. No minted

@@ -52,14 +52,23 @@ Proved, axioms `[propext, Classical.choice, Quot.sound]` only:
   (`α1=α2=1`) vanishes to order `siegel_T = N/2` at `0`;
 * `Φ(z) = P(z, α1^z, α2^z)` along `W`; gap-3 is not the relation
   `A^4 = (B+3)^13`;
-* `L≥1` and `α1=α2=1` makes `Δ=0` (duplicate columns).
+* `L≥1` and `α1=α2=1` makes `Δ=0` (duplicate columns);
+* frequencies `k1 log α1 + k2 log α2` are distinct if `α1,α2`
+  are multiplicatively independent;
+* `wuestholz_product_theorem_exp_Gm`: for independent `α1,α2`,
+  a nonzero coefficient vector cannot make `Φ` vanish to order
+  `≥ (L+1)(N1+1)(N2+1)` at `0` (jet of `{z^ℓ α1^{k1 z} α2^{k2 z}}`
+  is injective). Gap-3 rules out the single relation `A^4=(B+3)^13`;
+  full independence is still Baker.
 
-Wüstholz for exponential polynomials stays `def Prop`. Exact integer
+The full Wüstholz subgroup theorem stays `def Prop`. Exact integer
 vanishing of the *exponential* jet is not an integer linear system
-(the derivatives involve `log α`). The analytic smallness
-`|Δ| ≤ exp(−c L K)` is proved **conditionally** from a vanishing-order
-hypothesis and Schwarz; the generic `size_upper_bound` stays a
-`def Prop` (`L=0` gives `Δ=1`). Not v25.
+(the derivatives involve `log α`). Jet invertibility does **not**
+close Matveev 2000 / `C1_floor`; Track 1 stays elementary.
+The analytic smallness `|Δ| ≤ exp(−c L K)` is proved
+**conditionally** from a vanishing-order hypothesis and Schwarz;
+the generic `size_upper_bound` stays a `def Prop` (`L=0` gives
+`Δ=1`). Not v25.
 -/
 
 noncomputable section
@@ -1944,6 +1953,798 @@ theorem interpolationDeterminant_L_pos_exp_small
   rw [interpolationDeterminant_L_pos_alpha_one L K N1 N2 hL, abs_zero]
   exact le_of_lt (exp_pos _)
 
+/-! ## Jet invertibility on `W` for independent frequencies
+
+Mathlib 4.12 has no Wüstholz subgroup theorem. The theorem below is
+the jet criterion for `{ z^ℓ α1^{k1 z} α2^{k2 z} }`: independent
+frequencies make the order-`N` jet at `0` injective. This does not
+close Matveev 2000 / `C1_floor`. Gap-3 rules out `A^4=(B+3)^13`,
+not every multiplicative relation (`baker_bound_gap3`).
+-/
+
+def freqReal (α1 α2 : ℝ) (k1 k2 : ℕ) : ℝ :=
+  (k1 : ℝ) * log α1 + (k2 : ℝ) * log α2
+
+def freq (α1 α2 : ℝ) (k1 k2 : ℕ) : ℂ :=
+  (freqReal α1 α2 k1 k2 : ℂ)
+
+theorem alphaPowZ_mul_freq (α1 α2 : ℝ) (k1 k2 : ℕ) (z : ℂ) :
+    alphaPowZ α1 ((k1 : ℂ) * z) * alphaPowZ α2 ((k2 : ℂ) * z) =
+      Complex.exp (freq α1 α2 k1 k2 * z) := by
+  unfold alphaPowZ freq freqReal
+  rw [← Complex.exp_add]
+  congr 1
+  push_cast
+  ring
+
+theorem decodeCoeffK2_lt (L N1 N2 : ℕ) (j : Fin (coeffCount L N1 N2)) :
+    decodeCoeffK2 L N1 N2 j < N2 + 1 :=
+  Nat.mod_lt _ (Nat.succ_pos N2)
+
+theorem decodeCoeffK1_lt (L N1 N2 : ℕ) (j : Fin (coeffCount L N1 N2)) :
+    decodeCoeffK1 L N1 N2 j < N1 + 1 := by
+  unfold decodeCoeffK1
+  have hpos : 0 < N2 + 1 := Nat.succ_pos N2
+  have hmod : j.val % n12 N1 N2 < n12 N1 N2 := Nat.mod_lt _ (n12_pos N1 N2)
+  have : j.val % n12 N1 N2 < (N1 + 1) * (N2 + 1) := by
+    simpa [n12] using hmod
+  exact (Nat.div_lt_iff_lt_mul hpos).2 this
+
+theorem log_nat_pos {α : ℕ} (hα : 1 < α) : 0 < log (α : ℝ) :=
+  Real.log_pos (by exact_mod_cast hα)
+
+theorem nat_mul_log_eq_pow {A C n m : ℕ}
+    (hA : 1 < A) (hC : 1 < C)
+    (heq : (n : ℝ) * log (A : ℝ) = (m : ℝ) * log (C : ℝ)) :
+    A ^ n = C ^ m := by
+  have hApos : (0 : ℝ) < A := by exact_mod_cast (Nat.zero_lt_of_lt hA)
+  have hCpos : (0 : ℝ) < C := by exact_mod_cast (Nat.zero_lt_of_lt hC)
+  have hL : Real.exp ((n : ℝ) * log (A : ℝ)) = (A : ℝ) ^ n := by
+    rw [Real.exp_nat_mul, Real.exp_log hApos]
+  have hR : Real.exp ((m : ℝ) * log (C : ℝ)) = (C : ℝ) ^ m := by
+    rw [Real.exp_nat_mul, Real.exp_log hCpos]
+  have : ((A : ℝ) ^ n) = ((C : ℝ) ^ m) := by
+    have := congrArg Real.exp heq
+    rwa [hL, hR] at this
+  exact_mod_cast this
+
+theorem freqReal_eq_of_indep {α1 α2 : ℕ} (hα1 : 1 < α1) (hα2 : 1 < α2)
+    (hindep : ¬ multiplicativelyDependent α1 α2) {k1 k2 k1' k2' : ℕ}
+    (heq : freqReal (α1 : ℝ) (α2 : ℝ) k1 k2 =
+      freqReal (α1 : ℝ) (α2 : ℝ) k1' k2') :
+    k1 = k1' ∧ k2 = k2' := by
+  have hα1p := log_nat_pos hα1
+  have hα2p := log_nat_pos hα2
+  set a : ℤ := (k1 : ℤ) - (k1' : ℤ)
+  set b : ℤ := (k2' : ℤ) - (k2 : ℤ)
+  have hlin : (a : ℝ) * log (α1 : ℝ) = (b : ℝ) * log (α2 : ℝ) := by
+    unfold freqReal at heq
+    simp [a, b]
+    linarith
+  have ha0 : a = 0 := by
+    by_contra ha
+    have hb : b ≠ 0 := by
+      intro hb
+      have : (a : ℝ) * log (α1 : ℝ) = 0 := by simpa [hb] using hlin
+      have : (a : ℝ) = 0 := (mul_eq_zero.mp this).resolve_right hα1p.ne'
+      exact ha (by exact_mod_cast this)
+    have hsign : (0 < a ∧ 0 < b) ∨ (a < 0 ∧ b < 0) := by
+      have hprod : (a : ℝ) * log (α1 : ℝ) ≠ 0 :=
+        mul_ne_zero (by exact_mod_cast ha) hα1p.ne'
+      rcases lt_or_gt_of_ne hprod with hneg | hpos
+      · have ha' : (a : ℝ) < 0 := neg_of_mul_neg_left hneg (le_of_lt hα1p)
+        have hb' : (b : ℝ) < 0 :=
+          neg_of_mul_neg_left (hlin ▸ hneg) (le_of_lt hα2p)
+        exact Or.inr ⟨by exact_mod_cast ha', by exact_mod_cast hb'⟩
+      · have ha' : 0 < (a : ℝ) := pos_of_mul_pos_left hpos (le_of_lt hα1p)
+        have hb' : 0 < (b : ℝ) :=
+          pos_of_mul_pos_left (hlin ▸ hpos) (le_of_lt hα2p)
+        exact Or.inl ⟨by exact_mod_cast ha', by exact_mod_cast hb'⟩
+    refine hindep ?_
+    rcases hsign with ⟨ha', hb'⟩ | ⟨ha', hb'⟩
+    · refine ⟨a.natAbs, b.natAbs, Or.inl (Int.natAbs_ne_zero.2 ha), ?_⟩
+      have haAbs : (a : ℝ) = (a.natAbs : ℝ) := by
+        rw [Int.cast_natAbs, abs_of_pos (by exact_mod_cast ha')]
+      have hbAbs : (b : ℝ) = (b.natAbs : ℝ) := by
+        rw [Int.cast_natAbs, abs_of_pos (by exact_mod_cast hb')]
+      apply nat_mul_log_eq_pow hα1 hα2
+      rwa [← haAbs, ← hbAbs]
+    · refine ⟨(-a).natAbs, (-b).natAbs,
+        Or.inl (Int.natAbs_ne_zero.2 (neg_ne_zero.2 ha)), ?_⟩
+      have haAbs : (-(a : ℝ)) = ((-a).natAbs : ℝ) := by
+        rw [Int.cast_natAbs, Int.cast_abs, Int.cast_neg, abs_neg]
+        exact (abs_of_neg (show (a : ℝ) < 0 from by exact_mod_cast ha')).symm
+      have hbAbs : (-(b : ℝ)) = ((-b).natAbs : ℝ) := by
+        rw [Int.cast_natAbs, Int.cast_abs, Int.cast_neg, abs_neg]
+        exact (abs_of_neg (show (b : ℝ) < 0 from by exact_mod_cast hb')).symm
+      apply nat_mul_log_eq_pow hα1 hα2
+      have : (-(a : ℝ)) * log (α1 : ℝ) = (-(b : ℝ)) * log (α2 : ℝ) := by
+        linarith
+      rwa [← haAbs, ← hbAbs]
+  have hb0 : b = 0 := by
+    have : (b : ℝ) * log (α2 : ℝ) = 0 := by simpa [ha0] using hlin
+    exact_mod_cast (mul_eq_zero.mp this).resolve_right hα2p.ne'
+  constructor
+  · have : (k1 : ℤ) = (k1' : ℤ) := sub_eq_zero.mp (by simpa [a] using ha0)
+    exact_mod_cast this
+  · have : (k2 : ℤ) = (k2' : ℤ) :=
+      (sub_eq_zero.mp (by simpa [b] using hb0)).symm
+    exact_mod_cast this
+
+theorem freq_injective_of_indep {α1 α2 : ℕ} (hα1 : 1 < α1) (hα2 : 1 < α2)
+    (hindep : ¬ multiplicativelyDependent α1 α2) (N1 N2 : ℕ) :
+    Function.Injective fun s : Fin (n12 N1 N2) =>
+      freq (α1 : ℝ) (α2 : ℝ) (s.val / (N2 + 1)) (s.val % (N2 + 1)) := by
+  intro s t hst
+  have hR : freqReal (α1 : ℝ) (α2 : ℝ) (s.val / (N2 + 1)) (s.val % (N2 + 1)) =
+      freqReal (α1 : ℝ) (α2 : ℝ) (t.val / (N2 + 1)) (t.val % (N2 + 1)) :=
+    Complex.ofReal_injective (by simpa [freq] using hst)
+  obtain ⟨hk1, hk2⟩ := freqReal_eq_of_indep hα1 hα2 hindep hR
+  apply Fin.ext
+  have hs : s.val = (s.val / (N2 + 1)) * (N2 + 1) + s.val % (N2 + 1) := by
+    rw [mul_comm, Nat.div_add_mod]
+  have ht : t.val = (t.val / (N2 + 1)) * (N2 + 1) + t.val % (N2 + 1) := by
+    rw [mul_comm, Nat.div_add_mod]
+  rw [hs, ht, hk1, hk2]
+
+theorem iteratedDeriv_eq_factorial_mul_dslope
+    {f : ℂ → ℂ} (hf : Differentiable ℂ f) (n : ℕ) :
+    iteratedDeriv n f 0 = (n.factorial : ℂ) * iteratedDslope f n 0 := by
+  have hR : (0 : NNReal) < 1 := by norm_num
+  have hp := hf.hasFPowerSeriesOnBall (0 : ℂ) hR
+  have hAt : HasFPowerSeriesAt f (cauchyPowerSeries f 0 1) 0 :=
+    hp.hasFPowerSeriesAt
+  have hds : iteratedDslope f n 0 = (cauchyPowerSeries f 0 1).coeff n :=
+    iteratedDslope_zero_eq_coeff hAt n
+  have hfac := hp.factorial_smul (1 : ℂ) n
+  rw [FormalMultilinearSeries.apply_eq_pow_smul_coeff, one_pow, one_smul] at hfac
+  rw [← iteratedDeriv_eq_iteratedFDeriv] at hfac
+  have hcoeff :
+      (cauchyPowerSeries f 0 (1 : NNReal)).coeff n = iteratedDslope f n 0 := by
+    convert hds.symm
+  rw [hcoeff] at hfac
+  simpa [nsmul_eq_mul] using hfac.symm
+
+theorem iteratedDeriv_fun_sum {ι : Type*} [Fintype ι]
+    (f : ι → ℂ → ℂ) (hf : ∀ i, Differentiable ℂ (f i)) (n : ℕ) (z : ℂ) :
+    iteratedDeriv n (fun w => ∑ i, f i w) z =
+      ∑ i, iteratedDeriv n (f i) z := by
+  have hfC : ∀ i, ContDiff ℂ ⊤ (f i) := fun i => (hf i).contDiff
+  induction n generalizing z with
+  | zero =>
+    simp [iteratedDeriv_zero]
+  | succ n ih =>
+    rw [iteratedDeriv_succ]
+    have hfun :
+        (fun w => ∑ i, iteratedDeriv n (f i) w) =
+          iteratedDeriv n (fun w => ∑ i, f i w) := by
+      funext w
+      exact (ih w).symm
+    rw [← hfun, deriv_sum]
+    · refine Finset.sum_congr rfl fun i _ => ?_
+      rw [iteratedDeriv_succ]
+    · intro i _
+      exact ((hfC i).differentiable_iteratedDeriv n (WithTop.coe_lt_top _)).differentiableAt
+
+theorem matveevPhi_of_coeffs_eq_expSum (L N1 N2 : ℕ)
+    (c : Fin (coeffCount L N1 N2) → ℤ) (α1 α2 : ℝ) (z : ℂ) :
+    matveevPhi_of_coeffs L N1 N2 c α1 α2 z =
+      ∑ j : Fin (coeffCount L N1 N2),
+        (c j : ℂ) * z ^ decodeCoeffL L N1 N2 j *
+          Complex.exp (freq α1 α2 (decodeCoeffK1 L N1 N2 j)
+            (decodeCoeffK2 L N1 N2 j) * z) := by
+  unfold matveevPhi_of_coeffs
+  refine Finset.sum_congr rfl fun j _ => ?_
+  trans
+      (c j : ℂ) * z ^ decodeCoeffL L N1 N2 j *
+        (alphaPowZ α1 ((decodeCoeffK1 L N1 N2 j : ℂ) * z) *
+          alphaPowZ α2 ((decodeCoeffK2 L N1 N2 j : ℂ) * z))
+  · ring
+  · rw [alphaPowZ_mul_freq]
+
+theorem matveevPhi_of_coeffs_L0 (N1 N2 : ℕ)
+    (c : Fin (coeffCount 0 N1 N2) → ℤ) (α1 α2 : ℝ) (z : ℂ) :
+    matveevPhi_of_coeffs 0 N1 N2 c α1 α2 z =
+      ∑ j : Fin (coeffCount 0 N1 N2),
+        (c j : ℂ) *
+          Complex.exp (freq α1 α2 (decodeCoeffK1 0 N1 N2 j)
+            (decodeCoeffK2 0 N1 N2 j) * z) := by
+  rw [matveevPhi_of_coeffs_eq_expSum]
+  refine Finset.sum_congr rfl fun j _ => ?_
+  have hL : decodeCoeffL 0 N1 N2 j = 0 :=
+    Nat.lt_one_iff.mp (decodeCoeffL_lt 0 N1 N2 j)
+  simp [hL]
+
+theorem matveevPhi_of_coeffs_differentiable (L N1 N2 : ℕ)
+    (c : Fin (coeffCount L N1 N2) → ℤ) (α1 α2 : ℝ) :
+    Differentiable ℂ (matveevPhi_of_coeffs L N1 N2 c α1 α2) := by
+  unfold matveevPhi_of_coeffs
+  refine Differentiable.sum fun j _ => ?_
+  have hz : Differentiable ℂ fun z : ℂ => (z : ℂ) ^ decodeCoeffL L N1 N2 j :=
+    differentiable_id.pow _
+  have h1 : Differentiable ℂ fun z : ℂ =>
+      alphaPowZ α1 ((decodeCoeffK1 L N1 N2 j : ℂ) * z) :=
+    (alphaPowZ_differentiable α1).comp (differentiable_id.const_mul _)
+  have h2 : Differentiable ℂ fun z : ℂ =>
+      alphaPowZ α2 ((decodeCoeffK2 L N1 N2 j : ℂ) * z) :=
+    (alphaPowZ_differentiable α2).comp (differentiable_id.const_mul _)
+  exact ((differentiable_const _).mul hz).mul h1 |>.mul h2
+
+theorem decodeL_L0 (N1 N2 : ℕ) (j : Fin (coeffCount 0 N1 N2)) :
+    decodeCoeffL 0 N1 N2 j = 0 :=
+  Nat.lt_one_iff.mp (decodeCoeffL_lt 0 N1 N2 j)
+
+theorem decodeCoeffK1_L0 (N1 N2 : ℕ) (j : Fin (coeffCount 0 N1 N2)) :
+    decodeCoeffK1 0 N1 N2 j = j.val / (N2 + 1) := by
+  have hj : j.val < n12 N1 N2 := by
+    simpa [coeffCount, n12] using j.isLt
+  simp [decodeCoeffK1, Nat.mod_eq_of_lt hj]
+
+theorem decodeCoeffK2_L0 (N1 N2 : ℕ) (j : Fin (coeffCount 0 N1 N2)) :
+    decodeCoeffK2 0 N1 N2 j = j.val % (N2 + 1) := by
+  have hj : j.val < n12 N1 N2 := by
+    simpa [coeffCount, n12] using j.isLt
+  simp [decodeCoeffK2, Nat.mod_eq_of_lt hj]
+
+/-- Pull a constant out of `iteratedDeriv`. Mathlib's
+    `iteratedDeriv_const_mul` is the chain-rule form `f (c * x)`. -/
+theorem iteratedDeriv_const_mul_fun
+    (n : ℕ) (a : ℂ) (f : ℂ → ℂ) (hf : Differentiable ℂ f) (z : ℂ) :
+    iteratedDeriv n (fun w => a * f w) z = a * iteratedDeriv n f z := by
+  induction n generalizing z with
+  | zero =>
+    simp [iteratedDeriv_zero]
+  | succ n ih =>
+    rw [iteratedDeriv_succ, iteratedDeriv_succ]
+    have hcongr :
+        iteratedDeriv n (fun w => a * f w) = fun w => a * iteratedDeriv n f w := by
+      funext w
+      exact ih w
+    rw [hcongr, deriv_const_mul]
+    exact ((hf.contDiff.differentiable_iteratedDeriv n
+      (WithTop.coe_lt_top n)).differentiableAt)
+
+theorem cexp_const_mul_differentiable (μ : ℂ) :
+    Differentiable ℂ fun w => Complex.exp (μ * w) :=
+  (differentiable_id.const_mul μ).cexp
+
+theorem iteratedDeriv_mul_cexp (n : ℕ) (a μ : ℂ) (z : ℂ) :
+    iteratedDeriv n (fun w => a * Complex.exp (μ * w)) z =
+      a * μ ^ n * Complex.exp (μ * z) := by
+  rw [iteratedDeriv_const_mul_fun n a _ (cexp_const_mul_differentiable μ) z]
+  have h := iteratedDeriv_cexp_const_mul n μ
+  have : iteratedDeriv n (fun w => Complex.exp (μ * w)) z =
+      μ ^ n * Complex.exp (μ * z) := by
+    simp [h]
+  rw [this, mul_assoc]
+
+theorem iteratedDeriv_zero_iff_dslope
+    {f : ℂ → ℂ} (hf : Differentiable ℂ f) (n : ℕ) :
+    iteratedDeriv n f 0 = 0 ↔ iteratedDslope f n 0 = 0 := by
+  rw [iteratedDeriv_eq_factorial_mul_dslope hf n]
+  constructor
+  · intro h
+    exact (mul_eq_zero.mp h).resolve_left
+      (Nat.cast_ne_zero.mpr n.factorial_ne_zero)
+  · intro h
+    rw [h, mul_zero]
+
+/-- Independent frequencies: vanishing of the first `n12` derivatives of a
+    pure exponential sum (`L = 0`) forces all coefficients to vanish. -/
+theorem wuestholz_product_theorem_exp_Gm_L0
+    {α1 α2 : ℕ} (hα1 : 1 < α1) (hα2 : 1 < α2)
+    (hindep : ¬ multiplicativelyDependent α1 α2) {N1 N2 : ℕ}
+    (c : Fin (coeffCount 0 N1 N2) → ℤ)
+    (hvan : ∀ k < coeffCount 0 N1 N2,
+      iteratedDslope (matveevPhi_of_coeffs 0 N1 N2 c α1 α2) k 0 = 0) :
+    c = 0 := by
+  have hf := matveevPhi_of_coeffs_differentiable 0 N1 N2 c α1 α2
+  have hN : coeffCount 0 N1 N2 = n12 N1 N2 := by
+    simp [coeffCount, n12]
+  let μ : Fin (coeffCount 0 N1 N2) → ℂ := fun j =>
+    freq (α1 : ℝ) (α2 : ℝ) (decodeCoeffK1 0 N1 N2 j) (decodeCoeffK2 0 N1 N2 j)
+  have hμ : Function.Injective μ := by
+    intro j₁ j₂ hj
+    have hj1 :
+        (⟨j₁.val, by simpa [hN] using j₁.isLt⟩ : Fin (n12 N1 N2)) =
+          ⟨j₂.val, by simpa [hN] using j₂.isLt⟩ := by
+      apply freq_injective_of_indep hα1 hα2 hindep N1 N2
+      simpa [μ, decodeCoeffK1_L0, decodeCoeffK2_L0] using hj
+    have hv : j₁.val = j₂.val :=
+      congrArg (fun x : Fin (n12 N1 N2) => x.val) hj1
+    exact Fin.ext hv
+  have hterm : ∀ j,
+      Differentiable ℂ fun z : ℂ =>
+        (c j : ℂ) * Complex.exp (μ j * z) := fun j =>
+    (differentiable_const _).mul (cexp_const_mul_differentiable (μ j))
+  have hsum0 : ∀ t < coeffCount 0 N1 N2,
+      iteratedDeriv t (matveevPhi_of_coeffs 0 N1 N2 c α1 α2) 0 = 0 := by
+    intro t ht
+    exact (iteratedDeriv_zero_iff_dslope hf t).2 (hvan t ht)
+  have hsum :
+      (fun z => matveevPhi_of_coeffs 0 N1 N2 c α1 α2 z) =
+        fun z => ∑ j, (c j : ℂ) * Complex.exp (μ j * z) := by
+    funext z
+    simpa [μ] using matveevPhi_of_coeffs_L0 N1 N2 c α1 α2 z
+  have hjet : ∀ t : Fin (coeffCount 0 N1 N2),
+      (∑ j, (c j : ℂ) * μ j ^ (t : ℕ)) = 0 := by
+    intro t
+    have h0 :
+        iteratedDeriv t.val (fun z => matveevPhi_of_coeffs 0 N1 N2 c α1 α2 z) 0 = 0 :=
+      hsum0 t.val t.isLt
+    rw [hsum] at h0
+    have hder := iteratedDeriv_fun_sum
+      (fun j z => (c j : ℂ) * Complex.exp (μ j * z)) hterm t.val (0 : ℂ)
+    rw [hder] at h0
+    have htermDer : ∀ j,
+        iteratedDeriv t.val (fun z => (c j : ℂ) * Complex.exp (μ j * z)) 0 =
+          (c j : ℂ) * μ j ^ (t : ℕ) := by
+      intro j
+      simpa [Complex.exp_zero, mul_one] using
+        iteratedDeriv_mul_cexp t.val (c j : ℂ) (μ j) 0
+    simpa [htermDer] using h0
+  have hvd :=
+    eq_zero_of_forall_pow_sum_mul_pow_eq_zero (R := ℂ) hμ hjet
+  exact funext fun j => by
+    have hz : (c j : ℂ) = 0 := by
+      have := congrArg (fun v => v j) hvd
+      simpa using this
+    exact Int.cast_eq_zero.mp hz
+
+
+/-- Analytic curve `W = {(z, α1^z, α2^z)}` in `G_a × G_m²`. -/
+def W_map (α1 α2 : ℝ) (z : ℂ) : ℂ × ℂ × ℂ :=
+  (z, alphaPowZ α1 z, alphaPowZ α2 z)
+
+theorem iteratedDslope_entire {f : ℂ → ℂ} (hf : Differentiable ℂ f) :
+    ∀ n, Differentiable ℂ (iteratedDslope f n)
+  | 0 => hf
+  | n + 1 => by
+    intro z
+    have hR : (0 : ℝ) < ‖z‖ + 1 :=
+      add_pos_of_nonneg_of_pos (norm_nonneg z) one_pos
+    have hzmem : z ∈ ball (0 : ℂ) (‖z‖ + 1) := by
+      rw [mem_ball_zero_iff]
+      linarith [norm_nonneg z]
+    have hd :=
+      (Complex.differentiableOn_dslope (ball_mem_nhds (0 : ℂ) hR)).2
+        ((iteratedDslope_entire hf n).differentiableOn)
+    exact hd.differentiableAt (isOpen_ball.mem_nhds hzmem)
+
+theorem vanishing_mul_cexp
+    {f : ℂ → ℂ} (hf : Differentiable ℂ f) (lam : ℂ) {T : ℕ}
+    (hvan : ∀ k < T, iteratedDslope f k 0 = 0) {k : ℕ} (hk : k < T) :
+    iteratedDslope (fun z => Complex.exp (lam * z) * f z) k 0 = 0 := by
+  have heq : (fun z => Complex.exp (lam * z) * f z) =
+      fun z => z ^ T * (Complex.exp (lam * z) * iteratedDslope f T z) := by
+    funext z
+    rw [eval_eq_pow_mul_iteratedDslope f T hvan z]
+    ring
+  have hg : Differentiable ℂ fun z =>
+      Complex.exp (lam * z) * iteratedDslope f T z :=
+    (cexp_const_mul_differentiable lam).mul (iteratedDslope_entire hf T)
+  rw [heq]
+  exact iteratedDslope_pow_mul_vanishes _ T hg hk
+
+theorem vanishing_mul_cexp_deriv
+    {f : ℂ → ℂ} (hf : Differentiable ℂ f) (lam : ℂ) {T : ℕ}
+    (hvan : ∀ t < T, iteratedDeriv t f 0 = 0) {n : ℕ} (hn : n < T) :
+    iteratedDeriv n (fun z => Complex.exp (lam * z) * f z) 0 = 0 := by
+  have hf' : Differentiable ℂ fun z => Complex.exp (lam * z) * f z :=
+    (cexp_const_mul_differentiable lam).mul hf
+  have hds : ∀ k < T, iteratedDslope f k 0 = 0 := fun k hk =>
+    (iteratedDeriv_zero_iff_dslope hf k).1 (hvan k hk)
+  exact (iteratedDeriv_zero_iff_dslope hf' n).2 (vanishing_mul_cexp hf lam hds hn)
+
+theorem iteratedDeriv_add_right (m t : ℕ) (f : ℂ → ℂ) (z : ℂ) :
+    iteratedDeriv (m + t) f z = iteratedDeriv t (iteratedDeriv m f) z := by
+  induction t generalizing z with
+  | zero =>
+    simp [iteratedDeriv_zero]
+  | succ t ih =>
+    rw [Nat.add_succ, iteratedDeriv_succ, iteratedDeriv_succ]
+    have hcongr :
+        iteratedDeriv (m + t) f = iteratedDeriv t (iteratedDeriv m f) := by
+      funext w
+      exact ih w
+    rw [hcongr]
+
+def shiftPoly (ν : ℂ) (p : ℂ[X]) : ℂ[X] :=
+  derivative p + C ν * p
+
+theorem shiftPoly_sub (ν : ℂ) (p q : ℂ[X]) :
+    shiftPoly ν (p - q) = shiftPoly ν p - shiftPoly ν q := by
+  simp [shiftPoly, derivative_sub, mul_sub]
+  ring
+
+theorem shiftPoly_eq_zero {ν : ℂ} (hν : ν ≠ 0) {p : ℂ[X]}
+    (h : shiftPoly ν p = 0) : p = 0 := by
+  by_contra hp
+  have hcoeff :
+      (shiftPoly ν p).coeff p.natDegree = ν * p.leadingCoeff := by
+    simp [shiftPoly, coeff_add, coeff_C_mul, coeff_derivative,
+      coeff_eq_zero_of_natDegree_lt (Nat.lt_succ_self p.natDegree),
+      coeff_natDegree]
+  have hlead : (shiftPoly ν p).coeff p.natDegree ≠ 0 := by
+    rw [hcoeff]
+    exact mul_ne_zero hν (mt leadingCoeff_eq_zero.mp hp)
+  exact hlead (by simp [h])
+
+theorem shiftPoly_injective {ν : ℂ} (hν : ν ≠ 0) :
+    Function.Injective (shiftPoly ν) := by
+  intro p q hpq
+  apply sub_eq_zero.mp
+  exact shiftPoly_eq_zero hν (by rw [shiftPoly_sub, hpq, sub_self])
+
+theorem natDegree_shiftPoly_le (ν : ℂ) (p : ℂ[X]) {L : ℕ}
+    (h : p.natDegree ≤ L) : (shiftPoly ν p).natDegree ≤ L := by
+  have h1 : (derivative p).natDegree ≤ L :=
+    (natDegree_derivative_le p).trans ((Nat.sub_le _ _).trans h)
+  have h2 : (C ν * p).natDegree ≤ L :=
+    (natDegree_C_mul_le ν p).trans h
+  exact (natDegree_add_le _ _).trans (max_le h1 h2)
+
+theorem natDegree_iterate_shift_le (ν : ℂ) (p : ℂ[X]) {L : ℕ} (n : ℕ)
+    (h : p.natDegree ≤ L) : ((shiftPoly ν)^[n] p).natDegree ≤ L := by
+  induction n with
+  | zero =>
+    simpa using h
+  | succ n ih =>
+    rw [Function.iterate_succ_apply']
+    exact natDegree_shiftPoly_le ν _ ih
+
+theorem shiftPoly_zero_eq_derivative (p : ℂ[X]) :
+    shiftPoly 0 p = derivative p := by
+  simp [shiftPoly]
+
+theorem shiftPoly_map_zero (ν : ℂ) : ∀ n, (shiftPoly ν)^[n] 0 = 0
+  | 0 => rfl
+  | n + 1 => by
+    rw [Function.iterate_succ_apply', shiftPoly_map_zero]
+    simp [shiftPoly]
+
+theorem iterate_shiftPoly_zero (n : ℕ) (p : ℂ[X]) :
+    (shiftPoly 0)^[n] p = (derivative^[n] p) := by
+  induction n generalizing p with
+  | zero =>
+    simp
+  | succ n ih =>
+    rw [Function.iterate_succ_apply, Function.iterate_succ_apply,
+      shiftPoly_zero_eq_derivative, ih]
+
+theorem deriv_eval_mul_cexp (p : ℂ[X]) (ν : ℂ) (z : ℂ) :
+    deriv (fun w => p.eval w * Complex.exp (ν * w)) z =
+      (shiftPoly ν p).eval z * Complex.exp (ν * z) := by
+  have hp := p.differentiable.differentiableAt (x := z)
+  have he := (cexp_const_mul_differentiable ν).differentiableAt (x := z)
+  rw [deriv_mul hp he, p.deriv]
+  have hexp : deriv (fun w => Complex.exp (ν * w)) z =
+      ν * Complex.exp (ν * z) := by
+    have h := iteratedDeriv_cexp_const_mul 1 ν
+    simpa [iteratedDeriv_succ, iteratedDeriv_zero, pow_one] using congrFun h z
+  rw [hexp]
+  simp [shiftPoly, eval_add, eval_mul, eval_C]
+  ring
+
+theorem iteratedDeriv_eval_mul_cexp (n : ℕ) (p : ℂ[X]) (ν : ℂ) (z : ℂ) :
+    iteratedDeriv n (fun w => p.eval w * Complex.exp (ν * w)) z =
+      ((shiftPoly ν)^[n] p).eval z * Complex.exp (ν * z) := by
+  induction n generalizing z with
+  | zero =>
+    simp [iteratedDeriv_zero]
+  | succ n ih =>
+    rw [iteratedDeriv_succ]
+    have hcongr :
+        iteratedDeriv n (fun w => p.eval w * Complex.exp (ν * w)) =
+          fun w => ((shiftPoly ν)^[n] p).eval w * Complex.exp (ν * w) := by
+      funext w
+      exact ih w
+    rw [hcongr, deriv_eval_mul_cexp, Function.iterate_succ_apply']
+
+theorem iteratedDeriv_eval_zero (p : ℂ[X]) (t : ℕ) :
+    iteratedDeriv t (fun z => p.eval z) 0 = (t.factorial : ℂ) * p.coeff t := by
+  have hf : Differentiable ℂ fun z => p.eval z := p.differentiable
+  rw [iteratedDeriv_eq_factorial_mul_dslope hf t, iteratedDslope_polynomial_coeff]
+
+theorem eval_mul_cexp_sum_differentiable {r : ℕ}
+    (p : Fin r → ℂ[X]) (μ : Fin r → ℂ) :
+    Differentiable ℂ fun z =>
+      ∑ s, (p s).eval z * Complex.exp (μ s * z) :=
+  Differentiable.sum fun s _ =>
+    (p s).differentiable.mul (cexp_const_mul_differentiable (μ s))
+
+/-- Jet invertibility for exponential polynomials with distinct
+    frequencies and degree at most `L`. -/
+theorem exp_poly_jet_zero (L : ℕ) :
+    ∀ {r : ℕ} (μ : Fin r → ℂ), Function.Injective μ →
+      ∀ (p : Fin r → ℂ[X]), (∀ s, (p s).natDegree ≤ L) →
+        (∀ t < (L + 1) * r,
+            iteratedDeriv t (fun z =>
+              ∑ s, (p s).eval z * Complex.exp (μ s * z)) 0 = 0) →
+          ∀ s, p s = 0 := by
+  intro r
+  induction r with
+  | zero =>
+    intro μ hμ p hdeg hvan s
+    exact Fin.elim0 s
+  | succ r ih =>
+    intro μ hμ p hdeg hvan
+    have hf := eval_mul_cexp_sum_differentiable p μ
+    let g : ℂ → ℂ := fun z =>
+      Complex.exp (-μ 0 * z) *
+        ∑ s, (p s).eval z * Complex.exp (μ s * z)
+    have hg_eq : g = fun z =>
+        ∑ s, (p s).eval z * Complex.exp ((μ s - μ 0) * z) := by
+      funext z
+      simp only [g, Finset.mul_sum]
+      refine Finset.sum_congr rfl fun s _ => ?_
+      have hexp :
+          Complex.exp (-μ 0 * z) * Complex.exp (μ s * z) =
+            Complex.exp ((μ s - μ 0) * z) := by
+        rw [← Complex.exp_add]
+        congr 1
+        ring
+      calc
+        Complex.exp (-μ 0 * z) * ((p s).eval z * Complex.exp (μ s * z)) =
+            (p s).eval z * (Complex.exp (-μ 0 * z) * Complex.exp (μ s * z)) := by
+          ring
+        _ = (p s).eval z * Complex.exp ((μ s - μ 0) * z) := by
+          rw [hexp]
+    have hT : (L + 1) * r.succ = (L + 1) * r + (L + 1) := by
+      simp [Nat.succ_eq_add_one]
+      ring
+    have hvan_g : ∀ t < (L + 1) * r.succ, iteratedDeriv t g 0 = 0 := by
+      intro t ht
+      simpa [g] using vanishing_mul_cexp_deriv hf (-μ 0) hvan ht
+    have hD :
+        (fun z => iteratedDeriv (L + 1) g z) =
+          fun z =>
+            ∑ s, ((shiftPoly (μ s - μ 0))^[L + 1] (p s)).eval z *
+              Complex.exp ((μ s - μ 0) * z) := by
+      funext z
+      have hsum := iteratedDeriv_fun_sum
+        (fun s w => (p s).eval w * Complex.exp ((μ s - μ 0) * w))
+        (fun s => (p s).differentiable.mul
+          (cexp_const_mul_differentiable (μ s - μ 0)))
+        (L + 1) z
+      have : iteratedDeriv (L + 1) g z =
+          iteratedDeriv (L + 1)
+            (fun w => ∑ s, (p s).eval w * Complex.exp ((μ s - μ 0) * w)) z := by
+        rw [hg_eq]
+      rw [this, hsum]
+      refine Finset.sum_congr rfl fun s _ => ?_
+      exact iteratedDeriv_eval_mul_cexp (L + 1) (p s) (μ s - μ 0) z
+    have h0term : (shiftPoly (μ 0 - μ 0))^[L + 1] (p 0) = 0 := by
+      have hν : μ 0 - μ 0 = 0 := sub_self _
+      rw [hν, iterate_shiftPoly_zero]
+      exact iterate_derivative_eq_zero (Nat.lt_succ_of_le (hdeg 0))
+    have hrest :
+        (fun z => iteratedDeriv (L + 1) g z) =
+          fun z =>
+            ∑ i : Fin r,
+              ((shiftPoly (μ i.succ - μ 0))^[L + 1] (p i.succ)).eval z *
+                Complex.exp ((μ i.succ - μ 0) * z) := by
+      rw [hD]
+      funext z
+      rw [Fin.sum_univ_succ, h0term]
+      simp [eval_zero]
+    let μ' : Fin r → ℂ := fun i => μ i.succ - μ 0
+    let p' : Fin r → ℂ[X] := fun i =>
+      (shiftPoly (μ i.succ - μ 0))^[L + 1] (p i.succ)
+    have hμ' : Function.Injective μ' := by
+      intro i j hij
+      have : μ i.succ = μ j.succ := by
+        have hij' : μ i.succ + (-μ 0) = μ j.succ + (-μ 0) := by
+          simpa [μ', sub_eq_add_neg] using hij
+        exact add_right_cancel hij'
+      exact Fin.succ_injective r (hμ this)
+    have hdeg' : ∀ i, (p' i).natDegree ≤ L := fun i =>
+      natDegree_iterate_shift_le _ (p i.succ) (L + 1) (hdeg _)
+    have hvan' : ∀ t < (L + 1) * r,
+        iteratedDeriv t (fun z => ∑ i, (p' i).eval z * Complex.exp (μ' i * z)) 0 =
+          0 := by
+      intro t ht
+      have ht' : L + 1 + t < (L + 1) * r.succ := by
+        rw [hT]
+        linarith
+      have hgt := hvan_g (L + 1 + t) ht'
+      rw [iteratedDeriv_add_right] at hgt
+      have hfun :
+          iteratedDeriv (L + 1) g =
+            fun z => ∑ i, (p' i).eval z * Complex.exp (μ' i * z) := by
+        simpa [p', μ'] using hrest
+      simpa [hfun] using hgt
+    have ih' := ih μ' hμ' p' hdeg' hvan'
+    have hs : ∀ i : Fin r, p i.succ = 0 := by
+      intro i
+      have hν : μ i.succ - μ 0 ≠ 0 := by
+        intro h
+        have : μ i.succ = μ 0 := sub_eq_zero.mp h
+        have hidx : i.succ = (0 : Fin r.succ) := hμ this
+        exact Fin.succ_ne_zero i hidx
+      have hinj := (shiftPoly_injective hν).iterate (L + 1)
+      have hp' : p' i = 0 := ih' i
+      have : (shiftPoly (μ i.succ - μ 0))^[L + 1] (p i.succ) =
+          (shiftPoly (μ i.succ - μ 0))^[L + 1] 0 := by
+        simpa [p', shiftPoly_map_zero] using hp'
+      exact hinj this
+    have hp0 : p 0 = 0 := by
+      have hg0 : g = fun z => (p 0).eval z := by
+        rw [hg_eq]
+        funext z
+        rw [Fin.sum_univ_succ]
+        simp [hs, sub_self, Complex.exp_zero]
+      have hvan0 : ∀ t < L + 1, iteratedDeriv t (fun z => (p 0).eval z) 0 = 0 := by
+        intro t ht
+        have ht' : t < (L + 1) * r.succ :=
+          (lt_of_lt_of_le ht (by
+            simpa using
+              Nat.mul_le_mul_left (L + 1) (Nat.succ_le_succ (Nat.zero_le r))))
+        have := hvan_g t ht'
+        simpa [hg0] using this
+      apply Polynomial.ext
+      intro n
+      by_cases hn : n ≤ L
+      · have hlt : n < L + 1 := Nat.lt_succ_of_le hn
+        have := hvan0 n hlt
+        rw [iteratedDeriv_eval_zero] at this
+        exact (mul_eq_zero.mp this).resolve_left
+          (Nat.cast_ne_zero.mpr n.factorial_ne_zero)
+      · have : L < n := Nat.lt_of_not_le hn
+        exact coeff_eq_zero_of_natDegree_lt (lt_of_le_of_lt (hdeg 0) this)
+    intro s
+    exact Fin.cases hp0 hs s
+
+def coeffEquiv (L N1 N2 : ℕ) :
+    Fin (L + 1) × Fin (n12 N1 N2) ≃ Fin (coeffCount L N1 N2) :=
+  finProdFinEquiv.trans (finCongr (coeffCount_eq_mul_n12 L N1 N2).symm)
+
+theorem coeffEquiv_val (L N1 N2 : ℕ)
+    (ℓ : Fin (L + 1)) (s : Fin (n12 N1 N2)) :
+    (coeffEquiv L N1 N2 (ℓ, s)).val = s.val + n12 N1 N2 * ℓ.val := by
+  simp [coeffEquiv]
+
+theorem decode_coeffEquiv_L (L N1 N2 : ℕ)
+    (ℓ : Fin (L + 1)) (s : Fin (n12 N1 N2)) :
+    decodeCoeffL L N1 N2 (coeffEquiv L N1 N2 (ℓ, s)) = ℓ.val := by
+  unfold decodeCoeffL
+  rw [coeffEquiv_val, Nat.add_mul_div_left _ _ (n12_pos N1 N2),
+    Nat.div_eq_of_lt s.isLt, zero_add]
+
+theorem decode_coeffEquiv_mod (L N1 N2 : ℕ)
+    (ℓ : Fin (L + 1)) (s : Fin (n12 N1 N2)) :
+    (coeffEquiv L N1 N2 (ℓ, s)).val % n12 N1 N2 = s.val := by
+  rw [coeffEquiv_val, Nat.add_mul_mod_self_left, Nat.mod_eq_of_lt s.isLt]
+
+theorem decode_coeffEquiv_K1 (L N1 N2 : ℕ)
+    (ℓ : Fin (L + 1)) (s : Fin (n12 N1 N2)) :
+    decodeCoeffK1 L N1 N2 (coeffEquiv L N1 N2 (ℓ, s)) = s.val / (N2 + 1) := by
+  simp [decodeCoeffK1, decode_coeffEquiv_mod]
+
+theorem decode_coeffEquiv_K2 (L N1 N2 : ℕ)
+    (ℓ : Fin (L + 1)) (s : Fin (n12 N1 N2)) :
+    decodeCoeffK2 L N1 N2 (coeffEquiv L N1 N2 (ℓ, s)) = s.val % (N2 + 1) := by
+  simp [decodeCoeffK2, decode_coeffEquiv_mod]
+
+def groupedPoly (L N1 N2 : ℕ) (c : Fin (coeffCount L N1 N2) → ℤ)
+    (s : Fin (n12 N1 N2)) : ℂ[X] :=
+  ∑ ℓ : Fin (L + 1), C (c (coeffEquiv L N1 N2 (ℓ, s)) : ℂ) * X ^ (ℓ : ℕ)
+
+theorem groupedPoly_natDegree_le (L N1 N2 : ℕ)
+    (c : Fin (coeffCount L N1 N2) → ℤ) (s : Fin (n12 N1 N2)) :
+    (groupedPoly L N1 N2 c s).natDegree ≤ L := by
+  refine (natDegree_sum_le _ _).trans ?_
+  refine (Finset.sup_le fun ℓ _ => ?_)
+  exact ((natDegree_C_mul_le (c (coeffEquiv L N1 N2 (ℓ, s)) : ℂ)
+      (X ^ (ℓ : ℕ))).trans (natDegree_X_pow_le (ℓ : ℕ))).trans
+    (Nat.lt_succ_iff.mp ℓ.isLt)
+
+theorem groupedPoly_coeff (L N1 N2 : ℕ)
+    (c : Fin (coeffCount L N1 N2) → ℤ) (s : Fin (n12 N1 N2))
+    (ℓ : Fin (L + 1)) :
+    (groupedPoly L N1 N2 c s).coeff ℓ.val =
+      (c (coeffEquiv L N1 N2 (ℓ, s)) : ℂ) := by
+  unfold groupedPoly
+  rw [finset_sum_coeff]
+  refine (Finset.sum_eq_single ℓ ?_ ?_).trans ?_
+  · intro ℓ' _ hne
+    rw [coeff_C_mul, coeff_X_pow]
+    simp [Fin.val_ne_of_ne hne]
+    intro h
+    exact (hne (Fin.ext h.symm)).elim
+  · simp
+  · rw [coeff_C_mul, coeff_X_pow]
+    simp
+
+theorem matveevPhi_of_coeffs_grouped (L N1 N2 : ℕ)
+    (c : Fin (coeffCount L N1 N2) → ℤ) (α1 α2 : ℝ) (z : ℂ) :
+    matveevPhi_of_coeffs L N1 N2 c α1 α2 z =
+      ∑ s : Fin (n12 N1 N2),
+        (groupedPoly L N1 N2 c s).eval z *
+          Complex.exp (freq α1 α2 (s.val / (N2 + 1)) (s.val % (N2 + 1)) * z) := by
+  set term : Fin (coeffCount L N1 N2) → ℂ := fun j =>
+    (c j : ℂ) * z ^ decodeCoeffL L N1 N2 j *
+      Complex.exp (freq α1 α2 (decodeCoeffK1 L N1 N2 j)
+        (decodeCoeffK2 L N1 N2 j) * z)
+  rw [matveevPhi_of_coeffs_eq_expSum]
+  have hreindex :=
+    Fintype.sum_equiv (coeffEquiv L N1 N2)
+      (fun p => term (coeffEquiv L N1 N2 p)) term (fun _ => rfl)
+  rw [← hreindex]
+  rw [show (Finset.univ : Finset (Fin (L + 1) × Fin (n12 N1 N2))) =
+        Finset.univ ×ˢ Finset.univ from Finset.univ_product_univ.symm]
+  rw [Finset.sum_product]
+  rw [Finset.sum_comm]
+  refine Finset.sum_congr rfl fun s _ => ?_
+  have hrhs :
+      (groupedPoly L N1 N2 c s).eval z *
+          Complex.exp (freq α1 α2 (s.val / (N2 + 1)) (s.val % (N2 + 1)) * z) =
+        ∑ ℓ : Fin (L + 1), term (coeffEquiv L N1 N2 (ℓ, s)) := by
+    unfold groupedPoly
+    have heval :
+        (∑ ℓ ∈ Finset.univ, C (c (coeffEquiv L N1 N2 (ℓ, s)) : ℂ) * X ^ (ℓ : ℕ)).eval z =
+          ∑ ℓ ∈ Finset.univ, (c (coeffEquiv L N1 N2 (ℓ, s)) : ℂ) * z ^ (ℓ : ℕ) := by
+      rw [eval_finset_sum (R := ℂ) (ι := Fin (L + 1)) Finset.univ _ z]
+      refine Finset.sum_congr rfl fun ℓ _ => ?_
+      rw [eval_mul, eval_C, eval_pow, eval_X]
+    rw [heval, mul_comm, Finset.mul_sum]
+    refine Finset.sum_congr rfl fun ℓ _ => ?_
+    rw [mul_comm]
+    simp [term, decode_coeffEquiv_L, decode_coeffEquiv_K1, decode_coeffEquiv_K2]
+  rw [hrhs]
+
+/-- Independent `α1, α2`: a nonzero integer coefficient vector cannot
+    make `Φ(z) = P(z, α1^z, α2^z)` vanish to order
+    `(L+1)(N1+1)(N2+1)` at `0`. This is jet invertibility of
+    `{z^ℓ α1^{k1 z} α2^{k2 z}}`, not the Wüstholz subgroup theorem
+    and not a Matveev `C1_floor` close. -/
+theorem wuestholz_product_theorem_exp_Gm
+    {α1 α2 : ℕ} (hα1 : 1 < α1) (hα2 : 1 < α2)
+    (hindep : ¬ multiplicativelyDependent α1 α2)
+    (L N1 N2 : ℕ)
+    (c : Fin (coeffCount L N1 N2) → ℤ)
+    (hvan : ∀ k < coeffCount L N1 N2,
+      iteratedDslope (matveevPhi_of_coeffs L N1 N2 c α1 α2) k 0 = 0) :
+    c = 0 := by
+  have hf := matveevPhi_of_coeffs_differentiable L N1 N2 c α1 α2
+  have hN : coeffCount L N1 N2 = (L + 1) * n12 N1 N2 :=
+    coeffCount_eq_mul_n12 L N1 N2
+  let μ : Fin (n12 N1 N2) → ℂ := fun s =>
+    freq (α1 : ℝ) (α2 : ℝ) (s.val / (N2 + 1)) (s.val % (N2 + 1))
+  have hμ : Function.Injective μ :=
+    freq_injective_of_indep hα1 hα2 hindep N1 N2
+  let p : Fin (n12 N1 N2) → ℂ[X] := groupedPoly L N1 N2 c
+  have hdeg : ∀ s, (p s).natDegree ≤ L :=
+    groupedPoly_natDegree_le L N1 N2 c
+  have hsum :
+      (fun z => matveevPhi_of_coeffs L N1 N2 c α1 α2 z) =
+        fun z => ∑ s, (p s).eval z * Complex.exp (μ s * z) := by
+    funext z
+    simpa [p, μ] using matveevPhi_of_coeffs_grouped L N1 N2 c α1 α2 z
+  have hvan' : ∀ t < (L + 1) * n12 N1 N2,
+      iteratedDeriv t (fun z => ∑ s, (p s).eval z * Complex.exp (μ s * z)) 0 =
+        0 := by
+    intro t ht
+    have ht' : t < coeffCount L N1 N2 := by
+      simpa [hN] using ht
+    have h0 :
+        iteratedDeriv t (fun z => matveevPhi_of_coeffs L N1 N2 c α1 α2 z) 0 =
+          0 :=
+      (iteratedDeriv_zero_iff_dslope hf t).2 (hvan t ht')
+    rw [hsum] at h0
+    exact h0
+  have hp0 := exp_poly_jet_zero L μ hμ p hdeg hvan'
+  apply _root_.funext
+  intro j
+  obtain ⟨ℓs, rfl⟩ := (coeffEquiv L N1 N2).surjective j
+  rcases ℓs with ⟨ℓ, s⟩
+  have hpoly : p s = 0 := hp0 s
+  have hcoeff := groupedPoly_coeff L N1 N2 c s ℓ
+  have hcz : (c (coeffEquiv L N1 N2 (ℓ, s)) : ℂ) = (p s).coeff ℓ.val := by
+    simpa [p] using hcoeff.symm
+  rw [hpoly, coeff_zero] at hcz
+  exact Int.cast_eq_zero.mp hcz
+
 /-! ## Remaining steps (not in Mathlib 4.12) -/
 
 set_option linter.unusedVariables false
@@ -2203,6 +3004,10 @@ theorem matveev_thm14_n2_of_interpolation
 #check interpolationDeterminant_L_pos_alpha_one
 #check interpolationDeterminant_L_pos_exp_small
 #check wuestholz_product_theorem_exp
+#check wuestholz_product_theorem_exp_Gm
+#check wuestholz_product_theorem_exp_Gm_L0
+#check W_map
+#check exp_poly_jet_zero
 #print axioms interpolation_det_ne_zero
 #print axioms binomial_interpolation_det_eq_one
 #print axioms interpolationDeterminant_L0_eq_one
@@ -2222,5 +3027,8 @@ theorem matveev_thm14_n2_of_interpolation
 #print axioms gap3_not_fourth_thirteenth
 #print axioms interpolationDeterminant_L_pos_alpha_one
 #print axioms interpolationDeterminant_L_pos_exp_small
+#print axioms wuestholz_product_theorem_exp_Gm
+#print axioms wuestholz_product_theorem_exp_Gm_L0
+#print axioms exp_poly_jet_zero
 
 end BealMatveevBeal.MatveevInterpolation

@@ -211,6 +211,12 @@ if "theorem gap3_not_fourth_thirteenth" not in interp:
 if "theorem interpolationDeterminant_L_pos_alpha_one" not in interp:
     print("interpolationDeterminant_L_pos_alpha_one missing", file=sys.stderr)
     sys.exit(1)
+if "theorem wuestholz_product_theorem_exp_Gm" not in interp:
+    print("wuestholz_product_theorem_exp_Gm missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem exp_poly_jet_zero" not in interp:
+    print("exp_poly_jet_zero missing", file=sys.stderr)
+    sys.exit(1)
 if "def wuestholz_product_theorem_exp" not in interp:
     print("wuestholz_product_theorem_exp must stay a def Prop", file=sys.stderr)
     sys.exit(1)
@@ -251,7 +257,8 @@ print("  CF lemmas: 4/13 convergent, integer gap < ratio; not baker_bound_gap3")
 print("  interpolation: Δ, Vandermonde, G_a product, Hadamard, Schwarz, Cauchy;")
 print("  analytic small bound is conditional; polynomial vanishing inhabited")
 print("  Siegel + G_a jet vanishing: matveevPhi_vanishing_exists_T")
-print("  L>=1 alpha=1 gives Δ=0; exponential Wüstholz stays def Prop")
+print("  L>=1 alpha=1 gives Δ=0; jet invertibility wuestholz_product_theorem_exp_Gm")
+print("  subgroup-theorem Wüstholz stays def Prop; not a C1_floor close")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")
 print("  unrestricted target and hLLL stay def Prop; not v25")
