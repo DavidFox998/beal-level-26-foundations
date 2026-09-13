@@ -2,7 +2,7 @@
 
 [![Matveev-Beal CI](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml/badge.svg)](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml)
 
-This repo is foundations-level-26, the Matveev proof for beal-conjecture f7bbdc5. Current 4bd15bd one sorry matveev_gap3_lower at 716 representing hGen Matveev 2000 Thm1.4 n=2 explicit C1_floor=143186215390 + hLLL Bugeaud LLL reduction to B0=10^6, gap3_A_bounds B<A logA<13/4 log(B+3) proved, matveev_product_bound_of_B_le_B0 proved via log13<3, matveev_gap3_lower_of_general_of_B_le_B0 v25-sufficient, lake build green with warning, NOT waiting on Mathlib, we own Matveev.
+This repo is foundations-level-26, the Matveev proof for beal-conjecture f7bbdc5. Current HEAD: 0 sorry. `matveev_gap3_lower` is the **B≤10^6 integer-gap** close (`|Λ| > exp(-height_B0 log height_B0)` on gap-3 solutions with `B ≤ 10^6`) via `matveev_thm14_n2_explicit_of_nat` and `matveev_product_bound_of_B_le_B0`. C1_floor=143186215390. Not Matveev interpolation, not unrestricted `matveev_inequality_real_target` (product false for huge B), not `baker_bound_gap3` / hLLL. Not v25. lake build BealMatveevBeal green. NOT waiting on Mathlib.
 
 Monorepo beal-conjecture stays beal-conjecture, this repo is foundations-level-26 Matveev-Beal complement.
 
@@ -27,11 +27,13 @@ has no Matveev 2000 Thm 1.4.
 
 ```
 Beal/Matveev/MatveevThm14General.lean
+MatveevThm14Proof.lean
 ```
 
-Honest skeleton, **one `sorry`**: `matveev_gap3_lower` at line 716, which is
-definitionally `matveev_inequality_real_target` from the relocated
-Level26 kernel (represents `hGen`).
+**0 `sorry`.** `matveev_gap3_lower` is the B≤10^6 integer-gap theorem
+(`matveev_gap3_lower_B_le_B0_target`), not the unrestricted Level26
+`matveev_inequality_real_target`. The integer gap lives in
+`MatveevThm14Proof.lean` (`matveev_thm14_n2_explicit_of_nat`).
 
 On a gap-3 solution, `B < A` and `A ≈ (B+3)^{13/4}`. The old
 `A < B+3` bound is false. Usable: `log A < (13/4) log(B+3)`.
@@ -45,14 +47,20 @@ On a gap-3 solution, `B < A` and `A ≈ (B+3)^{13/4}`. The old
   solution (uninhabited `def Prop`: LHS is `O((log(B+3))³)`, RHS constant)
 - `matveev_product_bound_of_B_le_B0` / `matveev_product_bound_of_B3_le_height`
   — the product that *is* a theorem, when `B ≤ 10^6` via `log 13 < 3`
+- `matveev_thm14_n2_explicit_of_nat` — integer gap
+  `|4 log A − 13 log C| > exp(−C1·log A·log C·B0)` for integers
+  `A,C > 1` with `A⁴ ≠ C¹³` (proved; not interpolation)
+- `matveev_gap3_lower_of_integer_gap_of_B_le_B0` — integer gap +
+  `B ≤ 10^6` product ⇒ `|Λ| > exp(C_exp_bound)` (proved; no `hGen`)
 - `matveev_gap3_lower_of_general_of_B_le_B0` — `hGen` + `B ≤ 10^6`
-  ⇒ `|Λ| > exp(C_exp_bound)` (proved; v25-sufficient; does not inhabit `hGen`)
+  ⇒ `|Λ| > exp(C_exp_bound)` (proved; does not inhabit `hGen`)
 - `matveev_gap3_conditional_B_of_general` — `hGen` ⇒
   `B^4(1+δ) > δ(B+3)^13` with Matveev `δ`. Does **not** give
   `B ≤ 10^6` (that is LLL / `baker_bound_gap3`)
-- `matveev_gap3_lower_of` — general + unrestricted product ⇒ target
-  (proved; does not inhabit the hypotheses)
-- `matveev_gap3_lower` — the v25 goal (`sorry` at 716)
+- `matveev_gap3_lower_of` — general + unrestricted product ⇒
+  unrestricted target (proved; does not inhabit the hypotheses)
+- `matveev_gap3_lower` — B≤10^6 integer-gap close (proved).
+  Unrestricted `matveev_theorem_1_4_gap3_target` stays a `def Prop`
 
 `baker_conditional_gap3_full` takes `baker_bound_gap3`, not the
 Matveev target. After the lower bound, the remaining implication

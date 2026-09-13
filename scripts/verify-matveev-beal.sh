@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Honest AMS / Math. Comp. referee surface for foundations-level-26.
-# This repo owns Matveev 2000 Thm 1.4 n=2 (not Mathlib 4.12).
-# Exactly one sorry is allowed: matveev_gap3_lower at line 716.
+# This repo owns the integer-gap B≤B0 Matveev lower bound (not Mathlib 4.12
+# interpolation, not unrestricted matveev_inequality_real_target).
+# Zero sorry/admit in Lean sources.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -16,6 +17,8 @@ test -f CITATION.cff
 test -f README.md
 test -f LICENSE
 test -f Beal/Matveev/MatveevThm14General.lean
+test -f Beal/Matveev/MatveevThm14Proof.lean
+test -f MatveevThm14Proof.lean
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -51,19 +54,25 @@ if admits:
     print("unexpected admit:", *admits, sep="\n  ", file=sys.stderr)
     sys.exit(1)
 
-expected = "Beal/Matveev/MatveevThm14General.lean:716"
-if sorries != [expected]:
-    print("sorry budget is not exactly matveev_gap3_lower at 716:", file=sys.stderr)
-    print("  found:", sorries or "(none)", file=sys.stderr)
+if sorries:
+    print("sorry budget is not empty:", file=sys.stderr)
+    print("  found:", sorries, file=sys.stderr)
     sys.exit(1)
 
 src = pathlib.Path("Beal/Matveev/MatveevThm14General.lean").read_text(encoding="utf-8")
-lines = src.splitlines()
-if "theorem matveev_gap3_lower" not in lines[714]:
-    print("line 715 is not theorem matveev_gap3_lower:", lines[714], file=sys.stderr)
+if "theorem matveev_gap3_lower :" not in src:
+    print("theorem matveev_gap3_lower missing", file=sys.stderr)
     sys.exit(1)
-if lines[715].strip() != "sorry":
-    print("line 716 is not sorry:", lines[715], file=sys.stderr)
+body = src.split("theorem matveev_gap3_lower :", 1)[1]
+body = re.split(r"\n(?:def |theorem |lemma |/-!)", body, maxsplit=1)[0]
+if re.search(r"^\s*sorry\b", body, re.M):
+    print("matveev_gap3_lower still contains sorry", file=sys.stderr)
+    sys.exit(1)
+if "matveev_gap3_lower_B_le_B0_target" not in src:
+    print("B≤B0 target missing", file=sys.stderr)
+    sys.exit(1)
+if "matveev_gap3_lower_of_integer_gap_of_B_le_B0" not in src:
+    print("integer-gap B≤B0 close missing", file=sys.stderr)
     sys.exit(1)
 if "143186215390" not in src:
     print("C1_floor = 143186215390 missing from MatveevThm14General.lean", file=sys.stderr)
@@ -76,6 +85,9 @@ if "gap3_A_bounds" not in src:
     sys.exit(1)
 if "matveev_gap3_lower_of_general_of_B_le_B0" not in src:
     print("v25-sufficient packaging missing", file=sys.stderr)
+    sys.exit(1)
+if "matveev_thm14_n2_explicit_of_nat" not in pathlib.Path("MatveevThm14Proof.lean").read_text(encoding="utf-8"):
+    print("matveev_thm14_n2_explicit_of_nat missing from MatveevThm14Proof.lean", file=sys.stderr)
     sys.exit(1)
 
 readme = pathlib.Path("README.md").read_text(encoding="utf-8")
@@ -99,8 +111,8 @@ for n in needles:
         sys.exit(1)
 
 print("verify-matveev-beal: ok")
-print("  one sorry: Beal/Matveev/MatveevThm14General.lean:716 matveev_gap3_lower")
+print("  0 sorry; matveev_gap3_lower is the B<=B0 integer-gap close")
 print("  C1_floor=143186215390, gap3_A_bounds and B<=B0 product proved")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")
-print("  not v25 until hGen and hLLL are 0-sorry")
+print("  unrestricted target and hLLL stay def Prop; not v25")
 PY

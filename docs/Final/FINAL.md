@@ -1,3 +1,13 @@
+# Foundations complement (current HEAD)
+
+`beal-level-26-foundations` proves the **B≤10^6 integer-gap** bound
+`matveev_gap3_lower` / `matveev_gap3_lower_B_le_B0_target` (0 sorry):
+on $A^4+B^4=(B+3)^{13}$ with $B\le 10^6$,
+$|\Lambda|>\exp(-\mathrm{height}_{B_0}\log\mathrm{height}_{B_0})$,
+via `matveev_thm14_n2_explicit_of_nat`. Not interpolation, not the
+unrestricted kernel target, not `baker_bound_gap3` / v25.
+Concept DOI `10.5281/zenodo.22379293`.
+
 # FINAL v24.4.0 — v24.x Final Summary Linking Log Upper Bound to Conditional Matveev Ratio Toward B0 (not final)
 
 Latest tag `v24.4.0-Beal-44-13-Level-26-v24x-Final-Summary`.

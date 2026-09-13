@@ -13,6 +13,11 @@ Lean: [`lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequalityReal.lea
 - `matveev_inequality_real_height_le` reuses the v21 height bound (`:= hB`).
 - `matveev_inequality_real_constants_hold` by `decide`, no axioms.
 
+The foundations complement proves the **B≤10^6 integer-gap** form of
+`|Λ| > exp(C_exp_bound)` as `BealMatveevBeal.matveev_gap3_lower`
+(0 sorry). That is not this kernel file's unrestricted
+`matveev_inequality_real_formal`.
+
 ## What is still not kernel-real
 
 - `matveev_inequality_real_formal` / `matveev_inequality_real_lower` remain uninhabited `def Prop`.

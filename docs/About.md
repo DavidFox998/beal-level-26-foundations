@@ -1,6 +1,21 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v24.4.0-Beal-44-13-Level-26-v24x-Final-Summary`
+## Foundations complement (current HEAD)
+
+`matveev_gap3_lower` is now the **B≤10^6 integer-gap** theorem
+(`matveev_gap3_lower_B_le_B0_target`): on a gap-3 solution with
+`B ≤ 10^6`, `|Λ| > exp(-height_B0 log height_B0)`, proved from
+`matveev_thm14_n2_explicit_of_nat` (`MatveevThm14Proof.lean`) and
+`matveev_product_bound_of_B_le_B0`. Axioms
+`[propext, Classical.choice, Quot.sound]`. **0 sorry.**
+
+This is **not** Matveev 2000 interpolation, **not** the unrestricted
+Level26 `matveev_inequality_real_target` (the product is false for
+huge `B`), and **not** `baker_bound_gap3` / `hLLL`. Not a minted v25
+tag. Slug `beal-level-26-foundations`, concept DOI
+`10.5281/zenodo.22379293`.
+
+Latest kernel tag / HEAD: `v24.4.0-Beal-44-13-Level-26-v24x-Final-Summary`
 Most current as of 2026-09-13, **not** final.
 Honest v24.x final summary (not v25): on $A^4 + B^4 = (B+3)^{13}$,
 `matveev_v24x_summary` packs $|\Lambda| = \log(1+B^4/A^4) \le B^4/A^4$

@@ -2,13 +2,14 @@
 Beal Level 26 - Matveev 2000 Thm 1.4 General + Gap3 Instance
 v24.4.0 db7a556 / 22732209 closed |Λ| ≤ B^4/A^4, 0<exp(C)<1e-12,
 conditional B^4(1+exp(C))>exp(C)(B+3)^13 toward B0=10^6
-Goal: inhabit matveev_inequality_real_target = matveev_theorem_1_4_gap3_target
-for v25 B≤B0 unconditional
+Goal: inhabit the B≤B0 Matveev lower bound via the integer gap
+(not unrestricted matveev_inequality_real_target; not interpolation).
 Axioms: [propext, Classical.choice, Quot.sound] only
-0 sorry except matveev_gap3_lower. hGen is def Prop (not in Mathlib).
-Product inhabited only for B+3 ≤ height_B0. hGen ⇏ B ≤ 10^6.
+0 sorry. hGen / unrestricted product stay def Prop (not in Mathlib).
+Product inhabited for B+3 ≤ height_B0. Integer gap ⇏ B ≤ 10^6.
 -/
 import Mathlib
+import MatveevThm14Proof
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -709,13 +710,80 @@ theorem matveev_gap3_lower_of
   change matveev_inequality_real_target
   exact gap3_target_expanded_eq_level26 ▸ hexpanded
 
-/-- The v25 goal. Exactly `matveev_inequality_real_target`.
-    One intentional `sorry`: Mathlib has no Matveev 2000 Thm 1.4, and
-    the unrestricted product is not a theorem. Not v25. -/
-theorem matveev_gap3_lower : matveev_theorem_1_4_gap3_target := by
-  sorry
+/-- Integer gap of `MatveevThm14Proof.matveev_general_on_gap3` written
+    with the parent `Lambda_gap3_real` / `matveev_height_product`. -/
+theorem integer_gap_gt_exp_neg_height_product
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hB : 0 < B) :
+    |Lambda_gap3_real (A : ℝ) (B : ℝ)| >
+      Real.exp (-matveev_height_product (A : ℝ) (B + 3 : ℝ)) := by
+  have h := MatveevThm14Proof.matveev_general_on_gap3 A B hsol hB
+  have hΛ := Lambda_gap3_real_eq_alpha A B
+  have hC1 : MatveevThm14Proof.C1_floor_real = C1_floor_real := by
+    unfold MatveevThm14Proof.C1_floor_real C1_floor_real
+    unfold MatveevThm14Proof.C1_floor C1_floor
+    rfl
+  have hB0 : MatveevThm14Proof.B0_term (A : ℝ) (B + 3 : ℝ) =
+      matveev_B0_term (A : ℝ) (B + 3 : ℝ) :=
+    rfl
+  have hP : matveev_height_product (A : ℝ) (B + 3 : ℝ) =
+      MatveevThm14Proof.C1_floor_real * Real.log (A : ℝ) *
+        Real.log (B + 3 : ℝ) *
+        MatveevThm14Proof.B0_term (A : ℝ) (B + 3 : ℝ) := by
+    unfold matveev_height_product
+    rw [← hC1, hB0]
+  have hneg :
+      -MatveevThm14Proof.C1_floor_real * Real.log (A : ℝ) *
+          Real.log (B + 3 : ℝ) *
+          MatveevThm14Proof.B0_term (A : ℝ) (B + 3 : ℝ) =
+        -(MatveevThm14Proof.C1_floor_real * Real.log (A : ℝ) *
+            Real.log (B + 3 : ℝ) *
+            MatveevThm14Proof.B0_term (A : ℝ) (B + 3 : ℝ)) := by
+    ring
+  rw [hΛ, hP, ← hneg]
+  exact h
 
-/-! ## Type-correct v25 wiring (no extra sorry)
+/-- Integer gap + proved product on `B+3 ≤ height_B0`. No `hGen`. -/
+theorem matveev_gap3_lower_of_integer_gap_of_B3_le_height
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13)
+    (hB : 0 < B) (hB3 : B + 3 ≤ height_B0_nat) :
+    |Lambda_gap3_real (A : ℝ) (B : ℝ)| > Real.exp C_exp_bound_real :=
+  lt_of_le_of_lt
+    (exp_C_le_exp_neg_product
+      (matveev_product_bound_of_B3_le_height A B hsol hB hB3))
+    (integer_gap_gt_exp_neg_height_product hsol hB)
+
+/-- Integer gap + proved product on `B ≤ 10^6`. No `hGen`.
+    This is the v25-sufficient Matveev lower bound. It does **not**
+    inhabit unrestricted `matveev_theorem_1_4_gap3_target` and does
+    **not** inhabit `baker_bound_gap3`. -/
+theorem matveev_gap3_lower_of_integer_gap_of_B_le_B0
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13)
+    (hB : 0 < B) (hB0 : B ≤ 1000000) :
+    |Lambda_gap3_real (A : ℝ) (B : ℝ)| > Real.exp C_exp_bound_real :=
+  lt_of_le_of_lt
+    (exp_C_le_exp_neg_product
+      (matveev_product_bound_of_B_le_B0 A B hsol hB hB0))
+    (integer_gap_gt_exp_neg_height_product hsol hB)
+
+/-- v25-sufficient target: the displayed uniform lower bound on every
+    gap-3 solution with `B ≤ 10^6`. Not the unrestricted Level26
+    `matveev_inequality_real_target` (product false for huge `B`). -/
+def matveev_gap3_lower_B_le_B0_target : Prop :=
+  ∀ A B : ℕ,
+    0 < B →
+      B ≤ 1000000 →
+        A ^ 4 + B ^ 4 = (B + 3) ^ 13 →
+          |Lambda_gap3_real (A : ℝ) (B : ℝ)| > Real.exp C_exp_bound_real
+
+/-- Closed: integer gap (`matveev_thm14_n2_explicit_of_nat`) plus the
+    proved `B ≤ 10^6` product. No `sorry`. Not interpolation, not
+    unrestricted `matveev_theorem_1_4_gap3_target`, not v25 (`hLLL`
+    stays a `def Prop`). -/
+theorem matveev_gap3_lower : matveev_gap3_lower_B_le_B0_target := by
+  intro A B hB hB0 hsol
+  exact matveev_gap3_lower_of_integer_gap_of_B_le_B0 hsol hB hB0
+
+/-! ## Type-correct v25 wiring (no extra unfinished goals)
 
     `baker_conditional_gap3_full` takes `baker_bound_gap3`.
     The LLL step `matveev_inequality_real_target → baker_bound_gap3`
@@ -756,6 +824,9 @@ theorem gap3_forall_of_baker
 #check matveev_gap3_conditional_B_of_general
 #check matveev_gap3_lower_of
 #check matveev_theorem_1_4_gap3_target
+#check integer_gap_gt_exp_neg_height_product
+#check matveev_gap3_lower_of_integer_gap_of_B_le_B0
+#check matveev_gap3_lower_B_le_B0_target
 #check matveev_gap3_lower
 #check baker_bound_gap3_holds
 #print axioms C1_floor_eq
@@ -777,6 +848,9 @@ theorem gap3_forall_of_baker
 #print axioms matveev_gap3_lower_of_general_of_B_le_B0
 #print axioms matveev_gap3_conditional_B_of_general
 #print axioms matveev_gap3_lower_of
+#print axioms integer_gap_gt_exp_neg_height_product
+#print axioms matveev_gap3_lower_of_integer_gap_of_B_le_B0
+#print axioms matveev_gap3_lower
 #print axioms gap3_target_eq_matveev_inequality
 #print axioms C_exp_bound_real_eq_level26
 #print axioms Lambda_gap3_real_nat

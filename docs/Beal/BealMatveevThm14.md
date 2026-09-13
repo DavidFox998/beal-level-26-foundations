@@ -34,10 +34,16 @@ theorem bugeaud_v24x_final_link :
           ∀ solution with B ≤ bugeaud_B0, B ≤ B_reduced)
 ```
 
-Honest consolidation of v24.0.0–3.2. Does not claim $|\Lambda| > \exp(C)$.
-Target `matveev_inequality_real_target`, `baker_bound_gap3`, and
+Honest consolidation of v24.0.0–3.2. Does not claim $|\Lambda| > \exp(C)$
+on every solution. Target `matveev_inequality_real_target`, `baker_bound_gap3`, and
 `bugeaud_LLL_reduction_conditional` stay uninhabited def Props.
 v24.4.0 is the honest final of v24.x, not v25.
+
+The foundations complement (`beal-level-26-foundations`) now proves the
+**B≤10^6** integer-gap form `|Λ| > exp(-height_B0 log height_B0)` as
+`matveev_gap3_lower` / `matveev_gap3_lower_B_le_B0_target` (0 sorry),
+via `matveev_thm14_n2_explicit_of_nat`. That does not inhabit this
+kernel file's unrestricted target and is not LLL / v25.
 
 ## v24.3.2 — Numerical Tiny Bound exp(C) << 10^{-12}
 

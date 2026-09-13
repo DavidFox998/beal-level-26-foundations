@@ -1,6 +1,6 @@
 # Matveev–Beal CI (foundations-level-26).
 # Honest AMS / Math. Comp. surface: lake build of BealMatveevBeal
-# succeeds with exactly one sorry (matveev_gap3_lower at line 716).
+# succeeds with 0 sorry. matveev_gap3_lower is the B≤B0 integer-gap close.
 # Does not build the relocated v24.4.0 scaffold targets
 # BealLevel26FoundationsScaffold / BealLevel26FoundationsReal.
 name: Matveev-Beal CI

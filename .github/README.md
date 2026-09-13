@@ -13,18 +13,19 @@ Monorepo `beal-conjecture` stays `beal-conjecture`.
 requests to **`main`**, and on `workflow_dispatch`:
 
 1. `lake exe cache get`
-2. `lake build BealMatveevBeal` — default target; one `sorry` warning at
-   `matveev_gap3_lower` (line 716) is expected and is not a failure
+2. `lake build BealMatveevBeal` — default target; 0 `sorry`
 3. `bash scripts/verify-matveev-beal.sh` — AMS / Math. Comp. referee
-   surface: exactly that one `sorry`, `C1_floor=143186215390`,
-   `gap3_A_bounds` and `matveev_product_bound_of_B_le_B0` present,
-   concept DOI and slug on `CITATION.cff`
+   surface: 0 `sorry`, `matveev_gap3_lower` is the B≤10^6 integer-gap
+   close, `C1_floor=143186215390`, `gap3_A_bounds` and
+   `matveev_product_bound_of_B_le_B0` present, concept DOI and slug
+   on `CITATION.cff`
 
 It does **not** run `lake build BealLevel26FoundationsScaffold` or
 `BealLevel26FoundationsReal` (those targets left with the relocated
 v24.4.0 kernel in `beal-conjecture`). It does **not** run
 `scripts/verify-scaffold.sh` (historical X0(26) checklist).
 
-A green run is a Lean 4.12 / Mathlib 4.12 build of the Matveev 2000
-Thm 1.4 n=2 skeleton plus the honest one-sorry budget. It is not a
-minted `v25.0.0` tag and not an unconditional `∀ B ¬∃ A`.
+A green run is a Lean 4.12 / Mathlib 4.12 build of the B≤10^6
+integer-gap Matveev lower bound. It is not a minted `v25.0.0` tag,
+not interpolation, and not an unconditional `∀ B ¬∃ A` (`hLLL`
+stays a `def Prop`).
