@@ -11,11 +11,13 @@ elementary CF lemmas (`4/13` is a convergent;
 `1/(B+3)¹³ < B⁴/A⁴`) and keeps `bugeaud_LLL_reduction_proof` as
 an uninhabited `def Prop`. `MatveevInterpolation.lean` starts
 Matveev 2000 p.5 interpolation (Δ, Vandermonde, `𝐆_a` product
-theorem, Hadamard, higher-order Schwarz, Cauchy estimates) and
-proves the bare-real ∀-reals claim is false. Polynomial vanishing
-inhabits Schwarz on `𝐆_a`; analytic smallness of `Δ` is still
-conditional for exponential `Φ`, not a Matveev close. Being a
-convergent does not force `B ≤ 10⁶`. Axioms
+theorem, Hadamard, higher-order Schwarz, Cauchy estimates, Siegel
+/ G_a jet vanishing) and proves the bare-real ∀-reals claim is
+false. Polynomial vanishing inhabits Schwarz on `𝐆_a`;
+`matveevPhi_vanishing_exists_T` inhabits the G_a jet of `Φ`.
+Analytic smallness of a generic `Δ` is still conditional;
+exponential Wüstholz stays `def Prop`. `L≥1` and `α1=α2=1` forces
+`Δ=0`. Being a convergent does not force `B ≤ 10⁶`. Axioms
 `[propext, Classical.choice, Quot.sound]`. **0 sorry.**
 
 This is **not** Matveev 2000 interpolation, **not** the unrestricted

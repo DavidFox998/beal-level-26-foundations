@@ -43,14 +43,23 @@ Proved, axioms `[propext, Classical.choice, Quot.sound]` only:
 * polynomial vanishing → `iteratedDslope` (so Schwarz is inhabited
   on `𝐆_a`); binomial matrix entries are those Taylor coefficients;
 * conditional analytic smallness
-  `matveev_interpolation_analytic_small_bound`.
+  `matveev_interpolation_analytic_small_bound`;
+* Siegel / pigeonhole: an underdetermined integer system has a
+  nonzero integer kernel vector of controlled height
+  (`siegel_lemma`, Mathlib `Int.Matrix.exists_ne_zero_int_vec_norm_le`);
+* `matveevPhi_vanishing_exists_T`: integer coefficients of height
+  at most the Siegel bound such that the G_a specialisation
+  (`α1=α2=1`) vanishes to order `siegel_T = N/2` at `0`;
+* `Φ(z) = P(z, α1^z, α2^z)` along `W`; gap-3 is not the relation
+  `A^4 = (B+3)^13`;
+* `L≥1` and `α1=α2=1` makes `Δ=0` (duplicate columns).
 
-Wüstholz for exponential polynomials stays `def Prop`. The analytic
-smallness `|Δ| ≤ exp(−c L K)` is proved **conditionally**
-(`matveev_interpolation_analytic_small_bound`) from a vanishing-order
-hypothesis and Schwarz; it is not an unconditional bound on a generic
-interpolation matrix (`α1=α2=1` gives `Δ=1`). Polynomial vanishing is
-inhabited; exponential `Φ` vanishing is not. Not v25.
+Wüstholz for exponential polynomials stays `def Prop`. Exact integer
+vanishing of the *exponential* jet is not an integer linear system
+(the derivatives involve `log α`). The analytic smallness
+`|Δ| ≤ exp(−c L K)` is proved **conditionally** from a vanishing-order
+hypothesis and Schwarz; the generic `size_upper_bound` stays a
+`def Prop` (`L=0` gives `Δ=1`). Not v25.
 -/
 
 noncomputable section
@@ -1502,6 +1511,439 @@ theorem matveevPhi_cauchy_estimate
   cauchy_estimate_iteratedDslope n hR hM
     (matveevPhi_diffContOnCl α1 α2 terms) hbound
 
+/-! ## Siegel lemma and G_a vanishing of `Φ` -/
+
+attribute [local instance] Matrix.seminormedAddCommGroup
+
+/-- Pigeonhole box `[-H,H]^ι` has cardinality `(2H+1)^{|ι|}`. -/
+theorem integer_box_card {ι : Type*} [Fintype ι] [DecidableEq ι] (H : ℕ) :
+    (Finset.Icc (fun _ : ι => (-(H : ℤ))) (fun _ => (H : ℤ))).card =
+      (2 * H + 1) ^ Fintype.card ι := by
+  rw [Pi.card_Icc]
+  simp only [Finset.prod_const, Finset.card_univ]
+  congr 1
+  rw [Int.card_Icc]
+  have h : (H : ℤ) + 1 - (-(H : ℤ)) = ((2 * H + 1 : ℕ) : ℤ) := by
+    push_cast
+    ring
+  rw [h, Int.toNat_natCast]
+
+/-- Mathlib Siegel: `m < n` integer equations have a nonzero integer
+    solution of height `(n max(1,‖A‖))^{m/(n-m)}`. -/
+theorem siegel_lemma {α β : Type*} [Fintype α] [Fintype β]
+    (A : Matrix α β ℤ)
+    (hn : Fintype.card α < Fintype.card β) (hm : 0 < Fintype.card α) :
+    ∃ t : β → ℤ, t ≠ 0 ∧ A *ᵥ t = 0 ∧
+      ‖t‖ ≤
+        ((Fintype.card β : ℝ) * max 1 ‖A‖) ^
+          ((Fintype.card α : ℝ) / (Fintype.card β - Fintype.card α)) :=
+  Int.Matrix.exists_ne_zero_int_vec_norm_le A hn hm
+
+/-- Coefficient count `(L+1)(N1+1)(N2+1)`. -/
+def coeffCount (L N1 N2 : ℕ) : ℕ := (L + 1) * (N1 + 1) * (N2 + 1)
+
+theorem coeffCount_eq (L N1 N2 : ℕ) :
+    coeffCount L N1 N2 = (L + 1) * (N1 + 1) * (N2 + 1) :=
+  rfl
+
+theorem coeffCount_pos (L N1 N2 : ℕ) : 0 < coeffCount L N1 N2 :=
+  Nat.mul_pos (Nat.mul_pos (Nat.succ_pos L) (Nat.succ_pos N1)) (Nat.succ_pos N2)
+
+def n12 (N1 N2 : ℕ) : ℕ := (N1 + 1) * (N2 + 1)
+
+theorem n12_pos (N1 N2 : ℕ) : 0 < n12 N1 N2 :=
+  Nat.mul_pos (Nat.succ_pos N1) (Nat.succ_pos N2)
+
+theorem coeffCount_eq_mul_n12 (L N1 N2 : ℕ) :
+    coeffCount L N1 N2 = (L + 1) * n12 N1 N2 := by
+  unfold coeffCount n12
+  ring
+
+def decodeCoeffL (L N1 N2 : ℕ) (j : Fin (coeffCount L N1 N2)) : ℕ :=
+  j.val / n12 N1 N2
+
+def decodeCoeffK1 (L N1 N2 : ℕ) (j : Fin (coeffCount L N1 N2)) : ℕ :=
+  j.val % n12 N1 N2 / (N2 + 1)
+
+def decodeCoeffK2 (L N1 N2 : ℕ) (j : Fin (coeffCount L N1 N2)) : ℕ :=
+  j.val % n12 N1 N2 % (N2 + 1)
+
+theorem decodeCoeffL_lt (L N1 N2 : ℕ) (j : Fin (coeffCount L N1 N2)) :
+    decodeCoeffL L N1 N2 j < L + 1 := by
+  unfold decodeCoeffL
+  have hpos : 0 < n12 N1 N2 := n12_pos N1 N2
+  have hj : j.val < (L + 1) * n12 N1 N2 := by
+    simpa [coeffCount_eq_mul_n12 L N1 N2] using j.isLt
+  exact (Nat.div_lt_iff_lt_mul hpos).2 hj
+
+/-- Displayed vanishing order `T = N/2`. -/
+def siegel_T (L N1 N2 : ℕ) : ℕ := coeffCount L N1 N2 / 2
+
+theorem siegel_T_lt {L N1 N2 : ℕ} (hN : 2 ≤ coeffCount L N1 N2) :
+    siegel_T L N1 N2 < coeffCount L N1 N2 :=
+  Nat.div_lt_self (lt_of_lt_of_le (by decide : (0 : ℕ) < 2) hN)
+    (by decide : (1 : ℕ) < 2)
+
+theorem siegel_T_pos {L N1 N2 : ℕ} (hN : 2 ≤ coeffCount L N1 N2) :
+    0 < siegel_T L N1 N2 :=
+  Nat.div_pos hN (by decide : (0 : ℕ) < 2)
+
+theorem two_mul_siegel_T_le (L N1 N2 : ℕ) :
+    2 * siegel_T L N1 N2 ≤ coeffCount L N1 N2 := by
+  simpa [siegel_T] using Nat.mul_div_le (coeffCount L N1 N2) 2
+
+/-- Integer jet matrix: row `i` sums coefficients of `z^i`. -/
+def jetMatrix (L N1 N2 T : ℕ) :
+    Matrix (Fin T) (Fin (coeffCount L N1 N2)) ℤ :=
+  fun i j => if decodeCoeffL L N1 N2 j = (i : ℕ) then 1 else 0
+
+theorem jetMatrix_apply (L N1 N2 T : ℕ)
+    (i : Fin T) (j : Fin (coeffCount L N1 N2)) :
+    jetMatrix L N1 N2 T i j =
+      if decodeCoeffL L N1 N2 j = (i : ℕ) then 1 else 0 :=
+  rfl
+
+theorem jetMatrix_mulVec (L N1 N2 T : ℕ)
+    (c : Fin (coeffCount L N1 N2) → ℤ) (i : Fin T) :
+    (jetMatrix L N1 N2 T).mulVec c i =
+      ∑ j : Fin (coeffCount L N1 N2),
+        if decodeCoeffL L N1 N2 j = (i : ℕ) then c j else 0 := by
+  unfold Matrix.mulVec jetMatrix
+  simp [dotProduct, ite_mul, mul_one, mul_zero]
+
+theorem jetMatrix_abs_le_one (L N1 N2 T : ℕ)
+    (i : Fin T) (j : Fin (coeffCount L N1 N2)) :
+    |jetMatrix L N1 N2 T i j| ≤ 1 := by
+  unfold jetMatrix
+  split_ifs <;> norm_num
+
+theorem jetMatrix_norm_le_one (L N1 N2 T : ℕ) :
+    ‖jetMatrix L N1 N2 T‖ ≤ 1 := by
+  rw [norm_le_iff (by norm_num : (0 : ℝ) ≤ 1)]
+  intro i j
+  rw [Int.norm_eq_abs]
+  exact_mod_cast jetMatrix_abs_le_one L N1 N2 T i j
+
+/-- Auxiliary polynomial `Σ c_{ℓ,k1,k2} X^ℓ`. -/
+def auxPoly (L N1 N2 : ℕ) (c : Fin (coeffCount L N1 N2) → ℤ) : ℂ[X] :=
+  ∑ j : Fin (coeffCount L N1 N2),
+    C (c j : ℂ) * X ^ decodeCoeffL L N1 N2 j
+
+theorem auxPoly_eval (L N1 N2 : ℕ)
+    (c : Fin (coeffCount L N1 N2) → ℤ) (z : ℂ) :
+    (auxPoly L N1 N2 c).eval z =
+      ∑ j : Fin (coeffCount L N1 N2), (c j : ℂ) * z ^ decodeCoeffL L N1 N2 j := by
+  unfold auxPoly
+  simp [eval_finset_sum, eval_mul, eval_C, eval_pow, eval_X]
+
+theorem auxPoly_coeff (L N1 N2 : ℕ)
+    (c : Fin (coeffCount L N1 N2) → ℤ) (k : ℕ) :
+    (auxPoly L N1 N2 c).coeff k =
+      ∑ j : Fin (coeffCount L N1 N2),
+        if decodeCoeffL L N1 N2 j = k then (c j : ℂ) else 0 := by
+  unfold auxPoly
+  rw [finset_sum_coeff]
+  refine Finset.sum_congr rfl fun j _ => ?_
+  rw [coeff_C_mul_X_pow]
+  simp [eq_comm]
+
+/-- Exponential polynomial with integer coefficients indexed by
+    `(ℓ,k1,k2)`. -/
+def matveevPhi_of_coeffs (L N1 N2 : ℕ)
+    (c : Fin (coeffCount L N1 N2) → ℤ) (α1 α2 : ℝ) (z : ℂ) : ℂ :=
+  ∑ j : Fin (coeffCount L N1 N2),
+    (c j : ℂ) * z ^ decodeCoeffL L N1 N2 j *
+      alphaPowZ α1 ((decodeCoeffK1 L N1 N2 j : ℂ) * z) *
+      alphaPowZ α2 ((decodeCoeffK2 L N1 N2 j : ℂ) * z)
+
+theorem alphaPowZ_one (w : ℂ) : alphaPowZ 1 w = 1 := by
+  unfold alphaPowZ
+  rw [Real.log_one, Complex.ofReal_zero, zero_mul, Complex.exp_zero]
+
+theorem alphaPowZ_nat_mul (α : ℝ) (k : ℕ) (z : ℂ) :
+    alphaPowZ α ((k : ℂ) * z) = alphaPowZ α z ^ k := by
+  unfold alphaPowZ
+  have h :
+      (Real.log α : ℂ) * ((k : ℂ) * z) =
+        (k : ℂ) * ((Real.log α : ℂ) * z) := by
+    ring
+  rw [h, Complex.exp_nat_mul]
+
+theorem matveevPhi_of_coeffs_alpha_one (L N1 N2 : ℕ)
+    (c : Fin (coeffCount L N1 N2) → ℤ) (z : ℂ) :
+    matveevPhi_of_coeffs L N1 N2 c 1 1 z =
+      ∑ j : Fin (coeffCount L N1 N2),
+        (c j : ℂ) * z ^ decodeCoeffL L N1 N2 j := by
+  unfold matveevPhi_of_coeffs
+  refine Finset.sum_congr rfl fun j _ => ?_
+  rw [alphaPowZ_one, alphaPowZ_one, mul_one, mul_one]
+
+theorem matveevPhi_of_coeffs_eq_auxPoly (L N1 N2 : ℕ)
+    (c : Fin (coeffCount L N1 N2) → ℤ) :
+    matveevPhi_of_coeffs L N1 N2 c 1 1 =
+      fun z => (auxPoly L N1 N2 c).eval z := by
+  funext z
+  rw [matveevPhi_of_coeffs_alpha_one, auxPoly_eval]
+
+theorem matveevPhi_of_coeffs_dslope (L N1 N2 : ℕ)
+    (c : Fin (coeffCount L N1 N2) → ℤ) (k : ℕ) :
+    iteratedDslope (matveevPhi_of_coeffs L N1 N2 c 1 1) k 0 =
+      (auxPoly L N1 N2 c).coeff k := by
+  rw [matveevPhi_of_coeffs_eq_auxPoly]
+  exact iteratedDslope_polynomial_coeff (auxPoly L N1 N2 c) k
+
+theorem jetMatrix_ker_auxPoly_coeff
+    {L N1 N2 T : ℕ} {c : Fin (coeffCount L N1 N2) → ℤ}
+    (hker : (jetMatrix L N1 N2 T).mulVec c = 0) {k : ℕ} (hk : k < T) :
+    (auxPoly L N1 N2 c).coeff k = 0 := by
+  have hrow : (jetMatrix L N1 N2 T).mulVec c ⟨k, hk⟩ = 0 :=
+    congr_fun hker _
+  have hsum := jetMatrix_mulVec L N1 N2 T c ⟨k, hk⟩
+  rw [auxPoly_coeff]
+  have hcast :
+      (∑ j : Fin (coeffCount L N1 N2),
+          if decodeCoeffL L N1 N2 j = k then (c j : ℂ) else 0) =
+        ((∑ j : Fin (coeffCount L N1 N2),
+            if decodeCoeffL L N1 N2 j = k then c j else 0 : ℤ) : ℂ) := by
+    rw [Int.cast_sum]
+    refine Finset.sum_congr rfl fun j _ => ?_
+    split_ifs <;> simp
+  have hz :
+      (∑ j : Fin (coeffCount L N1 N2),
+          if decodeCoeffL L N1 N2 j = k then c j else 0 : ℤ) = 0 := by
+    rw [← hsum, hrow]
+  rw [hcast, hz, Int.cast_zero]
+
+/-- `P(y0,y1,y2) = Σ c y0^ℓ y1^{k1} y2^{k2}`. -/
+def matveevP (terms : List PhiTerm) (y0 y1 y2 : ℂ) : ℂ :=
+  (terms.map (fun t => t.coeff * y0 ^ t.l * y1 ^ t.k1 * y2 ^ t.k2)).sum
+
+/-- The curve `W`: `z ↦ (z, α1^z, α2^z)` in `𝐆_a × 𝐆_m²`. -/
+def matveevW (α1 α2 : ℝ) (z : ℂ) : ℂ × ℂ × ℂ :=
+  (z, alphaPowZ α1 z, alphaPowZ α2 z)
+
+/-- Lie-algebra direction `(z, z log α1, z log α2)`. -/
+def matveevW_lie (α1 α2 : ℝ) (z : ℂ) : ℂ × ℂ × ℂ :=
+  (z, (Real.log α1 : ℂ) * z, (Real.log α2 : ℂ) * z)
+
+theorem matveevPhi_eq_P_along_W
+    (α1 α2 : ℝ) (terms : List PhiTerm) (z : ℂ) :
+    matveevPhi α1 α2 terms z =
+      matveevP terms z (alphaPowZ α1 z) (alphaPowZ α2 z) := by
+  unfold matveevPhi matveevP
+  refine congrArg List.sum ?_
+  induction terms with
+  | nil => rfl
+  | cons t ts ih =>
+    simp only [List.map_cons]
+    refine congrArg₂ List.cons ?_ ih
+    unfold phiTermEval
+    rw [alphaPowZ_nat_mul, alphaPowZ_nat_mul]
+
+theorem matveevPhi_eq_P_along_W'
+    (α1 α2 : ℝ) (terms : List PhiTerm) (z : ℂ) :
+    matveevPhi α1 α2 terms z =
+      matveevP terms (matveevW α1 α2 z).1 (matveevW α1 α2 z).2.1
+        (matveevW α1 α2 z).2.2 :=
+  matveevPhi_eq_P_along_W α1 α2 terms z
+
+/-- Integer vanishing of the G_a jet: Siegel produces nonzero `c`
+    of controlled height such that `Φ_{1,1}` vanishes to order
+    `siegel_T = N/2` at `0`. Exact exponential-jet vanishing over `ℤ`
+    is not an integer system (derivatives carry `log α`). -/
+theorem matveevPhi_vanishing_exists_T
+    {L N1 N2 : ℕ} (hN : 2 ≤ coeffCount L N1 N2) :
+    ∃ c : Fin (coeffCount L N1 N2) → ℤ,
+      c ≠ 0 ∧
+        (jetMatrix L N1 N2 (siegel_T L N1 N2)).mulVec c = 0 ∧
+          ‖c‖ ≤
+              ((coeffCount L N1 N2 : ℝ) *
+                  max 1 ‖jetMatrix L N1 N2 (siegel_T L N1 N2)‖) ^
+                ((siegel_T L N1 N2 : ℝ) /
+                  (coeffCount L N1 N2 - siegel_T L N1 N2 : ℝ)) ∧
+            ∀ k < siegel_T L N1 N2,
+              iteratedDslope (matveevPhi_of_coeffs L N1 N2 c 1 1) k 0 = 0 := by
+  have hm : 0 < Fintype.card (Fin (siegel_T L N1 N2)) := by
+    rw [Fintype.card_fin]
+    exact siegel_T_pos hN
+  have hn :
+      Fintype.card (Fin (siegel_T L N1 N2)) <
+        Fintype.card (Fin (coeffCount L N1 N2)) := by
+    rw [Fintype.card_fin, Fintype.card_fin]
+    exact siegel_T_lt hN
+  obtain ⟨c, hc0, hker, hnorm⟩ :=
+    siegel_lemma (jetMatrix L N1 N2 (siegel_T L N1 N2)) hn hm
+  refine ⟨c, hc0, hker, ?_, ?_⟩
+  · simpa [Fintype.card_fin] using hnorm
+  · intro k hk
+    rw [matveevPhi_of_coeffs_dslope]
+    exact jetMatrix_ker_auxPoly_coeff hker hk
+
+theorem matveevPhi_vanishing_exists_T_height
+    {L N1 N2 : ℕ} (hN : 2 ≤ coeffCount L N1 N2) :
+    ∃ c : Fin (coeffCount L N1 N2) → ℤ,
+      c ≠ 0 ∧
+        ‖c‖ ≤ (coeffCount L N1 N2 : ℝ) ∧
+          ∀ k < siegel_T L N1 N2,
+            iteratedDslope (matveevPhi_of_coeffs L N1 N2 c 1 1) k 0 = 0 := by
+  obtain ⟨c, hc0, _, hnorm, hvan⟩ := matveevPhi_vanishing_exists_T hN
+  refine ⟨c, hc0, ?_, hvan⟩
+  have hA : ‖jetMatrix L N1 N2 (siegel_T L N1 N2)‖ ≤ 1 :=
+    jetMatrix_norm_le_one L N1 N2 _
+  have hmax : max 1 ‖jetMatrix L N1 N2 (siegel_T L N1 N2)‖ = 1 :=
+    le_antisymm (max_le le_rfl hA) (le_max_left _ _)
+  have hTle : (siegel_T L N1 N2 : ℝ) ≤
+      (coeffCount L N1 N2 : ℝ) - (siegel_T L N1 N2 : ℝ) := by
+    have hsum : (siegel_T L N1 N2 : ℝ) + (siegel_T L N1 N2 : ℝ) ≤
+        (coeffCount L N1 N2 : ℝ) := by
+      have h2 := two_mul_siegel_T_le L N1 N2
+      have h2' : siegel_T L N1 N2 + siegel_T L N1 N2 ≤
+          coeffCount L N1 N2 := by rwa [two_mul] at h2
+      exact_mod_cast h2'
+    linarith
+  have hpow :
+      ((coeffCount L N1 N2 : ℝ) *
+          max 1 ‖jetMatrix L N1 N2 (siegel_T L N1 N2)‖) ^
+          ((siegel_T L N1 N2 : ℝ) /
+            (coeffCount L N1 N2 - siegel_T L N1 N2 : ℝ)) ≤
+        (coeffCount L N1 N2 : ℝ) := by
+    rw [hmax, mul_one]
+    have hden : (0 : ℝ) <
+        (coeffCount L N1 N2 : ℝ) - (siegel_T L N1 N2 : ℝ) := by
+      have : (siegel_T L N1 N2 : ℝ) < (coeffCount L N1 N2 : ℝ) :=
+        Nat.cast_lt.mpr (siegel_T_lt hN)
+      linarith
+    have hexp : (siegel_T L N1 N2 : ℝ) /
+        ((coeffCount L N1 N2 : ℝ) - (siegel_T L N1 N2 : ℝ)) ≤ 1 :=
+      (div_le_one hden).2 hTle
+    have hbase : (1 : ℝ) ≤ (coeffCount L N1 N2 : ℝ) := by
+      exact_mod_cast (le_trans (by decide : (1 : ℕ) ≤ 2) hN)
+    exact (Real.rpow_le_rpow_of_exponent_le hbase hexp).trans_eq
+      (Real.rpow_one _)
+  exact le_trans hnorm hpow
+
+theorem nat_cast_le_exp (n : ℕ) : (n : ℝ) ≤ Real.exp n :=
+  (le_add_of_nonneg_right (by norm_num : (0 : ℝ) ≤ 1)).trans
+    (Real.add_one_le_exp _)
+
+/-- Siegel height is at most `N`, hence at most `exp N`. Displayed
+    Matveev bookkeeping writes this as `exp(O(L K))` once
+    `N = (L+1)(N1+1)(N2+1)` is absorbed. -/
+theorem matveevPhi_vanishing_exists_T_exp_height
+    {L N1 N2 : ℕ} (hN : 2 ≤ coeffCount L N1 N2) :
+    ∃ c : Fin (coeffCount L N1 N2) → ℤ,
+      c ≠ 0 ∧
+        ‖c‖ ≤ Real.exp (coeffCount L N1 N2 : ℝ) ∧
+          ∀ k < siegel_T L N1 N2,
+            iteratedDslope (matveevPhi_of_coeffs L N1 N2 c 1 1) k 0 = 0 := by
+  obtain ⟨c, hc0, hnorm, hvan⟩ := matveevPhi_vanishing_exists_T_height hN
+  exact ⟨c, hc0, hnorm.trans (nat_cast_le_exp _), hvan⟩
+
+/-! ## Multiplicative dependence on gap-3 -/
+
+theorem nat_pow_eq_pow_log {A C a b : ℕ}
+    (_hA : 1 < A) (_hC : 1 < C) (heq : A ^ a = C ^ b) :
+    (a : ℝ) * log (A : ℝ) = (b : ℝ) * log (C : ℝ) := by
+  have hpow : ((A : ℝ) ^ a) = ((C : ℝ) ^ b) := by exact_mod_cast heq
+  have hlog := congrArg log hpow
+  rw [log_pow (A : ℝ) a, log_pow (C : ℝ) b] at hlog
+  exact hlog
+
+theorem fourth_thirteenth_log_ratio {A C : ℕ}
+    (hA : 1 < A) (hC : 1 < C) (heq : A ^ 4 = C ^ 13) :
+    (4 : ℝ) * log (A : ℝ) = 13 * log (C : ℝ) :=
+  nat_pow_eq_pow_log hA hC heq
+
+/-- On a gap-3 solution `B^4 > 0`, so `A^4 ≠ (B+3)^13`. The ratio
+    `4/13` is therefore not a multiplicative relation. Remaining
+    relations are a Baker / LLL question (`baker_bound_gap3`). -/
+theorem gap3_not_fourth_thirteenth {A B : ℕ}
+    (h : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hB : 0 < B) :
+    A ^ 4 ≠ (B + 3) ^ 13 := by
+  intro heq
+  have hB4 : B ^ 4 = 0 := by
+    have : A ^ 4 + B ^ 4 = A ^ 4 := by
+      rw [h, heq]
+    exact Nat.add_left_cancel this
+  have hB0 : B = 0 := (Nat.pow_eq_zero.1 hB4).1
+  exact hB.ne' hB0
+
+def multiplicativelyDependent (α1 α2 : ℕ) : Prop :=
+  ∃ a b : ℕ, (a ≠ 0 ∨ b ≠ 0) ∧ α1 ^ a = α2 ^ b
+
+theorem mul_dep_implies_log_ratio {α1 α2 a b : ℕ}
+    (hα1 : 1 < α1) (hα2 : 1 < α2)
+    (heq : α1 ^ a = α2 ^ b) (hpos : a ≠ 0 ∨ b ≠ 0) :
+    0 < a ∧ 0 < b ∧
+      (a : ℝ) * log (α1 : ℝ) = (b : ℝ) * log (α2 : ℝ) := by
+  have ha : 0 < a := by
+    by_contra h
+    have ha0 : a = 0 := by omega
+    have hb : b ≠ 0 := by
+      simpa [ha0] using hpos
+    have : (1 : ℕ) = α2 ^ b := by
+      simpa [ha0, pow_zero] using heq
+    have hlt : 1 < α2 ^ b := one_lt_pow hα2 hb
+    rw [← this] at hlt
+    exact lt_irrefl _ hlt
+  have hb : 0 < b := by
+    by_contra h
+    have hb0 : b = 0 := by omega
+    have : α1 ^ a = 1 := by
+      simpa [hb0, pow_zero] using heq
+    have hlt : 1 < α1 ^ a := one_lt_pow hα1 ha.ne'
+    rw [this] at hlt
+    exact lt_irrefl _ hlt
+  exact ⟨ha, hb, nat_pow_eq_pow_log hα1 hα2 heq⟩
+
+/-! ## `L ≥ 1` degenerate smallness (`α1=α2=1`) -/
+
+theorem interpDim_K_succ_lt (L K : ℕ) (hL : 0 < L) :
+    K + 1 < interpDim L K := by
+  unfold interpDim
+  have h : 1 < L + 1 := Nat.succ_lt_succ hL
+  have hpos : 0 < K + 1 := Nat.succ_pos K
+  have hmul : 1 * (K + 1) < (L + 1) * (K + 1) :=
+    Nat.mul_lt_mul_of_pos_right h hpos
+  simpa using hmul
+
+theorem interpolationDeterminant_L_pos_alpha_one
+    (L K N1 N2 : ℕ) (hL : 0 < L) :
+    interpolationDeterminant L K N1 N2 1 1 = 0 := by
+  unfold interpolationDeterminant
+  have h0 : 0 < interpDim L K := interpDim_pos L K
+  have h1 : K + 1 < interpDim L K := interpDim_K_succ_lt L K hL
+  set j0 : Fin (interpDim L K) := ⟨0, h0⟩
+  set j1 : Fin (interpDim L K) := ⟨K + 1, h1⟩
+  have hne : j0 ≠ j1 := by
+    apply Fin.ne_of_val_ne
+    change (0 : ℕ) ≠ K + 1
+    exact Ne.symm (Nat.succ_ne_zero K)
+  have hL0 : decodeL L K j0 = 0 := by
+    simp [decodeL, j0]
+  have hK0 : decodeK L K j0 = 0 := by
+    simp [decodeK, j0]
+  have hL1 : decodeL L K j1 = 1 := by
+    simp [decodeL, j1, Nat.div_self (Nat.succ_pos K)]
+  have hK1 : decodeK L K j1 = 0 := by
+    simp [decodeK, j1, Nat.mod_self]
+  have hcol : ∀ i : Fin (interpDim L K),
+      matveevInterpMatrix (interpDim L K) 1 1 (matveevColumn L K N1 N2) i j0 =
+        matveevInterpMatrix (interpDim L K) 1 1 (matveevColumn L K N1 N2) i j1 := by
+    intro i
+    unfold matveevInterpMatrix matveevEntry matveevColumn
+    simp [hL0, hK0, hL1, hK1, one_pow]
+  exact det_zero_of_column_eq hne hcol
+
+/-- Degenerate smallness: `α1=α2=1` and `L≥1` forces `Δ=0`.
+    Generic `|Δ|≤exp(−c L K)` stays `size_upper_bound` (`def Prop`). -/
+theorem interpolationDeterminant_L_pos_exp_small
+    (L K N1 N2 : ℕ) (hL : 0 < L) {c : ℝ} :
+    |interpolationDeterminant L K N1 N2 1 1| ≤
+      exp (-c * (L : ℝ) * (K : ℝ)) := by
+  rw [interpolationDeterminant_L_pos_alpha_one L K N1 N2 hL, abs_zero]
+  exact le_of_lt (exp_pos _)
+
 /-! ## Remaining steps (not in Mathlib 4.12) -/
 
 set_option linter.unusedVariables false
@@ -1512,6 +1954,17 @@ def wuestholz_product_theorem : Prop :=
 
 theorem wuestholz_product_theorem_polynomial : wuestholz_product_theorem :=
   zero_estimate_polynomial
+
+/-- Wüstholz along `W ⊂ 𝐆_a × 𝐆_m²` for exponential polynomials.
+    Not in Mathlib 4.12; inhabited only on `𝐆_a`. -/
+def wuestholz_product_theorem_exp : Prop :=
+  ∀ (α1 α2 : ℕ) (terms : List PhiTerm),
+    1 < α1 →
+      1 < α2 →
+        (∀ T : ℕ,
+            (∀ k < T, iteratedDslope (matveevPhi α1 α2 terms) k 0 = 0) →
+              T ≤ (terms.map fun t => t.l + t.k1 + t.k2).sum) ∨
+          multiplicativelyDependent α1 α2
 
 def size_upper_bound : Prop :=
   ∀ (n : ℕ) (α1 α2 : ℝ) (cols : Fin n → InterpColumn) (c1 : ℝ),
@@ -1740,6 +2193,16 @@ theorem matveev_thm14_n2_of_interpolation
 #check schwarz_lemma_of_order_polynomial
 #check iteratedDslope_one_add_pow
 #check matveev_interpolation_analytic_small_bound_polynomial
+#check siegel_lemma
+#check integer_box_card
+#check matveevPhi_vanishing_exists_T
+#check matveevPhi_vanishing_exists_T_height
+#check matveevPhi_vanishing_exists_T_exp_height
+#check matveevPhi_eq_P_along_W
+#check gap3_not_fourth_thirteenth
+#check interpolationDeterminant_L_pos_alpha_one
+#check interpolationDeterminant_L_pos_exp_small
+#check wuestholz_product_theorem_exp
 #print axioms interpolation_det_ne_zero
 #print axioms binomial_interpolation_det_eq_one
 #print axioms interpolationDeterminant_L0_eq_one
@@ -1753,5 +2216,11 @@ theorem matveev_thm14_n2_of_interpolation
 #print axioms polynomial_iteratedDslope_vanishes
 #print axioms iteratedDslope_one_add_pow
 #print axioms schwarz_lemma_of_order_polynomial
+#print axioms siegel_lemma
+#print axioms matveevPhi_vanishing_exists_T
+#print axioms matveevPhi_vanishing_exists_T_height
+#print axioms gap3_not_fourth_thirteenth
+#print axioms interpolationDeterminant_L_pos_alpha_one
+#print axioms interpolationDeterminant_L_pos_exp_small
 
 end BealMatveevBeal.MatveevInterpolation

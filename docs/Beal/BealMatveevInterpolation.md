@@ -47,6 +47,26 @@ on `LEAN_PATH`).
 - Binomial matrix entries are those Taylor coefficients:
   `C(j,i) = iteratedDslope (1+z)^j i 0`
   (`iteratedDslope_one_add_pow`).
+- Siegel / pigeonhole: an underdetermined integer system
+  `M c = 0` with more unknowns than equations has a nonzero
+  integer solution of controlled height (`siegel_lemma`,
+  Mathlib `Int.Matrix.exists_ne_zero_int_vec_norm_le`;
+  `integer_box_card` records the box count).
+- `matveevPhi_vanishing_exists_T`: integer coefficients with
+  Siegel height such that the G_a specialisation (`α1=α2=1`)
+  of `Φ` vanishes to order `siegel_T = N/2` at `0`. Height
+  forms: `‖c‖ ≤ N` and `‖c‖ ≤ exp N`. Exact exponential-jet
+  vanishing is not an integer linear system (derivatives
+  carry `log α`).
+- `Φ(z) = P(z, α1^z, α2^z)` along the curve
+  `W = {(z, α1^z, α2^z)}` (`matveevPhi_eq_P_along_W`).
+- Gap-3 is not the relation `A^4 = (B+3)^13`
+  (`gap3_not_fourth_thirteenth`). Remaining multiplicative
+  relations are Baker / LLL (`baker_bound_gap3`).
+- `L≥1` and `α1=α2=1` forces `Δ=0` (duplicate columns), so
+  `|Δ| ≤ exp(−c L K)` holds degenerately
+  (`interpolationDeterminant_L_pos_exp_small`). The `L=0`
+  binomial has `Δ=1`.
 - Conditional analytic smallness
   `matveev_interpolation_analytic_small_bound`: if the order is `T`
   and `T log 2 ≥ c L K + log M`, then `|f| ≤ exp(−c L K)` on
@@ -75,11 +95,13 @@ Axioms: `[propext, Classical.choice, Quot.sound]` only.
 - `wuestholz_product_theorem` — inhabited only as the polynomial
   special case (`wuestholz_product_theorem_polynomial`). Mathlib 4.12
   has no Wüstholz theorem for exponential polynomials.
+- `wuestholz_product_theorem_exp` — multiplicity of `P` along `W`
+  bounded by degree unless `α1,α2` are multiplicatively dependent.
+  Not in Mathlib 4.12; inhabited only on `𝐆_a`.
 - `size_upper_bound` — unconditional `|Δ| ≤ exp(−c n²)` on a generic
   interpolation matrix. False for `L=0` (`Δ=1`). The *conditional*
-  Schwarz bound is a theorem; vanishing of a *polynomial* is
-  inhabited. Vanishing of Matveev's exponential `Φ` still needs
-  Wüstholz (not in Mathlib 4.12).
+  Schwarz bound is a theorem; the G_a jet of `Φ` vanishes after
+  Siegel. Exponential-jet Wüstholz stays open.
 
 Unrestricted `matveev_theorem_1_4_gap3_target` and
 `baker_bound_gap3` stay `def Prop`. No minted

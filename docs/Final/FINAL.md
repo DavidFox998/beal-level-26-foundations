@@ -13,8 +13,11 @@ Matveev 2000 p.5 interpolation and proves the bare-real ∀-reals
 claim is false; higher-order Schwarz gives a *conditional*
 $|\Phi|\le\exp(-cLK)$ under a vanishing-order hypothesis.
 Cauchy estimates and polynomial vanishing inhabit Schwarz on
-$\mathbf{G}_a$; exponential Wüstholz stays `def Prop`.
-Unconditional $|\Delta|\le\exp(-cLK)$ is false. Not the unrestricted
+$\mathbf{G}_a$. Siegel produces a G_a jet of $\Phi$ vanishing to
+order $N/2$ (`matveevPhi_vanishing_exists_T`); exponential
+Wüstholz stays `def Prop`. Unconditional generic
+$|\Delta|\le\exp(-cLK)$ is false ($L=0$ gives $\Delta=1$);
+$L\ge 1$ and $\alpha_1=\alpha_2=1$ forces $\Delta=0$. Not the unrestricted
 kernel target, not v25. Concept DOI `10.5281/zenodo.22379293`.
 
 # FINAL v24.4.0 — v24.x Final Summary Linking Log Upper Bound to Conditional Matveev Ratio Toward B0 (not final)

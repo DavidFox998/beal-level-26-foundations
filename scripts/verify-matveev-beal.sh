@@ -193,6 +193,36 @@ if "theorem schwarz_lemma_of_order_polynomial" not in interp:
 if "theorem iteratedDslope_one_add_pow" not in interp:
     print("iteratedDslope_one_add_pow missing", file=sys.stderr)
     sys.exit(1)
+if "theorem siegel_lemma" not in interp:
+    print("siegel_lemma missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem integer_box_card" not in interp:
+    print("integer_box_card missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem matveevPhi_vanishing_exists_T" not in interp:
+    print("matveevPhi_vanishing_exists_T missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem matveevPhi_eq_P_along_W" not in interp:
+    print("matveevPhi_eq_P_along_W missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem gap3_not_fourth_thirteenth" not in interp:
+    print("gap3_not_fourth_thirteenth missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem interpolationDeterminant_L_pos_alpha_one" not in interp:
+    print("interpolationDeterminant_L_pos_alpha_one missing", file=sys.stderr)
+    sys.exit(1)
+if "def wuestholz_product_theorem_exp" not in interp:
+    print("wuestholz_product_theorem_exp must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem wuestholz_product_theorem_exp\b", interp, re.M):
+    print("do not inhabit wuestholz_product_theorem_exp", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem size_upper_bound\b", interp, re.M):
+    print("do not inhabit size_upper_bound (L=0 gives Δ=1)", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_gap3\b", interp, re.M):
+    print("do not inhabit baker_bound_gap3", file=sys.stderr)
+    sys.exit(1)
 
 readme = pathlib.Path("README.md").read_text(encoding="utf-8")
 if not readme.startswith("# foundations-level-26"):
@@ -220,6 +250,8 @@ print("  C1_floor=143186215390, gap3_A_bounds and B<=B0 product proved")
 print("  CF lemmas: 4/13 convergent, integer gap < ratio; not baker_bound_gap3")
 print("  interpolation: Δ, Vandermonde, G_a product, Hadamard, Schwarz, Cauchy;")
 print("  analytic small bound is conditional; polynomial vanishing inhabited")
+print("  Siegel + G_a jet vanishing: matveevPhi_vanishing_exists_T")
+print("  L>=1 alpha=1 gives Δ=0; exponential Wüstholz stays def Prop")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")
 print("  unrestricted target and hLLL stay def Prop; not v25")
