@@ -11,9 +11,10 @@ target lower bound shape.
 Target and `baker_bound_gap3` stay
 uninhabited def Props.
 Locked Lean 0 vs v24.1.0 `7962905` except
-`BealMatveevThm14.lean`. Previous v24.1.0
-DOI `10.5281/zenodo.22730776`
-(concept `10.5281/zenodo.22379293`).
+`BealMatveevThm14.lean`. Zenodo DOI
+`10.5281/zenodo.22730846`
+(concept `10.5281/zenodo.22379293`;
+previous v24.1.0 `10.5281/zenodo.22730776`).
 
 Latest prior tag: `v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product`
 Most current as of 2026-09-12, **not** final.

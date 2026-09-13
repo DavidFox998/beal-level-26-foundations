@@ -4,6 +4,7 @@
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
 **Parent.** v24.1.0 `7962905` / `v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product` / DOI `10.5281/zenodo.22730776`.
+**DOI.** `10.5281/zenodo.22730846`.
 **Concept.** `10.5281/zenodo.22379293`.
 
 ## v24.1.1 — rewriting C_exp_bound via height_B0

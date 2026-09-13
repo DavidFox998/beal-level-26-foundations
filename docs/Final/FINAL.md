@@ -10,8 +10,9 @@ Locked Lean 0 vs v24.1.0 `7962905` /
 `10.5281/zenodo.22730776` except
 `BealMatveevThm14.lean`.
 Most current as of 2026-09-13, **not** a
-final Beal proof. Series concept
-`10.5281/zenodo.22379293`.
+final Beal proof. Zenodo DOI
+`10.5281/zenodo.22730846` (series concept
+`10.5281/zenodo.22379293`).
 
 # FINAL v24.1.0 — Matveev height product identity (not final)
 
