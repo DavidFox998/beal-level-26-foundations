@@ -51,11 +51,11 @@ theorem thirty_pow_eq_30_pow_6 : thirty_pow = Nat.pow 30 6 :=
   matveev_thirty_pow_eq_30_pow_6
 
 theorem height_B0_eq : height_B0 = 104382751019310000000 :=
-  matveev_height_B0_eq_numeral
+  BealLevel26Foundations.BealMatveevThm14.matveev_height_B0_eq_numeral
 
 theorem height_B0_eq_C1_mul_thirty :
     height_B0 = C1_floor * thirty_pow :=
-  matveev_height_B0_eq
+  BealLevel26Foundations.BealMatveevConstants.matveev_height_B0_eq
 
 theorem C_exp_bound_eq :
     C_exp_bound =
