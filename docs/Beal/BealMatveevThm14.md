@@ -1,10 +1,43 @@
 # BealMatveevThm14 — v24.0.0 Matveev 2000 Thm 1.4 formalization start
 
-**Tag.** `v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link`.
-**Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean` and `lean/BealLevel26Foundations/Beal/FullProof/BealBugeaudLLLFormal.lean`.
-**Namespace.** `BealLevel26Foundations.BealMatveevThm14` and `BealLevel26Foundations.BealBugeaudLLLFormal`.
-**Parent.** v24.2.3 `ed94732` / `v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower` / DOI `10.5281/zenodo.22731634`.
+**Tag.** `v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower`.
+**Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
+**Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
+**Parent.** v24.3.0 `6a0a0b1` / `v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link` / DOI `10.5281/zenodo.22731759`.
 **Concept.** `10.5281/zenodo.22379293`.
+
+## v24.3.1 — Conditional B Lower Bound from Matveev Ratio
+
+```lean
+theorem matveev_gap3_A_pow_eq_B3_pow_sub_B_pow :
+    A^4 + B^4 = (B+3)^13 →
+      (A:Real)^4 = ((B+3):Real)^13 - (B:Real)^4
+theorem matveev_gap3_ratio_explicit :
+    A^4 + B^4 = (B+3)^13 →
+      (B:Real)^4 / (A:Real)^4 = (B:Real)^4 / (((B+3):Real)^13 - (B:Real)^4)
+theorem matveev_gap3_conditional_B_lower :
+    A^4 + B^4 = (B+3)^13 →
+      Real.exp matveev_C_exp_bound < |matveev_log_form A B| →
+        Real.exp matveev_C_exp_bound < (B:Real)^4 / (((B+3):Real)^13 - (B:Real)^4) ∧
+        Real.exp matveev_C_exp_bound * (((B+3):Real)^13 - (B:Real)^4) < (B:Real)^4 ∧
+        Real.exp matveev_C_exp_bound * ((B+3):Real)^13 < (B:Real)^4 * (1 + Real.exp matveev_C_exp_bound)
+theorem matveev_gap3_conditional_B_lower_of_target :
+    A^4 + B^4 = (B+3)^13 →
+      matveev_inequality_real_target →
+        Real.exp matveev_C_exp_bound * ((B+3):Real)^13 < (B:Real)^4 * (1 + Real.exp matveev_C_exp_bound)
+theorem matveev_gap3_conditional_B_pos_lower :
+    A^4 + B^4 = (B+3)^13 →
+      matveev_inequality_real_target →
+        0 < B
+```
+
+On a gap-3 solution $A^4 + B^4 = (B+3)^{13}$:
+- `matveev_gap3_A_pow_eq_B3_pow_sub_B_pow`: expresses $A^4$ purely in terms of $B$ as $(B+3)^{13} - B^4$.
+- `matveev_gap3_ratio_explicit`: explicit form of the ratio $B^4/A^4$ as $B^4 / ((B+3)^{13} - B^4)$.
+- `matveev_gap3_conditional_B_lower`: IF the Matveev lower bound $|\Lambda| > \exp(C_{\mathrm{exp\_bound}})$ holds, THEN $B^4 / ((B+3)^{13} - B^4) > \exp(C_{\mathrm{exp\_bound}})$ and $B^4 (1 + \exp(C_{\mathrm{exp\_bound}})) > \exp(C_{\mathrm{exp\_bound}})(B+3)^{13}$.
+- `matveev_gap3_conditional_B_lower_of_target`: targets the formal `matveev_inequality_real_target` hypothesis.
+- `matveev_gap3_conditional_B_pos_lower`: strict positivity $B > 0$ on solutions.
+- Target `matveev_inequality_real_target`, `baker_bound_gap3`, and `bugeaud_LLL_reduction_conditional` stay uninhabited def Props.
 
 ## v24.3.0 — Linking Conditional Matveev Ratio to Baker B0 and LLL Reduction
 

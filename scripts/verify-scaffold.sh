@@ -3460,14 +3460,44 @@ grep -q "theorem matveev_gap3_conditional_ratio_pos" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem matveev_gap3_ratio_pos_of_conditional_lower" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem matveev_gap3_A_pow_eq_B3_pow_sub_B_pow" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem matveev_gap3_ratio_explicit" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem matveev_gap3_conditional_B_lower" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem matveev_gap3_conditional_B_lower_of_target" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem matveev_gap3_conditional_B_pos_lower" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "def bugeaud_LLL_reduction_conditional" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem matveev_gap3_conditional_ratio_pos" \
   lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
 grep -q "theorem matveev_gap3_ratio_pos_of_conditional_lower" \
   lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
+grep -q "theorem matveev_gap3_A_pow_eq_B3_pow_sub_B_pow" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
+grep -q "theorem matveev_gap3_ratio_explicit" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
+grep -q "theorem matveev_gap3_conditional_B_lower" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
+grep -q "theorem matveev_gap3_conditional_B_lower_of_target" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
+grep -q "theorem matveev_gap3_conditional_B_pos_lower" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
 grep -q "def bugeaud_LLL_reduction_conditional" \
   lean/BealLevel26Foundations/Beal/FullProof/BealBugeaudLLLFormal.lean
+test "$(git diff v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link -- lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean | wc -l)" -eq 0
+test "$(git diff v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
+test "$(git diff v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
+test "$(git diff v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean | wc -l)" -eq 0
+test "$(git diff v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean | wc -l)" -eq 0
+test "$(git diff v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean | wc -l)" -eq 0
+test "$(git diff v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean | wc -l)" -eq 0
+test "$(git diff v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequalityReal.lean | wc -l)" -eq 0
+test "$(git diff v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerBoundGap3.lean | wc -l)" -eq 0
+test "$(git diff v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link -- lean/BealLevel26Foundations/Beal/FullProof/BealBugeaudLLLFormal.lean | wc -l)" -eq 0
 test "$(git diff v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower -- lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean | wc -l)" -eq 0
 test "$(git diff v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 test "$(git diff v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0

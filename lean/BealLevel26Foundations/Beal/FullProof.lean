@@ -33,6 +33,22 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
 /-!
+# FullProof track (v24.3.1)
+
+Conditional B lower bound from Matveev ratio on gap-3 solutions.
+On a gap-3 solution A^4 + B^4 = (B+3)^13:
+  * (A:Real)^4 = ((B+3):Real)^13 - (B:Real)^4 via matveev_gap3_A_pow_eq_B3_pow_sub_B_pow
+  * B^4 / A^4 = B^4 / ((B+3)^13 - B^4) via matveev_gap3_ratio_explicit
+  * if |Lambda| > exp(C_exp_bound) then B^4 / ((B+3)^13 - B^4) > exp(C_exp_bound) and
+    B^4 * (1 + exp(C_exp_bound)) > exp(C_exp_bound) * (B+3)^13 via matveev_gap3_conditional_B_lower
+  * conditioned on matveev_inequality_real_target via matveev_gap3_conditional_B_lower_of_target
+  * 0 < B from solution conditionally (and unconditionally) via matveev_gap3_conditional_B_pos_lower
+Links conditional ratio bound to explicit inequality on B toward LLL reduction.
+`matveev_inequality_real_target`, `baker_bound_gap3`, and
+`bugeaud_LLL_reduction_conditional` stay uninhabited def Props.
+Locked Lean files stay exactly v24.3.0
+except BealMatveevThm14.lean and RibetMazur.lean.
+
 # FullProof track (v24.3.0)
 
 Linking conditional Matveev ratio bound to Baker B0 and LLL reduction.

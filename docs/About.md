@@ -1,6 +1,19 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link`
+Latest tag / HEAD: `v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower`
+Most current as of 2026-09-13, **not** final.
+`BealMatveevThm14.lean` derives an explicit conditional lower bound on $B$
+from the conditional Matveev ratio bound on a gap-3 solution $A^4 + B^4 = (B+3)^{13}$:
+`matveev_gap3_A_pow_eq_B3_pow_sub_B_pow` ($(A:\mathrm{Real})^4 = ((B+3):\mathrm{Real})^{13} - (B:\mathrm{Real})^4$),
+`matveev_gap3_ratio_explicit` ($B^4 / A^4 = B^4 / ((B+3)^{13} - B^4)$),
+`matveev_gap3_conditional_B_lower` (IF $|\Lambda| > \exp(C_{\mathrm{exp\_bound}})$ THEN $B^4 / ((B+3)^{13} - B^4) > \exp(C_{\mathrm{exp\_bound}})$ and $B^4(1 + \exp(C_{\mathrm{exp\_bound}})) > \exp(C_{\mathrm{exp\_bound}})(B+3)^{13}$),
+`matveev_gap3_conditional_B_lower_of_target`,
+`matveev_gap3_conditional_B_pos_lower` ($0 < B$).
+Target, `baker_bound_gap3`, and `bugeaud_LLL_reduction_conditional` stay uninhabited def Props.
+Locked Lean 0 vs v24.3.0 `6a0a0b1` except `BealMatveevThm14.lean` and `RibetMazur.lean`. Previous v24.3.0 DOI `10.5281/zenodo.22731759`
+(concept `10.5281/zenodo.22379293`).
+
+Latest prior tag: `v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link`
 Most current as of 2026-09-13, **not** final.
 `BealMatveevThm14.lean` and `BealBugeaudLLLFormal.lean` link the conditional
 ratio bound $B^4/A^4 > \exp(C_{\mathrm{exp\_bound}})$ to the Baker $B_0 = 10^6$ certificate

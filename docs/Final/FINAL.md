@@ -1,3 +1,21 @@
+# FINAL v24.3.1 — Conditional B Lower Bound from Matveev Ratio (not final)
+
+Latest tag `v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower`.
+On $A^4 + B^4 = (B+3)^{13}$:
+$(A:\mathrm{Real})^4 = ((B+3):\mathrm{Real})^{13} - (B:\mathrm{Real})^4$ via `matveev_gap3_A_pow_eq_B3_pow_sub_B_pow`,
+$B^4 / A^4 = B^4 / ((B+3)^{13} - B^4)$ via `matveev_gap3_ratio_explicit`,
+$|\Lambda| > \exp(C_{\mathrm{exp\_bound}}) \implies B^4 / ((B+3)^{13} - B^4) > \exp(C_{\mathrm{exp\_bound}})$ and
+$B^4(1 + \exp(C_{\mathrm{exp\_bound}})) > \exp(C_{\mathrm{exp\_bound}})(B+3)^{13}$ via `matveev_gap3_conditional_B_lower`,
+conditioned form via `matveev_gap3_conditional_B_lower_of_target`,
+$0 < B$ via `matveev_gap3_conditional_B_pos_lower`.
+Target, `baker_bound_gap3`, and `bugeaud_LLL_reduction_conditional` stay uninhabited
+def Props. Derives explicit $B$ inequality from conditional ratio bound toward LLL reduction.
+Locked Lean 0 vs v24.3.0 `6a0a0b1` /
+`10.5281/zenodo.22731759` on all 10 locked files.
+Most current as of 2026-09-13, **not** a
+final Beal proof. Series concept
+`10.5281/zenodo.22379293`.
+
 # FINAL v24.3.0 — Linking Conditional Matveev Ratio to Baker B0 and LLL Reduction (not final)
 
 Latest tag `v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link`.

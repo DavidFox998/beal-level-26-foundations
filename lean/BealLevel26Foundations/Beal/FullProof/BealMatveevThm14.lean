@@ -663,6 +663,103 @@ theorem matveev_gap3_ratio_pos_of_conditional_lower {A B : Nat}
   (matveev_gap3_conditional_ratio_pos hsol htarget).1.trans
     (matveev_gap3_conditional_ratio_pos hsol htarget).2
 
+/-! ## v24.3.1 — Conditional B lower bound from Matveev ratio
+
+    On a gap-3 solution A^4 + B^4 = (B+3)^13:
+      * (A:Real)^4 = ((B+3):Real)^13 - (B:Real)^4
+      * B^4 / A^4 = B^4 / ((B+3)^13 - B^4)
+      * If |Lambda| > exp(C_exp_bound), then
+        B^4 / ((B+3)^13 - B^4) > exp(C_exp_bound)
+      * B^4 * (1 + exp(C_exp_bound)) > exp(C_exp_bound) * (B+3)^13
+      * 0 < B from solution already
+
+    Does not use sorry. -/
+
+/-- On a solution, (A : Real)^4 equals ((B + 3 : Nat) : Real)^13 - (B : Real)^4. -/
+theorem matveev_gap3_A_pow_eq_B3_pow_sub_B_pow {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    (A : Real) ^ 4 = ((B + 3 : Nat) : Real) ^ 13 - (B : Real) ^ 4 := by
+  have hcast_pow : ((B + 3 : Nat) : Real) ^ 13 =
+      (A : Real) ^ 4 + (B : Real) ^ 4 := by
+    have hcast : ((Nat.pow (B + 3) 13 : Nat) : Real) =
+        ((Nat.pow A 4 + Nat.pow B 4 : Nat) : Real) := by
+      rw [← hsol]
+    push_cast at hcast
+    simpa [Nat.cast_pow] using hcast
+  linarith
+
+/-- Explicit expression of the ratio B^4 / A^4 on a solution as
+    (B : Real)^4 / (((B + 3 : Nat) : Real)^13 - (B : Real)^4). -/
+theorem matveev_gap3_ratio_explicit {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    (B : Real) ^ 4 / (A : Real) ^ 4 =
+      (B : Real) ^ 4 / (((B + 3 : Nat) : Real) ^ 13 - (B : Real) ^ 4) := by
+  rw [matveev_gap3_A_pow_eq_B3_pow_sub_B_pow hsol]
+
+/-- Conditional inequality on B from Matveev lower bound:
+    on a solution, IF |Lambda| > exp(C_exp_bound),
+    THEN (B : Real)^4 / (((B + 3 : Nat) : Real)^13 - (B : Real)^4) > exp(C_exp_bound),
+    and cleared of denominator:
+    (B : Real)^4 * (1 + Real.exp matveev_C_exp_bound) >
+      Real.exp matveev_C_exp_bound * ((B + 3 : Nat) : Real)^13. -/
+theorem matveev_gap3_conditional_B_lower {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (hlower : Real.exp matveev_C_exp_bound < |matveev_log_form A B|) :
+    Real.exp matveev_C_exp_bound <
+      (B : Real) ^ 4 / (((B + 3 : Nat) : Real) ^ 13 - (B : Real) ^ 4) ∧
+    Real.exp matveev_C_exp_bound * (((B + 3 : Nat) : Real) ^ 13 - (B : Real) ^ 4) <
+      (B : Real) ^ 4 ∧
+    Real.exp matveev_C_exp_bound * ((B + 3 : Nat) : Real) ^ 13 <
+      (B : Real) ^ 4 * (1 + Real.exp matveev_C_exp_bound) := by
+  have hratio_gt : Real.exp matveev_C_exp_bound < (B : Real) ^ 4 / (A : Real) ^ 4 :=
+    hlower.trans_le (matveev_gap3_abs_lambda_le_ratio hsol)
+  have hratio_exp : (B : Real) ^ 4 / (A : Real) ^ 4 =
+      (B : Real) ^ 4 / (((B + 3 : Nat) : Real) ^ 13 - (B : Real) ^ 4) :=
+    matveev_gap3_ratio_explicit hsol
+  rw [hratio_exp] at hratio_gt
+  have hA4_pos := matveev_gap3_A_pow_pos hsol
+  have hdenom_eq := matveev_gap3_A_pow_eq_B3_pow_sub_B_pow hsol
+  have hdenom_pos : (0 : Real) < ((B + 3 : Nat) : Real) ^ 13 - (B : Real) ^ 4 := by
+    rw [← hdenom_eq]
+    exact hA4_pos
+  have hmul : Real.exp matveev_C_exp_bound * (((B + 3 : Nat) : Real) ^ 13 - (B : Real) ^ 4) <
+      (B : Real) ^ 4 := by
+    have hlt := (lt_div_iff hdenom_pos).mp hratio_gt
+    exact hlt
+  have hdistrib : Real.exp matveev_C_exp_bound * ((B + 3 : Nat) : Real) ^ 13 <
+      (B : Real) ^ 4 * (1 + Real.exp matveev_C_exp_bound) := by
+    have h1 : Real.exp matveev_C_exp_bound * ((B + 3 : Nat) : Real) ^ 13 -
+        Real.exp matveev_C_exp_bound * (B : Real) ^ 4 < (B : Real) ^ 4 := by
+      calc Real.exp matveev_C_exp_bound * ((B + 3 : Nat) : Real) ^ 13 -
+             Real.exp matveev_C_exp_bound * (B : Real) ^ 4
+           _ = Real.exp matveev_C_exp_bound * (((B + 3 : Nat) : Real) ^ 13 - (B : Real) ^ 4) := by ring
+           _ < (B : Real) ^ 4 := hmul
+    calc Real.exp matveev_C_exp_bound * ((B + 3 : Nat) : Real) ^ 13
+         _ = (Real.exp matveev_C_exp_bound * ((B + 3 : Nat) : Real) ^ 13 -
+              Real.exp matveev_C_exp_bound * (B : Real) ^ 4) +
+             Real.exp matveev_C_exp_bound * (B : Real) ^ 4 := by ring
+         _ < (B : Real) ^ 4 + Real.exp matveev_C_exp_bound * (B : Real) ^ 4 := by linarith
+         _ = (B : Real) ^ 4 * (1 + Real.exp matveev_C_exp_bound) := by ring
+  exact ⟨hratio_gt, hmul, hdistrib⟩
+
+/-- Form conditioned on matveev_inequality_real_target. -/
+theorem matveev_gap3_conditional_B_lower_of_target {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (htarget : matveev_inequality_real_target) :
+    Real.exp matveev_C_exp_bound * ((B + 3 : Nat) : Real) ^ 13 <
+      (B : Real) ^ 4 * (1 + Real.exp matveev_C_exp_bound) := by
+  have hB : 0 < B := matveev_gap3_B_pos_of_solution hsol
+  have hlower : Real.exp matveev_C_exp_bound < |matveev_log_form A B| :=
+    htarget A B hB hsol
+  exact (matveev_gap3_conditional_B_lower hsol hlower).2.2
+
+/-- Positivity of B on a solution holding conditionally (and unconditionally). -/
+theorem matveev_gap3_conditional_B_pos_lower {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (_htarget : matveev_inequality_real_target) :
+    0 < B :=
+  matveev_gap3_B_pos_of_solution hsol
+
 #check matveev_C1_floor_eq
 #check matveev_thirty_pow_eq_30_pow_6
 #check matveev_thirty_pow_eq_729000000
@@ -715,6 +812,11 @@ theorem matveev_gap3_ratio_pos_of_conditional_lower {A B : Nat}
 #check matveev_gap3_ratio_lower_bound_conditional
 #check matveev_gap3_conditional_ratio_pos
 #check matveev_gap3_ratio_pos_of_conditional_lower
+#check matveev_gap3_A_pow_eq_B3_pow_sub_B_pow
+#check matveev_gap3_ratio_explicit
+#check matveev_gap3_conditional_B_lower
+#check matveev_gap3_conditional_B_lower_of_target
+#check matveev_gap3_conditional_B_pos_lower
 #check matveev_inequality_real_target
 #check baker_bound_gap3_remaining_thm14
 #print axioms matveev_C1_floor_eq
@@ -775,6 +877,11 @@ theorem matveev_gap3_ratio_pos_of_conditional_lower {A B : Nat}
 #print axioms matveev_gap3_ratio_lower_bound_conditional
 #print axioms matveev_gap3_conditional_ratio_pos
 #print axioms matveev_gap3_ratio_pos_of_conditional_lower
+#print axioms matveev_gap3_A_pow_eq_B3_pow_sub_B_pow
+#print axioms matveev_gap3_ratio_explicit
+#print axioms matveev_gap3_conditional_B_lower
+#print axioms matveev_gap3_conditional_B_lower_of_target
+#print axioms matveev_gap3_conditional_B_pos_lower
 #print axioms matveev_thm14_C_exp_bound_lt_neg_onee12
 #print axioms matveev_thm14_constants_hold
 

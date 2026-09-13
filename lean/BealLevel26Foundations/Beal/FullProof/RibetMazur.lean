@@ -6159,6 +6159,41 @@ theorem matveev_gap3_ratio_pos_of_conditional_lower {A B : Nat}
     (0 : Real) < (B : Real) ^ 4 / (A : Real) ^ 4 :=
   BealLevel26Foundations.BealMatveevThm14.matveev_gap3_ratio_pos_of_conditional_lower hsol htarget
 
+theorem matveev_gap3_A_pow_eq_B3_pow_sub_B_pow {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    (A : Real) ^ 4 = ((B + 3 : Nat) : Real) ^ 13 - (B : Real) ^ 4 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_gap3_A_pow_eq_B3_pow_sub_B_pow hsol
+
+theorem matveev_gap3_ratio_explicit {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    (B : Real) ^ 4 / (A : Real) ^ 4 =
+      (B : Real) ^ 4 / (((B + 3 : Nat) : Real) ^ 13 - (B : Real) ^ 4) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_gap3_ratio_explicit hsol
+
+theorem matveev_gap3_conditional_B_lower {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (hlower : Real.exp matveev_C_exp_bound < |matveev_log_form A B|) :
+    Real.exp matveev_C_exp_bound <
+      (B : Real) ^ 4 / (((B + 3 : Nat) : Real) ^ 13 - (B : Real) ^ 4) ∧
+    Real.exp matveev_C_exp_bound * (((B + 3 : Nat) : Real) ^ 13 - (B : Real) ^ 4) <
+      (B : Real) ^ 4 ∧
+    Real.exp matveev_C_exp_bound * ((B + 3 : Nat) : Real) ^ 13 <
+      (B : Real) ^ 4 * (1 + Real.exp matveev_C_exp_bound) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_gap3_conditional_B_lower hsol hlower
+
+theorem matveev_gap3_conditional_B_lower_of_target {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (htarget : matveev_inequality_real_target) :
+    Real.exp matveev_C_exp_bound * ((B + 3 : Nat) : Real) ^ 13 <
+      (B : Real) ^ 4 * (1 + Real.exp matveev_C_exp_bound) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_gap3_conditional_B_lower_of_target hsol htarget
+
+theorem matveev_gap3_conditional_B_pos_lower {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (htarget : matveev_inequality_real_target) :
+    0 < B :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_gap3_conditional_B_pos_lower hsol htarget
+
 /-! ## v14.0.0 — J0 / mwrank / formal displayed certs -/
 
 def J0DecompositionCert_26 :=
@@ -7287,6 +7322,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check matveev_gap3_ratio_lower_bound_conditional
 #check matveev_gap3_conditional_ratio_pos
 #check matveev_gap3_ratio_pos_of_conditional_lower
+#check matveev_gap3_A_pow_eq_B3_pow_sub_B_pow
+#check matveev_gap3_ratio_explicit
+#check matveev_gap3_conditional_B_lower
+#check matveev_gap3_conditional_B_lower_of_target
+#check matveev_gap3_conditional_B_pos_lower
 #check J0DecompositionCert_26
 #check J0DecompositionCert_26_displayed
 #check J0DecompositionSoundness_26
@@ -7905,6 +7945,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms matveev_gap3_ratio_lower_bound_conditional
 #print axioms matveev_gap3_conditional_ratio_pos
 #print axioms matveev_gap3_ratio_pos_of_conditional_lower
+#print axioms matveev_gap3_A_pow_eq_B3_pow_sub_B_pow
+#print axioms matveev_gap3_ratio_explicit
+#print axioms matveev_gap3_conditional_B_lower
+#print axioms matveev_gap3_conditional_B_lower_of_target
+#print axioms matveev_gap3_conditional_B_pos_lower
 #print axioms J0DecompositionSoundness_26_holds
 #print axioms MwrankCertificateSoundness_26_holds
 #print axioms FormalImmersionSoundness_26_holds
