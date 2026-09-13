@@ -3730,6 +3730,10 @@ grep -q "22732045" \
   paper/mcom-draft.tex
 grep -q "22732209" \
   paper/mcom-draft.tex
+grep -q "beal_level26_v24_4_0" \
+  paper/mcom-draft.tex
+grep -q "beal_level26_v24_4_0" \
+  paper/beal_level26_v24_4_0.bib
 grep -q "bugeaud_LLL_basis_holds" \
   paper/mcom-draft.tex
 grep -q "beal_44_13_level_26_modular_elimination" \
