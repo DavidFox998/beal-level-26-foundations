@@ -14,6 +14,7 @@ $0 < \exp(C) < B^4/A^4$ and $B^4(1+\exp(C)) > \exp(C)\,(B+3)^{13}$.
 Target, `baker_bound_gap3`, and `bugeaud_LLL_reduction_conditional` stay uninhabited def Props.
 Locked Lean 0 vs v24.3.2 `305e5f4` except `BealMatveevThm14.lean`,
 `RibetMazur.lean`, and `BealBakerB0ReductionCertificate.lean` summary shape.
+DOI `10.5281/zenodo.22732209`.
 Previous v24.3.2 DOI `10.5281/zenodo.22732045`
 (concept `10.5281/zenodo.22379293`).
 

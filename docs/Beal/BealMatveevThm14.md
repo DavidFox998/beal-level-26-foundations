@@ -3,6 +3,7 @@
 **Tag.** `v24.4.0-Beal-44-13-Level-26-v24x-Final-Summary`.
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
+**Release DOI.** `10.5281/zenodo.22732209`.
 **Parent.** v24.3.2 `305e5f4` / `v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound` / DOI `10.5281/zenodo.22732045`.
 **Concept.** `10.5281/zenodo.22379293`.
 

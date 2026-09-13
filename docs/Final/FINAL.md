@@ -1,6 +1,7 @@
 # FINAL v24.4.0 — v24.x Final Summary Linking Log Upper Bound to Conditional Matveev Ratio Toward B0 (not final)
 
 Latest tag `v24.4.0-Beal-44-13-Level-26-v24x-Final-Summary`.
+DOI `10.5281/zenodo.22732209`.
 Honest consolidation of v24.0.0–3.2. On $A^4 + B^4 = (B+3)^{13}$:
 $|\Lambda| = \log(1 + B^4/A^4) \le B^4/A^4 = B^4/((B+3)^{13}-B^4)$
 and $0 < \exp(C_{\mathrm{exp\_bound}}) < 10^{-12} < 1$ via `matveev_v24x_summary`,

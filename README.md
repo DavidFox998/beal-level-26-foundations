@@ -14,6 +14,7 @@ Honest consolidation of v24.0.0–3.2 on a gap-3 solution $A^4 + B^4 = (B+3)^{13
 - Standard Real axiom pack only: `[propext, Classical.choice, Quot.sound]`, 0 axioms for decide theorems, no sorry
 - Locked Lean 0 vs v24.3.2 / `305e5f4` except `BealMatveevThm14.lean`, `RibetMazur.lean`, and `BealBakerB0ReductionCertificate.lean` summary shape
 - Previous v24.3.2 DOI [`10.5281/zenodo.22732045`](https://doi.org/10.5281/zenodo.22732045) (concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293))
+- Current v24.4.0 DOI [`10.5281/zenodo.22732209`](https://doi.org/10.5281/zenodo.22732209) (concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293))
 - v24.x DOI chain: [`22730408`](https://doi.org/10.5281/zenodo.22730408), [`22730460`](https://doi.org/10.5281/zenodo.22730460), [`22730548`](https://doi.org/10.5281/zenodo.22730548), [`22730776`](https://doi.org/10.5281/zenodo.22730776), [`22730846`](https://doi.org/10.5281/zenodo.22730846), [`22731054`](https://doi.org/10.5281/zenodo.22731054), [`22731160`](https://doi.org/10.5281/zenodo.22731160), [`22731508`](https://doi.org/10.5281/zenodo.22731508), [`22731634`](https://doi.org/10.5281/zenodo.22731634), [`22731759`](https://doi.org/10.5281/zenodo.22731759), [`22731966`](https://doi.org/10.5281/zenodo.22731966), [`22732045`](https://doi.org/10.5281/zenodo.22732045)
 
 **v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound — Numerical Tiny Bound $\exp(C) \ll 10^{-12}$ Toward $B_0$. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
@@ -283,7 +284,7 @@ PARI LLL reduction of the huge Matveev integer `B0_raw` to the displayed cutoff 
 | v24.3.0 | [`10.5281/zenodo.22731759`](https://doi.org/10.5281/zenodo.22731759) | `6a0a0b1` | link conditional ratio to Baker $B_0$ and LLL reduction: `matveev_gap3_conditional_ratio_pos`, `matveev_gap3_ratio_pos_of_conditional_lower`, `bugeaud_LLL_reduction_conditional` |
 | v24.3.1 | [`10.5281/zenodo.22731966`](https://doi.org/10.5281/zenodo.22731966) | `d189ef9` | conditional $B$ lower bound from Matveev ratio: `matveev_gap3_A_pow_eq_B3_pow_sub_B_pow`, `matveev_gap3_ratio_explicit`, `matveev_gap3_conditional_B_lower`, `matveev_gap3_conditional_B_lower_of_target`, `matveev_gap3_conditional_B_pos_lower` |
 | v24.3.2 | [`10.5281/zenodo.22732045`](https://doi.org/10.5281/zenodo.22732045) | `305e5f4` | numerical tiny bound $\exp(C) \ll 10^{-12}$: `matveev_C_exp_bound_le_neg_1e12`, `matveev_target_exp_lower_lt_exp_neg_1e12`, `matveev_target_exp_lower_lt_onee12`, `matveev_exp_C_pos_lt_one` |
-| v24.4.0 | pending webhook | — | v24.x final summary: `matveev_v24x_summary`, `matveev_v24x_conditional_summary`, `bugeaud_v24x_final_link`, `baker_v24x_reduction_shape` |
+| v24.4.0 | [`10.5281/zenodo.22732209`](https://doi.org/10.5281/zenodo.22732209) | `db7a556` | v24.x final summary: `matveev_v24x_summary`, `matveev_v24x_conditional_summary`, `bugeaud_v24x_final_link`, `baker_v24x_reduction_shape` |
 
 Most current snapshot as of 2026-09-13, **not** a final Beal proof. Concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293). See [`docs/CUMULATIVE_ARCHIVE_v10_v17.md`](docs/CUMULATIVE_ARCHIVE_v10_v17.md).
 
