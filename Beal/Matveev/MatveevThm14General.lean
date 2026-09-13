@@ -81,6 +81,57 @@ theorem Lambda_gap3_real_nat (A B : ℕ) :
   unfold Lambda_gap3_real matveev_log_form
   rw [hcast]
 
+/-! ## Height facts on a gap-3 solution
+
+    `A < B+3` is false: `eq_implies_A_gt_B` gives `B < A`, and
+    `A^4 = (B+3)^13 - B^4` so `A ≈ (B+3)^{13/4}`.
+    Usable bounds: `1 < A`, `1 < B+3`, `A^4 < (B+3)^13`,
+    and `log A < (13/4) log(B+3)`.
+    `|Λ| = log(1 + B^4/A^4)` is already Level26. -/
+
+lemma height_bound_gap3 (A B : ℕ)
+    (h : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hB : 0 < B) :
+    (0 : ℝ) < (A : ℝ) ∧
+      (1 : ℝ) < (A : ℝ) ∧
+      (1 : ℝ) < (B + 3 : ℝ) ∧
+      A ^ 4 < (B + 3) ^ 13 := by
+  have hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 := h
+  have hApos : 0 < A := matveev_gap3_A_pos_of_pos_B hsol hB
+  have hAgt : B < A := eq_implies_A_gt_B hsol hB
+  have hAgt1 : 1 < A := Nat.lt_of_le_of_lt (Nat.succ_le_of_lt hB) hAgt
+  have hB4 : 0 < B ^ 4 := Nat.pos_pow_of_pos 4 hB
+  have hApow : A ^ 4 < (B + 3) ^ 13 := by
+    have hlt : A ^ 4 < A ^ 4 + B ^ 4 := Nat.lt_add_of_pos_right hB4
+    rw [h] at hlt
+    exact hlt
+  refine ⟨?_, ?_, ?_, hApow⟩
+  · exact_mod_cast hApos
+  · exact_mod_cast hAgt1
+  · have hBposR : (0 : ℝ) < (B : ℝ) := Nat.cast_pos.mpr hB
+    linarith
+
+lemma logA_lt_thirteen_fourths_logB3 (A B : ℕ)
+    (h : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hB : 0 < B) :
+    Real.log (A : ℝ) < (13 / 4 : ℝ) * Real.log ((B + 3 : ℕ) : ℝ) := by
+  have hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 := h
+  have hΛ := (matveev_gap3_log_form_upper_bound hsol hB).1
+  have hlt : (4 : ℝ) * Real.log (A : ℝ) <
+      (13 : ℝ) * Real.log ((B + 3 : ℕ) : ℝ) := by
+    unfold matveev_log_form at hΛ
+    linarith
+  calc
+    Real.log (A : ℝ) = ((4 : ℝ) * Real.log (A : ℝ)) / 4 := by ring
+    _ < ((13 : ℝ) * Real.log ((B + 3 : ℕ) : ℝ)) / 4 :=
+      (div_lt_div_right (by norm_num : (0 : ℝ) < 4)).mpr hlt
+    _ = (13 / 4 : ℝ) * Real.log ((B + 3 : ℕ) : ℝ) := by ring
+
+lemma abs_Lambda_eq_log_one_plus (A B : ℕ)
+    (h : A ^ 4 + B ^ 4 = (B + 3) ^ 13) :
+    |Lambda_gap3_real (A : ℝ) (B : ℝ)| =
+      Real.log (1 + (B : ℝ) ^ 4 / (A : ℝ) ^ 4) := by
+  have hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 := h
+  rw [Lambda_gap3_real_nat, matveev_gap3_abs_lambda_eq_log_one_plus_ratio hsol]
+
 /-! ## Matveev 2000 Thm 1.4 general, gap-3 n=2 heights
 
     α₁ = A, α₂ = B+3, b₁ = 4, b₂ = −13, D = 1.
@@ -96,9 +147,10 @@ def matveev_theorem_1_4_general : Prop :=
     |Lambda_gap3_real A B| >
       Real.exp (-C1_floor_real * (A1 * A2) * B0)
 
-/-- Instantiation sketch: on a gap-3 solution the logs are
-    bounded by log(B+3), |bᵢ| ≤ 13, and the product is
-    intended ≤ height_B0_real. Still a def Prop. -/
+/-- Instantiation sketch: on a gap-3 solution, `1 < A`, `1 < B+3`,
+    `log A < (13/4) log(B+3)`, `|bᵢ| = 13`. The product
+    `C1_floor * A1 * A2 * B0 ≤ height_B0 * log height_B0`
+    is still a def Prop (not `A1 ≤ log(B+3)`). -/
 def matveev_gap3_of_general : Prop :=
   matveev_theorem_1_4_general →
     BealLevel26Foundations.BealMatveevThm14.matveev_inequality_real_target
@@ -177,6 +229,9 @@ theorem gap3_forall_of_baker
 #check baker_bound_gap3_holds
 #print axioms C1_floor_eq
 #print axioms height_B0_eq
+#print axioms height_bound_gap3
+#print axioms logA_lt_thirteen_fourths_logB3
+#print axioms abs_Lambda_eq_log_one_plus
 #print axioms gap3_target_eq_matveev_inequality
 #print axioms C_exp_bound_real_eq_level26
 #print axioms Lambda_gap3_real_nat
