@@ -15,6 +15,7 @@ Kernel lemmas deriving an explicit conditional lower bound on $B$ from the Matve
 - Standard Real axiom pack only: `[propext, Classical.choice, Quot.sound]`, 0 axioms for decide theorems, no sorry
 - Locked Lean 0 vs v24.3.0 / `6a0a0b1` except `BealMatveevThm14.lean` and `RibetMazur.lean`
 - Previous v24.3.0 DOI [`10.5281/zenodo.22731759`](https://doi.org/10.5281/zenodo.22731759) (concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293))
+- Current v24.3.1 DOI [`10.5281/zenodo.22731966`](https://doi.org/10.5281/zenodo.22731966) (concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293))
 
 **v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link — Linking Conditional Matveev Ratio to Baker B0 and LLL Reduction. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
@@ -251,7 +252,7 @@ PARI LLL reduction of the huge Matveev integer `B0_raw` to the displayed cutoff 
 | v24.2.2 | [`10.5281/zenodo.22731508`](https://doi.org/10.5281/zenodo.22731508) | `ffd8343` | log bound $\log(1+x)\le x$: `matveev_log_one_plus_le_self`, `matveev_gap3_B_pow_div_A_pow_pos`, `matveev_gap3_abs_lambda_nonneg`, `matveev_gap3_abs_lambda_le_ratio`, `matveev_gap3_abs_lambda_lt_one_of_small_ratio` |
 | v24.2.3 | [`10.5281/zenodo.22731634`](https://doi.org/10.5281/zenodo.22731634) | `ed94732` | conditional lower implies ratio bound: `matveev_conditional_lower_implies_ratio_gt_exp`, `matveev_conditional_lower_implies_ratio_gt_exp_of_solution`, `matveev_gap3_ratio_lower_bound_conditional` |
 | v24.3.0 | [`10.5281/zenodo.22731759`](https://doi.org/10.5281/zenodo.22731759) | `6a0a0b1` | link conditional ratio to Baker $B_0$ and LLL reduction: `matveev_gap3_conditional_ratio_pos`, `matveev_gap3_ratio_pos_of_conditional_lower`, `bugeaud_LLL_reduction_conditional` |
-| v24.3.1 | pending webhook | — | conditional $B$ lower bound from Matveev ratio: `matveev_gap3_A_pow_eq_B3_pow_sub_B_pow`, `matveev_gap3_ratio_explicit`, `matveev_gap3_conditional_B_lower`, `matveev_gap3_conditional_B_lower_of_target`, `matveev_gap3_conditional_B_pos_lower` |
+| v24.3.1 | [`10.5281/zenodo.22731966`](https://doi.org/10.5281/zenodo.22731966) | `d189ef9` | conditional $B$ lower bound from Matveev ratio: `matveev_gap3_A_pow_eq_B3_pow_sub_B_pow`, `matveev_gap3_ratio_explicit`, `matveev_gap3_conditional_B_lower`, `matveev_gap3_conditional_B_lower_of_target`, `matveev_gap3_conditional_B_pos_lower` |
 
 Most current snapshot as of 2026-09-13, **not** a final Beal proof. Concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293). See [`docs/CUMULATIVE_ARCHIVE_v10_v17.md`](docs/CUMULATIVE_ARCHIVE_v10_v17.md).
 

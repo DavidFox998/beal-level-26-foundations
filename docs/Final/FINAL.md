@@ -1,6 +1,7 @@
 # FINAL v24.3.1 — Conditional B Lower Bound from Matveev Ratio (not final)
 
 Latest tag `v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower`.
+DOI `10.5281/zenodo.22731966`.
 On $A^4 + B^4 = (B+3)^{13}$:
 $(A:\mathrm{Real})^4 = ((B+3):\mathrm{Real})^{13} - (B:\mathrm{Real})^4$ via `matveev_gap3_A_pow_eq_B3_pow_sub_B_pow`,
 $B^4 / A^4 = B^4 / ((B+3)^{13} - B^4)$ via `matveev_gap3_ratio_explicit`,

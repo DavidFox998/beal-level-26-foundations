@@ -3,6 +3,7 @@
 **Tag.** `v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower`.
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
+**Release DOI.** `10.5281/zenodo.22731966`.
 **Parent.** v24.3.0 `6a0a0b1` / `v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link` / DOI `10.5281/zenodo.22731759`.
 **Concept.** `10.5281/zenodo.22379293`.
 

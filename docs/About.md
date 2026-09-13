@@ -2,6 +2,7 @@
 
 Latest tag / HEAD: `v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower`
 Most current as of 2026-09-13, **not** final.
+DOI `10.5281/zenodo.22731966`.
 `BealMatveevThm14.lean` derives an explicit conditional lower bound on $B$
 from the conditional Matveev ratio bound on a gap-3 solution $A^4 + B^4 = (B+3)^{13}$:
 `matveev_gap3_A_pow_eq_B3_pow_sub_B_pow` ($(A:\mathrm{Real})^4 = ((B+3):\mathrm{Real})^{13} - (B:\mathrm{Real})^4$),
