@@ -7,7 +7,7 @@ authors:
     given-names: David
 version: "v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound"
 date-released: "2026-09-13"
-doi: "10.5281/zenodo.22730846"
+doi: "10.5281/zenodo.22731054"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
 url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound"
 # v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound: logarithmic form upper bound on gap-3 solutions; matveev_gap3_B_pos_of_solution (B > 0 via baker_le_B0_gap3) / matveev_gap3_A_pos (A > 0 via eq_implies_A_gt_B) / matveev_gap3_log_form_upper_bound (Lambda < 0 and |Lambda| = -Lambda) / matveev_exp_lower_lt_one_and_pos (0 < target < 1); target and baker_bound_gap3 stay def Prop; locked Lean 0 vs v24.1.1 21df092 except BealMatveevThm14.lean and RibetMazur.lean. Previous v24.1.1 DOI 10.5281/zenodo.22730846. Series concept 10.5281/zenodo.22379293.

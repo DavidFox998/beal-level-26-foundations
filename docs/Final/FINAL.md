@@ -12,6 +12,7 @@ def Props. Links the upper bound side to the lower bound target.
 Locked Lean 0 vs v24.1.1 `21df092` /
 `10.5281/zenodo.22730846` except
 `BealMatveevThm14.lean` and `RibetMazur.lean`.
+DOI `10.5281/zenodo.22731054`.
 Most current as of 2026-09-13, **not** a
 final Beal proof. Series concept
 `10.5281/zenodo.22379293`.

@@ -1,6 +1,7 @@
 # BealMatveevThm14 — v24.0.0 Matveev 2000 Thm 1.4 formalization start
 
 **Tag.** `v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound`.
+**DOI.** `10.5281/zenodo.22731054`.
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
 **Parent.** v24.1.1 `21df092` / `v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite` / DOI `10.5281/zenodo.22730846`.
