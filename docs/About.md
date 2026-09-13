@@ -10,8 +10,8 @@ Matveev lower bound:
 `matveev_gap3_ratio_pos_of_conditional_lower` ($0 < B^4/A^4$ via conditional lower bound),
 `bugeaud_LLL_reduction_conditional` (conditional definition of LLL reduction to $B_{\mathrm{reduced}} \le B_0$ given `matveev_inequality_real_formal`).
 Target, `baker_bound_gap3`, and `bugeaud_LLL_reduction_conditional` stay uninhabited def Props.
-Locked Lean 0 vs v24.2.3 `ed94732` across 9 locked files (honesty lock exception only for intentional LLL link extension in `BealBugeaudLLLFormal.lean`). Previous v24.2.3 DOI `10.5281/zenodo.22731634`
-(concept `10.5281/zenodo.22379293`).
+Locked Lean 0 vs v24.2.3 `ed94732` across 9 locked files (honesty lock exception only for intentional LLL link extension in `BealBugeaudLLLFormal.lean`). Previous v24.2.3 DOI `10.5281/zenodo.22731634`.
+Current v24.3.0 DOI `10.5281/zenodo.22731759` (concept `10.5281/zenodo.22379293`).
 
 Latest prior tag: `v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower`
 Most current as of 2026-09-13, **not** final.

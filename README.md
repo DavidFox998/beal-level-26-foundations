@@ -236,7 +236,7 @@ PARI LLL reduction of the huge Matveev integer `B0_raw` to the displayed cutoff 
 | v24.2.1 | [`10.5281/zenodo.22731160`](https://doi.org/10.5281/zenodo.22731160) | `ac100cf` | log form as log of ratio: `matveev_gap3_A_pow_pos`, `matveev_gap3_B3_pow_pos`, `matveev_gap3_ratio_eq_one_plus_ratio`, `matveev_gap3_log_form_eq_log_ratio`, `matveev_gap3_abs_lambda_eq_log_one_plus_ratio` |
 | v24.2.2 | [`10.5281/zenodo.22731508`](https://doi.org/10.5281/zenodo.22731508) | `ffd8343` | log bound $\log(1+x)\le x$: `matveev_log_one_plus_le_self`, `matveev_gap3_B_pow_div_A_pow_pos`, `matveev_gap3_abs_lambda_nonneg`, `matveev_gap3_abs_lambda_le_ratio`, `matveev_gap3_abs_lambda_lt_one_of_small_ratio` |
 | v24.2.3 | [`10.5281/zenodo.22731634`](https://doi.org/10.5281/zenodo.22731634) | `ed94732` | conditional lower implies ratio bound: `matveev_conditional_lower_implies_ratio_gt_exp`, `matveev_conditional_lower_implies_ratio_gt_exp_of_solution`, `matveev_gap3_ratio_lower_bound_conditional` |
-| v24.3.0 | pending webhook | — | link conditional ratio to Baker $B_0$ and LLL reduction: `matveev_gap3_conditional_ratio_pos`, `matveev_gap3_ratio_pos_of_conditional_lower`, `bugeaud_LLL_reduction_conditional` |
+| v24.3.0 | [`10.5281/zenodo.22731759`](https://doi.org/10.5281/zenodo.22731759) | `6a0a0b1` | link conditional ratio to Baker $B_0$ and LLL reduction: `matveev_gap3_conditional_ratio_pos`, `matveev_gap3_ratio_pos_of_conditional_lower`, `bugeaud_LLL_reduction_conditional` |
 
 Most current snapshot as of 2026-09-13, **not** a final Beal proof. Concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293). See [`docs/CUMULATIVE_ARCHIVE_v10_v17.md`](docs/CUMULATIVE_ARCHIVE_v10_v17.md).
 

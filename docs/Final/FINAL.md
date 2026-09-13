@@ -10,7 +10,7 @@ def Props. Links conditional ratio bound to Baker B0=1e6 certificate and LLL red
 Locked Lean 0 vs v24.2.3 `ed94732` /
 `10.5281/zenodo.22731634` across 9 locked files (honesty lock exception only for intentional LLL link extension in `BealBugeaudLLLFormal.lean`).
 Most current as of 2026-09-13, **not** a
-final Beal proof. Series concept
+final Beal proof. Current v24.3.0 DOI `10.5281/zenodo.22731759`. Series concept
 `10.5281/zenodo.22379293`.
 
 # FINAL v24.2.3 — Conditional Lower Bound Implies Ratio Bound (not final)

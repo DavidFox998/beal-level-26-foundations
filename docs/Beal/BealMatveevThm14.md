@@ -4,6 +4,7 @@
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean` and `lean/BealLevel26Foundations/Beal/FullProof/BealBugeaudLLLFormal.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14` and `BealLevel26Foundations.BealBugeaudLLLFormal`.
 **Parent.** v24.2.3 `ed94732` / `v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower` / DOI `10.5281/zenodo.22731634`.
+**Current DOI.** `10.5281/zenodo.22731759`.
 **Concept.** `10.5281/zenodo.22379293`.
 
 ## v24.3.0 — Linking Conditional Matveev Ratio to Baker B0 and LLL Reduction
