@@ -4,9 +4,12 @@
 `matveev_gap3_lower` / `matveev_gap3_lower_B_le_B0_target` (0 sorry):
 on $A^4+B^4=(B+3)^{13}$ with $B\le 10^6$,
 $|\Lambda|>\exp(-\mathrm{height}_{B_0}\log\mathrm{height}_{B_0})$,
-via `matveev_thm14_n2_explicit_of_nat`. Not interpolation, not the
-unrestricted kernel target, not `baker_bound_gap3` / v25.
-Concept DOI `10.5281/zenodo.22379293`.
+via `matveev_thm14_n2_explicit_of_nat`. `MatveevLLL.lean` proves the
+elementary CF lemmas ($4/13$ is a convergent of the log ratio;
+integer gap $< B^4/A^4$) and keeps `bugeaud_LLL_reduction_proof` /
+`baker_bound_gap3` as uninhabited `def Prop`. Being a convergent
+does not force $B\le 10^6$. Not interpolation, not the unrestricted
+kernel target, not v25. Concept DOI `10.5281/zenodo.22379293`.
 
 # FINAL v24.4.0 — v24.x Final Summary Linking Log Upper Bound to Conditional Matveev Ratio Toward B0 (not final)
 

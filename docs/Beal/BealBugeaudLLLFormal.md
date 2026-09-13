@@ -19,4 +19,9 @@ Integer LLL lattice matching the v17 PARI qflll cert:
 
 `baker_bound_gap3` stays a **def Prop**.
 Mathlib 4.12 has no LLL reduction theorem.
+The foundations complement `MatveevLLL.lean` proves the elementary
+continued-fraction lemmas (`4/13` is a convergent of
+`log(B+3)/log A`; integer gap `< B⁴/A⁴`) and keeps
+`bugeaud_LLL_reduction_proof` as an uninhabited `def Prop`.
+Being a convergent does not force `B ≤ 10⁶`. Not v25.
 Does not use sorry.

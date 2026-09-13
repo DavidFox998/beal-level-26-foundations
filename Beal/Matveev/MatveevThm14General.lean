@@ -7,9 +7,12 @@ Goal: inhabit the B≤B0 Matveev lower bound via the integer gap
 Axioms: [propext, Classical.choice, Quot.sound] only
 0 sorry. hGen / unrestricted product stay def Prop (not in Mathlib).
 Product inhabited for B+3 ≤ height_B0. Integer gap ⇏ B ≤ 10^6.
+CF lemmas in MatveevLLL.lean (4/13 convergent; gap < ratio).
+bugeaud_LLL_reduction_proof stays def Prop. Not v25.
 -/
 import Mathlib
 import MatveevThm14Proof
+import MatveevLLL
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -788,7 +791,12 @@ theorem matveev_gap3_lower : matveev_gap3_lower_B_le_B0_target := by
     `baker_conditional_gap3_full` takes `baker_bound_gap3`.
     The LLL step `matveev_inequality_real_target → baker_bound_gap3`
     is still an uninhabited def Prop. See
-    beal-conjecture `Level26/BakerBoundGap3Holds.lean`. -/
+    beal-conjecture `Level26/BakerBoundGap3Holds.lean`.
+    `MatveevLLL.lean` proves the elementary CF lemmas
+    (`4/13` is a convergent; integer gap `<` ratio) and keeps
+    `bugeaud_LLL_reduction_proof` / `baker_bound_gap3_from_ratio`
+    as uninhabited `def Prop`. Being a convergent does not force
+    `B ≤ 10⁶`. Not v25. -/
 
 def baker_bound_gap3_of_matveev_gap3_lower : Prop :=
   matveev_theorem_1_4_gap3_target → baker_bound_gap3
@@ -829,6 +837,10 @@ theorem gap3_forall_of_baker
 #check matveev_gap3_lower_B_le_B0_target
 #check matveev_gap3_lower
 #check baker_bound_gap3_holds
+#check MatveevLLL.B0_nat
+#check MatveevLLL.four_thirteenths_is_convergent
+#check MatveevLLL.integer_gap_lt_ratio
+#check MatveevLLL.bugeaud_LLL_reduction_proof
 #print axioms C1_floor_eq
 #print axioms height_B0_eq
 #print axioms height_bound_gap3
@@ -854,5 +866,7 @@ theorem gap3_forall_of_baker
 #print axioms gap3_target_eq_matveev_inequality
 #print axioms C_exp_bound_real_eq_level26
 #print axioms Lambda_gap3_real_nat
+#print axioms MatveevLLL.four_thirteenths_is_convergent
+#print axioms MatveevLLL.integer_gap_lt_ratio
 
 end BealMatveevBeal

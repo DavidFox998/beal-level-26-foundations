@@ -16,7 +16,7 @@ Real theorems print `[propext, Classical.choice, Quot.sound]` only.
 ## What is still not kernel-real
 
 - `|Λ| > exp(matveev_C_exp_bound)` stays an uninhabited unrestricted `def Prop` (`matveev_inequality_real_lower_remaining`). The foundations complement proves the B≤10^6 integer-gap form as `BealMatveevBeal.matveev_gap3_lower`.
-- `baker_bound_gap3` stays an uninhabited `def Prop` (`baker_bound_gap3_remaining`).
+- `baker_bound_gap3` stays an uninhabited `def Prop` (`baker_bound_gap3_remaining`). The foundations `MatveevLLL.lean` CF lemmas (`4/13` convergent; integer gap `<` ratio) do not inhabit it.
 - `baker_conditional_gap3_full` still takes `hBaker : baker_bound_gap3`.
 - Mathlib 4.12 has no Matveev 2000 Theorem 1.4 and no Bugeaud/LLL reduction.
 - `C_exp_bound < -10^12` is a fact about the displayed exponent, not a uniform lower bound on `|Λ|`.

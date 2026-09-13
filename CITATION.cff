@@ -33,7 +33,10 @@ preferred-citation:
     beal-level-26-foundations. Monorepo beal-conjecture stays
     beal-conjecture (f7bbdc5 / e823a52 0-sorry wiring).
     matveev_gap3_lower is the B≤10^6 integer-gap close (0 sorry);
-    unrestricted matveev_inequality_real_target and hLLL stay def Prop.
+    MatveevLLL.lean proves 4/13 is a convergent and integer gap <
+    ratio; bugeaud_LLL_reduction_proof / baker_bound_gap3 stay def
+    Prop (CF does not force B ≤ 10^6). Unrestricted
+    matveev_inequality_real_target and hLLL stay def Prop.
     Not a minted v25 tag. Prior v24.4.0 version
     DOI 10.5281/zenodo.22732209 on db7a556.
 # v24.4.0-Beal-44-13-Level-26-v24x-Final-Summary: honest v24.x final summary (not v25); matveev_v24x_summary (|Lambda| = log(1+B^4/A^4) <= B^4/A^4 = B^4/((B+3)^13-B^4) and 0 < exp(C) < 1e-12 < 1 with C = -height_B0 log height_B0, height_B0 = 104382751019310000000 = C1_floor*30^6, 30^6=729000000) / matveev_v24x_conditional_summary (IF target THEN 0 < exp(C) < B^4/A^4 and B^4*(1+exp(C)) > exp(C)*(B+3)^13) / bugeaud_v24x_final_link / baker_v24x_reduction_shape; target, baker_bound_gap3, and bugeaud_LLL_reduction_conditional stay def Prop; locked Lean 0 vs v24.3.2 305e5f4 except BealMatveevThm14.lean, RibetMazur.lean, and BealBakerB0ReductionCertificate.lean summary shape. Previous v24.3.2 DOI 10.5281/zenodo.22732045. Current v24.4.0 DOI 10.5281/zenodo.22732209. Series concept 10.5281/zenodo.22379293.

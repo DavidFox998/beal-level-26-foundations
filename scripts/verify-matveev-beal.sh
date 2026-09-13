@@ -18,7 +18,9 @@ test -f README.md
 test -f LICENSE
 test -f Beal/Matveev/MatveevThm14General.lean
 test -f Beal/Matveev/MatveevThm14Proof.lean
+test -f Beal/Matveev/MatveevLLL.lean
 test -f MatveevThm14Proof.lean
+test -f MatveevLLL.lean
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -90,6 +92,29 @@ if "matveev_thm14_n2_explicit_of_nat" not in pathlib.Path("MatveevThm14Proof.lea
     print("matveev_thm14_n2_explicit_of_nat missing from MatveevThm14Proof.lean", file=sys.stderr)
     sys.exit(1)
 
+lll = pathlib.Path("MatveevLLL.lean").read_text(encoding="utf-8")
+if "theorem four_thirteenths_is_convergent" not in lll:
+    print("four_thirteenths_is_convergent missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem integer_gap_lt_ratio" not in lll:
+    print("integer_gap_lt_ratio missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "def B0_nat" not in lll or "1000000" not in lll:
+    print("B0_nat = 1000000 missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "def bugeaud_LLL_reduction_proof" not in lll:
+    print("bugeaud_LLL_reduction_proof must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem bugeaud_LLL_reduction_proof\b", lll, re.M):
+    print("bugeaud_LLL_reduction_proof must not be a theorem", file=sys.stderr)
+    sys.exit(1)
+if "theorem matveev_gap3_lower_unrestricted" in src or "theorem matveev_gap3_lower_unrestricted" in lll:
+    print("do not inhabit unrestricted matveev_gap3_lower", file=sys.stderr)
+    sys.exit(1)
+if ".one `MatveevLLL" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
+    print("lakefile.lean missing MatveevLLL glob", file=sys.stderr)
+    sys.exit(1)
+
 readme = pathlib.Path("README.md").read_text(encoding="utf-8")
 if not readme.startswith("# foundations-level-26"):
     print("README.md must start with the foundations-level-26 title", file=sys.stderr)
@@ -113,6 +138,7 @@ for n in needles:
 print("verify-matveev-beal: ok")
 print("  0 sorry; matveev_gap3_lower is the B<=B0 integer-gap close")
 print("  C1_floor=143186215390, gap3_A_bounds and B<=B0 product proved")
+print("  CF lemmas: 4/13 convergent, integer gap < ratio; not baker_bound_gap3")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")
 print("  unrestricted target and hLLL stay def Prop; not v25")
 PY

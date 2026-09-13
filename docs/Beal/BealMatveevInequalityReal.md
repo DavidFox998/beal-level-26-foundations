@@ -24,7 +24,8 @@ The foundations complement proves the **B≤10^6 integer-gap** form of
   Mathlib 4.12 has no Matveev 2000 Theorem 1.4. The v21 integer form
   `16 * (4 B − 13 (B+3)) ≠ 0` does not imply
   `|4 log A − 13 log(B+3)| > exp(matveev_C_exp_bound)`.
-- `baker_bound_gap3` stays an uninhabited `def Prop`.
+- `baker_bound_gap3` stays an uninhabited `def Prop`. The
+  foundations `MatveevLLL.lean` CF lemmas do not inhabit it.
 - `baker_bound_gap3_of_matveev_inequality_real` is the named implication only.
 
 Does not use sorry. No `axiom`. No `native_decide`.

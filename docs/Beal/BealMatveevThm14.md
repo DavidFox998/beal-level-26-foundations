@@ -37,6 +37,9 @@ theorem bugeaud_v24x_final_link :
 Honest consolidation of v24.0.0–3.2. Does not claim $|\Lambda| > \exp(C)$
 on every solution. Target `matveev_inequality_real_target`, `baker_bound_gap3`, and
 `bugeaud_LLL_reduction_conditional` stay uninhabited def Props.
+The foundations complement `MatveevLLL.lean` proves that `4/13` is a
+convergent of the log ratio and that the integer gap is `< B^4/A^4`;
+that does not inhabit `baker_bound_gap3`.
 v24.4.0 is the honest final of v24.x, not v25.
 
 The foundations complement (`beal-level-26-foundations`) now proves the

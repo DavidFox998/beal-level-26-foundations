@@ -26,6 +26,7 @@ v24.4.0 kernel in `beal-conjecture`). It does **not** run
 `scripts/verify-scaffold.sh` (historical X0(26) checklist).
 
 A green run is a Lean 4.12 / Mathlib 4.12 build of the B≤10^6
-integer-gap Matveev lower bound. It is not a minted `v25.0.0` tag,
-not interpolation, and not an unconditional `∀ B ¬∃ A` (`hLLL`
-stays a `def Prop`).
+integer-gap Matveev lower bound plus the elementary CF lemmas in
+`MatveevLLL.lean`. It is not a minted `v25.0.0` tag, not
+interpolation, and not an unconditional `∀ B ¬∃ A` (`hLLL` /
+`bugeaud_LLL_reduction_proof` stay `def Prop`).

@@ -6,8 +6,12 @@
 (`matveev_gap3_lower_B_le_B0_target`): on a gap-3 solution with
 `B ≤ 10^6`, `|Λ| > exp(-height_B0 log height_B0)`, proved from
 `matveev_thm14_n2_explicit_of_nat` (`MatveevThm14Proof.lean`) and
-`matveev_product_bound_of_B_le_B0`. Axioms
-`[propext, Classical.choice, Quot.sound]`. **0 sorry.**
+`matveev_product_bound_of_B_le_B0`. `MatveevLLL.lean` proves the
+elementary CF lemmas (`4/13` is a convergent;
+`1/(B+3)¹³ < B⁴/A⁴`) and keeps `bugeaud_LLL_reduction_proof` as
+an uninhabited `def Prop`. Being a convergent does not force
+`B ≤ 10⁶`. Axioms `[propext, Classical.choice, Quot.sound]`.
+**0 sorry.**
 
 This is **not** Matveev 2000 interpolation, **not** the unrestricted
 Level26 `matveev_inequality_real_target` (the product is false for

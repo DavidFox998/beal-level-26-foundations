@@ -2,7 +2,7 @@
 
 [![Matveev-Beal CI](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml/badge.svg)](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml)
 
-This repo is foundations-level-26, the Matveev proof for beal-conjecture f7bbdc5. Current HEAD: 0 sorry. `matveev_gap3_lower` is the **B≤10^6 integer-gap** close (`|Λ| > exp(-height_B0 log height_B0)` on gap-3 solutions with `B ≤ 10^6`) via `matveev_thm14_n2_explicit_of_nat` and `matveev_product_bound_of_B_le_B0`. C1_floor=143186215390. Not Matveev interpolation, not unrestricted `matveev_inequality_real_target` (product false for huge B), not `baker_bound_gap3` / hLLL. Not v25. lake build BealMatveevBeal green. NOT waiting on Mathlib.
+This repo is foundations-level-26, the Matveev proof for beal-conjecture f7bbdc5. Current HEAD: 0 sorry. `matveev_gap3_lower` is the **B≤10^6 integer-gap** close (`|Λ| > exp(-height_B0 log height_B0)` on gap-3 solutions with `B ≤ 10^6`) via `matveev_thm14_n2_explicit_of_nat` and `matveev_product_bound_of_B_le_B0`. `MatveevLLL.lean` proves the elementary CF lemmas (`4/13` is a convergent of the log ratio; integer gap `<` `B⁴/A⁴`) and keeps `bugeaud_LLL_reduction_proof` / `baker_bound_gap3` as uninhabited `def Prop` — being a convergent does not force `B ≤ 10⁶`. C1_floor=143186215390. Not Matveev interpolation, not unrestricted `matveev_inequality_real_target` (product false for huge B), not `hLLL`. Not v25. lake build BealMatveevBeal green. NOT waiting on Mathlib.
 
 Monorepo beal-conjecture stays beal-conjecture, this repo is foundations-level-26 Matveev-Beal complement.
 
@@ -28,6 +28,7 @@ has no Matveev 2000 Thm 1.4.
 ```
 Beal/Matveev/MatveevThm14General.lean
 MatveevThm14Proof.lean
+MatveevLLL.lean
 ```
 
 **0 `sorry`.** `matveev_gap3_lower` is the B≤10^6 integer-gap theorem
@@ -61,11 +62,21 @@ On a gap-3 solution, `B < A` and `A ≈ (B+3)^{13/4}`. The old
   unrestricted target (proved; does not inhabit the hypotheses)
 - `matveev_gap3_lower` — B≤10^6 integer-gap close (proved).
   Unrestricted `matveev_theorem_1_4_gap3_target` stays a `def Prop`
+- `four_thirteenths_is_convergent` — on a solution,
+  `|log(B+3)/log A − 4/13| < 1/(2·13²)`, so `4/13` is a
+  convergent (proved; expected, not a Baker cutoff)
+- `integer_gap_lt_ratio` — `1/(B+3)¹³ < B⁴/A⁴` on a solution
+  (proved; integer-gap Matveev never contradicts the upper bound)
+- `bugeaud_LLL_reduction_proof` / `baker_bound_gap3_from_ratio`
+  — implication “ratio upper bound ⇒ `B ≤ 10⁶`” (uninhabited
+  `def Prop`; inhabiting it would inhabit Level 26
+  `baker_bound_gap3`)
 
 `baker_conditional_gap3_full` takes `baker_bound_gap3`, not the
 Matveev target. After the lower bound, the remaining implication
 `matveev_inequality_real_target → baker_bound_gap3` is still an
-uninhabited `def Prop` (LLL / Bugeaud `hLLL`).
+uninhabited `def Prop` (LLL / Bugeaud `hLLL`). Mathlib 4.12 has
+no LLL reduction theorem. The CF lemmas do not close v25.
 
 ```bash
 lake update
