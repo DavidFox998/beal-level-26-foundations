@@ -3,9 +3,9 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v24.2.1 -- logarithmic form as logarithm of ratio
+Track B v24.2.2 -- log(1 + x) ≤ x upper bound
 on gap-3 solutions.
-Keeps all v24.0.0 through v24.2.0 lemmas.
+Keeps all v24.0.0 through v24.2.1 lemmas.
 
 On a gap-3 solution A^4 + B^4 = (B+3)^13:
   * 0 < A via matveev_gap3_A_pos
@@ -16,6 +16,10 @@ On a gap-3 solution A^4 + B^4 = (B+3)^13:
   * |Lambda| = log((B+3)^13 / A^4) = log(1 + B^4 / A^4)
     (matveev_gap3_log_form_eq_log_ratio,
      matveev_gap3_abs_lambda_eq_log_one_plus_ratio)
+  * 0 < B^4 / A^4 via matveev_gap3_B_pow_div_A_pow_pos
+  * |Lambda| ≤ B^4 / A^4 via matveev_gap3_abs_lambda_le_ratio
+  * 0 ≤ |Lambda| via matveev_gap3_abs_lambda_nonneg
+  * B^4 / A^4 < 1 → |Lambda| < 1 via matveev_gap3_abs_lambda_lt_one_of_small_ratio
   * 0 < matveev_target_exp_lower < 1
     (matveev_exp_lower_lt_one_and_pos)
 
@@ -525,6 +529,57 @@ theorem matveev_gap3_abs_lambda_eq_log_one_plus_ratio {A B : Nat}
   have h := matveev_gap3_log_form_eq_log_ratio hsol
   rw [h.2.1, h.2.2]
 
+/-! ## v24.2.2 — Logarithmic bound log(1 + x) ≤ x on gap-3 solutions
+
+    On a gap-3 solution A^4 + B^4 = (B+3)^13:
+      * log(1 + x) ≤ x for all x > -1
+      * 0 < B^4 / A^4
+      * 0 ≤ |Lambda|
+      * |Lambda| = log(1 + B^4 / A^4) ≤ B^4 / A^4
+      * B^4 / A^4 < 1 → |Lambda| < 1
+
+    Does not use sorry. -/
+
+/-- Real logarithm upper bound: log(1 + x) ≤ x for all x > -1. -/
+theorem matveev_log_one_plus_le_self {x : Real} (hx : -1 < x) :
+    Real.log (1 + x) ≤ x := by
+  have hpos : (0 : Real) < 1 + x := by linarith
+  have hle := Real.log_le_sub_one_of_pos hpos
+  linarith
+
+/-- On a gap-3 solution, B^4 / A^4 is strictly positive. -/
+theorem matveev_gap3_B_pow_div_A_pow_pos {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    (0 : Real) < (B : Real) ^ 4 / (A : Real) ^ 4 := by
+  have hB : 0 < B := matveev_gap3_B_pos_of_solution hsol
+  have hBR : (0 : Real) < (B : Real) := Nat.cast_pos.mpr hB
+  have hB4 : (0 : Real) < (B : Real) ^ 4 := pow_pos hBR 4
+  have hA4 : (0 : Real) < (A : Real) ^ 4 := matveev_gap3_A_pow_pos hsol
+  exact div_pos hB4 hA4
+
+/-- On a gap-3 solution, |Lambda| ≥ 0 (trivial nonnegativity of absolute value). -/
+theorem matveev_gap3_abs_lambda_nonneg (A B : Nat) :
+    (0 : Real) ≤ |matveev_log_form A B| :=
+  abs_nonneg (matveev_log_form A B)
+
+/-- On a gap-3 solution, |Lambda| = log(1 + B^4 / A^4) ≤ B^4 / A^4. -/
+theorem matveev_gap3_abs_lambda_le_ratio {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    |matveev_log_form A B| ≤ (B : Real) ^ 4 / (A : Real) ^ 4 := by
+  have habs := matveev_gap3_abs_lambda_eq_log_one_plus_ratio hsol
+  have hratio_pos := matveev_gap3_B_pow_div_A_pow_pos hsol
+  have hgt : (-1 : Real) < (B : Real) ^ 4 / (A : Real) ^ 4 := by linarith
+  have hlog_le := matveev_log_one_plus_le_self hgt
+  rw [habs]
+  exact hlog_le
+
+/-- If B^4 / A^4 < 1 on a gap-3 solution, then |Lambda| < 1. -/
+theorem matveev_gap3_abs_lambda_lt_one_of_small_ratio {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (hsmall : (B : Real) ^ 4 / (A : Real) ^ 4 < 1) :
+    |matveev_log_form A B| < 1 :=
+  (matveev_gap3_abs_lambda_le_ratio hsol).trans_lt hsmall
+
 /-! ## Named Matveev 2000 Thm 1.4 target
 
     On a gap-3 solution the v23 theorem
@@ -591,6 +646,11 @@ def baker_bound_gap3_remaining_thm14 : Prop :=
 #check matveev_gap3_ratio_eq_one_plus_ratio
 #check matveev_gap3_log_form_eq_log_ratio
 #check matveev_gap3_abs_lambda_eq_log_one_plus_ratio
+#check matveev_log_one_plus_le_self
+#check matveev_gap3_B_pow_div_A_pow_pos
+#check matveev_gap3_abs_lambda_nonneg
+#check matveev_gap3_abs_lambda_le_ratio
+#check matveev_gap3_abs_lambda_lt_one_of_small_ratio
 #check matveev_inequality_real_target
 #check baker_bound_gap3_remaining_thm14
 #print axioms matveev_C1_floor_eq
@@ -641,6 +701,11 @@ def baker_bound_gap3_remaining_thm14 : Prop :=
 #print axioms matveev_gap3_ratio_eq_one_plus_ratio
 #print axioms matveev_gap3_log_form_eq_log_ratio
 #print axioms matveev_gap3_abs_lambda_eq_log_one_plus_ratio
+#print axioms matveev_log_one_plus_le_self
+#print axioms matveev_gap3_B_pow_div_A_pow_pos
+#print axioms matveev_gap3_abs_lambda_nonneg
+#print axioms matveev_gap3_abs_lambda_le_ratio
+#print axioms matveev_gap3_abs_lambda_lt_one_of_small_ratio
 #print axioms matveev_thm14_C_exp_bound_lt_neg_onee12
 #print axioms matveev_thm14_constants_hold
 

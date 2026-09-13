@@ -3377,6 +3377,16 @@ grep -q "theorem matveev_gap3_log_form_eq_log_ratio" \
   lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
 grep -q "theorem matveev_gap3_abs_lambda_eq_log_one_plus_ratio" \
   lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
+grep -q "theorem matveev_log_one_plus_le_self" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
+grep -q "theorem matveev_gap3_B_pow_div_A_pow_pos" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
+grep -q "theorem matveev_gap3_abs_lambda_nonneg" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
+grep -q "theorem matveev_gap3_abs_lambda_le_ratio" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
+grep -q "theorem matveev_gap3_abs_lambda_lt_one_of_small_ratio" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
 test "$(grep -c '^axiom ' lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean)" -eq 0
 test ! -n "$(grep -E '^\s*(sorry|admit)\b|False\.elim|native_decide|^axiom ' \
   lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean || true)"
@@ -3424,6 +3434,26 @@ grep -q "theorem matveev_gap3_log_form_eq_log_ratio" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem matveev_gap3_abs_lambda_eq_log_one_plus_ratio" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem matveev_log_one_plus_le_self" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem matveev_gap3_B_pow_div_A_pow_pos" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem matveev_gap3_abs_lambda_nonneg" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem matveev_gap3_abs_lambda_le_ratio" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem matveev_gap3_abs_lambda_lt_one_of_small_ratio" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+test "$(git diff v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio -- lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean | wc -l)" -eq 0
+test "$(git diff v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
+test "$(git diff v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
+test "$(git diff v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean | wc -l)" -eq 0
+test "$(git diff v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean | wc -l)" -eq 0
+test "$(git diff v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean | wc -l)" -eq 0
+test "$(git diff v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio -- lean/BealLevel26Foundations/Beal/FullProof/BealBugeaudLLLFormal.lean | wc -l)" -eq 0
+test "$(git diff v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean | wc -l)" -eq 0
+test "$(git diff v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequalityReal.lean | wc -l)" -eq 0
+test "$(git diff v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerBoundGap3.lean | wc -l)" -eq 0
 test "$(git diff v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound -- lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean | wc -l)" -eq 0
 test "$(git diff v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 test "$(git diff v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0

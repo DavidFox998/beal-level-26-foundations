@@ -5,11 +5,12 @@ type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio"
+version: "v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le"
 date-released: "2026-09-13"
-doi: "10.5281/zenodo.22731054"
+doi: "10.5281/zenodo.22731160"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
-url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio"
+url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le"
+# v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le: logarithmic bound log(1+x) <= x on gap-3 solutions; matveev_log_one_plus_le_self (Real.log (1+x) <= x for x > -1) / matveev_gap3_B_pow_div_A_pow_pos (0 < B^4 / A^4) / matveev_gap3_abs_lambda_nonneg (0 <= |Lambda|) / matveev_gap3_abs_lambda_le_ratio (|Lambda| <= B^4 / A^4) / matveev_gap3_abs_lambda_lt_one_of_small_ratio (B^4 / A^4 < 1 -> |Lambda| < 1); target and baker_bound_gap3 stay def Prop; locked Lean 0 vs v24.2.1 ac100cf except BealMatveevThm14.lean and RibetMazur.lean. Previous v24.2.1 DOI 10.5281/zenodo.22731160. Series concept 10.5281/zenodo.22379293.
 # v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio: logarithmic form as logarithm of ratio on gap-3 solutions; 0 < A^4 (matveev_gap3_A_pow_pos) / 0 < (B+3)^13 (matveev_gap3_B3_pow_pos) / (B+3)^13 / A^4 = 1 + B^4 / A^4 (matveev_gap3_ratio_eq_one_plus_ratio) / Lambda = -log((B+3)^13 / A^4) and |Lambda| = log((B+3)^13 / A^4) = log(1 + B^4 / A^4) (matveev_gap3_log_form_eq_log_ratio) / |Lambda| = log(1 + B^4 / A^4) (matveev_gap3_abs_lambda_eq_log_one_plus_ratio); target and baker_bound_gap3 stay def Prop; locked Lean 0 vs v24.2.0 d755428 except BealMatveevThm14.lean and RibetMazur.lean. Previous v24.2.0 DOI 10.5281/zenodo.22731054. Series concept 10.5281/zenodo.22379293.
 # v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound: logarithmic form upper bound on gap-3 solutions; matveev_gap3_B_pos_of_solution (B > 0 via baker_le_B0_gap3) / matveev_gap3_A_pos (A > 0 via eq_implies_A_gt_B) / matveev_gap3_log_form_upper_bound (Lambda < 0 and |Lambda| = -Lambda) / matveev_exp_lower_lt_one_and_pos (0 < target < 1); target and baker_bound_gap3 stay def Prop; locked Lean 0 vs v24.1.1 21df092 except BealMatveevThm14.lean and RibetMazur.lean. Previous v24.1.1 DOI 10.5281/zenodo.22730846. Series concept 10.5281/zenodo.22379293.
 # v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite: matveev_C_exp_bound = -(height_B0 * log height_B0) using v24.1.0 product identity C1_floor*thirty_pow=height_B0; matveev_C_exp_bound_eq_neg_height_mul_log / matveev_C_exp_bound_eq_neg_height_log / matveev_target_exp_lower_eq / matveev_height_B0_mul_log_pos / matveev_C_exp_bound_neg_of_mul_log_pos; target and baker_bound_gap3 stay def Prop; locked Lean 0 vs v24.1.0 7962905 except BealMatveevThm14.lean. Previous v24.1.0 DOI 10.5281/zenodo.22730776. Series concept 10.5281/zenodo.22379293.

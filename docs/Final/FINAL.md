@@ -1,3 +1,21 @@
+# FINAL v24.2.2 — Logarithmic Bound log(1+x) ≤ x on Gap-3 (not final)
+
+Latest tag `v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le`.
+On $A^4 + B^4 = (B+3)^{13}$:
+$\forall x > -1, \log(1+x) \le x$ via `matveev_log_one_plus_le_self`,
+$0 < B^4 / A^4$ via `matveev_gap3_B_pow_div_A_pow_pos`,
+$0 \le |\Lambda|$ via `matveev_gap3_abs_lambda_nonneg`,
+$|\Lambda| = \log(1 + B^4 / A^4) \le B^4 / A^4$ via `matveev_gap3_abs_lambda_le_ratio`,
+$B^4 / A^4 < 1 \implies |\Lambda| < 1$ via `matveev_gap3_abs_lambda_lt_one_of_small_ratio`.
+Target and `baker_bound_gap3` stay uninhabited
+def Props. Links the classical logarithmic upper bound to the ratio $B^4/A^4$ toward Baker B0.
+Locked Lean 0 vs v24.2.1 `ac100cf` /
+`10.5281/zenodo.22731160` except
+`BealMatveevThm14.lean` and `RibetMazur.lean`.
+Most current as of 2026-09-13, **not** a
+final Beal proof. Series concept
+`10.5281/zenodo.22379293`.
+
 # FINAL v24.2.1 — Logarithmic Form as Logarithm of Ratio (not final)
 
 Latest tag `v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio`.

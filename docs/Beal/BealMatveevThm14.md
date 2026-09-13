@@ -1,10 +1,36 @@
 # BealMatveevThm14 — v24.0.0 Matveev 2000 Thm 1.4 formalization start
 
-**Tag.** `v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio`.
+**Tag.** `v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le`.
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
-**Parent.** v24.2.0 `d755428` / `v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound` / DOI `10.5281/zenodo.22731054`.
+**Parent.** v24.2.1 `ac100cf` / `v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio` / DOI `10.5281/zenodo.22731160`.
 **Concept.** `10.5281/zenodo.22379293`.
+
+## v24.2.2 — logarithmic bound log(1 + x) ≤ x on gap-3 solutions
+
+```lean
+theorem matveev_log_one_plus_le_self :
+    ∀ {x : Real}, -1 < x → Real.log (1 + x) ≤ x
+theorem matveev_gap3_B_pow_div_A_pow_pos :
+    A^4 + B^4 = (B+3)^13 → 0 < (B:Real)^4 / (A:Real)^4
+theorem matveev_gap3_abs_lambda_nonneg :
+    ∀ (A B : Nat), 0 ≤ |matveev_log_form A B|
+theorem matveev_gap3_abs_lambda_le_ratio :
+    A^4 + B^4 = (B+3)^13 →
+      |matveev_log_form A B| ≤ (B:Real)^4 / (A:Real)^4
+theorem matveev_gap3_abs_lambda_lt_one_of_small_ratio :
+    A^4 + B^4 = (B+3)^13 →
+      (B:Real)^4 / (A:Real)^4 < 1 →
+        |matveev_log_form A B| < 1
+```
+
+On a gap-3 solution $A^4 + B^4 = (B+3)^{13}$:
+- General inequality `matveev_log_one_plus_le_self`: $\forall x > -1, \log(1+x) \le x$, proven via Mathlib's `Real.log_le_sub_one_of_pos` and `linarith`.
+- Positivity `matveev_gap3_B_pow_div_A_pow_pos`: $0 < (B : \mathrm{Real})^4 / (A : \mathrm{Real})^4$ on solutions with $B > 0$ and $A > 0$.
+- Nonnegativity `matveev_gap3_abs_lambda_nonneg`: $0 \le |\Lambda|$ trivially via `abs_nonneg`.
+- Classical upper bound `matveev_gap3_abs_lambda_le_ratio`: $|\Lambda| = \log(1 + B^4/A^4) \le B^4/A^4$ by combining `matveev_gap3_abs_lambda_eq_log_one_plus_ratio` with `matveev_log_one_plus_le_self` evaluated at $x = B^4/A^4 > 0$.
+- Baker reduction step `matveev_gap3_abs_lambda_lt_one_of_small_ratio`: $B^4/A^4 < 1 \implies |\Lambda| < 1$.
+- `matveev_inequality_real_target` and `baker_bound_gap3` stay uninhabited def Props.
 
 ## v24.2.1 — logarithmic form as logarithm of ratio
 

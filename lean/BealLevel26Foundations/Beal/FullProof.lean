@@ -33,6 +33,23 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
 /-!
+# FullProof track (v24.2.2)
+
+Logarithmic bound log(1 + x) ≤ x on gap-3 solutions.
+On a gap-3 solution A^4 + B^4 = (B+3)^13:
+  * log(1 + x) ≤ x for all x > -1 via matveev_log_one_plus_le_self
+  * 0 < B^4 / A^4 via matveev_gap3_B_pow_div_A_pow_pos
+  * 0 ≤ |Lambda| via matveev_gap3_abs_lambda_nonneg
+  * |Lambda| = log(1 + B^4 / A^4) ≤ B^4 / A^4 via matveev_gap3_abs_lambda_le_ratio
+  * B^4 / A^4 < 1 → |Lambda| < 1 via matveev_gap3_abs_lambda_lt_one_of_small_ratio
+  * 0 < matveev_target_exp_lower < 1 via matveev_exp_lower_lt_one_and_pos
+Links the upper bound side via ratio toward Baker B0.
+`matveev_inequality_real_target` and
+`baker_bound_gap3` stay uninhabited
+def Props.
+Locked Lean files stay exactly v24.2.1
+except BealMatveevThm14.lean and RibetMazur.lean.
+
 # FullProof track (v24.2.1)
 
 Logarithmic form as logarithm of ratio on gap-3 solutions.
