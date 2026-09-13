@@ -6023,6 +6023,53 @@ theorem matveev_C_exp_bound_neg_of_mul_log_pos :
         Real.log (matveev_height_B0 : Real) :=
   BealLevel26Foundations.BealMatveevThm14.matveev_C_exp_bound_neg_of_mul_log_pos
 
+/-! ## v24.2.0 — Logarithmic form upper bound on gap-3 solutions -/
+
+theorem matveev_gap3_B_pos_of_solution {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    0 < B :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_gap3_B_pos_of_solution hsol
+
+theorem matveev_gap3_A_pos {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    0 < A :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_gap3_A_pos hsol
+
+theorem matveev_gap3_A_pos_of_pos_B {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (hB : 0 < B) :
+    0 < A :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_gap3_A_pos_of_pos_B hsol hB
+
+theorem matveev_gap3_log_form_upper_bound {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (hB : 0 < B) :
+    matveev_log_form A B < 0 ∧
+      |matveev_log_form A B| = -matveev_log_form A B :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_gap3_log_form_upper_bound hsol hB
+
+theorem matveev_gap3_log_form_upper_bound_expanded {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (hB : 0 < B) :
+    (4 : Real) * Real.log (A : Real) -
+        (13 : Real) * Real.log ((B + 3 : Nat) : Real) < 0 ∧
+      |(4 : Real) * Real.log (A : Real) -
+        (13 : Real) * Real.log ((B + 3 : Nat) : Real)| =
+        -((4 : Real) * Real.log (A : Real) -
+          (13 : Real) * Real.log ((B + 3 : Nat) : Real)) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_gap3_log_form_upper_bound_expanded hsol hB
+
+theorem matveev_gap3_log_form_upper_bound_of_solution {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    matveev_log_form A B < 0 ∧
+      |matveev_log_form A B| = -matveev_log_form A B :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_gap3_log_form_upper_bound_of_solution hsol
+
+theorem matveev_exp_lower_lt_one_and_pos :
+    (0 : Real) < matveev_target_exp_lower ∧
+      matveev_target_exp_lower < 1 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_exp_lower_lt_one_and_pos
+
 /-! ## v14.0.0 — J0 / mwrank / formal displayed certs -/
 
 def J0DecompositionCert_26 :=
@@ -7128,6 +7175,13 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check matveev_target_exp_lower_eq
 #check matveev_height_B0_mul_log_pos
 #check matveev_C_exp_bound_neg_of_mul_log_pos
+#check matveev_gap3_B_pos_of_solution
+#check matveev_gap3_A_pos
+#check matveev_gap3_A_pos_of_pos_B
+#check matveev_gap3_log_form_upper_bound
+#check matveev_gap3_log_form_upper_bound_expanded
+#check matveev_gap3_log_form_upper_bound_of_solution
+#check matveev_exp_lower_lt_one_and_pos
 #check J0DecompositionCert_26
 #check J0DecompositionCert_26_displayed
 #check J0DecompositionSoundness_26
@@ -7724,6 +7778,13 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms matveev_target_exp_lower_eq
 #print axioms matveev_height_B0_mul_log_pos
 #print axioms matveev_C_exp_bound_neg_of_mul_log_pos
+#print axioms matveev_gap3_B_pos_of_solution
+#print axioms matveev_gap3_A_pos
+#print axioms matveev_gap3_A_pos_of_pos_B
+#print axioms matveev_gap3_log_form_upper_bound
+#print axioms matveev_gap3_log_form_upper_bound_expanded
+#print axioms matveev_gap3_log_form_upper_bound_of_solution
+#print axioms matveev_exp_lower_lt_one_and_pos
 #print axioms J0DecompositionSoundness_26_holds
 #print axioms MwrankCertificateSoundness_26_holds
 #print axioms FormalImmersionSoundness_26_holds

@@ -33,6 +33,24 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
 /-!
+# FullProof track (v24.2.0)
+
+Logarithmic form upper bound on gap-3 solutions.
+On a gap-3 solution A^4 + B^4 = (B+3)^13:
+  * B > 0 via baker_le_B0_gap3 (matveev_gap3_B_pos_of_solution)
+  * A > 0 via eq_implies_A_gt_B (matveev_gap3_A_pos)
+  * Lambda = 4 log A - 13 log (B+3) < 0
+  * |Lambda| = -Lambda = -(4 log A - 13 log (B+3))
+    (matveev_gap3_log_form_upper_bound)
+  * 0 < matveev_target_exp_lower < 1
+    (matveev_exp_lower_lt_one_and_pos)
+Links the upper bound side to the lower bound target.
+`matveev_inequality_real_target` and
+`baker_bound_gap3` stay uninhabited
+def Props.
+Locked Lean files stay exactly v24.1.1
+except BealMatveevThm14.lean and RibetMazur.lean.
+
 # FullProof track (v24.1.1)
 
 Rewriting the displayed Matveev exponent

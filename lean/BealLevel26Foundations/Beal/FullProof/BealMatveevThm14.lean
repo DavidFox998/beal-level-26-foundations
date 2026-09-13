@@ -3,9 +3,20 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v24.1.1 -- rewrite C_exp_bound via
-the height_B0 product identity.
-Keeps all v24.0.0-1.0 lemmas.
+Track B v24.2.0 -- logarithmic form upper bound
+on gap-3 solutions.
+Keeps all v24.0.0 through v24.1.1 lemmas.
+
+On a gap-3 solution A^4 + B^4 = (B+3)^13:
+  * B > 0 via baker_le_B0_gap3 (matveev_gap3_B_pos_of_solution)
+  * A > 0 via eq_implies_A_gt_B (matveev_gap3_A_pos)
+  * Lambda = 4 log A - 13 log (B+3) < 0
+  * |Lambda| = -Lambda = -(4 log A - 13 log (B+3))
+    (matveev_gap3_log_form_upper_bound)
+  * 0 < matveev_target_exp_lower < 1
+    (matveev_exp_lower_lt_one_and_pos)
+
+Links the upper bound side to the lower bound target.
 
 thirty_pow is 30^6 = 729000000, not
 the 7-digit typo 72900000 (= 30^6 / 10).
@@ -340,6 +351,84 @@ theorem matveev_thm14_constants_hold :
     matveev_thm14_constants ≠ [] := by
   decide
 
+/-! ## v24.2.0 — Logarithmic form upper bound on gap-3 solutions
+
+    On a gap-3 solution A^4 + B^4 = (B+3)^13:
+      * B > 0 by eliminating B = 0 via baker_le_B0_gap3
+      * A > 0 via eq_implies_A_gt_B
+      * Lambda = 4 log A - 13 log (B+3) < 0
+      * |Lambda| = -Lambda = -(4 log A - 13 log (B+3))
+      * 0 < matveev_target_exp_lower < 1
+
+    Does not use sorry. -/
+
+/-- On any gap-3 solution A^4 + B^4 = (B+3)^13, B must be strictly positive
+    because B = 0 is eliminated by baker_le_B0_gap3 (0 ≤ baker_B0). -/
+theorem matveev_gap3_B_pos_of_solution {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    0 < B := by
+  cases' Nat.eq_zero_or_pos B with hB0 hpos
+  · exfalso
+    have hle : B ≤ baker_B0 := by rw [hB0]; decide
+    exact baker_le_B0_gap3 hle ⟨A, hsol⟩
+  · exact hpos
+
+/-- On any gap-3 solution A^4 + B^4 = (B+3)^13, A must be strictly positive
+    because 0 < B and B < A via eq_implies_A_gt_B. -/
+theorem matveev_gap3_A_pos {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    0 < A := by
+  have hB := matveev_gap3_B_pos_of_solution hsol
+  have hgt := eq_implies_A_gt_B hsol hB
+  exact Nat.lt_trans hB hgt
+
+/-- On a gap-3 solution with B > 0, A is strictly positive. -/
+theorem matveev_gap3_A_pos_of_pos_B {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (hB : 0 < B) :
+    0 < A := by
+  have hgt := eq_implies_A_gt_B hsol hB
+  exact Nat.lt_trans hB hgt
+
+/-- On a gap-3 solution with B > 0, the Real logarithmic form
+    Lambda = 4 log A - 13 log (B+3) is strictly negative,
+    and |Lambda| = -Lambda = -(4 log A - 13 log (B+3)). -/
+theorem matveev_gap3_log_form_upper_bound {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (hB : 0 < B) :
+    matveev_log_form A B < 0 ∧
+      |matveev_log_form A B| = -matveev_log_form A B := by
+  have hlt := matveev_log_form_lt_zero_of_gap3 hsol hB
+  exact ⟨hlt, abs_of_neg hlt⟩
+
+/-- Expanded version of matveev_gap3_log_form_upper_bound with
+    explicit 4 log A - 13 log (B+3). -/
+theorem matveev_gap3_log_form_upper_bound_expanded {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (hB : 0 < B) :
+    (4 : Real) * Real.log (A : Real) -
+        (13 : Real) * Real.log ((B + 3 : Nat) : Real) < 0 ∧
+      |(4 : Real) * Real.log (A : Real) -
+        (13 : Real) * Real.log ((B + 3 : Nat) : Real)| =
+        -((4 : Real) * Real.log (A : Real) -
+          (13 : Real) * Real.log ((B + 3 : Nat) : Real)) :=
+  matveev_gap3_log_form_upper_bound hsol hB
+
+/-- Upper bound shape holding directly from the solution identity without
+    requiring B > 0 as a hypothesis (B > 0 is deduced). -/
+theorem matveev_gap3_log_form_upper_bound_of_solution {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    matveev_log_form A B < 0 ∧
+      |matveev_log_form A B| = -matveev_log_form A B :=
+  matveev_gap3_log_form_upper_bound hsol (matveev_gap3_B_pos_of_solution hsol)
+
+/-- Restatement of the target exponential lower bound in (0, 1):
+    0 < matveev_target_exp_lower ∧ matveev_target_exp_lower < 1. -/
+theorem matveev_exp_lower_lt_one_and_pos :
+    (0 : Real) < matveev_target_exp_lower ∧
+      matveev_target_exp_lower < 1 :=
+  ⟨matveev_target_exp_lower_pos, matveev_target_exp_lower_lt_one⟩
+
 /-! ## Named Matveev 2000 Thm 1.4 target
 
     On a gap-3 solution the v23 theorem
@@ -394,6 +483,13 @@ def baker_bound_gap3_remaining_thm14 : Prop :=
 #check matveev_target_exp_lower_eq
 #check matveev_height_B0_mul_log_pos
 #check matveev_C_exp_bound_neg_of_mul_log_pos
+#check matveev_gap3_B_pos_of_solution
+#check matveev_gap3_A_pos
+#check matveev_gap3_A_pos_of_pos_B
+#check matveev_gap3_log_form_upper_bound
+#check matveev_gap3_log_form_upper_bound_expanded
+#check matveev_gap3_log_form_upper_bound_of_solution
+#check matveev_exp_lower_lt_one_and_pos
 #check matveev_inequality_real_target
 #check baker_bound_gap3_remaining_thm14
 #print axioms matveev_C1_floor_eq
@@ -432,6 +528,13 @@ def baker_bound_gap3_remaining_thm14 : Prop :=
 #print axioms matveev_target_exp_lower_eq
 #print axioms matveev_height_B0_mul_log_pos
 #print axioms matveev_C_exp_bound_neg_of_mul_log_pos
+#print axioms matveev_gap3_B_pos_of_solution
+#print axioms matveev_gap3_A_pos
+#print axioms matveev_gap3_A_pos_of_pos_B
+#print axioms matveev_gap3_log_form_upper_bound
+#print axioms matveev_gap3_log_form_upper_bound_expanded
+#print axioms matveev_gap3_log_form_upper_bound_of_solution
+#print axioms matveev_exp_lower_lt_one_and_pos
 #print axioms matveev_thm14_C_exp_bound_lt_neg_onee12
 #print axioms matveev_thm14_constants_hold
 

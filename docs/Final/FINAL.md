@@ -1,3 +1,21 @@
+# FINAL v24.2.0 — Logarithmic Form Upper Bound on Gap-3 Solutions (not final)
+
+Latest tag `v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound`.
+On $A^4 + B^4 = (B+3)^{13}$:
+$B > 0$ via `baker_le_B0_gap3`,
+$A > 0$ via `eq_implies_A_gt_B`,
+$\Lambda = 4 \log A - 13 \log (B+3) < 0$,
+$|\Lambda| = -\Lambda = -(4 \log A - 13 \log (B+3))$.
+`0 < matveev_target_exp_lower < 1`.
+Target and `baker_bound_gap3` stay uninhabited
+def Props. Links the upper bound side to the lower bound target.
+Locked Lean 0 vs v24.1.1 `21df092` /
+`10.5281/zenodo.22730846` except
+`BealMatveevThm14.lean` and `RibetMazur.lean`.
+Most current as of 2026-09-13, **not** a
+final Beal proof. Series concept
+`10.5281/zenodo.22379293`.
+
 # FINAL v24.1.1 — Matveev C_exp_bound rewrite (not final)
 
 Latest tag `v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite`.

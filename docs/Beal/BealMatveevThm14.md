@@ -1,10 +1,32 @@
 # BealMatveevThm14 — v24.0.0 Matveev 2000 Thm 1.4 formalization start
 
-**Tag.** `v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite`.
+**Tag.** `v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound`.
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
-**Parent.** v24.1.0 `7962905` / `v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product` / DOI `10.5281/zenodo.22730776`.
+**Parent.** v24.1.1 `21df092` / `v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite` / DOI `10.5281/zenodo.22730846`.
 **Concept.** `10.5281/zenodo.22379293`.
+
+## v24.2.0 — logarithmic form upper bound on gap-3 solutions
+
+```lean
+theorem matveev_gap3_B_pos_of_solution :
+    A^4 + B^4 = (B+3)^13 → 0 < B
+theorem matveev_gap3_A_pos :
+    A^4 + B^4 = (B+3)^13 → 0 < A
+theorem matveev_gap3_log_form_upper_bound :
+    A^4 + B^4 = (B+3)^13 → 0 < B →
+      matveev_log_form A B < 0 ∧
+        |matveev_log_form A B| = -matveev_log_form A B
+theorem matveev_exp_lower_lt_one_and_pos :
+    0 < matveev_target_exp_lower ∧ matveev_target_exp_lower < 1
+```
+
+On a gap-3 solution $A^4 + B^4 = (B+3)^{13}$:
+- $B > 0$ is proven by eliminating $B = 0$ via `baker_le_B0_gap3` ($0 \le 10^6$).
+- $A > 0$ follows from $0 < B$ and $B < A$ via `eq_implies_A_gt_B`.
+- The logarithmic linear form $\Lambda = 4 \log A - 13 \log (B+3)$ is strictly negative, so $|\Lambda| = -\Lambda = -(4 \log A - 13 \log (B+3))$.
+- The target lower bound $\exp(C_{\mathrm{exp\_bound}})$ is strictly in $(0, 1)$.
+- Links the upper bound side to the lower bound target. `matveev_inequality_real_target` and `baker_bound_gap3` stay uninhabited def Props.
 
 ## v24.1.1 — rewriting C_exp_bound via height_B0
 
@@ -177,7 +199,7 @@ v23 already showed `Λ ≠ 0` on a solution and `C_exp_bound < -10^{12}`. Those 
 
 ## Honesty lock
 
-`git diff v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product` is empty on:
+`git diff v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite` is empty on:
 
 - Tate (`BealFreyTateConductor.lean`)
 - Baker (`BealGap3BakerUpperBound.lean`)

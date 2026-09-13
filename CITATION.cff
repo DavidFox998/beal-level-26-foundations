@@ -5,11 +5,12 @@ type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite"
+version: "v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound"
 date-released: "2026-09-13"
-doi: "10.5281/zenodo.22730776"
+doi: "10.5281/zenodo.22730846"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
-url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite"
+url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound"
+# v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound: logarithmic form upper bound on gap-3 solutions; matveev_gap3_B_pos_of_solution (B > 0 via baker_le_B0_gap3) / matveev_gap3_A_pos (A > 0 via eq_implies_A_gt_B) / matveev_gap3_log_form_upper_bound (Lambda < 0 and |Lambda| = -Lambda) / matveev_exp_lower_lt_one_and_pos (0 < target < 1); target and baker_bound_gap3 stay def Prop; locked Lean 0 vs v24.1.1 21df092 except BealMatveevThm14.lean and RibetMazur.lean. Previous v24.1.1 DOI 10.5281/zenodo.22730846. Series concept 10.5281/zenodo.22379293.
 # v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite: matveev_C_exp_bound = -(height_B0 * log height_B0) using v24.1.0 product identity C1_floor*thirty_pow=height_B0; matveev_C_exp_bound_eq_neg_height_mul_log / matveev_C_exp_bound_eq_neg_height_log / matveev_target_exp_lower_eq / matveev_height_B0_mul_log_pos / matveev_C_exp_bound_neg_of_mul_log_pos; target and baker_bound_gap3 stay def Prop; locked Lean 0 vs v24.1.0 7962905 except BealMatveevThm14.lean. Previous v24.1.0 DOI 10.5281/zenodo.22730776. Series concept 10.5281/zenodo.22379293.
 # v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product: C1_floor*729000000=height_B0=104382751019310000000 by decide; typo C1_floor*72900000=height_B0/10; matveev_height_product_link; target and baker_bound_gap3 stay def Prop; stay in v24 until |Lambda|>exp(-C); locked Lean 0 vs v24.0.2 73c5993 except BealMatveevThm14.lean. Previous v24.0.2 DOI 10.5281/zenodo.22730548. Series concept 10.5281/zenodo.22379293.
 # v24.0.2-Beal-44-13-Level-26-Matveev-Exp-Bound-Properties DOI 10.5281/zenodo.22730548 at 73c5993: Real.exp properties of C_exp_bound; exp(C)<1 and 0<exp(C); C_exp_bound <= -10^12; named matveev_target_exp_lower; target and baker_bound_gap3 stay def Prop; stay in v24 until |Lambda|>exp(-C); locked Lean 0 vs v24.0.1 4d66383 except BealMatveevThm14.lean. Previous v24.0.1 DOI 10.5281/zenodo.22730460. Series concept 10.5281/zenodo.22379293.

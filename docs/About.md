@@ -1,6 +1,20 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite`
+Latest tag / HEAD: `v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound`
+Most current as of 2026-09-13, **not** final.
+`BealMatveevThm14.lean` proves the logarithmic form
+upper bound on gap-3 solutions: on $A^4 + B^4 = (B+3)^{13}$,
+$B > 0$ via `baker_le_B0_gap3`, $A > 0$ via `eq_implies_A_gt_B`,
+$\Lambda = 4 \log A - 13 \log (B+3) < 0$, and
+$|\Lambda| = -\Lambda = -(4 \log A - 13 \log (B+3))$.
+`matveev_exp_lower_lt_one_and_pos` restates the lower bound target
+in $(0, 1)$. Links the upper bound side to the lower bound target.
+Target and `baker_bound_gap3` stay uninhabited def Props.
+Locked Lean 0 vs v24.1.1 `21df092` except `BealMatveevThm14.lean`
+and `RibetMazur.lean`. Previous v24.1.1 DOI `10.5281/zenodo.22730846`
+(concept `10.5281/zenodo.22379293`).
+
+Latest prior tag: `v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite`
 Most current as of 2026-09-13, **not** final.
 `BealMatveevThm14.lean` rewrites the
 displayed Matveev exponent `matveev_C_exp_bound`
