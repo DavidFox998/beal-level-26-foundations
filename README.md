@@ -1,5 +1,7 @@
 # foundations-level-26 — Beal Level 26 Matveev-Baker Foundations
 
+[![Matveev-Beal CI](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml/badge.svg)](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml)
+
 This repo is foundations-level-26, the Matveev proof for beal-conjecture f7bbdc5. Current 4bd15bd one sorry matveev_gap3_lower at 716 representing hGen Matveev 2000 Thm1.4 n=2 explicit C1_floor=143186215390 + hLLL Bugeaud LLL reduction to B0=10^6, gap3_A_bounds B<A logA<13/4 log(B+3) proved, matveev_product_bound_of_B_le_B0 proved via log13<3, matveev_gap3_lower_of_general_of_B_le_B0 v25-sufficient, lake build green with warning, NOT waiting on Mathlib, we own Matveev.
 
 Monorepo beal-conjecture stays beal-conjecture, this repo is foundations-level-26 Matveev-Beal complement.

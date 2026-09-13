@@ -1,14 +1,25 @@
-name: Beal Level-26 Foundations CI
+# Matveev–Beal CI (foundations-level-26).
+# Honest AMS / Math. Comp. surface: lake build of BealMatveevBeal
+# succeeds with exactly one sorry (matveev_gap3_lower at line 716).
+# Does not build the relocated v24.4.0 scaffold targets
+# BealLevel26FoundationsScaffold / BealLevel26FoundationsReal.
+name: Matveev-Beal CI
 
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: matveev-beal-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
 
@@ -28,14 +39,10 @@ jobs:
           key: lean-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json') }}
 
       - name: Get Mathlib binary cache
-        if: steps.lean-cache.outputs.cache-hit != 'true'
         run: lake exe cache get
 
-      - name: Build finite foundations and explicit extensions
-        run: |
-          lake build BealLevel26Foundations
-          lake build BealLevel26FoundationsScaffold
-          lake build BealLevel26FoundationsReal
+      - name: Build BealMatveevBeal
+        run: lake build BealMatveevBeal
 
-      - name: Verify declarations, evidence, and release surface
-        run: bash scripts/verify-scaffold.sh
+      - name: Honest AMS referee surface
+        run: bash scripts/verify-matveev-beal.sh
