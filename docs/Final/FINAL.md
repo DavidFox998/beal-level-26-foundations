@@ -8,8 +8,11 @@ via `matveev_thm14_n2_explicit_of_nat`. `MatveevLLL.lean` proves the
 elementary CF lemmas ($4/13$ is a convergent of the log ratio;
 integer gap $< B^4/A^4$) and keeps `bugeaud_LLL_reduction_proof` /
 `baker_bound_gap3` as uninhabited `def Prop`. Being a convergent
-does not force $B\le 10^6$. Not interpolation, not the unrestricted
-kernel target, not v25. Concept DOI `10.5281/zenodo.22379293`.
+does not force $B\le 10^6$. `MatveevInterpolation.lean` starts
+Matveev 2000 p.5 interpolation and proves the bare-real ∀-reals
+claim is false; analytic $|\Delta|\le\exp(-cLK)$ and exponential
+Wüstholz stay `def Prop`. Not the unrestricted kernel target, not
+v25. Concept DOI `10.5281/zenodo.22379293`.
 
 # FINAL v24.4.0 — v24.x Final Summary Linking Log Upper Bound to Conditional Matveev Ratio Toward B0 (not final)
 

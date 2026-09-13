@@ -45,8 +45,10 @@ v24.4.0 is the honest final of v24.x, not v25.
 The foundations complement (`beal-level-26-foundations`) now proves the
 **B≤10^6** integer-gap form `|Λ| > exp(-height_B0 log height_B0)` as
 `matveev_gap3_lower` / `matveev_gap3_lower_B_le_B0_target` (0 sorry),
-via `matveev_thm14_n2_explicit_of_nat`. That does not inhabit this
-kernel file's unrestricted target and is not LLL / v25.
+via `matveev_thm14_n2_explicit_of_nat`. `MatveevInterpolation.lean`
+starts Matveev 2000 p.5 interpolation and proves the bare-real ∀-reals
+claim is false. That does not inhabit this kernel file's unrestricted
+target and is not LLL / v25.
 
 ## v24.3.2 — Numerical Tiny Bound exp(C) << 10^{-12}
 

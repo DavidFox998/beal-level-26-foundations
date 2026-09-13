@@ -21,6 +21,8 @@ test -f Beal/Matveev/MatveevThm14Proof.lean
 test -f Beal/Matveev/MatveevLLL.lean
 test -f MatveevThm14Proof.lean
 test -f MatveevLLL.lean
+test -f MatveevInterpolation.lean
+test -f Beal/Matveev/MatveevInterpolation.lean
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -123,6 +125,50 @@ if "theorem matveev_gap3_lower_unrestricted" in src or "theorem matveev_gap3_low
 if ".one `MatveevLLL" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
     print("lakefile.lean missing MatveevLLL glob", file=sys.stderr)
     sys.exit(1)
+if ".one `MatveevInterpolation" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
+    print("lakefile.lean missing MatveevInterpolation glob", file=sys.stderr)
+    sys.exit(1)
+
+interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in interp:
+    print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
+if "theorem C1_floor_eq" not in interp or "143186215390" not in interp:
+    print("C1_floor = 143186215390 missing from MatveevInterpolation.lean", file=sys.stderr)
+    sys.exit(1)
+if "def height_B0_nat" not in interp or "104382751019310000000" not in interp:
+    print("height_B0_nat missing from MatveevInterpolation.lean", file=sys.stderr)
+    sys.exit(1)
+if "def B0_nat" not in interp or "1000000" not in interp:
+    print("B0_nat = 1000000 missing from MatveevInterpolation.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem interpolation_det_ne_zero" not in interp:
+    print("interpolation_det_ne_zero missing", file=sys.stderr)
+    sys.exit(1)
+if "def interpolationDeterminant" not in interp:
+    print("interpolationDeterminant missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem matveev_thm14_n2_real_explicit_is_false" not in interp:
+    print("matveev_thm14_n2_real_explicit_is_false missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem matveev_interpolation_track1" not in interp:
+    print("matveev_interpolation_track1 missing", file=sys.stderr)
+    sys.exit(1)
+if "def matveev_thm14_n2_real_explicit" not in interp:
+    print("matveev_thm14_n2_real_explicit must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem matveev_thm14_n2_real_explicit\b", interp, re.M):
+    print("do not inhabit matveev_thm14_n2_real_explicit (false for reals)", file=sys.stderr)
+    sys.exit(1)
+if "theorem wuestholz_product_theorem_Ga" not in interp:
+    print("wuestholz_product_theorem_Ga missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem size_upper_bound_hadamard" not in interp:
+    print("size_upper_bound_hadamard missing", file=sys.stderr)
+    sys.exit(1)
+if "def size_upper_bound" not in interp:
+    print("analytic size_upper_bound must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
 
 readme = pathlib.Path("README.md").read_text(encoding="utf-8")
 if not readme.startswith("# foundations-level-26"):
@@ -148,6 +194,8 @@ print("verify-matveev-beal: ok")
 print("  0 sorry; matveev_gap3_lower is the B<=B0 integer-gap close")
 print("  C1_floor=143186215390, gap3_A_bounds and B<=B0 product proved")
 print("  CF lemmas: 4/13 convergent, integer gap < ratio; not baker_bound_gap3")
+print("  interpolation: Δ, Vandermonde, G_a product theorem, Hadamard;")
+print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")
 print("  unrestricted target and hLLL stay def Prop; not v25")
 PY

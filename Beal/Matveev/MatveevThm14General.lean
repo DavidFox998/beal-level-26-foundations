@@ -8,11 +8,14 @@ Axioms: [propext, Classical.choice, Quot.sound] only
 0 sorry. hGen / unrestricted product stay def Prop (not in Mathlib).
 Product inhabited for B+3 ≤ height_B0. Integer gap ⇏ B ≤ 10^6.
 CF lemmas in MatveevLLL.lean (4/13 convergent; gap < ratio).
-bugeaud_LLL_reduction_proof stays def Prop. Not v25.
+Interpolation track in MatveevInterpolation.lean (Δ, G_a product,
+Hadamard; bare-real claim false). bugeaud_LLL_reduction_proof stays
+def Prop. Not v25.
 -/
 import Mathlib
 import MatveevThm14Proof
 import MatveevLLL
+import MatveevInterpolation
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -868,5 +871,8 @@ theorem gap3_forall_of_baker
 #print axioms Lambda_gap3_real_nat
 #print axioms MatveevLLL.four_thirteenths_is_convergent
 #print axioms MatveevLLL.integer_gap_lt_ratio
+#print axioms MatveevInterpolation.matveev_interpolation_track1
+#print axioms MatveevInterpolation.matveev_thm14_n2_real_explicit_is_false
+#print axioms MatveevInterpolation.interpolationDeterminant_L0_eq_one
 
 end BealMatveevBeal

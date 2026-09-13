@@ -9,9 +9,11 @@
 `matveev_product_bound_of_B_le_B0`. `MatveevLLL.lean` proves the
 elementary CF lemmas (`4/13` is a convergent;
 `1/(B+3)¹³ < B⁴/A⁴`) and keeps `bugeaud_LLL_reduction_proof` as
-an uninhabited `def Prop`. Being a convergent does not force
-`B ≤ 10⁶`. Axioms `[propext, Classical.choice, Quot.sound]`.
-**0 sorry.**
+an uninhabited `def Prop`. `MatveevInterpolation.lean` starts
+Matveev 2000 p.5 interpolation (Δ, Vandermonde, `𝐆_a` product
+theorem, Hadamard) and proves the bare-real ∀-reals claim is
+false. Being a convergent does not force `B ≤ 10⁶`. Axioms
+`[propext, Classical.choice, Quot.sound]`. **0 sorry.**
 
 This is **not** Matveev 2000 interpolation, **not** the unrestricted
 Level26 `matveev_inequality_real_target` (the product is false for
