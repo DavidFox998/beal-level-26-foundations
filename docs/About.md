@@ -11,8 +11,8 @@ on gap-3 solutions via the classical upper bound $\log(1+x) \le x$:
 `matveev_gap3_abs_lambda_lt_one_of_small_ratio` ($B^4/A^4 < 1 \implies |\Lambda| < 1$).
 Target and `baker_bound_gap3` stay uninhabited def Props.
 Locked Lean 0 vs v24.2.1 `ac100cf` except `BealMatveevThm14.lean`
-and `RibetMazur.lean`. Previous v24.2.1 DOI `10.5281/zenodo.22731160`
-(concept `10.5281/zenodo.22379293`).
+and `RibetMazur.lean`. DOI `10.5281/zenodo.22731508` (previous v24.2.1
+DOI `10.5281/zenodo.22731160`; concept `10.5281/zenodo.22379293`).
 
 Latest prior tag: `v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio`
 Most current as of 2026-09-13, **not** final.

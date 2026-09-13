@@ -12,6 +12,7 @@ def Props. Links the classical logarithmic upper bound to the ratio $B^4/A^4$ to
 Locked Lean 0 vs v24.2.1 `ac100cf` /
 `10.5281/zenodo.22731160` except
 `BealMatveevThm14.lean` and `RibetMazur.lean`.
+DOI `10.5281/zenodo.22731508`.
 Most current as of 2026-09-13, **not** a
 final Beal proof. Series concept
 `10.5281/zenodo.22379293`.

@@ -3,6 +3,7 @@
 **Tag.** `v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le`.
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
+**DOI.** `10.5281/zenodo.22731508`.
 **Parent.** v24.2.1 `ac100cf` / `v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio` / DOI `10.5281/zenodo.22731160`.
 **Concept.** `10.5281/zenodo.22379293`.
 

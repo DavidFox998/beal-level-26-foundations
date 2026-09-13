@@ -7,7 +7,7 @@ authors:
     given-names: David
 version: "v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le"
 date-released: "2026-09-13"
-doi: "10.5281/zenodo.22731160"
+doi: "10.5281/zenodo.22731508"
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
 url: "https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le"
 # v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le: logarithmic bound log(1+x) <= x on gap-3 solutions; matveev_log_one_plus_le_self (Real.log (1+x) <= x for x > -1) / matveev_gap3_B_pow_div_A_pow_pos (0 < B^4 / A^4) / matveev_gap3_abs_lambda_nonneg (0 <= |Lambda|) / matveev_gap3_abs_lambda_le_ratio (|Lambda| <= B^4 / A^4) / matveev_gap3_abs_lambda_lt_one_of_small_ratio (B^4 / A^4 < 1 -> |Lambda| < 1); target and baker_bound_gap3 stay def Prop; locked Lean 0 vs v24.2.1 ac100cf except BealMatveevThm14.lean and RibetMazur.lean. Previous v24.2.1 DOI 10.5281/zenodo.22731160. Series concept 10.5281/zenodo.22379293.
