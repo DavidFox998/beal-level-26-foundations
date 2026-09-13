@@ -3,20 +3,23 @@ Copyright (c) 2026 David Fox. All rights reserved.
 Released under MIT license as described in the file LICENSE.
 Authors: David Fox
 
-Track B v24.2.0 -- logarithmic form upper bound
+Track B v24.2.1 -- logarithmic form as logarithm of ratio
 on gap-3 solutions.
-Keeps all v24.0.0 through v24.1.1 lemmas.
+Keeps all v24.0.0 through v24.2.0 lemmas.
 
 On a gap-3 solution A^4 + B^4 = (B+3)^13:
-  * B > 0 via baker_le_B0_gap3 (matveev_gap3_B_pos_of_solution)
-  * A > 0 via eq_implies_A_gt_B (matveev_gap3_A_pos)
-  * Lambda = 4 log A - 13 log (B+3) < 0
-  * |Lambda| = -Lambda = -(4 log A - 13 log (B+3))
-    (matveev_gap3_log_form_upper_bound)
+  * 0 < A via matveev_gap3_A_pos
+  * 0 < B via matveev_gap3_B_pos_of_solution
+  * 0 < (A:Real)^4 via matveev_gap3_A_pow_pos
+  * 0 < ((B+3):Real)^13 via matveev_gap3_B3_pow_pos
+  * Lambda = 4 log A - 13 log (B+3) = -log((B+3)^13 / A^4)
+  * |Lambda| = log((B+3)^13 / A^4) = log(1 + B^4 / A^4)
+    (matveev_gap3_log_form_eq_log_ratio,
+     matveev_gap3_abs_lambda_eq_log_one_plus_ratio)
   * 0 < matveev_target_exp_lower < 1
     (matveev_exp_lower_lt_one_and_pos)
 
-Links the upper bound side to the lower bound target.
+Links the upper bound side via ratio toward Baker B0.
 
 thirty_pow is 30^6 = 729000000, not
 the 7-digit typo 72900000 (= 30^6 / 10).
@@ -429,6 +432,99 @@ theorem matveev_exp_lower_lt_one_and_pos :
       matveev_target_exp_lower < 1 :=
   ⟨matveev_target_exp_lower_pos, matveev_target_exp_lower_lt_one⟩
 
+/-! ## v24.2.1 — Logarithmic form as logarithm of ratio
+
+    On a gap-3 solution A^4 + B^4 = (B+3)^13:
+      * 0 < (A:Real)^4
+      * 0 < ((B+3):Real)^13
+      * (B+3)^13 / A^4 = 1 + B^4 / A^4
+      * Lambda = 4 log A - 13 log (B+3) = -log((B+3)^13 / A^4)
+      * |Lambda| = log((B+3)^13 / A^4) = log(1 + B^4 / A^4)
+
+    Does not use sorry. -/
+
+/-- On a gap-3 solution, (A : Real)^4 is strictly positive. -/
+theorem matveev_gap3_A_pow_pos {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    (0 : Real) < (A : Real) ^ 4 := by
+  have hA : 0 < A := matveev_gap3_A_pos hsol
+  have hAR : (0 : Real) < (A : Real) := Nat.cast_pos.mpr hA
+  exact pow_pos hAR 4
+
+/-- On a gap-3 solution, ((B+3) : Real)^13 is strictly positive. -/
+theorem matveev_gap3_B3_pow_pos {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    (0 : Real) < ((B + 3 : Nat) : Real) ^ 13 := by
+  have hB : 0 < B := matveev_gap3_B_pos_of_solution hsol
+  have hB3 : 0 < B + 3 :=
+    Nat.lt_trans hB (Nat.lt_add_of_pos_right (by decide : 0 < 3))
+  have hB3R : (0 : Real) < ((B + 3 : Nat) : Real) := Nat.cast_pos.mpr hB3
+  exact pow_pos hB3R 13
+
+/-- On a gap-3 solution, the ratio ((B+3) : Real)^13 / (A : Real)^4 equals
+    1 + (B : Real)^4 / (A : Real)^4. -/
+theorem matveev_gap3_ratio_eq_one_plus_ratio {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    ((B + 3 : Nat) : Real) ^ 13 / (A : Real) ^ 4 =
+      1 + (B : Real) ^ 4 / (A : Real) ^ 4 := by
+  have hA4_pos := matveev_gap3_A_pow_pos hsol
+  have hA4_ne : (A : Real) ^ 4 ≠ 0 := hA4_pos.ne'
+  have hcast_pow : ((B + 3 : Nat) : Real) ^ 13 =
+      (A : Real) ^ 4 + (B : Real) ^ 4 := by
+    have hcast : ((Nat.pow (B + 3) 13 : Nat) : Real) =
+        ((Nat.pow A 4 + Nat.pow B 4 : Nat) : Real) := by
+      rw [← hsol]
+    push_cast at hcast
+    simpa [Nat.cast_pow] using hcast
+  rw [hcast_pow, add_div, div_self hA4_ne]
+
+/-- On a gap-3 solution, Lambda = -log(((B+3) : Real)^13 / (A : Real)^4),
+    and |Lambda| = log(((B+3) : Real)^13 / (A : Real)^4) = log(1 + B^4 / A^4). -/
+theorem matveev_gap3_log_form_eq_log_ratio {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    matveev_log_form A B =
+      -Real.log (((B + 3 : Nat) : Real) ^ 13 / (A : Real) ^ 4) ∧
+    |matveev_log_form A B| =
+      Real.log (((B + 3 : Nat) : Real) ^ 13 / (A : Real) ^ 4) ∧
+    Real.log (((B + 3 : Nat) : Real) ^ 13 / (A : Real) ^ 4) =
+      Real.log (1 + (B : Real) ^ 4 / (A : Real) ^ 4) := by
+  have hB3_pow_pos := matveev_gap3_B3_pow_pos hsol
+  have hA_pow_pos := matveev_gap3_A_pow_pos hsol
+  have hlog_div : Real.log (((B + 3 : Nat) : Real) ^ 13 / (A : Real) ^ 4) =
+      Real.log (((B + 3 : Nat) : Real) ^ 13) - Real.log ((A : Real) ^ 4) :=
+    Real.log_div hB3_pow_pos.ne' hA_pow_pos.ne'
+  have hlog_pow13 : Real.log (((B + 3 : Nat) : Real) ^ 13) =
+      (13 : Real) * Real.log ((B + 3 : Nat) : Real) :=
+    Real.log_pow ((B + 3 : Nat) : Real) 13
+  have hlog_pow4 : Real.log ((A : Real) ^ 4) =
+      (4 : Real) * Real.log (A : Real) :=
+    Real.log_pow (A : Real) 4
+  have hratio_log : Real.log (((B + 3 : Nat) : Real) ^ 13 / (A : Real) ^ 4) =
+      (13 : Real) * Real.log ((B + 3 : Nat) : Real) -
+        (4 : Real) * Real.log (A : Real) := by
+    rw [hlog_div, hlog_pow13, hlog_pow4]
+  have hlambda : matveev_log_form A B =
+      -Real.log (((B + 3 : Nat) : Real) ^ 13 / (A : Real) ^ 4) := by
+    rw [hratio_log]
+    unfold matveev_log_form
+    ring
+  have hbound := matveev_gap3_log_form_upper_bound_of_solution hsol
+  have habs : |matveev_log_form A B| =
+      Real.log (((B + 3 : Nat) : Real) ^ 13 / (A : Real) ^ 4) := by
+    rw [hbound.2, hlambda, neg_neg]
+  have heq_ratio : Real.log (((B + 3 : Nat) : Real) ^ 13 / (A : Real) ^ 4) =
+      Real.log (1 + (B : Real) ^ 4 / (A : Real) ^ 4) := by
+    rw [matveev_gap3_ratio_eq_one_plus_ratio hsol]
+  exact ⟨hlambda, habs, heq_ratio⟩
+
+/-- Upper bound side via ratio: on a solution,
+    |Lambda| = log(1 + B^4 / A^4). -/
+theorem matveev_gap3_abs_lambda_eq_log_one_plus_ratio {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    |matveev_log_form A B| = Real.log (1 + (B : Real) ^ 4 / (A : Real) ^ 4) := by
+  have h := matveev_gap3_log_form_eq_log_ratio hsol
+  rw [h.2.1, h.2.2]
+
 /-! ## Named Matveev 2000 Thm 1.4 target
 
     On a gap-3 solution the v23 theorem
@@ -490,6 +586,11 @@ def baker_bound_gap3_remaining_thm14 : Prop :=
 #check matveev_gap3_log_form_upper_bound_expanded
 #check matveev_gap3_log_form_upper_bound_of_solution
 #check matveev_exp_lower_lt_one_and_pos
+#check matveev_gap3_A_pow_pos
+#check matveev_gap3_B3_pow_pos
+#check matveev_gap3_ratio_eq_one_plus_ratio
+#check matveev_gap3_log_form_eq_log_ratio
+#check matveev_gap3_abs_lambda_eq_log_one_plus_ratio
 #check matveev_inequality_real_target
 #check baker_bound_gap3_remaining_thm14
 #print axioms matveev_C1_floor_eq
@@ -535,6 +636,11 @@ def baker_bound_gap3_remaining_thm14 : Prop :=
 #print axioms matveev_gap3_log_form_upper_bound_expanded
 #print axioms matveev_gap3_log_form_upper_bound_of_solution
 #print axioms matveev_exp_lower_lt_one_and_pos
+#print axioms matveev_gap3_A_pow_pos
+#print axioms matveev_gap3_B3_pow_pos
+#print axioms matveev_gap3_ratio_eq_one_plus_ratio
+#print axioms matveev_gap3_log_form_eq_log_ratio
+#print axioms matveev_gap3_abs_lambda_eq_log_one_plus_ratio
 #print axioms matveev_thm14_C_exp_bound_lt_neg_onee12
 #print axioms matveev_thm14_constants_hold
 

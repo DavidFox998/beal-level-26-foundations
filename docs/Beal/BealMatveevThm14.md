@@ -1,10 +1,38 @@
 # BealMatveevThm14 — v24.0.0 Matveev 2000 Thm 1.4 formalization start
 
-**Tag.** `v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound`.
+**Tag.** `v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio`.
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
-**Parent.** v24.1.1 `21df092` / `v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite` / DOI `10.5281/zenodo.22730846`.
+**Parent.** v24.2.0 `d755428` / `v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound` / DOI `10.5281/zenodo.22731054`.
 **Concept.** `10.5281/zenodo.22379293`.
+
+## v24.2.1 — logarithmic form as logarithm of ratio
+
+```lean
+theorem matveev_gap3_A_pow_pos :
+    A^4 + B^4 = (B+3)^13 → 0 < (A:Real)^4
+theorem matveev_gap3_B3_pow_pos :
+    A^4 + B^4 = (B+3)^13 → 0 < ((B+3):Real)^13
+theorem matveev_gap3_ratio_eq_one_plus_ratio :
+    A^4 + B^4 = (B+3)^13 →
+      ((B+3):Real)^13 / (A:Real)^4 = 1 + (B:Real)^4 / (A:Real)^4
+theorem matveev_gap3_log_form_eq_log_ratio :
+    A^4 + B^4 = (B+3)^13 →
+      matveev_log_form A B = -Real.log (((B+3):Real)^13 / (A:Real)^4) ∧
+      |matveev_log_form A B| = Real.log (((B+3):Real)^13 / (A:Real)^4) ∧
+      Real.log (((B+3):Real)^13 / (A:Real)^4) = Real.log (1 + (B:Real)^4 / (A:Real)^4)
+theorem matveev_gap3_abs_lambda_eq_log_one_plus_ratio :
+    A^4 + B^4 = (B+3)^13 →
+      |matveev_log_form A B| = Real.log (1 + (B:Real)^4 / (A:Real)^4)
+```
+
+On a gap-3 solution $A^4 + B^4 = (B+3)^{13}$:
+- $(A : \mathrm{Real})^4 > 0$ and $((B+3) : \mathrm{Real})^{13} > 0$ from solution positivity.
+- Ratio identity $((B+3) : \mathrm{Real})^{13} / (A : \mathrm{Real})^4 = 1 + (B : \mathrm{Real})^4 / (A : \mathrm{Real})^4$.
+- Logarithmic linear form $\Lambda = 4 \log A - 13 \log (B+3) = -\log(((B+3) : \mathrm{Real})^{13} / (A : \mathrm{Real})^4)$.
+- $|\Lambda| = \log(((B+3) : \mathrm{Real})^{13} / (A : \mathrm{Real})^4) = \log(1 + (B : \mathrm{Real})^4 / (A : \mathrm{Real})^4)$.
+- Expresses the upper bound side in the classical Baker form $\log(1 + (B/A)^4) \approx (B/A)^4$.
+- `matveev_inequality_real_target` and `baker_bound_gap3` stay uninhabited def Props.
 
 ## v24.2.0 — logarithmic form upper bound on gap-3 solutions
 

@@ -6070,6 +6070,37 @@ theorem matveev_exp_lower_lt_one_and_pos :
       matveev_target_exp_lower < 1 :=
   BealLevel26Foundations.BealMatveevThm14.matveev_exp_lower_lt_one_and_pos
 
+theorem matveev_gap3_A_pow_pos {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    (0 : Real) < (A : Real) ^ 4 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_gap3_A_pow_pos hsol
+
+theorem matveev_gap3_B3_pow_pos {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    (0 : Real) < ((B + 3 : Nat) : Real) ^ 13 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_gap3_B3_pow_pos hsol
+
+theorem matveev_gap3_ratio_eq_one_plus_ratio {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    ((B + 3 : Nat) : Real) ^ 13 / (A : Real) ^ 4 =
+      1 + (B : Real) ^ 4 / (A : Real) ^ 4 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_gap3_ratio_eq_one_plus_ratio hsol
+
+theorem matveev_gap3_log_form_eq_log_ratio {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    matveev_log_form A B =
+      -Real.log (((B + 3 : Nat) : Real) ^ 13 / (A : Real) ^ 4) ∧
+    |matveev_log_form A B| =
+      Real.log (((B + 3 : Nat) : Real) ^ 13 / (A : Real) ^ 4) ∧
+    Real.log (((B + 3 : Nat) : Real) ^ 13 / (A : Real) ^ 4) =
+      Real.log (1 + (B : Real) ^ 4 / (A : Real) ^ 4) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_gap3_log_form_eq_log_ratio hsol
+
+theorem matveev_gap3_abs_lambda_eq_log_one_plus_ratio {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    |matveev_log_form A B| = Real.log (1 + (B : Real) ^ 4 / (A : Real) ^ 4) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_gap3_abs_lambda_eq_log_one_plus_ratio hsol
+
 /-! ## v14.0.0 — J0 / mwrank / formal displayed certs -/
 
 def J0DecompositionCert_26 :=
@@ -7182,6 +7213,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check matveev_gap3_log_form_upper_bound_expanded
 #check matveev_gap3_log_form_upper_bound_of_solution
 #check matveev_exp_lower_lt_one_and_pos
+#check matveev_gap3_A_pow_pos
+#check matveev_gap3_B3_pow_pos
+#check matveev_gap3_ratio_eq_one_plus_ratio
+#check matveev_gap3_log_form_eq_log_ratio
+#check matveev_gap3_abs_lambda_eq_log_one_plus_ratio
 #check J0DecompositionCert_26
 #check J0DecompositionCert_26_displayed
 #check J0DecompositionSoundness_26
@@ -7785,6 +7821,11 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms matveev_gap3_log_form_upper_bound_expanded
 #print axioms matveev_gap3_log_form_upper_bound_of_solution
 #print axioms matveev_exp_lower_lt_one_and_pos
+#print axioms matveev_gap3_A_pow_pos
+#print axioms matveev_gap3_B3_pow_pos
+#print axioms matveev_gap3_ratio_eq_one_plus_ratio
+#print axioms matveev_gap3_log_form_eq_log_ratio
+#print axioms matveev_gap3_abs_lambda_eq_log_one_plus_ratio
 #print axioms J0DecompositionSoundness_26_holds
 #print axioms MwrankCertificateSoundness_26_holds
 #print axioms FormalImmersionSoundness_26_holds

@@ -1,6 +1,24 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound`
+Latest tag / HEAD: `v24.2.1-Beal-44-13-Level-26-Matveev-Log-Form-Ratio`
+Most current as of 2026-09-13, **not** final.
+`BealMatveevThm14.lean` expresses the logarithmic form
+on gap-3 solutions as the logarithm of the ratio
+$(B+3)^{13} / A^4 = 1 + B^4 / A^4$:
+$0 < A^4$ (`matveev_gap3_A_pow_pos`),
+$0 < (B+3)^{13}$ (`matveev_gap3_B3_pow_pos`),
+$(B+3)^{13} / A^4 = 1 + B^4 / A^4$ (`matveev_gap3_ratio_eq_one_plus_ratio`),
+$\Lambda = -\log((B+3)^{13} / A^4)$,
+$|\Lambda| = \log((B+3)^{13} / A^4) = \log(1 + B^4 / A^4)$
+(`matveev_gap3_log_form_eq_log_ratio`,
+ `matveev_gap3_abs_lambda_eq_log_one_plus_ratio`).
+`0 < matveev_target_exp_lower < 1`.
+Target and `baker_bound_gap3` stay uninhabited def Props.
+Locked Lean 0 vs v24.2.0 `d755428` except `BealMatveevThm14.lean`
+and `RibetMazur.lean`. Previous v24.2.0 DOI `10.5281/zenodo.22731054`
+(concept `10.5281/zenodo.22379293`).
+
+Latest prior tag: `v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound`
 Most current as of 2026-09-13, **not** final.
 `BealMatveevThm14.lean` proves the logarithmic form
 upper bound on gap-3 solutions: on $A^4 + B^4 = (B+3)^{13}$,
