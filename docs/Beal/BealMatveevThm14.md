@@ -4,6 +4,7 @@
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
 **Parent.** v24.2.0 `d755428` / `v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound` / DOI `10.5281/zenodo.22731054`.
+**DOI.** `10.5281/zenodo.22731160`.
 **Concept.** `10.5281/zenodo.22379293`.
 
 ## v24.2.1 — logarithmic form as logarithm of ratio

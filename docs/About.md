@@ -15,8 +15,8 @@ $|\Lambda| = \log((B+3)^{13} / A^4) = \log(1 + B^4 / A^4)$
 `0 < matveev_target_exp_lower < 1`.
 Target and `baker_bound_gap3` stay uninhabited def Props.
 Locked Lean 0 vs v24.2.0 `d755428` except `BealMatveevThm14.lean`
-and `RibetMazur.lean`. Previous v24.2.0 DOI `10.5281/zenodo.22731054`
-(concept `10.5281/zenodo.22379293`).
+and `RibetMazur.lean`. DOI `10.5281/zenodo.22731160` (previous v24.2.0 DOI `10.5281/zenodo.22731054`,
+concept `10.5281/zenodo.22379293`).
 
 Latest prior tag: `v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound`
 Most current as of 2026-09-13, **not** final.
