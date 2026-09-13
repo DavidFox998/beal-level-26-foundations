@@ -5805,6 +5805,9 @@ theorem bugeaud_LLL_basis_holds :
 def bugeaud_reduction_formal : Prop :=
   BealLevel26Foundations.BealBugeaudLLLFormal.bugeaud_reduction_formal
 
+def bugeaud_LLL_reduction_conditional : Prop :=
+  BealLevel26Foundations.BealBugeaudLLLFormal.bugeaud_LLL_reduction_conditional
+
 def baker_bound_gap3_of_bugeaud_LLL : Prop :=
   BealLevel26Foundations.BealBugeaudLLLFormal.baker_bound_gap3_of_bugeaud_LLL
 
@@ -6142,6 +6145,19 @@ theorem matveev_gap3_ratio_lower_bound_conditional {A B : Nat}
     (htarget : matveev_inequality_real_target) :
     Real.exp matveev_C_exp_bound < (B : Real) ^ 4 / (A : Real) ^ 4 :=
   BealLevel26Foundations.BealMatveevThm14.matveev_gap3_ratio_lower_bound_conditional hsol htarget
+
+theorem matveev_gap3_conditional_ratio_pos {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (htarget : matveev_inequality_real_target) :
+    (0 : Real) < Real.exp matveev_C_exp_bound ∧
+      Real.exp matveev_C_exp_bound < (B : Real) ^ 4 / (A : Real) ^ 4 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_gap3_conditional_ratio_pos hsol htarget
+
+theorem matveev_gap3_ratio_pos_of_conditional_lower {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (htarget : matveev_inequality_real_target) :
+    (0 : Real) < (B : Real) ^ 4 / (A : Real) ^ 4 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_gap3_ratio_pos_of_conditional_lower hsol htarget
 
 /-! ## v14.0.0 — J0 / mwrank / formal displayed certs -/
 
@@ -7210,6 +7226,7 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check bugeaud_LLL_basis
 #check bugeaud_LLL_basis_holds
 #check bugeaud_reduction_formal
+#check bugeaud_LLL_reduction_conditional
 #check matveev_log_form_int
 #check matveev_log_form_ne_zero
 #check matveev_log_form_ne_zero_zero
@@ -7268,6 +7285,8 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check matveev_conditional_lower_implies_ratio_gt_exp
 #check matveev_conditional_lower_implies_ratio_gt_exp_of_solution
 #check matveev_gap3_ratio_lower_bound_conditional
+#check matveev_gap3_conditional_ratio_pos
+#check matveev_gap3_ratio_pos_of_conditional_lower
 #check J0DecompositionCert_26
 #check J0DecompositionCert_26_displayed
 #check J0DecompositionSoundness_26
@@ -7884,6 +7903,8 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms matveev_conditional_lower_implies_ratio_gt_exp
 #print axioms matveev_conditional_lower_implies_ratio_gt_exp_of_solution
 #print axioms matveev_gap3_ratio_lower_bound_conditional
+#print axioms matveev_gap3_conditional_ratio_pos
+#print axioms matveev_gap3_ratio_pos_of_conditional_lower
 #print axioms J0DecompositionSoundness_26_holds
 #print axioms MwrankCertificateSoundness_26_holds
 #print axioms FormalImmersionSoundness_26_holds

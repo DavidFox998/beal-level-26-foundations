@@ -1,10 +1,38 @@
 # BealMatveevThm14 — v24.0.0 Matveev 2000 Thm 1.4 formalization start
 
-**Tag.** `v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower`.
-**Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
-**Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
-**Parent.** v24.2.2 `ffd8343` / `v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le` / DOI `10.5281/zenodo.22731508`.
+**Tag.** `v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link`.
+**Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean` and `lean/BealLevel26Foundations/Beal/FullProof/BealBugeaudLLLFormal.lean`.
+**Namespace.** `BealLevel26Foundations.BealMatveevThm14` and `BealLevel26Foundations.BealBugeaudLLLFormal`.
+**Parent.** v24.2.3 `ed94732` / `v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower` / DOI `10.5281/zenodo.22731634`.
 **Concept.** `10.5281/zenodo.22379293`.
+
+## v24.3.0 — Linking Conditional Matveev Ratio to Baker B0 and LLL Reduction
+
+```lean
+theorem matveev_gap3_conditional_ratio_pos :
+    A^4 + B^4 = (B+3)^13 →
+      matveev_inequality_real_target →
+        0 < Real.exp matveev_C_exp_bound ∧
+          Real.exp matveev_C_exp_bound < (B:Real)^4 / (A:Real)^4
+theorem matveev_gap3_ratio_pos_of_conditional_lower :
+    A^4 + B^4 = (B+3)^13 →
+      matveev_inequality_real_target →
+        0 < (B:Real)^4 / (A:Real)^4
+def bugeaud_LLL_reduction_conditional : Prop :=
+  matveev_inequality_real_formal →
+    ∃ B_reduced : Nat,
+      B_reduced ≤ bugeaud_B0 ∧
+      ∀ A B : Nat,
+        A^4 + B^4 = (B+3)^13 →
+        B ≤ bugeaud_B0 →
+        B ≤ B_reduced
+```
+
+On a gap-3 solution $A^4 + B^4 = (B+3)^{13}$:
+- `matveev_gap3_conditional_ratio_pos`: IF the Matveev lower bound target holds, THEN $0 < \exp(C_{\mathrm{exp\_bound}}) < B^4/A^4$, combining positivity of exponential with the ratio lower bound.
+- `matveev_gap3_ratio_pos_of_conditional_lower`: Transitivity directly establishes $0 < B^4/A^4$ through the conditional exponential bound.
+- `bugeaud_LLL_reduction_conditional`: In `BealBugeaudLLLFormal.lean`, defines the formal statement of LLL reduction conditionally: IF Matveev lower bound holds, THEN the Baker bound $B \le B_0 = 10^6$ can be reduced to $B \le B_{\mathrm{reduced}}$. Defined as an uninhabited `def Prop`, making explicit the pipeline toward LLL without claiming unproven theorems.
+- Target `matveev_inequality_real_target`, `baker_bound_gap3`, and `bugeaud_LLL_reduction_conditional` stay uninhabited def Props.
 
 ## v24.2.3 — conditional lower bound implies ratio bound on gap-3 solutions
 

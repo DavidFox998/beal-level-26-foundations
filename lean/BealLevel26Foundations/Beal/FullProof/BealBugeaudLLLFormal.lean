@@ -26,6 +26,8 @@ Does not use sorry.
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
 import BealLevel26Foundations.Beal.FullProof.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
+import BealLevel26Foundations.Beal.FullProof.BealMatveevInequality
+import BealLevel26Foundations.Beal.FullProof.BealMatveevInequalityReal
 import BealLevel26Foundations.Beal.FullProof.BealGap3BakerUpperBound
 
 set_option maxRecDepth 200000
@@ -35,6 +37,8 @@ namespace BealLevel26Foundations.BealBugeaudLLLFormal
 
 open BealLevel26Foundations.BealBakerB0ReductionCertificate
 open BealLevel26Foundations.BealMatveevConstants
+open BealLevel26Foundations.BealMatveevInequality
+open BealLevel26Foundations.BealMatveevInequalityReal
 open BealLevel26Foundations.BealGap3BakerUpperBound
 
 /-- LLL scale K = 10^20. -/
@@ -125,6 +129,28 @@ def bugeaud_reduction_formal : Prop :=
 def baker_bound_gap3_of_bugeaud_LLL : Prop :=
   bugeaud_reduction_formal
 
+/-! ## v24.3.0 — Conditional LLL reduction from Matveev lower bound
+
+    Connecting the Matveev lower bound target and the Baker census
+    B ≤ 10^6 toward the LLL-reduced bound B ≤ B_reduced (~10^3).
+    Mathlib 4.12 has no Matveev 2000 Thm 1.4 and no LLL reduction,
+    so this stays an uninhabited def Prop.
+    Does not claim reduction without Matveev. -/
+
+/-- Conditional LLL reduction: IF the Matveev lower bound target
+    holds on gap-3 solutions, THEN there exists a reduced bound
+    B_reduced (from LLL) such that any solution satisfying B ≤ 10^6
+    satisfies B ≤ B_reduced.
+    Stays an uninhabited def Prop. -/
+def bugeaud_LLL_reduction_conditional : Prop :=
+  matveev_inequality_real_formal →
+    ∃ B_reduced : Nat,
+      B_reduced ≤ bugeaud_B0 ∧
+      ∀ A B : Nat,
+        Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 →
+        B ≤ bugeaud_B0 →
+        B ≤ B_reduced
+
 #check bugeaud_K
 #check bugeaud_K_eq
 #check bugeaud_K_pos
@@ -139,6 +165,7 @@ def baker_bound_gap3_of_bugeaud_LLL : Prop :=
 #check bugeaud_B0_reduced
 #check bugeaud_reduction_formal
 #check baker_bound_gap3_of_bugeaud_LLL
+#check bugeaud_LLL_reduction_conditional
 #print axioms bugeaud_K_eq
 #print axioms bugeaud_K_pos
 #print axioms bugeaud_lattice_eq

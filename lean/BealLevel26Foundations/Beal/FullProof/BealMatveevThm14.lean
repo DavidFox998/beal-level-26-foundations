@@ -638,6 +638,31 @@ theorem matveev_gap3_ratio_lower_bound_conditional {A B : Nat}
   have hle := matveev_gap3_abs_lambda_le_ratio hsol
   exact gt_of_ge_of_gt hle hgt
 
+/-! ## v24.3.0 — Linking conditional ratio to Baker B0
+
+    Connecting the conditional ratio lower bound
+    B^4 / A^4 > exp(C_exp_bound) with the strictly positive
+    exponential lower bound 0 < exp(C_exp_bound) < B^4 / A^4,
+    toward the LLL reduction to B0 = 10^6.
+    Does not use sorry. -/
+
+/-- Restatement that 0 < exp(C_exp_bound) < B^4 / A^4 conditionally on
+    a solution and the Matveev lower bound target. -/
+theorem matveev_gap3_conditional_ratio_pos {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (htarget : matveev_inequality_real_target) :
+    (0 : Real) < Real.exp matveev_C_exp_bound ∧
+      Real.exp matveev_C_exp_bound < (B : Real) ^ 4 / (A : Real) ^ 4 :=
+  ⟨matveev_exp_of_bound_pos, matveev_gap3_ratio_lower_bound_conditional hsol htarget⟩
+
+/-- Conditional ratio bound implies B^4 / A^4 is strictly positive directly. -/
+theorem matveev_gap3_ratio_pos_of_conditional_lower {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (htarget : matveev_inequality_real_target) :
+    (0 : Real) < (B : Real) ^ 4 / (A : Real) ^ 4 :=
+  (matveev_gap3_conditional_ratio_pos hsol htarget).1.trans
+    (matveev_gap3_conditional_ratio_pos hsol htarget).2
+
 #check matveev_C1_floor_eq
 #check matveev_thirty_pow_eq_30_pow_6
 #check matveev_thirty_pow_eq_729000000
@@ -688,6 +713,8 @@ theorem matveev_gap3_ratio_lower_bound_conditional {A B : Nat}
 #check matveev_conditional_lower_implies_ratio_gt_exp
 #check matveev_conditional_lower_implies_ratio_gt_exp_of_solution
 #check matveev_gap3_ratio_lower_bound_conditional
+#check matveev_gap3_conditional_ratio_pos
+#check matveev_gap3_ratio_pos_of_conditional_lower
 #check matveev_inequality_real_target
 #check baker_bound_gap3_remaining_thm14
 #print axioms matveev_C1_floor_eq
@@ -746,6 +773,8 @@ theorem matveev_gap3_ratio_lower_bound_conditional {A B : Nat}
 #print axioms matveev_conditional_lower_implies_ratio_gt_exp
 #print axioms matveev_conditional_lower_implies_ratio_gt_exp_of_solution
 #print axioms matveev_gap3_ratio_lower_bound_conditional
+#print axioms matveev_gap3_conditional_ratio_pos
+#print axioms matveev_gap3_ratio_pos_of_conditional_lower
 #print axioms matveev_thm14_C_exp_bound_lt_neg_onee12
 #print axioms matveev_thm14_constants_hold
 

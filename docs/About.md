@@ -1,6 +1,19 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower`
+Latest tag / HEAD: `v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link`
+Most current as of 2026-09-13, **not** final.
+`BealMatveevThm14.lean` and `BealBugeaudLLLFormal.lean` link the conditional
+ratio bound $B^4/A^4 > \exp(C_{\mathrm{exp\_bound}})$ to the Baker $B_0 = 10^6$ certificate
+and LLL reduction toward $B \le B_{\mathrm{reduced}}$ (~$10^3$) without claiming the unproven
+Matveev lower bound:
+`matveev_gap3_conditional_ratio_pos` ($0 < \exp(C_{\mathrm{exp\_bound}}) < B^4/A^4$ conditional on target),
+`matveev_gap3_ratio_pos_of_conditional_lower` ($0 < B^4/A^4$ via conditional lower bound),
+`bugeaud_LLL_reduction_conditional` (conditional definition of LLL reduction to $B_{\mathrm{reduced}} \le B_0$ given `matveev_inequality_real_formal`).
+Target, `baker_bound_gap3`, and `bugeaud_LLL_reduction_conditional` stay uninhabited def Props.
+Locked Lean 0 vs v24.2.3 `ed94732` across 9 locked files (honesty lock exception only for intentional LLL link extension in `BealBugeaudLLLFormal.lean`). Previous v24.2.3 DOI `10.5281/zenodo.22731634`
+(concept `10.5281/zenodo.22379293`).
+
+Latest prior tag: `v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower`
 Most current as of 2026-09-13, **not** final.
 `BealMatveevThm14.lean` shows that IF the Matveev lower bound target
 $|\Lambda| > \exp(C_{\mathrm{exp\_bound}})$ were true on a gap-3 solution

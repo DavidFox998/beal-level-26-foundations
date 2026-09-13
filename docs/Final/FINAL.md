@@ -1,3 +1,18 @@
+# FINAL v24.3.0 — Linking Conditional Matveev Ratio to Baker B0 and LLL Reduction (not final)
+
+Latest tag `v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link`.
+On $A^4 + B^4 = (B+3)^{13}$:
+$0 < \exp(C_{\mathrm{exp\_bound}}) < B^4/A^4$ via `matveev_gap3_conditional_ratio_pos`,
+$0 < B^4/A^4$ via `matveev_gap3_ratio_pos_of_conditional_lower`,
+conditional LLL reduction defined via `bugeaud_LLL_reduction_conditional` in `BealBugeaudLLLFormal.lean`.
+Target, `baker_bound_gap3`, and `bugeaud_LLL_reduction_conditional` stay uninhabited
+def Props. Links conditional ratio bound to Baker B0=1e6 certificate and LLL reduction without claiming Matveev lower bound.
+Locked Lean 0 vs v24.2.3 `ed94732` /
+`10.5281/zenodo.22731634` across 9 locked files (honesty lock exception only for intentional LLL link extension in `BealBugeaudLLLFormal.lean`).
+Most current as of 2026-09-13, **not** a
+final Beal proof. Series concept
+`10.5281/zenodo.22379293`.
+
 # FINAL v24.2.3 — Conditional Lower Bound Implies Ratio Bound (not final)
 
 Latest tag `v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower`.
