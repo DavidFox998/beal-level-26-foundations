@@ -22,9 +22,19 @@ Honest skeleton, **one `sorry`**: `matveev_gap3_lower`, which is
 definitionally `matveev_inequality_real_target` from the relocated
 Level26 kernel.
 
-- `matveev_theorem_1_4_general` — Matveev 2000 Thm 1.4 shape with
-  `height_B0 = C1_floor * 30^6` (uninhabited `def Prop`)
-- `matveev_theorem_1_4_gap3_target` — gap-3 instance
+On a gap-3 solution, `B < A` and `A ≈ (B+3)^{13/4}`. The old
+`A < B+3` bound is false. Usable: `log A < (13/4) log(B+3)`.
+
+- `gap3_A_bounds` — `0 < A`, `1 < A`, `1 < B+3`, `A^4 < (B+3)^13`,
+  `log A < (13/4) log(B+3)` (proved)
+- `matveev_theorem_1_4_general` — Matveev 2000 Thm 1.4 on
+  `α1 = A`, `α2 = B+3` (uninhabited `def Prop`; not in Mathlib 4.12)
+- `matveev_product_bound_gap3` — unrestricted product on every
+  solution (uninhabited `def Prop`: LHS is `O((log(B+3))³)`, RHS constant)
+- `matveev_product_bound_of_B3_le_height` — the product that *is*
+  a theorem, when `B+3 ≤ height_B0` (includes `B ≤ 10^6`)
+- `matveev_gap3_lower_of` — general + unrestricted product ⇒ target
+  (proved; does not inhabit the hypotheses)
 - `matveev_gap3_lower` — the v25 goal (`sorry`)
 
 `baker_conditional_gap3_full` takes `baker_bound_gap3`, not the
