@@ -1,10 +1,42 @@
 # BealMatveevThm14 — v24.0.0 Matveev 2000 Thm 1.4 formalization start
 
-**Tag.** `v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound`.
+**Tag.** `v24.4.0-Beal-44-13-Level-26-v24x-Final-Summary`.
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
-**Parent.** v24.3.1 `d189ef9` / `v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower` / DOI `10.5281/zenodo.22731966`.
+**Parent.** v24.3.2 `305e5f4` / `v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound` / DOI `10.5281/zenodo.22732045`.
 **Concept.** `10.5281/zenodo.22379293`.
+
+## v24.4.0 — v24.x Final Summary
+
+```lean
+theorem matveev_v24x_summary :
+    A^4 + B^4 = (B+3)^13 →
+      0 < A ∧ 0 < B ∧
+      |Lambda| = log(1 + B^4/A^4) ∧
+      |Lambda| ≤ B^4/A^4 ∧
+      B^4/A^4 = B^4 / ((B+3)^13 - B^4) ∧
+      0 < B^4/A^4 ∧
+      0 < exp(C) < 1e-12 ∧ exp(C) < 1 ∧
+      C = -(height_B0 * log height_B0) ∧
+      height_B0 = 104382751019310000000 ∧
+      C1_floor * thirty_pow = 104382751019310000000 ∧
+      thirty_pow = 729000000
+theorem matveev_v24x_conditional_summary :
+    A^4 + B^4 = (B+3)^13 →
+      matveev_inequality_real_target →
+        0 < exp(C) < B^4/A^4 ∧
+        B^4 * (1 + exp(C)) > exp(C) * (B+3)^13
+theorem bugeaud_v24x_final_link :
+    bugeaud_LLL_reduction_conditional ↔
+      (matveev_inequality_real_formal →
+        ∃ B_reduced ≤ bugeaud_B0,
+          ∀ solution with B ≤ bugeaud_B0, B ≤ B_reduced)
+```
+
+Honest consolidation of v24.0.0–3.2. Does not claim $|\Lambda| > \exp(C)$.
+Target `matveev_inequality_real_target`, `baker_bound_gap3`, and
+`bugeaud_LLL_reduction_conditional` stay uninhabited def Props.
+v24.4.0 is the honest final of v24.x, not v25.
 
 ## v24.3.2 — Numerical Tiny Bound exp(C) << 10^{-12}
 

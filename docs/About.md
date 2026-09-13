@@ -1,6 +1,23 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound`
+Latest tag / HEAD: `v24.4.0-Beal-44-13-Level-26-v24x-Final-Summary`
+Most current as of 2026-09-13, **not** final.
+Honest v24.x final summary (not v25): on $A^4 + B^4 = (B+3)^{13}$,
+`matveev_v24x_summary` packs $|\Lambda| = \log(1+B^4/A^4) \le B^4/A^4$
+with $0 < \exp(C_{\mathrm{exp\_bound}}) < 10^{-12} < 1$ and
+$C_{\mathrm{exp\_bound}} = -\mathrm{height}_{B_0}\log\mathrm{height}_{B_0}$,
+$\mathrm{height}_{B_0} = 104382751019310000000 = C1_{\mathrm{floor}}\cdot 30^6$.
+`matveev_v24x_conditional_summary` is the IF-Matveev form
+$0 < \exp(C) < B^4/A^4$ and $B^4(1+\exp(C)) > \exp(C)\,(B+3)^{13}$.
+`bugeaud_v24x_final_link` restates the conditional LLL shape.
+`baker_v24x_reduction_shape` restates the displayed $B0_{\mathrm{raw}}$ cert.
+Target, `baker_bound_gap3`, and `bugeaud_LLL_reduction_conditional` stay uninhabited def Props.
+Locked Lean 0 vs v24.3.2 `305e5f4` except `BealMatveevThm14.lean`,
+`RibetMazur.lean`, and `BealBakerB0ReductionCertificate.lean` summary shape.
+Previous v24.3.2 DOI `10.5281/zenodo.22732045`
+(concept `10.5281/zenodo.22379293`).
+
+Latest prior tag: `v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound`
 Most current as of 2026-09-13, **not** final.
 `BealMatveevThm14.lean` evaluates the displayed Matveev exponential as
 an extremely small number $0 < \exp(C_{\mathrm{exp\_bound}}) < 10^{-12}$:

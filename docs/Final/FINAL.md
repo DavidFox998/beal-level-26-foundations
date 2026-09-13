@@ -1,3 +1,28 @@
+# FINAL v24.4.0 — v24.x Final Summary Linking Log Upper Bound to Conditional Matveev Ratio Toward B0 (not final)
+
+Latest tag `v24.4.0-Beal-44-13-Level-26-v24x-Final-Summary`.
+Honest consolidation of v24.0.0–3.2. On $A^4 + B^4 = (B+3)^{13}$:
+$|\Lambda| = \log(1 + B^4/A^4) \le B^4/A^4 = B^4/((B+3)^{13}-B^4)$
+and $0 < \exp(C_{\mathrm{exp\_bound}}) < 10^{-12} < 1$ via `matveev_v24x_summary`,
+with $C_{\mathrm{exp\_bound}} = -\mathrm{height}_{B_0}\log\mathrm{height}_{B_0}$
+and $\mathrm{height}_{B_0} = 104382751019310000000 = C1_{\mathrm{floor}}\cdot 30^6$,
+$30^6 = 729000000$.
+IF `matveev_inequality_real_target` THEN $0 < \exp(C) < B^4/A^4$ and
+$B^4(1+\exp(C)) > \exp(C)\,(B+3)^{13}$ via `matveev_v24x_conditional_summary`.
+Conditional LLL shape restated via `bugeaud_v24x_final_link`.
+Displayed LLL cert shape via `baker_v24x_reduction_shape`.
+Target, `baker_bound_gap3`, and `bugeaud_LLL_reduction_conditional` stay uninhabited
+def Props. Mathlib 4.12 has no Matveev 2000 Thm 1.4, so v24.4.0 is the
+honest final of v24.x, **not** v25.
+Locked Lean 0 vs v24.3.2 `305e5f4` /
+`10.5281/zenodo.22732045` except `BealMatveevThm14.lean`,
+`RibetMazur.lean`, and `BealBakerB0ReductionCertificate.lean` summary shape.
+Most current as of 2026-09-13, **not** a
+final Beal proof. Series concept
+`10.5281/zenodo.22379293`.
+v24.x DOI chain: 22730408, 22730460, 22730548, 22730776, 22730846,
+22731054, 22731160, 22731508, 22731634, 22731759, 22731966, 22732045.
+
 # FINAL v24.3.2 — Numerical Tiny Bound exp(C) << 10^{-12} Toward B0 (not final)
 
 Latest tag `v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound`.

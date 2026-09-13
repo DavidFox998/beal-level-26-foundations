@@ -506,6 +506,14 @@ needs Baker, not Zsig, and stays a Prop.
 % matveev_target_exp_lower_lt_exp_neg_1e12
 % matveev_target_exp_lower_lt_onee12
 % matveev_exp_C_pos_lt_one
+% matveev_v24x_summary
+% matveev_v24x_conditional_summary
+% bugeaud_v24x_final_link
+% baker_v24x_reduction_shape
+% v24.4.0-Beal-44-13-Level-26-v24x-Final-Summary
+% v24.x DOI chain: 22730408, 22730460, 22730548, 22730776,
+% 22730846, 22731054, 22731160, 22731508, 22731634,
+% 22731759, 22731966, 22732045; v24.4.0 to come
 % v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound
 % v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower
 % v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link
@@ -549,6 +557,42 @@ kernel decide that
 $a_{53}\in\{-10,-2,1,6,14\}$ misses
 $S_2(26)$ traces $\{0,12\}$.
 Tate and Baker files are unchanged.
+
+\paragraph{v24.x final summary.}
+Versions v24.0.0--v24.3.2 build the displayed
+Matveev kernel without claiming
+$|\Lambda|>\exp(C)$.
+The chain of version DOIs is
+\texttt{10.5281/zenodo.22730408},
+\texttt{22730460},
+\texttt{22730548},
+\texttt{22730776},
+\texttt{22730846},
+\texttt{22731054},
+\texttt{22731160},
+\texttt{22731508},
+\texttt{22731634},
+\texttt{22731759},
+\texttt{22731966},
+\texttt{22732045},
+with v24.4.0 to come.
+On a gap-3 solution,
+\texttt{matveev\_v24x\_summary}
+packs
+$|\Lambda|=\log(1+B^4/A^4)\le B^4/A^4$
+together with
+$0<\exp(C_{\mathrm{exp\_bound}})<10^{-12}<1$
+and
+$C_{\mathrm{exp\_bound}}=-(\mathrm{height}_{B_0}\log\mathrm{height}_{B_0})$,
+$\mathrm{height}_{B_0}=104382751019310000000=C_1^{\mathrm{floor}}\cdot 30^6$.
+\texttt{matveev\_v24x\_conditional\_summary}
+is the implication from the still-uninhabited
+\texttt{matveev\_inequality\_real\_target}.
+\texttt{bugeaud\_v24x\_final\_link}
+restates the conditional LLL shape.
+This is the honest final of v24.x, not v25:
+\texttt{baker\_bound\_gap3} stays a def Prop
+until Mathlib has Matveev 2000 Thm~1.4.
 
 \section{What remains}
 $15/16$ of $B\le 2\text{M}$ is eliminated by mod-$16$ residues.

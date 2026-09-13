@@ -33,6 +33,32 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
 /-!
+# FullProof track (v24.4.0)
+
+v24.x final summary linking the log-form upper bound to the
+conditional Matveev ratio toward Baker B0.
+On a gap-3 solution A^4 + B^4 = (B+3)^13:
+  * |Lambda| = log(1 + B^4/A^4) ≤ B^4/A^4
+    = B^4 / ((B+3)^13 - B^4) via matveev_v24x_summary
+  * 0 < exp(C_exp_bound) < 10^{-12} < 1
+  * C_exp_bound = -(height_B0 * log height_B0)
+  * height_B0 = 104382751019310000000 = C1_floor * 30^6
+    with 30^6 = 729000000
+  * IF matveev_inequality_real_target THEN
+    0 < exp(C) < B^4/A^4 and
+    B^4 * (1 + exp(C)) > exp(C) * (B+3)^13
+    via matveev_v24x_conditional_summary
+  * conditional LLL reduction shape restated via
+    bugeaud_v24x_final_link (still uninhabited)
+  * displayed LLL cert shape via baker_v24x_reduction_shape
+Does not claim |Lambda| > exp(C_exp_bound).
+`matveev_inequality_real_target`, `baker_bound_gap3`, and
+`bugeaud_LLL_reduction_conditional` stay uninhabited def Props.
+v24.4.0 is the honest final of v24.x, not v25.
+Locked Lean 0 vs v24.3.2 except BealMatveevThm14.lean,
+RibetMazur.lean, and BealBakerB0ReductionCertificate.lean
+summary shape.
+
 # FullProof track (v24.3.2)
 
 Numerical tiny bound exp(C_exp_bound) << 10^{-12} toward Baker B0.

@@ -6253,6 +6253,63 @@ theorem matveev_exp_C_pos_lt_one :
       matveev_target_exp_lower < 1 :=
   BealLevel26Foundations.BealMatveevThm14.matveev_exp_C_pos_lt_one
 
+/-! ## v24.4.0 — v24.x final summary -/
+
+theorem matveev_v24x_summary {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    0 < A ∧
+    0 < B ∧
+    |matveev_log_form A B| =
+      Real.log (1 + (B : Real) ^ 4 / (A : Real) ^ 4) ∧
+    |matveev_log_form A B| ≤ (B : Real) ^ 4 / (A : Real) ^ 4 ∧
+    (B : Real) ^ 4 / (A : Real) ^ 4 =
+      (B : Real) ^ 4 / (((B + 3 : Nat) : Real) ^ 13 - (B : Real) ^ 4) ∧
+    (0 : Real) < (B : Real) ^ 4 / (A : Real) ^ 4 ∧
+    (0 : Real) < Real.exp matveev_C_exp_bound ∧
+    Real.exp matveev_C_exp_bound <
+      (1 : Real) / ((BealLevel26Foundations.BealBakerBoundGap3.ten_pow_12 : Nat) : Real) ∧
+    Real.exp matveev_C_exp_bound < 1 ∧
+    matveev_C_exp_bound =
+      -((matveev_height_B0 : Real) *
+          Real.log (matveev_height_B0 : Real)) ∧
+    matveev_height_B0 = 104382751019310000000 ∧
+    BealLevel26Foundations.BealMatveevConstants.matveev_C1_floor *
+        BealLevel26Foundations.BealMatveevConstants.matveev_thirty_pow =
+      104382751019310000000 ∧
+    BealLevel26Foundations.BealMatveevConstants.matveev_thirty_pow =
+      729000000 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_v24x_summary hsol
+
+theorem matveev_v24x_conditional_summary {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (htarget : matveev_inequality_real_target) :
+    (0 : Real) < Real.exp matveev_C_exp_bound ∧
+      Real.exp matveev_C_exp_bound <
+        (B : Real) ^ 4 / (A : Real) ^ 4 ∧
+      (B : Real) ^ 4 * (1 + Real.exp matveev_C_exp_bound) >
+        Real.exp matveev_C_exp_bound * ((B + 3 : Nat) : Real) ^ 13 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_v24x_conditional_summary
+    hsol htarget
+
+theorem bugeaud_v24x_final_link :
+    bugeaud_LLL_reduction_conditional ↔
+      (matveev_inequality_real_formal →
+        ∃ B_reduced : Nat,
+          B_reduced ≤
+              BealLevel26Foundations.BealBugeaudLLLFormal.bugeaud_B0 ∧
+          ∀ A B : Nat,
+            Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 →
+              B ≤ BealLevel26Foundations.BealBugeaudLLLFormal.bugeaud_B0 →
+              B ≤ B_reduced) :=
+  BealLevel26Foundations.BealMatveevThm14.bugeaud_v24x_final_link
+
+theorem baker_v24x_reduction_shape :
+    baker_reduction_certificate_displayed ≠ [] ∧
+      baker_B0_raw_PARI = 104382751019310000000 ∧
+      baker_B0_reduced_PARI = baker_B0 ∧
+      baker_B0_reduced_PARI = 1000000 :=
+  BealLevel26Foundations.BealBakerB0ReductionCertificate.baker_v24x_reduction_shape
+
 /-! ## v14.0.0 — J0 / mwrank / formal displayed certs -/
 
 def J0DecompositionCert_26 :=
@@ -7399,6 +7456,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check matveev_exp_neg_1e12_lt_inv_1e12
 #check matveev_target_exp_lower_lt_onee12
 #check matveev_exp_C_pos_lt_one
+#check matveev_v24x_summary
+#check matveev_v24x_conditional_summary
+#check bugeaud_v24x_final_link
+#check baker_v24x_reduction_shape
 #check J0DecompositionCert_26
 #check J0DecompositionCert_26_displayed
 #check J0DecompositionSoundness_26
@@ -8034,6 +8095,10 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms matveev_exp_neg_1e12_lt_inv_1e12
 #print axioms matveev_target_exp_lower_lt_onee12
 #print axioms matveev_exp_C_pos_lt_one
+#print axioms matveev_v24x_summary
+#print axioms matveev_v24x_conditional_summary
+#print axioms bugeaud_v24x_final_link
+#print axioms baker_v24x_reduction_shape
 #print axioms J0DecompositionSoundness_26_holds
 #print axioms MwrankCertificateSoundness_26_holds
 #print axioms FormalImmersionSoundness_26_holds

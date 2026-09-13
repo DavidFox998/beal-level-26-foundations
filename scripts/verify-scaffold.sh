@@ -3478,6 +3478,14 @@ grep -q "theorem matveev_target_exp_lower_lt_onee12" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem matveev_exp_C_pos_lt_one" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem matveev_v24x_summary" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem matveev_v24x_conditional_summary" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem bugeaud_v24x_final_link" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
+grep -q "theorem baker_v24x_reduction_shape" \
+  lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "def bugeaud_LLL_reduction_conditional" \
   lean/BealLevel26Foundations/Beal/FullProof/RibetMazur.lean
 grep -q "theorem matveev_gap3_conditional_ratio_pos" \
@@ -3502,13 +3510,39 @@ grep -q "theorem matveev_target_exp_lower_lt_onee12" \
   lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
 grep -q "theorem matveev_exp_C_pos_lt_one" \
   lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
+grep -q "theorem matveev_v24x_summary" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
+grep -q "theorem matveev_v24x_conditional_summary" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
+grep -q "theorem bugeaud_v24x_final_link" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean
+grep -q "theorem baker_v24x_reduction_shape" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean
+grep -q "\[104382751019310000000, 1000000\]" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean
+grep -q "\[9, -16201573319, -5065060422\]" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean
+grep -q "\[\[1, 0, 1, -5, -8\], \[1, -1, 1, -3, 3\]\]" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
+grep -q "s2Basis := \[0, 12\]" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
+grep -q "chabautyMatrix := \[\[1, 1\], \[0, 2\]\]" \
+  lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean
 grep -q "def bugeaud_LLL_reduction_conditional" \
   lean/BealLevel26Foundations/Beal/FullProof/BealBugeaudLLLFormal.lean
+test "$(git diff v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound -- lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean | wc -l)" -eq 0
+test "$(git diff v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
+test "$(git diff v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
+test "$(git diff v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean | wc -l)" -eq 0
+test "$(git diff v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean | wc -l)" -eq 0
+test "$(git diff v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean | wc -l)" -eq 0
+test "$(git diff v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequalityReal.lean | wc -l)" -eq 0
+test "$(git diff v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerBoundGap3.lean | wc -l)" -eq 0
+test "$(git diff v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound -- lean/BealLevel26Foundations/Beal/FullProof/BealBugeaudLLLFormal.lean | wc -l)" -eq 0
 test "$(git diff v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower -- lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean | wc -l)" -eq 0
 test "$(git diff v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 test "$(git diff v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
 test "$(git diff v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean | wc -l)" -eq 0
-test "$(git diff v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean | wc -l)" -eq 0
 test "$(git diff v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean | wc -l)" -eq 0
 test "$(git diff v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean | wc -l)" -eq 0
 test "$(git diff v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequalityReal.lean | wc -l)" -eq 0
@@ -3518,7 +3552,6 @@ test "$(git diff v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link -- lean/BealLevel2
 test "$(git diff v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 test "$(git diff v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
 test "$(git diff v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean | wc -l)" -eq 0
-test "$(git diff v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean | wc -l)" -eq 0
 test "$(git diff v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean | wc -l)" -eq 0
 test "$(git diff v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean | wc -l)" -eq 0
 test "$(git diff v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequalityReal.lean | wc -l)" -eq 0
@@ -3528,7 +3561,6 @@ test "$(git diff v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower -- lean/B
 test "$(git diff v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 test "$(git diff v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
 test "$(git diff v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean | wc -l)" -eq 0
-test "$(git diff v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean | wc -l)" -eq 0
 test "$(git diff v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean | wc -l)" -eq 0
 test "$(git diff v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean | wc -l)" -eq 0
 test "$(git diff v24.2.3-Beal-44-13-Level-26-Matveev-Conditional-Lower -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequalityReal.lean | wc -l)" -eq 0
@@ -3537,7 +3569,6 @@ test "$(git diff v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le -- lean/Bea
 test "$(git diff v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 test "$(git diff v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
 test "$(git diff v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean | wc -l)" -eq 0
-test "$(git diff v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean | wc -l)" -eq 0
 test "$(git diff v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean | wc -l)" -eq 0
 test "$(git diff v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean | wc -l)" -eq 0
 test "$(git diff v24.2.2-Beal-44-13-Level-26-Matveev-Log-One-Plus-Le -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequalityReal.lean | wc -l)" -eq 0
@@ -3546,7 +3577,6 @@ test "$(git diff v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound -- lean/Beal
 test "$(git diff v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 test "$(git diff v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
 test "$(git diff v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean | wc -l)" -eq 0
-test "$(git diff v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean | wc -l)" -eq 0
 test "$(git diff v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean | wc -l)" -eq 0
 test "$(git diff v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean | wc -l)" -eq 0
 test "$(git diff v24.2.0-Beal-44-13-Level-26-Matveev-Log-Form-Bound -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequalityReal.lean | wc -l)" -eq 0
@@ -3555,7 +3585,6 @@ test "$(git diff v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite -- lean/BealL
 test "$(git diff v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 test "$(git diff v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
 test "$(git diff v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean | wc -l)" -eq 0
-test "$(git diff v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean | wc -l)" -eq 0
 test "$(git diff v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean | wc -l)" -eq 0
 test "$(git diff v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean | wc -l)" -eq 0
 test "$(git diff v24.1.1-Beal-44-13-Level-26-Matveev-C-Exp-Rewrite -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequalityReal.lean | wc -l)" -eq 0
@@ -3564,7 +3593,6 @@ test "$(git diff v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product -- lean/Beal
 test "$(git diff v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 test "$(git diff v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
 test "$(git diff v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean | wc -l)" -eq 0
-test "$(git diff v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean | wc -l)" -eq 0
 test "$(git diff v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean | wc -l)" -eq 0
 test "$(git diff v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean | wc -l)" -eq 0
 test "$(git diff v24.1.0-Beal-44-13-Level-26-Matveev-Height-Product -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequalityReal.lean | wc -l)" -eq 0
@@ -3573,7 +3601,6 @@ test "$(git diff v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone -- lean
 test "$(git diff v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 test "$(git diff v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
 test "$(git diff v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean | wc -l)" -eq 0
-test "$(git diff v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean | wc -l)" -eq 0
 test "$(git diff v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean | wc -l)" -eq 0
 test "$(git diff v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean | wc -l)" -eq 0
 test "$(git diff v24.0.1-Beal-44-13-Level-26-Matveev-Height-Log-Monotone -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequalityReal.lean | wc -l)" -eq 0
@@ -3582,7 +3609,6 @@ test "$(git diff v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start
 test "$(git diff v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 test "$(git diff v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
 test "$(git diff v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean | wc -l)" -eq 0
-test "$(git diff v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean | wc -l)" -eq 0
 test "$(git diff v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean | wc -l)" -eq 0
 test "$(git diff v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean | wc -l)" -eq 0
 test "$(git diff v24.0.0-Beal-44-13-Level-26-Matveev-Thm-1-4-Formalization-Start -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequalityReal.lean | wc -l)" -eq 0
@@ -3591,7 +3617,6 @@ test "$(git diff v23.0.0-Beal-44-13-Level-26-Matveev-C-Exp-Bound-Compare -- lean
 test "$(git diff v23.0.0-Beal-44-13-Level-26-Matveev-C-Exp-Bound-Compare -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 test "$(git diff v23.0.0-Beal-44-13-Level-26-Matveev-C-Exp-Bound-Compare -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
 test "$(git diff v23.0.0-Beal-44-13-Level-26-Matveev-C-Exp-Bound-Compare -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean | wc -l)" -eq 0
-test "$(git diff v23.0.0-Beal-44-13-Level-26-Matveev-C-Exp-Bound-Compare -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean | wc -l)" -eq 0
 test "$(git diff v23.0.0-Beal-44-13-Level-26-Matveev-C-Exp-Bound-Compare -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean | wc -l)" -eq 0
 test "$(git diff v23.0.0-Beal-44-13-Level-26-Matveev-C-Exp-Bound-Compare -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean | wc -l)" -eq 0
 test "$(git diff v23.0.0-Beal-44-13-Level-26-Matveev-C-Exp-Bound-Compare -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequalityReal.lean | wc -l)" -eq 0
@@ -3600,7 +3625,6 @@ test "$(git diff v22.0.0-Beal-44-13-Level-26-Matveev-Inequality-Real -- lean/Bea
 test "$(git diff v22.0.0-Beal-44-13-Level-26-Matveev-Inequality-Real -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 test "$(git diff v22.0.0-Beal-44-13-Level-26-Matveev-Inequality-Real -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
 test "$(git diff v22.0.0-Beal-44-13-Level-26-Matveev-Inequality-Real -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean | wc -l)" -eq 0
-test "$(git diff v22.0.0-Beal-44-13-Level-26-Matveev-Inequality-Real -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean | wc -l)" -eq 0
 test "$(git diff v22.0.0-Beal-44-13-Level-26-Matveev-Inequality-Real -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean | wc -l)" -eq 0
 test "$(git diff v22.0.0-Beal-44-13-Level-26-Matveev-Inequality-Real -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean | wc -l)" -eq 0
 test "$(git diff v22.0.0-Beal-44-13-Level-26-Matveev-Inequality-Real -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequalityReal.lean | wc -l)" -eq 0
@@ -3608,26 +3632,22 @@ test "$(git diff v21.0.0-Beal-44-13-Level-26-Matveev-Log-Form-Nonzero -- lean/Be
 test "$(git diff v21.0.0-Beal-44-13-Level-26-Matveev-Log-Form-Nonzero -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 test "$(git diff v21.0.0-Beal-44-13-Level-26-Matveev-Log-Form-Nonzero -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
 test "$(git diff v21.0.0-Beal-44-13-Level-26-Matveev-Log-Form-Nonzero -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean | wc -l)" -eq 0
-test "$(git diff v21.0.0-Beal-44-13-Level-26-Matveev-Log-Form-Nonzero -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean | wc -l)" -eq 0
 test "$(git diff v21.0.0-Beal-44-13-Level-26-Matveev-Log-Form-Nonzero -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean | wc -l)" -eq 0
 test "$(git diff v21.0.0-Beal-44-13-Level-26-Matveev-Log-Form-Nonzero -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevInequality.lean | wc -l)" -eq 0
 test "$(git diff v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean | wc -l)" -eq 0
 test "$(git diff v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 test "$(git diff v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
 test "$(git diff v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean | wc -l)" -eq 0
-test "$(git diff v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean | wc -l)" -eq 0
 test "$(git diff v20.0.0-Beal-44-13-Level-26-Matveev-Inequality-Bugeaud-LLL-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean | wc -l)" -eq 0
 test "$(git diff v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean | wc -l)" -eq 0
 test "$(git diff v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 test "$(git diff v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
 test "$(git diff v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean | wc -l)" -eq 0
-test "$(git diff v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean | wc -l)" -eq 0
 test "$(git diff v19.0.0-Beal-44-13-Level-26-Matveev-Constants-Formalization -- lean/BealLevel26Foundations/Beal/FullProof/BealMatveevConstants.lean | wc -l)" -eq 0
 test "$(git diff v18.0.0-Beal-44-13-Level-26-Cumulative-Archive-v10-v17 -- lean/BealLevel26Foundations/Beal/FullProof/BealFreyTateConductor.lean | wc -l)" -eq 0
 test "$(git diff v18.0.0-Beal-44-13-Level-26-Cumulative-Archive-v10-v17 -- lean/BealLevel26Foundations/Beal/FullProof/BealGap3BakerUpperBound.lean | wc -l)" -eq 0
 test "$(git diff v18.0.0-Beal-44-13-Level-26-Cumulative-Archive-v10-v17 -- lean/BealLevel26Foundations/Beal/FullProof/BealLevel26ModularElimination.lean | wc -l)" -eq 0
 test "$(git diff v18.0.0-Beal-44-13-Level-26-Cumulative-Archive-v10-v17 -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0Certificate.lean | wc -l)" -eq 0
-test "$(git diff v18.0.0-Beal-44-13-Level-26-Cumulative-Archive-v10-v17 -- lean/BealLevel26Foundations/Beal/FullProof/BealBakerB0ReductionCertificate.lean | wc -l)" -eq 0
 grep -q "baker_B0_certificate" \
   paper/mcom-draft.tex
 grep -q "baker_B0_reduction_certificate" \
@@ -3695,6 +3715,18 @@ grep -q "matveev_gap3_B3_pow_pos" \
 grep -q "matveev_gap3_log_form_eq_log_ratio" \
   paper/mcom-draft.tex
 grep -q "matveev_gap3_abs_lambda_eq_log_one_plus_ratio" \
+  paper/mcom-draft.tex
+grep -q "matveev_v24x_summary" \
+  paper/mcom-draft.tex
+grep -q "matveev_v24x_conditional_summary" \
+  paper/mcom-draft.tex
+grep -q "bugeaud_v24x_final_link" \
+  paper/mcom-draft.tex
+grep -q "baker_v24x_reduction_shape" \
+  paper/mcom-draft.tex
+grep -q "22730408" \
+  paper/mcom-draft.tex
+grep -q "22732045" \
   paper/mcom-draft.tex
 grep -q "bugeaud_LLL_basis_holds" \
   paper/mcom-draft.tex

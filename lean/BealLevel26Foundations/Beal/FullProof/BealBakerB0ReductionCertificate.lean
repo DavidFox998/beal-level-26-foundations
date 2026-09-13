@@ -82,6 +82,23 @@ theorem baker_reduction_certificate_holds :
 def baker_bound_gap3_of_LLL : Prop :=
   baker_reduction_certificate_displayed ≠ [] → baker_bound_gap3
 
+/-! ## v24.4.0 — v24.x final summary shape
+
+    Restates the displayed LLL reduction certificate
+    used by the v24.x summary: B0_raw = height_B0
+    = 104382751019310000000, B0_reduced = baker_B0
+    = 10^6, and the nonempty qflll list.
+    Does not inhabit baker_bound_gap3.
+    Does not change the displayed cert rows. -/
+
+theorem baker_v24x_reduction_shape :
+    baker_reduction_certificate_displayed ≠ [] ∧
+      baker_B0_raw_PARI = 104382751019310000000 ∧
+      baker_B0_reduced_PARI = baker_B0 ∧
+      baker_B0_reduced_PARI = 1000000 :=
+  ⟨baker_reduction_certificate_holds, rfl,
+    baker_B0_reduced_PARI_eq, rfl⟩
+
 #check baker_B0_reduced_PARI
 #check baker_B0_reduced_PARI_eq
 #check baker_B0_raw_PARI
@@ -89,7 +106,9 @@ def baker_bound_gap3_of_LLL : Prop :=
 #check baker_reduction_certificate_displayed
 #check baker_reduction_certificate_holds
 #check baker_bound_gap3_of_LLL
+#check baker_v24x_reduction_shape
 #print axioms baker_B0_reduced_PARI_eq
 #print axioms baker_reduction_certificate_holds
+#print axioms baker_v24x_reduction_shape
 
 end BealLevel26Foundations.BealBakerB0ReductionCertificate

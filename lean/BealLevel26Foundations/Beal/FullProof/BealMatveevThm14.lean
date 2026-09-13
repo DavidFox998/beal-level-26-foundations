@@ -924,6 +924,101 @@ theorem matveev_exp_C_pos_lt_one :
     matveev_target_exp_lower_lt_onee12,
     matveev_target_exp_lower_lt_one⟩
 
+/-! ## v24.4.0 — v24.x final summary
+
+    Consolidates v24.0.0–3.2 on a gap-3 solution
+    A^4 + B^4 = (B+3)^13:
+      * |Lambda| = log(1 + B^4/A^4) ≤ B^4/A^4
+        = B^4 / ((B+3)^13 - B^4)
+      * 0 < exp(C_exp_bound) < 10^{-12} < 1
+      * C_exp_bound = -(height_B0 * log height_B0)
+      * height_B0 = 104382751019310000000
+        = C1_floor * 30^6, 30^6 = 729000000
+    IF matveev_inequality_real_target then
+      0 < exp(C) < B^4/A^4 and
+      B^4 * (1 + exp(C)) > exp(C) * (B+3)^13.
+    Restates the conditional LLL reduction shape
+    without inhabiting it.
+    Does not claim the Matveev lower bound.
+    Does not inhabit baker_bound_gap3.
+    Does not use sorry. -/
+
+/-- Unconditional v24.x summary on a gap-3 solution:
+    the log-form upper bound, the explicit ratio,
+    positivity, and the tiny displayed exponential. -/
+theorem matveev_v24x_summary {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13) :
+    0 < A ∧
+    0 < B ∧
+    |matveev_log_form A B| =
+      Real.log (1 + (B : Real) ^ 4 / (A : Real) ^ 4) ∧
+    |matveev_log_form A B| ≤ (B : Real) ^ 4 / (A : Real) ^ 4 ∧
+    (B : Real) ^ 4 / (A : Real) ^ 4 =
+      (B : Real) ^ 4 / (((B + 3 : Nat) : Real) ^ 13 - (B : Real) ^ 4) ∧
+    (0 : Real) < (B : Real) ^ 4 / (A : Real) ^ 4 ∧
+    (0 : Real) < Real.exp matveev_C_exp_bound ∧
+    Real.exp matveev_C_exp_bound <
+      (1 : Real) / ((ten_pow_12 : Nat) : Real) ∧
+    Real.exp matveev_C_exp_bound < 1 ∧
+    matveev_C_exp_bound =
+      -((matveev_height_B0 : Real) *
+          Real.log (matveev_height_B0 : Real)) ∧
+    matveev_height_B0 = 104382751019310000000 ∧
+    matveev_C1_floor * matveev_thirty_pow = 104382751019310000000 ∧
+    matveev_thirty_pow = 729000000 := by
+  have hexp_lt : Real.exp matveev_C_exp_bound <
+      (1 : Real) / ((ten_pow_12 : Nat) : Real) := by
+    simpa [matveev_target_exp_lower] using
+      matveev_target_exp_lower_lt_onee12
+  have hprod :
+      matveev_C1_floor * matveev_thirty_pow =
+        104382751019310000000 := by
+    rw [← matveev_height_product_link]
+    exact matveev_height_B0_eq_numeral
+  exact ⟨matveev_gap3_A_pos hsol,
+    matveev_gap3_B_pos_of_solution hsol,
+    matveev_gap3_abs_lambda_eq_log_one_plus_ratio hsol,
+    matveev_gap3_abs_lambda_le_ratio hsol,
+    matveev_gap3_ratio_explicit hsol,
+    matveev_gap3_B_pow_div_A_pow_pos hsol,
+    matveev_exp_of_bound_pos,
+    hexp_lt,
+    matveev_exp_of_bound_pos_lt_one,
+    matveev_C_exp_bound_eq_neg_height_mul_log,
+    matveev_height_B0_eq_numeral,
+    hprod,
+    matveev_thirty_pow_eq_729000000⟩
+
+/-- Conditional v24.x summary: IF the uninhabited
+    Matveev target holds on a solution, THEN
+    0 < exp(C) < B^4/A^4 and the cleared B inequality.
+    Does not claim the Matveev lower bound. -/
+theorem matveev_v24x_conditional_summary {A B : Nat}
+    (hsol : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13)
+    (htarget : matveev_inequality_real_target) :
+    (0 : Real) < Real.exp matveev_C_exp_bound ∧
+      Real.exp matveev_C_exp_bound <
+        (B : Real) ^ 4 / (A : Real) ^ 4 ∧
+      (B : Real) ^ 4 * (1 + Real.exp matveev_C_exp_bound) >
+        Real.exp matveev_C_exp_bound * ((B + 3 : Nat) : Real) ^ 13 :=
+  ⟨matveev_exp_of_bound_pos,
+    matveev_gap3_ratio_lower_bound_conditional hsol htarget,
+    matveev_gap3_conditional_B_lower_of_target hsol htarget⟩
+
+/-- Restatement of the conditional LLL reduction shape.
+    Still uninhabited: this is definitional equality,
+    not an inhabitation of baker_bound_gap3. -/
+theorem bugeaud_v24x_final_link :
+    bugeaud_LLL_reduction_conditional ↔
+      (matveev_inequality_real_formal →
+        ∃ B_reduced : Nat,
+          B_reduced ≤ bugeaud_B0 ∧
+          ∀ A B : Nat,
+            Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 →
+              B ≤ bugeaud_B0 →
+              B ≤ B_reduced) :=
+  Iff.rfl
+
 #check matveev_C1_floor_eq
 #check matveev_thirty_pow_eq_30_pow_6
 #check matveev_thirty_pow_eq_729000000
@@ -994,6 +1089,9 @@ theorem matveev_exp_C_pos_lt_one :
 #check matveev_exp_neg_1e12_lt_inv_1e12
 #check matveev_target_exp_lower_lt_onee12
 #check matveev_exp_C_pos_lt_one
+#check matveev_v24x_summary
+#check matveev_v24x_conditional_summary
+#check bugeaud_v24x_final_link
 #check matveev_inequality_real_target
 #check baker_bound_gap3_remaining_thm14
 #print axioms matveev_C1_floor_eq
@@ -1071,6 +1169,9 @@ theorem matveev_exp_C_pos_lt_one :
 #print axioms matveev_exp_neg_1e12_lt_inv_1e12
 #print axioms matveev_target_exp_lower_lt_onee12
 #print axioms matveev_exp_C_pos_lt_one
+#print axioms matveev_v24x_summary
+#print axioms matveev_v24x_conditional_summary
+#print axioms bugeaud_v24x_final_link
 #print axioms matveev_thm14_C_exp_bound_lt_neg_onee12
 #print axioms matveev_thm14_constants_hold
 

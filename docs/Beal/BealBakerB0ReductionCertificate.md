@@ -36,6 +36,16 @@ Matveev or LLL theorem.
 `baker_bound_gap3_of_LLL` is the named
 implication (also a def Prop, not inhabited).
 
+## v24.4.0 summary shape
+
+`baker_v24x_reduction_shape` restates the displayed
+cert used by the v24.x final summary:
+`B0_raw = 104382751019310000000`,
+`B0_reduced = baker_B0 = 10^6`, and the nonempty
+qflll list. It does **not** inhabit
+`baker_bound_gap3`. Displayed cert rows are
+unchanged vs v17 / v24.3.2.
+
 Regenerate:
 
 ```
