@@ -67,6 +67,8 @@ On a gap-3 solution, `B < A` and `A ≈ (B+3)^{13/4}`. The old
   convergent (proved; expected, not a Baker cutoff)
 - `integer_gap_lt_ratio` — `1/(B+3)¹³ < B⁴/A⁴` on a solution
   (proved; integer-gap Matveev never contradicts the upper bound)
+- `abs_Lambda_tight_sandwich` — `B⁴/(B+3)¹³ ≤ |Λ| ≤ B⁴/A⁴`
+  (proved; same order, no Baker cutoff)
 - `bugeaud_LLL_reduction_proof` / `baker_bound_gap3_from_ratio`
   — implication “ratio upper bound ⇒ `B ≤ 10⁶`” (uninhabited
   `def Prop`; inhabiting it would inhabit Level 26

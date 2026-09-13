@@ -34,7 +34,15 @@ What it **does** prove, with axioms only
   `4/13` is a convergent of the log ratio (expected: `A⁴ ≈ (B+3)¹³`);
 * the integer gap `1/(B+3)¹³ < B⁴/A⁴` never contradicts the
   `log(1+x) ≤ x` upper bound, so `matveev_thm14_n2_explicit_of_nat`
-  does **not** force `B ≤ 10⁶`.
+  does **not** force `B ≤ 10⁶`;
+* the tighter gap `log(1+u) ≥ u/(1+u)` gives
+  `B⁴/(B+3)¹³ ≤ |Λ| ≤ B⁴/A⁴`, still the same order
+  (ratio of sides is `(B+3)¹³/A⁴ = 1 + B⁴/A⁴`), so still no cutoff.
+
+Baker–Davenport / Bugeaud LLL would need a lower bound strictly
+stronger than `B⁴/A⁴` for `B > 10⁶`. Mathlib 4.12 has no such
+theorem. The Matveev product `O((log B)³)` grows with `B` and makes
+`exp(−product)` *smaller*, not larger.
 
 `bugeaud_LLL_reduction_proof` and the implication-form
 `baker_bound_gap3_from_ratio` stay uninhabited `def Prop`. Inhabiting
@@ -406,6 +414,76 @@ theorem abs_Lambda_ge_inv_B3_pow
   rw [hmax] at hge
   exact hge
 
+/-- `log(1+u) ≥ u/(1+u)` for `u > 0`, from `1 − x⁻¹ ≤ log x`. -/
+theorem log_one_plus_ge_div {u : ℝ} (hu : 0 < u) :
+    u / (1 + u) ≤ log (1 + u) := by
+  have hpos : (0 : ℝ) < 1 + u := by linarith
+  have h := Real.one_sub_inv_le_log_of_pos hpos
+  have hrew : (1 : ℝ) - (1 + u)⁻¹ = u / (1 + u) := by
+    rw [inv_eq_one_div, one_sub_div hpos.ne']
+    ring
+  rwa [hrew] at h
+
+/-- Tight integer-side lower bound: `|Λ| ≥ B⁴/(B+3)¹³`.
+    Same order as the upper bound `B⁴/A⁴ = B⁴/((B+3)¹³ − B⁴)`. -/
+theorem abs_Lambda_ge_B4_div_B3_pow
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hB : 0 < B) :
+    (B : ℝ) ^ 4 / ((B + 3 : ℕ) : ℝ) ^ 13 ≤ |Lambda A B| := by
+  have hpow : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 := hsol
+  have habs := matveev_gap3_abs_lambda_eq_log_one_plus_ratio hpow
+  have hu := matveev_gap3_B_pow_div_A_pow_pos hpow
+  have hge := log_one_plus_ge_div hu
+  have hA4pos := matveev_gap3_A_pow_pos hpow
+  have hsum : (A : ℝ) ^ 4 + (B : ℝ) ^ 4 = ((B + 3 : ℕ) : ℝ) ^ 13 := by
+    have hA4 := matveev_gap3_A_pow_eq_B3_pow_sub_B_pow hpow
+    linarith
+  have hdiv :
+      ((B : ℝ) ^ 4 / (A : ℝ) ^ 4) / (1 + (B : ℝ) ^ 4 / (A : ℝ) ^ 4) =
+        (B : ℝ) ^ 4 / ((A : ℝ) ^ 4 + (B : ℝ) ^ 4) := by
+    have hne : (A : ℝ) ^ 4 ≠ 0 := hA4pos.ne'
+    field_simp [hne]
+  rw [Lambda_eq_matveev_log_form, habs]
+  calc
+    (B : ℝ) ^ 4 / ((B + 3 : ℕ) : ℝ) ^ 13
+        = (B : ℝ) ^ 4 / ((A : ℝ) ^ 4 + (B : ℝ) ^ 4) := by rw [hsum]
+    _ = ((B : ℝ) ^ 4 / (A : ℝ) ^ 4) /
+          (1 + (B : ℝ) ^ 4 / (A : ℝ) ^ 4) := hdiv.symm
+    _ ≤ log (1 + (B : ℝ) ^ 4 / (A : ℝ) ^ 4) := hge
+
+/-- The tight lower bound is strictly below the ratio upper bound. -/
+theorem B4_div_B3_pow_lt_ratio
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hB : 0 < B) :
+    (B : ℝ) ^ 4 / ((B + 3 : ℕ) : ℝ) ^ 13 <
+      (B : ℝ) ^ 4 / (A : ℝ) ^ 4 := by
+  have hpow : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 := hsol
+  have hA4pos := matveev_gap3_A_pow_pos hpow
+  have hB4pos : (0 : ℝ) < (B : ℝ) ^ 4 :=
+    pow_pos (Nat.cast_pos.mpr hB) 4
+  have hApow : (A : ℝ) ^ 4 < ((B + 3 : ℕ) : ℝ) ^ 13 := by
+    have hA4 := matveev_gap3_A_pow_eq_B3_pow_sub_B_pow hpow
+    linarith [hB4pos]
+  exact div_lt_div_of_pos_left hB4pos hA4pos hApow
+
+/-- Tight sandwich: `B⁴/(B+3)¹³ ≤ |Λ| ≤ B⁴/A⁴`, sides the same order.
+    No extra LLL factor, so no `B ≤ 10⁶`. -/
+theorem abs_Lambda_tight_sandwich
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hB : 0 < B) :
+    (B : ℝ) ^ 4 / ((B + 3 : ℕ) : ℝ) ^ 13 ≤ |Lambda A B| ∧
+      |Lambda A B| ≤ (B : ℝ) ^ 4 / (A : ℝ) ^ 4 ∧
+        (B : ℝ) ^ 4 / ((B + 3 : ℕ) : ℝ) ^ 13 <
+          (B : ℝ) ^ 4 / (A : ℝ) ^ 4 :=
+  ⟨abs_Lambda_ge_B4_div_B3_pow hsol hB,
+    by
+      have hpow : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 := hsol
+      rw [Lambda_eq_matveev_log_form]
+      exact matveev_gap3_abs_lambda_le_ratio hpow,
+    B4_div_B3_pow_lt_ratio hsol hB⟩
+
+/-- Baker–Davenport / Bugeaud LLL reduction from `|Λ| ≤ B⁴/A⁴`
+    down to `B ≤ B0_nat`. Mathlib 4.12 has no such theorem.
+    Same type as `baker_bound_gap3_from_ratio`; still uninhabited. -/
+def baker_davenport_reduction : Prop := baker_bound_gap3_from_ratio
+
 /-- Sandwich: integer gap ≤ `|Λ|` ≤ ratio, and the gap is strictly
     smaller than the ratio. No Baker cutoff. -/
 theorem integer_gap_le_abs_Lambda_le_ratio
@@ -468,9 +546,13 @@ theorem baker_bound_gap3_of_bugeaud_LLL_reduction_proof
 #check four_thirteenths_is_convergent
 #check integer_gap_lt_ratio
 #check integer_gap_le_abs_Lambda_le_ratio
+#check abs_Lambda_ge_B4_div_B3_pow
+#check abs_Lambda_tight_sandwich
+#check baker_davenport_reduction
 #check baker_bound_gap3_of_from_ratio
 #print axioms four_thirteenths_is_convergent
 #print axioms integer_gap_lt_ratio
+#print axioms abs_Lambda_tight_sandwich
 #print axioms baker_bound_gap3_of_from_ratio
 
 end BealMatveevBeal.MatveevLLL

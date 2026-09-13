@@ -99,6 +99,15 @@ if "theorem four_thirteenths_is_convergent" not in lll:
 if "theorem integer_gap_lt_ratio" not in lll:
     print("integer_gap_lt_ratio missing from MatveevLLL.lean", file=sys.stderr)
     sys.exit(1)
+if "theorem abs_Lambda_ge_B4_div_B3_pow" not in lll:
+    print("abs_Lambda_ge_B4_div_B3_pow missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem abs_Lambda_tight_sandwich" not in lll:
+    print("abs_Lambda_tight_sandwich missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "def baker_davenport_reduction" not in lll:
+    print("baker_davenport_reduction must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
 if "def B0_nat" not in lll or "1000000" not in lll:
     print("B0_nat = 1000000 missing from MatveevLLL.lean", file=sys.stderr)
     sys.exit(1)
