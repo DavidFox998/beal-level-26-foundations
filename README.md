@@ -1,6 +1,22 @@
 [![v17 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22729067.svg)](https://doi.org/10.5281/zenodo.22729067) [![v16 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22728705.svg)](https://doi.org/10.5281/zenodo.22728705) [![v15 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22728624.svg)](https://doi.org/10.5281/zenodo.22728624) [![v14 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22722140.svg)](https://doi.org/10.5281/zenodo.22722140) [![v13 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721843.svg)](https://doi.org/10.5281/zenodo.22721843) [![v12 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721089.svg)](https://doi.org/10.5281/zenodo.22721089) [![v11 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22721420.svg)](https://doi.org/10.5281/zenodo.22721420) [![math DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22712897.svg)](https://doi.org/10.5281/zenodo.22712897) [![paper DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22713047.svg)](https://doi.org/10.5281/zenodo.22713047) [![v8.20.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22654189.svg)](https://doi.org/10.5281/zenodo.22654189) [![v7.1.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22635221.svg)](https://doi.org/10.5281/zenodo.22635221) [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22272382.svg)](https://doi.org/10.5281/zenodo.22272382)
 
-# Beal Level 26 Foundations — v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower
+# Beal Level 26 Foundations — v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound
+
+**v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound — Numerical Tiny Bound $\exp(C) \ll 10^{-12}$ Toward $B_0$. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
+
+Kernel lemmas evaluating the displayed Matveev exponential $\exp(C_{\mathrm{exp\_bound}})$ as an extremely small number in $(0, 10^{-12})$:
+- Keeps all v24.0.0 through v24.3.1 lemmas
+- `matveev_height_B0_gt_onee20`: $\mathrm{height}_{B_0} = 104382751019310000000 > 10^{20}$
+- `matveev_log_ten_gt_23_div_10`: $\log 10 > 2.3$ via $2^{83} < 10^{25}$ and $\log 2 > 0.6931471803$
+- `matveev_log_height_B0_gt_46` / `matveev_exp_46_lt_height_B0`: $\log(\mathrm{height}_{B_0}) > 46$ and $\exp(46) < \mathrm{height}_{B_0}$
+- `matveev_C_exp_bound_le_neg_1e12`: $C_{\mathrm{exp\_bound}} \le -10^{12}$ from the product $\mathrm{height}_{B_0} \cdot \log(\mathrm{height}_{B_0}) > 46 \cdot 10^{20}$
+- `matveev_target_exp_lower_lt_exp_neg_1e12`: $\exp(C_{\mathrm{exp\_bound}}) < \exp(-10^{12})$
+- `matveev_target_exp_lower_lt_onee12`: $\exp(C_{\mathrm{exp\_bound}}) < 10^{-12}$
+- `matveev_exp_C_pos_lt_one`: $0 < \exp(C_{\mathrm{exp\_bound}}) < 10^{-12} < 1$
+- `matveev_inequality_real_target`, `baker_bound_gap3`, and `bugeaud_LLL_reduction_conditional` stay uninhabited def Props (Mathlib 4.12 has no Matveev 2000 Thm 1.4)
+- Standard Real axiom pack only: `[propext, Classical.choice, Quot.sound]`, 0 axioms for decide theorems, no sorry
+- Locked Lean 0 vs v24.3.1 / `d189ef9` except `BealMatveevThm14.lean` and `RibetMazur.lean`
+- Previous v24.3.1 DOI [`10.5281/zenodo.22731966`](https://doi.org/10.5281/zenodo.22731966) (concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293))
 
 **v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower — Conditional B Lower Bound from Matveev Ratio. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 
@@ -251,11 +267,12 @@ PARI LLL reduction of the huge Matveev integer `B0_raw` to the displayed cutoff 
 | v24.2.2 | [`10.5281/zenodo.22731508`](https://doi.org/10.5281/zenodo.22731508) | `ffd8343` | log bound $\log(1+x)\le x$: `matveev_log_one_plus_le_self`, `matveev_gap3_B_pow_div_A_pow_pos`, `matveev_gap3_abs_lambda_nonneg`, `matveev_gap3_abs_lambda_le_ratio`, `matveev_gap3_abs_lambda_lt_one_of_small_ratio` |
 | v24.2.3 | [`10.5281/zenodo.22731634`](https://doi.org/10.5281/zenodo.22731634) | `ed94732` | conditional lower implies ratio bound: `matveev_conditional_lower_implies_ratio_gt_exp`, `matveev_conditional_lower_implies_ratio_gt_exp_of_solution`, `matveev_gap3_ratio_lower_bound_conditional` |
 | v24.3.0 | [`10.5281/zenodo.22731759`](https://doi.org/10.5281/zenodo.22731759) | `6a0a0b1` | link conditional ratio to Baker $B_0$ and LLL reduction: `matveev_gap3_conditional_ratio_pos`, `matveev_gap3_ratio_pos_of_conditional_lower`, `bugeaud_LLL_reduction_conditional` |
-| v24.3.1 | pending webhook | — | conditional $B$ lower bound from Matveev ratio: `matveev_gap3_A_pow_eq_B3_pow_sub_B_pow`, `matveev_gap3_ratio_explicit`, `matveev_gap3_conditional_B_lower`, `matveev_gap3_conditional_B_lower_of_target`, `matveev_gap3_conditional_B_pos_lower` |
+| v24.3.1 | [`10.5281/zenodo.22731966`](https://doi.org/10.5281/zenodo.22731966) | `d189ef9` | conditional $B$ lower bound from Matveev ratio: `matveev_gap3_A_pow_eq_B3_pow_sub_B_pow`, `matveev_gap3_ratio_explicit`, `matveev_gap3_conditional_B_lower`, `matveev_gap3_conditional_B_lower_of_target`, `matveev_gap3_conditional_B_pos_lower` |
+| v24.3.2 | pending webhook | — | numerical tiny bound $\exp(C) \ll 10^{-12}$: `matveev_C_exp_bound_le_neg_1e12`, `matveev_target_exp_lower_lt_exp_neg_1e12`, `matveev_target_exp_lower_lt_onee12`, `matveev_exp_C_pos_lt_one` |
 
 Most current snapshot as of 2026-09-13, **not** a final Beal proof. Concept [`10.5281/zenodo.22379293`](https://doi.org/10.5281/zenodo.22379293). See [`docs/CUMULATIVE_ARCHIVE_v10_v17.md`](docs/CUMULATIVE_ARCHIVE_v10_v17.md).
 
-**Honesty lock (most current).** `git diff v24.3.0 -- BealFreyTateConductor.lean BealGap3BakerUpperBound.lean BealLevel26ModularElimination.lean BealBakerB0Certificate.lean BealBakerB0ReductionCertificate.lean BealMatveevConstants.lean BealMatveevInequality.lean BealMatveevInequalityReal.lean BealBakerBoundGap3.lean BealBugeaudLLLFormal.lean` = 0 (10 locked files). Only `BealMatveevThm14.lean` and `RibetMazur.lean` are extended. Tate 0 lines since v11. Baker-upper-bound 0 lines since v12. v14 displayed J0 / mwrank / formal unchanged. `baker_bound_gap3`, `matveev_inequality_real_target`, and `bugeaud_LLL_reduction_conditional` stay uninhabited def Props. Main pack prints `[propext, Classical.choice, Quot.sound]` only.
+**Honesty lock (most current).** `git diff v24.3.1 -- BealFreyTateConductor.lean BealGap3BakerUpperBound.lean BealLevel26ModularElimination.lean BealBakerB0Certificate.lean BealBakerB0ReductionCertificate.lean BealMatveevConstants.lean BealMatveevInequality.lean BealMatveevInequalityReal.lean BealBakerBoundGap3.lean BealBugeaudLLLFormal.lean` = 0 (10 locked files). Only `BealMatveevThm14.lean` and `RibetMazur.lean` are extended. Tate 0 lines since v11. Baker-upper-bound 0 lines since v12. v14 displayed J0 / mwrank / formal unchanged. `baker_bound_gap3`, `matveev_inequality_real_target`, and `bugeaud_LLL_reduction_conditional` stay uninhabited def Props. Main pack prints `[propext, Classical.choice, Quot.sound]` only.
 
 **v15.0.0-Baker-B0-PARI-Certificate — Track A lock. Track A: no new Beal-∀, unconditional Beal NOT claimed.**
 

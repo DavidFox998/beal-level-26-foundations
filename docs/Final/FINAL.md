@@ -1,3 +1,23 @@
+# FINAL v24.3.2 — Numerical Tiny Bound exp(C) << 10^{-12} Toward B0 (not final)
+
+Latest tag `v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound`.
+$\mathrm{height}_{B_0} > 10^{20}$ via `matveev_height_B0_gt_onee20`,
+$\log 10 > 2.3$ via `matveev_log_ten_gt_23_div_10` ($2^{83} < 10^{25}$),
+$\log(\mathrm{height}_{B_0}) > 46$ via `matveev_log_height_B0_gt_46`,
+$\exp(46) < \mathrm{height}_{B_0}$ via `matveev_exp_46_lt_height_B0`,
+$C_{\mathrm{exp\_bound}} \le -10^{12}$ via `matveev_C_exp_bound_le_neg_1e12`,
+$\exp(C) < \exp(-10^{12}) < 10^{-12}$ via `matveev_target_exp_lower_lt_exp_neg_1e12`
+and `matveev_target_exp_lower_lt_onee12`,
+$0 < \exp(C) < 10^{-12} < 1$ via `matveev_exp_C_pos_lt_one`.
+Target, `baker_bound_gap3`, and `bugeaud_LLL_reduction_conditional` stay uninhabited
+def Props. Evaluates the displayed exponential as tiny toward Baker $B_0$
+without claiming $|\Lambda| > \exp(C)$.
+Locked Lean 0 vs v24.3.1 `d189ef9` /
+`10.5281/zenodo.22731966` on all 10 locked files.
+Most current as of 2026-09-13, **not** a
+final Beal proof. Series concept
+`10.5281/zenodo.22379293`.
+
 # FINAL v24.3.1 — Conditional B Lower Bound from Matveev Ratio (not final)
 
 Latest tag `v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower`.

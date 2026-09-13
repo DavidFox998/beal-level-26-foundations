@@ -33,6 +33,24 @@ import BealLevel26Foundations.Beal.FullProof.BealFreyTateConductor
 import BealLevel26Foundations.Beal.FullProof.BealLevel26ModularElimination
 
 /-!
+# FullProof track (v24.3.2)
+
+Numerical tiny bound exp(C_exp_bound) << 10^{-12} toward Baker B0.
+On the displayed Matveev exponent:
+  * height_B0 > 10^20 via matveev_height_B0_gt_onee20
+  * log 10 > 2.3 via matveev_log_ten_gt_23_div_10 (2^83 < 10^25)
+  * log(height_B0) > 46 via matveev_log_height_B0_gt_46
+  * exp(46) < height_B0 via matveev_exp_46_lt_height_B0
+  * C_exp_bound ≤ -10^12 via matveev_C_exp_bound_le_neg_1e12
+  * exp(C) < exp(-10^12) < 10^{-12} via matveev_target_exp_lower_lt_exp_neg_1e12
+    and matveev_target_exp_lower_lt_onee12
+  * 0 < exp(C) < 10^{-12} < 1 via matveev_exp_C_pos_lt_one
+Does not inhabit |Lambda| > exp(C_exp_bound).
+`matveev_inequality_real_target`, `baker_bound_gap3`, and
+`bugeaud_LLL_reduction_conditional` stay uninhabited def Props.
+Locked Lean files stay exactly v24.3.1
+except BealMatveevThm14.lean and RibetMazur.lean.
+
 # FullProof track (v24.3.1)
 
 Conditional B lower bound from Matveev ratio on gap-3 solutions.

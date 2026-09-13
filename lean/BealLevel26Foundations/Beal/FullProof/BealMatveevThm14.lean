@@ -47,6 +47,7 @@ Does not use sorry.
 -/
 
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
+import Mathlib.Data.Complex.ExponentialBounds
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
 import BealLevel26Foundations.Beal.FullProof.BealMatveevInequality
 import BealLevel26Foundations.Beal.FullProof.BealMatveevInequalityReal
@@ -760,6 +761,169 @@ theorem matveev_gap3_conditional_B_pos_lower {A B : Nat}
     0 < B :=
   matveev_gap3_B_pos_of_solution hsol
 
+/-! ## v24.3.2 — Numerical tiny bound exp(C_exp_bound) << 10^{-12}
+
+    height_B0 = 104382751019310000000 > 10^20.
+    log(height_B0) > 46 because exp(46) < height_B0,
+    via 2^83 < 10^25 (so log 10 > 2.3) and
+    log(10^20) = 20 * log 10 > 46.
+    Therefore C_exp_bound = -(height_B0 * log height_B0)
+    < -(10^20 * 46) ≤ -10^12, and
+    0 < exp(C_exp_bound) < exp(-10^12) < 10^{-12} < 1.
+
+    Does not inhabit |Lambda| > exp(C_exp_bound).
+    Does not use sorry. -/
+
+/-- 10^20 as a Nat, used to compare height_B0. -/
+def matveev_ten_pow_20 : Nat := 100000000000000000000
+
+theorem matveev_ten_pow_20_eq :
+    matveev_ten_pow_20 = Nat.pow 10 20 := by
+  decide
+
+theorem matveev_two_pow_83_lt_ten_pow_25 :
+    Nat.pow 2 83 < Nat.pow 10 25 := by
+  decide
+
+/-- height_B0 = 104382751019310000000 > 10^20. -/
+theorem matveev_height_B0_gt_onee20 :
+    matveev_ten_pow_20 < matveev_height_B0 := by
+  decide
+
+/-- log 10 > 23/10 = 2.3 via 2^83 < 10^25 and
+    Real.log_two_gt_d9 (log 2 > 0.6931471803). -/
+theorem matveev_log_ten_gt_23_div_10 :
+    (23 / 10 : Real) < Real.log (10 : Real) := by
+  have hnat : Nat.pow 2 83 < Nat.pow 10 25 :=
+    matveev_two_pow_83_lt_ten_pow_25
+  have h2 : (0 : Real) < (2 : Real) := by norm_num
+  have h2pow : (0 : Real) < (2 : Real) ^ 83 := pow_pos h2 83
+  have hpow : (2 : Real) ^ 83 < (10 : Real) ^ 25 := by
+    exact_mod_cast hnat
+  have hlog : Real.log ((2 : Real) ^ 83) < Real.log ((10 : Real) ^ 25) :=
+    Real.log_lt_log h2pow hpow
+  have hmul : (83 : Real) * Real.log 2 < (25 : Real) * Real.log 10 := by
+    rw [Real.log_pow, Real.log_pow] at hlog
+    exact hlog
+  have h25 : (0 : Real) < (25 : Real) := by norm_num
+  have hquot : (83 / 25 : Real) * Real.log 2 < Real.log 10 := by
+    calc (83 / 25 : Real) * Real.log 2
+         _ = ((83 : Real) * Real.log 2) / 25 := by ring
+         _ < ((25 : Real) * Real.log 10) / 25 :=
+              (div_lt_div_right h25).mpr hmul
+         _ = Real.log 10 := by ring
+  have hlb : (23 / 10 : Real) < (83 / 25 : Real) * (0.6931471803 : Real) := by
+    norm_num
+  have hscale : (83 / 25 : Real) * (0.6931471803 : Real) <
+      (83 / 25 : Real) * Real.log 2 :=
+    mul_lt_mul_of_pos_left Real.log_two_gt_d9 (by norm_num)
+  exact hlb.trans (hscale.trans hquot)
+
+/-- log(height_B0) > 46 via 10^20 < height_B0 and log 10 > 2.3. -/
+theorem matveev_log_height_B0_gt_46 :
+    (46 : Real) < Real.log (matveev_height_B0 : Real) := by
+  have h10 : (0 : Real) < (10 : Real) := by norm_num
+  have hpowpos : (0 : Real) < (10 : Real) ^ 20 := pow_pos h10 20
+  have hnat : matveev_ten_pow_20 < matveev_height_B0 :=
+    matveev_height_B0_gt_onee20
+  have hpow : (10 : Real) ^ 20 < (matveev_height_B0 : Real) := by
+    have hten : matveev_ten_pow_20 = Nat.pow 10 20 := matveev_ten_pow_20_eq
+    rw [hten] at hnat
+    exact_mod_cast hnat
+  have hlog : Real.log ((10 : Real) ^ 20) <
+      Real.log (matveev_height_B0 : Real) :=
+    Real.log_lt_log hpowpos hpow
+  have h20 : (20 : Real) * Real.log 10 <
+      Real.log (matveev_height_B0 : Real) := by
+    rw [Real.log_pow] at hlog
+    exact hlog
+  have h46 : (46 : Real) < (20 : Real) * Real.log 10 := by
+    have hmul : (20 : Real) * (23 / 10 : Real) <
+        (20 : Real) * Real.log 10 :=
+      mul_lt_mul_of_pos_left matveev_log_ten_gt_23_div_10 (by norm_num)
+    have heq : (20 : Real) * (23 / 10 : Real) = 46 := by norm_num
+    rw [heq] at hmul
+    exact hmul
+  exact h46.trans h20
+
+/-- exp(46) < height_B0, the exponential form of log height_B0 > 46. -/
+theorem matveev_exp_46_lt_height_B0 :
+    Real.exp (46 : Real) < (matveev_height_B0 : Real) := by
+  have hpos : (0 : Real) < (matveev_height_B0 : Real) :=
+    Nat.cast_pos.mpr
+      (Nat.lt_trans (by decide : 0 < matveev_ten_pow_20)
+        matveev_height_B0_gt_onee20)
+  exact (Real.lt_log_iff_exp_lt hpos).1 matveev_log_height_B0_gt_46
+
+/-- C_exp_bound < -10^12 via height_B0 > 10^20 and log height_B0 > 46,
+    so height_B0 * log height_B0 > 46 * 10^20 > 10^12. -/
+theorem matveev_C_exp_bound_lt_neg_1e12_of_log46 :
+    matveev_C_exp_bound < -((ten_pow_12 : Nat) : Real) := by
+  have h20nn : (0 : Real) ≤ ((matveev_ten_pow_20 : Nat) : Real) :=
+    Nat.cast_nonneg _
+  have hheight : ((matveev_ten_pow_20 : Nat) : Real) <
+      (matveev_height_B0 : Real) :=
+    Nat.cast_lt.mpr matveev_height_B0_gt_onee20
+  have h46nn : (0 : Real) ≤ (46 : Real) := by norm_num
+  have hprod : ((matveev_ten_pow_20 : Nat) : Real) * (46 : Real) <
+      (matveev_height_B0 : Real) * Real.log (matveev_height_B0 : Real) :=
+    mul_lt_mul'' hheight matveev_log_height_B0_gt_46 h20nn h46nn
+  have h12 : ((ten_pow_12 : Nat) : Real) <
+      ((matveev_ten_pow_20 : Nat) : Real) * (46 : Real) := by
+    unfold ten_pow_12 matveev_ten_pow_20
+    norm_num
+  have hgt : ((ten_pow_12 : Nat) : Real) <
+      (matveev_height_B0 : Real) * Real.log (matveev_height_B0 : Real) :=
+    h12.trans hprod
+  rw [matveev_C_exp_bound_eq_neg_height_mul_log]
+  exact neg_lt_neg hgt
+
+/-- C_exp_bound ≤ -10^12 from the explicit 46-log product. -/
+theorem matveev_C_exp_bound_le_neg_1e12 :
+    matveev_C_exp_bound ≤ -((ten_pow_12 : Nat) : Real) :=
+  le_of_lt matveev_C_exp_bound_lt_neg_1e12_of_log46
+
+/-- exp(C_exp_bound) < exp(-10^12) by monotonicity of Real.exp. -/
+theorem matveev_target_exp_lower_lt_exp_neg_1e12 :
+    matveev_target_exp_lower <
+      Real.exp (-((ten_pow_12 : Nat) : Real)) := by
+  unfold matveev_target_exp_lower
+  exact Real.exp_lt_exp.mpr matveev_C_exp_bound_lt_neg_1e12_of_log46
+
+/-- exp(-10^12) < 10^{-12} because x < exp(x) for x = 10^12. -/
+theorem matveev_exp_neg_1e12_lt_inv_1e12 :
+    Real.exp (-((ten_pow_12 : Nat) : Real)) <
+      (1 : Real) / ((ten_pow_12 : Nat) : Real) := by
+  have hx : (0 : Real) < ((ten_pow_12 : Nat) : Real) := by
+    unfold ten_pow_12
+    norm_num
+  have hle := Real.add_one_le_exp ((ten_pow_12 : Nat) : Real)
+  have hlt : ((ten_pow_12 : Nat) : Real) <
+      Real.exp ((ten_pow_12 : Nat) : Real) := by linarith
+  have hinv : (Real.exp ((ten_pow_12 : Nat) : Real))⁻¹ <
+      ((ten_pow_12 : Nat) : Real)⁻¹ :=
+    (inv_lt_inv (Real.exp_pos _) hx).mpr hlt
+  rw [Real.exp_neg, one_div]
+  exact hinv
+
+/-- exp(C_exp_bound) < 10^{-12}. -/
+theorem matveev_target_exp_lower_lt_onee12 :
+    matveev_target_exp_lower <
+      (1 : Real) / ((ten_pow_12 : Nat) : Real) :=
+  matveev_target_exp_lower_lt_exp_neg_1e12.trans
+    matveev_exp_neg_1e12_lt_inv_1e12
+
+/-- Restatement 0 < exp(C_exp_bound) < 10^{-12} < 1
+    with the explicit tiny upper bound for the B0 paper. -/
+theorem matveev_exp_C_pos_lt_one :
+    (0 : Real) < matveev_target_exp_lower ∧
+      matveev_target_exp_lower <
+        (1 : Real) / ((ten_pow_12 : Nat) : Real) ∧
+      matveev_target_exp_lower < 1 :=
+  ⟨matveev_target_exp_lower_pos,
+    matveev_target_exp_lower_lt_onee12,
+    matveev_target_exp_lower_lt_one⟩
+
 #check matveev_C1_floor_eq
 #check matveev_thirty_pow_eq_30_pow_6
 #check matveev_thirty_pow_eq_729000000
@@ -817,6 +981,19 @@ theorem matveev_gap3_conditional_B_pos_lower {A B : Nat}
 #check matveev_gap3_conditional_B_lower
 #check matveev_gap3_conditional_B_lower_of_target
 #check matveev_gap3_conditional_B_pos_lower
+#check matveev_ten_pow_20
+#check matveev_ten_pow_20_eq
+#check matveev_two_pow_83_lt_ten_pow_25
+#check matveev_height_B0_gt_onee20
+#check matveev_log_ten_gt_23_div_10
+#check matveev_log_height_B0_gt_46
+#check matveev_exp_46_lt_height_B0
+#check matveev_C_exp_bound_lt_neg_1e12_of_log46
+#check matveev_C_exp_bound_le_neg_1e12
+#check matveev_target_exp_lower_lt_exp_neg_1e12
+#check matveev_exp_neg_1e12_lt_inv_1e12
+#check matveev_target_exp_lower_lt_onee12
+#check matveev_exp_C_pos_lt_one
 #check matveev_inequality_real_target
 #check baker_bound_gap3_remaining_thm14
 #print axioms matveev_C1_floor_eq
@@ -882,6 +1059,18 @@ theorem matveev_gap3_conditional_B_pos_lower {A B : Nat}
 #print axioms matveev_gap3_conditional_B_lower
 #print axioms matveev_gap3_conditional_B_lower_of_target
 #print axioms matveev_gap3_conditional_B_pos_lower
+#print axioms matveev_ten_pow_20_eq
+#print axioms matveev_two_pow_83_lt_ten_pow_25
+#print axioms matveev_height_B0_gt_onee20
+#print axioms matveev_log_ten_gt_23_div_10
+#print axioms matveev_log_height_B0_gt_46
+#print axioms matveev_exp_46_lt_height_B0
+#print axioms matveev_C_exp_bound_lt_neg_1e12_of_log46
+#print axioms matveev_C_exp_bound_le_neg_1e12
+#print axioms matveev_target_exp_lower_lt_exp_neg_1e12
+#print axioms matveev_exp_neg_1e12_lt_inv_1e12
+#print axioms matveev_target_exp_lower_lt_onee12
+#print axioms matveev_exp_C_pos_lt_one
 #print axioms matveev_thm14_C_exp_bound_lt_neg_onee12
 #print axioms matveev_thm14_constants_hold
 

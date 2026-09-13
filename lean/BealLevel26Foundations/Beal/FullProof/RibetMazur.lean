@@ -6194,6 +6194,65 @@ theorem matveev_gap3_conditional_B_pos_lower {A B : Nat}
     0 < B :=
   BealLevel26Foundations.BealMatveevThm14.matveev_gap3_conditional_B_pos_lower hsol htarget
 
+def matveev_ten_pow_20 : Nat :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_ten_pow_20
+
+theorem matveev_ten_pow_20_eq :
+    matveev_ten_pow_20 = Nat.pow 10 20 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_ten_pow_20_eq
+
+theorem matveev_two_pow_83_lt_ten_pow_25 :
+    Nat.pow 2 83 < Nat.pow 10 25 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_two_pow_83_lt_ten_pow_25
+
+theorem matveev_height_B0_gt_onee20 :
+    matveev_ten_pow_20 < matveev_height_B0 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_height_B0_gt_onee20
+
+theorem matveev_log_ten_gt_23_div_10 :
+    (23 / 10 : Real) < Real.log (10 : Real) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_log_ten_gt_23_div_10
+
+theorem matveev_log_height_B0_gt_46 :
+    (46 : Real) < Real.log (matveev_height_B0 : Real) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_log_height_B0_gt_46
+
+theorem matveev_exp_46_lt_height_B0 :
+    Real.exp (46 : Real) < (matveev_height_B0 : Real) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_exp_46_lt_height_B0
+
+theorem matveev_C_exp_bound_lt_neg_1e12_of_log46 :
+    matveev_C_exp_bound <
+      -((BealLevel26Foundations.BealBakerBoundGap3.ten_pow_12 : Nat) : Real) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_C_exp_bound_lt_neg_1e12_of_log46
+
+theorem matveev_C_exp_bound_le_neg_1e12 :
+    matveev_C_exp_bound ≤
+      -((BealLevel26Foundations.BealBakerBoundGap3.ten_pow_12 : Nat) : Real) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_C_exp_bound_le_neg_1e12
+
+theorem matveev_target_exp_lower_lt_exp_neg_1e12 :
+    matveev_target_exp_lower <
+      Real.exp (-((BealLevel26Foundations.BealBakerBoundGap3.ten_pow_12 : Nat) : Real)) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_target_exp_lower_lt_exp_neg_1e12
+
+theorem matveev_exp_neg_1e12_lt_inv_1e12 :
+    Real.exp (-((BealLevel26Foundations.BealBakerBoundGap3.ten_pow_12 : Nat) : Real)) <
+      (1 : Real) / ((BealLevel26Foundations.BealBakerBoundGap3.ten_pow_12 : Nat) : Real) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_exp_neg_1e12_lt_inv_1e12
+
+theorem matveev_target_exp_lower_lt_onee12 :
+    matveev_target_exp_lower <
+      (1 : Real) / ((BealLevel26Foundations.BealBakerBoundGap3.ten_pow_12 : Nat) : Real) :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_target_exp_lower_lt_onee12
+
+theorem matveev_exp_C_pos_lt_one :
+    (0 : Real) < matveev_target_exp_lower ∧
+      matveev_target_exp_lower <
+        (1 : Real) / ((BealLevel26Foundations.BealBakerBoundGap3.ten_pow_12 : Nat) : Real) ∧
+      matveev_target_exp_lower < 1 :=
+  BealLevel26Foundations.BealMatveevThm14.matveev_exp_C_pos_lt_one
+
 /-! ## v14.0.0 — J0 / mwrank / formal displayed certs -/
 
 def J0DecompositionCert_26 :=
@@ -7327,6 +7386,19 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #check matveev_gap3_conditional_B_lower
 #check matveev_gap3_conditional_B_lower_of_target
 #check matveev_gap3_conditional_B_pos_lower
+#check matveev_ten_pow_20
+#check matveev_ten_pow_20_eq
+#check matveev_two_pow_83_lt_ten_pow_25
+#check matveev_height_B0_gt_onee20
+#check matveev_log_ten_gt_23_div_10
+#check matveev_log_height_B0_gt_46
+#check matveev_exp_46_lt_height_B0
+#check matveev_C_exp_bound_lt_neg_1e12_of_log46
+#check matveev_C_exp_bound_le_neg_1e12
+#check matveev_target_exp_lower_lt_exp_neg_1e12
+#check matveev_exp_neg_1e12_lt_inv_1e12
+#check matveev_target_exp_lower_lt_onee12
+#check matveev_exp_C_pos_lt_one
 #check J0DecompositionCert_26
 #check J0DecompositionCert_26_displayed
 #check J0DecompositionSoundness_26
@@ -7950,6 +8022,18 @@ def TWAuxEllFixed_inhabited_for_every_ell_le_1000 : Prop :=
 #print axioms matveev_gap3_conditional_B_lower
 #print axioms matveev_gap3_conditional_B_lower_of_target
 #print axioms matveev_gap3_conditional_B_pos_lower
+#print axioms matveev_ten_pow_20_eq
+#print axioms matveev_two_pow_83_lt_ten_pow_25
+#print axioms matveev_height_B0_gt_onee20
+#print axioms matveev_log_ten_gt_23_div_10
+#print axioms matveev_log_height_B0_gt_46
+#print axioms matveev_exp_46_lt_height_B0
+#print axioms matveev_C_exp_bound_lt_neg_1e12_of_log46
+#print axioms matveev_C_exp_bound_le_neg_1e12
+#print axioms matveev_target_exp_lower_lt_exp_neg_1e12
+#print axioms matveev_exp_neg_1e12_lt_inv_1e12
+#print axioms matveev_target_exp_lower_lt_onee12
+#print axioms matveev_exp_C_pos_lt_one
 #print axioms J0DecompositionSoundness_26_holds
 #print axioms MwrankCertificateSoundness_26_holds
 #print axioms FormalImmersionSoundness_26_holds

@@ -1,10 +1,41 @@
 # BealMatveevThm14 — v24.0.0 Matveev 2000 Thm 1.4 formalization start
 
-**Tag.** `v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower`.
+**Tag.** `v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound`.
 **Source.** `lean/BealLevel26Foundations/Beal/FullProof/BealMatveevThm14.lean`.
 **Namespace.** `BealLevel26Foundations.BealMatveevThm14`.
-**Parent.** v24.3.0 `6a0a0b1` / `v24.3.0-Beal-44-13-Level-26-Bugeaud-LLL-Link` / DOI `10.5281/zenodo.22731759`.
+**Parent.** v24.3.1 `d189ef9` / `v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower` / DOI `10.5281/zenodo.22731966`.
 **Concept.** `10.5281/zenodo.22379293`.
+
+## v24.3.2 — Numerical Tiny Bound exp(C) << 10^{-12}
+
+```lean
+theorem matveev_height_B0_gt_onee20 :
+    matveev_ten_pow_20 < matveev_height_B0
+theorem matveev_log_ten_gt_23_div_10 :
+    (23 / 10 : Real) < Real.log 10
+theorem matveev_log_height_B0_gt_46 :
+    (46 : Real) < Real.log (matveev_height_B0 : Real)
+theorem matveev_exp_46_lt_height_B0 :
+    Real.exp 46 < (matveev_height_B0 : Real)
+theorem matveev_C_exp_bound_le_neg_1e12 :
+    matveev_C_exp_bound ≤ -((ten_pow_12 : Nat) : Real)
+theorem matveev_target_exp_lower_lt_exp_neg_1e12 :
+    matveev_target_exp_lower < Real.exp (-((ten_pow_12 : Nat) : Real))
+theorem matveev_target_exp_lower_lt_onee12 :
+    matveev_target_exp_lower < (1 : Real) / ((ten_pow_12 : Nat) : Real)
+theorem matveev_exp_C_pos_lt_one :
+    0 < matveev_target_exp_lower ∧
+      matveev_target_exp_lower < 1 / ↑ten_pow_12 ∧
+      matveev_target_exp_lower < 1
+```
+
+On the displayed Matveev exponent $C_{\mathrm{exp\_bound}} = -(\mathrm{height}_{B_0} \cdot \log(\mathrm{height}_{B_0}))$:
+- `height_B0 = 104382751019310000000 > 10^{20}` by decide.
+- $\log 10 > 2.3$ via $2^{83} < 10^{25}$ and $\log 2 > 0.6931471803$.
+- Therefore $\log(\mathrm{height}_{B_0}) > 20 \cdot \log 10 > 46$ and $\exp(46) < \mathrm{height}_{B_0}$.
+- Product $\mathrm{height}_{B_0} \cdot \log(\mathrm{height}_{B_0}) > 46 \cdot 10^{20} > 10^{12}$, so $C \le -10^{12}$.
+- Monotonicity: $\exp(C) < \exp(-10^{12}) < 10^{-12}$, hence $0 < \exp(C) < 10^{-12} < 1$.
+- Target `matveev_inequality_real_target`, `baker_bound_gap3`, and `bugeaud_LLL_reduction_conditional` stay uninhabited def Props.
 
 ## v24.3.1 — Conditional B Lower Bound from Matveev Ratio
 

@@ -1,6 +1,21 @@
 # About — Beal Level 26 Foundations
 
-Latest tag / HEAD: `v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower`
+Latest tag / HEAD: `v24.3.2-Beal-44-13-Level-26-Exp-Numerical-Bound`
+Most current as of 2026-09-13, **not** final.
+`BealMatveevThm14.lean` evaluates the displayed Matveev exponential as
+an extremely small number $0 < \exp(C_{\mathrm{exp\_bound}}) < 10^{-12}$:
+`matveev_height_B0_gt_onee20` ($\mathrm{height}_{B_0} > 10^{20}$),
+`matveev_log_ten_gt_23_div_10` ($\log 10 > 2.3$ via $2^{83} < 10^{25}$),
+`matveev_log_height_B0_gt_46` / `matveev_exp_46_lt_height_B0` ($\log(\mathrm{height}_{B_0}) > 46$),
+`matveev_C_exp_bound_le_neg_1e12` ($C_{\mathrm{exp\_bound}} \le -10^{12}$),
+`matveev_target_exp_lower_lt_exp_neg_1e12` ($\exp(C) < \exp(-10^{12})$),
+`matveev_target_exp_lower_lt_onee12` ($\exp(C) < 10^{-12}$),
+`matveev_exp_C_pos_lt_one` ($0 < \exp(C) < 10^{-12} < 1$).
+Target, `baker_bound_gap3`, and `bugeaud_LLL_reduction_conditional` stay uninhabited def Props.
+Locked Lean 0 vs v24.3.1 `d189ef9` except `BealMatveevThm14.lean` and `RibetMazur.lean`. Previous v24.3.1 DOI `10.5281/zenodo.22731966`
+(concept `10.5281/zenodo.22379293`).
+
+Latest prior tag: `v24.3.1-Beal-44-13-Level-26-Conditional-B-Lower`
 Most current as of 2026-09-13, **not** final.
 `BealMatveevThm14.lean` derives an explicit conditional lower bound on $B$
 from the conditional Matveev ratio bound on a gap-3 solution $A^4 + B^4 = (B+3)^{13}$:
