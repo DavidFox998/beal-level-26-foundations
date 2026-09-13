@@ -874,5 +874,7 @@ theorem gap3_forall_of_baker
 #print axioms MatveevInterpolation.matveev_interpolation_track1
 #print axioms MatveevInterpolation.matveev_thm14_n2_real_explicit_is_false
 #print axioms MatveevInterpolation.interpolationDeterminant_L0_eq_one
+#print axioms MatveevInterpolation.schwarz_lemma_of_order
+#print axioms MatveevInterpolation.matveev_interpolation_analytic_small_bound
 
 end BealMatveevBeal

@@ -36,10 +36,17 @@ Proved, axioms `[propext, Classical.choice, Quot.sound]` only:
 * Hadamard size `|Δ| ≤ n! X^n` and `|log α| ≤ α−1`;
 * interpolation contradiction schema (small upper + Liouville);
 * Bugeaud κ=1 floor `C1_floor` by `rfl`;
-* Track 1 integer bound (`matveev_thm14_n2_explicit_of_nat`).
+* Track 1 integer bound (`matveev_thm14_n2_explicit_of_nat`);
+* Matveev §3 `Φ` (entire exponential polynomial);
+* higher-order Schwarz `|f|_r ≤ (r/R)^T |f|_R`;
+* conditional analytic smallness
+  `matveev_interpolation_analytic_small_bound`.
 
-Wüstholz for exponential polynomials and the analytic `|Δ| ≤ exp(−c L K)`
-bound stay `def Prop`. Not v25.
+Wüstholz for exponential polynomials stays `def Prop`. The analytic
+smallness `|Δ| ≤ exp(−c L K)` is proved **conditionally**
+(`matveev_interpolation_analytic_small_bound`) from a vanishing-order
+hypothesis and Schwarz; it is not an unconditional bound on a generic
+interpolation matrix (`α1=α2=1` gives `Δ=1`). Not v25.
 -/
 
 noncomputable section
@@ -805,6 +812,368 @@ theorem algebraic_bound_of_C1_le_C0
       mul_assoc, mul_left_comm, mul_comm] using h
   exact lt_of_le_of_lt hexp' (gt_iff_lt.mp h')
 
+/-! ## Analytic Φ (Matveev 2000 §3) and higher-order Schwarz
+
+Mathlib 4.12 has the classical Schwarz lemma (`Complex.abs_le_abs_of_mapsTo_ball_self`)
+and the maximum-modulus principle, but not the order-`T` form
+`|f|_r ≤ (r/R)^T |f|_R`. That form is proved here by iterating `dslope`.
+Jensen's formula is not in Mathlib 4.12; Schwarz + max-modulus is the
+single-zero special case used by Matveev at `z = 0`.
+
+An unconditional `|Δ| ≤ exp(−c L K)` is false (`Δ = 1` when `L = 0`).
+The named theorem `matveev_interpolation_analytic_small_bound` is the
+conditional decay: a zero of order `T` at `0` plus a max-modulus bound
+gives `|f| ≤ exp(−c L K)` on `|z| ≤ R/2` once `T log 2` absorbs `c L K`
+and `log M`.
+-/
+
+open Metric
+
+/-- One exponential-polynomial term `c · z^ℓ · α1^{k1 z} · α2^{k2 z}`. -/
+structure PhiTerm where
+  coeff : ℂ
+  l : ℕ
+  k1 : ℕ
+  k2 : ℕ
+
+/-- Entire branch `α^z := exp(z log α)` of the real-positive exponential. -/
+def alphaPowZ (α : ℝ) (z : ℂ) : ℂ :=
+  Complex.exp ((Real.log α : ℂ) * z)
+
+theorem alphaPowZ_differentiable (α : ℝ) :
+    Differentiable ℂ (alphaPowZ α) :=
+  (differentiable_id.const_mul (Real.log α : ℂ)).cexp
+
+theorem alphaPowZ_mul (α : ℝ) (k : ℕ) (z : ℂ) :
+    alphaPowZ α ((k : ℂ) * z) = Complex.exp ((k : ℂ) * (Real.log α : ℂ) * z) := by
+  unfold alphaPowZ
+  ring_nf
+
+def phiTermEval (α1 α2 : ℝ) (t : PhiTerm) (z : ℂ) : ℂ :=
+  t.coeff * z ^ t.l * alphaPowZ α1 ((t.k1 : ℂ) * z) * alphaPowZ α2 ((t.k2 : ℂ) * z)
+
+theorem phiTermEval_differentiable (α1 α2 : ℝ) (t : PhiTerm) :
+    Differentiable ℂ (phiTermEval α1 α2 t) := by
+  unfold phiTermEval
+  have hz : Differentiable ℂ fun z : ℂ => z ^ t.l := differentiable_id.pow _
+  have h1 : Differentiable ℂ fun z : ℂ => alphaPowZ α1 ((t.k1 : ℂ) * z) :=
+    (alphaPowZ_differentiable α1).comp (differentiable_id.const_mul _)
+  have h2 : Differentiable ℂ fun z : ℂ => alphaPowZ α2 ((t.k2 : ℂ) * z) :=
+    (alphaPowZ_differentiable α2).comp (differentiable_id.const_mul _)
+  exact ((differentiable_const _).mul hz).mul h1 |>.mul h2
+
+/-- Matveev §3 auxiliary function
+    `Φ(z) = Σ c_{ℓ,k1,k2} z^ℓ α1^{k1 z} α2^{k2 z}`. -/
+def matveevPhi (α1 α2 : ℝ) (terms : List PhiTerm) (z : ℂ) : ℂ :=
+  (terms.map (fun t => phiTermEval α1 α2 t z)).sum
+
+theorem matveevPhi_differentiable (α1 α2 : ℝ) (terms : List PhiTerm) :
+    Differentiable ℂ (matveevPhi α1 α2 terms) := by
+  induction terms with
+  | nil =>
+    have h : matveevPhi α1 α2 [] = fun _ => (0 : ℂ) := by
+      funext
+      simp [matveevPhi]
+    rw [h]
+    exact differentiable_const 0
+  | cons t ts ih =>
+    unfold matveevPhi
+    simp only [List.map_cons, List.sum_cons]
+    exact (phiTermEval_differentiable α1 α2 t).add (by
+      simpa [matveevPhi] using ih)
+
+theorem matveevPhi_diffContOnCl (α1 α2 : ℝ) (terms : List PhiTerm) {s : Set ℂ} :
+    DiffContOnCl ℂ (matveevPhi α1 α2 terms) s :=
+  (matveevPhi_differentiable α1 α2 terms).diffContOnCl
+
+/-- Iterate `dslope · 0`. If `f` vanishes to order `T` at `0`, then
+    `f(z) = z^T · iteratedDslope f T z`. -/
+def iteratedDslope (f : ℂ → ℂ) : ℕ → ℂ → ℂ
+  | 0 => f
+  | n + 1 => dslope (iteratedDslope f n) 0
+
+theorem iteratedDslope_zero (f : ℂ → ℂ) : iteratedDslope f 0 = f := rfl
+
+theorem iteratedDslope_succ (f : ℂ → ℂ) (n : ℕ) :
+    iteratedDslope f (n + 1) = dslope (iteratedDslope f n) 0 := rfl
+
+theorem iteratedDslope_succ_eq (f : ℂ → ℂ) (n : ℕ) :
+    iteratedDslope f (n + 1) = iteratedDslope (dslope f 0) n := by
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+    change dslope (iteratedDslope f (n + 1)) 0 =
+      dslope (iteratedDslope (dslope f 0) n) 0
+    rw [ih]
+
+theorem eval_eq_mul_dslope (f : ℂ → ℂ) (hf0 : f 0 = 0) (z : ℂ) :
+    f z = z * dslope f 0 z := by
+  have h := sub_smul_dslope f 0 z
+  simp only [sub_zero, smul_eq_mul] at h
+  rw [hf0, sub_zero] at h
+  exact h.symm
+
+theorem eval_eq_pow_mul_iteratedDslope :
+    ∀ (f : ℂ → ℂ) (T : ℕ), (∀ k < T, iteratedDslope f k 0 = 0) →
+      ∀ z, f z = z ^ T * iteratedDslope f T z := by
+  intro f T
+  induction T generalizing f with
+  | zero =>
+    intro _ z
+    simp [iteratedDslope]
+  | succ T ih =>
+    intro hvan z
+    have hf0 : f 0 = 0 := by
+      simpa [iteratedDslope] using hvan 0 (Nat.zero_lt_succ T)
+    have hvan' : ∀ k < T, iteratedDslope (dslope f 0) k 0 = 0 := by
+      intro k hk
+      have := hvan (k + 1) (Nat.succ_lt_succ hk)
+      rwa [iteratedDslope_succ_eq f k] at this
+    rw [eval_eq_mul_dslope f hf0 z, ih (dslope f 0) hvan' z, ← iteratedDslope_succ_eq, pow_succ]
+    ring
+
+theorem iteratedDslope_differentiableOn {f : ℂ → ℂ} {R : ℝ} (hR : 0 < R)
+    (hf : DifferentiableOn ℂ f (ball 0 R)) :
+    ∀ n, DifferentiableOn ℂ (iteratedDslope f n) (ball 0 R)
+  | 0 => hf
+  | n + 1 =>
+    (Complex.differentiableOn_dslope (ball_mem_nhds (0 : ℂ) hR)).2
+      (iteratedDslope_differentiableOn hR hf n)
+
+theorem continuousOn_dslope_closedBall {f : ℂ → ℂ} {R : ℝ} (hR : 0 < R)
+    (hf : ContinuousOn f (closedBall 0 R))
+    (hd : DifferentiableOn ℂ f (ball 0 R)) :
+    ContinuousOn (dslope f 0) (closedBall 0 R) := by
+  intro z hz
+  by_cases h : z = 0
+  · subst h
+    exact (continuousAt_dslope_same.2
+      (hd.differentiableAt (ball_mem_nhds (0 : ℂ) hR))).continuousWithinAt
+  · exact (continuousWithinAt_dslope_of_ne h).2 (hf z hz)
+
+theorem dslope_diffContOnCl {f : ℂ → ℂ} {R : ℝ} (hR : 0 < R)
+    (hf : DiffContOnCl ℂ f (ball 0 R)) :
+    DiffContOnCl ℂ (dslope f 0) (ball 0 R) := by
+  refine ⟨(Complex.differentiableOn_dslope (ball_mem_nhds (0 : ℂ) hR)).2 hf.differentiableOn, ?_⟩
+  rw [closure_ball (0 : ℂ) hR.ne']
+  exact continuousOn_dslope_closedBall hR
+    (by
+      have : closure (ball (0 : ℂ) R) = closedBall 0 R := closure_ball _ hR.ne'
+      simpa [this] using hf.continuousOn)
+    hf.differentiableOn
+
+/-- Order-zero Schwarz: max modulus on the closed disc. -/
+theorem schwarz_order_zero {f : ℂ → ℂ} {R M : ℝ} (hR : 0 < R)
+    (hf : DiffContOnCl ℂ f (ball 0 R))
+    (hM : ∀ z, z ∈ sphere 0 R → ‖f z‖ ≤ M)
+    {z : ℂ} (hz : z ∈ closedBall 0 R) :
+    ‖f z‖ ≤ M := by
+  have hfront : frontier (ball (0 : ℂ) R) = sphere 0 R :=
+    frontier_ball (0 : ℂ) hR.ne'
+  have hcl : closure (ball (0 : ℂ) R) = closedBall 0 R :=
+    closure_ball (0 : ℂ) hR.ne'
+  refine Complex.norm_le_of_forall_mem_frontier_norm_le
+    (isBounded_ball (x := (0 : ℂ)) (r := R)) hf ?_ (hcl.symm ▸ hz)
+  intro w hw
+  rw [hfront] at hw
+  exact hM w hw
+
+/-- Higher-order Schwarz lemma: a zero of order `T` at `0` gives
+    `|f(z)| ≤ (r/R)^T M` for `|z| ≤ r ≤ R`. -/
+theorem schwarz_lemma_of_order {f : ℂ → ℂ} {R r M : ℝ} {T : ℕ}
+    (hR : 0 < R) (hr : 0 ≤ r) (hrR : r ≤ R) (hM : 0 ≤ M)
+    (hf : DiffContOnCl ℂ f (ball 0 R))
+    (hvan : ∀ k < T, iteratedDslope f k 0 = 0)
+    (hbound : ∀ w, w ∈ sphere 0 R → ‖f w‖ ≤ M)
+    {z : ℂ} (hz : ‖z‖ ≤ r) :
+    ‖f z‖ ≤ (r / R) ^ T * M := by
+  induction T generalizing f M with
+  | zero =>
+    have hz' : z ∈ closedBall 0 R := by
+      rw [mem_closedBall_zero_iff]
+      exact le_trans hz hrR
+    have := schwarz_order_zero hR hf hbound hz'
+    simp only [pow_zero, one_mul]
+    exact this
+  | succ T ih =>
+    have hf0 : f 0 = 0 := by
+      simpa [iteratedDslope] using hvan 0 (Nat.zero_lt_succ T)
+    have hg : DiffContOnCl ℂ (dslope f 0) (ball 0 R) :=
+      dslope_diffContOnCl hR hf
+    have hvan' : ∀ k < T, iteratedDslope (dslope f 0) k 0 = 0 := by
+      intro k hk
+      have := hvan (k + 1) (Nat.succ_lt_succ hk)
+      rwa [iteratedDslope_succ_eq f k] at this
+    have hMg : 0 ≤ M / R := div_nonneg hM hR.le
+    have hbound' : ∀ w, w ∈ sphere 0 R → ‖dslope f 0 w‖ ≤ M / R := by
+      intro w hw
+      have _hw0 : w ≠ 0 := by
+        intro h
+        rw [h, mem_sphere_zero_iff_norm, norm_zero] at hw
+        exact hR.ne' hw.symm
+      have hfeq : f w = w * dslope f 0 w := eval_eq_mul_dslope f hf0 w
+      have hwR : ‖w‖ = R := mem_sphere_zero_iff_norm.1 hw
+      have hfM : ‖f w‖ ≤ M := hbound w hw
+      have hmul : ‖w‖ * ‖dslope f 0 w‖ ≤ M := by
+        rwa [← norm_mul, ← hfeq]
+      have hmulR : R * ‖dslope f 0 w‖ ≤ M := by
+        rwa [hwR] at hmul
+      exact (le_div_iff₀ hR).2 (by rwa [mul_comm])
+    have hgbound := ih (f := dslope f 0) (M := M / R) hMg hg hvan' hbound'
+    have hfeq : f z = z * dslope f 0 z := eval_eq_mul_dslope f hf0 z
+    have hzn : ‖z‖ * ‖dslope f 0 z‖ ≤ r * ((r / R) ^ T * (M / R)) :=
+      mul_le_mul hz hgbound (norm_nonneg _) hr
+    have hrew : r * ((r / R) ^ T * (M / R)) = (r / R) ^ (T + 1) * M := by
+      have hRne : (R : ℝ) ≠ 0 := hR.ne'
+      field_simp [pow_succ, hRne]
+      ring
+    calc
+      ‖f z‖ = ‖z‖ * ‖dslope f 0 z‖ := by rw [hfeq, norm_mul]
+      _ ≤ (r / R) ^ (T + 1) * M := by
+        exact le_trans hzn (le_of_eq hrew)
+
+theorem half_pow_eq_exp_neg_log_two (T : ℕ) :
+    ((1 / 2 : ℝ) ^ T) = exp (-(T : ℝ) * log 2) := by
+  have hpos : (0 : ℝ) < 1 / 2 := by norm_num
+  rw [← Real.exp_log (pow_pos hpos T), Real.log_pow (1 / 2) T]
+  have hlog : log (1 / 2 : ℝ) = -log 2 := by
+    rw [log_div (by norm_num : (1 : ℝ) ≠ 0) (by norm_num : (2 : ℝ) ≠ 0), log_one, zero_sub]
+  rw [hlog]
+  ring
+
+/-- Displayed analytic constant: `r = R/2` gives decay `2^{−T}`. -/
+def analytic_c1 : ℝ := log 2
+
+theorem analytic_c1_pos : (0 : ℝ) < analytic_c1 :=
+  Real.log_pos (by norm_num : (1 : ℝ) < 2)
+
+theorem analytic_c1_eq_log_two : analytic_c1 = log 2 := rfl
+
+def analytic_T (L K : ℕ) : ℕ := L * K
+
+theorem analytic_T_eq (L K : ℕ) : analytic_T L K = L * K := rfl
+
+/-- Conditional analytic smallness on `Φ` (or any holomorphic `f`).
+    A zero of order `T` at `0` and `|f| ≤ M` on `|z| = R` imply
+    `|f(z)| ≤ exp(−c L K)` on `|z| ≤ R/2` once `T log 2` absorbs
+    `c L K + log M`. -/
+theorem matveev_interpolation_analytic_small_bound
+    {f : ℂ → ℂ} {R M c : ℝ} {L K T : ℕ}
+    (hR : 0 < R) (hM : 0 < M) (_hc : 0 ≤ c)
+    (hf : DiffContOnCl ℂ f (ball 0 R))
+    (hvan : ∀ k < T, iteratedDslope f k 0 = 0)
+    (hbound : ∀ w, w ∈ sphere 0 R → ‖f w‖ ≤ M)
+    (hT : (T : ℝ) * log 2 ≥ c * (L : ℝ) * (K : ℝ) + log M)
+    {z : ℂ} (hz : ‖z‖ ≤ R / 2) :
+    ‖f z‖ ≤ exp (-c * (L : ℝ) * (K : ℝ)) := by
+  have hr : (0 : ℝ) ≤ R / 2 := div_nonneg hR.le (by norm_num)
+  have hrR : R / 2 ≤ R := by
+    have : (1 / 2 : ℝ) ≤ 1 := by norm_num
+    have := mul_le_mul_of_nonneg_left this hR.le
+    linarith
+  have hM0 : (0 : ℝ) ≤ M := le_of_lt hM
+  have hsch :=
+    schwarz_lemma_of_order hR hr hrR hM0 hf hvan hbound hz
+  have hhalf : (R / 2) / R = (1 / 2 : ℝ) := by
+    field_simp [hR.ne']
+    ring
+  have hexp : ((R / 2) / R) ^ T * M = exp (-(T : ℝ) * log 2 + log M) := by
+    rw [hhalf, half_pow_eq_exp_neg_log_two]
+    have hMeq : M = exp (log M) := (Real.exp_log hM).symm
+    nth_rw 1 [hMeq]
+    rw [← Real.exp_add]
+  have hle : exp (-(T : ℝ) * log 2 + log M) ≤ exp (-c * (L : ℝ) * (K : ℝ)) := by
+    have : -(T : ℝ) * log 2 + log M ≤ -c * (L : ℝ) * (K : ℝ) := by
+      linarith [hT]
+    exact Real.exp_le_exp.2 this
+  exact le_trans (hsch.trans (le_of_eq hexp)) hle
+
+/-- Determinant form: Schwarz-small entries give a small Hadamard bound. -/
+theorem matveev_interpolation_analytic_small_bound_det
+    {n L K : ℕ} {c : ℝ} {M : Matrix (Fin n) (Fin n) ℝ}
+    (hn : 0 < n) (hc : 0 ≤ c)
+    (hEntries : ∀ i j,
+      |M i j| ≤
+        exp (-(c * (L : ℝ) * (K : ℝ) + log (max (n.factorial : ℝ) 1)))) :
+    |M.det| ≤ exp (-c * (L : ℝ) * (K : ℝ)) := by
+  have hε : (0 : ℝ) ≤
+      exp (-(c * (L : ℝ) * (K : ℝ) + log (max (n.factorial : ℝ) 1))) :=
+    le_of_lt (exp_pos _)
+  have hdet := det_abs_le_of_small_entries hε hEntries
+  have hnfac : (1 : ℝ) ≤ (n.factorial : ℝ) := by
+    exact_mod_cast Nat.one_le_of_lt (Nat.factorial_pos n)
+  have hmax : max (n.factorial : ℝ) 1 = (n.factorial : ℝ) :=
+    max_eq_left hnfac
+  have hpow :
+      exp (-(c * (L : ℝ) * (K : ℝ) + log (max (n.factorial : ℝ) 1))) ^ n =
+        exp (-(c * (L : ℝ) * (K : ℝ) + log (n.factorial : ℝ)) * n) := by
+    rw [hmax, ← Real.exp_nat_mul]
+    congr 1
+    ring
+  rw [hpow] at hdet
+  have hfact :
+      (n.factorial : ℝ) *
+          exp (-(c * (L : ℝ) * (K : ℝ) + log (n.factorial : ℝ)) * n) =
+        exp (log (n.factorial : ℝ) +
+          (-(c * (L : ℝ) * (K : ℝ) + log (n.factorial : ℝ)) * n)) := by
+    have hNpos : (0 : ℝ) < n.factorial := lt_of_lt_of_le (by norm_num) hnfac
+    have hNeq : (n.factorial : ℝ) = exp (log (n.factorial : ℝ)) :=
+      (Real.exp_log hNpos).symm
+    nth_rw 1 [hNeq]
+    rw [← Real.exp_add]
+  have hsimp :
+      log (n.factorial : ℝ) +
+          (-(c * (L : ℝ) * (K : ℝ) + log (n.factorial : ℝ)) * n) ≤
+        -c * (L : ℝ) * (K : ℝ) := by
+    have hn1 : (1 : ℝ) ≤ (n : ℝ) := by exact_mod_cast Nat.succ_le_of_lt hn
+    have hlog : (0 : ℝ) ≤ log (n.factorial : ℝ) := log_nonneg hnfac
+    have hclk : (0 : ℝ) ≤ c * (L : ℝ) * (K : ℝ) :=
+      mul_nonneg (mul_nonneg hc (Nat.cast_nonneg L)) (Nat.cast_nonneg K)
+    have hleft :
+        log (n.factorial : ℝ) +
+            (-(c * (L : ℝ) * (K : ℝ) + log (n.factorial : ℝ)) * n) =
+          (1 - (n : ℝ)) * log (n.factorial : ℝ) -
+            (n : ℝ) * (c * (L : ℝ) * (K : ℝ)) := by
+      ring
+    rw [hleft]
+    have hneg : (1 - (n : ℝ)) * log (n.factorial : ℝ) ≤ 0 :=
+      mul_nonpos_of_nonpos_of_nonneg (by linarith) hlog
+    have hscale :
+        -((n : ℝ) * (c * (L : ℝ) * (K : ℝ))) ≤ -(c * (L : ℝ) * (K : ℝ)) := by
+      have : c * (L : ℝ) * (K : ℝ) ≤ (n : ℝ) * (c * (L : ℝ) * (K : ℝ)) :=
+        le_mul_of_one_le_left hclk hn1
+      linarith
+    linarith
+  have : (n.factorial : ℝ) *
+      exp (-(c * (L : ℝ) * (K : ℝ) + log (n.factorial : ℝ)) * n) ≤
+        exp (-c * (L : ℝ) * (K : ℝ)) := by
+    rw [hfact]
+    exact Real.exp_le_exp.2 hsimp
+  exact le_trans hdet this
+
+/-- Specialisation of the analytic bound to Matveev's `Φ`. -/
+theorem matveevPhi_analytic_small_bound
+    {α1 α2 : ℝ} {terms : List PhiTerm} {R M c : ℝ} {L K T : ℕ}
+    (hR : 0 < R) (hM : 0 < M) (hc : 0 ≤ c)
+    (hvan : ∀ k < T, iteratedDslope (matveevPhi α1 α2 terms) k 0 = 0)
+    (hbound : ∀ w, w ∈ sphere 0 R → ‖matveevPhi α1 α2 terms w‖ ≤ M)
+    (hT : (T : ℝ) * log 2 ≥ c * (L : ℝ) * (K : ℝ) + log M)
+    {z : ℂ} (hz : ‖z‖ ≤ R / 2) :
+    ‖matveevPhi α1 α2 terms z‖ ≤ exp (-c * (L : ℝ) * (K : ℝ)) :=
+  matveev_interpolation_analytic_small_bound hR hM hc
+    (matveevPhi_diffContOnCl α1 α2 terms) hvan hbound hT hz
+
+/-- Unconditional smallness of `Δ` is false: the L=0 binomial matrix has `Δ = 1`. -/
+theorem interpolationDeterminant_L0_not_exp_small (K : ℕ) {c : ℝ}
+    (_hc : 0 < c) :
+    ¬ |interpolationDeterminant 0 K 0 0 1 1| ≤
+        exp (-c * (0 : ℝ) * (K : ℝ) - 1) := by
+  rw [interpolationDeterminant_L0_eq_one, abs_one]
+  have : exp (-c * 0 * (K : ℝ) - 1) = exp (-1) := by ring_nf
+  rw [this]
+  have hlt : exp (-1 : ℝ) < 1 := (Real.exp_lt_one_iff).2 (by norm_num)
+  exact not_le.2 hlt
+
 /-! ## Remaining steps (not in Mathlib 4.12) -/
 
 set_option linter.unusedVariables false
@@ -1033,11 +1402,19 @@ theorem matveev_thm14_n2_of_interpolation
 #check matveev_thm14_n2_real_explicit_is_false
 #check matveev_interpolation_track1
 #check wuestholz_product_theorem
+#check matveevPhi
+#check schwarz_lemma_of_order
+#check matveev_interpolation_analytic_small_bound
+#check matveev_interpolation_analytic_small_bound_det
+#check interpolationDeterminant_L0_not_exp_small
 #print axioms interpolation_det_ne_zero
 #print axioms binomial_interpolation_det_eq_one
 #print axioms interpolationDeterminant_L0_eq_one
 #print axioms wuestholz_product_theorem_family
 #print axioms matveev_thm14_n2_real_explicit_is_false
 #print axioms matveev_interpolation_track1
+#print axioms schwarz_lemma_of_order
+#print axioms matveev_interpolation_analytic_small_bound
+#print axioms matveevPhi_differentiable
 
 end BealMatveevBeal.MatveevInterpolation

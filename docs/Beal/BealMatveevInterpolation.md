@@ -29,6 +29,18 @@ on `LEAN_PATH`).
 - Hadamard size `|Δ| ≤ n! X^n` with `X` from binomial / height bounds
   (`size_upper_bound_hadamard`). Analytic estimates `|log α| ≤ α − 1`
   for `α ≥ 1`.
+- Matveev §3 auxiliary `Φ(z) = Σ c z^ℓ α1^{k1 z} α2^{k2 z}` is entire
+  (`matveevPhi_differentiable`).
+- Higher-order Schwarz: a zero of order `T` at `0` gives
+  `|f|_r ≤ (r/R)^T |f|_R` (`schwarz_lemma_of_order`), via iterated
+  `dslope` and Mathlib max-modulus. Jensen is not in Mathlib 4.12.
+- Conditional analytic smallness
+  `matveev_interpolation_analytic_small_bound`: if the order is `T`
+  and `T log 2 ≥ c L K + log M`, then `|f| ≤ exp(−c L K)` on
+  `|z| ≤ R/2`. Determinant form
+  `matveev_interpolation_analytic_small_bound_det` for Schwarz-small
+  entries. Unconditional `|Δ| ≤ exp(−c L K)` is false
+  (`interpolationDeterminant_L0_not_exp_small`).
 - Integer-determinant Liouville `|det| ≥ exp(−h(|det|,1))`.
 - Interpolation contradiction schema: a *small* upper bound
   `|Δ| ≤ exp(−c1 L K)` plus Liouville
@@ -48,10 +60,10 @@ Axioms: `[propext, Classical.choice, Quot.sound]` only.
 - `wuestholz_product_theorem` — inhabited only as the polynomial
   special case (`wuestholz_product_theorem_polynomial`). Mathlib 4.12
   has no Wüstholz theorem for exponential polynomials.
-- `size_upper_bound` — analytic `|Δ| ≤ exp(−c L K)`. The proved
-  Hadamard bound is *large* (`n! X^n`), not exponentially small.
-  The smallness bound is the unproved interpolation estimate that
-  needs a small linear form.
+- `size_upper_bound` — unconditional `|Δ| ≤ exp(−c n²)` on a generic
+  interpolation matrix. False for `L=0` (`Δ=1`). The *conditional*
+  Schwarz bound is a theorem; vanishing of Matveev's exponential
+  `Φ` still needs Wüstholz (not in Mathlib 4.12).
 
 Unrestricted `matveev_theorem_1_4_gap3_target` and
 `baker_bound_gap3` stay `def Prop`. No minted

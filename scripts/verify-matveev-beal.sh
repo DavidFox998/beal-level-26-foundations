@@ -169,6 +169,18 @@ if "theorem size_upper_bound_hadamard" not in interp:
 if "def size_upper_bound" not in interp:
     print("analytic size_upper_bound must stay a def Prop", file=sys.stderr)
     sys.exit(1)
+if "theorem matveev_interpolation_analytic_small_bound" not in interp:
+    print("matveev_interpolation_analytic_small_bound missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem schwarz_lemma_of_order" not in interp:
+    print("schwarz_lemma_of_order missing", file=sys.stderr)
+    sys.exit(1)
+if "def matveevPhi" not in interp:
+    print("matveevPhi missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem interpolationDeterminant_L0_not_exp_small" not in interp:
+    print("interpolationDeterminant_L0_not_exp_small missing", file=sys.stderr)
+    sys.exit(1)
 
 readme = pathlib.Path("README.md").read_text(encoding="utf-8")
 if not readme.startswith("# foundations-level-26"):
@@ -194,7 +206,8 @@ print("verify-matveev-beal: ok")
 print("  0 sorry; matveev_gap3_lower is the B<=B0 integer-gap close")
 print("  C1_floor=143186215390, gap3_A_bounds and B<=B0 product proved")
 print("  CF lemmas: 4/13 convergent, integer gap < ratio; not baker_bound_gap3")
-print("  interpolation: Δ, Vandermonde, G_a product theorem, Hadamard;")
+print("  interpolation: Δ, Vandermonde, G_a product, Hadamard, Schwarz;")
+print("  analytic small bound is conditional on vanishing order")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")
 print("  unrestricted target and hLLL stay def Prop; not v25")
