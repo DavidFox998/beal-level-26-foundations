@@ -1,26 +1,15 @@
 import Lake
 open Lake DSL
 
-package beal_level_26_foundations where
+package beal_matveev_beal where
   leanOptions := #[⟨`autoImplicit, false⟩]
 
 require mathlib from git
-  "https://github.com/leanprover-community/mathlib4.git" @ "v4.12.0"
+  "https://github.com/leanprover-community/mathlib4" @ "v4.12.0"
 
-lean_lib BealLevel26Foundations where
-  srcDir := "lean"
-  roots := #[`BealLevel26Foundations, `Beal]
+require beal_conjecture from git
+  "https://github.com/DavidFox998/beal-conjecture" @ "main"
 
-lean_lib BealLevel26FoundationsScaffold where
-  srcDir := "lean"
-  roots := #[`BealLevel26Foundations.Scaffold]
-
-lean_lib BealLevel26FoundationsReal where
-  srcDir := "lean"
-  roots := #[`BealLevel26Foundations.Real]
-
-/-- v8.85.0 FullProof track.  Separate root so the 24-module
-none chain is not rebuilt from this file. -/
-lean_lib BealLevel26FoundationsFullProof where
-  srcDir := "lean"
-  roots := #[`BealLevel26Foundations.Beal.FullProof]
+@[default_target]
+lean_lib «BealMatveevBeal» where
+  globs := #[.submodules `Beal.Matveev]
