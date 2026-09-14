@@ -16,8 +16,10 @@ solution, and sets up the rank-3 Bugeaud lattice
 via the tight ratio). Minkowski does not raise `|Λ|`.
 `lll_svt_bound_of_reduced`, `baker_davenport_gs_lower`,
 `lll_algorithm_terminates`, displayed `lll_svt_bound`
-(`‖b₁‖ ≤ 2 λ₁` on a reduced generating triple), and
-`lll_det_bound` (`‖b₁‖ ≤ √2 · C^{1/3}`) are theorems.
+(`‖b₁‖ ≤ 2^{(n-1)/2} λ₁ = 2 λ₁` for `n=3`),
+`lll_det_bound` (`‖b₁‖ ≤ 2^{(n-1)/4} det^{1/n} = √2 · C^{1/3}`),
+and `baker_davenport_no_cutoff` (`r ∈ (17,18)` ⇒
+`(r−17)/C < 10⁻³⁰ < 10⁻⁶`) are theorems.
 These are *upper* bounds on a short first vector and do
 **not** give `B ≤ 10⁶`.
 `bugeaud_LLL_reduction_proof` /

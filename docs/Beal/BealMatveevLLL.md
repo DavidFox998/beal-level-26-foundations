@@ -67,12 +67,21 @@ On a gap-3 solution $A^4+B^4=(B+3)^{13}$ with $B>0$:
   swaps occur. This does **not** give `B ≤ 10⁶`: a reduced
   first vector is short (`‖b₁‖ ≤ 2 λ₁ < 64`).
 - `lll_svt_bound`: a reduced *generating* first vector
-  satisfies `‖b₁‖ ≤ 2 λ₁`. Not “every lattice vector is
-  short”.
+  satisfies `‖b₁‖ ≤ 2^{(n-1)/2} λ₁`. For `n = 3` this is
+  `‖b₁‖ ≤ 2 λ₁`. Via `lll_gs_lower_half_pow`
+  (`‖bⱼ*‖² ≥ (1/2)^{j-i} ‖bᵢ*‖²`) and
+  `lll_reduced_first_vec_le_lattice_vec`
+  (`‖x‖ ≥ ‖b₁‖/2` for every nonzero lattice vector).
+  Not “every lattice vector is short”.
 - `lll_det_bound`: a reduced generating first vector
-  satisfies `‖b₁‖ ≤ √2 · C^{1/3}` (`≈ 2.8e10` for
-  `C = 10^{30}`). An *upper* bound, far larger than
-  `‖v‖ < 32`. Not a `B ≤ 10⁶` cutoff.
+  satisfies `‖b₁‖ ≤ 2^{(n-1)/4} det^{1/n}`. For `n = 3`
+  and `det = C` this is `‖b₁‖ ≤ √2 · C^{1/3}`
+  (`≈ 2.8e10` for `C = 10^{30}`). An *upper* bound, far
+  larger than `‖v‖ < 32`. Not a `B ≤ 10⁶` cutoff.
+- `baker_davenport_no_cutoff`: on a solution with `B > 10⁶`,
+  any `17 < r ≤ |v₃|` has `r ∈ (17, 18)`, so
+  `(r−17)/C < 10⁻³⁰ < 10⁻⁶ = 1/B0`, compatible with
+  `|Λ| < 1/B`. No Baker cutoff.
 
 Axioms: `[propext, Classical.choice, Quot.sound]` only.
 

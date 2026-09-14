@@ -14,8 +14,11 @@ Minkowski does not raise $|\Lambda|$.
 `lll_svt_bound_of_reduced`, the Baker–Davenport
 rearrangement, `lll_algorithm_terminates` (existence of an
 LLL-reduced generating triple), displayed `lll_svt_bound`
-($\lVert b_1\rVert\le 2\lambda_1$), and `lll_det_bound`
-($\lVert b_1\rVert\le\sqrt{2}\,C^{1/3}$) are theorems. These
+($\|b_1\|\le 2^{(n-1)/2}\lambda_1=2\lambda_1$ for $n=3$),
+`lll_det_bound`
+($\|b_1\|\le 2^{(n-1)/4}\det^{1/n}=\sqrt{2}\,C^{1/3}$),
+and `baker_davenport_no_cutoff` ($r\in(17,18)$ gives
+$10^{-30}$ not $B\le 10^6$) are theorems. These
 are *upper* bounds on a short first vector and do
 **not** give $B\le 10^6$.
 `bugeaud_LLL_reduction_proof` / `baker_davenport_reduction` /

@@ -69,13 +69,18 @@ Existence of a reduced basis does **not** give `B ≤ 10⁶`.
 A reduced first vector satisfies `‖b₁‖ ≤ 2 λ₁ < 64`, which
 makes `‖b₁*‖` *small*, the opposite of the large `r` that
 `baker_davenport_gs_lower` would need. Displayed
-`lll_svt_bound` (`‖b₁‖ ≤ 2 λ₁` for an LLL-reduced generating
-triple) and `lll_det_bound` (`‖b₁‖ ≤ √2 · C^{1/3} ≈ 2.8e10`)
+`lll_svt_bound` (`‖b₁‖ ≤ 2^{(n-1)/2} λ₁ = 2 λ₁` for `n = 3`,
+via `lll_gs_lower_half_pow` and
+`lll_reduced_first_vec_le_lattice_vec`) and `lll_det_bound`
+(`‖b₁‖ ≤ 2^{(n-1)/4} det^{1/n} = √2 · C^{1/3} ≈ 2.8e10`)
 are theorems; both are *upper* bounds on a short first vector
 and do **not** give `B ≤ 10⁶`.
 `baker_davenport_gs_lower` is the rearrangement
-`r ≤ |v₃|` and `17 < r` ⇒ `|Λ| ≥ (r−17)/C`; on `B > 10⁶`
-one has `|v₃| < 18`, so this does not beat `|Λ| < 1/B`.
+`r ≤ |v₃|` and `17 < r` ⇒ `|Λ| ≥ (r−17)/C`;
+`baker_davenport_no_cutoff` records that on `B > 10⁶`
+one has `|v₃| < 18`, so `r ∈ (17, 18)` and
+`(r−17)/C < 10⁻³⁰ < 10⁻⁶ = 1/B0`, compatible with
+`|Λ| < 1/B`.
 `|Λ| < 1/B` is too weak to make `C|Λ|` small (`C/B = 10^{24}`);
 the `‖v‖ < 32` estimate uses `B⁴/A⁴ < 1/((B+3)⁹−1)`, not `1/B`.
 A genuine `B ≤ 10⁶` cutoff would need a lower bound on `|Λ|`
@@ -1052,6 +1057,20 @@ theorem lll_reduced_gs_half
   refine ⟨lll_lovasz_size_half h12 hsize.1 hlov.1,
     lll_lovasz_size_half h23 hsize.2.2 hlov.2⟩
 
+/-- LLL-reduced ⇒ `‖bⱼ*‖² ≥ (1/2)^{j−i} ‖bᵢ*‖²` (`n = 3`):
+    consecutive factors `1/2`, and `‖b₃*‖² ≥ (1/4) ‖b₁*‖²`. -/
+theorem lll_gs_lower_half_pow
+    {b1star b2star b3star : Fin 3 → ℝ} {μ21 μ31 μ32 : ℝ}
+    (h12 : lllInner b2star b1star = 0)
+    (h23 : lllInner b3star b2star = 0)
+    (hred : LLL_reduced b1star b2star b3star μ21 μ31 μ32) :
+    (1 / 2 : ℝ) * lllNormSq b1star ≤ lllNormSq b2star ∧
+      (1 / 2 : ℝ) * lllNormSq b2star ≤ lllNormSq b3star ∧
+        (1 / 4 : ℝ) * lllNormSq b1star ≤ lllNormSq b3star := by
+  have h := lll_reduced_gs_half h12 h23 hred
+  refine ⟨h.1, h.2, ?_⟩
+  nlinarith [h.1, h.2, lllNormSq_nonneg b2star]
+
 /-- On a 1–2 swap the new first squared length is
     `L = ‖b₂* + μ b₁*‖²`, and `D` scales by `L / ‖b₁*‖²`.
     If Lovász fails then this factor is `< 3/4`. -/
@@ -1175,6 +1194,43 @@ theorem lllNormSq_linear_orth3
     ring
   rw [hexpand, huv', huw', hvw']
   ring
+
+/-- GS reconstruction: `‖bⱼ‖² ≥ ‖bⱼ*‖²`. -/
+theorem lll_vec_normSq_ge_star
+    {b1s b2s b3s : Fin 3 → ℝ} {μ21 μ31 μ32 : ℝ}
+    {b1 b2 b3 : Fin 3 → ℝ}
+    (hb1 : b1 = b1s)
+    (hb2 : b2 = fun i => b2s i + μ21 * b1s i)
+    (hb3 : b3 = fun i => b3s i + μ31 * b1s i + μ32 * b2s i)
+    (h12 : lllInner b1s b2s = 0)
+    (h13 : lllInner b1s b3s = 0)
+    (h23 : lllInner b2s b3s = 0) :
+    lllNormSq b1s ≤ lllNormSq b1 ∧
+      lllNormSq b2s ≤ lllNormSq b2 ∧
+        lllNormSq b3s ≤ lllNormSq b3 := by
+  have h1 : lllNormSq b1s ≤ lllNormSq b1 := by rw [hb1]
+  have h2 : lllNormSq b2 =
+      lllNormSq b2s + μ21 ^ 2 * lllNormSq b1s := by
+    have : lllNormSq b2 =
+        lllNormSq (fun i => b2s i + μ21 * b1s i) := by rw [hb2]
+    rw [this, lllNormSq_add_smul_of_orth
+      (by rwa [lllInner_comm] : lllInner b2s b1s = 0)]
+  have h3 : lllNormSq b3 =
+      lllNormSq b1s * μ31 ^ 2 + lllNormSq b2s * μ32 ^ 2 +
+        lllNormSq b3s := by
+    have : lllNormSq b3 =
+        lllNormSq (fun i =>
+          μ31 * b1s i + μ32 * b2s i + (1 : ℝ) * b3s i) := by
+      rw [hb3]
+      congr
+      ext i
+      ring
+    rw [this, lllNormSq_linear_orth3 h12 h13 h23]
+    ring
+  refine ⟨h1, ?_, ?_⟩
+  · nlinarith [h2, sq_nonneg μ21, lllNormSq_nonneg b1s]
+  · nlinarith [h3, sq_nonneg μ31, sq_nonneg μ32,
+      lllNormSq_nonneg b1s, lllNormSq_nonneg b2s]
 
 theorem one_le_int_cast_sq {z : ℤ} (hz : z ≠ 0) :
     (1 : ℝ) ≤ (z : ℝ) ^ 2 := by
@@ -2594,28 +2650,63 @@ theorem lll_algorithm_terminates (A B : ℕ) :
   exact lll_exists_reduced_of_potential A B n (LLL_b1 A) (LLL_b2 B) LLL_b3
     hmem1 hmem2 hmem3 hgen hint1 hint2 hint3 hn hnpos
 
-/-- Displayed LLL-reduced generating first vector: `‖b₁‖ ≤ 2 λ₁`.
-    Not the false claim that every lattice vector is short. -/
-theorem lll_svt_bound (A B : ℕ) {b1 b2 b3 : Fin 3 → ℝ}
-    (hmem : mem_LLL_lattice A B b1)
+/-- For an LLL-reduced generating triple, every nonzero lattice
+    vector `x` satisfies `‖x‖ ≥ 2^{-(n-1)/2} ‖b₁‖`. For `n = 3`
+    this is `‖x‖ ≥ ‖b₁‖ / 2`. -/
+theorem lll_reduced_first_vec_le_lattice_vec
+    (A B : ℕ) {b1 b2 b3 x : Fin 3 → ℝ}
     (hgen : lllGenerates A B b1 b2 b3)
-    (hred : lllIsReducedBasis b1 b2 b3) :
-    lllNorm b1 ≤ 2 * LLL_lambda1 A B := by
+    (hred : lllIsReducedBasis b1 b2 b3)
+    (hxmem : mem_LLL_lattice A B x)
+    (hxne : x ≠ 0) :
+    lllNorm b1 / 2 ≤ lllNorm x := by
   have ha_ne : lllNormSq b1 ≠ 0 := lllGenerates_normSq_b1_ne hgen
   have hg_ne : lllGram2 b1 b2 ≠ 0 := lllGenerates_gram2_ne hgen
   have ha : 0 < lllNormSq b1 :=
     lt_of_le_of_ne (lllNormSq_nonneg b1) ha_ne.symm
-  refine lll_svt_bound_of_reduced A B
-    (rfl : b1 = b1)
-    (lllB2_eq_gs b1 b2)
-    (lllB3_eq_gs b1 b2 b3)
-    ?h12 ?h13 ?h23 hred ha hmem hgen
-  · have := lllB2s_orth (b2 := b2) ha_ne
+  obtain ⟨cx, cy, cz, hxyz⟩ := hgen x hxmem
+  have hnz : ¬ (cx = 0 ∧ cy = 0 ∧ cz = 0) := by
+    intro h0
+    apply hxne
+    rw [hxyz]
+    rcases h0 with ⟨hx0, hy0, hz0⟩
+    ext i
+    simp [lllZspan, hx0, hy0, hz0]
+  have h12 : lllInner b1 (lllB2s b1 b2) = 0 := by
+    have := lllB2s_orth (b2 := b2) ha_ne
     rwa [lllInner_comm]
-  · have := lllB3s_orth_b1 (b2 := b2) (b3 := b3) ha_ne
+  have h13 : lllInner b1 (lllB3s b1 b2 b3) = 0 := by
+    have := lllB3s_orth_b1 (b2 := b2) (b3 := b3) ha_ne
     rwa [lllInner_comm]
-  · have := lllB3s_orth_b2s (b3 := b3) ha_ne hg_ne
+  have h23 : lllInner (lllB2s b1 b2) (lllB3s b1 b2 b3) = 0 := by
+    have := lllB3s_orth_b2s (b3 := b3) ha_ne hg_ne
     rwa [lllInner_comm]
+  have hhalf :=
+    lll_reduced_gs_half
+      (lllB2s_orth (b2 := b2) ha_ne)
+      (lllB3s_orth_b2s (b3 := b3) ha_ne hg_ne) hred
+  have :=
+    lll_zspan_norm_ge_half (rfl : b1 = b1) (lllB2_eq_gs b1 b2)
+      (lllB3_eq_gs b1 b2 b3) h12 h13 h23 hhalf ha hnz
+  rwa [hxyz]
+
+/-- Displayed LLL-reduced generating first vector:
+    `‖b₁‖ ≤ 2^{(n-1)/2} λ₁`. For `n = 3` this is `‖b₁‖ ≤ 2 λ₁`.
+    Not the false claim that every lattice vector is short. -/
+theorem lll_svt_bound (A B : ℕ) {b1 b2 b3 : Fin 3 → ℝ}
+    (_hmem : mem_LLL_lattice A B b1)
+    (hgen : lllGenerates A B b1 b2 b3)
+    (hred : lllIsReducedBasis b1 b2 b3) :
+    lllNorm b1 ≤ 2 * LLL_lambda1 A B := by
+  have hlb : ∀ r ∈ LLL_nonzero_norms A B, lllNorm b1 / 2 ≤ r := by
+    intro r ⟨v, hvmem, hvne, heq⟩
+    rw [heq]
+    exact lll_reduced_first_vec_le_lattice_vec A B hgen hred hvmem hvne
+  have hinf : lllNorm b1 / 2 ≤ LLL_lambda1 A B :=
+    le_csInf ⟨lllNorm (LLL_v A B), LLL_v_mem_norms A B⟩ hlb
+  have hmul : lllNorm b1 ≤ LLL_lambda1 A B * 2 :=
+    (div_le_iff₀ (by norm_num : (0 : ℝ) < 2)).mp hinf
+  linarith [hmul]
 
 theorem matrix_det_int_of_int_entries
     (M : Matrix (Fin 3) (Fin 3) ℝ)
@@ -2885,9 +2976,10 @@ theorem lll_det_bound_rhs_pow_six :
   rw [h2, hC]
 
 /-- Displayed LLL-reduced generating first vector:
-    `‖b₁‖ ≤ √2 · C^{1/3}`. For `C = 10³⁰` this is `≈ 2.8e10`,
-    an *upper* bound, much larger than `‖v‖ < 32`. Not a
-    `B ≤ 10⁶` cutoff. -/
+    `‖b₁‖ ≤ 2^{(n-1)/4} det(L)^{1/n}`. For `n = 3` and
+    `det = C` this is `‖b₁‖ ≤ √2 · C^{1/3}`. For `C = 10³⁰`
+    this is `≈ 2.8e10`, an *upper* bound, much larger than
+    `‖v‖ < 32`. Not a `B ≤ 10⁶` cutoff. -/
 theorem lll_det_bound (A B : ℕ) {b1 b2 b3 : Fin 3 → ℝ}
     (h1 : mem_LLL_lattice A B b1) (h2 : mem_LLL_lattice A B b2)
     (h3 : mem_LLL_lattice A B b3) (hgen : lllGenerates A B b1 b2 b3)
@@ -3031,6 +3123,38 @@ theorem LLL_lambda1_lt_thirty_two
   lt_of_le_of_lt (LLL_lambda1_le_v_norm A B)
     (LLL_v_norm_lt_thirty_two hsol hB hB0)
 
+/-- On a gap-3 solution with `B > 10⁶`, any Baker–Davenport
+    witness `17 < r ≤ |v₃|` lies in `(17, 18)`, so
+    `(r − 17)/C < 1/C = 10⁻³⁰ < 1/B0 = 10⁻⁶`. Compatible with
+    `|Λ| < 1/B`; not a `B ≤ 10⁶` cutoff. -/
+theorem baker_davenport_no_cutoff
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13)
+    (hB : 0 < B) (hB0 : B0_nat < B)
+    (r : ℝ) (hle : r ≤ |LLL_v A B 2|) (h17 : 17 < r) :
+    r < 18 ∧
+      (r - 17) / LLL_C_real < 1 / LLL_C_real ∧
+        (1 : ℝ) / LLL_C_real < 1 / (B0_nat : ℝ) ∧
+          (r - 17) / LLL_C_real ≤ |Lambda A B| ∧
+            |Lambda A B| < 1 / (B : ℝ) := by
+  have ht := LLL_v_third_abs_lt_eighteen hsol hB hB0
+  have hrlt : r < 18 := lt_of_le_of_lt hle ht
+  have hC := LLL_C_real_pos
+  have hB0pos : (0 : ℝ) < (B0_nat : ℝ) := by
+    have : (0 : ℕ) < B0_nat := by decide
+    exact_mod_cast this
+  have hquot : (r - 17) / LLL_C_real < 1 / LLL_C_real := by
+    rw [div_lt_div_iff hC hC, one_mul]
+    nlinarith [hrlt, hC]
+  have hC_lt_B0 : (1 : ℝ) / LLL_C_real < 1 / (B0_nat : ℝ) := by
+    rw [div_lt_div_iff hC hB0pos]
+    simp only [one_mul]
+    rw [LLL_C_real_eq, B0_nat_eq]
+    have : ((1000000 : ℕ) : ℝ) < (10 : ℝ) ^ 30 := by norm_num
+    exact this
+  have hBD := baker_davenport_gs_lower A B r hle h17
+  have hupper := abs_Lambda_le_inv_B hsol hB
+  exact ⟨hrlt, hquot, hC_lt_B0, hBD, hupper⟩
+
 /-- Baker–Davenport / Bugeaud LLL reduction from `|Λ| ≤ B⁴/A⁴`
     down to `B ≤ B0_nat`. Mathlib 4.12 has no such theorem.
     Same type as `baker_bound_gap3_from_ratio`; still uninhabited.
@@ -3130,7 +3254,11 @@ theorem baker_bound_gap3_of_bugeaud_LLL_reduction_proof
 #check lll_algorithm_terminates
 #check lll_svt_bound
 #check lll_det_bound
+#check lll_gs_lower_half_pow
+#check lll_vec_normSq_ge_star
+#check lll_reduced_first_vec_le_lattice_vec
 #check baker_davenport_gs_lower
+#check baker_davenport_no_cutoff
 #check baker_davenport_reduction
 #check baker_bound_gap3_of_from_ratio
 #print axioms four_thirteenths_is_convergent
@@ -3149,6 +3277,7 @@ theorem baker_bound_gap3_of_bugeaud_LLL_reduction_proof
 #print axioms lll_algorithm_terminates
 #print axioms lll_svt_bound
 #print axioms lll_det_bound
+#print axioms baker_davenport_no_cutoff
 #print axioms baker_bound_gap3_of_from_ratio
 
 end BealMatveevBeal.MatveevLLL

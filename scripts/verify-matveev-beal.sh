@@ -152,6 +152,15 @@ if "theorem lll_svt_bound " not in lll and not re.search(r"^theorem lll_svt_boun
 if "theorem lll_det_bound " not in lll and not re.search(r"^theorem lll_det_bound\b", lll, re.M):
     print("lll_det_bound must be a displayed theorem", file=sys.stderr)
     sys.exit(1)
+if "theorem lll_gs_lower_half_pow" not in lll:
+    print("lll_gs_lower_half_pow missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem lll_reduced_first_vec_le_lattice_vec" not in lll:
+    print("lll_reduced_first_vec_le_lattice_vec missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem baker_davenport_no_cutoff" not in lll:
+    print("baker_davenport_no_cutoff missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
 if "theorem baker_davenport_gs_lower" not in lll:
     print("baker_davenport_gs_lower rearrangement missing", file=sys.stderr)
     sys.exit(1)
@@ -384,7 +393,8 @@ print("  1/max(4log A,13log C) is not a lower bound; Track1 exp < ratio")
 print("  LLL floor form approximates CΛ to <17; rank-3 det=C, ||v||<32")
 print("  Lovasz 1/2, swap D<3/4 D, SVT of reduced, BD rearrangement")
 print("  lll_algorithm_terminates: reduced Z-basis exists; not a B<=1e6 cutoff")
-print("  displayed lll_svt_bound ||b1||<=2 lambda1; lll_det_bound ||b1||<=sqrt2 C^{1/3}")
+print("  displayed lll_svt_bound ||b1||<=2^{(n-1)/2} lambda1; lll_det_bound ||b1||<=sqrt2 C^{1/3}")
+print("  baker_davenport_no_cutoff: (17,18) gives 1e-30 not B<=1e6")
 print("  baker_davenport_reduction / baker_bound_gap3 stay def Prop")
 print("  interpolation: Δ, Vandermonde, G_a product, Hadamard, Schwarz, Cauchy;")
 print("  analytic small bound is conditional; polynomial vanishing inhabited")
