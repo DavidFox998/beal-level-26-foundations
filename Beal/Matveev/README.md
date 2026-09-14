@@ -16,10 +16,11 @@ tree. Theorems live in the matching **root** modules:
 | `MatveevThreeLogs.lean` | `MatveevThreeLogs.lean` |
 | `BealKraus.lean` | `BealKraus.lean` |
 | `BealKrausZsig.lean` | `BealKrausZsig.lean` |
+| `BealCatalanZsig.lean` | `BealCatalanZsig.lean` |
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /
-Kraus / KrausZsig modules.
+Kraus / KrausZsig / CatalanZsig modules.
 
 `baker_bound_gap3`, `baker_davenport_reduction`,
 `bugeaud_LLL_reduction_proof`, `wuestholz_subgroup_theorem`, and

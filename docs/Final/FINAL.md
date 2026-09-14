@@ -69,6 +69,10 @@ curve is not a Fermat-style uniform level-$32$ check.
 `242` / `2` all lose to `B^4/C^{13}` on `B \ge B0`.
 The thirteenth-power factorization, Zsigmondy, and Catalan
 stay `def Prop`.
+`BealCatalanZsig.lean` proves gap-3 is not Catalan
+`X^p-Y^q=1`, that `3 \nmid B` gives `\gcd(A,B)=1` so a
+Zsigmondy prime in `B` does not force `13 \mid v_p(A)`, and
+that the same `C1 < 2` cutoff still fails.
 Unconditional generic
 $|\Delta|\le\exp(-cLK)$ is false ($L=0$ gives $\Delta=1$);
 $L\ge 1$ and $\alpha_1=\alpha_2=1$ forces $\Delta=0$. Not the unrestricted

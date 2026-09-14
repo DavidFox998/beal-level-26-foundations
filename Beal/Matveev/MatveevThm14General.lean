@@ -23,6 +23,9 @@ lowers; 13 ∤ 8 so primes in A do not).
 Gaussian / Zsigmondy / Thue no-go in BealKrausZsig.lean
 (N(A²+iB²)=(B+3)¹³; Matveev-style |sin(13θ)| needs C1<2;
 C1_floor / 242 / 2 all lose to B⁴/C¹³ on B≥B0).
+Catalan / Zsigmondy no-go in BealCatalanZsig.lean (gap-3 is
+not X^p−Y^q=1; 3∤B ⇒ gcd(A,B)=1; Zsigmondy primes in B do
+not force 13∣v_p(A); still need C1<2).
 bugeaud_LLL_reduction_proof stays def Prop. Not v25.
 -/
 import Mathlib
@@ -35,6 +38,7 @@ import WuestholzProduct
 import MatveevThreeLogs
 import BealKraus
 import BealKrausZsig
+import BealCatalanZsig
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -885,6 +889,10 @@ theorem gap3_forall_of_baker
 #check BealKrausZsig.baker_bound_gap3_gaussian_nogo
 #check BealKrausZsig.log_thirteen_gt_five_div_two
 #check BealKrausZsig.gaussianAlpha_norm_of_sol
+#check BealCatalanZsig.baker_bound_gap3_mihailescu_zsigmondy_nogo
+#check BealCatalanZsig.gap3_not_catalan_shape
+#check BealCatalanZsig.gcd_A_B_eq_one_of_not_three_dvd_B
+#check BealCatalanZsig.C1_floor_mihailescu_zsigmondy_nogo
 #print axioms C1_floor_eq
 #print axioms height_B0_eq
 #print axioms height_bound_gap3
@@ -935,5 +943,9 @@ theorem gap3_forall_of_baker
 #print axioms BealKrausZsig.baker_bound_gap3_gaussian_nogo
 #print axioms BealKrausZsig.log_thirteen_gt_five_div_two
 #print axioms BealKrausZsig.gaussianAlpha_norm_of_sol
+#print axioms BealCatalanZsig.baker_bound_gap3_mihailescu_zsigmondy_nogo
+#print axioms BealCatalanZsig.gap3_not_catalan_shape
+#print axioms BealCatalanZsig.gcd_A_B_eq_one_of_not_three_dvd_B
+#print axioms BealCatalanZsig.C1_floor_mihailescu_zsigmondy_nogo
 
 end BealMatveevBeal

@@ -53,6 +53,7 @@ Axioms `[propext, Classical.choice, Quot.sound]` only.
   `C¹³ − B⁴ = A⁴`, not Catalan shape.
 - Darmon–Merel / Ribet / Kraus residual-level (re-exported).
 
-See also [`BealKraus.md`](BealKraus.md).
+See also [`BealKraus.md`](BealKraus.md) and
+[`BealCatalanZsig.md`](BealCatalanZsig.md).
 
 Not a minted v25 tag.

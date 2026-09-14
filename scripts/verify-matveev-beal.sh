@@ -35,6 +35,8 @@ test -f BealKraus.lean
 test -f Beal/Matveev/BealKraus.lean
 test -f BealKrausZsig.lean
 test -f Beal/Matveev/BealKrausZsig.lean
+test -f BealCatalanZsig.lean
+test -f Beal/Matveev/BealCatalanZsig.lean
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -122,6 +124,12 @@ if "import BealKrausZsig" not in src:
     sys.exit(1)
 if "BealKrausZsig.baker_bound_gap3_gaussian_nogo" not in src:
     print("#check baker_bound_gap3_gaussian_nogo missing from MatveevThm14General.lean", file=sys.stderr)
+    sys.exit(1)
+if "import BealCatalanZsig" not in src:
+    print("MatveevThm14General.lean missing import BealCatalanZsig", file=sys.stderr)
+    sys.exit(1)
+if "BealCatalanZsig.baker_bound_gap3_mihailescu_zsigmondy_nogo" not in src:
+    print("#check baker_bound_gap3_mihailescu_zsigmondy_nogo missing from MatveevThm14General.lean", file=sys.stderr)
     sys.exit(1)
 
 lll = pathlib.Path("MatveevLLL.lean").read_text(encoding="utf-8")
@@ -268,6 +276,9 @@ if ".one `BealKraus" not in pathlib.Path("lakefile.lean").read_text(encoding="ut
     sys.exit(1)
 if ".one `BealKrausZsig" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
     print("lakefile.lean missing BealKrausZsig glob", file=sys.stderr)
+    sys.exit(1)
+if ".one `BealCatalanZsig" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
+    print("lakefile.lean missing BealCatalanZsig glob", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -681,6 +692,71 @@ if re.search(r"^theorem ribet_level_lowering\b", zsig, re.M):
     print("do not inhabit ribet_level_lowering", file=sys.stderr)
     sys.exit(1)
 
+catz = pathlib.Path("BealCatalanZsig.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in catz:
+    print("BealCatalanZsig.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
+if "theorem baker_bound_gap3_mihailescu_zsigmondy_nogo" not in catz:
+    print("baker_bound_gap3_mihailescu_zsigmondy_nogo missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem gap3_not_catalan_shape" not in catz:
+    print("gap3_not_catalan_shape missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem gcd_A_B_eq_one_of_not_three_dvd_B" not in catz:
+    print("gcd_A_B_eq_one_of_not_three_dvd_B missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem B_even_of_sol" not in catz:
+    print("B_even_of_sol missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem zsigmondy_prime_in_B_not_dvd_A" not in catz:
+    print("zsigmondy_prime_in_B_not_dvd_A missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem zsigmondy_does_not_force_thirteen_divides_vpA" not in catz:
+    print("zsigmondy_does_not_force_thirteen_divides_vpA missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem frey_B_not_ribet_lowered" not in catz:
+    print("frey_B_not_ribet_lowered missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem gaussian_gcd_divides_two" not in catz:
+    print("gaussian_gcd_divides_two missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem C1_floor_mihailescu_zsigmondy_nogo" not in catz:
+    print("C1_floor_mihailescu_zsigmondy_nogo missing", file=sys.stderr)
+    sys.exit(1)
+if "143186215390" not in catz:
+    print("C1_floor = 143186215390 missing from BealCatalanZsig.lean", file=sys.stderr)
+    sys.exit(1)
+if "1000000" not in catz:
+    print("B0_nat = 1000000 missing from BealCatalanZsig.lean", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in catz:
+    print("do not paste True := trivial skeletons", file=sys.stderr)
+    sys.exit(1)
+if "def baker_bound_gap3" not in catz:
+    print("baker_bound_gap3 must stay a def Prop in BealCatalanZsig.lean", file=sys.stderr)
+    sys.exit(1)
+if "def gaussian_associate_thirteenth_power" not in catz:
+    print("gaussian_associate_thirteenth_power must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def zsigmondy_gaussian_primitive_divisor" not in catz:
+    print("zsigmondy_gaussian_primitive_divisor must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def mihailescu_catalan" not in catz:
+    print("mihailescu_catalan must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_gap3\b", catz, re.M):
+    print("do not inhabit baker_bound_gap3 in BealCatalanZsig.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem gaussian_associate_thirteenth_power\b", catz, re.M):
+    print("do not inhabit gaussian_associate_thirteenth_power", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem zsigmondy_gaussian_primitive_divisor\b", catz, re.M):
+    print("do not inhabit zsigmondy_gaussian_primitive_divisor", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem mihailescu_catalan\b", catz, re.M):
+    print("do not inhabit mihailescu_catalan", file=sys.stderr)
+    sys.exit(1)
+
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
     print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
@@ -888,6 +964,9 @@ print("  darmon_merel / ribet / kraus_uniform_residual_level stay def Prop")
 print("  BealKrausZsig: N(A^2+iB^2)=(B+3)^13; C1<5/log13<2 for |sin(13θ)|")
 print("  baker_bound_gap3_gaussian_nogo: C1>=2 exp^2 < B^4/C^13 on B>=B0")
 print("  gaussian thirteenth-power / Zsigmondy / Catalan stay def Prop")
+print("  BealCatalanZsig: gap-3 is not Catalan =1; 3∤B => gcd(A,B)=1; B even")
+print("  baker_bound_gap3_mihailescu_zsigmondy_nogo: still C1>=2 loses")
+print("  Zsigmondy primes in B do not force 13|v_p(A); not v25")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")
 print("  unrestricted target and hLLL stay def Prop; not v25")
