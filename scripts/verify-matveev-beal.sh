@@ -137,8 +137,14 @@ if "theorem LLL_lambda1_lt_thirty_two" not in lll:
 if "def lllPotential" not in lll:
     print("lllPotential missing from MatveevLLL.lean", file=sys.stderr)
     sys.exit(1)
-if "def lll_algorithm_terminates" not in lll:
-    print("lll_algorithm_terminates must stay a def Prop", file=sys.stderr)
+if "theorem lll_algorithm_terminates" not in lll:
+    print("lll_algorithm_terminates must be a theorem", file=sys.stderr)
+    sys.exit(1)
+if "def lllIsReducedBasis" not in lll:
+    print("lllIsReducedBasis missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "def lllBasisPotential" not in lll:
+    print("lllBasisPotential missing from MatveevLLL.lean", file=sys.stderr)
     sys.exit(1)
 if "def lll_svt_bound" not in lll:
     print("lll_svt_bound must stay a def Prop", file=sys.stderr)
@@ -163,9 +169,6 @@ if "theorem LLL_b1_normSq_int" not in lll:
     sys.exit(1)
 if "theorem abs_sub_lllNearestInt" not in lll:
     print("abs_sub_lllNearestInt missing from MatveevLLL.lean", file=sys.stderr)
-    sys.exit(1)
-if re.search(r"^theorem lll_algorithm_terminates\b", lll, re.M):
-    print("lll_algorithm_terminates must not be a theorem", file=sys.stderr)
     sys.exit(1)
 if re.search(r"^theorem lll_svt_bound\b", lll, re.M):
     print("lll_svt_bound must not be a theorem", file=sys.stderr)
@@ -380,7 +383,8 @@ print("  CF lemmas: 4/13 convergent, integer gap < ratio; |Λ|<1/B not a cutoff"
 print("  1/max(4log A,13log C) is not a lower bound; Track1 exp < ratio")
 print("  LLL floor form approximates CΛ to <17; rank-3 det=C, ||v||<32")
 print("  Lovasz 1/2, swap D<3/4 D, SVT of reduced, BD rearrangement")
-print("  reduced-basis existence / baker_davenport_reduction stay def Prop")
+print("  lll_algorithm_terminates: reduced Z-basis exists; not a B<=1e6 cutoff")
+print("  baker_davenport_reduction / baker_bound_gap3 stay def Prop")
 print("  interpolation: Δ, Vandermonde, G_a product, Hadamard, Schwarz, Cauchy;")
 print("  analytic small bound is conditional; polynomial vanishing inhabited")
 print("  Siegel + G_a jet vanishing: matveevPhi_vanishing_exists_T")

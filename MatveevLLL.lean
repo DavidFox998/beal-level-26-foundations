@@ -60,8 +60,17 @@ Gram–Schmidt orthogonality, Lovász `‖bᵢ*‖² ≥ (1/2) ‖bᵢ₋₁*‖
 the swap factor `D ↦ (L/‖b₁*‖²) D < (3/4) D`, integer
 `‖b₁‖²`, nearest-integer size-reduction, and the *conditional*
 SVT `‖b₁‖ ≤ 2 λ₁` for an LLL-reduced Z-basis are theorems.
-Existence of a reduced basis (`lll_algorithm_terminates`) and
-the displayed-basis det bound stay `def Prop`.
+`lll_algorithm_terminates` is the existence of an LLL-reduced
+Z-basis of the displayed rank-3 lattice: size-reduction is
+finite, each Lovász-failing swap drops the integer potential
+`D = d₁ d₂ d₃` by a factor `< 3/4`, and `D ∈ ℕ≥1` is bounded
+below, so only finitely many swaps occur.
+Existence of a reduced basis does **not** give `B ≤ 10⁶`.
+A reduced first vector satisfies `‖b₁‖ ≤ 2 λ₁ < 64`, which
+makes `‖b₁*‖` *small*, the opposite of the large `r` that
+`baker_davenport_gs_lower` would need. The displayed-basis
+det bound and the unconditional `lll_svt_bound` /
+`lll_det_bound` stay `def Prop`.
 `baker_davenport_gs_lower` is the rearrangement
 `r ≤ |v₃|` and `17 < r` ⇒ `|Λ| ≥ (r−17)/C`; on `B > 10⁶`
 one has `|v₃| < 18`, so this does not beat `|Λ| < 1/B`.
@@ -1351,18 +1360,1237 @@ theorem baker_davenport_gs_lower
   rw [hform] at hmono
   exact le_trans hmono happ
 
-/-- Existence of an LLL-reduced Z-basis. The swap factor
-    `lllPotential_swap12_factor_lt` is the termination step;
-    producing the basis is not in Mathlib 4.12. -/
-def lll_algorithm_terminates : Prop :=
-  ∀ A B : ℕ,
+/-- Gram–Schmidt `μ₂₁` for an arbitrary pair. -/
+def lllMu21 (b1 b2 : Fin 3 → ℝ) : ℝ :=
+  lllInner b2 b1 / lllNormSq b1
+
+def lllB2s (b1 b2 : Fin 3 → ℝ) : Fin 3 → ℝ :=
+  fun i => b2 i - lllMu21 b1 b2 * b1 i
+
+def lllMu31 (b1 b3 : Fin 3 → ℝ) : ℝ :=
+  lllInner b3 b1 / lllNormSq b1
+
+def lllMu32 (b1 b2 b3 : Fin 3 → ℝ) : ℝ :=
+  lllInner b3 (lllB2s b1 b2) / lllNormSq (lllB2s b1 b2)
+
+def lllB3s (b1 b2 b3 : Fin 3 → ℝ) : Fin 3 → ℝ :=
+  fun i =>
+    b3 i - lllMu31 b1 b3 * b1 i - lllMu32 b1 b2 b3 * lllB2s b1 b2 i
+
+/-- LLL potential of a triple, written from the original vectors. -/
+def lllBasisPotential (b1 b2 b3 : Fin 3 → ℝ) : ℝ :=
+  lllPotential b1 (lllB2s b1 b2) (lllB3s b1 b2 b3)
+
+/-- Size-reduction and Lovász on the Gram–Schmidt of `(b₁,b₂,b₃)`. -/
+def lllIsReducedBasis (b1 b2 b3 : Fin 3 → ℝ) : Prop :=
+  LLL_reduced b1 (lllB2s b1 b2) (lllB3s b1 b2 b3)
+    (lllMu21 b1 b2) (lllMu31 b1 b3) (lllMu32 b1 b2 b3)
+
+/-- The triple generates the displayed lattice over `ℤ`. -/
+def lllGenerates (A B : ℕ) (b1 b2 b3 : Fin 3 → ℝ) : Prop :=
+  ∀ v, mem_LLL_lattice A B v →
+    ∃ x y z : ℤ, v = lllZspan b1 b2 b3 x y z
+
+/-- Integer coordinates (the displayed basis is in `ℤ³`). -/
+def lllCoordInt (v : Fin 3 → ℝ) : Prop :=
+  ∀ i : Fin 3, ∃ z : ℤ, v i = (z : ℝ)
+
+/-- Size-reduction of `b₂` against `b₁`. -/
+def lllSizeReduce2 (b1 b2 : Fin 3 → ℝ) : Fin 3 → ℝ :=
+  fun i => b2 i - (lllNearestInt (lllMu21 b1 b2) : ℝ) * b1 i
+
+/-- Size-reduction of `b₃` against already size-reduced `b₂`, then `b₁`. -/
+def lllSizeReduce3 (b1 b2 b3 : Fin 3 → ℝ) : Fin 3 → ℝ :=
+  let b3mid : Fin 3 → ℝ :=
+    fun i => b3 i - (lllNearestInt (lllMu32 b1 b2 b3) : ℝ) * b2 i
+  fun i =>
+    b3mid i -
+      (lllNearestInt (lllInner b3mid b1 / lllNormSq b1) : ℝ) * b1 i
+
+/-- 3×3 Gram determinant in inner-product coordinates. -/
+def lllGramDet (b1 b2 b3 : Fin 3 → ℝ) : ℝ :=
+  lllNormSq b1 * lllNormSq b2 * lllNormSq b3 +
+    2 * lllInner b1 b2 * lllInner b2 b3 * lllInner b1 b3 -
+    lllNormSq b1 * lllInner b2 b3 ^ 2 -
+    lllNormSq b2 * lllInner b1 b3 ^ 2 -
+    lllNormSq b3 * lllInner b1 b2 ^ 2
+
+def lllGram2 (b1 b2 : Fin 3 → ℝ) : ℝ :=
+  lllNormSq b1 * lllNormSq b2 - lllInner b1 b2 ^ 2
+
+theorem LLL_span_eq_zspan (A B : ℕ) (x y z : ℤ) :
+    LLL_span A B x y z =
+      lllZspan (LLL_b1 A) (LLL_b2 B) LLL_b3 x y z := rfl
+
+theorem LLL_b1_mem (A B : ℕ) : mem_LLL_lattice A B (LLL_b1 A) :=
+  ⟨1, 0, 0, by
+    ext i
+    simp [LLL_span]⟩
+
+theorem LLL_b2_mem (A B : ℕ) : mem_LLL_lattice A B (LLL_b2 B) :=
+  ⟨0, 1, 0, by
+    ext i
+    simp [LLL_span]⟩
+
+theorem LLL_b3_mem (A B : ℕ) : mem_LLL_lattice A B LLL_b3 :=
+  ⟨0, 0, 1, by
+    ext i
+    simp [LLL_span]⟩
+
+theorem LLL_displayed_generates (A B : ℕ) :
+    lllGenerates A B (LLL_b1 A) (LLL_b2 B) LLL_b3 := by
+  intro v ⟨x, y, z, hv⟩
+  exact ⟨x, y, z, by rw [hv]; rfl⟩
+
+theorem LLL_b1_coord_int (A : ℕ) : lllCoordInt (LLL_b1 A) := by
+  intro i
+  fin_cases i
+  · exact ⟨1, by simp [LLL_b1]⟩
+  · exact ⟨0, by simp [LLL_b1]⟩
+  · exact ⟨⌊LLL_C_real * log (A : ℝ)⌋, by simp [LLL_b1]⟩
+
+theorem LLL_b2_coord_int (B : ℕ) : lllCoordInt (LLL_b2 B) := by
+  intro i
+  fin_cases i
+  · exact ⟨0, by simp [LLL_b2]⟩
+  · exact ⟨1, by simp [LLL_b2]⟩
+  · exact ⟨⌊LLL_C_real * log ((B + 3 : ℕ) : ℝ)⌋, by simp [LLL_b2]⟩
+
+theorem LLL_b3_coord_int : lllCoordInt LLL_b3 := by
+  intro i
+  fin_cases i
+  · exact ⟨0, by simp [LLL_b3]⟩
+  · exact ⟨0, by simp [LLL_b3]⟩
+  · refine ⟨LLL_C_nat, ?_⟩
+    simp [LLL_b3, LLL_C_real]
+
+theorem LLL_span_coord_int (A B : ℕ) (x y z : ℤ) :
+    lllCoordInt (LLL_span A B x y z) := by
+  intro i
+  obtain ⟨p, hp⟩ := LLL_b1_coord_int A i
+  obtain ⟨q, hq⟩ := LLL_b2_coord_int B i
+  obtain ⟨r, hr⟩ := LLL_b3_coord_int i
+  refine ⟨x * p + y * q + z * r, ?_⟩
+  simp [LLL_span, hp, hq, hr]
+
+theorem mem_LLL_coord_int {A B : ℕ} {v : Fin 3 → ℝ}
+    (h : mem_LLL_lattice A B v) : lllCoordInt v := by
+  obtain ⟨x, y, z, hv⟩ := h
+  rw [hv]
+  exact LLL_span_coord_int A B x y z
+
+theorem lllInner_int_of_coords {u v : Fin 3 → ℝ}
+    (hu : lllCoordInt u) (hv : lllCoordInt v) :
+    ∃ z : ℤ, (z : ℝ) = lllInner u v := by
+  obtain ⟨a0, h0⟩ := hu 0
+  obtain ⟨a1, h1⟩ := hu 1
+  obtain ⟨a2, h2⟩ := hu 2
+  obtain ⟨b0, k0⟩ := hv 0
+  obtain ⟨b1, k1⟩ := hv 1
+  obtain ⟨b2, k2⟩ := hv 2
+  refine ⟨a0 * b0 + a1 * b1 + a2 * b2, ?_⟩
+  unfold lllInner
+  rw [Fin.sum_univ_three, h0, h1, h2, k0, k1, k2]
+  push_cast
+  ring
+
+theorem lllNormSq_int_of_coords {v : Fin 3 → ℝ} (hv : lllCoordInt v) :
+    ∃ z : ℤ, (z : ℝ) = lllNormSq v :=
+  lllInner_int_of_coords hv hv
+
+theorem LLL_span_smul (A B : ℕ) (k x y z : ℤ) :
+    (fun i => (k : ℝ) * LLL_span A B x y z i) =
+      LLL_span A B (k * x) (k * y) (k * z) := by
+  ext i
+  simp [LLL_span]
+  ring
+
+theorem LLL_span_add (A B : ℕ) (x1 y1 z1 x2 y2 z2 : ℤ) :
+    (fun i => LLL_span A B x1 y1 z1 i + LLL_span A B x2 y2 z2 i) =
+      LLL_span A B (x1 + x2) (y1 + y2) (z1 + z2) := by
+  ext i
+  simp [LLL_span]
+  ring
+
+theorem LLL_span_sub (A B : ℕ) (x1 y1 z1 x2 y2 z2 : ℤ) :
+    (fun i => LLL_span A B x1 y1 z1 i - LLL_span A B x2 y2 z2 i) =
+      LLL_span A B (x1 - x2) (y1 - y2) (z1 - z2) := by
+  ext i
+  simp [LLL_span]
+  ring
+
+theorem mem_LLL_smul {A B : ℕ} (k : ℤ) {v : Fin 3 → ℝ}
+    (h : mem_LLL_lattice A B v) :
+    mem_LLL_lattice A B (fun i => (k : ℝ) * v i) := by
+  obtain ⟨x, y, z, hv⟩ := h
+  refine ⟨k * x, k * y, k * z, ?_⟩
+  rw [hv]
+  exact LLL_span_smul A B k x y z
+
+theorem mem_LLL_add {A B : ℕ} {u v : Fin 3 → ℝ}
+    (hu : mem_LLL_lattice A B u) (hv : mem_LLL_lattice A B v) :
+    mem_LLL_lattice A B (fun i => u i + v i) := by
+  obtain ⟨x1, y1, z1, hu'⟩ := hu
+  obtain ⟨x2, y2, z2, hv'⟩ := hv
+  refine ⟨x1 + x2, y1 + y2, z1 + z2, ?_⟩
+  rw [hu', hv']
+  exact LLL_span_add A B x1 y1 z1 x2 y2 z2
+
+theorem mem_LLL_sub {A B : ℕ} {u v : Fin 3 → ℝ}
+    (hu : mem_LLL_lattice A B u) (hv : mem_LLL_lattice A B v) :
+    mem_LLL_lattice A B (fun i => u i - v i) := by
+  obtain ⟨x1, y1, z1, hu'⟩ := hu
+  obtain ⟨x2, y2, z2, hv'⟩ := hv
+  refine ⟨x1 - x2, y1 - y2, z1 - z2, ?_⟩
+  rw [hu', hv']
+  exact LLL_span_sub A B x1 y1 z1 x2 y2 z2
+
+theorem lllSizeReduce2_mem {A B : ℕ} {b1 b2 : Fin 3 → ℝ}
+    (h1 : mem_LLL_lattice A B b1) (h2 : mem_LLL_lattice A B b2) :
+    mem_LLL_lattice A B (lllSizeReduce2 b1 b2) := by
+  unfold lllSizeReduce2
+  exact mem_LLL_sub h2 (mem_LLL_smul _ h1)
+
+theorem lllInner_sub_smul (u v w : Fin 3 → ℝ) (a : ℝ) :
+    lllInner (fun i => u i - a * v i) w =
+      lllInner u w - a * lllInner v w := by
+  have hneg : (fun i => u i - a * v i) =
+      (fun i => u i + (-a) * v i) := by
+    ext i; ring
+  rw [hneg, lllInner_add, lllInner_smul]
+  ring
+
+theorem lllInner_sub_smul_right (u v w : Fin 3 → ℝ) (a : ℝ) :
+    lllInner u (fun i => v i - a * w i) =
+      lllInner u v - a * lllInner u w := by
+  rw [lllInner_comm, lllInner_sub_smul, lllInner_comm u v, lllInner_comm w u]
+
+theorem lllNormSq_sub_smul (u v : Fin 3 → ℝ) (a : ℝ) :
+    lllNormSq (fun i => u i - a * v i) =
+      lllNormSq u - 2 * a * lllInner u v + a ^ 2 * lllNormSq v := by
+  have hrew : (fun i => u i - a * v i) = fun i => u i + (-a) * v i := by
+    ext i; ring
+  unfold lllNormSq
+  rw [hrew, lllInner_add, lllInner_smul, lllInner_add_right,
+    lllInner_add_right, lllInner_smul_right, lllInner_smul_right]
+  rw [lllInner_comm v u]
+  ring
+
+theorem lll_lagrange (u v : Fin 3 → ℝ) :
+    lllNormSq u * lllNormSq v - lllInner u v ^ 2 =
+      (u 0 * v 1 - u 1 * v 0) ^ 2 +
+        (u 0 * v 2 - u 2 * v 0) ^ 2 +
+          (u 1 * v 2 - u 2 * v 1) ^ 2 := by
+  rw [lllNormSq_eq, lllNormSq_eq]
+  unfold lllInner
+  rw [Fin.sum_univ_three]
+  ring
+
+theorem lllGram2_nonneg (b1 b2 : Fin 3 → ℝ) :
+    0 ≤ lllGram2 b1 b2 := by
+  unfold lllGram2
+  have h := lll_lagrange b1 b2
+  have : 0 ≤
+      (b1 0 * b2 1 - b1 1 * b2 0) ^ 2 +
+        (b1 0 * b2 2 - b1 2 * b2 0) ^ 2 +
+          (b1 1 * b2 2 - b1 2 * b2 1) ^ 2 := by
+    nlinarith [sq_nonneg (b1 0 * b2 1 - b1 1 * b2 0),
+      sq_nonneg (b1 0 * b2 2 - b1 2 * b2 0),
+      sq_nonneg (b1 1 * b2 2 - b1 2 * b2 1)]
+  linarith [h]
+
+theorem lllB2s_orth {b1 b2 : Fin 3 → ℝ} (h : lllNormSq b1 ≠ 0) :
+    lllInner (lllB2s b1 b2) b1 = 0 := by
+  have hsub :
+      lllB2s b1 b2 =
+        fun i => b2 i + (-lllMu21 b1 b2) * b1 i := by
+    unfold lllB2s
+    ext i
+    ring
+  have hcalc :
+      lllInner (lllB2s b1 b2) b1 =
+        lllInner b2 b1 - lllMu21 b1 b2 * lllNormSq b1 := by
+    rw [hsub, lllInner_add, lllInner_smul]
+    unfold lllNormSq
+    ring
+  rw [hcalc]
+  unfold lllMu21
+  field_simp [h]
+
+theorem lllB2s_normSq {b1 b2 : Fin 3 → ℝ} (h : lllNormSq b1 ≠ 0) :
+    lllNormSq (lllB2s b1 b2) = lllGram2 b1 b2 / lllNormSq b1 := by
+  have hμ : lllMu21 b1 b2 = lllInner b2 b1 / lllNormSq b1 := rfl
+  have hcomm : lllInner b2 b1 = lllInner b1 b2 := lllInner_comm _ _
+  have hexp := lllNormSq_sub_smul b2 b1 (lllMu21 b1 b2)
+  unfold lllB2s
+  rw [hexp, hμ, hcomm]
+  unfold lllGram2
+  field_simp [h]
+  ring
+
+theorem lllMu21_sizeReduce (b1 b2 : Fin 3 → ℝ) (h : lllNormSq b1 ≠ 0) :
+    lllMu21 b1 (lllSizeReduce2 b1 b2) =
+      lllMu21 b1 b2 - (lllNearestInt (lllMu21 b1 b2) : ℝ) := by
+  unfold lllMu21
+  change
+    lllInner
+        (fun i =>
+          b2 i - (lllNearestInt (lllInner b2 b1 / lllNormSq b1) : ℝ) * b1 i)
+        b1 / lllNormSq b1 =
+      _
+  rw [lllInner_sub_smul]
+  have hN : lllInner b1 b1 = lllNormSq b1 := rfl
+  rw [hN]
+  field_simp [h]
+  ring
+
+theorem lllMu21_sizeReduce_le (b1 b2 : Fin 3 → ℝ) (h : lllNormSq b1 ≠ 0) :
+    |lllMu21 b1 (lllSizeReduce2 b1 b2)| ≤ 1 / 2 := by
+  rw [lllMu21_sizeReduce b1 b2 h]
+  exact abs_sub_lllNearestInt (lllMu21 b1 b2)
+
+theorem lllNearestInt_zero : lllNearestInt 0 = 0 := by
+  unfold lllNearestInt
+  norm_num
+
+theorem lllB2s_sizeReduce (b1 b2 : Fin 3 → ℝ) :
+    lllB2s b1 (lllSizeReduce2 b1 b2) = lllB2s b1 b2 := by
+  by_cases h : lllNormSq b1 = 0
+  · have hμ : lllMu21 b1 b2 = 0 := by
+      unfold lllMu21
+      simp [h]
+    have hμ' : lllMu21 b1 (lllSizeReduce2 b1 b2) = 0 := by
+      unfold lllMu21
+      simp [h]
+    ext i
+    calc
+      lllB2s b1 (lllSizeReduce2 b1 b2) i =
+          lllSizeReduce2 b1 b2 i - lllMu21 b1 (lllSizeReduce2 b1 b2) * b1 i :=
+        rfl
+      _ = lllSizeReduce2 b1 b2 i := by rw [hμ']; ring
+      _ = b2 i - (lllNearestInt (lllMu21 b1 b2) : ℝ) * b1 i := rfl
+      _ = b2 i := by rw [hμ, lllNearestInt_zero]; ring
+      _ = b2 i - lllMu21 b1 b2 * b1 i := by rw [hμ]; ring
+      _ = lllB2s b1 b2 i := rfl
+  · ext i
+    have hμ := lllMu21_sizeReduce b1 b2 h
+    calc
+      lllB2s b1 (lllSizeReduce2 b1 b2) i =
+          lllSizeReduce2 b1 b2 i - lllMu21 b1 (lllSizeReduce2 b1 b2) * b1 i :=
+        rfl
+      _ = lllSizeReduce2 b1 b2 i -
+            (lllMu21 b1 b2 - (lllNearestInt (lllMu21 b1 b2) : ℝ)) * b1 i := by
+        rw [hμ]
+      _ = b2 i - (lllNearestInt (lllMu21 b1 b2) : ℝ) * b1 i -
+            (lllMu21 b1 b2 - (lllNearestInt (lllMu21 b1 b2) : ℝ)) * b1 i :=
+        rfl
+      _ = b2 i - lllMu21 b1 b2 * b1 i := by ring
+      _ = lllB2s b1 b2 i := rfl
+
+theorem lllB3s_sizeReduce2 (b1 b2 b3 : Fin 3 → ℝ) :
+    lllB3s b1 (lllSizeReduce2 b1 b2) b3 = lllB3s b1 b2 b3 := by
+  unfold lllB3s lllMu32
+  rw [lllB2s_sizeReduce]
+
+theorem lllCoordInt_sub_smul {u v : Fin 3 → ℝ} (k : ℤ)
+    (hu : lllCoordInt u) (hv : lllCoordInt v) :
+    lllCoordInt (fun i => u i - (k : ℝ) * v i) := by
+  intro i
+  obtain ⟨a, ha⟩ := hu i
+  obtain ⟨b, hb⟩ := hv i
+  refine ⟨a - k * b, ?_⟩
+  change u i - (k : ℝ) * v i = _
+  rw [ha, hb]
+  push_cast
+  ring
+
+theorem lllSizeReduce2_coordInt {b1 b2 : Fin 3 → ℝ}
+    (h1 : lllCoordInt b1) (h2 : lllCoordInt b2) :
+    lllCoordInt (lllSizeReduce2 b1 b2) :=
+  lllCoordInt_sub_smul _ h2 h1
+
+theorem lllZspan_sizeReduce2 (b1 b2 b3 : Fin 3 → ℝ) (k x y z : ℤ) :
+    lllZspan b1 b2 b3 x y z =
+      lllZspan b1 (fun i => b2 i - (k : ℝ) * b1 i) b3
+        (x + y * k) y z := by
+  ext i
+  simp [lllZspan]
+  ring
+
+theorem lllGenerates_sizeReduce2 {A B : ℕ} {b1 b2 b3 : Fin 3 → ℝ}
+    (h : lllGenerates A B b1 b2 b3) :
+    lllGenerates A B b1 (lllSizeReduce2 b1 b2) b3 := by
+  intro v hv
+  obtain ⟨x, y, z, hv'⟩ := h v hv
+  refine ⟨x + y * lllNearestInt (lllMu21 b1 b2), y, z, ?_⟩
+  rw [hv']
+  exact lllZspan_sizeReduce2 b1 b2 b3 _ x y z
+
+theorem lllZspan_of_sizeReduce3 (b1 b2 b3 : Fin 3 → ℝ)
+    (k m x y z : ℤ) :
+    lllZspan b1 b2 b3 x y z =
+      lllZspan b1 b2
+        (fun i => b3 i - (k : ℝ) * b2 i - (m : ℝ) * b1 i)
+        (x + z * m) (y + z * k) z := by
+  ext i
+  simp [lllZspan]
+  ring
+
+theorem lllSizeReduce3_eq (b1 b2 b3 : Fin 3 → ℝ) :
+    lllSizeReduce3 b1 b2 b3 =
+      fun i =>
+        b3 i - (lllNearestInt (lllMu32 b1 b2 b3) : ℝ) * b2 i -
+          (lllNearestInt
+              (lllInner
+                  (fun j =>
+                    b3 j - (lllNearestInt (lllMu32 b1 b2 b3) : ℝ) *
+                      b2 j)
+                  b1 / lllNormSq b1) : ℝ) *
+            b1 i :=
+  rfl
+
+theorem lllSizeReduce3_mem {A B : ℕ} {b1 b2 b3 : Fin 3 → ℝ}
+    (h1 : mem_LLL_lattice A B b1) (h2 : mem_LLL_lattice A B b2)
+    (h3 : mem_LLL_lattice A B b3) :
+    mem_LLL_lattice A B (lllSizeReduce3 b1 b2 b3) := by
+  unfold lllSizeReduce3
+  exact mem_LLL_sub
+    (mem_LLL_sub h3 (mem_LLL_smul _ h2))
+    (mem_LLL_smul _ h1)
+
+theorem lllSizeReduce3_coordInt {b1 b2 b3 : Fin 3 → ℝ}
+    (h1 : lllCoordInt b1) (h2 : lllCoordInt b2) (h3 : lllCoordInt b3) :
+    lllCoordInt (lllSizeReduce3 b1 b2 b3) := by
+  unfold lllSizeReduce3
+  exact lllCoordInt_sub_smul _
+    (lllCoordInt_sub_smul _ h3 h2) h1
+
+theorem lllGenerates_sizeReduce3 {A B : ℕ} {b1 b2 b3 : Fin 3 → ℝ}
+    (h : lllGenerates A B b1 b2 b3) :
+    lllGenerates A B b1 b2 (lllSizeReduce3 b1 b2 b3) := by
+  intro v hv
+  obtain ⟨x, y, z, hv'⟩ := h v hv
+  refine ⟨x + z *
+      lllNearestInt
+        (lllInner
+          (fun j =>
+            b3 j - (lllNearestInt (lllMu32 b1 b2 b3) : ℝ) * b2 j)
+          b1 / lllNormSq b1),
+    y + z * lllNearestInt (lllMu32 b1 b2 b3), z, ?_⟩
+  rw [hv', lllSizeReduce3_eq]
+  exact lllZspan_of_sizeReduce3 b1 b2 b3 _ _ x y z
+
+theorem lllZspan_swap12 (b1 b2 b3 : Fin 3 → ℝ) (x y z : ℤ) :
+    lllZspan b1 b2 b3 x y z = lllZspan b2 b1 b3 y x z := by
+  ext i
+  simp [lllZspan]
+  ring
+
+theorem lllZspan_swap23 (b1 b2 b3 : Fin 3 → ℝ) (x y z : ℤ) :
+    lllZspan b1 b2 b3 x y z = lllZspan b1 b3 b2 x z y := by
+  ext i
+  simp [lllZspan]
+  ring
+
+theorem lllGenerates_swap12 {A B : ℕ} {b1 b2 b3 : Fin 3 → ℝ}
+    (h : lllGenerates A B b1 b2 b3) :
+    lllGenerates A B b2 b1 b3 := by
+  intro v hv
+  obtain ⟨x, y, z, hv'⟩ := h v hv
+  exact ⟨y, x, z, by rw [hv']; exact lllZspan_swap12 b1 b2 b3 x y z⟩
+
+theorem lllGenerates_swap23 {A B : ℕ} {b1 b2 b3 : Fin 3 → ℝ}
+    (h : lllGenerates A B b1 b2 b3) :
+    lllGenerates A B b1 b3 b2 := by
+  intro v hv
+  obtain ⟨x, y, z, hv'⟩ := h v hv
+  exact ⟨x, z, y, by rw [hv']; exact lllZspan_swap23 b1 b2 b3 x y z⟩
+
+def lllColMatrix (b1 b2 b3 : Fin 3 → ℝ) : Matrix (Fin 3) (Fin 3) ℝ :=
+  fun i j => if j = 0 then b1 i else if j = 1 then b2 i else b3 i
+
+theorem lllNormSq_eq_zero_iff (v : Fin 3 → ℝ) :
+    lllNormSq v = 0 ↔ v = 0 := by
+  constructor
+  · intro h
+    rw [lllNormSq_eq] at h
+    have h0 : v 0 = 0 := by
+      nlinarith [sq_nonneg (v 0), sq_nonneg (v 1), sq_nonneg (v 2)]
+    have h1 : v 1 = 0 := by
+      nlinarith [sq_nonneg (v 0), sq_nonneg (v 1), sq_nonneg (v 2)]
+    have h2 : v 2 = 0 := by
+      nlinarith [sq_nonneg (v 0), sq_nonneg (v 1), sq_nonneg (v 2)]
+    ext i
+    fin_cases i <;> assumption
+  · intro h
+    rw [h, lllNormSq_eq]
+    simp
+
+theorem LLL_basisMatrix_col (A B : ℕ) :
+    LLL_basisMatrix A B =
+      lllColMatrix (LLL_b1 A) (LLL_b2 B) LLL_b3 := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    simp [LLL_basisMatrix, lllColMatrix, LLL_b1, LLL_b2, LLL_b3, LLL_C_real]
+
+theorem lllCol_det_eq_zero_of_b1 {b1 b2 b3 : Fin 3 → ℝ}
+    (h : lllNormSq b1 = 0) :
+    (lllColMatrix b1 b2 b3).det = 0 := by
+  have hb1 : b1 = 0 := (lllNormSq_eq_zero_iff b1).mp h
+  rw [Matrix.det_fin_three]
+  simp [lllColMatrix, hb1]
+
+theorem lllCol_det_eq_zero_of_gram2
+    {b1 b2 b3 : Fin 3 → ℝ}
+    (ha : lllNormSq b1 ≠ 0) (hg : lllGram2 b1 b2 = 0) :
+    (lllColMatrix b1 b2 b3).det = 0 := by
+  have hb2s : lllNormSq (lllB2s b1 b2) = 0 := by
+    rw [lllB2s_normSq ha, hg, zero_div]
+  have h0 : lllB2s b1 b2 = 0 := (lllNormSq_eq_zero_iff _).mp hb2s
+  have hb2 : b2 = fun i => lllMu21 b1 b2 * b1 i := by
+    ext i
+    have hi := congrArg (fun v : Fin 3 → ℝ => v i) h0
+    simp [lllB2s] at hi
+    linarith
+  rw [Matrix.det_fin_three]
+  have col0 (i : Fin 3) : lllColMatrix b1 b2 b3 i 0 = b1 i := by
+    simp [lllColMatrix]
+  have col1 (i : Fin 3) : lllColMatrix b1 b2 b3 i 1 = lllMu21 b1 b2 * b1 i := by
+    simp [lllColMatrix]
+    exact congrArg (fun v : Fin 3 → ℝ => v i) hb2
+  have col2 (i : Fin 3) : lllColMatrix b1 b2 b3 i 2 = b3 i := by
+    simp [lllColMatrix]
+  rw [col0 0, col0 1, col0 2, col1 0, col1 1, col1 2, col2 0, col2 1, col2 2]
+  ring
+
+theorem lllGenerates_det_ne {A B : ℕ} {b1 b2 b3 : Fin 3 → ℝ}
+    (hgen : lllGenerates A B b1 b2 b3) :
+    (lllColMatrix b1 b2 b3).det ≠ 0 := by
+  obtain ⟨x1, y1, z1, e1⟩ := hgen (LLL_b1 A) (LLL_b1_mem A B)
+  obtain ⟨x2, y2, z2, e2⟩ := hgen (LLL_b2 B) (LLL_b2_mem A B)
+  obtain ⟨x3, y3, z3, e3⟩ := hgen LLL_b3 (LLL_b3_mem A B)
+  let U : Matrix (Fin 3) (Fin 3) ℝ := fun i j =>
+    if j = 0 then
+      (if i = 0 then (x1 : ℝ) else if i = 1 then (y1 : ℝ) else (z1 : ℝ))
+    else if j = 1 then
+      (if i = 0 then (x2 : ℝ) else if i = 1 then (y2 : ℝ) else (z2 : ℝ))
+    else
+      (if i = 0 then (x3 : ℝ) else if i = 1 then (y3 : ℝ) else (z3 : ℝ))
+  have hU0 : U 0 0 = x1 ∧ U 1 0 = y1 ∧ U 2 0 = z1 := by
+    simp [U]
+  have hU1 : U 0 1 = x2 ∧ U 1 1 = y2 ∧ U 2 1 = z2 := by
+    simp [U]
+  have hU2 : U 0 2 = x3 ∧ U 1 2 = y3 ∧ U 2 2 = z3 := by
+    simp [U]
+  have hmul : LLL_basisMatrix A B = lllColMatrix b1 b2 b3 * U := by
+    ext i j
+    rw [LLL_basisMatrix_col]
+    unfold lllColMatrix
+    rw [Matrix.mul_apply, Fin.sum_univ_three]
+    fin_cases j
+    · simp [hU0.1, hU0.2.1, hU0.2.2, e1, lllZspan]
+      ring
+    · simp [hU1.1, hU1.2.1, hU1.2.2, e2, lllZspan]
+      ring
+    · simp [hU2.1, hU2.2.1, hU2.2.2, e3, lllZspan]
+      ring
+  have hdet :
+      (LLL_basisMatrix A B).det =
+        (lllColMatrix b1 b2 b3).det * U.det := by
+    rw [hmul, Matrix.det_mul]
+  intro hz
+  rw [LLL_basis_det, hz, zero_mul] at hdet
+  exact (ne_of_gt LLL_C_real_pos) hdet
+
+theorem lllGenerates_normSq_b1_ne {A B : ℕ} {b1 b2 b3 : Fin 3 → ℝ}
+    (hgen : lllGenerates A B b1 b2 b3) :
+    lllNormSq b1 ≠ 0 := by
+  intro h
+  exact lllGenerates_det_ne hgen (lllCol_det_eq_zero_of_b1 h)
+
+theorem lllGenerates_gram2_ne {A B : ℕ} {b1 b2 b3 : Fin 3 → ℝ}
+    (hgen : lllGenerates A B b1 b2 b3) :
+    lllGram2 b1 b2 ≠ 0 := by
+  intro h
+  exact lllGenerates_det_ne hgen
+    (lllCol_det_eq_zero_of_gram2 (lllGenerates_normSq_b1_ne hgen) h)
+
+theorem lllB3s_orth_b1 {b1 b2 b3 : Fin 3 → ℝ}
+    (ha : lllNormSq b1 ≠ 0) :
+    lllInner (lllB3s b1 b2 b3) b1 = 0 := by
+  have horth2 := lllB2s_orth (b2 := b2) ha
+  have hrew :
+      lllB3s b1 b2 b3 =
+        fun i =>
+          (b3 i - lllMu31 b1 b3 * b1 i) -
+            lllMu32 b1 b2 b3 * lllB2s b1 b2 i := by
+    ext i
+    unfold lllB3s
+    ring
+  rw [hrew, lllInner_sub_smul]
+  rw [horth2]
+  simp only [mul_zero, sub_zero]
+  rw [lllInner_sub_smul]
+  unfold lllMu31 lllNormSq
+  have hN : lllInner b1 b1 ≠ 0 := ha
+  have hcancel :
+      lllInner b3 b1 / lllInner b1 b1 * lllInner b1 b1 =
+        lllInner b3 b1 :=
+    div_mul_cancel₀ _ hN
+  rw [hcancel, sub_self]
+
+theorem lllB3s_orth_b2s {b1 b2 b3 : Fin 3 → ℝ}
+    (ha : lllNormSq b1 ≠ 0) (hg : lllGram2 b1 b2 ≠ 0) :
+    lllInner (lllB3s b1 b2 b3) (lllB2s b1 b2) = 0 := by
+  have hb2s_ne : lllNormSq (lllB2s b1 b2) ≠ 0 := by
+    rw [lllB2s_normSq ha]
+    exact div_ne_zero hg ha
+  have horth2 := lllB2s_orth (b2 := b2) ha
+  unfold lllB3s
+  rw [show (fun i =>
+        b3 i - lllMu31 b1 b3 * b1 i - lllMu32 b1 b2 b3 * lllB2s b1 b2 i) =
+          fun i =>
+            (b3 i - lllMu31 b1 b3 * b1 i) -
+              lllMu32 b1 b2 b3 * lllB2s b1 b2 i by
+        ext i; ring,
+      lllInner_sub_smul]
+  have hmid :
+      lllInner (fun i => b3 i - lllMu31 b1 b3 * b1 i) (lllB2s b1 b2) =
+        lllInner b3 (lllB2s b1 b2) := by
+    rw [lllInner_sub_smul, lllInner_comm b1, horth2]
+    ring
+  rw [hmid]
+  unfold lllMu32
+  have hN : lllInner (lllB2s b1 b2) (lllB2s b1 b2) = lllNormSq (lllB2s b1 b2) :=
+    rfl
+  rw [hN]
+  have :
+      lllInner b3 (lllB2s b1 b2) / lllNormSq (lllB2s b1 b2) *
+        lllNormSq (lllB2s b1 b2) =
+      lllInner b3 (lllB2s b1 b2) :=
+    div_mul_cancel₀ _ hb2s_ne
+  rw [this, sub_self]
+
+theorem lllB2_eq_gs (b1 b2 : Fin 3 → ℝ) :
+    b2 = fun i => lllB2s b1 b2 i + lllMu21 b1 b2 * b1 i := by
+  ext i
+  unfold lllB2s
+  ring
+
+theorem lllB3_eq_gs (b1 b2 b3 : Fin 3 → ℝ) :
+    b3 =
+      fun i =>
+        lllB3s b1 b2 b3 i + lllMu31 b1 b3 * b1 i +
+          lllMu32 b1 b2 b3 * lllB2s b1 b2 i := by
+  ext i
+  unfold lllB3s
+  ring
+
+theorem lllMu32_sub_b2 {b1 b2 b3 : Fin 3 → ℝ} (k : ℤ)
+    (ha : lllNormSq b1 ≠ 0) (hg : lllGram2 b1 b2 ≠ 0) :
+    lllMu32 b1 b2 (fun i => b3 i - (k : ℝ) * b2 i) =
+      lllMu32 b1 b2 b3 - k := by
+  have hb2s_ne : lllNormSq (lllB2s b1 b2) ≠ 0 := by
+    rw [lllB2s_normSq ha]
+    exact div_ne_zero hg ha
+  have hb2_b2s : lllInner b2 (lllB2s b1 b2) = lllNormSq (lllB2s b1 b2) := by
+    convert_to
+      lllInner (fun i => lllB2s b1 b2 i + lllMu21 b1 b2 * b1 i)
+          (lllB2s b1 b2) =
+        lllNormSq (lllB2s b1 b2)
+    · rw [← lllB2_eq_gs]
+    rw [lllInner_add, lllInner_smul, lllInner_comm b1, lllB2s_orth ha]
+    unfold lllNormSq
+    ring
+  unfold lllMu32
+  rw [lllInner_sub_smul]
+  field_simp [hb2s_ne]
+  rw [hb2_b2s]
+  ring
+
+theorem lllMu32_sub_b1 {b1 b2 b3 : Fin 3 → ℝ} (m : ℤ)
+    (ha : lllNormSq b1 ≠ 0) :
+    lllMu32 b1 b2 (fun i => b3 i - (m : ℝ) * b1 i) =
+      lllMu32 b1 b2 b3 := by
+  unfold lllMu32
+  rw [lllInner_sub_smul]
+  have h0 : lllInner b1 (lllB2s b1 b2) = 0 :=
+    (lllInner_comm b1 (lllB2s b1 b2)).trans (lllB2s_orth ha)
+  rw [h0]
+  ring
+
+theorem lllMu31_sub_b1 {b1 b3 : Fin 3 → ℝ} (m : ℤ)
+    (ha : lllNormSq b1 ≠ 0) :
+    lllMu31 b1 (fun i => b3 i - (m : ℝ) * b1 i) =
+      lllMu31 b1 b3 - m := by
+  unfold lllMu31
+  rw [lllInner_sub_smul]
+  have hN : lllInner b1 b1 = lllNormSq b1 := rfl
+  rw [hN]
+  field_simp [ha]
+  ring
+
+theorem lllMu31_sizeReduce3 {b1 b2 b3 : Fin 3 → ℝ}
+    (ha : lllNormSq b1 ≠ 0) :
+    lllMu31 b1 (lllSizeReduce3 b1 b2 b3) =
+      lllInner
+          (fun j =>
+            b3 j - (lllNearestInt (lllMu32 b1 b2 b3) : ℝ) * b2 j)
+          b1 / lllNormSq b1 -
+        (lllNearestInt
+          (lllInner
+              (fun j =>
+                b3 j - (lllNearestInt (lllMu32 b1 b2 b3) : ℝ) * b2 j)
+              b1 / lllNormSq b1) : ℝ) := by
+  change
+    lllMu31 b1
+        (fun i =>
+          (b3 i - (lllNearestInt (lllMu32 b1 b2 b3) : ℝ) * b2 i) -
+            (lllNearestInt
+                (lllInner
+                    (fun j =>
+                      b3 j - (lllNearestInt (lllMu32 b1 b2 b3) : ℝ) *
+                        b2 j)
+                    b1 / lllNormSq b1) : ℝ) *
+              b1 i) =
+      _
+  exact lllMu31_sub_b1 _ ha
+
+theorem lllMu31_sizeReduce3_le {b1 b2 b3 : Fin 3 → ℝ}
+    (ha : lllNormSq b1 ≠ 0) :
+    |lllMu31 b1 (lllSizeReduce3 b1 b2 b3)| ≤ 1 / 2 := by
+  rw [lllMu31_sizeReduce3 ha]
+  exact abs_sub_lllNearestInt _
+
+theorem lllMu32_sizeReduce3 {b1 b2 b3 : Fin 3 → ℝ}
+    (ha : lllNormSq b1 ≠ 0) (hg : lllGram2 b1 b2 ≠ 0) :
+    lllMu32 b1 b2 (lllSizeReduce3 b1 b2 b3) =
+      lllMu32 b1 b2 b3 - lllNearestInt (lllMu32 b1 b2 b3) := by
+  have hmid :
+      lllMu32 b1 b2
+          (fun i =>
+            b3 i - (lllNearestInt (lllMu32 b1 b2 b3) : ℝ) * b2 i) =
+        lllMu32 b1 b2 b3 - lllNearestInt (lllMu32 b1 b2 b3) :=
+    lllMu32_sub_b2 _ ha hg
+  unfold lllSizeReduce3
+  have hlast :=
+    lllMu32_sub_b1 (b2 := b2)
+      (b3 := fun i =>
+        b3 i - (lllNearestInt (lllMu32 b1 b2 b3) : ℝ) * b2 i)
+      (lllNearestInt
+        (lllInner
+            (fun j =>
+              b3 j - (lllNearestInt (lllMu32 b1 b2 b3) : ℝ) * b2 j)
+            b1 / lllNormSq b1))
+      ha
+  change lllMu32 b1 b2
+      (fun i =>
+        (b3 i - (lllNearestInt (lllMu32 b1 b2 b3) : ℝ) * b2 i) -
+          (lllNearestInt
+              (lllInner
+                  (fun j =>
+                    b3 j - (lllNearestInt (lllMu32 b1 b2 b3) : ℝ) *
+                      b2 j)
+                  b1 / lllNormSq b1) : ℝ) *
+            b1 i) =
+    _
+  rw [hlast, hmid]
+
+theorem lllMu32_sizeReduce3_le {b1 b2 b3 : Fin 3 → ℝ}
+    (ha : lllNormSq b1 ≠ 0) (hg : lllGram2 b1 b2 ≠ 0) :
+    |lllMu32 b1 b2 (lllSizeReduce3 b1 b2 b3)| ≤ 1 / 2 := by
+  rw [lllMu32_sizeReduce3 ha hg]
+  exact abs_sub_lllNearestInt _
+
+theorem lllB3s_sizeReduce3
+    {b1 b2 b3 : Fin 3 → ℝ}
+    (ha : lllNormSq b1 ≠ 0) (hg : lllGram2 b1 b2 ≠ 0) :
+    lllB3s b1 b2 (lllSizeReduce3 b1 b2 b3) = lllB3s b1 b2 b3 := by
+  let k : ℤ := lllNearestInt (lllMu32 b1 b2 b3)
+  let b3mid : Fin 3 → ℝ := fun i => b3 i - (k : ℝ) * b2 i
+  let m : ℤ := lllNearestInt (lllInner b3mid b1 / lllNormSq b1)
+  have hb3r : lllSizeReduce3 b1 b2 b3 =
+      fun i => b3mid i - (m : ℝ) * b1 i := rfl
+  have hμ32 : lllMu32 b1 b2 (lllSizeReduce3 b1 b2 b3) =
+      lllMu32 b1 b2 b3 - k := by
+    simpa [k] using lllMu32_sizeReduce3 (b3 := b3) ha hg
+  have hμ31 : lllMu31 b1 (lllSizeReduce3 b1 b2 b3) =
+      lllMu31 b1 b3mid - m := by
+    rw [hb3r]
+    exact lllMu31_sub_b1 m ha
+  have hμ31mid : lllMu31 b1 b3mid =
+      lllMu31 b1 b3 - (k : ℝ) * lllMu21 b1 b2 := by
+    unfold lllMu31 lllMu21
+    simp [b3mid, lllInner_sub_smul]
+    field_simp [ha]
+  have hb2 := lllB2_eq_gs b1 b2
+  ext i
+  unfold lllB3s
+  rw [hb3r]
+  have hi : b3mid i - (m : ℝ) * b1 i -
+        lllMu31 b1 (lllSizeReduce3 b1 b2 b3) * b1 i -
+        lllMu32 b1 b2 (lllSizeReduce3 b1 b2 b3) * lllB2s b1 b2 i =
+      b3 i - lllMu31 b1 b3 * b1 i -
+        lllMu32 b1 b2 b3 * lllB2s b1 b2 i := by
+    have hb2i : b2 i = lllB2s b1 b2 i + lllMu21 b1 b2 * b1 i :=
+      congrArg (fun v : Fin 3 → ℝ => v i) hb2
+    simp [b3mid, hμ31, hμ32, hμ31mid, hb2i]
+    ring
+  exact hi
+
+theorem lllGram2_int {b1 b2 : Fin 3 → ℝ}
+    (h1 : lllCoordInt b1) (h2 : lllCoordInt b2) :
+    ∃ z : ℤ, (z : ℝ) = lllGram2 b1 b2 := by
+  obtain ⟨a, ha⟩ := lllNormSq_int_of_coords h1
+  obtain ⟨b, hb⟩ := lllNormSq_int_of_coords h2
+  obtain ⟨p, hp⟩ := lllInner_int_of_coords h1 h2
+  refine ⟨a * b - p ^ 2, ?_⟩
+  unfold lllGram2
+  rw [← ha, ← hb, ← hp]
+  norm_cast
+
+theorem lllGramDet_int {b1 b2 b3 : Fin 3 → ℝ}
+    (h1 : lllCoordInt b1) (h2 : lllCoordInt b2) (h3 : lllCoordInt b3) :
+    ∃ z : ℤ, (z : ℝ) = lllGramDet b1 b2 b3 := by
+  obtain ⟨a, ha⟩ := lllNormSq_int_of_coords h1
+  obtain ⟨b, hb⟩ := lllNormSq_int_of_coords h2
+  obtain ⟨c, hc⟩ := lllNormSq_int_of_coords h3
+  obtain ⟨p, hp⟩ := lllInner_int_of_coords h1 h2
+  obtain ⟨q, hq⟩ := lllInner_int_of_coords h1 h3
+  obtain ⟨r, hr⟩ := lllInner_int_of_coords h2 h3
+  refine ⟨a * b * c + 2 * p * r * q - a * r ^ 2 - b * q ^ 2 - c * p ^ 2, ?_⟩
+  unfold lllGramDet
+  rw [← ha, ← hb, ← hc, ← hp, ← hq, ← hr]
+  norm_cast
+
+theorem lllB3s_normSq_mul_gram2
+    {b1 b2 b3 : Fin 3 → ℝ}
+    (ha : lllNormSq b1 ≠ 0) (hg : lllGram2 b1 b2 ≠ 0) :
+    lllNormSq (lllB3s b1 b2 b3) * lllGram2 b1 b2 =
+      lllGramDet b1 b2 b3 := by
+  have hb2s := lllB2s_normSq (b2 := b2) ha
+  have hb2s_ne : lllNormSq (lllB2s b1 b2) ≠ 0 := by
+    rw [hb2s]
+    exact div_ne_zero hg ha
+  have hw :
+      lllNormSq (fun i => b3 i - lllMu31 b1 b3 * b1 i) =
+        lllNormSq b3 - lllInner b3 b1 ^ 2 / lllNormSq b1 := by
+    have hexp := lllNormSq_sub_smul b3 b1 (lllMu31 b1 b3)
+    unfold lllMu31 at hexp ⊢
+    rw [hexp]
+    field_simp [ha]
+    unfold lllNormSq
+    ring
+  have hstar :
+      lllNormSq (lllB3s b1 b2 b3) =
+        lllNormSq (fun i => b3 i - lllMu31 b1 b3 * b1 i) -
+          lllInner b3 (lllB2s b1 b2) ^ 2 / lllNormSq (lllB2s b1 b2) := by
+    have hrew :
+        lllB3s b1 b2 b3 =
+          fun i =>
+            (b3 i - lllMu31 b1 b3 * b1 i) -
+              lllMu32 b1 b2 b3 * lllB2s b1 b2 i := by
+      ext i
+      unfold lllB3s
+      ring
+    have hexp :=
+      lllNormSq_sub_smul
+        (fun i => b3 i - lllMu31 b1 b3 * b1 i)
+        (lllB2s b1 b2) (lllMu32 b1 b2 b3)
+    have hinner :
+        lllInner (fun i => b3 i - lllMu31 b1 b3 * b1 i) (lllB2s b1 b2) =
+          lllInner b3 (lllB2s b1 b2) := by
+      rw [lllInner_sub_smul]
+      have h0 : lllInner b1 (lllB2s b1 b2) = 0 :=
+        (lllInner_comm b1 (lllB2s b1 b2)).trans (lllB2s_orth ha)
+      rw [h0]
+      ring
+    rw [hrew, hexp, hinner]
+    unfold lllMu32
+    field_simp [hb2s_ne]
+    ring
+  have hμ : lllInner b3 (lllB2s b1 b2) =
+      lllInner b3 b2 - lllMu21 b1 b2 * lllInner b3 b1 := by
+    unfold lllB2s
+    rw [lllInner_sub_smul_right]
+  rw [hstar, hw, hμ]
+  unfold lllGramDet lllGram2 lllMu21
+  field_simp [ha, hg, hb2s, hb2s_ne]
+  have h31 : lllInner b3 b1 = lllInner b1 b3 := lllInner_comm _ _
+  have h32 : lllInner b3 b2 = lllInner b2 b3 := lllInner_comm _ _
+  have h21 : lllInner b2 b1 = lllInner b1 b2 := lllInner_comm _ _
+  rw [h31, h32, h21]
+  unfold lllGram2
+  ring
+
+theorem lllBasisPotential_eq_prod
+    {b1 b2 b3 : Fin 3 → ℝ}
+    (ha : lllNormSq b1 ≠ 0) (hg : lllGram2 b1 b2 ≠ 0) :
+    lllBasisPotential b1 b2 b3 =
+      lllNormSq b1 * lllGram2 b1 b2 * lllGramDet b1 b2 b3 := by
+  have h2 := lllB2s_normSq (b2 := b2) ha
+  have h3 :
+      lllNormSq (lllB3s b1 b2 b3) =
+        lllGramDet b1 b2 b3 / lllGram2 b1 b2 := by
+    have hmul := lllB3s_normSq_mul_gram2 (b3 := b3) ha hg
+    exact (eq_div_iff hg).mpr (by linarith [hmul])
+  unfold lllBasisPotential lllPotential
+  rw [h2, h3]
+  field_simp [ha, hg]
+  ring
+
+theorem int_toNat_cast {z : ℤ} (hz : 0 ≤ z) :
+    (z.toNat : ℝ) = (z : ℝ) := by
+  have hzZ : (z.toNat : ℤ) = z := Int.toNat_of_nonneg hz
+  exact_mod_cast hzZ
+
+theorem lllBasisPotential_nat
+    {b1 b2 b3 : Fin 3 → ℝ}
+    (h1 : lllCoordInt b1) (h2 : lllCoordInt b2) (h3 : lllCoordInt b3)
+    (ha : lllNormSq b1 ≠ 0) (hg : lllGram2 b1 b2 ≠ 0) :
+    ∃ n : ℕ, (n : ℝ) = lllBasisPotential b1 b2 b3 := by
+  obtain ⟨za, ha'⟩ := lllNormSq_int_of_coords h1
+  obtain ⟨zg, hg'⟩ := lllGram2_int h1 h2
+  obtain ⟨zd, hd'⟩ := lllGramDet_int h1 h2 h3
+  have hpot := lllBasisPotential_eq_prod (b3 := b3) ha hg
+  have hza0 : 0 ≤ za :=
+    Int.cast_nonneg.mp (by rw [ha']; exact lllNormSq_nonneg b1)
+  have hzg0 : 0 ≤ zg :=
+    Int.cast_nonneg.mp (by rw [hg']; exact lllGram2_nonneg b1 b2)
+  have hzd0 : 0 ≤ zd := by
+    have hmul := lllB3s_normSq_mul_gram2 (b3 := b3) ha hg
+    exact Int.cast_nonneg.mp (by
+      rw [hd', ← hmul]
+      exact mul_nonneg (lllNormSq_nonneg _) (lllGram2_nonneg _ _))
+  refine ⟨za.toNat * zg.toNat * zd.toNat, ?_⟩
+  have hza := int_toNat_cast hza0
+  have hzg := int_toNat_cast hzg0
+  have hzd := int_toNat_cast hzd0
+  rw [hpot]
+  rw [← ha', ← hg', ← hd']
+  rw [← hza, ← hzg, ← hzd]
+  push_cast
+  rfl
+
+theorem lllGram2_swap (b1 b2 : Fin 3 → ℝ) :
+    lllGram2 b2 b1 = lllGram2 b1 b2 := by
+  unfold lllGram2
+  rw [lllInner_comm b2 b1]
+  ring
+
+theorem lllGramDet_swap12 (b1 b2 b3 : Fin 3 → ℝ) :
+    lllGramDet b2 b1 b3 = lllGramDet b1 b2 b3 := by
+  unfold lllGramDet
+  rw [lllInner_comm b2 b1, lllInner_comm b1 b3, lllInner_comm b2 b3]
+  ring
+
+theorem lllGramDet_swap23 (b1 b2 b3 : Fin 3 → ℝ) :
+    lllGramDet b1 b3 b2 = lllGramDet b1 b2 b3 := by
+  unfold lllGramDet
+  rw [lllInner_comm b2 b3, lllInner_comm b1 b2, lllInner_comm b1 b3]
+  ring
+
+theorem lllGram2_b1_b3 (b1 b2 b3 : Fin 3 → ℝ)
+    (ha : lllNormSq b1 ≠ 0) :
+    lllGram2 b1 b3 =
+      lllNormSq b1 *
+        lllNormSq (fun i =>
+          lllB3s b1 b2 b3 i + lllMu32 b1 b2 b3 * lllB2s b1 b2 i) := by
+  have hw :
+      (fun i => b3 i - lllMu31 b1 b3 * b1 i) =
+        fun i =>
+          lllB3s b1 b2 b3 i + lllMu32 b1 b2 b3 * lllB2s b1 b2 i := by
+    ext i
+    unfold lllB3s
+    ring
+  have hnorm :
+      lllNormSq (fun i => b3 i - lllMu31 b1 b3 * b1 i) =
+        lllNormSq b3 - lllInner b3 b1 ^ 2 / lllNormSq b1 := by
+    have hexp := lllNormSq_sub_smul b3 b1 (lllMu31 b1 b3)
+    unfold lllMu31 at hexp ⊢
+    rw [hexp]
+    field_simp [ha]
+    unfold lllNormSq
+    ring
+  unfold lllGram2
+  rw [← hw, hnorm]
+  field_simp [ha]
+  rw [lllInner_comm b3 b1]
+  ring
+
+theorem lllPotential_swap12_eq
+    {b1 b2 b3 : Fin 3 → ℝ}
+    (ha : lllNormSq b1 ≠ 0) (hg : lllGram2 b1 b2 ≠ 0)
+    (hb2 : lllNormSq b2 ≠ 0) :
+    lllBasisPotential b2 b1 b3 =
+      (lllNormSq b2 / lllNormSq b1) * lllBasisPotential b1 b2 b3 := by
+  have hg' : lllGram2 b2 b1 ≠ 0 := by
+    rw [lllGram2_swap]; exact hg
+  have hD := lllBasisPotential_eq_prod (b3 := b3) ha hg
+  have hD' := lllBasisPotential_eq_prod (b1 := b2) (b2 := b1) (b3 := b3) hb2 hg'
+  rw [hD, hD', lllGram2_swap, lllGramDet_swap12]
+  field_simp [ha, hb2]
+  ring
+
+theorem lllPotential_swap23_eq
+    {b1 b2 b3 : Fin 3 → ℝ}
+    (ha : lllNormSq b1 ≠ 0) (hg : lllGram2 b1 b2 ≠ 0)
+    (hg13 : lllGram2 b1 b3 ≠ 0) :
+    lllBasisPotential b1 b3 b2 =
+      (lllNormSq
+          (fun i =>
+            lllB3s b1 b2 b3 i + lllMu32 b1 b2 b3 * lllB2s b1 b2 i) /
+        lllNormSq (lllB2s b1 b2)) *
+        lllBasisPotential b1 b2 b3 := by
+  have hD := lllBasisPotential_eq_prod (b3 := b3) ha hg
+  have hD' := lllBasisPotential_eq_prod (b2 := b3) (b3 := b2) ha hg13
+  have h2 := lllB2s_normSq (b2 := b2) ha
+  have hL := lllGram2_b1_b3 b1 b2 b3 ha
+  rw [hD, hD', lllGramDet_swap23, h2, hL]
+  field_simp [ha, hg]
+  ring
+
+theorem lll_nat_lt_of_factor
+    {m n : ℕ} {D' : ℝ}
+    (hm : (m : ℝ) = D')
+    (hn : 0 < n)
+    (hfactor : D' < (3 / 4 : ℝ) * (n : ℝ)) :
+    m < n := by
+  have hlt : (m : ℝ) < (n : ℝ) := by
+    rw [hm]
+    have hnR : (0 : ℝ) < n := Nat.cast_pos.mpr hn
+    have h34 : (3 / 4 : ℝ) * (n : ℝ) < n := by nlinarith [hnR]
+    exact lt_trans hfactor h34
+  exact Nat.cast_lt.mp hlt
+
+theorem lllBasisPotential_pos
+    {A B : ℕ} {b1 b2 b3 : Fin 3 → ℝ}
+    (hgen : lllGenerates A B b1 b2 b3)
+    (_h1 : lllCoordInt b1) (_h2 : lllCoordInt b2) (_h3 : lllCoordInt b3) :
+    0 < lllBasisPotential b1 b2 b3 := by
+  have ha := lllGenerates_normSq_b1_ne hgen
+  have hg := lllGenerates_gram2_ne hgen
+  rw [lllBasisPotential_eq_prod (b3 := b3) ha hg]
+  have ha0 : 0 < lllNormSq b1 :=
+    lt_of_le_of_ne (lllNormSq_nonneg _) ha.symm
+  have hg0 : 0 < lllGram2 b1 b2 :=
+    lt_of_le_of_ne (lllGram2_nonneg _ _) hg.symm
+  have hdet0 : lllGramDet b1 b2 b3 ≠ 0 := by
+    intro h0
+    have hmul := lllB3s_normSq_mul_gram2 (b3 := b3) ha hg
+    have hb3s : lllNormSq (lllB3s b1 b2 b3) = 0 := by
+      nlinarith [hmul, h0, lllGram2_nonneg b1 b2, lllNormSq_nonneg (lllB3s b1 b2 b3)]
+    -- det M = 0 if b3s = 0 and we already have independence of first two?
+    -- Use: D = a * gram2 * detG = 0 would contradict later; prove detG > 0
+    -- from (det M)^2 identity is hard here; instead use generates det ≠ 0
+    -- and detG = 0 ⇒ columns of GS dependent ⇒ original dependent.
+    have hb3s0 : lllB3s b1 b2 b3 = 0 := (lllNormSq_eq_zero_iff _).mp hb3s
+    have hb3 :
+        b3 =
+          fun i =>
+            lllMu31 b1 b3 * b1 i + lllMu32 b1 b2 b3 * lllB2s b1 b2 i := by
+      ext i
+      have hi := congrArg (fun v : Fin 3 → ℝ => v i) hb3s0
+      simp [lllB3s] at hi
+      linarith
+    have hb2 := lllB2_eq_gs b1 b2
+    have : (lllColMatrix b1 b2 b3).det = 0 := by
+      rw [Matrix.det_fin_three]
+      have col0 (i : Fin 3) : lllColMatrix b1 b2 b3 i 0 = b1 i := by
+        simp [lllColMatrix]
+      have col1 (i : Fin 3) : lllColMatrix b1 b2 b3 i 1 =
+          lllB2s b1 b2 i + lllMu21 b1 b2 * b1 i := by
+        simp [lllColMatrix]
+        exact congrArg (fun v : Fin 3 → ℝ => v i) hb2
+      have col2 (i : Fin 3) : lllColMatrix b1 b2 b3 i 2 =
+          lllMu31 b1 b3 * b1 i + lllMu32 b1 b2 b3 * lllB2s b1 b2 i := by
+        simp [lllColMatrix]
+        exact congrArg (fun v : Fin 3 → ℝ => v i) hb3
+      rw [col0 0, col0 1, col0 2, col1 0, col1 1, col1 2, col2 0, col2 1, col2 2]
+      ring
+    exact lllGenerates_det_ne hgen this
+  have hdetpos : 0 < lllGramDet b1 b2 b3 :=
+    lt_of_le_of_ne (by
+      have hmul := lllB3s_normSq_mul_gram2 (b3 := b3) ha hg
+      rw [← hmul]
+      exact mul_nonneg (lllNormSq_nonneg _) (lllGram2_nonneg _ _))
+      hdet0.symm
+  exact mul_pos (mul_pos ha0 hg0) hdetpos
+
+theorem lll_exists_reduced_of_potential
+    (A B : ℕ) (n : ℕ)
+    (b1 b2 b3 : Fin 3 → ℝ)
+    (hmem1 : mem_LLL_lattice A B b1)
+    (hmem2 : mem_LLL_lattice A B b2)
+    (hmem3 : mem_LLL_lattice A B b3)
+    (hgen : lllGenerates A B b1 b2 b3)
+    (hint1 : lllCoordInt b1)
+    (hint2 : lllCoordInt b2)
+    (hint3 : lllCoordInt b3)
+    (hpot : (n : ℝ) = lllBasisPotential b1 b2 b3)
+    (hn : 0 < n) :
     ∃ b1' b2' b3' : Fin 3 → ℝ,
-      mem_LLL_lattice A B b1' ∧ mem_LLL_lattice A B b2' ∧
-        mem_LLL_lattice A B b3' ∧
-          LLL_reduced b1' b2' b3'
-            (lllInner b2' b1' / lllNormSq b1')
-            (lllInner b3' b1' / lllNormSq b1')
-            (lllInner b3' b2' / lllNormSq b2')
+      mem_LLL_lattice A B b1' ∧
+        mem_LLL_lattice A B b2' ∧
+          mem_LLL_lattice A B b3' ∧
+            lllGenerates A B b1' b2' b3' ∧
+              lllIsReducedBasis b1' b2' b3' := by
+  induction n using Nat.strong_induction_on generalizing b1 b2 b3 with
+  | h n ih =>
+    have ha := lllGenerates_normSq_b1_ne hgen
+    let b2r := lllSizeReduce2 b1 b2
+    let b3r := lllSizeReduce3 b1 b2r b3
+    have hmem2r : mem_LLL_lattice A B b2r := lllSizeReduce2_mem hmem1 hmem2
+    have hmem3r : mem_LLL_lattice A B b3r :=
+      lllSizeReduce3_mem hmem1 hmem2r hmem3
+    have hint2r : lllCoordInt b2r := lllSizeReduce2_coordInt hint1 hint2
+    have hint3r : lllCoordInt b3r :=
+      lllSizeReduce3_coordInt hint1 hint2r hint3
+    have hgenr : lllGenerates A B b1 b2r b3r :=
+      lllGenerates_sizeReduce3 (lllGenerates_sizeReduce2 hgen)
+    have ha' := lllGenerates_normSq_b1_ne hgenr
+    have hg' := lllGenerates_gram2_ne hgenr
+    have hpot_r : lllBasisPotential b1 b2r b3r = lllBasisPotential b1 b2 b3 := by
+      have hb2s : lllB2s b1 b2r = lllB2s b1 b2 := lllB2s_sizeReduce b1 b2
+      have hb3s_mid : lllB3s b1 b2r b3r = lllB3s b1 b2r b3 := by
+        change lllB3s b1 b2r (lllSizeReduce3 b1 b2r b3) = lllB3s b1 b2r b3
+        exact lllB3s_sizeReduce3 ha' hg'
+      have hb3s : lllB3s b1 b2r b3 = lllB3s b1 b2 b3 := by
+        change lllB3s b1 (lllSizeReduce2 b1 b2) b3 = lllB3s b1 b2 b3
+        exact lllB3s_sizeReduce2 b1 b2 b3
+      unfold lllBasisPotential
+      rw [hb2s, hb3s_mid, hb3s]
+    have hsize :
+        LLL_size_reduced (lllMu21 b1 b2r) (lllMu31 b1 b3r)
+          (lllMu32 b1 b2r b3r) :=
+      ⟨lllMu21_sizeReduce_le b1 b2 ha,
+        lllMu31_sizeReduce3_le (b2 := b2r) ha',
+        lllMu32_sizeReduce3_le ha' hg'⟩
+    by_cases h12 :
+        (3 / 4 : ℝ) * lllNormSq b1 ≤
+          lllNormSq (fun i =>
+            lllB2s b1 b2r i + lllMu21 b1 b2r * b1 i)
+    · by_cases h23 :
+          (3 / 4 : ℝ) * lllNormSq (lllB2s b1 b2r) ≤
+            lllNormSq (fun i =>
+              lllB3s b1 b2r b3r i +
+                lllMu32 b1 b2r b3r * lllB2s b1 b2r i)
+      · refine ⟨b1, b2r, b3r, hmem1, hmem2r, hmem3r, hgenr, ?_⟩
+        exact ⟨hsize, h12, h23⟩
+      · have hfail : lllNormSq (fun i =>
+            lllB3s b1 b2r b3r i +
+              lllMu32 b1 b2r b3r * lllB2s b1 b2r i) <
+            (3 / 4 : ℝ) * lllNormSq (lllB2s b1 b2r) :=
+          lt_of_not_ge h23
+        have hb2s_ne : lllNormSq (lllB2s b1 b2r) ≠ 0 := by
+          rw [lllB2s_normSq ha']
+          exact div_ne_zero hg' ha'
+        have hgens : lllGenerates A B b1 b3r b2r :=
+          lllGenerates_swap23 hgenr
+        have hg13 : lllGram2 b1 b3r ≠ 0 :=
+          lllGenerates_gram2_ne hgens
+        obtain ⟨m, hm⟩ :=
+          lllBasisPotential_nat hint1 hint3r hint2r ha' hg13
+        have hmpos : 0 < m := by
+          have hpos := lllBasisPotential_pos hgens hint1 hint3r hint2r
+          have : (0 : ℝ) < m := by rwa [hm]
+          exact Nat.cast_pos.mp this
+        have hfactor :
+            lllBasisPotential b1 b3r b2r <
+              (3 / 4 : ℝ) * lllBasisPotential b1 b2r b3r := by
+          have heq := lllPotential_swap23_eq (b3 := b3r) ha' hg' hg13
+          have hfrac :
+              lllNormSq
+                  (fun i =>
+                    lllB3s b1 b2r b3r i +
+                      lllMu32 b1 b2r b3r * lllB2s b1 b2r i) /
+                lllNormSq (lllB2s b1 b2r) < (3 / 4 : ℝ) :=
+            (div_lt_iff
+                (lt_of_le_of_ne (lllNormSq_nonneg _) hb2s_ne.symm)).mpr
+              hfail
+          have hDpos : 0 < lllBasisPotential b1 b2r b3r := by
+            rw [hpot_r, ← hpot]
+            exact Nat.cast_pos.mpr hn
+          have := mul_lt_mul_of_pos_right hfrac hDpos
+          rwa [heq]
+        have hmlt : m < n :=
+          lll_nat_lt_of_factor hm hn (by
+            have := hfactor
+            rwa [hpot_r, ← hpot] at this)
+        exact ih m hmlt b1 b3r b2r hmem1 hmem3r hmem2r hgens
+          hint1 hint3r hint2r hm hmpos
+    · have hfail :
+          lllNormSq (fun i =>
+              lllB2s b1 b2r i + lllMu21 b1 b2r * b1 i) <
+            (3 / 4 : ℝ) * lllNormSq b1 :=
+        lt_of_not_ge h12
+      have hb2r_eq : lllNormSq b2r =
+          lllNormSq (fun i =>
+            lllB2s b1 b2r i + lllMu21 b1 b2r * b1 i) := by
+        have := lllB2_eq_gs b1 b2r
+        rw [← this]
+      have hgens : lllGenerates A B b2r b1 b3r :=
+        lllGenerates_swap12 hgenr
+      have hb2r_ne : lllNormSq b2r ≠ 0 :=
+        lllGenerates_normSq_b1_ne hgens
+      obtain ⟨m, hm⟩ :=
+        lllBasisPotential_nat hint2r hint1 hint3r hb2r_ne
+          (by
+            rw [lllGram2_swap]
+            exact hg')
+      have hmpos : 0 < m := by
+        have hpos := lllBasisPotential_pos hgens hint2r hint1 hint3r
+        have : (0 : ℝ) < m := by rwa [hm]
+        exact Nat.cast_pos.mp this
+      have hfactor :
+          lllBasisPotential b2r b1 b3r <
+            (3 / 4 : ℝ) * lllBasisPotential b1 b2r b3r := by
+        have heq := lllPotential_swap12_eq (b3 := b3r) ha' hg' hb2r_ne
+        have hfrac : lllNormSq b2r / lllNormSq b1 < (3 / 4 : ℝ) := by
+          rw [hb2r_eq]
+          exact (div_lt_iff
+              (lt_of_le_of_ne (lllNormSq_nonneg _) ha'.symm)).mpr hfail
+        have hDpos : 0 < lllBasisPotential b1 b2r b3r := by
+          rw [hpot_r, ← hpot]
+          exact Nat.cast_pos.mpr hn
+        have := mul_lt_mul_of_pos_right hfrac hDpos
+        rwa [heq]
+      have hmlt : m < n :=
+        lll_nat_lt_of_factor hm hn (by
+          have := hfactor
+          rwa [hpot_r, ← hpot] at this)
+      exact ih m hmlt b2r b1 b3r hmem2r hmem1 hmem3r hgens
+        hint2r hint1 hint3r hm hmpos
+
+/-- Existence of an LLL-reduced generating triple for the displayed
+    rank-3 lattice. Size-reduction is finite; each Lovász-failing
+    swap drops the integer potential `D = d₁ d₂ d₃` by a factor
+    `< 3/4`. This does **not** inhabit `baker_bound_gap3`: a reduced
+    first vector is short (`‖b₁‖ ≤ 2 λ₁ < 64`), so
+    `baker_davenport_gs_lower` still only yields `|Λ| ≳ 10⁻³⁰`. -/
+theorem lll_algorithm_terminates (A B : ℕ) :
+    ∃ b1 b2 b3 : Fin 3 → ℝ,
+      mem_LLL_lattice A B b1 ∧
+        mem_LLL_lattice A B b2 ∧
+          mem_LLL_lattice A B b3 ∧
+            lllGenerates A B b1 b2 b3 ∧
+              lllIsReducedBasis b1 b2 b3 := by
+  have hmem1 := LLL_b1_mem A B
+  have hmem2 := LLL_b2_mem A B
+  have hmem3 := LLL_b3_mem A B
+  have hgen := LLL_displayed_generates A B
+  have hint1 := LLL_b1_coord_int A
+  have hint2 := LLL_b2_coord_int B
+  have hint3 := LLL_b3_coord_int
+  have ha := lllGenerates_normSq_b1_ne hgen
+  have hg := lllGenerates_gram2_ne hgen
+  obtain ⟨n, hn⟩ := lllBasisPotential_nat hint1 hint2 hint3 ha hg
+  have hnpos : 0 < n := by
+    have hpos := lllBasisPotential_pos hgen hint1 hint2 hint3
+    have : (0 : ℝ) < n := by rwa [hn]
+    exact Nat.cast_pos.mp this
+  exact lll_exists_reduced_of_potential A B n (LLL_b1 A) (LLL_b2 B) LLL_b3
+    hmem1 hmem2 hmem3 hgen hint1 hint2 hint3 hn hnpos
 
 /-- LLL reduced ⇒ `‖b₁‖ ≤ 2 λ₁` (`n = 3`). Not in Mathlib 4.12. -/
 def lll_svt_bound : Prop :=
@@ -1577,6 +2805,9 @@ theorem baker_bound_gap3_of_bugeaud_LLL_reduction_proof
 #check lll_reduced_gs_half
 #check lll_svt_bound_of_reduced
 #check lll_det_prod_sq_of_reduced
+#check lllIsReducedBasis
+#check lllBasisPotential
+#check lllGenerates
 #check lll_algorithm_terminates
 #check lll_svt_bound
 #check lll_det_bound
@@ -1596,6 +2827,7 @@ theorem baker_bound_gap3_of_bugeaud_LLL_reduction_proof
 #print axioms lllPotential_swap12_factor_lt
 #print axioms lll_svt_bound_of_reduced
 #print axioms baker_davenport_gs_lower
+#print axioms lll_algorithm_terminates
 #print axioms baker_bound_gap3_of_from_ratio
 
 end BealMatveevBeal.MatveevLLL

@@ -11,8 +11,11 @@ that $1/\max(4\log A,13\log(B+3))$ is not a lower bound, and the
 rank-3 lattice facts $\det L=C$, $v\in L$, $\|v\|<32$ and
 $\lambda_1<32$ on a solution with $B>10^6$ (tight ratio, not $1/B$).
 Minkowski does not raise $|\Lambda|$.
-`lll_svt_bound_of_reduced` and the Baker–Davenport
-rearrangement are theorems; `lll_algorithm_terminates` /
+`lll_svt_bound_of_reduced`, the Baker–Davenport
+rearrangement, and `lll_algorithm_terminates` (existence of an
+LLL-reduced generating triple) are theorems. Existence does
+**not** give $B\le 10^6$.
+`lll_svt_bound` / `lll_det_bound` /
 `bugeaud_LLL_reduction_proof` / `baker_davenport_reduction` /
 `baker_bound_gap3` stay uninhabited `def Prop`. Being a convergent
 does not force $B\le 10^6$. `MatveevInterpolation.lean` starts
