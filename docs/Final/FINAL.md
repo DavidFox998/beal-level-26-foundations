@@ -43,7 +43,13 @@ strictly weaker than full jet order; the uniform
 Wüstholz subgroup theorem stays `def Prop`.
 `WuestholzSubgroup.lean` proves there is no uniform `c` for
 intermediate `T ≥ c L K` (`(1/2)·1·1 < 242`; even linear
-`K ∼ N1+N2` fails). Unconditional generic
+`K ∼ N1+N2` fails). `WuestholzProduct.lean` packages the
+inhabited product theorem as `T < coeffCount ∨ P = 0 ∨`
+dependence; uniform `wuestholz_product_theorem_exp` stays
+`def Prop`. `floor_form_approx_of_C` /
+`baker_davenport_reduction_nogo` /
+`bugeaud_LLL_method_fails` prove that **every** scaling `C`
+has Baker–Davenport strictly weaker than `|Λ|`. Unconditional generic
 $|\Delta|\le\exp(-cLK)$ is false ($L=0$ gives $\Delta=1$);
 $L\ge 1$ and $\alpha_1=\alpha_2=1$ forces $\Delta=0$. Not the unrestricted
 kernel target, not v25. Concept DOI `10.5281/zenodo.22379293`.

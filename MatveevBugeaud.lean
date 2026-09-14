@@ -39,7 +39,11 @@ close the gap either (`exp(−C1 log A log B)` is far smaller than
 
 `bugeaud_LLL_reduction_proof`, `baker_davenport_reduction`,
 `baker_bound_gap3_from_ratio`, and Level 26 `baker_bound_gap3`
-stay uninhabited `def Prop`. Not a minted v25 tag.
+stay uninhabited `def Prop`. The uniform-`C` method-failure
+theorems `floor_form_approx_of_C`, `baker_davenport_reduction_nogo`,
+and `bugeaud_LLL_method_fails` are the honest close of this LLL
+setup: no scaling `C > 0` produces a Baker–Davenport witness
+above `17 + C/B0` on solutions with `B ≥ B0`. Not a minted v25 tag.
 -/
 
 noncomputable section
@@ -249,6 +253,105 @@ theorem bugeaud_usable_third_lt_required_r_of_B_lt_C
   have hreq := bugeaud_required_r_gt_eighteen_of_B_lt_C hB hBC
   linarith [ht, hreq]
 
+/-! ## Uniform-`C` Baker–Davenport no-go (beyond the displayed `10³⁰`)
+
+The floor error `|4⌊C log A⌋ − 13⌊C log(B+3)⌋ − C Λ| < 17` holds
+for **every** `C > 0` (`floor_form_approx_of_C`). Any usable
+Baker–Davenport witness `17 < r ≤ |third|` therefore satisfies
+`(r − 17)/C < |Λ|`, independently of the scaling. In particular
+no choice of `C` (including `C = B^k`) produces a witness
+`r > 17 + C/B0` on a solution with `B ≥ B0`. This is the
+method-failure theorem: it does **not** inhabit
+`baker_davenport_reduction` / `bugeaud_LLL_reduction_proof`.
+-/
+
+/-- Triangle for an arbitrary scaling: `|third| < 17 + C|Λ|`. -/
+theorem floor_form_third_abs_lt {C : ℝ} (hC : 0 < C) (A B : ℕ) :
+    |floorFormThird C A B| < 17 + C * |Lambda A B| := by
+  have happ := floor_form_approx_of_C C A B
+  have hmul : |C * Lambda A B| = C * |Lambda A B| := by
+    rw [abs_mul, abs_of_pos hC]
+  have htri : |floorFormThird C A B| ≤
+      |floorFormThird C A B - C * Lambda A B| + |C * Lambda A B| := by
+    simpa [sub_eq_add_neg] using
+      abs_add (floorFormThird C A B - C * Lambda A B)
+        (C * Lambda A B)
+  linarith [happ, htri, hmul]
+
+/-- Uniform Baker–Davenport no-go: if `17 < r ≤ |third|` then
+    `(r − 17)/C < |Λ|`. Independent of the scaling `C`. -/
+theorem baker_davenport_reduction_nogo
+    {C : ℝ} (hC : 0 < C) (A B : ℕ) (r : ℝ)
+    (hle : r ≤ |floorFormThird C A B|) (_h17 : 17 < r) :
+    (r - 17) / C < |Lambda A B| := by
+  have ht := floor_form_third_abs_lt hC A B
+  have hr : r < 17 + C * |Lambda A B| := lt_of_le_of_lt hle ht
+  have hsub : r - 17 < C * |Lambda A B| := by linarith [hr]
+  have hcomm : C * |Lambda A B| = |Lambda A B| * C := by
+    ring
+  rw [hcomm] at hsub
+  exact (div_lt_iff hC).mpr hsub
+
+/-- Same rearrangement versus `|Λ| < 1/B`. -/
+theorem baker_davenport_reduction_nogo_inv_B
+    {C : ℝ} (hC : 0 < C) {A B : ℕ}
+    (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hB : 0 < B)
+    (r : ℝ) (hle : r ≤ |floorFormThird C A B|) (h17 : 17 < r) :
+    (r - 17) / C < 1 / (B : ℝ) :=
+  lt_trans (baker_davenport_reduction_nogo hC A B r hle h17)
+    (abs_Lambda_le_inv_B hsol hB)
+
+/-- Same rearrangement versus the ratio upper bound. -/
+theorem baker_davenport_reduction_nogo_ratio
+    {C : ℝ} (hC : 0 < C) {A B : ℕ}
+    (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hB : 0 < B)
+    (r : ℝ) (hle : r ≤ |floorFormThird C A B|) (h17 : 17 < r) :
+    (r - 17) / C < (B : ℝ) ^ 4 / (A : ℝ) ^ 4 :=
+  lt_of_lt_of_le (baker_davenport_reduction_nogo hC A B r hle h17)
+    (abs_Lambda_tight_sandwich hsol hB).2.1
+
+/-- On a solution with `B ≥ B0`, no real `r` can satisfy both
+    `r > 17 + C/B0` and `r ≤ |third|`. -/
+theorem baker_davenport_no_witness_above_C_div_B0
+    {C : ℝ} (hC : 0 < C) {A B : ℕ}
+    (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13)
+    (hB : 0 < B) (hB0 : B0_nat ≤ B) (r : ℝ) :
+    ¬ (17 + C / (B0_nat : ℝ) < r ∧ r ≤ |floorFormThird C A B|) := by
+  rintro ⟨hgt, hle⟩
+  have htri := floor_form_third_abs_lt hC A B
+  have hLam := abs_Lambda_le_inv_B hsol hB
+  have hB0pos : (0 : ℝ) < (B0_nat : ℝ) := by
+    have : (0 : ℕ) < B0_nat := by decide
+    exact_mod_cast this
+  have hBle : (B0_nat : ℝ) ≤ (B : ℝ) := Nat.cast_le.mpr hB0
+  have hCΛ : C * |Lambda A B| < C / (B0_nat : ℝ) := by
+    have hmid : C * |Lambda A B| < C * (1 / (B : ℝ)) :=
+      mul_lt_mul_of_pos_left hLam hC
+    have hrew : C * (1 / (B : ℝ)) = C / (B : ℝ) := mul_one_div _ _
+    have hCB : C / (B : ℝ) ≤ C / (B0_nat : ℝ) :=
+      div_le_div_of_le_left (le_of_lt hC) hB0pos hBle
+    linarith [hmid, hrew, hCB]
+  have hthird : |floorFormThird C A B| < 17 + C / (B0_nat : ℝ) := by
+    linarith [htri, hCΛ]
+  linarith [hgt, hle, hthird]
+
+/-- Method-failure theorem: no scaling `C > 0` of this floor form
+    yields a Baker–Davenport witness above `17 + C/B0` on solutions
+    with `B ≥ B0`. Not `baker_davenport_reduction` (that name stays
+    the uninhabited v25 Prop). -/
+theorem bugeaud_LLL_method_fails :
+    ∀ C : ℝ, 0 < C →
+      ∀ A B : ℕ,
+        A ^ 4 + B ^ 4 = (B + 3) ^ 13 →
+          0 < B →
+            B0_nat ≤ B →
+              ¬ ∃ r : ℝ,
+                17 + C / (B0_nat : ℝ) < r ∧
+                  r ≤ |floorFormThird C A B| := by
+  intro C hC A B hsol hB hB0
+  rintro ⟨r, hr⟩
+  exact baker_davenport_no_witness_above_C_div_B0 hC hsol hB hB0 r hr
+
 /-! ## Locked uninhabited Props (v25 remains open) -/
 
 /-- Same implication as `MatveevLLL.bugeaud_LLL_reduction_proof`.
@@ -278,6 +381,12 @@ def baker_bound_gap3_from_ratio : Prop :=
 #check exists_reduced_b1_lt_sixty_four
 #check not_exists_reduced_b1_gt_required_r
 #check bugeaud_usable_third_lt_required_r_of_B_lt_C
+#check floor_form_third_abs_lt
+#check baker_davenport_reduction_nogo
+#check baker_davenport_reduction_nogo_inv_B
+#check baker_davenport_reduction_nogo_ratio
+#check baker_davenport_no_witness_above_C_div_B0
+#check bugeaud_LLL_method_fails
 #check bugeaud_LLL_reduction_proof
 #check baker_davenport_reduction
 #check baker_bound_gap3_from_ratio
@@ -288,5 +397,7 @@ def baker_bound_gap3_from_ratio : Prop :=
 #print axioms exists_reduced_b1_lt_sixty_four
 #print axioms not_exists_reduced_b1_gt_required_r
 #print axioms LLL_C_div_B0_eq
+#print axioms baker_davenport_reduction_nogo
+#print axioms bugeaud_LLL_method_fails
 
 end BealMatveevBeal.MatveevBugeaud

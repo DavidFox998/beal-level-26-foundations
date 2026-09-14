@@ -106,6 +106,10 @@ on `LEAN_PATH`).
   uniform statement `T ≥ c L K` stays
   `wuestholz_subgroup_theorem` (`def Prop`): Philippon's
   zero estimate is not in Mathlib 4.12.
+  `WuestholzProduct.lean` packages the inhabited disjunction
+  as `T < coeffCount ∨ P = 0 ∨` dependence
+  (`wuestholz_product_theorem_exp_or_small_T`); the uniform
+  exponential product theorem stays `def Prop`.
   This does **not** close Matveev 2000 / `C1_floor`. Track 1
   stays the elementary `1/max` bound.
 - Conditional analytic smallness

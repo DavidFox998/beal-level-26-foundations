@@ -43,4 +43,6 @@ Axioms `[propext, Classical.choice, Quot.sound]` only.
   `W` below full jet order.
 - Level 26 `baker_bound_gap3` / `bugeaud_LLL_reduction_proof`.
 
-Not a minted v25 tag.
+Not a minted v25 tag. Successor packaging of the inhabited
+full-order product theorem lives in
+[`BealWuestholzProduct.md`](BealWuestholzProduct.md).

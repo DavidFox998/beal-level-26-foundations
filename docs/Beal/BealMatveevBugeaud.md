@@ -40,8 +40,13 @@ Axioms `[propext, Classical.choice, Quot.sound]` only.
   `17 + C/B`.
 
 Raising `C` or swapping columns does not help: `v` stays short
-by construction, so `λ₁ ≤ ‖v‖ < 32`. Wüstholz / `C1_floor` cannot
-close the gap either (`exp(−C1 log A log B)` is far smaller than
+by construction, so `λ₁ ≤ ‖v‖ < 32`. The uniform-`C` theorems
+`floor_form_third_abs_lt`, `baker_davenport_reduction_nogo`,
+`baker_davenport_no_witness_above_C_div_B0`, and
+`bugeaud_LLL_method_fails` prove the same rearrangement for
+**every** `C > 0`: no witness `r > 17 + C/B0` exists on a
+solution with `B ≥ B0`. Wüstholz / `C1_floor` cannot close the
+gap either (`exp(−C1 log A log B)` is far smaller than
 `B⁴/A⁴`).
 
 ## What stays a def Prop

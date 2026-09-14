@@ -15,6 +15,12 @@ PARI lock: 26a1 Δ `-17576` 26b1 Δ `-1664` `|Sel2|=1` det `M3=2` SHA `d9d907f6c
 
 # docs/Final/
 
+Current Matveev–Beal HEAD is recorded at the top of
+[`FINAL.md`](FINAL.md): integer-gap `B≤B0`, LLL / Wüstholz no-gos,
+full-order product packaging in `WuestholzProduct.lean`. Uniform
+`wuestholz_product_theorem_exp` / `baker_davenport_reduction` /
+`baker_bound_gap3` stay `def Prop`. Not v25.
+
 FINAL v5 green: [`FINAL.md`](FINAL.md).
 Iter / Forall / typed-bridge docs. Lean sources live in
 [`lean/BealLevel26Foundations/Final/`](../../lean/BealLevel26Foundations/Final/README.md).

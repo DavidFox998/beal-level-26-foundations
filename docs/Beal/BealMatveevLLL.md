@@ -38,7 +38,11 @@ On a gap-3 solution $A^4+B^4=(B+3)^{13}$ with $B>0$:
 - `track1_exp_lt_ratio`: the packaged Track 1
   `exp(−C1 log A log C B0_term)` is `< B^4/A^4`.
 - `LLL_e2_linear_form_approx`: the displayed `C=10^{30}` floor
-  form approximates `C Λ` with error `< 17`. Mathlib 4.12 has no
+  form approximates `C Λ` with error `< 17`.
+- `floor_form_approx_of_C` / `floorFormThird`: the same bound
+  `4 + 13 = 17` holds for **every** real scaling `C`, so changing
+  `C` (including `C = B^k`) cannot enlarge the usable
+  Baker–Davenport gap past `|Λ|`. Mathlib 4.12 has no
   LLL shortest-vector theorem.
 - Rank-3 lattice (columns `b₁ = (1,0,⌊C log A⌋)`,
   `b₂ = (0,1,⌊C log(B+3)⌋)`, `b₃ = (0,0,C)`):

@@ -42,10 +42,16 @@ injective (`wuestholz_product_theorem_exp_Gm`, also for
 strictly weaker than full jet order and reduces to
 the inhabited disjunction only when
 `(L+1)(N1+1)(N2+1) ≤ c L K`. The uniform Wüstholz
-subgroup theorem stays `def Prop`. `WuestholzSubgroup.lean`
-proves `c = 1/2`, `1/242`, `1/1000` lose to
+subgroup theorem stays `def Prop`. `WuestholzSubgroup.lean` proves `c = 1/2`, `1/242`, `1/1000` lose to
 `coeffCount 1 10 10 = 242`, and that linear `K ∼ N1+N2`
-still has no uniform `c`. `L≥1` and `α1=α2=1` forces
+still has no uniform `c`. `WuestholzProduct.lean` packages
+the inhabited product theorem as `T < coeffCount ∨ P = 0 ∨`
+dependence (`T < 242` at displayed `1 10 10`); uniform
+`wuestholz_product_theorem_exp` stays `def Prop`.
+`floor_form_approx_of_C` holds for every `C`;
+`baker_davenport_reduction_nogo` /
+`bugeaud_LLL_method_fails` prove no scaling yields
+`r > 17 + C/B0` on `B ≥ B0`. `L≥1` and `α1=α2=1` forces
 `Δ=0`. Being a convergent does not force `B ≤ 10⁶`. Axioms
 `[propext, Classical.choice, Quot.sound]`. **0 sorry.**
 

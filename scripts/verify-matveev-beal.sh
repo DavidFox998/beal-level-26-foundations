@@ -27,6 +27,8 @@ test -f MatveevBugeaud.lean
 test -f Beal/Matveev/MatveevBugeaud.lean
 test -f WuestholzSubgroup.lean
 test -f Beal/Matveev/WuestholzSubgroup.lean
+test -f WuestholzProduct.lean
+test -f Beal/Matveev/WuestholzProduct.lean
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -125,6 +127,12 @@ if "theorem track1_exp_lt_ratio" not in lll:
     sys.exit(1)
 if "theorem LLL_e2_linear_form_approx" not in lll:
     print("LLL_e2_linear_form_approx missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem floor_form_approx_of_C" not in lll:
+    print("floor_form_approx_of_C missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "def floorFormThird" not in lll:
+    print("floorFormThird missing from MatveevLLL.lean", file=sys.stderr)
     sys.exit(1)
 if "theorem LLL_basis_det" not in lll:
     print("LLL_basis_det missing from MatveevLLL.lean", file=sys.stderr)
@@ -225,6 +233,9 @@ if ".one `MatveevBugeaud" not in pathlib.Path("lakefile.lean").read_text(encodin
 if ".one `WuestholzSubgroup" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
     print("lakefile.lean missing WuestholzSubgroup glob", file=sys.stderr)
     sys.exit(1)
+if ".one `WuestholzProduct" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
+    print("lakefile.lean missing WuestholzProduct glob", file=sys.stderr)
+    sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in bugeaud:
@@ -259,6 +270,21 @@ if "theorem bugeaud_naive_gs_lt_inv_B0" not in bugeaud:
     sys.exit(1)
 if "theorem not_exists_reduced_b1_gt_required_r" not in bugeaud:
     print("not_exists_reduced_b1_gt_required_r missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem floor_form_third_abs_lt" not in bugeaud:
+    print("floor_form_third_abs_lt missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem baker_davenport_reduction_nogo" not in bugeaud:
+    print("baker_davenport_reduction_nogo missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem baker_davenport_reduction_nogo_inv_B" not in bugeaud:
+    print("baker_davenport_reduction_nogo_inv_B missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem baker_davenport_no_witness_above_C_div_B0" not in bugeaud:
+    print("baker_davenport_no_witness_above_C_div_B0 missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem bugeaud_LLL_method_fails" not in bugeaud:
+    print("bugeaud_LLL_method_fails missing", file=sys.stderr)
     sys.exit(1)
 if "143186215390" not in bugeaud:
     print("C1_floor = 143186215390 missing from MatveevBugeaud.lean", file=sys.stderr)
@@ -339,6 +365,62 @@ if re.search(r"^theorem wuestholz_product_theorem_exp\b", wsg, re.M):
     sys.exit(1)
 if re.search(r"^theorem baker_bound_gap3\b", wsg, re.M):
     print("do not inhabit baker_bound_gap3 in WuestholzSubgroup.lean", file=sys.stderr)
+    sys.exit(1)
+
+prod = pathlib.Path("WuestholzProduct.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in prod:
+    print("WuestholzProduct.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
+if "theorem wuestholz_product_theorem_exp_or_small_T" not in prod:
+    print("wuestholz_product_theorem_exp_or_small_T missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem wuestholz_product_theorem_exp_one_ten_ten" not in prod:
+    print("wuestholz_product_theorem_exp_one_ten_ten missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem wuestholz_product_theorem_exp_of_jet_dim" not in prod:
+    print("wuestholz_product_theorem_exp_of_jet_dim missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem wuestholz_product_theorem_exp_Ga_base" not in prod:
+    print("wuestholz_product_theorem_exp_Ga_base missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_uniform_c_for_product_theorem" not in prod:
+    print("no_uniform_c_for_product_theorem missing", file=sys.stderr)
+    sys.exit(1)
+if "143186215390" not in prod:
+    print("C1_floor = 143186215390 missing from WuestholzProduct.lean", file=sys.stderr)
+    sys.exit(1)
+if "1000000" not in prod:
+    print("B0_nat = 1000000 missing from WuestholzProduct.lean", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in prod:
+    print("do not paste True := trivial skeletons", file=sys.stderr)
+    sys.exit(1)
+if "def wuestholz_product_theorem_exp" not in prod:
+    print("wuestholz_product_theorem_exp must stay a def Prop in WuestholzProduct.lean", file=sys.stderr)
+    sys.exit(1)
+if "def wuestholz_subgroup_theorem" not in prod:
+    print("wuestholz_subgroup_theorem must stay a def Prop in WuestholzProduct.lean", file=sys.stderr)
+    sys.exit(1)
+if "def baker_davenport_reduction" not in prod:
+    print("baker_davenport_reduction must stay a def Prop in WuestholzProduct.lean", file=sys.stderr)
+    sys.exit(1)
+if "def bugeaud_LLL_reduction_proof" not in prod:
+    print("bugeaud_LLL_reduction_proof must stay a def Prop in WuestholzProduct.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem wuestholz_product_theorem_exp\b", prod, re.M):
+    print("do not inhabit wuestholz_product_theorem_exp", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem wuestholz_subgroup_theorem\b", prod, re.M):
+    print("do not inhabit wuestholz_subgroup_theorem", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_davenport_reduction\b", prod, re.M):
+    print("baker_davenport_reduction must not be a theorem", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem bugeaud_LLL_reduction_proof\b", prod, re.M):
+    print("bugeaud_LLL_reduction_proof must not be a theorem", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_gap3\b", prod, re.M):
+    print("do not inhabit baker_bound_gap3 in WuestholzProduct.lean", file=sys.stderr)
     sys.exit(1)
 
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
@@ -534,6 +616,11 @@ print("  intermediate T < jet dim uniformly; subgroup of jet-dim <= cLK")
 print("  WuestholzSubgroup: c=1/2, 1/242, 1/1000 lose to coeffCount 1 10 10=242")
 print("  no_uniform_c_linear_in_N; inhabited special case is jet-dim <= cLK")
 print("  subgroup-theorem Wüstholz stays def Prop; not a C1_floor close")
+print("  WuestholzProduct: full-order T<coeffCount or P=0 or dependence")
+print("  displayed 1 10 10: T<242 or P=0 or dep; no uniform c for product")
+print("  floor_form_approx_of_C for every C; baker_davenport_reduction_nogo")
+print("  bugeaud_LLL_method_fails: no C gives r>17+C/B0 on B>=B0")
+print("  baker_davenport_reduction / wuestholz_product_theorem_exp stay def Prop")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")
 print("  unrestricted target and hLLL stay def Prop; not v25")

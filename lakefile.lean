@@ -21,4 +21,5 @@ lean_lib BealConjecture where
 @[default_target]
 lean_lib «BealMatveevBeal» where
   globs := #[.submodules `Beal.Matveev, .one `MatveevThm14Proof, .one `MatveevLLL,
-    .one `MatveevInterpolation, .one `MatveevBugeaud, .one `WuestholzSubgroup]
+    .one `MatveevInterpolation, .one `MatveevBugeaud, .one `WuestholzSubgroup,
+    .one `WuestholzProduct]

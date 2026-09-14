@@ -46,7 +46,8 @@ What it **does** prove, with axioms only
   `|Λ| ≤ 1/B` would be a false close;
 * Track 1 `exp(−C1 …)` is `< B⁴/A⁴` (`track1_exp_lt_ratio`);
 * the displayed C=10³⁰ floor form approximates `C Λ` to error `< 17`
-  (`LLL_e2_linear_form_approx`);
+  (`LLL_e2_linear_form_approx`); the same bound holds for **every**
+  real scaling `C` (`floor_form_approx_of_C`);
 * the rank-3 lattice with columns `(1,0,⌊C log A⌋)`,
   `(0,1,⌊C log(B+3)⌋)`, `(0,0,C)` has `det = C`
   (`LLL_basis_det`);
@@ -767,6 +768,54 @@ theorem LLL_e2_linear_form_approx (A B : ℕ) :
         |4 * (⌊a⌋ - a)| + |13 * (⌊c⌋ - c)| := by
       simpa [sub_eq_add_neg, abs_neg] using
         abs_add ((4 : ℝ) * (⌊a⌋ - a)) (-((13 : ℝ) * (⌊c⌋ - c)))
+    linarith [htri, h4, h13]
+  rwa [hform]
+
+/-- Third coordinate of `4 b₁ − 13 b₂` for an arbitrary scaling `C`,
+    not only the displayed `C = 10³⁰`. -/
+noncomputable def floorFormThird (C : ℝ) (A B : ℕ) : ℝ :=
+  (4 : ℝ) * ⌊C * log (A : ℝ)⌋ - 13 * ⌊C * log ((B + 3 : ℕ) : ℝ)⌋
+
+theorem floorFormThird_eq_LLL_e2 (A B : ℕ) :
+    floorFormThird LLL_C_real A B =
+      (4 : ℝ) * (LLL_e2 A B).1 - 13 * (LLL_e2 A B).2 :=
+  rfl
+
+/-- Floor error `|4⌊C log A⌋ − 13⌊C log(B+3)⌋ − C Λ| < 17` for
+    **every** real `C`. The bound `4 + 13` does not depend on `C`.
+    Changing `C` (including `C = B^k`) cannot enlarge the usable
+    Baker–Davenport gap past `|Λ|`. -/
+theorem floor_form_approx_of_C (C : ℝ) (A B : ℕ) :
+    |floorFormThird C A B - C * Lambda A B| < 17 := by
+  set a : ℝ := C * log (A : ℝ)
+  set cval : ℝ := C * log ((B + 3 : ℕ) : ℝ)
+  have hΛ : C * Lambda A B = 4 * a - 13 * cval := by
+    simp only [Lambda, a, cval]
+    ring
+  have hft : floorFormThird C A B = (4 : ℝ) * ⌊a⌋ - 13 * ⌊cval⌋ := rfl
+  have hform :
+      floorFormThird C A B - C * Lambda A B =
+        4 * (⌊a⌋ - a) - 13 * (⌊cval⌋ - cval) := by
+    rw [hft, hΛ]
+    ring
+  have ha : |a - ⌊a⌋| < 1 := abs_sub_int_floor a
+  have hc : |cval - ⌊cval⌋| < 1 := abs_sub_int_floor cval
+  have hbound :
+      |4 * (⌊a⌋ - a) - 13 * (⌊cval⌋ - cval)| < 17 := by
+    have h4 : |(4 : ℝ) * (⌊a⌋ - a)| < 4 := by
+      rw [abs_mul, abs_of_pos (by norm_num : (0 : ℝ) < 4)]
+      have : |⌊a⌋ - a| = |a - ⌊a⌋| := abs_sub_comm _ _
+      rw [this]
+      nlinarith [ha]
+    have h13 : |(13 : ℝ) * (⌊cval⌋ - cval)| < 13 := by
+      rw [abs_mul, abs_of_pos (by norm_num : (0 : ℝ) < 13)]
+      have : |⌊cval⌋ - cval| = |cval - ⌊cval⌋| := abs_sub_comm _ _
+      rw [this]
+      nlinarith [hc]
+    have htri : |4 * (⌊a⌋ - a) - 13 * (⌊cval⌋ - cval)| ≤
+        |4 * (⌊a⌋ - a)| + |13 * (⌊cval⌋ - cval)| := by
+      simpa [sub_eq_add_neg, abs_neg] using
+        abs_add ((4 : ℝ) * (⌊a⌋ - a)) (-((13 : ℝ) * (⌊cval⌋ - cval)))
     linarith [htri, h4, h13]
   rwa [hform]
 
@@ -3238,6 +3287,9 @@ theorem baker_bound_gap3_of_bugeaud_LLL_reduction_proof
 #check abs_Lambda_lt_inv_max_log_coeff
 #check track1_exp_lt_ratio
 #check LLL_e2_linear_form_approx
+#check floorFormThird
+#check floor_form_approx_of_C
+#check floorFormThird_eq_LLL_e2
 #check LLL_basis_det
 #check LLL_v_mem
 #check LLL_v_norm_lt_thirty_two
@@ -3271,6 +3323,7 @@ theorem baker_bound_gap3_of_bugeaud_LLL_reduction_proof
 #print axioms abs_Lambda_lt_inv_max_log_coeff
 #print axioms track1_exp_lt_ratio
 #print axioms LLL_e2_linear_form_approx
+#print axioms floor_form_approx_of_C
 #print axioms LLL_basis_det
 #print axioms LLL_v_norm_lt_thirty_two
 #print axioms LLL_lambda1_lt_thirty_two
