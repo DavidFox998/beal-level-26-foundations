@@ -39,7 +39,10 @@ compatible, `5∣B` impossible). Gap-5 no-go in
 impossible, `5∣B` impossible by 5-descent). Gap-6 no-go in
 `BealGap6.lean` (`baker_bound_gap6` stays `def Prop`; `B` odd, even
 `B` dies as `6` or `14` mod 16, `3∣B` impossible by 3-descent,
-`5∣B` compatible). Uniform
+`5∣B` compatible). Gap-7 no-go in
+`BealGap7.lean` (`baker_bound_gap7` stays `def Prop`; `B` even,
+`3∣B` compatible, `5∣B` impossible (`C≡2`), `7∣B` impossible
+by 7-descent). Uniform
 `wuestholz_product_theorem_exp` / `baker_davenport_reduction`
 stay `def Prop`. The kernel `baker_bound_gap3` stays a `def`;
 the axiom-relative theorem is named `baker_bound_gap3_true`.

@@ -28,6 +28,7 @@ Current Matveev–Beal track:
 - [`BealGap4.md`](BealGap4.md) — gap-4 `A⁴+B⁴=(B+4)¹³` no-go (`v24-v24x-final-gap4-nogo`); `B` odd `A` even; `3∣B` compatible like gap-1; `5∣B` impossible
 - [`BealGap5.md`](BealGap5.md) — gap-5 `A⁴+B⁴=(B+5)¹³` no-go (`v24-v24x-final-gap5-nogo`); `B` even `A` odd; `3∣B` impossible like `f1cb039`; `5∣B` impossible by 5-descent
 - [`BealGap6.md`](BealGap6.md) — gap-6 `A⁴+B⁴=(B+6)¹³` no-go (`v24-v24x-final-gap6-nogo`); `B` odd `A` even; even `B` dies as `6` or `14` mod 16; `3∣B` impossible by 3-descent (`C₁=B₁+2`); `5∣B` compatible
+- [`BealGap7.md`](BealGap7.md) — gap-7 `A⁴+B⁴=(B+7)¹³` no-go (`v24-v24x-final-gap7-nogo`); `B` even `A` odd; `3∣B` compatible; `5∣B` impossible (`C≡2`); `7∣B` impossible by 7-descent
 - [`BealBakerBoundGap3.md`](BealBakerBoundGap3.md) — kernel `baker_bound_gap3` stays a `def Prop`; Mathlib-only close remains open
 
 Older Frey / Zsigmondy / modular-elimination notes in this

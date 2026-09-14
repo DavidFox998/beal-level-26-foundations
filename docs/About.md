@@ -104,6 +104,11 @@ no `(1,0)`. `baker_bound_gap5` stays `def Prop`.
 mod 16, `3 ∣ B` impossible by 3-descent (`C₁=B₁+2`), `5 ∣ B`
 compatible, same log/LLL lose, no `(1,0)`. `baker_bound_gap6`
 stays `def Prop`.
+`BealGap7.lean` proves `baker_bound_gap7_unconditional_nogo` for
+`A⁴+B⁴=(B+7)¹³`: `B` even `A` odd, `3 ∣ B` compatible (`C≡1`),
+`5 ∣ B` impossible (`C≡2 mod 5`), `7 ∣ B` impossible by
+7-descent, same log/LLL lose, no `(1,0)`. `baker_bound_gap7`
+stays `def Prop`.
 `L≥1` and `α1=α2=1` forces `Δ=0`. Being a convergent does not force
 `B ≤ 10⁶`. Mathlib-only theorems print axioms
 `[propext, Classical.choice, Quot.sound]`. **0 sorry.**

@@ -115,6 +115,11 @@ $A^4+B^4=(B+6)^{13}$: $B$ odd $A$ even, even $B$ dies as $6$ or
 $14$ mod 16, $3\mid B$ impossible by 3-descent ($C_1=B_1+2$),
 $5\mid B$ compatible, same log/LLL lose, no $(1,0)$.
 `baker_bound_gap6` stays `def Prop`.
+`BealGap7.lean` proves `baker_bound_gap7_unconditional_nogo` for
+$A^4+B^4=(B+7)^{13}$: $B$ even $A$ odd, $3\mid B$ compatible
+($C\equiv 1$), $5\mid B$ impossible ($C\equiv 2$ mod 5),
+$7\mid B$ impossible by 7-descent, same log/LLL lose, no $(1,0)$.
+`baker_bound_gap7` stays `def Prop`.
 Unconditional generic
 $|\Delta|\le\exp(-cLK)$ is false ($L=0$ gives $\Delta=1$);
 $L\ge 1$ and $\alpha_1=\alpha_2=1$ forces $\Delta=0$. Not the unrestricted

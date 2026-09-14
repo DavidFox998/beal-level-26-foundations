@@ -74,4 +74,4 @@ prove `no_sol_when_five_dvd_B` for gap-6 (`C ≡ 1 mod 5`).
 This module does **not** contain `axiom darmon_merel_4413_axiom_gap6`.
 The axiom-relative inhabitant reuses [`BealTrueV25.md`](BealTrueV25.md).
 
-Not a minted unconditional v25 tag. Next: gap-7 `C = B+7` would flip parity again (`k` odd ⇒ `B` even) and `7∣B` is a new prime.
+Not a minted unconditional v25 tag. Next: gap-7 `C = B+7` in [`BealGap7.md`](BealGap7.md).
