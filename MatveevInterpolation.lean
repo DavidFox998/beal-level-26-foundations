@@ -68,9 +68,17 @@ Proved, axioms `[propext, Classical.choice, Quot.sound]` only:
   the jet dimension. `A^4 ≠ C^13` is not independence (`4` and
   `2`). A dependent pair admits nonzero `P` with `Φ ≡ 0`
   (`twoOneRelation`). On `𝐆_a`, Siegel still produces nonzero
-  `P` with order `N/2 < N`. The intermediate-order subgroup
-  statement (`T ≥ c L K` uniformly in `N1,N2`) stays
-  `wuestholz_subgroup_theorem` (`def Prop`).
+  `P` with order `N/2 < N`. Proper algebraic subgroups of
+  `𝐆_a × 𝐆_m²` that can contain `W` are classified
+  (`ProperSubgroupCandidate`); independence keeps `W` out of
+  every such candidate (`W_not_in_proper_candidate_of_indep`).
+  Intermediate `T ≥ c L K` is strictly weaker than full jet
+  order (`intermediate_threshold_lt_jet_dim`) and reduces to
+  the inhabited disjunction only when
+  `(L+1)(N1+1)(N2+1) ≤ c L K`
+  (`wuestholz_subgroup_of_jet_dim_le_threshold`). Uniformly in
+  `N1,N2`, the statement stays `wuestholz_subgroup_theorem`
+  (`def Prop`). Philippon's zero estimate is not in Mathlib 4.12.
 
 The full Wüstholz subgroup theorem stays `def Prop`. Exact integer
 vanishing of the *exponential* jet is not an integer linear system
@@ -3364,6 +3372,251 @@ theorem wuestholz_Ga_siegel_below_full_order
       simpa [hcoe] using hΦ z
     simpa [hfun] using hvan k hk
 
+/-! ## Proper algebraic subgroups of `𝐆_a × 𝐆_m²`
+
+Philippon / Wüstholz: a proper algebraic subgroup of
+`𝐆_a × 𝐆_m²` that can contain the analytic curve
+`W = {(z, α1^z, α2^z)}` is (up to finite index) one of
+
+* `𝐆_a × {1} × 𝐆_m` (`y1 = 1`);
+* `𝐆_a × 𝐆_m × {1}` (`y2 = 1`);
+* `{0} × 𝐆_m²` (`z = 0`);
+* a graph `y1^a y2^b = 1` (`a ≠ 0 ∨ b ≠ 0`).
+
+The easy half is formalized: if `W` lies in one of these, then
+either `1 < αi` fails or `α1,α2` are multiplicatively dependent.
+The hard half — high vanishing order along `W` forces containment
+in a proper subgroup after a small translate — is Philippon's
+zero estimate and is **not** in Mathlib 4.12. Intermediate
+`T ≥ c L K` uniformly in `N1,N2` therefore stays
+`wuestholz_subgroup_theorem` (`def Prop`). It holds when the
+jet dimension is already `≤ c L K`; for any fixed `c` one can
+choose `N1,N2` so that `c L K < (L+1)(N1+1)(N2+1)`.
+-/
+
+/-- Candidate proper algebraic subgroups of `𝐆_a × 𝐆_m²`
+    that can contain `W`. -/
+inductive ProperSubgroupCandidate
+  | vanishY1
+  | vanishY2
+  | vanishZ
+  | graph (a b : ℤ) (hne : a ≠ 0 ∨ b ≠ 0)
+
+/-- Containment of the analytic curve `W` in a candidate. -/
+def W_in_candidate (α1 α2 : ℕ) : ProperSubgroupCandidate → Prop
+  | .vanishY1 => ∀ z : ℂ, alphaPowZ (α1 : ℝ) z = 1
+  | .vanishY2 => ∀ z : ℂ, alphaPowZ (α2 : ℝ) z = 1
+  | .vanishZ => False
+  | .graph a b _ => ∀ z : ℂ,
+      alphaPowZ (α1 : ℝ) z ^ a * alphaPowZ (α2 : ℝ) z ^ b = 1
+
+theorem alphaPowZ_zpow (α : ℝ) (n : ℤ) (z : ℂ) :
+    alphaPowZ α z ^ n =
+      Complex.exp ((n : ℂ) * (Real.log α : ℂ) * z) := by
+  unfold alphaPowZ
+  rw [← Complex.exp_int_mul]
+  congr 1
+  ring
+
+theorem alphaPowZ_at_one {α : ℕ} (hα : 0 < α) :
+    alphaPowZ (α : ℝ) (1 : ℂ) = (α : ℂ) := by
+  unfold alphaPowZ
+  have hmul : (Real.log (α : ℝ) : ℂ) * 1 = (Real.log (α : ℝ) : ℂ) := by
+    ring
+  rw [hmul, ← Complex.ofReal_exp]
+  have hpos : (0 : ℝ) < α := by exact_mod_cast hα
+  rw [Real.exp_log hpos]
+  simp
+
+theorem complex_exp_ofReal_eq_one {x : ℝ} :
+    Complex.exp (x : ℂ) = 1 ↔ x = 0 := by
+  rw [← Complex.ofReal_exp, ← Complex.ofReal_one, Complex.ofReal_inj,
+    exp_eq_one_iff]
+
+theorem W_graph_eval (α1 α2 : ℕ) (a b : ℤ) (z : ℂ) :
+    alphaPowZ (α1 : ℝ) z ^ a * alphaPowZ (α2 : ℝ) z ^ b =
+      Complex.exp
+        ((((a : ℝ) * log (α1 : ℝ) + (b : ℝ) * log (α2 : ℝ) : ℝ) : ℂ) *
+          z) := by
+  rw [alphaPowZ_zpow, alphaPowZ_zpow, ← Complex.exp_add]
+  congr 1
+  push_cast
+  ring
+
+theorem mul_dep_of_int_log_sum {α1 α2 : ℕ}
+    (hα1 : 1 < α1) (hα2 : 1 < α2) {a b : ℤ} (hne : a ≠ 0 ∨ b ≠ 0)
+    (hsum : (a : ℝ) * log (α1 : ℝ) + (b : ℝ) * log (α2 : ℝ) = 0) :
+    multiplicativelyDependent α1 α2 := by
+  have hα1p := log_nat_pos hα1
+  have hα2p := log_nat_pos hα2
+  have ha : a ≠ 0 := by
+    intro ha0
+    have : (b : ℝ) * log (α2 : ℝ) = 0 := by simpa [ha0] using hsum
+    have hb0 : b = 0 := by
+      have := (mul_eq_zero.mp this).resolve_right hα2p.ne'
+      exact_mod_cast this
+    cases hne with
+    | inl h => exact h ha0
+    | inr h => exact h hb0
+  have hb : b ≠ 0 := by
+    intro hb0
+    have : (a : ℝ) * log (α1 : ℝ) = 0 := by simpa [hb0] using hsum
+    have ha0 : a = 0 := by
+      have := (mul_eq_zero.mp this).resolve_right hα1p.ne'
+      exact_mod_cast this
+    exact ha ha0
+  have hlin : (a : ℝ) * log (α1 : ℝ) = (-(b : ℝ)) * log (α2 : ℝ) := by
+    linarith
+  have hsign : (0 < a ∧ b < 0) ∨ (a < 0 ∧ 0 < b) := by
+    rcases lt_or_gt_of_ne ha with ha_neg | ha_pos
+    · have hneg : (a : ℝ) * log (α1 : ℝ) < 0 :=
+        mul_neg_of_neg_of_pos (by exact_mod_cast ha_neg) hα1p
+      have hbpos : 0 < b := by
+        have : (b : ℝ) * log (α2 : ℝ) > 0 := by linarith
+        have hb' : (0 : ℝ) < b := pos_of_mul_pos_left this (le_of_lt hα2p)
+        exact_mod_cast hb'
+      exact Or.inr ⟨ha_neg, hbpos⟩
+    · have hpos : 0 < (a : ℝ) * log (α1 : ℝ) :=
+        mul_pos (by exact_mod_cast ha_pos) hα1p
+      have hbneg : b < 0 := by
+        have : (b : ℝ) * log (α2 : ℝ) < 0 := by linarith
+        have hb' : (b : ℝ) < 0 := neg_of_mul_neg_left this (le_of_lt hα2p)
+        exact_mod_cast hb'
+      exact Or.inl ⟨ha_pos, hbneg⟩
+  rcases hsign with ⟨ha', hb'⟩ | ⟨ha', hb'⟩
+  · refine ⟨a.natAbs, b.natAbs, Or.inl (Int.natAbs_ne_zero.2 ha), ?_⟩
+    have haAbs : (a : ℝ) = (a.natAbs : ℝ) := by
+      rw [Int.cast_natAbs, abs_of_pos (by exact_mod_cast ha')]
+    have hbAbs : (-(b : ℝ)) = (b.natAbs : ℝ) := by
+      rw [Int.cast_natAbs, Int.cast_abs]
+      exact (abs_of_neg (show (b : ℝ) < 0 from by exact_mod_cast hb')).symm
+    apply nat_mul_log_eq_pow hα1 hα2
+    rwa [← haAbs, ← hbAbs]
+  · refine ⟨a.natAbs, b.natAbs, Or.inr (Int.natAbs_ne_zero.2 hb), ?_⟩
+    have haAbs : (-(a : ℝ)) = (a.natAbs : ℝ) := by
+      rw [Int.cast_natAbs, Int.cast_abs]
+      exact (abs_of_neg (show (a : ℝ) < 0 from by exact_mod_cast ha')).symm
+    have hbAbs : (b : ℝ) = (b.natAbs : ℝ) := by
+      rw [Int.cast_natAbs, abs_of_pos (by exact_mod_cast hb')]
+    apply nat_mul_log_eq_pow hα1 hα2
+    have : (-(a : ℝ)) * log (α1 : ℝ) = (b : ℝ) * log (α2 : ℝ) := by
+      linarith
+    rwa [← haAbs, ← hbAbs]
+
+/-- A graph relation `y1^a y2^b = 1` along all of `W` is a
+    multiplicative dependence. -/
+theorem mul_dep_of_W_in_graph {α1 α2 : ℕ}
+    (hα1 : 1 < α1) (hα2 : 1 < α2) {a b : ℤ} (hne : a ≠ 0 ∨ b ≠ 0)
+    (hW : ∀ z : ℂ,
+      alphaPowZ (α1 : ℝ) z ^ a * alphaPowZ (α2 : ℝ) z ^ b = 1) :
+    multiplicativelyDependent α1 α2 := by
+  have h1 := hW 1
+  rw [W_graph_eval] at h1
+  have hmul :
+      ((((a : ℝ) * log (α1 : ℝ) + (b : ℝ) * log (α2 : ℝ) : ℝ) : ℂ) *
+          (1 : ℂ)) =
+        (((a : ℝ) * log (α1 : ℝ) + (b : ℝ) * log (α2 : ℝ) : ℝ) : ℂ) := by
+    ring
+  rw [hmul] at h1
+  exact mul_dep_of_int_log_sum hα1 hα2 hne (complex_exp_ofReal_eq_one.mp h1)
+
+theorem not_W_in_vanishY1 {α1 α2 : ℕ} (hα1 : 1 < α1) :
+    ¬ W_in_candidate α1 α2 .vanishY1 := by
+  intro h
+  have h1 := h 1
+  have heq := alphaPowZ_at_one (Nat.zero_lt_of_lt hα1)
+  rw [heq] at h1
+  norm_cast at h1
+  exact hα1.ne' h1
+
+theorem not_W_in_vanishY2 {α1 α2 : ℕ} (hα2 : 1 < α2) :
+    ¬ W_in_candidate α1 α2 .vanishY2 := by
+  intro h
+  have h1 := h 1
+  have heq := alphaPowZ_at_one (Nat.zero_lt_of_lt hα2)
+  rw [heq] at h1
+  norm_cast at h1
+  exact hα2.ne' h1
+
+theorem not_W_in_vanishZ (α1 α2 : ℕ) :
+    ¬ W_in_candidate α1 α2 .vanishZ :=
+  not_false
+
+/-- Easy half of Wüstholz: independence keeps `W` out of every
+    proper candidate subgroup of `𝐆_a × 𝐆_m²`. -/
+theorem W_not_in_proper_candidate_of_indep {α1 α2 : ℕ}
+    (hα1 : 1 < α1) (hα2 : 1 < α2)
+    (hindep : ¬ multiplicativelyDependent α1 α2)
+    (H : ProperSubgroupCandidate) :
+    ¬ W_in_candidate α1 α2 H := by
+  cases H with
+  | vanishY1 => exact not_W_in_vanishY1 hα1
+  | vanishY2 => exact not_W_in_vanishY2 hα2
+  | vanishZ => exact not_W_in_vanishZ α1 α2
+  | graph a b hne =>
+    intro h
+    exact hindep (mul_dep_of_W_in_graph hα1 hα2 hne h)
+
+/-- For any displayed constant `c`, some `G_m` degrees make the
+    jet dimension strictly larger than `c L K`. Intermediate
+    vanishing `T ≥ c L K` is therefore strictly weaker than
+    `T ≥ (L+1)(N1+1)(N2+1)`. -/
+theorem intermediate_threshold_lt_jet_dim (c : ℝ) (L K : ℕ) :
+    ∃ N1 N2 : ℕ, (c : ℝ) * L * K < coeffCount L N1 N2 := by
+  obtain ⟨n, hn⟩ := exists_nat_gt (c * (L : ℝ) * (K : ℝ))
+  refine ⟨0, n, ?_⟩
+  have hcnt : (coeffCount L 0 n : ℝ) = (L + 1) * (n + 1) := by
+    simp [coeffCount]
+  have hlt : (n : ℝ) < (L + 1 : ℝ) * (n + 1) :=
+    calc (n : ℝ)
+        < n + 1 := lt_add_one _
+      _ = (1 : ℝ) * (n + 1) := (one_mul _).symm
+      _ ≤ (L + 1 : ℝ) * (n + 1) :=
+        mul_le_mul_of_nonneg_right
+          (by exact_mod_cast (Nat.le_add_left 1 L)) (by positivity)
+  linarith
+
+/-- The `c ≈ 1/2` interpolation shape: `T ≥ (1/2) L K` need not
+    reach the jet dimension. Here `L = K = 1`, `N1 = N2 = 10`. -/
+theorem intermediate_T_example_half :
+    ((1 : ℝ) / 2) * 1 * 1 < coeffCount 1 10 10 := by
+  simp [coeffCount]
+  norm_num
+
+/-- No uniform `c` makes `c L K` dominate the jet dimension for
+    every `N1,N2`. Full-order invertibility therefore does not
+    inhabit `wuestholz_subgroup_theorem`. -/
+theorem no_uniform_c_reaches_full_order (L K : ℕ) :
+    ¬ ∃ c : ℝ, 0 < c ∧
+      ∀ N1 N2 : ℕ,
+        (coeffCount L N1 N2 : ℝ) ≤ c * (L : ℝ) * (K : ℝ) := by
+  rintro ⟨c, _, hforall⟩
+  obtain ⟨N1, N2, hlt⟩ := intermediate_threshold_lt_jet_dim c L K
+  exact not_le_of_gt hlt (hforall N1 N2)
+
+/-- Intermediate `T ≥ c L K` forces the inhabited disjunction
+    precisely when the jet dimension is already `≤ c L K`.
+    The interesting interpolation regime is the reverse
+    inequality, which needs Philippon. -/
+theorem wuestholz_subgroup_of_jet_dim_le_threshold
+    {α1 α2 : ℕ} (hα1 : 1 < α1) (hα2 : 1 < α2)
+    (L N1 N2 : ℕ)
+    (P : MvPolynomial (Fin 3) ℤ)
+    (hdeg : MvPolynomial.degreeOf 0 P ≤ L ∧
+      MvPolynomial.degreeOf 1 P ≤ N1 ∧
+        MvPolynomial.degreeOf 2 P ≤ N2)
+    {c : ℝ} {K T : ℕ}
+    (hdim : (coeffCount L N1 N2 : ℝ) ≤ c * (L : ℝ) * (K : ℝ))
+    (hT : c * (L : ℝ) * (K : ℝ) ≤ (T : ℝ))
+    (hvan : ∀ k < T,
+      iteratedDslope
+          (matveevPhi_of_mvPolynomial P (α1 : ℝ) (α2 : ℝ)) k 0 = 0) :
+    P = 0 ∨ multiplicativelyDependent α1 α2 := by
+  have hTN : coeffCount L N1 N2 ≤ T := by
+    exact_mod_cast (le_trans hdim hT)
+  exact wuestholz_product_theorem_exp_of_full_order hα1 hα2 L N1 N2 P
+    hdeg hTN hvan
+
 /-! ## Remaining steps (not in Mathlib 4.12) -/
 
 set_option linter.unusedVariables false
@@ -3377,11 +3630,14 @@ theorem wuestholz_product_theorem_polynomial : wuestholz_product_theorem :=
 
 /-- Intermediate-order subgroup statement: some `c` makes
     `T ≥ c L K` force `P = 0 ∨ dependence`, uniformly in the
-    `G_m` degrees. Not in Mathlib 4.12. Jet invertibility needs
-    `T ≥ (L+1)(N1+1)(N2+1)`, which is not of the shape `c L K`
-    uniformly in `N1,N2`. Schwarz + Liouville do not close this.
-    The inhabited special case is
-    `wuestholz_product_theorem_exp_of_full_order`. -/
+    `G_m` degrees. Not in Mathlib 4.12 (needs Philippon). Jet
+    invertibility needs `T ≥ (L+1)(N1+1)(N2+1)`, which is not of
+    the shape `c L K` uniformly in `N1,N2`
+    (`no_uniform_c_reaches_full_order`). The easy half
+    (independence ⇒ `W` not in a proper candidate) is
+    `W_not_in_proper_candidate_of_indep`. When the jet dimension
+    is already `≤ c L K`, the inhabited special case is
+    `wuestholz_subgroup_of_jet_dim_le_threshold`. -/
 def wuestholz_subgroup_theorem : Prop :=
   ∃ c : ℝ, 0 < c ∧
     ∀ (α1 α2 L N1 N2 K T : ℕ) (P : MvPolynomial (Fin 3) ℤ),
@@ -3654,6 +3910,14 @@ theorem matveev_thm14_n2_of_interpolation
 #check fourth_thirteenth_ne_not_mul_indep
 #check dependent_pair_allows_identically_zero_Phi
 #check wuestholz_Ga_siegel_below_full_order
+#check ProperSubgroupCandidate
+#check W_in_candidate
+#check mul_dep_of_W_in_graph
+#check W_not_in_proper_candidate_of_indep
+#check intermediate_threshold_lt_jet_dim
+#check intermediate_T_example_half
+#check no_uniform_c_reaches_full_order
+#check wuestholz_subgroup_of_jet_dim_le_threshold
 #check wuestholz_subgroup_theorem
 #check matveevPhi_of_mvPolynomial
 #check W_map
@@ -3688,5 +3952,10 @@ theorem matveev_thm14_n2_of_interpolation
 #print axioms dependent_pair_allows_identically_zero_Phi
 #print axioms wuestholz_Ga_siegel_below_full_order
 #print axioms fourth_thirteenth_ne_not_mul_indep
+#print axioms mul_dep_of_W_in_graph
+#print axioms W_not_in_proper_candidate_of_indep
+#print axioms intermediate_threshold_lt_jet_dim
+#print axioms no_uniform_c_reaches_full_order
+#print axioms wuestholz_subgroup_of_jet_dim_le_threshold
 
 end BealMatveevBeal.MatveevInterpolation

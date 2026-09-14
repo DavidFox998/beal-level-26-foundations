@@ -235,6 +235,27 @@ if "theorem dependent_pair_allows_identically_zero_Phi" not in interp:
 if "theorem wuestholz_Ga_siegel_below_full_order" not in interp:
     print("wuestholz_Ga_siegel_below_full_order missing", file=sys.stderr)
     sys.exit(1)
+if "inductive ProperSubgroupCandidate" not in interp:
+    print("ProperSubgroupCandidate missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem mul_dep_of_W_in_graph" not in interp:
+    print("mul_dep_of_W_in_graph missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem W_not_in_proper_candidate_of_indep" not in interp:
+    print("W_not_in_proper_candidate_of_indep missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem intermediate_threshold_lt_jet_dim" not in interp:
+    print("intermediate_threshold_lt_jet_dim missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem intermediate_T_example_half" not in interp:
+    print("intermediate_T_example_half missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_uniform_c_reaches_full_order" not in interp:
+    print("no_uniform_c_reaches_full_order missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem wuestholz_subgroup_of_jet_dim_le_threshold" not in interp:
+    print("wuestholz_subgroup_of_jet_dim_le_threshold missing", file=sys.stderr)
+    sys.exit(1)
 if "def wuestholz_subgroup_theorem" not in interp:
     print("wuestholz_subgroup_theorem must stay a def Prop", file=sys.stderr)
     sys.exit(1)
@@ -287,6 +308,8 @@ print("  Siegel + G_a jet vanishing: matveevPhi_vanishing_exists_T")
 print("  L>=1 alpha=1 gives Δ=0; jet invertibility wuestholz_product_theorem_exp_Gm")
 print("  MvPolynomial form: wuestholz_product_theorem_exp_Gm_of_mvPolynomial")
 print("  full-order disjunction P=0 or dependent; intermediate T stays def Prop")
+print("  Ga x Gm^2 candidates: graph implies dependence; W not in proper H")
+print("  intermediate T < jet dim uniformly; subgroup of jet-dim <= cLK")
 print("  subgroup-theorem Wüstholz stays def Prop; not a C1_floor close")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")

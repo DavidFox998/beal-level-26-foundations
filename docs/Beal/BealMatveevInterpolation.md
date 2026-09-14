@@ -89,8 +89,23 @@ on `LEAN_PATH`).
   a dependent pair admits nonzero `P` with `Φ ≡ 0`
   (`dependent_pair_allows_identically_zero_Phi`). On `𝐆_a`,
   Siegel still produces nonzero `P` with order `N/2 < N`.
-  The intermediate-order statement `T ≥ c L K` uniformly in
-  `N1,N2` stays `wuestholz_subgroup_theorem` (`def Prop`).
+  Proper algebraic subgroups of `𝐆_a × 𝐆_m²` that can
+  contain `W` are `ProperSubgroupCandidate` (`y1=1`, `y2=1`,
+  `z=0`, or a graph `y1^a y2^b=1`). A graph along all of
+  `W` is multiplicative dependence (`mul_dep_of_W_in_graph`);
+  independence keeps `W` out of every candidate
+  (`W_not_in_proper_candidate_of_indep`). Intermediate
+  `T ≥ c L K` is strictly weaker than the jet dimension
+  (`intermediate_threshold_lt_jet_dim`,
+  `intermediate_T_example_half` for `c=1/2`). No uniform
+  `c` makes `c L K` dominate `(L+1)(N1+1)(N2+1)`
+  (`no_uniform_c_reaches_full_order`). When the jet
+  dimension is already `≤ c L K`, the inhabited
+  disjunction is
+  `wuestholz_subgroup_of_jet_dim_le_threshold`. The
+  uniform statement `T ≥ c L K` stays
+  `wuestholz_subgroup_theorem` (`def Prop`): Philippon's
+  zero estimate is not in Mathlib 4.12.
   This does **not** close Matveev 2000 / `C1_floor`. Track 1
   stays the elementary `1/max` bound.
 - Conditional analytic smallness
@@ -128,7 +143,10 @@ Axioms: `[propext, Classical.choice, Quot.sound]` only.
   `wuestholz_product_theorem_exp_Gm_of_mvPolynomial` /
   `wuestholz_product_theorem_exp_of_full_order`, not this
   `def Prop`. `wuestholz_subgroup_theorem` is the
-  intermediate-`T` statement and also stays a `def Prop`.
+  intermediate-`T` statement uniformly in `N1,N2` and
+  also stays a `def Prop`. The easy half (independence
+  ⇒ `W` not in a proper candidate) and the reduction
+  when `(L+1)(N1+1)(N2+1) ≤ c L K` are theorems.
 - `size_upper_bound` — unconditional `|Δ| ≤ exp(−c n²)` on a generic
   interpolation matrix. False for `L=0` (`Δ=1`). The *conditional*
   Schwarz bound is a theorem; the G_a jet of `Φ` vanishes after

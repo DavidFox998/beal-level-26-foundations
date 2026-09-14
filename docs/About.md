@@ -19,7 +19,12 @@ Analytic smallness of a generic `Δ` is still conditional.
 Independent frequencies make the jet of `{z^ℓ α1^{k1 z} α2^{k2 z}}`
 injective (`wuestholz_product_theorem_exp_Gm`, also for
 `P ∈ ℤ[y0,y1,y2]`); the full-order disjunction is
-`P = 0 ∨` dependence. The intermediate-order Wüstholz
+`P = 0 ∨` dependence. Proper candidates for
+`W ⊂ 𝐆_a × 𝐆_m²` are classified; independence keeps
+`W` out of every one. Intermediate `T ≥ c L K` is
+strictly weaker than full jet order and reduces to
+the inhabited disjunction only when
+`(L+1)(N1+1)(N2+1) ≤ c L K`. The uniform Wüstholz
 subgroup theorem stays `def Prop`. `L≥1` and `α1=α2=1` forces
 `Δ=0`. Being a convergent does not force `B ≤ 10⁶`. Axioms
 `[propext, Classical.choice, Quot.sound]`. **0 sorry.**

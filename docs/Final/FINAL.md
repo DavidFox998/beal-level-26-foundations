@@ -18,8 +18,11 @@ order $N/2$ (`matveevPhi_vanishing_exists_T`). Independent
 frequencies give jet invertibility
 (`wuestholz_product_theorem_exp_Gm`, including the
 `MvPolynomial` form and the full-order disjunction
-`P = 0 ∨` dependence); the intermediate-order Wüstholz subgroup
-theorem stays `def Prop`. Unconditional generic
+`P = 0 ∨` dependence); proper candidates for
+`W ⊂ 𝐆_a × 𝐆_m²` are classified and independence
+keeps `W` out of them. Intermediate `T ≥ c L K` is
+strictly weaker than full jet order; the uniform
+Wüstholz subgroup theorem stays `def Prop`. Unconditional generic
 $|\Delta|\le\exp(-cLK)$ is false ($L=0$ gives $\Delta=1$);
 $L\ge 1$ and $\alpha_1=\alpha_2=1$ forces $\Delta=0$. Not the unrestricted
 kernel target, not v25. Concept DOI `10.5281/zenodo.22379293`.
