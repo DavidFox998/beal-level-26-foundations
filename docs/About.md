@@ -22,6 +22,9 @@ and `baker_davenport_no_cutoff` (`r ∈ (17,18)` ⇒
 `(r−17)/C < 10⁻³⁰ < 10⁻⁶`) are theorems.
 These are *upper* bounds on a short first vector and do
 **not** give `B ≤ 10⁶`.
+`MatveevBugeaud.lean` proves the displayed-lattice no-go:
+usable Baker–Davenport satisfies `(r−17)/C < |Λ|`, so it
+cannot beat `|Λ| < 1/B`.
 `bugeaud_LLL_reduction_proof` /
 `baker_davenport_reduction` stay uninhabited `def Prop`. `MatveevInterpolation.lean` starts
 Matveev 2000 p.5 interpolation (Δ, Vandermonde, `𝐆_a` product

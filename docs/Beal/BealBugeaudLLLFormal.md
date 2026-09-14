@@ -23,5 +23,8 @@ The foundations complement `MatveevLLL.lean` proves the elementary
 continued-fraction lemmas (`4/13` is a convergent of
 `log(B+3)/log A`; integer gap `< B⁴/A⁴`) and keeps
 `bugeaud_LLL_reduction_proof` as an uninhabited `def Prop`.
+`MatveevBugeaud.lean` proves the displayed `C=10^{30}` lattice
+cannot inhabit that Prop: usable Baker–Davenport satisfies
+`(r−17)/C < |Λ|`.
 Being a convergent does not force `B ≤ 10⁶`. Not v25.
 Does not use sorry.

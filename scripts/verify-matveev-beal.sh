@@ -23,6 +23,8 @@ test -f MatveevThm14Proof.lean
 test -f MatveevLLL.lean
 test -f MatveevInterpolation.lean
 test -f Beal/Matveev/MatveevInterpolation.lean
+test -f MatveevBugeaud.lean
+test -f Beal/Matveev/MatveevBugeaud.lean
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -215,6 +217,68 @@ if ".one `MatveevLLL" not in pathlib.Path("lakefile.lean").read_text(encoding="u
 if ".one `MatveevInterpolation" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
     print("lakefile.lean missing MatveevInterpolation glob", file=sys.stderr)
     sys.exit(1)
+if ".one `MatveevBugeaud" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
+    print("lakefile.lean missing MatveevBugeaud glob", file=sys.stderr)
+    sys.exit(1)
+
+bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in bugeaud:
+    print("MatveevBugeaud.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
+if "theorem LLL_v_third_abs_lt_C_mul_abs_Lambda_add" not in bugeaud:
+    print("LLL_v_third_abs_lt_C_mul_abs_Lambda_add missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem bugeaud_third_lt_seventeen_add_C_div_B" not in bugeaud:
+    print("bugeaud_third_lt_seventeen_add_C_div_B missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem bugeaud_bd_lower_lt_inv_B" not in bugeaud:
+    print("bugeaud_bd_lower_lt_inv_B missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem bugeaud_bd_lower_lt_ratio" not in bugeaud:
+    print("bugeaud_bd_lower_lt_ratio missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem bugeaud_bd_lower_lt_abs_Lambda" not in bugeaud:
+    print("bugeaud_bd_lower_lt_abs_Lambda missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem bugeaud_required_r_gt_eighteen_of_B_lt_C" not in bugeaud:
+    print("bugeaud_required_r_gt_eighteen_of_B_lt_C missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem LLL_C_div_B0_eq" not in bugeaud:
+    print("LLL_C_div_B0_eq missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem exists_reduced_b1_lt_sixty_four" not in bugeaud:
+    print("exists_reduced_b1_lt_sixty_four missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem bugeaud_naive_gs_lt_inv_B0" not in bugeaud:
+    print("bugeaud_naive_gs_lt_inv_B0 missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem not_exists_reduced_b1_gt_required_r" not in bugeaud:
+    print("not_exists_reduced_b1_gt_required_r missing", file=sys.stderr)
+    sys.exit(1)
+if "143186215390" not in bugeaud:
+    print("C1_floor = 143186215390 missing from MatveevBugeaud.lean", file=sys.stderr)
+    sys.exit(1)
+if "1000000" not in bugeaud:
+    print("B0_nat = 1000000 missing from MatveevBugeaud.lean", file=sys.stderr)
+    sys.exit(1)
+if "def bugeaud_LLL_reduction_proof" not in bugeaud:
+    print("bugeaud_LLL_reduction_proof must stay a def Prop in MatveevBugeaud.lean", file=sys.stderr)
+    sys.exit(1)
+if "def baker_davenport_reduction" not in bugeaud:
+    print("baker_davenport_reduction must stay a def Prop in MatveevBugeaud.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem bugeaud_LLL_reduction_proof\b", bugeaud, re.M):
+    print("bugeaud_LLL_reduction_proof must not be a theorem", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_davenport_reduction\b", bugeaud, re.M):
+    print("baker_davenport_reduction must not be a theorem", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_gap3_from_ratio\b", bugeaud, re.M):
+    print("baker_bound_gap3_from_ratio must not be a theorem", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_gap3\b", bugeaud, re.M):
+    print("do not inhabit baker_bound_gap3 in MatveevBugeaud.lean", file=sys.stderr)
+    sys.exit(1)
 
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
@@ -395,6 +459,8 @@ print("  Lovasz 1/2, swap D<3/4 D, SVT of reduced, BD rearrangement")
 print("  lll_algorithm_terminates: reduced Z-basis exists; not a B<=1e6 cutoff")
 print("  displayed lll_svt_bound ||b1||<=2^{(n-1)/2} lambda1; lll_det_bound ||b1||<=sqrt2 C^{1/3}")
 print("  baker_davenport_no_cutoff: (17,18) gives 1e-30 not B<=1e6")
+print("  MatveevBugeaud: BD lower < |Λ| so cannot beat 1/B or the ratio")
+print("  exists_reduced_b1_lt_sixty_four; C/B0=1e24; required r > 18 if B < C")
 print("  baker_davenport_reduction / baker_bound_gap3 stay def Prop")
 print("  interpolation: Δ, Vandermonde, G_a product, Hadamard, Schwarz, Cauchy;")
 print("  analytic small bound is conditional; polynomial vanishing inhabited")

@@ -81,6 +81,9 @@ and do **not** give `B ≤ 10⁶`.
 one has `|v₃| < 18`, so `r ∈ (17, 18)` and
 `(r−17)/C < 10⁻³⁰ < 10⁻⁶ = 1/B0`, compatible with
 `|Λ| < 1/B`.
+`MatveevBugeaud.lean` upgrades that to a uniform no-go:
+`|v₃| < 17 + C|Λ|` so any usable `17 < r ≤ |v₃|` has
+`(r − 17)/C < |Λ|` and cannot contradict `|Λ| < 1/B`.
 `|Λ| < 1/B` is too weak to make `C|Λ|` small (`C/B = 10^{24}`);
 the `‖v‖ < 32` estimate uses `B⁴/A⁴ < 1/((B+3)⁹−1)`, not `1/B`.
 A genuine `B ≤ 10⁶` cutoff would need a lower bound on `|Λ|`

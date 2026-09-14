@@ -21,6 +21,9 @@ and `baker_davenport_no_cutoff` ($r\in(17,18)$ gives
 $10^{-30}$ not $B\le 10^6$) are theorems. These
 are *upper* bounds on a short first vector and do
 **not** give $B\le 10^6$.
+`MatveevBugeaud.lean` proves the displayed-lattice no-go:
+$(r-17)/C < |\Lambda|$ on any usable $r\le|v_3|$, so this
+LLL setup cannot inhabit `baker_bound_gap3`.
 `bugeaud_LLL_reduction_proof` / `baker_davenport_reduction` /
 `baker_bound_gap3` stay uninhabited `def Prop`. Being a convergent
 does not force $B\le 10^6$. `MatveevInterpolation.lean` starts

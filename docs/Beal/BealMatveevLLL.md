@@ -83,6 +83,12 @@ On a gap-3 solution $A^4+B^4=(B+3)^{13}$ with $B>0$:
   `(r−17)/C < 10⁻³⁰ < 10⁻⁶ = 1/B0`, compatible with
   `|Λ| < 1/B`. No Baker cutoff.
 
+The companion [`MatveevBugeaud.lean`](../../MatveevBugeaud.lean)
+proves the uniform displayed-lattice no-go: `|v₃| < 17 + C|Λ|`
+so `(r−17)/C < |Λ|` whenever `17 < r ≤ |v₃|`, hence Baker–Davenport
+on this `v` cannot beat `|Λ| < 1/B` or `B⁴/A⁴`. `C/B0 = 10^{24}`.
+A reduced first vector satisfies `‖b₁‖ < 64` on `B > 10⁶`.
+
 Axioms: `[propext, Classical.choice, Quot.sound]` only.
 
 ## What stays a def Prop

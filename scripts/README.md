@@ -19,7 +19,7 @@ Deterministic repository checks. **Current as of** `v4.2.0-full-chain`.
 
 | Script | What it checks |
 |---|---|
-| `verify-matveev-beal.sh` | Current CI / AMS referee surface: 0 `sorry`, `matveev_gap3_lower` is the B≤10^6 integer-gap close, `C1_floor=143186215390`, proved `gap3_A_bounds` and `matveev_product_bound_of_B_le_B0`, CF lemmas in `MatveevLLL.lean` (`4/13` convergent; integer gap `<` ratio; displayed `lll_svt_bound` / `lll_det_bound`; `bugeaud_LLL_reduction_proof` stays `def Prop`), concept DOI `22379293`, slug `beal-level-26-foundations` |
+| `verify-matveev-beal.sh` | Current CI / AMS referee surface: 0 `sorry`, `matveev_gap3_lower` is the B≤10^6 integer-gap close, `C1_floor=143186215390`, proved `gap3_A_bounds` and `matveev_product_bound_of_B_le_B0`, CF lemmas in `MatveevLLL.lean` (`4/13` convergent; integer gap `<` ratio; displayed `lll_svt_bound` / `lll_det_bound`; `bugeaud_LLL_reduction_proof` stays `def Prop`), displayed-lattice no-go in `MatveevBugeaud.lean`, concept DOI `22379293`, slug `beal-level-26-foundations` |
 | `verify-scaffold.sh` | Historical X0(26) checklist. Not run by current CI. |
 | `verify_coefficient_ledger.py` | `level_26_ledger.json` SHA-256 `0259fe957cc348b7286e233ce717fac47c30ad174b05e8e1c5fb70626f511151` |
 | `verify_v1_3_0_certs.py` | The two cert SHA-256s; manifest `version` is still `v1.4.0` |

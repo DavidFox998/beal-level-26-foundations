@@ -9,13 +9,15 @@ Axioms: [propext, Classical.choice, Quot.sound] only
 Product inhabited for B+3 ≤ height_B0. Integer gap ⇏ B ≤ 10^6.
 CF lemmas in MatveevLLL.lean (4/13 convergent; gap < ratio).
 Interpolation track in MatveevInterpolation.lean (Δ, G_a product,
-Hadamard; bare-real claim false). bugeaud_LLL_reduction_proof stays
-def Prop. Not v25.
+Hadamard; bare-real claim false). Displayed-lattice Baker–Davenport
+no-go in MatveevBugeaud.lean ((r−17)/C < |Λ|).
+bugeaud_LLL_reduction_proof stays def Prop. Not v25.
 -/
 import Mathlib
 import MatveevThm14Proof
 import MatveevLLL
 import MatveevInterpolation
+import MatveevBugeaud
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -844,6 +846,10 @@ theorem gap3_forall_of_baker
 #check MatveevLLL.four_thirteenths_is_convergent
 #check MatveevLLL.integer_gap_lt_ratio
 #check MatveevLLL.bugeaud_LLL_reduction_proof
+#check MatveevBugeaud.LLL_C_div_B0_eq
+#check MatveevBugeaud.bugeaud_bd_lower_lt_inv_B
+#check MatveevBugeaud.exists_reduced_b1_lt_sixty_four
+#check MatveevBugeaud.bugeaud_LLL_reduction_proof
 #print axioms C1_floor_eq
 #print axioms height_B0_eq
 #print axioms height_bound_gap3
@@ -876,5 +882,7 @@ theorem gap3_forall_of_baker
 #print axioms MatveevInterpolation.interpolationDeterminant_L0_eq_one
 #print axioms MatveevInterpolation.schwarz_lemma_of_order
 #print axioms MatveevInterpolation.matveev_interpolation_analytic_small_bound
+#print axioms MatveevBugeaud.bugeaud_bd_lower_lt_inv_B
+#print axioms MatveevBugeaud.exists_reduced_b1_lt_sixty_four
 
 end BealMatveevBeal
