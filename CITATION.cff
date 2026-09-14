@@ -39,7 +39,10 @@ preferred-citation:
     inhabits baker_bound_gap3_true relative to axiom
     darmon_merel_4413_axiom (0 sorry; extra axiom; not Mathlib
     4.12). BealUnconditionalV25 proves hGen+hLLL cannot cut
-    B≤10^6 (baker_bound_gap3_unconditional_nogo). That does not
+    B≤10^6 (baker_bound_gap3_unconditional_nogo). BealGap1 proves
+    baker_bound_gap1_unconditional_nogo for A^4+B^4=(B+1)^13
+    (coprime from the start; 3|B compatible; (1,0) is a solution;
+    baker_bound_gap1 stays def Prop). That does not
     mint this version tag. Unrestricted
     matveev_inequality_real_target and hLLL stay def Prop.
     Not a minted v25 tag. Prior v24.4.0 version

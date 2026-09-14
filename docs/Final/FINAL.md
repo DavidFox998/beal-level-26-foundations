@@ -94,6 +94,10 @@ unconditional v25 tag.
 `hGen` and `hLLL` cannot cut $B\le 10^6$ (every $C_1\ge 1$ loses
 to $B^4/A^4$; no Baker–Davenport witness above $17+C/B_0$).
 Those hypotheses stay `def Prop`.
+`BealGap1.lean` proves `baker_bound_gap1_unconditional_nogo` for
+$A^4+B^4=(B+1)^{13}$: coprime from the start, $3\mid B$ compatible,
+same log/LLL lose, $(1,0)$ is a solution. `baker_bound_gap1`
+stays `def Prop`.
 Unconditional generic
 $|\Delta|\le\exp(-cLK)$ is false ($L=0$ gives $\Delta=1$);
 $L\ge 1$ and $\alpha_1=\alpha_2=1$ forces $\Delta=0$. Not the unrestricted

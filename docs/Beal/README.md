@@ -23,6 +23,7 @@ Current Matveev–Beal track:
 - [`BealGenuineV25.md`](BealGenuineV25.md) — Darmon–Merel (4,4,13) + 3-adic vacuous-close no-go (`v24-v24x-final-genuine-v25-nogo` at `2b4ee3b`)
 - [`BealTrueV25.md`](BealTrueV25.md) — axiom-relative `baker_bound_gap3_true` (Darmon–Merel axiom; not the minted v25 tag)
 - [`BealUnconditionalV25.md`](BealUnconditionalV25.md) — `hGen` + `hLLL` no-go; unconditional mint still waits
+- [`BealGap1.md`](BealGap1.md) — gap-1 `A⁴+B⁴=(B+1)¹³` no-go (`v24-v24x-final-gap1-nogo`); coprime from the start; `3∣B` compatible
 - [`BealBakerBoundGap3.md`](BealBakerBoundGap3.md) — kernel `baker_bound_gap3` stays a `def Prop`; Mathlib-only close remains open
 
 Older Frey / Zsigmondy / modular-elimination notes in this

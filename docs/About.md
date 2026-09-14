@@ -84,7 +84,10 @@ unconditional v25 tag. `BealUnconditionalV25.lean` proves
 `baker_bound_gap3_unconditional_nogo`: `hGen` and `hLLL` cannot
 cut `B ≤ 10⁶` (every `C1 ≥ 1` loses to `B⁴/A⁴`; no Baker–Davenport
 witness above `17+C/B0`). Those hypotheses stay `def Prop`.
-`L≥1` and `α1=α2=1` forces `Δ=0`. Being a convergent does not force
+`BealGap1.lean` proves `baker_bound_gap1_unconditional_nogo` for
+`A⁴+B⁴=(B+1)¹³`: coprime from the start, `3 ∣ B` compatible,
+same log/LLL lose, `(1,0)` is a solution. `baker_bound_gap1`
+stays `def Prop`. `L≥1` and `α1=α2=1` forces `Δ=0`. Being a convergent does not force
 `B ≤ 10⁶`. Mathlib-only theorems print axioms
 `[propext, Classical.choice, Quot.sound]`. **0 sorry.**
 
