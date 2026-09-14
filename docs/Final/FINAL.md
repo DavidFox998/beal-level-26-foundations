@@ -77,6 +77,8 @@ that the same `C1 < 2` cutoff still fails.
 Darmon–Merel coprime hypothesis fails, and that an unlowered
 prime in `A` makes the residual estimate not divide 32.
 Darmon–Merel / Ribet stay `def Prop`.
+`BealDarmonMerel44p.lean` proves the displayed residual is not 32
+on `B > 0` and that `A = a^{13}`, `B = b^{13}` is Fermat exponent 13.
 Unconditional generic
 $|\Delta|\le\exp(-cLK)$ is false ($L=0$ gives $\Delta=1$);
 $L\ge 1$ and $\alpha_1=\alpha_2=1$ forces $\Delta=0$. Not the unrestricted

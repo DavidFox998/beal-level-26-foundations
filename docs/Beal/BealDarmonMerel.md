@@ -36,7 +36,8 @@ Axioms `[propext, Classical.choice, Quot.sound]` only.
   `darmon_merel_signature_44p` — not in Mathlib 4.12.
 - `kraus_uniform_residual_level` / `ribet_level_lowering`.
 
-See also [`BealCatalanZsig.md`](BealCatalanZsig.md) and
-[`BealKraus.md`](BealKraus.md).
+See also [`BealCatalanZsig.md`](BealCatalanZsig.md),
+[`BealKraus.md`](BealKraus.md), and
+[`BealDarmonMerel44p.md`](BealDarmonMerel44p.md).
 
 Not a minted v25 tag.

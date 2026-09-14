@@ -18,6 +18,7 @@ Current Matveev–Beal track:
 - [`BealKrausZsig.md`](BealKrausZsig.md) — Gaussian / Thue argument-form no-go
 - [`BealCatalanZsig.md`](BealCatalanZsig.md) — Catalan / Zsigmondy no-go
 - [`BealDarmonMerel.md`](BealDarmonMerel.md) — Darmon–Merel / Ribet residual-level no-go
+- [`BealDarmonMerel44p.md`](BealDarmonMerel44p.md) — Darmon–Merel signature (4,4,p) / Ribet-to-32 no-go
 - [`BealBakerBoundGap3.md`](BealBakerBoundGap3.md) — `baker_bound_gap3` stays `def Prop`
 
 Older Frey / Zsigmondy / modular-elimination notes in this

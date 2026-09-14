@@ -69,7 +69,9 @@ gives `gcd(A,B)=1`, and the same `C1 < 2` cutoff still fails.
 `BealDarmonMerel.lean` proves `3 ∣ B` forces `3 ∣ A` so Darmon–Merel
 coprime hypothesis fails, while `13 ∣ 26` / `13 ∤ 8` keep an
 unlowered prime in `A` from producing uniform level 32.
-Darmon–Merel stays `def Prop`. `L≥1` and `α1=α2=1` forces
+Darmon–Merel stays `def Prop`. `BealDarmonMerel44p.lean` proves
+the displayed residual is not 32 on `B > 0` and that thirteenth
+powers rewrite as Fermat exponent 13. `L≥1` and `α1=α2=1` forces
 `Δ=0`. Being a convergent does not force `B ≤ 10⁶`. Axioms
 `[propext, Classical.choice, Quot.sound]`. **0 sorry.**
 

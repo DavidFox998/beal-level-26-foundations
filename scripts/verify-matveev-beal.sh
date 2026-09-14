@@ -39,6 +39,8 @@ test -f BealCatalanZsig.lean
 test -f Beal/Matveev/BealCatalanZsig.lean
 test -f BealDarmonMerel.lean
 test -f Beal/Matveev/BealDarmonMerel.lean
+test -f BealDarmonMerel44p.lean
+test -f Beal/Matveev/BealDarmonMerel44p.lean
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -138,6 +140,12 @@ if "import BealDarmonMerel" not in src:
     sys.exit(1)
 if "BealDarmonMerel.baker_bound_gap3_darmon_merel_nogo" not in src:
     print("#check baker_bound_gap3_darmon_merel_nogo missing from MatveevThm14General.lean", file=sys.stderr)
+    sys.exit(1)
+if "import BealDarmonMerel44p" not in src:
+    print("MatveevThm14General.lean missing import BealDarmonMerel44p", file=sys.stderr)
+    sys.exit(1)
+if "BealDarmonMerel44p.baker_bound_gap3_darmon_merel_44p_nogo" not in src:
+    print("#check baker_bound_gap3_darmon_merel_44p_nogo missing from MatveevThm14General.lean", file=sys.stderr)
     sys.exit(1)
 
 lll = pathlib.Path("MatveevLLL.lean").read_text(encoding="utf-8")
@@ -290,6 +298,9 @@ if ".one `BealCatalanZsig" not in pathlib.Path("lakefile.lean").read_text(encodi
     sys.exit(1)
 if ".one `BealDarmonMerel" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
     print("lakefile.lean missing BealDarmonMerel glob", file=sys.stderr)
+    sys.exit(1)
+if ".one `BealDarmonMerel44p" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
+    print("lakefile.lean missing BealDarmonMerel44p glob", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -836,6 +847,59 @@ if re.search(r"^theorem ribet_level_lowering\b", dm, re.M):
     print("do not inhabit ribet_level_lowering", file=sys.stderr)
     sys.exit(1)
 
+dm44 = pathlib.Path("BealDarmonMerel44p.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in dm44:
+    print("BealDarmonMerel44p.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
+if "theorem baker_bound_gap3_darmon_merel_44p_nogo" not in dm44:
+    print("baker_bound_gap3_darmon_merel_44p_nogo missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem residualLevelEstimate_ne_thirty_two_of_sol" not in dm44:
+    print("residualLevelEstimate_ne_thirty_two_of_sol missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem uniform_level_32_requires_A_B_pth_powers" not in dm44:
+    print("uniform_level_32_requires_A_B_pth_powers missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem exists_thirteenth_root_of_thirteen_dvd_padic" not in dm44:
+    print("exists_thirteenth_root_of_thirteen_dvd_padic missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem fermat_shape_of_A_B_pth_powers" not in dm44:
+    print("fermat_shape_of_A_B_pth_powers missing", file=sys.stderr)
+    sys.exit(1)
+if "143186215390" not in dm44:
+    print("C1_floor = 143186215390 missing from BealDarmonMerel44p.lean", file=sys.stderr)
+    sys.exit(1)
+if "1000000" not in dm44:
+    print("B0_nat = 1000000 missing from BealDarmonMerel44p.lean", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in dm44:
+    print("do not paste True := trivial skeletons", file=sys.stderr)
+    sys.exit(1)
+if "def baker_bound_gap3" not in dm44:
+    print("baker_bound_gap3 must stay a def Prop in BealDarmonMerel44p.lean", file=sys.stderr)
+    sys.exit(1)
+if "def darmon_merel_signature_44p" not in dm44:
+    print("darmon_merel_signature_44p must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def ribet_level_lowering_to_32" not in dm44:
+    print("ribet_level_lowering_to_32 must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def fermat_last_theorem_thirteen" not in dm44:
+    print("fermat_last_theorem_thirteen must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_gap3\b", dm44, re.M):
+    print("do not inhabit baker_bound_gap3 in BealDarmonMerel44p.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem darmon_merel_signature_44p\b", dm44, re.M):
+    print("do not inhabit darmon_merel_signature_44p", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem ribet_level_lowering_to_32\b", dm44, re.M):
+    print("do not inhabit ribet_level_lowering_to_32", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem fermat_last_theorem_thirteen\b", dm44, re.M):
+    print("do not inhabit fermat_last_theorem_thirteen", file=sys.stderr)
+    sys.exit(1)
+
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
     print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
@@ -1049,6 +1113,9 @@ print("  Zsigmondy primes in B do not force 13|v_p(A); not v25")
 print("  BealDarmonMerel: 3|B => 3|A so gcd!=1; Darmon-Merel coprime hyp fails")
 print("  13|26 so C lowers; 13∤8 so A-primes need not; residual estimate ∤ 32")
 print("  baker_bound_gap3_darmon_merel_nogo: A>B0; Darmon-Merel stays def Prop")
+print("  BealDarmonMerel44p: displayed residual !=32 on B>0; B even so 2|AB")
+print("  A=a^13 and B=b^13 is Fermat exponent 13; FLT not in Mathlib 4.12")
+print("  baker_bound_gap3_darmon_merel_44p_nogo: not uniform level 32")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")
 print("  unrestricted target and hLLL stay def Prop; not v25")

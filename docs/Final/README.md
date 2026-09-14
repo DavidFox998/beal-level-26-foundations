@@ -22,7 +22,8 @@ log-method no-go in `MatveevThreeLogs.lean`, displayed Frey /
 Kraus no-go in `BealKraus.lean`, Gaussian/Thue no-go in
 `BealKrausZsig.lean`, Catalan/Zsigmondy no-go in
 `BealCatalanZsig.lean`. Darmon–Merel / Ribet residual-level
-no-go in `BealDarmonMerel.lean`. Uniform
+no-go in `BealDarmonMerel.lean`. Darmon–Merel signature (4,4,p) /
+Ribet-to-32 no-go in `BealDarmonMerel44p.lean`. Uniform
 `wuestholz_product_theorem_exp` / `baker_davenport_reduction` /
 `baker_bound_gap3` stay `def Prop`. Not v25.
 
