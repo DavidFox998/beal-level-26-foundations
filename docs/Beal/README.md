@@ -25,6 +25,7 @@ Current Matveev–Beal track:
 - [`BealUnconditionalV25.md`](BealUnconditionalV25.md) — `hGen` + `hLLL` no-go; unconditional mint still waits
 - [`BealGap1.md`](BealGap1.md) — gap-1 `A⁴+B⁴=(B+1)¹³` no-go (`v24-v24x-final-gap1-nogo`); coprime from the start; `3∣B` compatible
 - [`BealGap2.md`](BealGap2.md) — gap-2 `A⁴+B⁴=(B+2)¹³` no-go (`v24-v24x-final-gap2-nogo`); `B` odd `A` even; `3∣B` impossible like `f1cb039`
+- [`BealGap4.md`](BealGap4.md) — gap-4 `A⁴+B⁴=(B+4)¹³` no-go (`v24-v24x-final-gap4-nogo`); `B` odd `A` even; `3∣B` compatible like gap-1; `5∣B` impossible
 - [`BealBakerBoundGap3.md`](BealBakerBoundGap3.md) — kernel `baker_bound_gap3` stays a `def Prop`; Mathlib-only close remains open
 
 Older Frey / Zsigmondy / modular-elimination notes in this

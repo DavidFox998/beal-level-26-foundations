@@ -65,4 +65,4 @@ are the gap-1 parities and are false here.
 This module does **not** contain `axiom darmon_merel_4413_axiom_gap2`.
 The axiom-relative inhabitant reuses [`BealTrueV25.md`](BealTrueV25.md).
 
-Not a minted unconditional v25 tag.
+Not a minted unconditional v25 tag. Next: gap-4 `C = B+4` in [`BealGap4.md`](BealGap4.md).
