@@ -14,8 +14,10 @@ elementary CF lemmas (`4/13` is a convergent;
 solution, and sets up the rank-3 Bugeaud lattice
 (`det = C`, `v ∈ L`, `‖v‖ < 32` / `λ₁ < 32` when `B > 10⁶`
 via the tight ratio). Minkowski does not raise `|Λ|`.
+`lll_svt_bound_of_reduced` and `baker_davenport_gs_lower`
+are theorems (conditional SVT / floor rearrangement).
 `lll_algorithm_terminates` / `lll_svt_bound` /
-`baker_davenport_gs_lower` / `bugeaud_LLL_reduction_proof` /
+`bugeaud_LLL_reduction_proof` /
 `baker_davenport_reduction` stay uninhabited `def Prop`. `MatveevInterpolation.lean` starts
 Matveev 2000 p.5 interpolation (Δ, Vandermonde, `𝐆_a` product
 theorem, Hadamard, higher-order Schwarz, Cauchy estimates, Siegel

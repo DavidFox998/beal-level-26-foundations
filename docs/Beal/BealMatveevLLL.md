@@ -50,17 +50,24 @@ On a gap-3 solution $A^4+B^4=(B+3)^{13}$ with $B>0$:
 - Gram–Schmidt coefficients, size-reduction / Lovász predicates,
   and the potential `lllPotential` are defined. The displayed
   basis is **not** claimed LLL-reduced.
+- `lll_lovasz_size_half` / `lll_reduced_gs_half`: reduced +
+  orthogonal GS ⇒ `‖bᵢ*‖² ≥ (1/2) ‖bᵢ₋₁*‖²`.
+- `lllPotential_swap12_factor_lt`: a failed Lovász swap scales
+  `D` by a factor `< 3/4`. `LLL_b1_normSq_int`: displayed
+  `‖b₁‖²` is an integer. `abs_sub_lllNearestInt`: size-reduction.
+- `lll_svt_bound_of_reduced`: an LLL-reduced Z-basis satisfies
+  `‖b₁‖ ≤ 2 λ₁`.
+- `baker_davenport_gs_lower`: if `r ≤ |v₃|` and `17 < r` then
+  `|Λ| ≥ (r − 17)/C`. On `B > 10⁶` one has `|v₃| < 18`, so this
+  does not beat `|Λ| < 1/B`.
 
 Axioms: `[propext, Classical.choice, Quot.sound]` only.
 
 ## What stays a def Prop
 
 - `lll_algorithm_terminates` / `lll_svt_bound` / `lll_det_bound`
-  — LLL termination and `‖b₁‖ ≤ 2 λ₁` / `√2 · C^{1/3}` are
-  not in Mathlib 4.12.
-- `baker_davenport_gs_lower` — `|Λ| ≥ (‖b₁*‖ − 17)/C` from a
-  large first GS vector; circular without an independent
-  estimate of `‖b₁*‖`.
+  — existence of a reduced basis, and the displayed-basis
+  `√2 · C^{1/3}` bound, are not produced here.
 - `baker_bound_gap3_from_ratio` — “solution and `|Λ| ≤ B^4/A^4` ⇒ `B ≤ B0_nat`”.
 - `bugeaud_LLL_reduction_proof` — same Prop; **not** a theorem.
 - `baker_davenport_reduction` — same Prop; Mathlib 4.12 has no

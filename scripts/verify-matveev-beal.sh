@@ -146,8 +146,23 @@ if "def lll_svt_bound" not in lll:
 if "def lll_det_bound" not in lll:
     print("lll_det_bound must stay a def Prop", file=sys.stderr)
     sys.exit(1)
-if "def baker_davenport_gs_lower" not in lll:
-    print("baker_davenport_gs_lower must stay a def Prop", file=sys.stderr)
+if "theorem baker_davenport_gs_lower" not in lll:
+    print("baker_davenport_gs_lower rearrangement missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem lll_svt_bound_of_reduced" not in lll:
+    print("lll_svt_bound_of_reduced missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem lllPotential_swap12_factor_lt" not in lll:
+    print("lllPotential_swap12_factor_lt missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem lll_lovasz_size_half" not in lll:
+    print("lll_lovasz_size_half missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem LLL_b1_normSq_int" not in lll:
+    print("LLL_b1_normSq_int missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem abs_sub_lllNearestInt" not in lll:
+    print("abs_sub_lllNearestInt missing from MatveevLLL.lean", file=sys.stderr)
     sys.exit(1)
 if re.search(r"^theorem lll_algorithm_terminates\b", lll, re.M):
     print("lll_algorithm_terminates must not be a theorem", file=sys.stderr)
@@ -157,9 +172,6 @@ if re.search(r"^theorem lll_svt_bound\b", lll, re.M):
     sys.exit(1)
 if re.search(r"^theorem lll_det_bound\b", lll, re.M):
     print("lll_det_bound must not be a theorem", file=sys.stderr)
-    sys.exit(1)
-if re.search(r"^theorem baker_davenport_gs_lower\b", lll, re.M):
-    print("baker_davenport_gs_lower must not be a theorem", file=sys.stderr)
     sys.exit(1)
 if "def baker_davenport_reduction" not in lll:
     print("baker_davenport_reduction must stay a def Prop", file=sys.stderr)
@@ -367,7 +379,8 @@ print("  C1_floor=143186215390, gap3_A_bounds and B<=B0 product proved")
 print("  CF lemmas: 4/13 convergent, integer gap < ratio; |Λ|<1/B not a cutoff")
 print("  1/max(4log A,13log C) is not a lower bound; Track1 exp < ratio")
 print("  LLL floor form approximates CΛ to <17; rank-3 det=C, ||v||<32")
-print("  LLL SVT / baker_davenport stay def Prop; not baker_bound_gap3")
+print("  Lovasz 1/2, swap D<3/4 D, SVT of reduced, BD rearrangement")
+print("  reduced-basis existence / baker_davenport_reduction stay def Prop")
 print("  interpolation: Δ, Vandermonde, G_a product, Hadamard, Schwarz, Cauchy;")
 print("  analytic small bound is conditional; polynomial vanishing inhabited")
 print("  Siegel + G_a jet vanishing: matveevPhi_vanishing_exists_T")

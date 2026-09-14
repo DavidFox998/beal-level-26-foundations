@@ -56,14 +56,20 @@ What it **does** prove, with axioms only
   `LLL_lambda1_lt_thirty_two`). Minkowski is an *upper* bound
   on `λ₁` and does not enlarge `|Λ|`.
 
-Mathlib 4.12 has no LLL shortest-vector theorem. Gram–Schmidt
-coefficients, the LLL-reduced predicate, termination, and the
-`‖b₁‖ ≤ 2 λ₁` / `2^{1/2} C^{1/3}` bounds stay `def Prop`.
+Gram–Schmidt orthogonality, Lovász `‖bᵢ*‖² ≥ (1/2) ‖bᵢ₋₁*‖²`,
+the swap factor `D ↦ (L/‖b₁*‖²) D < (3/4) D`, integer
+`‖b₁‖²`, nearest-integer size-reduction, and the *conditional*
+SVT `‖b₁‖ ≤ 2 λ₁` for an LLL-reduced Z-basis are theorems.
+Existence of a reduced basis (`lll_algorithm_terminates`) and
+the displayed-basis det bound stay `def Prop`.
+`baker_davenport_gs_lower` is the rearrangement
+`r ≤ |v₃|` and `17 < r` ⇒ `|Λ| ≥ (r−17)/C`; on `B > 10⁶`
+one has `|v₃| < 18`, so this does not beat `|Λ| < 1/B`.
 `|Λ| < 1/B` is too weak to make `C|Λ|` small (`C/B = 10^{24}`);
 the `‖v‖ < 32` estimate uses `B⁴/A⁴ < 1/((B+3)⁹−1)`, not `1/B`.
 A genuine `B ≤ 10⁶` cutoff would need a lower bound on `|Λ|`
 stronger than `B⁴/A⁴`. That is circular without an external
-LLL/Baker–Davenport theorem. Not v25.
+reduced-basis length estimate. Not v25.
 
 Baker–Davenport / Bugeaud LLL would need a lower bound strictly
 stronger than `B⁴/A⁴` for `B > 10⁶`. Mathlib 4.12 has no such
@@ -946,13 +952,408 @@ def LLL_reduced (b1star b2star b3star : Fin 3 → ℝ)
   LLL_size_reduced μ21 μ31 μ32 ∧ LLL_lovasz b1star b2star b3star μ21 μ32
 
 /-- LLL potential `D = ∏ᵢ ‖bᵢ*‖^{2(n−i+1)}` for `n = 3`, written
-    in squared norms: `‖b₁*‖⁶ ‖b₂*‖⁴ ‖b₃*‖²`. Termination (a
-    swap drops `D` by a factor `< 3/4`) stays `def Prop`. -/
+    in squared norms: `‖b₁*‖⁶ ‖b₂*‖⁴ ‖b₃*‖²`. -/
 def lllPotential (b1star b2star b3star : Fin 3 → ℝ) : ℝ :=
   lllNormSq b1star ^ 3 * lllNormSq b2star ^ 2 * lllNormSq b3star
 
-/-- LLL terminates on a rank-3 lattice (potential
-    `D = ∏ ‖bᵢ*‖^{2(n−i+1)}` drops on a swap). Not in Mathlib 4.12. -/
+theorem lllInner_comm (u v : Fin 3 → ℝ) :
+    lllInner u v = lllInner v u := by
+  unfold lllInner
+  apply Finset.sum_congr rfl
+  intro i _
+  ring
+
+theorem lllInner_add (u v w : Fin 3 → ℝ) :
+    lllInner (fun i => u i + v i) w = lllInner u w + lllInner v w := by
+  unfold lllInner
+  simp only [add_mul]
+  exact Finset.sum_add_distrib
+
+theorem lllInner_add_right (u v w : Fin 3 → ℝ) :
+    lllInner u (fun i => v i + w i) = lllInner u v + lllInner u w := by
+  unfold lllInner
+  simp only [mul_add]
+  exact Finset.sum_add_distrib
+
+theorem lllInner_smul (a : ℝ) (u v : Fin 3 → ℝ) :
+    lllInner (fun i => a * u i) v = a * lllInner u v := by
+  unfold lllInner
+  have : ∑ i : Fin 3, a * u i * v i = ∑ i : Fin 3, a * (u i * v i) := by
+    apply Finset.sum_congr rfl
+    intro i _
+    ring
+  rw [this, ← Finset.mul_sum]
+
+theorem lllInner_smul_right (a : ℝ) (u v : Fin 3 → ℝ) :
+    lllInner u (fun i => a * v i) = a * lllInner u v := by
+  rw [lllInner_comm, lllInner_smul, lllInner_comm]
+
+theorem lllNormSq_nonneg (v : Fin 3 → ℝ) : 0 ≤ lllNormSq v := by
+  rw [lllNormSq_eq]
+  nlinarith [sq_nonneg (v 0), sq_nonneg (v 1), sq_nonneg (v 2)]
+
+theorem lllNormSq_add_smul_of_orth
+    {u v : Fin 3 → ℝ} {a : ℝ} (h : lllInner u v = 0) :
+    lllNormSq (fun i => u i + a * v i) =
+      lllNormSq u + a ^ 2 * lllNormSq v := by
+  have hinn : u 0 * v 0 + u 1 * v 1 + u 2 * v 2 = 0 := by
+    have : lllInner u v = u 0 * v 0 + u 1 * v 1 + u 2 * v 2 := by
+      unfold lllInner
+      rw [Fin.sum_univ_three]
+    rwa [← this]
+  rw [lllNormSq_eq, lllNormSq_eq, lllNormSq_eq]
+  have hexpand :
+      (u 0 + a * v 0) ^ 2 + (u 1 + a * v 1) ^ 2 + (u 2 + a * v 2) ^ 2 =
+        (u 0 ^ 2 + u 1 ^ 2 + u 2 ^ 2) +
+          a ^ 2 * (v 0 ^ 2 + v 1 ^ 2 + v 2 ^ 2) +
+            2 * a * (u 0 * v 0 + u 1 * v 1 + u 2 * v 2) := by
+    ring
+  rw [hexpand, hinn]
+  ring
+
+/-- Size-reduction plus Lovász and GS orthogonality give
+    `‖bᵢ*‖² ≥ (1/2) ‖bᵢ₋₁*‖²`. -/
+theorem lll_lovasz_size_half
+    {b1star b2star : Fin 3 → ℝ} {μ : ℝ}
+    (horth : lllInner b2star b1star = 0)
+    (hμ : |μ| ≤ 1 / 2)
+    (hlov : (3 / 4 : ℝ) * lllNormSq b1star ≤
+        lllNormSq (fun i => b2star i + μ * b1star i)) :
+    (1 / 2 : ℝ) * lllNormSq b1star ≤ lllNormSq b2star := by
+  have hpy : lllNormSq (fun i => b2star i + μ * b1star i) =
+      lllNormSq b2star + μ ^ 2 * lllNormSq b1star :=
+    lllNormSq_add_smul_of_orth horth
+  have hμsq : μ ^ 2 ≤ (1 / 4 : ℝ) := by
+    have habs := abs_le.mp hμ
+    nlinarith
+  have hN1 := lllNormSq_nonneg b1star
+  rw [hpy] at hlov
+  nlinarith [hμsq, hN1]
+
+theorem lll_reduced_gs_half
+    {b1star b2star b3star : Fin 3 → ℝ} {μ21 μ31 μ32 : ℝ}
+    (h12 : lllInner b2star b1star = 0)
+    (h23 : lllInner b3star b2star = 0)
+    (hred : LLL_reduced b1star b2star b3star μ21 μ31 μ32) :
+    (1 / 2 : ℝ) * lllNormSq b1star ≤ lllNormSq b2star ∧
+      (1 / 2 : ℝ) * lllNormSq b2star ≤ lllNormSq b3star := by
+  obtain ⟨hsize, hlov⟩ := hred
+  refine ⟨lll_lovasz_size_half h12 hsize.1 hlov.1,
+    lll_lovasz_size_half h23 hsize.2.2 hlov.2⟩
+
+/-- On a 1–2 swap the new first squared length is
+    `L = ‖b₂* + μ b₁*‖²`, and `D` scales by `L / ‖b₁*‖²`.
+    If Lovász fails then this factor is `< 3/4`. -/
+theorem lllPotential_swap12_mul
+    (b1star b2star b3star : Fin 3 → ℝ) (μ : ℝ)
+    (hN1 : lllNormSq b1star ≠ 0)
+    (hL : lllNormSq (fun i => b2star i + μ * b1star i) ≠ 0) :
+    let L := lllNormSq (fun i => b2star i + μ * b1star i)
+    L ^ 3 * (lllNormSq b1star * lllNormSq b2star / L) ^ 2 *
+        lllNormSq b3star =
+      (L / lllNormSq b1star) * lllPotential b1star b2star b3star := by
+  intro L
+  unfold lllPotential
+  field_simp [hN1, hL]
+  ring
+
+theorem lllPotential_swap12_factor_lt
+    (b1star b2star b3star : Fin 3 → ℝ) (μ : ℝ)
+    (hN1 : 0 < lllNormSq b1star)
+    (hD : 0 < lllPotential b1star b2star b3star)
+    (hfail : lllNormSq (fun i => b2star i + μ * b1star i) <
+        (3 / 4 : ℝ) * lllNormSq b1star) :
+    (lllNormSq (fun i => b2star i + μ * b1star i) / lllNormSq b1star) *
+        lllPotential b1star b2star b3star <
+      (3 / 4 : ℝ) * lllPotential b1star b2star b3star := by
+  have hfrac :
+      lllNormSq (fun i => b2star i + μ * b1star i) / lllNormSq b1star <
+        (3 / 4 : ℝ) :=
+    (div_lt_iff hN1).mpr hfail
+  exact mul_lt_mul_of_pos_right hfrac hD
+
+/-- Displayed `‖b₁‖² = 1 + ⌊C log A⌋²` is an integer
+    (so the first Gram factor of `D` is integer-valued). -/
+theorem LLL_b1_normSq_int (A : ℕ) :
+    ∃ z : ℤ, (z : ℝ) = lllNormSq (LLL_b1 A) := by
+  refine ⟨1 + ⌊LLL_C_real * log (A : ℝ)⌋ ^ 2, ?_⟩
+  rw [lllNormSq_eq, LLL_b1_zero, LLL_b1_one, LLL_b1_two]
+  push_cast
+  ring
+
+theorem LLL_b1_normSq_nat (A : ℕ) :
+    ∃ n : ℕ, (n : ℝ) = lllNormSq (LLL_b1 A) := by
+  obtain ⟨z, hz⟩ := LLL_b1_normSq_int A
+  have hz0 : 0 ≤ z := by
+    have : (0 : ℝ) ≤ z := by
+      rw [hz]
+      exact lllNormSq_nonneg (LLL_b1 A)
+    exact Int.cast_nonneg.mp this
+  refine ⟨z.toNat, ?_⟩
+  have hzZ : (z.toNat : ℤ) = z := Int.toNat_of_nonneg hz0
+  have : (z.toNat : ℝ) = (z : ℝ) := by
+    rw [← hzZ]
+    exact_mod_cast rfl
+  rwa [this]
+
+/-- Nearest-integer rounding: size-reduction step. -/
+def lllNearestInt (x : ℝ) : ℤ := ⌊x + 1 / 2⌋
+
+theorem abs_sub_lllNearestInt (x : ℝ) :
+    |x - (lllNearestInt x : ℝ)| ≤ 1 / 2 := by
+  have hle : (lllNearestInt x : ℝ) ≤ x + 1 / 2 := Int.floor_le (x + 1 / 2)
+  have hlt : x + 1 / 2 < (lllNearestInt x : ℝ) + 1 :=
+    Int.lt_floor_add_one (x + 1 / 2)
+  have hlo : (lllNearestInt x : ℝ) - 1 / 2 ≤ x := by linarith
+  have hhi : x < (lllNearestInt x : ℝ) + 1 / 2 := by linarith
+  cases le_or_lt (x - lllNearestInt x) 0 with
+  | inl hnonpos =>
+    rw [abs_of_nonpos hnonpos]
+    linarith [hlo]
+  | inr hpos =>
+    rw [abs_of_pos hpos]
+    linarith [hhi]
+
+def lllZspan (b1 b2 b3 : Fin 3 → ℝ) (x y z : ℤ) : Fin 3 → ℝ :=
+  fun i => (x : ℝ) * b1 i + (y : ℝ) * b2 i + (z : ℝ) * b3 i
+
+theorem lllZspan_eq_gs
+    {b1s b2s b3s : Fin 3 → ℝ} {μ21 μ31 μ32 : ℝ} {x y z : ℤ}
+    {b1 b2 b3 : Fin 3 → ℝ}
+    (hb1 : b1 = b1s)
+    (hb2 : b2 = fun i => b2s i + μ21 * b1s i)
+    (hb3 : b3 = fun i => b3s i + μ31 * b1s i + μ32 * b2s i) :
+    lllZspan b1 b2 b3 x y z =
+      fun i =>
+        ((x : ℝ) + (y : ℝ) * μ21 + (z : ℝ) * μ31) * b1s i +
+          ((y : ℝ) + (z : ℝ) * μ32) * b2s i +
+            (z : ℝ) * b3s i := by
+  ext i
+  simp [lllZspan, hb1, hb2, hb3]
+  ring
+
+theorem lllNormSq_linear_orth3
+    {u v w : Fin 3 → ℝ} {a b c : ℝ}
+    (huv : lllInner u v = 0) (huw : lllInner u w = 0)
+    (hvw : lllInner v w = 0) :
+    lllNormSq (fun i => a * u i + b * v i + c * w i) =
+      a ^ 2 * lllNormSq u + b ^ 2 * lllNormSq v + c ^ 2 * lllNormSq w := by
+  have huv' : u 0 * v 0 + u 1 * v 1 + u 2 * v 2 = 0 := by
+    have : lllInner u v = u 0 * v 0 + u 1 * v 1 + u 2 * v 2 := by
+      unfold lllInner; rw [Fin.sum_univ_three]
+    rwa [← this]
+  have huw' : u 0 * w 0 + u 1 * w 1 + u 2 * w 2 = 0 := by
+    have : lllInner u w = u 0 * w 0 + u 1 * w 1 + u 2 * w 2 := by
+      unfold lllInner; rw [Fin.sum_univ_three]
+    rwa [← this]
+  have hvw' : v 0 * w 0 + v 1 * w 1 + v 2 * w 2 = 0 := by
+    have : lllInner v w = v 0 * w 0 + v 1 * w 1 + v 2 * w 2 := by
+      unfold lllInner; rw [Fin.sum_univ_three]
+    rwa [← this]
+  rw [lllNormSq_eq, lllNormSq_eq, lllNormSq_eq, lllNormSq_eq]
+  have hexpand :
+      (a * u 0 + b * v 0 + c * w 0) ^ 2 +
+          (a * u 1 + b * v 1 + c * w 1) ^ 2 +
+            (a * u 2 + b * v 2 + c * w 2) ^ 2 =
+        a ^ 2 * (u 0 ^ 2 + u 1 ^ 2 + u 2 ^ 2) +
+          b ^ 2 * (v 0 ^ 2 + v 1 ^ 2 + v 2 ^ 2) +
+            c ^ 2 * (w 0 ^ 2 + w 1 ^ 2 + w 2 ^ 2) +
+              2 * a * b * (u 0 * v 0 + u 1 * v 1 + u 2 * v 2) +
+                2 * a * c * (u 0 * w 0 + u 1 * w 1 + u 2 * w 2) +
+                  2 * b * c * (v 0 * w 0 + v 1 * w 1 + v 2 * w 2) := by
+    ring
+  rw [hexpand, huv', huw', hvw']
+  ring
+
+theorem one_le_int_cast_sq {z : ℤ} (hz : z ≠ 0) :
+    (1 : ℝ) ≤ (z : ℝ) ^ 2 := by
+  have habs : (1 : ℤ) ≤ |z| := Int.one_le_abs hz
+  have hx : (1 : ℝ) ≤ |(z : ℝ)| := by exact_mod_cast habs
+  rw [← sq_abs]
+  nlinarith [hx, abs_nonneg (z : ℝ)]
+
+/-- Integer combination of an LLL-reduced orthogonal GS basis
+    has `‖v‖ ≥ ‖b₁‖ / 2`. This is `2^{(n-1)/2} = 2` for `n = 3`. -/
+theorem lll_zspan_norm_ge_half
+    {b1s b2s b3s : Fin 3 → ℝ} {μ21 μ31 μ32 : ℝ} {x y z : ℤ}
+    {b1 b2 b3 : Fin 3 → ℝ}
+    (hb1 : b1 = b1s)
+    (hb2 : b2 = fun i => b2s i + μ21 * b1s i)
+    (hb3 : b3 = fun i => b3s i + μ31 * b1s i + μ32 * b2s i)
+    (h12 : lllInner b1s b2s = 0)
+    (h13 : lllInner b1s b3s = 0)
+    (h23 : lllInner b2s b3s = 0)
+    (hhalf : (1 / 2 : ℝ) * lllNormSq b1s ≤ lllNormSq b2s ∧
+        (1 / 2 : ℝ) * lllNormSq b2s ≤ lllNormSq b3s)
+    (hN1 : 0 < lllNormSq b1s)
+    (hxyz : ¬ (x = 0 ∧ y = 0 ∧ z = 0)) :
+    lllNorm b1s / 2 ≤ lllNorm (lllZspan b1 b2 b3 x y z) := by
+  have hexp := lllZspan_eq_gs (x := x) (y := y) (z := z) hb1 hb2 hb3
+  let α : ℝ := (x : ℝ) + (y : ℝ) * μ21 + (z : ℝ) * μ31
+  let β : ℝ := (y : ℝ) + (z : ℝ) * μ32
+  let γ : ℝ := (z : ℝ)
+  have hnorm :
+      lllNormSq (lllZspan b1 b2 b3 x y z) =
+        α ^ 2 * lllNormSq b1s + β ^ 2 * lllNormSq b2s +
+          γ ^ 2 * lllNormSq b3s := by
+    change lllNormSq (lllZspan b1 b2 b3 x y z) =
+      ((x : ℝ) + (y : ℝ) * μ21 + (z : ℝ) * μ31) ^ 2 * lllNormSq b1s +
+        ((y : ℝ) + (z : ℝ) * μ32) ^ 2 * lllNormSq b2s +
+          (z : ℝ) ^ 2 * lllNormSq b3s
+    rw [hexp]
+    exact lllNormSq_linear_orth3 h12 h13 h23
+  have hN2 : (1 / 2 : ℝ) * lllNormSq b1s ≤ lllNormSq b2s := hhalf.1
+  have hN3 : (1 / 2 : ℝ) * lllNormSq b2s ≤ lllNormSq b3s := hhalf.2
+  have hN3' : (1 / 4 : ℝ) * lllNormSq b1s ≤ lllNormSq b3s := by
+    nlinarith [hN2, hN3, lllNormSq_nonneg b2s]
+  have hsq : lllNormSq b1s / 4 ≤ lllNormSq (lllZspan b1 b2 b3 x y z) := by
+    rw [hnorm]
+    by_cases hz : z = 0
+    · by_cases hy : y = 0
+      · have hx : x ≠ 0 := by
+          intro hx
+          exact hxyz ⟨hx, hy, hz⟩
+        have hα : α = (x : ℝ) := by simp [α, hy, hz]
+        have hx2 : (1 : ℝ) ≤ (x : ℝ) ^ 2 := one_le_int_cast_sq hx
+        rw [hα]
+        nlinarith [hx2, hN1, sq_nonneg β, sq_nonneg γ,
+          lllNormSq_nonneg b2s, lllNormSq_nonneg b3s]
+      · have hy2 : (1 : ℝ) ≤ (y : ℝ) ^ 2 := one_le_int_cast_sq hy
+        have hβ : β = (y : ℝ) := by simp [β, hz]
+        rw [hβ]
+        nlinarith [hy2, hN2, hN1, sq_nonneg α, sq_nonneg γ,
+          lllNormSq_nonneg b1s, lllNormSq_nonneg b3s]
+    · have hz2 : (1 : ℝ) ≤ (z : ℝ) ^ 2 := one_le_int_cast_sq hz
+      have hγ : γ = (z : ℝ) := rfl
+      rw [hγ]
+      nlinarith [hz2, hN3', hN1, sq_nonneg α, sq_nonneg β,
+        lllNormSq_nonneg b1s, lllNormSq_nonneg b2s]
+  have hN1nn : 0 ≤ lllNormSq b1s := le_of_lt hN1
+  unfold lllNorm
+  have hsplit :
+      Real.sqrt (lllNormSq b1s) / 2 =
+        Real.sqrt (lllNormSq b1s / 4) := by
+    rw [Real.sqrt_div hN1nn 4]
+    have : Real.sqrt 4 = 2 := by
+      rw [show (4 : ℝ) = 2 ^ 2 by norm_num,
+        Real.sqrt_sq (by norm_num : (0 : ℝ) ≤ 2)]
+    rw [this]
+  rw [hsplit]
+  exact Real.sqrt_le_sqrt hsq
+
+/-- LLL-reduced Z-basis ⇒ `‖b₁‖ ≤ 2 λ₁` (`n = 3`). -/
+theorem lll_svt_bound_of_reduced
+    (A B : ℕ)
+    {b1 b2 b3 b1s b2s b3s : Fin 3 → ℝ} {μ21 μ31 μ32 : ℝ}
+    (hb1 : b1 = b1s)
+    (hb2 : b2 = fun i => b2s i + μ21 * b1s i)
+    (hb3 : b3 = fun i => b3s i + μ31 * b1s i + μ32 * b2s i)
+    (h12 : lllInner b1s b2s = 0)
+    (h13 : lllInner b1s b3s = 0)
+    (h23 : lllInner b2s b3s = 0)
+    (hred : LLL_reduced b1s b2s b3s μ21 μ31 μ32)
+    (hN1 : 0 < lllNormSq b1s)
+    (_hmem : mem_LLL_lattice A B b1)
+    (hspan : ∀ v, mem_LLL_lattice A B v →
+        ∃ x y z : ℤ, v = lllZspan b1 b2 b3 x y z) :
+    lllNorm b1 ≤ 2 * LLL_lambda1 A B := by
+  have hhalf := lll_reduced_gs_half
+    (by rwa [lllInner_comm] : lllInner b2s b1s = 0)
+    (by rwa [lllInner_comm] : lllInner b3s b2s = 0) hred
+  have hlb : ∀ r ∈ LLL_nonzero_norms A B, lllNorm b1s / 2 ≤ r := by
+    intro r ⟨v, hvmem, hvne, heq⟩
+    obtain ⟨x, y, z, hxyz⟩ := hspan v hvmem
+    have hnz : ¬ (x = 0 ∧ y = 0 ∧ z = 0) := by
+      intro h0
+      apply hvne
+      rw [hxyz]
+      rcases h0 with ⟨hx, hy, hz⟩
+      ext i
+      simp [lllZspan, hx, hy, hz]
+    have := lll_zspan_norm_ge_half hb1 hb2 hb3 h12 h13 h23 hhalf hN1 hnz
+    rw [heq, hxyz]
+    exact this
+  have hinf : lllNorm b1s / 2 ≤ LLL_lambda1 A B :=
+    le_csInf ⟨lllNorm (LLL_v A B), LLL_v_mem_norms A B⟩ hlb
+  have hb1eq : lllNorm b1 = lllNorm b1s := by rw [hb1]
+  rw [hb1eq]
+  have hmul : lllNorm b1s ≤ LLL_lambda1 A B * 2 :=
+    (div_le_iff₀ (by norm_num : (0 : ℝ) < 2)).mp hinf
+  linarith [hmul]
+
+/-- Reduced GS lengths: `‖b₁*‖⁶ ≤ 8 (‖b₁*‖² ‖b₂*‖² ‖b₃*‖²)`. -/
+theorem lll_det_prod_sq_of_reduced
+    {b1s b2s b3s : Fin 3 → ℝ} {μ21 μ31 μ32 : ℝ}
+    (h12 : lllInner b2s b1s = 0)
+    (h23 : lllInner b3s b2s = 0)
+    (hred : LLL_reduced b1s b2s b3s μ21 μ31 μ32) :
+    lllNormSq b1s ^ 3 ≤
+      8 * (lllNormSq b1s * lllNormSq b2s * lllNormSq b3s) := by
+  have hhalf := lll_reduced_gs_half h12 h23 hred
+  have hN1 := lllNormSq_nonneg b1s
+  have hN2 := lllNormSq_nonneg b2s
+  have hN3 := lllNormSq_nonneg b3s
+  have h2 : lllNormSq b2s ≥ lllNormSq b1s / 2 := by linarith [hhalf.1]
+  have h3 : lllNormSq b3s ≥ lllNormSq b2s / 2 := by linarith [hhalf.2]
+  have h34 : lllNormSq b3s ≥ lllNormSq b1s / 4 := by
+    nlinarith [h2, h3, hN2]
+  have hprod : lllNormSq b1s * lllNormSq b1s ≤
+      8 * lllNormSq b2s * lllNormSq b3s := by
+    nlinarith [h2, h34, hN2, hN3]
+  nlinarith [hprod, hN1]
+
+theorem LLL_b2star_orth_b1star (A B : ℕ)
+    (h : lllNormSq (LLL_b1star A) ≠ 0) :
+    lllInner (LLL_b2star A B) (LLL_b1star A) = 0 := by
+  have hsub :
+      LLL_b2star A B =
+        fun i => LLL_b2 B i + (-LLL_mu21 A B) * LLL_b1star A i := by
+    unfold LLL_b2star
+    ext i
+    ring
+  have hcalc :
+      lllInner (LLL_b2star A B) (LLL_b1star A) =
+        lllInner (LLL_b2 B) (LLL_b1star A) -
+          LLL_mu21 A B * lllNormSq (LLL_b1star A) := by
+    rw [hsub, lllInner_add, lllInner_smul]
+    unfold lllNormSq
+    ring
+  rw [hcalc]
+  unfold LLL_mu21
+  field_simp [h]
+
+theorem LLL_b1star_normSq_ne_zero (A : ℕ) :
+    lllNormSq (LLL_b1star A) ≠ 0 := by
+  have := LLL_b1_normSq_ge_one A
+  unfold LLL_b1star
+  linarith
+
+/-- Baker–Davenport rearrangement: if a first GS length `r`
+    is at most `|v₃|` and larger than 17, then
+    `|Λ| ≥ (r − 17)/C`. On a solution with `B > 10⁶` one has
+    `|v₃| < 18`, so this never beats `|Λ| < 1/B`. -/
+theorem baker_davenport_gs_lower
+    (A B : ℕ) (r : ℝ)
+    (hle : r ≤ |LLL_v A B 2|)
+    (h17 : 17 < r) :
+    (r - 17) / LLL_C_real ≤ |Lambda A B| := by
+  have hthird : 17 < |LLL_v A B 2| := lt_of_lt_of_le h17 hle
+  have happ := abs_Lambda_ge_of_third_gt_seventeen A B (by
+    rw [← LLL_v_two]
+    exact hthird)
+  have hC := LLL_C_real_pos
+  have hform : |LLL_v A B 2| =
+      |(4 : ℝ) * (LLL_e2 A B).1 - 13 * (LLL_e2 A B).2| := by
+    rw [LLL_v_two]
+  have hmono : (r - 17) / LLL_C_real ≤
+      (|LLL_v A B 2| - 17) / LLL_C_real :=
+    div_le_div_of_nonneg_right (by linarith [hle]) (le_of_lt hC)
+  rw [hform] at hmono
+  exact le_trans hmono happ
+
+/-- Existence of an LLL-reduced Z-basis. The swap factor
+    `lllPotential_swap12_factor_lt` is the termination step;
+    producing the basis is not in Mathlib 4.12. -/
 def lll_algorithm_terminates : Prop :=
   ∀ A B : ℕ,
     ∃ b1' b2' b3' : Fin 3 → ℝ,
@@ -975,14 +1376,6 @@ def lll_det_bound : Prop :=
   ∀ (A B : ℕ) (b1' : Fin 3 → ℝ),
     mem_LLL_lattice A B b1' →
       lllNorm b1' ≤ Real.sqrt 2 * LLL_C_real ^ ((1 : ℝ) / 3)
-
-/-- Baker–Davenport from a large first GS vector. Circular without
-    an independent estimate of `‖b₁*‖`. Not in Mathlib 4.12. -/
-def baker_davenport_gs_lower : Prop :=
-  ∀ A B : ℕ,
-    1 < A →
-      1 < B + 3 →
-        (lllNorm (LLL_b1star A) - 17) / LLL_C_real ≤ |Lambda A B|
 
 theorem B3_ge_of_B_gt_B0 {B : ℕ} (hB0 : B0_nat < B) :
     (1000004 : ℕ) ≤ B + 3 := by
@@ -1178,6 +1571,12 @@ theorem baker_bound_gap3_of_bugeaud_LLL_reduction_proof
 #check abs_Lambda_ge_of_third_gt_seventeen
 #check LLL_reduced
 #check lllPotential
+#check lllPotential_swap12_factor_lt
+#check LLL_b1_normSq_nat
+#check abs_sub_lllNearestInt
+#check lll_reduced_gs_half
+#check lll_svt_bound_of_reduced
+#check lll_det_prod_sq_of_reduced
 #check lll_algorithm_terminates
 #check lll_svt_bound
 #check lll_det_bound
@@ -1194,6 +1593,9 @@ theorem baker_bound_gap3_of_bugeaud_LLL_reduction_proof
 #print axioms LLL_basis_det
 #print axioms LLL_v_norm_lt_thirty_two
 #print axioms LLL_lambda1_lt_thirty_two
+#print axioms lllPotential_swap12_factor_lt
+#print axioms lll_svt_bound_of_reduced
+#print axioms baker_davenport_gs_lower
 #print axioms baker_bound_gap3_of_from_ratio
 
 end BealMatveevBeal.MatveevLLL
