@@ -47,6 +47,8 @@ test -f BealGenuineV25.lean
 test -f Beal/Matveev/BealGenuineV25.lean
 test -f BealTrueV25.lean
 test -f Beal/Matveev/BealTrueV25.lean
+test -f BealUnconditionalV25.lean
+test -f Beal/Matveev/BealUnconditionalV25.lean
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -170,6 +172,12 @@ if "import BealTrueV25" not in src:
     sys.exit(1)
 if "BealTrueV25.baker_bound_gap3_true" not in src:
     print("#check baker_bound_gap3_true missing from MatveevThm14General.lean", file=sys.stderr)
+    sys.exit(1)
+if "import BealUnconditionalV25" not in src:
+    print("MatveevThm14General.lean missing import BealUnconditionalV25", file=sys.stderr)
+    sys.exit(1)
+if "BealUnconditionalV25.baker_bound_gap3_unconditional_nogo" not in src:
+    print("#check baker_bound_gap3_unconditional_nogo missing from MatveevThm14General.lean", file=sys.stderr)
     sys.exit(1)
 
 lll = pathlib.Path("MatveevLLL.lean").read_text(encoding="utf-8")
@@ -334,6 +342,9 @@ if ".one `BealGenuineV25" not in pathlib.Path("lakefile.lean").read_text(encodin
     sys.exit(1)
 if ".one `BealTrueV25" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
     print("lakefile.lean missing BealTrueV25 glob", file=sys.stderr)
+    sys.exit(1)
+if ".one `BealUnconditionalV25" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
+    print("lakefile.lean missing BealUnconditionalV25 glob", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -1092,6 +1103,74 @@ if re.search(r"^theorem three_dvd_A_of_sol\b", truev, re.M):
     print("do not prove three_dvd_A_of_sol for all solutions", file=sys.stderr)
     sys.exit(1)
 
+uncond = pathlib.Path("BealUnconditionalV25.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in uncond:
+    print("BealUnconditionalV25.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
+if "axiom darmon_merel_4413_axiom" in uncond:
+    print("do not add Darmon-Merel axiom in BealUnconditionalV25.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem baker_bound_gap3_unconditional_nogo" not in uncond:
+    print("baker_bound_gap3_unconditional_nogo missing", file=sys.stderr)
+    sys.exit(1)
+if "def hGen" not in uncond:
+    print("hGen missing from BealUnconditionalV25.lean", file=sys.stderr)
+    sys.exit(1)
+if "def hLLL" not in uncond:
+    print("hLLL missing from BealUnconditionalV25.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem hGen_exp_lt_ratio" not in uncond:
+    print("hGen_exp_lt_ratio missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem hLLL_method_fails" not in uncond:
+    print("hLLL_method_fails missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem C1_floor_hGen_loses" not in uncond:
+    print("C1_floor_hGen_loses missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_uniform_c_cubic_in_N" not in uncond:
+    print("no_uniform_c_cubic_in_N missing from BealUnconditionalV25.lean", file=sys.stderr)
+    sys.exit(1)
+if "143186215390" not in uncond:
+    print("C1_floor = 143186215390 missing from BealUnconditionalV25.lean", file=sys.stderr)
+    sys.exit(1)
+if "1000000" not in uncond:
+    print("B0_nat = 1000000 missing from BealUnconditionalV25.lean", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in uncond:
+    print("do not paste True := trivial skeletons", file=sys.stderr)
+    sys.exit(1)
+if "def baker_bound_gap3" not in uncond:
+    print("baker_bound_gap3 Prop alias missing from BealUnconditionalV25.lean", file=sys.stderr)
+    sys.exit(1)
+if "def baker_bound_gap3_of_hGen_hLLL" not in uncond:
+    print("baker_bound_gap3_of_hGen_hLLL must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_gap3\b", uncond, re.M):
+    print("do not inhabit baker_bound_gap3 in BealUnconditionalV25.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem hGen\b", uncond, re.M):
+    print("do not inhabit hGen", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem hLLL\b", uncond, re.M):
+    print("do not inhabit hLLL", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_gap3_of_hGen_hLLL\b", uncond, re.M):
+    print("do not inhabit baker_bound_gap3_of_hGen_hLLL", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem darmon_merel_44_13_no_coprime\b", uncond, re.M):
+    print("do not inhabit darmon_merel_44_13_no_coprime", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem fermat_last_theorem_thirteen\b", uncond, re.M):
+    print("do not inhabit fermat_last_theorem_thirteen", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem ribet_level_lowering_to_32\b", uncond, re.M):
+    print("do not inhabit ribet_level_lowering_to_32", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem three_dvd_A_of_sol\b", uncond, re.M):
+    print("do not prove three_dvd_A_of_sol for all solutions", file=sys.stderr)
+    sys.exit(1)
+
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
     print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
@@ -1317,6 +1396,10 @@ print("  DM / FLT13 / Ribet-to-32 stay def Prop; not a B<=1e6 close")
 print("  BealTrueV25: baker_bound_gap3_true via axiom darmon_merel_4413_axiom")
 print("  baker_bound_gap3_le_B0: vacuous ∀ A B, sol → B ≤ B0_nat")
 print("  axiom-relative; not the unconditional v25 mint; hGen/hLLL stay open")
+print("  BealUnconditionalV25: hGen+hLLL cannot cut B<=1e6; C1>=1 exp < ratio")
+print("  hLLL_method_fails: no C gives r>17+C/B0; cubic jet 1331; DM/FLT/Ribet def Prop")
+print("  baker_bound_gap3_unconditional_nogo; baker_bound_gap3 stays def Prop")
+print("  not a minted v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations tag")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")
 print("  unrestricted target and hLLL stay def Prop; not v25")

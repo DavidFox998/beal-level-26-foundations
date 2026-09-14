@@ -6,8 +6,8 @@ Lake library sources for the Matveev–Beal complement
 `MatveevLLL`, `MatveevInterpolation`, `MatveevBugeaud`,
 `WuestholzSubgroup`, `WuestholzProduct`, `MatveevThreeLogs`,
 `BealKraus`, `BealKrausZsig`, `BealCatalanZsig`, `BealDarmonMerel`,
-`BealDarmonMerel44p`, `BealFLT13`, `BealGenuineV25`, and
-`BealTrueV25`.
+`BealDarmonMerel44p`, `BealFLT13`, `BealGenuineV25`,
+`BealTrueV25`, and `BealUnconditionalV25`.
 
 `Beal.lean` re-exports `Beal.Matveev.MatveevThm14General`.
 Substantial proofs live in **root** modules; files under
@@ -16,4 +16,6 @@ Substantial proofs live in **root** modules; files under
 Concept DOI `10.5281/zenodo.22379293`. `C1_floor = 143186215390`.
 `B0_nat = 1000000`. **0 sorry.** `BealTrueV25` inhabits
 `baker_bound_gap3_true` relative to `axiom darmon_merel_4413_axiom`.
-That is not Mathlib 4.12 and not the minted unconditional v25 tag.
+`BealUnconditionalV25` proves `hGen` + `hLLL` cannot close
+`B ≤ 10⁶` in Mathlib 4.12. That is not the minted unconditional
+v25 tag.

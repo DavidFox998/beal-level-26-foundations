@@ -54,5 +54,6 @@ depends on `darmon_merel_4413_axiom` in addition to
 
 GenuineV25 / FLT13 / 44p do **not** contain this axiom.
 
-See also [`BealGenuineV25.md`](BealGenuineV25.md) and
-[`BealBakerBoundGap3.md`](BealBakerBoundGap3.md).
+See also [`BealGenuineV25.md`](BealGenuineV25.md),
+[`BealBakerBoundGap3.md`](BealBakerBoundGap3.md), and
+[`BealUnconditionalV25.md`](BealUnconditionalV25.md).

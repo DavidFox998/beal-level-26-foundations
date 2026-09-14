@@ -80,8 +80,11 @@ statement is not a theorem here. `BealTrueV25.lean` takes that
 signature as `axiom darmon_merel_4413_axiom` and inhabits
 `baker_bound_gap3_true` (0 sorry; extra axiom). That is
 axiom-relative, not Mathlib 4.12, and not the minted
-unconditional v25 tag (`hGen` / `hLLL` remain open). `L≥1` and
-`α1=α2=1` forces `Δ=0`. Being a convergent does not force
+unconditional v25 tag. `BealUnconditionalV25.lean` proves
+`baker_bound_gap3_unconditional_nogo`: `hGen` and `hLLL` cannot
+cut `B ≤ 10⁶` (every `C1 ≥ 1` loses to `B⁴/A⁴`; no Baker–Davenport
+witness above `17+C/B0`). Those hypotheses stay `def Prop`.
+`L≥1` and `α1=α2=1` forces `Δ=0`. Being a convergent does not force
 `B ≤ 10⁶`. Mathlib-only theorems print axioms
 `[propext, Classical.choice, Quot.sound]`. **0 sorry.**
 

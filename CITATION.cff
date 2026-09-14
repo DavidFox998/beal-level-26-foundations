@@ -38,7 +38,9 @@ preferred-citation:
     named theorem baker_bound_gap3 stays uninhabited. BealTrueV25
     inhabits baker_bound_gap3_true relative to axiom
     darmon_merel_4413_axiom (0 sorry; extra axiom; not Mathlib
-    4.12). That does not mint this version tag. Unrestricted
+    4.12). BealUnconditionalV25 proves hGen+hLLL cannot cut
+    B≤10^6 (baker_bound_gap3_unconditional_nogo). That does not
+    mint this version tag. Unrestricted
     matveev_inequality_real_target and hLLL stay def Prop.
     Not a minted v25 tag. Prior v24.4.0 version
     DOI 10.5281/zenodo.22732209 on db7a556.

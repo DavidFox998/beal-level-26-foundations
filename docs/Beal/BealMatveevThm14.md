@@ -51,7 +51,8 @@ claim is false. That does not inhabit this kernel file's unrestricted
 target and is not LLL / a minted unconditional v25 tag.
 `BealTrueV25.baker_bound_gap3_true` inhabits the kernel Prop relative
 to `axiom darmon_merel_4413_axiom`; that extra axiom is not in this
-kernel file.
+kernel file. `BealUnconditionalV25.baker_bound_gap3_unconditional_nogo`
+records that `hGen` and `hLLL` still fail on `B ≥ B0`.
 
 ## v24.3.2 — Numerical Tiny Bound exp(C) << 10^{-12}
 

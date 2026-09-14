@@ -24,7 +24,7 @@ depends on `darmon_merel_4413_axiom` in addition to
 `[propext, Classical.choice, Quot.sound]`. That is **not**
 the unconditional minted tag
 `v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations`
-(`hGen` / `hLLL` remain open). 0 sorry.
+(`hGen` / `hLLL` remain open; see `BealUnconditionalV25`). 0 sorry.
 
 `C1_floor = 143186215390`, `B0_nat = 1000000`.
 -/

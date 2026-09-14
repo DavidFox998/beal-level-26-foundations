@@ -39,8 +39,10 @@ Darmon–Merel (4,4,13) + 3-adic vacuous-close no-go in
 BealGenuineV25.lean (DM ⇒ no gap-3 ⇒ baker_bound_gap3;
 DM not in Mathlib 4.12; a B≥B0 solution refutes DM).
 Axiom-relative baker_bound_gap3_true in BealTrueV25.lean
-(axiom darmon_merel_4413_axiom; not the unconditional v25 mint;
-hGen / hLLL remain open).
+(axiom darmon_merel_4413_axiom; not the unconditional v25 mint).
+Unconditional hGen+hLLL no-go in BealUnconditionalV25.lean
+(baker_bound_gap3_unconditional_nogo; hGen/hLLL stay def Prop;
+DM / FLT13 / Ribet-to-32 stay def Prop).
 bugeaud_LLL_reduction_proof stays def Prop. Named theorem
 baker_bound_gap3 stays uninhabited. Not a minted v25 tag.
 -/
@@ -60,6 +62,7 @@ import BealDarmonMerel44p
 import BealFLT13
 import BealGenuineV25
 import BealTrueV25
+import BealUnconditionalV25
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -933,6 +936,11 @@ theorem gap3_forall_of_baker
 #check BealTrueV25.no_gap3_of_axiom
 #check BealTrueV25.darmon_merel_4413_axiom
 #check BealTrueV25.baker_bound_gap3_le_B0
+#check BealUnconditionalV25.baker_bound_gap3_unconditional_nogo
+#check BealUnconditionalV25.hGen
+#check BealUnconditionalV25.hLLL
+#check BealUnconditionalV25.hGen_exp_lt_ratio
+#check BealUnconditionalV25.hLLL_method_fails
 #print axioms C1_floor_eq
 #print axioms height_B0_eq
 #print axioms height_bound_gap3
@@ -1005,5 +1013,8 @@ theorem gap3_forall_of_baker
 #print axioms BealTrueV25.baker_bound_gap3_true
 #print axioms BealTrueV25.no_gap3_of_axiom
 #print axioms BealTrueV25.baker_bound_gap3_le_B0
+#print axioms BealUnconditionalV25.baker_bound_gap3_unconditional_nogo
+#print axioms BealUnconditionalV25.hGen_exp_lt_ratio
+#print axioms BealUnconditionalV25.hLLL_method_fails
 
 end BealMatveevBeal

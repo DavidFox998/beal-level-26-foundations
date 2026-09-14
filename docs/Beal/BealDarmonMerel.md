@@ -40,7 +40,8 @@ See also [`BealCatalanZsig.md`](BealCatalanZsig.md),
 [`BealKraus.md`](BealKraus.md),
 [`BealDarmonMerel44p.md`](BealDarmonMerel44p.md),
 [`BealFLT13.md`](BealFLT13.md),
-[`BealGenuineV25.md`](BealGenuineV25.md), and
-[`BealTrueV25.md`](BealTrueV25.md).
+[`BealGenuineV25.md`](BealGenuineV25.md),
+[`BealTrueV25.md`](BealTrueV25.md), and
+[`BealUnconditionalV25.md`](BealUnconditionalV25.md).
 
 Not a minted v25 tag.

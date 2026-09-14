@@ -38,7 +38,8 @@ Axioms `[propext, Classical.choice, Quot.sound]` only.
 - `fermat_last_theorem_thirteen`.
 - `ribet_level_lowering_to_32` / `ribet_level_lowering`.
 
-See also [`BealFLT13.md`](BealFLT13.md) and
-[`BealTrueV25.md`](BealTrueV25.md).
+See also [`BealFLT13.md`](BealFLT13.md),
+[`BealTrueV25.md`](BealTrueV25.md), and
+[`BealUnconditionalV25.md`](BealUnconditionalV25.md).
 
 Not a minted unconditional v25 tag.

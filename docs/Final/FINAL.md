@@ -89,7 +89,11 @@ $B \ge B_0$ solution would refute it.
 `axiom darmon_merel_4413_axiom` and inhabits
 `baker_bound_gap3_true` (0 sorry; extra axiom). That is
 axiom-relative, not Mathlib 4.12, and not the minted
-unconditional v25 tag (`hGen` / `hLLL` remain open).
+unconditional v25 tag.
+`BealUnconditionalV25.lean` proves `baker_bound_gap3_unconditional_nogo`:
+`hGen` and `hLLL` cannot cut $B\le 10^6$ (every $C_1\ge 1$ loses
+to $B^4/A^4$; no Baker–Davenport witness above $17+C/B_0$).
+Those hypotheses stay `def Prop`.
 Unconditional generic
 $|\Delta|\le\exp(-cLK)$ is false ($L=0$ gives $\Delta=1$);
 $L\ge 1$ and $\alpha_1=\alpha_2=1$ forces $\Delta=0$. Not the unrestricted
