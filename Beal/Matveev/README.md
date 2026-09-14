@@ -20,11 +20,12 @@ tree. Theorems live in the matching **root** modules:
 | `BealDarmonMerel.lean` | `BealDarmonMerel.lean` |
 | `BealDarmonMerel44p.lean` | `BealDarmonMerel44p.lean` |
 | `BealFLT13.lean` | `BealFLT13.lean` |
+| `BealGenuineV25.lean` | `BealGenuineV25.lean` |
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /
 Kraus / KrausZsig / CatalanZsig / DarmonMerel / DarmonMerel44p /
-FLT13 modules.
+FLT13 / GenuineV25 modules.
 
 `baker_bound_gap3`, `baker_davenport_reduction`,
 `bugeaud_LLL_reduction_proof`, `wuestholz_subgroup_theorem`, and

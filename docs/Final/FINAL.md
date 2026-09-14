@@ -82,6 +82,9 @@ on `B > 0` and that `A = a^{13}`, `B = b^{13}` is Fermat exponent 13.
 `BealFLT13.lean` proves there are no gap-3 solutions with `3 \mid B`
 by 3-adic descent, so every solution is coprime — Darmon–Merel's
 remaining case, still not in Mathlib 4.12.
+`BealGenuineV25.lean` proves Darmon–Merel $(4,4,13)$ would close
+`baker_bound_gap3` vacuously; it is not a theorem here, and a
+$B \ge B_0$ solution would refute it.
 Unconditional generic
 $|\Delta|\le\exp(-cLK)$ is false ($L=0$ gives $\Delta=1$);
 $L\ge 1$ and $\alpha_1=\alpha_2=1$ forces $\Delta=0$. Not the unrestricted

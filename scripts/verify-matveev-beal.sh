@@ -43,6 +43,8 @@ test -f BealDarmonMerel44p.lean
 test -f Beal/Matveev/BealDarmonMerel44p.lean
 test -f BealFLT13.lean
 test -f Beal/Matveev/BealFLT13.lean
+test -f BealGenuineV25.lean
+test -f Beal/Matveev/BealGenuineV25.lean
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -154,6 +156,12 @@ if "import BealFLT13" not in src:
     sys.exit(1)
 if "BealFLT13.baker_bound_gap3_flt13_darmon_merel_nogo" not in src:
     print("#check baker_bound_gap3_flt13_darmon_merel_nogo missing from MatveevThm14General.lean", file=sys.stderr)
+    sys.exit(1)
+if "import BealGenuineV25" not in src:
+    print("MatveevThm14General.lean missing import BealGenuineV25", file=sys.stderr)
+    sys.exit(1)
+if "BealGenuineV25.baker_bound_gap3_darmon_merel_4413_3adic_nogo" not in src:
+    print("#check baker_bound_gap3_darmon_merel_4413_3adic_nogo missing from MatveevThm14General.lean", file=sys.stderr)
     sys.exit(1)
 
 lll = pathlib.Path("MatveevLLL.lean").read_text(encoding="utf-8")
@@ -312,6 +320,9 @@ if ".one `BealDarmonMerel44p" not in pathlib.Path("lakefile.lean").read_text(enc
     sys.exit(1)
 if ".one `BealFLT13" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
     print("lakefile.lean missing BealFLT13 glob", file=sys.stderr)
+    sys.exit(1)
+if ".one `BealGenuineV25" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
+    print("lakefile.lean missing BealGenuineV25 glob", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -973,6 +984,62 @@ if re.search(r"^theorem three_dvd_A_of_sol\b", flt13, re.M):
     print("do not prove three_dvd_A_of_sol for all solutions", file=sys.stderr)
     sys.exit(1)
 
+gv25 = pathlib.Path("BealGenuineV25.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in gv25:
+    print("BealGenuineV25.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
+if "theorem baker_bound_gap3_darmon_merel_4413_3adic_nogo" not in gv25:
+    print("baker_bound_gap3_darmon_merel_4413_3adic_nogo missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_gap3_of_darmon_merel_4413" not in gv25:
+    print("no_gap3_of_darmon_merel_4413 missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem baker_bound_gap3_of_darmon_merel_4413" not in gv25:
+    print("baker_bound_gap3_of_darmon_merel_4413 missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_sol_when_three_dvd_B_of_f1cb039" not in gv25:
+    print("no_sol_when_three_dvd_B_of_f1cb039 missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem coprime_of_remaining_sol" not in gv25:
+    print("coprime_of_remaining_sol missing", file=sys.stderr)
+    sys.exit(1)
+if "143186215390" not in gv25:
+    print("C1_floor = 143186215390 missing from BealGenuineV25.lean", file=sys.stderr)
+    sys.exit(1)
+if "1000000" not in gv25:
+    print("B0_nat = 1000000 missing from BealGenuineV25.lean", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in gv25:
+    print("do not paste True := trivial skeletons", file=sys.stderr)
+    sys.exit(1)
+if "def baker_bound_gap3" not in gv25:
+    print("baker_bound_gap3 must stay a def Prop in BealGenuineV25.lean", file=sys.stderr)
+    sys.exit(1)
+if "def darmon_merel_44_13_no_coprime" not in gv25:
+    print("darmon_merel_44_13_no_coprime must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def fermat_last_theorem_thirteen" not in gv25:
+    print("fermat_last_theorem_thirteen must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def ribet_level_lowering_to_32" not in gv25:
+    print("ribet_level_lowering_to_32 must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_gap3\b", gv25, re.M):
+    print("do not inhabit baker_bound_gap3 in BealGenuineV25.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem darmon_merel_44_13_no_coprime\b", gv25, re.M):
+    print("do not inhabit darmon_merel_44_13_no_coprime", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem fermat_last_theorem_thirteen\b", gv25, re.M):
+    print("do not inhabit fermat_last_theorem_thirteen", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem ribet_level_lowering_to_32\b", gv25, re.M):
+    print("do not inhabit ribet_level_lowering_to_32", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem three_dvd_A_of_sol\b", gv25, re.M):
+    print("do not prove three_dvd_A_of_sol for all solutions", file=sys.stderr)
+    sys.exit(1)
+
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
     print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
@@ -1192,6 +1259,9 @@ print("  baker_bound_gap3_darmon_merel_44p_nogo: not uniform level 32")
 print("  BealFLT13: 3|B impossible by 3-adic descent; every solution is coprime")
 print("  baker_bound_gap3_flt13_darmon_merel_nogo: remaining case is Darmon-Merel")
 print("  FLT 13 / Darmon-Merel 44p stay def Prop; not in Mathlib 4.12")
+print("  BealGenuineV25: DM (4,4,13) => no gap-3 => baker_bound_gap3 vacuously")
+print("  baker_bound_gap3_darmon_merel_4413_3adic_nogo: a B>=B0 sol refutes DM")
+print("  DM / FLT13 / Ribet-to-32 stay def Prop; not a B<=1e6 close")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")
 print("  unrestricted target and hLLL stay def Prop; not v25")

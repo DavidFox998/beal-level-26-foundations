@@ -39,7 +39,8 @@ Axioms `[propext, Classical.choice, Quot.sound]` only.
 - `fermat_last_theorem_thirteen`.
 - `ribet_level_lowering` / `kraus_uniform_residual_level`.
 
-See also [`BealDarmonMerel.md`](BealDarmonMerel.md) and
-[`BealFLT13.md`](BealFLT13.md).
+See also [`BealDarmonMerel.md`](BealDarmonMerel.md),
+[`BealFLT13.md`](BealFLT13.md), and
+[`BealGenuineV25.md`](BealGenuineV25.md).
 
 Not a minted v25 tag.

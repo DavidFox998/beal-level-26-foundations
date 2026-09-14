@@ -24,7 +24,9 @@ Kraus no-go in `BealKraus.lean`, Gaussian/Thue no-go in
 `BealCatalanZsig.lean`. Darmon–Merel / Ribet residual-level
 no-go in `BealDarmonMerel.lean`. Darmon–Merel signature (4,4,p) /
 Ribet-to-32 no-go in `BealDarmonMerel44p.lean`. FLT 13 /
-Darmon–Merel 44p / 3-adic descent no-go in `BealFLT13.lean`. Uniform
+Darmon–Merel 44p / 3-adic descent no-go in `BealFLT13.lean`.
+Darmon–Merel (4,4,13) + 3-adic vacuous-close no-go in
+`BealGenuineV25.lean`. Uniform
 `wuestholz_product_theorem_exp` / `baker_davenport_reduction` /
 `baker_bound_gap3` stay `def Prop`. Not v25.
 

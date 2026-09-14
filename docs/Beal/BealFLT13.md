@@ -7,6 +7,7 @@ Concept DOI `10.5281/zenodo.22379293`.
 `C1_floor = 143186215390` (`rfl`). `B0_nat = 1000000` (`rfl`).
 
 Successor of `515d761` (`v24-v24x-final-Darmon-Merel-44p-nogo`).
+Tagged `v24-v24x-final-FLT13-nogo` at `f1cb039`.
 `3 ∣ A` is **not** automatic on gap-3: if `B ≡ 2 mod 3` then
 `A⁴ ≡ 1 mod 3`. When `3 ∣ B` one does have `3 ∣ A`, and a
 three-step 3-adic descent is contradictory: writing
@@ -39,6 +40,7 @@ Axioms `[propext, Classical.choice, Quot.sound]` only.
 - `fermat_last_theorem_thirteen`.
 - `ribet_level_lowering_to_32` / `ribet_level_lowering`.
 
-See also [`BealDarmonMerel44p.md`](BealDarmonMerel44p.md).
+See also [`BealDarmonMerel44p.md`](BealDarmonMerel44p.md) and
+[`BealGenuineV25.md`](BealGenuineV25.md).
 
 Not a minted v25 tag.

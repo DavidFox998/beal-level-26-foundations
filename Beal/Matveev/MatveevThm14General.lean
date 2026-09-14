@@ -35,6 +35,9 @@ A=a¹³ and B=b¹³ is Fermat exponent 13; not in Mathlib 4.12).
 FLT 13 / Darmon–Merel 44p / 3-adic descent no-go in
 BealFLT13.lean (no solutions when 3∣B; every solution is
 coprime; Darmon–Merel / FLT 13 stay def Prop).
+Darmon–Merel (4,4,13) + 3-adic vacuous-close no-go in
+BealGenuineV25.lean (DM ⇒ no gap-3 ⇒ baker_bound_gap3;
+DM not in Mathlib 4.12; a B≥B0 solution refutes DM).
 bugeaud_LLL_reduction_proof stays def Prop. Not v25.
 -/
 import Mathlib
@@ -51,6 +54,7 @@ import BealCatalanZsig
 import BealDarmonMerel
 import BealDarmonMerel44p
 import BealFLT13
+import BealGenuineV25
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -917,6 +921,9 @@ theorem gap3_forall_of_baker
 #check BealFLT13.no_sol_when_three_dvd_B
 #check BealFLT13.three_not_dvd_B_of_sol
 #check BealFLT13.coprime_of_sol
+#check BealGenuineV25.baker_bound_gap3_darmon_merel_4413_3adic_nogo
+#check BealGenuineV25.no_gap3_of_darmon_merel_4413
+#check BealGenuineV25.baker_bound_gap3_of_darmon_merel_4413
 #print axioms C1_floor_eq
 #print axioms height_B0_eq
 #print axioms height_bound_gap3
@@ -983,5 +990,8 @@ theorem gap3_forall_of_baker
 #print axioms BealFLT13.no_sol_when_three_dvd_B
 #print axioms BealFLT13.three_not_dvd_B_of_sol
 #print axioms BealFLT13.coprime_of_sol
+#print axioms BealGenuineV25.baker_bound_gap3_darmon_merel_4413_3adic_nogo
+#print axioms BealGenuineV25.no_gap3_of_darmon_merel_4413
+#print axioms BealGenuineV25.baker_bound_gap3_of_darmon_merel_4413
 
 end BealMatveevBeal

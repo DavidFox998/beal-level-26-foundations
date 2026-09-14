@@ -20,6 +20,7 @@ Current Matveev–Beal track:
 - [`BealDarmonMerel.md`](BealDarmonMerel.md) — Darmon–Merel / Ribet residual-level no-go
 - [`BealDarmonMerel44p.md`](BealDarmonMerel44p.md) — Darmon–Merel signature (4,4,p) / Ribet-to-32 no-go
 - [`BealFLT13.md`](BealFLT13.md) — FLT 13 / Darmon–Merel 44p / 3-adic descent no-go
+- [`BealGenuineV25.md`](BealGenuineV25.md) — Darmon–Merel (4,4,13) + 3-adic vacuous-close no-go
 - [`BealBakerBoundGap3.md`](BealBakerBoundGap3.md) — `baker_bound_gap3` stays `def Prop`
 
 Older Frey / Zsigmondy / modular-elimination notes in this
