@@ -52,7 +52,11 @@ preferred-citation:
     baker_bound_gap5_unconditional_nogo for A^4+B^4=(B+5)^13
     (B even A odd; 3|B impossible like f1cb039; 5|B impossible
     by 5-descent; (1,0) is not a solution; baker_bound_gap5 stays
-    def Prop). That does not
+    def Prop). BealGap6 proves
+    baker_bound_gap6_unconditional_nogo for A^4+B^4=(B+6)^13
+    (B odd A even; even B dies as 6 or 14 mod 16; 3|B impossible
+    by 3-descent C1=B1+2; 5|B compatible; (1,0) is not a solution;
+    baker_bound_gap6 stays def Prop). That does not
     mint this version tag. Unrestricted
     matveev_inequality_real_target and hLLL stay def Prop.
     Not a minted v25 tag. Prior v24.4.0 version

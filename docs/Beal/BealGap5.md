@@ -75,4 +75,4 @@ there are **no** solutions with `5 ∣ B`.
 This module does **not** contain `axiom darmon_merel_4413_axiom_gap5`.
 The axiom-relative inhabitant reuses [`BealTrueV25.md`](BealTrueV25.md).
 
-Not a minted unconditional v25 tag.
+Not a minted unconditional v25 tag. Next: gap-6 `C = B+6` in [`BealGap6.md`](BealGap6.md).

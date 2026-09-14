@@ -57,6 +57,10 @@ Gap-5 A⁴+B⁴=(B+5)¹³ no-go in BealGap5.lean
 (baker_bound_gap5_unconditional_nogo; B even A odd; 3∣B
 impossible like f1cb039; 5∣B impossible by 5-descent;
 hGen_gap5/hLLL_gap5 stay def Prop).
+Gap-6 A⁴+B⁴=(B+6)¹³ no-go in BealGap6.lean
+(baker_bound_gap6_unconditional_nogo; B odd A even; 3∣B
+impossible by 3-descent like f1cb039; 5∣B compatible;
+hGen_gap6/hLLL_gap6 stay def Prop).
 bugeaud_LLL_reduction_proof stays def Prop. Named theorem
 baker_bound_gap3 stays uninhabited. Not a minted v25 tag.
 -/
@@ -81,6 +85,7 @@ import BealGap1
 import BealGap2
 import BealGap4
 import BealGap5
+import BealGap6
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -999,6 +1004,17 @@ theorem gap3_forall_of_baker
 #check BealGap5.A_odd_of_sol_gap5
 #check BealGap5.no_sol_when_three_dvd_B_gap5
 #check BealGap5.no_sol_when_five_dvd_B_gap5
+#check BealGap6.baker_bound_gap6_unconditional_nogo
+#check BealGap6.hGen_gap6
+#check BealGap6.hLLL_gap6
+#check BealGap6.hGen_exp_lt_ratio_gap6
+#check BealGap6.hLLL_method_fails_gap6
+#check BealGap6.baker_bound_gap6_true
+#check BealGap6.gcd_A_B_eq_one_of_sol
+#check BealGap6.B_odd_of_sol_gap6
+#check BealGap6.A_even_of_sol_gap6
+#check BealGap6.no_sol_when_three_dvd_B_gap6
+#check BealGap6.no_sol_when_even_B
 #print axioms C1_floor_eq
 #print axioms height_B0_eq
 #print axioms height_bound_gap3
@@ -1094,5 +1110,10 @@ theorem gap3_forall_of_baker
 #print axioms BealGap5.hLLL_method_fails_gap5
 #print axioms BealGap5.baker_bound_gap5_true
 #print axioms BealGap5.no_gap5_of_axiom
+#print axioms BealGap6.baker_bound_gap6_unconditional_nogo
+#print axioms BealGap6.hGen_exp_lt_ratio_gap6
+#print axioms BealGap6.hLLL_method_fails_gap6
+#print axioms BealGap6.baker_bound_gap6_true
+#print axioms BealGap6.no_gap6_of_axiom
 
 end BealMatveevBeal
