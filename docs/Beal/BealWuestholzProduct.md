@@ -37,4 +37,7 @@ Axioms `[propext, Classical.choice, Quot.sound]` only.
 - `baker_davenport_reduction` / `bugeaud_LLL_reduction_proof`.
 
 The proved LLL method-failure (`bugeaud_LLL_method_fails`) lives
-in `MatveevBugeaud.lean`. Not a minted v25 tag.
+in `MatveevBugeaud.lean`. The log-method no-go
+(`baker_bound_gap3_nogo_logs`) lives in
+[`BealMatveevThreeLogs.md`](BealMatveevThreeLogs.md).
+Not a minted v25 tag.

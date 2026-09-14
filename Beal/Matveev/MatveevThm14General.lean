@@ -16,6 +16,8 @@ Intermediate-T Wüstholz no-go in WuestholzSubgroup.lean
 (no uniform c; jet-dim special case inhabited).
 Full-order product packaging in WuestholzProduct.lean
 (T < coeffCount ∨ P=0 ∨ dependence; not Philippon).
+Log-method no-go in MatveevThreeLogs.lean (C1≥1 exp < ratio
+on B≥B0; Lambda3=Lambda; cubic jet 1331).
 bugeaud_LLL_reduction_proof stays def Prop. Not v25.
 -/
 import Mathlib
@@ -25,6 +27,7 @@ import MatveevInterpolation
 import MatveevBugeaud
 import WuestholzSubgroup
 import WuestholzProduct
+import MatveevThreeLogs
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -866,6 +869,9 @@ theorem gap3_forall_of_baker
 #check MatveevBugeaud.baker_davenport_reduction_nogo
 #check MatveevBugeaud.bugeaud_LLL_method_fails
 #check MatveevLLL.floor_form_approx_of_C
+#check MatveevThreeLogs.baker_bound_gap3_nogo_logs
+#check MatveevThreeLogs.Lambda3_eq_Lambda
+#check MatveevThreeLogs.no_uniform_c_cubic_in_N
 #print axioms C1_floor_eq
 #print axioms height_B0_eq
 #print axioms height_bound_gap3
@@ -907,5 +913,8 @@ theorem gap3_forall_of_baker
 #print axioms MatveevBugeaud.baker_davenport_reduction_nogo
 #print axioms MatveevBugeaud.bugeaud_LLL_method_fails
 #print axioms MatveevLLL.floor_form_approx_of_C
+#print axioms MatveevThreeLogs.baker_bound_gap3_nogo_logs
+#print axioms MatveevThreeLogs.Lambda3_eq_Lambda
+#print axioms MatveevThreeLogs.no_uniform_c_cubic_in_N
 
 end BealMatveevBeal

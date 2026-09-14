@@ -29,6 +29,8 @@ test -f WuestholzSubgroup.lean
 test -f Beal/Matveev/WuestholzSubgroup.lean
 test -f WuestholzProduct.lean
 test -f Beal/Matveev/WuestholzProduct.lean
+test -f MatveevThreeLogs.lean
+test -f Beal/Matveev/MatveevThreeLogs.lean
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -98,6 +100,12 @@ if "matveev_gap3_lower_of_general_of_B_le_B0" not in src:
     sys.exit(1)
 if "matveev_thm14_n2_explicit_of_nat" not in pathlib.Path("MatveevThm14Proof.lean").read_text(encoding="utf-8"):
     print("matveev_thm14_n2_explicit_of_nat missing from MatveevThm14Proof.lean", file=sys.stderr)
+    sys.exit(1)
+if "import MatveevThreeLogs" not in src:
+    print("MatveevThm14General.lean missing import MatveevThreeLogs", file=sys.stderr)
+    sys.exit(1)
+if "MatveevThreeLogs.baker_bound_gap3_nogo_logs" not in src:
+    print("#check baker_bound_gap3_nogo_logs missing from MatveevThm14General.lean", file=sys.stderr)
     sys.exit(1)
 
 lll = pathlib.Path("MatveevLLL.lean").read_text(encoding="utf-8")
@@ -235,6 +243,9 @@ if ".one `WuestholzSubgroup" not in pathlib.Path("lakefile.lean").read_text(enco
     sys.exit(1)
 if ".one `WuestholzProduct" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
     print("lakefile.lean missing WuestholzProduct glob", file=sys.stderr)
+    sys.exit(1)
+if ".one `MatveevThreeLogs" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
+    print("lakefile.lean missing MatveevThreeLogs glob", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -421,6 +432,77 @@ if re.search(r"^theorem bugeaud_LLL_reduction_proof\b", prod, re.M):
     sys.exit(1)
 if re.search(r"^theorem baker_bound_gap3\b", prod, re.M):
     print("do not inhabit baker_bound_gap3 in WuestholzProduct.lean", file=sys.stderr)
+    sys.exit(1)
+
+three = pathlib.Path("MatveevThreeLogs.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in three:
+    print("MatveevThreeLogs.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
+if "theorem baker_bound_gap3_nogo_logs" not in three:
+    print("baker_bound_gap3_nogo_logs missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem matveev_lower_nogo_logs" not in three:
+    print("matveev_lower_nogo_logs missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem Lambda3_eq_Lambda" not in three:
+    print("Lambda3_eq_Lambda missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem log_B0_gt_thirteen" not in three:
+    print("log_B0_gt_thirteen missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem C1_floor_exp_lt_ratio" not in three:
+    print("C1_floor_exp_lt_ratio missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem two_forty_two_exp_lt_ratio" not in three:
+    print("two_forty_two_exp_lt_ratio missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem one_exp_lt_ratio" not in three:
+    print("one_exp_lt_ratio missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_uniform_c_cubic_in_N" not in three:
+    print("no_uniform_c_cubic_in_N missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem coeffCount3_zero_ten_ten_ten" not in three:
+    print("coeffCount3_zero_ten_ten_ten missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem four_div_log_B0_lt_one" not in three:
+    print("four_div_log_B0_lt_one missing", file=sys.stderr)
+    sys.exit(1)
+if "def wuestholz_product_theorem_exp_Gm3" not in three:
+    print("wuestholz_product_theorem_exp_Gm3 must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if "143186215390" not in three:
+    print("C1_floor = 143186215390 missing from MatveevThreeLogs.lean", file=sys.stderr)
+    sys.exit(1)
+if "1000000" not in three:
+    print("B0_nat = 1000000 missing from MatveevThreeLogs.lean", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in three:
+    print("do not paste True := trivial skeletons", file=sys.stderr)
+    sys.exit(1)
+if "def wuestholz_product_theorem_exp" not in three:
+    print("wuestholz_product_theorem_exp must stay a def Prop in MatveevThreeLogs.lean", file=sys.stderr)
+    sys.exit(1)
+if "def baker_bound_gap3" not in three:
+    print("baker_bound_gap3 must stay a def Prop in MatveevThreeLogs.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem wuestholz_product_theorem_exp\b", three, re.M):
+    print("do not inhabit wuestholz_product_theorem_exp", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_gap3\b", three, re.M):
+    print("do not inhabit baker_bound_gap3 in MatveevThreeLogs.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_davenport_reduction\b", three, re.M):
+    print("baker_davenport_reduction must not be a theorem", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem bugeaud_LLL_reduction_proof\b", three, re.M):
+    print("bugeaud_LLL_reduction_proof must not be a theorem", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem wuestholz_subgroup_theorem\b", three, re.M):
+    print("wuestholz_subgroup_theorem must not be a theorem", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem wuestholz_product_theorem_exp_Gm3\b", three, re.M):
+    print("do not inhabit wuestholz_product_theorem_exp_Gm3", file=sys.stderr)
     sys.exit(1)
 
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
@@ -621,6 +703,9 @@ print("  displayed 1 10 10: T<242 or P=0 or dep; no uniform c for product")
 print("  floor_form_approx_of_C for every C; baker_davenport_reduction_nogo")
 print("  bugeaud_LLL_method_fails: no C gives r>17+C/B0 on B>=B0")
 print("  baker_davenport_reduction / wuestholz_product_theorem_exp stay def Prop")
+print("  MatveevThreeLogs: Lambda3=Lambda; log B0>13; C1>=1 exp < ratio")
+print("  C1_floor / 242 / 1 all lose to B^4/A^4 on B>=B0; cubic jet 1331")
+print("  baker_bound_gap3_nogo_logs: log method cannot cut B<=1e6")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")
 print("  unrestricted target and hLLL stay def Prop; not v25")

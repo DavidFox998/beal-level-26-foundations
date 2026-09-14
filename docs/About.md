@@ -51,7 +51,13 @@ dependence (`T < 242` at displayed `1 10 10`); uniform
 `floor_form_approx_of_C` holds for every `C`;
 `baker_davenport_reduction_nogo` /
 `bugeaud_LLL_method_fails` prove no scaling yields
-`r > 17 + C/B0` on `B ≥ B0`. `L≥1` and `α1=α2=1` forces
+`r > 17 + C/B0` on `B ≥ B0`. `MatveevThreeLogs.lean` proves
+the log-method no-go: `Lambda3 = Lambda`; any `C1 ≥ 1`
+(including `C1_floor`, `242`, and `1`) gives
+`exp(−C1 log A log(B+3)) < B⁴/A⁴` on a solution with
+`B ≥ B0`; a four-factor jet is cubic (`1331` at
+`0 10 10 10`) and still has no uniform `c`.
+`baker_bound_gap3` stays `def Prop`. `L≥1` and `α1=α2=1` forces
 `Δ=0`. Being a convergent does not force `B ≤ 10⁶`. Axioms
 `[propext, Classical.choice, Quot.sound]`. **0 sorry.**
 

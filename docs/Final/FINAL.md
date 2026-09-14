@@ -49,7 +49,15 @@ dependence; uniform `wuestholz_product_theorem_exp` stays
 `def Prop`. `floor_form_approx_of_C` /
 `baker_davenport_reduction_nogo` /
 `bugeaud_LLL_method_fails` prove that **every** scaling `C`
-has Baker–Davenport strictly weaker than `|Λ|`. Unconditional generic
+has Baker–Davenport strictly weaker than `|Λ|`.
+`MatveevThreeLogs.lean` proves the log-method no-go:
+`Lambda3 = Lambda`; any `C1 ≥ 1` (including `C1_floor`,
+the jet `242`, and the ideal `C1 = 1`) has
+`exp(−C1 log A log(B+3)) < B⁴/A⁴` on a solution with
+`B ≥ B0`, so Matveev-style exponentials cannot cut
+`B ≤ 10⁶`. A four-factor jet is cubic (`1331` at
+`0 10 10 10`) and still has no uniform `c`.
+`baker_bound_gap3` stays `def Prop`. Unconditional generic
 $|\Delta|\le\exp(-cLK)$ is false ($L=0$ gives $\Delta=1$);
 $L\ge 1$ and $\alpha_1=\alpha_2=1$ forces $\Delta=0$. Not the unrestricted
 kernel target, not v25. Concept DOI `10.5281/zenodo.22379293`.
