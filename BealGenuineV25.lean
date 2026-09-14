@@ -28,7 +28,8 @@ nor are FLT 13 and Ribet-to-32. A putative solution with
 `B ≥ B0` would refute Darmon–Merel `(4,4,13)`; without that
 theorem the displayed residual is still not 32 and `A > B0`.
 
-`baker_bound_gap3` stays uninhabited. Not v25.
+`baker_bound_gap3` stays uninhabited as a named theorem. Not v25.
+The axiom-relative inhabitant is `BealTrueV25.baker_bound_gap3_true`.
 `C1_floor = 143186215390`, `B0_nat = 1000000`.
 -/
 

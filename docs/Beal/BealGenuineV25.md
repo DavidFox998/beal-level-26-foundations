@@ -7,12 +7,15 @@ Concept DOI `10.5281/zenodo.22379293`.
 `C1_floor = 143186215390` (`rfl`). `B0_nat = 1000000` (`rfl`).
 
 Successor of `f1cb039` (`v24-v24x-final-FLT13-nogo`).
+Tagged `v24-v24x-final-genuine-v25-nogo` at `2b4ee3b`.
 3-adic descent already rules out `3 ∣ B`. Every remaining
 solution is coprime. If Darmon–Merel signature `(4,4,13)` were
 a theorem there would be no gap-3 solutions at all, and
 `baker_bound_gap3` would hold vacuously. It is not a theorem
 in Mathlib 4.12 (nor FLT 13, nor Ribet-to-32). A putative
 solution with `B ≥ B0` would refute Darmon–Merel `(4,4,13)`.
+The axiom-relative inhabitant lives in [`BealTrueV25.md`](BealTrueV25.md);
+this module does not add that axiom.
 
 ## What is proved (0 sorry)
 
@@ -35,6 +38,7 @@ Axioms `[propext, Classical.choice, Quot.sound]` only.
 - `fermat_last_theorem_thirteen`.
 - `ribet_level_lowering_to_32` / `ribet_level_lowering`.
 
-See also [`BealFLT13.md`](BealFLT13.md).
+See also [`BealFLT13.md`](BealFLT13.md) and
+[`BealTrueV25.md`](BealTrueV25.md).
 
-Not a minted v25 tag.
+Not a minted unconditional v25 tag.

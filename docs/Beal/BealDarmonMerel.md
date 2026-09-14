@@ -39,7 +39,8 @@ Axioms `[propext, Classical.choice, Quot.sound]` only.
 See also [`BealCatalanZsig.md`](BealCatalanZsig.md),
 [`BealKraus.md`](BealKraus.md),
 [`BealDarmonMerel44p.md`](BealDarmonMerel44p.md),
-[`BealFLT13.md`](BealFLT13.md), and
-[`BealGenuineV25.md`](BealGenuineV25.md).
+[`BealFLT13.md`](BealFLT13.md),
+[`BealGenuineV25.md`](BealGenuineV25.md), and
+[`BealTrueV25.md`](BealTrueV25.md).
 
 Not a minted v25 tag.

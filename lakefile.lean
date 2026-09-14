@@ -24,4 +24,4 @@ lean_lib «BealMatveevBeal» where
     .one `MatveevInterpolation, .one `MatveevBugeaud, .one `WuestholzSubgroup,
     .one `WuestholzProduct, .one `MatveevThreeLogs, .one `BealKraus, .one `BealKrausZsig,
     .one `BealCatalanZsig, .one `BealDarmonMerel, .one `BealDarmonMerel44p,
-    .one `BealFLT13, .one `BealGenuineV25]
+    .one `BealFLT13, .one `BealGenuineV25, .one `BealTrueV25]

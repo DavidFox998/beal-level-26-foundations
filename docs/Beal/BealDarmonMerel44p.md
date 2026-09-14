@@ -40,7 +40,8 @@ Axioms `[propext, Classical.choice, Quot.sound]` only.
 - `ribet_level_lowering` / `kraus_uniform_residual_level`.
 
 See also [`BealDarmonMerel.md`](BealDarmonMerel.md),
-[`BealFLT13.md`](BealFLT13.md), and
-[`BealGenuineV25.md`](BealGenuineV25.md).
+[`BealFLT13.md`](BealFLT13.md),
+[`BealGenuineV25.md`](BealGenuineV25.md), and
+[`BealTrueV25.md`](BealTrueV25.md).
 
 Not a minted v25 tag.

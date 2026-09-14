@@ -26,9 +26,12 @@ no-go in `BealDarmonMerel.lean`. Darmon–Merel signature (4,4,p) /
 Ribet-to-32 no-go in `BealDarmonMerel44p.lean`. FLT 13 /
 Darmon–Merel 44p / 3-adic descent no-go in `BealFLT13.lean`.
 Darmon–Merel (4,4,13) + 3-adic vacuous-close no-go in
-`BealGenuineV25.lean`. Uniform
-`wuestholz_product_theorem_exp` / `baker_davenport_reduction` /
-`baker_bound_gap3` stay `def Prop`. Not v25.
+`BealGenuineV25.lean`. Axiom-relative `baker_bound_gap3_true` in
+`BealTrueV25.lean` (`axiom darmon_merel_4413_axiom`; not Mathlib
+4.12; not the minted unconditional v25 tag). Uniform
+`wuestholz_product_theorem_exp` / `baker_davenport_reduction`
+stay `def Prop`. The kernel `baker_bound_gap3` stays a `def`;
+the theorem is named `baker_bound_gap3_true`.
 
 FINAL v5 green: [`FINAL.md`](FINAL.md).
 Iter / Forall / typed-bridge docs. Lean sources live in

@@ -76,15 +76,20 @@ there are no gap-3 solutions with `3 ∣ B` by 3-adic descent, so
 every solution is coprime (Darmon–Merel's remaining case, not
 in Mathlib 4.12). `BealGenuineV25.lean` proves that Darmon–Merel
 `(4,4,13)` would close `baker_bound_gap3` vacuously, but that
-statement is not a theorem here. `L≥1` and `α1=α2=1` forces
-`Δ=0`. Being a convergent does not force `B ≤ 10⁶`. Axioms
+statement is not a theorem here. `BealTrueV25.lean` takes that
+signature as `axiom darmon_merel_4413_axiom` and inhabits
+`baker_bound_gap3_true` (0 sorry; extra axiom). That is
+axiom-relative, not Mathlib 4.12, and not the minted
+unconditional v25 tag (`hGen` / `hLLL` remain open). `L≥1` and
+`α1=α2=1` forces `Δ=0`. Being a convergent does not force
+`B ≤ 10⁶`. Mathlib-only theorems print axioms
 `[propext, Classical.choice, Quot.sound]`. **0 sorry.**
 
 This is **not** Matveev 2000 interpolation, **not** the unrestricted
 Level26 `matveev_inequality_real_target` (the product is false for
-huge `B`), and **not** `baker_bound_gap3` / `hLLL`. Not a minted v25
-tag. Slug `beal-level-26-foundations`, concept DOI
-`10.5281/zenodo.22379293`.
+huge `B`), and **not** a Mathlib-only `baker_bound_gap3` / `hLLL`.
+Not a minted unconditional v25 tag. Slug `beal-level-26-foundations`,
+concept DOI `10.5281/zenodo.22379293`.
 
 Latest kernel tag / HEAD: `v24.4.0-Beal-44-13-Level-26-v24x-Final-Summary`
 Most current as of 2026-09-13, **not** final.

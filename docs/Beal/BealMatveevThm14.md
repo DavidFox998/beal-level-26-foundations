@@ -48,7 +48,10 @@ The foundations complement (`beal-level-26-foundations`) now proves the
 via `matveev_thm14_n2_explicit_of_nat`. `MatveevInterpolation.lean`
 starts Matveev 2000 p.5 interpolation and proves the bare-real ∀-reals
 claim is false. That does not inhabit this kernel file's unrestricted
-target and is not LLL / v25.
+target and is not LLL / a minted unconditional v25 tag.
+`BealTrueV25.baker_bound_gap3_true` inhabits the kernel Prop relative
+to `axiom darmon_merel_4413_axiom`; that extra axiom is not in this
+kernel file.
 
 ## v24.3.2 — Numerical Tiny Bound exp(C) << 10^{-12}
 

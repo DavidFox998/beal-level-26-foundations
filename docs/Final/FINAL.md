@@ -85,6 +85,11 @@ remaining case, still not in Mathlib 4.12.
 `BealGenuineV25.lean` proves Darmon–Merel $(4,4,13)$ would close
 `baker_bound_gap3` vacuously; it is not a theorem here, and a
 $B \ge B_0$ solution would refute it.
+`BealTrueV25.lean` takes Darmon–Merel $(4,4,13)$ as
+`axiom darmon_merel_4413_axiom` and inhabits
+`baker_bound_gap3_true` (0 sorry; extra axiom). That is
+axiom-relative, not Mathlib 4.12, and not the minted
+unconditional v25 tag (`hGen` / `hLLL` remain open).
 Unconditional generic
 $|\Delta|\le\exp(-cLK)$ is false ($L=0$ gives $\Delta=1$);
 $L\ge 1$ and $\alpha_1=\alpha_2=1$ forces $\Delta=0$. Not the unrestricted
