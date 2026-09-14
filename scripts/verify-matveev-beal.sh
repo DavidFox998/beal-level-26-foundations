@@ -31,6 +31,8 @@ test -f WuestholzProduct.lean
 test -f Beal/Matveev/WuestholzProduct.lean
 test -f MatveevThreeLogs.lean
 test -f Beal/Matveev/MatveevThreeLogs.lean
+test -f BealKraus.lean
+test -f Beal/Matveev/BealKraus.lean
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -106,6 +108,12 @@ if "import MatveevThreeLogs" not in src:
     sys.exit(1)
 if "MatveevThreeLogs.baker_bound_gap3_nogo_logs" not in src:
     print("#check baker_bound_gap3_nogo_logs missing from MatveevThm14General.lean", file=sys.stderr)
+    sys.exit(1)
+if "import BealKraus" not in src:
+    print("MatveevThm14General.lean missing import BealKraus", file=sys.stderr)
+    sys.exit(1)
+if "BealKraus.baker_bound_gap3_kraus_nogo" not in src:
+    print("#check baker_bound_gap3_kraus_nogo missing from MatveevThm14General.lean", file=sys.stderr)
     sys.exit(1)
 
 lll = pathlib.Path("MatveevLLL.lean").read_text(encoding="utf-8")
@@ -246,6 +254,9 @@ if ".one `WuestholzProduct" not in pathlib.Path("lakefile.lean").read_text(encod
     sys.exit(1)
 if ".one `MatveevThreeLogs" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
     print("lakefile.lean missing MatveevThreeLogs glob", file=sys.stderr)
+    sys.exit(1)
+if ".one `BealKraus" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
+    print("lakefile.lean missing BealKraus glob", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -505,6 +516,86 @@ if re.search(r"^theorem wuestholz_product_theorem_exp_Gm3\b", three, re.M):
     print("do not inhabit wuestholz_product_theorem_exp_Gm3", file=sys.stderr)
     sys.exit(1)
 
+kraus = pathlib.Path("BealKraus.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in kraus:
+    print("BealKraus.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
+if "theorem baker_bound_gap3_kraus_nogo" not in kraus:
+    print("baker_bound_gap3_kraus_nogo missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem baker_bound_gap3_kraus_nogo_val" not in kraus:
+    print("baker_bound_gap3_kraus_nogo_val missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem freyDiscNat_of_sol" not in kraus:
+    print("freyDiscNat_of_sol missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem freyWeierstrass_Δ" not in kraus:
+    print("freyWeierstrass_Δ missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem not_thirteen_dvd_eight" not in kraus:
+    print("not_thirteen_dvd_eight missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem thirteen_dvd_twenty_six" not in kraus:
+    print("thirteen_dvd_twenty_six missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem padicValNat_freyDiscNat_at_A" not in kraus:
+    print("padicValNat_freyDiscNat_at_A missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem padicValNat_freyDiscNat_at_C" not in kraus:
+    print("padicValNat_freyDiscNat_at_C missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem frey_A_not_ribet_lowered" not in kraus:
+    print("frey_A_not_ribet_lowered missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem frey_C_ribet_lowered_candidate" not in kraus:
+    print("frey_C_ribet_lowered_candidate missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem gcd_B_C_dvd_three" not in kraus:
+    print("gcd_B_C_dvd_three missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem A_odd_of_sol" not in kraus:
+    print("A_odd_of_sol missing", file=sys.stderr)
+    sys.exit(1)
+if "143186215390" not in kraus:
+    print("C1_floor = 143186215390 missing from BealKraus.lean", file=sys.stderr)
+    sys.exit(1)
+if "1000000" not in kraus:
+    print("B0_nat = 1000000 missing from BealKraus.lean", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in kraus:
+    print("do not paste True := trivial skeletons", file=sys.stderr)
+    sys.exit(1)
+if "def baker_bound_gap3" not in kraus:
+    print("baker_bound_gap3 must stay a def Prop in BealKraus.lean", file=sys.stderr)
+    sys.exit(1)
+if "def darmon_merel_signature_44p" not in kraus:
+    print("darmon_merel_signature_44p must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def kraus_uniform_residual_level" not in kraus:
+    print("kraus_uniform_residual_level must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def ribet_level_lowering" not in kraus:
+    print("ribet_level_lowering must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_gap3\b", kraus, re.M):
+    print("do not inhabit baker_bound_gap3 in BealKraus.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem darmon_merel_signature_44p\b", kraus, re.M):
+    print("do not inhabit darmon_merel_signature_44p", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem kraus_uniform_residual_level\b", kraus, re.M):
+    print("do not inhabit kraus_uniform_residual_level", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem ribet_level_lowering\b", kraus, re.M):
+    print("do not inhabit ribet_level_lowering", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_davenport_reduction\b", kraus, re.M):
+    print("baker_davenport_reduction must not be a theorem", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem bugeaud_LLL_reduction_proof\b", kraus, re.M):
+    print("bugeaud_LLL_reduction_proof must not be a theorem", file=sys.stderr)
+    sys.exit(1)
+
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
     print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
@@ -706,6 +797,9 @@ print("  baker_davenport_reduction / wuestholz_product_theorem_exp stay def Prop
 print("  MatveevThreeLogs: Lambda3=Lambda; log B0>13; C1>=1 exp < ratio")
 print("  C1_floor / 242 / 1 all lose to B^4/A^4 on B>=B0; cubic jet 1331")
 print("  baker_bound_gap3_nogo_logs: log method cannot cut B<=1e6")
+print("  BealKraus: Frey Δ=16 A^8 B^8 C^26; 13|26 so C lowers; 13∤8 so A does not")
+print("  baker_bound_gap3_kraus_nogo: displayed Frey is not Fermat-style level 32")
+print("  darmon_merel / ribet / kraus_uniform_residual_level stay def Prop")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")
 print("  unrestricted target and hLLL stay def Prop; not v25")

@@ -40,4 +40,6 @@ The proved LLL method-failure (`bugeaud_LLL_method_fails`) lives
 in `MatveevBugeaud.lean`. The log-method no-go
 (`baker_bound_gap3_nogo_logs`) lives in
 [`BealMatveevThreeLogs.md`](BealMatveevThreeLogs.md).
+The displayed Frey / Kraus no-go (`baker_bound_gap3_kraus_nogo`)
+lives in [`BealKraus.md`](BealKraus.md).
 Not a minted v25 tag.

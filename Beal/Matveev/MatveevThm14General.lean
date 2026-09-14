@@ -18,6 +18,8 @@ Full-order product packaging in WuestholzProduct.lean
 (T < coeffCount ∨ P=0 ∨ dependence; not Philippon).
 Log-method no-go in MatveevThreeLogs.lean (C1≥1 exp < ratio
 on B≥B0; Lambda3=Lambda; cubic jet 1331).
+Displayed Frey / Kraus no-go in BealKraus.lean (13 ∣ 26 so C
+lowers; 13 ∤ 8 so primes in A do not).
 bugeaud_LLL_reduction_proof stays def Prop. Not v25.
 -/
 import Mathlib
@@ -28,6 +30,7 @@ import MatveevBugeaud
 import WuestholzSubgroup
 import WuestholzProduct
 import MatveevThreeLogs
+import BealKraus
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -872,6 +875,9 @@ theorem gap3_forall_of_baker
 #check MatveevThreeLogs.baker_bound_gap3_nogo_logs
 #check MatveevThreeLogs.Lambda3_eq_Lambda
 #check MatveevThreeLogs.no_uniform_c_cubic_in_N
+#check BealKraus.baker_bound_gap3_kraus_nogo
+#check BealKraus.freyDiscNat_of_sol
+#check BealKraus.not_thirteen_dvd_eight
 #print axioms C1_floor_eq
 #print axioms height_B0_eq
 #print axioms height_bound_gap3
@@ -916,5 +922,8 @@ theorem gap3_forall_of_baker
 #print axioms MatveevThreeLogs.baker_bound_gap3_nogo_logs
 #print axioms MatveevThreeLogs.Lambda3_eq_Lambda
 #print axioms MatveevThreeLogs.no_uniform_c_cubic_in_N
+#print axioms BealKraus.baker_bound_gap3_kraus_nogo
+#print axioms BealKraus.freyDiscNat_of_sol
+#print axioms BealKraus.baker_bound_gap3_kraus_nogo_val
 
 end BealMatveevBeal

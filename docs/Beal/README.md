@@ -14,6 +14,7 @@ Current Matveev–Beal track:
 - [`BealWuestholzSubgroup.md`](BealWuestholzSubgroup.md) — no uniform `c`
 - [`BealWuestholzProduct.md`](BealWuestholzProduct.md) — full-order product packaging
 - [`BealMatveevThreeLogs.md`](BealMatveevThreeLogs.md) — log-method `C1`-vs-ratio no-go
+- [`BealKraus.md`](BealKraus.md) — displayed Frey / Kraus valuation no-go
 - [`BealBakerBoundGap3.md`](BealBakerBoundGap3.md) — `baker_bound_gap3` stays `def Prop`
 
 Older Frey / Zsigmondy / modular-elimination notes in this

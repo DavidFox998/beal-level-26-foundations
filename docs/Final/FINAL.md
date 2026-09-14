@@ -57,7 +57,13 @@ the jet `242`, and the ideal `C1 = 1`) has
 `B ≥ B0`, so Matveev-style exponentials cannot cut
 `B ≤ 10⁶`. A four-factor jet is cubic (`1331` at
 `0 10 10 10`) and still has no uniform `c`.
-`baker_bound_gap3` stays `def Prop`. Unconditional generic
+`baker_bound_gap3` stays `def Prop`.
+`BealKraus.lean` proves the displayed Frey discriminant
+`16 A^8 B^8 (B+3)^{26}` and the valuation obstruction
+`13 \mid 26` / `13 \nmid 8`: `C` is a lowering candidate at
+`p=13` while primes `p \nmid 6` dividing `A` are not, so this
+curve is not a Fermat-style uniform level-$32$ check.
+Unconditional generic
 $|\Delta|\le\exp(-cLK)$ is false ($L=0$ gives $\Delta=1$);
 $L\ge 1$ and $\alpha_1=\alpha_2=1$ forces $\Delta=0$. Not the unrestricted
 kernel target, not v25. Concept DOI `10.5281/zenodo.22379293`.
