@@ -71,7 +71,10 @@ coprime hypothesis fails, while `13 ∣ 26` / `13 ∤ 8` keep an
 unlowered prime in `A` from producing uniform level 32.
 Darmon–Merel stays `def Prop`. `BealDarmonMerel44p.lean` proves
 the displayed residual is not 32 on `B > 0` and that thirteenth
-powers rewrite as Fermat exponent 13. `L≥1` and `α1=α2=1` forces
+powers rewrite as Fermat exponent 13. `BealFLT13.lean` proves
+there are no gap-3 solutions with `3 ∣ B` by 3-adic descent, so
+every solution is coprime (Darmon–Merel's remaining case, not
+in Mathlib 4.12). `L≥1` and `α1=α2=1` forces
 `Δ=0`. Being a convergent does not force `B ≤ 10⁶`. Axioms
 `[propext, Classical.choice, Quot.sound]`. **0 sorry.**
 

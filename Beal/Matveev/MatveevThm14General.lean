@@ -32,6 +32,9 @@ unlowered A-prime means residual estimate ∤ 32).
 Darmon–Merel signature (4,4,p) / Ribet-to-32 no-go in
 BealDarmonMerel44p.lean (displayed residual ≠ 32 on B>0;
 A=a¹³ and B=b¹³ is Fermat exponent 13; not in Mathlib 4.12).
+FLT 13 / Darmon–Merel 44p / 3-adic descent no-go in
+BealFLT13.lean (no solutions when 3∣B; every solution is
+coprime; Darmon–Merel / FLT 13 stay def Prop).
 bugeaud_LLL_reduction_proof stays def Prop. Not v25.
 -/
 import Mathlib
@@ -47,6 +50,7 @@ import BealKrausZsig
 import BealCatalanZsig
 import BealDarmonMerel
 import BealDarmonMerel44p
+import BealFLT13
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -909,6 +913,10 @@ theorem gap3_forall_of_baker
 #check BealDarmonMerel44p.residualLevelEstimate_ne_thirty_two_of_sol
 #check BealDarmonMerel44p.fermat_shape_of_A_B_pth_powers
 #check BealDarmonMerel44p.uniform_level_32_requires_A_B_pth_powers
+#check BealFLT13.baker_bound_gap3_flt13_darmon_merel_nogo
+#check BealFLT13.no_sol_when_three_dvd_B
+#check BealFLT13.three_not_dvd_B_of_sol
+#check BealFLT13.coprime_of_sol
 #print axioms C1_floor_eq
 #print axioms height_B0_eq
 #print axioms height_bound_gap3
@@ -971,5 +979,9 @@ theorem gap3_forall_of_baker
 #print axioms BealDarmonMerel44p.residualLevelEstimate_ne_thirty_two_of_sol
 #print axioms BealDarmonMerel44p.fermat_shape_of_A_B_pth_powers
 #print axioms BealDarmonMerel44p.uniform_level_32_requires_A_B_pth_powers
+#print axioms BealFLT13.baker_bound_gap3_flt13_darmon_merel_nogo
+#print axioms BealFLT13.no_sol_when_three_dvd_B
+#print axioms BealFLT13.three_not_dvd_B_of_sol
+#print axioms BealFLT13.coprime_of_sol
 
 end BealMatveevBeal
