@@ -11,6 +11,8 @@ CF lemmas in MatveevLLL.lean (4/13 convergent; gap < ratio).
 Interpolation track in MatveevInterpolation.lean (Δ, G_a product,
 Hadamard; bare-real claim false). Displayed-lattice Baker–Davenport
 no-go in MatveevBugeaud.lean ((r−17)/C < |Λ|).
+Intermediate-T Wüstholz no-go in WuestholzSubgroup.lean
+(no uniform c; jet-dim special case inhabited).
 bugeaud_LLL_reduction_proof stays def Prop. Not v25.
 -/
 import Mathlib
@@ -18,6 +20,7 @@ import MatveevThm14Proof
 import MatveevLLL
 import MatveevInterpolation
 import MatveevBugeaud
+import WuestholzSubgroup
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -850,6 +853,9 @@ theorem gap3_forall_of_baker
 #check MatveevBugeaud.bugeaud_bd_lower_lt_inv_B
 #check MatveevBugeaud.exists_reduced_b1_lt_sixty_four
 #check MatveevBugeaud.bugeaud_LLL_reduction_proof
+#check WuestholzSubgroup.no_uniform_c_easy_half
+#check WuestholzSubgroup.wuestholz_subgroup_theorem_of_jet_dim
+#check WuestholzSubgroup.wuestholz_subgroup_theorem
 #print axioms C1_floor_eq
 #print axioms height_B0_eq
 #print axioms height_bound_gap3
@@ -884,5 +890,7 @@ theorem gap3_forall_of_baker
 #print axioms MatveevInterpolation.matveev_interpolation_analytic_small_bound
 #print axioms MatveevBugeaud.bugeaud_bd_lower_lt_inv_B
 #print axioms MatveevBugeaud.exists_reduced_b1_lt_sixty_four
+#print axioms WuestholzSubgroup.no_uniform_c_linear_in_N
+#print axioms WuestholzSubgroup.wuestholz_subgroup_theorem_of_jet_dim
 
 end BealMatveevBeal

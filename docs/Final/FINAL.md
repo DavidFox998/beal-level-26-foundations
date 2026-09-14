@@ -40,7 +40,10 @@ frequencies give jet invertibility
 `W ⊂ 𝐆_a × 𝐆_m²` are classified and independence
 keeps `W` out of them. Intermediate `T ≥ c L K` is
 strictly weaker than full jet order; the uniform
-Wüstholz subgroup theorem stays `def Prop`. Unconditional generic
+Wüstholz subgroup theorem stays `def Prop`.
+`WuestholzSubgroup.lean` proves there is no uniform `c` for
+intermediate `T ≥ c L K` (`(1/2)·1·1 < 242`; even linear
+`K ∼ N1+N2` fails). Unconditional generic
 $|\Delta|\le\exp(-cLK)$ is false ($L=0$ gives $\Delta=1$);
 $L\ge 1$ and $\alpha_1=\alpha_2=1$ forces $\Delta=0$. Not the unrestricted
 kernel target, not v25. Concept DOI `10.5281/zenodo.22379293`.

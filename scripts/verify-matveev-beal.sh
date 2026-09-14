@@ -25,6 +25,8 @@ test -f MatveevInterpolation.lean
 test -f Beal/Matveev/MatveevInterpolation.lean
 test -f MatveevBugeaud.lean
 test -f Beal/Matveev/MatveevBugeaud.lean
+test -f WuestholzSubgroup.lean
+test -f Beal/Matveev/WuestholzSubgroup.lean
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -220,6 +222,9 @@ if ".one `MatveevInterpolation" not in pathlib.Path("lakefile.lean").read_text(e
 if ".one `MatveevBugeaud" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
     print("lakefile.lean missing MatveevBugeaud glob", file=sys.stderr)
     sys.exit(1)
+if ".one `WuestholzSubgroup" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
+    print("lakefile.lean missing WuestholzSubgroup glob", file=sys.stderr)
+    sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in bugeaud:
@@ -278,6 +283,62 @@ if re.search(r"^theorem baker_bound_gap3_from_ratio\b", bugeaud, re.M):
     sys.exit(1)
 if re.search(r"^theorem baker_bound_gap3\b", bugeaud, re.M):
     print("do not inhabit baker_bound_gap3 in MatveevBugeaud.lean", file=sys.stderr)
+    sys.exit(1)
+
+wsg = pathlib.Path("WuestholzSubgroup.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in wsg:
+    print("WuestholzSubgroup.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_uniform_c_easy_half" not in wsg:
+    print("no_uniform_c_easy_half missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_uniform_c_one_div_thousand" not in wsg:
+    print("no_uniform_c_one_div_thousand missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_uniform_c_linear_in_N" not in wsg:
+    print("no_uniform_c_linear_in_N missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem wuestholz_subgroup_theorem_of_jet_dim" not in wsg:
+    print("wuestholz_subgroup_theorem_of_jet_dim missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem coeffCount_one_ten_ten" not in wsg:
+    print("coeffCount_one_ten_ten missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem siegel_T_lt_jet_dim" not in wsg:
+    print("siegel_T_lt_jet_dim missing", file=sys.stderr)
+    sys.exit(1)
+if "def W_tangent" not in wsg:
+    print("W_tangent missing", file=sys.stderr)
+    sys.exit(1)
+if "def vanishesToOrder" not in wsg:
+    print("vanishesToOrder missing", file=sys.stderr)
+    sys.exit(1)
+if "structure AlgebraicSubgroup" not in wsg:
+    print("AlgebraicSubgroup missing", file=sys.stderr)
+    sys.exit(1)
+if "143186215390" not in wsg:
+    print("C1_floor = 143186215390 missing from WuestholzSubgroup.lean", file=sys.stderr)
+    sys.exit(1)
+if "1000000" not in wsg:
+    print("B0_nat = 1000000 missing from WuestholzSubgroup.lean", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in wsg:
+    print("do not paste True := trivial skeletons", file=sys.stderr)
+    sys.exit(1)
+if "def wuestholz_subgroup_theorem" not in wsg:
+    print("wuestholz_subgroup_theorem must stay a def Prop in WuestholzSubgroup.lean", file=sys.stderr)
+    sys.exit(1)
+if "def wuestholz_product_theorem_exp" not in wsg:
+    print("wuestholz_product_theorem_exp must stay a def Prop in WuestholzSubgroup.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem wuestholz_subgroup_theorem\b", wsg, re.M):
+    print("do not inhabit wuestholz_subgroup_theorem", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem wuestholz_product_theorem_exp\b", wsg, re.M):
+    print("do not inhabit wuestholz_product_theorem_exp", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_gap3\b", wsg, re.M):
+    print("do not inhabit baker_bound_gap3 in WuestholzSubgroup.lean", file=sys.stderr)
     sys.exit(1)
 
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
@@ -470,6 +531,8 @@ print("  MvPolynomial form: wuestholz_product_theorem_exp_Gm_of_mvPolynomial")
 print("  full-order disjunction P=0 or dependent; intermediate T stays def Prop")
 print("  Ga x Gm^2 candidates: graph implies dependence; W not in proper H")
 print("  intermediate T < jet dim uniformly; subgroup of jet-dim <= cLK")
+print("  WuestholzSubgroup: c=1/2, 1/242, 1/1000 lose to coeffCount 1 10 10=242")
+print("  no_uniform_c_linear_in_N; inhabited special case is jet-dim <= cLK")
 print("  subgroup-theorem Wüstholz stays def Prop; not a C1_floor close")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")
