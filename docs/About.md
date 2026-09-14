@@ -9,9 +9,13 @@
 `matveev_product_bound_of_B_le_B0`. `MatveevLLL.lean` proves the
 elementary CF lemmas (`4/13` is a convergent;
 `1/(B+3)¹³ < B⁴/A⁴`), proves `|Λ| < 1/B` without a Baker cutoff
-(the elementary gap is still smaller), and shows
+(the elementary gap is still smaller), shows
 `1/max(4 log A, 13 log(B+3))` is not a lower bound on a
-solution. `bugeaud_LLL_reduction_proof` /
+solution, and sets up the rank-3 Bugeaud lattice
+(`det = C`, `v ∈ L`, `‖v‖ < 32` / `λ₁ < 32` when `B > 10⁶`
+via the tight ratio). Minkowski does not raise `|Λ|`.
+`lll_algorithm_terminates` / `lll_svt_bound` /
+`baker_davenport_gs_lower` / `bugeaud_LLL_reduction_proof` /
 `baker_davenport_reduction` stay uninhabited `def Prop`. `MatveevInterpolation.lean` starts
 Matveev 2000 p.5 interpolation (Δ, Vandermonde, `𝐆_a` product
 theorem, Hadamard, higher-order Schwarz, Cauchy estimates, Siegel

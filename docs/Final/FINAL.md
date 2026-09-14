@@ -7,7 +7,11 @@ $|\Lambda|>\exp(-\mathrm{height}_{B_0}\log\mathrm{height}_{B_0})$,
 via `matveev_thm14_n2_explicit_of_nat`. `MatveevLLL.lean` proves the
 elementary CF lemmas ($4/13$ is a convergent of the log ratio;
 integer gap $< B^4/A^4$), $|\Lambda|<1/B$ without a Baker cutoff,
-and that $1/\max(4\log A,13\log(B+3))$ is not a lower bound.
+that $1/\max(4\log A,13\log(B+3))$ is not a lower bound, and the
+rank-3 lattice facts $\det L=C$, $v\in L$, $\|v\|<32$ and
+$\lambda_1<32$ on a solution with $B>10^6$ (tight ratio, not $1/B$).
+Minkowski does not raise $|\Lambda|$.
+`lll_algorithm_terminates` / `lll_svt_bound` /
 `bugeaud_LLL_reduction_proof` / `baker_davenport_reduction` /
 `baker_bound_gap3` stay uninhabited `def Prop`. Being a convergent
 does not force $B\le 10^6$. `MatveevInterpolation.lean` starts

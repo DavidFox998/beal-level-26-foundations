@@ -46,8 +46,24 @@ What it **does** prove, with axioms only
   `|Λ| ≤ 1/B` would be a false close;
 * Track 1 `exp(−C1 …)` is `< B⁴/A⁴` (`track1_exp_lt_ratio`);
 * the displayed C=10³⁰ floor form approximates `C Λ` to error `< 17`
-  (`LLL_e2_linear_form_approx`). Mathlib 4.12 has no LLL theorem
-  that turns this lattice into `B ≤ 10⁶`.
+  (`LLL_e2_linear_form_approx`);
+* the rank-3 lattice with columns `(1,0,⌊C log A⌋)`,
+  `(0,1,⌊C log(B+3)⌋)`, `(0,0,C)` has `det = C`
+  (`LLL_basis_det`);
+* `v = 4 b₁ − 13 b₂` lies in the lattice, and on a solution
+  with `B > 10⁶` the tight ratio bound makes `C|Λ| < 1`, so
+  `‖v‖ < 32` and `λ₁(L) ≤ ‖v‖` (`LLL_v_norm_lt_thirty_two`,
+  `LLL_lambda1_lt_thirty_two`). Minkowski is an *upper* bound
+  on `λ₁` and does not enlarge `|Λ|`.
+
+Mathlib 4.12 has no LLL shortest-vector theorem. Gram–Schmidt
+coefficients, the LLL-reduced predicate, termination, and the
+`‖b₁‖ ≤ 2 λ₁` / `2^{1/2} C^{1/3}` bounds stay `def Prop`.
+`|Λ| < 1/B` is too weak to make `C|Λ|` small (`C/B = 10^{24}`);
+the `‖v‖ < 32` estimate uses `B⁴/A⁴ < 1/((B+3)⁹−1)`, not `1/B`.
+A genuine `B ≤ 10⁶` cutoff would need a lower bound on `|Λ|`
+stronger than `B⁴/A⁴`. That is circular without an external
+LLL/Baker–Davenport theorem. Not v25.
 
 Baker–Davenport / Bugeaud LLL would need a lower bound strictly
 stronger than `B⁴/A⁴` for `B > 10⁶`. Mathlib 4.12 has no such
@@ -729,10 +745,357 @@ theorem LLL_e2_linear_form_approx (A B : ℕ) :
     linarith [htri, h4, h13]
   rwa [hform]
 
+/-! ## Rank-3 Bugeaud lattice (setup, not a shortest-vector close)
+
+Displayed basis of `L ⊂ ℝ³`:
+
+* `b₁ = (1, 0, ⌊C log A⌋)`
+* `b₂ = (0, 1, ⌊C log(B+3)⌋)`
+* `b₃ = (0, 0, C)`
+
+`det L = C = 10³⁰`. The integer vector `v = 4 b₁ − 13 b₂` is in
+`L`. On a gap-3 solution with `B > 10⁶`, `C|Λ| < 1`, so `‖v‖ < 32`
+and `λ₁ ≤ 32`. That does **not** force `|Λ|` above `B⁴/A⁴`:
+Minkowski bounds `λ₁` from above, and a lower bound on `|Λ|` from
+`‖b₁*‖` is Baker–Davenport / LLL, not in Mathlib 4.12.
+-/
+
+theorem LLL_C_real_eq : LLL_C_real = (10 : ℝ) ^ 30 := by
+  unfold LLL_C_real LLL_C_nat
+  norm_num
+
+theorem LLL_C_real_pos : (0 : ℝ) < LLL_C_real := by
+  rw [LLL_C_real_eq]
+  positivity
+
+def LLL_b1 (A : ℕ) : Fin 3 → ℝ := fun i =>
+  if i = 0 then (1 : ℝ)
+  else if i = 1 then 0
+  else (⌊LLL_C_real * log (A : ℝ)⌋ : ℝ)
+
+def LLL_b2 (B : ℕ) : Fin 3 → ℝ := fun i =>
+  if i = 0 then (0 : ℝ)
+  else if i = 1 then 1
+  else (⌊LLL_C_real * log ((B + 3 : ℕ) : ℝ)⌋ : ℝ)
+
+def LLL_b3 : Fin 3 → ℝ := fun i =>
+  if i = 2 then LLL_C_real else 0
+
+theorem LLL_b1_zero (A : ℕ) : LLL_b1 A 0 = 1 := by simp [LLL_b1]
+theorem LLL_b1_one (A : ℕ) : LLL_b1 A 1 = 0 := by simp [LLL_b1]
+theorem LLL_b1_two (A : ℕ) :
+    LLL_b1 A 2 = (⌊LLL_C_real * log (A : ℝ)⌋ : ℝ) := by
+  simp [LLL_b1]
+
+theorem LLL_b2_zero (B : ℕ) : LLL_b2 B 0 = 0 := by simp [LLL_b2]
+theorem LLL_b2_one (B : ℕ) : LLL_b2 B 1 = 1 := by simp [LLL_b2]
+theorem LLL_b2_two (B : ℕ) :
+    LLL_b2 B 2 = (⌊LLL_C_real * log ((B + 3 : ℕ) : ℝ)⌋ : ℝ) := by
+  simp [LLL_b2]
+
+theorem LLL_b3_zero : LLL_b3 0 = 0 := by simp [LLL_b3]
+theorem LLL_b3_one : LLL_b3 1 = 0 := by simp [LLL_b3]
+theorem LLL_b3_two : LLL_b3 2 = LLL_C_real := by simp [LLL_b3]
+
+/-- Columns are `b₁, b₂, b₃`. -/
+def LLL_basisMatrix (A B : ℕ) : Matrix (Fin 3) (Fin 3) ℝ := fun i j =>
+  if i = 0 ∧ j = 0 then 1
+  else if i = 1 ∧ j = 1 then 1
+  else if i = 2 ∧ j = 0 then LLL_b1 A 2
+  else if i = 2 ∧ j = 1 then LLL_b2 B 2
+  else if i = 2 ∧ j = 2 then LLL_C_real
+  else 0
+
+theorem LLL_basis_det (A B : ℕ) :
+    (LLL_basisMatrix A B).det = LLL_C_real := by
+  rw [Matrix.det_fin_three]
+  simp [LLL_basisMatrix, LLL_b1_two, LLL_b2_two]
+
+def lllInner (u v : Fin 3 → ℝ) : ℝ := ∑ i : Fin 3, u i * v i
+def lllNormSq (v : Fin 3 → ℝ) : ℝ := lllInner v v
+noncomputable def lllNorm (v : Fin 3 → ℝ) : ℝ := Real.sqrt (lllNormSq v)
+
+theorem lllNormSq_eq (v : Fin 3 → ℝ) :
+    lllNormSq v = v 0 ^ 2 + v 1 ^ 2 + v 2 ^ 2 := by
+  unfold lllNormSq lllInner
+  rw [Fin.sum_univ_three]
+  ring
+
+theorem lllNorm_nonneg (v : Fin 3 → ℝ) : 0 ≤ lllNorm v :=
+  Real.sqrt_nonneg _
+
+def LLL_span (A B : ℕ) (x y z : ℤ) : Fin 3 → ℝ :=
+  fun i =>
+    (x : ℝ) * LLL_b1 A i + (y : ℝ) * LLL_b2 B i + (z : ℝ) * LLL_b3 i
+
+def mem_LLL_lattice (A B : ℕ) (v : Fin 3 → ℝ) : Prop :=
+  ∃ x y z : ℤ, v = LLL_span A B x y z
+
+/-- Explicit short vector `v = 4 b₁ − 13 b₂`. -/
+def LLL_v (A B : ℕ) : Fin 3 → ℝ := LLL_span A B 4 (-13) 0
+
+theorem LLL_v_mem (A B : ℕ) : mem_LLL_lattice A B (LLL_v A B) :=
+  ⟨4, -13, 0, rfl⟩
+
+theorem LLL_v_zero (A B : ℕ) : LLL_v A B 0 = 4 := by
+  simp [LLL_v, LLL_span, LLL_b1_zero, LLL_b2_zero, LLL_b3_zero]
+
+theorem LLL_v_one (A B : ℕ) : LLL_v A B 1 = -13 := by
+  simp [LLL_v, LLL_span, LLL_b1_one, LLL_b2_one, LLL_b3_one]
+
+theorem LLL_v_two (A B : ℕ) :
+    LLL_v A B 2 = (4 : ℝ) * (LLL_e2 A B).1 - 13 * (LLL_e2 A B).2 := by
+  simp [LLL_v, LLL_span, LLL_b1_two, LLL_b2_two, LLL_b3_two, LLL_e2]
+  ring
+
+theorem LLL_v_ne_zero (A B : ℕ) : LLL_v A B ≠ 0 := by
+  intro h
+  have := congrArg (fun v : Fin 3 → ℝ => v 0) h
+  simp [LLL_v_zero] at this
+
+theorem LLL_v_normSq (A B : ℕ) :
+    lllNormSq (LLL_v A B) = 185 + LLL_v A B 2 ^ 2 := by
+  rw [lllNormSq_eq, LLL_v_zero, LLL_v_one]
+  ring
+
+theorem LLL_v_third_approx (A B : ℕ) :
+    |LLL_v A B 2 - LLL_C_real * Lambda A B| < 17 := by
+  rw [LLL_v_two]
+  exact LLL_e2_linear_form_approx A B
+
+/-- Rearrangement of the floor error: if the third coordinate is
+    larger than 17, `|Λ| ≥ (|third| − 17)/C`. Not a `B ≤ 10⁶` cutoff. -/
+theorem abs_Lambda_ge_of_third_gt_seventeen
+    (A B : ℕ)
+    (_h : 17 < |(4 : ℝ) * (LLL_e2 A B).1 - 13 * (LLL_e2 A B).2|) :
+    (|(4 : ℝ) * (LLL_e2 A B).1 - 13 * (LLL_e2 A B).2| - 17) / LLL_C_real ≤
+      |Lambda A B| := by
+  have happ := LLL_e2_linear_form_approx A B
+  have hC := LLL_C_real_pos
+  have htri : |LLL_C_real * Lambda A B| ≥
+      |(4 : ℝ) * (LLL_e2 A B).1 - 13 * (LLL_e2 A B).2| - 17 := by
+    have := abs_sub_abs_le_abs_sub
+      ((4 : ℝ) * (LLL_e2 A B).1 - 13 * (LLL_e2 A B).2)
+      (LLL_C_real * Lambda A B)
+    linarith [happ, this]
+  have hmul : |LLL_C_real * Lambda A B| = LLL_C_real * |Lambda A B| := by
+    rw [abs_mul, abs_of_pos hC]
+  rw [hmul] at htri
+  rw [div_le_iff₀ hC]
+  linarith [htri]
+
+def LLL_nonzero_norms (A B : ℕ) : Set ℝ :=
+  { r | ∃ v, mem_LLL_lattice A B v ∧ v ≠ 0 ∧ r = lllNorm v }
+
+noncomputable def LLL_lambda1 (A B : ℕ) : ℝ := sInf (LLL_nonzero_norms A B)
+
+theorem LLL_nonzero_norms_bddBelow (A B : ℕ) :
+    BddBelow (LLL_nonzero_norms A B) :=
+  ⟨0, by
+    intro r ⟨v, _, _, heq⟩
+    rw [heq]
+    exact lllNorm_nonneg v⟩
+
+theorem LLL_v_mem_norms (A B : ℕ) :
+    lllNorm (LLL_v A B) ∈ LLL_nonzero_norms A B :=
+  ⟨LLL_v A B, LLL_v_mem A B, LLL_v_ne_zero A B, rfl⟩
+
+theorem LLL_lambda1_le_v_norm (A B : ℕ) :
+    LLL_lambda1 A B ≤ lllNorm (LLL_v A B) :=
+  csInf_le (LLL_nonzero_norms_bddBelow A B) (LLL_v_mem_norms A B)
+
+/-- Gram–Schmidt: `b₁* = b₁`. -/
+def LLL_b1star (A : ℕ) : Fin 3 → ℝ := LLL_b1 A
+
+def LLL_mu21 (A B : ℕ) : ℝ :=
+  lllInner (LLL_b2 B) (LLL_b1star A) / lllNormSq (LLL_b1star A)
+
+def LLL_b2star (A B : ℕ) : Fin 3 → ℝ :=
+  fun i => LLL_b2 B i - LLL_mu21 A B * LLL_b1star A i
+
+def LLL_mu31 (A : ℕ) (_B : ℕ) : ℝ :=
+  lllInner LLL_b3 (LLL_b1star A) / lllNormSq (LLL_b1star A)
+
+def LLL_mu32 (A B : ℕ) : ℝ :=
+  lllInner LLL_b3 (LLL_b2star A B) / lllNormSq (LLL_b2star A B)
+
+def LLL_b3star (A B : ℕ) : Fin 3 → ℝ :=
+  fun i =>
+    LLL_b3 i - LLL_mu31 A B * LLL_b1star A i
+      - LLL_mu32 A B * LLL_b2star A B i
+
+theorem LLL_b1_normSq_ge_one (A : ℕ) :
+    (1 : ℝ) ≤ lllNormSq (LLL_b1 A) := by
+  rw [lllNormSq_eq, LLL_b1_zero, LLL_b1_one]
+  nlinarith [sq_nonneg (LLL_b1 A 2)]
+
+/-- Size-reduction inequalities on a 3-basis. The *displayed*
+    basis is not claimed to satisfy them. -/
+def LLL_size_reduced (μ21 μ31 μ32 : ℝ) : Prop :=
+  |μ21| ≤ 1 / 2 ∧ |μ31| ≤ 1 / 2 ∧ |μ32| ≤ 1 / 2
+
+/-- Lovász inequalities (`δ = 3/4`). -/
+def LLL_lovasz (b1star b2star b3star : Fin 3 → ℝ) (μ21 μ32 : ℝ) : Prop :=
+  (3 / 4 : ℝ) * lllNormSq b1star ≤
+      lllNormSq (fun i => b2star i + μ21 * b1star i) ∧
+    (3 / 4 : ℝ) * lllNormSq b2star ≤
+      lllNormSq (fun i => b3star i + μ32 * b2star i)
+
+def LLL_reduced (b1star b2star b3star : Fin 3 → ℝ)
+    (μ21 μ31 μ32 : ℝ) : Prop :=
+  LLL_size_reduced μ21 μ31 μ32 ∧ LLL_lovasz b1star b2star b3star μ21 μ32
+
+/-- LLL potential `D = ∏ᵢ ‖bᵢ*‖^{2(n−i+1)}` for `n = 3`, written
+    in squared norms: `‖b₁*‖⁶ ‖b₂*‖⁴ ‖b₃*‖²`. Termination (a
+    swap drops `D` by a factor `< 3/4`) stays `def Prop`. -/
+def lllPotential (b1star b2star b3star : Fin 3 → ℝ) : ℝ :=
+  lllNormSq b1star ^ 3 * lllNormSq b2star ^ 2 * lllNormSq b3star
+
+/-- LLL terminates on a rank-3 lattice (potential
+    `D = ∏ ‖bᵢ*‖^{2(n−i+1)}` drops on a swap). Not in Mathlib 4.12. -/
+def lll_algorithm_terminates : Prop :=
+  ∀ A B : ℕ,
+    ∃ b1' b2' b3' : Fin 3 → ℝ,
+      mem_LLL_lattice A B b1' ∧ mem_LLL_lattice A B b2' ∧
+        mem_LLL_lattice A B b3' ∧
+          LLL_reduced b1' b2' b3'
+            (lllInner b2' b1' / lllNormSq b1')
+            (lllInner b3' b1' / lllNormSq b1')
+            (lllInner b3' b2' / lllNormSq b2')
+
+/-- LLL reduced ⇒ `‖b₁‖ ≤ 2 λ₁` (`n = 3`). Not in Mathlib 4.12. -/
+def lll_svt_bound : Prop :=
+  ∀ (A B : ℕ) (b1' : Fin 3 → ℝ),
+    mem_LLL_lattice A B b1' →
+      lllNorm b1' ≤ 2 * LLL_lambda1 A B
+
+/-- LLL reduced ⇒ `‖b₁‖ ≤ √2 · C^{1/3}`. Not in Mathlib 4.12.
+    For `C = 10³⁰` this is `≈ 2.8e10`, much larger than `‖v‖ < 32`. -/
+def lll_det_bound : Prop :=
+  ∀ (A B : ℕ) (b1' : Fin 3 → ℝ),
+    mem_LLL_lattice A B b1' →
+      lllNorm b1' ≤ Real.sqrt 2 * LLL_C_real ^ ((1 : ℝ) / 3)
+
+/-- Baker–Davenport from a large first GS vector. Circular without
+    an independent estimate of `‖b₁*‖`. Not in Mathlib 4.12. -/
+def baker_davenport_gs_lower : Prop :=
+  ∀ A B : ℕ,
+    1 < A →
+      1 < B + 3 →
+        (lllNorm (LLL_b1star A) - 17) / LLL_C_real ≤ |Lambda A B|
+
+theorem B3_ge_of_B_gt_B0 {B : ℕ} (hB0 : B0_nat < B) :
+    (1000004 : ℕ) ≤ B + 3 := by
+  have hB : 1000001 ≤ B := by
+    have : B0_nat + 1 ≤ B := Nat.succ_le_of_lt hB0
+    simpa [B0_nat] using this
+  omega
+
+theorem C_mul_ratio_lt_one_of_B_gt_B0
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13)
+    (hB : 0 < B) (hB0 : B0_nat < B) :
+    LLL_C_real * ((B : ℝ) ^ 4 / (A : ℝ) ^ 4) < 1 := by
+  have hratio := ratio_lt_inv_B3_pow_nine hsol hB
+  have h9sub : (0 : ℝ) < ((B + 3 : ℕ) : ℝ) ^ 9 - 1 := by
+    have hgt := MatveevThm14Proof.gap3_A_gt_one A B hsol hB
+    have hC1 : (1 : ℝ) < ((B + 3 : ℕ) : ℝ) := by exact_mod_cast hgt.2
+    have h9 : (1 : ℝ) < ((B + 3 : ℕ) : ℝ) ^ 9 :=
+      one_lt_pow hC1 (by decide : (9 : ℕ) ≠ 0)
+    linarith
+  have hB3 : (1000004 : ℕ) ≤ B + 3 := B3_ge_of_B_gt_B0 hB0
+  have hbase : (10 : ℕ) ^ 6 ≤ B + 3 := by
+    have : (10 : ℕ) ^ 6 = 1000000 := by decide
+    have : (1000000 : ℕ) ≤ 1000004 := by decide
+    exact le_trans (by decide : (10 : ℕ) ^ 6 ≤ 1000004) hB3
+  have hpow : ((10 : ℕ) ^ 6) ^ 9 ≤ (B + 3) ^ 9 :=
+    Nat.pow_le_pow_left hbase 9
+  have h54 : ((10 : ℕ) ^ 6) ^ 9 = (10 : ℕ) ^ 54 := by
+    rw [← Nat.pow_mul]
+  have hreal :
+      LLL_C_real + 1 < ((B + 3 : ℕ) : ℝ) ^ 9 := by
+    have hle : ((10 : ℕ) ^ 54 : ℝ) ≤ ((B + 3 : ℕ) : ℝ) ^ 9 := by
+      exact_mod_cast (h54 ▸ hpow)
+    have hC : LLL_C_real + 1 < ((10 : ℕ) ^ 54 : ℝ) := by
+      rw [LLL_C_real_eq]
+      have : ((10 : ℕ) ^ 54 : ℝ) = (10 : ℝ) ^ 54 := by
+        norm_cast
+      rw [this]
+      norm_num
+    exact lt_of_lt_of_le hC hle
+  have hden : LLL_C_real < ((B + 3 : ℕ) : ℝ) ^ 9 - 1 := by linarith
+  have hquot : LLL_C_real / (((B + 3 : ℕ) : ℝ) ^ 9 - 1) < 1 :=
+    (div_lt_one h9sub).2 hden
+  have : LLL_C_real * ((B : ℝ) ^ 4 / (A : ℝ) ^ 4) <
+      LLL_C_real / (((B + 3 : ℕ) : ℝ) ^ 9 - 1) := by
+    have hC := LLL_C_real_pos
+    have := mul_lt_mul_of_pos_left hratio hC
+    rwa [mul_one_div] at this
+  exact lt_trans this hquot
+
+theorem LLL_v_third_abs_lt_eighteen
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13)
+    (hB : 0 < B) (hB0 : B0_nat < B) :
+    |LLL_v A B 2| < 18 := by
+  have happ := LLL_v_third_approx A B
+  have hpow : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 := hsol
+  have hle := matveev_gap3_abs_lambda_le_ratio hpow
+  have hΛ : |Lambda A B| ≤ (B : ℝ) ^ 4 / (A : ℝ) ^ 4 := by
+    rw [Lambda_eq_matveev_log_form]
+    exact hle
+  have hCΛ : LLL_C_real * |Lambda A B| < 1 := by
+    have := mul_le_mul_of_nonneg_left hΛ (le_of_lt LLL_C_real_pos)
+    exact lt_of_le_of_lt this (C_mul_ratio_lt_one_of_B_gt_B0 hsol hB hB0)
+  have hmul : |LLL_C_real * Lambda A B| = LLL_C_real * |Lambda A B| := by
+    rw [abs_mul, abs_of_pos LLL_C_real_pos]
+  have : |LLL_v A B 2| < 17 + LLL_C_real * |Lambda A B| := by
+    have htri : |LLL_v A B 2| ≤
+        |LLL_v A B 2 - LLL_C_real * Lambda A B| +
+          |LLL_C_real * Lambda A B| := by
+      simpa [sub_eq_add_neg] using
+        abs_add (LLL_v A B 2 - LLL_C_real * Lambda A B)
+          (LLL_C_real * Lambda A B)
+    linarith [happ, htri, hmul]
+  linarith [hCΛ]
+
+/-- On a solution with `B > 10⁶`, the tight ratio (not `1/B`)
+    makes `C|Λ| < 1`, so `‖v‖ < 32`. Using `|Λ| < 1/B` would give
+    `C|Λ| < 10^{24}`, which does not bound `‖v‖`. -/
+theorem LLL_v_norm_lt_thirty_two
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13)
+    (hB : 0 < B) (hB0 : B0_nat < B) :
+    lllNorm (LLL_v A B) < 32 := by
+  have ht := LLL_v_third_abs_lt_eighteen hsol hB hB0
+  have hsq : lllNormSq (LLL_v A B) = 185 + LLL_v A B 2 ^ 2 :=
+    LLL_v_normSq A B
+  have hx : (0 : ℝ) ≤ 185 := by norm_num
+  have h185 : Real.sqrt 185 < 14 := by
+    exact (Real.sqrt_lt (by norm_num : (0 : ℝ) ≤ 185)
+      (by norm_num : (0 : ℝ) ≤ 14)).mpr (by
+      rw [show (14 : ℝ) ^ 2 = 196 by norm_num]
+      norm_num)
+  have hsum : (0 : ℝ) ≤ Real.sqrt 185 + |LLL_v A B 2| :=
+    add_nonneg (Real.sqrt_nonneg _) (abs_nonneg _)
+  have hsqle : lllNormSq (LLL_v A B) ≤
+      (Real.sqrt 185 + |LLL_v A B 2|) ^ 2 := by
+    rw [hsq, add_sq, Real.sq_sqrt hx, sq_abs]
+    nlinarith [Real.sqrt_nonneg (185 : ℝ), abs_nonneg (LLL_v A B 2)]
+  have : lllNorm (LLL_v A B) ≤ Real.sqrt 185 + |LLL_v A B 2| := by
+    unfold lllNorm
+    exact (Real.sqrt_le_left hsum).2 hsqle
+  linarith [this, h185, ht]
+
+theorem LLL_lambda1_lt_thirty_two
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13)
+    (hB : 0 < B) (hB0 : B0_nat < B) :
+    LLL_lambda1 A B < 32 :=
+  lt_of_le_of_lt (LLL_lambda1_le_v_norm A B)
+    (LLL_v_norm_lt_thirty_two hsol hB hB0)
+
 /-- Baker–Davenport / Bugeaud LLL reduction from `|Λ| ≤ B⁴/A⁴`
     down to `B ≤ B0_nat`. Mathlib 4.12 has no such theorem.
     Same type as `baker_bound_gap3_from_ratio`; still uninhabited.
-    The proved `|Λ| < 1/B` is `abs_Lambda_le_inv_B`, not this. -/
+    The proved lattice facts are `LLL_basis_det`, `LLL_v_mem`, and
+    `LLL_v_norm_lt_thirty_two`, not this. -/
 def baker_davenport_reduction : Prop := baker_bound_gap3_from_ratio
 
 /-- Sandwich: integer gap ≤ `|Λ|` ≤ ratio, and the gap is strictly
@@ -808,6 +1171,17 @@ theorem baker_bound_gap3_of_bugeaud_LLL_reduction_proof
 #check abs_Lambda_lt_inv_max_log_coeff
 #check track1_exp_lt_ratio
 #check LLL_e2_linear_form_approx
+#check LLL_basis_det
+#check LLL_v_mem
+#check LLL_v_norm_lt_thirty_two
+#check LLL_lambda1_lt_thirty_two
+#check abs_Lambda_ge_of_third_gt_seventeen
+#check LLL_reduced
+#check lllPotential
+#check lll_algorithm_terminates
+#check lll_svt_bound
+#check lll_det_bound
+#check baker_davenport_gs_lower
 #check baker_davenport_reduction
 #check baker_bound_gap3_of_from_ratio
 #print axioms four_thirteenths_is_convergent
@@ -817,6 +1191,9 @@ theorem baker_bound_gap3_of_bugeaud_LLL_reduction_proof
 #print axioms abs_Lambda_lt_inv_max_log_coeff
 #print axioms track1_exp_lt_ratio
 #print axioms LLL_e2_linear_form_approx
+#print axioms LLL_basis_det
+#print axioms LLL_v_norm_lt_thirty_two
+#print axioms LLL_lambda1_lt_thirty_two
 #print axioms baker_bound_gap3_of_from_ratio
 
 end BealMatveevBeal.MatveevLLL

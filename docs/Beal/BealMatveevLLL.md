@@ -40,11 +40,27 @@ On a gap-3 solution $A^4+B^4=(B+3)^{13}$ with $B>0$:
 - `LLL_e2_linear_form_approx`: the displayed `C=10^{30}` floor
   form approximates `C Λ` with error `< 17`. Mathlib 4.12 has no
   LLL shortest-vector theorem.
+- Rank-3 lattice (columns `b₁ = (1,0,⌊C log A⌋)`,
+  `b₂ = (0,1,⌊C log(B+3)⌋)`, `b₃ = (0,0,C)`):
+  `LLL_basis_det` (`det = C`), `LLL_v_mem` (`v = 4 b₁ − 13 b₂ ∈ L`),
+  `LLL_v_norm_lt_thirty_two` / `LLL_lambda1_lt_thirty_two`
+  (`‖v‖ < 32` and `λ₁ < 32` on a solution with `B > 10⁶`,
+  using `B⁴/A⁴ < 1/((B+3)⁹−1)` so `C|Λ| < 1`; `|Λ| < 1/B`
+  only gives `C|Λ| < 10^{24}`). Minkowski does not raise `|Λ|`.
+- Gram–Schmidt coefficients, size-reduction / Lovász predicates,
+  and the potential `lllPotential` are defined. The displayed
+  basis is **not** claimed LLL-reduced.
 
 Axioms: `[propext, Classical.choice, Quot.sound]` only.
 
 ## What stays a def Prop
 
+- `lll_algorithm_terminates` / `lll_svt_bound` / `lll_det_bound`
+  — LLL termination and `‖b₁‖ ≤ 2 λ₁` / `√2 · C^{1/3}` are
+  not in Mathlib 4.12.
+- `baker_davenport_gs_lower` — `|Λ| ≥ (‖b₁*‖ − 17)/C` from a
+  large first GS vector; circular without an independent
+  estimate of `‖b₁*‖`.
 - `baker_bound_gap3_from_ratio` — “solution and `|Λ| ≤ B^4/A^4` ⇒ `B ≤ B0_nat`”.
 - `bugeaud_LLL_reduction_proof` — same Prop; **not** a theorem.
 - `baker_davenport_reduction` — same Prop; Mathlib 4.12 has no

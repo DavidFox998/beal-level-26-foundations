@@ -122,6 +122,45 @@ if "theorem track1_exp_lt_ratio" not in lll:
 if "theorem LLL_e2_linear_form_approx" not in lll:
     print("LLL_e2_linear_form_approx missing from MatveevLLL.lean", file=sys.stderr)
     sys.exit(1)
+if "theorem LLL_basis_det" not in lll:
+    print("LLL_basis_det missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem LLL_v_mem" not in lll:
+    print("LLL_v_mem missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem LLL_v_norm_lt_thirty_two" not in lll:
+    print("LLL_v_norm_lt_thirty_two missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem LLL_lambda1_lt_thirty_two" not in lll:
+    print("LLL_lambda1_lt_thirty_two missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "def lllPotential" not in lll:
+    print("lllPotential missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "def lll_algorithm_terminates" not in lll:
+    print("lll_algorithm_terminates must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def lll_svt_bound" not in lll:
+    print("lll_svt_bound must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def lll_det_bound" not in lll:
+    print("lll_det_bound must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def baker_davenport_gs_lower" not in lll:
+    print("baker_davenport_gs_lower must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem lll_algorithm_terminates\b", lll, re.M):
+    print("lll_algorithm_terminates must not be a theorem", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem lll_svt_bound\b", lll, re.M):
+    print("lll_svt_bound must not be a theorem", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem lll_det_bound\b", lll, re.M):
+    print("lll_det_bound must not be a theorem", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_davenport_gs_lower\b", lll, re.M):
+    print("baker_davenport_gs_lower must not be a theorem", file=sys.stderr)
+    sys.exit(1)
 if "def baker_davenport_reduction" not in lll:
     print("baker_davenport_reduction must stay a def Prop", file=sys.stderr)
     sys.exit(1)
@@ -327,7 +366,8 @@ print("  0 sorry; matveev_gap3_lower is the B<=B0 integer-gap close")
 print("  C1_floor=143186215390, gap3_A_bounds and B<=B0 product proved")
 print("  CF lemmas: 4/13 convergent, integer gap < ratio; |Λ|<1/B not a cutoff")
 print("  1/max(4log A,13log C) is not a lower bound; Track1 exp < ratio")
-print("  LLL floor form approximates CΛ to <17; not baker_bound_gap3")
+print("  LLL floor form approximates CΛ to <17; rank-3 det=C, ||v||<32")
+print("  LLL SVT / baker_davenport stay def Prop; not baker_bound_gap3")
 print("  interpolation: Δ, Vandermonde, G_a product, Hadamard, Schwarz, Cauchy;")
 print("  analytic small bound is conditional; polynomial vanishing inhabited")
 print("  Siegel + G_a jet vanishing: matveevPhi_vanishing_exists_T")
