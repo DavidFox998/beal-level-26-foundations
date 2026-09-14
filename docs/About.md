@@ -8,8 +8,11 @@
 `matveev_thm14_n2_explicit_of_nat` (`MatveevThm14Proof.lean`) and
 `matveev_product_bound_of_B_le_B0`. `MatveevLLL.lean` proves the
 elementary CF lemmas (`4/13` is a convergent;
-`1/(B+3)¹³ < B⁴/A⁴`) and keeps `bugeaud_LLL_reduction_proof` as
-an uninhabited `def Prop`. `MatveevInterpolation.lean` starts
+`1/(B+3)¹³ < B⁴/A⁴`), proves `|Λ| < 1/B` without a Baker cutoff
+(the elementary gap is still smaller), and shows
+`1/max(4 log A, 13 log(B+3))` is not a lower bound on a
+solution. `bugeaud_LLL_reduction_proof` /
+`baker_davenport_reduction` stay uninhabited `def Prop`. `MatveevInterpolation.lean` starts
 Matveev 2000 p.5 interpolation (Δ, Vandermonde, `𝐆_a` product
 theorem, Hadamard, higher-order Schwarz, Cauchy estimates, Siegel
 / G_a jet vanishing) and proves the bare-real ∀-reals claim is

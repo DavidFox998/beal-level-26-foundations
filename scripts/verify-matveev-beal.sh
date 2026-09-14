@@ -107,6 +107,21 @@ if "theorem abs_Lambda_ge_B4_div_B3_pow" not in lll:
 if "theorem abs_Lambda_tight_sandwich" not in lll:
     print("abs_Lambda_tight_sandwich missing from MatveevLLL.lean", file=sys.stderr)
     sys.exit(1)
+if "theorem abs_Lambda_le_inv_B" not in lll:
+    print("abs_Lambda_le_inv_B missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem elementary_inv_max_compatible_with_inv_B" not in lll:
+    print("elementary_inv_max_compatible_with_inv_B missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem abs_Lambda_lt_inv_max_log_coeff" not in lll:
+    print("abs_Lambda_lt_inv_max_log_coeff missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem track1_exp_lt_ratio" not in lll:
+    print("track1_exp_lt_ratio missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem LLL_e2_linear_form_approx" not in lll:
+    print("LLL_e2_linear_form_approx missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
 if "def baker_davenport_reduction" not in lll:
     print("baker_davenport_reduction must stay a def Prop", file=sys.stderr)
     sys.exit(1)
@@ -118,6 +133,15 @@ if "def bugeaud_LLL_reduction_proof" not in lll:
     sys.exit(1)
 if re.search(r"^theorem bugeaud_LLL_reduction_proof\b", lll, re.M):
     print("bugeaud_LLL_reduction_proof must not be a theorem", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_davenport_reduction\b", lll, re.M):
+    print("baker_davenport_reduction must not be a theorem", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_gap3_from_ratio\b", lll, re.M):
+    print("baker_bound_gap3_from_ratio must not be a theorem", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_gap3\b", lll, re.M):
+    print("do not inhabit baker_bound_gap3 in MatveevLLL.lean", file=sys.stderr)
     sys.exit(1)
 if "theorem matveev_gap3_lower_unrestricted" in src or "theorem matveev_gap3_lower_unrestricted" in lll:
     print("do not inhabit unrestricted matveev_gap3_lower", file=sys.stderr)
@@ -301,7 +325,9 @@ for n in needles:
 print("verify-matveev-beal: ok")
 print("  0 sorry; matveev_gap3_lower is the B<=B0 integer-gap close")
 print("  C1_floor=143186215390, gap3_A_bounds and B<=B0 product proved")
-print("  CF lemmas: 4/13 convergent, integer gap < ratio; not baker_bound_gap3")
+print("  CF lemmas: 4/13 convergent, integer gap < ratio; |Λ|<1/B not a cutoff")
+print("  1/max(4log A,13log C) is not a lower bound; Track1 exp < ratio")
+print("  LLL floor form approximates CΛ to <17; not baker_bound_gap3")
 print("  interpolation: Δ, Vandermonde, G_a product, Hadamard, Schwarz, Cauchy;")
 print("  analytic small bound is conditional; polynomial vanishing inhabited")
 print("  Siegel + G_a jet vanishing: matveevPhi_vanishing_exists_T")

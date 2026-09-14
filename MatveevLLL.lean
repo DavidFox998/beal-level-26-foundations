@@ -37,7 +37,17 @@ What it **does** prove, with axioms only
   does **not** force `B ≤ 10⁶`;
 * the tighter gap `log(1+u) ≥ u/(1+u)` gives
   `B⁴/(B+3)¹³ ≤ |Λ| ≤ B⁴/A⁴`, still the same order
-  (ratio of sides is `(B+3)¹³/A⁴ = 1 + B⁴/A⁴`), so still no cutoff.
+  (ratio of sides is `(B+3)¹³/A⁴ = 1 + B⁴/A⁴`), so still no cutoff;
+* `A⁴ > B⁵` so `|Λ| ≤ B⁴/A⁴ < 1/B` (`abs_Lambda_le_inv_B`);
+  the elementary gap `1/(B+3)¹³` is still `< 1/B`, so this
+  upper bound is not a Baker–Davenport cutoff;
+* `1/max(4 log A, 13 log(B+3))` is **not** a lower bound on a
+  solution (`abs_Lambda_lt_inv_max_log_coeff`); combining it with
+  `|Λ| ≤ 1/B` would be a false close;
+* Track 1 `exp(−C1 …)` is `< B⁴/A⁴` (`track1_exp_lt_ratio`);
+* the displayed C=10³⁰ floor form approximates `C Λ` to error `< 17`
+  (`LLL_e2_linear_form_approx`). Mathlib 4.12 has no LLL theorem
+  that turns this lattice into `B ≤ 10⁶`.
 
 Baker–Davenport / Bugeaud LLL would need a lower bound strictly
 stronger than `B⁴/A⁴` for `B > 10⁶`. Mathlib 4.12 has no such
@@ -479,9 +489,250 @@ theorem abs_Lambda_tight_sandwich
       exact matveev_gap3_abs_lambda_le_ratio hpow,
     B4_div_B3_pow_lt_ratio hsol hB⟩
 
+/-! ## Baker–Davenport auxiliaries (not a `B ≤ 10⁶` close)
+
+The requested reduction lemma `|Λ| ≤ 1/B` on `B > 10⁶` is true
+because `A⁴ > B⁵`. The elementary `1/max(A⁴,C¹³)` gap is
+`1/(B+3)¹³ < 1/B`, so the two sides never contradict.
+`1/max(4 log A, 13 log(B+3))` is *larger* than `|Λ|` on every
+positive-`B` solution, so it is not a lower bound and cannot be
+combined with `|Λ| ≤ 1/B` to inhabit `baker_bound_gap3`.
+-/
+
+theorem B_pow_five_add_B_pow_four_lt_B3_pow
+    {B : ℕ} (_hB : 0 < B) :
+    (B : ℝ) ^ 5 + (B : ℝ) ^ 4 < ((B + 3 : ℕ) : ℝ) ^ 13 := by
+  have hx : (0 : ℝ) ≤ (B : ℝ) := Nat.cast_nonneg B
+  have hC : ((B + 3 : ℕ) : ℝ) = (B : ℝ) + 3 := by
+    rw [Nat.cast_add, Nat.cast_ofNat]
+  have h5 : (B : ℝ) ^ 5 + (B : ℝ) ^ 4 < ((B + 3 : ℕ) : ℝ) ^ 5 := by
+    rw [hC]
+    have hexp : ((B : ℝ) + 3) ^ 5 =
+        (B : ℝ) ^ 5 + 15 * (B : ℝ) ^ 4 + 90 * (B : ℝ) ^ 3 +
+          270 * (B : ℝ) ^ 2 + 405 * (B : ℝ) + 243 := by
+      ring
+    have h3 : (0 : ℝ) ≤ (B : ℝ) ^ 3 := pow_nonneg hx 3
+    have h2 : (0 : ℝ) ≤ (B : ℝ) ^ 2 := sq_nonneg _
+    nlinarith [hexp, h3, h2, hx]
+  have hC1 : (1 : ℝ) ≤ ((B + 3 : ℕ) : ℝ) := by
+    have : 1 ≤ B + 3 := Nat.succ_le_of_lt (Nat.add_pos_right B (by decide : 0 < 3))
+    exact_mod_cast this
+  have h513 : ((B + 3 : ℕ) : ℝ) ^ 5 ≤ ((B + 3 : ℕ) : ℝ) ^ 13 :=
+    pow_le_pow_right hC1 (by decide : (5 : ℕ) ≤ 13)
+  exact lt_of_lt_of_le h5 h513
+
+/-- On a solution, `A⁴ > B⁵`. -/
+theorem A_pow_gt_B_pow_five
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hB : 0 < B) :
+    (B : ℝ) ^ 5 < (A : ℝ) ^ 4 := by
+  have hpow : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 := hsol
+  have hA4 := matveev_gap3_A_pow_eq_B3_pow_sub_B_pow hpow
+  have hsum := B_pow_five_add_B_pow_four_lt_B3_pow hB
+  linarith [hA4, hsum]
+
+/-- Ratio upper bound is `< 1/B`. -/
+theorem ratio_lt_inv_B
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hB : 0 < B) :
+    (B : ℝ) ^ 4 / (A : ℝ) ^ 4 < 1 / (B : ℝ) := by
+  have hA4pos : (0 : ℝ) < (A : ℝ) ^ 4 := by
+    have hpow : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 := hsol
+    exact matveev_gap3_A_pow_pos hpow
+  have hBpos : (0 : ℝ) < (B : ℝ) := by exact_mod_cast hB
+  have hgt := A_pow_gt_B_pow_five hsol hB
+  have hB4pos : (0 : ℝ) < (B : ℝ) ^ 4 := pow_pos hBpos 4
+  have : (B : ℝ) ^ 4 * (B : ℝ) < (A : ℝ) ^ 4 := by
+    have : (B : ℝ) ^ 5 = (B : ℝ) ^ 4 * (B : ℝ) := by ring
+    rwa [this] at hgt
+  rw [div_lt_div_iff hA4pos hBpos, one_mul]
+  exact this
+
+/-- Requested upper-bound half: `|Λ| ≤ 1/B` on a solution.
+    Not a Baker–Davenport cutoff: the elementary gap is smaller. -/
+theorem abs_Lambda_le_inv_B
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hB : 0 < B) :
+    |Lambda A B| < 1 / (B : ℝ) := by
+  have hsand := abs_Lambda_tight_sandwich hsol hB
+  exact lt_of_le_of_lt hsand.2.1 (ratio_lt_inv_B hsol hB)
+
+theorem abs_Lambda_le_inv_B_of_B_gt_B0
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13)
+    (hB : 0 < B) (_hB0 : B0_nat < B) :
+    |Lambda A B| < 1 / (B : ℝ) :=
+  abs_Lambda_le_inv_B hsol hB
+
+/-- Elementary `1/(B+3)¹³` is strictly below `1/B`. -/
+theorem inv_B3_pow_lt_inv_B {B : ℕ} (hB : 0 < B) :
+    (1 : ℝ) / ((B + 3 : ℕ) : ℝ) ^ 13 < 1 / (B : ℝ) := by
+  have hBpos : (0 : ℝ) < (B : ℝ) := by exact_mod_cast hB
+  have hCpos : (0 : ℝ) < ((B + 3 : ℕ) : ℝ) := by
+    have : 0 < B + 3 := Nat.add_pos_right B (by decide : 0 < 3)
+    exact_mod_cast this
+  have hC13 : (0 : ℝ) < ((B + 3 : ℕ) : ℝ) ^ 13 := pow_pos hCpos 13
+  have hlt : (B : ℝ) < ((B + 3 : ℕ) : ℝ) ^ 13 := by
+    have h1 : (B : ℝ) < ((B + 3 : ℕ) : ℝ) := by
+      have : B < B + 3 := Nat.lt_add_of_pos_right (by decide : 0 < 3)
+      exact_mod_cast this
+    have hC1 : (1 : ℝ) < ((B + 3 : ℕ) : ℝ) := by
+      have : 1 < B + 3 :=
+        Nat.lt_of_lt_of_le (by decide : 1 < 4)
+          (Nat.add_le_add_right (Nat.succ_le_of_lt hB) 3)
+      exact_mod_cast this
+    have hpow : ((B + 3 : ℕ) : ℝ) < ((B + 3 : ℕ) : ℝ) ^ 13 :=
+      lt_self_pow hC1 (by decide : (1 : ℕ) < 13)
+    exact lt_trans h1 hpow
+  exact (one_div_lt_one_div hC13 hBpos).2 hlt
+
+/-- Integer-gap `1/max(A⁴,C¹³)` never contradicts `|Λ| < 1/B`. -/
+theorem elementary_inv_max_compatible_with_inv_B
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hB : 0 < B) :
+    (1 : ℝ) / ((B + 3 : ℕ) : ℝ) ^ 13 < 1 / (B : ℝ) ∧
+      (1 : ℝ) / ((B + 3 : ℕ) : ℝ) ^ 13 ≤ |Lambda A B| ∧
+        |Lambda A B| < 1 / (B : ℝ) :=
+  ⟨inv_B3_pow_lt_inv_B hB,
+    abs_Lambda_ge_inv_B3_pow hsol hB,
+    abs_Lambda_le_inv_B hsol hB⟩
+
+theorem four_logA_lt_thirteen_logB3
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hB : 0 < B) :
+    4 * log (A : ℝ) < 13 * log ((B + 3 : ℕ) : ℝ) := by
+  have hpow : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 := hsol
+  have hA4pos := matveev_gap3_A_pow_pos hpow
+  have hB4pos : (0 : ℝ) < (B : ℝ) ^ 4 :=
+    pow_pos (by exact_mod_cast hB) 4
+  have hApow : (A : ℝ) ^ 4 < ((B + 3 : ℕ) : ℝ) ^ 13 := by
+    have hA4 := matveev_gap3_A_pow_eq_B3_pow_sub_B_pow hpow
+    linarith [hB4pos]
+  have hlog := Real.log_lt_log hA4pos hApow
+  rw [Real.log_pow, Real.log_pow] at hlog
+  exact hlog
+
+theorem max_log_coeff_eq_thirteen_logB3
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hB : 0 < B) :
+    max (4 * log (A : ℝ)) (13 * log ((B + 3 : ℕ) : ℝ)) =
+      13 * log ((B + 3 : ℕ) : ℝ) :=
+  max_eq_right (le_of_lt (four_logA_lt_thirteen_logB3 hsol hB))
+
+/-- The proposed `1/max(4 log A, 13 log(B+3))` lower bound is
+    false on every positive-`B` gap-3 solution. -/
+theorem abs_Lambda_lt_inv_max_log_coeff
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hB : 0 < B) :
+    |Lambda A B| <
+      1 / max (4 * log (A : ℝ)) (13 * log ((B + 3 : ℕ) : ℝ)) := by
+  have hgt := MatveevThm14Proof.gap3_A_gt_one A B hsol hB
+  have hC1 : (1 : ℝ) < ((B + 3 : ℕ) : ℝ) := by exact_mod_cast hgt.2
+  have hlogC : (0 : ℝ) < log ((B + 3 : ℕ) : ℝ) := Real.log_pos hC1
+  have hmax := max_log_coeff_eq_thirteen_logB3 hsol hB
+  rw [hmax]
+  have hratio := ratio_lt_inv_B3_pow_nine hsol hB
+  have hsand := abs_Lambda_tight_sandwich hsol hB
+  have h9sub : (0 : ℝ) < ((B + 3 : ℕ) : ℝ) ^ 9 - 1 := by
+    have h9 : (1 : ℝ) < ((B + 3 : ℕ) : ℝ) ^ 9 :=
+      one_lt_pow hC1 (by decide : (9 : ℕ) ≠ 0)
+    linarith
+  have hCpos : (0 : ℝ) < ((B + 3 : ℕ) : ℝ) :=
+    lt_trans (by norm_num : (0 : ℝ) < 1) hC1
+  have hloglt : log ((B + 3 : ℕ) : ℝ) < ((B + 3 : ℕ) : ℝ) := by
+    have hle := add_one_le_exp (log ((B + 3 : ℕ) : ℝ))
+    rw [Real.exp_log hCpos] at hle
+    linarith
+  have h13C : (13 : ℝ) * log ((B + 3 : ℕ) : ℝ) <
+      ((B + 3 : ℕ) : ℝ) ^ 9 - 1 := by
+    have h13self : (13 : ℝ) * log ((B + 3 : ℕ) : ℝ) <
+        13 * ((B + 3 : ℕ) : ℝ) :=
+      mul_lt_mul_of_pos_left hloglt (by norm_num)
+    have hC4 : (4 : ℝ) ≤ ((B + 3 : ℕ) : ℝ) := by
+      have : 4 ≤ B + 3 :=
+        Nat.add_le_add_right (Nat.succ_le_of_lt hB) 3
+      exact_mod_cast this
+    have hC8 : (4 : ℝ) ^ 8 ≤ ((B + 3 : ℕ) : ℝ) ^ 8 :=
+      pow_le_pow_left (by norm_num) hC4 8
+    have h48 : (4 : ℝ) ^ 8 = 65536 := by norm_num
+    have hscale :
+        (13 : ℝ) * ((B + 3 : ℕ) : ℝ) + 1 ≤
+          ((B + 3 : ℕ) : ℝ) ^ 9 := by
+      have hpow : ((B + 3 : ℕ) : ℝ) ^ 9 =
+          ((B + 3 : ℕ) : ℝ) ^ 8 * ((B + 3 : ℕ) : ℝ) := by
+        rw [← pow_succ]
+      have hbig : (65536 : ℝ) * ((B + 3 : ℕ) : ℝ) ≤
+          ((B + 3 : ℕ) : ℝ) ^ 8 * ((B + 3 : ℕ) : ℝ) :=
+        mul_le_mul_of_nonneg_right (h48 ▸ hC8) (le_of_lt hCpos)
+      have hsmall : (13 : ℝ) * ((B + 3 : ℕ) : ℝ) + 1 ≤
+          (65536 : ℝ) * ((B + 3 : ℕ) : ℝ) := by
+        nlinarith [hCpos]
+      exact le_trans hsmall (hpow ▸ hbig)
+    linarith [h13self, hscale]
+  have hinv :
+      1 / (((B + 3 : ℕ) : ℝ) ^ 9 - 1) <
+        1 / (13 * log ((B + 3 : ℕ) : ℝ)) :=
+    (one_div_lt_one_div h9sub (mul_pos (by norm_num) hlogC)).2 h13C
+  exact lt_trans (lt_of_le_of_lt hsand.2.1 hratio) hinv
+
+/-- Track 1 packaged RHS is strictly below the ratio upper bound. -/
+theorem track1_exp_lt_ratio
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hB : 0 < B) :
+    exp (-MatveevThm14Proof.C1_floor_real * log (A : ℝ) *
+        log ((B + 3 : ℕ) : ℝ) *
+        MatveevThm14Proof.B0_term (A : ℝ) ((B + 3 : ℕ) : ℝ)) <
+      (B : ℝ) ^ 4 / (A : ℝ) ^ 4 := by
+  have hgt := MatveevThm14Proof.gap3_A_gt_one A B hsol hB
+  have hΛ := MatveevThm14Proof.Lambda_gap3_ne_zero A B hsol hB
+  have hlower :=
+    MatveevThm14Proof.matveev_thm14_n2_explicit_of_nat A (B + 3)
+      hgt.1 hgt.2 hΛ
+  have hpow : Nat.pow A 4 + Nat.pow B 4 = Nat.pow (B + 3) 13 := hsol
+  have hupper := matveev_gap3_abs_lambda_le_ratio hpow
+  exact lt_of_lt_of_le hlower hupper
+
+theorem abs_sub_int_floor (x : ℝ) : |x - ⌊x⌋| < 1 := by
+  have hle : (⌊x⌋ : ℝ) ≤ x := Int.floor_le x
+  have hlt : x < ⌊x⌋ + 1 := Int.lt_floor_add_one x
+  have hnonneg : 0 ≤ x - ⌊x⌋ := sub_nonneg.mpr hle
+  rw [abs_of_nonneg hnonneg]
+  linarith
+
+/-- Displayed C=10³⁰ floor form approximates `C Λ` with error `< 17`.
+    Not an LLL reduction: Mathlib 4.12 has no shortest-vector theorem. -/
+theorem LLL_e2_linear_form_approx (A B : ℕ) :
+    |(4 : ℝ) * (LLL_e2 A B).1 - 13 * (LLL_e2 A B).2
+      - LLL_C_real * Lambda A B| < 17 := by
+  set a : ℝ := LLL_C_real * log (A : ℝ)
+  set c : ℝ := LLL_C_real * log ((B + 3 : ℕ) : ℝ)
+  have hΛ : LLL_C_real * Lambda A B = 4 * a - 13 * c := by
+    simp only [Lambda, a, c]
+    ring
+  have he2 : LLL_e2 A B = (⌊a⌋, ⌊c⌋) := rfl
+  have hform :
+      (4 : ℝ) * (LLL_e2 A B).1 - 13 * (LLL_e2 A B).2
+        - LLL_C_real * Lambda A B =
+      4 * (⌊a⌋ - a) - 13 * (⌊c⌋ - c) := by
+    rw [he2, hΛ]
+    push_cast
+    ring
+  have ha : |a - ⌊a⌋| < 1 := abs_sub_int_floor a
+  have hc : |c - ⌊c⌋| < 1 := abs_sub_int_floor c
+  have hbound :
+      |4 * (⌊a⌋ - a) - 13 * (⌊c⌋ - c)| < 17 := by
+    have h4 : |(4 : ℝ) * (⌊a⌋ - a)| < 4 := by
+      rw [abs_mul, abs_of_pos (by norm_num : (0 : ℝ) < 4)]
+      have : |⌊a⌋ - a| = |a - ⌊a⌋| := abs_sub_comm _ _
+      rw [this]
+      nlinarith [ha]
+    have h13 : |(13 : ℝ) * (⌊c⌋ - c)| < 13 := by
+      rw [abs_mul, abs_of_pos (by norm_num : (0 : ℝ) < 13)]
+      have : |⌊c⌋ - c| = |c - ⌊c⌋| := abs_sub_comm _ _
+      rw [this]
+      nlinarith [hc]
+    have htri : |4 * (⌊a⌋ - a) - 13 * (⌊c⌋ - c)| ≤
+        |4 * (⌊a⌋ - a)| + |13 * (⌊c⌋ - c)| := by
+      simpa [sub_eq_add_neg, abs_neg] using
+        abs_add ((4 : ℝ) * (⌊a⌋ - a)) (-((13 : ℝ) * (⌊c⌋ - c)))
+    linarith [htri, h4, h13]
+  rwa [hform]
+
 /-- Baker–Davenport / Bugeaud LLL reduction from `|Λ| ≤ B⁴/A⁴`
     down to `B ≤ B0_nat`. Mathlib 4.12 has no such theorem.
-    Same type as `baker_bound_gap3_from_ratio`; still uninhabited. -/
+    Same type as `baker_bound_gap3_from_ratio`; still uninhabited.
+    The proved `|Λ| < 1/B` is `abs_Lambda_le_inv_B`, not this. -/
 def baker_davenport_reduction : Prop := baker_bound_gap3_from_ratio
 
 /-- Sandwich: integer gap ≤ `|Λ|` ≤ ratio, and the gap is strictly
@@ -548,11 +799,24 @@ theorem baker_bound_gap3_of_bugeaud_LLL_reduction_proof
 #check integer_gap_le_abs_Lambda_le_ratio
 #check abs_Lambda_ge_B4_div_B3_pow
 #check abs_Lambda_tight_sandwich
+#check A_pow_gt_B_pow_five
+#check ratio_lt_inv_B
+#check abs_Lambda_le_inv_B
+#check abs_Lambda_le_inv_B_of_B_gt_B0
+#check inv_B3_pow_lt_inv_B
+#check elementary_inv_max_compatible_with_inv_B
+#check abs_Lambda_lt_inv_max_log_coeff
+#check track1_exp_lt_ratio
+#check LLL_e2_linear_form_approx
 #check baker_davenport_reduction
 #check baker_bound_gap3_of_from_ratio
 #print axioms four_thirteenths_is_convergent
 #print axioms integer_gap_lt_ratio
 #print axioms abs_Lambda_tight_sandwich
+#print axioms abs_Lambda_le_inv_B
+#print axioms abs_Lambda_lt_inv_max_log_coeff
+#print axioms track1_exp_lt_ratio
+#print axioms LLL_e2_linear_form_approx
 #print axioms baker_bound_gap3_of_from_ratio
 
 end BealMatveevBeal.MatveevLLL

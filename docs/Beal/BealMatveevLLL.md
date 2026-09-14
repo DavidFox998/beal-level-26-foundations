@@ -26,6 +26,20 @@ On a gap-3 solution $A^4+B^4=(B+3)^{13}$ with $B>0$:
 - `abs_Lambda_tight_sandwich`: `B^4/(B+3)^{13} ≤ |Λ| ≤ B^4/A^4`
   via `log(1+u) ≥ u/(1+u)`. Same order (ratio of sides is
   `(B+3)^{13}/A^4 = 1 + B^4/A^4`). Still no cutoff.
+- `A_pow_gt_B_pow_five` / `ratio_lt_inv_B` / `abs_Lambda_le_inv_B`:
+  `A^4 > B^5` so `|Λ| < 1/B`. The elementary gap
+  `1/(B+3)^{13}` is still `< 1/B`
+  (`elementary_inv_max_compatible_with_inv_B`), so this is not a
+  Baker–Davenport cutoff.
+- `abs_Lambda_lt_inv_max_log_coeff`: on every positive-`B`
+  solution, `|Λ| < 1/max(4 log A, 13 log(B+3))`. That proposed
+  “elementary” lower bound is false and cannot be combined with
+  `|Λ| < 1/B` to inhabit `baker_bound_gap3`.
+- `track1_exp_lt_ratio`: the packaged Track 1
+  `exp(−C1 log A log C B0_term)` is `< B^4/A^4`.
+- `LLL_e2_linear_form_approx`: the displayed `C=10^{30}` floor
+  form approximates `C Λ` with error `< 17`. Mathlib 4.12 has no
+  LLL shortest-vector theorem.
 
 Axioms: `[propext, Classical.choice, Quot.sound]` only.
 

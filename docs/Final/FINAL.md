@@ -6,8 +6,10 @@ on $A^4+B^4=(B+3)^{13}$ with $B\le 10^6$,
 $|\Lambda|>\exp(-\mathrm{height}_{B_0}\log\mathrm{height}_{B_0})$,
 via `matveev_thm14_n2_explicit_of_nat`. `MatveevLLL.lean` proves the
 elementary CF lemmas ($4/13$ is a convergent of the log ratio;
-integer gap $< B^4/A^4$) and keeps `bugeaud_LLL_reduction_proof` /
-`baker_bound_gap3` as uninhabited `def Prop`. Being a convergent
+integer gap $< B^4/A^4$), $|\Lambda|<1/B$ without a Baker cutoff,
+and that $1/\max(4\log A,13\log(B+3))$ is not a lower bound.
+`bugeaud_LLL_reduction_proof` / `baker_davenport_reduction` /
+`baker_bound_gap3` stay uninhabited `def Prop`. Being a convergent
 does not force $B\le 10^6$. `MatveevInterpolation.lean` starts
 Matveev 2000 p.5 interpolation and proves the bare-real ∀-reals
 claim is false; higher-order Schwarz gives a *conditional*
