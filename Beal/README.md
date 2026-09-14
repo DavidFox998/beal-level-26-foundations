@@ -8,7 +8,7 @@ Lake library sources for the Matveev–Beal complement
 `BealKraus`, `BealKrausZsig`, `BealCatalanZsig`, `BealDarmonMerel`,
 `BealDarmonMerel44p`, `BealFLT13`, `BealGenuineV25`,
 `BealTrueV25`, `BealUnconditionalV25`, `BealGap1`, `BealGap2`,
-and `BealGap4`.
+`BealGap4`, and `BealGap5`.
 
 `Beal.lean` re-exports `Beal.Matveev.MatveevThm14General`.
 Substantial proofs live in **root** modules; files under
@@ -25,4 +25,7 @@ Concept DOI `10.5281/zenodo.22379293`. `C1_floor = 143186215390`.
 `BealGap4` proves the gap-4 analogue (`baker_bound_gap4` stays
 `def Prop`; `B` odd, `A` even; `3 ∣ B` compatible; `5 ∣ B`
 impossible; no `(1,0)`).
+`BealGap5` proves the gap-5 analogue (`baker_bound_gap5` stays
+`def Prop`; `B` even, `A` odd; `3 ∣ B` impossible; `5 ∣ B`
+impossible by 5-descent; no `(1,0)`).
 That is not the minted unconditional v25 tag.

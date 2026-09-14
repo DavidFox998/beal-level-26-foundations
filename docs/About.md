@@ -95,6 +95,10 @@ log/LLL lose, no `(1,0)`. `baker_bound_gap2` stays `def Prop`.
 `A⁴+B⁴=(B+4)¹³`: `B` odd `A` even, `3 ∣ B` compatible like
 gap-1, `5 ∣ B` impossible, same log/LLL lose, no `(1,0)`.
 `baker_bound_gap4` stays `def Prop`.
+`BealGap5.lean` proves `baker_bound_gap5_unconditional_nogo` for
+`A⁴+B⁴=(B+5)¹³`: `B` even `A` odd, `3 ∣ B` impossible like
+`f1cb039`, `5 ∣ B` impossible by 5-descent, same log/LLL lose,
+no `(1,0)`. `baker_bound_gap5` stays `def Prop`.
 `L≥1` and `α1=α2=1` forces `Δ=0`. Being a convergent does not force
 `B ≤ 10⁶`. Mathlib-only theorems print axioms
 `[propext, Classical.choice, Quot.sound]`. **0 sorry.**

@@ -34,7 +34,9 @@ no-go in `BealUnconditionalV25.lean`. Gap-1 no-go in
 `BealGap2.lean` (`baker_bound_gap2` stays `def Prop`; `B` odd, `3∣B`
 impossible). Gap-4 no-go in
 `BealGap4.lean` (`baker_bound_gap4` stays `def Prop`; `B` odd, `3∣B`
-compatible, `5∣B` impossible). Uniform
+compatible, `5∣B` impossible). Gap-5 no-go in
+`BealGap5.lean` (`baker_bound_gap5` stays `def Prop`; `B` even, `3∣B`
+impossible, `5∣B` impossible by 5-descent). Uniform
 `wuestholz_product_theorem_exp` / `baker_davenport_reduction`
 stay `def Prop`. The kernel `baker_bound_gap3` stays a `def`;
 the axiom-relative theorem is named `baker_bound_gap3_true`.

@@ -71,4 +71,4 @@ prove `no_sol_when_three_dvd_B` for gap-4 (`C ≡ 1 mod 3`).
 This module does **not** contain `axiom darmon_merel_4413_axiom_gap4`.
 The axiom-relative inhabitant reuses [`BealTrueV25.md`](BealTrueV25.md).
 
-Not a minted unconditional v25 tag.
+Not a minted unconditional v25 tag. Next: gap-5 `C = B+5` in [`BealGap5.md`](BealGap5.md).

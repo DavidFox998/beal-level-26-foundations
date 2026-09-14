@@ -26,12 +26,13 @@ tree. Theorems live in the matching **root** modules:
 | `BealGap1.lean` | `BealGap1.lean` |
 | `BealGap2.lean` | `BealGap2.lean` |
 | `BealGap4.lean` | `BealGap4.lean` |
+| `BealGap5.lean` | `BealGap5.lean` |
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /
 Kraus / KrausZsig / CatalanZsig / DarmonMerel / DarmonMerel44p /
 FLT13 / GenuineV25 / TrueV25 / UnconditionalV25 / Gap1 / Gap2 /
-Gap4 modules.
+Gap4 / Gap5 modules.
 
 `hGen`, `hLLL`, and `baker_bound_gap3_of_hGen_hLLL` stay
 uninhabited `def Prop`. `baker_bound_gap3` stays a `def Prop`
@@ -43,6 +44,8 @@ same axiom). `hGen_gap2`, `hLLL_gap2`, and `baker_bound_gap2`
 stay uninhabited `def Prop` (`baker_bound_gap2_true` reuses the
 same axiom). `hGen_gap4`, `hLLL_gap4`, and `baker_bound_gap4`
 stay uninhabited `def Prop` (`baker_bound_gap4_true` reuses the
+same axiom). `hGen_gap5`, `hLLL_gap5`, and `baker_bound_gap5`
+stay uninhabited `def Prop` (`baker_bound_gap5_true` reuses the
 same axiom). `baker_davenport_reduction`, `bugeaud_LLL_reduction_proof`,
 `wuestholz_subgroup_theorem`, and `wuestholz_product_theorem_exp`
 stay uninhabited `def Prop`.

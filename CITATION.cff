@@ -48,7 +48,11 @@ preferred-citation:
     solution; baker_bound_gap2 stays def Prop). BealGap4 proves
     baker_bound_gap4_unconditional_nogo for A^4+B^4=(B+4)^13
     (B odd A even; 3|B compatible like gap-1; 5|B impossible;
-    (1,0) is not a solution; baker_bound_gap4 stays def Prop). That does not
+    (1,0) is not a solution; baker_bound_gap4 stays def Prop). BealGap5 proves
+    baker_bound_gap5_unconditional_nogo for A^4+B^4=(B+5)^13
+    (B even A odd; 3|B impossible like f1cb039; 5|B impossible
+    by 5-descent; (1,0) is not a solution; baker_bound_gap5 stays
+    def Prop). That does not
     mint this version tag. Unrestricted
     matveev_inequality_real_target and hLLL stay def Prop.
     Not a minted v25 tag. Prior v24.4.0 version

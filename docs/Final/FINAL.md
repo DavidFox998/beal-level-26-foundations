@@ -106,6 +106,10 @@ stays `def Prop`.
 $A^4+B^4=(B+4)^{13}$: $B$ odd $A$ even, $3\mid B$ compatible like
 gap-1, $5\mid B$ impossible, same log/LLL lose, no $(1,0)$.
 `baker_bound_gap4` stays `def Prop`.
+`BealGap5.lean` proves `baker_bound_gap5_unconditional_nogo` for
+$A^4+B^4=(B+5)^{13}$: $B$ even $A$ odd, $3\mid B$ impossible like
+`f1cb039`, $5\mid B$ impossible by 5-descent, same log/LLL lose,
+no $(1,0)$. `baker_bound_gap5` stays `def Prop`.
 Unconditional generic
 $|\Delta|\le\exp(-cLK)$ is false ($L=0$ gives $\Delta=1$);
 $L\ge 1$ and $\alpha_1=\alpha_2=1$ forces $\Delta=0$. Not the unrestricted
