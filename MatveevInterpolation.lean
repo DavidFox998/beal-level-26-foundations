@@ -62,7 +62,15 @@ Proved, axioms `[propext, Classical.choice, Quot.sound]` only:
   `wuestholz_product_theorem_exp_Gm_of_mvPolynomial` is the same
   criterion for `P ∈ ℤ[y0,y1,y2]` of degree `≤ (L,N1,N2)`.
   Gap-3 rules out the single relation `A^4=(B+3)^13`;
-  full independence is still Baker.
+  full independence is still Baker;
+* `wuestholz_product_theorem_exp_of_full_order`: the disjunction
+  `P = 0 ∨ multiplicativelyDependent` when the order is at least
+  the jet dimension. `A^4 ≠ C^13` is not independence (`4` and
+  `2`). A dependent pair admits nonzero `P` with `Φ ≡ 0`
+  (`twoOneRelation`). On `𝐆_a`, Siegel still produces nonzero
+  `P` with order `N/2 < N`. The intermediate-order subgroup
+  statement (`T ≥ c L K` uniformly in `N1,N2`) stays
+  `wuestholz_subgroup_theorem` (`def Prop`).
 
 The full Wüstholz subgroup theorem stays `def Prop`. Exact integer
 vanishing of the *exponential* jet is not an integer linear system
@@ -3095,6 +3103,267 @@ theorem wuestholz_product_theorem_exp_Gm_of_rpow_indep
     (not_mul_dep_of_rpow_indep hindep) L N1 N2 P hdeg
     (by simpa [coeffCount] using hT) hvan
 
+/-! ## Full-order disjunction and sharpness
+
+The inhabited Wüstholz-shaped statement is the jet-dimension
+threshold `T ≥ (L+1)(N1+1)(N2+1)`. Schwarz + Liouville do not
+lower that threshold: they give conditional smallness of `Φ`,
+not a kernel criterion for `T < N`. The intermediate-order
+subgroup theorem stays `def Prop`. This does not make
+`C1_floor` a Matveev interpolation close.
+-/
+
+/-- Jet-dimension form of the requested disjunction: vanishing
+    order `T ≥ (L+1)(N1+1)(N2+1)` forces `P = 0` or a
+    multiplicative relation. Not the intermediate-`T` subgroup
+    theorem, and not a `C1_floor` close. -/
+theorem wuestholz_product_theorem_exp_of_full_order
+    {α1 α2 : ℕ} (hα1 : 1 < α1) (hα2 : 1 < α2)
+    (L N1 N2 : ℕ)
+    (P : MvPolynomial (Fin 3) ℤ)
+    (hdeg : MvPolynomial.degreeOf 0 P ≤ L ∧
+      MvPolynomial.degreeOf 1 P ≤ N1 ∧
+        MvPolynomial.degreeOf 2 P ≤ N2)
+    {T : ℕ} (hT : coeffCount L N1 N2 ≤ T)
+    (hvan : ∀ k < T,
+      iteratedDslope
+          (matveevPhi_of_mvPolynomial P (α1 : ℝ) (α2 : ℝ)) k 0 = 0) :
+    P = 0 ∨ multiplicativelyDependent α1 α2 := by
+  by_cases hdep : multiplicativelyDependent α1 α2
+  · exact Or.inr hdep
+  · exact Or.inl
+      (wuestholz_product_theorem_exp_Gm_of_mvPolynomial hα1 hα2 hdep
+        L N1 N2 P hdeg hT hvan)
+
+/-- `A^4 ≠ C^13` is only one missing relation. The disjunction
+    still has a dependence clause. -/
+theorem wuestholz_product_theorem_exp_of_full_order_of_fourth_ne
+    {α1 α2 : ℕ} (hα1 : 1 < α1) (hα2 : 1 < α2)
+    (_hneq : α1 ^ 4 ≠ α2 ^ 13)
+    (L N1 N2 : ℕ)
+    (P : MvPolynomial (Fin 3) ℤ)
+    (hdeg : MvPolynomial.degreeOf 0 P ≤ L ∧
+      MvPolynomial.degreeOf 1 P ≤ N1 ∧
+        MvPolynomial.degreeOf 2 P ≤ N2)
+    {T : ℕ} (hT : coeffCount L N1 N2 ≤ T)
+    (hvan : ∀ k < T,
+      iteratedDslope
+          (matveevPhi_of_mvPolynomial P (α1 : ℝ) (α2 : ℝ)) k 0 = 0) :
+    P = 0 ∨ multiplicativelyDependent α1 α2 :=
+  wuestholz_product_theorem_exp_of_full_order hα1 hα2 L N1 N2 P hdeg
+    hT hvan
+
+theorem wuestholz_product_theorem_exp_of_full_order_gap3
+    {A B : ℕ} (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hB : 0 < B)
+    (hA : 1 < A) (hC : 1 < B + 3)
+    (L N1 N2 : ℕ)
+    (P : MvPolynomial (Fin 3) ℤ)
+    (hdeg : MvPolynomial.degreeOf 0 P ≤ L ∧
+      MvPolynomial.degreeOf 1 P ≤ N1 ∧
+        MvPolynomial.degreeOf 2 P ≤ N2)
+    {T : ℕ} (hT : coeffCount L N1 N2 ≤ T)
+    (hvan : ∀ k < T,
+      iteratedDslope
+          (matveevPhi_of_mvPolynomial P (A : ℝ) ((B + 3 : ℕ) : ℝ))
+          k 0 = 0) :
+    P = 0 ∨ multiplicativelyDependent A (B + 3) :=
+  wuestholz_product_theorem_exp_of_full_order_of_fourth_ne hA hC
+    (gap3_not_fourth_thirteenth hsol hB) L N1 N2 P hdeg hT hvan
+
+theorem four_two_mul_dep : multiplicativelyDependent 4 2 :=
+  ⟨1, 2, Or.inl one_ne_zero, by decide⟩
+
+theorem four_pow_four_ne_two_pow_thirteen : (4 : ℕ) ^ 4 ≠ 2 ^ 13 := by
+  decide
+
+/-- `A^4 ≠ C^13` does not imply multiplicative independence. -/
+theorem fourth_thirteenth_ne_not_mul_indep :
+    ∃ α1 α2 : ℕ,
+      1 < α1 ∧ 1 < α2 ∧ α1 ^ 4 ≠ α2 ^ 13 ∧
+        multiplicativelyDependent α1 α2 :=
+  ⟨4, 2, by decide, by decide, four_pow_four_ne_two_pow_thirteen,
+    four_two_mul_dep⟩
+
+theorem log_four_eq_two_log_two : log (4 : ℝ) = 2 * log (2 : ℝ) := by
+  have h4 : (4 : ℝ) = 2 ^ 2 := by norm_num
+  rw [h4, Real.log_pow, Nat.cast_ofNat]
+
+theorem alphaPowZ_two_sq (z : ℂ) :
+    alphaPowZ 2 z ^ 2 = alphaPowZ 4 z := by
+  unfold alphaPowZ
+  rw [pow_two, ← Complex.exp_add]
+  have hlog : (Real.log (4 : ℝ) : ℂ) = 2 * (Real.log (2 : ℝ) : ℂ) := by
+    rw [log_four_eq_two_log_two, Complex.ofReal_mul, Complex.ofReal_ofNat]
+  rw [← two_mul, ← mul_assoc, hlog]
+
+/-- The relation `y1 − y2²` along `W` for `(α1,α2)=(4,2)`. -/
+def twoOneRelation : MvPolynomial (Fin 3) ℤ :=
+  MvPolynomial.X 1 - MvPolynomial.X 2 ^ 2
+
+theorem twoOneRelation_ne_zero : twoOneRelation ≠ 0 := by
+  intro h
+  have hcoeff :=
+    congrArg (MvPolynomial.coeff (R := ℤ) (Finsupp.single (1 : Fin 3) 1)) h
+  rw [MvPolynomial.coeff_zero] at hcoeff
+  unfold twoOneRelation at hcoeff
+  have hne :
+      Finsupp.single (2 : Fin 3) 2 ≠ Finsupp.single (1 : Fin 3) 1 := by
+    intro heq
+    have := congrArg (fun f : Fin 3 →₀ ℕ => f (1 : Fin 3)) heq
+    simp [Finsupp.single_apply] at this
+  rw [MvPolynomial.coeff_sub, MvPolynomial.coeff_X, MvPolynomial.coeff_X_pow,
+    if_neg hne] at hcoeff
+  exact one_ne_zero hcoeff
+
+theorem twoOneRelation_eval (z : ℂ) :
+    matveevPhi_of_mvPolynomial twoOneRelation 4 2 z = 0 := by
+  unfold matveevPhi_of_mvPolynomial twoOneRelation
+  rw [← MvPolynomial.coe_eval₂Hom]
+  rw [map_sub (MvPolynomial.eval₂Hom (Int.castRingHom ℂ) (W_coord 4 2 z))]
+  rw [MvPolynomial.eval₂Hom_X']
+  rw [map_pow, MvPolynomial.eval₂Hom_X']
+  rw [W_coord_one, W_coord_two, alphaPowZ_two_sq, sub_self]
+
+theorem iteratedDslope_const_zero (n : ℕ) :
+    iteratedDslope (fun _ : ℂ => (0 : ℂ)) n = fun _ => (0 : ℂ) := by
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+    funext w
+    change dslope (iteratedDslope (fun _ : ℂ => (0 : ℂ)) n) 0 w = 0
+    rw [ih]
+    by_cases hw : w = 0
+    · subst hw
+      rw [dslope_same]
+      simp
+    · rw [dslope_of_ne _ hw]
+      simp [slope]
+
+/-- Dependence is sharp: nonzero `P` can make `Φ` vanish to every
+    order. `4^4 ≠ 2^13`, so ruling out one ratio is not enough. -/
+theorem dependent_pair_allows_identically_zero_Phi :
+    twoOneRelation ≠ 0 ∧
+      multiplicativelyDependent 4 2 ∧
+        (4 : ℕ) ^ 4 ≠ 2 ^ 13 ∧
+          ∀ T : ℕ, ∀ k < T,
+            iteratedDslope (matveevPhi_of_mvPolynomial twoOneRelation 4 2)
+              k 0 = 0 := by
+  refine ⟨twoOneRelation_ne_zero, four_two_mul_dep,
+    four_pow_four_ne_two_pow_thirteen, ?_⟩
+  intro T k _hk
+  have h0 : matveevPhi_of_mvPolynomial twoOneRelation 4 2 =
+      fun _ => (0 : ℂ) := by
+    funext z
+    exact twoOneRelation_eval z
+  simpa [h0, iteratedDslope_const_zero k]
+
+def mvPolynomialOfCoeffs (L N1 N2 : ℕ)
+    (c : Fin (coeffCount L N1 N2) → ℤ) : MvPolynomial (Fin 3) ℤ :=
+  ∑ j : Fin (coeffCount L N1 N2),
+    MvPolynomial.monomial (monomialOfDecodes L N1 N2 j) (c j)
+
+theorem coeff_mvPolynomialOfCoeffs (L N1 N2 : ℕ)
+    (c : Fin (coeffCount L N1 N2) → ℤ) (d : Fin 3 →₀ ℕ) :
+    MvPolynomial.coeff (R := ℤ) d (mvPolynomialOfCoeffs L N1 N2 c) =
+      ∑ j : Fin (coeffCount L N1 N2),
+        if monomialOfDecodes L N1 N2 j = d then c j else 0 := by
+  unfold mvPolynomialOfCoeffs
+  rw [MvPolynomial.coeff_sum]
+  refine Finset.sum_congr rfl fun j _ => ?_
+  rw [MvPolynomial.coeff_monomial]
+
+theorem coeffsOf_mvPolynomialOfCoeffs (L N1 N2 : ℕ)
+    (c : Fin (coeffCount L N1 N2) → ℤ) :
+    coeffsOfMvPolynomial (mvPolynomialOfCoeffs L N1 N2 c) L N1 N2 = c := by
+  funext j
+  unfold coeffsOfMvPolynomial
+  rw [coeff_mvPolynomialOfCoeffs]
+  refine (Finset.sum_eq_single j ?_ ?_).trans ?_
+  · intro j' _ hne
+    split_ifs with heq
+    · exact (hne (monomialOfDecodes_injective L N1 N2 heq)).elim
+    · rfl
+  · simp
+  · simp
+
+theorem mvPolynomialOfCoeffs_degree (L N1 N2 : ℕ)
+    (c : Fin (coeffCount L N1 N2) → ℤ) :
+    MvPolynomial.degreeOf 0 (mvPolynomialOfCoeffs L N1 N2 c) ≤ L ∧
+      MvPolynomial.degreeOf 1 (mvPolynomialOfCoeffs L N1 N2 c) ≤ N1 ∧
+        MvPolynomial.degreeOf 2 (mvPolynomialOfCoeffs L N1 N2 c) ≤ N2 := by
+  have hbox : ∀ d ∈ (mvPolynomialOfCoeffs L N1 N2 c).support,
+      d 0 ≤ L ∧ d 1 ≤ N1 ∧ d 2 ≤ N2 := by
+    intro d hd
+    have hne :
+        MvPolynomial.coeff (R := ℤ) d (mvPolynomialOfCoeffs L N1 N2 c) ≠ 0 :=
+      MvPolynomial.mem_support_iff.mp hd
+    rw [coeff_mvPolynomialOfCoeffs] at hne
+    have hex : ∃ j, (if monomialOfDecodes L N1 N2 j = d then c j else 0) ≠ 0 := by
+      by_contra hnone
+      push_neg at hnone
+      exact hne (Finset.sum_eq_zero fun j _ => hnone j)
+    obtain ⟨j, hj⟩ := hex
+    have heq : monomialOfDecodes L N1 N2 j = d := by
+      by_contra hne'
+      simp [hne'] at hj
+    subst heq
+    rw [monomialOfDecodes_zero, monomialOfDecodes_one, monomialOfDecodes_two]
+    exact ⟨Nat.lt_succ_iff.mp (decodeCoeffL_lt L N1 N2 j),
+      Nat.lt_succ_iff.mp (decodeCoeffK1_lt L N1 N2 j),
+      Nat.lt_succ_iff.mp (decodeCoeffK2_lt L N1 N2 j)⟩
+  exact ⟨MvPolynomial.degreeOf_le_iff.mpr fun d hd => (hbox d hd).1,
+    MvPolynomial.degreeOf_le_iff.mpr fun d hd => (hbox d hd).2.1,
+    MvPolynomial.degreeOf_le_iff.mpr fun d hd => (hbox d hd).2.2⟩
+
+theorem mvPolynomialOfCoeffs_eq_zero_iff (L N1 N2 : ℕ)
+    (c : Fin (coeffCount L N1 N2) → ℤ) :
+    mvPolynomialOfCoeffs L N1 N2 c = 0 ↔ c = 0 := by
+  constructor
+  · intro h
+    have hcoe := coeffsOf_mvPolynomialOfCoeffs L N1 N2 c
+    rw [h] at hcoe
+    funext j
+    have hz :
+        coeffsOfMvPolynomial (0 : MvPolynomial (Fin 3) ℤ) L N1 N2 j = 0 := by
+      simp [coeffsOfMvPolynomial, MvPolynomial.coeff_zero]
+    have hj := congrFun hcoe.symm j
+    rw [hz] at hj
+    exact hj
+  · intro h
+    unfold mvPolynomialOfCoeffs
+    simp [h, MvPolynomial.monomial_zero]
+
+/-- On `𝐆_a` (`α1=α2=1`), Siegel produces a nonzero integer `P`
+    vanishing to order `N/2 < N`. Intermediate `T` does not force
+    `P = 0`. -/
+theorem wuestholz_Ga_siegel_below_full_order
+    {L N1 N2 : ℕ} (hN : 2 ≤ coeffCount L N1 N2) :
+    ∃ P : MvPolynomial (Fin 3) ℤ,
+      P ≠ 0 ∧
+        (MvPolynomial.degreeOf 0 P ≤ L ∧
+            MvPolynomial.degreeOf 1 P ≤ N1 ∧
+              MvPolynomial.degreeOf 2 P ≤ N2) ∧
+          siegel_T L N1 N2 < coeffCount L N1 N2 ∧
+            ∀ k < siegel_T L N1 N2,
+              iteratedDslope (matveevPhi_of_mvPolynomial P 1 1) k 0 = 0 := by
+  obtain ⟨c, hc0, _, _, hvan⟩ := matveevPhi_vanishing_exists_T hN
+  refine ⟨mvPolynomialOfCoeffs L N1 N2 c, ?_,
+    mvPolynomialOfCoeffs_degree L N1 N2 c, siegel_T_lt hN, ?_⟩
+  · intro hP
+    exact hc0 ((mvPolynomialOfCoeffs_eq_zero_iff L N1 N2 c).mp hP)
+  · intro k hk
+    have hdeg := mvPolynomialOfCoeffs_degree L N1 N2 c
+    have hΦ :=
+      matveevPhi_of_mvPolynomial_eq_of_coeffs
+        (mvPolynomialOfCoeffs L N1 N2 c) hdeg 1 1
+    have hcoe := coeffsOf_mvPolynomialOfCoeffs L N1 N2 c
+    have hfun :
+        matveevPhi_of_mvPolynomial (mvPolynomialOfCoeffs L N1 N2 c) 1 1 =
+          matveevPhi_of_coeffs L N1 N2 c 1 1 := by
+      funext z
+      simpa [hcoe] using hΦ z
+    simpa [hfun] using hvan k hk
+
 /-! ## Remaining steps (not in Mathlib 4.12) -/
 
 set_option linter.unusedVariables false
@@ -3105,6 +3374,28 @@ def wuestholz_product_theorem : Prop :=
 
 theorem wuestholz_product_theorem_polynomial : wuestholz_product_theorem :=
   zero_estimate_polynomial
+
+/-- Intermediate-order subgroup statement: some `c` makes
+    `T ≥ c L K` force `P = 0 ∨ dependence`, uniformly in the
+    `G_m` degrees. Not in Mathlib 4.12. Jet invertibility needs
+    `T ≥ (L+1)(N1+1)(N2+1)`, which is not of the shape `c L K`
+    uniformly in `N1,N2`. Schwarz + Liouville do not close this.
+    The inhabited special case is
+    `wuestholz_product_theorem_exp_of_full_order`. -/
+def wuestholz_subgroup_theorem : Prop :=
+  ∃ c : ℝ, 0 < c ∧
+    ∀ (α1 α2 L N1 N2 K T : ℕ) (P : MvPolynomial (Fin 3) ℤ),
+      1 < α1 →
+        1 < α2 →
+          MvPolynomial.degreeOf 0 P ≤ L →
+            MvPolynomial.degreeOf 1 P ≤ N1 →
+              MvPolynomial.degreeOf 2 P ≤ N2 →
+                c * (L : ℝ) * (K : ℝ) ≤ (T : ℝ) →
+                  (∀ k < T,
+                      iteratedDslope
+                          (matveevPhi_of_mvPolynomial P α1 α2) k 0 =
+                        0) →
+                    P = 0 ∨ multiplicativelyDependent α1 α2
 
 /-- Wüstholz along `W ⊂ 𝐆_a × 𝐆_m²` for exponential polynomials.
     Not in Mathlib 4.12; inhabited only on `𝐆_a`. -/
@@ -3358,6 +3649,12 @@ theorem matveev_thm14_n2_of_interpolation
 #check wuestholz_product_theorem_exp_Gm_L0
 #check wuestholz_product_theorem_exp_Gm_of_mvPolynomial
 #check wuestholz_product_theorem_exp_Gm_of_rpow_indep
+#check wuestholz_product_theorem_exp_of_full_order
+#check wuestholz_product_theorem_exp_of_full_order_gap3
+#check fourth_thirteenth_ne_not_mul_indep
+#check dependent_pair_allows_identically_zero_Phi
+#check wuestholz_Ga_siegel_below_full_order
+#check wuestholz_subgroup_theorem
 #check matveevPhi_of_mvPolynomial
 #check W_map
 #check exp_poly_jet_zero
@@ -3386,5 +3683,10 @@ theorem matveev_thm14_n2_of_interpolation
 #print axioms wuestholz_product_theorem_exp_Gm_of_mvPolynomial
 #print axioms wuestholz_product_theorem_exp_Gm_of_rpow_indep
 #print axioms not_mul_dep_of_rpow_indep
+#print axioms wuestholz_product_theorem_exp_of_full_order
+#print axioms wuestholz_product_theorem_exp_of_full_order_gap3
+#print axioms dependent_pair_allows_identically_zero_Phi
+#print axioms wuestholz_Ga_siegel_below_full_order
+#print axioms fourth_thirteenth_ne_not_mul_indep
 
 end BealMatveevBeal.MatveevInterpolation

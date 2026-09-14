@@ -226,6 +226,21 @@ if "def matveevPhi_of_mvPolynomial" not in interp:
 if "theorem wuestholz_product_theorem_exp_Gm_of_rpow_indep" not in interp:
     print("wuestholz_product_theorem_exp_Gm_of_rpow_indep missing", file=sys.stderr)
     sys.exit(1)
+if "theorem wuestholz_product_theorem_exp_of_full_order" not in interp:
+    print("wuestholz_product_theorem_exp_of_full_order missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem dependent_pair_allows_identically_zero_Phi" not in interp:
+    print("dependent_pair_allows_identically_zero_Phi missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem wuestholz_Ga_siegel_below_full_order" not in interp:
+    print("wuestholz_Ga_siegel_below_full_order missing", file=sys.stderr)
+    sys.exit(1)
+if "def wuestholz_subgroup_theorem" not in interp:
+    print("wuestholz_subgroup_theorem must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem wuestholz_subgroup_theorem\b", interp, re.M):
+    print("do not inhabit wuestholz_subgroup_theorem", file=sys.stderr)
+    sys.exit(1)
 if "theorem matveev_thm14_n2_explicit_of_nat_is_corollary_of_genuine" in interp:
     print("do not claim Track 1 is a corollary of genuine Matveev", file=sys.stderr)
     sys.exit(1)
@@ -271,6 +286,7 @@ print("  analytic small bound is conditional; polynomial vanishing inhabited")
 print("  Siegel + G_a jet vanishing: matveevPhi_vanishing_exists_T")
 print("  L>=1 alpha=1 gives Δ=0; jet invertibility wuestholz_product_theorem_exp_Gm")
 print("  MvPolynomial form: wuestholz_product_theorem_exp_Gm_of_mvPolynomial")
+print("  full-order disjunction P=0 or dependent; intermediate T stays def Prop")
 print("  subgroup-theorem Wüstholz stays def Prop; not a C1_floor close")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")

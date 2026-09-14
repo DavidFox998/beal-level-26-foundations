@@ -17,7 +17,8 @@ $\mathbf{G}_a$. Siegel produces a G_a jet of $\Phi$ vanishing to
 order $N/2$ (`matveevPhi_vanishing_exists_T`). Independent
 frequencies give jet invertibility
 (`wuestholz_product_theorem_exp_Gm`, including the
-`MvPolynomial` form); the Wüstholz subgroup
+`MvPolynomial` form and the full-order disjunction
+`P = 0 ∨` dependence); the intermediate-order Wüstholz subgroup
 theorem stays `def Prop`. Unconditional generic
 $|\Delta|\le\exp(-cLK)$ is false ($L=0$ gives $\Delta=1$);
 $L\ge 1$ and $\alpha_1=\alpha_2=1$ forces $\Delta=0$. Not the unrestricted

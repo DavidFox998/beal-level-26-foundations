@@ -2,7 +2,7 @@
 
 [![Matveev-Beal CI](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml/badge.svg)](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml)
 
-This repo is foundations-level-26, the Matveev proof for beal-conjecture f7bbdc5. Current HEAD: 0 sorry. `matveev_gap3_lower` is the **B≤10^6 integer-gap** close (`|Λ| > exp(-height_B0 log height_B0)` on gap-3 solutions with `B ≤ 10^6`) via `matveev_thm14_n2_explicit_of_nat` and `matveev_product_bound_of_B_le_B0`. `MatveevLLL.lean` proves the elementary CF lemmas (`4/13` is a convergent of the log ratio; integer gap `<` `B⁴/A⁴`) and keeps `bugeaud_LLL_reduction_proof` / `baker_bound_gap3` as uninhabited `def Prop` — being a convergent does not force `B ≤ 10⁶`. `MatveevInterpolation.lean` starts genuine Matveev 2000 p.5 interpolation (Δ, Vandermonde, polynomial product theorem, Hadamard, higher-order Schwarz, Cauchy estimates, Siegel / G_a jet vanishing) and proves the bare-real ∀-reals claim is **false**. The analytic `|Δ| ≤ exp(−c L K)` bound is **conditional** on a vanishing-order hypothesis; polynomial vanishing and the G_a jet of `Φ` (`α1=α2=1`) are inhabited. Independent frequencies make the order-`N` jet of `{z^ℓ α1^{k1 z} α2^{k2 z}}` injective (`wuestholz_product_theorem_exp_Gm`, also as `P ∈ ℤ[y0,y1,y2]`); that is not the Wüstholz subgroup theorem and does not close `C1_floor`. The subgroup-theorem statement stays `def Prop`. `L≥1` and `α1=α2=1` forces `Δ=0`. C1_floor=143186215390. Not unrestricted `matveev_inequality_real_target` (product false for huge B), not `hLLL`. Not v25. lake build BealMatveevBeal green. NOT waiting on Mathlib.
+This repo is foundations-level-26, the Matveev proof for beal-conjecture f7bbdc5. Current HEAD: 0 sorry. `matveev_gap3_lower` is the **B≤10^6 integer-gap** close (`|Λ| > exp(-height_B0 log height_B0)` on gap-3 solutions with `B ≤ 10^6`) via `matveev_thm14_n2_explicit_of_nat` and `matveev_product_bound_of_B_le_B0`. `MatveevLLL.lean` proves the elementary CF lemmas (`4/13` is a convergent of the log ratio; integer gap `<` `B⁴/A⁴`) and keeps `bugeaud_LLL_reduction_proof` / `baker_bound_gap3` as uninhabited `def Prop` — being a convergent does not force `B ≤ 10⁶`. `MatveevInterpolation.lean` starts genuine Matveev 2000 p.5 interpolation (Δ, Vandermonde, polynomial product theorem, Hadamard, higher-order Schwarz, Cauchy estimates, Siegel / G_a jet vanishing) and proves the bare-real ∀-reals claim is **false**. The analytic `|Δ| ≤ exp(−c L K)` bound is **conditional** on a vanishing-order hypothesis; polynomial vanishing and the G_a jet of `Φ` (`α1=α2=1`) are inhabited. Independent frequencies make the order-`N` jet of `{z^ℓ α1^{k1 z} α2^{k2 z}}` injective (`wuestholz_product_theorem_exp_Gm`, also as `P ∈ ℤ[y0,y1,y2]`); the full-order disjunction is `P = 0 ∨` dependence. That is not the intermediate-order Wüstholz subgroup theorem and does not close `C1_floor`. The subgroup-theorem statement stays `def Prop`. `L≥1` and `α1=α2=1` forces `Δ=0`. C1_floor=143186215390. Not unrestricted `matveev_inequality_real_target` (product false for huge B), not `hLLL`. Not v25. lake build BealMatveevBeal green. NOT waiting on Mathlib.
 
 Monorepo beal-conjecture stays beal-conjecture, this repo is foundations-level-26 Matveev-Beal complement.
 
@@ -79,7 +79,9 @@ On a gap-3 solution, `B < A` and `A ≈ (B+3)^{13/4}`. The old
   `(L+1)(N1+1)(N2+1)` at `0` (proved; jet invertibility). The
   `MvPolynomial` form
   `wuestholz_product_theorem_exp_Gm_of_mvPolynomial` is the same
-  criterion for `P ∈ ℤ[y0,y1,y2]`. The
+  criterion for `P ∈ ℤ[y0,y1,y2]`. The full-order disjunction
+  `wuestholz_product_theorem_exp_of_full_order` is
+  `P = 0 ∨` dependence. The intermediate-order
   Wüstholz subgroup theorem stays `def Prop`
 - `siegel_lemma` / `matveevPhi_vanishing_exists_T` — underdetermined
   integer jet has a nonzero kernel of Siegel height; G_a `Φ`

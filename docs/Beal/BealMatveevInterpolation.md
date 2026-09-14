@@ -82,8 +82,17 @@ on `LEAN_PATH`).
   vanishing of `Φ(z)=P(z,α1^z,α2^z)` to order
   `T ≥ (L+1)(N1+1)(N2+1)` forces `P = 0`. Gap-3 rules out the
   single relation `A^4=(B+3)^13`; remaining relations are Baker
-  (`baker_bound_gap3`). This does **not** close Matveev 2000 /
-  `C1_floor`. Track 1 stays the elementary `1/max` bound.
+  (`baker_bound_gap3`). The disjunction
+  `wuestholz_product_theorem_exp_of_full_order` packages
+  `P = 0 ∨ multiplicativelyDependent` at the jet-dimension
+  threshold. `A^4 ≠ C^13` is not independence (`4` and `2`);
+  a dependent pair admits nonzero `P` with `Φ ≡ 0`
+  (`dependent_pair_allows_identically_zero_Phi`). On `𝐆_a`,
+  Siegel still produces nonzero `P` with order `N/2 < N`.
+  The intermediate-order statement `T ≥ c L K` uniformly in
+  `N1,N2` stays `wuestholz_subgroup_theorem` (`def Prop`).
+  This does **not** close Matveev 2000 / `C1_floor`. Track 1
+  stays the elementary `1/max` bound.
 - Conditional analytic smallness
   `matveev_interpolation_analytic_small_bound`: if the order is `T`
   and `T log 2 ≥ c L K + log M`, then `|f| ≤ exp(−c L K)` on
@@ -116,8 +125,10 @@ Axioms: `[propext, Classical.choice, Quot.sound]` only.
   theorem for `P` along `W ⊂ 𝐆_a × 𝐆_m²`. Not in Mathlib 4.12.
   The inhabited theorem is the jet criterion
   `wuestholz_product_theorem_exp_Gm` /
-  `wuestholz_product_theorem_exp_Gm_of_mvPolynomial`, not this
-  `def Prop`.
+  `wuestholz_product_theorem_exp_Gm_of_mvPolynomial` /
+  `wuestholz_product_theorem_exp_of_full_order`, not this
+  `def Prop`. `wuestholz_subgroup_theorem` is the
+  intermediate-`T` statement and also stays a `def Prop`.
 - `size_upper_bound` — unconditional `|Δ| ≤ exp(−c n²)` on a generic
   interpolation matrix. False for `L=0` (`Δ=1`). The *conditional*
   Schwarz bound is a theorem; the G_a jet of `Φ` vanishes after
