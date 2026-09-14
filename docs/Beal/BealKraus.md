@@ -54,6 +54,8 @@ Axioms `[propext, Classical.choice, Quot.sound]` only.
 - `wuestholz_product_theorem_exp` / `baker_davenport_reduction`.
 
 See also [`BealKrausZsig.md`](BealKrausZsig.md) for the
-Gaussian / Thue argument-form no-go.
+Gaussian / Thue argument-form no-go and
+[`BealDarmonMerel.md`](BealDarmonMerel.md) for Darmon–Merel
+coprime failure when `3 ∣ B`.
 
 Not a minted v25 tag.

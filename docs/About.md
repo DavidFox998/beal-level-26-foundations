@@ -66,7 +66,10 @@ on `|sin(13θ)|` needs `C1 < 2`, and `C1_floor` / `242` / `2` all
 lose to `B⁴/C¹³` on `B ≥ B0`. `BealCatalanZsig.lean` proves the
 Catalan / Zsigmondy no-go: gap-3 is not Catalan shape, `3 ∤ B`
 gives `gcd(A,B)=1`, and the same `C1 < 2` cutoff still fails.
-`L≥1` and `α1=α2=1` forces
+`BealDarmonMerel.lean` proves `3 ∣ B` forces `3 ∣ A` so Darmon–Merel
+coprime hypothesis fails, while `13 ∣ 26` / `13 ∤ 8` keep an
+unlowered prime in `A` from producing uniform level 32.
+Darmon–Merel stays `def Prop`. `L≥1` and `α1=α2=1` forces
 `Δ=0`. Being a convergent does not force `B ≤ 10⁶`. Axioms
 `[propext, Classical.choice, Quot.sound]`. **0 sorry.**
 

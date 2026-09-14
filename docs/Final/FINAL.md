@@ -73,6 +73,10 @@ stay `def Prop`.
 `X^p-Y^q=1`, that `3 \nmid B` gives `\gcd(A,B)=1` so a
 Zsigmondy prime in `B` does not force `13 \mid v_p(A)`, and
 that the same `C1 < 2` cutoff still fails.
+`BealDarmonMerel.lean` proves `3 \mid B` forces `3 \mid A` so
+Darmon–Merel coprime hypothesis fails, and that an unlowered
+prime in `A` makes the residual estimate not divide 32.
+Darmon–Merel / Ribet stay `def Prop`.
 Unconditional generic
 $|\Delta|\le\exp(-cLK)$ is false ($L=0$ gives $\Delta=1$);
 $L\ge 1$ and $\alpha_1=\alpha_2=1$ forces $\Delta=0$. Not the unrestricted

@@ -26,6 +26,9 @@ C1_floor / 242 / 2 all lose to B⁴/C¹³ on B≥B0).
 Catalan / Zsigmondy no-go in BealCatalanZsig.lean (gap-3 is
 not X^p−Y^q=1; 3∤B ⇒ gcd(A,B)=1; Zsigmondy primes in B do
 not force 13∣v_p(A); still need C1<2).
+Darmon–Merel / Ribet residual-level no-go in
+BealDarmonMerel.lean (3∣B ⇒ 3∣A so gcd≠1; 13∣26 / 13∤8;
+unlowered A-prime means residual estimate ∤ 32).
 bugeaud_LLL_reduction_proof stays def Prop. Not v25.
 -/
 import Mathlib
@@ -39,6 +42,7 @@ import MatveevThreeLogs
 import BealKraus
 import BealKrausZsig
 import BealCatalanZsig
+import BealDarmonMerel
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -893,6 +897,10 @@ theorem gap3_forall_of_baker
 #check BealCatalanZsig.gap3_not_catalan_shape
 #check BealCatalanZsig.gcd_A_B_eq_one_of_not_three_dvd_B
 #check BealCatalanZsig.C1_floor_mihailescu_zsigmondy_nogo
+#check BealDarmonMerel.baker_bound_gap3_darmon_merel_nogo
+#check BealDarmonMerel.darmon_merel_hypothesis_fails_when_three_dvd_B
+#check BealDarmonMerel.kraus_uniform_residual_level_32_nogo
+#check BealDarmonMerel.three_dvd_A_of_three_dvd_B
 #print axioms C1_floor_eq
 #print axioms height_B0_eq
 #print axioms height_bound_gap3
@@ -947,5 +955,9 @@ theorem gap3_forall_of_baker
 #print axioms BealCatalanZsig.gap3_not_catalan_shape
 #print axioms BealCatalanZsig.gcd_A_B_eq_one_of_not_three_dvd_B
 #print axioms BealCatalanZsig.C1_floor_mihailescu_zsigmondy_nogo
+#print axioms BealDarmonMerel.baker_bound_gap3_darmon_merel_nogo
+#print axioms BealDarmonMerel.darmon_merel_hypothesis_fails_when_three_dvd_B
+#print axioms BealDarmonMerel.kraus_uniform_residual_level_32_nogo
+#print axioms BealDarmonMerel.three_dvd_A_of_three_dvd_B
 
 end BealMatveevBeal

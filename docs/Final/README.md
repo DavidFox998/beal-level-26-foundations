@@ -21,7 +21,8 @@ full-order product packaging in `WuestholzProduct.lean`,
 log-method no-go in `MatveevThreeLogs.lean`, displayed Frey /
 Kraus no-go in `BealKraus.lean`, Gaussian/Thue no-go in
 `BealKrausZsig.lean`, Catalan/Zsigmondy no-go in
-`BealCatalanZsig.lean`. Uniform
+`BealCatalanZsig.lean`. Darmon–Merel / Ribet residual-level
+no-go in `BealDarmonMerel.lean`. Uniform
 `wuestholz_product_theorem_exp` / `baker_davenport_reduction` /
 `baker_bound_gap3` stay `def Prop`. Not v25.
 

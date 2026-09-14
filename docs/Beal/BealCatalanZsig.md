@@ -40,6 +40,7 @@ Axioms `[propext, Classical.choice, Quot.sound]` only.
 - `mihailescu_catalan` — Catalan / Mihăilescu. Not in Mathlib 4.12.
 - Darmon–Merel / Ribet / Kraus residual-level.
 
-See also [`BealKrausZsig.md`](BealKrausZsig.md).
+See also [`BealKrausZsig.md`](BealKrausZsig.md) and
+[`BealDarmonMerel.md`](BealDarmonMerel.md).
 
 Not a minted v25 tag.

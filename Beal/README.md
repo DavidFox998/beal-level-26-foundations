@@ -5,7 +5,8 @@ Lake library sources for the Matveev–Beal complement
 `Beal.Matveev` plus root modules `MatveevThm14Proof`,
 `MatveevLLL`, `MatveevInterpolation`, `MatveevBugeaud`,
 `WuestholzSubgroup`, `WuestholzProduct`, `MatveevThreeLogs`,
-`BealKraus`, `BealKrausZsig`, and `BealCatalanZsig`.
+`BealKraus`, `BealKrausZsig`, `BealCatalanZsig`, and
+`BealDarmonMerel`.
 
 `Beal.lean` re-exports `Beal.Matveev.MatveevThm14General`.
 Substantial proofs live in **root** modules; files under

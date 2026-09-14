@@ -23,4 +23,4 @@ lean_lib «BealMatveevBeal» where
   globs := #[.submodules `Beal.Matveev, .one `MatveevThm14Proof, .one `MatveevLLL,
     .one `MatveevInterpolation, .one `MatveevBugeaud, .one `WuestholzSubgroup,
     .one `WuestholzProduct, .one `MatveevThreeLogs, .one `BealKraus, .one `BealKrausZsig,
-    .one `BealCatalanZsig]
+    .one `BealCatalanZsig, .one `BealDarmonMerel]
