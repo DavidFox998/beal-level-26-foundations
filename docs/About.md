@@ -17,7 +17,8 @@ false. Polynomial vanishing inhabits Schwarz on `𝐆_a`;
 `matveevPhi_vanishing_exists_T` inhabits the G_a jet of `Φ`.
 Analytic smallness of a generic `Δ` is still conditional.
 Independent frequencies make the jet of `{z^ℓ α1^{k1 z} α2^{k2 z}}`
-injective (`wuestholz_product_theorem_exp_Gm`); the Wüstholz
+injective (`wuestholz_product_theorem_exp_Gm`, also for
+`P ∈ ℤ[y0,y1,y2]`); the Wüstholz
 subgroup theorem stays `def Prop`. `L≥1` and `α1=α2=1` forces
 `Δ=0`. Being a convergent does not force `B ≤ 10⁶`. Axioms
 `[propext, Classical.choice, Quot.sound]`. **0 sorry.**

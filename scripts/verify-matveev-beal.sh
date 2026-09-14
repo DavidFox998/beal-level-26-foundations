@@ -217,6 +217,18 @@ if "theorem wuestholz_product_theorem_exp_Gm" not in interp:
 if "theorem exp_poly_jet_zero" not in interp:
     print("exp_poly_jet_zero missing", file=sys.stderr)
     sys.exit(1)
+if "theorem wuestholz_product_theorem_exp_Gm_of_mvPolynomial" not in interp:
+    print("wuestholz_product_theorem_exp_Gm_of_mvPolynomial missing", file=sys.stderr)
+    sys.exit(1)
+if "def matveevPhi_of_mvPolynomial" not in interp:
+    print("matveevPhi_of_mvPolynomial missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem wuestholz_product_theorem_exp_Gm_of_rpow_indep" not in interp:
+    print("wuestholz_product_theorem_exp_Gm_of_rpow_indep missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem matveev_thm14_n2_explicit_of_nat_is_corollary_of_genuine" in interp:
+    print("do not claim Track 1 is a corollary of genuine Matveev", file=sys.stderr)
+    sys.exit(1)
 if "def wuestholz_product_theorem_exp" not in interp:
     print("wuestholz_product_theorem_exp must stay a def Prop", file=sys.stderr)
     sys.exit(1)
@@ -258,6 +270,7 @@ print("  interpolation: Δ, Vandermonde, G_a product, Hadamard, Schwarz, Cauchy;
 print("  analytic small bound is conditional; polynomial vanishing inhabited")
 print("  Siegel + G_a jet vanishing: matveevPhi_vanishing_exists_T")
 print("  L>=1 alpha=1 gives Δ=0; jet invertibility wuestholz_product_theorem_exp_Gm")
+print("  MvPolynomial form: wuestholz_product_theorem_exp_Gm_of_mvPolynomial")
 print("  subgroup-theorem Wüstholz stays def Prop; not a C1_floor close")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")

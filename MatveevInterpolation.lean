@@ -58,7 +58,10 @@ Proved, axioms `[propext, Classical.choice, Quot.sound]` only:
 * `wuestholz_product_theorem_exp_Gm`: for independent `α1,α2`,
   a nonzero coefficient vector cannot make `Φ` vanish to order
   `≥ (L+1)(N1+1)(N2+1)` at `0` (jet of `{z^ℓ α1^{k1 z} α2^{k2 z}}`
-  is injective). Gap-3 rules out the single relation `A^4=(B+3)^13`;
+  is injective). The `MvPolynomial` form
+  `wuestholz_product_theorem_exp_Gm_of_mvPolynomial` is the same
+  criterion for `P ∈ ℤ[y0,y1,y2]` of degree `≤ (L,N1,N2)`.
+  Gap-3 rules out the single relation `A^4=(B+3)^13`;
   full independence is still Baker.
 
 The full Wüstholz subgroup theorem stays `def Prop`. Exact integer
@@ -2745,6 +2748,353 @@ theorem wuestholz_product_theorem_exp_Gm
   rw [hpoly, coeff_zero] at hcz
   exact Int.cast_eq_zero.mp hcz
 
+/-! ## `MvPolynomial` wrapper (requested API)
+
+Same jet criterion, now for `P ∈ ℤ[y0,y1,y2]` of degree at most
+`(L,N1,N2)`. This is still not the Wüstholz subgroup theorem and
+does not close Matveev 2000 / `C1_floor`.
+-/
+
+def W_coord (α1 α2 : ℝ) (z : ℂ) : Fin 3 → ℂ :=
+  fun i =>
+    if i = 0 then z
+    else if i = 1 then alphaPowZ α1 z
+    else alphaPowZ α2 z
+
+theorem W_coord_zero (α1 α2 : ℝ) (z : ℂ) : W_coord α1 α2 z 0 = z := by
+  simp [W_coord]
+
+theorem W_coord_one (α1 α2 : ℝ) (z : ℂ) :
+    W_coord α1 α2 z 1 = alphaPowZ α1 z := by
+  simp [W_coord]
+
+theorem W_coord_two (α1 α2 : ℝ) (z : ℂ) :
+    W_coord α1 α2 z 2 = alphaPowZ α2 z := by
+  simp [W_coord]
+
+theorem W_coord_prod (α1 α2 : ℝ) (z : ℂ) (d : Fin 3 →₀ ℕ) :
+    ∏ i : Fin 3, W_coord α1 α2 z i ^ d i =
+      z ^ d 0 * alphaPowZ α1 z ^ d 1 * alphaPowZ α2 z ^ d 2 := by
+  rw [Fin.prod_univ_succ, Fin.prod_univ_succ, Fin.prod_univ_succ,
+    Fin.prod_univ_zero]
+  simp [W_coord, mul_assoc]
+
+/-- `Φ(z) = P(z, α1^z, α2^z)` for an integer polynomial in three
+    variables. -/
+def matveevPhi_of_mvPolynomial (P : MvPolynomial (Fin 3) ℤ)
+    (α1 α2 : ℝ) (z : ℂ) : ℂ :=
+  MvPolynomial.eval₂ (Int.castRingHom ℂ) (W_coord α1 α2 z) P
+
+theorem encode_lt {L N1 N2 ℓ k1 k2 : ℕ}
+    (hℓ : ℓ ≤ L) (hk1 : k1 ≤ N1) (hk2 : k2 ≤ N2) :
+    ℓ * n12 N1 N2 + k1 * (N2 + 1) + k2 < coeffCount L N1 N2 := by
+  have h12 : k1 * (N2 + 1) + k2 < n12 N1 N2 := by
+    unfold n12
+    have hle : k1 * (N2 + 1) + k2 ≤ N1 * (N2 + 1) + N2 :=
+      Nat.add_le_add (Nat.mul_le_mul_right _ hk1) hk2
+    have hlt : N1 * (N2 + 1) + N2 < (N1 + 1) * (N2 + 1) := by
+      rw [Nat.succ_mul]
+      exact Nat.add_lt_add_left (Nat.lt_succ_self N2) _
+    exact lt_of_le_of_lt hle hlt
+  have hsum :
+      ℓ * n12 N1 N2 + (k1 * (N2 + 1) + k2) < (ℓ + 1) * n12 N1 N2 := by
+    rw [Nat.succ_mul]
+    exact Nat.add_lt_add_left h12 _
+  have hℓ1 : (ℓ + 1) * n12 N1 N2 ≤ (L + 1) * n12 N1 N2 :=
+    Nat.mul_le_mul_right _ (Nat.succ_le_succ hℓ)
+  have hrew : ℓ * n12 N1 N2 + k1 * (N2 + 1) + k2 =
+      ℓ * n12 N1 N2 + (k1 * (N2 + 1) + k2) := by
+    ac_rfl
+  have hcount : (L + 1) * n12 N1 N2 = coeffCount L N1 N2 :=
+    (coeffCount_eq_mul_n12 L N1 N2).symm
+  rw [hrew]
+  exact lt_of_lt_of_le hsum (hcount ▸ hℓ1)
+
+def encodeOfBox (L N1 N2 : ℕ) (d : Fin 3 →₀ ℕ)
+    (hd : d 0 ≤ L ∧ d 1 ≤ N1 ∧ d 2 ≤ N2) :
+    Fin (coeffCount L N1 N2) :=
+  ⟨d 0 * n12 N1 N2 + d 1 * (N2 + 1) + d 2, encode_lt hd.1 hd.2.1 hd.2.2⟩
+
+def monomialOfDecodes (L N1 N2 : ℕ) (j : Fin (coeffCount L N1 N2)) :
+    Fin 3 →₀ ℕ :=
+  Finsupp.single (0 : Fin 3) (decodeCoeffL L N1 N2 j) +
+    Finsupp.single (1 : Fin 3) (decodeCoeffK1 L N1 N2 j) +
+    Finsupp.single (2 : Fin 3) (decodeCoeffK2 L N1 N2 j)
+
+theorem monomialOfDecodes_zero (L N1 N2 : ℕ)
+    (j : Fin (coeffCount L N1 N2)) :
+    monomialOfDecodes L N1 N2 j 0 = decodeCoeffL L N1 N2 j := by
+  simp [monomialOfDecodes, Finsupp.single_apply]
+
+theorem monomialOfDecodes_one (L N1 N2 : ℕ)
+    (j : Fin (coeffCount L N1 N2)) :
+    monomialOfDecodes L N1 N2 j 1 = decodeCoeffK1 L N1 N2 j := by
+  simp [monomialOfDecodes, Finsupp.single_apply]
+
+theorem monomialOfDecodes_two (L N1 N2 : ℕ)
+    (j : Fin (coeffCount L N1 N2)) :
+    monomialOfDecodes L N1 N2 j 2 = decodeCoeffK2 L N1 N2 j := by
+  simp [monomialOfDecodes, Finsupp.single_apply]
+
+theorem decode_reconstruct (L N1 N2 : ℕ)
+    (j : Fin (coeffCount L N1 N2)) :
+    j.val =
+      decodeCoeffL L N1 N2 j * n12 N1 N2 +
+        decodeCoeffK1 L N1 N2 j * (N2 + 1) +
+        decodeCoeffK2 L N1 N2 j := by
+  unfold decodeCoeffL decodeCoeffK1 decodeCoeffK2
+  have h1 := Nat.div_add_mod j.val (n12 N1 N2)
+  have h2 := Nat.div_add_mod (j.val % n12 N1 N2) (N2 + 1)
+  have hrew :
+      j.val / n12 N1 N2 * n12 N1 N2 +
+          j.val % n12 N1 N2 / (N2 + 1) * (N2 + 1) +
+          j.val % n12 N1 N2 % (N2 + 1) =
+        n12 N1 N2 * (j.val / n12 N1 N2) +
+          ((N2 + 1) * (j.val % n12 N1 N2 / (N2 + 1)) +
+            j.val % n12 N1 N2 % (N2 + 1)) := by
+    ring
+  rw [hrew, h2, h1]
+
+theorem decode_encodeOfBox (L N1 N2 : ℕ) (d : Fin 3 →₀ ℕ)
+    (hd : d 0 ≤ L ∧ d 1 ≤ N1 ∧ d 2 ≤ N2) :
+    decodeCoeffL L N1 N2 (encodeOfBox L N1 N2 d hd) = d 0 ∧
+      decodeCoeffK1 L N1 N2 (encodeOfBox L N1 N2 d hd) = d 1 ∧
+        decodeCoeffK2 L N1 N2 (encodeOfBox L N1 N2 d hd) = d 2 := by
+  have h12 : d 1 * (N2 + 1) + d 2 < n12 N1 N2 := by
+    unfold n12
+    have hle : d 1 * (N2 + 1) + d 2 ≤ N1 * (N2 + 1) + N2 :=
+      Nat.add_le_add (Nat.mul_le_mul_right _ hd.2.1) hd.2.2
+    have hlt : N1 * (N2 + 1) + N2 < (N1 + 1) * (N2 + 1) := by
+      rw [Nat.succ_mul]
+      exact Nat.add_lt_add_left (Nat.lt_succ_self N2) _
+    exact lt_of_le_of_lt hle hlt
+  have hval : (encodeOfBox L N1 N2 d hd).val =
+      (d 1 * (N2 + 1) + d 2) + n12 N1 N2 * d 0 := by
+    change d 0 * n12 N1 N2 + d 1 * (N2 + 1) + d 2 =
+      (d 1 * (N2 + 1) + d 2) + n12 N1 N2 * d 0
+    ring
+  have hmod : (encodeOfBox L N1 N2 d hd).val % n12 N1 N2 =
+      d 1 * (N2 + 1) + d 2 := by
+    rw [hval, Nat.add_mul_mod_self_left, Nat.mod_eq_of_lt h12]
+  have hdiv : (encodeOfBox L N1 N2 d hd).val / n12 N1 N2 = d 0 := by
+    rw [hval, Nat.add_mul_div_left _ _ (n12_pos N1 N2),
+      Nat.div_eq_of_lt h12, zero_add]
+  have hk2 : d 2 < N2 + 1 := Nat.lt_succ_of_le hd.2.2
+  have hmod2 : (d 1 * (N2 + 1) + d 2) % (N2 + 1) = d 2 := by
+    have : d 1 * (N2 + 1) + d 2 = d 2 + (N2 + 1) * d 1 := by ring
+    rw [this, Nat.add_mul_mod_self_left, Nat.mod_eq_of_lt hk2]
+  have hdiv2 : (d 1 * (N2 + 1) + d 2) / (N2 + 1) = d 1 := by
+    have : d 1 * (N2 + 1) + d 2 = d 2 + (N2 + 1) * d 1 := by ring
+    rw [this, Nat.add_mul_div_left _ _ (Nat.succ_pos N2),
+      Nat.div_eq_of_lt hk2, zero_add]
+  refine ⟨?_, ?_, ?_⟩
+  · simpa [decodeCoeffL] using hdiv
+  · simpa [decodeCoeffK1, hmod] using hdiv2
+  · simpa [decodeCoeffK2, hmod] using hmod2
+
+theorem monomialOfDecodes_encode (L N1 N2 : ℕ) (d : Fin 3 →₀ ℕ)
+    (hd : d 0 ≤ L ∧ d 1 ≤ N1 ∧ d 2 ≤ N2) :
+    monomialOfDecodes L N1 N2 (encodeOfBox L N1 N2 d hd) = d := by
+  have hdec := decode_encodeOfBox L N1 N2 d hd
+  ext i
+  fin_cases i <;>
+    simp [monomialOfDecodes, Finsupp.single_apply, hdec]
+
+theorem monomialOfDecodes_injective (L N1 N2 : ℕ) :
+    Function.Injective (monomialOfDecodes L N1 N2) := by
+  intro j j' h
+  apply Fin.ext
+  have h0 : decodeCoeffL L N1 N2 j = decodeCoeffL L N1 N2 j' := by
+    have := congrArg (fun d : Fin 3 →₀ ℕ => d 0) h
+    simpa [monomialOfDecodes_zero] using this
+  have h1 : decodeCoeffK1 L N1 N2 j = decodeCoeffK1 L N1 N2 j' := by
+    have := congrArg (fun d : Fin 3 →₀ ℕ => d 1) h
+    simpa [monomialOfDecodes_one] using this
+  have h2 : decodeCoeffK2 L N1 N2 j = decodeCoeffK2 L N1 N2 j' := by
+    have := congrArg (fun d : Fin 3 →₀ ℕ => d 2) h
+    simpa [monomialOfDecodes_two] using this
+  rw [decode_reconstruct L N1 N2 j, decode_reconstruct L N1 N2 j', h0, h1, h2]
+
+def coeffsOfMvPolynomial (P : MvPolynomial (Fin 3) ℤ) (L N1 N2 : ℕ) :
+    Fin (coeffCount L N1 N2) → ℤ :=
+  fun j => MvPolynomial.coeff (monomialOfDecodes L N1 N2 j) P
+
+theorem support_subset_box {L N1 N2 : ℕ} {P : MvPolynomial (Fin 3) ℤ}
+    (hdeg : MvPolynomial.degreeOf 0 P ≤ L ∧
+      MvPolynomial.degreeOf 1 P ≤ N1 ∧
+        MvPolynomial.degreeOf 2 P ≤ N2) :
+    ∀ d ∈ P.support, d 0 ≤ L ∧ d 1 ≤ N1 ∧ d 2 ≤ N2 := by
+  intro d hd
+  exact ⟨MvPolynomial.degreeOf_le_iff.mp hdeg.1 d hd,
+    MvPolynomial.degreeOf_le_iff.mp hdeg.2.1 d hd,
+    MvPolynomial.degreeOf_le_iff.mp hdeg.2.2 d hd⟩
+
+theorem mvPolynomial_eq_zero_of_box_coeffs
+    {L N1 N2 : ℕ} {P : MvPolynomial (Fin 3) ℤ}
+    (hdeg : MvPolynomial.degreeOf 0 P ≤ L ∧
+      MvPolynomial.degreeOf 1 P ≤ N1 ∧
+        MvPolynomial.degreeOf 2 P ≤ N2)
+    (hc : ∀ j, MvPolynomial.coeff (monomialOfDecodes L N1 N2 j) P = 0) :
+    P = 0 := by
+  refine MvPolynomial.ext P 0 fun d => ?_
+  by_cases hd : d ∈ P.support
+  · have hb := support_subset_box hdeg d hd
+    have hmono :
+        d = monomialOfDecodes L N1 N2 (encodeOfBox L N1 N2 d hb) :=
+      (monomialOfDecodes_encode L N1 N2 d hb).symm
+    rw [hmono, hc, MvPolynomial.coeff_zero]
+  · rw [MvPolynomial.not_mem_support_iff.mp hd, MvPolynomial.coeff_zero]
+
+theorem matveevPhi_of_mvPolynomial_eq_eval₂
+    (P : MvPolynomial (Fin 3) ℤ) (α1 α2 : ℝ) (z : ℂ) :
+    matveevPhi_of_mvPolynomial P α1 α2 z =
+      ∑ d ∈ P.support,
+        ((MvPolynomial.coeff (R := ℤ) d P : ℤ) : ℂ) *
+          (z ^ d 0 * alphaPowZ α1 z ^ d 1 * alphaPowZ α2 z ^ d 2) := by
+  unfold matveevPhi_of_mvPolynomial
+  rw [MvPolynomial.eval₂_eq']
+  refine Finset.sum_congr rfl fun d _ => ?_
+  rw [W_coord_prod]
+  simp [Int.castRingHom]
+
+theorem matveevPhi_of_mvPolynomial_eq_of_coeffs
+    {L N1 N2 : ℕ} (P : MvPolynomial (Fin 3) ℤ)
+    (hdeg : MvPolynomial.degreeOf 0 P ≤ L ∧
+      MvPolynomial.degreeOf 1 P ≤ N1 ∧
+        MvPolynomial.degreeOf 2 P ≤ N2)
+    (α1 α2 : ℝ) (z : ℂ) :
+    matveevPhi_of_mvPolynomial P α1 α2 z =
+      matveevPhi_of_coeffs L N1 N2 (coeffsOfMvPolynomial P L N1 N2)
+        α1 α2 z := by
+  classical
+  set e : Fin (coeffCount L N1 N2) → Fin 3 →₀ ℕ :=
+    monomialOfDecodes L N1 N2
+  set f : (Fin 3 →₀ ℕ) → ℂ := fun d =>
+    ((MvPolynomial.coeff (R := ℤ) d P : ℤ) : ℂ) *
+      (z ^ d 0 * alphaPowZ α1 z ^ d 1 * alphaPowZ α2 z ^ d 2)
+  have hleft :
+      matveevPhi_of_mvPolynomial P α1 α2 z = ∑ d ∈ P.support, f d :=
+    matveevPhi_of_mvPolynomial_eq_eval₂ P α1 α2 z
+  have hright :
+      matveevPhi_of_coeffs L N1 N2 (coeffsOfMvPolynomial P L N1 N2)
+          α1 α2 z =
+        ∑ j : Fin (coeffCount L N1 N2), f (e j) := by
+    unfold matveevPhi_of_coeffs coeffsOfMvPolynomial
+    refine Finset.sum_congr rfl fun j _ => ?_
+    have hz1 := alphaPowZ_nat_mul α1 (decodeCoeffK1 L N1 N2 j) z
+    have hz2 := alphaPowZ_nat_mul α2 (decodeCoeffK2 L N1 N2 j) z
+    simp [f, e, monomialOfDecodes_zero, monomialOfDecodes_one,
+      monomialOfDecodes_two, hz1, hz2, mul_assoc]
+  have hinj : ∀ x ∈ (Finset.univ : Finset (Fin (coeffCount L N1 N2))),
+      ∀ y ∈ (Finset.univ : Finset (Fin (coeffCount L N1 N2))),
+        e x = e y → x = y :=
+    fun x _ y _ hxy => monomialOfDecodes_injective L N1 N2 hxy
+  set box : Finset (Fin 3 →₀ ℕ) :=
+    Finset.univ.image e
+  have hbox_sum : ∑ d ∈ box, f d = ∑ j, f (e j) :=
+    Finset.sum_image hinj
+  have hsupp : P.support ⊆ box := by
+    intro d hd
+    have hb := support_subset_box hdeg d hd
+    refine Finset.mem_image.2 ?_
+    refine ⟨encodeOfBox L N1 N2 d hb, Finset.mem_univ _, ?_⟩
+    exact monomialOfDecodes_encode L N1 N2 d hb
+  have hunion : P.support ∪ (box \ P.support) = box :=
+    Finset.union_sdiff_of_subset hsupp
+  have hdisj : Disjoint P.support (box \ P.support) :=
+    Finset.disjoint_sdiff
+  have hzero : ∑ d ∈ box \ P.support, f d = 0 := by
+    refine Finset.sum_eq_zero fun d hd => ?_
+    have hns : d ∉ P.support := (Finset.mem_sdiff.mp hd).2
+    have hc0 : MvPolynomial.coeff (R := ℤ) d P = 0 :=
+      MvPolynomial.not_mem_support_iff.mp hns
+    simp [f, hc0]
+  have : ∑ d ∈ P.support, f d = ∑ d ∈ box, f d := by
+    rw [← hunion, Finset.sum_union hdisj, hzero, add_zero]
+  rw [hleft, this, hbox_sum, hright]
+
+/-- Independent `α1, α2`: a nonzero integer `P` of degree
+    `≤ (L,N1,N2)` cannot make `Φ(z)=P(z,α1^z,α2^z)` vanish to
+    order `T ≥ (L+1)(N1+1)(N2+1)` at `0`. Jet invertibility, not
+    the Wüstholz subgroup theorem, and not a `C1_floor` close. -/
+theorem wuestholz_product_theorem_exp_Gm_of_mvPolynomial
+    {α1 α2 : ℕ} (hα1 : 1 < α1) (hα2 : 1 < α2)
+    (hindep : ¬ multiplicativelyDependent α1 α2)
+    (L N1 N2 : ℕ)
+    (P : MvPolynomial (Fin 3) ℤ)
+    (hdeg : MvPolynomial.degreeOf 0 P ≤ L ∧
+      MvPolynomial.degreeOf 1 P ≤ N1 ∧
+        MvPolynomial.degreeOf 2 P ≤ N2)
+    {T : ℕ} (hT : coeffCount L N1 N2 ≤ T)
+    (hvan : ∀ k < T,
+      iteratedDslope
+          (matveevPhi_of_mvPolynomial P (α1 : ℝ) (α2 : ℝ)) k 0 = 0) :
+    P = 0 := by
+  have hΦ :
+      matveevPhi_of_mvPolynomial P (α1 : ℝ) (α2 : ℝ) =
+        matveevPhi_of_coeffs L N1 N2
+          (coeffsOfMvPolynomial P L N1 N2) (α1 : ℝ) (α2 : ℝ) := by
+    funext z
+    exact matveevPhi_of_mvPolynomial_eq_of_coeffs P hdeg (α1 : ℝ)
+      (α2 : ℝ) z
+  have hvan' : ∀ k < coeffCount L N1 N2,
+      iteratedDslope
+          (matveevPhi_of_coeffs L N1 N2
+            (coeffsOfMvPolynomial P L N1 N2) (α1 : ℝ) (α2 : ℝ))
+          k 0 = 0 := by
+    intro k hk
+    have hkT : k < T := lt_of_lt_of_le hk hT
+    have := hvan k hkT
+    simpa [hΦ] using this
+  have hc :=
+    wuestholz_product_theorem_exp_Gm hα1 hα2 hindep L N1 N2
+      (coeffsOfMvPolynomial P L N1 N2) hvan'
+  refine mvPolynomial_eq_zero_of_box_coeffs hdeg fun j => ?_
+  have := congrArg (fun c => c j) hc
+  simpa [coeffsOfMvPolynomial] using this
+
+/-- Real-power form of multiplicative independence used in the
+    requested statement. For `α>1` this rules out every ℕ-relation
+    `α1^a = α2^b`. -/
+def rpowIndependent (α1 α2 : ℕ) : Prop :=
+  ∀ a b : ℤ, a ≠ 0 ∨ b ≠ 0 →
+    (α1 : ℝ) ^ (a : ℝ) ≠ (α2 : ℝ) ^ (b : ℝ)
+
+theorem not_mul_dep_of_rpow_indep {α1 α2 : ℕ}
+    (h : rpowIndependent α1 α2) :
+    ¬ multiplicativelyDependent α1 α2 := by
+  rintro ⟨a, b, hpos, heq⟩
+  have ha' : (a : ℤ) ≠ 0 ∨ (b : ℤ) ≠ 0 := by exact_mod_cast hpos
+  have hcast : (α1 : ℝ) ^ a = (α2 : ℝ) ^ b := by exact_mod_cast heq
+  have hpow :
+      (α1 : ℝ) ^ ((a : ℤ) : ℝ) = (α2 : ℝ) ^ ((b : ℤ) : ℝ) := by
+    have h1 : (α1 : ℝ) ^ ((a : ℤ) : ℝ) = (α1 : ℝ) ^ a := by
+      rw [Int.cast_natCast, Real.rpow_natCast]
+    have h2 : (α2 : ℝ) ^ ((b : ℤ) : ℝ) = (α2 : ℝ) ^ b := by
+      rw [Int.cast_natCast, Real.rpow_natCast]
+    rw [h1, h2, hcast]
+  exact (h a b ha') hpow
+
+/-- Requested independence shape: integer real powers, vanishing
+    order `T ≥ (L+1)(N1+1)(N2+1)`, conclusion `P = 0`. -/
+theorem wuestholz_product_theorem_exp_Gm_of_rpow_indep
+    {α1 α2 : ℕ} (hα1 : 1 < α1) (hα2 : 1 < α2)
+    (hindep : ∀ a b : ℤ, a ≠ 0 ∨ b ≠ 0 →
+      (α1 : ℝ) ^ (a : ℝ) ≠ (α2 : ℝ) ^ (b : ℝ))
+    (L N1 N2 : ℕ)
+    (P : MvPolynomial (Fin 3) ℤ)
+    (hdeg : MvPolynomial.degreeOf 0 P ≤ L ∧
+      MvPolynomial.degreeOf 1 P ≤ N1 ∧
+        MvPolynomial.degreeOf 2 P ≤ N2)
+    {T : ℕ} (hT : (L + 1) * (N1 + 1) * (N2 + 1) ≤ T)
+    (hvan : ∀ k < T,
+      iteratedDslope
+          (matveevPhi_of_mvPolynomial P (α1 : ℝ) (α2 : ℝ)) k 0 = 0) :
+    P = 0 :=
+  wuestholz_product_theorem_exp_Gm_of_mvPolynomial hα1 hα2
+    (not_mul_dep_of_rpow_indep hindep) L N1 N2 P hdeg
+    (by simpa [coeffCount] using hT) hvan
+
 /-! ## Remaining steps (not in Mathlib 4.12) -/
 
 set_option linter.unusedVariables false
@@ -3006,6 +3356,9 @@ theorem matveev_thm14_n2_of_interpolation
 #check wuestholz_product_theorem_exp
 #check wuestholz_product_theorem_exp_Gm
 #check wuestholz_product_theorem_exp_Gm_L0
+#check wuestholz_product_theorem_exp_Gm_of_mvPolynomial
+#check wuestholz_product_theorem_exp_Gm_of_rpow_indep
+#check matveevPhi_of_mvPolynomial
 #check W_map
 #check exp_poly_jet_zero
 #print axioms interpolation_det_ne_zero
@@ -3030,5 +3383,8 @@ theorem matveev_thm14_n2_of_interpolation
 #print axioms wuestholz_product_theorem_exp_Gm
 #print axioms wuestholz_product_theorem_exp_Gm_L0
 #print axioms exp_poly_jet_zero
+#print axioms wuestholz_product_theorem_exp_Gm_of_mvPolynomial
+#print axioms wuestholz_product_theorem_exp_Gm_of_rpow_indep
+#print axioms not_mul_dep_of_rpow_indep
 
 end BealMatveevBeal.MatveevInterpolation
