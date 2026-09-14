@@ -15,10 +15,11 @@ solution, and sets up the rank-3 Bugeaud lattice
 (`det = C`, `v ∈ L`, `‖v‖ < 32` / `λ₁ < 32` when `B > 10⁶`
 via the tight ratio). Minkowski does not raise `|Λ|`.
 `lll_svt_bound_of_reduced`, `baker_davenport_gs_lower`,
-and `lll_algorithm_terminates` are theorems (conditional SVT /
-floor rearrangement / existence of an LLL-reduced generating
-triple). Existence does **not** give `B ≤ 10⁶`.
-`lll_svt_bound` / `lll_det_bound` /
+`lll_algorithm_terminates`, displayed `lll_svt_bound`
+(`‖b₁‖ ≤ 2 λ₁` on a reduced generating triple), and
+`lll_det_bound` (`‖b₁‖ ≤ √2 · C^{1/3}`) are theorems.
+These are *upper* bounds on a short first vector and do
+**not** give `B ≤ 10⁶`.
 `bugeaud_LLL_reduction_proof` /
 `baker_davenport_reduction` stay uninhabited `def Prop`. `MatveevInterpolation.lean` starts
 Matveev 2000 p.5 interpolation (Δ, Vandermonde, `𝐆_a` product

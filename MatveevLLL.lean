@@ -68,9 +68,11 @@ below, so only finitely many swaps occur.
 Existence of a reduced basis does **not** give `B ≤ 10⁶`.
 A reduced first vector satisfies `‖b₁‖ ≤ 2 λ₁ < 64`, which
 makes `‖b₁*‖` *small*, the opposite of the large `r` that
-`baker_davenport_gs_lower` would need. The displayed-basis
-det bound and the unconditional `lll_svt_bound` /
-`lll_det_bound` stay `def Prop`.
+`baker_davenport_gs_lower` would need. Displayed
+`lll_svt_bound` (`‖b₁‖ ≤ 2 λ₁` for an LLL-reduced generating
+triple) and `lll_det_bound` (`‖b₁‖ ≤ √2 · C^{1/3} ≈ 2.8e10`)
+are theorems; both are *upper* bounds on a short first vector
+and do **not** give `B ≤ 10⁶`.
 `baker_davenport_gs_lower` is the rearrangement
 `r ≤ |v₃|` and `17 < r` ⇒ `|Λ| ≥ (r−17)/C`; on `B > 10⁶`
 one has `|v₃| < 18`, so this does not beat `|Λ| < 1/B`.
@@ -2592,18 +2594,335 @@ theorem lll_algorithm_terminates (A B : ℕ) :
   exact lll_exists_reduced_of_potential A B n (LLL_b1 A) (LLL_b2 B) LLL_b3
     hmem1 hmem2 hmem3 hgen hint1 hint2 hint3 hn hnpos
 
-/-- LLL reduced ⇒ `‖b₁‖ ≤ 2 λ₁` (`n = 3`). Not in Mathlib 4.12. -/
-def lll_svt_bound : Prop :=
-  ∀ (A B : ℕ) (b1' : Fin 3 → ℝ),
-    mem_LLL_lattice A B b1' →
-      lllNorm b1' ≤ 2 * LLL_lambda1 A B
+/-- Displayed LLL-reduced generating first vector: `‖b₁‖ ≤ 2 λ₁`.
+    Not the false claim that every lattice vector is short. -/
+theorem lll_svt_bound (A B : ℕ) {b1 b2 b3 : Fin 3 → ℝ}
+    (hmem : mem_LLL_lattice A B b1)
+    (hgen : lllGenerates A B b1 b2 b3)
+    (hred : lllIsReducedBasis b1 b2 b3) :
+    lllNorm b1 ≤ 2 * LLL_lambda1 A B := by
+  have ha_ne : lllNormSq b1 ≠ 0 := lllGenerates_normSq_b1_ne hgen
+  have hg_ne : lllGram2 b1 b2 ≠ 0 := lllGenerates_gram2_ne hgen
+  have ha : 0 < lllNormSq b1 :=
+    lt_of_le_of_ne (lllNormSq_nonneg b1) ha_ne.symm
+  refine lll_svt_bound_of_reduced A B
+    (rfl : b1 = b1)
+    (lllB2_eq_gs b1 b2)
+    (lllB3_eq_gs b1 b2 b3)
+    ?h12 ?h13 ?h23 hred ha hmem hgen
+  · have := lllB2s_orth (b2 := b2) ha_ne
+    rwa [lllInner_comm]
+  · have := lllB3s_orth_b1 (b2 := b2) (b3 := b3) ha_ne
+    rwa [lllInner_comm]
+  · have := lllB3s_orth_b2s (b3 := b3) ha_ne hg_ne
+    rwa [lllInner_comm]
 
-/-- LLL reduced ⇒ `‖b₁‖ ≤ √2 · C^{1/3}`. Not in Mathlib 4.12.
-    For `C = 10³⁰` this is `≈ 2.8e10`, much larger than `‖v‖ < 32`. -/
-def lll_det_bound : Prop :=
-  ∀ (A B : ℕ) (b1' : Fin 3 → ℝ),
-    mem_LLL_lattice A B b1' →
-      lllNorm b1' ≤ Real.sqrt 2 * LLL_C_real ^ ((1 : ℝ) / 3)
+theorem matrix_det_int_of_int_entries
+    (M : Matrix (Fin 3) (Fin 3) ℝ)
+    (h : ∀ i j : Fin 3, ∃ z : ℤ, M i j = z) :
+    ∃ z : ℤ, M.det = z := by
+  obtain ⟨a00, h00⟩ := h 0 0
+  obtain ⟨a01, h01⟩ := h 0 1
+  obtain ⟨a02, h02⟩ := h 0 2
+  obtain ⟨a10, h10⟩ := h 1 0
+  obtain ⟨a11, h11⟩ := h 1 1
+  obtain ⟨a12, h12⟩ := h 1 2
+  obtain ⟨a20, h20⟩ := h 2 0
+  obtain ⟨a21, h21⟩ := h 2 1
+  obtain ⟨a22, h22⟩ := h 2 2
+  refine ⟨a00 * a11 * a22 - a00 * a12 * a21 - a01 * a10 * a22
+      + a01 * a12 * a20 + a02 * a10 * a21 - a02 * a11 * a20, ?_⟩
+  rw [Matrix.det_fin_three, h00, h01, h02, h10, h11, h12, h20, h21, h22]
+  norm_cast
+
+theorem lllBasis_eq_col_mul_int {A B : ℕ} {b1 b2 b3 : Fin 3 → ℝ}
+    (hgen : lllGenerates A B b1 b2 b3) :
+    ∃ U : Matrix (Fin 3) (Fin 3) ℝ,
+      (∀ i j, ∃ z : ℤ, U i j = z) ∧
+        LLL_basisMatrix A B = lllColMatrix b1 b2 b3 * U := by
+  obtain ⟨x1, y1, z1, e1⟩ := hgen (LLL_b1 A) (LLL_b1_mem A B)
+  obtain ⟨x2, y2, z2, e2⟩ := hgen (LLL_b2 B) (LLL_b2_mem A B)
+  obtain ⟨x3, y3, z3, e3⟩ := hgen LLL_b3 (LLL_b3_mem A B)
+  let U : Matrix (Fin 3) (Fin 3) ℝ := fun i j =>
+    if j = 0 then
+      (if i = 0 then (x1 : ℝ) else if i = 1 then (y1 : ℝ) else (z1 : ℝ))
+    else if j = 1 then
+      (if i = 0 then (x2 : ℝ) else if i = 1 then (y2 : ℝ) else (z2 : ℝ))
+    else
+      (if i = 0 then (x3 : ℝ) else if i = 1 then (y3 : ℝ) else (z3 : ℝ))
+  refine ⟨U, ?_, ?_⟩
+  · intro i j
+    fin_cases j
+    · fin_cases i
+      · exact ⟨x1, by simp [U]⟩
+      · exact ⟨y1, by simp [U]⟩
+      · exact ⟨z1, by simp [U]⟩
+    · fin_cases i
+      · exact ⟨x2, by simp [U]⟩
+      · exact ⟨y2, by simp [U]⟩
+      · exact ⟨z2, by simp [U]⟩
+    · fin_cases i
+      · exact ⟨x3, by simp [U]⟩
+      · exact ⟨y3, by simp [U]⟩
+      · exact ⟨z3, by simp [U]⟩
+  · ext i j
+    rw [LLL_basisMatrix_col]
+    unfold lllColMatrix
+    rw [Matrix.mul_apply, Fin.sum_univ_three]
+    fin_cases j
+    · have hU0 : U 0 0 = x1 ∧ U 1 0 = y1 ∧ U 2 0 = z1 := by simp [U]
+      simp [hU0.1, hU0.2.1, hU0.2.2, e1, lllZspan]
+      ring
+    · have hU1 : U 0 1 = x2 ∧ U 1 1 = y2 ∧ U 2 1 = z2 := by simp [U]
+      simp [hU1.1, hU1.2.1, hU1.2.2, e2, lllZspan]
+      ring
+    · have hU2 : U 0 2 = x3 ∧ U 1 2 = y3 ∧ U 2 2 = z3 := by simp [U]
+      simp [hU2.1, hU2.2.1, hU2.2.2, e3, lllZspan]
+      ring
+
+theorem lllCol_eq_basis_mul_int {A B : ℕ} {b1 b2 b3 : Fin 3 → ℝ}
+    (h1 : mem_LLL_lattice A B b1) (h2 : mem_LLL_lattice A B b2)
+    (h3 : mem_LLL_lattice A B b3) :
+    ∃ V : Matrix (Fin 3) (Fin 3) ℝ,
+      (∀ i j, ∃ z : ℤ, V i j = z) ∧
+        lllColMatrix b1 b2 b3 = LLL_basisMatrix A B * V := by
+  obtain ⟨x1, y1, z1, e1⟩ := h1
+  obtain ⟨x2, y2, z2, e2⟩ := h2
+  obtain ⟨x3, y3, z3, e3⟩ := h3
+  let V : Matrix (Fin 3) (Fin 3) ℝ := fun i j =>
+    if j = 0 then
+      (if i = 0 then (x1 : ℝ) else if i = 1 then (y1 : ℝ) else (z1 : ℝ))
+    else if j = 1 then
+      (if i = 0 then (x2 : ℝ) else if i = 1 then (y2 : ℝ) else (z2 : ℝ))
+    else
+      (if i = 0 then (x3 : ℝ) else if i = 1 then (y3 : ℝ) else (z3 : ℝ))
+  refine ⟨V, ?_, ?_⟩
+  · intro i j
+    fin_cases j
+    · fin_cases i
+      · exact ⟨x1, by simp [V]⟩
+      · exact ⟨y1, by simp [V]⟩
+      · exact ⟨z1, by simp [V]⟩
+    · fin_cases i
+      · exact ⟨x2, by simp [V]⟩
+      · exact ⟨y2, by simp [V]⟩
+      · exact ⟨z2, by simp [V]⟩
+    · fin_cases i
+      · exact ⟨x3, by simp [V]⟩
+      · exact ⟨y3, by simp [V]⟩
+      · exact ⟨z3, by simp [V]⟩
+  · ext i j
+    rw [LLL_basisMatrix_col]
+    unfold lllColMatrix
+    rw [Matrix.mul_apply, Fin.sum_univ_three]
+    fin_cases j
+    · have hV0 : V 0 0 = x1 ∧ V 1 0 = y1 ∧ V 2 0 = z1 := by simp [V]
+      simp [hV0.1, hV0.2.1, hV0.2.2, e1, LLL_span]
+      ring
+    · have hV1 : V 0 1 = x2 ∧ V 1 1 = y2 ∧ V 2 1 = z2 := by simp [V]
+      simp [hV1.1, hV1.2.1, hV1.2.2, e2, LLL_span]
+      ring
+    · have hV2 : V 0 2 = x3 ∧ V 1 2 = y3 ∧ V 2 2 = z3 := by simp [V]
+      simp [hV2.1, hV2.2.1, hV2.2.2, e3, LLL_span]
+      ring
+
+/-- A generating lattice triple has `|det M| = C`. -/
+theorem lllCol_abs_det_eq_C {A B : ℕ} {b1 b2 b3 : Fin 3 → ℝ}
+    (h1 : mem_LLL_lattice A B b1) (h2 : mem_LLL_lattice A B b2)
+    (h3 : mem_LLL_lattice A B b3) (hgen : lllGenerates A B b1 b2 b3) :
+    |(lllColMatrix b1 b2 b3).det| = LLL_C_real := by
+  obtain ⟨U, hUint, hU⟩ := lllBasis_eq_col_mul_int hgen
+  obtain ⟨V, hVint, hV⟩ := lllCol_eq_basis_mul_int h1 h2 h3
+  obtain ⟨u, hu⟩ := matrix_det_int_of_int_entries U hUint
+  obtain ⟨v, hv⟩ := matrix_det_int_of_int_entries V hVint
+  have hCU : LLL_C_real = (lllColMatrix b1 b2 b3).det * U.det := by
+    have := congrArg Matrix.det hU
+    rw [LLL_basis_det, Matrix.det_mul] at this
+    exact this
+  have hCV : (lllColMatrix b1 b2 b3).det = LLL_C_real * V.det := by
+    have := congrArg Matrix.det hV
+    rw [Matrix.det_mul, LLL_basis_det] at this
+    exact this
+  have hprod : (u : ℝ) * v = 1 := by
+    have hmid :
+        (lllColMatrix b1 b2 b3).det * U.det =
+          (LLL_C_real * V.det) * U.det := by
+      rw [hCV]
+    have hC1 : LLL_C_real = LLL_C_real * (V.det * U.det) := by
+      nth_rw 1 [hCU]
+      rw [hmid]
+      ring
+    have hone : (1 : ℝ) = V.det * U.det := by
+      have hC := ne_of_gt LLL_C_real_pos
+      have h' : LLL_C_real * 1 = LLL_C_real * (V.det * U.det) := by
+        rw [mul_one]
+        exact hC1
+      exact mul_left_cancel₀ hC h'
+    rw [hu, hv, mul_comm] at hone
+    exact hone.symm
+  have h1z : (u * v : ℤ) = 1 := by
+    exact_mod_cast hprod
+  have huunit : u = 1 ∨ u = -1 :=
+    Int.eq_one_or_neg_one_of_mul_eq_one h1z
+  have hCpos : 0 < LLL_C_real := LLL_C_real_pos
+  rcases huunit with hu1 | hu1
+  · have : (lllColMatrix b1 b2 b3).det = LLL_C_real := by
+      have h := hCU
+      rw [hu, hu1, Int.cast_one, mul_one] at h
+      exact h.symm
+    rw [this, abs_of_pos hCpos]
+  · have : (lllColMatrix b1 b2 b3).det = -LLL_C_real := by
+      have h := hCU
+      rw [hu, hu1, Int.cast_neg, Int.cast_one] at h
+      linarith
+    rw [this, abs_neg, abs_of_pos hCpos]
+
+theorem lllCol_as_vec (b1 b2 b3 : Fin 3 → ℝ) :
+    (fun k => lllColMatrix b1 b2 b3 k 0) = b1 ∧
+      (fun k => lllColMatrix b1 b2 b3 k 1) = b2 ∧
+        (fun k => lllColMatrix b1 b2 b3 k 2) = b3 := by
+  refine ⟨?_, ?_, ?_⟩
+  · ext k; simp [lllColMatrix]
+  · ext k; simp [lllColMatrix]
+  · ext k; simp [lllColMatrix]
+
+theorem lllTranspose_mul_apply (b1 b2 b3 : Fin 3 → ℝ) (i j : Fin 3) :
+    (Matrix.transpose (lllColMatrix b1 b2 b3) * lllColMatrix b1 b2 b3) i j =
+      lllInner
+        (fun k => lllColMatrix b1 b2 b3 k i)
+        (fun k => lllColMatrix b1 b2 b3 k j) := by
+  unfold lllInner
+  rw [Matrix.mul_apply]
+  simp only [Matrix.transpose_apply]
+
+theorem lllGramDet_eq_col_det_sq (b1 b2 b3 : Fin 3 → ℝ) :
+    lllGramDet b1 b2 b3 = (lllColMatrix b1 b2 b3).det ^ 2 := by
+  have hpow :
+      (Matrix.transpose (lllColMatrix b1 b2 b3) * lllColMatrix b1 b2 b3).det =
+        (lllColMatrix b1 b2 b3).det ^ 2 := by
+    rw [Matrix.det_mul, Matrix.det_transpose]
+    ring
+  have hG :
+      (Matrix.transpose (lllColMatrix b1 b2 b3) * lllColMatrix b1 b2 b3).det =
+        lllGramDet b1 b2 b3 := by
+    have hc := lllCol_as_vec b1 b2 b3
+    have a : (Matrix.transpose (lllColMatrix b1 b2 b3) * lllColMatrix b1 b2 b3) 0 0 =
+        lllNormSq b1 := by
+      rw [lllTranspose_mul_apply, hc.1]; rfl
+    have p01 : (Matrix.transpose (lllColMatrix b1 b2 b3) * lllColMatrix b1 b2 b3) 0 1 =
+        lllInner b1 b2 := by
+      rw [lllTranspose_mul_apply, hc.1, hc.2.1]
+    have q02 : (Matrix.transpose (lllColMatrix b1 b2 b3) * lllColMatrix b1 b2 b3) 0 2 =
+        lllInner b1 b3 := by
+      rw [lllTranspose_mul_apply, hc.1, hc.2.2]
+    have p10 : (Matrix.transpose (lllColMatrix b1 b2 b3) * lllColMatrix b1 b2 b3) 1 0 =
+        lllInner b2 b1 := by
+      rw [lllTranspose_mul_apply, hc.2.1, hc.1]
+    have b11 : (Matrix.transpose (lllColMatrix b1 b2 b3) * lllColMatrix b1 b2 b3) 1 1 =
+        lllNormSq b2 := by
+      rw [lllTranspose_mul_apply, hc.2.1]; rfl
+    have r12 : (Matrix.transpose (lllColMatrix b1 b2 b3) * lllColMatrix b1 b2 b3) 1 2 =
+        lllInner b2 b3 := by
+      rw [lllTranspose_mul_apply, hc.2.1, hc.2.2]
+    have q20 : (Matrix.transpose (lllColMatrix b1 b2 b3) * lllColMatrix b1 b2 b3) 2 0 =
+        lllInner b3 b1 := by
+      rw [lllTranspose_mul_apply, hc.2.2, hc.1]
+    have r21 : (Matrix.transpose (lllColMatrix b1 b2 b3) * lllColMatrix b1 b2 b3) 2 1 =
+        lllInner b3 b2 := by
+      rw [lllTranspose_mul_apply, hc.2.2, hc.2.1]
+    have c22 : (Matrix.transpose (lllColMatrix b1 b2 b3) * lllColMatrix b1 b2 b3) 2 2 =
+        lllNormSq b3 := by
+      rw [lllTranspose_mul_apply, hc.2.2]; rfl
+    rw [Matrix.det_fin_three, a, p01, q02, p10, b11, r12, q20, r21, c22]
+    have h21 : lllInner b2 b1 = lllInner b1 b2 := lllInner_comm _ _
+    have h31 : lllInner b3 b1 = lllInner b1 b3 := lllInner_comm _ _
+    have h32 : lllInner b3 b2 = lllInner b2 b3 := lllInner_comm _ _
+    rw [h21, h31, h32]
+    unfold lllGramDet lllNormSq
+    ring
+  linarith
+
+theorem lll_gs_prod_eq_gramDet {b1 b2 b3 : Fin 3 → ℝ}
+    (ha : lllNormSq b1 ≠ 0) (hg : lllGram2 b1 b2 ≠ 0) :
+    lllNormSq b1 * lllNormSq (lllB2s b1 b2) *
+        lllNormSq (lllB3s b1 b2 b3) =
+      lllGramDet b1 b2 b3 := by
+  have h2 := lllB2s_normSq (b2 := b2) ha
+  have h3 := lllB3s_normSq_mul_gram2 (b3 := b3) ha hg
+  have h3' :
+      lllNormSq (lllB3s b1 b2 b3) =
+        lllGramDet b1 b2 b3 / lllGram2 b1 b2 :=
+    (eq_div_iff hg).mpr (by linarith [h3])
+  rw [h2, h3']
+  field_simp [ha, hg]
+
+theorem lllNorm_pow_six (v : Fin 3 → ℝ) :
+    lllNorm v ^ 6 = lllNormSq v ^ 3 := by
+  unfold lllNorm
+  have hnn := lllNormSq_nonneg v
+  have hsq : Real.sqrt (lllNormSq v) ^ 2 = lllNormSq v := Real.sq_sqrt hnn
+  have hpow : Real.sqrt (lllNormSq v) ^ 6 =
+      (Real.sqrt (lllNormSq v) ^ 2) ^ 3 := by
+    rw [← pow_mul]
+  rw [hpow, hsq]
+
+theorem lll_det_bound_rhs_pow_six :
+    (Real.sqrt 2 * LLL_C_real ^ ((1 : ℝ) / 3)) ^ 6 =
+      8 * LLL_C_real ^ 2 := by
+  rw [mul_pow]
+  have h2 : Real.sqrt 2 ^ 6 = 8 := by
+    have hsq : Real.sqrt 2 ^ 2 = 2 := Real.sq_sqrt (by norm_num)
+    have hpow : Real.sqrt 2 ^ 6 = (Real.sqrt 2 ^ 2) ^ 3 := by
+      rw [← pow_mul]
+    rw [hpow, hsq]
+    norm_num
+  have hx : 0 ≤ LLL_C_real := le_of_lt LLL_C_real_pos
+  have hC : (LLL_C_real ^ ((1 : ℝ) / 3)) ^ 6 = LLL_C_real ^ 2 := by
+    rw [← Real.rpow_natCast LLL_C_real 2]
+    rw [← Real.rpow_mul_natCast hx ((1 : ℝ) / 3) 6]
+    congr 1
+    norm_num
+  rw [h2, hC]
+
+/-- Displayed LLL-reduced generating first vector:
+    `‖b₁‖ ≤ √2 · C^{1/3}`. For `C = 10³⁰` this is `≈ 2.8e10`,
+    an *upper* bound, much larger than `‖v‖ < 32`. Not a
+    `B ≤ 10⁶` cutoff. -/
+theorem lll_det_bound (A B : ℕ) {b1 b2 b3 : Fin 3 → ℝ}
+    (h1 : mem_LLL_lattice A B b1) (h2 : mem_LLL_lattice A B b2)
+    (h3 : mem_LLL_lattice A B b3) (hgen : lllGenerates A B b1 b2 b3)
+    (hred : lllIsReducedBasis b1 b2 b3) :
+    lllNorm b1 ≤ Real.sqrt 2 * LLL_C_real ^ ((1 : ℝ) / 3) := by
+  have ha_ne : lllNormSq b1 ≠ 0 := lllGenerates_normSq_b1_ne hgen
+  have hg_ne : lllGram2 b1 b2 ≠ 0 := lllGenerates_gram2_ne hgen
+  have hprod :=
+    lll_det_prod_sq_of_reduced
+      (lllB2s_orth (b2 := b2) ha_ne)
+      (lllB3s_orth_b2s (b3 := b3) ha_ne hg_ne) hred
+  have hgs := lll_gs_prod_eq_gramDet (b3 := b3) ha_ne hg_ne
+  have hG := lllGramDet_eq_col_det_sq b1 b2 b3
+  have habs := lllCol_abs_det_eq_C h1 h2 h3 hgen
+  have hsq : (lllColMatrix b1 b2 b3).det ^ 2 = LLL_C_real ^ 2 := by
+    rw [← sq_abs, habs]
+  have hN3 : lllNormSq b1 ^ 3 ≤ 8 * LLL_C_real ^ 2 := by
+    have hstep :
+        8 * (lllNormSq b1 * lllNormSq (lllB2s b1 b2) *
+            lllNormSq (lllB3s b1 b2 b3)) =
+          8 * LLL_C_real ^ 2 := by
+      rw [hgs, hG, hsq]
+    exact hprod.trans (le_of_eq hstep)
+  have hleft := lllNorm_pow_six b1
+  have hright := lll_det_bound_rhs_pow_six
+  have hpow :
+      lllNorm b1 ^ 6 ≤
+        (Real.sqrt 2 * LLL_C_real ^ ((1 : ℝ) / 3)) ^ 6 := by
+    rw [hleft, hright]
+    exact hN3
+  have ha0 : 0 ≤ lllNorm b1 := lllNorm_nonneg b1
+  have hb0 : 0 ≤ Real.sqrt 2 * LLL_C_real ^ ((1 : ℝ) / 3) :=
+    mul_nonneg (Real.sqrt_nonneg _)
+      (Real.rpow_nonneg (le_of_lt LLL_C_real_pos) _)
+  exact (pow_le_pow_iff_left ha0 hb0 (by norm_num : (6 : ℕ) ≠ 0)).mp hpow
 
 theorem B3_ge_of_B_gt_B0 {B : ℕ} (hB0 : B0_nat < B) :
     (1000004 : ℕ) ≤ B + 3 := by
@@ -2828,6 +3147,8 @@ theorem baker_bound_gap3_of_bugeaud_LLL_reduction_proof
 #print axioms lll_svt_bound_of_reduced
 #print axioms baker_davenport_gs_lower
 #print axioms lll_algorithm_terminates
+#print axioms lll_svt_bound
+#print axioms lll_det_bound
 #print axioms baker_bound_gap3_of_from_ratio
 
 end BealMatveevBeal.MatveevLLL

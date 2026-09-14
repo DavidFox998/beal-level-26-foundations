@@ -146,11 +146,11 @@ if "def lllIsReducedBasis" not in lll:
 if "def lllBasisPotential" not in lll:
     print("lllBasisPotential missing from MatveevLLL.lean", file=sys.stderr)
     sys.exit(1)
-if "def lll_svt_bound" not in lll:
-    print("lll_svt_bound must stay a def Prop", file=sys.stderr)
+if "theorem lll_svt_bound " not in lll and not re.search(r"^theorem lll_svt_bound\b", lll, re.M):
+    print("lll_svt_bound must be a displayed theorem", file=sys.stderr)
     sys.exit(1)
-if "def lll_det_bound" not in lll:
-    print("lll_det_bound must stay a def Prop", file=sys.stderr)
+if "theorem lll_det_bound " not in lll and not re.search(r"^theorem lll_det_bound\b", lll, re.M):
+    print("lll_det_bound must be a displayed theorem", file=sys.stderr)
     sys.exit(1)
 if "theorem baker_davenport_gs_lower" not in lll:
     print("baker_davenport_gs_lower rearrangement missing", file=sys.stderr)
@@ -170,11 +170,11 @@ if "theorem LLL_b1_normSq_int" not in lll:
 if "theorem abs_sub_lllNearestInt" not in lll:
     print("abs_sub_lllNearestInt missing from MatveevLLL.lean", file=sys.stderr)
     sys.exit(1)
-if re.search(r"^theorem lll_svt_bound\b", lll, re.M):
-    print("lll_svt_bound must not be a theorem", file=sys.stderr)
+if "def lll_svt_bound" in lll:
+    print("lll_svt_bound is now the displayed theorem, not a def Prop", file=sys.stderr)
     sys.exit(1)
-if re.search(r"^theorem lll_det_bound\b", lll, re.M):
-    print("lll_det_bound must not be a theorem", file=sys.stderr)
+if "def lll_det_bound" in lll:
+    print("lll_det_bound is now the displayed theorem, not a def Prop", file=sys.stderr)
     sys.exit(1)
 if "def baker_davenport_reduction" not in lll:
     print("baker_davenport_reduction must stay a def Prop", file=sys.stderr)
@@ -384,6 +384,7 @@ print("  1/max(4log A,13log C) is not a lower bound; Track1 exp < ratio")
 print("  LLL floor form approximates CΛ to <17; rank-3 det=C, ||v||<32")
 print("  Lovasz 1/2, swap D<3/4 D, SVT of reduced, BD rearrangement")
 print("  lll_algorithm_terminates: reduced Z-basis exists; not a B<=1e6 cutoff")
+print("  displayed lll_svt_bound ||b1||<=2 lambda1; lll_det_bound ||b1||<=sqrt2 C^{1/3}")
 print("  baker_davenport_reduction / baker_bound_gap3 stay def Prop")
 print("  interpolation: Δ, Vandermonde, G_a product, Hadamard, Schwarz, Cauchy;")
 print("  analytic small bound is conditional; polynomial vanishing inhabited")

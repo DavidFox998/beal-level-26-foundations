@@ -66,14 +66,21 @@ On a gap-3 solution $A^4+B^4=(B+3)^{13}$ with $B>0$:
   `D = d₁ d₂ d₃` by a factor `< 3/4`, so only finitely many
   swaps occur. This does **not** give `B ≤ 10⁶`: a reduced
   first vector is short (`‖b₁‖ ≤ 2 λ₁ < 64`).
+- `lll_svt_bound`: a reduced *generating* first vector
+  satisfies `‖b₁‖ ≤ 2 λ₁`. Not “every lattice vector is
+  short”.
+- `lll_det_bound`: a reduced generating first vector
+  satisfies `‖b₁‖ ≤ √2 · C^{1/3}` (`≈ 2.8e10` for
+  `C = 10^{30}`). An *upper* bound, far larger than
+  `‖v‖ < 32`. Not a `B ≤ 10⁶` cutoff.
 
 Axioms: `[propext, Classical.choice, Quot.sound]` only.
 
 ## What stays a def Prop
 
-- `lll_svt_bound` / `lll_det_bound`
-  — the *unconditional* “every lattice vector” forms, and the
-  displayed-basis `√2 · C^{1/3}` bound, are not produced here.
+- *(removed)* the old universal `lll_svt_bound` /
+  `lll_det_bound` “every lattice vector” forms were false
+  and are replaced by the displayed theorems above.
 - `baker_bound_gap3_from_ratio` — “solution and `|Λ| ≤ B^4/A^4` ⇒ `B ≤ B0_nat`”.
 - `bugeaud_LLL_reduction_proof` — same Prop; **not** a theorem.
 - `baker_davenport_reduction` — same Prop; Mathlib 4.12 has no
