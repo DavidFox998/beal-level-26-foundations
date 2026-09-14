@@ -30,7 +30,9 @@ Darmon–Merel (4,4,13) + 3-adic vacuous-close no-go in
 `BealTrueV25.lean` (`axiom darmon_merel_4413_axiom`; not Mathlib
 4.12; not the minted unconditional v25 tag). `hGen` + `hLLL`
 no-go in `BealUnconditionalV25.lean`. Gap-1 no-go in
-`BealGap1.lean` (`baker_bound_gap1` stays `def Prop`). Uniform
+`BealGap1.lean` (`baker_bound_gap1` stays `def Prop`). Gap-2 no-go in
+`BealGap2.lean` (`baker_bound_gap2` stays `def Prop`; `B` odd, `3∣B`
+impossible). Uniform
 `wuestholz_product_theorem_exp` / `baker_davenport_reduction`
 stay `def Prop`. The kernel `baker_bound_gap3` stays a `def`;
 the axiom-relative theorem is named `baker_bound_gap3_true`.

@@ -46,6 +46,9 @@ DM / FLT13 / Ribet-to-32 stay def Prop).
 Gap-1 A⁴+B⁴=(B+1)¹³ no-go in BealGap1.lean
 (baker_bound_gap1_unconditional_nogo; coprime from the start;
 3∣B compatible; hGen_gap1/hLLL_gap1 stay def Prop).
+Gap-2 A⁴+B⁴=(B+2)¹³ no-go in BealGap2.lean
+(baker_bound_gap2_unconditional_nogo; B odd A even; 3∣B
+impossible like f1cb039; hGen_gap2/hLLL_gap2 stay def Prop).
 bugeaud_LLL_reduction_proof stays def Prop. Named theorem
 baker_bound_gap3 stays uninhabited. Not a minted v25 tag.
 -/
@@ -67,6 +70,7 @@ import BealGenuineV25
 import BealTrueV25
 import BealUnconditionalV25
 import BealGap1
+import BealGap2
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -953,6 +957,16 @@ theorem gap3_forall_of_baker
 #check BealGap1.baker_bound_gap1_true
 #check BealGap1.gcd_A_B_eq_one_of_sol
 #check BealGap1.not_three_dvd_A_of_three_dvd_B
+#check BealGap2.baker_bound_gap2_unconditional_nogo
+#check BealGap2.hGen_gap2
+#check BealGap2.hLLL_gap2
+#check BealGap2.hGen_exp_lt_ratio_gap2
+#check BealGap2.hLLL_method_fails_gap2
+#check BealGap2.baker_bound_gap2_true
+#check BealGap2.gcd_A_B_eq_one_of_sol
+#check BealGap2.B_odd_of_sol_gap2
+#check BealGap2.A_even_of_sol_gap2
+#check BealGap2.no_sol_when_three_dvd_B_gap2
 #print axioms C1_floor_eq
 #print axioms height_B0_eq
 #print axioms height_bound_gap3
@@ -1033,5 +1047,10 @@ theorem gap3_forall_of_baker
 #print axioms BealGap1.hLLL_method_fails_gap1
 #print axioms BealGap1.baker_bound_gap1_true
 #print axioms BealGap1.no_pos_gap1_of_axiom
+#print axioms BealGap2.baker_bound_gap2_unconditional_nogo
+#print axioms BealGap2.hGen_exp_lt_ratio_gap2
+#print axioms BealGap2.hLLL_method_fails_gap2
+#print axioms BealGap2.baker_bound_gap2_true
+#print axioms BealGap2.no_gap2_of_axiom
 
 end BealMatveevBeal

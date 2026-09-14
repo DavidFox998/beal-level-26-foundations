@@ -59,4 +59,4 @@ solution with `B = 0 ≤ B0`. 0 sorry. No new axiom.
 This module does **not** contain `axiom darmon_merel_4413_axiom_gap1`.
 The axiom-relative inhabitant reuses [`BealTrueV25.md`](BealTrueV25.md).
 
-Not a minted unconditional v25 tag. Next: gap-2 `C = B+2`.
+Not a minted unconditional v25 tag. Next: gap-2 `C = B+2` in [`BealGap2.md`](BealGap2.md).

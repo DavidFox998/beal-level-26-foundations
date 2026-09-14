@@ -98,6 +98,10 @@ Those hypotheses stay `def Prop`.
 $A^4+B^4=(B+1)^{13}$: coprime from the start, $3\mid B$ compatible,
 same log/LLL lose, $(1,0)$ is a solution. `baker_bound_gap1`
 stays `def Prop`.
+`BealGap2.lean` proves `baker_bound_gap2_unconditional_nogo` for
+$A^4+B^4=(B+2)^{13}$: $B$ odd $A$ even, $3\mid B$ impossible like
+`f1cb039`, same log/LLL lose, no $(1,0)$. `baker_bound_gap2`
+stays `def Prop`.
 Unconditional generic
 $|\Delta|\le\exp(-cLK)$ is false ($L=0$ gives $\Delta=1$);
 $L\ge 1$ and $\alpha_1=\alpha_2=1$ forces $\Delta=0$. Not the unrestricted
