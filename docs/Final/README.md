@@ -19,7 +19,8 @@ Current Matveev–Beal HEAD is recorded at the top of
 [`FINAL.md`](FINAL.md): integer-gap `B≤B0`, LLL / Wüstholz no-gos,
 full-order product packaging in `WuestholzProduct.lean`,
 log-method no-go in `MatveevThreeLogs.lean`, displayed Frey /
-Kraus no-go in `BealKraus.lean`. Uniform
+Kraus no-go in `BealKraus.lean`, Gaussian/Thue no-go in
+`BealKrausZsig.lean`. Uniform
 `wuestholz_product_theorem_exp` / `baker_davenport_reduction` /
 `baker_bound_gap3` stay `def Prop`. Not v25.
 

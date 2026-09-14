@@ -60,7 +60,10 @@ the log-method no-go: `Lambda3 = Lambda`; any `C1 ≥ 1`
 `baker_bound_gap3` stays `def Prop`. `BealKraus.lean` proves the
 displayed Frey discriminant `16 A⁸ B⁸ (B+3)²⁶` and the valuation
 obstruction `13 ∣ 26` / `13 ∤ 8`: `C` lowers at `p=13` while primes
-`p ∤ 6` dividing `A` do not. `L≥1` and `α1=α2=1` forces
+`p ∤ 6` dividing `A` do not. `BealKrausZsig.lean` proves the
+Gaussian/Thue no-go: `N(A²+iB²)=(B+3)¹³`; a Matveev-style bound
+on `|sin(13θ)|` needs `C1 < 2`, and `C1_floor` / `242` / `2` all
+lose to `B⁴/C¹³` on `B ≥ B0`. `L≥1` and `α1=α2=1` forces
 `Δ=0`. Being a convergent does not force `B ≤ 10⁶`. Axioms
 `[propext, Classical.choice, Quot.sound]`. **0 sorry.**
 

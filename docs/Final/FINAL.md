@@ -63,6 +63,12 @@ the jet `242`, and the ideal `C1 = 1`) has
 `13 \mid 26` / `13 \nmid 8`: `C` is a lowering candidate at
 `p=13` while primes `p \nmid 6` dividing `A` are not, so this
 curve is not a Fermat-style uniform level-$32$ check.
+`BealKrausZsig.lean` proves the Gaussian/Thue no-go:
+`N(A^2+iB^2)=(B+3)^{13}`; a Matveev-style bound on
+`|\sin(13\theta)|` needs `C1 < 2`, and `C1_{\mathrm{floor}}` /
+`242` / `2` all lose to `B^4/C^{13}` on `B \ge B0`.
+The thirteenth-power factorization, Zsigmondy, and Catalan
+stay `def Prop`.
 Unconditional generic
 $|\Delta|\le\exp(-cLK)$ is false ($L=0$ gives $\Delta=1$);
 $L\ge 1$ and $\alpha_1=\alpha_2=1$ forces $\Delta=0$. Not the unrestricted

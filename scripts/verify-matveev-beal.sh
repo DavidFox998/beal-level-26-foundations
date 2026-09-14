@@ -33,6 +33,8 @@ test -f MatveevThreeLogs.lean
 test -f Beal/Matveev/MatveevThreeLogs.lean
 test -f BealKraus.lean
 test -f Beal/Matveev/BealKraus.lean
+test -f BealKrausZsig.lean
+test -f Beal/Matveev/BealKrausZsig.lean
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -114,6 +116,12 @@ if "import BealKraus" not in src:
     sys.exit(1)
 if "BealKraus.baker_bound_gap3_kraus_nogo" not in src:
     print("#check baker_bound_gap3_kraus_nogo missing from MatveevThm14General.lean", file=sys.stderr)
+    sys.exit(1)
+if "import BealKrausZsig" not in src:
+    print("MatveevThm14General.lean missing import BealKrausZsig", file=sys.stderr)
+    sys.exit(1)
+if "BealKrausZsig.baker_bound_gap3_gaussian_nogo" not in src:
+    print("#check baker_bound_gap3_gaussian_nogo missing from MatveevThm14General.lean", file=sys.stderr)
     sys.exit(1)
 
 lll = pathlib.Path("MatveevLLL.lean").read_text(encoding="utf-8")
@@ -257,6 +265,9 @@ if ".one `MatveevThreeLogs" not in pathlib.Path("lakefile.lean").read_text(encod
     sys.exit(1)
 if ".one `BealKraus" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
     print("lakefile.lean missing BealKraus glob", file=sys.stderr)
+    sys.exit(1)
+if ".one `BealKrausZsig" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
+    print("lakefile.lean missing BealKrausZsig glob", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -596,6 +607,80 @@ if re.search(r"^theorem bugeaud_LLL_reduction_proof\b", kraus, re.M):
     print("bugeaud_LLL_reduction_proof must not be a theorem", file=sys.stderr)
     sys.exit(1)
 
+zsig = pathlib.Path("BealKrausZsig.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in zsig:
+    print("BealKrausZsig.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
+if "theorem baker_bound_gap3_gaussian_nogo" not in zsig:
+    print("baker_bound_gap3_gaussian_nogo missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem baker_bound_gap3_z_i_nogo" not in zsig:
+    print("baker_bound_gap3_z_i_nogo missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem log_thirteen_gt_five_div_two" not in zsig:
+    print("log_thirteen_gt_five_div_two missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem five_div_log_thirteen_lt_two" not in zsig:
+    print("five_div_log_thirteen_lt_two missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem gaussianAlpha_norm_of_sol" not in zsig:
+    print("gaussianAlpha_norm_of_sol missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem gaussian_common_dvd" not in zsig:
+    print("gaussian_common_dvd missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem C1_floor_gaussian_nogo" not in zsig:
+    print("C1_floor_gaussian_nogo missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem two_forty_two_gaussian_nogo" not in zsig:
+    print("two_forty_two_gaussian_nogo missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem two_gaussian_nogo" not in zsig:
+    print("two_gaussian_nogo missing", file=sys.stderr)
+    sys.exit(1)
+if "143186215390" not in zsig:
+    print("C1_floor = 143186215390 missing from BealKrausZsig.lean", file=sys.stderr)
+    sys.exit(1)
+if "1000000" not in zsig:
+    print("B0_nat = 1000000 missing from BealKrausZsig.lean", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in zsig:
+    print("do not paste True := trivial skeletons", file=sys.stderr)
+    sys.exit(1)
+if "def baker_bound_gap3" not in zsig:
+    print("baker_bound_gap3 must stay a def Prop in BealKrausZsig.lean", file=sys.stderr)
+    sys.exit(1)
+if "def gaussian_associate_thirteenth_power" not in zsig:
+    print("gaussian_associate_thirteenth_power must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def zsigmondy_gaussian_primitive_divisor" not in zsig:
+    print("zsigmondy_gaussian_primitive_divisor must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def mihailescu_catalan" not in zsig:
+    print("mihailescu_catalan must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_gap3\b", zsig, re.M):
+    print("do not inhabit baker_bound_gap3 in BealKrausZsig.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem gaussian_associate_thirteenth_power\b", zsig, re.M):
+    print("do not inhabit gaussian_associate_thirteenth_power", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem zsigmondy_gaussian_primitive_divisor\b", zsig, re.M):
+    print("do not inhabit zsigmondy_gaussian_primitive_divisor", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem mihailescu_catalan\b", zsig, re.M):
+    print("do not inhabit mihailescu_catalan", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem darmon_merel_signature_44p\b", zsig, re.M):
+    print("do not inhabit darmon_merel_signature_44p", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem kraus_uniform_residual_level\b", zsig, re.M):
+    print("do not inhabit kraus_uniform_residual_level", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem ribet_level_lowering\b", zsig, re.M):
+    print("do not inhabit ribet_level_lowering", file=sys.stderr)
+    sys.exit(1)
+
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
     print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
@@ -800,6 +885,9 @@ print("  baker_bound_gap3_nogo_logs: log method cannot cut B<=1e6")
 print("  BealKraus: Frey Δ=16 A^8 B^8 C^26; 13|26 so C lowers; 13∤8 so A does not")
 print("  baker_bound_gap3_kraus_nogo: displayed Frey is not Fermat-style level 32")
 print("  darmon_merel / ribet / kraus_uniform_residual_level stay def Prop")
+print("  BealKrausZsig: N(A^2+iB^2)=(B+3)^13; C1<5/log13<2 for |sin(13θ)|")
+print("  baker_bound_gap3_gaussian_nogo: C1>=2 exp^2 < B^4/C^13 on B>=B0")
+print("  gaussian thirteenth-power / Zsigmondy / Catalan stay def Prop")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")
 print("  unrestricted target and hLLL stay def Prop; not v25")

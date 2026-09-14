@@ -53,4 +53,7 @@ Axioms `[propext, Classical.choice, Quot.sound]` only.
 - `ribet_level_lowering` — Ribet as a modularity theorem.
 - `wuestholz_product_theorem_exp` / `baker_davenport_reduction`.
 
+See also [`BealKrausZsig.md`](BealKrausZsig.md) for the
+Gaussian / Thue argument-form no-go.
+
 Not a minted v25 tag.
