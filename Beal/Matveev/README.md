@@ -37,12 +37,13 @@ tree. Theorems live in the matching **root** modules:
 | `BealGap13.lean` | `BealGap13.lean` |
 | `BealGap14.lean` | `BealGap14.lean` |
 | `BealGap15.lean` | `BealGap15.lean` |
+| `BealGapK.lean` | `BealGapK.lean` |
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /
 Kraus / KrausZsig / CatalanZsig / DarmonMerel / DarmonMerel44p /
 FLT13 / GenuineV25 / TrueV25 / UnconditionalV25 / Gap1 / Gap2 /
-Gap4 / Gap5 / Gap6 / Gap7 / Gap8 / Gap9 / Gap10 / Gap11 / Gap12 / Gap13 / Gap14 / Gap15 modules.
+Gap4 / Gap5 / Gap6 / Gap7 / Gap8 / Gap9 / Gap10 / Gap11 / Gap12 / Gap13 / Gap14 / Gap15 / GapK modules.
 
 `hGen`, `hLLL`, and `baker_bound_gap3_of_hGen_hLLL` stay
 uninhabited `def Prop`. `baker_bound_gap3` stays a `def Prop`
@@ -76,6 +77,9 @@ same axiom). `hGen_gap14`, `hLLL_gap14`, and `baker_bound_gap14`
 stay uninhabited `def Prop` (`baker_bound_gap14_true` reuses the
 same axiom). `hGen_gap15`, `hLLL_gap15`, and `baker_bound_gap15`
 stay uninhabited `def Prop` (`baker_bound_gap15_true` reuses the
-same axiom). `baker_davenport_reduction`, `bugeaud_LLL_reduction_proof`,
+same axiom). `hGen_gapK`, `hLLL_gapK`, and `baker_bound_gapK`
+stay uninhabited `def Prop` (`baker_bound_gapK_true_of_positive_coprime`
+reuses the same axiom on positive coprime solutions; not `∀k ¬sol`).
+`baker_davenport_reduction`, `bugeaud_LLL_reduction_proof`,
 `wuestholz_subgroup_theorem`, and `wuestholz_product_theorem_exp`
 stay uninhabited `def Prop`.

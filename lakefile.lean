@@ -28,4 +28,4 @@ lean_lib «BealMatveevBeal» where
     .one `BealUnconditionalV25, .one `BealGap1, .one `BealGap2, .one `BealGap4,
     .one `BealGap5, .one `BealGap6, .one `BealGap7, .one `BealGap8,
     .one `BealGap9, .one `BealGap10, .one `BealGap11, .one `BealGap12,     .one `BealGap13,
-    .one `BealGap14, .one `BealGap15]
+    .one `BealGap14, .one `BealGap15, .one `BealGapK]

@@ -85,4 +85,8 @@ are false here. Do **not** prove `no_sol_when_seven_dvd_B`.
 This module does **not** contain `axiom darmon_merel_4413_axiom_gap15`.
 The axiom-relative inhabitant reuses [`BealTrueV25.md`](BealTrueV25.md).
 
+Successor infrastructure for generic `k` is
+[`BealGapK.md`](BealGapK.md) (`v24-v24x-final-gapK-generic-nogo`).
+Gap-15 itself is unchanged.
+
 Not a minted unconditional v25 tag.

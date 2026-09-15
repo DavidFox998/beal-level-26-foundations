@@ -105,7 +105,13 @@ preferred-citation:
     5|B impossible by 5-descent C1=B1+3 last 125X; 7|B
     compatible C==1 A^4==1; remaining coprime Darmon-Merel;
     (1,0) is not a solution; baker_bound_gap15 stays def Prop).
-    That does not
+    BealGapK proves baker_bound_gapK_unconditional_nogo for
+    generic A^4+B^4=(B+k)^13 (odd k => B even A odd; even k =>
+    A even only; gcd(B,B+k)|k; p|k and p|B => p|A; v_p(k)=1
+    descents 3/5/7/11/13; residue kills with hyps; not forall k
+    nogo because gap-1 (1,0) and k=m^4 B=0; recovers gaps
+    2..9,11..15 and odd-B gap-10; baker_bound_gapK stays def
+    Prop). That does not
     mint this version tag. Unrestricted
     matveev_inequality_real_target and hLLL stay def Prop.
     Not a minted v25 tag. Prior v24.4.0 version

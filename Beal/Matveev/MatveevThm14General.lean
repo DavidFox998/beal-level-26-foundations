@@ -110,6 +110,13 @@ impossible by 3-descent C1=B1+5≡2 last 27X; 5∣B impossible
 by 5-descent C1=B1+3≡3 last 125X; 7∣B compatible C≡1 A⁴≡1;
 remaining coprime Darmon–Merel; hGen_gap15/hLLL_gap15
 stay def Prop).
+Gap-K generic A⁴+B⁴=(B+k)¹³ infrastructure in BealGapK.lean
+(baker_bound_gapK_unconditional_nogo on k≥1, B≥B0; odd k ⇒
+B even A odd; even k ⇒ A even only; gcd(B,B+k)∣k; p∣k∧p∣B⇒p∣A;
+v_p(k)=1 descents 3/5/7/11/13; residue kills with hyps;
+remaining coprime Darmon–Merel; recovers gaps 2..9,11..15
+and odd-B gap-10; not ∀k ¬sol — gap-1 (1,0) and k=m⁴, B=0;
+hGen_gapK/hLLL_gapK/baker_bound_gapK stay def Prop).
 bugeaud_LLL_reduction_proof stays def Prop. Named theorem
 baker_bound_gap3 stays uninhabited. Not a minted v25 tag.
 -/
@@ -144,6 +151,7 @@ import BealGap12
 import BealGap13
 import BealGap14
 import BealGap15
+import BealGapK
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -1186,6 +1194,21 @@ theorem gap3_forall_of_baker
 #check BealGap15.five_dvd_B_forces_five_dvd_A_gap15
 #check BealGap15.no_sol_when_five_dvd_B_gap15
 #check BealGap15.seven_dvd_B_compat_gap15
+#check BealGapK.baker_bound_gapK_unconditional_nogo
+#check BealGapK.hGen_gapK
+#check BealGapK.hLLL_gapK
+#check BealGapK.hGen_exp_lt_ratio_gapK
+#check BealGapK.hLLL_method_fails_gapK
+#check BealGapK.baker_bound_gapK_true_of_positive_coprime
+#check BealGapK.gcd_B_C_dvd_k
+#check BealGapK.A_even_of_sol_of_even_k
+#check BealGapK.B_even_of_sol_of_odd_k
+#check BealGapK.A_odd_of_sol_of_odd_k
+#check BealGapK.p_dvd_k_forces_p_dvd_A_gapK
+#check BealGapK.no_sol_when_p_dvd_k_three_gapK
+#check BealGapK.no_sol_when_p_dvd_k_five_gapK
+#check BealGapK.no_positive_coprime_gapK_of_axiom
+#check BealGapK.recover_no_gap15_of_axiom
 #print axioms C1_floor_eq
 #print axioms height_B0_eq
 #print axioms height_bound_gap3
@@ -1331,5 +1354,10 @@ theorem gap3_forall_of_baker
 #print axioms BealGap15.hLLL_method_fails_gap15
 #print axioms BealGap15.baker_bound_gap15_true
 #print axioms BealGap15.no_gap15_of_axiom
+#print axioms BealGapK.baker_bound_gapK_unconditional_nogo
+#print axioms BealGapK.hGen_exp_lt_ratio_gapK
+#print axioms BealGapK.hLLL_method_fails_gapK
+#print axioms BealGapK.no_positive_coprime_gapK_of_axiom
+#print axioms BealGapK.recover_no_gap15_of_axiom
 
 end BealMatveevBeal

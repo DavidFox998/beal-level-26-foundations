@@ -6,14 +6,14 @@ This repo is foundations-level-26, the Matveev proof for beal-conjecture f7bbdc5
 
 Monorepo beal-conjecture stays beal-conjecture, this repo is foundations-level-26 Matveev-Beal complement.
 
-## BealMatveevBeal — Matveev–Beal Gap-3 / Gap-1 / Gap-2 / Gap-4 / Gap-5 / Gap-6 / Gap-7 / Gap-8 / Gap-9 / Gap-10 / Gap-11 / Gap-12 / Gap-13 / Gap-14 / Gap-15 Documentation
+## BealMatveevBeal — Matveev–Beal Gap-3 / Gap-1 / Gap-2 / Gap-4 / Gap-5 / Gap-6 / Gap-7 / Gap-8 / Gap-9 / Gap-10 / Gap-11 / Gap-12 / Gap-13 / Gap-14 / Gap-15 / Gap-K Documentation
 
 Concept DOI: **10.5281/zenodo.22379293**
-Latest tag: **v24-v24x-final-gap15-nogo** (successor of `v24-v24x-final-gap14-nogo` `d382439` `main`)
+Latest tag: **v24-v24x-final-gapK-generic-nogo** (successor of `v24-v24x-final-gap15-nogo` `0af0b77` `main`)
 Lean: Mathlib 4.12 — foundations-level-26 — beal-conjecture stays beal-conjecture
 Build: `lake build BealMatveevBeal` green — `./scripts/verify-matveev-beal.sh` green — 0 sorry
 
-### Current status: `baker_bound_gap3` / `baker_bound_gap1` / `baker_bound_gap2` / `baker_bound_gap4` / `baker_bound_gap5` / `baker_bound_gap6` / `baker_bound_gap7` / `baker_bound_gap8` / `baker_bound_gap9` / `baker_bound_gap10` / `baker_bound_gap11` / `baker_bound_gap12` / `baker_bound_gap13` / `baker_bound_gap14` / `baker_bound_gap15` stay `def Prop` uninhabited
+### Current status: `baker_bound_gap3` / `baker_bound_gap1` / `baker_bound_gap2` / `baker_bound_gap4` / `baker_bound_gap5` / `baker_bound_gap6` / `baker_bound_gap7` / `baker_bound_gap8` / `baker_bound_gap9` / `baker_bound_gap10` / `baker_bound_gap11` / `baker_bound_gap12` / `baker_bound_gap13` / `baker_bound_gap14` / `baker_bound_gap15` / `baker_bound_gapK` stay `def Prop` uninhabited
 
 - **`baker_bound_gap3` `def Prop` uninhabited** — `∀ A B, A^4+B^4=(B+3)^13 → B ≤ B0_nat` with `B0_nat=1000000` `rfl`, `C1_floor=143186215390` `rfl` — named theorem stays `def Prop` — unconditional tag `v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations` **not minted**.
 - **`f1cb039` `no_sol_when_three_dvd_B` closed** — no gap-3 solutions with `3∣B`; remaining solutions coprime.
@@ -33,6 +33,7 @@ Build: `lake build BealMatveevBeal` green — `./scripts/verify-matveev-beal.sh`
 - **Gap-13 `BealGap13`** — `A^4+B^4=(B+13)^13`; `B` even and `A` odd (odd `B` dies mod 16, like gap-1/5/7/9/11); `3∣B` compatible (`C≡1`, `A⁴≡1`); `5∣B` impossible (`C≡3 mod 5`); `7∣B` impossible (`C≡6 mod 7`); `11∣B` impossible (`C≡2`, `C¹³≡8` vs `{0,1,3,4,5,9}`, not the gap-11 11-descent); `13∣B` impossible by 13-descent (`C₁=B₁+1≡1`, last `2197 X=(B₁+1)¹³`); remaining `5∤B` `7∤B` `11∤B` `13∤B` are coprime Darmon–Merel (including the `3∣B` branch); `(1,0)` is not a solution; `baker_bound_gap13` stays `def Prop`; `baker_bound_gap13_unconditional_nogo` `[propext, Classical.choice, Quot.sound]` only; axiom-relative `baker_bound_gap13_true` reuses the existing Darmon–Merel axiom.
 - **Gap-14 `BealGap14`** — `A^4+B^4=(B+14)^13`; `B` odd and `A` even (even `B` dies after three `/2` as `2(4B₃+7)¹³` residue `6` or `14`, like gap-2/6); `3∣B` impossible (`C≡2 mod 3`, same as gap-2/5/8/11); `5∣B` impossible (`C≡4 mod 5`, same as gap-4/9); `7∣B` impossible by 7-descent (`C₁=B₁+2≡2`, last `343 X=(B₁+2)¹³`, like gap-7); remaining `3∤B` `5∤B` `7∤B` are coprime Darmon–Merel; `(1,0)` is not a solution; `baker_bound_gap14` stays `def Prop`; `baker_bound_gap14_unconditional_nogo` `[propext, Classical.choice, Quot.sound]` only; axiom-relative `baker_bound_gap14_true` reuses the existing Darmon–Merel axiom.
 - **Gap-15 `BealGap15`** — `A^4+B^4=(B+15)^13`; `B` even and `A` odd (odd `B` dies mod 16, like gap-1/5/7/9/11/13); `3∣B` impossible by 3-descent (`C₁=B₁+5≡2`, last `27 X=(B₁+5)¹³`, like gap-3/6/12); `5∣B` impossible by 5-descent (`C₁=B₁+3≡3`, last `125 X=(B₁+3)¹³`, like gap-5/10); `7∣B` compatible (`C≡1`, `A⁴≡1`); remaining `3∤B` `5∤B` are coprime Darmon–Merel; `(1,0)` is not a solution; `baker_bound_gap15` stays `def Prop`; `baker_bound_gap15_unconditional_nogo` `[propext, Classical.choice, Quot.sound]` only; axiom-relative `baker_bound_gap15_true` reuses the existing Darmon–Merel axiom.
+- **Gap-K `BealGapK`** — generic `A^4+B^4=(B+k)^13`; odd `k` forces `B` even and `A` odd; even `k` forces `A` even only (not `B` odd — gap-10 leftover); `gcd(B,B+k)∣k`; `p∣k` and `p∣B` force `p∣A`; `v_p(k)=1` descents for `p=3,5,7,11,13`; residue kills with congruence hypotheses; remaining coprime solutions are Darmon–Merel `(4,4,13)`; **not** `∀k ¬sol` (`(1,0)` and `k=m⁴`, `B=0`); recovers axiom closes for gaps 2..9,11..15 and odd-`B` gap-10; `baker_bound_gapK` stays `def Prop`; `baker_bound_gapK_unconditional_nogo` `[propext, Classical.choice, Quot.sound]` only.
 
 GitHub slug remains `beal-level-26-foundations` (not renamed: concept DOI
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293) stays
@@ -90,6 +91,7 @@ BealGap12.lean
 BealGap13.lean
 BealGap14.lean
 BealGap15.lean
+BealGapK.lean
 ```
 
 **0 `sorry`.** `matveev_gap3_lower` is the B≤10^6 integer-gap theorem
@@ -418,6 +420,14 @@ On a gap-3 solution, `B < A` and `A ≈ (B+3)^{13/4}`. The old
   `hGen_gap15` / `hLLL_gap15` stay `def Prop`.
   Axiom-relative `baker_bound_gap15_true` reuses
   `darmon_merel_4413_axiom`. Not a minted v25 tag
+- `baker_bound_gapK_unconditional_nogo` — generic
+  `A⁴ + B⁴ = (B+k)¹³` infrastructure (proved in
+  `BealGapK.lean`): odd `k` ⇒ `B` even `A` odd; even `k` ⇒
+  `A` even only; `gcd(B,B+k)∣k`; `p∣k` and `p∣B` force `p∣A`;
+  `v_p(k)=1` descents; residue kills with hyps; not `∀k ¬sol`
+  (gap-1 `(1,0)` and `k=m⁴`, `B=0`); recovers gaps 2..9,11..15
+  and odd-`B` gap-10. `baker_bound_gapK` / `hGen_gapK` /
+  `hLLL_gapK` stay `def Prop`. Not a minted v25 tag
 
 `baker_conditional_gap3_full` takes `baker_bound_gap3`, not the
 Matveev target. After the lower bound, the remaining implication
