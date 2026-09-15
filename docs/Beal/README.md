@@ -36,6 +36,7 @@ Current Matveev–Beal track:
 - [`BealGap12.md`](BealGap12.md) — gap-12 `A⁴+B⁴=(B+12)¹³` no-go (`v24-v24x-final-gap12-nogo`); `B` odd `A` even; even `B` dies after six `/2` residue `12`; `3∣B` impossible by 3-descent (`C₁=B₁+4`); `5∣B` impossible (`C≡2`); `7∣B` impossible (`C≡5`)
 - [`BealGap13.md`](BealGap13.md) — gap-13 `A⁴+B⁴=(B+13)¹³` no-go (`v24-v24x-final-gap13-nogo`); `B` even `A` odd; `3∣B` compatible (`A⁴≡1`); `5∣B` impossible (`C≡3`); `7∣B` impossible (`C≡6`); `11∣B` impossible (`C¹³≡8`); `13∣B` impossible by 13-descent (`C₁=B₁+1`)
 - [`BealGap14.md`](BealGap14.md) — gap-14 `A⁴+B⁴=(B+14)¹³` no-go (`v24-v24x-final-gap14-nogo`); `B` odd `A` even; even `B` dies after three `/2` last `2(4B₃+7)¹³` residue `6` or `14`; `3∣B` impossible (`C≡2`); `5∣B` impossible (`C≡4`); `7∣B` impossible by 7-descent (`C₁=B₁+2`)
+- [`BealGap15.md`](BealGap15.md) — gap-15 `A⁴+B⁴=(B+15)¹³` no-go (`v24-v24x-final-gap15-nogo`); `B` even `A` odd; `3∣B` impossible by 3-descent (`C₁=B₁+5≡2`); `5∣B` impossible by 5-descent (`C₁=B₁+3≡3`); `7∣B` compatible (`C≡1 A⁴≡1`)
 - [`BealBakerBoundGap3.md`](BealBakerBoundGap3.md) — kernel `baker_bound_gap3` stays a `def Prop`; Mathlib-only close remains open
 
 Older Frey / Zsigmondy / modular-elimination notes in this
