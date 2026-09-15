@@ -27,4 +27,4 @@ lean_lib «BealMatveevBeal» where
     .one `BealFLT13, .one `BealGenuineV25, .one `BealTrueV25,
     .one `BealUnconditionalV25, .one `BealGap1, .one `BealGap2, .one `BealGap4,
     .one `BealGap5, .one `BealGap6, .one `BealGap7, .one `BealGap8,
-    .one `BealGap9]
+    .one `BealGap9, .one `BealGap10]
