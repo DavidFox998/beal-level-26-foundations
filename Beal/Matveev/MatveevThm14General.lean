@@ -80,6 +80,12 @@ to last-step 2(4B3+5)¹³, even B3 / 5|B3 / B≡1,3 die, leftover
 B≡2∨4; 3∣B compatible; 5∣B impossible by 5-descent C1=B1+2;
 7∣B impossible C≡3; odd B coprime Darmon–Merel; hGen_gap10/hLLL_gap10
 stay def Prop).
+Gap-11 A⁴+B⁴=(B+11)¹³ no-go in BealGap11.lean
+(baker_bound_gap11_unconditional_nogo; B even A odd; 3∣B
+impossible C≡2; 11∣B impossible by 11-descent C1=B1+1;
+5∣B compatible C≡1 A⁴≡1; 7∣B compatible C≡4 A⁴≡4;
+remaining coprime Darmon–Merel; hGen_gap11/hLLL_gap11
+stay def Prop).
 bugeaud_LLL_reduction_proof stays def Prop. Named theorem
 baker_bound_gap3 stays uninhabited. Not a minted v25 tag.
 -/
@@ -109,6 +115,7 @@ import BealGap7
 import BealGap8
 import BealGap9
 import BealGap10
+import BealGap11
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -1084,6 +1091,18 @@ theorem gap3_forall_of_baker
 #check BealGap10.no_sol_when_seven_dvd_B_gap10
 #check BealGap10.even_B_three_div2_last
 #check BealGap10.even_B_last_step_remaining
+#check BealGap11.baker_bound_gap11_unconditional_nogo
+#check BealGap11.hGen_gap11
+#check BealGap11.hLLL_gap11
+#check BealGap11.hGen_exp_lt_ratio_gap11
+#check BealGap11.hLLL_method_fails_gap11
+#check BealGap11.baker_bound_gap11_true
+#check BealGap11.gcd_A_B_eq_one_of_sol
+#check BealGap11.B_even_of_sol_gap11
+#check BealGap11.A_odd_of_sol_gap11
+#check BealGap11.no_sol_when_three_dvd_B_gap11
+#check BealGap11.no_sol_when_eleven_dvd_B_gap11
+#check BealGap11.eleven_dvd_B_forces_eleven_dvd_A
 #print axioms C1_floor_eq
 #print axioms height_B0_eq
 #print axioms height_bound_gap3
@@ -1204,5 +1223,10 @@ theorem gap3_forall_of_baker
 #print axioms BealGap10.hLLL_method_fails_gap10
 #print axioms BealGap10.baker_bound_gap10_true
 #print axioms BealGap10.no_gap10_of_axiom
+#print axioms BealGap11.baker_bound_gap11_unconditional_nogo
+#print axioms BealGap11.hGen_exp_lt_ratio_gap11
+#print axioms BealGap11.hLLL_method_fails_gap11
+#print axioms BealGap11.baker_bound_gap11_true
+#print axioms BealGap11.no_gap11_of_axiom
 
 end BealMatveevBeal

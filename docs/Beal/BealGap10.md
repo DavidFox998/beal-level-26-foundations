@@ -83,4 +83,5 @@ Darmon–Merel signature `(4,4,13)`. 0 sorry. No new axiom.
 - Last-step both-odd 5-free `B ≡ 2 ∨ 4` (not a `def Prop`; simply
   not killed).
 
-Not a minted unconditional v25 tag.
+Not a minted unconditional v25 tag. Successor: [`BealGap11.md`](BealGap11.md)
+(`v24-v24x-final-gap11-nogo`).

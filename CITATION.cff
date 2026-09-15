@@ -75,7 +75,13 @@ preferred-citation:
     (A even; even B last-step leftover B3==2 or 4; 3|B compatible;
     5|B impossible by 5-descent C1=B1+2; 7|B impossible C==3;
     odd B coprime Darmon-Merel; (1,0) is not a solution;
-    baker_bound_gap10 stays def Prop). That does not
+    baker_bound_gap10 stays def Prop). BealGap11 proves
+    baker_bound_gap11_unconditional_nogo for A^4+B^4=(B+11)^13
+    (B even A odd; 3|B impossible C==2; 11|B impossible by
+    11-descent C1=B1+1; 5|B compatible C==1 A^4==1; 7|B
+    compatible C==4 A^4==4; remaining coprime Darmon-Merel;
+    (1,0) is not a solution; baker_bound_gap11 stays
+    def Prop). That does not
     mint this version tag. Unrestricted
     matveev_inequality_real_target and hLLL stay def Prop.
     Not a minted v25 tag. Prior v24.4.0 version
