@@ -33,12 +33,13 @@ tree. Theorems live in the matching **root** modules:
 | `BealGap9.lean` | `BealGap9.lean` |
 | `BealGap10.lean` | `BealGap10.lean` |
 | `BealGap11.lean` | `BealGap11.lean` |
+| `BealGap12.lean` | `BealGap12.lean` |
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /
 Kraus / KrausZsig / CatalanZsig / DarmonMerel / DarmonMerel44p /
 FLT13 / GenuineV25 / TrueV25 / UnconditionalV25 / Gap1 / Gap2 /
-Gap4 / Gap5 / Gap6 / Gap7 / Gap8 / Gap9 / Gap10 / Gap11 modules.
+Gap4 / Gap5 / Gap6 / Gap7 / Gap8 / Gap9 / Gap10 / Gap11 / Gap12 modules.
 
 `hGen`, `hLLL`, and `baker_bound_gap3_of_hGen_hLLL` stay
 uninhabited `def Prop`. `baker_bound_gap3` stays a `def Prop`
@@ -64,6 +65,8 @@ same axiom). `hGen_gap10`, `hLLL_gap10`, and `baker_bound_gap10`
 stay uninhabited `def Prop` (`baker_bound_gap10_true` reuses the
 same axiom on odd `B`). `hGen_gap11`, `hLLL_gap11`, and `baker_bound_gap11`
 stay uninhabited `def Prop` (`baker_bound_gap11_true` reuses the
+same axiom). `hGen_gap12`, `hLLL_gap12`, and `baker_bound_gap12`
+stay uninhabited `def Prop` (`baker_bound_gap12_true` reuses the
 same axiom). `baker_davenport_reduction`, `bugeaud_LLL_reduction_proof`,
 `wuestholz_subgroup_theorem`, and `wuestholz_product_theorem_exp`
 stay uninhabited `def Prop`.

@@ -76,4 +76,5 @@ gap-11 (`C ≡ 1 mod 5` and `C ≡ 4 mod 7`).
 This module does **not** contain `axiom darmon_merel_4413_axiom_gap11`.
 The axiom-relative inhabitant reuses [`BealTrueV25.md`](BealTrueV25.md).
 
-Not a minted unconditional v25 tag.
+Not a minted unconditional v25 tag. Successor: [`BealGap12.md`](BealGap12.md)
+(`v24-v24x-final-gap12-nogo`).
