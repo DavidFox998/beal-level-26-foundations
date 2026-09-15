@@ -9,7 +9,7 @@ Lake library sources for the Matveev–Beal complement
 `BealDarmonMerel44p`, `BealFLT13`, `BealGenuineV25`,
 `BealTrueV25`, `BealUnconditionalV25`, `BealGap1`, `BealGap2`,
 `BealGap4`, `BealGap5`, `BealGap6`, `BealGap7`, `BealGap8`,
-`BealGap9`, `BealGap10`, `BealGap11`, and `BealGap12`.
+`BealGap9`, `BealGap10`, `BealGap11`, `BealGap12`, and `BealGap13`.
 
 `Beal.lean` re-exports `Beal.Matveev.MatveevThm14General`.
 Substantial proofs live in **root** modules; files under
@@ -60,4 +60,9 @@ Darmon–Merel; no `(1,0)`).
 as residue `12`; `3 ∣ B` impossible by 3-descent (`C₁=B₁+4`);
 `5 ∣ B` impossible (`C ≡ 2`); `7 ∣ B` impossible (`C ≡ 5`);
 remaining coprime Darmon–Merel; no `(1,0)`).
+`BealGap13` proves the gap-13 analogue (`baker_bound_gap13` stays
+`def Prop`; `B` even, `A` odd; `3 ∣ B` compatible (`C ≡ 1`);
+`5 ∣ B` impossible (`C ≡ 3`); `7 ∣ B` impossible (`C ≡ 6`);
+`11 ∣ B` impossible (`C¹³ ≡ 8`); `13 ∣ B` impossible by
+13-descent; remaining coprime Darmon–Merel; no `(1,0)`).
 That is not the minted unconditional v25 tag.
