@@ -100,9 +100,7 @@ theorem gcd_B_C_dvd_eight_gap8 (B : ℕ) : Nat.gcd B (B + 8) ∣ 8 :=
 theorem eight_mul_odd_mod16 {n : ℕ} (h : Odd n) :
     (8 * n) % 16 = 8 := by
   obtain ⟨k, hk⟩ := h
-  have : 8 * (k + k + 1) = 16 * k + 8 := by
-    rw [← two_mul]
-    ring
+  have : 8 * (2 * k + 1) = 16 * k + 8 := by ring
   rw [hk, this, Nat.add_mod, Nat.mul_mod]
   norm_num
 
@@ -385,8 +383,8 @@ theorem B_odd_of_sol_gap8 {A B : ℕ} (h : is_gap8_sol A B) : Odd B := by
 
 theorem two_mul_B_pow_four_lt_add_eight_pow (B : ℕ) :
     2 * B ^ 4 < (B + 8) ^ 13 := by
-  have h6 : 6 ≤ B + 8 := Nat.le_add_left 6 B
-  have h2 : 2 ≤ B + 8 := le_trans (by decide : 2 ≤ 8) h6
+  have h8 : 8 ≤ B + 8 := Nat.le_add_left 8 B
+  have h2 : 2 ≤ B + 8 := le_trans (by decide : 2 ≤ 8) h8
   have h2pow : 2 ≤ 2 ^ 9 := by decide
   have h29 : 2 ^ 9 ≤ (B + 8) ^ 9 := Nat.pow_le_pow_left h2 9
   have h2le : 2 ≤ (B + 8) ^ 9 := le_trans h2pow h29
@@ -686,12 +684,12 @@ theorem abs_Lambda_gap8_le_ratio {A B : ℕ}
 theorem B_pow_five_add_B_pow_four_lt_add_eight_pow {B : ℕ} (_hB : 0 < B) :
     (B : ℝ) ^ 5 + (B : ℝ) ^ 4 < ((B + 8 : ℕ) : ℝ) ^ 13 := by
   have hx : (0 : ℝ) ≤ (B : ℝ) := Nat.cast_nonneg B
-  have hC : ((B + 8 : ℕ) : ℝ) = (B : ℝ) + 6 := by
+  have hC : ((B + 8 : ℕ) : ℝ) = (B : ℝ) + 8 := by
     rw [Nat.cast_add]
     norm_num
   have h5 : (B : ℝ) ^ 5 + (B : ℝ) ^ 4 < ((B + 8 : ℕ) : ℝ) ^ 5 := by
     rw [hC]
-    have hexp : ((B : ℝ) + 6) ^ 5 =
+    have hexp : ((B : ℝ) + 8) ^ 5 =
         (B : ℝ) ^ 5 + 40 * (B : ℝ) ^ 4 + 640 * (B : ℝ) ^ 3 +
           5120 * (B : ℝ) ^ 2 + 20480 * (B : ℝ) + 32768 := by
       ring
@@ -699,7 +697,7 @@ theorem B_pow_five_add_B_pow_four_lt_add_eight_pow {B : ℕ} (_hB : 0 < B) :
     have h2 : (0 : ℝ) ≤ (B : ℝ) ^ 2 := sq_nonneg _
     nlinarith [hexp, h3, h2, hx]
   have hC1 : (1 : ℝ) ≤ ((B + 8 : ℕ) : ℝ) := by
-    have : 1 ≤ B + 8 := le_trans (by decide : 1 ≤ 8) (Nat.le_add_left 6 B)
+    have : 1 ≤ B + 8 := le_trans (by decide : 1 ≤ 8) (Nat.le_add_left 8 B)
     exact_mod_cast this
   have h513 : ((B + 8 : ℕ) : ℝ) ^ 5 ≤ ((B + 8 : ℕ) : ℝ) ^ 13 :=
     pow_le_pow_right hC1 (by decide : (5 : ℕ) ≤ 13)
@@ -773,7 +771,7 @@ theorem hGen_exp_lt_ratio_gap8
   set C : ℝ := ((B + 8 : ℕ) : ℝ)
   have hAgt1 : 1 < A := A_gt_one_of_sol_pos hsol hB
   have hCgt1 : 1 < B + 8 :=
-    lt_of_lt_of_le (by decide : 1 < 8) (Nat.le_add_left 6 B)
+    lt_of_lt_of_le (by decide : 1 < 8) (Nat.le_add_left 8 B)
   have hApos : (0 : ℝ) < (A : ℝ) := by
     have : (0 : ℕ) < A := lt_trans Nat.zero_lt_one hAgt1
     exact_mod_cast this
