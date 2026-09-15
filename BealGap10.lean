@@ -765,4 +765,63 @@ theorem no_sol_when_five_dvd_last {A B : ℕ}
   rw [hLmod, hRmod] at hmod
   exact (by decide : (0 : ℕ) ≠ 2) hmod
 
+/-! ## Original equation: `3 ∣ B` is compatible; `7 ∣ B` dies. -/
+
+theorem fourth_pow_mod3 (a : ℕ) : a ^ 4 % 3 = 0 ∨ a ^ 4 % 3 = 1 :=
+  BealMatveevBeal.BealGap4.fourth_pow_mod3 a
+
+theorem pow13_mod3 (c : ℕ) : c ^ 13 % 3 = c % 3 :=
+  BealMatveevBeal.BealGap4.pow13_mod3 c
+
+/-- `C = B+10 ≡ 1 mod 3`, so `C¹³ ≡ 1` and `A⁴ ≡ 1`. No contradiction.
+    Do **not** prove `no_sol_when_three_dvd_B`. -/
+theorem A_pow_four_mod3_eq_one_of_three_dvd_B {A B : ℕ}
+    (h : is_gap10_sol A B) (h3 : 3 ∣ B) : A ^ 4 % 3 = 1 := by
+  have hB4 : B ^ 4 % 3 = 0 :=
+    Nat.mod_eq_zero_of_dvd (dvd_pow h3 (by decide))
+  have hC : (B + 10) % 3 = 1 := by
+    have : B % 3 = 0 := Nat.mod_eq_zero_of_dvd h3
+    rw [Nat.add_mod, this]
+  have hC13 : (B + 10) ^ 13 % 3 = 1 := by
+    rw [pow13_mod3, hC]
+  have hsum : (A ^ 4 + B ^ 4) % 3 = (B + 10) ^ 13 % 3 := by rw [h]
+  rw [Nat.add_mod, hB4, Nat.add_zero, Nat.mod_mod, hC13] at hsum
+  obtain h0 | h1 := fourth_pow_mod3 A
+  · rw [h0] at hsum
+    exact absurd hsum (by decide)
+  · exact h1
+
+theorem fourth_pow_mod7 (a : ℕ) :
+    a ^ 4 % 7 = 0 ∨ a ^ 4 % 7 = 1 ∨ a ^ 4 % 7 = 2 ∨ a ^ 4 % 7 = 4 :=
+  BealMatveevBeal.BealGap7.fourth_pow_mod7 a
+
+theorem pow13_mod7 (c : ℕ) : c ^ 13 % 7 = c % 7 :=
+  BealMatveevBeal.BealGap7.pow13_mod7 c
+
+/-- `C = B+10 ≡ 3 mod 7`, so `C¹³ ≡ 3` not in `{0,1,2,4}`. -/
+theorem no_sol_when_seven_dvd_B_gap10 {A B : ℕ}
+    (h : is_gap10_sol A B) (h7 : 7 ∣ B) : False := by
+  have hB4 : B ^ 4 % 7 = 0 :=
+    Nat.mod_eq_zero_of_dvd (dvd_pow h7 (by decide))
+  have hC : (B + 10) % 7 = 3 := by
+    have : B % 7 = 0 := Nat.mod_eq_zero_of_dvd h7
+    rw [Nat.add_mod, this]
+  have hC13 : (B + 10) ^ 13 % 7 = 3 := by
+    rw [pow13_mod7, hC]
+  have hsum : (A ^ 4 + B ^ 4) % 7 = (B + 10) ^ 13 % 7 := by rw [h]
+  rw [Nat.add_mod, hB4, Nat.add_zero, Nat.mod_mod, hC13] at hsum
+  obtain h0 | h1 | h2 | h4 := fourth_pow_mod7 A
+  · rw [h0] at hsum
+    exact absurd hsum (by decide)
+  · rw [h1] at hsum
+    exact absurd hsum (by decide)
+  · rw [h2] at hsum
+    exact absurd hsum (by decide)
+  · rw [h4] at hsum
+    exact absurd hsum (by decide)
+
+theorem seven_not_dvd_B_of_sol {A B : ℕ}
+    (h : is_gap10_sol A B) : ¬ 7 ∣ B :=
+  fun h7 => no_sol_when_seven_dvd_B_gap10 h h7
+
 end BealMatveevBeal.BealGap10
