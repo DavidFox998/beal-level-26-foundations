@@ -48,3 +48,7 @@ Do **not** prove `B_odd_of_sol_gapK` / `no_gapK_of_axiom` as
 
 `#print axioms baker_bound_gapK_unconditional_nogo` is
 `[propext, Classical.choice, Quot.sound]` only.
+
+Successor:
+[`EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.md`](EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.md)
+(`v24-v24x-final-effective-padic-nogo`).

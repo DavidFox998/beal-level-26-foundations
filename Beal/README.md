@@ -10,7 +10,8 @@ Lake library sources for the Matveev–Beal complement
 `BealTrueV25`, `BealUnconditionalV25`, `BealGap1`, `BealGap2`,
 `BealGap4`, `BealGap5`, `BealGap6`, `BealGap7`, `BealGap8`,
 `BealGap9`, `BealGap10`, `BealGap11`, `BealGap12`, `BealGap13`,
-`BealGap14`, `BealGap15`, and `BealGapK`.
+`BealGap14`, `BealGap15`, `BealGapK`, and
+`EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6`.
 
 `Beal.lean` re-exports `Beal.Matveev.MatveevThm14General`.
 Substantial proofs live in **root** modules; files under
@@ -79,4 +80,8 @@ no `(1,0)`).
 `BealGapK` proves generic `k` infrastructure (`baker_bound_gapK`
 stays `def Prop`; odd `k` ⇒ `B` even `A` odd; even `k` ⇒ `A`
 even only; not `∀k ¬sol`).
+`EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6`
+re-exports those wrappers and proves the conditional size
+lemma `C<100` when `A,B≤B0`; `baker_bound_B0_1e6` /
+`hGen_padic` / `hLLL_padic` stay `def Prop`.
 That is not the minted unconditional v25 tag.

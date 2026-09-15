@@ -117,6 +117,13 @@ v_p(k)=1 descents 3/5/7/11/13; residue kills with hyps;
 remaining coprime Darmon–Merel; recovers gaps 2..9,11..15
 and odd-B gap-10; not ∀k ¬sol — gap-1 (1,0) and k=m⁴, B=0;
 hGen_gapK/hLLL_gapK/baker_bound_gapK stay def Prop).
+Effective level-lowering / p-adic linear forms in
+EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.lean
+(baker_bound_B0_1e6_unconditional_nogo; GapK wrappers;
+conditional C<100 when A,B≤B0; C≥100 and ¬C≤73 on B≥B0;
+hGen_padic/hLLL_padic/baker_bound_B0_1e6 stay def Prop;
+does not mint v25; Bugeaud–Laurent / Kraus / Oesterlé /
+Ribet-to-32 / FLT 13 stay uninhabited).
 bugeaud_LLL_reduction_proof stays def Prop. Named theorem
 baker_bound_gap3 stays uninhabited. Not a minted v25 tag.
 -/
@@ -152,6 +159,7 @@ import BealGap13
 import BealGap14
 import BealGap15
 import BealGapK
+import EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -1209,6 +1217,15 @@ theorem gap3_forall_of_baker
 #check BealGapK.no_sol_when_p_dvd_k_five_gapK
 #check BealGapK.no_positive_coprime_gapK_of_axiom
 #check BealGapK.recover_no_gap15_of_axiom
+#check EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.baker_bound_B0_1e6_unconditional_nogo
+#check EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.hGen_padic
+#check EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.hLLL_padic
+#check EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.baker_bound_B0_1e6
+#check EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.C_lt_hundred_of_A_B_le_B0
+#check EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.C_ge_hundred_of_B_ge_B0
+#check EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.parity_odd_k_gapK
+#check EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.parity_even_k_gapK
+#check EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.no_positive_A4_B4_C13_coprime_of_axiom
 #print axioms C1_floor_eq
 #print axioms height_B0_eq
 #print axioms height_bound_gap3
@@ -1359,5 +1376,9 @@ theorem gap3_forall_of_baker
 #print axioms BealGapK.hLLL_method_fails_gapK
 #print axioms BealGapK.no_positive_coprime_gapK_of_axiom
 #print axioms BealGapK.recover_no_gap15_of_axiom
+#print axioms EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.baker_bound_B0_1e6_unconditional_nogo
+#print axioms EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.C_lt_hundred_of_A_B_le_B0
+#print axioms EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.C_ge_hundred_of_B_ge_B0
+#print axioms EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.no_positive_A4_B4_C13_coprime_of_axiom
 
 end BealMatveevBeal

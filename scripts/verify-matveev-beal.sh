@@ -79,6 +79,8 @@ test -f BealGap15.lean
 test -f Beal/Matveev/BealGap15.lean
 test -f BealGapK.lean
 test -f Beal/Matveev/BealGapK.lean
+test -f EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.lean
+test -f Beal/Matveev/EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.lean
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -299,6 +301,12 @@ if "import BealGapK" not in src:
 if "BealGapK.baker_bound_gapK_unconditional_nogo" not in src:
     print("#check baker_bound_gapK_unconditional_nogo missing from MatveevThm14General.lean", file=sys.stderr)
     sys.exit(1)
+if "import EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6" not in src:
+    print("MatveevThm14General.lean missing import EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6", file=sys.stderr)
+    sys.exit(1)
+if "EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.baker_bound_B0_1e6_unconditional_nogo" not in src:
+    print("#check baker_bound_B0_1e6_unconditional_nogo missing from MatveevThm14General.lean", file=sys.stderr)
+    sys.exit(1)
 
 lll = pathlib.Path("MatveevLLL.lean").read_text(encoding="utf-8")
 if "theorem four_thirteenths_is_convergent" not in lll:
@@ -510,6 +518,9 @@ if ".one `BealGap15" not in pathlib.Path("lakefile.lean").read_text(encoding="ut
     sys.exit(1)
 if ".one `BealGapK" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
     print("lakefile.lean missing BealGapK glob", file=sys.stderr)
+    sys.exit(1)
+if ".one `EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
+    print("lakefile.lean missing EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6 glob", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -2821,6 +2832,131 @@ if "theorem no_uniform_c_cubic_in_N_gapK" not in gapk:
     print("no_uniform_c_cubic_in_N_gapK missing", file=sys.stderr)
     sys.exit(1)
 
+eff = pathlib.Path("EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in eff:
+    print("EffectiveLevelLowering file must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
+if "axiom darmon_merel_4413_axiom" in eff and "BealTrueV25.darmon_merel_4413_axiom" not in eff:
+    print("do not add a second Darmon-Merel axiom in EffectiveLevelLowering", file=sys.stderr)
+    sys.exit(1)
+if "BealTrueV25.darmon_merel_4413_axiom" not in eff:
+    print("EffectiveLevelLowering must reuse BealTrueV25.darmon_merel_4413_axiom", file=sys.stderr)
+    sys.exit(1)
+if "theorem baker_bound_B0_1e6_unconditional_nogo" not in eff:
+    print("baker_bound_B0_1e6_unconditional_nogo missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem C_lt_hundred_of_A_B_le_B0" not in eff:
+    print("C_lt_hundred_of_A_B_le_B0 missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem C_ge_hundred_of_B_ge_B0" not in eff:
+    print("C_ge_hundred_of_B_ge_B0 missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem not_C_le_seventy_three_of_B_ge_B0" not in eff:
+    print("not_C_le_seventy_three_of_B_ge_B0 missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem parity_odd_k_gapK" not in eff:
+    print("parity_odd_k_gapK missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem parity_even_k_gapK" not in eff:
+    print("parity_even_k_gapK missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem gcd_dvd_k_gapK" not in eff:
+    print("gcd_dvd_k_gapK missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem p_dvd_k_and_B_forces_p_dvd_A_gapK" not in eff:
+    print("p_dvd_k_and_B_forces_p_dvd_A_gapK missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem vp_one_descent_three_gapK" not in eff:
+    print("vp_one_descent_three_gapK missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem vp_one_descent_five_gapK" not in eff:
+    print("vp_one_descent_five_gapK missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem residue_kill_three_k_eq_two_gapK" not in eff:
+    print("residue_kill_three_k_eq_two_gapK missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_positive_A4_B4_C13_coprime_of_axiom" not in eff:
+    print("no_positive_A4_B4_C13_coprime_of_axiom missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem hGen_exp_lt_ratio_gapK" not in eff:
+    print("hGen_exp_lt_ratio_gapK missing from EffectiveLevelLowering", file=sys.stderr)
+    sys.exit(1)
+if "theorem C1_floor_hGen_loses_gapK" not in eff:
+    print("C1_floor_hGen_loses_gapK missing from EffectiveLevelLowering", file=sys.stderr)
+    sys.exit(1)
+if "theorem hLLL_method_fails_gapK" not in eff:
+    print("hLLL_method_fails_gapK missing from EffectiveLevelLowering", file=sys.stderr)
+    sys.exit(1)
+if "143186215390" not in eff:
+    print("C1_floor = 143186215390 missing from EffectiveLevelLowering", file=sys.stderr)
+    sys.exit(1)
+if "1000000" not in eff:
+    print("B0_nat = 1000000 missing from EffectiveLevelLowering", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in eff:
+    print("True := trivial is not allowed in EffectiveLevelLowering", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", eff, re.M) or ":= sorry" in eff or "by sorry" in eff:
+    print("sorry is not allowed in EffectiveLevelLowering", file=sys.stderr)
+    sys.exit(1)
+if "def baker_bound_B0_1e6" not in eff:
+    print("baker_bound_B0_1e6 Prop alias missing", file=sys.stderr)
+    sys.exit(1)
+if "def hGen_padic" not in eff:
+    print("hGen_padic missing; must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def hLLL_padic" not in eff:
+    print("hLLL_padic missing; must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def baker_bound_gapK_unconditional_wins" not in eff:
+    print("baker_bound_gapK_unconditional_wins must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def beal_conjecture_4413" not in eff:
+    print("beal_conjecture_4413 must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_B0_1e6\b", eff, re.M):
+    print("do not inhabit baker_bound_B0_1e6", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem hGen_padic\b", eff, re.M):
+    print("do not inhabit hGen_padic", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem hLLL_padic\b", eff, re.M):
+    print("do not inhabit hLLL_padic", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_B0_1e6_of_hGen_hLLL\b", eff, re.M):
+    print("do not inhabit baker_bound_B0_1e6_of_hGen_hLLL", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_gapK_unconditional_wins\b", eff, re.M):
+    print("do not inhabit baker_bound_gapK_unconditional_wins", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem beal_conjecture_4413\b", eff, re.M):
+    print("do not inhabit beal_conjecture_4413", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem darmon_merel_4413_no_coprime_unconditional\b", eff, re.M):
+    print("do not inhabit darmon_merel_4413_no_coprime_unconditional", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem fermat_last_theorem_thirteen_unconditional\b", eff, re.M):
+    print("do not inhabit fermat_last_theorem_thirteen_unconditional", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem ribet_level_lowering_to_32_unconditional\b", eff, re.M):
+    print("do not inhabit ribet_level_lowering_to_32_unconditional", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_B0_1e6_unconditional\b", eff, re.M):
+    print("do not inhabit baker_bound_B0_1e6_unconditional; use the nogo", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem no_A4_B4_C13_positive_coprime_unconditional\b", eff, re.M):
+    print("do not inhabit no_A4_B4_C13_positive_coprime_unconditional", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem beal_conjecture_4413_unconditional\b", eff, re.M):
+    print("do not inhabit beal_conjecture_4413_unconditional", file=sys.stderr)
+    sys.exit(1)
+if "Odd k" not in eff or "Even k" not in eff:
+    print("EffectiveLevelLowering parity wrappers must use Even/Odd, not % 2", file=sys.stderr)
+    sys.exit(1)
+if "v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations" in eff and "does **not** mint" not in eff:
+    print("do not treat v25 as minted in EffectiveLevelLowering", file=sys.stderr)
+    sys.exit(1)
+
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
     print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
@@ -3102,6 +3238,9 @@ print("  gcd(B,B+k)|k; p|k and p|B => p|A; v_p(k)=1 descents 3/5/7/11/13; residu
 print("  not forall k nogo: gap-1 (1,0) and k=m^4 B=0; recovers 2..9,11..15 and odd-B gap-10")
 print("  baker_bound_gapK_unconditional_nogo; hGen_gapK/hLLL_gapK stay def Prop")
 print("  no_positive_coprime_gapK_of_axiom reuses darmon_merel_4413_axiom")
+print("  EffectiveLevelLowering: GapK wrappers + C<100 when A,B<=B0; C>=100 and not C<=73 on B>=B0")
+print("  baker_bound_B0_1e6_unconditional_nogo; hGen_padic/hLLL_padic/baker_bound_B0_1e6 stay def Prop")
+print("  no Bugeaud-Laurent / Kraus / Oesterle / Ribet-to-32 / FLT13 inhabitant; v25 not minted")
 print("  not a minted v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations tag")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")

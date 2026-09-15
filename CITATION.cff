@@ -111,7 +111,12 @@ preferred-citation:
     descents 3/5/7/11/13; residue kills with hyps; not forall k
     nogo because gap-1 (1,0) and k=m^4 B=0; recovers gaps
     2..9,11..15 and odd-B gap-10; baker_bound_gapK stays def
-    Prop). That does not
+    Prop). EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6
+    proves baker_bound_B0_1e6_unconditional_nogo (GapK wrappers;
+    C<100 when A,B<=B0; C>=100 and not C<=73 on B>=B0;
+    baker_bound_B0_1e6 / hGen_padic / hLLL_padic stay def Prop;
+    Bugeaud-Laurent / Kraus / Oesterle / Ribet-to-32 / FLT13
+    not in Mathlib 4.12). That does not
     mint this version tag. Unrestricted
     matveev_inequality_real_target and hLLL stay def Prop.
     Not a minted v25 tag. Prior v24.4.0 version
