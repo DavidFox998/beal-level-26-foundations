@@ -77,5 +77,6 @@ prove `no_sol_when_seven_dvd_B` for gap-8 (`C ≡ 1 mod 7`).
 This module does **not** contain `axiom darmon_merel_4413_axiom_gap8`.
 The axiom-relative inhabitant reuses [`BealTrueV25.md`](BealTrueV25.md).
 
-Not a minted unconditional v25 tag. Next: gap-9 `C = B+9` would
-flip parity again (`k` odd ⇒ `B` even) and `gcd ∣ 9`.
+Not a minted unconditional v25 tag. Successor: [`BealGap9.md`](BealGap9.md)
+`C = B+9`, `B` even, `3 ∣ B` dies by 3-descent, `5 ∣ B` dies as
+`C ≡ 4`.

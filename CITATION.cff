@@ -64,7 +64,12 @@ preferred-citation:
     baker_bound_gap8_unconditional_nogo for A^4+B^4=(B+8)^13
     (B odd A even; even B dies after nine /2 residue 8;
     3|B impossible C==2; 5|B impossible C==3; 7|B compatible
-    C==1; (1,0) is not a solution; baker_bound_gap8 stays
+    C==1; (1,0) is not a solution;     baker_bound_gap8 stays
+    def Prop). BealGap9 proves
+    baker_bound_gap9_unconditional_nogo for A^4+B^4=(B+9)^13
+    (B even A odd; 3|B impossible by 3-descent C1=B1+3;
+    5|B impossible C==4; 7|B compatible C==2 A^4==2;
+    (1,0) is not a solution; baker_bound_gap9 stays
     def Prop). That does not
     mint this version tag. Unrestricted
     matveev_inequality_real_target and hLLL stay def Prop.
