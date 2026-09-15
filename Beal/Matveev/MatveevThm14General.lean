@@ -65,6 +65,11 @@ Gap-7 A⁴+B⁴=(B+7)¹³ no-go in BealGap7.lean
 (baker_bound_gap7_unconditional_nogo; B even A odd; 3∣B
 compatible like gap-1/4; 5∣B impossible C≡2; 7∣B
 impossible by 7-descent; hGen_gap7/hLLL_gap7 stay def Prop).
+Gap-8 A⁴+B⁴=(B+8)¹³ no-go in BealGap8.lean
+(baker_bound_gap8_unconditional_nogo; B odd A even; even B
+dies after nine /2 residue 8; 3∣B impossible C≡2; 5∣B
+impossible C≡3; 7∣B compatible C≡1; hGen_gap8/hLLL_gap8
+stay def Prop).
 bugeaud_LLL_reduction_proof stays def Prop. Named theorem
 baker_bound_gap3 stays uninhabited. Not a minted v25 tag.
 -/
@@ -91,6 +96,7 @@ import BealGap4
 import BealGap5
 import BealGap6
 import BealGap7
+import BealGap8
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -1031,6 +1037,18 @@ theorem gap3_forall_of_baker
 #check BealGap7.A_odd_of_sol_gap7
 #check BealGap7.no_sol_when_five_dvd_B_gap7
 #check BealGap7.no_sol_when_seven_dvd_B_gap7
+#check BealGap8.baker_bound_gap8_unconditional_nogo
+#check BealGap8.hGen_gap8
+#check BealGap8.hLLL_gap8
+#check BealGap8.hGen_exp_lt_ratio_gap8
+#check BealGap8.hLLL_method_fails_gap8
+#check BealGap8.baker_bound_gap8_true
+#check BealGap8.gcd_A_B_eq_one_of_sol
+#check BealGap8.B_odd_of_sol_gap8
+#check BealGap8.A_even_of_sol_gap8
+#check BealGap8.no_sol_when_three_dvd_B_gap8
+#check BealGap8.no_sol_when_five_dvd_B_gap8
+#check BealGap8.no_sol_when_even_B
 #print axioms C1_floor_eq
 #print axioms height_B0_eq
 #print axioms height_bound_gap3
@@ -1136,5 +1154,10 @@ theorem gap3_forall_of_baker
 #print axioms BealGap7.hLLL_method_fails_gap7
 #print axioms BealGap7.baker_bound_gap7_true
 #print axioms BealGap7.no_gap7_of_axiom
+#print axioms BealGap8.baker_bound_gap8_unconditional_nogo
+#print axioms BealGap8.hGen_exp_lt_ratio_gap8
+#print axioms BealGap8.hLLL_method_fails_gap8
+#print axioms BealGap8.baker_bound_gap8_true
+#print axioms BealGap8.no_gap8_of_axiom
 
 end BealMatveevBeal
