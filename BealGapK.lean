@@ -182,18 +182,26 @@ theorem two_mul_lt_succ_pow_five (B : ℕ) : 2 * B ^ 4 < (B + 1) ^ 5 := by
   cases B with
   | zero => decide
   | succ n =>
-    set B := n + 1
-    have hB5 : B ^ 5 = B * B ^ 4 := by rw [pow_succ']
-    have h6 : 6 * B ^ 4 ≤ B ^ 5 + 5 * B ^ 4 := by
-      rw [hB5, ← add_mul]
-      exact Nat.mul_le_mul_right (B ^ 4) (by decide : 6 ≤ B + 5)
-    have hpos : 0 < B ^ 4 := Nat.pos_pow_of_pos 4 (Nat.succ_pos n)
-    have h2 : 2 * B ^ 4 < 6 * B ^ 4 :=
+    have hpos : 0 < (n + 1) ^ 4 := Nat.pos_pow_of_pos 4 (Nat.succ_pos n)
+    have h2 : 2 * (n + 1) ^ 4 < 6 * (n + 1) ^ 4 :=
       Nat.mul_lt_mul_of_pos_right (by decide : 2 < 6) hpos
-    have hrest :
-        B ^ 5 + 5 * B ^ 4 ≤
-          B ^ 5 + 5 * B ^ 4 + 10 * B ^ 3 + 10 * B ^ 2 + 5 * B + 1 :=
-      Nat.le_add_right _ _
+    have h6 : 6 * (n + 1) ^ 4 ≤ (n + 1) ^ 5 + 5 * (n + 1) ^ 4 := by
+      have hpow : (n + 1) ^ 5 = (n + 1) * (n + 1) ^ 4 := by rw [pow_succ']
+      rw [hpow, ← add_mul]
+      have h65 : n + 1 + 5 = n + 6 := by ring
+      rw [h65]
+      exact Nat.mul_le_mul_right ((n + 1) ^ 4) (Nat.le_add_left 6 n)
+    have hsplit :
+        (n + 1) ^ 5 + 5 * (n + 1) ^ 4 + 10 * (n + 1) ^ 3 +
+            10 * (n + 1) ^ 2 + 5 * (n + 1) + 1 =
+          ((n + 1) ^ 5 + 5 * (n + 1) ^ 4) +
+            (10 * (n + 1) ^ 3 + 10 * (n + 1) ^ 2 + 5 * (n + 1) + 1) := by
+      ring
+    have hrest : (n + 1) ^ 5 + 5 * (n + 1) ^ 4 ≤
+        (n + 1) ^ 5 + 5 * (n + 1) ^ 4 + 10 * (n + 1) ^ 3 +
+          10 * (n + 1) ^ 2 + 5 * (n + 1) + 1 := by
+      rw [hsplit]
+      exact Nat.le_add_right _ _
     exact lt_of_lt_of_le (lt_of_lt_of_le h2 h6) hrest
 
 theorem two_mul_B_pow_four_lt_add_k_pow {k B : ℕ} (hk : 1 ≤ k) :
@@ -296,7 +304,9 @@ theorem val_one_of_prime_dvd {p k : ℕ}
   refine ⟨k', hk', ?_⟩
   intro h
   obtain ⟨k'', hk''⟩ := h
-  exact hn ⟨k'', by rw [hk', hk'', mul_assoc, pow_two]⟩
+  exact hn ⟨k'', by
+    rw [hk', hk'', pow_two]
+    ac_rfl⟩
 
 /-! ## `p ∣ k` and `v_p(k)=1`: 3/5/7/11/13-descent -/
 
@@ -414,7 +424,7 @@ theorem no_sol_when_p_dvd_k_three_gapK {k A B : ℕ}
     ⟨9 * (A4 ^ 4 + B4 ^ 4), by rw [← h27, ← mul_assoc]; rfl⟩
   have hC1 : 3 ∣ B1 + k' := Nat.Prime.dvd_of_dvd_pow Nat.prime_three hC13
   have hB1three : 3 ∣ B1 := ⟨B2, hB2⟩
-  have : 3 ∣ k' := (Nat.dvd_add_left hB1three).mp hC1
+  have : 3 ∣ k' := (Nat.dvd_add_right hB1three).mp hC1
   exact hk'n this
 
 /-- `5 ∣ B` and `v_5(k)=1` die: last `125 X = C₁¹³` with `C₁ ≡ k/5 ≢ 0`. -/
@@ -491,7 +501,7 @@ theorem no_sol_when_p_dvd_k_five_gapK {k A B : ℕ}
     ⟨25 * (A4 ^ 4 + B4 ^ 4), by rw [← h125, ← mul_assoc]; rfl⟩
   have hC1 : 5 ∣ B1 + k' := Nat.Prime.dvd_of_dvd_pow Nat.prime_five hC13
   have hB1five : 5 ∣ B1 := ⟨B2, hB2⟩
-  have : 5 ∣ k' := (Nat.dvd_add_left hB1five).mp hC1
+  have : 5 ∣ k' := (Nat.dvd_add_right hB1five).mp hC1
   exact hk'n this
 
 /-- `7 ∣ B` and `v_7(k)=1` die: last `343 X = C₁¹³` with `C₁ ≡ k/7 ≢ 0`. -/
@@ -571,7 +581,7 @@ theorem no_sol_when_p_dvd_k_seven_gapK {k A B : ℕ}
   have hC1 : 7 ∣ B1 + k' :=
     Nat.Prime.dvd_of_dvd_pow BealMatveevBeal.BealGap7.prime_seven hC13
   have hB1seven : 7 ∣ B1 := ⟨B2, hB2⟩
-  have : 7 ∣ k' := (Nat.dvd_add_left hB1seven).mp hC1
+  have : 7 ∣ k' := (Nat.dvd_add_right hB1seven).mp hC1
   exact hk'n this
 
 /-- `11 ∣ B` and `v_11(k)=1` die: last `1331 X = C₁¹³` with `C₁ ≡ k/11 ≢ 0`. -/
@@ -652,7 +662,7 @@ theorem no_sol_when_p_dvd_k_eleven_gapK {k A B : ℕ}
   have hC1 : 11 ∣ B1 + k' :=
     Nat.Prime.dvd_of_dvd_pow BealMatveevBeal.BealGap11.prime_eleven hC13
   have hB1el : 11 ∣ B1 := ⟨B2, hB2⟩
-  have : 11 ∣ k' := (Nat.dvd_add_left hB1el).mp hC1
+  have : 11 ∣ k' := (Nat.dvd_add_right hB1el).mp hC1
   exact hk'n this
 
 /-- `13 ∣ B` and `v_13(k)=1` die: last `2197 X = C₁¹³` with `C₁ ≡ k/13 ≢ 0`. -/
@@ -733,13 +743,13 @@ theorem no_sol_when_p_dvd_k_thirteen_gapK {k A B : ℕ}
   have hC1 : 13 ∣ B1 + k' :=
     Nat.Prime.dvd_of_dvd_pow BealMatveevBeal.BealGap13.prime_thirteen hC13
   have hB1th : 13 ∣ B1 := ⟨B2, hB2⟩
-  have : 13 ∣ k' := (Nat.dvd_add_left hB1th).mp hC1
+  have : 13 ∣ k' := (Nat.dvd_add_right hB1th).mp hC1
   exact hk'n this
 
 /-! ## `p ∤ k` residue kills (congruence hypotheses) -/
 
 theorem no_sol_when_three_dvd_B_residue_gapK {k A B : ℕ}
-    (h : is_gapK_sol k A B) (hk : ¬ 3 ∣ k) (h3 : 3 ∣ B)
+    (h : is_gapK_sol k A B) (_hk : ¬ 3 ∣ k) (h3 : 3 ∣ B)
     (hkmod : k % 3 = 2) : False := by
   have hB4 : B ^ 4 % 3 = 0 :=
     Nat.mod_eq_zero_of_dvd (dvd_pow h3 (by decide))
@@ -763,7 +773,7 @@ theorem no_sol_when_five_dvd_B_residue_gapK {k A B : ℕ}
     Nat.mod_eq_zero_of_dvd (dvd_pow h5 (by decide))
   have hC : (B + k) % 5 = k % 5 := by
     have : B % 5 = 0 := Nat.mod_eq_zero_of_dvd h5
-    rw [Nat.add_mod, this]
+    rw [Nat.add_mod, this, zero_add, Nat.mod_mod]
   have hC13 : (B + k) ^ 13 % 5 = k % 5 := by
     rw [pow13_mod5, hC]
   have hsum : (A ^ 4 + B ^ 4) % 5 = (B + k) ^ 13 % 5 := by rw [h]
@@ -790,7 +800,7 @@ theorem no_sol_when_seven_dvd_B_residue_gapK {k A B : ℕ}
     Nat.mod_eq_zero_of_dvd (dvd_pow h7 (by decide))
   have hC : (B + k) % 7 = k % 7 := by
     have : B % 7 = 0 := Nat.mod_eq_zero_of_dvd h7
-    rw [Nat.add_mod, this]
+    rw [Nat.add_mod, this, zero_add, Nat.mod_mod]
   have hC13 : (B + k) ^ 13 % 7 = k % 7 := by
     rw [pow13_mod7, hC]
   have hsum : (A ^ 4 + B ^ 4) % 7 = (B + k) ^ 13 % 7 := by rw [h]
@@ -833,7 +843,7 @@ theorem gcd_A_B_eq_one_of_remaining_gapK {k A B : ℕ}
     have hsum : p ∣ A ^ 4 + B ^ 4 := Nat.dvd_add hA4 hB4
     simpa [is_gapK_sol] using (h ▸ hsum)
   have hpC : p ∣ B + k := Nat.Prime.dvd_of_dvd_pow hp hpC13
-  have hpk : p ∣ k := (Nat.dvd_add_left hpB).mp hpC
+  have hpk : p ∣ k := (Nat.dvd_add_right hpB).mp hpC
   exact hforall p hp hpk hpB
 
 theorem coprime_of_remaining_gapK {k A B : ℕ}
@@ -996,8 +1006,6 @@ theorem B_pow_five_add_B_pow_four_lt_add_k_pow {k B : ℕ}
     (hk : 1 ≤ k) (_hB : 0 < B) :
     (B : ℝ) ^ 5 + (B : ℝ) ^ 4 < ((B + k : ℕ) : ℝ) ^ 13 := by
   have hx : (0 : ℝ) ≤ (B : ℝ) := Nat.cast_nonneg B
-  have hC : ((B + k : ℕ) : ℝ) = (B : ℝ) + (k : ℝ) := by
-    rw [Nat.cast_add]
   have h1 : ((B + 1 : ℕ) : ℝ) = (B : ℝ) + 1 := by
     rw [Nat.cast_add, Nat.cast_one]
   have h5 : (B : ℝ) ^ 5 + (B : ℝ) ^ 4 < ((B + 1 : ℕ) : ℝ) ^ 5 := by
