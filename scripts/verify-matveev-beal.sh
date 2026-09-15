@@ -73,6 +73,8 @@ test -f BealGap12.lean
 test -f Beal/Matveev/BealGap12.lean
 test -f BealGap13.lean
 test -f Beal/Matveev/BealGap13.lean
+test -f BealGap14.lean
+test -f Beal/Matveev/BealGap14.lean
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -274,6 +276,12 @@ if "import BealGap13" not in src:
     sys.exit(1)
 if "BealGap13.baker_bound_gap13_unconditional_nogo" not in src:
     print("#check baker_bound_gap13_unconditional_nogo missing from MatveevThm14General.lean", file=sys.stderr)
+    sys.exit(1)
+if "import BealGap14" not in src:
+    print("MatveevThm14General.lean missing import BealGap14", file=sys.stderr)
+    sys.exit(1)
+if "BealGap14.baker_bound_gap14_unconditional_nogo" not in src:
+    print("#check baker_bound_gap14_unconditional_nogo missing from MatveevThm14General.lean", file=sys.stderr)
     sys.exit(1)
 
 lll = pathlib.Path("MatveevLLL.lean").read_text(encoding="utf-8")
@@ -477,6 +485,9 @@ if ".one `BealGap12" not in pathlib.Path("lakefile.lean").read_text(encoding="ut
     sys.exit(1)
 if ".one `BealGap13" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
     print("lakefile.lean missing BealGap13 glob", file=sys.stderr)
+    sys.exit(1)
+if ".one `BealGap14" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
+    print("lakefile.lean missing BealGap14 glob", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -2473,6 +2484,110 @@ if re.search(r"^theorem three_dvd_A_of_sol\b", gap13, re.M):
     print("do not prove three_dvd_A_of_sol for all solutions", file=sys.stderr)
     sys.exit(1)
 
+gap14 = pathlib.Path("BealGap14.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in gap14:
+    print("BealGap14.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
+if "axiom darmon_merel_4413_axiom_gap14" in gap14:
+    print("do not add a second Darmon-Merel axiom in BealGap14.lean", file=sys.stderr)
+    sys.exit(1)
+if "BealTrueV25.darmon_merel_4413_axiom" not in gap14:
+    print("BealGap14.lean must reuse BealTrueV25.darmon_merel_4413_axiom", file=sys.stderr)
+    sys.exit(1)
+if "theorem baker_bound_gap14_unconditional_nogo" not in gap14:
+    print("baker_bound_gap14_unconditional_nogo missing", file=sys.stderr)
+    sys.exit(1)
+if "def hGen_gap14" not in gap14:
+    print("hGen_gap14 missing from BealGap14.lean", file=sys.stderr)
+    sys.exit(1)
+if "def hLLL_gap14" not in gap14:
+    print("hLLL_gap14 missing from BealGap14.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem hGen_exp_lt_ratio_gap14" not in gap14:
+    print("hGen_exp_lt_ratio_gap14 missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem hLLL_method_fails_gap14" not in gap14:
+    print("hLLL_method_fails_gap14 missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem C1_floor_hGen_loses_gap14" not in gap14:
+    print("C1_floor_hGen_loses_gap14 missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem gcd_A_B_eq_one_of_sol" not in gap14:
+    print("gcd_A_B_eq_one_of_sol missing from BealGap14.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem gcd_B_C_dvd_fourteen_gap14" not in gap14:
+    print("gcd_B_C_dvd_fourteen_gap14 missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem gcd_B_C_dvd_seven_of_odd_gap14" not in gap14:
+    print("gcd_B_C_dvd_seven_of_odd_gap14 missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem B_odd_of_sol_gap14" not in gap14:
+    print("B_odd_of_sol_gap14 missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem A_even_of_sol_gap14" not in gap14:
+    print("A_even_of_sol_gap14 missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_sol_when_even_B" not in gap14:
+    print("no_sol_when_even_B missing from BealGap14.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_sol_when_three_dvd_B_gap14" not in gap14:
+    print("no_sol_when_three_dvd_B_gap14 missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_sol_when_five_dvd_B_gap14" not in gap14:
+    print("no_sol_when_five_dvd_B_gap14 missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem seven_dvd_B_forces_seven_dvd_A_gap14" not in gap14:
+    print("seven_dvd_B_forces_seven_dvd_A_gap14 missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_sol_when_seven_dvd_B_gap14" not in gap14:
+    print("no_sol_when_seven_dvd_B_gap14 missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem baker_bound_gap14_true" not in gap14:
+    print("baker_bound_gap14_true missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_gap14_of_axiom" not in gap14:
+    print("no_gap14_of_axiom missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_uniform_c_cubic_in_N_gap14" not in gap14:
+    print("no_uniform_c_cubic_in_N_gap14 missing", file=sys.stderr)
+    sys.exit(1)
+if "143186215390" not in gap14:
+    print("C1_floor = 143186215390 missing from BealGap14.lean", file=sys.stderr)
+    sys.exit(1)
+if "1000000" not in gap14:
+    print("B0_nat = 1000000 missing from BealGap14.lean", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in gap14:
+    print("do not paste True := trivial skeletons", file=sys.stderr)
+    sys.exit(1)
+if "def baker_bound_gap14" not in gap14:
+    print("baker_bound_gap14 Prop alias missing from BealGap14.lean", file=sys.stderr)
+    sys.exit(1)
+if "def baker_bound_gap14_of_hGen_hLLL" not in gap14:
+    print("baker_bound_gap14_of_hGen_hLLL must stay a def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_gap14\b", gap14, re.M):
+    print("use baker_bound_gap14_true, do not name the theorem baker_bound_gap14", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem hGen_gap14\b", gap14, re.M):
+    print("do not inhabit hGen_gap14", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem hLLL_gap14\b", gap14, re.M):
+    print("do not inhabit hLLL_gap14", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_gap14_of_hGen_hLLL\b", gap14, re.M):
+    print("do not inhabit baker_bound_gap14_of_hGen_hLLL", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem B_even_of_sol_gap14\b", gap14, re.M):
+    print("do not prove B_even_of_sol_gap14; B is odd for gap-14", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem A_odd_of_sol_gap14\b", gap14, re.M):
+    print("do not prove A_odd_of_sol_gap14; A is even for gap-14", file=sys.stderr)
+    sys.exit(1)
+if "A1^4+B1^4=512 C1^13 both even infinite descent" in gap14 and "not an infinite" not in gap14:
+    print("do not claim infinite 512 descent forever for even B", file=sys.stderr)
+    sys.exit(1)
+
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
     print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
@@ -2741,6 +2856,10 @@ print("  BealGap13: A^4+B^4=(B+13)^13 B even A odd; 3|B compatible (C==1 A^4==1)
 print("  7|B impossible (C==6 mod 7); 11|B impossible (C==2 C^13==8); 13|B impossible by 13-descent C1=B1+1")
 print("  baker_bound_gap13_unconditional_nogo; hGen_gap13/hLLL_gap13 stay def Prop")
 print("  baker_bound_gap13_true reuses darmon_merel_4413_axiom; remaining coprime Darmon-Merel; (1,0) is not a solution")
+print("  BealGap14: A^4+B^4=(B+14)^13 B odd A even; even B dies after three /2 last 2(4B3+7)^13 residue 6 or 14")
+print("  3|B impossible (C==2 mod 3); 5|B impossible (C==4 mod 5); 7|B impossible by 7-descent C1=B1+2")
+print("  baker_bound_gap14_unconditional_nogo; hGen_gap14/hLLL_gap14 stay def Prop")
+print("  baker_bound_gap14_true reuses darmon_merel_4413_axiom; remaining coprime Darmon-Merel; (1,0) is not a solution")
 print("  not a minted v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations tag")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")

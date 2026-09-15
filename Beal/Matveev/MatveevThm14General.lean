@@ -98,6 +98,12 @@ compatible C≡1 A⁴≡1; 5∣B impossible C≡3; 7∣B impossible C≡6;
 11∣B impossible C≡2 C¹³≡8; 13∣B impossible by 13-descent C1=B1+1;
 remaining coprime Darmon–Merel; hGen_gap13/hLLL_gap13
 stay def Prop).
+Gap-14 A⁴+B⁴=(B+14)¹³ no-go in BealGap14.lean
+(baker_bound_gap14_unconditional_nogo; B odd A even; even B
+dies after three /2 last 2(4B3+7)¹³ residue 6 or 14; 3∣B
+impossible C≡2; 5∣B impossible C≡4; 7∣B impossible by
+7-descent C1=B1+2; remaining coprime Darmon–Merel;
+hGen_gap14/hLLL_gap14 stay def Prop).
 bugeaud_LLL_reduction_proof stays def Prop. Named theorem
 baker_bound_gap3 stays uninhabited. Not a minted v25 tag.
 -/
@@ -130,6 +136,7 @@ import BealGap10
 import BealGap11
 import BealGap12
 import BealGap13
+import BealGap14
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -1144,6 +1151,20 @@ theorem gap3_forall_of_baker
 #check BealGap13.no_sol_when_eleven_dvd_B_gap13
 #check BealGap13.no_sol_when_thirteen_dvd_B_gap13
 #check BealGap13.thirteen_dvd_B_forces_thirteen_dvd_A
+#check BealGap14.baker_bound_gap14_unconditional_nogo
+#check BealGap14.hGen_gap14
+#check BealGap14.hLLL_gap14
+#check BealGap14.hGen_exp_lt_ratio_gap14
+#check BealGap14.hLLL_method_fails_gap14
+#check BealGap14.baker_bound_gap14_true
+#check BealGap14.gcd_A_B_eq_one_of_sol
+#check BealGap14.B_odd_of_sol_gap14
+#check BealGap14.A_even_of_sol_gap14
+#check BealGap14.no_sol_when_even_B
+#check BealGap14.no_sol_when_three_dvd_B_gap14
+#check BealGap14.no_sol_when_five_dvd_B_gap14
+#check BealGap14.seven_dvd_B_forces_seven_dvd_A_gap14
+#check BealGap14.no_sol_when_seven_dvd_B_gap14
 #print axioms C1_floor_eq
 #print axioms height_B0_eq
 #print axioms height_bound_gap3
@@ -1279,5 +1300,10 @@ theorem gap3_forall_of_baker
 #print axioms BealGap13.hLLL_method_fails_gap13
 #print axioms BealGap13.baker_bound_gap13_true
 #print axioms BealGap13.no_gap13_of_axiom
+#print axioms BealGap14.baker_bound_gap14_unconditional_nogo
+#print axioms BealGap14.hGen_exp_lt_ratio_gap14
+#print axioms BealGap14.hLLL_method_fails_gap14
+#print axioms BealGap14.baker_bound_gap14_true
+#print axioms BealGap14.no_gap14_of_axiom
 
 end BealMatveevBeal
