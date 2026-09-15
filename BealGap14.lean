@@ -102,11 +102,13 @@ theorem gcd_B_C_dvd_fourteen_gap14 (B : ℕ) : Nat.gcd B (B + 14) ∣ 14 :=
 
 theorem gcd_odd_eq_gcd_seven (B : ℕ) (hBodd : Odd B) :
     Nat.gcd B 14 = Nat.gcd B 7 := by
-  have hcop : Nat.Coprime 2 B := by
-    rw [Nat.Coprime, Nat.gcd_comm, Nat.gcd_rec, Nat.odd_iff.1 hBodd]
-    decide
-  have h := hcop.gcd_mul_left_cancel 7
-  rw [Nat.gcd_comm, h, Nat.gcd_comm]
+  have hcop : Nat.Coprime 2 B :=
+    (Nat.prime_two.coprime_iff_not_dvd).2 <|
+      fun h2 => Nat.not_even_iff_odd.2 hBodd (even_iff_two_dvd.2 h2)
+  have h : Nat.gcd (2 * 7) B = Nat.gcd 7 B :=
+    hcop.gcd_mul_left_cancel 7
+  have h14 : (14 : ℕ) = 2 * 7 := rfl
+  rw [h14, Nat.gcd_comm, h, Nat.gcd_comm]
 
 theorem gcd_B_C_dvd_seven_of_odd_gap14 (B : ℕ) (hBodd : Odd B) :
     Nat.gcd B (B + 14) ∣ 7 := by
