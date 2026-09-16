@@ -20,11 +20,16 @@ mint `v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations`.
 - `check_B` — `true` means no solution at that `B` (mod-16 reject
   or the difference is not a fourth power).
 - `check_B_true_no_sol` — extracts the Bool checker to a Prop.
-- `check_upto` / `check_upto_spec` — structural prefix checker.
-- `check_range` / `check_range_spec` — shifted list checker
-  (avoids `hi`-deep recursion; `check_upto 10000` overflows).
+- `check_upto` / `check_upto_spec` — structural prefix checker
+  (`check_upto 10000` overflows the kernel stack).
+- `foldl_and_true` — foldl invariant: `foldl (· && p ·) b l = true`
+  forces `b` and every `p x` (list induction, no `sorry`).
+- `check_range` / `check_range_true_of_all` — shifted range via
+  `List.range (hi-lo).foldl`, not an `hi`-deep recursive loop.
+- `shard_0_100` … `shard_900_1000` — ten `native_decide` shards
+  of 100 (each computes `100 · (B+3)¹³`, not one shard of 1000).
 - `gap3_B_lt_1000_no_sol` — `∀ B < 1000, ∀ A, A⁴+B⁴ ≠ (B+3)¹³`
-  (`native_decide` on `check_upto 1000`, axiom `Lean.ofReduceBool`).
+  (glues the ten shards; axiom `Lean.ofReduceBool`).
 
 Popcount is defined but **not** used as a reject: fourth powers
 are not characterized by popcount.

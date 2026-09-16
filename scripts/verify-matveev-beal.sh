@@ -3420,8 +3420,17 @@ if "theorem check_B_true_no_sol" not in b0s:
 if "theorem fourth_pow_mod16" not in b0s:
     print("fourth_pow_mod16 missing from BealMatveevBealV25B0Search.lean", file=sys.stderr)
     sys.exit(1)
-if b0s.count("native_decide") > 8:
+if b0s.count("native_decide") > 20:
     print("do not dump hundreds of native_decide shards; B<=B0 stays def Prop", file=sys.stderr)
+    sys.exit(1)
+if "foldl" not in b0s:
+    print("check_range must use foldl, not an hi-deep recursive loop", file=sys.stderr)
+    sys.exit(1)
+if "theorem shard_0_100" not in b0s or "theorem shard_900_1000" not in b0s:
+    print("B<1000 must be ten shards of 100", file=sys.stderr)
+    sys.exit(1)
+if "theorem check_range_true_of_all" not in b0s:
+    print("check_range_true_of_all missing from BealMatveevBealV25B0Search.lean", file=sys.stderr)
     sys.exit(1)
 if "143186215390" not in b0s or "1000000" not in b0s:
     print("C1_floor/B0_nat missing from BealMatveevBealV25B0Search.lean", file=sys.stderr)
@@ -3739,6 +3748,7 @@ print("  not a minted v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundat
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")
 print("  BealMatveevBealV25B0Search: separate Lake target; B<1000 no-sol via mod16+fourth-root")
+print("  check_range is foldl; ten shards of 100; check_range_true_of_all is the foldl invariant")
 print("  check_B_true_no_sol extracts Bool checker; gap3_B_le_B0_no_solution stays def Prop")
 print("  not 200 native_decide shards; popcount is not a sound reject; v25 not minted")
 PY

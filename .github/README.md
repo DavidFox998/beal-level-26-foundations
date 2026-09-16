@@ -17,7 +17,7 @@ requests to **`main`**, and on `workflow_dispatch`:
 3. `lake build BealMatveevBealV25Rank3` — separate Rank-3 B0/C
    cutoff nogo target; not in the default glob
 4. `lake build BealMatveevBealV25B0Search` — separate `B<1000`
-   search slice; full `B ≤ B0` stays `def Prop`
+   foldl shards of 100; full `B ≤ B0` stays `def Prop`
 5. `bash scripts/verify-matveev-beal.sh` — AMS / Math. Comp. referee
    surface: 0 `sorry`, `matveev_gap3_lower` is the B≤10^6 integer-gap
    close, `C1_floor=143186215390`, `B0_nat=1000000`, `gap3_A_bounds` and

@@ -51,8 +51,8 @@ root module `BealMatveevBealV25Rank3.lean`
 (`lake build BealMatveevBealV25Rank3`). `C_LLL_v25 = C1_floor`;
 `B0/C > 1/B` is true; `|Λ| ≥ B0/C` fails on a solution.
 The `B ≤ B0` search slice lives in
-`BealMatveevBealV25B0Search.lean` (`B<1000` closed;
-`∀ B ≤ B0` stays `def Prop`).
+`BealMatveevBealV25B0Search.lean` (`B<1000` closed as
+ten foldl shards of 100; `∀ B ≤ B0` stays `def Prop`).
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /
