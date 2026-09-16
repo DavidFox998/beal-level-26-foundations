@@ -4409,8 +4409,13 @@ check_gap_file("Tate_I29_Inertia.lean",
      "valuation_Tate_q_series", "valuation_Tate_q_lead",
      "thirteen_dvd_valuation_Tate_q_lead"])
 check_gap_file("Ribet_Level32.lean",
-    ["modular_Frey", "ribet_level_lowering_29_to_32"],
-    ["LLL_nogo_persists_after_Ribet_Level32"])
+    ["modular_Frey", "ribet_level_lowering_29_to_32",
+     "Ribet_level_lowering_abstract", "level_Frey_eq_32_needs_Wiles"],
+    ["LLL_nogo_persists_after_Ribet_Level32",
+     "nine_twenty_eight_div_twenty_nine", "nine_twenty_eight_ne_thirty_two",
+     "level_after_ribet_29_eq_32_of_nmid_AB",
+     "residual_nmid_32_of_29_dvd_A",
+     "ribet_lowers_of_abstract_and_inertia"])
 check_gap_file("Serre_Large_vs_CM_Small.lean",
     ["card_32a1_le_48", "serre_large_Frey", "contradiction_48_lt_2184",
      "card_image_32a1_le_48_via_CM", "rho_Frey_iso_rho_32a1_needs_Ribet"],
@@ -4469,6 +4474,9 @@ if "744" not in arch or "196884" not in arch:
     sys.exit(1)
 if "288" not in arch:
     print("ARCHIVE_4413.md must record split-Cartan 2(13-1)^2=288", file=sys.stderr)
+    sys.exit(1)
+if "928 / 29" not in arch and "928/29" not in arch:
+    print("ARCHIVE_4413.md must record 928/29=32 as the displayed residual numeral", file=sys.stderr)
     sys.exit(1)
 
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
@@ -4827,6 +4835,7 @@ print("  no new axiom; darmon_merel_4413_four_gaps stays def Prop; main 6247c63 
 print("  Mazur_X0_13: Fricke j(t), f roots 7,9 mod29, v(t) in {26k,-2k}; Mazur via X0(13) stays def Prop")
 print("  Tate_I29_Inertia / Ribet_Level32 / Serre_Large_vs_CM_Small: Galois stays def Prop")
 print("  no local F29 close; 48<2184 is not False without the Galois iso")
+print("  Ribet abstract: 928/29=32 numeral, 29 nmid 32; abstract Ribet / Frey-needs-Wiles stay def Prop")
 print("  Serre CM numerics: 2^2+3^2=13, 2(12)^2=288, 288/48=6; y^2=x^3-x has j=1728 not 32a1")
 print("  card_image_32a1_le_48_via_CM / rho_Frey iso stay def Prop; no Wiles")
 print("  X0_26_Full2Torsion: Frey cubic splits at 0,A^4,-B^4 over Q; Kenku 26 not in cyclic list")

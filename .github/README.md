@@ -45,7 +45,9 @@ requests to **`main`**, and on `workflow_dispatch`:
    `MazurIrreducibilityFull` / `TateGalois` / `SerreImageFull`
    (four Mathlib gaps stay `def Prop`; no new axiom) plus
    `Mazur_X0_13_RationalPoints` (Fricke `j`-map; Mazur stays
-   `def Prop`) plus `Tate_I29_Inertia` / `Ribet_Level32` /
+   `def Prop`) plus `Tate_I29_Inertia` (truncated `j(q)`;
+   Tate stays `def Prop`) plus `Ribet_Level32` (`928/29=32`;
+   abstract Ribet / Frey-needs-Wiles stay `def Prop`) plus
    `Serre_Large_vs_CM_Small` (Galois stays `def Prop`) plus
    `X0_26_Full2Torsion` (Frey cubic split inhabited; Kenku /
    Mazur via `X₀(26)` stay `def Prop`);

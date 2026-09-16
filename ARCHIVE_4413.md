@@ -287,7 +287,15 @@ kill. Honest status on this branch:
    module (Loeffler / Vonk direction).
 3. **Ribet `928→32`.** Stays `def Prop`. Needs Wiles + BCDT
    modularity of the semistable Frey curve and Ribet
-   level-lowering after unramified `I₂₉`.
+   level-lowering after unramified `I₂₉`. Abstract Ribet
+   (modular `E`, `13 ∣ v_p(Δ)`, trivial inertia ⇒ level
+   `N_E / p`) has no Wiles in the **statement**; Mathlib still
+   cannot inhabit it. Displayed numerals: `928 / 29 = 32`,
+   `928 ≠ 32`, `29 ∤ 32`; `level_after_ribet_29 = 32` when
+   `29 ∤ AB` and `928` when `29 ∣ AB`. That is not Néron `N_E`
+   and not `ρ_E ≅ ρ_{E'}`. `Ribet_level_lowering_abstract` /
+   `level_Frey_eq_32_needs_Wiles` stay `def Prop`. Primes in
+   `A` need not drop (`13 ∤ 8`).
 4. **Serre.** `48 < 2184` is a numeral theorem (`48 ≠ 2184`).
    `2²+3²=13` and split-Cartan count `2(13−1)²=288` with
    `288/48=6` are theorems. `y²=x³−x` has `j=1728` but is

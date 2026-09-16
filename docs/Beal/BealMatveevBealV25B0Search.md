@@ -210,9 +210,10 @@ inhabits the Fricke `j`-map and `𝔽₂₉` scans (`f` has roots
 `def Prop`. [`Tate_I29_Inertia.lean`](../../Tate_I29_Inertia.lean)
 inhabits `Padic.valuation (Δ : ℚ_[29]) = 26 v₂₉(C)` and a unit
 of that valuation (`Δ` itself); `Tate_q` / uniformization stay
-`def Prop`. [`Ribet_Level32.lean`](../../Ribet_Level32.lean) and
-[`Serre_Large_vs_CM_Small.lean`](../../Serre_Large_vs_CM_Small.lean)
-keep Galois as `def Prop`.
+`def Prop`. [`Ribet_Level32.lean`](../../Ribet_Level32.lean) inhabits
+`928/29=32`; abstract Ribet / Frey-needs-Wiles stay
+`def Prop`. [`Serre_Large_vs_CM_Small.lean`](../../Serre_Large_vs_CM_Small.lean)
+keeps Galois as `def Prop`.
 Root [`X0_26_Full2Torsion.lean`](../../X0_26_Full2Torsion.lean)
 inhabits the Frey cubic split (`0, A⁴, −B⁴ ∈ ℚ`); Kenku
 emptiness / 26-isogeny glue / Mazur via `X₀(26)` stay

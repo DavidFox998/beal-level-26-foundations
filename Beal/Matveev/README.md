@@ -110,8 +110,10 @@ Root `MazurIrreducibilityFull.lean`, `TateGalois.lean`, and
 `SerreImageFull.lean` name the four Mathlib gaps as `def Prop`.
 Root `Mazur_X0_13_RationalPoints.lean` inhabits the Fricke
 `j`-map and `𝔽₂₉` scans; Mazur via `X₀(13)` stays `def Prop`.
-Root `Tate_I29_Inertia.lean`, `Ribet_Level32.lean`, and
-`Serre_Large_vs_CM_Small.lean` keep Galois as `def Prop`.
+Root `Tate_I29_Inertia.lean` keeps Tate uniformization as
+`def Prop`. Root `Ribet_Level32.lean` inhabits `928/29=32`;
+abstract Ribet / Frey-needs-Wiles stay `def Prop`. Root
+`Serre_Large_vs_CM_Small.lean` keeps Galois as `def Prop`.
 Root `X0_26_Full2Torsion.lean` inhabits the Frey cubic split
 (`0, A⁴, −B⁴ ∈ ℚ`); Kenku / 26-isogeny / Mazur via `X₀(26)`
 stay `def Prop`. Do **not** add copies under `Beal/Matveev/`.

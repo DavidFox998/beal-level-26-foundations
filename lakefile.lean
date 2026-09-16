@@ -68,8 +68,9 @@ lean_lib «BealMatveevBealV25Rank3» where
     `Tate_I29_Inertia` inhabits `Padic.valuation Δ = 26 v(C)` and
     the truncated `j(q)` valuation `v(j⁻¹)=26k`; Tate
     uniformization / inertia stay `def Prop`.
-    `Ribet_Level32` / `Serre_Large_vs_CM_Small` keep Galois
-    as `def Prop`. Serre inhabits `2²+3²=13` and Cartan
+    `Ribet_Level32` inhabits `928/29=32` and `29 ∤ 32`;
+    abstract Ribet / Frey-needs-Wiles stay `def Prop`.
+    `Serre_Large_vs_CM_Small` inhabits `2²+3²=13` and Cartan
     `2(12)²=288`; image `≤48` / Frey iso stay `def Prop`.
     `X0_26_Full2Torsion` inhabits the Frey cubic split
     (`E[2]` roots in `ℚ`), LMFDB `26.42.2.a.1` Weierstrass,
