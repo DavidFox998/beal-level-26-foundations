@@ -32,11 +32,20 @@ shards, and do **not** touch `BealLevel26FoundationsScaffold`.
 
 The floor lattice `b1=(1,0)`, `b2=(⌊C_LLL α⌋, C_LLL)` with
 `C_LLL = C1_floor^2` still contains `(1,0)` of Euclidean length
-`1 < B0`, so the draft `lll_lower_bound` is false. Floor error
-`< 1` kills the integer kernel; it does not kill `(1,0)`.
-`LLL_reduces_bound_to_B0_theorem` /
+`1 < B0`, so the draft Euclidean `lll_lower_bound` is false.
+The later draft `|u α + v| > exp(−B0)` for *all* nonzero
+`(u,v)` is also false: Dirichlet
+(`Real.exists_int_int_abs_mul_sub_le`) produces
+`|k α − j| ≤ 1/(N+1) < exp(−B0)`. Floor error `< 1` kills the
+integer kernel; it does not restore a B0 cutoff.
+`LLL_reduces_bound_to_B0` / `LLL_reduces_bound_to_B0_theorem` /
+`hGen_padic` / `hLLL_padic` /
 `beal_gap3_4_4_13_unconditional_v25_draft` stay `def Prop`.
-`matveev_gap3_lower` is not `¬∃ A`. v25 is not minted.
+Defining `hGen` as the constant true proposition is forbidden.
+`matveev_gap3_lower` needs `B ≤ B0` and is not `¬∃ A`.
+Even `|Λ| > exp(−B0)` is smaller than `1/C1_floor`, so it
+cannot beat the elementary `|Λ| < 1/B` on `B0 < B ≤ C1_floor`.
+v25 is not minted.
 
 `p_adic_LLL_reduction` / `hLLL_padic` / `baker_bound_B0_1e6` /
 `LLL_reduces_bound_to_B0` stay `def Prop`. Defining the reduced
@@ -384,9 +393,118 @@ theorem floor_lattice_nogo (B : ℕ) :
           B0_nat < C1_floor / 2 :=
   ⟨LLL_basis_b1 B, combo_one_zero_length B, one_lt_B0_real, C1_div_two_gt_B0⟩
 
+/-! ## Unbounded `|u α + v| > exp(−B0)` fails by Dirichlet -/
+
+/-- Ceiling of `exp(B0)`. Used only as a Dirichlet box size. -/
+noncomputable def dirichlet_N : ℕ := Nat.ceil (Real.exp (B0_nat : ℝ))
+
+theorem dirichlet_N_pos : 0 < dirichlet_N :=
+  Nat.ceil_pos.mpr (Real.exp_pos _)
+
+theorem exp_B0_lt_dirichlet_N_succ :
+    Real.exp (B0_nat : ℝ) < (dirichlet_N + 1 : ℝ) := by
+  have hle : Real.exp (B0_nat : ℝ) ≤ (dirichlet_N : ℝ) := Nat.le_ceil _
+  have hlt : (dirichlet_N : ℝ) < (dirichlet_N + 1 : ℝ) := by
+    exact_mod_cast Nat.lt_succ_self dirichlet_N
+  exact hle.trans_lt hlt
+
+theorem one_div_dirichlet_N_succ_lt_exp_neg_B0 :
+    (1 : ℝ) / (dirichlet_N + 1 : ℝ) < Real.exp (-(B0_nat : ℝ)) := by
+  have hposN : (0 : ℝ) < dirichlet_N + 1 := by
+    exact_mod_cast Nat.succ_pos dirichlet_N
+  have h :=
+    (one_div_lt_one_div hposN (Real.exp_pos (B0_nat : ℝ))).mpr
+      exp_B0_lt_dirichlet_N_succ
+  simpa [Real.exp_neg, one_div] using h
+
+/-- The draft `lll_lower_bound_of_B_gt_B0`
+    (`|u α + v| > exp(−B0)` for every nonzero integer pair)
+    is **false** for every `B`. Dirichlet supplies `k > 0` and
+    `j` with `|k α − j| ≤ 1/(N+1) < exp(−B0)`. Mathlib 4.12
+    has this lemma and has **no** LLL module. -/
+theorem lll_form_lower_bound_fails (B : ℕ) :
+    ¬ (∀ u v : ℤ, (u, v) ≠ (0, 0) →
+        |(u : ℝ) * alpha B + (v : ℝ)| > Real.exp (-(B0_nat : ℝ))) := by
+  intro h
+  obtain ⟨j, k, hk0, _hkN, hle⟩ :=
+    exists_int_int_abs_mul_sub_le (alpha B) dirichlet_N_pos
+  have hne : (k, -j) ≠ (0, 0) := by
+    intro hpair
+    exact (ne_of_gt hk0) (congrArg Prod.fst hpair)
+  have hgt := h k (-j) hne
+  have heq :
+      |((k : ℝ) * alpha B + ((-j : ℤ) : ℝ))| =
+        |(k : ℝ) * alpha B - (j : ℝ)| := by
+    simp [sub_eq_add_neg]
+  have hlt :
+      |((k : ℝ) * alpha B + ((-j : ℤ) : ℝ))| <
+        Real.exp (-(B0_nat : ℝ)) := by
+    rw [heq]
+    exact (hle.trans_lt one_div_dirichlet_N_succ_lt_exp_neg_B0)
+  exact (not_lt.mpr hgt.le) hlt
+
+theorem lll_lower_bound_of_B_gt_B0_fails {B : ℕ} (_hB : B0_nat < B) :
+    ¬ (∀ u v : ℤ, (u, v) ≠ (0, 0) →
+        |(u : ℝ) * alpha B + (v : ℝ)| > Real.exp (-(B0_nat : ℝ))) :=
+  lll_form_lower_bound_fails B
+
+theorem two_pow_forty_gt_C1_floor : C1_floor < 2 ^ 40 := by
+  rw [C1_floor_eq]
+  decide
+
+theorem forty_lt_B0 : 40 < B0_nat := by
+  rw [B0_nat_eq]
+  decide
+
+theorem two_lt_exp_one : (2 : ℝ) < Real.exp 1 :=
+  lt_trans (by norm_num : (2 : ℝ) < 2.7182818283) exp_one_gt_d9
+
+/-- `C1_floor < exp(B0)`, so `exp(−B0) < 1/C1_floor`. A lower
+    bound `exp(−B0)` cannot beat `|Λ| < 1/B` on
+    `B0 < B ≤ C1_floor`. -/
+theorem C1_floor_lt_exp_B0 : (C1_floor : ℝ) < Real.exp (B0_nat : ℝ) := by
+  have hC : (C1_floor : ℝ) < (2 : ℝ) ^ 40 := by
+    have := two_pow_forty_gt_C1_floor
+    exact_mod_cast this
+  have hpow : (2 : ℝ) ^ 40 < Real.exp 1 ^ 40 :=
+    pow_lt_pow_left two_lt_exp_one (by norm_num : (0 : ℝ) ≤ 2)
+      (by decide : (40 : ℕ) ≠ 0)
+  have h40 : Real.exp 1 ^ 40 = Real.exp (40 : ℝ) := by
+    rw [← Real.exp_nat_mul (1 : ℝ) 40, mul_one]
+    norm_cast
+  have hB : Real.exp (40 : ℝ) < Real.exp (B0_nat : ℝ) :=
+    Real.exp_lt_exp.mpr (by exact_mod_cast forty_lt_B0)
+  calc
+    (C1_floor : ℝ) < (2 : ℝ) ^ 40 := hC
+    _ < Real.exp 1 ^ 40 := hpow
+    _ = Real.exp (40 : ℝ) := h40
+    _ < Real.exp (B0_nat : ℝ) := hB
+
+theorem C1_floor_pos_real : (0 : ℝ) < (C1_floor : ℝ) := by
+  have : 0 < C1_floor := by
+    rw [C1_floor_eq]
+    decide
+  exact_mod_cast this
+
+theorem exp_neg_B0_lt_inv_C1 :
+    Real.exp (-(B0_nat : ℝ)) < 1 / (C1_floor : ℝ) := by
+  have h :=
+    (one_div_lt_one_div (Real.exp_pos (B0_nat : ℝ)) C1_floor_pos_real).mpr
+      C1_floor_lt_exp_B0
+  simpa [Real.exp_neg, one_div] using h
+
+/-- Packaged form no-go: the unbounded Baker-style LLL lower
+    bound is false, and `exp(−B0)` is smaller than `1/C1`. -/
+theorem lll_form_dirichlet_nogo (B : ℕ) :
+    ¬ (∀ u v : ℤ, (u, v) ≠ (0, 0) →
+        |(u : ℝ) * alpha B + (v : ℝ)| > Real.exp (-(B0_nat : ℝ))) ∧
+      Real.exp (-(B0_nat : ℝ)) < 1 / (C1_floor : ℝ) :=
+  ⟨lll_form_lower_bound_fails B, exp_neg_B0_lt_inv_C1⟩
+
 /-- Draft `LLL_reduces_bound_to_B0_theorem`. Uninhabited: the
-    displayed Euclidean lower bound is false, Matveev+LLL already
-    lose on `B ≥ B0`, and `matveev_gap3_lower` is not `¬∃ A`. -/
+    displayed Euclidean lower bound is false, the `|uα+v|`
+    form fails by Dirichlet, Matveev+LLL already lose on
+    `B ≥ B0`, and `matveev_gap3_lower` is not `¬∃ A`. -/
 def LLL_reduces_bound_to_B0_theorem : Prop :=
   ∀ B : ℕ, B0_nat < B → B ≤ C1_floor →
     ∀ A : ℕ, B < A → A ^ 4 + B ^ 4 = (B + 3) ^ 13 → False
@@ -431,6 +549,12 @@ def beal_gap3_4_4_13_unconditional_v25_draft : Prop :=
 #check LLL_b1_is_combo
 #check lll_euclidean_lower_bound_fails
 #check floor_lattice_nogo
+#check dirichlet_N_pos
+#check lll_form_lower_bound_fails
+#check lll_lower_bound_of_B_gt_B0_fails
+#check C1_floor_lt_exp_B0
+#check exp_neg_B0_lt_inv_C1
+#check lll_form_dirichlet_nogo
 #check LLL_reduces_bound_to_B0_theorem
 #check beal_gap3_4_4_13_unconditional_v25_draft
 #print axioms C1_floor_eq
@@ -447,6 +571,9 @@ def beal_gap3_4_4_13_unconditional_v25_draft : Prop :=
 #print axioms combo_one_zero_length
 #print axioms floor_C_alpha_error_lt_one
 #print axioms floor_lattice_nogo
+#print axioms lll_form_lower_bound_fails
+#print axioms lll_form_dirichlet_nogo
+#print axioms exp_neg_B0_lt_inv_C1
 #print axioms C1_div_two_gt_B0
 
 end BealMatveevBeal.PAdicLLL

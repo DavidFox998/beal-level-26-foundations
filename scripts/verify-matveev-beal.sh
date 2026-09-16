@@ -334,6 +334,9 @@ if "PAdicLLL.not_A_le_B_add_ten_of_gap3" not in src:
 if "PAdicLLL.lll_euclidean_lower_bound_fails" not in src:
     print("#check lll_euclidean_lower_bound_fails missing from MatveevThm14General.lean", file=sys.stderr)
     sys.exit(1)
+if "PAdicLLL.lll_form_dirichlet_nogo" not in src:
+    print("#check lll_form_dirichlet_nogo missing from MatveevThm14General.lean", file=sys.stderr)
+    sys.exit(1)
 if "import PAdicLLL_ZeroAxiom" not in src:
     print("MatveevThm14General.lean missing import PAdicLLL_ZeroAxiom", file=sys.stderr)
     sys.exit(1)
@@ -3181,6 +3184,21 @@ if "theorem nat_int_form_has_kernel" not in pll:
 if "theorem floor_lattice_nogo" not in pll:
     print("floor_lattice_nogo missing from PAdicLLL.lean", file=sys.stderr)
     sys.exit(1)
+if "theorem lll_form_lower_bound_fails" not in pll:
+    print("lll_form_lower_bound_fails missing from PAdicLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem lll_form_dirichlet_nogo" not in pll:
+    print("lll_form_dirichlet_nogo missing from PAdicLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem hGen\b", pll, re.M):
+    print("do not inhabit hGen; keep def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem hLLL\b", pll, re.M):
+    print("do not inhabit hLLL; keep def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem beal_gap3_4_4_13_unconditional\b", pll, re.M):
+    print("do not inhabit beal_gap3_4_4_13_unconditional; v25 not minted", file=sys.stderr)
+    sys.exit(1)
 if "def LLL_reduces_bound_to_B0_theorem" not in pll:
     print("LLL_reduces_bound_to_B0_theorem must stay def Prop", file=sys.stderr)
     sys.exit(1)
@@ -3543,6 +3561,7 @@ print("  p_adic_LLL_unconditional_nogo; p_adic_LLL_reduction/LLL_reduces_bound_t
 print("  four_le_C1_padic_placeholder=4<=1000 does not bound B; no 977 check_gap3_range shards")
 print("  floor lattice b1=(1,0) has Euclidean length 1 < B0; lll_euclidean_lower_bound_fails")
 print("  nat_int_form_has_kernel: naive u*a+v*C1 always vanishes at (C1,-a)")
+print("  unbounded |u alpha + v| > exp(-B0) fails by Dirichlet; exp(-B0) < 1/C1")
 print("  LLL_reduces_bound_to_B0_theorem / v25_draft stay def Prop; Real.log keeps choice")
 print("  PAdicLLL_ZeroAxiom: Nat.sqrt C1 < B0; displayed kernel in box without a solution")
 print("  LLL_reduces_bound_to_B0_zero_axiom stays def Prop; not a minted v25 tag")

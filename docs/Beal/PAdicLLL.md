@@ -74,5 +74,29 @@ and `beal_gap3_4_4_13_unconditional_v25_draft` stay `def Prop`.
 `#print axioms lll_euclidean_lower_bound_fails` is
 `[propext, Classical.choice, Quot.sound]` (`Real.log` / `Real.sqrt`).
 
+## Unbounded `|u α + v| > exp(−B0)` fails by Dirichlet
+
+The later draft `lll_lower_bound_of_B_gt_B0` asked for
+`|u log(B+3) + v| > exp(−B0)` for **every** nonzero integer
+pair. Mathlib 4.12 already has
+`Real.exists_int_int_abs_mul_sub_le`: with
+`N = ⌈exp(B0)⌉` one gets `k > 0` and `j` such that
+`|k α − j| ≤ 1/(N+1) < exp(−B0)`. So that bound is false
+for every `B`. Mathlib 4.12 still has **no** LLL module;
+LLL would *upper*-bound a short vector anyway.
+
+Separately, `exp(−B0) < 1/C1_floor` (`C1_floor < 2⁴⁰ < e⁴⁰ < e^{B0}`),
+so even a true `|Λ| > exp(−B0)` cannot beat the elementary
+`|Λ| < 1/B` on `B0 < B ≤ C1_floor`. `matveev_gap3_lower` needs
+`B ≤ B0` and is not `¬∃ A`. Draft `alpha A` would be
+`log(A+3)`, not `log A`.
+
+`hGen_padic` / `hLLL_padic` / `LLL_reduces_bound_to_B0` stay
+`def Prop`. Defining `hGen` as the constant true proposition
+is forbidden. v25 is not minted.
+
+`#print axioms lll_form_lower_bound_fails` is
+`[propext, Classical.choice, Quot.sound]`.
+
 Successor integer-form nogo: [`PAdicLLL_ZeroAxiom.md`](PAdicLLL_ZeroAxiom.md).
 v25 is not minted.

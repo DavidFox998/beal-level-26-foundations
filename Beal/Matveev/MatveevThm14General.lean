@@ -138,8 +138,9 @@ does not inhabit the reduced predicate as true; does not shard
 matveev_gap3_lower; does not fork Mathlib; v25 not minted).
 Floor lattice b1=(1,0) has Euclidean length 1 < B0
 (lll_euclidean_lower_bound_fails); naive u*a+v*C1 has a kernel
-(nat_int_form_has_kernel); LLL_reduces_bound_to_B0_theorem stays
-def Prop; v25 not minted.
+(nat_int_form_has_kernel); unbounded |u α + v| > exp(-B0) fails
+by Dirichlet (lll_form_lower_bound_fails); exp(-B0) < 1/C1_floor;
+LLL_reduces_bound_to_B0_theorem stays def Prop; v25 not minted.
 bugeaud_LLL_reduction_proof stays def Prop. Named theorem
 baker_bound_gap3 stays uninhabited. Not a minted v25 tag.
 -/
@@ -1261,6 +1262,8 @@ theorem gap3_forall_of_baker
 #check PAdicLLL.Z_p_norm_le_one
 #check PAdicLLL.lll_euclidean_lower_bound_fails
 #check PAdicLLL.floor_lattice_nogo
+#check PAdicLLL.lll_form_lower_bound_fails
+#check PAdicLLL.lll_form_dirichlet_nogo
 #check PAdicLLL.combo_one_zero_length
 #check PAdicLLL.nat_int_form_has_kernel
 #check PAdicLLL.LLL_reduces_bound_to_B0_theorem
@@ -1430,6 +1433,8 @@ theorem gap3_forall_of_baker
 #print axioms PAdicLLL.four_le_C1_padic_placeholder
 #print axioms PAdicLLL.lll_euclidean_lower_bound_fails
 #print axioms PAdicLLL.floor_lattice_nogo
+#print axioms PAdicLLL.lll_form_lower_bound_fails
+#print axioms PAdicLLL.lll_form_dirichlet_nogo
 #print axioms PAdicLLL.nat_int_form_has_kernel
 #print axioms PAdicLLL_ZeroAxiom.nat_int_form_has_kernel
 #print axioms PAdicLLL_ZeroAxiom.p_adic_lll_zero_axiom_unconditional_nogo
