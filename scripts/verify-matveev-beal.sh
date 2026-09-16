@@ -3514,15 +3514,22 @@ if "beal-conjecture stays beal-conjecture" not in readme:
 
 cff = pathlib.Path("CITATION.cff").read_text(encoding="utf-8")
 needles = [
-    'title: "foundations-level-26 — Beal Level 26 Matveev-Baker Foundations"',
-    'version: "v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations"',
+    'title: "Matveev-Beal Level 26: Rank-3 Bugeaud-Laurent shape nogo"',
+    'version: "v24-v24x-final-rank3-shape-nogo"',
     'doi: "10.5281/zenodo.22379293"',
     'repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"',
+    "C1_floor=143186215390",
+    "B0_nat=1000000",
+    "10.5281/zenodo.22732209",
+    "v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations is not",
 ]
 for n in needles:
     if n not in cff:
         print("CITATION.cff missing:", n, file=sys.stderr)
         sys.exit(1)
+if 'version: "v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations"' in cff:
+    print("CITATION.cff must not mint v25.0.0 as the current version", file=sys.stderr)
+    sys.exit(1)
 
 print("verify-matveev-beal: ok")
 print("  0 sorry; matveev_gap3_lower is the B<=B0 integer-gap close")
