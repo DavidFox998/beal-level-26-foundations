@@ -93,6 +93,10 @@ Root `Ribet29C_Residue16.lean` checks `l = 11` on residue
 `(1,6) (mod 7)`: `a₁₁(32a1)=0`, the class is mixed at `11`,
 and `full_29C_eliminated` stays `def Prop`. Do **not** add
 `Beal/Matveev/Ribet29C_Residue16.lean`.
+Root `Ribet29C_Residue16_L23.lean` checks `l = 23` on the same
+class: `a₂₃(32a1)=0` (not `−6`), mixed CRT lifts, and
+`residue_1_6_eliminated_at_23` stays `def Prop`. Do **not** add
+`Beal/Matveev/Ribet29C_Residue16_L23.lean`.
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /

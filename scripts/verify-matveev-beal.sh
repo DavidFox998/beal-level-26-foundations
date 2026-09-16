@@ -131,6 +131,10 @@ test -f Ribet29C_Residue16.lean
 if test -f Beal/Matveev/Ribet29C_Residue16.lean; then
   fail "do not add Beal/Matveev/Ribet29C_Residue16.lean; .submodules Beal.Matveev would pull it into default"
 fi
+test -f Ribet29C_Residue16_L23.lean
+if test -f Beal/Matveev/Ribet29C_Residue16_L23.lean; then
+  fail "do not add Beal/Matveev/Ribet29C_Residue16_L23.lean; .submodules Beal.Matveev would pull it into default"
+fi
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -666,6 +670,9 @@ if ".one `Ribet29C_Lowering" not in lake:
 if ".one `Ribet29C_Residue16" not in lake:
     print("lakefile.lean missing Ribet29C_Residue16 glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
+if ".one `Ribet29C_Residue16_L23" not in lake:
+    print("lakefile.lean missing Ribet29C_Residue16_L23 glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
 if "BealMatveevBealV25B0Search" in default_globs.group(1):
     print("BealMatveevBealV25B0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
@@ -692,6 +699,9 @@ if "Ribet29C_Lowering" in default_globs.group(1):
     sys.exit(1)
 if "Ribet29C_Residue16" in default_globs.group(1):
     print("Ribet29C_Residue16 must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Ribet29C_Residue16_L23" in default_globs.group(1):
+    print("Ribet29C_Residue16_L23 must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -4000,6 +4010,56 @@ if "theorem LLL_nogo_persists_after_Residue16" not in r16:
     print("LLL_nogo_persists_after_Residue16 missing", file=sys.stderr)
     sys.exit(1)
 
+l23 = pathlib.Path("Ribet29C_Residue16_L23.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in l23 or re.search(
+        r"^import Beal\.Matveev\.", l23, re.M):
+    print("Ribet29C_Residue16_L23.lean must not import Beal.Matveev.*", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", l23, re.M) or ":= sorry" in l23 or "by sorry" in l23:
+    print("sorry is not allowed in Ribet29C_Residue16_L23.lean", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in l23:
+    print("True := trivial is not allowed in Ribet29C_Residue16_L23.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^axiom ", l23, re.M):
+    print("do not add axioms in Ribet29C_Residue16_L23.lean; reuse BealTrueV25.darmon_merel_4413_axiom",
+          file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^def count_E_Fp_32a1\b", l23, re.M) or re.search(r"^def frey_a23\b", l23, re.M):
+    print("do not stub count_E_Fp_32a1 / frey_a23 := 0; reuse Level32Table sqCount",
+          file=sys.stderr)
+    sys.exit(1)
+if "a23_32a1 : Int := -6" in l23 or "curve32a1_ap 23 = -6" in l23:
+    print("do not claim a23(32a1)=-6; the point count is 0", file=sys.stderr)
+    sys.exit(1)
+if "theorem curve32a1_ap_23" not in l23:
+    print("curve32a1_ap_23 missing from Ribet29C_Residue16_L23.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem residue_1_6_has_a23_match_witness" not in l23:
+    print("residue_1_6_has_a23_match_witness missing; l=23 does not kill (1,6)",
+          file=sys.stderr)
+    sys.exit(1)
+if "theorem witness_15_69_bad_at_23" not in l23:
+    print("witness_15_69_bad_at_23 missing; 15,69 is 23|B", file=sys.stderr)
+    sys.exit(1)
+if "def residue_1_6_eliminated_at_23" not in l23:
+    print("residue_1_6_eliminated_at_23 must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem residue_1_6_eliminated_at_23\b", l23, re.M):
+    print("do not inhabit residue_1_6_eliminated_at_23; a23=0 lifts exist",
+          file=sys.stderr)
+    sys.exit(1)
+if "def no_sol_ge_B0_29C_1_6_of_l23" not in l23:
+    print("no_sol_ge_B0_29C_1_6_of_l23 must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem no_sol_ge_B0_29C_1_6_of_l23\b", l23, re.M):
+    print("do not inhabit no_sol_ge_B0_29C_1_6_of_l23; (1,6) has a23=0 lifts",
+          file=sys.stderr)
+    sys.exit(1)
+if "theorem LLL_nogo_persists_after_L23" not in l23:
+    print("LLL_nogo_persists_after_L23 missing", file=sys.stderr)
+    sys.exit(1)
+
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
     print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
@@ -4338,4 +4398,7 @@ print("  Ribet29C_Residue16: 32a1 a11=0; frey_ap 11 1 6 = 0 matches; (1,6) not o
 print("  mixed F_11: a11=0 at (4,3)/(7,3), a11=-4 at (2,6)/(9,6); (1,6) class has both")
 print("  no_sol_ge_B0_29C_of_7_and_11 / full_29C_eliminated stay def Prop; (6,6) still matches a7")
 print("  LLL_nogo_persists_after_Residue16 is the e5a95f5 iff; no new axiom")
+print("  Ribet29C_Residue16_L23: 32a1 a23=0 not -6; (1,6) CRT lifts include a23=0 and a23=8")
+print("  witness 15,69 is 23|B (bad red); residue_1_6_eliminated_at_23 stays def Prop")
+print("  LLL_nogo_persists_after_L23 is the e5a95f5 iff; no new axiom")
 PY

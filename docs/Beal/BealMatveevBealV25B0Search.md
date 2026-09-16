@@ -164,4 +164,14 @@ that class. `(6,6) (mod 7)` still matches at `7`.
 `def Prop`. `LLL_nogo_persists_after_Residue16` is the same
 `e5a95f5` equivalence.
 
+Root [`Ribet29C_Residue16_L23.lean`](../../Ribet29C_Residue16_L23.lean)
+checks the same class at `l = 23`. `32a1` has `a₂₃ = 0`
+(`#E(𝔽₂₃)=24`), not `−6`. Good on-solution residues mod `23`
+are mixed (eight match, ten mismatch). CRT lifts of `(1,6)
+(mod 7)` include `a₂₃ = 0` (`A=1, B=118`) and `a₂₃ = 8`
+(`A=50, B=160`), including a `29 ∣ C` match. The `1636a62`
+witness `A=15, B=69` is bad at `23` (`23 ∣ 69`).
+`residue_1_6_eliminated_at_23` stays `def Prop`.
+`LLL_nogo_persists_after_L23` is the same `e5a95f5` equivalence.
+
 v25 is not minted.
