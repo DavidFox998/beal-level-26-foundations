@@ -207,8 +207,10 @@ numerics. `darmon_merel_4413_four_gaps` /
 Root [`Mazur_X0_13_RationalPoints.lean`](../../Mazur_X0_13_RationalPoints.lean)
 inhabits the Fricke `j`-map and `𝔽₂₉` scans (`f` has roots
 `7,9` mod `29`; `v(t)∈{26k,−2k}`); Mazur via `X₀(13)` stays
-`def Prop`. [`Tate_I29_Inertia.lean`](../../Tate_I29_Inertia.lean),
-[`Ribet_Level32.lean`](../../Ribet_Level32.lean), and
+`def Prop`. [`Tate_I29_Inertia.lean`](../../Tate_I29_Inertia.lean)
+inhabits `Padic.valuation (Δ : ℚ_[29]) = 26 v₂₉(C)` and a unit
+of that valuation (`Δ` itself); `Tate_q` / uniformization stay
+`def Prop`. [`Ribet_Level32.lean`](../../Ribet_Level32.lean) and
 [`Serre_Large_vs_CM_Small.lean`](../../Serre_Large_vs_CM_Small.lean)
 keep Galois as `def Prop`.
 Root [`X0_26_Full2Torsion.lean`](../../X0_26_Full2Torsion.lean)

@@ -4402,9 +4402,10 @@ check_gap_file("Mazur_X0_13_RationalPoints.lean",
      "LLL_nogo_persists_after_X0_13"])
 check_gap_file("Tate_I29_Inertia.lean",
     ["Tate_uniformization", "inertia_via_cyclo",
-     "inertia_trivial_mod13_when_13_dvd_v"],
+     "inertia_trivial_mod13_when_13_dvd_v", "Tate_q"],
     ["v29_c4_eq_0_thm", "v29_Delta_26k_thm",
-     "LLL_nogo_persists_after_Tate_I29"])
+     "valuation_natCast_eq_padicValNat", "padic_valuation_Delta_eq_26_vC",
+     "exists_Qp_unit_val_eq_vDelta", "LLL_nogo_persists_after_Tate_I29"])
 check_gap_file("Ribet_Level32.lean",
     ["modular_Frey", "ribet_level_lowering_29_to_32"],
     ["LLL_nogo_persists_after_Ribet_Level32"])
@@ -4441,6 +4442,9 @@ if "Kenku" not in arch:
     sys.exit(1)
 if "X0(26)" not in arch and "X₀(26)" not in arch:
     print("ARCHIVE_4413.md must record the X0(26) full 2-torsion route", file=sys.stderr)
+    sys.exit(1)
+if "Padic.valuation" not in arch and "Tate_q" not in arch:
+    print("ARCHIVE_4413.md must record the Qp / Padic.valuation Tate scaffold", file=sys.stderr)
     sys.exit(1)
 
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
@@ -4802,4 +4806,6 @@ print("  no local F29 close; 48<2184 is not False without the Galois iso")
 print("  X0_26_Full2Torsion: Frey cubic splits at 0,A^4,-B^4 over Q; Kenku 26 not in cyclic list")
 print("  full2+13=>26-isogeny / X0(26) cusps-only / mazur via X0(26) stay def Prop; no kenku axiom")
 print("  v29(j)=-26k shows j not integral; Kenku emptiness is stronger than a CM j-list")
+print("  Tate_I29 Qp: Padic.valuation Delta = 26 v(C); exists Qp unit of that val (Delta itself)")
+print("  Tate_q / uniformization / inertia stay def Prop; no new axiom on BealTrueV25")
 PY

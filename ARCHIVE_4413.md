@@ -251,6 +251,54 @@ No `axiom kenku_*`. Glue `full2 + 13 ⇒ 26-isogeny`,
 Kenku completeness, and `mazur_irreducible_13_via_X0_26` stay
 `def Prop`. Gaps 2–4 (Tate `I₂₉`, Ribet, Serre) stay `def Prop`.
 
+## Barrier lock (`953a174` → `9030063` → `adb1d41`)
+
+Closing `B ≥ B0` is four Mathlib gaps, not an `a₇=−4` slice
+kill. Honest status on this branch:
+
+1. **Mazur / `X₀(13)` / `X₀(26)`.** `X₀(13)` genus 0: Fricke
+   `j(t)=(t²+5t+13)f³/t` has both remaining cusps onto `𝔽₂₉ˣ`
+   (`v(t)=26k` and `v(t)=−2k`), so a unit scan cannot close
+   Mazur (`1d28dc1`). `f` roots `7,9` mod `29`; fourth powers
+   `{0,1,7,16,20,23,24,25}`; `c₄` coefficient `1`. Frey cubic
+   splits at `0,A⁴,−B⁴` (`adb1d41`). Kenku emptiness of
+   non-cuspidal `X₀(26)(ℚ)` stays `def Prop`.
+2. **Tate `I₂₉`.** Numerics `v₂₉(c₄)=0`, `v₂₉(Δ)=26k` are
+   theorems. `Padic.valuation (Δ : ℚ_[29]) = 26 v₂₉(C)` is now
+   a theorem; a unit of that valuation exists (`Δ` itself).
+   Uniformization `E(ℚ̄_p) ≅ ℚ̄_pˣ / q^ℤ` and
+   `inertia_trivial_mod13` stay `def Prop`. This is the only
+   gap that does not need Wiles; it needs a Mathlib Tate-curve
+   module (Loeffler / Vonk direction).
+3. **Ribet `928→32`.** Stays `def Prop`. Needs Wiles + BCDT
+   modularity of the semistable Frey curve and Ribet
+   level-lowering after unramified `I₂₉`.
+4. **Serre.** `48 < 2184` is a numeral theorem. The Galois
+   isomorphism `ρ_Frey ≅ ρ_{32a1}` that would turn it into
+   `False` stays `def Prop`.
+
+`BealTrueV25` still has **one** axiom,
+`darmon_merel_4413_axiom`. The four gaps are `def Prop` on
+`BealMatveevBealV25B0Search`, not extra axioms. `main` stays
+`6247c63` (axiom-free Matveev glob except that existing TrueV25
+axiom). LLL `e5a95f5` (`C1' ≤ 8` impossible) is independent.
+v25 is not minted.
+
+## `ℚ_[29]` valuation scaffold (not Tate uniformization)
+
+Root `Tate_I29_Inertia.lean` now inhabits Mathlib’s field
+`ℚ_[p]` on the displayed discriminant:
+
+- `Padic.valuation (n : ℚ_[29]) = padicValNat 29 n` (`n ≠ 0`)
+- `Padic.valuation (Δ : ℚ_[29]) = 26 v₂₉(C)` on a solution
+  with `29 ∤ AB`
+- `13 ∣ Padic.valuation Δ`
+- `∃ q : (ℚ_[29])ˣ, v(q) = v(Δ)` — take `q = Δ`
+
+That last fact is **not** the Tate parameter. `Tate_q` /
+`Tate_uniformization` / `inertia_via_cyclo` stay `def Prop`.
+No new axiom.
+
 ## What this tree does not claim
 
 - No `sorry`, no `True := trivial`, no fake `False.elim`.

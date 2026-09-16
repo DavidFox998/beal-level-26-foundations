@@ -65,8 +65,9 @@ lean_lib «BealMatveevBealV25Rank3» where
     `9030063` numerics.
     `Mazur_X0_13_RationalPoints` inhabits the Fricke `j`-map and
     `𝔽₂₉` scans; Mazur via `X₀(13)` stays `def Prop`.
-    `Tate_I29_Inertia` / `Ribet_Level32` /
-    `Serre_Large_vs_CM_Small` re-export numerics and keep Galois
+    `Tate_I29_Inertia` inhabits `Padic.valuation Δ = 26 v(C)` on
+    `ℚ_[29]`; Tate uniformization / inertia stay `def Prop`.
+    `Ribet_Level32` / `Serre_Large_vs_CM_Small` keep Galois
     as `def Prop`.
     `X0_26_Full2Torsion` inhabits the Frey cubic split
     (`E[2]` roots in `ℚ`); Kenku / 26-isogeny / Mazur via
