@@ -48,5 +48,8 @@ jobs:
       - name: Build BealMatveevBealV25Rank3 (separate target)
         run: lake build BealMatveevBealV25Rank3
 
+      - name: Build BealMatveevBealV25B0Search (separate target)
+        run: lake build BealMatveevBealV25B0Search
+
       - name: Honest AMS referee surface
         run: bash scripts/verify-matveev-beal.sh

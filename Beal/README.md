@@ -14,7 +14,9 @@ Lake library sources for the Matveev–Beal complement
 `EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6`,
 `BugeaudLaurent`, `PAdicLLL`, and `PAdicLLL_ZeroAxiom`.
 Separate Lake target `BealMatveevBealV25Rank3` is **not** in
-that glob (`lake build BealMatveevBealV25Rank3`).
+that glob (`lake build BealMatveevBealV25Rank3`). Separate
+Lake target `BealMatveevBealV25B0Search` is also **not** in
+that glob (`lake build BealMatveevBealV25B0Search`).
 
 `Beal.lean` re-exports `Beal.Matveev.MatveevThm14General`.
 Substantial proofs live in **root** modules; files under

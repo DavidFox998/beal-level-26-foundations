@@ -43,12 +43,16 @@ tree. Theorems live in the matching **root** modules:
 | `PAdicLLL.lean` | `PAdicLLL.lean` |
 | `PAdicLLL_ZeroAxiom.lean` | `PAdicLLL_ZeroAxiom.lean` |
 
-Do **not** add `Beal/Matveev/BealMatveevBealV25Rank3.lean`:
-`.submodules Beal.Matveev` would pull it into the default
+Do **not** add `Beal/Matveev/BealMatveevBealV25Rank3.lean` or
+`Beal/Matveev/BealMatveevBealV25B0Search.lean`:
+`.submodules Beal.Matveev` would pull them into the default
 `BealMatveevBeal` glob. Rank-3 B0/C cutoff wrappers live only in the
 root module `BealMatveevBealV25Rank3.lean`
 (`lake build BealMatveevBealV25Rank3`). `C_LLL_v25 = C1_floor`;
 `B0/C > 1/B` is true; `|Λ| ≥ B0/C` fails on a solution.
+The `B ≤ B0` search slice lives in
+`BealMatveevBealV25B0Search.lean` (`B<1000` closed;
+`∀ B ≤ B0` stays `def Prop`).
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /

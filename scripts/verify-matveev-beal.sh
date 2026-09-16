@@ -91,6 +91,10 @@ test -f BealMatveevBealV25Rank3.lean
 if test -f Beal/Matveev/BealMatveevBealV25Rank3.lean; then
   fail "do not add Beal/Matveev/BealMatveevBealV25Rank3.lean; .submodules Beal.Matveev would pull it into default"
 fi
+test -f BealMatveevBealV25B0Search.lean
+if test -f Beal/Matveev/BealMatveevBealV25B0Search.lean; then
+  fail "do not add Beal/Matveev/BealMatveevBealV25B0Search.lean; .submodules Beal.Matveev would pull it into default"
+fi
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -595,6 +599,15 @@ if default_globs is None:
     sys.exit(1)
 if "BealMatveevBealV25Rank3" in default_globs.group(1):
     print("BealMatveevBealV25Rank3 must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "lean_lib «BealMatveevBealV25B0Search»" not in lake:
+    print("lakefile.lean missing separate BealMatveevBealV25B0Search library", file=sys.stderr)
+    sys.exit(1)
+if ".one `BealMatveevBealV25B0Search" not in lake:
+    print("lakefile.lean missing BealMatveevBealV25B0Search glob", file=sys.stderr)
+    sys.exit(1)
+if "BealMatveevBealV25B0Search" in default_globs.group(1):
+    print("BealMatveevBealV25B0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -3378,6 +3391,42 @@ if "% 2" in rank3:
     print("use Even/Odd, not % 2, in BealMatveevBealV25Rank3.lean", file=sys.stderr)
     sys.exit(1)
 
+b0s = pathlib.Path("BealMatveevBealV25B0Search.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in b0s or re.search(
+        r"^import MatveevThm14General\b", b0s, re.M):
+    print("BealMatveevBealV25B0Search.lean must not import MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in b0s:
+    print("True := trivial is not allowed in BealMatveevBealV25B0Search.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", b0s, re.M) or ":= sorry" in b0s or "by sorry" in b0s:
+    print("sorry is not allowed in BealMatveevBealV25B0Search.lean", file=sys.stderr)
+    sys.exit(1)
+if "does **not** mint" not in b0s:
+    print("BealMatveevBealV25B0Search.lean must record that v25 is not minted", file=sys.stderr)
+    sys.exit(1)
+if "def gap3_B_le_B0_no_solution" not in b0s:
+    print("gap3_B_le_B0_no_solution must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem gap3_B_le_B0_no_solution\b", b0s, re.M):
+    print("do not inhabit gap3_B_le_B0_no_solution; only B<1000 is closed", file=sys.stderr)
+    sys.exit(1)
+if "theorem gap3_B_lt_1000_no_sol" not in b0s:
+    print("gap3_B_lt_1000_no_sol missing from BealMatveevBealV25B0Search.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem check_B_true_no_sol" not in b0s:
+    print("check_B_true_no_sol missing from BealMatveevBealV25B0Search.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem fourth_pow_mod16" not in b0s:
+    print("fourth_pow_mod16 missing from BealMatveevBealV25B0Search.lean", file=sys.stderr)
+    sys.exit(1)
+if b0s.count("native_decide") > 8:
+    print("do not dump hundreds of native_decide shards; B<=B0 stays def Prop", file=sys.stderr)
+    sys.exit(1)
+if "143186215390" not in b0s or "1000000" not in b0s:
+    print("C1_floor/B0_nat missing from BealMatveevBealV25B0Search.lean", file=sys.stderr)
+    sys.exit(1)
+
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
     print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
@@ -3689,5 +3738,7 @@ print("  matveev_gap3_lower stays the integer-gap B<=B0 close; not a minted v25 
 print("  not a minted v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations tag")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")
-print("  unrestricted target and hLLL stay def Prop; not v25")
+print("  BealMatveevBealV25B0Search: separate Lake target; B<1000 no-sol via mod16+fourth-root")
+print("  check_B_true_no_sol extracts Bool checker; gap3_B_le_B0_no_solution stays def Prop")
+print("  not 200 native_decide shards; popcount is not a sound reject; v25 not minted")
 PY

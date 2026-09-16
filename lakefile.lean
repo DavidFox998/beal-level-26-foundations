@@ -37,3 +37,8 @@ lean_lib «BealMatveevBeal» where
     not mint v25. -/
 lean_lib «BealMatveevBealV25Rank3» where
   globs := #[.one `BealMatveevBealV25Rank3]
+
+/-- Gap-3 `B ≤ B0` search slice. Not the default target. Does
+    not mint v25. Does not claim the full million-B search. -/
+lean_lib «BealMatveevBealV25B0Search» where
+  globs := #[.one `BealMatveevBealV25B0Search]

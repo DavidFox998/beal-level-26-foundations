@@ -39,6 +39,7 @@ Build: `lake build BealMatveevBeal` green — `./scripts/verify-matveev-beal.sh`
 - **p-adic LLL / window no-go `PAdicLLL`** — Mathlib 4.12 has `PadicInt` / `ℤ_[p]` but no LLL module; on a gap-`k` solution with `k≥1` and `B≥2` one has `¬ A ≤ B+10`, so the proposed `A ∈ [B, B+10]` `native_decide` shards cannot close `matveev_gap3_lower` (already the integer-gap `B≤B0` theorem); `4 ≤ 1000` does not bound `B`; the floor lattice `b1=(1,0)`, `b2=(⌊C_LLL α⌋, C_LLL)` contains `(1,0)` of Euclidean length `1 < B0`, so the draft Euclidean `lll_lower_bound` is false (`lll_euclidean_lower_bound_fails`); the unbounded `|u α + v| > exp(−B0)` draft is false by Dirichlet (`lll_form_lower_bound_fails`); `exp(−B0) < 1/C1_floor` so that bound cannot beat `|Λ| < 1/B`; `p_adic_LLL_reduction` / `LLL_reduces_bound_to_B0` / `LLL_reduces_bound_to_B0_theorem` / `hGen_padic` / `hLLL_padic` stay `def Prop`; does **not** inhabit `p_adic_LLL_reduced` as the constant true proposition; **v25 not minted**.
 - **Integer-form / binary-log no-go `PAdicLLL_ZeroAxiom`** — the naive `u·a+v·C1` form always has kernel `(C1,-a)` in the claimed box with no gap-3 hypothesis; `Nat.sqrt C1_floor < B0_nat`, so Minkowski from `det=C1` cannot force `λ1≥B0`; `LLL_reduces_bound_to_B0_zero_axiom` stays `def Prop`; **v25 not minted**.
 - **Rank-3 B0/C cutoff nogo `BealMatveevBealV25Rank3`** — **separate** Lake target, not in the default `BealMatveevBeal` glob (`lake build BealMatveevBeal` stays independent). Wraps `gap3_B_lt_A_of_sol` (`B < A`), `|Λ| < 1/B`, and rank-3 `v = 4 b₁ − 13 b₂` with `‖v‖ < 32` on `B > B0`. `C_LLL_v25 = C1_floor` (not `C1²`); `B0/C > 1/B` is true (`B0_div_C_gt_inv_B`); on a solution `|Λ| < 1/B < B0/C`, so `|Λ| ≥ B0/C` fails (`lll_B0_div_C_lower_bound_fails`). `λ₁ < 32 < B0`, so a vector of scale `C|Λ| < B0` is long versus `λ₁`. Does **not** import `MatveevThm14General`. Does **not** claim Euclidean length `≥ B0` or `|u α + v| > exp(−B0)` (`lll_euclidean_lower_bound_fails`, `lll_form_lower_bound_fails`). `LLL_reduces_bound_to_B0` / `LLL_reduces_bound_to_B0_v25` / `hGen` / `hLLL` stay `def Prop`; **v25 not minted**. Prior tag `v24-v24x-final-rank3-shape-nogo` stays at `c1d173e`.
+- **Gap-3 `B ≤ B0` search slice `BealMatveevBealV25B0Search`** — **separate** Lake target. Mod-16 reject plus floor fourth-root (`Nat.sqrt` twice). `check_B_true_no_sol` extracts the Bool checker. `∀ B < 1000, ∀ A, A⁴+B⁴ ≠ (B+3)¹³` is a theorem (`gap3_B_lt_1000_no_sol`). The full `∀ B ≤ 10⁶` statement stays `def Prop`: two hundred `native_decide` shards of 13th powers are not an AMS close, and `check_upto 10000` overflows the kernel stack. Popcount is not a sound reject. **v25 not minted**.
 
 GitHub slug remains `beal-level-26-foundations` (not renamed: concept DOI
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293) stays
@@ -488,6 +489,11 @@ On a gap-3 solution, `B < A` and `A ≈ (B+3)^{13/4}`. The old
   inhabited. Does not claim Euclidean `≥ B0`.
   `LLL_reduces_bound_to_B0` / `LLL_reduces_bound_to_B0_v25` /
   `hGen` / `hLLL` stay `def Prop`. Not a minted v25 tag
+- `gap3_B_lt_1000_no_sol` — first `B ≤ B0` search shard
+  (proved in `BealMatveevBealV25B0Search.lean`, **separate**
+  Lake target): mod-16 + floor fourth-root, Bool-to-Prop
+  extraction. `gap3_B_le_B0_no_solution` stays `def Prop`.
+  Not a minted v25 tag
 
 `baker_conditional_gap3_full` takes `baker_bound_gap3`, not the
 Matveev target. After the lower bound, the remaining implication
@@ -500,6 +506,7 @@ lake update
 lake exe cache get   # optional, uses the mathlib oleans cache
 lake build BealMatveevBeal
 lake build BealMatveevBealV25Rank3  # separate Rank-3 shape target; not default
+lake build BealMatveevBealV25B0Search  # B<1000 search slice; B≤B0 stays def Prop
 ```
 
 Lake requires the monorepo subdirectory
