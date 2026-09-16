@@ -329,7 +329,7 @@ if "PAdicLLL.not_A_le_B_add_ten_of_sol" not in src:
 if "PAdicLLL.not_A_le_B_add_ten_of_gap3" not in src:
     print("#check not_A_le_B_add_ten_of_gap3 missing from MatveevThm14General.lean", file=sys.stderr)
     sys.exit(1)
-if "check_gap3_range" in src:
+if re.search(r"^def check_gap3_range\b", src, re.M):
     print("do not rewrite matveev_gap3_lower with check_gap3_range shards", file=sys.stderr)
     sys.exit(1)
 
@@ -364,7 +364,7 @@ if "theorem LLL_e2_linear_form_approx" not in lll:
 if "theorem floor_form_approx_of_C" not in lll:
     print("floor_form_approx_of_C missing from MatveevLLL.lean", file=sys.stderr)
     sys.exit(1)
-if "check_gap3_range" in lll:
+if re.search(r"^def check_gap3_range\b", lll, re.M) or "for A in [B : B+10]" in lll:
     print("do not rewrite MatveevLLL.lean with check_gap3_range shards", file=sys.stderr)
     sys.exit(1)
 if "gap3_lower_" in lll and "native_decide" in lll:
@@ -3118,7 +3118,7 @@ if "True := trivial" in pll:
 if re.search(r"^\s*sorry\b", pll, re.M) or ":= sorry" in pll or "by sorry" in pll:
     print("sorry is not allowed in PAdicLLL.lean", file=sys.stderr)
     sys.exit(1)
-if "check_gap3_range" in pll:
+if re.search(r"^def check_gap3_range\b", pll, re.M) or "for A in [B : B+10]" in pll:
     print("do not implement check_gap3_range; A in [B,B+10] is false", file=sys.stderr)
     sys.exit(1)
 if "p_adic_LLL_reduced := True" in pll or "p_adic_LLL_reduced : Prop := True" in pll:

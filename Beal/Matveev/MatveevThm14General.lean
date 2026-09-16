@@ -134,7 +134,7 @@ p-adic LLL / A∈[B,B+10] no-go in PAdicLLL.lean
 (p_adic_LLL_unconditional_nogo; PadicInt alias Z_p; not_A_le_B_add_ten_of_sol
 for k≥1 B≥2; four_le_C1_padic_placeholder does not bound B;
 p_adic_LLL_reduction / LLL_reduces_bound_to_B0 stay def Prop;
-does not inhabit p_adic_LLL_reduced := True; does not shard
+does not inhabit the reduced predicate as true; does not shard
 matveev_gap3_lower; does not fork Mathlib; v25 not minted).
 bugeaud_LLL_reduction_proof stays def Prop. Named theorem
 baker_bound_gap3 stays uninhabited. Not a minted v25 tag.

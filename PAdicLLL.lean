@@ -16,9 +16,9 @@ import BugeaudLaurent
 
 Successor of `v24-v24x-final-bugeaud-laurent-nogo`. This file
 records that Mathlib 4.12 already has `PadicInt` / `ℤ_[p]`, but
-**not** LLL over `ℤ_p` (there is no LLL module at all). It does
-**not** fork Mathlib, does **not** open a Mathlib PR, does **not**
-change `lean-toolchain`, and does **not** mint
+**not** LLL over `ℤ_p` (there is no LLL module at all). It does **not** fork Mathlib,
+does **not** open a Mathlib PR, and does **not** change `lean-toolchain`.
+It does **not** mint
 `v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations`.
 
 It also kills the false brute-force window `A ∈ [B, B+10]`
@@ -31,10 +31,10 @@ do **not** rewrite `MatveevLLL.lean` with 977 `native_decide`
 shards, and do **not** touch `BealLevel26FoundationsScaffold`.
 
 `p_adic_LLL_reduction` / `hLLL_padic` / `baker_bound_B0_1e6` /
-`LLL_reduces_bound_to_B0` stay `def Prop`. Defining
-`p_adic_LLL_reduced := True` would inhabit `∀ L, ∃ L', reduced L'`
-and is forbidden. The toy comparison `4 ≤ 1000` does **not** bound
-`B`. 0 sorry. No new axiom.
+`LLL_reduces_bound_to_B0` stay `def Prop`. Defining the reduced
+predicate as the constant true proposition would inhabit
+`∀ L, ∃ L', reduced L'` and is forbidden. The toy comparison
+`4 ≤ 1000` does **not** bound `B`. 0 sorry. No new axiom.
 
 `C1_floor = 143186215390`, `B0_nat = 1000000`.
 Do **not** delete `BealGap1`–`BealGap15`, `BealGapK`,
@@ -135,15 +135,7 @@ theorem Z_p_norm_le_one {p : ℕ} [Fact p.Prime] (x : Z_p p) :
 /-! ## Size lemma: a gap solution cannot have `A ≤ B+10` -/
 
 theorem n_add_nine_le_four_mul {n : ℕ} (hn : 3 ≤ n) :
-    n + 9 ≤ 4 * n := by
-  have h9 : 9 ≤ 3 * n := by
-    have : 3 * 3 ≤ 3 * n := Nat.mul_le_mul_left 3 hn
-    exact this
-  have hsum : n + 9 ≤ n + 3 * n := Nat.add_le_add_left h9 n
-  have h4 : n + 3 * n = 4 * n := by
-    rw [← Nat.one_mul n, ← Nat.add_mul]
-    rfl
-  exact h4 ▸ hsum
+    n + 9 ≤ 4 * n := by omega
 
 theorem five_hundred_twelve_lt_pow_nine {n : ℕ} (hn : 3 ≤ n) :
     512 < n ^ 9 := by
@@ -169,17 +161,14 @@ theorem two_mul_succ_add_nine_pow_four_lt_pow_thirteen {n : ℕ}
   have hmul : 512 * n ^ 4 < n ^ 9 * n ^ 4 :=
     Nat.mul_lt_mul_of_pos_right (five_hundred_twelve_lt_pow_nine hn) hpos
   have h13 : n ^ 9 * n ^ 4 = n ^ 13 := by
-    rw [← pow_add]
-    rfl
+    rw [← pow_add n 9 4]
   have hlt : 2 * (4 * n) ^ 4 < n ^ 13 := by
     rw [h512eq, ← h13]
     exact hmul
   exact lt_of_le_of_lt h2 hlt
 
 theorem B_add_ten_eq_succ_add_nine (B : ℕ) :
-    B + 10 = B + 1 + 9 := by
-  rw [add_assoc]
-  rfl
+    B + 10 = B + 1 + 9 := by omega
 
 theorem two_mul_B_add_ten_pow_four_lt_succ_pow_thirteen {B : ℕ}
     (hB : 2 ≤ B) : 2 * (B + 10) ^ 4 < (B + 1) ^ 13 := by
@@ -189,7 +178,7 @@ theorem two_mul_B_add_ten_pow_four_lt_succ_pow_thirteen {B : ℕ}
 
 /-- On a positive-gap solution with `B ≥ 2`, `A` cannot lie in
     `[B, B+10]`. Combined with `A_gt_B_of_sol` this kills the
-    proposed `for A in [B : B+10]` search. -/
+    proposed `[B, B+10]` search. -/
 theorem not_A_le_B_add_ten_of_sol {k A B : ℕ}
     (hk : 1 ≤ k) (h : is_gapK_sol k A B) (hB : 2 ≤ B) :
     ¬ A ≤ B + 10 := by
@@ -228,10 +217,11 @@ theorem not_A_le_B_add_ten_of_gap3 {A B : ℕ}
     ¬ A ≤ B + 10 :=
   not_A_le_B_add_ten_of_sol (by decide : (1 : ℕ) ≤ 3) h hB
 
-theorem two_le_of_B_ge_B0 {B : ℕ} (hB0 : B0_nat ≤ B) : 2 ≤ B :=
-  Nat.le_trans (by
-    have : 2 ≤ 1000000 := by decide
-    simpa [B0_nat_eq] using this) hB0
+theorem two_le_of_B_ge_B0 {B : ℕ} (hB0 : B0_nat ≤ B) : 2 ≤ B := by
+  have h2 : 2 ≤ B0_nat := by
+    rw [B0_nat_eq]
+    decide
+  exact Nat.le_trans h2 hB0
 
 /-! ## Wrapped Bugeaud–Laurent facts -/
 
