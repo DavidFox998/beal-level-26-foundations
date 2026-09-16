@@ -30,4 +30,4 @@ lean_lib «BealMatveevBeal» where
     .one `BealGap9, .one `BealGap10, .one `BealGap11, .one `BealGap12,     .one `BealGap13,
     .one `BealGap14, .one `BealGap15, .one `BealGapK,
     .one `EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6,
-    .one `BugeaudLaurent]
+    .one `BugeaudLaurent, .one `PAdicLLL]

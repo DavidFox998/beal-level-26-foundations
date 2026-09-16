@@ -83,6 +83,8 @@ test -f EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.lean
 test -f Beal/Matveev/EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.lean
 test -f BugeaudLaurent.lean
 test -f Beal/Matveev/BugeaudLaurent.lean
+test -f PAdicLLL.lean
+test -f Beal/Matveev/PAdicLLL.lean
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -315,6 +317,21 @@ if "import BugeaudLaurent" not in src:
 if "BugeaudLaurent.bugeaud_laurent_unconditional_nogo" not in src:
     print("#check bugeaud_laurent_unconditional_nogo missing from MatveevThm14General.lean", file=sys.stderr)
     sys.exit(1)
+if "import PAdicLLL" not in src:
+    print("MatveevThm14General.lean missing import PAdicLLL", file=sys.stderr)
+    sys.exit(1)
+if "PAdicLLL.p_adic_LLL_unconditional_nogo" not in src:
+    print("#check p_adic_LLL_unconditional_nogo missing from MatveevThm14General.lean", file=sys.stderr)
+    sys.exit(1)
+if "PAdicLLL.not_A_le_B_add_ten_of_sol" not in src:
+    print("#check not_A_le_B_add_ten_of_sol missing from MatveevThm14General.lean", file=sys.stderr)
+    sys.exit(1)
+if "PAdicLLL.not_A_le_B_add_ten_of_gap3" not in src:
+    print("#check not_A_le_B_add_ten_of_gap3 missing from MatveevThm14General.lean", file=sys.stderr)
+    sys.exit(1)
+if "check_gap3_range" in src:
+    print("do not rewrite matveev_gap3_lower with check_gap3_range shards", file=sys.stderr)
+    sys.exit(1)
 
 lll = pathlib.Path("MatveevLLL.lean").read_text(encoding="utf-8")
 if "theorem four_thirteenths_is_convergent" not in lll:
@@ -346,6 +363,12 @@ if "theorem LLL_e2_linear_form_approx" not in lll:
     sys.exit(1)
 if "theorem floor_form_approx_of_C" not in lll:
     print("floor_form_approx_of_C missing from MatveevLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "check_gap3_range" in lll:
+    print("do not rewrite MatveevLLL.lean with check_gap3_range shards", file=sys.stderr)
+    sys.exit(1)
+if "gap3_lower_" in lll and "native_decide" in lll:
+    print("do not add 977 native_decide shards to MatveevLLL.lean", file=sys.stderr)
     sys.exit(1)
 if "def floorFormThird" not in lll:
     print("floorFormThird missing from MatveevLLL.lean", file=sys.stderr)
@@ -532,6 +555,9 @@ if ".one `EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6" not in pathli
     sys.exit(1)
 if ".one `BugeaudLaurent" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
     print("lakefile.lean missing BugeaudLaurent glob", file=sys.stderr)
+    sys.exit(1)
+if ".one `PAdicLLL" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
+    print("lakefile.lean missing PAdicLLL glob", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -3042,6 +3068,97 @@ if "does **not** fork" not in bl and "does **not** fork Mathlib" not in bl:
     print("BugeaudLaurent.lean must record that Mathlib is not forked", file=sys.stderr)
     sys.exit(1)
 
+for shard_name in ("maveevlll_sharded.lean", "matveevlll_sharded.lean",
+                   "MatveevLLL_sharded.lean"):
+    if pathlib.Path(shard_name).exists():
+        print(f"do not add {shard_name}; matveev_gap3_lower is already 0-sorry",
+              file=sys.stderr)
+        sys.exit(1)
+
+pll = pathlib.Path("PAdicLLL.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in pll:
+    print("PAdicLLL.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
+if "axiom darmon_merel_4413_axiom" in pll and "BealTrueV25.darmon_merel_4413_axiom" not in pll:
+    print("do not add a second Darmon-Merel axiom in PAdicLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem p_adic_LLL_unconditional_nogo" not in pll:
+    print("p_adic_LLL_unconditional_nogo missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem not_A_le_B_add_ten_of_sol" not in pll:
+    print("not_A_le_B_add_ten_of_sol missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem not_A_le_B_add_ten_of_gap3" not in pll:
+    print("not_A_le_B_add_ten_of_gap3 missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem four_le_C1_padic_placeholder" not in pll:
+    print("four_le_C1_padic_placeholder missing", file=sys.stderr)
+    sys.exit(1)
+if "def p_adic_LLL_reduction" not in pll:
+    print("p_adic_LLL_reduction must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def LLL_reduces_bound_to_B0" not in pll:
+    print("LLL_reduces_bound_to_B0 must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def baker_bound_B0_1e6" not in pll:
+    print("baker_bound_B0_1e6 Prop alias missing from PAdicLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "def hGen_padic" not in pll or "def hLLL_padic" not in pll:
+    print("hGen_padic/hLLL_padic must stay def Prop in PAdicLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "143186215390" not in pll:
+    print("C1_floor = 143186215390 missing from PAdicLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "1000000" not in pll:
+    print("B0_nat = 1000000 missing from PAdicLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in pll:
+    print("True := trivial is not allowed in PAdicLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", pll, re.M) or ":= sorry" in pll or "by sorry" in pll:
+    print("sorry is not allowed in PAdicLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "check_gap3_range" in pll:
+    print("do not implement check_gap3_range; A in [B,B+10] is false", file=sys.stderr)
+    sys.exit(1)
+if "p_adic_LLL_reduced := True" in pll or "p_adic_LLL_reduced : Prop := True" in pll:
+    print("do not define p_adic_LLL_reduced := True", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem p_adic_LLL_reduction\b", pll, re.M):
+    print("do not inhabit p_adic_LLL_reduction", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem LLL_reduces_bound_to_B0\b", pll, re.M):
+    print("do not inhabit LLL_reduces_bound_to_B0", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_B0_1e6\b", pll, re.M):
+    print("do not inhabit baker_bound_B0_1e6", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem hGen_padic\b", pll, re.M):
+    print("do not inhabit hGen_padic", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem hLLL_padic\b", pll, re.M):
+    print("do not inhabit hLLL_padic", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_B0_1e6_of_bugeaud_lll\b", pll, re.M):
+    print("do not inhabit baker_bound_B0_1e6_of_bugeaud_lll", file=sys.stderr)
+    sys.exit(1)
+if "does **not** mint" not in pll:
+    print("PAdicLLL.lean must record that v25 is not minted", file=sys.stderr)
+    sys.exit(1)
+if "does **not** fork" not in pll and "does **not** fork Mathlib" not in pll:
+    print("PAdicLLL.lean must record that Mathlib is not forked", file=sys.stderr)
+    sys.exit(1)
+if "% 2" in pll:
+    print("use Even/Odd, not % 2, in PAdicLLL.lean", file=sys.stderr)
+    sys.exit(1)
+stub_pll = pathlib.Path("Beal/Matveev/PAdicLLL.lean").read_text(encoding="utf-8")
+if not re.search(r"^import PAdicLLL\s*$", stub_pll, re.M):
+    print("Beal/Matveev/PAdicLLL.lean must import PAdicLLL", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^import Beal.Matveev.MatveevThm14General", stub_pll, re.M):
+    print("Beal/Matveev/PAdicLLL.lean must not import MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
+
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
     print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
@@ -3329,6 +3446,10 @@ print("  no Bugeaud-Laurent / Kraus / Oesterle / Ribet-to-32 / FLT13 inhabitant;
 print("  BugeaudLaurent: 2-adic valuation compatible on odd k; real logs lose at C1=1 and placeholder 1000")
 print("  bugeaud_laurent_unconditional_nogo; bugeaud_laurent_1996_two_logs/p_adic_LLL_reduction stay def Prop")
 print("  does not fork Mathlib; no Iwasawa log_p / Bugeaud-Laurent 1996 / p-adic LLL / S2(32) dim 1")
+print("  PAdicLLL: PadicInt alias Z_p; not_A_le_B_add_ten_of_sol / of_gap3 (A in [B,B+10] is false)")
+print("  p_adic_LLL_unconditional_nogo; p_adic_LLL_reduction/LLL_reduces_bound_to_B0 stay def Prop")
+print("  four_le_C1_padic_placeholder=4<=1000 does not bound B; no 977 check_gap3_range shards")
+print("  matveev_gap3_lower stays the integer-gap B<=B0 close; not a minted v25 tag")
 print("  not a minted v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations tag")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")

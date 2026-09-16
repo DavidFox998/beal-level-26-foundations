@@ -40,12 +40,13 @@ tree. Theorems live in the matching **root** modules:
 | `BealGapK.lean` | `BealGapK.lean` |
 | `EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.lean` | `EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.lean` |
 | `BugeaudLaurent.lean` | `BugeaudLaurent.lean` |
+| `PAdicLLL.lean` | `PAdicLLL.lean` |
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /
 Kraus / KrausZsig / CatalanZsig / DarmonMerel / DarmonMerel44p /
 FLT13 / GenuineV25 / TrueV25 / UnconditionalV25 / Gap1 / Gap2 /
-Gap4 / Gap5 / Gap6 / Gap7 / Gap8 / Gap9 / Gap10 / Gap11 / Gap12 / Gap13 / Gap14 / Gap15 / GapK / EffectiveLevelLowering / BugeaudLaurent modules.
+Gap4 / Gap5 / Gap6 / Gap7 / Gap8 / Gap9 / Gap10 / Gap11 / Gap12 / Gap13 / Gap14 / Gap15 / GapK / EffectiveLevelLowering / BugeaudLaurent / PAdicLLL modules.
 
 `hGen`, `hLLL`, and `baker_bound_gap3_of_hGen_hLLL` stay
 uninhabited `def Prop`. `baker_bound_gap3` stays a `def Prop`
@@ -91,6 +92,10 @@ under `A,B≤B0`).
 `BugeaudLaurent` (no Iwasawa `log_p` / Bugeaud–Laurent 1996 /
 p-adic LLL in Mathlib 4.12; 2-adic valuation of the equation is
 compatible on odd `k`; real logs lose at `C1=1`).
+`p_adic_LLL_reduction`, `LLL_reduces_bound_to_B0`, and
+`baker_bound_B0_1e6` stay uninhabited `def Prop` in `PAdicLLL`
+(`PadicInt` is not an LLL lattice; `¬ A ≤ B+10` on gap solutions
+with `B≥2`; `matveev_gap3_lower` is not 977 shards).
 `baker_davenport_reduction`, `bugeaud_LLL_reduction_proof`,
 `wuestholz_subgroup_theorem`, and `wuestholz_product_theorem_exp`
 stay uninhabited `def Prop`.

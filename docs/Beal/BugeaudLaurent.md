@@ -48,3 +48,7 @@ That is why `baker_bound_B0_1e6`, `hGen_padic`, and
 
 `#print axioms bugeaud_laurent_unconditional_nogo` is
 `[propext, Classical.choice, Quot.sound]` only.
+
+Successor: [`PAdicLLL.md`](PAdicLLL.md)
+(`v24-v24x-final-padic-lll-nogo`) aliases `PadicInt` and proves
+`¬ A ≤ B+10` on gap solutions with `B ≥ 2`.

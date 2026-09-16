@@ -130,6 +130,12 @@ equation is compatible on odd k; real logs lose at C1=1 and
 at the placeholder 1000; bugeaud_laurent_1996_two_logs /
 p_adic_LLL_reduction / baker_bound_B0_1e6 stay def Prop;
 does not fork Mathlib; v25 not minted).
+p-adic LLL / A∈[B,B+10] no-go in PAdicLLL.lean
+(p_adic_LLL_unconditional_nogo; PadicInt alias Z_p; not_A_le_B_add_ten_of_sol
+for k≥1 B≥2; four_le_C1_padic_placeholder does not bound B;
+p_adic_LLL_reduction / LLL_reduces_bound_to_B0 stay def Prop;
+does not inhabit p_adic_LLL_reduced := True; does not shard
+matveev_gap3_lower; does not fork Mathlib; v25 not minted).
 bugeaud_LLL_reduction_proof stays def Prop. Named theorem
 baker_bound_gap3 stays uninhabited. Not a minted v25 tag.
 -/
@@ -167,6 +173,7 @@ import BealGap15
 import BealGapK
 import EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6
 import BugeaudLaurent
+import PAdicLLL
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -1240,6 +1247,13 @@ theorem gap3_forall_of_baker
 #check BugeaudLaurent.C1_padic_placeholder_loses_in_reals
 #check BugeaudLaurent.C1_one_loses_in_reals
 #check BugeaudLaurent.baker_bound_B0_1e6
+#check PAdicLLL.p_adic_LLL_unconditional_nogo
+#check PAdicLLL.not_A_le_B_add_ten_of_sol
+#check PAdicLLL.not_A_le_B_add_ten_of_gap3
+#check PAdicLLL.p_adic_LLL_reduction
+#check PAdicLLL.LLL_reduces_bound_to_B0
+#check PAdicLLL.four_le_C1_padic_placeholder
+#check PAdicLLL.Z_p_norm_le_one
 #print axioms C1_floor_eq
 #print axioms height_B0_eq
 #print axioms height_bound_gap3
@@ -1397,5 +1411,9 @@ theorem gap3_forall_of_baker
 #print axioms BugeaudLaurent.bugeaud_laurent_unconditional_nogo
 #print axioms BugeaudLaurent.two_val_equation_compatible_odd_k
 #print axioms BugeaudLaurent.C1_padic_placeholder_loses_in_reals
+#print axioms PAdicLLL.p_adic_LLL_unconditional_nogo
+#print axioms PAdicLLL.not_A_le_B_add_ten_of_sol
+#print axioms PAdicLLL.not_A_le_B_add_ten_of_gap3
+#print axioms PAdicLLL.four_le_C1_padic_placeholder
 
 end BealMatveevBeal

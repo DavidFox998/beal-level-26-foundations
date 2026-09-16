@@ -122,6 +122,12 @@ preferred-citation:
     and placeholder 1000; no Iwasawa log_p / Bugeaud-Laurent
     1996 / p-adic LLL / S2(32) dim 1 in Mathlib 4.12;
     bugeaud_laurent_1996_two_logs / p_adic_LLL_reduction stay
+    def Prop; does not fork Mathlib). PAdicLLL proves
+    p_adic_LLL_unconditional_nogo (PadicInt alias Z_p;
+    not_A_le_B_add_ten_of_sol / of_gap3: A in [B,B+10] is
+    empty of solutions for k>=1 B>=2; four_le_C1_padic_placeholder
+    does not bound B; matveev_gap3_lower stays the integer-gap
+    close; p_adic_LLL_reduction / LLL_reduces_bound_to_B0 stay
     def Prop; does not fork Mathlib). That does not
     mint this version tag. Unrestricted
     matveev_inequality_real_target and hLLL stay def Prop.

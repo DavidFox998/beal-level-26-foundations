@@ -11,8 +11,8 @@ Lake library sources for the Matveev–Beal complement
 `BealGap4`, `BealGap5`, `BealGap6`, `BealGap7`, `BealGap8`,
 `BealGap9`, `BealGap10`, `BealGap11`, `BealGap12`, `BealGap13`,
 `BealGap14`, `BealGap15`, `BealGapK`,
-`EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6`, and
-`BugeaudLaurent`.
+`EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6`,
+`BugeaudLaurent`, and `PAdicLLL`.
 
 `Beal.lean` re-exports `Beal.Matveev.MatveevThm14General`.
 Substantial proofs live in **root** modules; files under
@@ -88,4 +88,8 @@ lemma `C<100` when `A,B≤B0`; `baker_bound_B0_1e6` /
 `BugeaudLaurent` records the Mathlib 4.12 gap (no Iwasawa
 `log_p`, no Bugeaud–Laurent 1996, no p-adic LLL) and proves
 the 2-adic valuation of the equation is compatible on odd `k`.
+`PAdicLLL` aliases `PadicInt` as `Z_p` and proves
+`¬ A ≤ B+10` on gap solutions with `B≥2` (the proposed
+`A ∈ [B, B+10]` search is empty); `p_adic_LLL_reduction` /
+`LLL_reduces_bound_to_B0` stay `def Prop`.
 That is not the minted unconditional v25 tag.
