@@ -58,13 +58,21 @@ are not characterized by popcount. One hundred shards through
   `|Λ| ≥ B⁻⁸` + `|Λ| ≤ 2/B⁹` ⇒ `B ≤ 2` ⇒ not `B ≥ B0`.
   `future_v25_shape_of_B8_lift` is the `by_cases` packaging;
   neither branch is inhabited.
-  Phase-lift lattice: `C_LLL = 10³⁰`, `b1 = (1,0)`,
-  `b2 = (⌊C log(B+3)⌋, 1)`. Theorems: `lambda1_ge_one`,
-  `v_short_mem_L`, `C_LLL_mul_inv_B_pow_eight_lt_half`
-  (`C·B⁻⁸ < 1/2`), `C_LLL_mul_two_div_B_pow_nine_lt_one`.
-  Nogo: `not_exists_nonzero_euc_lt_one` (`euc v < 1 ↔ v = 0`
-  on `ℤ×ℤ`); `v_short` is a multiple of `b1`. The implication
-  `LLL_lift_to_B8_of_short_vector` still needs `h_exists`.
+  Phase-lift lattices on `phase-lll-lift-b8`: old nogo
+  `L` with `b1=(1,0)` still has `λ₁=1`. New `L'` with
+  `C_LLL = 10⁴⁸ = B0⁸`, `b1'=(C, ⌊C log(B+3)⌋)`, `b2'=(0,C)`,
+  `det = C²`, `λ₁ = C` (`lambda1_ge_C_div_two`,
+  `not_exists_nonzero_euc_lt_C_div_two`). `(1,0) ∉ L'`.
+  `C/B⁸ = 1` at `B=B0` and `C/B⁸ ≤ 1` for `B ≥ B0`
+  (`C_LLL_div_B_pow_eight_le_one`); `C/B⁸ ≥ 1` only for
+  `B ≤ B0`. `C·(2/B⁹) < C/2` on `B ≥ B0`. Candidate
+  `v_short' = (4 kA − 13 cLog, 0)` has first coordinate
+  `≈ C·Λ` of absolute value `< C` on `|Λ| < B⁻⁸`, so
+  membership in `L'` forces `0`
+  (`v_short'_mem_L'_of_Lambda_lt_imp_zero`).
+  `v_short'_mem_L'` stays `def Prop`. The implication
+  `LLL_lift_to_B8_of_short_vector_C48` still needs `h_exists`,
+  which `not_exists_nonzero_euc_lt_C_div_two` refutes.
   `LLL_reduces_bound_to_B0` / `hGen` / `hLLL` remain uninhabited
   on the Rank-3 target.
 

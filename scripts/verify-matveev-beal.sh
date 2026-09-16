@@ -3505,8 +3505,11 @@ if "Matrix" in b8 or "native_decide" in b8:
 if re.search(r"^import Beal\.Matveev\.PAdicLLL\b", b8, re.M):
     print("LLLTargetB8.lean must not import Beal.Matveev.PAdicLLL (LEAN_PATH); define the floor lattice locally", file=sys.stderr)
     sys.exit(1)
-if "def C_LLL : ℕ := 10 ^ 30" not in b8:
-    print("C_LLL = 10^30 missing from LLLTargetB8.lean", file=sys.stderr)
+if "def C_LLL : ℕ := 10 ^ 48" not in b8:
+    print("C_LLL = 10^48 missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "def C_LLL : ℕ := 10 ^ 30" in b8:
+    print("C_LLL must be 10^48 on phase-lll-lift-b8, not 10^30", file=sys.stderr)
     sys.exit(1)
 if "theorem lambda1_ge_one" not in b8:
     print("lambda1_ge_one missing from LLLTargetB8.lean", file=sys.stderr)
@@ -3520,11 +3523,35 @@ if "theorem not_exists_nonzero_euc_lt_one" not in b8:
 if "theorem LLL_lift_to_B8_of_short_vector" not in b8:
     print("LLL_lift_to_B8_of_short_vector missing from LLLTargetB8.lean", file=sys.stderr)
     sys.exit(1)
-if "theorem C_LLL_mul_inv_B_pow_eight_lt_half" not in b8:
-    print("C_LLL_mul_inv_B_pow_eight_lt_half missing from LLLTargetB8.lean", file=sys.stderr)
-    sys.exit(1)
 if "theorem C_LLL_mul_two_div_B_pow_nine_lt_one" not in b8:
     print("C_LLL_mul_two_div_B_pow_nine_lt_one missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem C_mul_two_div_B_pow_nine_lt_C_div_two" not in b8:
+    print("C_mul_two_div_B_pow_nine_lt_C_div_two missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem C_LLL_div_B_pow_eight_le_one" not in b8:
+    print("C_LLL_div_B_pow_eight_le_one missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem C_mul_inv_B_pow_eight_ge_one" not in b8:
+    print("C_mul_inv_B_pow_eight_ge_one missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem det_L'" not in b8:
+    print("det_L' missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem lambda1_ge_C_div_two" not in b8:
+    print("lambda1_ge_C_div_two missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem not_exists_nonzero_euc_lt_C_div_two" not in b8:
+    print("not_exists_nonzero_euc_lt_C_div_two missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "def v_short'_mem_L'" not in b8:
+    print("v_short'_mem_L' must stay def Prop in LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem v_short'_mem_L' ", b8, re.M):
+    print("do not inhabit v_short'_mem_L'; first coord is a multiple of C", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem LLL_lift_B8_with_C48\b", b8, re.M):
+    print("do not inhabit LLL_lift_B8_with_C48; |Lambda|<B^{-8} does not yield a nonzero v in L'", file=sys.stderr)
     sys.exit(1)
 
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
@@ -3842,8 +3869,8 @@ print("  BealMatveevBealV25B0Search: separate Lake target; B<1000 no-sol via mod
 print("  check_range is foldl; ten shards of 100; check_range_true_of_all is the foldl invariant")
 print("  |Lambda| <= 2/B^9 on B>=100; abs_Lambda_ge_inv_B_pow_eight stays def Prop")
 print("  LLLTargetB8: |Lambda|>=B^{-8} and LLL_reduces_C1_to_lt_nine stay def Prop")
-print("  C_LLL=10^30, lambda1_ge_one, v_short_mem_L closed; not_exists_nonzero_euc_lt_one nogo")
-print("  C*B^{-8}<1/2 and C*(2/B^9)<1 are theorems; LLL_lift_to_B8_of_short_vector needs h_exists")
+print("  C_LLL=10^48, L' det C^2, lambda1_ge_C_div_two, not_exists_nonzero_euc_lt_C_div_two")
+print("  C/B^8<=1 on B>=B0; C*(2/B^9)<C/2; v_short'_mem_L' stays def Prop")
 print("  no_sol_of_abs_Lambda_ge_B_pow_neg_eight is the implication, not an inhabitant")
 print("  check_B_true_no_sol extracts Bool checker; gap3_B_le_B0_no_solution stays def Prop")
 print("  not 100 native_decide shards to 10000; popcount is not a sound reject; v25 not minted")

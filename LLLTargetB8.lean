@@ -30,17 +30,18 @@ axiom in `BealTrueV25`, not the default glob). This file does
 `LLL_reduces_bound_to_B0_v25`, and does **not** mint
 `v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations`.
 
-Phase-lift lattice (same `C = 10³⁰` as `MatveevLLL.LLL_C_nat`):
-`b1 = (1,0)`, `b2 = (⌊C log(B+3)⌋, 1)`. Arithmetic
-`C·B⁻⁸ ≤ 10⁻¹⁸ < 1/2` and `C·(2/B⁹) < 1` are theorems.
-`λ₁ ≥ 1` is a theorem on this integer lattice. The missing
-piece is a **nonzero** `v ∈ L` with Euclidean length
-`C·|Λ| < 1`. No such integer vector exists:
-`euc v < 1 ↔ v = 0`. That is the same obstruction as
-`PAdicLLL.floor_lattice_nogo` / `lll_euclidean_lower_bound_fails`
-(length-1 `b1`), not a false `|Λ| ≥ B0/C` lower bound.
-The implication `LLL_lift_to_B8_of_short_vector` is therefore
-honest and uninhabited in the `h_exists` hypothesis.
+Two lattices:
+
+* Old nogo `L`: `b1 = (1,0)`, `b2 = (⌊C log(B+3)⌋, 1)`, `λ₁ = 1`.
+  No nonzero integer vector has Euclidean length `< 1`.
+* New `L'`: `b1' = (C, ⌊C log(B+3)⌋)`, `b2' = (0, C)`, `C = 10⁴⁸`,
+  `det = C²`, `λ₁ = C`. First coordinates are multiples of `C`,
+  so `(1,0)` is not in `L'`. `C·(2/B⁹) < C/2` is true arithmetic.
+  `C/B⁸ ≥ 1` holds at `B = B0` and for `B ≤ B0`; it is **false**
+  for `B > B0` (`C/B⁸` decreases in `B`). `v_short' = (4 kA − 13 kB, 0)`
+  has first coordinate `≈ C·Λ` of absolute value `< C` on a small
+  `|Λ|`, hence lies in `L'` only if it is `0`. No nonzero `v ∈ L'`
+  has length `< C/2`. The `|Λ| ≥ B⁻⁸` target stays `def Prop`.
 
 0 sorry. Tag `v24-v24x-final-rank3-shape-nogo` stays at `c1d173e`.
 -/
@@ -129,20 +130,25 @@ theorem future_v25_shape_of_B8_lift :
   · exact hLe B h A hsol
   · exact no_sol_of_abs_Lambda_ge_B_pow_neg_eight hge (le_of_not_le h) hsol
 
-/-! ## Phase-lift lattice `C = 10³⁰`, `b1 = (1,0)`
+/-! ## Old nogo lattice `b1 = (1,0)` (`λ₁ = 1`)
 
     Same Euclidean `(1,0)` that `PAdicLLL` already showed has
-    length `1 < B0`. Here the target is `|Λ| ≥ B⁻⁸`, not
-    Euclidean `≥ B0`. `C · B⁻⁸ = 10⁻¹⁸ < 1 = λ₁` is true
-    arithmetic. It does **not** produce a nonzero lattice
-    vector of length `C·|Λ|`: integer pairs satisfy
-    `euc v < 1 ↔ v = 0`. -/
+    length `1 < B0`. Scaling `C` to `10⁴⁸` does not add `(1,0)`
+    to a higher `λ₁`: this lattice still contains it. -/
 
-/-- Lattice scale. Same numeral as `MatveevLLL.LLL_C_nat`.
-    Not `C1_floor` and not `PAdicLLL.C_LLL = C1_floor²`. -/
-def C_LLL : ℕ := 10 ^ 30
+/-- Lattice scale `C = B0⁸ = 10⁴⁸`. At `B = B0` one has `C/B⁸ = 1`;
+    for `B > B0` one has `C/B⁸ < 1`. Not `C1_floor`. -/
+def C_LLL : ℕ := 10 ^ 48
 
-theorem C_LLL_eq : C_LLL = 10 ^ 30 := rfl
+theorem C_LLL_eq : C_LLL = 10 ^ 48 := rfl
+
+theorem C_LLL_pos : 0 < C_LLL := by
+  rw [C_LLL_eq]
+  exact Nat.pos_pow_of_pos 48 (by decide : (0 : ℕ) < 10)
+
+theorem C_LLL_one_lt : (1 : ℕ) < C_LLL := by
+  rw [C_LLL_eq]
+  decide
 
 def b1 : ℤ × ℤ := (1, 0)
 
@@ -191,24 +197,24 @@ theorem million_pow_eight : (1000000 : ℝ) ^ 8 = (10 : ℝ) ^ 48 := by
 theorem million_pow_nine : (1000000 : ℝ) ^ 9 = (10 : ℝ) ^ 54 := by
   rw [million_eq_ten_pow_six, ← pow_mul]
 
-theorem C_LLL_real : (C_LLL : ℝ) = (10 : ℝ) ^ 30 := by
+theorem C_LLL_real : (C_LLL : ℝ) = (10 : ℝ) ^ 48 := by
   rw [C_LLL_eq]
-  exact Nat.cast_pow (10 : ℕ) 30
+  exact Nat.cast_pow (10 : ℕ) 48
 
-theorem ten_pow_thirty_div_forty_eight :
-    (10 : ℝ) ^ 30 / (10 : ℝ) ^ 48 = 1 / (10 : ℝ) ^ 18 := by
-  have h10 : (10 : ℝ) ≠ 0 := by norm_num
-  field_simp [h10]
-  rw [← pow_add]
+/-- `C / B0⁸ = 1`. Equality, not a lower bound for all `B ≥ B0`. -/
+theorem C_LLL_div_B0_pow_eight_eq_one :
+    (C_LLL : ℝ) / (B0_nat : ℝ) ^ 8 = 1 := by
+  have hC : (C_LLL : ℝ) = (10 : ℝ) ^ 48 := C_LLL_real
+  have hB0 : (B0_nat : ℝ) = (1000000 : ℝ) := by
+    rw [B0_nat_eq]
+    norm_num
+  rw [hC, hB0, million_pow_eight]
+  have hne : (10 : ℝ) ^ 48 ≠ 0 := by norm_num
+  field_simp [hne]
 
-theorem one_div_ten_pow_eighteen_lt_half :
-    1 / (10 : ℝ) ^ 18 < 1 / 2 := by
-  norm_num
-
-/-- `C · B⁻⁸ ≤ 10⁻¹⁸ < 1/2` on `B ≥ B0`. This is the arithmetic
-    `C · B⁻⁸ < λ₁` for `λ₁ ≥ 1`. -/
-theorem C_LLL_mul_inv_B_pow_eight_lt_half {B : ℕ} (hB : B0_nat ≤ B) :
-    (C_LLL : ℝ) / (B : ℝ) ^ 8 < 1 / 2 := by
+/-- For `B ≥ B0`, `C/B⁸` is at most `1` (decreases in `B`). -/
+theorem C_LLL_div_B_pow_eight_le_one {B : ℕ} (hB : B0_nat ≤ B) :
+    (C_LLL : ℝ) / (B : ℝ) ^ 8 ≤ 1 := by
   have hB0 : (1000000 : ℕ) ≤ B := by
     simpa [B0_nat_eq] using hB
   have hBreal : (1000000 : ℝ) ≤ (B : ℝ) := by exact_mod_cast hB0
@@ -217,15 +223,30 @@ theorem C_LLL_mul_inv_B_pow_eight_lt_half {B : ℕ} (hB : B0_nat ≤ B) :
   have hnum : 0 ≤ (C_LLL : ℝ) := Nat.cast_nonneg _
   have hle : (C_LLL : ℝ) / (B : ℝ) ^ 8 ≤ (C_LLL : ℝ) / (1000000 : ℝ) ^ 8 :=
     div_le_div_of_nonneg_left hnum (pow_pos (by norm_num) 8) hpow
-  have hC : (C_LLL : ℝ) / (1000000 : ℝ) ^ 8 =
-      (10 : ℝ) ^ 30 / (10 : ℝ) ^ 48 := by
-    rw [C_LLL_real, million_pow_eight]
-  have hlt : (10 : ℝ) ^ 30 / (10 : ℝ) ^ 48 < 1 / 2 := by
-    rw [ten_pow_thirty_div_forty_eight]
-    exact one_div_ten_pow_eighteen_lt_half
-  exact lt_of_le_of_lt (hle.trans_eq hC) hlt
+  have hC : (C_LLL : ℝ) / (1000000 : ℝ) ^ 8 = 1 := by
+    have hB0r : (B0_nat : ℝ) = 1000000 := by
+      rw [B0_nat_eq]
+      norm_num
+    simpa [hB0r] using C_LLL_div_B0_pow_eight_eq_one
+  exact hle.trans_eq hC
 
-/-- `λ₁(L) > C · (2/B⁹)` as arithmetic: `C · 2/B⁹ ≤ 2·10⁻²⁴ < 1`. -/
+/-- The paste `1 ≤ C/B⁸` for `B ≥ B0` is the wrong direction
+    when `B > B0`. It holds on `1 ≤ B ≤ B0`. -/
+theorem C_mul_inv_B_pow_eight_ge_one {B : ℕ} (hBpos : 1 ≤ B)
+    (hB : B ≤ B0_nat) : 1 ≤ (C_LLL : ℝ) / (B : ℝ) ^ 8 := by
+  have hBposR : (0 : ℝ) < (B : ℝ) := by
+    exact_mod_cast (Nat.succ_le_iff.mp hBpos)
+  have hBreal : (B : ℝ) ≤ (B0_nat : ℝ) := by exact_mod_cast hB
+  have hpow : (B : ℝ) ^ 8 ≤ (B0_nat : ℝ) ^ 8 :=
+    pow_le_pow_left (le_of_lt hBposR) hBreal 8
+  have hnum : 0 ≤ (C_LLL : ℝ) := Nat.cast_nonneg _
+  have hle : (C_LLL : ℝ) / (B0_nat : ℝ) ^ 8 ≤ (C_LLL : ℝ) / (B : ℝ) ^ 8 :=
+    div_le_div_of_nonneg_left hnum (pow_pos hBposR 8) hpow
+  have h1 : (C_LLL : ℝ) / (B0_nat : ℝ) ^ 8 = 1 :=
+    C_LLL_div_B0_pow_eight_eq_one
+  exact h1.symm.trans_le hle
+
+/-- `C · 2/B⁹ ≤ 2·10⁻⁶ < 1` on `B ≥ B0`. Still true at `C = 10⁴⁸`. -/
 theorem C_LLL_mul_two_div_B_pow_nine_lt_one {B : ℕ} (hB : B0_nat ≤ B) :
     (C_LLL : ℝ) * (2 / (B : ℝ) ^ 9) < 1 := by
   have hB0 : (1000000 : ℕ) ≤ B := by
@@ -239,13 +260,41 @@ theorem C_LLL_mul_two_div_B_pow_nine_lt_one {B : ℕ} (hB : B0_nat ≤ B) :
       (C_LLL : ℝ) * (2 / (1000000 : ℝ) ^ 9) :=
     mul_le_mul_of_nonneg_left hfrac (Nat.cast_nonneg _)
   have hval : (C_LLL : ℝ) * (2 / (1000000 : ℝ) ^ 9) =
-      2 * (10 : ℝ) ^ 30 / (10 : ℝ) ^ 54 := by
+      2 * (10 : ℝ) ^ 48 / (10 : ℝ) ^ 54 := by
     rw [C_LLL_real, million_pow_nine]
     ring
-  have hlt : 2 * (10 : ℝ) ^ 30 / (10 : ℝ) ^ 54 < 1 := by
+  have hlt : 2 * (10 : ℝ) ^ 48 / (10 : ℝ) ^ 54 < 1 := by
     rw [div_lt_one (pow_pos (by norm_num) 54)]
     norm_num
   exact lt_of_le_of_lt (hle.trans_eq hval) hlt
+
+/-- `C · (2/B⁹) < C/2` on `B ≥ B0`. Cancels `C`: `4/B⁹ < 1`. -/
+theorem C_mul_two_div_B_pow_nine_lt_C_div_two {B : ℕ} (hB : B0_nat ≤ B) :
+    (C_LLL : ℝ) * (2 / (B : ℝ) ^ 9) < (C_LLL : ℝ) / 2 := by
+  have hCpos : (0 : ℝ) < (C_LLL : ℝ) := by
+    exact_mod_cast C_LLL_pos
+  have hB0 : (1000000 : ℕ) ≤ B := by
+    simpa [B0_nat_eq] using hB
+  have hBpos : (0 : ℝ) < (B : ℝ) := by
+    exact_mod_cast (lt_of_lt_of_le (by decide : (0 : ℕ) < 1000000) hB0)
+  have hden : (0 : ℝ) < (B : ℝ) ^ 9 := pow_pos hBpos 9
+  have h4 : (4 : ℝ) < (B : ℝ) ^ 9 := by
+    have h100 : (1000000 : ℝ) ≤ (B : ℝ) := by exact_mod_cast hB0
+    have hpow : (1000000 : ℝ) ^ 9 ≤ (B : ℝ) ^ 9 :=
+      pow_le_pow_left (by norm_num) h100 9
+    exact lt_of_lt_of_le (by norm_num : (4 : ℝ) < (1000000 : ℝ) ^ 9) hpow
+  have hcross : (2 : ℝ) * 2 < (1 : ℝ) * (B : ℝ) ^ 9 := by
+    have hL : (2 : ℝ) * 2 = 4 := by norm_num
+    have hR : (1 : ℝ) * (B : ℝ) ^ 9 = (B : ℝ) ^ 9 := one_mul _
+    rw [hL, hR]
+    exact h4
+  have hfrac : (2 : ℝ) / (B : ℝ) ^ 9 < 1 / 2 :=
+    (div_lt_div_iff hden (by norm_num : (0 : ℝ) < 2)).mpr hcross
+  have hmul : (C_LLL : ℝ) * (2 / (B : ℝ) ^ 9) < (C_LLL : ℝ) * (1 / 2) :=
+    mul_lt_mul_of_pos_left hfrac hCpos
+  have hhalf : (C_LLL : ℝ) * (1 / 2) = (C_LLL : ℝ) / 2 :=
+    mul_one_div (C_LLL : ℝ) 2
+  rwa [hhalf] at hmul
 
 theorem int_sq_ge_one_of_ne_zero {z : ℤ} (hz : z ≠ 0) : (1 : ℤ) ≤ z ^ 2 :=
   Int.add_one_le_of_lt (sq_pos_of_ne_zero hz)
@@ -392,6 +441,291 @@ theorem C_LLL_mul_abs_Lambda_lt_one_of_sol {A B : ℕ}
     mul_le_mul_of_nonneg_left hup hC
   exact lt_of_le_of_lt hmul (C_LLL_mul_two_div_B_pow_nine_lt_one hB)
 
+/-! ## New lattice `L'`: no `(1,0)`, `det = C²`, `λ₁ = C`
+
+    Columns `(C, ⌊C log(B+3)⌋)` and `(0, C)`. A general vector is
+    `(k C, k·cLog + l C)`. First coordinate is always a multiple
+    of `C`, so `(1,0) ∉ L'`. Euclidean `λ₁ = C` is a theorem
+    (`b2'` has length `C`; every nonzero combo is at least that).
+    `v_short'` is **not** a free `L'`-vector: if its first
+    coordinate has absolute value `< C`, membership forces `0`. -/
+
+noncomputable def b1' (B : ℕ) : ℤ × ℤ := ((C_LLL : ℤ), cLog B)
+
+def b2' : ℤ × ℤ := (0, (C_LLL : ℤ))
+
+theorem b1'_fst (B : ℕ) : (b1' B).1 = (C_LLL : ℤ) := rfl
+
+theorem b2'_eq : b2' = (0, (C_LLL : ℤ)) := rfl
+
+noncomputable def L' (B : ℕ) : Set (ℤ × ℤ) :=
+  { v | ∃ k l : ℤ, v = (k * (C_LLL : ℤ), k * cLog B + l * (C_LLL : ℤ)) }
+
+theorem L'_eq_combo (B : ℕ) (v : ℤ × ℤ) :
+    v ∈ L' B ↔
+      ∃ k l : ℤ, v = (k * (C_LLL : ℤ), k * cLog B + l * (C_LLL : ℤ)) :=
+  Iff.rfl
+
+theorem b2'_mem_L' (B : ℕ) : b2' ∈ L' B := by
+  refine ⟨0, 1, ?_⟩
+  simp [b2']
+
+theorem b1'_mem_L' (B : ℕ) : b1' B ∈ L' B := by
+  refine ⟨1, 0, ?_⟩
+  simp [b1']
+
+theorem not_b1_mem_L' (B : ℕ) : b1 ∉ L' B := by
+  intro ⟨k, _, hk⟩
+  have hfst : (1 : ℤ) = k * (C_LLL : ℤ) := by
+    simpa [b1] using congrArg Prod.fst hk
+  have habs : Int.natAbs (k * (C_LLL : ℤ)) = 1 := by
+    rw [← hfst]
+    exact Int.natAbs_ofNat 1
+  have hmul : Int.natAbs k * C_LLL = 1 := by
+    rw [Int.natAbs_mul k (C_LLL : ℤ), Int.natAbs_ofNat C_LLL] at habs
+    exact habs
+  have hdvd : C_LLL ∣ 1 := ⟨Int.natAbs k, by
+    rw [mul_comm, eq_comm]
+    exact hmul⟩
+  exact Nat.not_dvd_of_pos_of_lt (by decide : (0 : ℕ) < 1) C_LLL_one_lt hdvd
+
+/-- `det = C · C − ⌊C log⌋ · 0 = C²`. -/
+theorem det_L' (B : ℕ) :
+    Int.natAbs ((b1' B).1 * b2'.2 - (b1' B).2 * b2'.1) = C_LLL ^ 2 := by
+  unfold b1' b2'
+  simp only [mul_zero, sub_zero]
+  have h : (C_LLL : ℤ) * (C_LLL : ℤ) = ((C_LLL * C_LLL : ℕ) : ℤ) := by
+    rw [Int.natCast_mul]
+  rw [h, Int.natAbs_ofNat, pow_two]
+
+theorem euc_ge_abs_fst (v : ℤ × ℤ) : |(v.1 : ℝ)| ≤ euc v := by
+  have hle : (v.1 : ℝ) ^ 2 ≤ (v.1 : ℝ) ^ 2 + (v.2 : ℝ) ^ 2 :=
+    le_add_of_nonneg_right (sq_nonneg _)
+  have hsqrt := Real.sqrt_le_sqrt hle
+  simpa [euc, Real.sqrt_sq_eq_abs] using hsqrt
+
+theorem euc_ge_abs_snd (v : ℤ × ℤ) : |(v.2 : ℝ)| ≤ euc v := by
+  have hle : (v.2 : ℝ) ^ 2 ≤ (v.1 : ℝ) ^ 2 + (v.2 : ℝ) ^ 2 :=
+    le_add_of_nonneg_left (sq_nonneg _)
+  have hsqrt := Real.sqrt_le_sqrt hle
+  simpa [euc, Real.sqrt_sq_eq_abs] using hsqrt
+
+theorem euc_b2' : euc b2' = (C_LLL : ℝ) := by
+  change Real.sqrt (((0 : ℤ) : ℝ) ^ 2 + ((C_LLL : ℤ) : ℝ) ^ 2) = (C_LLL : ℝ)
+  have h0 : ((0 : ℤ) : ℝ) ^ 2 = 0 := by simp
+  rw [h0, zero_add]
+  have hC : ((C_LLL : ℤ) : ℝ) = (C_LLL : ℝ) := by simp
+  rw [hC]
+  exact Real.sqrt_sq (Nat.cast_nonneg _)
+
+theorem abs_mul_C_ge_C {k : ℤ} (hk : k ≠ 0) :
+    (C_LLL : ℝ) ≤ |Int.cast (k * (C_LLL : ℤ))| := by
+  have h1 : (1 : ℤ) ≤ |k| := Int.add_one_le_of_lt (abs_pos.mpr hk)
+  have hC : (0 : ℝ) ≤ (C_LLL : ℝ) := Nat.cast_nonneg _
+  have hcast : Int.cast (k * (C_LLL : ℤ)) = (k : ℝ) * (C_LLL : ℝ) := by
+    rw [Int.cast_mul]
+    simp
+  rw [hcast, abs_mul, abs_of_nonneg hC]
+  have h1R : (1 : ℝ) ≤ |(k : ℝ)| := by
+    exact_mod_cast h1
+  nlinarith
+
+/-- Every nonzero `v ∈ L'` has Euclidean length `≥ C`. -/
+theorem lambda1_ge_C_LLL {B : ℕ} : ∀ v ∈ L' B, v ≠ 0 → (C_LLL : ℝ) ≤ euc v := by
+  intro v hv hne
+  rcases hv with ⟨k, l, rfl⟩
+  rcases em (k = 0) with hk | hk
+  · subst hk
+    simp only [zero_mul, zero_add]
+    have hl : l ≠ 0 := by
+      intro hl
+      subst hl
+      apply hne
+      simp
+    have hge : (C_LLL : ℝ) ≤ |Int.cast (l * (C_LLL : ℤ))| := abs_mul_C_ge_C hl
+    have hsnd := euc_ge_abs_snd ((0 : ℤ), l * (C_LLL : ℤ))
+    exact hge.trans (by simpa using hsnd)
+  · have hge : (C_LLL : ℝ) ≤ |Int.cast (k * (C_LLL : ℤ))| := abs_mul_C_ge_C hk
+    have hfst :=
+      euc_ge_abs_fst (k * (C_LLL : ℤ), k * cLog B + l * (C_LLL : ℤ))
+    exact hge.trans (by simpa using hfst)
+
+/-- User target `λ₁ ≥ C/2`. Follows from `λ₁ ≥ C`. -/
+theorem lambda1_ge_C_div_two {B : ℕ} :
+    ∀ v ∈ L' B, v ≠ 0 → (C_LLL : ℝ) / 2 ≤ euc v := by
+  intro v hv hne
+  have hC : (C_LLL : ℝ) ≤ euc v := lambda1_ge_C_LLL v hv hne
+  have hhalf : (C_LLL : ℝ) / 2 ≤ (C_LLL : ℝ) := by
+    have : (0 : ℝ) ≤ (C_LLL : ℝ) := Nat.cast_nonneg _
+    linarith
+  exact hhalf.trans hC
+
+theorem not_exists_nonzero_euc_lt_C_div_two (B : ℕ) :
+    ¬ ∃ v ∈ L' B, v ≠ 0 ∧ euc v < (C_LLL : ℝ) / 2 := by
+  intro ⟨v, hv, hne, hlt⟩
+  exact (not_lt.mpr (lambda1_ge_C_div_two v hv hne)) hlt
+
+noncomputable def kA (A : ℕ) : ℤ :=
+  ⌊(C_LLL : ℝ) * Real.log (A : ℝ)⌋
+
+/-- Candidate short vector for `L'`. First coordinate approximates
+    `C·Λ`; second is `0`. In `L'` only if the first coordinate is
+    a multiple of `C`. -/
+noncomputable def v_short' (A B : ℕ) : ℤ × ℤ :=
+  (4 * kA A - 13 * cLog B, 0)
+
+theorem v_short'_snd (A B : ℕ) : (v_short' A B).2 = 0 := rfl
+
+theorem kA_error_lt_one (A : ℕ) :
+    |(C_LLL : ℝ) * Real.log (A : ℝ) - kA A| < 1 := by
+  unfold kA
+  rw [Int.self_sub_floor, abs_of_nonneg (Int.fract_nonneg _)]
+  exact Int.fract_lt_one _
+
+theorem v_short'_sub_C_Lambda_lt_seventeen (A B : ℕ) :
+    |((v_short' A B).1 : ℝ) -
+        (C_LLL : ℝ) * (4 * Real.log (A : ℝ) - 13 * Real.log ((B : ℝ) + 3))| <
+      17 := by
+  have hA : |(kA A : ℝ) - (C_LLL : ℝ) * Real.log (A : ℝ)| < 1 := by
+    simpa [abs_sub_comm] using kA_error_lt_one A
+  have hB : |(cLog B : ℝ) - (C_LLL : ℝ) * Real.log ((B : ℝ) + 3)| < 1 := by
+    simpa [abs_sub_comm] using cLog_error_lt_one B
+  unfold v_short'
+  have heq : ((4 * kA A - 13 * cLog B : ℤ) : ℝ) -
+      (C_LLL : ℝ) * (4 * Real.log (A : ℝ) - 13 * Real.log ((B : ℝ) + 3)) =
+        4 * ((kA A : ℝ) - (C_LLL : ℝ) * Real.log (A : ℝ)) -
+          13 * ((cLog B : ℝ) - (C_LLL : ℝ) * Real.log ((B : ℝ) + 3)) := by
+    simp [Int.cast_sub, Int.cast_mul]
+    ring
+  rw [heq]
+  have h4 : |4 * ((kA A : ℝ) - (C_LLL : ℝ) * Real.log (A : ℝ))| < 4 := by
+    rw [abs_mul, abs_of_nonneg (by norm_num : (0 : ℝ) ≤ 4)]
+    nlinarith
+  have h13 : |13 * ((cLog B : ℝ) - (C_LLL : ℝ) * Real.log ((B : ℝ) + 3))| < 13 := by
+    rw [abs_mul, abs_of_nonneg (by norm_num : (0 : ℝ) ≤ 13)]
+    nlinarith
+  have htri :
+      |4 * ((kA A : ℝ) - (C_LLL : ℝ) * Real.log (A : ℝ)) -
+          13 * ((cLog B : ℝ) - (C_LLL : ℝ) * Real.log ((B : ℝ) + 3))| ≤
+        |4 * ((kA A : ℝ) - (C_LLL : ℝ) * Real.log (A : ℝ))| +
+          |13 * ((cLog B : ℝ) - (C_LLL : ℝ) * Real.log ((B : ℝ) + 3))| := by
+    have hx :=
+      abs_add
+        (4 * ((kA A : ℝ) - (C_LLL : ℝ) * Real.log (A : ℝ)))
+        (-(13 * ((cLog B : ℝ) - (C_LLL : ℝ) * Real.log ((B : ℝ) + 3))))
+    simpa [sub_eq_add_neg, abs_neg] using hx
+  calc
+    |4 * ((kA A : ℝ) - (C_LLL : ℝ) * Real.log (A : ℝ)) -
+        13 * ((cLog B : ℝ) - (C_LLL : ℝ) * Real.log ((B : ℝ) + 3))| ≤
+        |4 * ((kA A : ℝ) - (C_LLL : ℝ) * Real.log (A : ℝ))| +
+          |13 * ((cLog B : ℝ) - (C_LLL : ℝ) * Real.log ((B : ℝ) + 3))| :=
+      htri
+    _ < 4 + 13 := add_lt_add h4 h13
+    _ = 17 := by norm_num
+
+theorem v_short'_fst_abs_lt_C_of_Lambda_lt {A B : ℕ} (hB : B0_nat ≤ B)
+    (hΛ : |4 * Real.log (A : ℝ) - 13 * Real.log ((B : ℝ) + 3)| <
+      1 / (B : ℝ) ^ 8) :
+    |((v_short' A B).1 : ℝ)| < (C_LLL : ℝ) := by
+  have herr := v_short'_sub_C_Lambda_lt_seventeen A B
+  have hCpos : (0 : ℝ) < (C_LLL : ℝ) := by exact_mod_cast C_LLL_pos
+  have hC : 0 ≤ (C_LLL : ℝ) := le_of_lt hCpos
+  have hB0 : (1000000 : ℕ) ≤ B := by
+    simpa [B0_nat_eq] using hB
+  have hBpos : (0 : ℝ) < (B : ℝ) := by
+    exact_mod_cast (lt_of_lt_of_le (by decide : (0 : ℕ) < 1000000) hB0)
+  have hpow : (0 : ℝ) < (B : ℝ) ^ 8 := pow_pos hBpos 8
+  have hCΛ :
+      |(C_LLL : ℝ) * (4 * Real.log (A : ℝ) - 13 * Real.log ((B : ℝ) + 3))| <
+        (C_LLL : ℝ) / (B : ℝ) ^ 8 := by
+    rw [abs_mul, abs_of_nonneg hC]
+    calc
+      (C_LLL : ℝ) *
+          |4 * Real.log (A : ℝ) - 13 * Real.log ((B : ℝ) + 3)| <
+          (C_LLL : ℝ) * (1 / (B : ℝ) ^ 8) :=
+        mul_lt_mul_of_pos_left hΛ hCpos
+      _ = (C_LLL : ℝ) / (B : ℝ) ^ 8 := by
+        field_simp [hpow.ne']
+  have htri :
+      |((v_short' A B).1 : ℝ)| ≤
+        |((v_short' A B).1 : ℝ) -
+            (C_LLL : ℝ) * (4 * Real.log (A : ℝ) - 13 * Real.log ((B : ℝ) + 3))| +
+          |(C_LLL : ℝ) * (4 * Real.log (A : ℝ) - 13 * Real.log ((B : ℝ) + 3))| := by
+    simpa using abs_add
+      (((v_short' A B).1 : ℝ) -
+        (C_LLL : ℝ) * (4 * Real.log (A : ℝ) - 13 * Real.log ((B : ℝ) + 3)))
+      ((C_LLL : ℝ) * (4 * Real.log (A : ℝ) - 13 * Real.log ((B : ℝ) + 3)))
+
+  have hsum :
+      |((v_short' A B).1 : ℝ)| < 17 + (C_LLL : ℝ) / (B : ℝ) ^ 8 :=
+    lt_of_le_of_lt htri (add_lt_add herr hCΛ)
+  have h18 : 17 + (C_LLL : ℝ) / (B : ℝ) ^ 8 ≤ 18 := by
+    have hC8 : (C_LLL : ℝ) / (B : ℝ) ^ 8 ≤ 1 :=
+      C_LLL_div_B_pow_eight_le_one hB
+    linarith
+  have h18C : (18 : ℝ) < (C_LLL : ℝ) := by
+    rw [C_LLL_real]
+    norm_num
+  exact lt_trans (hsum.trans_le h18) h18C
+
+/-- If `|first coord| < C` and `v_short' ∈ L'`, then `v_short' = 0`. -/
+theorem v_short'_mem_L'_imp_eq_zero {A B : ℕ}
+    (hmem : v_short' A B ∈ L' B)
+    (hlt : |((v_short' A B).1 : ℝ)| < (C_LLL : ℝ)) :
+    v_short' A B = 0 := by
+  rcases hmem with ⟨k, l, hk⟩
+  have hfst := congrArg Prod.fst hk
+  have hsnd := congrArg Prod.snd hk
+  have hk0 : k = 0 := by
+    by_contra hkne
+    have hge := abs_mul_C_ge_C hkne
+    have habs : |Int.cast (k * (C_LLL : ℤ))| < (C_LLL : ℝ) := by
+      simpa [hfst] using hlt
+    exact (not_le.mpr habs) hge
+  subst hk0
+  have hCne : (C_LLL : ℤ) ≠ 0 := by exact_mod_cast C_LLL_pos.ne'
+  have hl0 : l = 0 := by
+    have : l * (C_LLL : ℤ) = 0 := by
+      simpa [v_short'] using hsnd.symm
+    exact (mul_eq_zero.mp this).resolve_right hCne
+  subst hl0
+  simpa using hk
+
+/-- On `|Λ| < B⁻⁸` and `B ≥ B0`, `v_short' ∈ L'` forces `v_short' = 0`.
+    So this candidate is not a nonzero short lattice vector. -/
+theorem v_short'_mem_L'_of_Lambda_lt_imp_zero {A B : ℕ} (hB : B0_nat ≤ B)
+    (hΛ : |4 * Real.log (A : ℝ) - 13 * Real.log ((B : ℝ) + 3)| <
+      1 / (B : ℝ) ^ 8)
+    (hmem : v_short' A B ∈ L' B) : v_short' A B = 0 :=
+  v_short'_mem_L'_imp_eq_zero hmem (v_short'_fst_abs_lt_C_of_Lambda_lt hB hΛ)
+
+/-- The paste `v_short'_mem_L'` is not a theorem: membership requires
+    the first coordinate to be a multiple of `C`. On small `|Λ|` that
+    forces the zero vector. Stays `def Prop`. -/
+noncomputable def v_short'_mem_L' (A B : ℕ) : Prop :=
+  v_short' A B ∈ L' B
+
+/-- If a small `|Λ|` produced a nonzero `v ∈ L'` of length `< C/2`,
+    then `|Λ| ≥ B⁻⁸`. The `h_exists` hypothesis is refuted by
+    `not_exists_nonzero_euc_lt_C_div_two`. -/
+theorem LLL_lift_to_B8_of_short_vector_C48 {A B : ℕ} (_hB : B0_nat ≤ B)
+    (h_short : ∀ v ∈ L' B, v ≠ 0 → (C_LLL : ℝ) / 2 ≤ euc v)
+    (h_exists :
+      |4 * Real.log (A : ℝ) - 13 * Real.log ((B : ℝ) + 3)| <
+          1 / (B : ℝ) ^ 8 →
+        ∃ v ∈ L' B, v ≠ 0 ∧ euc v < (C_LLL : ℝ) / 2) :
+    1 / (B : ℝ) ^ 8 ≤
+      |4 * Real.log (A : ℝ) - 13 * Real.log ((B : ℝ) + 3)| := by
+  by_contra hlt
+  have ⟨v, hvL, hv_ne, hv_lt⟩ := h_exists (lt_of_not_ge hlt)
+  have hge := h_short v hvL hv_ne
+  linarith
+
+noncomputable def short_vector_from_Lambda_lt_B8_C48 (A B : ℕ) : Prop :=
+  |4 * Real.log (A : ℝ) - 13 * Real.log ((B : ℝ) + 3)| <
+      1 / (B : ℝ) ^ 8 →
+    ∃ v ∈ L' B, v ≠ 0 ∧ euc v < (C_LLL : ℝ) / 2
+
 #check abs_Lambda_ge_B_pow_neg_eight
 #check LLL_reduces_C1_to_lt_nine
 #check LLL_reduces_bound_to_B0_v25
@@ -403,14 +737,23 @@ theorem C_LLL_mul_abs_Lambda_lt_one_of_sol {A B : ℕ}
 #check v_short_mem_L
 #check not_exists_nonzero_euc_lt_one
 #check LLL_lift_to_B8_of_short_vector
-#check C_LLL_mul_inv_B_pow_eight_lt_half
+#check C_mul_inv_B_pow_eight_ge_one
+#check C_LLL_div_B_pow_eight_le_one
 #check C_LLL_mul_two_div_B_pow_nine_lt_one
+#check C_mul_two_div_B_pow_nine_lt_C_div_two
 #check C_LLL_mul_abs_Lambda_lt_one_of_sol
+#check det_L'
+#check lambda1_ge_C_div_two
+#check not_exists_nonzero_euc_lt_C_div_two
+#check not_b1_mem_L'
+#check v_short'_mem_L'_of_Lambda_lt_imp_zero
+#check LLL_lift_to_B8_of_short_vector_C48
 #print axioms no_sol_of_abs_Lambda_ge_B_pow_neg_eight
 #print axioms future_v25_shape_of_B8_lift
 #print axioms lambda1_ge_one
-#print axioms not_exists_nonzero_euc_lt_one
-#print axioms LLL_lift_to_B8_of_short_vector
-#print axioms C_LLL_mul_inv_B_pow_eight_lt_half
+#print axioms lambda1_ge_C_div_two
+#print axioms not_exists_nonzero_euc_lt_C_div_two
+#print axioms C_mul_two_div_B_pow_nine_lt_C_div_two
+#print axioms LLL_lift_to_B8_of_short_vector_C48
 
 end BealMatveevBeal.LLLTargetB8
