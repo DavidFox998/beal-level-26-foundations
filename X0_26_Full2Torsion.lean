@@ -46,17 +46,42 @@ emptiness, not `v₂₉(j) = −26k` versus integral CM. (The valuation
 still shows Frey `j` is non-integral when `29 ∣ C`; that is a
 weaker input, already inhabited at `1d28dc1`.)
 
-`X₀(26)` has genus 2 (hyperelliptic, LMFDB `26.a`). Genus and
-Kenku completeness stay `def Prop`. Bilu–Parent–Rebolledo 2011
-is a split-Cartan refinement, not a replacement for Kenku
-emptiness, and is not inhabited here.
+`X₀(26)` is LMFDB `26.42.2.a.1` (genus 2, index 42, four
+rational cusps, analytic rank 0). **Not** elliptic curve
+`26.a2` and **not** the genus-0 label `26.48.0.a.1`.
+LMFDB’s odd Weierstrass model is
+
+```
+y² + (x³ + 1)y = 2x⁵ + 2x⁴ + 4x³ + 2x² + 2x
+```
+
+(`HyperellipticCurve([[0,2,2,4,2,2],[1,0,0,1]])`). Completing
+the square and sending `x ↦ −x` recovers González 1991
+(AIF 41, p. 794)
+
+```
+Y² = x⁶ − 8x⁵ + 8x⁴ − 18x³ + 8x² − 8x + 1
+```
+
+Affine points on González: `(0, ±1)` (equivalently LMFDB
+`(0,0)` and `(0,−1)`). Leading coefficient `1` is a square,
+so two rational infinities. Four rational cusps, not six.
+The pasted lists `{(0,±7),(1,±1),(3,±3)}` and
+`x⁶−8x⁵+34x⁴−…` fail (`f(0)=1 ≠ 49`). Completeness of
+`X₀(26)(ℚ)` is Kenku / Chabauty, not a six-point
+`native_decide`. There is no Mathlib `genus` / Jacobian /
+`rank` object.
 
 **Inhabited:** cubic identity; three distinct integer roots;
 `26 = 2·13`; `26,52 ∉` the Kenku *degree list as a Finset*;
+LMFDB odd model; González even model; complete-square
+identity; `(0,±1)` on González and `(0,0),(0,−1)` on
+LMFDB; `f(0) ≠ 49`; genus formula numeral `= 2`;
 Frey `j` is not an integral rational when `29 ∣ C`.
 
 **Uninhabited (`def Prop`):** Galois glue `full2 + 13 ⇒ 26-isogeny`;
-Kenku completeness; `X₀(26)(ℚ)` cusps-only; Mazur via `X₀(26)`.
+Jacobian rank 0 / Chabauty; Kenku completeness;
+`X₀(26)(ℚ)` equals the known cusps; Mazur via `X₀(26)`.
 No `sorry`, no inhabited `True` stub, no `axiom kenku_*`.
 
 Does **not** mint v25. `C1_floor = 143186215390`. `B0_nat = 1000000`.
@@ -71,6 +96,7 @@ open BealMatveevBeal.MazurIrreducibility13
 open BealMatveevBeal.LLLTargetB8
 open BealMatveevBeal.LLLTargetB8C1LowerBound
 open Nat
+open Polynomial
 
 /-! ## Affine cubic of the displayed Frey model -/
 
@@ -187,6 +213,120 @@ theorem fifty_two_not_in_kenku_list :
 /-- `[SL₂(ℤ):Γ₀(26)] = 42`. Index, not genus. -/
 theorem gamma0_26_index : 26 * 3 / 2 * 14 / 13 = 42 := by decide
 
+/-- Four cusps of `X₀(26)`: `∑_{d∣26} φ(gcd(d,26/d)) = 4`.
+    LMFDB records all four as rational (`1⁴` orbits). Completeness
+    of `X₀(26)(ℚ)` is Kenku, not this numeral. -/
+theorem X0_26_four_cusps :
+    Nat.totient (Nat.gcd 1 26) + Nat.totient (Nat.gcd 2 13) +
+      Nat.totient (Nat.gcd 13 2) + Nat.totient (Nat.gcd 26 1) = 4 := by
+  native_decide
+
+/-- LMFDB `26.42.2.a.1` genus formula
+    `1 + 42/12 − 2/4 − 0/3 − 4/2 = 2`. Not a Mathlib `genus`
+    of a polynomial. -/
+theorem X0_26_genus2 :
+    (1 : ℚ) + (42 : ℚ) / 12 - (2 : ℚ) / 4 - (0 : ℚ) / 3 - (4 : ℚ) / 2 = 2 := by
+  native_decide
+
+/-- Hyperelliptic even model of degree 6 has genus `(6−2)/2 = 2`.
+    Numeral; identifying the model with `X₀(26)` is LMFDB / González. -/
+theorem X0_26_hyperelliptic_genus_deg6 : ((6 : ℤ) - 2) / 2 = 2 := by
+  decide
+
+/-! ## LMFDB `26.42.2.a.1` Weierstrass + González 1991 even model -/
+
+/-- Odd-model `h` in `y² + h(x) y = f(x)`. -/
+def X0_26_h (x : ℤ) : ℤ := x ^ 3 + 1
+
+/-- LMFDB Weierstrass right-hand side
+    `2x⁵ + 2x⁴ + 4x³ + 2x² + 2x`. -/
+def X0_26_f_odd (x : ℤ) : ℤ :=
+  2 * x ^ 5 + 2 * x ^ 4 + 4 * x ^ 3 + 2 * x ^ 2 + 2 * x
+
+/-- Affine points on the odd model at `x = 0`. Completeness is Kenku. -/
+def X0_26_known_weierstrass : Finset (ℤ × ℤ) :=
+  {(0, 0), (0, -1)}
+
+theorem X0_26_weierstrass_points :
+    ∀ p ∈ X0_26_known_weierstrass,
+      p.2 ^ 2 + X0_26_h p.1 * p.2 = X0_26_f_odd p.1 := by
+  native_decide
+
+/-- Even model `(2y + h)² = 4f + h²` before `x ↦ −x`. -/
+def X0_26_even (x : ℤ) : ℤ :=
+  x ^ 6 + 8 * x ^ 5 + 8 * x ^ 4 + 18 * x ^ 3 + 8 * x ^ 2 + 8 * x + 1
+
+theorem X0_26_even_complete_square (x : ℤ) :
+    X0_26_even x = 4 * X0_26_f_odd x + X0_26_h x ^ 2 := by
+  simp [X0_26_even, X0_26_f_odd, X0_26_h]
+  ring
+
+/-- Affine right-hand side of González
+    `Y² = x⁶ − 8x⁵ + 8x⁴ − 18x³ + 8x² − 8x + 1`
+    (AIF 41 (1991) p. 794). -/
+def X0_26_f (x : ℤ) : ℤ :=
+  x ^ 6 - 8 * x ^ 5 + 8 * x ^ 4 - 18 * x ^ 3 + 8 * x ^ 2 - 8 * x + 1
+
+/-- González is the even LMFDB model after `x ↦ −x`. -/
+theorem X0_26_gonzalez_eq_even_neg (x : ℤ) :
+    X0_26_f x = X0_26_even (-x) := by
+  simp [X0_26_f, X0_26_even]
+  ring
+
+/-- Same polynomial, for `eval`. Affine `X0_26_f` is the
+    `native_decide` source of truth. -/
+noncomputable def X0_26_poly : ℤ[X] :=
+  X ^ 6 - C (8 : ℤ) * X ^ 5 + C 8 * X ^ 4 - C 18 * X ^ 3 +
+    C 8 * X ^ 2 - C 8 * X + C 1
+
+theorem X0_26_poly_eval (x : ℤ) :
+    eval x X0_26_poly = X0_26_f x := by
+  simp [X0_26_poly, X0_26_f]
+
+theorem X0_26_poly_natDegree : X0_26_poly.natDegree = 6 := by
+  unfold X0_26_poly
+  compute_degree!
+
+/-- Displayed affine cusps on González. Completeness is Kenku. -/
+def X0_26_known_affine : Finset (ℤ × ℤ) :=
+  {(0, 1), (0, -1)}
+
+theorem X0_26_known_on_curve :
+    ∀ p ∈ X0_26_known_affine, p.2 ^ 2 = X0_26_f p.1 := by
+  native_decide
+
+/-- Same two affine points as rationals (not a six-point list). -/
+def X0_26_known_Q_points : Finset (ℚ × ℚ) :=
+  {(0, 1), (0, -1)}
+
+def X0_26_f_rat (x : ℚ) : ℚ :=
+  x ^ 6 - 8 * x ^ 5 + 8 * x ^ 4 - 18 * x ^ 3 + 8 * x ^ 2 - 8 * x + 1
+
+theorem X0_26_points_satisfy :
+    ∀ p ∈ X0_26_known_Q_points, X0_26_f_rat p.1 = p.2 ^ 2 := by
+  native_decide
+
+theorem X0_26_points_on_curve :
+    ∀ p ∈ X0_26_known_Q_points, p.2 ^ 2 = X0_26_f_rat p.1 := by
+  native_decide
+
+/-- Pasted `(0,±7)` is not on the González model (`1 ≠ 49`). -/
+theorem X0_26_f_zero_ne_forty_nine : X0_26_f 0 ≠ 49 := by
+  native_decide
+
+theorem X0_26_f_zero_eq_one : X0_26_f 0 = 1 := by
+  native_decide
+
+/-- Pasted `(1,±1)`, `(3,±3)`, `(2,±3)` fail on González. -/
+theorem X0_26_user_points_not_on_gonzalez :
+    X0_26_f 1 ≠ 1 ∧ X0_26_f 3 ≠ 9 ∧ X0_26_f 2 ≠ 9 := by
+  native_decide
+
+/-- Leading coefficient `1` is a square, so the even model has two
+    rational points at infinity. Not a count of `X₀(26)(ℚ)`. -/
+theorem X0_26_leading_is_square : ∃ y : ℤ, y ^ 2 = (1 : ℤ) :=
+  ⟨1, by decide⟩
+
 /-! ## Non-integral Frey `j` (weaker than Kenku emptiness) -/
 
 /-- Re-export: when `29 ∣ C` and `29 ∤ AB`, Frey `j` is not an
@@ -269,6 +409,20 @@ def kenku_no_cyclic_26_over_Q : Prop :=
 def X0_26_model : Prop :=
   kenku_no_cyclic_26_over_Q
 
+/-- Jacobian `J₀(26)(ℚ)` has rank 0 (`≅ ℤ/21ℤ`, Bruin–Najman).
+    Not in Mathlib 4.12: no mwrank / 2-descent. Uninhabited. -/
+def J0_26_rank0 : Prop :=
+  kenku_no_cyclic_26_over_Q
+
+/-- Chabauty: `X₀(26)(ℚ)` equals the four cusps. Uninhabited.
+    The inhabited input is `X0_26_known_on_curve`, not this. -/
+def X0_26_Q_eq_known : Prop :=
+  X0_26_Q_points_cusps_only
+
+/-- No non-cuspidal cyclic 26-isogeny over `ℚ`. Alias of Kenku. -/
+def no_cyclic_26_isogeny_Q : Prop :=
+  kenku_no_cyclic_26_over_Q
+
 /-- If glue and Kenku both held, Mazur via `X₀(26)` would hold.
     Does **not** inhabit either hypothesis. -/
 theorem no_reducible_13_of_full2_and_kenku
@@ -299,9 +453,30 @@ theorem LLL_nogo_persists_after_X0_26 :
 #check full2_plus_13_isog_gives_26_isog
 #check kenku_no_cyclic_26_over_Q
 #check X0_26_Q_points_cusps_only
+#check gamma0_26_index
+#check X0_26_f
+#check X0_26_f_odd
+#check X0_26_poly_eval
+#check X0_26_poly_natDegree
+#check X0_26_known_on_curve
+#check X0_26_points_satisfy
+#check X0_26_weierstrass_points
+#check X0_26_even_complete_square
+#check X0_26_gonzalez_eq_even_neg
+#check X0_26_genus2
+#check X0_26_four_cusps
+#check X0_26_f_zero_ne_forty_nine
+#check X0_26_user_points_not_on_gonzalez
+#check J0_26_rank0
+#check X0_26_Q_eq_known
+#check no_cyclic_26_isogeny_Q
 #check mazur_irreducible_13_via_X0_26
 #print axioms frey_has_full_2_torsion
 #print axioms twenty_six_not_in_kenku_list
+#print axioms X0_26_known_on_curve
+#print axioms X0_26_poly_natDegree
+#print axioms X0_26_genus2
+#print axioms X0_26_even_complete_square
 #print axioms frey_j_not_integral_j0
 #print axioms LLL_nogo_persists_after_X0_26
 

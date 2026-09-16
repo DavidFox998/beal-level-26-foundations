@@ -4417,10 +4417,14 @@ check_gap_file("X0_26_Full2Torsion.lean",
     ["full2_plus_13_isog_gives_26_isog", "X0_26_model",
      "X0_26_Q_points_cusps_only", "X0_26_Q_points_finite",
      "kenku_no_cyclic_26_over_Q", "kenku_no_cyclic_52_over_Q",
-     "mazur_irreducible_13_via_X0_26"],
+     "mazur_irreducible_13_via_X0_26", "J0_26_rank0",
+     "X0_26_Q_eq_known", "no_cyclic_26_isogeny_Q"],
     ["frey_cubic_eq_prod", "frey_has_full_2_torsion",
      "twenty_six_not_in_kenku_list", "fifty_two_not_in_kenku_list",
-     "frey_j_not_integral_j0", "LLL_nogo_persists_after_X0_26"])
+     "frey_j_not_integral_j0", "LLL_nogo_persists_after_X0_26",
+     "X0_26_known_on_curve", "X0_26_poly_natDegree",
+     "X0_26_f_zero_ne_forty_nine", "X0_26_genus2",
+     "X0_26_weierstrass_points", "X0_26_even_complete_square"])
 arch = pathlib.Path("ARCHIVE_4413.md").read_text(encoding="utf-8")
 if "e5a95f5" not in arch or "953a174" not in arch:
     print("ARCHIVE_4413.md must record e5a95f5 LLL iff and 953a174 barrier", file=sys.stderr)
@@ -4442,6 +4446,15 @@ if "Kenku" not in arch:
     sys.exit(1)
 if "X0(26)" not in arch and "X₀(26)" not in arch:
     print("ARCHIVE_4413.md must record the X0(26) full 2-torsion route", file=sys.stderr)
+    sys.exit(1)
+if "26.42.2.a.1" not in arch:
+    print("ARCHIVE_4413.md must record LMFDB 26.42.2.a.1, not 26.a2", file=sys.stderr)
+    sys.exit(1)
+if "Gonz" not in arch:
+    print("ARCHIVE_4413.md must record the Gonzalez 1991 even model", file=sys.stderr)
+    sys.exit(1)
+if "49" not in arch:
+    print("ARCHIVE_4413.md must record f(0)=1 != 49 so (0,+-7) fails", file=sys.stderr)
     sys.exit(1)
 if "Padic.valuation" not in arch and "Tate_q" not in arch:
     print("ARCHIVE_4413.md must record the Qp / Padic.valuation Tate scaffold", file=sys.stderr)
@@ -4804,6 +4817,8 @@ print("  Mazur_X0_13: Fricke j(t), f roots 7,9 mod29, v(t) in {26k,-2k}; Mazur v
 print("  Tate_I29_Inertia / Ribet_Level32 / Serre_Large_vs_CM_Small: Galois stays def Prop")
 print("  no local F29 close; 48<2184 is not False without the Galois iso")
 print("  X0_26_Full2Torsion: Frey cubic splits at 0,A^4,-B^4 over Q; Kenku 26 not in cyclic list")
+print("  LMFDB 26.42.2.a.1 Weierstrass + Gonzalez even model; (0,+-1) native_decide, f(0)=1!=49")
+print("  genus2 is the LMFDB numeral; J0_26_rank0 / X0_26_Q_eq_known / Kenku stay def Prop")
 print("  full2+13=>26-isogeny / X0(26) cusps-only / mazur via X0(26) stay def Prop; no kenku axiom")
 print("  v29(j)=-26k shows j not integral; Kenku emptiness is stronger than a CM j-list")
 print("  Tate_I29 Qp: Padic.valuation Delta = 26 v(C); exists Qp unit of that val (Delta itself)")

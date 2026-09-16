@@ -246,6 +246,19 @@ valuation still shows Frey `j` is non-integral when `29 ∣ C`
 (any denominator-`1` rational, including those CM values, is
 not Frey `j`); that weaker fact is inhabited.
 
+`X₀(26)` is LMFDB `26.42.2.a.1` (genus 2, four rational
+cusps), **not** elliptic curve `26.a2` and **not** genus-0
+`26.48.0.a.1`. LMFDB odd Weierstrass
+`y²+(x³+1)y = 2x⁵+2x⁴+4x³+2x²+2x` completes the square to
+González 1991 (AIF 41 p. 794)
+`Y² = x⁶−8x⁵+8x⁴−18x³+8x²−8x+1`. Affine theorems:
+`(0,0),(0,−1)` on LMFDB and `(0,±1)` on González;
+`f(0)=1 ≠ 49`, so pasted `(0,±7)` / six-point lists fail.
+Genus formula `1+42/12−2/4−0/3−4/2 = 2` is a numeral, not a
+Mathlib `genus`. Jacobian rank 0 / Chabauty /
+`X0_26_Q_eq_known` / `J0_26_rank0` / `no_cyclic_26_isogeny_Q`
+stay `def Prop`. No `sorry`.
+
 No `axiom kenku_*`. Glue `full2 + 13 ⇒ 26-isogeny`,
 `X0_26_model`, `X0_26_Q_points_cusps_only` / `_finite`,
 Kenku completeness, and `mazur_irreducible_13_via_X0_26` stay
@@ -261,7 +274,8 @@ kill. Honest status on this branch:
    (`v(t)=26k` and `v(t)=−2k`), so a unit scan cannot close
    Mazur (`1d28dc1`). `f` roots `7,9` mod `29`; fourth powers
    `{0,1,7,16,20,23,24,25}`; `c₄` coefficient `1`. Frey cubic
-   splits at `0,A⁴,−B⁴` (`adb1d41`). Kenku emptiness of
+   splits at `0,A⁴,−B⁴` (`adb1d41`). LMFDB `26.42.2.a.1` /
+   González model and `(0,±1)` are theorems; Kenku emptiness of
    non-cuspidal `X₀(26)(ℚ)` stays `def Prop`.
 2. **Tate `I₂₉`.** Numerics `v₂₉(c₄)=0`, `v₂₉(Δ)=26k` are
    theorems. `Padic.valuation (Δ : ℚ_[29]) = 26 v₂₉(C)` is now

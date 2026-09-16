@@ -70,8 +70,9 @@ lean_lib «BealMatveevBealV25Rank3» where
     `Ribet_Level32` / `Serre_Large_vs_CM_Small` keep Galois
     as `def Prop`.
     `X0_26_Full2Torsion` inhabits the Frey cubic split
-    (`E[2]` roots in `ℚ`); Kenku / 26-isogeny / Mazur via
-    `X₀(26)` stay `def Prop`. -/
+    (`E[2]` roots in `ℚ`), LMFDB `26.42.2.a.1` Weierstrass,
+    and González even model `(0,±1)`; Kenku / Chabauty /
+    26-isogeny / Mazur via `X₀(26)` stay `def Prop`. -/
 lean_lib «BealMatveevBealV25B0Search» where
   globs := #[.one `BealMatveevBealV25B0Search, .one `LLLTargetB8, .one `Gap3B0Million,
     .one `LLLTargetB8_C1_lower_bound, .one `DarmonMerelFrey4413, .one `Level32Table,
