@@ -111,6 +111,10 @@ test -f LLLTargetB8_C1_lower_bound.lean
 if test -f Beal/Matveev/LLLTargetB8_C1_lower_bound.lean; then
   fail "do not add Beal/Matveev/LLLTargetB8_C1_lower_bound.lean; .submodules Beal.Matveev would pull it into default"
 fi
+test -f DarmonMerelFrey4413.lean
+if test -f Beal/Matveev/DarmonMerelFrey4413.lean; then
+  fail "do not add Beal/Matveev/DarmonMerelFrey4413.lean; .submodules Beal.Matveev would pull it into default"
+fi
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -631,6 +635,9 @@ if ".one `Gap3B0Million" not in lake:
 if ".one `LLLTargetB8_C1_lower_bound" not in lake:
     print("lakefile.lean missing LLLTargetB8_C1_lower_bound glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
+if ".one `DarmonMerelFrey4413" not in lake:
+    print("lakefile.lean missing DarmonMerelFrey4413 glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
 if "BealMatveevBealV25B0Search" in default_globs.group(1):
     print("BealMatveevBealV25B0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
@@ -642,6 +649,9 @@ if "Gap3B0Million" in default_globs.group(1):
     sys.exit(1)
 if "LLLTargetB8_C1_lower_bound" in default_globs.group(1):
     print("LLLTargetB8_C1_lower_bound must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "DarmonMerelFrey4413" in default_globs.group(1):
+    print("DarmonMerelFrey4413 must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -3710,6 +3720,56 @@ if re.search(r"^theorem LLL_cannot_reach_B8\b", c1lb, re.M) or \
           file=sys.stderr)
     sys.exit(1)
 
+frey = pathlib.Path("DarmonMerelFrey4413.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in frey or re.search(
+        r"^import Beal\.Matveev\.", frey, re.M):
+    print("DarmonMerelFrey4413.lean must not import Beal.Matveev.*", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", frey, re.M) or ":= sorry" in frey or "by sorry" in frey:
+    print("sorry is not allowed in DarmonMerelFrey4413.lean", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in frey:
+    print("True := trivial is not allowed in DarmonMerelFrey4413.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^axiom ", frey, re.M):
+    print("do not add axioms in DarmonMerelFrey4413.lean; reuse BealTrueV25.darmon_merel_4413_axiom",
+          file=sys.stderr)
+    sys.exit(1)
+if "theorem freyWeierstrass_Δ" not in frey:
+    print("freyWeierstrass_Δ missing from DarmonMerelFrey4413.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem freyDiscNat_of_sol" not in frey:
+    print("freyDiscNat_of_sol missing from DarmonMerelFrey4413.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem thirteen_dvd_twenty_six" not in frey or "theorem not_thirteen_dvd_eight" not in frey:
+    print("13|26 / 13∤8 missing from DarmonMerelFrey4413.lean", file=sys.stderr)
+    sys.exit(1)
+if "def level_32_no_newform" not in frey:
+    print("level_32_no_newform must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem level_32_no_newform\b", frey, re.M):
+    print("do not inhabit level_32_no_newform; needs a modular forms table",
+          file=sys.stderr)
+    sys.exit(1)
+if "def ribet_lowers_Frey_to_level_32" not in frey:
+    print("ribet_lowers_Frey_to_level_32 must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem ribet_lowers_Frey_to_level_32\b", frey, re.M):
+    print("do not inhabit ribet_lowers_Frey_to_level_32", file=sys.stderr)
+    sys.exit(1)
+if "def modularity_Frey_gap3" not in frey:
+    print("modularity_Frey_gap3 must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_sol_ge_B0_of_ribet_and_level_32_table" not in frey:
+    print("no_sol_ge_B0_of_ribet_and_level_32_table missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem LLL_reduces_C1_to_lt_nine_of_no_sol_ge_B0_frey" not in frey:
+    print("LLL_reduces_C1_to_lt_nine_of_no_sol_ge_B0_frey missing", file=sys.stderr)
+    sys.exit(1)
+if "gcd" in frey and "placeholder" in frey:
+    print("do not use gcd placeholder for rad(ABC)", file=sys.stderr)
+    sys.exit(1)
+
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
     print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
@@ -4035,4 +4095,6 @@ print("  check_B_true_no_sol extracts Bool checker; gap3_B_le_B0_no_solution sta
 print("  not 100 native_decide shards to 10000; popcount is not a sound reject; v25 not minted")
 print("  LLLTargetB8_C1_lower_bound: C1'<=8 impossible on a solution via 2/B^9 < 1/B^8")
 print("  LLL_reduces_C1_to_lt_nine iff no B>=B0 solution; LLL_cannot_reach_B8 stays def Prop")
+print("  DarmonMerelFrey4413: Frey y^2=x(x-A^4)(x+B^4) Delta=16 A^8 B^8 (A^4+B^4)^2")
+print("  13|26 C lowers, 13∤8 A need not; level_32_no_newform/ribet stay def Prop; no new axiom")
 PY

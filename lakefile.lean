@@ -44,7 +44,9 @@ lean_lib «BealMatveevBealV25Rank3» where
     those shards are not `native_decide`'d.
     `LLLTargetB8_C1_lower_bound` is `C1' ≤ 8` impossible on a
     solution via `|Λ| ≤ 2/B⁹`; `¬ LLL_reduces_C1_to_lt_nine`
-    stays `def Prop`. -/
+    stays `def Prop`. `DarmonMerelFrey4413` is the displayed
+    Frey curve for signature `(4,4,13)`; level-32 table stays
+    `def Prop`. -/
 lean_lib «BealMatveevBealV25B0Search» where
   globs := #[.one `BealMatveevBealV25B0Search, .one `LLLTargetB8, .one `Gap3B0Million,
-    .one `LLLTargetB8_C1_lower_bound]
+    .one `LLLTargetB8_C1_lower_bound, .one `DarmonMerelFrey4413]

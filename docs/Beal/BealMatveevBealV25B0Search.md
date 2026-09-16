@@ -102,4 +102,14 @@ independent LLL lemma. `C1_lower_bound_false` and
 `LLL_cannot_reach_B8` stay `def Prop` (the negations need a
 `B ≥ B0` witness).
 
+Root [`DarmonMerelFrey4413.lean`](../../DarmonMerelFrey4413.lean)
+is the displayed Frey curve `y² = x(x−A⁴)(x+B⁴)`:
+`Δ = 16 A⁸ B⁸ (A⁴+B⁴)²`, hence `16 A⁸ B⁸ C²⁶` on a solution.
+`13 ∣ 26` so primes in `C` lower; `13 ∤ 8` so primes in `A`
+need not. Ribet-to-32, Mazur irreducibility, and
+`level_32_no_newform` stay `def Prop` (Mathlib 4.12 has no
+`dim S₂(Γ₀(32))=1` table). No new axiom; the only Darmon–Merel
+axiom remains `BealTrueV25.darmon_merel_4413_axiom` on the
+default target.
+
 v25 is not minted.

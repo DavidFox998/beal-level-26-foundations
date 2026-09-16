@@ -73,6 +73,10 @@ Bugeaud–Laurent `30`–`50` is still `> 8`. `|Λ| ≥ B⁻⁸` stays
 `¬ LLL_reduces_C1_to_lt_nine` stays `def Prop` (needs a
 `B ≥ B0` witness). Do **not** add
 `Beal/Matveev/LLLTargetB8_C1_lower_bound.lean`.
+Root `DarmonMerelFrey4413.lean` is the displayed Frey curve
+for gap-3 signature `(4,4,13)`; Ribet-to-32 and
+`level_32_no_newform` stay `def Prop`. Do **not** add
+`Beal/Matveev/DarmonMerelFrey4413.lean`.
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /

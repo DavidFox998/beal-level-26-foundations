@@ -22,7 +22,9 @@ requests to **`main`**, and on `workflow_dispatch`:
    and `Gap3B0Million` (10k-shard foldl wiring; `allShardsTrue_eq_true`
    stays `def Prop`; shards are not `native_decide`'d) plus
    `LLLTargetB8_C1_lower_bound` (`C1'≤8` impossible on a solution;
-   `LLL_cannot_reach_B8` stays `def Prop`);
+   `LLL_cannot_reach_B8` stays `def Prop`) plus
+   `DarmonMerelFrey4413` (displayed Frey `(4,4,13)`;
+   `level_32_no_newform` stays `def Prop`);
    full `B ≤ B0` stays `def Prop`
 5. `bash scripts/verify-matveev-beal.sh` — AMS / Math. Comp. referee
    surface: 0 `sorry`, `matveev_gap3_lower` is the B≤10^6 integer-gap
