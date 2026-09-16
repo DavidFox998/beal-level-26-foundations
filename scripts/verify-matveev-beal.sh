@@ -3432,6 +3432,21 @@ if "theorem shard_0_100" not in b0s or "theorem shard_900_1000" not in b0s:
 if "theorem check_range_true_of_all" not in b0s:
     print("check_range_true_of_all missing from BealMatveevBealV25B0Search.lean", file=sys.stderr)
     sys.exit(1)
+if "theorem abs_Lambda_lt_two_div_B_pow_nine" not in b0s:
+    print("abs_Lambda_lt_two_div_B_pow_nine missing from BealMatveevBealV25B0Search.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem abs_Lambda_eq_log_one_sub_eps" not in b0s:
+    print("abs_Lambda_eq_log_one_sub_eps missing from BealMatveevBealV25B0Search.lean", file=sys.stderr)
+    sys.exit(1)
+if "def abs_Lambda_ge_inv_B_pow_eight" not in b0s:
+    print("abs_Lambda_ge_inv_B_pow_eight must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem abs_Lambda_ge_inv_B_pow_eight\b", b0s, re.M):
+    print("do not inhabit abs_Lambda_ge_inv_B_pow_eight; LLL lift stays def Prop", file=sys.stderr)
+    sys.exit(1)
+if "theorem shard_9900_10000" in b0s or "theorem shard_1900_2000" in b0s:
+    print("do not dump 100 native_decide shards through B<10000", file=sys.stderr)
+    sys.exit(1)
 if "143186215390" not in b0s or "1000000" not in b0s:
     print("C1_floor/B0_nat missing from BealMatveevBealV25B0Search.lean", file=sys.stderr)
     sys.exit(1)
@@ -3749,6 +3764,7 @@ print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")
 print("  BealMatveevBealV25B0Search: separate Lake target; B<1000 no-sol via mod16+fourth-root")
 print("  check_range is foldl; ten shards of 100; check_range_true_of_all is the foldl invariant")
+print("  |Lambda| <= 2/B^9 on B>=100; abs_Lambda_ge_inv_B_pow_eight stays def Prop")
 print("  check_B_true_no_sol extracts Bool checker; gap3_B_le_B0_no_solution stays def Prop")
-print("  not 200 native_decide shards; popcount is not a sound reject; v25 not minted")
+print("  not 100 native_decide shards to 10000; popcount is not a sound reject; v25 not minted")
 PY

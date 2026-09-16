@@ -30,16 +30,28 @@ mint `v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations`.
   of 100 (each computes `100 · (B+3)¹³`, not one shard of 1000).
 - `gap3_B_lt_1000_no_sol` — `∀ B < 1000, ∀ A, A⁴+B⁴ ≠ (B+3)¹³`
   (glues the ten shards; axiom `Lean.ofReduceBool`).
+- `eps_le_inv_B_pow_nine` / `eps_lt_half` — `ε = B⁴/(B+3)¹³ ≤ 1/B⁹ < 1/2`
+  for `B ≥ 100`.
+- `abs_Lambda_eq_log_one_sub_eps` — Nat-to-Real cast
+  `A⁴ = (B+3)¹³ − B⁴` plus `Real.log_pow`.
+- `abs_Lambda_lt_two_eps` / `abs_Lambda_lt_two_div_B_pow_nine` —
+  `|Λ| ≤ 2ε ≤ 2/B⁹` on a solution with `B ≥ 100`, strictly
+  tighter than `|Λ| < 1/B` (`two_div_B_pow_nine_lt_inv_B`).
 
 Popcount is defined but **not** used as a reject: fourth powers
-are not characterized by popcount.
+are not characterized by popcount. One hundred shards through
+`B < 10000` are **not** shipped (`(B+3)¹³ ≈ 10⁵²`).
 
 ## What stays `def Prop`
 
 - `gap3_B_le_B0_no_solution` — `∀ B ≤ 10⁶, ∀ A, … ≠ …`.
   Two hundred `native_decide` shards of `(B+3)¹³` at `B ≈ 2·10⁵`
-  are not an AMS close. `LLL_reduces_bound_to_B0` / `hGen` /
-  `hLLL` remain uninhabited on the Rank-3 target.
+  are not an AMS close.
+- `abs_Lambda_ge_inv_B_pow_eight` — LLL would need `|Λ| ≥ B⁻⁸`
+  (reduce `C1` from `1.4·10¹¹` to `< 9`). Bugeaud–Laurent
+  typically reaches `10²`–`10³`, not `< 9`.
+  `LLL_reduces_bound_to_B0` / `hGen` / `hLLL` remain uninhabited
+  on the Rank-3 target.
 
 Build: `lake build BealMatveevBealV25B0Search`.
 v25 is not minted.

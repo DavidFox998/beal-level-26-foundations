@@ -22,6 +22,15 @@ Computable mod-16 reject plus floor fourth-root test for
 `check_upto 10000` overflows, and a million 13th-power shards
 is not an AMS close. Popcount is **not** a sound reject.
 Closed slice: `B < 1000` from `shard_0_100` … `shard_900_1000`.
+One hundred shards through `B < 10000` are **not** shipped:
+`(B+3)¹³` at `B ≈ 10⁴` is `10⁵²`, and verify caps
+`native_decide`.
+
+On a solution with `B ≥ 100`, `|Λ| ≤ 2·ε(B) ≤ 2/B⁹`. This
+tightens `|Λ| < 1/B` but does **not** mint v25: Matveev’s
+`|Λ| > B^{−C1}` with `C1 = 143186215390` is far smaller than
+`2/B⁹`. An LLL lift would need `|Λ| ≥ B⁻⁸` (reduce `C1` from
+`1.4·10¹¹` to `< 9`); that stays `def Prop`.
 
 This does **not** rewrite `matveev_gap3_lower` (that theorem
 is a lower bound on `|Λ|` when a solution exists and `B ≤ B0`,
@@ -244,6 +253,168 @@ termination_by n
 decreasing_by
   exact Nat.div_lt_self (Nat.pos_of_ne_zero ‹n ≠ 0›) (by decide)
 
+/-! ## `|Λ| ≤ 2/B⁹` on a solution with `B ≥ 100`
+
+`Λ = 4 log A − 13 log(B+3) = log(1 − ε)` with
+`ε = B⁴/(B+3)¹³`. For `B ≥ 100` one has `ε < 1/2` and
+`|log(1−ε)| ≤ 2ε ≤ 2/B⁹`. This is **not** a Baker cutoff:
+Matveev’s `B^{−C1}` lower bound is smaller, so there is no
+contradiction until LLL lifts the lower bound past `2/B⁹`.
+-/
+
+noncomputable def eps (B : ℕ) : ℝ :=
+  (B : ℝ) ^ 4 / ((B : ℝ) + 3) ^ 13
+
+theorem B_add_three_pow_ge_B_pow {B : ℕ} :
+    (B : ℝ) ^ 13 ≤ ((B : ℝ) + 3) ^ 13 :=
+  pow_le_pow_left (Nat.cast_nonneg B) (by linarith) 13
+
+theorem A_ne_zero_of_sol {A B : ℕ} (hB : 1 ≤ B)
+    (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) : A ≠ 0 := by
+  intro hA
+  subst hA
+  have heq : B ^ 4 = (B + 3) ^ 13 := by simpa using hsol
+  have hpos : 0 < B := Nat.succ_le_iff.mp hB
+  have hle : B ^ 4 ≤ B ^ 13 :=
+    Nat.pow_le_pow_right hpos (by decide : (4 : ℕ) ≤ 13)
+  have hlt : B ^ 13 < (B + 3) ^ 13 :=
+    Nat.pow_lt_pow_left (Nat.lt_add_of_pos_right (by decide : (0 : ℕ) < 3))
+      (by decide : (13 : ℕ) ≠ 0)
+  exact (ne_of_lt (lt_of_le_of_lt hle hlt)) heq
+
+theorem A_pow_real_add {A B : ℕ}
+    (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) :
+    (A : ℝ) ^ 4 + (B : ℝ) ^ 4 = ((B : ℝ) + 3) ^ 13 := by
+  have h' : ((A ^ 4 + B ^ 4 : ℕ) : ℝ) = (((B + 3) ^ 13 : ℕ) : ℝ) :=
+    congrArg (fun n : ℕ => (n : ℝ)) hsol
+  simpa [Nat.cast_add, Nat.cast_pow, Nat.cast_ofNat] using h'
+
+theorem eps_le_inv_B_pow_nine {B : ℕ} (hB : 1 ≤ B) :
+    eps B ≤ 1 / (B : ℝ) ^ 9 := by
+  unfold eps
+  have hBpos : (0 : ℝ) < B := by exact_mod_cast (Nat.succ_le_iff.mp hB)
+  have hdenB : (0 : ℝ) < (B : ℝ) ^ 13 := pow_pos hBpos 13
+  have hnum : (0 : ℝ) ≤ (B : ℝ) ^ 4 := pow_nonneg (le_of_lt hBpos) 4
+  have hdiv : (B : ℝ) ^ 4 / ((B : ℝ) + 3) ^ 13 ≤
+      (B : ℝ) ^ 4 / (B : ℝ) ^ 13 :=
+    div_le_div_of_nonneg_left hnum hdenB B_add_three_pow_ge_B_pow
+  have hrew : (B : ℝ) ^ 4 / (B : ℝ) ^ 13 = 1 / (B : ℝ) ^ 9 := by
+    have hfact : (B : ℝ) ^ 13 = (B : ℝ) ^ 4 * (B : ℝ) ^ 9 := by
+      rw [← pow_add]
+    rw [hfact]
+    have h4ne : (B : ℝ) ^ 4 ≠ 0 := (pow_pos hBpos 4).ne'
+    field_simp [h4ne]
+  exact hdiv.trans_eq hrew
+
+theorem eps_lt_half {B : ℕ} (hB : 100 ≤ B) : eps B < 1 / 2 := by
+  have h1 : 1 ≤ B := le_trans (by decide : (1 : ℕ) ≤ 100) hB
+  calc
+    eps B ≤ 1 / (B : ℝ) ^ 9 := eps_le_inv_B_pow_nine h1
+    _ ≤ 1 / (100 : ℝ) ^ 9 := by
+      have h100pos : (0 : ℝ) < (100 : ℝ) := by norm_num
+      have hpow : (100 : ℝ) ^ 9 ≤ (B : ℝ) ^ 9 :=
+        pow_le_pow_left (le_of_lt h100pos) (by exact_mod_cast hB) 9
+      exact one_div_le_one_div_of_le (pow_pos h100pos 9) hpow
+    _ < 1 / 2 := by norm_num
+
+theorem abs_log_one_sub_le_two_mul {x : ℝ} (hx0 : 0 ≤ x) (hx : x < 1 / 2) :
+    |Real.log (1 - x)| ≤ 2 * x := by
+  have h1mx_pos : 0 < 1 - x := by linarith
+  have hlog_nonpos : Real.log (1 - x) ≤ 0 :=
+    Real.log_nonpos (le_of_lt h1mx_pos) (by linarith)
+  rw [abs_of_nonpos hlog_nonpos]
+  have hinv : Real.log (1 / (1 - x)) = -Real.log (1 - x) := by
+    rw [one_div, Real.log_inv]
+  rw [← hinv]
+  have hle : Real.log (1 / (1 - x)) ≤ 1 / (1 - x) - 1 :=
+    Real.log_le_sub_one_of_pos (one_div_pos.mpr h1mx_pos)
+  have heq : 1 / (1 - x) - 1 = x / (1 - x) := by
+    field_simp [h1mx_pos.ne']
+  have hx2 : 1 / (1 - x) ≤ 2 := by
+    rw [div_le_iff₀ h1mx_pos]
+    linarith
+  have hle2 : x / (1 - x) ≤ 2 * x := by
+    calc
+      x / (1 - x) = x * (1 / (1 - x)) := div_eq_mul_one_div x (1 - x)
+      _ ≤ x * 2 := mul_le_mul_of_nonneg_left hx2 hx0
+      _ = 2 * x := by ring
+  linarith
+
+theorem abs_Lambda_eq_log_one_sub_eps {A B : ℕ} (hB : 1 ≤ B)
+    (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) :
+    |4 * Real.log (A : ℝ) - 13 * Real.log ((B : ℝ) + 3)| =
+      |Real.log (1 - eps B)| := by
+  have hAne := A_ne_zero_of_sol hB hsol
+  have hApos : (0 : ℝ) < (A : ℝ) := by exact_mod_cast (Nat.pos_of_ne_zero hAne)
+  have hCpos : (0 : ℝ) < (B : ℝ) + 3 := by linarith
+  have hsum := A_pow_real_add hsol
+  have hA4eq : (A : ℝ) ^ 4 = ((B : ℝ) + 3) ^ 13 - (B : ℝ) ^ 4 := by linarith
+  have h4 : (4 : ℝ) * Real.log (A : ℝ) = Real.log ((A : ℝ) ^ 4) :=
+    (Real.log_pow (A : ℝ) 4).symm
+  have h13 : (13 : ℝ) * Real.log ((B : ℝ) + 3) =
+      Real.log (((B : ℝ) + 3) ^ 13) :=
+    (Real.log_pow ((B : ℝ) + 3) 13).symm
+  have hΛ :
+      4 * Real.log (A : ℝ) - 13 * Real.log ((B : ℝ) + 3) =
+        Real.log ((A : ℝ) ^ 4 / ((B : ℝ) + 3) ^ 13) := by
+    rw [h4, h13, Real.log_div (pow_pos hApos 4).ne' (pow_pos hCpos 13).ne']
+  have hratio : (A : ℝ) ^ 4 / ((B : ℝ) + 3) ^ 13 = 1 - eps B := by
+    unfold eps
+    have hden : ((B : ℝ) + 3) ^ 13 ≠ 0 := (pow_pos hCpos 13).ne'
+    rw [hA4eq]
+    field_simp [hden]
+  rw [hΛ, hratio]
+
+theorem abs_Lambda_lt_two_eps {A B : ℕ} (hB : 100 ≤ B)
+    (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) :
+    |4 * Real.log (A : ℝ) - 13 * Real.log ((B : ℝ) + 3)| ≤
+      2 * eps B := by
+  have h1 : 1 ≤ B := le_trans (by decide : (1 : ℕ) ≤ 100) hB
+  have hnonneg : 0 ≤ eps B := by
+    unfold eps
+    have hBpos : (0 : ℝ) < (B : ℝ) := by
+      exact_mod_cast (lt_of_lt_of_le (by decide : (0 : ℕ) < 100) hB)
+    exact div_nonneg (pow_nonneg (le_of_lt hBpos) 4)
+      (pow_nonneg (by linarith) 13)
+  rw [abs_Lambda_eq_log_one_sub_eps h1 hsol]
+  exact abs_log_one_sub_le_two_mul hnonneg (eps_lt_half hB)
+
+theorem abs_Lambda_lt_two_div_B_pow_nine {A B : ℕ} (hB : 100 ≤ B)
+    (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) :
+    |4 * Real.log (A : ℝ) - 13 * Real.log ((B : ℝ) + 3)| ≤
+      2 / (B : ℝ) ^ 9 := by
+  have h1 : 1 ≤ B := le_trans (by decide : (1 : ℕ) ≤ 100) hB
+  calc
+    |4 * Real.log (A : ℝ) - 13 * Real.log ((B : ℝ) + 3)| ≤ 2 * eps B :=
+      abs_Lambda_lt_two_eps hB hsol
+    _ ≤ 2 * (1 / (B : ℝ) ^ 9) := by
+      gcongr
+      exact eps_le_inv_B_pow_nine h1
+    _ = 2 / (B : ℝ) ^ 9 := by ring
+
+theorem two_div_B_pow_nine_lt_inv_B {B : ℕ} (hB : 100 ≤ B) :
+    2 / (B : ℝ) ^ 9 < 1 / (B : ℝ) := by
+  have hBpos : (0 : ℝ) < (B : ℝ) := by
+    exact_mod_cast (lt_of_lt_of_le (by decide : (0 : ℕ) < 100) hB)
+  have h100 : (100 : ℝ) ≤ (B : ℝ) := by exact_mod_cast hB
+  have hpow : (100 : ℝ) ^ 8 ≤ (B : ℝ) ^ 8 :=
+    pow_le_pow_left (by norm_num) h100 8
+  have h2 : (2 : ℝ) < (B : ℝ) ^ 8 :=
+    lt_of_lt_of_le (by norm_num : (2 : ℝ) < (100 : ℝ) ^ 8) hpow
+  have h9pos : (0 : ℝ) < (B : ℝ) ^ 9 := pow_pos hBpos 9
+  rw [div_lt_div_iff h9pos hBpos, one_mul]
+  have hmul : (B : ℝ) * 2 < (B : ℝ) * (B : ℝ) ^ 8 :=
+    mul_lt_mul_of_pos_left h2 hBpos
+  convert hmul using 1 <;> ring
+
+/-- LLL target: lift Matveev’s `B^{−C1}` lower bound past
+    `2/B⁹`. Uninhabited — Bugeaud–Laurent typically reduces
+    `C1` to `10²`–`10³`, not `< 9`. -/
+noncomputable def abs_Lambda_ge_inv_B_pow_eight : Prop :=
+  ∀ {A B : ℕ}, 100 ≤ B → A ^ 4 + B ^ 4 = (B + 3) ^ 13 →
+    (1 : ℝ) / (B : ℝ) ^ 8 ≤
+      |4 * Real.log (A : ℝ) - 13 * Real.log ((B : ℝ) + 3)|
+
 /-! ## Closed small range. Ten shards of 100. Not `B ≤ B0`. -/
 
 theorem shard_0_100 : check_range 0 100 = true := by native_decide
@@ -297,7 +468,8 @@ theorem gap3_B_lt_256_no_sol :
   fun B hB A => gap3_B_lt_1000_no_sol B (lt_trans hB (by decide : (256 : ℕ) < 1000)) A
 
 /-- Full Baker `B ≤ 10⁶` search. Uninhabited: the closed slice
-    is `B < 1000` from ten foldl shards of 100. -/
+    is `B < 1000` from ten foldl shards of 100. The `2/B⁹`
+    upper bound does not close this either. -/
 def gap3_B_le_B0_no_solution : Prop :=
   ∀ B ≤ B0_nat, ∀ A : ℕ, A ^ 4 + B ^ 4 ≠ (B + 3) ^ 13
 
@@ -316,6 +488,12 @@ def gap3_B_le_B0_no_solution : Prop :=
 #check shard_900_1000
 #check gap3_B_lt_1000_no_sol
 #check gap3_B_le_B0_no_solution
+#check eps_le_inv_B_pow_nine
+#check abs_Lambda_eq_log_one_sub_eps
+#check abs_Lambda_lt_two_eps
+#check abs_Lambda_lt_two_div_B_pow_nine
+#check two_div_B_pow_nine_lt_inv_B
+#check abs_Lambda_ge_inv_B_pow_eight
 #print axioms fourth_pow_mod16
 #print axioms is_fourth_power_iff
 #print axioms check_B_true_no_sol
@@ -323,5 +501,7 @@ def gap3_B_le_B0_no_solution : Prop :=
 #print axioms check_range_true_of_all
 #print axioms gap3_B_lt_16_no_sol
 #print axioms gap3_B_lt_1000_no_sol
+#print axioms abs_Lambda_eq_log_one_sub_eps
+#print axioms abs_Lambda_lt_two_div_B_pow_nine
 
 end BealMatveevBeal.BealMatveevBealV25B0Search
