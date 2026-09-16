@@ -87,6 +87,10 @@ test -f PAdicLLL.lean
 test -f Beal/Matveev/PAdicLLL.lean
 test -f PAdicLLL_ZeroAxiom.lean
 test -f Beal/Matveev/PAdicLLL_ZeroAxiom.lean
+test -f BealMatveevBealV25Rank3.lean
+if test -f Beal/Matveev/BealMatveevBealV25Rank3.lean; then
+  fail "do not add Beal/Matveev/BealMatveevBealV25Rank3.lean; .submodules Beal.Matveev would pull it into default"
+fi
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -575,6 +579,22 @@ if ".one `PAdicLLL" not in pathlib.Path("lakefile.lean").read_text(encoding="utf
     sys.exit(1)
 if ".one `PAdicLLL_ZeroAxiom" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
     print("lakefile.lean missing PAdicLLL_ZeroAxiom glob", file=sys.stderr)
+    sys.exit(1)
+lake = pathlib.Path("lakefile.lean").read_text(encoding="utf-8")
+if "lean_lib «BealMatveevBealV25Rank3»" not in lake:
+    print("lakefile.lean missing separate BealMatveevBealV25Rank3 library", file=sys.stderr)
+    sys.exit(1)
+if ".one `BealMatveevBealV25Rank3" not in lake:
+    print("lakefile.lean missing BealMatveevBealV25Rank3 glob", file=sys.stderr)
+    sys.exit(1)
+default_globs = re.search(
+    r"@\[default_target\]\s*lean_lib «BealMatveevBeal» where\s*globs := #\[(.*?)\]",
+    lake, re.S)
+if default_globs is None:
+    print("could not parse default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "BealMatveevBealV25Rank3" in default_globs.group(1):
+    print("BealMatveevBealV25Rank3 must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -3269,6 +3289,72 @@ if re.search(r"^import Beal.Matveev.MatveevThm14General", stub_za, re.M):
     print("Beal/Matveev/PAdicLLL_ZeroAxiom.lean must not import MatveevThm14General", file=sys.stderr)
     sys.exit(1)
 
+rank3 = pathlib.Path("BealMatveevBealV25Rank3.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in rank3 or re.search(
+        r"^import MatveevThm14General\b", rank3, re.M):
+    print("BealMatveevBealV25Rank3.lean must not import MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in rank3:
+    print("True := trivial is not allowed in BealMatveevBealV25Rank3.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", rank3, re.M) or ":= sorry" in rank3 or "by sorry" in rank3:
+    print("sorry is not allowed in BealMatveevBealV25Rank3.lean", file=sys.stderr)
+    sys.exit(1)
+if "does **not** mint" not in rank3:
+    print("BealMatveevBealV25Rank3.lean must record that v25 is not minted", file=sys.stderr)
+    sys.exit(1)
+if "does **not** fork" not in rank3 and "does **not** fork Mathlib" not in rank3:
+    print("BealMatveevBealV25Rank3.lean must record that Mathlib is not forked", file=sys.stderr)
+    sys.exit(1)
+if "def LLL_reduces_bound_to_B0" not in rank3:
+    print("LLL_reduces_bound_to_B0 must stay def Prop in BealMatveevBealV25Rank3.lean", file=sys.stderr)
+    sys.exit(1)
+if "def hGen" not in rank3 or "def hLLL" not in rank3:
+    print("hGen/hLLL must stay def Prop in BealMatveevBealV25Rank3.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem LLL_reduces_bound_to_B0\b", rank3, re.M):
+    print("do not inhabit LLL_reduces_bound_to_B0", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem hGen\b", rank3, re.M):
+    print("do not inhabit hGen; keep def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem hLLL\b", rank3, re.M):
+    print("do not inhabit hLLL; keep def Prop", file=sys.stderr)
+    sys.exit(1)
+if "theorem gap3_B_lt_A_of_sol" not in rank3:
+    print("gap3_B_lt_A_of_sol missing from BealMatveevBealV25Rank3.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem abs_Lambda_lt_inv_B" not in rank3:
+    print("abs_Lambda_lt_inv_B missing from BealMatveevBealV25Rank3.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem lll_short_vector_of_large_B" not in rank3:
+    print("lll_short_vector_of_large_B missing from BealMatveevBealV25Rank3.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem future_unconditional_shape" not in rank3:
+    print("future_unconditional_shape missing from BealMatveevBealV25Rank3.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem rank3_shape_nogo" not in rank3:
+    print("rank3_shape_nogo missing from BealMatveevBealV25Rank3.lean", file=sys.stderr)
+    sys.exit(1)
+if "143186215390" not in rank3:
+    print("C1_floor = 143186215390 missing from BealMatveevBealV25Rank3.lean", file=sys.stderr)
+    sys.exit(1)
+if "1000000" not in rank3:
+    print("B0_nat = 1000000 missing from BealMatveevBealV25Rank3.lean", file=sys.stderr)
+    sys.exit(1)
+if "lll_euclidean_lower_bound_fails" not in rank3:
+    print("must keep lll_euclidean_lower_bound_fails in BealMatveevBealV25Rank3.lean", file=sys.stderr)
+    sys.exit(1)
+if "LLL_v_norm_lt_thirty_two" not in rank3:
+    print("must wrap MatveevLLL.LLL_v_norm_lt_thirty_two in BealMatveevBealV25Rank3.lean", file=sys.stderr)
+    sys.exit(1)
+if "axiom darmon_merel_4413_axiom" in rank3 and "BealTrueV25.darmon_merel_4413_axiom" not in rank3:
+    print("do not add a second Darmon-Merel axiom in BealMatveevBealV25Rank3.lean", file=sys.stderr)
+    sys.exit(1)
+if "% 2" in rank3:
+    print("use Even/Odd, not % 2, in BealMatveevBealV25Rank3.lean", file=sys.stderr)
+    sys.exit(1)
+
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
     print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
@@ -3565,6 +3651,9 @@ print("  unbounded |u alpha + v| > exp(-B0) fails by Dirichlet; exp(-B0) < 1/C1"
 print("  LLL_reduces_bound_to_B0_theorem / v25_draft stay def Prop; Real.log keeps choice")
 print("  PAdicLLL_ZeroAxiom: Nat.sqrt C1 < B0; displayed kernel in box without a solution")
 print("  LLL_reduces_bound_to_B0_zero_axiom stays def Prop; not a minted v25 tag")
+print("  BealMatveevBealV25Rank3: separate Lake target; not in default BealMatveevBeal globs")
+print("  wraps gap3_B_lt_A_of_sol, |Lambda|<1/B, rank-3 ||v||<32; LLL_reduces_bound_to_B0 stays def Prop")
+print("  does not claim Euclidean >= B0; does not import MatveevThm14General; v25 not minted")
 print("  matveev_gap3_lower stays the integer-gap B<=B0 close; not a minted v25 tag")
 print("  not a minted v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations tag")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")

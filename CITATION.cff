@@ -134,7 +134,10 @@ preferred-citation:
     proves p_adic_lll_zero_axiom_unconditional_nogo (naive
     u*a+v*C1 always has kernel (C1,-a) in the claimed box;
     Nat.sqrt C1 < B0; LLL_reduces_bound_to_B0_zero_axiom stays
-    def Prop). That does not
+    def Prop). BealMatveevBealV25Rank3 is a separate Lake target
+    wrapping rank-3 ||v||<32 and |Lambda|<1/B; not in the default
+    BealMatveevBeal glob; LLL_reduces_bound_to_B0 / hGen / hLLL
+    stay def Prop; does not import MatveevThm14General. That does not
     mint this version tag. Unrestricted
     matveev_inequality_real_target and hLLL stay def Prop.
     Not a minted v25 tag. Prior v24.4.0 version

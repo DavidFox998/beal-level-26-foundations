@@ -99,4 +99,6 @@ is forbidden. v25 is not minted.
 `[propext, Classical.choice, Quot.sound]`.
 
 Successor integer-form nogo: [`PAdicLLL_ZeroAxiom.md`](PAdicLLL_ZeroAxiom.md).
+Successor rank-3 shape wrappers (separate Lake target, not default):
+[`BealMatveevBealV25Rank3.md`](BealMatveevBealV25Rank3.md).
 v25 is not minted.

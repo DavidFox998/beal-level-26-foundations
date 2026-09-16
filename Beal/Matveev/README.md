@@ -43,11 +43,17 @@ tree. Theorems live in the matching **root** modules:
 | `PAdicLLL.lean` | `PAdicLLL.lean` |
 | `PAdicLLL_ZeroAxiom.lean` | `PAdicLLL_ZeroAxiom.lean` |
 
+Do **not** add `Beal/Matveev/BealMatveevBealV25Rank3.lean`:
+`.submodules Beal.Matveev` would pull it into the default
+`BealMatveevBeal` glob. Rank-3 shape wrappers live only in the
+root module `BealMatveevBealV25Rank3.lean`
+(`lake build BealMatveevBealV25Rank3`).
+
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /
 Kraus / KrausZsig / CatalanZsig / DarmonMerel / DarmonMerel44p /
 FLT13 / GenuineV25 / TrueV25 / UnconditionalV25 / Gap1 / Gap2 /
-Gap4 / Gap5 / Gap6 / Gap7 / Gap8 / Gap9 / Gap10 / Gap11 / Gap12 / Gap13 / Gap14 / Gap15 / GapK / EffectiveLevelLowering / BugeaudLaurent / PAdicLLL / PAdicLLL_ZeroAxiom modules.
+Gap4 / Gap5 / Gap6 / Gap7 / Gap8 / Gap9 / Gap10 / Gap11 / Gap12 / Gap13 / Gap14 / Gap15 / GapK / EffectiveLevelLowering / BugeaudLaurent / PAdicLLL / PAdicLLL_ZeroAxiom / Rank3 modules.
 
 `hGen`, `hLLL`, and `baker_bound_gap3_of_hGen_hLLL` stay
 uninhabited `def Prop`. `baker_bound_gap3` stays a `def Prop`
@@ -101,6 +107,9 @@ with `B≥2`; floor lattice `b1=(1,0)` has length `1 < B0`;
 `LLL_reduces_bound_to_B0_zero_axiom` stays uninhabited
 `def Prop` in `PAdicLLL_ZeroAxiom` (naive `u·a+v·C1` has kernel
 `(C1,-a)`; `Nat.sqrt C1 < B0`).
+`LLL_reduces_bound_to_B0`, `hGen`, and `hLLL` stay uninhabited
+`def Prop` in the separate Rank-3 target `BealMatveevBealV25Rank3`
+(rank-3 `‖v‖ < 32` is a short vector, not a `B ≤ B0` cutoff).
 `baker_davenport_reduction`, `bugeaud_LLL_reduction_proof`,
 `wuestholz_subgroup_theorem`, and `wuestholz_product_theorem_exp`
 stay uninhabited `def Prop`.

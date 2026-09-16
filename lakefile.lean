@@ -31,3 +31,9 @@ lean_lib «BealMatveevBeal» where
     .one `BealGap14, .one `BealGap15, .one `BealGapK,
     .one `EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6,
     .one `BugeaudLaurent, .one `PAdicLLL, .one `PAdicLLL_ZeroAxiom]
+
+/-- Rank-3 v25 *shape* wrappers. Not the default target: keeps
+    `lake build BealMatveevBeal` independent of this file. Does
+    not mint v25. -/
+lean_lib «BealMatveevBealV25Rank3» where
+  globs := #[.one `BealMatveevBealV25Rank3]

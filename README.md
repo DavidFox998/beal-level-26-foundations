@@ -9,7 +9,7 @@ Monorepo beal-conjecture stays beal-conjecture, this repo is foundations-level-2
 ## BealMatveevBeal — Matveev–Beal Gap-3 / Gap-1 / Gap-2 / Gap-4 / Gap-5 / Gap-6 / Gap-7 / Gap-8 / Gap-9 / Gap-10 / Gap-11 / Gap-12 / Gap-13 / Gap-14 / Gap-15 / Gap-K / Effective p-adic / Bugeaud–Laurent / p-adic LLL Documentation
 
 Concept DOI: **10.5281/zenodo.22379293**
-Latest tag: **v24-v24x-final-lll-dirichlet-nogo** (successor of `v24-v24x-final-padic-lll-floor-nogo`)
+Latest tag: **v24-v24x-final-rank3-shape-nogo** (successor of `v24-v24x-final-lll-dirichlet-nogo`)
 Lean: Mathlib 4.12 — foundations-level-26 — beal-conjecture stays beal-conjecture
 Build: `lake build BealMatveevBeal` green — `./scripts/verify-matveev-beal.sh` green — 0 sorry
 
@@ -38,6 +38,7 @@ Build: `lake build BealMatveevBeal` green — `./scripts/verify-matveev-beal.sh`
 - **Bugeaud–Laurent import plan `BugeaudLaurent`** — Mathlib 4.12 has `ℚ_[p]` / `padicValNat` but no Iwasawa `log_p`, no Bugeaud–Laurent 1996, no p-adic LLL, no `dim S₂(32)=1`; the 2-adic valuation of `A⁴+B⁴=C¹³` is compatible on odd `k` (`v₂=0` on both sides); real logs lose at `C1=1` and at the placeholder `1000`; `bugeaud_laurent_1996_two_logs` / `p_adic_LLL_reduction` / `baker_bound_B0_1e6` stay `def Prop`; does **not** fork Mathlib; **v25 not minted**.
 - **p-adic LLL / window no-go `PAdicLLL`** — Mathlib 4.12 has `PadicInt` / `ℤ_[p]` but no LLL module; on a gap-`k` solution with `k≥1` and `B≥2` one has `¬ A ≤ B+10`, so the proposed `A ∈ [B, B+10]` `native_decide` shards cannot close `matveev_gap3_lower` (already the integer-gap `B≤B0` theorem); `4 ≤ 1000` does not bound `B`; the floor lattice `b1=(1,0)`, `b2=(⌊C_LLL α⌋, C_LLL)` contains `(1,0)` of Euclidean length `1 < B0`, so the draft Euclidean `lll_lower_bound` is false (`lll_euclidean_lower_bound_fails`); the unbounded `|u α + v| > exp(−B0)` draft is false by Dirichlet (`lll_form_lower_bound_fails`); `exp(−B0) < 1/C1_floor` so that bound cannot beat `|Λ| < 1/B`; `p_adic_LLL_reduction` / `LLL_reduces_bound_to_B0` / `LLL_reduces_bound_to_B0_theorem` / `hGen_padic` / `hLLL_padic` stay `def Prop`; does **not** inhabit `p_adic_LLL_reduced` as the constant true proposition; **v25 not minted**.
 - **Integer-form / binary-log no-go `PAdicLLL_ZeroAxiom`** — the naive `u·a+v·C1` form always has kernel `(C1,-a)` in the claimed box with no gap-3 hypothesis; `Nat.sqrt C1_floor < B0_nat`, so Minkowski from `det=C1` cannot force `λ1≥B0`; `LLL_reduces_bound_to_B0_zero_axiom` stays `def Prop`; **v25 not minted**.
+- **Rank-3 shape wrappers `BealMatveevBealV25Rank3`** — **separate** Lake target, not in the default `BealMatveevBeal` glob (`lake build BealMatveevBeal` stays independent). Wraps `gap3_B_lt_A_of_sol` (`B < A`), `|Λ| < 1/B`, and rank-3 `v = 4 b₁ − 13 b₂` with `‖v‖ < 32` on `B > B0`. Does **not** import `MatveevThm14General`. Does **not** claim Euclidean length `≥ B0` or `|u α + v| > exp(−B0)` (`lll_euclidean_lower_bound_fails`, `lll_form_lower_bound_fails`). `LLL_reduces_bound_to_B0` / `hGen` / `hLLL` stay `def Prop`; **v25 not minted**.
 
 GitHub slug remains `beal-level-26-foundations` (not renamed: concept DOI
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293) stays
@@ -101,6 +102,9 @@ BugeaudLaurent.lean
 PAdicLLL.lean
 PAdicLLL_ZeroAxiom.lean
 ```
+
+Separate Lake target (not in the default glob above):
+`BealMatveevBealV25Rank3.lean` — `lake build BealMatveevBealV25Rank3`.
 
 **0 `sorry`.** `matveev_gap3_lower` is the B≤10^6 integer-gap theorem
 (`matveev_gap3_lower_B_le_B0_target`), not the unrestricted Level26
@@ -473,6 +477,14 @@ On a gap-3 solution, `B < A` and `A ≈ (B+3)^{13/4}`. The old
   with no solution hypothesis; `Nat.sqrt C1 < B0`.
   `LLL_reduces_bound_to_B0_zero_axiom` stays `def Prop`. Not a
   minted v25 tag
+- `rank3_shape_nogo` — rank-3 Bugeaud–Laurent *shape* wrappers
+  (proved in `BealMatveevBealV25Rank3.lean`, **separate** Lake
+  target): `B < A`, `|Λ| < 1/B`, and `‖v‖ < 32` for
+  `v = 4 b₁ − 13 b₂` on a solution with `B > B0`. The
+  `by_cases` implication `future_unconditional_shape` is a
+  theorem; neither branch is inhabited. Does not claim
+  Euclidean `≥ B0`. `LLL_reduces_bound_to_B0` / `hGen` /
+  `hLLL` stay `def Prop`. Not a minted v25 tag
 
 `baker_conditional_gap3_full` takes `baker_bound_gap3`, not the
 Matveev target. After the lower bound, the remaining implication
@@ -483,7 +495,8 @@ no LLL reduction theorem. The CF lemmas do not close v25.
 ```bash
 lake update
 lake exe cache get   # optional, uses the mathlib oleans cache
-lake build
+lake build BealMatveevBeal
+lake build BealMatveevBealV25Rank3  # separate Rank-3 shape target; not default
 ```
 
 Lake requires the monorepo subdirectory

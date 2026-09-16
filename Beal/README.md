@@ -13,6 +13,8 @@ Lake library sources for the Matveev–Beal complement
 `BealGap14`, `BealGap15`, `BealGapK`,
 `EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6`,
 `BugeaudLaurent`, `PAdicLLL`, and `PAdicLLL_ZeroAxiom`.
+Separate Lake target `BealMatveevBealV25Rank3` is **not** in
+that glob (`lake build BealMatveevBealV25Rank3`).
 
 `Beal.lean` re-exports `Beal.Matveev.MatveevThm14General`.
 Substantial proofs live in **root** modules; files under
@@ -97,4 +99,8 @@ the 2-adic valuation of the equation is compatible on odd `k`.
 `PAdicLLL_ZeroAxiom` proves the naive `u·a+v·C1` form has
 kernel `(C1,-a)` and `Nat.sqrt C1 < B0`;
 `LLL_reduces_bound_to_B0_zero_axiom` stays `def Prop`.
+`BealMatveevBealV25Rank3` is a **separate** Lake target wrapping
+rank-3 `‖v‖ < 32` and `|Λ| < 1/B`; do **not** add a
+`Beal/Matveev/` stub for it; `LLL_reduces_bound_to_B0` /
+`hGen` / `hLLL` stay `def Prop`.
 That is not the minted unconditional v25 tag.
