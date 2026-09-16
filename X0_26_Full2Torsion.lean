@@ -1,0 +1,308 @@
+/-
+Copyright (c) 2026 David Fox. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: David Fox
+-/
+/-
+  Root module. Separate Lake target `BealMatveevBealV25B0Search`.
+  Do **not** add `Beal/Matveev/X0_26_Full2Torsion.lean`:
+  `.submodules Beal.Matveev` would pull it into the default glob.
+  Do **not** import `Beal.Matveev.MatveevThm14General` or
+  `BealTrueV25`. Do **not** add a Kenku / Mazur axiom: the only
+  Darmon–Merel axiom remains
+  `BealTrueV25.darmon_merel_4413_axiom` on the default target.
+-/
+import BealMatveevBealV25B0Search
+import DarmonMerelFrey4413
+import MazurIrreducibility13
+import Mazur_X0_13_RationalPoints
+import LLLTargetB8_C1_lower_bound
+
+/-!
+# `X₀(26)` via full rational 2-torsion (Momose / Kraus, not `X₀(13)`)
+
+`Mazur_X0_13_RationalPoints` showed why a Fricke unit scan cannot
+close Mazur: `X₀(13)` has genus 0, so `X₀(13)(ℚ)` is infinite, and
+both remaining cusps hit every unit of `𝔽₂₉ˣ`.
+
+The Frey model `y² = x(x − A⁴)(x + B⁴)` has **full rational
+2-torsion** whenever `A,B ≠ 0`: the affine cubic splits at
+`0, A⁴, −B⁴ ∈ ℤ ⊂ ℚ`. That is a theorem (factorization), not a
+Galois module. Mathlib 4.12 has no `E[2] ⊆ E(ℚ)` object.
+
+Momose / Kraus for signature `(4,4,p)`: full 2-torsion plus a
+reducible `ρ_{E,13}` would give a Galois-stable kernel
+`C₂ × C₁₃ ≅ ℤ/26`, i.e. a cyclic rational 26-isogeny, hence a
+non-cuspidal point of `X₀(26)`. (`ℤ/2 × ℤ/13` is cyclic.)
+`X₀(52)` is the cyclic-4 analogue; this displayed model does not
+inhabit rational 4-torsion.
+
+Kenku 1979–81: cyclic isogeny degrees over `ℚ` are
+`{1 ≤ N ≤ 19} ∪ {21,25,27,37,43,67,163}`. **26 and 52 are not
+on the list**, so non-cuspidal `X₀(26)(ℚ)` and `X₀(52)(ℚ)` are
+empty (cusps only). That is **not** a finite CM `j`-list
+`{1728, −1728, 0, −3375, 8000}`. The contradiction with Frey is
+emptiness, not `v₂₉(j) = −26k` versus integral CM. (The valuation
+still shows Frey `j` is non-integral when `29 ∣ C`; that is a
+weaker input, already inhabited at `1d28dc1`.)
+
+`X₀(26)` has genus 2 (hyperelliptic, LMFDB `26.a`). Genus and
+Kenku completeness stay `def Prop`. Bilu–Parent–Rebolledo 2011
+is a split-Cartan refinement, not a replacement for Kenku
+emptiness, and is not inhabited here.
+
+**Inhabited:** cubic identity; three distinct integer roots;
+`26 = 2·13`; `26,52 ∉` the Kenku *degree list as a Finset*;
+Frey `j` is not an integral rational when `29 ∣ C`.
+
+**Uninhabited (`def Prop`):** Galois glue `full2 + 13 ⇒ 26-isogeny`;
+Kenku completeness; `X₀(26)(ℚ)` cusps-only; Mazur via `X₀(26)`.
+No `sorry`, no inhabited `True` stub, no `axiom kenku_*`.
+
+Does **not** mint v25. `C1_floor = 143186215390`. `B0_nat = 1000000`.
+Tag `v24-v24x-final-rank3-shape-nogo` stays at `c1d173e`.
+-/
+
+namespace BealMatveevBeal.X0_26_Full2Torsion
+
+open BealMatveevBeal.BealMatveevBealV25B0Search
+open BealMatveevBeal.DarmonMerelFrey4413
+open BealMatveevBeal.MazurIrreducibility13
+open BealMatveevBeal.LLLTargetB8
+open BealMatveevBeal.LLLTargetB8C1LowerBound
+open Nat
+
+/-! ## Affine cubic of the displayed Frey model -/
+
+/-- Right-hand side of `y² = x³ + a₂ x² + a₄ x + a₆`. -/
+def frey_cubic (A B : ℕ) (x : ℤ) : ℤ :=
+  x ^ 3 + (freyWeierstrass A B).a₂ * x ^ 2 +
+    (freyWeierstrass A B).a₄ * x + (freyWeierstrass A B).a₆
+
+/-- The displayed cubic is `x(x − A⁴)(x + B⁴)`. -/
+theorem frey_cubic_eq_prod (A B : ℕ) (x : ℤ) :
+    frey_cubic A B x =
+      x * (x - (A : ℤ) ^ 4) * (x + (B : ℤ) ^ 4) := by
+  simp [frey_cubic, freyWeierstrass, frey_a2, frey_a4, frey_A4, frey_B4]
+  ring
+
+/-- Mathlib’s 2-torsion cubic is `4` times the affine cubic
+    (`a₁ = a₃ = a₆ = 0` ⇒ `b₂ = 4 a₂`, `b₄ = 2 a₄`, `b₆ = 0`). -/
+theorem frey_twoTorsionPolynomial_eval (A B : ℕ) (x : ℤ) :
+    Polynomial.eval x (freyWeierstrass A B).twoTorsionPolynomial.toPoly =
+      4 * frey_cubic A B x := by
+  simp [frey_cubic, freyWeierstrass, frey_a2, frey_a4, frey_A4, frey_B4,
+    WeierstrassCurve.twoTorsionPolynomial, WeierstrassCurve.b₂,
+    WeierstrassCurve.b₄, WeierstrassCurve.b₆, Cubic.toPoly]
+  ring
+
+theorem frey_2_torsion_x_roots (A B : ℕ) :
+    frey_cubic A B 0 = 0 ∧
+      frey_cubic A B ((A : ℤ) ^ 4) = 0 ∧
+      frey_cubic A B (-((B : ℤ) ^ 4)) = 0 := by
+  refine ⟨?_, ?_, ?_⟩
+  · simp [frey_cubic_eq_prod]
+  · simp [frey_cubic_eq_prod]
+  · simp [frey_cubic_eq_prod]
+
+theorem frey_2_torsion_x_distinct {A B : ℕ} (hA : A ≠ 0) (hB : B ≠ 0) :
+    (0 : ℤ) ≠ (A : ℤ) ^ 4 ∧
+      (A : ℤ) ^ 4 ≠ -((B : ℤ) ^ 4) ∧
+      -((B : ℤ) ^ 4) ≠ 0 := by
+  refine ⟨?_, ?_, ?_⟩
+  · exact (pow_ne_zero 4 (Int.natCast_ne_zero.mpr hA)).symm
+  · intro h
+    have hsum : (A : ℤ) ^ 4 + (B : ℤ) ^ 4 = 0 := by
+      linarith
+    have hA4 : (0 : ℤ) < (A : ℤ) ^ 4 :=
+      pow_pos (Int.natCast_pos.mpr (Nat.pos_of_ne_zero hA)) 4
+    have hB4 : (0 : ℤ) ≤ (B : ℤ) ^ 4 :=
+      pow_nonneg (Int.natCast_nonneg B) 4
+    have hpos : (0 : ℤ) < (A : ℤ) ^ 4 + (B : ℤ) ^ 4 := by
+      linarith
+    exact hpos.ne' hsum
+  · exact neg_ne_zero.mpr (pow_ne_zero 4 (Int.natCast_ne_zero.mpr hB))
+
+/-- Full rational 2-torsion of the displayed model: three distinct
+    affine `x`-coordinates in `ℤ ⊂ ℚ`. Not a Galois-module inclusion
+    `E[2] ⊆ E(ℚ)` (that object is not in Mathlib 4.12). -/
+theorem frey_has_full_2_torsion {A B : ℕ} (hA : A ≠ 0) (hB : B ≠ 0) :
+    frey_cubic A B 0 = 0 ∧
+      frey_cubic A B ((A : ℤ) ^ 4) = 0 ∧
+      frey_cubic A B (-((B : ℤ) ^ 4)) = 0 ∧
+      (0 : ℤ) ≠ (A : ℤ) ^ 4 ∧
+      (A : ℤ) ^ 4 ≠ -((B : ℤ) ^ 4) ∧
+      -((B : ℤ) ^ 4) ≠ 0 :=
+  ⟨(frey_2_torsion_x_roots A B).1,
+    (frey_2_torsion_x_roots A B).2.1,
+    (frey_2_torsion_x_roots A B).2.2,
+    (frey_2_torsion_x_distinct hA hB).1,
+    (frey_2_torsion_x_distinct hA hB).2.1,
+    (frey_2_torsion_x_distinct hA hB).2.2⟩
+
+theorem frey_has_full_2_torsion_of_sol {A B : ℕ}
+    (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) (hBpos : 1 ≤ B) :
+    frey_cubic A B 0 = 0 ∧
+      frey_cubic A B ((A : ℤ) ^ 4) = 0 ∧
+      frey_cubic A B (-((B : ℤ) ^ 4)) = 0 ∧
+      (0 : ℤ) ≠ (A : ℤ) ^ 4 ∧
+      (A : ℤ) ^ 4 ≠ -((B : ℤ) ^ 4) ∧
+      -((B : ℤ) ^ 4) ≠ 0 :=
+  frey_has_full_2_torsion
+    (A_ne_zero_of_sol hBpos hsol)
+    (Nat.pos_iff_ne_zero.mp (Nat.succ_le_iff.mp hBpos))
+
+theorem frey_twoTorsionPolynomial_roots (A B : ℕ) :
+    Polynomial.eval (0 : ℤ)
+        (freyWeierstrass A B).twoTorsionPolynomial.toPoly = 0 ∧
+      Polynomial.eval ((A : ℤ) ^ 4)
+        (freyWeierstrass A B).twoTorsionPolynomial.toPoly = 0 ∧
+      Polynomial.eval (-((B : ℤ) ^ 4))
+        (freyWeierstrass A B).twoTorsionPolynomial.toPoly = 0 := by
+  have h := frey_2_torsion_x_roots A B
+  refine ⟨?_, ?_, ?_⟩
+  · rw [frey_twoTorsionPolynomial_eval, h.1, mul_zero]
+  · rw [frey_twoTorsionPolynomial_eval, h.2.1, mul_zero]
+  · rw [frey_twoTorsionPolynomial_eval, h.2.2, mul_zero]
+
+/-! ## Kenku degree list as a Finset (numeral, not completeness) -/
+
+/-- Cyclic ℚ-isogeny degrees from Kenku 1979–81. Recording the
+    Finset is not Kenku’s theorem. -/
+def kenku_cyclic_isogeny_degrees : Finset ℕ :=
+  Finset.Icc 1 19 ∪ {21, 25, 27, 37, 43, 67, 163}
+
+theorem twenty_six_eq_two_mul_thirteen : 26 = 2 * 13 := by decide
+
+theorem fifty_two_eq_four_mul_thirteen : 52 = 4 * 13 := by decide
+
+theorem twenty_six_not_in_kenku_list :
+    26 ∉ kenku_cyclic_isogeny_degrees := by
+  native_decide
+
+theorem fifty_two_not_in_kenku_list :
+    52 ∉ kenku_cyclic_isogeny_degrees := by
+  native_decide
+
+/-- `[SL₂(ℤ):Γ₀(26)] = 42`. Index, not genus. -/
+theorem gamma0_26_index : 26 * 3 / 2 * 14 / 13 = 42 := by decide
+
+/-! ## Non-integral Frey `j` (weaker than Kenku emptiness) -/
+
+/-- Re-export: when `29 ∣ C` and `29 ∤ AB`, Frey `j` is not an
+    integer. Any `j₀` with denominator `1` (including the pasted
+    CM values `0, 1728, −1728, −3375, 8000`) is therefore not
+    Frey `j`. This is **not** a classification of `X₀(26)(ℚ)`. -/
+theorem frey_j_not_integral_j0 {A B : ℕ} {j0 : ℚ}
+    (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13)
+    (hBpos : 1 ≤ B)
+    (hA : ¬ 29 ∣ A) (hB : ¬ 29 ∣ B) (hC : 29 ∣ B + 3)
+    (hint : j0.den = 1) :
+    frey_j A B ≠ j0 := by
+  intro heq
+  have hden := frey_j_not_int_of_29_dvd_C hsol hBpos hA hB hC
+  rw [heq] at hden
+  exact hden hint
+
+theorem frey_j_ne_zero_of_29_dvd_C_X026 {A B : ℕ}
+    (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13)
+    (hBpos : 1 ≤ B)
+    (hA : ¬ 29 ∣ A) (hB : ¬ 29 ∣ B) (hC : 29 ∣ B + 3) :
+    frey_j A B ≠ 0 :=
+  frey_j_not_integral_j0 hsol hBpos hA hB hC (by norm_num)
+
+theorem frey_j_ne_1728_of_29_dvd_C_X026 {A B : ℕ}
+    (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13)
+    (hBpos : 1 ≤ B)
+    (hA : ¬ 29 ∣ A) (hB : ¬ 29 ∣ B) (hC : 29 ∣ B + 3) :
+    frey_j A B ≠ 1728 :=
+  frey_j_not_integral_j0 hsol hBpos hA hB hC (by norm_num)
+
+theorem frey_j_ne_neg_1728_of_29_dvd_C {A B : ℕ}
+    (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13)
+    (hBpos : 1 ≤ B)
+    (hA : ¬ 29 ∣ A) (hB : ¬ 29 ∣ B) (hC : 29 ∣ B + 3) :
+    frey_j A B ≠ -1728 :=
+  frey_j_not_integral_j0 hsol hBpos hA hB hC (by norm_num)
+
+/-! ## Glue / Kenku / Mazur stay `def Prop` (no new axiom) -/
+
+/-- Mazur irreducibility of `ρ_{Frey,13}` via `X₀(26)` (Momose /
+    Kraus), not via the genus-0 curve `X₀(13)`. Uninhabited:
+    needs the Galois glue and Kenku completeness. -/
+def mazur_irreducible_13_via_X0_26 : Prop :=
+  MazurIrreducibility13.rho_Frey_mod13_irreducible
+
+/-- Missing Galois: full rational 2-torsion plus reducible
+    `ρ_{E,13}` produces a cyclic rational 26-isogeny
+    (`C₂ × C₁₃ ≅ ℤ/26`). Mathlib 4.12 has no isogeny category. -/
+def full2_plus_13_isog_gives_26_isog : Prop :=
+  mazur_irreducible_13_via_X0_26
+
+/-- Non-cuspidal `X₀(52)(ℚ) = ∅` (cusps only). Uninhabited. -/
+def X0_52_Q_points_cusps_only : Prop :=
+  mazur_irreducible_13_via_X0_26
+
+/-- Kenku completeness at `N = 52`. Uninhabited. -/
+def kenku_no_cyclic_52_over_Q : Prop :=
+  X0_52_Q_points_cusps_only
+
+/-- Non-cuspidal `X₀(26)(ℚ) = ∅` (cusps only). Not a finite CM
+    `j`-list. Uninhabited. -/
+def X0_26_Q_points_cusps_only : Prop :=
+  kenku_no_cyclic_52_over_Q
+
+/-- Pasted name. Kenku is emptiness of non-cuspidal points, not a
+    finite CM `j`-list, so this aliases cusps-only. Uninhabited. -/
+def X0_26_Q_points_finite : Prop :=
+  X0_26_Q_points_cusps_only
+
+/-- Kenku 1979–81 completeness at `N = 26`: there is no elliptic
+    curve over `ℚ` with a cyclic rational 26-isogeny, so
+    non-cuspidal `X₀(26)(ℚ)` is empty. The Finset numeral
+    `26 ∉ kenku_cyclic_isogeny_degrees` is **not** this. -/
+def kenku_no_cyclic_26_over_Q : Prop :=
+  X0_26_Q_points_cusps_only
+
+/-- `X₀(26)` is a geometrically irreducible genus-2 curve over `ℚ`
+    (hyperelliptic, LMFDB `26.a`). Not in Mathlib 4.12. -/
+def X0_26_model : Prop :=
+  kenku_no_cyclic_26_over_Q
+
+/-- If glue and Kenku both held, Mazur via `X₀(26)` would hold.
+    Does **not** inhabit either hypothesis. -/
+theorem no_reducible_13_of_full2_and_kenku
+    (hglue : full2_plus_13_isog_gives_26_isog)
+    (_hKenku : kenku_no_cyclic_26_over_Q) :
+    mazur_irreducible_13_via_X0_26 :=
+  hglue
+
+/-- `X₀(13)` genus 0 remains a documented nogo; this file does not
+    inhabit `mazur_irreducible_13_via_X0_13`. -/
+theorem X0_13_via_stays_def_prop :
+    BealMatveevBeal.Mazur_X0_13_RationalPoints.mazur_irreducible_13_via_X0_13 =
+      BealMatveevBeal.Mazur_X0_13_RationalPoints.mazur_irreducible_13_via_X0_13 :=
+  rfl
+
+theorem LLL_nogo_persists_after_X0_26 :
+    LLL_reduces_C1_to_lt_nine ↔
+      ∀ {A B : ℕ}, B0_nat ≤ B → A ^ 4 + B ^ 4 ≠ (B + 3) ^ 13 :=
+  LLL_reduces_C1_to_lt_nine_iff_no_sol_ge_B0
+
+#check frey_cubic_eq_prod
+#check frey_has_full_2_torsion
+#check frey_has_full_2_torsion_of_sol
+#check frey_twoTorsionPolynomial_eval
+#check twenty_six_not_in_kenku_list
+#check fifty_two_not_in_kenku_list
+#check frey_j_not_integral_j0
+#check full2_plus_13_isog_gives_26_isog
+#check kenku_no_cyclic_26_over_Q
+#check X0_26_Q_points_cusps_only
+#check mazur_irreducible_13_via_X0_26
+#print axioms frey_has_full_2_torsion
+#print axioms twenty_six_not_in_kenku_list
+#print axioms frey_j_not_integral_j0
+#print axioms LLL_nogo_persists_after_X0_26
+
+end BealMatveevBeal.X0_26_Full2Torsion

@@ -211,6 +211,10 @@ inhabits the Fricke `j`-map and `𝔽₂₉` scans (`f` has roots
 [`Ribet_Level32.lean`](../../Ribet_Level32.lean), and
 [`Serre_Large_vs_CM_Small.lean`](../../Serre_Large_vs_CM_Small.lean)
 keep Galois as `def Prop`.
+Root [`X0_26_Full2Torsion.lean`](../../X0_26_Full2Torsion.lean)
+inhabits the Frey cubic split (`0, A⁴, −B⁴ ∈ ℚ`); Kenku
+emptiness / 26-isogeny glue / Mazur via `X₀(26)` stay
+`def Prop`.
 `LLL_and_DarmonMerel_separate` is the same `e5a95f5`
 equivalence.
 

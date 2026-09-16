@@ -67,7 +67,10 @@ lean_lib «BealMatveevBealV25Rank3» where
     `𝔽₂₉` scans; Mazur via `X₀(13)` stays `def Prop`.
     `Tate_I29_Inertia` / `Ribet_Level32` /
     `Serre_Large_vs_CM_Small` re-export numerics and keep Galois
-    as `def Prop`. -/
+    as `def Prop`.
+    `X0_26_Full2Torsion` inhabits the Frey cubic split
+    (`E[2]` roots in `ℚ`); Kenku / 26-isogeny / Mazur via
+    `X₀(26)` stay `def Prop`. -/
 lean_lib «BealMatveevBealV25B0Search» where
   globs := #[.one `BealMatveevBealV25B0Search, .one `LLLTargetB8, .one `Gap3B0Million,
     .one `LLLTargetB8_C1_lower_bound, .one `DarmonMerelFrey4413, .one `Level32Table,
@@ -76,4 +79,4 @@ lean_lib «BealMatveevBealV25B0Search» where
     .one `Inertia29Unramified, .one `SerreImage13,
     .one `MazurIrreducibilityFull, .one `TateGalois, .one `SerreImageFull,
     .one `Mazur_X0_13_RationalPoints, .one `Tate_I29_Inertia, .one `Ribet_Level32,
-    .one `Serre_Large_vs_CM_Small]
+    .one `Serre_Large_vs_CM_Small, .one `X0_26_Full2Torsion]

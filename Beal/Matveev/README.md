@@ -112,8 +112,10 @@ Root `Mazur_X0_13_RationalPoints.lean` inhabits the Fricke
 `j`-map and `𝔽₂₉` scans; Mazur via `X₀(13)` stays `def Prop`.
 Root `Tate_I29_Inertia.lean`, `Ribet_Level32.lean`, and
 `Serre_Large_vs_CM_Small.lean` keep Galois as `def Prop`.
-Do **not** add copies under `Beal/Matveev/`. See root
-`ARCHIVE_4413.md`.
+Root `X0_26_Full2Torsion.lean` inhabits the Frey cubic split
+(`0, A⁴, −B⁴ ∈ ℚ`); Kenku / 26-isogeny / Mazur via `X₀(26)`
+stay `def Prop`. Do **not** add copies under `Beal/Matveev/`.
+See root `ARCHIVE_4413.md`.
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /

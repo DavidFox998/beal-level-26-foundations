@@ -176,6 +176,10 @@ test -f Serre_Large_vs_CM_Small.lean
 if test -f Beal/Matveev/Serre_Large_vs_CM_Small.lean; then
   fail "do not add Beal/Matveev/Serre_Large_vs_CM_Small.lean; .submodules Beal.Matveev would pull it into default"
 fi
+test -f X0_26_Full2Torsion.lean
+if test -f Beal/Matveev/X0_26_Full2Torsion.lean; then
+  fail "do not add Beal/Matveev/X0_26_Full2Torsion.lean; .submodules Beal.Matveev would pull it into default"
+fi
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -744,6 +748,9 @@ if ".one `Ribet_Level32" not in lake:
 if ".one `Serre_Large_vs_CM_Small" not in lake:
     print("lakefile.lean missing Serre_Large_vs_CM_Small glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
+if ".one `X0_26_Full2Torsion" not in lake:
+    print("lakefile.lean missing X0_26_Full2Torsion glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
 if "BealMatveevBealV25B0Search" in default_globs.group(1):
     print("BealMatveevBealV25B0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
@@ -803,6 +810,9 @@ if "Ribet_Level32" in default_globs.group(1):
     sys.exit(1)
 if "Serre_Large_vs_CM_Small" in default_globs.group(1):
     print("Serre_Large_vs_CM_Small must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "X0_26_Full2Torsion" in default_globs.group(1):
+    print("X0_26_Full2Torsion must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -4402,6 +4412,14 @@ check_gap_file("Serre_Large_vs_CM_Small.lean",
     ["card_32a1_le_48", "serre_large_Frey", "contradiction_48_lt_2184"],
     ["forty_eight_lt_2184", "card_SL2_F13_eq_2184",
      "LLL_and_DarmonMerel_separate"])
+check_gap_file("X0_26_Full2Torsion.lean",
+    ["full2_plus_13_isog_gives_26_isog", "X0_26_model",
+     "X0_26_Q_points_cusps_only", "X0_26_Q_points_finite",
+     "kenku_no_cyclic_26_over_Q", "kenku_no_cyclic_52_over_Q",
+     "mazur_irreducible_13_via_X0_26"],
+    ["frey_cubic_eq_prod", "frey_has_full_2_torsion",
+     "twenty_six_not_in_kenku_list", "fifty_two_not_in_kenku_list",
+     "frey_j_not_integral_j0", "LLL_nogo_persists_after_X0_26"])
 arch = pathlib.Path("ARCHIVE_4413.md").read_text(encoding="utf-8")
 if "e5a95f5" not in arch or "953a174" not in arch:
     print("ARCHIVE_4413.md must record e5a95f5 LLL iff and 953a174 barrier", file=sys.stderr)
@@ -4417,6 +4435,12 @@ if "X0(13)" not in arch and "X₀(13)" not in arch:
     sys.exit(1)
 if "7,9" not in arch and "t ≡ 7" not in arch:
     print("ARCHIVE_4413.md must record that f has roots 7,9 mod 29", file=sys.stderr)
+    sys.exit(1)
+if "Kenku" not in arch:
+    print("ARCHIVE_4413.md must record Kenku cyclic-isogeny emptiness at 26", file=sys.stderr)
+    sys.exit(1)
+if "X0(26)" not in arch and "X₀(26)" not in arch:
+    print("ARCHIVE_4413.md must record the X0(26) full 2-torsion route", file=sys.stderr)
     sys.exit(1)
 
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
@@ -4775,4 +4799,7 @@ print("  no new axiom; darmon_merel_4413_four_gaps stays def Prop; main 6247c63 
 print("  Mazur_X0_13: Fricke j(t), f roots 7,9 mod29, v(t) in {26k,-2k}; Mazur via X0(13) stays def Prop")
 print("  Tate_I29_Inertia / Ribet_Level32 / Serre_Large_vs_CM_Small: Galois stays def Prop")
 print("  no local F29 close; 48<2184 is not False without the Galois iso")
+print("  X0_26_Full2Torsion: Frey cubic splits at 0,A^4,-B^4 over Q; Kenku 26 not in cyclic list")
+print("  full2+13=>26-isogeny / X0(26) cusps-only / mazur via X0(26) stay def Prop; no kenku axiom")
+print("  v29(j)=-26k shows j not integral; Kenku emptiness is stronger than a CM j-list")
 PY

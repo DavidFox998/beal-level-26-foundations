@@ -213,6 +213,44 @@ Gaps 2–4 stay `def Prop` in `Tate_I29_Inertia`,
 `Ribet_Level32`, and `Serre_Large_vs_CM_Small`. `48 < 2184` is
 a numeral theorem, not `False` without a Galois isomorphism.
 
+## `X₀(26)` full 2-torsion (Momose / Kraus, not a Fricke scan)
+
+Root `X0_26_Full2Torsion.lean` inhabits the displayed cubic
+identity
+
+```
+x³ + (B⁴ − A⁴) x² − A⁴ B⁴ x  =  x(x − A⁴)(x + B⁴)
+```
+
+so the three affine 2-torsion `x`-coordinates `0, A⁴, −B⁴` lie
+in `ℤ ⊂ ℚ` and are pairwise distinct for `A,B ≠ 0`. Mathlib
+4.12 has no Galois module `E[2] ⊆ E(ℚ)`; the factorization is
+the inhabitant that statement would use. The 2-torsion
+polynomial is `4` times the affine cubic.
+
+`X₀(13)` has genus 0, so `X₀(13)(ℚ)` is infinite and the Fricke
+unit scan at `1d28dc1` cannot close Mazur. Full 2-torsion plus
+reducible `ρ_{E,13}` would give a Galois-stable kernel
+`C₂ × C₁₃ ≅ ℤ/26`, a cyclic rational 26-isogeny, hence a
+non-cuspidal point of `X₀(26)` (genus 2). `X₀(52)` is the
+cyclic-4 analogue.
+
+Kenku 1979–81: cyclic isogeny degrees over `ℚ` are
+`{1 ≤ N ≤ 19} ∪ {21,25,27,37,43,67,163}`. **26 and 52 are not
+on that list** (Finset numeral in the Lean file). Completeness
+of the list — emptiness of non-cuspidal `X₀(26)(ℚ)` — stays
+`def Prop`. That is **not** a finite CM `j`-list
+`{1728, −1728, 0, −3375, 8000}`. The contradiction with Frey is
+emptiness, not `v₂₉(j) = −26k` versus integral CM. The
+valuation still shows Frey `j` is non-integral when `29 ∣ C`
+(any denominator-`1` rational, including those CM values, is
+not Frey `j`); that weaker fact is inhabited.
+
+No `axiom kenku_*`. Glue `full2 + 13 ⇒ 26-isogeny`,
+`X0_26_model`, `X0_26_Q_points_cusps_only` / `_finite`,
+Kenku completeness, and `mazur_irreducible_13_via_X0_26` stay
+`def Prop`. Gaps 2–4 (Tate `I₂₉`, Ribet, Serre) stay `def Prop`.
+
 ## What this tree does not claim
 
 - No `sorry`, no `True := trivial`, no fake `False.elim`.
