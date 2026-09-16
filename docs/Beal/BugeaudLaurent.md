@@ -50,5 +50,8 @@ That is why `baker_bound_B0_1e6`, `hGen_padic`, and
 `[propext, Classical.choice, Quot.sound]` only.
 
 Successor: [`PAdicLLL.md`](PAdicLLL.md)
-(`v24-v24x-final-padic-lll-nogo`) aliases `PadicInt` and proves
-`¬ A ≤ B+10` on gap solutions with `B ≥ 2`.
+(`v24-v24x-final-padic-lll-nogo`, floor lattice
+`v24-v24x-final-padic-lll-floor-nogo`) aliases `PadicInt` and
+proves `¬ A ≤ B+10` on gap solutions with `B ≥ 2`. The floor
+lattice `b1=(1,0)` has Euclidean length `1 < B0`. Integer-form
+nogo: [`PAdicLLL_ZeroAxiom.md`](PAdicLLL_ZeroAxiom.md).

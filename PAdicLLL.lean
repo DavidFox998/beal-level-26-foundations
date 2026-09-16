@@ -30,6 +30,14 @@ with `k ≥ 1` and `B ≥ 2` one has `¬ A ≤ B+10`, because
 do **not** rewrite `MatveevLLL.lean` with 977 `native_decide`
 shards, and do **not** touch `BealLevel26FoundationsScaffold`.
 
+The floor lattice `b1=(1,0)`, `b2=(⌊C_LLL α⌋, C_LLL)` with
+`C_LLL = C1_floor^2` still contains `(1,0)` of Euclidean length
+`1 < B0`, so the draft `lll_lower_bound` is false. Floor error
+`< 1` kills the integer kernel; it does not kill `(1,0)`.
+`LLL_reduces_bound_to_B0_theorem` /
+`beal_gap3_4_4_13_unconditional_v25_draft` stay `def Prop`.
+`matveev_gap3_lower` is not `¬∃ A`. v25 is not minted.
+
 `p_adic_LLL_reduction` / `hLLL_padic` / `baker_bound_B0_1e6` /
 `LLL_reduces_bound_to_B0` stay `def Prop`. Defining the reduced
 predicate as the constant true proposition would inhabit
@@ -279,6 +287,114 @@ theorem p_adic_LLL_unconditional_nogo {k A B : ℕ}
   refine ⟨hlogs, h2, hC, h73, ?_, hp, hbl, hb, hb⟩
   exact not_A_le_B_add_ten_of_sol hk hsol (two_le_of_B_ge_B0 hB0)
 
+/-! ## Floor lattice `b1=(1,0)` still has length 1 — not a B0 cutoff -/
+
+/-- Rank-2 Bugeaud–Laurent *shape* with `det = C1²`. The first
+    displayed vector is `(1,0)`. -/
+def C_LLL : ℕ := C1_floor * C1_floor
+
+theorem C_LLL_eq : C_LLL = C1_floor * C1_floor := rfl
+
+noncomputable def alpha (B : ℕ) : ℝ := Real.log ((B + 3 : ℕ) : ℝ)
+
+noncomputable def LLL_basis (B : ℕ) : (ℤ × ℤ) × (ℤ × ℤ) :=
+  ((1, 0), (⌊(C_LLL : ℝ) * alpha B⌋, (C_LLL : ℤ)))
+
+theorem LLL_basis_b1 (B : ℕ) : (LLL_basis B).1 = (1, 0) := rfl
+
+/-- The naive integer form has a kernel. Same fact as
+    `PAdicLLL_ZeroAxiom.nat_int_form_has_kernel`. -/
+theorem nat_int_form_has_kernel (a C1 : ℤ) (hC1 : C1 ≠ 0) :
+    ∃ u v : ℤ, (u, v) ≠ (0, 0) ∧ u * a + v * C1 = 0 := by
+  refine ⟨C1, -a, ?_, ?_⟩
+  · intro h
+    exact hC1 (congrArg Prod.fst h)
+  · ring
+
+theorem C1_div_two_gt_B0 : B0_nat < C1_floor / 2 := by
+  rw [B0_nat_eq, C1_floor_eq]
+  decide
+
+/-- Euclidean square of the `(u,v)=(1,0)` combination is `1`,
+    independently of the floor coordinate. -/
+theorem displayed_combo_one_zero_sq (B : ℕ) :
+    let fl : ℤ := ⌊(C_LLL : ℝ) * alpha B⌋
+    ((1 : ℝ) + (0 : ℝ) * (fl : ℝ)) ^ 2 + ((0 : ℝ) * (C_LLL : ℝ)) ^ 2 = 1 := by
+  simp
+
+/-- Same identity with the `ℤ` coercions that appear when the
+    draft lower bound is instantiated at `(u,v)=(1,0)`. -/
+theorem combo_one_zero_sq_cast (B : ℕ) :
+    ((((1 : ℤ) : ℝ) + ((0 : ℤ) : ℝ) * (⌊(C_LLL : ℝ) * alpha B⌋ : ℝ)) ^ 2 +
+      (((0 : ℤ) : ℝ) * (C_LLL : ℝ)) ^ 2) = (1 : ℝ) := by
+  simp
+
+theorem combo_one_zero_length (B : ℕ) :
+    Real.sqrt
+        ((((1 : ℤ) : ℝ) + ((0 : ℤ) : ℝ) * (⌊(C_LLL : ℝ) * alpha B⌋ : ℝ)) ^ 2 +
+          (((0 : ℤ) : ℝ) * (C_LLL : ℝ)) ^ 2) = (1 : ℝ) := by
+  rw [combo_one_zero_sq_cast B, Real.sqrt_one]
+
+theorem one_lt_B0_nat : 1 < B0_nat := by
+  rw [B0_nat_eq]
+  decide
+
+theorem one_lt_B0_real : (1 : ℝ) < (B0_nat : ℝ) := by
+  rw [B0_nat_eq]
+  norm_num
+
+/-- Floor error is strictly less than `1`. This kills the integer
+    kernel `u a + v C1 = 0`, but it does not kill `(1,0)`. -/
+theorem floor_C_alpha_error_lt_one (B : ℕ) :
+    |(C_LLL : ℝ) * alpha B - ⌊(C_LLL : ℝ) * alpha B⌋| < 1 := by
+  rw [Int.self_sub_floor, abs_of_nonneg (Int.fract_nonneg _)]
+  exact Int.fract_lt_one _
+
+/-- `(1,0)` is the displayed combination `1·b1 + 0·b2`. -/
+theorem LLL_b1_is_combo (B : ℕ) :
+    ((1 : ℤ) * (LLL_basis B).1.1 + (0 : ℤ) * (LLL_basis B).2.1,
+      (1 : ℤ) * (LLL_basis B).1.2 + (0 : ℤ) * (LLL_basis B).2.2) = (1, 0) := by
+  simp [LLL_basis]
+
+/-- The draft `lll_lower_bound` (`‖u b1 + v b2‖ ≥ B0` for all
+    nonzero `(u,v)`) is **false**: `(1,0)` has length `1 < B0`.
+    Floor error `< 1` kills the integer kernel, but it does not
+    kill the lattice vector `(1,0)`. `C1_floor / 2 > B0` is a
+    numeral, not `λ₁`. -/
+theorem lll_euclidean_lower_bound_fails (B : ℕ) :
+    ¬ (∀ u v : ℤ, (u, v) ≠ (0, 0) →
+        Real.sqrt
+            (((u : ℝ) + (v : ℝ) * (⌊(C_LLL : ℝ) * alpha B⌋ : ℝ)) ^ 2 +
+              ((v : ℝ) * (C_LLL : ℝ)) ^ 2) ≥
+          (B0_nat : ℝ)) := by
+  intro h
+  have hge := h (1 : ℤ) (0 : ℤ) (by decide : ((1 : ℤ), (0 : ℤ)) ≠ (0, 0))
+  rw [combo_one_zero_length B] at hge
+  exact (not_le.mpr one_lt_B0_real) hge
+
+/-- Packaged floor-lattice no-go: first basis vector is `(1,0)`,
+    its Euclidean length is `1`, and `1 < B0`. The numeral
+    `C1_floor / 2 > B0` is recorded separately and is not `λ₁`. -/
+theorem floor_lattice_nogo (B : ℕ) :
+    (LLL_basis B).1 = (1, 0) ∧
+      Real.sqrt
+          ((((1 : ℤ) : ℝ) + ((0 : ℤ) : ℝ) * (⌊(C_LLL : ℝ) * alpha B⌋ : ℝ)) ^ 2 +
+            (((0 : ℤ) : ℝ) * (C_LLL : ℝ)) ^ 2) = (1 : ℝ) ∧
+        (1 : ℝ) < (B0_nat : ℝ) ∧
+          B0_nat < C1_floor / 2 :=
+  ⟨LLL_basis_b1 B, combo_one_zero_length B, one_lt_B0_real, C1_div_two_gt_B0⟩
+
+/-- Draft `LLL_reduces_bound_to_B0_theorem`. Uninhabited: the
+    displayed Euclidean lower bound is false, Matveev+LLL already
+    lose on `B ≥ B0`, and `matveev_gap3_lower` is not `¬∃ A`. -/
+def LLL_reduces_bound_to_B0_theorem : Prop :=
+  ∀ B : ℕ, B0_nat < B → B ≤ C1_floor →
+    ∀ A : ℕ, B < A → A ^ 4 + B ^ 4 = (B + 3) ^ 13 → False
+
+/-- Draft unconditional v25. Uninhabited. -/
+def beal_gap3_4_4_13_unconditional_v25_draft : Prop :=
+  ∀ B : ℕ, ¬ ∃ A : ℕ, A ^ 4 + B ^ 4 = (B + 3) ^ 13
+
 #check C1_floor_eq
 #check B0_nat_eq
 #check C1_padic_floor_placeholder_eq
@@ -304,6 +420,19 @@ theorem p_adic_LLL_unconditional_nogo {k A B : ℕ}
 #check hLLL_padic
 #check baker_bound_B0_1e6_of_bugeaud_lll
 #check p_adic_LLL_unconditional_nogo
+#check nat_int_form_has_kernel
+#check LLL_basis_b1
+#check C1_div_two_gt_B0
+#check displayed_combo_one_zero_sq
+#check combo_one_zero_sq_cast
+#check combo_one_zero_length
+#check one_lt_B0_real
+#check floor_C_alpha_error_lt_one
+#check LLL_b1_is_combo
+#check lll_euclidean_lower_bound_fails
+#check floor_lattice_nogo
+#check LLL_reduces_bound_to_B0_theorem
+#check beal_gap3_4_4_13_unconditional_v25_draft
 #print axioms C1_floor_eq
 #print axioms B0_nat_eq
 #print axioms four_le_C1_padic_placeholder
@@ -313,5 +442,11 @@ theorem p_adic_LLL_unconditional_nogo {k A B : ℕ}
 #print axioms A_gt_B_of_sol
 #print axioms Z_p_norm_le_one
 #print axioms p_adic_LLL_unconditional_nogo
+#print axioms nat_int_form_has_kernel
+#print axioms lll_euclidean_lower_bound_fails
+#print axioms combo_one_zero_length
+#print axioms floor_C_alpha_error_lt_one
+#print axioms floor_lattice_nogo
+#print axioms C1_div_two_gt_B0
 
 end BealMatveevBeal.PAdicLLL

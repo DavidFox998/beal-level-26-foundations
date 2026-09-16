@@ -9,7 +9,7 @@ Monorepo beal-conjecture stays beal-conjecture, this repo is foundations-level-2
 ## BealMatveevBeal — Matveev–Beal Gap-3 / Gap-1 / Gap-2 / Gap-4 / Gap-5 / Gap-6 / Gap-7 / Gap-8 / Gap-9 / Gap-10 / Gap-11 / Gap-12 / Gap-13 / Gap-14 / Gap-15 / Gap-K / Effective p-adic / Bugeaud–Laurent / p-adic LLL Documentation
 
 Concept DOI: **10.5281/zenodo.22379293**
-Latest tag: **v24-v24x-final-padic-lll-nogo** (successor of `v24-v24x-final-bugeaud-laurent-nogo`)
+Latest tag: **v24-v24x-final-padic-lll-floor-nogo** (successor of `v24-v24x-final-padic-lll-nogo`)
 Lean: Mathlib 4.12 — foundations-level-26 — beal-conjecture stays beal-conjecture
 Build: `lake build BealMatveevBeal` green — `./scripts/verify-matveev-beal.sh` green — 0 sorry
 
@@ -36,7 +36,8 @@ Build: `lake build BealMatveevBeal` green — `./scripts/verify-matveev-beal.sh`
 - **Gap-K `BealGapK`** — generic `A^4+B^4=(B+k)^13`; odd `k` forces `B` even and `A` odd; even `k` forces `A` even only (not `B` odd — gap-10 leftover); `gcd(B,B+k)∣k`; `p∣k` and `p∣B` force `p∣A`; `v_p(k)=1` descents for `p=3,5,7,11,13`; residue kills with congruence hypotheses; remaining coprime solutions are Darmon–Merel `(4,4,13)`; **not** `∀k ¬sol` (`(1,0)` and `k=m⁴`, `B=0`); recovers axiom closes for gaps 2..9,11..15 and odd-`B` gap-10; `baker_bound_gapK` stays `def Prop`; `baker_bound_gapK_unconditional_nogo` `[propext, Classical.choice, Quot.sound]` only.
 - **Effective level-lowering / p-adic `EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6`** — GapK wrappers; conditional `C<100` when `A,B≤B0` (`C¹³≤2·10²⁴<10²⁶=100¹³`); on `B≥B0` and `k≥1` one has `C≥1000001` so `C≤73` / `B≤72` do not apply; `baker_bound_B0_1e6` / `hGen_padic` / `hLLL_padic` stay `def Prop`; Bugeaud–Laurent / Kraus / Oesterlé / Ribet-to-32 / FLT 13 are not in Mathlib 4.12; `baker_bound_B0_1e6_unconditional_nogo` `[propext, Classical.choice, Quot.sound]` only; **v25 not minted**.
 - **Bugeaud–Laurent import plan `BugeaudLaurent`** — Mathlib 4.12 has `ℚ_[p]` / `padicValNat` but no Iwasawa `log_p`, no Bugeaud–Laurent 1996, no p-adic LLL, no `dim S₂(32)=1`; the 2-adic valuation of `A⁴+B⁴=C¹³` is compatible on odd `k` (`v₂=0` on both sides); real logs lose at `C1=1` and at the placeholder `1000`; `bugeaud_laurent_1996_two_logs` / `p_adic_LLL_reduction` / `baker_bound_B0_1e6` stay `def Prop`; does **not** fork Mathlib; **v25 not minted**.
-- **p-adic LLL / window no-go `PAdicLLL`** — Mathlib 4.12 has `PadicInt` / `ℤ_[p]` but no LLL module; on a gap-`k` solution with `k≥1` and `B≥2` one has `¬ A ≤ B+10`, so the proposed `A ∈ [B, B+10]` `native_decide` shards cannot close `matveev_gap3_lower` (already the integer-gap `B≤B0` theorem); `4 ≤ 1000` does not bound `B`; `p_adic_LLL_reduction` / `LLL_reduces_bound_to_B0` stay `def Prop`; does **not** inhabit `p_adic_LLL_reduced := True`; **v25 not minted**.
+- **p-adic LLL / window no-go `PAdicLLL`** — Mathlib 4.12 has `PadicInt` / `ℤ_[p]` but no LLL module; on a gap-`k` solution with `k≥1` and `B≥2` one has `¬ A ≤ B+10`, so the proposed `A ∈ [B, B+10]` `native_decide` shards cannot close `matveev_gap3_lower` (already the integer-gap `B≤B0` theorem); `4 ≤ 1000` does not bound `B`; the floor lattice `b1=(1,0)`, `b2=(⌊C_LLL α⌋, C_LLL)` contains `(1,0)` of Euclidean length `1 < B0`, so the draft `lll_lower_bound` is false (`lll_euclidean_lower_bound_fails`); `p_adic_LLL_reduction` / `LLL_reduces_bound_to_B0` / `LLL_reduces_bound_to_B0_theorem` stay `def Prop`; does **not** inhabit `p_adic_LLL_reduced := True`; **v25 not minted**.
+- **Integer-form / binary-log no-go `PAdicLLL_ZeroAxiom`** — the naive `u·a+v·C1` form always has kernel `(C1,-a)` in the claimed box with no gap-3 hypothesis; `Nat.sqrt C1_floor < B0_nat`, so Minkowski from `det=C1` cannot force `λ1≥B0`; `LLL_reduces_bound_to_B0_zero_axiom` stays `def Prop`; **v25 not minted**.
 
 GitHub slug remains `beal-level-26-foundations` (not renamed: concept DOI
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293) stays
@@ -98,6 +99,7 @@ BealGapK.lean
 EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.lean
 BugeaudLaurent.lean
 PAdicLLL.lean
+PAdicLLL_ZeroAxiom.lean
 ```
 
 **0 `sorry`.** `matveev_gap3_lower` is the B≤10^6 integer-gap theorem
@@ -458,9 +460,17 @@ On a gap-3 solution, `B < A` and `A ≈ (B+3)^{13/4}`. The old
   cannot have `A ≤ B+10` (`2(B+10)⁴ < (B+1)¹³`), so the
   proposed `check_gap3_range` window is empty of solutions.
   `matveev_gap3_lower` stays the integer-gap close. `4 ≤ 1000`
-  does not bound `B`. `p_adic_LLL_reduction` /
-  `LLL_reduces_bound_to_B0` stay `def Prop`. Does not fork
-  Mathlib. Not a minted v25 tag
+  does not bound `B`. The floor lattice `b1=(1,0)` has
+  Euclidean length `1 < B0` (`lll_euclidean_lower_bound_fails`).
+  `p_adic_LLL_reduction` / `LLL_reduces_bound_to_B0` /
+  `LLL_reduces_bound_to_B0_theorem` stay `def Prop`. Does not
+  fork Mathlib. Not a minted v25 tag
+- `p_adic_lll_zero_axiom_unconditional_nogo` — integer-form /
+  binary-log no-go (proved in `PAdicLLL_ZeroAxiom.lean`):
+  `u·a+v·C1` always vanishes at `(C1,-a)` in the claimed box
+  with no solution hypothesis; `Nat.sqrt C1 < B0`.
+  `LLL_reduces_bound_to_B0_zero_axiom` stays `def Prop`. Not a
+  minted v25 tag
 
 `baker_conditional_gap3_full` takes `baker_bound_gap3`, not the
 Matveev target. After the lower bound, the remaining implication

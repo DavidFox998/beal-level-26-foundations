@@ -128,7 +128,13 @@ preferred-citation:
     empty of solutions for k>=1 B>=2; four_le_C1_padic_placeholder
     does not bound B; matveev_gap3_lower stays the integer-gap
     close; p_adic_LLL_reduction / LLL_reduces_bound_to_B0 stay
-    def Prop; does not fork Mathlib). That does not
+    def Prop; floor lattice b1=(1,0) has Euclidean length 1 < B0
+    so lll_euclidean_lower_bound_fails; LLL_reduces_bound_to_B0_theorem
+    stays def Prop; does not fork Mathlib). PAdicLLL_ZeroAxiom
+    proves p_adic_lll_zero_axiom_unconditional_nogo (naive
+    u*a+v*C1 always has kernel (C1,-a) in the claimed box;
+    Nat.sqrt C1 < B0; LLL_reduces_bound_to_B0_zero_axiom stays
+    def Prop). That does not
     mint this version tag. Unrestricted
     matveev_inequality_real_target and hLLL stay def Prop.
     Not a minted v25 tag. Prior v24.4.0 version

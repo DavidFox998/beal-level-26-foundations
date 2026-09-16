@@ -85,6 +85,8 @@ test -f BugeaudLaurent.lean
 test -f Beal/Matveev/BugeaudLaurent.lean
 test -f PAdicLLL.lean
 test -f Beal/Matveev/PAdicLLL.lean
+test -f PAdicLLL_ZeroAxiom.lean
+test -f Beal/Matveev/PAdicLLL_ZeroAxiom.lean
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -329,6 +331,15 @@ if "PAdicLLL.not_A_le_B_add_ten_of_sol" not in src:
 if "PAdicLLL.not_A_le_B_add_ten_of_gap3" not in src:
     print("#check not_A_le_B_add_ten_of_gap3 missing from MatveevThm14General.lean", file=sys.stderr)
     sys.exit(1)
+if "PAdicLLL.lll_euclidean_lower_bound_fails" not in src:
+    print("#check lll_euclidean_lower_bound_fails missing from MatveevThm14General.lean", file=sys.stderr)
+    sys.exit(1)
+if "import PAdicLLL_ZeroAxiom" not in src:
+    print("MatveevThm14General.lean missing import PAdicLLL_ZeroAxiom", file=sys.stderr)
+    sys.exit(1)
+if "PAdicLLL_ZeroAxiom.p_adic_lll_zero_axiom_unconditional_nogo" not in src:
+    print("#check p_adic_lll_zero_axiom_unconditional_nogo missing from MatveevThm14General.lean", file=sys.stderr)
+    sys.exit(1)
 if re.search(r"^def check_gap3_range\b", src, re.M):
     print("do not rewrite matveev_gap3_lower with check_gap3_range shards", file=sys.stderr)
     sys.exit(1)
@@ -558,6 +569,9 @@ if ".one `BugeaudLaurent" not in pathlib.Path("lakefile.lean").read_text(encodin
     sys.exit(1)
 if ".one `PAdicLLL" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
     print("lakefile.lean missing PAdicLLL glob", file=sys.stderr)
+    sys.exit(1)
+if ".one `PAdicLLL_ZeroAxiom" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
+    print("lakefile.lean missing PAdicLLL_ZeroAxiom glob", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -3158,6 +3172,84 @@ if not re.search(r"^import PAdicLLL\s*$", stub_pll, re.M):
 if re.search(r"^import Beal.Matveev.MatveevThm14General", stub_pll, re.M):
     print("Beal/Matveev/PAdicLLL.lean must not import MatveevThm14General", file=sys.stderr)
     sys.exit(1)
+if "theorem lll_euclidean_lower_bound_fails" not in pll:
+    print("lll_euclidean_lower_bound_fails missing from PAdicLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem nat_int_form_has_kernel" not in pll:
+    print("nat_int_form_has_kernel missing from PAdicLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem floor_lattice_nogo" not in pll:
+    print("floor_lattice_nogo missing from PAdicLLL.lean", file=sys.stderr)
+    sys.exit(1)
+if "def LLL_reduces_bound_to_B0_theorem" not in pll:
+    print("LLL_reduces_bound_to_B0_theorem must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def beal_gap3_4_4_13_unconditional_v25_draft" not in pll:
+    print("beal_gap3_4_4_13_unconditional_v25_draft must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem LLL_reduces_bound_to_B0_theorem\b", pll, re.M):
+    print("do not inhabit LLL_reduces_bound_to_B0_theorem", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem beal_gap3_4_4_13_unconditional_v25_draft\b", pll, re.M):
+    print("do not inhabit beal_gap3_4_4_13_unconditional_v25_draft", file=sys.stderr)
+    sys.exit(1)
+
+za = pathlib.Path("PAdicLLL_ZeroAxiom.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in za:
+    print("PAdicLLL_ZeroAxiom.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
+if "theorem nat_int_form_has_kernel" not in za:
+    print("nat_int_form_has_kernel missing from PAdicLLL_ZeroAxiom.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem displayed_kernel_in_box" not in za:
+    print("displayed_kernel_in_box missing from PAdicLLL_ZeroAxiom.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem minkowski_sqrt_C1_lt_B0" not in za:
+    print("minkowski_sqrt_C1_lt_B0 missing from PAdicLLL_ZeroAxiom.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem p_adic_lll_zero_axiom_unconditional_nogo" not in za:
+    print("p_adic_lll_zero_axiom_unconditional_nogo missing", file=sys.stderr)
+    sys.exit(1)
+if "143186215390" not in za:
+    print("C1_floor = 143186215390 missing from PAdicLLL_ZeroAxiom.lean", file=sys.stderr)
+    sys.exit(1)
+if "1000000" not in za:
+    print("B0_nat = 1000000 missing from PAdicLLL_ZeroAxiom.lean", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in za:
+    print("True := trivial is not allowed in PAdicLLL_ZeroAxiom.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", za, re.M) or ":= sorry" in za or "by sorry" in za:
+    print("sorry is not allowed in PAdicLLL_ZeroAxiom.lean", file=sys.stderr)
+    sys.exit(1)
+if "def LLL_reduces_bound_to_B0_zero_axiom" not in za:
+    print("LLL_reduces_bound_to_B0_zero_axiom must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def beal_gap3_4_4_13_unconditional_zero_axiom" not in za:
+    print("beal_gap3_4_4_13_unconditional_zero_axiom must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem LLL_reduces_bound_to_B0_zero_axiom\b", za, re.M):
+    print("do not inhabit LLL_reduces_bound_to_B0_zero_axiom", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem beal_gap3_4_4_13_unconditional_zero_axiom\b", za, re.M):
+    print("do not inhabit beal_gap3_4_4_13_unconditional_zero_axiom", file=sys.stderr)
+    sys.exit(1)
+if "does **not** mint" not in za:
+    print("PAdicLLL_ZeroAxiom.lean must record that v25 is not minted", file=sys.stderr)
+    sys.exit(1)
+if "does **not** fork" not in za and "does **not** fork Mathlib" not in za:
+    print("PAdicLLL_ZeroAxiom.lean must record that Mathlib is not forked", file=sys.stderr)
+    sys.exit(1)
+if "% 2" in za:
+    print("use Even/Odd, not % 2, in PAdicLLL_ZeroAxiom.lean", file=sys.stderr)
+    sys.exit(1)
+stub_za = pathlib.Path("Beal/Matveev/PAdicLLL_ZeroAxiom.lean").read_text(encoding="utf-8")
+if not re.search(r"^import PAdicLLL_ZeroAxiom\s*$", stub_za, re.M):
+    print("Beal/Matveev/PAdicLLL_ZeroAxiom.lean must import PAdicLLL_ZeroAxiom", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^import Beal.Matveev.MatveevThm14General", stub_za, re.M):
+    print("Beal/Matveev/PAdicLLL_ZeroAxiom.lean must not import MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
 
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
@@ -3449,6 +3541,11 @@ print("  does not fork Mathlib; no Iwasawa log_p / Bugeaud-Laurent 1996 / p-adic
 print("  PAdicLLL: PadicInt alias Z_p; not_A_le_B_add_ten_of_sol / of_gap3 (A in [B,B+10] is false)")
 print("  p_adic_LLL_unconditional_nogo; p_adic_LLL_reduction/LLL_reduces_bound_to_B0 stay def Prop")
 print("  four_le_C1_padic_placeholder=4<=1000 does not bound B; no 977 check_gap3_range shards")
+print("  floor lattice b1=(1,0) has Euclidean length 1 < B0; lll_euclidean_lower_bound_fails")
+print("  nat_int_form_has_kernel: naive u*a+v*C1 always vanishes at (C1,-a)")
+print("  LLL_reduces_bound_to_B0_theorem / v25_draft stay def Prop; Real.log keeps choice")
+print("  PAdicLLL_ZeroAxiom: Nat.sqrt C1 < B0; displayed kernel in box without a solution")
+print("  LLL_reduces_bound_to_B0_zero_axiom stays def Prop; not a minted v25 tag")
 print("  matveev_gap3_lower stays the integer-gap B<=B0 close; not a minted v25 tag")
 print("  not a minted v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations tag")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")

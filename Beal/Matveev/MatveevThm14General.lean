@@ -136,6 +136,10 @@ for k≥1 B≥2; four_le_C1_padic_placeholder does not bound B;
 p_adic_LLL_reduction / LLL_reduces_bound_to_B0 stay def Prop;
 does not inhabit the reduced predicate as true; does not shard
 matveev_gap3_lower; does not fork Mathlib; v25 not minted).
+Floor lattice b1=(1,0) has Euclidean length 1 < B0
+(lll_euclidean_lower_bound_fails); naive u*a+v*C1 has a kernel
+(nat_int_form_has_kernel); LLL_reduces_bound_to_B0_theorem stays
+def Prop; v25 not minted.
 bugeaud_LLL_reduction_proof stays def Prop. Named theorem
 baker_bound_gap3 stays uninhabited. Not a minted v25 tag.
 -/
@@ -174,6 +178,7 @@ import BealGapK
 import EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6
 import BugeaudLaurent
 import PAdicLLL
+import PAdicLLL_ZeroAxiom
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -1254,6 +1259,14 @@ theorem gap3_forall_of_baker
 #check PAdicLLL.LLL_reduces_bound_to_B0
 #check PAdicLLL.four_le_C1_padic_placeholder
 #check PAdicLLL.Z_p_norm_le_one
+#check PAdicLLL.lll_euclidean_lower_bound_fails
+#check PAdicLLL.floor_lattice_nogo
+#check PAdicLLL.combo_one_zero_length
+#check PAdicLLL.nat_int_form_has_kernel
+#check PAdicLLL.LLL_reduces_bound_to_B0_theorem
+#check PAdicLLL_ZeroAxiom.nat_int_form_has_kernel
+#check PAdicLLL_ZeroAxiom.p_adic_lll_zero_axiom_unconditional_nogo
+#check PAdicLLL_ZeroAxiom.displayed_kernel_in_box
 #print axioms C1_floor_eq
 #print axioms height_B0_eq
 #print axioms height_bound_gap3
@@ -1415,5 +1428,10 @@ theorem gap3_forall_of_baker
 #print axioms PAdicLLL.not_A_le_B_add_ten_of_sol
 #print axioms PAdicLLL.not_A_le_B_add_ten_of_gap3
 #print axioms PAdicLLL.four_le_C1_padic_placeholder
+#print axioms PAdicLLL.lll_euclidean_lower_bound_fails
+#print axioms PAdicLLL.floor_lattice_nogo
+#print axioms PAdicLLL.nat_int_form_has_kernel
+#print axioms PAdicLLL_ZeroAxiom.nat_int_form_has_kernel
+#print axioms PAdicLLL_ZeroAxiom.p_adic_lll_zero_axiom_unconditional_nogo
 
 end BealMatveevBeal

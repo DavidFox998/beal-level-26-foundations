@@ -12,7 +12,7 @@ Lake library sources for the Matveev–Beal complement
 `BealGap9`, `BealGap10`, `BealGap11`, `BealGap12`, `BealGap13`,
 `BealGap14`, `BealGap15`, `BealGapK`,
 `EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6`,
-`BugeaudLaurent`, and `PAdicLLL`.
+`BugeaudLaurent`, `PAdicLLL`, and `PAdicLLL_ZeroAxiom`.
 
 `Beal.lean` re-exports `Beal.Matveev.MatveevThm14General`.
 Substantial proofs live in **root** modules; files under
@@ -90,6 +90,11 @@ lemma `C<100` when `A,B≤B0`; `baker_bound_B0_1e6` /
 the 2-adic valuation of the equation is compatible on odd `k`.
 `PAdicLLL` aliases `PadicInt` as `Z_p` and proves
 `¬ A ≤ B+10` on gap solutions with `B≥2` (the proposed
-`A ∈ [B, B+10]` search is empty); `p_adic_LLL_reduction` /
-`LLL_reduces_bound_to_B0` stay `def Prop`.
+`A ∈ [B, B+10]` search is empty); the floor lattice
+`b1=(1,0)` has Euclidean length `1 < B0`;
+`p_adic_LLL_reduction` / `LLL_reduces_bound_to_B0` /
+`LLL_reduces_bound_to_B0_theorem` stay `def Prop`.
+`PAdicLLL_ZeroAxiom` proves the naive `u·a+v·C1` form has
+kernel `(C1,-a)` and `Nat.sqrt C1 < B0`;
+`LLL_reduces_bound_to_B0_zero_axiom` stays `def Prop`.
 That is not the minted unconditional v25 tag.
