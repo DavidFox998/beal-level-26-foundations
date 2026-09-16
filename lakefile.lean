@@ -59,10 +59,14 @@ lean_lib «BealMatveevBealV25Rank3» where
     Mazur/Ribet/image stay `def Prop`. `Inertia29Unramified`
     inhabits `v₂₉(c₄)=0` and Tate numerics; Kodaira/Ribet inertia
     stay `def Prop`. `SerreImage13` inhabits `32a1` `j=1728`;
-    CM image / Serre open image stay `def Prop`. -/
+    CM image / Serre open image stay `def Prop`.
+    `MazurIrreducibilityFull` / `TateGalois` / `SerreImageFull`
+    name the four Mathlib gaps as `def Prop` and re-export the
+    `9030063` numerics. -/
 lean_lib «BealMatveevBealV25B0Search» where
   globs := #[.one `BealMatveevBealV25B0Search, .one `LLLTargetB8, .one `Gap3B0Million,
     .one `LLLTargetB8_C1_lower_bound, .one `DarmonMerelFrey4413, .one `Level32Table,
     .one `Level928Table, .one `Ribet29C_Lowering, .one `Ribet29C_Residue16,
     .one `Ribet29C_Residue16_L23, .one `MazurIrreducibility13,
-    .one `Inertia29Unramified, .one `SerreImage13]
+    .one `Inertia29Unramified, .one `SerreImage13,
+    .one `MazurIrreducibilityFull, .one `TateGalois, .one `SerreImageFull]

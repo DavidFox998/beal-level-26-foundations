@@ -198,4 +198,13 @@ Root [`SerreImage13.lean`](../../SerreImage13.lean) inhabits
 `LLL_and_DarmonMerel_separate` is the same `e5a95f5`
 equivalence.
 
+Root [`MazurIrreducibilityFull.lean`](../../MazurIrreducibilityFull.lean),
+[`TateGalois.lean`](../../TateGalois.lean), and
+[`SerreImageFull.lean`](../../SerreImageFull.lean) name the
+**four Mathlib gaps** as `def Prop` and re-export the `9030063`
+numerics. `darmon_merel_4413_four_gaps` /
+`no_sol_ge_B0_of_four_gaps` stay `def Prop`. No new axiom.
+`LLL_and_DarmonMerel_separate` is the same `e5a95f5`
+equivalence.
+
 v25 is not minted.

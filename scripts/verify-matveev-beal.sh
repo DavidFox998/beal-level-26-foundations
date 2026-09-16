@@ -148,6 +148,18 @@ test -f SerreImage13.lean
 if test -f Beal/Matveev/SerreImage13.lean; then
   fail "do not add Beal/Matveev/SerreImage13.lean; .submodules Beal.Matveev would pull it into default"
 fi
+test -f MazurIrreducibilityFull.lean
+if test -f Beal/Matveev/MazurIrreducibilityFull.lean; then
+  fail "do not add Beal/Matveev/MazurIrreducibilityFull.lean; .submodules Beal.Matveev would pull it into default"
+fi
+test -f TateGalois.lean
+if test -f Beal/Matveev/TateGalois.lean; then
+  fail "do not add Beal/Matveev/TateGalois.lean; .submodules Beal.Matveev would pull it into default"
+fi
+test -f SerreImageFull.lean
+if test -f Beal/Matveev/SerreImageFull.lean; then
+  fail "do not add Beal/Matveev/SerreImageFull.lean; .submodules Beal.Matveev would pull it into default"
+fi
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -695,6 +707,15 @@ if ".one `Inertia29Unramified" not in lake:
 if ".one `SerreImage13" not in lake:
     print("lakefile.lean missing SerreImage13 glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
+if ".one `MazurIrreducibilityFull" not in lake:
+    print("lakefile.lean missing MazurIrreducibilityFull glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
+if ".one `TateGalois" not in lake:
+    print("lakefile.lean missing TateGalois glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
+if ".one `SerreImageFull" not in lake:
+    print("lakefile.lean missing SerreImageFull glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
 if "BealMatveevBealV25B0Search" in default_globs.group(1):
     print("BealMatveevBealV25B0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
@@ -733,6 +754,15 @@ if "Inertia29Unramified" in default_globs.group(1):
     sys.exit(1)
 if "SerreImage13" in default_globs.group(1):
     print("SerreImage13 must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "MazurIrreducibilityFull" in default_globs.group(1):
+    print("MazurIrreducibilityFull must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "TateGalois" in default_globs.group(1):
+    print("TateGalois must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "SerreImageFull" in default_globs.group(1):
+    print("SerreImageFull must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -4262,12 +4292,66 @@ if "theorem frey_j_ne_1728_of_29_dvd_C" not in serre:
 if "theorem LLL_and_DarmonMerel_separate" not in serre:
     print("LLL_and_DarmonMerel_separate missing; e5a95f5 iff must persist", file=sys.stderr)
     sys.exit(1)
+
+def check_gap_file(path, required_defs, required_thms):
+    text = pathlib.Path(path).read_text(encoding="utf-8")
+    if "import Beal.Matveev.MatveevThm14General" in text or re.search(
+            r"^import Beal\.Matveev\.", text, re.M):
+        print(f"{path} must not import Beal.Matveev.*", file=sys.stderr)
+        sys.exit(1)
+    if "import BealTrueV25" in text:
+        print(f"{path} must not import BealTrueV25", file=sys.stderr)
+        sys.exit(1)
+    if re.search(r"^\s*sorry\b", text, re.M) or ":= sorry" in text or "by sorry" in text:
+        print(f"sorry is not allowed in {path}", file=sys.stderr)
+        sys.exit(1)
+    if "True := trivial" in text or "True := by trivial" in text:
+        print(f"True := trivial is not allowed in {path}", file=sys.stderr)
+        sys.exit(1)
+    if re.search(r"^axiom ", text, re.M):
+        print(f"do not add axioms in {path}; reuse BealTrueV25.darmon_merel_4413_axiom",
+              file=sys.stderr)
+        sys.exit(1)
+    if re.search(r"^def darmon_merel_4413_axiom\b", text, re.M):
+        print(f"do not redefine darmon_merel_4413_axiom in {path}", file=sys.stderr)
+        sys.exit(1)
+    for d in required_defs:
+        if f"def {d}" not in text:
+            print(f"{d} must stay def Prop in {path}", file=sys.stderr)
+            sys.exit(1)
+        if re.search(rf"^theorem {d}\b", text, re.M):
+            print(f"do not inhabit {d} in {path}", file=sys.stderr)
+            sys.exit(1)
+    for t in required_thms:
+        if f"theorem {t}" not in text:
+            print(f"{t} missing from {path}", file=sys.stderr)
+            sys.exit(1)
+    return text
+
+check_gap_file("MazurIrreducibilityFull.lean",
+    ["frey_not_CM_of_B_ge_B0", "mazur_irreducible_13_of_nonintegral_j",
+     "rho_Frey_mod13_irreducible_full"],
+    ["frey_j_ne_zero_of_29_dvd_C", "frey_j_ne_1728_of_29_dvd_C_reexport",
+     "LLL_nogo_persists_after_MazurFull"])
+check_gap_file("TateGalois.lean",
+    ["tate_curve_at_29", "inertia_via_cyclotomic",
+     "inertia_at_29_trivial_mod13_full", "ribet_unramified_at_29_full"],
+    ["v29_c4_zero_when_29_nmid_AB", "v29_Delta_eq_26_vC",
+     "displayed_minimal_at_29_theorem", "LLL_nogo_persists_after_TateGalois"])
+check_gap_file("SerreImageFull.lean",
+    ["modularity_Frey_semistable", "ribet_level_32_of_unramified",
+     "image_32a1_mod13_small_full", "serre_large_image_13_full",
+     "darmon_merel_4413_four_gaps", "no_sol_ge_B0_of_four_gaps"],
+    ["E32a1_j_eq_1728", "forty_eight_lt_2184", "LLL_and_DarmonMerel_separate"])
 arch = pathlib.Path("ARCHIVE_4413.md").read_text(encoding="utf-8")
 if "e5a95f5" not in arch or "953a174" not in arch:
     print("ARCHIVE_4413.md must record e5a95f5 LLL iff and 953a174 barrier", file=sys.stderr)
     sys.exit(1)
 if "(1,6)" not in arch:
     print("ARCHIVE_4413.md must explain (1,6) slice vs whole class", file=sys.stderr)
+    sys.exit(1)
+if "four gaps" not in arch and "4 gaps" not in arch:
+    print("ARCHIVE_4413.md must record the four Mathlib gaps", file=sys.stderr)
     sys.exit(1)
 
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
@@ -4620,4 +4704,7 @@ print("  LLL_nogo_persists_after_Inertia is the e5a95f5 iff; no new axiom")
 print("  SerreImage13: 32a1 j=1728 inhabited; 13==1 mod4; |SL2(F13)|=2184; 48<2184")
 print("  image_32a1_mod13_small / serre_large_image / darmon_merel_4413_full stay def Prop")
 print("  no serre_large_image_13_axiom; Frey j!=1728 when 29|C; LLL e5a95f5 separate")
+print("  four gaps scaffold: Mazur irr, Tate I29, modularity+Ribet 32, Serre vs 32a1 48<2184")
+print("  MazurIrreducibilityFull / TateGalois / SerreImageFull: numerics re-exported, Galois def Prop")
+print("  no new axiom; darmon_merel_4413_four_gaps stays def Prop; main 6247c63 axiom-free")
 PY

@@ -157,6 +157,29 @@ and not Serre open image for Frey. `image_32a1_mod13_small`,
 `no_sol_ge_B0_of_image_contradiction` stay `def Prop`. There is
 no `axiom serre_large_image_13_axiom`.
 
+## Four Mathlib gaps (`9030063` → full scaffold)
+
+Closing `B ≥ B0` is **four gaps** (four theorems), not `a₇=−4` / `a₁₁=−4` /
+`a₂₃=8` slice kills (`953a174`). Root modules
+`MazurIrreducibilityFull`, `TateGalois`, `SerreImageFull`
+re-export the inhabited numerics and keep the Galois statements
+as `def Prop`. No new axiom; `main` stays `6247c63`.
+
+1. **Mazur irreducibility.** Inhabited: `29 ∣ j.den`, `j ≠ 0`,
+   `j ≠ 1728` when `29 ∣ C`. Missing: `HasCM`, Mazur 1978,
+   Bilu–Parent–Rebolledo 2013.
+2. **Galois `I₂₉`.** Inhabited: `v(c₄)=0`, `v(Δ)=26 v(C)`.
+   Missing: Tate curve `ℚ̄_ℓˣ / q^ℤ` and `χ_cyc^{v(q)}`.
+3. **Modularity + Ribet to 32.** Missing: Wiles modularity of
+   the semistable Frey curve; Ribet `29·32 → 32` after
+   unramified `I₂₉`. Not added as axioms on `BealTrueV25`.
+4. **Serre large vs `32a1` small.** Inhabited: `j(32a1)=1728`,
+   `48 < 2184 = |SL₂(𝔽₁₃)|`. Missing: Serre 1972 open image
+   and `card(im ρ_{32a1,13}) ≤ 48`.
+
+`darmon_merel_4413_four_gaps` and `no_sol_ge_B0_of_four_gaps`
+stay `def Prop`. The `e5a95f5` LLL iff is re-exported.
+
 ## What this tree does not claim
 
 - No `sorry`, no `True := trivial`, no fake `False.elim`.

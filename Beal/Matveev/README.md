@@ -105,7 +105,11 @@ Kodaira / Ribet inertia stay `def Prop`. Do **not** add
 `Beal/Matveev/Inertia29Unramified.lean`.
 Root `SerreImage13.lean` inhabits `32a1` `j=1728`; CM image /
 Serre open image stay `def Prop`. Do **not** add
-`Beal/Matveev/SerreImage13.lean`. See root `ARCHIVE_4413.md`.
+`Beal/Matveev/SerreImage13.lean`.
+Root `MazurIrreducibilityFull.lean`, `TateGalois.lean`, and
+`SerreImageFull.lean` name the four Mathlib gaps as `def Prop`.
+Do **not** add copies under `Beal/Matveev/`. See root
+`ARCHIVE_4413.md`.
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /
