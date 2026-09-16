@@ -31,6 +31,20 @@ of a unit of the same valuation (`Δ` itself). That is **not**
 Tate uniformization `E(ℚ̄_p) ≅ ℚ̄_pˣ / q^ℤ`. No
 `InertiaGroup`, no `axiom inertia_via_cyclo`.
 
+The modular `j`-expansion begins
+
+```
+j(q) = q⁻¹ + 744 + 196884 q + O(q²)
+```
+
+(`q` here is a formal / `p`-adic parameter with `v(q)>0`, not
+`exp(−2πiτ)`). Truncation is a theorem about valuations:
+`v(q⁻¹+744+196884 q) = −v(q)`. The leading inverse `j⁻¹` of
+Frey `j` therefore has `v(j⁻¹)=−v(j)=26k=v(Δ)`. That is **not**
+the Tate functor `E ↦ q(E)` and not
+`E(ℚ̄_p) ≅ ℚ̄_pˣ/q^ℤ`. No `EllipticCurve ℚ_[29]` object, no
+`sorry`, no `axiom Tate_q_series`.
+
 A Mathlib Tate-curve module (Loeffler / Vonk direction) would
 unblock this gap and the unramified-at-`29` half of Ribet.
 Wiles / BCDT is a separate gap.
@@ -153,6 +167,210 @@ theorem exists_Qp_unit_val_eq_vDelta {A B : ℕ}
         Padic.valuation (freyDisc_in_Qp29 A B) :=
   ⟨Units.mk0 _ (freyDisc_in_Qp29_ne_zero hA hB), by simp⟩
 
+/-! ## Truncated `j(q)` expansion (not Tate uniformization) -/
+
+theorem padic_valuation_inv {x : ℚ_[29]} (hx : x ≠ 0) :
+    Padic.valuation x⁻¹ = - Padic.valuation x := by
+  have hinv : x⁻¹ ≠ 0 := inv_ne_zero hx
+  have hone : x⁻¹ * x = 1 := inv_mul_cancel₀ hx
+  have hmul := Padic.valuation_map_mul hinv hx
+  rw [hone, Padic.valuation_one] at hmul
+  linarith
+
+theorem padic_valuation_neg {x : ℚ_[29]} (hx : x ≠ 0) :
+    Padic.valuation (-x) = Padic.valuation x := by
+  have hneg : -x ≠ 0 := neg_ne_zero.mpr hx
+  have hp_pos : (0 : ℝ) < 29 := by norm_num
+  have hp_ne : (29 : ℝ) ≠ 1 := by norm_num
+  have hnorm : ‖(-x : ℚ_[29])‖ = ‖x‖ := norm_neg x
+  have hL : (29 : ℝ) ^ (-Padic.valuation x) = ‖x‖ := by
+    exact_mod_cast (Padic.norm_eq_pow_val hx).symm
+  have hR : (29 : ℝ) ^ (-Padic.valuation (-x)) = ‖(-x : ℚ_[29])‖ := by
+    exact_mod_cast (Padic.norm_eq_pow_val hneg).symm
+  have : (29 : ℝ) ^ (-Padic.valuation (-x)) =
+      (29 : ℝ) ^ (-Padic.valuation x) := by
+    rw [hR, hnorm, hL]
+  exact neg_injective ((zpow_inj hp_pos hp_ne).mp this)
+
+/-- Ultrametric equality: the smaller-valuation summand wins. -/
+theorem padic_valuation_add_of_lt {x y : ℚ_[29]} (hx : x ≠ 0)
+    (hxy : Padic.valuation x < Padic.valuation y) :
+    Padic.valuation (x + y) = Padic.valuation x := by
+  have hsum : x + y ≠ 0 := by
+    intro h0
+    have hy : y = -x := eq_neg_of_add_eq_zero_right h0
+    have : Padic.valuation y = Padic.valuation x := by
+      rw [hy, padic_valuation_neg hx]
+    exact hxy.ne this.symm
+  have hp_pos : (0 : ℝ) < 29 := by norm_num
+  have hp_ne : (29 : ℝ) ≠ 1 := by norm_num
+  have hp_one : (1 : ℝ) < 29 := by norm_num
+  by_cases hy : y = 0
+  · subst hy
+    simp
+  · have hnx : (29 : ℝ) ^ (-Padic.valuation x) = ‖x‖ := by
+      exact_mod_cast (Padic.norm_eq_pow_val hx).symm
+    have hny : (29 : ℝ) ^ (-Padic.valuation y) = ‖y‖ := by
+      exact_mod_cast (Padic.norm_eq_pow_val hy).symm
+    have hlt : ‖y‖ < ‖x‖ := by
+      rw [← hnx, ← hny]
+      exact (zpow_strictMono hp_one).lt_iff_lt.mpr (neg_lt_neg hxy)
+    have hne : ‖x‖ ≠ ‖y‖ := hlt.ne.symm
+    have hmax : ‖x + y‖ = max ‖x‖ ‖y‖ := padicNormE.add_eq_max_of_ne hne
+    have hnorm_eq : ‖x + y‖ = ‖x‖ := hmax.trans (max_eq_left hlt.le)
+    have hns : (29 : ℝ) ^ (-Padic.valuation (x + y)) = ‖x + y‖ := by
+      exact_mod_cast (Padic.norm_eq_pow_val hsum).symm
+    have heq : (29 : ℝ) ^ (-Padic.valuation (x + y)) =
+        (29 : ℝ) ^ (-Padic.valuation x) := by
+      rw [hns, hnorm_eq, hnx]
+    exact neg_injective ((zpow_inj hp_pos hp_ne).mp heq)
+
+/-- Constant term of the modular `j`-expansion. -/
+def j_expansion_c0 : ℕ := 744
+
+/-- Coefficient of `q` in the modular `j`-expansion. -/
+def j_expansion_c1 : ℕ := 196884
+
+theorem twenty_nine_not_dvd_j_c0 : ¬ 29 ∣ j_expansion_c0 := by
+  native_decide
+
+theorem twenty_nine_not_dvd_j_c1 : ¬ 29 ∣ j_expansion_c1 := by
+  native_decide
+
+theorem j_expansion_c0_ne_zero : j_expansion_c0 ≠ 0 := by
+  native_decide
+
+theorem j_expansion_c1_ne_zero : j_expansion_c1 ≠ 0 := by
+  native_decide
+
+theorem padic_valuation_j_c0 :
+    Padic.valuation (j_expansion_c0 : ℚ_[29]) = 0 := by
+  rw [valuation_natCast_eq_padicValNat j_expansion_c0_ne_zero]
+  simp [padicValNat.eq_zero_of_not_dvd twenty_nine_not_dvd_j_c0]
+
+theorem padic_valuation_j_c1 :
+    Padic.valuation (j_expansion_c1 : ℚ_[29]) = 0 := by
+  rw [valuation_natCast_eq_padicValNat j_expansion_c1_ne_zero]
+  simp [padicValNat.eq_zero_of_not_dvd twenty_nine_not_dvd_j_c1]
+
+/-- Truncated modular expansion `q⁻¹ + 744 + 196884 q`.
+    Not a map from `EllipticCurve ℚ_[29]`, and not the Tate
+    parameter of the Frey curve. `q = 0` uses Lean’s `0⁻¹ = 0`. -/
+def Tate_q_series (q : ℚ_[29]) : ℚ_[29] :=
+  q⁻¹ + (j_expansion_c0 : ℚ_[29]) + (j_expansion_c1 : ℚ_[29]) * q
+
+/-- If `v(q)>0`, the `q⁻¹` term dominates, so
+    `v(j_trunc(q)) = −v(q)`. Full `O(q²)` is the same estimate. -/
+theorem valuation_Tate_q_series {q : ℚ_[29]} (hq : q ≠ 0)
+    (hpos : 0 < Padic.valuation q) :
+    Padic.valuation (Tate_q_series q) = - Padic.valuation q := by
+  have hc0 : (j_expansion_c0 : ℚ_[29]) ≠ 0 :=
+    Nat.cast_ne_zero.mpr j_expansion_c0_ne_zero
+  have hc1 : (j_expansion_c1 : ℚ_[29]) ≠ 0 :=
+    Nat.cast_ne_zero.mpr j_expansion_c1_ne_zero
+  have ha : q⁻¹ ≠ 0 := inv_ne_zero hq
+  have hva : Padic.valuation q⁻¹ = - Padic.valuation q :=
+    padic_valuation_inv hq
+  have hva_lt0 : Padic.valuation q⁻¹ < 0 := by
+    rw [hva]; linarith
+  have hvc : Padic.valuation ((j_expansion_c1 : ℚ_[29]) * q) =
+      Padic.valuation q := by
+    rw [Padic.valuation_map_mul hc1 hq, padic_valuation_j_c1, zero_add]
+  have hrest :
+      Padic.valuation
+          ((j_expansion_c0 : ℚ_[29]) + (j_expansion_c1 : ℚ_[29]) * q) = 0 := by
+    have hlt : Padic.valuation (j_expansion_c0 : ℚ_[29]) <
+        Padic.valuation ((j_expansion_c1 : ℚ_[29]) * q) := by
+      rw [padic_valuation_j_c0, hvc]
+      exact hpos
+    rw [padic_valuation_add_of_lt hc0 hlt, padic_valuation_j_c0]
+  have hdom :
+      Padic.valuation q⁻¹ <
+        Padic.valuation
+          ((j_expansion_c0 : ℚ_[29]) + (j_expansion_c1 : ℚ_[29]) * q) := by
+    rw [hrest]
+    exact hva_lt0
+  have hsum := padic_valuation_add_of_lt ha hdom
+  -- `Tate_q_series q = q⁻¹ + (c0 + c1 q)`
+  have hform : Tate_q_series q =
+      q⁻¹ + ((j_expansion_c0 : ℚ_[29]) + (j_expansion_c1 : ℚ_[29]) * q) := by
+    simp [Tate_q_series, add_assoc]
+  rw [hform, hsum, hva]
+
+/-- Leading inverse `j⁻¹`. First term of the inverted `j`-series,
+    not the Tate parameter. -/
+def Tate_q_lead (A B : ℕ) : ℚ_[29] :=
+  (frey_j A B : ℚ_[29])⁻¹
+
+theorem frey_j_ne_zero_of_29_nmid_AB {A B : ℕ}
+    (hApos : A ≠ 0) (hBpos : B ≠ 0)
+    (hA : ¬ 29 ∣ A) (hB : ¬ 29 ∣ B) :
+    frey_j A B ≠ 0 := by
+  unfold frey_j
+  refine div_ne_zero ?_ ?_
+  · exact pow_ne_zero 3 (Int.cast_ne_zero.mpr (frey_c4_ne_zero hA hB))
+  · exact Nat.cast_ne_zero.mpr (freyDiscNat_pos hApos hBpos).ne'
+
+theorem padic_valuation_frey_j {A B : ℕ}
+    (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13)
+    (hBpos : 1 ≤ B)
+    (hA : ¬ 29 ∣ A) (hB : ¬ 29 ∣ B) :
+    Padic.valuation (frey_j A B : ℚ_[29]) =
+      - (26 * (padicValNat 29 (B + 3) : ℤ)) := by
+  have hApos : A ≠ 0 := A_ne_zero_of_sol hBpos hsol
+  have hBne : B ≠ 0 := Nat.pos_iff_ne_zero.mp (Nat.succ_le_iff.mp hBpos)
+  have hj := frey_j_ne_zero_of_29_nmid_AB hApos hBne hA hB
+  rw [valuation_coe_rat hj, padicValRat_frey_j_eq hApos hBne hA hB,
+    v29_Delta_26k_thm hsol hBpos hA hB]
+  simp
+
+/-- `v(j⁻¹) = −v(j) = 26 v₂₉(C) = v(Δ)`. Leading-term identity,
+    not `q(E_Tate) = j⁻¹`. -/
+theorem valuation_Tate_q_lead {A B : ℕ}
+    (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13)
+    (hBpos : 1 ≤ B)
+    (hA : ¬ 29 ∣ A) (hB : ¬ 29 ∣ B) :
+    Padic.valuation (Tate_q_lead A B) =
+      26 * (padicValNat 29 (B + 3) : ℤ) := by
+  have hApos : A ≠ 0 := A_ne_zero_of_sol hBpos hsol
+  have hBne : B ≠ 0 := Nat.pos_iff_ne_zero.mp (Nat.succ_le_iff.mp hBpos)
+  have hj := frey_j_ne_zero_of_29_nmid_AB hApos hBne hA hB
+  have hjQp : (frey_j A B : ℚ_[29]) ≠ 0 := Rat.cast_ne_zero.mpr hj
+  rw [Tate_q_lead, padic_valuation_inv hjQp, padic_valuation_frey_j hsol hBpos hA hB]
+  ring
+
+theorem valuation_Tate_q_lead_eq_vDelta {A B : ℕ}
+    (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13)
+    (hBpos : 1 ≤ B)
+    (hA : ¬ 29 ∣ A) (hB : ¬ 29 ∣ B) :
+    Padic.valuation (Tate_q_lead A B) =
+      Padic.valuation (freyDisc_in_Qp29 A B) := by
+  rw [valuation_Tate_q_lead hsol hBpos hA hB,
+    padic_valuation_Delta_eq_26_vC hsol hBpos hA hB]
+
+theorem thirteen_dvd_valuation_Tate_q_lead {A B : ℕ}
+    (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13)
+    (hBpos : 1 ≤ B)
+    (hA : ¬ 29 ∣ A) (hB : ¬ 29 ∣ B) :
+    (13 : ℤ) ∣ Padic.valuation (Tate_q_lead A B) := by
+  rw [valuation_Tate_q_lead hsol hBpos hA hB]
+  exact dvd_mul_of_dvd_left (by decide : (13 : ℤ) ∣ 26) _
+
+/-- If the truncated series recovered Frey `j`, its `q` would
+    have valuation `26k`. Identifying that `q` with a Tate
+    parameter is `Tate_q`. -/
+theorem valuation_of_q_from_trunc {q : ℚ_[29]} {A B : ℕ}
+    (hq : q ≠ 0) (hpos : 0 < Padic.valuation q)
+    (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13)
+    (hBpos : 1 ≤ B)
+    (hA : ¬ 29 ∣ A) (hB : ¬ 29 ∣ B)
+    (heq : Tate_q_series q = (frey_j A B : ℚ_[29])) :
+    Padic.valuation q = 26 * (padicValNat 29 (B + 3) : ℤ) := by
+  have hv := valuation_Tate_q_series hq hpos
+  have hvj := padic_valuation_frey_j hsol hBpos hA hB
+  rw [heq] at hv
+  linarith
+
 /-! ## Tate uniformization stays `def Prop` (no Galois module) -/
 
 /-- Intended Mathlib object: Tate uniformisation
@@ -164,9 +382,10 @@ def Tate_uniformization : Prop :=
   tate_curve_at_29
 
 /-- Missing: a Tate parameter `q ∈ ℚ_[p]ˣ` attached to the
-    displayed Frey curve, not an arbitrary unit of the same
-    valuation. Uninhabited. Mathlib contribution target:
-    Tate uniformization over `ℚ_p` (Loeffler / Vonk direction). -/
+    displayed Frey curve by inverting the *full* modular
+    `j`-expansion. The leading term `j⁻¹` is `Tate_q_lead`
+    (valuation theorem). An arbitrary unit of valuation `v(Δ)`
+    is `exists_Qp_unit_val_eq_vDelta`. Uninhabited. -/
 def Tate_q : Prop :=
   Tate_uniformization
 
@@ -191,12 +410,20 @@ theorem LLL_nogo_persists_after_Tate_I29 :
 #check padic_valuation_Delta_eq_26_vC
 #check thirteen_dvd_padic_valuation_Delta
 #check exists_Qp_unit_val_eq_vDelta
+#check Tate_q_series
+#check valuation_Tate_q_series
+#check Tate_q_lead
+#check valuation_Tate_q_lead
+#check valuation_Tate_q_lead_eq_vDelta
+#check thirteen_dvd_valuation_Tate_q_lead
 #check Tate_q
 #check Tate_uniformization
 #check inertia_trivial_mod13_when_13_dvd_v
 #print axioms v29_c4_eq_0_thm
 #print axioms padic_valuation_Delta_eq_26_vC
 #print axioms exists_Qp_unit_val_eq_vDelta
+#print axioms valuation_Tate_q_series
+#print axioms valuation_Tate_q_lead
 #print axioms LLL_nogo_persists_after_Tate_I29
 
 end

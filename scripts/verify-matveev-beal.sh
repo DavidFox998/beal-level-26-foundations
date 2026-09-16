@@ -4405,7 +4405,9 @@ check_gap_file("Tate_I29_Inertia.lean",
      "inertia_trivial_mod13_when_13_dvd_v", "Tate_q"],
     ["v29_c4_eq_0_thm", "v29_Delta_26k_thm",
      "valuation_natCast_eq_padicValNat", "padic_valuation_Delta_eq_26_vC",
-     "exists_Qp_unit_val_eq_vDelta", "LLL_nogo_persists_after_Tate_I29"])
+     "exists_Qp_unit_val_eq_vDelta", "LLL_nogo_persists_after_Tate_I29",
+     "valuation_Tate_q_series", "valuation_Tate_q_lead",
+     "thirteen_dvd_valuation_Tate_q_lead"])
 check_gap_file("Ribet_Level32.lean",
     ["modular_Frey", "ribet_level_lowering_29_to_32"],
     ["LLL_nogo_persists_after_Ribet_Level32"])
@@ -4458,6 +4460,9 @@ if "49" not in arch:
     sys.exit(1)
 if "Padic.valuation" not in arch and "Tate_q" not in arch:
     print("ARCHIVE_4413.md must record the Qp / Padic.valuation Tate scaffold", file=sys.stderr)
+    sys.exit(1)
+if "744" not in arch or "196884" not in arch:
+    print("ARCHIVE_4413.md must record the truncated j(q)=q^{-1}+744+196884 q expansion", file=sys.stderr)
     sys.exit(1)
 
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
@@ -4822,5 +4827,6 @@ print("  genus2 is the LMFDB numeral; J0_26_rank0 / X0_26_Q_eq_known / Kenku sta
 print("  full2+13=>26-isogeny / X0(26) cusps-only / mazur via X0(26) stay def Prop; no kenku axiom")
 print("  v29(j)=-26k shows j not integral; Kenku emptiness is stronger than a CM j-list")
 print("  Tate_I29 Qp: Padic.valuation Delta = 26 v(C); exists Qp unit of that val (Delta itself)")
+print("  truncated j(q)=q^{-1}+744+196884 q; v(j^{-1})=26k=v(Delta); not the Tate parameter")
 print("  Tate_q / uniformization / inertia stay def Prop; no new axiom on BealTrueV25")
 PY

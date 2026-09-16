@@ -280,8 +280,9 @@ kill. Honest status on this branch:
 2. **Tate `I₂₉`.** Numerics `v₂₉(c₄)=0`, `v₂₉(Δ)=26k` are
    theorems. `Padic.valuation (Δ : ℚ_[29]) = 26 v₂₉(C)` is now
    a theorem; a unit of that valuation exists (`Δ` itself).
-   Uniformization `E(ℚ̄_p) ≅ ℚ̄_pˣ / q^ℤ` and
-   `inertia_trivial_mod13` stay `def Prop`. This is the only
+   Truncated `j(q)=q⁻¹+744+196884q` has `v=−v(q)` when `v(q)>0`;
+   Frey `v(j⁻¹)=26k=v(Δ)`. Uniformization `E(ℚ̄_p) ≅ ℚ̄_pˣ / q^ℤ`
+   and `inertia_trivial_mod13` stay `def Prop`. This is the only
    gap that does not need Wiles; it needs a Mathlib Tate-curve
    module (Loeffler / Vonk direction).
 3. **Ribet `928→32`.** Stays `def Prop`. Needs Wiles + BCDT
@@ -309,9 +310,13 @@ Root `Tate_I29_Inertia.lean` now inhabits Mathlib’s field
 - `13 ∣ Padic.valuation Δ`
 - `∃ q : (ℚ_[29])ˣ, v(q) = v(Δ)` — take `q = Δ`
 
-That last fact is **not** the Tate parameter. `Tate_q` /
-`Tate_uniformization` / `inertia_via_cyclo` stay `def Prop`.
-No new axiom.
+That last fact is **not** the Tate parameter. The truncated
+modular expansion `j(q)=q⁻¹+744+196884 q` now has
+`v(j(q))=−v(q)` whenever `v(q)>0`, and Frey `j⁻¹` has
+`v(j⁻¹)=26k=v(Δ)` (`Tate_q_lead`). Identifying `j⁻¹` with the
+Tate parameter of the displayed curve is still missing.
+`Tate_q` / `Tate_uniformization` / `inertia_via_cyclo` stay
+`def Prop`. No new axiom.
 
 ## What this tree does not claim
 
