@@ -174,4 +174,14 @@ witness `A=15, B=69` is bad at `23` (`23 ∣ 69`).
 `residue_1_6_eliminated_at_23` stays `def Prop`.
 `LLL_nogo_persists_after_L23` is the same `e5a95f5` equivalence.
 
+Root [`MazurIrreducibility13.lean`](../../MazurIrreducibility13.lean)
+inhabits the Mazur **input** `29 ∣ j.den` (and `j.den ≠ 1`) when
+`29 ∣ C` and `29 ∤ AB`, using displayed `c₄ = 16(A⁸+B⁸+A⁴B⁴)`
+and `v₂₉(Δ) ≥ 26`. Mazur irreducibility of `ρ_{E,13}`, Ribet
+inertia at `I₂₉`, and Serre open image versus CM of `32a1` stay
+`def Prop`. There is no new axiom on this target. The name
+`BealTrueV25.darmon_merel_4413_axiom` is not redefined here.
+`LLL_and_DarmonMerel_separate` is the same `e5a95f5`
+equivalence. See root [`ARCHIVE_4413.md`](../../ARCHIVE_4413.md).
+
 v25 is not minted.

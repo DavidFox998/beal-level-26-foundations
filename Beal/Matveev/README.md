@@ -97,6 +97,10 @@ Root `Ribet29C_Residue16_L23.lean` checks `l = 23` on the same
 class: `a₂₃(32a1)=0` (not `−6`), mixed CRT lifts, and
 `residue_1_6_eliminated_at_23` stays `def Prop`. Do **not** add
 `Beal/Matveev/Ribet29C_Residue16_L23.lean`.
+Root `MazurIrreducibility13.lean` inhabits `29 ∣ j.den` when
+`29 ∣ C` and `29 ∤ AB`. Mazur / Ribet / image stay `def Prop`.
+Do **not** add `Beal/Matveev/MazurIrreducibility13.lean`. See
+root `ARCHIVE_4413.md`.
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /

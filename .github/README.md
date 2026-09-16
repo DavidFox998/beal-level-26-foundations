@@ -35,7 +35,9 @@ requests to **`main`**, and on `workflow_dispatch`:
    `Ribet29C_Residue16` (`a₁₁=0` on `(1,6)` lifts; 7+11 sieve
    stays `def Prop`) plus
    `Ribet29C_Residue16_L23` (`a₂₃=0` not `−6`; `(1,6)` mixed at
-   `l=23`; `residue_1_6_eliminated_at_23` stays `def Prop`);
+   `l=23`; `residue_1_6_eliminated_at_23` stays `def Prop`) plus
+   `MazurIrreducibility13` (`29 ∣ j.den` on `29 ∣ C`; Mazur /
+   Ribet / image stay `def Prop`; no new axiom);
    full `B ≤ B0` stays `def Prop`
 5. `bash scripts/verify-matveev-beal.sh` — AMS / Math. Comp. referee
    surface: 0 `sorry`, `matveev_gap3_lower` is the B≤10^6 integer-gap

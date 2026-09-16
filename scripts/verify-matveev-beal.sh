@@ -135,6 +135,11 @@ test -f Ribet29C_Residue16_L23.lean
 if test -f Beal/Matveev/Ribet29C_Residue16_L23.lean; then
   fail "do not add Beal/Matveev/Ribet29C_Residue16_L23.lean; .submodules Beal.Matveev would pull it into default"
 fi
+test -f MazurIrreducibility13.lean
+if test -f Beal/Matveev/MazurIrreducibility13.lean; then
+  fail "do not add Beal/Matveev/MazurIrreducibility13.lean; .submodules Beal.Matveev would pull it into default"
+fi
+test -f ARCHIVE_4413.md
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -673,6 +678,9 @@ if ".one `Ribet29C_Residue16" not in lake:
 if ".one `Ribet29C_Residue16_L23" not in lake:
     print("lakefile.lean missing Ribet29C_Residue16_L23 glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
+if ".one `MazurIrreducibility13" not in lake:
+    print("lakefile.lean missing MazurIrreducibility13 glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
 if "BealMatveevBealV25B0Search" in default_globs.group(1):
     print("BealMatveevBealV25B0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
@@ -702,6 +710,9 @@ if "Ribet29C_Residue16" in default_globs.group(1):
     sys.exit(1)
 if "Ribet29C_Residue16_L23" in default_globs.group(1):
     print("Ribet29C_Residue16_L23 must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "MazurIrreducibility13" in default_globs.group(1):
+    print("MazurIrreducibility13 must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -4060,6 +4071,70 @@ if "theorem LLL_nogo_persists_after_L23" not in l23:
     print("LLL_nogo_persists_after_L23 missing", file=sys.stderr)
     sys.exit(1)
 
+mazur = pathlib.Path("MazurIrreducibility13.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in mazur or re.search(
+        r"^import Beal\.Matveev\.", mazur, re.M):
+    print("MazurIrreducibility13.lean must not import Beal.Matveev.*", file=sys.stderr)
+    sys.exit(1)
+if "import BealTrueV25" in mazur:
+    print("MazurIrreducibility13.lean must not import BealTrueV25", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", mazur, re.M) or ":= sorry" in mazur or "by sorry" in mazur:
+    print("sorry is not allowed in MazurIrreducibility13.lean", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in mazur:
+    print("True := trivial is not allowed in MazurIrreducibility13.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^axiom ", mazur, re.M):
+    print("do not add axioms in MazurIrreducibility13.lean; reuse BealTrueV25.darmon_merel_4413_axiom",
+          file=sys.stderr)
+    sys.exit(1)
+if "axiom mazur_13_irreducible" in mazur or "axiom darmon_merel_4413_axiom" in mazur:
+    print("do not add mazur_13_irreducible_axiom or redefine darmon_merel_4413_axiom",
+          file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^def frey_c4\b", mazur, re.M):
+    print("do not redefine frey_c4; reuse DarmonMerelFrey4413.frey_c4",
+          file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^def darmon_merel_4413_axiom\b", mazur, re.M):
+    print("do not redefine darmon_merel_4413_axiom; that name is BealTrueV25 only",
+          file=sys.stderr)
+    sys.exit(1)
+if "def rho_Frey_mod13_irreducible" not in mazur:
+    print("rho_Frey_mod13_irreducible must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem rho_Frey_mod13_irreducible\b", mazur, re.M):
+    print("do not inhabit rho_Frey_mod13_irreducible; Mazur is not in Mathlib 4.12",
+          file=sys.stderr)
+    sys.exit(1)
+if "def mazur_and_ribet_hyp" not in mazur:
+    print("mazur_and_ribet_hyp must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def no_sol_ge_B0_of_darmon_merel_4413" not in mazur:
+    print("no_sol_ge_B0_of_darmon_merel_4413 must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem no_sol_ge_B0_of_darmon_merel_4413\b", mazur, re.M):
+    print("do not inhabit no_sol_ge_B0_of_darmon_merel_4413; needs I_29 + Serre image",
+          file=sys.stderr)
+    sys.exit(1)
+if "theorem twenty_nine_dvd_frey_j_den" not in mazur:
+    print("twenty_nine_dvd_frey_j_den missing from MazurIrreducibility13.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem frey_j_not_int_of_29_dvd_C" not in mazur:
+    print("frey_j_not_int_of_29_dvd_C missing from MazurIrreducibility13.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem LLL_and_DarmonMerel_separate" not in mazur:
+    print("LLL_and_DarmonMerel_separate missing; e5a95f5 iff must persist", file=sys.stderr)
+    sys.exit(1)
+arch = pathlib.Path("ARCHIVE_4413.md").read_text(encoding="utf-8")
+if "e5a95f5" not in arch or "953a174" not in arch:
+    print("ARCHIVE_4413.md must record e5a95f5 LLL iff and 953a174 barrier", file=sys.stderr)
+    sys.exit(1)
+if "(1,6)" not in arch:
+    print("ARCHIVE_4413.md must explain (1,6) slice vs whole class", file=sys.stderr)
+    sys.exit(1)
+
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
     print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
@@ -4401,4 +4476,7 @@ print("  LLL_nogo_persists_after_Residue16 is the e5a95f5 iff; no new axiom")
 print("  Ribet29C_Residue16_L23: 32a1 a23=0 not -6; (1,6) CRT lifts include a23=0 and a23=8")
 print("  witness 15,69 is 23|B (bad red); residue_1_6_eliminated_at_23 stays def Prop")
 print("  LLL_nogo_persists_after_L23 is the e5a95f5 iff; no new axiom")
+print("  MazurIrreducibility13: 29|C and 29nmid AB => 29|j.den; Mazur/Ribet/image stay def Prop")
+print("  no new axiom; darmon_merel_4413_axiom stays on BealTrueV25 only; ARCHIVE_4413.md")
+print("  LLL_and_DarmonMerel_separate is the e5a95f5 iff; C-scaling not replaced")
 PY
