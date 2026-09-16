@@ -24,7 +24,10 @@ requests to **`main`**, and on `workflow_dispatch`:
    `LLLTargetB8_C1_lower_bound` (`C1'≤8` impossible on a solution;
    `LLL_cannot_reach_B8` stays `def Prop`) plus
    `DarmonMerelFrey4413` (displayed Frey `(4,4,13)`;
-   `level_32_no_newform` stays `def Prop`);
+   `level_32_no_newform` stays `def Prop`) plus
+   `Level32Table` (LMFDB `32a1` q-exp by `𝔽_p` counts;
+   `l=3,5` match, `p=29` mismatches good reduction;
+   `level_32_no_newform_for_Frey_gap3` stays `def Prop`);
    full `B ≤ B0` stays `def Prop`
 5. `bash scripts/verify-matveev-beal.sh` — AMS / Math. Comp. referee
    surface: 0 `sorry`, `matveev_gap3_lower` is the B≤10^6 integer-gap

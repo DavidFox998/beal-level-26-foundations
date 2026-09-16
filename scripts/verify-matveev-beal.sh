@@ -115,6 +115,10 @@ test -f DarmonMerelFrey4413.lean
 if test -f Beal/Matveev/DarmonMerelFrey4413.lean; then
   fail "do not add Beal/Matveev/DarmonMerelFrey4413.lean; .submodules Beal.Matveev would pull it into default"
 fi
+test -f Level32Table.lean
+if test -f Beal/Matveev/Level32Table.lean; then
+  fail "do not add Beal/Matveev/Level32Table.lean; .submodules Beal.Matveev would pull it into default"
+fi
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -638,6 +642,9 @@ if ".one `LLLTargetB8_C1_lower_bound" not in lake:
 if ".one `DarmonMerelFrey4413" not in lake:
     print("lakefile.lean missing DarmonMerelFrey4413 glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
+if ".one `Level32Table" not in lake:
+    print("lakefile.lean missing Level32Table glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
 if "BealMatveevBealV25B0Search" in default_globs.group(1):
     print("BealMatveevBealV25B0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
@@ -652,6 +659,9 @@ if "LLLTargetB8_C1_lower_bound" in default_globs.group(1):
     sys.exit(1)
 if "DarmonMerelFrey4413" in default_globs.group(1):
     print("DarmonMerelFrey4413 must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Level32Table" in default_globs.group(1):
+    print("Level32Table must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -3770,6 +3780,50 @@ if "gcd" in frey and "placeholder" in frey:
     print("do not use gcd placeholder for rad(ABC)", file=sys.stderr)
     sys.exit(1)
 
+l32 = pathlib.Path("Level32Table.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in l32 or re.search(
+        r"^import Beal\.Matveev\.", l32, re.M):
+    print("Level32Table.lean must not import Beal.Matveev.*", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", l32, re.M) or ":= sorry" in l32 or "by sorry" in l32:
+    print("sorry is not allowed in Level32Table.lean", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in l32:
+    print("True := trivial is not allowed in Level32Table.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^axiom ", l32, re.M):
+    print("do not add axioms in Level32Table.lean; reuse BealTrueV25.darmon_merel_4413_axiom",
+          file=sys.stderr)
+    sys.exit(1)
+if "| _ => 0" in l32 or "_ => 0 -- placeholder" in l32:
+    print("do not use placeholder 0 traces for missing a_p; use Option", file=sys.stderr)
+    sys.exit(1)
+if "def frey_trace_mod_13" in l32 and "= 0 -- placeholder" in l32:
+    print("do not stub Frey traces as 0", file=sys.stderr)
+    sys.exit(1)
+if "theorem curve32a1_ap_5" not in l32 or "theorem curve32a1_ap_3" not in l32:
+    print("curve32a1_ap point-count certs missing from Level32Table.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem frey_a3_match_32a1" not in l32 or "theorem frey_a5_match_32a1" not in l32:
+    print("l=3,5 match theorems missing; those primes do not eliminate 32a1", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_match_32a1_of_good_red_29" not in l32:
+    print("p=29 good-reduction mismatch missing from Level32Table.lean", file=sys.stderr)
+    sys.exit(1)
+if "def level_32_no_newform_for_Frey_gap3" not in l32:
+    print("level_32_no_newform_for_Frey_gap3 must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem level_32_no_newform_for_Frey_gap3\b", l32, re.M):
+    print("do not inhabit level_32_no_newform_for_Frey_gap3; l=3,5 match and 29|ABC survives",
+          file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem level_32_no_newform\b", l32, re.M):
+    print("do not inhabit level_32_no_newform via dim=1 string list", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_sol_ge_B0_of_level_32_table" not in l32:
+    print("no_sol_ge_B0_of_level_32_table missing", file=sys.stderr)
+    sys.exit(1)
+
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
     print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
@@ -4097,4 +4151,6 @@ print("  LLLTargetB8_C1_lower_bound: C1'<=8 impossible on a solution via 2/B^9 <
 print("  LLL_reduces_C1_to_lt_nine iff no B>=B0 solution; LLL_cannot_reach_B8 stays def Prop")
 print("  DarmonMerelFrey4413: Frey y^2=x(x-A^4)(x+B^4) Delta=16 A^8 B^8 (A^4+B^4)^2")
 print("  13|26 C lowers, 13∤8 A need not; level_32_no_newform/ribet stay def Prop; no new axiom")
+print("  Level32Table: LMFDB 32a1 q-exp via F_p counts; a3=a5 match; p=29 mismatches good red")
+print("  level_32_no_newform_for_Frey_gap3 stays def Prop; dim=1 is LMFDB data not Kraus empty")
 PY

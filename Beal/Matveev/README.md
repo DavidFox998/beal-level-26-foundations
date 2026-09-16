@@ -77,6 +77,10 @@ Root `DarmonMerelFrey4413.lean` is the displayed Frey curve
 for gap-3 signature `(4,4,13)`; Ribet-to-32 and
 `level_32_no_newform` stay `def Prop`. Do **not** add
 `Beal/Matveev/DarmonMerelFrey4413.lean`.
+Root `Level32Table.lean` records LMFDB `32a1` (`a₃=0`, `a₅=−2`,
+`a₂₉=−10`) by `𝔽_p` point counts; `l=3,5` match so they do not
+eliminate, and `level_32_no_newform_for_Frey_gap3` stays
+`def Prop`. Do **not** add `Beal/Matveev/Level32Table.lean`.
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /

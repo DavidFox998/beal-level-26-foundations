@@ -112,4 +112,19 @@ need not. Ribet-to-32, Mazur irreducibility, and
 axiom remains `BealTrueV25.darmon_merel_4413_axiom` on the
 default target.
 
+Root [`Level32Table.lean`](../../Level32Table.lean) records
+LMFDB `32a1` (`y² = x³ + 4x`, conductor 32) by counting points
+over `𝔽_p`: `a₃=0`, `a₅=−2`, `a₇=0`, `a₁₃=6`, `a₂₉=−10`.
+Frey traces at good reduction match `32a1` at `l=3,5` (those
+primes do not eliminate). At `l=7` some residues match and some
+do not. At `l=29` every good-reduction on-solution residue
+mismatches `a₂₉=−10`, so a solution with `29 ∤ ABC` cannot
+arise from `32a1`. Solutions with `29 ∣ ABC` survive.
+`level_32_no_newform` / `level_32_no_newform_for_Frey_gap3`
+stay `def Prop` (dim-1 + `{32a1}` is not Kraus elimination).
+The implication `no_sol_ge_B0_of_level_32_table` does not
+inhabit Ribet or the empty table. That is the `e5a95f5` LLL
+nogo: `LLL_reduces_C1_to_lt_nine` is equivalent to no
+`B ≥ B0` solution.
+
 v25 is not minted.
