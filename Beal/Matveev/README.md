@@ -81,6 +81,10 @@ Root `Level32Table.lean` records LMFDB `32a1` (`a₃=0`, `a₅=−2`,
 `a₂₉=−10`) by `𝔽_p` point counts; `l=3,5` match so they do not
 eliminate, and `level_32_no_newform_for_Frey_gap3` stays
 `def Prop`. Do **not** add `Beal/Matveev/Level32Table.lean`.
+Root `Level928Table.lean` splits `29 ∣ ABC`: at most one of `A,B,C`;
+`13 ∣ v₂₉(Δ)` when `29 ∣ C`; displayed extra factor `928` when
+`29 ∣ AB`. `level_928_no_match_bad_29` stays `def Prop` (no
+77-row table). Do **not** add `Beal/Matveev/Level928Table.lean`.
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /

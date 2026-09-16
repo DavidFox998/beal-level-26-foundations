@@ -127,4 +127,15 @@ inhabit Ribet or the empty table. That is the `e5a95f5` LLL
 nogo: `LLL_reduces_C1_to_lt_nine` is equivalent to no
 `B ≥ B0` solution.
 
+Root [`Level928Table.lean`](../../Level928Table.lean) handles
+the `29 ∣ ABC` cases that survive `9a9caa0`. On a solution
+`29` divides at most one of `A`, `B`, `C`. If `29 ∣ C` then
+`v₂₉(Δ) = 26 v₂₉(C)` so `13 ∣ v₂₉(Δ)` (lowering candidate).
+If `29 ∣ A` then `v₂₉(Δ) = 8 v₂₉(A)` and `13 ∤ 8`. Displayed
+extra factor `32 · 29 = 928` when `29 ∣ AB` (not Néron).
+LMFDB `dim S₂(Γ₀(928)) = 77` is data; `level_928_no_match_bad_29`
+stays `def Prop`. `no_sol_ge_B0_of_32_and_928` does not inhabit
+the 928 table. `LLL_still_nogo_after_29` is the same `e5a95f5`
+equivalence.
+
 v25 is not minted.

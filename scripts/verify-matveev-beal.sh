@@ -119,6 +119,10 @@ test -f Level32Table.lean
 if test -f Beal/Matveev/Level32Table.lean; then
   fail "do not add Beal/Matveev/Level32Table.lean; .submodules Beal.Matveev would pull it into default"
 fi
+test -f Level928Table.lean
+if test -f Beal/Matveev/Level928Table.lean; then
+  fail "do not add Beal/Matveev/Level928Table.lean; .submodules Beal.Matveev would pull it into default"
+fi
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -645,6 +649,9 @@ if ".one `DarmonMerelFrey4413" not in lake:
 if ".one `Level32Table" not in lake:
     print("lakefile.lean missing Level32Table glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
+if ".one `Level928Table" not in lake:
+    print("lakefile.lean missing Level928Table glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
 if "BealMatveevBealV25B0Search" in default_globs.group(1):
     print("BealMatveevBealV25B0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
@@ -662,6 +669,9 @@ if "DarmonMerelFrey4413" in default_globs.group(1):
     sys.exit(1)
 if "Level32Table" in default_globs.group(1):
     print("Level32Table must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Level928Table" in default_globs.group(1):
+    print("Level928Table must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -3824,6 +3834,47 @@ if "theorem no_sol_ge_B0_of_level_32_table" not in l32:
     print("no_sol_ge_B0_of_level_32_table missing", file=sys.stderr)
     sys.exit(1)
 
+l928 = pathlib.Path("Level928Table.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in l928 or re.search(
+        r"^import Beal\.Matveev\.", l928, re.M):
+    print("Level928Table.lean must not import Beal.Matveev.*", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", l928, re.M) or ":= sorry" in l928 or "by sorry" in l928:
+    print("sorry is not allowed in Level928Table.lean", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in l928:
+    print("True := trivial is not allowed in Level928Table.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^axiom ", l928, re.M):
+    print("do not add axioms in Level928Table.lean; reuse BealTrueV25.darmon_merel_4413_axiom",
+          file=sys.stderr)
+    sys.exit(1)
+if "frey_a3_bad_29" in l928 and "= 0" in l928:
+    print("do not stub Frey traces as 0 via Tate placeholder", file=sys.stderr)
+    sys.exit(1)
+if '["928a1", "928b1", "928c1"]' in l928:
+    print("do not ship a 3-name truncation as the 77 newforms", file=sys.stderr)
+    sys.exit(1)
+if "theorem v29_valuation_gap3" not in l928:
+    print("v29_valuation_gap3 missing from Level928Table.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem thirteen_dvd_v29_Delta_of_only_C" not in l928:
+    print("thirteen_dvd_v29_Delta_of_only_C missing", file=sys.stderr)
+    sys.exit(1)
+if "def level_928_no_match_bad_29" not in l928:
+    print("level_928_no_match_bad_29 must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem level_928_no_match_bad_29\b", l928, re.M):
+    print("do not inhabit level_928_no_match_bad_29; no 77-row table",
+          file=sys.stderr)
+    sys.exit(1)
+if "theorem no_sol_ge_B0_of_32_and_928" not in l928:
+    print("no_sol_ge_B0_of_32_and_928 missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem LLL_still_nogo_after_29" not in l928:
+    print("LLL_still_nogo_after_29 missing", file=sys.stderr)
+    sys.exit(1)
+
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
     print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
@@ -4153,4 +4204,6 @@ print("  DarmonMerelFrey4413: Frey y^2=x(x-A^4)(x+B^4) Delta=16 A^8 B^8 (A^4+B^4
 print("  13|26 C lowers, 13∤8 A need not; level_32_no_newform/ribet stay def Prop; no new axiom")
 print("  Level32Table: LMFDB 32a1 q-exp via F_p counts; a3=a5 match; p=29 mismatches good red")
 print("  level_32_no_newform_for_Frey_gap3 stays def Prop; dim=1 is LMFDB data not Kraus empty")
+print("  Level928Table: 29 divides at most one of A,B,C; 13|v29(Delta) on 29|C; 928 if 29|AB")
+print("  level_928_no_match_bad_29 stays def Prop; dim=77 is LMFDB data not a 3-name table")
 PY

@@ -47,7 +47,10 @@ lean_lib «BealMatveevBealV25Rank3» where
     stays     `def Prop`. `DarmonMerelFrey4413` is the displayed
     Frey curve for signature `(4,4,13)`; level-32 table stays
     `def Prop`. `Level32Table` is LMFDB `32a1` q-exp by
-    `𝔽_p` point counts; `level_32_no_newform` stays `def Prop`. -/
+    `𝔽_p` point counts; `level_32_no_newform` stays `def Prop`.
+    `Level928Table` is the `29 ∣ ABC` split and displayed residual
+    `928`; the 77-row table stays `def Prop`. -/
 lean_lib «BealMatveevBealV25B0Search» where
   globs := #[.one `BealMatveevBealV25B0Search, .one `LLLTargetB8, .one `Gap3B0Million,
-    .one `LLLTargetB8_C1_lower_bound, .one `DarmonMerelFrey4413, .one `Level32Table]
+    .one `LLLTargetB8_C1_lower_bound, .one `DarmonMerelFrey4413, .one `Level32Table,
+    .one `Level928Table]
