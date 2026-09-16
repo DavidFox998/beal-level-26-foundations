@@ -3312,15 +3312,29 @@ if "def LLL_reduces_bound_to_B0" not in rank3:
 if "def hGen" not in rank3 or "def hLLL" not in rank3:
     print("hGen/hLLL must stay def Prop in BealMatveevBealV25Rank3.lean", file=sys.stderr)
     sys.exit(1)
-if re.search(r"^theorem LLL_reduces_bound_to_B0\b", rank3, re.M):
-    print("do not inhabit LLL_reduces_bound_to_B0", file=sys.stderr)
+if re.search(r"^theorem LLL_reduces_bound_to_B0_v25\b", rank3, re.M):
+    print("do not inhabit LLL_reduces_bound_to_B0_v25; keep def Prop", file=sys.stderr)
     sys.exit(1)
-if re.search(r"^theorem hGen\b", rank3, re.M):
-    print("do not inhabit hGen; keep def Prop", file=sys.stderr)
+if re.search(r"^theorem lll_B0_div_C_lower_bound\b", rank3, re.M):
+    print("do not inhabit lll_B0_div_C_lower_bound; it contradicts |Lambda|<1/B", file=sys.stderr)
     sys.exit(1)
-if re.search(r"^theorem hLLL\b", rank3, re.M):
-    print("do not inhabit hLLL; keep def Prop", file=sys.stderr)
+if "def C_LLL_v25" not in rank3:
+    print("C_LLL_v25 missing from BealMatveevBealV25Rank3.lean", file=sys.stderr)
     sys.exit(1)
+if "theorem B0_div_C_gt_inv_B" not in rank3:
+    print("B0_div_C_gt_inv_B missing from BealMatveevBealV25Rank3.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem lll_B0_div_C_lower_bound_fails" not in rank3:
+    print("lll_B0_div_C_lower_bound_fails missing from BealMatveevBealV25Rank3.lean", file=sys.stderr)
+    sys.exit(1)
+if "def LLL_reduces_bound_to_B0_v25" not in rank3:
+    print("LLL_reduces_bound_to_B0_v25 must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if "C_LLL_v25 ≠ C1_floor * C1_floor" not in rank3 and "C_LLL_v25_ne_C1_sq" not in rank3:
+    print("C_LLL_v25 must not be C1^2", file=sys.stderr)
+    sys.exit(1)
+
+interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "theorem gap3_B_lt_A_of_sol" not in rank3:
     print("gap3_B_lt_A_of_sol missing from BealMatveevBealV25Rank3.lean", file=sys.stderr)
     sys.exit(1)
@@ -3335,6 +3349,15 @@ if "theorem future_unconditional_shape" not in rank3:
     sys.exit(1)
 if "theorem rank3_shape_nogo" not in rank3:
     print("rank3_shape_nogo missing from BealMatveevBealV25Rank3.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem abs_Lambda_lt_B0_div_C" not in rank3:
+    print("abs_Lambda_lt_B0_div_C missing from BealMatveevBealV25Rank3.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem lll_B0_div_C_shape_nogo" not in rank3:
+    print("lll_B0_div_C_shape_nogo missing from BealMatveevBealV25Rank3.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem lll_svt_bound_of_rank3" not in rank3:
+    print("lll_svt_bound_of_rank3 missing from BealMatveevBealV25Rank3.lean", file=sys.stderr)
     sys.exit(1)
 if "143186215390" not in rank3:
     print("C1_floor = 143186215390 missing from BealMatveevBealV25Rank3.lean", file=sys.stderr)
@@ -3514,8 +3537,8 @@ if "beal-conjecture stays beal-conjecture" not in readme:
 
 cff = pathlib.Path("CITATION.cff").read_text(encoding="utf-8")
 needles = [
-    'title: "Matveev-Beal Level 26: Rank-3 Bugeaud-Laurent shape nogo"',
-    'version: "v24-v24x-final-rank3-shape-nogo"',
+    'title: "Matveev-Beal Level 26: Rank-3 B0/C cutoff nogo"',
+    'version: "v24-v24x-final-rank3-b0-div-c-nogo"',
     'doi: "10.5281/zenodo.22379293"',
     'repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"',
     "C1_floor=143186215390",
@@ -3660,6 +3683,7 @@ print("  PAdicLLL_ZeroAxiom: Nat.sqrt C1 < B0; displayed kernel in box without a
 print("  LLL_reduces_bound_to_B0_zero_axiom stays def Prop; not a minted v25 tag")
 print("  BealMatveevBealV25Rank3: separate Lake target; not in default BealMatveevBeal globs")
 print("  wraps gap3_B_lt_A_of_sol, |Lambda|<1/B, rank-3 ||v||<32; LLL_reduces_bound_to_B0 stays def Prop")
+print("  C_LLL_v25=C1_floor not C1^2; B0/C>1/B is true; |Lambda|>=B0/C fails on a solution")
 print("  does not claim Euclidean >= B0; does not import MatveevThm14General; v25 not minted")
 print("  matveev_gap3_lower stays the integer-gap B<=B0 close; not a minted v25 tag")
 print("  not a minted v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations tag")

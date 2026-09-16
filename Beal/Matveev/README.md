@@ -45,9 +45,10 @@ tree. Theorems live in the matching **root** modules:
 
 Do **not** add `Beal/Matveev/BealMatveevBealV25Rank3.lean`:
 `.submodules Beal.Matveev` would pull it into the default
-`BealMatveevBeal` glob. Rank-3 shape wrappers live only in the
+`BealMatveevBeal` glob. Rank-3 B0/C cutoff wrappers live only in the
 root module `BealMatveevBealV25Rank3.lean`
-(`lake build BealMatveevBealV25Rank3`).
+(`lake build BealMatveevBealV25Rank3`). `C_LLL_v25 = C1_floor`;
+`B0/C > 1/B` is true; `|Λ| ≥ B0/C` fails on a solution.
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /

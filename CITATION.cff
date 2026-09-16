@@ -3,17 +3,18 @@ message: >-
   This repo is foundations-level-26, the Matveev–Beal complement.
   Monorepo beal-conjecture stays beal-conjecture. Cite under concept DOI
   10.5281/zenodo.22379293. Current tag is
-  v24-v24x-final-rank3-shape-nogo (Rank-3 Bugeaud–Laurent shape nogo).
+  v24-v24x-final-rank3-b0-div-c-nogo (Rank-3 B0/C cutoff nogo).
+  Prior tag v24-v24x-final-rank3-shape-nogo stays at c1d173e.
   The named tag
   v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations is not
   minted until hGen and hLLL are 0-sorry. Slug remains
   beal-level-26-foundations. C1_floor=143186215390. B0_nat=1000000.
-title: "Matveev-Beal Level 26: Rank-3 Bugeaud-Laurent shape nogo"
+title: "Matveev-Beal Level 26: Rank-3 B0/C cutoff nogo"
 type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v24-v24x-final-rank3-shape-nogo"
+version: "v24-v24x-final-rank3-b0-div-c-nogo"
 date-released: "2026-09-16"
 doi: "10.5281/zenodo.22379293"
 identifiers:
@@ -30,8 +31,8 @@ preferred-citation:
   authors:
     - family-names: Fox
       given-names: David
-  title: "Matveev-Beal Level 26: Rank-3 Bugeaud-Laurent shape nogo"
-  version: "v24-v24x-final-rank3-shape-nogo"
+  title: "Matveev-Beal Level 26: Rank-3 B0/C cutoff nogo"
+  version: "v24-v24x-final-rank3-b0-div-c-nogo"
   year: 2026
   doi: "10.5281/zenodo.22379293"
   url: "https://doi.org/10.5281/zenodo.22379293"
@@ -42,12 +43,17 @@ preferred-citation:
     beal-level-26-foundations. Monorepo beal-conjecture stays
     beal-conjecture (f7bbdc5 / e823a52 0-sorry wiring).
     C1_floor=143186215390. B0_nat=1000000. Current tag
-    v24-v24x-final-rank3-shape-nogo is a Rank-3 Bugeaud–Laurent
-    *shape* nogo (separate Lake target BealMatveevBealV25Rank3):
-    v = 4 b1 − 13 b2 has ‖v‖ < 32; gap3_B_lt_A_of_sol and
-    |Lambda| < 1/B are theorems; future_unconditional_shape is the
-    by_cases implication; LLL_reduces_bound_to_B0 / hGen / hLLL
-    stay def Prop. Does not claim Euclidean ≥ B0 or
+    v24-v24x-final-rank3-b0-div-c-nogo is a Rank-3 B0/C cutoff
+    nogo (separate Lake target BealMatveevBealV25Rank3):
+    C_LLL_v25=C1_floor not C1^2; B0/C>1/B is true;
+    |Lambda|>=B0/C fails on a solution (abs_Lambda<1/B);
+    lambda1<32<B0 so a vector of scale C|Lambda|<B0 is long
+    versus lambda1. Prior tag v24-v24x-final-rank3-shape-nogo
+    stays at c1d173e. v = 4 b1 − 13 b2 has ‖v‖ < 32;
+    gap3_B_lt_A_of_sol and |Lambda| < 1/B are theorems;
+    future_unconditional_shape is the by_cases implication;
+    LLL_reduces_bound_to_B0 / LLL_reduces_bound_to_B0_v25 /
+    hGen / hLLL stay def Prop. Does not claim Euclidean ≥ B0 or
     |u α + v| > exp(−B0). Does not mint
     v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations.
     Prior v24.4.0 version DOI 10.5281/zenodo.22732209 on db7a556.
@@ -154,9 +160,11 @@ preferred-citation:
     u*a+v*C1 always has kernel (C1,-a) in the claimed box;
     Nat.sqrt C1 < B0; LLL_reduces_bound_to_B0_zero_axiom stays
     def Prop). BealMatveevBealV25Rank3 is a separate Lake target
-    wrapping rank-3 ||v||<32 and |Lambda|<1/B; not in the default
-    BealMatveevBeal glob; LLL_reduces_bound_to_B0 / hGen / hLLL
-    stay def Prop; does not import MatveevThm14General. That does not
+    wrapping rank-3 ||v||<32 and |Lambda|<1/B; C_LLL_v25=C1_floor;
+    B0/C>1/B true; |Lambda|>=B0/C fails on a solution; not in the
+    default BealMatveevBeal glob; LLL_reduces_bound_to_B0 /
+    LLL_reduces_bound_to_B0_v25 / hGen / hLLL stay def Prop; does
+    not import MatveevThm14General. That does not
     mint this version tag. Unrestricted
     matveev_inequality_real_target and hLLL stay def Prop.
     Not a minted v25 tag. Prior v24.4.0 version

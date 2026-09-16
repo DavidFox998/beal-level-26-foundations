@@ -14,8 +14,8 @@ requests to **`main`**, and on `workflow_dispatch`:
 
 1. `lake exe cache get`
 2. `lake build BealMatveevBeal` — default target; 0 `sorry`
-3. `lake build BealMatveevBealV25Rank3` — separate Rank-3 shape
-   target; not in the default glob
+3. `lake build BealMatveevBealV25Rank3` — separate Rank-3 B0/C
+   cutoff nogo target; not in the default glob
 4. `bash scripts/verify-matveev-beal.sh` — AMS / Math. Comp. referee
    surface: 0 `sorry`, `matveev_gap3_lower` is the B≤10^6 integer-gap
    close, `C1_floor=143186215390`, `B0_nat=1000000`, `gap3_A_bounds` and

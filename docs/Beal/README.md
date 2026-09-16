@@ -42,7 +42,7 @@ Current Matveev–Beal track:
 - [`BugeaudLaurent.md`](BugeaudLaurent.md) — Mathlib 4.12 p-adic / modular gap (`v24-v24x-final-bugeaud-laurent-nogo`); 2-adic valuation compatible on odd `k`; no Iwasawa `log_p` / Bugeaud–Laurent 1996 / p-adic LLL; v25 not minted
 - [`PAdicLLL.md`](PAdicLLL.md) — `PadicInt` alias; `¬ A ≤ B+10` on gap solutions with `B≥2`; floor lattice `b1=(1,0)` has length `1 < B0`; unbounded `|uα+v|>exp(−B0)` fails by Dirichlet; `p_adic_LLL_reduction` / `LLL_reduces_bound_to_B0` / `LLL_reduces_bound_to_B0_theorem` stay `def Prop`; v25 not minted
 - [`PAdicLLL_ZeroAxiom.md`](PAdicLLL_ZeroAxiom.md) — Nat/Int form always has kernel `(C1,-a)`; `Nat.sqrt C1 < B0`; `LLL_reduces_bound_to_B0_zero_axiom` stays `def Prop`; v25 not minted
-- [`BealMatveevBealV25Rank3.md`](BealMatveevBealV25Rank3.md) — separate Lake target wrapping rank-3 `‖v‖<32` and `|Λ|<1/B` (`v24-v24x-final-rank3-shape-nogo`); not in default `BealMatveevBeal` globs; no `MatveevThm14General` import; `LLL_reduces_bound_to_B0` / `hGen` / `hLLL` stay `def Prop`; v25 not minted
+- [`BealMatveevBealV25Rank3.md`](BealMatveevBealV25Rank3.md) — separate Lake target wrapping rank-3 `‖v‖<32` and `|Λ|<1/B`; `C_LLL_v25=C1_floor`; `B0/C>1/B` is true and `|Λ|≥B0/C` fails on a solution (`v24-v24x-final-rank3-b0-div-c-nogo`; prior tag `v24-v24x-final-rank3-shape-nogo` stays at `c1d173e`); not in default `BealMatveevBeal` globs; no `MatveevThm14General` import; `LLL_reduces_bound_to_B0` / `hGen` / `hLLL` stay `def Prop`; v25 not minted
 - [`BealBakerBoundGap3.md`](BealBakerBoundGap3.md) — kernel `baker_bound_gap3` stays a `def Prop`; Mathlib-only close remains open
 
 Older Frey / Zsigmondy / modular-elimination notes in this
