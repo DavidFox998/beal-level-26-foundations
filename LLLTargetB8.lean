@@ -30,18 +30,26 @@ axiom in `BealTrueV25`, not the default glob). This file does
 `LLL_reduces_bound_to_B0_v25`, and does **not** mint
 `v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations`.
 
-Two lattices:
+Three lattices:
 
 * Old nogo `L`: `b1 = (1,0)`, `b2 = (⌊C log(B+3)⌋, 1)`, `λ₁ = 1`.
   No nonzero integer vector has Euclidean length `< 1`.
-* New `L'`: `b1' = (C, ⌊C log(B+3)⌋)`, `b2' = (0, C)`, `C = 10⁴⁸`,
+* `L'`: `b1' = (C, ⌊C log(B+3)⌋)`, `b2' = (0, C)`, `C = 10⁴⁸`,
   `det = C²`, `λ₁ = C`. First coordinates are multiples of `C`,
   so `(1,0)` is not in `L'`. `C·(2/B⁹) < C/2` is true arithmetic.
-  `C/B⁸ ≥ 1` holds at `B = B0` and for `B ≤ B0`; it is **false**
-  for `B > B0` (`C/B⁸` decreases in `B`). `v_short' = (4 kA − 13 kB, 0)`
-  has first coordinate `≈ C·Λ` of absolute value `< C` on a small
-  `|Λ|`, hence lies in `L'` only if it is `0`. No nonzero `v ∈ L'`
-  has length `< C/2`. The `|Λ| ≥ B⁻⁸` target stays `def Prop`.
+  `v_short'` lies in `L'` on small `|Λ|` only if it is `0`.
+* 3-dim Bugeaud–Laurent `L3` (`ℤ×ℤ×ℤ`, not `Fin 3 → ℤ`):
+  `b1_3 = (1,0,0)`, `b2_3 = (0,1,0)`,
+  `b3_3 = (⌊C₃ log(B+3)⌋, ⌊C₃ log A⌋, C₃)` with `C₃ = 10³⁰`,
+  `det = C₃`. Minkowski’s *upper* bound is `λ₁ ≲ C₃^{1/3} = 10¹⁰`.
+  The lattice contains `(1,0,0)`, so `λ₁ = 1`, not `10`. The paste
+  `‖4·b3_3 − 13·b1_3‖ ≈ C₃·|Λ|` is false: that combo has third
+  coordinate `4 C₃` and length `≥ 4 C₃`. The real LLL gap is
+  exponent reduction: Matveev `C1 = 143186215390`; a typical
+  Bugeaud–Laurent `C1'` is `30`–`50`, still `> 8`. Need `C1' ≤ 8`
+  (i.e. `< 9`) to get `|Λ| ≥ B⁻⁸`. `C1' ≥ 9` does not beat
+  `|Λ| ≤ 2/B⁹`. So `abs_Lambda_ge_B_pow_neg_eight` and
+  `LLL_reduces_C1_to_lt_nine` stay `def Prop`.
 
 0 sorry. Tag `v24-v24x-final-rank3-shape-nogo` stays at `c1d173e`.
 -/
@@ -59,11 +67,42 @@ theorem abs_Lambda_ge_B_pow_neg_eight_eq :
     abs_Lambda_ge_B_pow_neg_eight = abs_Lambda_ge_inv_B_pow_eight :=
   rfl
 
-/-- Reduce Matveev `C1 = 143186215390` to an exponent `< 9`.
-    Uninhabited: Bugeaud–Laurent typically reaches `10²`–`10³`,
-    not `< 9`. Equivalent to `|Λ| ≥ B⁻⁸`. -/
+/-- Matveev exponent. Same numeral as `C1_floor`. -/
+def C1_Matveev : ℕ := C1_floor
+
+theorem C1_Matveev_eq : C1_Matveev = 143186215390 := C1_floor_eq
+
+/-- Need `C1' < 9`, i.e. `C1' ≤ 8`, to get `|Λ| ≥ B⁻⁸`. -/
+def C1_LLL_target : ℕ := 8
+
+theorem C1_LLL_target_eq : C1_LLL_target = 8 := rfl
+
+/-- Literature-scale Bugeaud–Laurent output. Not a theorem that LLL
+    attains these; numerals for the gap `8 < 30 ≤ 50`. -/
+def C1_LLL_typical_lo : ℕ := 30
+
+def C1_LLL_typical_hi : ℕ := 50
+
+theorem C1_LLL_target_lt_typical_lo :
+    C1_LLL_target < C1_LLL_typical_lo := by
+  decide
+
+theorem C1_LLL_typical_lo_le_hi :
+    C1_LLL_typical_lo ≤ C1_LLL_typical_hi := by
+  decide
+
+theorem C1_LLL_typical_lo_lt_Matveev :
+    C1_LLL_typical_lo < C1_Matveev := by
+  decide
+
+/-- Reduce Matveev `C1 = 143186215390` to an exponent `≤ 8` (`< 9`).
+    Uninhabited: a typical Bugeaud–Laurent `C1'` is `30`–`50`, not
+    `≤ 8`. Stays `def Prop`. -/
 noncomputable def LLL_reduces_C1_to_lt_nine : Prop :=
-  abs_Lambda_ge_B_pow_neg_eight
+  ∃ C1' : ℕ, C1' ≤ C1_LLL_target ∧
+    ∀ {A B : ℕ}, B0_nat ≤ B → A ^ 4 + B ^ 4 = (B + 3) ^ 13 →
+      (1 : ℝ) / (B : ℝ) ^ C1' ≤
+        |4 * Real.log (A : ℝ) - 13 * Real.log ((B : ℝ) + 3)|
 
 /-- Packaged v25 LLL close. Uninhabited: the first two conjuncts
     are the missing lower bound; the third is the large-`B`
@@ -116,6 +155,62 @@ theorem LLL_closes_B_ge_B0_of_pow_neg_eight
     (hge : abs_Lambda_ge_B_pow_neg_eight) :
     ∀ {A B : ℕ}, B0_nat ≤ B → A ^ 4 + B ^ 4 = (B + 3) ^ 13 → False :=
   no_sol_of_abs_Lambda_ge_B_pow_neg_eight hge
+
+theorem two_le_B_of_B0 {B : ℕ} (hB : B0_nat ≤ B) : 2 ≤ B := by
+  have hB0 : (1000000 : ℕ) ≤ B := by
+    simpa [B0_nat_eq] using hB
+  exact le_trans (by decide : (2 : ℕ) ≤ 1000000) hB0
+
+/-- `C1' ≥ 9` cannot beat `|Λ| ≤ 2/B⁹`. Typical `30`–`50` is in this
+    range, so it does not close `B ≥ B0`. -/
+theorem inv_pow_C1_ge_nine_le_two_div_pow_nine
+    {B C1' : ℕ} (hB : B0_nat ≤ B) (hC : 9 ≤ C1') :
+    (1 : ℝ) / (B : ℝ) ^ C1' ≤ 2 / (B : ℝ) ^ 9 := by
+  have hB2 : 2 ≤ B := two_le_B_of_B0 hB
+  have hBpos : (0 : ℝ) < (B : ℝ) := by
+    exact_mod_cast (lt_of_lt_of_le (by decide : (0 : ℕ) < 2) hB2)
+  have hB1 : (1 : ℝ) ≤ (B : ℝ) := by
+    exact_mod_cast (le_trans (by decide : (1 : ℕ) ≤ 2) hB2)
+  have hpow : (B : ℝ) ^ 9 ≤ (B : ℝ) ^ C1' :=
+    pow_le_pow_right hB1 hC
+  have hle1 : (1 : ℝ) / (B : ℝ) ^ C1' ≤ 1 / (B : ℝ) ^ 9 :=
+    div_le_div_of_nonneg_left (by norm_num) (pow_pos hBpos 9) hpow
+  have hle2 : (1 : ℝ) / (B : ℝ) ^ 9 ≤ 2 / (B : ℝ) ^ 9 :=
+    div_le_div_of_nonneg_right (by norm_num : (1 : ℝ) ≤ 2)
+      (pow_nonneg (le_of_lt hBpos) 9)
+  exact hle1.trans hle2
+
+/-- If LLL inhabits some `C1' ≤ 8`, then `|Λ| ≥ B⁻⁸` on `B ≥ B0` and
+    the proved `|Λ| ≤ 2/B⁹` forces `B ≤ 2`. Does **not** inhabit
+    `LLL_reduces_C1_to_lt_nine`. -/
+theorem no_sol_of_LLL_reduces_C1_to_lt_nine
+    (h : LLL_reduces_C1_to_lt_nine)
+    {A B : ℕ} (hB0 : B0_nat ≤ B)
+    (hsol : A ^ 4 + B ^ 4 = (B + 3) ^ 13) : False := by
+  rcases h with ⟨C1', hC1', hlow⟩
+  have h100B0 : 100 ≤ B0_nat := by
+    rw [B0_nat_eq]
+    decide
+  have h100 : 100 ≤ B := h100B0.trans hB0
+  have hup := abs_Lambda_lt_two_div_B_pow_nine h100 hsol
+  have hge := hlow hB0 hsol
+  have hB2 : 2 ≤ B := two_le_B_of_B0 hB0
+  have hBpos : (0 : ℝ) < (B : ℝ) := by
+    exact_mod_cast (lt_of_lt_of_le (by decide : (0 : ℕ) < 2) hB2)
+  have hB1 : (1 : ℝ) ≤ (B : ℝ) := by
+    exact_mod_cast (le_trans (by decide : (1 : ℕ) ≤ 2) hB2)
+  have hpow : (B : ℝ) ^ C1' ≤ (B : ℝ) ^ 8 :=
+    pow_le_pow_right hB1 hC1'
+  have hlow8 : (1 : ℝ) / (B : ℝ) ^ 8 ≤ (1 : ℝ) / (B : ℝ) ^ C1' :=
+    div_le_div_of_nonneg_left (by norm_num) (pow_pos hBpos C1') hpow
+  have hle : (1 : ℝ) / (B : ℝ) ^ 8 ≤ 2 / (B : ℝ) ^ 9 :=
+    (hlow8.trans hge).trans hup
+  have h1 : 1 ≤ B := le_trans (by decide : (1 : ℕ) ≤ 2) hB2
+  have hB2' : B ≤ 2 :=
+    one_div_pow_eight_le_two_div_pow_nine_implies_B_le_two h1 hle
+  have hB0le2 : B0_nat ≤ 2 := hB0.trans hB2'
+  rw [B0_nat_eq] at hB0le2
+  exact (by decide : ¬((1000000 : ℕ) ≤ 2)) hB0le2
 
 /-- Correct `by_cases` shape. Does **not** inhabit either
     branch: `B ≤ B0` is still `gap3_B_le_B0_no_solution`
@@ -726,6 +821,209 @@ noncomputable def short_vector_from_Lambda_lt_B8_C48 (A B : ℕ) : Prop :=
       1 / (B : ℝ) ^ 8 →
     ∃ v ∈ L' B, v ≠ 0 ∧ euc v < (C_LLL : ℝ) / 2
 
+/-! ## 3-dim Bugeaud–Laurent lattice `L3`
+
+    Generators `(1,0,0)`, `(0,1,0)`, `(⌊C₃ log(B+3)⌋, ⌊C₃ log A⌋, C₃)`
+    with `C₃ = 10³⁰`. A general vector is
+    `(k + m·c1, l + m·c2, m·C₃)`. Determinant of this upper-triangular
+    generating triple is `C₃`. Minkowski supplies an *upper* bound
+    `λ₁ ≲ C₃^{1/3} = 10¹⁰`. The lattice contains `(1,0,0)`, so
+    `λ₁ = 1`. The paste `λ₁ ≥ 10` is false. The paste
+    `4·b3_3 − 13·b1_3` of length `C₃·|Λ|` is false: third coordinate
+    `4 C₃`. Do **not** import `Beal.Matveev.PAdicLLL`. -/
+
+def C_LLL_3 : ℕ := 10 ^ 30
+
+theorem C_LLL_3_eq : C_LLL_3 = 10 ^ 30 := rfl
+
+theorem C_LLL_3_pos : 0 < C_LLL_3 := by
+  rw [C_LLL_3_eq]
+  exact Nat.pos_pow_of_pos 30 (by decide : (0 : ℕ) < 10)
+
+theorem C_LLL_3_real : (C_LLL_3 : ℝ) = (10 : ℝ) ^ 30 := by
+  rw [C_LLL_3_eq]
+  exact Nat.cast_pow (10 : ℕ) 30
+
+theorem C_LLL_3_eq_ten_pow_ten_cubed :
+    C_LLL_3 = ((10 : ℕ) ^ 10) ^ 3 := by
+  rw [C_LLL_3_eq, ← Nat.pow_mul]
+
+theorem ten_pow_ten_pow_three_real :
+    ((10 : ℝ) ^ 10) ^ 3 = (10 : ℝ) ^ 30 := by
+  rw [← pow_mul]
+
+theorem one_lt_ten_pow_ten : (1 : ℝ) < (10 : ℝ) ^ 10 := by
+  norm_num
+
+def b1_3 : ℤ × ℤ × ℤ := (1, 0, 0)
+
+def b2_3 : ℤ × ℤ × ℤ := (0, 1, 0)
+
+noncomputable def cLogB3 (B : ℕ) : ℤ :=
+  ⌊(C_LLL_3 : ℝ) * Real.log ((B : ℝ) + 3)⌋
+
+noncomputable def cLogA3 (A : ℕ) : ℤ :=
+  ⌊(C_LLL_3 : ℝ) * Real.log (A : ℝ)⌋
+
+noncomputable def b3_3 (A B : ℕ) : ℤ × ℤ × ℤ :=
+  (cLogB3 B, cLogA3 A, (C_LLL_3 : ℤ))
+
+theorem b1_3_eq : b1_3 = (1, 0, 0) := rfl
+
+theorem b2_3_eq : b2_3 = (0, 1, 0) := rfl
+
+theorem b1_3_ne_zero : b1_3 ≠ 0 := by
+  intro h
+  have hfst := congrArg Prod.fst h
+  simp [b1_3] at hfst
+
+/-- `ℤ b1_3 + ℤ b2_3 + ℤ b3_3`. -/
+noncomputable def L3 (A B : ℕ) : Set (ℤ × ℤ × ℤ) :=
+  { v | ∃ k l m : ℤ,
+      v = (k + m * cLogB3 B, l + m * cLogA3 A, m * (C_LLL_3 : ℤ)) }
+
+noncomputable def euc3 (v : ℤ × ℤ × ℤ) : ℝ :=
+  Real.sqrt ((v.1 : ℝ) ^ 2 + (v.2.1 : ℝ) ^ 2 + (v.2.2 : ℝ) ^ 2)
+
+theorem euc3_nonneg (v : ℤ × ℤ × ℤ) : 0 ≤ euc3 v :=
+  Real.sqrt_nonneg _
+
+theorem euc3_b1_3 : euc3 b1_3 = 1 := by
+  unfold euc3 b1_3
+  simp [Real.sqrt_one]
+
+theorem b1_3_mem_L3 (A B : ℕ) : b1_3 ∈ L3 A B := by
+  refine ⟨1, 0, 0, ?_⟩
+  simp [b1_3]
+
+theorem b2_3_mem_L3 (A B : ℕ) : b2_3 ∈ L3 A B := by
+  refine ⟨0, 1, 0, ?_⟩
+  simp [b2_3]
+
+theorem b3_3_mem_L3 (A B : ℕ) : b3_3 A B ∈ L3 A B := by
+  refine ⟨0, 0, 1, ?_⟩
+  simp [b3_3]
+
+/-- Diagonal product `1 · 1 · C₃ = C₃`. -/
+theorem det_L3 (A B : ℕ) :
+    Int.natAbs (b1_3.1 * b2_3.2.1 * (b3_3 A B).2.2) = C_LLL_3 := by
+  simp [b1_3, b2_3, b3_3, Int.natAbs_ofNat]
+
+theorem euc3_ge_one_of_ne_zero (v : ℤ × ℤ × ℤ) (hne : v ≠ 0) :
+    1 ≤ euc3 v := by
+  have hsum : (1 : ℝ) ≤
+      (v.1 : ℝ) ^ 2 + (v.2.1 : ℝ) ^ 2 + (v.2.2 : ℝ) ^ 2 := by
+    rcases em (v.1 = 0) with h1 | h1
+    · rcases em (v.2.1 = 0) with h2 | h2
+      · rcases em (v.2.2 = 0) with h3 | h3
+        · exact (hne (Prod.ext h1 (Prod.ext h2 h3))).elim
+        · have : (1 : ℤ) ≤ v.2.2 ^ 2 := int_sq_ge_one_of_ne_zero h3
+          have : (1 : ℝ) ≤ (v.2.2 : ℝ) ^ 2 := by exact_mod_cast this
+          have hx : (0 : ℝ) ≤ (v.1 : ℝ) ^ 2 := sq_nonneg _
+          have hy : (0 : ℝ) ≤ (v.2.1 : ℝ) ^ 2 := sq_nonneg _
+          linarith
+      · have : (1 : ℤ) ≤ v.2.1 ^ 2 := int_sq_ge_one_of_ne_zero h2
+        have : (1 : ℝ) ≤ (v.2.1 : ℝ) ^ 2 := by exact_mod_cast this
+        have hx : (0 : ℝ) ≤ (v.1 : ℝ) ^ 2 := sq_nonneg _
+        have hz : (0 : ℝ) ≤ (v.2.2 : ℝ) ^ 2 := sq_nonneg _
+        linarith
+    · have : (1 : ℤ) ≤ v.1 ^ 2 := int_sq_ge_one_of_ne_zero h1
+      have : (1 : ℝ) ≤ (v.1 : ℝ) ^ 2 := by exact_mod_cast this
+      have hy : (0 : ℝ) ≤ (v.2.1 : ℝ) ^ 2 := sq_nonneg _
+      have hz : (0 : ℝ) ≤ (v.2.2 : ℝ) ^ 2 := sq_nonneg _
+      linarith
+  have hsqrt := Real.sqrt_le_sqrt hsum
+  simpa [euc3, Real.sqrt_one] using hsqrt
+
+/-- True `λ₁ ≥ 1`. The paste `λ₁ ≥ 10` is false (`euc3 b1_3 = 1`). -/
+theorem L3_lambda1_ge {A B : ℕ} :
+    ∀ v ∈ L3 A B, v ≠ 0 → (1 : ℝ) ≤ euc3 v := by
+  intro v _ hv
+  exact euc3_ge_one_of_ne_zero v hv
+
+theorem not_L3_lambda1_ge_ten (A B : ℕ) :
+    ¬ ∀ v ∈ L3 A B, v ≠ 0 → (10 : ℝ) ≤ euc3 v := by
+  intro h
+  have h1 := h b1_3 (b1_3_mem_L3 A B) b1_3_ne_zero
+  rw [euc3_b1_3] at h1
+  exact (by norm_num : ¬((10 : ℝ) ≤ 1)) h1
+
+/-- Minkowski scale `10¹⁰` is an *upper*-bound heuristic, not `λ₁`.
+    Actual `λ₁ ≤ 1 < 10¹⁰`. -/
+theorem L3_lambda1_lt_minkowski_scale :
+    euc3 b1_3 < (10 : ℝ) ^ 10 := by
+  rw [euc3_b1_3]
+  exact one_lt_ten_pow_ten
+
+theorem ten_pow_thirty_div_forty_eight :
+    (10 : ℝ) ^ 30 / (10 : ℝ) ^ 48 = 1 / (10 : ℝ) ^ 18 := by
+  have h10 : (10 : ℝ) ≠ 0 := by norm_num
+  field_simp [h10]
+  rw [← pow_add]
+
+theorem C_LLL_3_mul_inv_B_pow_eight_lt_half {B : ℕ} (hB : B0_nat ≤ B) :
+    (C_LLL_3 : ℝ) / (B : ℝ) ^ 8 < 1 / 2 := by
+  have hB0 : (1000000 : ℕ) ≤ B := by
+    simpa [B0_nat_eq] using hB
+  have hBreal : (1000000 : ℝ) ≤ (B : ℝ) := by exact_mod_cast hB0
+  have hpow : (1000000 : ℝ) ^ 8 ≤ (B : ℝ) ^ 8 :=
+    pow_le_pow_left (by norm_num) hBreal 8
+  have hnum : 0 ≤ (C_LLL_3 : ℝ) := Nat.cast_nonneg _
+  have hle : (C_LLL_3 : ℝ) / (B : ℝ) ^ 8 ≤ (C_LLL_3 : ℝ) / (1000000 : ℝ) ^ 8 :=
+    div_le_div_of_nonneg_left hnum (pow_pos (by norm_num) 8) hpow
+  have hC : (C_LLL_3 : ℝ) / (1000000 : ℝ) ^ 8 =
+      (10 : ℝ) ^ 30 / (10 : ℝ) ^ 48 := by
+    rw [C_LLL_3_real, million_pow_eight]
+  have hlt : (10 : ℝ) ^ 30 / (10 : ℝ) ^ 48 < 1 / 2 := by
+    rw [ten_pow_thirty_div_forty_eight]
+    norm_num
+  exact lt_of_le_of_lt (hle.trans_eq hC) hlt
+
+theorem not_exists_nonzero_euc3_lt_one (A B : ℕ) :
+    ¬ ∃ v ∈ L3 A B, v ≠ 0 ∧ euc3 v < 1 := by
+  intro ⟨v, _, hne, hlt⟩
+  exact (not_lt.mpr (euc3_ge_one_of_ne_zero v hne)) hlt
+
+/-- Displayed combo `4·b3_3 − 13·b1_3`. Third coordinate `4 C₃`,
+    length `≥ 4 C₃`, not `C₃·|Λ|`. -/
+noncomputable def v_combo3 (A B : ℕ) : ℤ × ℤ × ℤ :=
+  (4 * cLogB3 B - 13, 4 * cLogA3 A, 4 * (C_LLL_3 : ℤ))
+
+theorem v_combo3_mem_L3 (A B : ℕ) : v_combo3 A B ∈ L3 A B := by
+  refine ⟨(-13 : ℤ), 0, 4, ?_⟩
+  apply Prod.ext
+  · simp [v_combo3]
+    ring
+  · apply Prod.ext
+    · simp [v_combo3]
+    · simp [v_combo3]
+
+theorem euc3_ge_abs_third (v : ℤ × ℤ × ℤ) : |(v.2.2 : ℝ)| ≤ euc3 v := by
+  have hle : (v.2.2 : ℝ) ^ 2 ≤
+      (v.1 : ℝ) ^ 2 + (v.2.1 : ℝ) ^ 2 + (v.2.2 : ℝ) ^ 2 := by
+    have hx : (0 : ℝ) ≤ (v.1 : ℝ) ^ 2 := sq_nonneg _
+    have hy : (0 : ℝ) ≤ (v.2.1 : ℝ) ^ 2 := sq_nonneg _
+    linarith
+  have hsqrt := Real.sqrt_le_sqrt hle
+  simpa [euc3, Real.sqrt_sq_eq_abs] using hsqrt
+
+theorem v_combo3_euc_ge_four_C (A B : ℕ) :
+    4 * (C_LLL_3 : ℝ) ≤ euc3 (v_combo3 A B) := by
+  unfold v_combo3
+  have hthird :=
+    euc3_ge_abs_third (4 * cLogB3 B - 13, 4 * cLogA3 A, 4 * (C_LLL_3 : ℤ))
+  have hC : (0 : ℝ) ≤ (C_LLL_3 : ℝ) := Nat.cast_nonneg _
+  have h4 : (0 : ℝ) ≤ (4 : ℝ) := by norm_num
+  have hcast : Int.cast (4 * (C_LLL_3 : ℤ)) = (4 : ℝ) * (C_LLL_3 : ℝ) := by
+    rw [Int.cast_mul]
+    simp
+  have habs : |Int.cast (4 * (C_LLL_3 : ℤ))| = 4 * (C_LLL_3 : ℝ) := by
+    rw [hcast, abs_mul, abs_of_nonneg h4, abs_of_nonneg hC]
+  have hle : |Int.cast (4 * (C_LLL_3 : ℤ))| ≤
+      euc3 (4 * cLogB3 B - 13, 4 * cLogA3 A, 4 * (C_LLL_3 : ℤ)) := by
+    simpa using hthird
+  rwa [habs] at hle
+
 #check abs_Lambda_ge_B_pow_neg_eight
 #check LLL_reduces_C1_to_lt_nine
 #check LLL_reduces_bound_to_B0_v25
@@ -748,6 +1046,20 @@ noncomputable def short_vector_from_Lambda_lt_B8_C48 (A B : ℕ) : Prop :=
 #check not_b1_mem_L'
 #check v_short'_mem_L'_of_Lambda_lt_imp_zero
 #check LLL_lift_to_B8_of_short_vector_C48
+#check C1_Matveev_eq
+#check C1_LLL_target_eq
+#check C1_LLL_target_lt_typical_lo
+#check inv_pow_C1_ge_nine_le_two_div_pow_nine
+#check no_sol_of_LLL_reduces_C1_to_lt_nine
+#check C_LLL_3_eq
+#check det_L3
+#check L3_lambda1_ge
+#check not_L3_lambda1_ge_ten
+#check L3_lambda1_lt_minkowski_scale
+#check C_LLL_3_mul_inv_B_pow_eight_lt_half
+#check not_exists_nonzero_euc3_lt_one
+#check v_combo3_mem_L3
+#check v_combo3_euc_ge_four_C
 #print axioms no_sol_of_abs_Lambda_ge_B_pow_neg_eight
 #print axioms future_v25_shape_of_B8_lift
 #print axioms lambda1_ge_one
@@ -755,5 +1067,11 @@ noncomputable def short_vector_from_Lambda_lt_B8_C48 (A B : ℕ) : Prop :=
 #print axioms not_exists_nonzero_euc_lt_C_div_two
 #print axioms C_mul_two_div_B_pow_nine_lt_C_div_two
 #print axioms LLL_lift_to_B8_of_short_vector_C48
+#print axioms L3_lambda1_ge
+#print axioms not_L3_lambda1_ge_ten
+#print axioms det_L3
+#print axioms no_sol_of_LLL_reduces_C1_to_lt_nine
+#print axioms inv_pow_C1_ge_nine_le_two_div_pow_nine
+#print axioms v_combo3_euc_ge_four_C
 
 end BealMatveevBeal.LLLTargetB8

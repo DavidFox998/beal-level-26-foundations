@@ -56,11 +56,12 @@ ten foldl shards of 100; `∀ B ≤ B0` stays `def Prop`).
 The LLL `|Λ| ≥ B⁻⁸` target lives in root `LLLTargetB8.lean`
 (same Lake target; do **not** add `Beal/Matveev/LLLTargetB8.lean`).
 Phase-lift lattices on `phase-lll-lift-b8`: old `L` with
-`b1=(1,0)` still has `λ₁=1`. New `L'` with `C=10⁴⁸`,
+`b1=(1,0)` still has `λ₁=1`. `L'` with `C=10⁴⁸`,
 `b1'=(C, ⌊C log(B+3)⌋)`, `b2'=(0,C)`, `det=C²`, `λ₁=C`.
-`C/B⁸ ≤ 1` on `B≥B0`; `C·(2/B⁹) < C/2`. No nonzero
-`v ∈ L'` has length `< C/2`. `v_short'` lies in `L'` on
-small `|Λ|` only if it is `0`. `|Λ| ≥ B⁻⁸` stays `def Prop`.
+3-dim `L3` with `C₃=10³⁰` has `det=C₃` and `λ₁=1` (not
+`C₃^{1/3}`). Need `C1' ≤ 8` for `|Λ| ≥ B⁻⁸`; typical
+Bugeaud–Laurent `30`–`50` is still `> 8`. `|Λ| ≥ B⁻⁸` stays
+`def Prop`.
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /

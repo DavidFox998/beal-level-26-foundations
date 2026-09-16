@@ -3553,6 +3553,36 @@ if re.search(r"^theorem v_short'_mem_L' ", b8, re.M):
 if re.search(r"^theorem LLL_lift_B8_with_C48\b", b8, re.M):
     print("do not inhabit LLL_lift_B8_with_C48; |Lambda|<B^{-8} does not yield a nonzero v in L'", file=sys.stderr)
     sys.exit(1)
+if "def C_LLL_3 : ℕ := 10 ^ 30" not in b8:
+    print("C_LLL_3 = 10^30 missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem L3_lambda1_ge" not in b8:
+    print("L3_lambda1_ge missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem not_L3_lambda1_ge_ten" not in b8:
+    print("not_L3_lambda1_ge_ten missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem det_L3" not in b8:
+    print("det_L3 missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "def C1_LLL_target" not in b8:
+    print("C1_LLL_target missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "def C1_Matveev" not in b8:
+    print("C1_Matveev missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem C1_LLL_target_lt_typical_lo" not in b8:
+    print("C1_LLL_target_lt_typical_lo missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem inv_pow_C1_ge_nine_le_two_div_pow_nine" not in b8:
+    print("inv_pow_C1_ge_nine_le_two_div_pow_nine missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_sol_of_LLL_reduces_C1_to_lt_nine" not in b8:
+    print("no_sol_of_LLL_reduces_C1_to_lt_nine missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem v_combo3_euc_ge_four_C" not in b8:
+    print("v_combo3_euc_ge_four_C missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
 
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
@@ -3869,8 +3899,9 @@ print("  BealMatveevBealV25B0Search: separate Lake target; B<1000 no-sol via mod
 print("  check_range is foldl; ten shards of 100; check_range_true_of_all is the foldl invariant")
 print("  |Lambda| <= 2/B^9 on B>=100; abs_Lambda_ge_inv_B_pow_eight stays def Prop")
 print("  LLLTargetB8: |Lambda|>=B^{-8} and LLL_reduces_C1_to_lt_nine stay def Prop")
-print("  C_LLL=10^48, L' det C^2, lambda1_ge_C_div_two, not_exists_nonzero_euc_lt_C_div_two")
-print("  C/B^8<=1 on B>=B0; C*(2/B^9)<C/2; v_short'_mem_L' stays def Prop")
+print("  C_LLL=10^48 L' det C^2 lambda1=C; C_LLL_3=10^30 L3 det C lambda1=1 not 10")
+print("  C1_LLL_target=8 < typical 30-50; C1'>=9 does not beat 2/B^9")
+print("  v_combo3 length >=4 C_3 not C_3|Lambda|; v_short'_mem_L' stays def Prop")
 print("  no_sol_of_abs_Lambda_ge_B_pow_neg_eight is the implication, not an inhabitant")
 print("  check_B_true_no_sol extracts Bool checker; gap3_B_le_B0_no_solution stays def Prop")
 print("  not 100 native_decide shards to 10000; popcount is not a sound reject; v25 not minted")

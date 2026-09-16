@@ -70,7 +70,15 @@ are not characterized by popcount. One hundred shards through
   `≈ C·Λ` of absolute value `< C` on `|Λ| < B⁻⁸`, so
   membership in `L'` forces `0`
   (`v_short'_mem_L'_of_Lambda_lt_imp_zero`).
-  `v_short'_mem_L'` stays `def Prop`. The implication
+  `v_short'_mem_L'` stays `def Prop`. 3-dim Bugeaud–Laurent `L3`
+  (`ℤ×ℤ×ℤ`): `C_LLL_3 = 10³⁰`, `det = C₃`, `λ₁ = 1` because
+  `(1,0,0) ∈ L3` (`L3_lambda1_ge`, `not_L3_lambda1_ge_ten`).
+  Minkowski `C₃^{1/3} = 10¹⁰` is an upper-bound scale, not `λ₁`.
+  Displayed `4·b3_3 − 13·b1_3` has length `≥ 4 C₃`
+  (`v_combo3_euc_ge_four_C`). Need `C1' ≤ 8` for `|Λ| ≥ B⁻⁸`;
+  typical `30`–`50` is still `> 8`; `C1' ≥ 9` does not beat
+  `|Λ| ≤ 2/B⁹`. `LLL_reduces_C1_to_lt_nine` stays `def Prop`.
+  The implication
   `LLL_lift_to_B8_of_short_vector_C48` still needs `h_exists`,
   which `not_exists_nonzero_euc_lt_C_div_two` refutes.
   `LLL_reduces_bound_to_B0` / `hGen` / `hLLL` remain uninhabited
