@@ -288,9 +288,12 @@ kill. Honest status on this branch:
 3. **Ribet `928→32`.** Stays `def Prop`. Needs Wiles + BCDT
    modularity of the semistable Frey curve and Ribet
    level-lowering after unramified `I₂₉`.
-4. **Serre.** `48 < 2184` is a numeral theorem. The Galois
-   isomorphism `ρ_Frey ≅ ρ_{32a1}` that would turn it into
-   `False` stays `def Prop`.
+4. **Serre.** `48 < 2184` is a numeral theorem (`48 ≠ 2184`).
+   `2²+3²=13` and split-Cartan count `2(13−1)²=288` with
+   `288/48=6` are theorems. `y²=x³−x` has `j=1728` but is
+   **not** LMFDB `32.a1` (`y²=x³+4x`). The Galois isomorphism
+   `ρ_Frey ≅ ρ_{32a1}` and `card(im ρ_{32a1,13}) ≤ 48` stay
+   `def Prop`.
 
 `BealTrueV25` still has **one** axiom,
 `darmon_merel_4413_axiom`. The four gaps are `def Prop` on

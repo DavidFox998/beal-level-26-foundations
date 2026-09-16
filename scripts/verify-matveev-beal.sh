@@ -4412,8 +4412,11 @@ check_gap_file("Ribet_Level32.lean",
     ["modular_Frey", "ribet_level_lowering_29_to_32"],
     ["LLL_nogo_persists_after_Ribet_Level32"])
 check_gap_file("Serre_Large_vs_CM_Small.lean",
-    ["card_32a1_le_48", "serre_large_Frey", "contradiction_48_lt_2184"],
+    ["card_32a1_le_48", "serre_large_Frey", "contradiction_48_lt_2184",
+     "card_image_32a1_le_48_via_CM", "rho_Frey_iso_rho_32a1_needs_Ribet"],
     ["forty_eight_lt_2184", "card_SL2_F13_eq_2184",
+     "thirteen_splits_in_Zi", "card_normalizer_split_Cartan_13",
+     "forty_eight_ne_2184", "curve_x3_minus_x_j_eq_1728",
      "LLL_and_DarmonMerel_separate"])
 check_gap_file("X0_26_Full2Torsion.lean",
     ["full2_plus_13_isog_gives_26_isog", "X0_26_model",
@@ -4463,6 +4466,9 @@ if "Padic.valuation" not in arch and "Tate_q" not in arch:
     sys.exit(1)
 if "744" not in arch or "196884" not in arch:
     print("ARCHIVE_4413.md must record the truncated j(q)=q^{-1}+744+196884 q expansion", file=sys.stderr)
+    sys.exit(1)
+if "288" not in arch:
+    print("ARCHIVE_4413.md must record split-Cartan 2(13-1)^2=288", file=sys.stderr)
     sys.exit(1)
 
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
@@ -4821,6 +4827,8 @@ print("  no new axiom; darmon_merel_4413_four_gaps stays def Prop; main 6247c63 
 print("  Mazur_X0_13: Fricke j(t), f roots 7,9 mod29, v(t) in {26k,-2k}; Mazur via X0(13) stays def Prop")
 print("  Tate_I29_Inertia / Ribet_Level32 / Serre_Large_vs_CM_Small: Galois stays def Prop")
 print("  no local F29 close; 48<2184 is not False without the Galois iso")
+print("  Serre CM numerics: 2^2+3^2=13, 2(12)^2=288, 288/48=6; y^2=x^3-x has j=1728 not 32a1")
+print("  card_image_32a1_le_48_via_CM / rho_Frey iso stay def Prop; no Wiles")
 print("  X0_26_Full2Torsion: Frey cubic splits at 0,A^4,-B^4 over Q; Kenku 26 not in cyclic list")
 print("  LMFDB 26.42.2.a.1 Weierstrass + Gonzalez even model; (0,+-1) native_decide, f(0)=1!=49")
 print("  genus2 is the LMFDB numeral; J0_26_rank0 / X0_26_Q_eq_known / Kenku stay def Prop")
