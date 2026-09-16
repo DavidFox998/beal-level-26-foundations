@@ -12,7 +12,7 @@ v25 mint and it does **not** close `B ≥ B0`.
 | `main` | reset to `6247c63` | default `lake build BealMatveevBeal` stays the foundation |
 | `phase-main-nogo-f337dd5` | `f337dd5` | nogo note that had been on `main` |
 | `phase-lll-lift-b8` | `e5a95f5` | `LLL_reduces_C1_to_lt_nine ↔ no_sol_ge_B0` |
-| `phase-darmon-merel-4413` | this tree | Frey `Δ`, LMFDB `32a1` traces, `v₂₉`, mixed sieves, Mazur `j` |
+| `phase-darmon-merel-4413` | this tree | Frey `Δ`, LMFDB `32a1` traces, `v₂₉`, mixed sieves, Mazur `j`, Tate numerics, `32a1` `j=1728` |
 | tag `v24-v24x-final-rank3-shape-nogo` | `c1d173e` | do not move |
 | v25 | not minted | `hGen` / `hLLL` stay `def Prop` |
 
@@ -128,6 +128,34 @@ at primes with `13 ∣ v_ℓ(Δ)` (Galois inertia `I_ℓ`, not just
 the CM / dihedral image of `32a1`. None of that is in Mathlib
 4.12. Level 32 tables in this tree are **docs of the barrier**,
 not a close.
+
+## `I₂₉` numerics vs Galois inertia
+
+Root `Inertia29Unramified.lean` inhabits the Tate **input** when
+`29 ∣ C` and `29 ∤ AB`:
+
+- `v₂₉(c₄) = 0` (`padicValInt`, from `29 ∤ c₄`)
+- `29 ∣ Δ` and `v₂₉(Δ) = 26 v₂₉(C) ≥ 26`
+- `displayed_minimal_at_29` (Silverman: `v(c₄)=0` blocks a
+  `u`-scaling)
+
+Tate’s Kodaira symbol `I_{26k}` (multiplicative reduction) and
+`ρ_{E,13}(I_{29})=1` stay `def Prop`. There is no `InertiaGroup`
+in Mathlib 4.12 and no Tate-curve Galois module. `True := trivial`
+is not a Kodaira classification.
+
+## `32a1` has `j=1728`; image size stays `def Prop`
+
+Root `SerreImage13.lean` inhabits the Weierstrass computation
+for `y²=x³+4x`: `c₄=−192`, `Δ=−4096`, `j=1728`. Also `13≡1
+(mod 4)` and `|SL₂(𝔽₁₃)|=2184 > 48`. When `29 ∣ C`, Frey `j`
+has denominator divisible by `29`, so `j ≠ 1728`.
+
+That is not CM as a Galois object, not `card(im ρ_{32a1,13})≤48`,
+and not Serre open image for Frey. `image_32a1_mod13_small`,
+`serre_large_image`, `darmon_merel_4413_full`, and
+`no_sol_ge_B0_of_image_contradiction` stay `def Prop`. There is
+no `axiom serre_large_image_13_axiom`.
 
 ## What this tree does not claim
 

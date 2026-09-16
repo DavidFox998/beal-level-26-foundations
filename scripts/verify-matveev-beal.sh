@@ -140,6 +140,14 @@ if test -f Beal/Matveev/MazurIrreducibility13.lean; then
   fail "do not add Beal/Matveev/MazurIrreducibility13.lean; .submodules Beal.Matveev would pull it into default"
 fi
 test -f ARCHIVE_4413.md
+test -f Inertia29Unramified.lean
+if test -f Beal/Matveev/Inertia29Unramified.lean; then
+  fail "do not add Beal/Matveev/Inertia29Unramified.lean; .submodules Beal.Matveev would pull it into default"
+fi
+test -f SerreImage13.lean
+if test -f Beal/Matveev/SerreImage13.lean; then
+  fail "do not add Beal/Matveev/SerreImage13.lean; .submodules Beal.Matveev would pull it into default"
+fi
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -681,6 +689,12 @@ if ".one `Ribet29C_Residue16_L23" not in lake:
 if ".one `MazurIrreducibility13" not in lake:
     print("lakefile.lean missing MazurIrreducibility13 glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
+if ".one `Inertia29Unramified" not in lake:
+    print("lakefile.lean missing Inertia29Unramified glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
+if ".one `SerreImage13" not in lake:
+    print("lakefile.lean missing SerreImage13 glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
 if "BealMatveevBealV25B0Search" in default_globs.group(1):
     print("BealMatveevBealV25B0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
@@ -713,6 +727,12 @@ if "Ribet29C_Residue16_L23" in default_globs.group(1):
     sys.exit(1)
 if "MazurIrreducibility13" in default_globs.group(1):
     print("MazurIrreducibility13 must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Inertia29Unramified" in default_globs.group(1):
+    print("Inertia29Unramified must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "SerreImage13" in default_globs.group(1):
+    print("SerreImage13 must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -4127,6 +4147,121 @@ if "theorem frey_j_not_int_of_29_dvd_C" not in mazur:
 if "theorem LLL_and_DarmonMerel_separate" not in mazur:
     print("LLL_and_DarmonMerel_separate missing; e5a95f5 iff must persist", file=sys.stderr)
     sys.exit(1)
+
+inertia = pathlib.Path("Inertia29Unramified.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in inertia or re.search(
+        r"^import Beal\.Matveev\.", inertia, re.M):
+    print("Inertia29Unramified.lean must not import Beal.Matveev.*", file=sys.stderr)
+    sys.exit(1)
+if "import BealTrueV25" in inertia:
+    print("Inertia29Unramified.lean must not import BealTrueV25", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", inertia, re.M) or ":= sorry" in inertia or "by sorry" in inertia:
+    print("sorry is not allowed in Inertia29Unramified.lean", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in inertia or "True := by trivial" in inertia:
+    print("True := trivial is not allowed in Inertia29Unramified.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^axiom ", inertia, re.M):
+    print("do not add axioms in Inertia29Unramified.lean; reuse BealTrueV25.darmon_merel_4413_axiom",
+          file=sys.stderr)
+    sys.exit(1)
+if "def tate_Kodaira_I_at_29" not in inertia:
+    print("tate_Kodaira_I_at_29 must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem tate_Kodaira_I_at_29\b", inertia, re.M):
+    print("do not inhabit tate_Kodaira_I_at_29; Tate algorithm is not in Mathlib 4.12",
+          file=sys.stderr)
+    sys.exit(1)
+if "def inertia_at_29_trivial_mod13" not in inertia:
+    print("inertia_at_29_trivial_mod13 must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem inertia_at_29_trivial_mod13\b", inertia, re.M):
+    print("do not inhabit inertia_at_29_trivial_mod13; needs Galois I_29",
+          file=sys.stderr)
+    sys.exit(1)
+if "def ribet_unramified_at_l_if_13_dvd_vDelta" not in inertia:
+    print("ribet_unramified_at_l_if_13_dvd_vDelta must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem ribet_unramified_at_l_if_13_dvd_vDelta\b", inertia, re.M):
+    print("do not inhabit ribet_unramified_at_l_if_13_dvd_vDelta; needs Tate curve Gal",
+          file=sys.stderr)
+    sys.exit(1)
+if "theorem v29_c4_eq_0" not in inertia:
+    print("v29_c4_eq_0 missing from Inertia29Unramified.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem displayed_minimal_at_29_of_29_dvd_C" not in inertia:
+    print("displayed_minimal_at_29_of_29_dvd_C missing from Inertia29Unramified.lean",
+          file=sys.stderr)
+    sys.exit(1)
+if "theorem LLL_nogo_persists_after_Inertia" not in inertia:
+    print("LLL_nogo_persists_after_Inertia missing; e5a95f5 iff must persist", file=sys.stderr)
+    sys.exit(1)
+
+serre = pathlib.Path("SerreImage13.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in serre or re.search(
+        r"^import Beal\.Matveev\.", serre, re.M):
+    print("SerreImage13.lean must not import Beal.Matveev.*", file=sys.stderr)
+    sys.exit(1)
+if "import BealTrueV25" in serre:
+    print("SerreImage13.lean must not import BealTrueV25", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", serre, re.M) or ":= sorry" in serre or "by sorry" in serre:
+    print("sorry is not allowed in SerreImage13.lean", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in serre or "True := by trivial" in serre:
+    print("True := trivial is not allowed in SerreImage13.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^axiom ", serre, re.M):
+    print("do not add axioms in SerreImage13.lean; reuse BealTrueV25.darmon_merel_4413_axiom",
+          file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^axiom serre_large_image", serre, re.M) or re.search(
+        r"^axiom darmon_merel_4413_axiom", serre, re.M):
+    print("do not add serre_large_image_13_axiom or redefine darmon_merel_4413_axiom",
+          file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^def darmon_merel_4413_axiom\b", serre, re.M):
+    print("do not redefine darmon_merel_4413_axiom; that name is BealTrueV25 only",
+          file=sys.stderr)
+    sys.exit(1)
+if "def image_32a1_mod13_small" not in serre:
+    print("image_32a1_mod13_small must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem image_32a1_mod13_small\b", serre, re.M):
+    print("do not inhabit image_32a1_mod13_small; Galois image is not in Mathlib 4.12",
+          file=sys.stderr)
+    sys.exit(1)
+if "def serre_large_image" not in serre:
+    print("serre_large_image must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem serre_large_image\b", serre, re.M):
+    print("do not inhabit serre_large_image; Serre open image is not in Mathlib 4.12",
+          file=sys.stderr)
+    sys.exit(1)
+if "def darmon_merel_4413_full" not in serre:
+    print("darmon_merel_4413_full must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem darmon_merel_4413_full\b", serre, re.M):
+    print("do not inhabit darmon_merel_4413_full; needs I_29 + Serre image",
+          file=sys.stderr)
+    sys.exit(1)
+if "def no_sol_ge_B0_of_image_contradiction" not in serre:
+    print("no_sol_ge_B0_of_image_contradiction must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem no_sol_ge_B0_of_image_contradiction\b", serre, re.M):
+    print("do not inhabit no_sol_ge_B0_of_image_contradiction; image size is not in Mathlib",
+          file=sys.stderr)
+    sys.exit(1)
+if "theorem curve32a1_j_eq_1728" not in serre:
+    print("curve32a1_j_eq_1728 missing from SerreImage13.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem frey_j_ne_1728_of_29_dvd_C" not in serre:
+    print("frey_j_ne_1728_of_29_dvd_C missing from SerreImage13.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem LLL_and_DarmonMerel_separate" not in serre:
+    print("LLL_and_DarmonMerel_separate missing; e5a95f5 iff must persist", file=sys.stderr)
+    sys.exit(1)
 arch = pathlib.Path("ARCHIVE_4413.md").read_text(encoding="utf-8")
 if "e5a95f5" not in arch or "953a174" not in arch:
     print("ARCHIVE_4413.md must record e5a95f5 LLL iff and 953a174 barrier", file=sys.stderr)
@@ -4479,4 +4614,10 @@ print("  LLL_nogo_persists_after_L23 is the e5a95f5 iff; no new axiom")
 print("  MazurIrreducibility13: 29|C and 29nmid AB => 29|j.den; Mazur/Ribet/image stay def Prop")
 print("  no new axiom; darmon_merel_4413_axiom stays on BealTrueV25 only; ARCHIVE_4413.md")
 print("  LLL_and_DarmonMerel_separate is the e5a95f5 iff; C-scaling not replaced")
+print("  Inertia29Unramified: v29(c4)=0 and 29|Delta when 29|C 29nmid AB; Tate I_26k stays def Prop")
+print("  ribet_unramified_at_l_if_13_dvd_vDelta / inertia_at_29_trivial_mod13 stay def Prop")
+print("  LLL_nogo_persists_after_Inertia is the e5a95f5 iff; no new axiom")
+print("  SerreImage13: 32a1 j=1728 inhabited; 13==1 mod4; |SL2(F13)|=2184; 48<2184")
+print("  image_32a1_mod13_small / serre_large_image / darmon_merel_4413_full stay def Prop")
+print("  no serre_large_image_13_axiom; Frey j!=1728 when 29|C; LLL e5a95f5 separate")
 PY

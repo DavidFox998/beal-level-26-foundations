@@ -184,4 +184,18 @@ inertia at `I₂₉`, and Serre open image versus CM of `32a1` stay
 `LLL_and_DarmonMerel_separate` is the same `e5a95f5`
 equivalence. See root [`ARCHIVE_4413.md`](../../ARCHIVE_4413.md).
 
+Root [`Inertia29Unramified.lean`](../../Inertia29Unramified.lean)
+inhabits `v₂₉(c₄)=0` and `29 ∣ Δ` when `29 ∣ C` and `29 ∤ AB`.
+Tate Kodaira `I_{26k}` and `ρ_{E,13}(I_{29})=1` stay `def Prop`.
+`LLL_nogo_persists_after_Inertia` is the same `e5a95f5`
+equivalence.
+
+Root [`SerreImage13.lean`](../../SerreImage13.lean) inhabits
+`32a1` `j=1728` (`y²=x³+4x`) and `frey_j ≠ 1728` when `29 ∣ C`.
+`image_32a1_mod13_small`, `serre_large_image`, and
+`darmon_merel_4413_full` stay `def Prop`. There is no
+`axiom serre_large_image_13_axiom`.
+`LLL_and_DarmonMerel_separate` is the same `e5a95f5`
+equivalence.
+
 v25 is not minted.

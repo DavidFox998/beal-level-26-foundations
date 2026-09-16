@@ -56,9 +56,13 @@ lean_lib «BealMatveevBealV25Rank3» where
     `Ribet29C_Residue16_L23` is `l=23` on the same class; mixed
     (`a₂₃=0` matches, not `−6`) and stays `def Prop`.
     `MazurIrreducibility13` inhabits `v₂₉(j)≤−26` on `29 ∣ C`;
-    Mazur/Ribet/image stay `def Prop`. -/
+    Mazur/Ribet/image stay `def Prop`. `Inertia29Unramified`
+    inhabits `v₂₉(c₄)=0` and Tate numerics; Kodaira/Ribet inertia
+    stay `def Prop`. `SerreImage13` inhabits `32a1` `j=1728`;
+    CM image / Serre open image stay `def Prop`. -/
 lean_lib «BealMatveevBealV25B0Search» where
   globs := #[.one `BealMatveevBealV25B0Search, .one `LLLTargetB8, .one `Gap3B0Million,
     .one `LLLTargetB8_C1_lower_bound, .one `DarmonMerelFrey4413, .one `Level32Table,
     .one `Level928Table, .one `Ribet29C_Lowering, .one `Ribet29C_Residue16,
-    .one `Ribet29C_Residue16_L23, .one `MazurIrreducibility13]
+    .one `Ribet29C_Residue16_L23, .one `MazurIrreducibility13,
+    .one `Inertia29Unramified, .one `SerreImage13]

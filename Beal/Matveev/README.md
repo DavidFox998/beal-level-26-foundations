@@ -99,8 +99,13 @@ class: `a₂₃(32a1)=0` (not `−6`), mixed CRT lifts, and
 `Beal/Matveev/Ribet29C_Residue16_L23.lean`.
 Root `MazurIrreducibility13.lean` inhabits `29 ∣ j.den` when
 `29 ∣ C` and `29 ∤ AB`. Mazur / Ribet / image stay `def Prop`.
-Do **not** add `Beal/Matveev/MazurIrreducibility13.lean`. See
-root `ARCHIVE_4413.md`.
+Do **not** add `Beal/Matveev/MazurIrreducibility13.lean`.
+Root `Inertia29Unramified.lean` inhabits `v₂₉(c₄)=0`; Tate
+Kodaira / Ribet inertia stay `def Prop`. Do **not** add
+`Beal/Matveev/Inertia29Unramified.lean`.
+Root `SerreImage13.lean` inhabits `32a1` `j=1728`; CM image /
+Serre open image stay `def Prop`. Do **not** add
+`Beal/Matveev/SerreImage13.lean`. See root `ARCHIVE_4413.md`.
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /
