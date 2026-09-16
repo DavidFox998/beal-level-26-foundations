@@ -3502,6 +3502,30 @@ if "theorem future_v25_shape_of_B8_lift" not in b8:
 if "Matrix" in b8 or "native_decide" in b8:
     print("do not ship a placeholder LLL matrix or native_decide in LLLTargetB8.lean", file=sys.stderr)
     sys.exit(1)
+if re.search(r"^import Beal\.Matveev\.PAdicLLL\b", b8, re.M):
+    print("LLLTargetB8.lean must not import Beal.Matveev.PAdicLLL (LEAN_PATH); define the floor lattice locally", file=sys.stderr)
+    sys.exit(1)
+if "def C_LLL : ℕ := 10 ^ 30" not in b8:
+    print("C_LLL = 10^30 missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem lambda1_ge_one" not in b8:
+    print("lambda1_ge_one missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem v_short_mem_L" not in b8:
+    print("v_short_mem_L missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem not_exists_nonzero_euc_lt_one" not in b8:
+    print("not_exists_nonzero_euc_lt_one missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem LLL_lift_to_B8_of_short_vector" not in b8:
+    print("LLL_lift_to_B8_of_short_vector missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem C_LLL_mul_inv_B_pow_eight_lt_half" not in b8:
+    print("C_LLL_mul_inv_B_pow_eight_lt_half missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem C_LLL_mul_two_div_B_pow_nine_lt_one" not in b8:
+    print("C_LLL_mul_two_div_B_pow_nine_lt_one missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
 
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
@@ -3818,6 +3842,8 @@ print("  BealMatveevBealV25B0Search: separate Lake target; B<1000 no-sol via mod
 print("  check_range is foldl; ten shards of 100; check_range_true_of_all is the foldl invariant")
 print("  |Lambda| <= 2/B^9 on B>=100; abs_Lambda_ge_inv_B_pow_eight stays def Prop")
 print("  LLLTargetB8: |Lambda|>=B^{-8} and LLL_reduces_C1_to_lt_nine stay def Prop")
+print("  C_LLL=10^30, lambda1_ge_one, v_short_mem_L closed; not_exists_nonzero_euc_lt_one nogo")
+print("  C*B^{-8}<1/2 and C*(2/B^9)<1 are theorems; LLL_lift_to_B8_of_short_vector needs h_exists")
 print("  no_sol_of_abs_Lambda_ge_B_pow_neg_eight is the implication, not an inhabitant")
 print("  check_B_true_no_sol extracts Bool checker; gap3_B_le_B0_no_solution stays def Prop")
 print("  not 100 native_decide shards to 10000; popcount is not a sound reject; v25 not minted")

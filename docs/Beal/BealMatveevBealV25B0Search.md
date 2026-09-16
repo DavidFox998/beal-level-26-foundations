@@ -58,6 +58,13 @@ are not characterized by popcount. One hundred shards through
   `|Λ| ≥ B⁻⁸` + `|Λ| ≤ 2/B⁹` ⇒ `B ≤ 2` ⇒ not `B ≥ B0`.
   `future_v25_shape_of_B8_lift` is the `by_cases` packaging;
   neither branch is inhabited.
+  Phase-lift lattice: `C_LLL = 10³⁰`, `b1 = (1,0)`,
+  `b2 = (⌊C log(B+3)⌋, 1)`. Theorems: `lambda1_ge_one`,
+  `v_short_mem_L`, `C_LLL_mul_inv_B_pow_eight_lt_half`
+  (`C·B⁻⁸ < 1/2`), `C_LLL_mul_two_div_B_pow_nine_lt_one`.
+  Nogo: `not_exists_nonzero_euc_lt_one` (`euc v < 1 ↔ v = 0`
+  on `ℤ×ℤ`); `v_short` is a multiple of `b1`. The implication
+  `LLL_lift_to_B8_of_short_vector` still needs `h_exists`.
   `LLL_reduces_bound_to_B0` / `hGen` / `hLLL` remain uninhabited
   on the Rank-3 target.
 

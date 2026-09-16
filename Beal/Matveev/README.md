@@ -55,6 +55,9 @@ The `B ≤ B0` search slice lives in
 ten foldl shards of 100; `∀ B ≤ B0` stays `def Prop`).
 The LLL `|Λ| ≥ B⁻⁸` target lives in root `LLLTargetB8.lean`
 (same Lake target; do **not** add `Beal/Matveev/LLLTargetB8.lean`).
+Phase-lift lattice `C=10³⁰`, `b1=(1,0)`: `λ₁≥1` and
+`C·B⁻⁸<1/2` are theorems; no nonzero integer vector has
+length `< 1`, so the short-vector hyp stays uninhabited.
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /
