@@ -95,6 +95,10 @@ test -f BealMatveevBealV25B0Search.lean
 if test -f Beal/Matveev/BealMatveevBealV25B0Search.lean; then
   fail "do not add Beal/Matveev/BealMatveevBealV25B0Search.lean; .submodules Beal.Matveev would pull it into default"
 fi
+test -f LLLTargetB8.lean
+if test -f Beal/Matveev/LLLTargetB8.lean; then
+  fail "do not add Beal/Matveev/LLLTargetB8.lean; .submodules Beal.Matveev would pull it into default"
+fi
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -606,8 +610,14 @@ if "lean_lib «BealMatveevBealV25B0Search»" not in lake:
 if ".one `BealMatveevBealV25B0Search" not in lake:
     print("lakefile.lean missing BealMatveevBealV25B0Search glob", file=sys.stderr)
     sys.exit(1)
+if ".one `LLLTargetB8" not in lake:
+    print("lakefile.lean missing LLLTargetB8 glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
 if "BealMatveevBealV25B0Search" in default_globs.group(1):
     print("BealMatveevBealV25B0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "LLLTargetB8" in default_globs.group(1):
+    print("LLLTargetB8 must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -3451,6 +3461,48 @@ if "143186215390" not in b0s or "1000000" not in b0s:
     print("C1_floor/B0_nat missing from BealMatveevBealV25B0Search.lean", file=sys.stderr)
     sys.exit(1)
 
+b8 = pathlib.Path("LLLTargetB8.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in b8 or re.search(
+        r"^import MatveevThm14General\b", b8, re.M):
+    print("LLLTargetB8.lean must not import MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in b8:
+    print("True := trivial is not allowed in LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", b8, re.M) or ":= sorry" in b8 or "by sorry" in b8:
+    print("sorry is not allowed in LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "does **not** mint" not in b8:
+    print("LLLTargetB8.lean must record that v25 is not minted", file=sys.stderr)
+    sys.exit(1)
+if "def abs_Lambda_ge_B_pow_neg_eight" not in b8:
+    print("abs_Lambda_ge_B_pow_neg_eight must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem abs_Lambda_ge_B_pow_neg_eight\b", b8, re.M):
+    print("do not inhabit abs_Lambda_ge_B_pow_neg_eight; LLL lift stays def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def LLL_reduces_C1_to_lt_nine" not in b8:
+    print("LLL_reduces_C1_to_lt_nine must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem LLL_reduces_C1_to_lt_nine\b", b8, re.M):
+    print("do not inhabit LLL_reduces_C1_to_lt_nine", file=sys.stderr)
+    sys.exit(1)
+if "def LLL_reduces_bound_to_B0_v25" not in b8:
+    print("LLL_reduces_bound_to_B0_v25 must stay def Prop in LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem LLL_reduces_bound_to_B0_v25\b", b8, re.M):
+    print("do not inhabit LLL_reduces_bound_to_B0_v25 in LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_sol_of_abs_Lambda_ge_B_pow_neg_eight" not in b8:
+    print("no_sol_of_abs_Lambda_ge_B_pow_neg_eight missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem future_v25_shape_of_B8_lift" not in b8:
+    print("future_v25_shape_of_B8_lift missing from LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+if "Matrix" in b8 or "native_decide" in b8:
+    print("do not ship a placeholder LLL matrix or native_decide in LLLTargetB8.lean", file=sys.stderr)
+    sys.exit(1)
+
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
     print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
@@ -3765,6 +3817,8 @@ print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")
 print("  BealMatveevBealV25B0Search: separate Lake target; B<1000 no-sol via mod16+fourth-root")
 print("  check_range is foldl; ten shards of 100; check_range_true_of_all is the foldl invariant")
 print("  |Lambda| <= 2/B^9 on B>=100; abs_Lambda_ge_inv_B_pow_eight stays def Prop")
+print("  LLLTargetB8: |Lambda|>=B^{-8} and LLL_reduces_C1_to_lt_nine stay def Prop")
+print("  no_sol_of_abs_Lambda_ge_B_pow_neg_eight is the implication, not an inhabitant")
 print("  check_B_true_no_sol extracts Bool checker; gap3_B_le_B0_no_solution stays def Prop")
 print("  not 100 native_decide shards to 10000; popcount is not a sound reject; v25 not minted")
 PY

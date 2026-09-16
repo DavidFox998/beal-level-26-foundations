@@ -50,6 +50,14 @@ are not characterized by popcount. One hundred shards through
 - `abs_Lambda_ge_inv_B_pow_eight` — LLL would need `|Λ| ≥ B⁻⁸`
   (reduce `C1` from `1.4·10¹¹` to `< 9`). Bugeaud–Laurent
   typically reaches `10²`–`10³`, not `< 9`.
+- Root module [`LLLTargetB8.lean`](../../LLLTargetB8.lean)
+  (same Lake target; **no** `Beal/Matveev/` stub):
+  `abs_Lambda_ge_B_pow_neg_eight`, `LLL_reduces_C1_to_lt_nine`,
+  and `LLL_reduces_bound_to_B0_v25` stay `def Prop`.
+  `no_sol_of_abs_Lambda_ge_B_pow_neg_eight` is the implication
+  `|Λ| ≥ B⁻⁸` + `|Λ| ≤ 2/B⁹` ⇒ `B ≤ 2` ⇒ not `B ≥ B0`.
+  `future_v25_shape_of_B8_lift` is the `by_cases` packaging;
+  neither branch is inhabited.
   `LLL_reduces_bound_to_B0` / `hGen` / `hLLL` remain uninhabited
   on the Rank-3 target.
 

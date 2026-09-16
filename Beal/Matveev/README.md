@@ -53,6 +53,8 @@ root module `BealMatveevBealV25Rank3.lean`
 The `B ≤ B0` search slice lives in
 `BealMatveevBealV25B0Search.lean` (`B<1000` closed as
 ten foldl shards of 100; `∀ B ≤ B0` stays `def Prop`).
+The LLL `|Λ| ≥ B⁻⁸` target lives in root `LLLTargetB8.lean`
+(same Lake target; do **not** add `Beal/Matveev/LLLTargetB8.lean`).
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /
