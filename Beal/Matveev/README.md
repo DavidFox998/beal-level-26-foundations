@@ -68,7 +68,11 @@ Phase-lift lattices on `phase-lll-lift-b8`: old `L` with
 3-dim `L3` with `C₃=10³⁰` has `det=C₃` and `λ₁=1` (not
 `C₃^{1/3}`). Need `C1' ≤ 8` for `|Λ| ≥ B⁻⁸`; typical
 Bugeaud–Laurent `30`–`50` is still `> 8`. `|Λ| ≥ B⁻⁸` stays
-`def Prop`.
+`def Prop`. Root `LLLTargetB8_C1_lower_bound.lean` proves
+`C1' ≤ 8` is impossible **on a solution** (`2/B⁹ < 1/B⁸`);
+`¬ LLL_reduces_C1_to_lt_nine` stays `def Prop` (needs a
+`B ≥ B0` witness). Do **not** add
+`Beal/Matveev/LLLTargetB8_C1_lower_bound.lean`.
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /

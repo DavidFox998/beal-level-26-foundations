@@ -94,4 +94,12 @@ refuses `Beal/Matveev/` (default glob) and does not commit
 `native_decide` of `(B+3)¹³ ≈ 10⁷⁸`. The closed slice stays
 `B < 1000`.
 
+Root [`LLLTargetB8_C1_lower_bound.lean`](../../LLLTargetB8_C1_lower_bound.lean)
+proves `C1' ≤ 8` cannot hold on a gap-3 solution with `B ≥ B0`:
+`2/B⁹ < 1/B⁸ ≤ 1/B^{C1'}`. `LLL_reduces_C1_to_lt_nine` is
+equivalent to “no solution with `B ≥ B0`”, so it is not an
+independent LLL lemma. `C1_lower_bound_false` and
+`LLL_cannot_reach_B8` stay `def Prop` (the negations need a
+`B ≥ B0` witness).
+
 v25 is not minted.

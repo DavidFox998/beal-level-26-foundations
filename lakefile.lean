@@ -41,6 +41,10 @@ lean_lib «BealMatveevBealV25Rank3» where
 /-- Gap-3 `B ≤ B0` search slice. Not the default target. Does
     not mint v25. Does not claim the full million-B search.
     `Gap3B0Million` is the foldl wiring for 10k shards of 100;
-    those shards are not `native_decide`'d. -/
+    those shards are not `native_decide`'d.
+    `LLLTargetB8_C1_lower_bound` is `C1' ≤ 8` impossible on a
+    solution via `|Λ| ≤ 2/B⁹`; `¬ LLL_reduces_C1_to_lt_nine`
+    stays `def Prop`. -/
 lean_lib «BealMatveevBealV25B0Search» where
-  globs := #[.one `BealMatveevBealV25B0Search, .one `LLLTargetB8, .one `Gap3B0Million]
+  globs := #[.one `BealMatveevBealV25B0Search, .one `LLLTargetB8, .one `Gap3B0Million,
+    .one `LLLTargetB8_C1_lower_bound]

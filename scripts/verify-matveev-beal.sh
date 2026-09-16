@@ -107,6 +107,10 @@ if test -d Beal/Matveev/Gap3Shards; then
   fail "do not add Beal/Matveev/Gap3Shards; .submodules Beal.Matveev would pull it into default"
 fi
 test -f scripts/gen_gap3_shards.py
+test -f LLLTargetB8_C1_lower_bound.lean
+if test -f Beal/Matveev/LLLTargetB8_C1_lower_bound.lean; then
+  fail "do not add Beal/Matveev/LLLTargetB8_C1_lower_bound.lean; .submodules Beal.Matveev would pull it into default"
+fi
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -624,6 +628,9 @@ if ".one `LLLTargetB8" not in lake:
 if ".one `Gap3B0Million" not in lake:
     print("lakefile.lean missing Gap3B0Million glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
+if ".one `LLLTargetB8_C1_lower_bound" not in lake:
+    print("lakefile.lean missing LLLTargetB8_C1_lower_bound glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
 if "BealMatveevBealV25B0Search" in default_globs.group(1):
     print("BealMatveevBealV25B0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
@@ -632,6 +639,9 @@ if "LLLTargetB8" in default_globs.group(1):
     sys.exit(1)
 if "Gap3B0Million" in default_globs.group(1):
     print("Gap3B0Million must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "LLLTargetB8_C1_lower_bound" in default_globs.group(1):
+    print("LLLTargetB8_C1_lower_bound must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -3650,6 +3660,56 @@ if dry.returncode != 0 or "10000 shards" not in dry.stdout:
           file=sys.stderr)
     sys.exit(1)
 
+c1lb = pathlib.Path("LLLTargetB8_C1_lower_bound.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in c1lb or re.search(
+        r"^import Beal\.Matveev\.", c1lb, re.M):
+    print("LLLTargetB8_C1_lower_bound.lean must not import Beal.Matveev.*",
+          file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", c1lb, re.M) or ":= sorry" in c1lb or "by sorry" in c1lb:
+    print("sorry is not allowed in LLLTargetB8_C1_lower_bound.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*native_decide\b", c1lb, re.M) or "by native_decide" in c1lb:
+    print("do not native_decide in LLLTargetB8_C1_lower_bound.lean", file=sys.stderr)
+    sys.exit(1)
+if "Matrix" in c1lb:
+    print("do not ship a placeholder LLL matrix in LLLTargetB8_C1_lower_bound.lean",
+          file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in c1lb:
+    print("True := trivial is not allowed in LLLTargetB8_C1_lower_bound.lean",
+          file=sys.stderr)
+    sys.exit(1)
+if "theorem C1_le_8_impossible" not in c1lb:
+    print("C1_le_8_impossible missing from LLLTargetB8_C1_lower_bound.lean",
+          file=sys.stderr)
+    sys.exit(1)
+if "theorem two_div_pow_nine_lt_one_div_pow_eight" not in c1lb:
+    print("two_div_pow_nine_lt_one_div_pow_eight missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem C1_le_8_impossible_of_sol" not in c1lb:
+    print("C1_le_8_impossible_of_sol missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem LLL_reduces_C1_to_lt_nine_iff_no_sol_ge_B0" not in c1lb:
+    print("LLL_reduces_C1_to_lt_nine_iff_no_sol_ge_B0 missing", file=sys.stderr)
+    sys.exit(1)
+if "def C1_lower_bound_false" not in c1lb:
+    print("C1_lower_bound_false must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem C1_lower_bound_false\b", c1lb, re.M) or \
+        re.search(r"^theorem C1_lower_bound_false_true\b", c1lb, re.M):
+    print("do not inhabit C1_lower_bound_false; needs a B>=B0 witness",
+          file=sys.stderr)
+    sys.exit(1)
+if "def LLL_cannot_reach_B8" not in c1lb:
+    print("LLL_cannot_reach_B8 must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem LLL_cannot_reach_B8\b", c1lb, re.M) or \
+        re.search(r"^theorem LLL_cannot_reach_B8_true\b", c1lb, re.M):
+    print("do not inhabit LLL_cannot_reach_B8; equivalent to a B>=B0 witness",
+          file=sys.stderr)
+    sys.exit(1)
+
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
     print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
@@ -3973,4 +4033,6 @@ print("  Gap3B0Million: 10k-shard foldl wiring; allShardsTrue_eq_true stays def 
 print("  no committed Gap3Shards; not under Beal/Matveev; B<1000 remains the closed slice")
 print("  check_B_true_no_sol extracts Bool checker; gap3_B_le_B0_no_solution stays def Prop")
 print("  not 100 native_decide shards to 10000; popcount is not a sound reject; v25 not minted")
+print("  LLLTargetB8_C1_lower_bound: C1'<=8 impossible on a solution via 2/B^9 < 1/B^8")
+print("  LLL_reduces_C1_to_lt_nine iff no B>=B0 solution; LLL_cannot_reach_B8 stays def Prop")
 PY
