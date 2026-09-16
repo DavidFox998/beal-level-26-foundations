@@ -116,7 +116,13 @@ preferred-citation:
     C<100 when A,B<=B0; C>=100 and not C<=73 on B>=B0;
     baker_bound_B0_1e6 / hGen_padic / hLLL_padic stay def Prop;
     Bugeaud-Laurent / Kraus / Oesterle / Ribet-to-32 / FLT13
-    not in Mathlib 4.12). That does not
+    not in Mathlib 4.12). BugeaudLaurent proves
+    bugeaud_laurent_unconditional_nogo (2-adic valuation of
+    A^4+B^4=C^13 is compatible on odd k; real logs lose at C1=1
+    and placeholder 1000; no Iwasawa log_p / Bugeaud-Laurent
+    1996 / p-adic LLL / S2(32) dim 1 in Mathlib 4.12;
+    bugeaud_laurent_1996_two_logs / p_adic_LLL_reduction stay
+    def Prop; does not fork Mathlib). That does not
     mint this version tag. Unrestricted
     matveev_inequality_real_target and hLLL stay def Prop.
     Not a minted v25 tag. Prior v24.4.0 version

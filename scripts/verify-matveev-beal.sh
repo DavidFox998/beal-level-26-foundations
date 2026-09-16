@@ -81,6 +81,8 @@ test -f BealGapK.lean
 test -f Beal/Matveev/BealGapK.lean
 test -f EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.lean
 test -f Beal/Matveev/EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.lean
+test -f BugeaudLaurent.lean
+test -f Beal/Matveev/BugeaudLaurent.lean
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -307,6 +309,12 @@ if "import EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6" not in src:
 if "EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.baker_bound_B0_1e6_unconditional_nogo" not in src:
     print("#check baker_bound_B0_1e6_unconditional_nogo missing from MatveevThm14General.lean", file=sys.stderr)
     sys.exit(1)
+if "import BugeaudLaurent" not in src:
+    print("MatveevThm14General.lean missing import BugeaudLaurent", file=sys.stderr)
+    sys.exit(1)
+if "BugeaudLaurent.bugeaud_laurent_unconditional_nogo" not in src:
+    print("#check bugeaud_laurent_unconditional_nogo missing from MatveevThm14General.lean", file=sys.stderr)
+    sys.exit(1)
 
 lll = pathlib.Path("MatveevLLL.lean").read_text(encoding="utf-8")
 if "theorem four_thirteenths_is_convergent" not in lll:
@@ -521,6 +529,9 @@ if ".one `BealGapK" not in pathlib.Path("lakefile.lean").read_text(encoding="utf
     sys.exit(1)
 if ".one `EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
     print("lakefile.lean missing EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6 glob", file=sys.stderr)
+    sys.exit(1)
+if ".one `BugeaudLaurent" not in pathlib.Path("lakefile.lean").read_text(encoding="utf-8"):
+    print("lakefile.lean missing BugeaudLaurent glob", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -2957,6 +2968,80 @@ if "v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations" in eff and "
     print("do not treat v25 as minted in EffectiveLevelLowering", file=sys.stderr)
     sys.exit(1)
 
+bl = pathlib.Path("BugeaudLaurent.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in bl:
+    print("BugeaudLaurent.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
+if "axiom darmon_merel_4413_axiom" in bl and "BealTrueV25.darmon_merel_4413_axiom" not in bl:
+    print("do not add a second Darmon-Merel axiom in BugeaudLaurent.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem bugeaud_laurent_unconditional_nogo" not in bl:
+    print("bugeaud_laurent_unconditional_nogo missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem two_val_equation_compatible_odd_k" not in bl:
+    print("two_val_equation_compatible_odd_k missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem C1_one_loses_in_reals" not in bl:
+    print("C1_one_loses_in_reals missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem C1_padic_placeholder_loses_in_reals" not in bl:
+    print("C1_padic_placeholder_loses_in_reals missing", file=sys.stderr)
+    sys.exit(1)
+if "def bugeaud_laurent_1996_two_logs" not in bl:
+    print("bugeaud_laurent_1996_two_logs must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def p_adic_LLL_reduction" not in bl:
+    print("p_adic_LLL_reduction must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if "def baker_bound_B0_1e6" not in bl:
+    print("baker_bound_B0_1e6 Prop alias missing from BugeaudLaurent.lean", file=sys.stderr)
+    sys.exit(1)
+if "143186215390" not in bl:
+    print("C1_floor = 143186215390 missing from BugeaudLaurent.lean", file=sys.stderr)
+    sys.exit(1)
+if "1000000" not in bl:
+    print("B0_nat = 1000000 missing from BugeaudLaurent.lean", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in bl:
+    print("True := trivial is not allowed in BugeaudLaurent.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", bl, re.M) or ":= sorry" in bl or "by sorry" in bl:
+    print("sorry is not allowed in BugeaudLaurent.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_B0_1e6\b", bl, re.M):
+    print("do not inhabit baker_bound_B0_1e6", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem hGen_padic\b", bl, re.M):
+    print("do not inhabit hGen_padic", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem hLLL_padic\b", bl, re.M):
+    print("do not inhabit hLLL_padic", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem bugeaud_laurent_1996_two_logs\b", bl, re.M):
+    print("do not inhabit bugeaud_laurent_1996_two_logs", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem p_adic_LLL_reduction\b", bl, re.M):
+    print("do not inhabit p_adic_LLL_reduction", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_B0_1e6_of_bugeaud_lll\b", bl, re.M):
+    print("do not inhabit baker_bound_B0_1e6_of_bugeaud_lll", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_B0_1e6_unconditional\b", bl, re.M):
+    print("do not inhabit baker_bound_B0_1e6_unconditional", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem darmon_merel_4413_no_coprime_unconditional\b", bl, re.M):
+    print("do not inhabit darmon_merel_4413_no_coprime_unconditional", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem baker_bound_gapK_unconditional_wins\b", bl, re.M):
+    print("do not inhabit baker_bound_gapK_unconditional_wins", file=sys.stderr)
+    sys.exit(1)
+if "does **not** mint" not in bl:
+    print("BugeaudLaurent.lean must record that v25 is not minted", file=sys.stderr)
+    sys.exit(1)
+if "does **not** fork" not in bl and "does **not** fork Mathlib" not in bl:
+    print("BugeaudLaurent.lean must record that Mathlib is not forked", file=sys.stderr)
+    sys.exit(1)
+
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
     print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
@@ -3241,6 +3326,9 @@ print("  no_positive_coprime_gapK_of_axiom reuses darmon_merel_4413_axiom")
 print("  EffectiveLevelLowering: GapK wrappers + C<100 when A,B<=B0; C>=100 and not C<=73 on B>=B0")
 print("  baker_bound_B0_1e6_unconditional_nogo; hGen_padic/hLLL_padic/baker_bound_B0_1e6 stay def Prop")
 print("  no Bugeaud-Laurent / Kraus / Oesterle / Ribet-to-32 / FLT13 inhabitant; v25 not minted")
+print("  BugeaudLaurent: 2-adic valuation compatible on odd k; real logs lose at C1=1 and placeholder 1000")
+print("  bugeaud_laurent_unconditional_nogo; bugeaud_laurent_1996_two_logs/p_adic_LLL_reduction stay def Prop")
+print("  does not fork Mathlib; no Iwasawa log_p / Bugeaud-Laurent 1996 / p-adic LLL / S2(32) dim 1")
 print("  not a minted v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations tag")
 print("  bare-real matveev_thm14_n2_real_explicit stays false def Prop")
 print("  concept DOI 10.5281/zenodo.22379293, slug beal-level-26-foundations")

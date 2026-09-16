@@ -9,7 +9,7 @@ Monorepo beal-conjecture stays beal-conjecture, this repo is foundations-level-2
 ## BealMatveevBeal — Matveev–Beal Gap-3 / Gap-1 / Gap-2 / Gap-4 / Gap-5 / Gap-6 / Gap-7 / Gap-8 / Gap-9 / Gap-10 / Gap-11 / Gap-12 / Gap-13 / Gap-14 / Gap-15 / Gap-K / Effective p-adic Documentation
 
 Concept DOI: **10.5281/zenodo.22379293**
-Latest tag: **v24-v24x-final-effective-padic-nogo** (successor of `v24-v24x-final-gapK-generic-nogo`)
+Latest tag: **v24-v24x-final-bugeaud-laurent-nogo** (successor of `v24-v24x-final-effective-padic-nogo`)
 Lean: Mathlib 4.12 — foundations-level-26 — beal-conjecture stays beal-conjecture
 Build: `lake build BealMatveevBeal` green — `./scripts/verify-matveev-beal.sh` green — 0 sorry
 
@@ -35,6 +35,7 @@ Build: `lake build BealMatveevBeal` green — `./scripts/verify-matveev-beal.sh`
 - **Gap-15 `BealGap15`** — `A^4+B^4=(B+15)^13`; `B` even and `A` odd (odd `B` dies mod 16, like gap-1/5/7/9/11/13); `3∣B` impossible by 3-descent (`C₁=B₁+5≡2`, last `27 X=(B₁+5)¹³`, like gap-3/6/12); `5∣B` impossible by 5-descent (`C₁=B₁+3≡3`, last `125 X=(B₁+3)¹³`, like gap-5/10); `7∣B` compatible (`C≡1`, `A⁴≡1`); remaining `3∤B` `5∤B` are coprime Darmon–Merel; `(1,0)` is not a solution; `baker_bound_gap15` stays `def Prop`; `baker_bound_gap15_unconditional_nogo` `[propext, Classical.choice, Quot.sound]` only; axiom-relative `baker_bound_gap15_true` reuses the existing Darmon–Merel axiom.
 - **Gap-K `BealGapK`** — generic `A^4+B^4=(B+k)^13`; odd `k` forces `B` even and `A` odd; even `k` forces `A` even only (not `B` odd — gap-10 leftover); `gcd(B,B+k)∣k`; `p∣k` and `p∣B` force `p∣A`; `v_p(k)=1` descents for `p=3,5,7,11,13`; residue kills with congruence hypotheses; remaining coprime solutions are Darmon–Merel `(4,4,13)`; **not** `∀k ¬sol` (`(1,0)` and `k=m⁴`, `B=0`); recovers axiom closes for gaps 2..9,11..15 and odd-`B` gap-10; `baker_bound_gapK` stays `def Prop`; `baker_bound_gapK_unconditional_nogo` `[propext, Classical.choice, Quot.sound]` only.
 - **Effective level-lowering / p-adic `EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6`** — GapK wrappers; conditional `C<100` when `A,B≤B0` (`C¹³≤2·10²⁴<10²⁶=100¹³`); on `B≥B0` and `k≥1` one has `C≥1000001` so `C≤73` / `B≤72` do not apply; `baker_bound_B0_1e6` / `hGen_padic` / `hLLL_padic` stay `def Prop`; Bugeaud–Laurent / Kraus / Oesterlé / Ribet-to-32 / FLT 13 are not in Mathlib 4.12; `baker_bound_B0_1e6_unconditional_nogo` `[propext, Classical.choice, Quot.sound]` only; **v25 not minted**.
+- **Bugeaud–Laurent import plan `BugeaudLaurent`** — Mathlib 4.12 has `ℚ_[p]` / `padicValNat` but no Iwasawa `log_p`, no Bugeaud–Laurent 1996, no p-adic LLL, no `dim S₂(32)=1`; the 2-adic valuation of `A⁴+B⁴=C¹³` is compatible on odd `k` (`v₂=0` on both sides); real logs lose at `C1=1` and at the placeholder `1000`; `bugeaud_laurent_1996_two_logs` / `p_adic_LLL_reduction` / `baker_bound_B0_1e6` stay `def Prop`; does **not** fork Mathlib; **v25 not minted**.
 
 GitHub slug remains `beal-level-26-foundations` (not renamed: concept DOI
 [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293) stays
@@ -94,6 +95,7 @@ BealGap14.lean
 BealGap15.lean
 BealGapK.lean
 EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.lean
+BugeaudLaurent.lean
 ```
 
 **0 `sorry`.** `matveev_gap3_lower` is the B≤10^6 integer-gap theorem
@@ -438,6 +440,16 @@ On a gap-3 solution, `B < A` and `A ≈ (B+3)^{13/4}`. The old
   (`C=B+k` grows with `B`); real-log / LLL still lose every
   `C1≥1` on `B≥B0`. `baker_bound_B0_1e6` / `hGen_padic` /
   `hLLL_padic` stay `def Prop`. Not a minted v25 tag
+- `bugeaud_laurent_unconditional_nogo` — Bugeaud–Laurent /
+  p-adic LLL import-plan no-go (proved in `BugeaudLaurent.lean`):
+  Mathlib 4.12 has `ℚ_[p]` and `padicValNat` but no Iwasawa
+  logarithm, no Bugeaud–Laurent 1996 explicit `c(p)`, no LLL
+  over `ℤ_p`, and no `dim S₂(32)=1`. On odd `k` the 2-adic
+  valuation of both sides is `0`, so a valuation identity does
+  not replace p-adic logs. Real logs lose at `C1=1` and at the
+  placeholder `1000`. `bugeaud_laurent_1996_two_logs` /
+  `p_adic_LLL_reduction` / `baker_bound_B0_1e6` stay `def Prop`.
+  Does not fork Mathlib. Not a minted v25 tag
 
 `baker_conditional_gap3_full` takes `baker_bound_gap3`, not the
 Matveev target. After the lower bound, the remaining implication

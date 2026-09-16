@@ -124,6 +124,12 @@ conditional C<100 when A,B≤B0; C≥100 and ¬C≤73 on B≥B0;
 hGen_padic/hLLL_padic/baker_bound_B0_1e6 stay def Prop;
 does not mint v25; Bugeaud–Laurent / Kraus / Oesterlé /
 Ribet-to-32 / FLT 13 stay uninhabited).
+Bugeaud–Laurent / p-adic LLL import plan in BugeaudLaurent.lean
+(bugeaud_laurent_unconditional_nogo; 2-adic valuation of the
+equation is compatible on odd k; real logs lose at C1=1 and
+at the placeholder 1000; bugeaud_laurent_1996_two_logs /
+p_adic_LLL_reduction / baker_bound_B0_1e6 stay def Prop;
+does not fork Mathlib; v25 not minted).
 bugeaud_LLL_reduction_proof stays def Prop. Named theorem
 baker_bound_gap3 stays uninhabited. Not a minted v25 tag.
 -/
@@ -160,6 +166,7 @@ import BealGap14
 import BealGap15
 import BealGapK
 import EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6
+import BugeaudLaurent
 import BealConjecture.Level26.BealLevel26Foundations.BealMatveevThm14
 import BealConjecture.Level26.BealLevel26Foundations.BealBakerB0ReductionCertificate
 import BealLevel26Foundations.Beal.FullProof.BealMatveevConstants
@@ -1226,6 +1233,13 @@ theorem gap3_forall_of_baker
 #check EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.parity_odd_k_gapK
 #check EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.parity_even_k_gapK
 #check EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.no_positive_A4_B4_C13_coprime_of_axiom
+#check BugeaudLaurent.bugeaud_laurent_unconditional_nogo
+#check BugeaudLaurent.bugeaud_laurent_1996_two_logs
+#check BugeaudLaurent.p_adic_LLL_reduction
+#check BugeaudLaurent.two_val_equation_compatible_odd_k
+#check BugeaudLaurent.C1_padic_placeholder_loses_in_reals
+#check BugeaudLaurent.C1_one_loses_in_reals
+#check BugeaudLaurent.baker_bound_B0_1e6
 #print axioms C1_floor_eq
 #print axioms height_B0_eq
 #print axioms height_bound_gap3
@@ -1380,5 +1394,8 @@ theorem gap3_forall_of_baker
 #print axioms EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.C_lt_hundred_of_A_B_le_B0
 #print axioms EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.C_ge_hundred_of_B_ge_B0
 #print axioms EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.no_positive_A4_B4_C13_coprime_of_axiom
+#print axioms BugeaudLaurent.bugeaud_laurent_unconditional_nogo
+#print axioms BugeaudLaurent.two_val_equation_compatible_odd_k
+#print axioms BugeaudLaurent.C1_padic_placeholder_loses_in_reals
 
 end BealMatveevBeal

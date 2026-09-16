@@ -39,6 +39,7 @@ Current Matveev–Beal track:
 - [`BealGap15.md`](BealGap15.md) — gap-15 `A⁴+B⁴=(B+15)¹³` no-go (`v24-v24x-final-gap15-nogo`); `B` even `A` odd; `3∣B` impossible by 3-descent (`C₁=B₁+5≡2`); `5∣B` impossible by 5-descent (`C₁=B₁+3≡3`); `7∣B` compatible (`C≡1 A⁴≡1`)
 - [`BealGapK.md`](BealGapK.md) — generic `A⁴+B⁴=(B+k)¹³` (`v24-v24x-final-gapK-generic-nogo`); odd `k` ⇒ `B` even `A` odd; even `k` ⇒ `A` even only; not `∀k ¬sol`
 - [`EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.md`](EffectiveLevelLoweringPAdicLinearForms_A4_B4_C13_B0_1e6.md) — GapK wrappers + conditional `C<100` when `A,B≤B0` (`v24-v24x-final-effective-padic-nogo`); `baker_bound_B0_1e6` / `hGen_padic` / `hLLL_padic` stay `def Prop`; v25 not minted
+- [`BugeaudLaurent.md`](BugeaudLaurent.md) — Mathlib 4.12 p-adic / modular gap (`v24-v24x-final-bugeaud-laurent-nogo`); 2-adic valuation compatible on odd `k`; no Iwasawa `log_p` / Bugeaud–Laurent 1996 / p-adic LLL; v25 not minted
 - [`BealBakerBoundGap3.md`](BealBakerBoundGap3.md) — kernel `baker_bound_gap3` stays a `def Prop`; Mathlib-only close remains open
 
 Older Frey / Zsigmondy / modular-elimination notes in this

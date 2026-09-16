@@ -56,3 +56,7 @@ Do **not** inhabit `hGen_padic` / `hLLL_padic` /
 
 `#print axioms baker_bound_B0_1e6_unconditional_nogo` is
 `[propext, Classical.choice, Quot.sound]` only.
+
+Successor:
+[`BugeaudLaurent.md`](BugeaudLaurent.md)
+(`v24-v24x-final-bugeaud-laurent-nogo`).
