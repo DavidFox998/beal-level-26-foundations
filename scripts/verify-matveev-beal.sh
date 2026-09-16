@@ -160,6 +160,22 @@ test -f SerreImageFull.lean
 if test -f Beal/Matveev/SerreImageFull.lean; then
   fail "do not add Beal/Matveev/SerreImageFull.lean; .submodules Beal.Matveev would pull it into default"
 fi
+test -f Mazur_X0_13_RationalPoints.lean
+if test -f Beal/Matveev/Mazur_X0_13_RationalPoints.lean; then
+  fail "do not add Beal/Matveev/Mazur_X0_13_RationalPoints.lean; .submodules Beal.Matveev would pull it into default"
+fi
+test -f Tate_I29_Inertia.lean
+if test -f Beal/Matveev/Tate_I29_Inertia.lean; then
+  fail "do not add Beal/Matveev/Tate_I29_Inertia.lean; .submodules Beal.Matveev would pull it into default"
+fi
+test -f Ribet_Level32.lean
+if test -f Beal/Matveev/Ribet_Level32.lean; then
+  fail "do not add Beal/Matveev/Ribet_Level32.lean; .submodules Beal.Matveev would pull it into default"
+fi
+test -f Serre_Large_vs_CM_Small.lean
+if test -f Beal/Matveev/Serre_Large_vs_CM_Small.lean; then
+  fail "do not add Beal/Matveev/Serre_Large_vs_CM_Small.lean; .submodules Beal.Matveev would pull it into default"
+fi
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -716,6 +732,18 @@ if ".one `TateGalois" not in lake:
 if ".one `SerreImageFull" not in lake:
     print("lakefile.lean missing SerreImageFull glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
+if ".one `Mazur_X0_13_RationalPoints" not in lake:
+    print("lakefile.lean missing Mazur_X0_13_RationalPoints glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
+if ".one `Tate_I29_Inertia" not in lake:
+    print("lakefile.lean missing Tate_I29_Inertia glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
+if ".one `Ribet_Level32" not in lake:
+    print("lakefile.lean missing Ribet_Level32 glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
+if ".one `Serre_Large_vs_CM_Small" not in lake:
+    print("lakefile.lean missing Serre_Large_vs_CM_Small glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
 if "BealMatveevBealV25B0Search" in default_globs.group(1):
     print("BealMatveevBealV25B0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
@@ -763,6 +791,18 @@ if "TateGalois" in default_globs.group(1):
     sys.exit(1)
 if "SerreImageFull" in default_globs.group(1):
     print("SerreImageFull must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Mazur_X0_13_RationalPoints" in default_globs.group(1):
+    print("Mazur_X0_13_RationalPoints must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Tate_I29_Inertia" in default_globs.group(1):
+    print("Tate_I29_Inertia must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Ribet_Level32" in default_globs.group(1):
+    print("Ribet_Level32 must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Serre_Large_vs_CM_Small" in default_globs.group(1):
+    print("Serre_Large_vs_CM_Small must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -4343,6 +4383,25 @@ check_gap_file("SerreImageFull.lean",
      "image_32a1_mod13_small_full", "serre_large_image_13_full",
      "darmon_merel_4413_four_gaps", "no_sol_ge_B0_of_four_gaps"],
     ["E32a1_j_eq_1728", "forty_eight_lt_2184", "LLL_and_DarmonMerel_separate"])
+check_gap_file("Mazur_X0_13_RationalPoints.lean",
+    ["reducible_13_iff_j_in_image", "no_t_gives_Frey_j_when_29_dvd_C",
+     "mazur_irreducible_13_via_X0_13", "mazur_irreducible_13_theorem"],
+    ["x0_13_quad_ne_zero_mod29", "x0_13_f_zero_at_seven_nine_mod29",
+     "fourth_pow_mod29", "c4_form_ne_fourteen_form_mod29",
+     "padicValRat_frey_j_eq_neg_26_vC", "v_t_of_j_eq",
+     "LLL_nogo_persists_after_X0_13"])
+check_gap_file("Tate_I29_Inertia.lean",
+    ["Tate_uniformization", "inertia_via_cyclo",
+     "inertia_trivial_mod13_when_13_dvd_v"],
+    ["v29_c4_eq_0_thm", "v29_Delta_26k_thm",
+     "LLL_nogo_persists_after_Tate_I29"])
+check_gap_file("Ribet_Level32.lean",
+    ["modular_Frey", "ribet_level_lowering_29_to_32"],
+    ["LLL_nogo_persists_after_Ribet_Level32"])
+check_gap_file("Serre_Large_vs_CM_Small.lean",
+    ["card_32a1_le_48", "serre_large_Frey", "contradiction_48_lt_2184"],
+    ["forty_eight_lt_2184", "card_SL2_F13_eq_2184",
+     "LLL_and_DarmonMerel_separate"])
 arch = pathlib.Path("ARCHIVE_4413.md").read_text(encoding="utf-8")
 if "e5a95f5" not in arch or "953a174" not in arch:
     print("ARCHIVE_4413.md must record e5a95f5 LLL iff and 953a174 barrier", file=sys.stderr)
@@ -4352,6 +4411,12 @@ if "(1,6)" not in arch:
     sys.exit(1)
 if "four gaps" not in arch and "4 gaps" not in arch:
     print("ARCHIVE_4413.md must record the four Mathlib gaps", file=sys.stderr)
+    sys.exit(1)
+if "X0(13)" not in arch and "X₀(13)" not in arch:
+    print("ARCHIVE_4413.md must record the X0(13) Fricke j-map", file=sys.stderr)
+    sys.exit(1)
+if "7,9" not in arch and "t ≡ 7" not in arch:
+    print("ARCHIVE_4413.md must record that f has roots 7,9 mod 29", file=sys.stderr)
     sys.exit(1)
 
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
@@ -4707,4 +4772,7 @@ print("  no serre_large_image_13_axiom; Frey j!=1728 when 29|C; LLL e5a95f5 sepa
 print("  four gaps scaffold: Mazur irr, Tate I29, modularity+Ribet 32, Serre vs 32a1 48<2184")
 print("  MazurIrreducibilityFull / TateGalois / SerreImageFull: numerics re-exported, Galois def Prop")
 print("  no new axiom; darmon_merel_4413_four_gaps stays def Prop; main 6247c63 axiom-free")
+print("  Mazur_X0_13: Fricke j(t), f roots 7,9 mod29, v(t) in {26k,-2k}; Mazur via X0(13) stays def Prop")
+print("  Tate_I29_Inertia / Ribet_Level32 / Serre_Large_vs_CM_Small: Galois stays def Prop")
+print("  no local F29 close; 48<2184 is not False without the Galois iso")
 PY

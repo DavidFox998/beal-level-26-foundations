@@ -43,7 +43,10 @@ requests to **`main`**, and on `workflow_dispatch`:
    `SerreImage13` (`32a1` `j=1728`; CM image / Serre stay
    `def Prop`; no new axiom) plus
    `MazurIrreducibilityFull` / `TateGalois` / `SerreImageFull`
-   (four Mathlib gaps stay `def Prop`; no new axiom);
+   (four Mathlib gaps stay `def Prop`; no new axiom) plus
+   `Mazur_X0_13_RationalPoints` (Fricke `j`-map; Mazur stays
+   `def Prop`) plus `Tate_I29_Inertia` / `Ribet_Level32` /
+   `Serre_Large_vs_CM_Small` (Galois stays `def Prop`);
    full `B ≤ B0` stays `def Prop`
 5. `bash scripts/verify-matveev-beal.sh` — AMS / Math. Comp. referee
    surface: 0 `sorry`, `matveev_gap3_lower` is the B≤10^6 integer-gap

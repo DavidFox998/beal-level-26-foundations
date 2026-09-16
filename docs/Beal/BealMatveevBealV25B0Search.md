@@ -204,6 +204,13 @@ Root [`MazurIrreducibilityFull.lean`](../../MazurIrreducibilityFull.lean),
 **four Mathlib gaps** as `def Prop` and re-export the `9030063`
 numerics. `darmon_merel_4413_four_gaps` /
 `no_sol_ge_B0_of_four_gaps` stay `def Prop`. No new axiom.
+Root [`Mazur_X0_13_RationalPoints.lean`](../../Mazur_X0_13_RationalPoints.lean)
+inhabits the Fricke `j`-map and `𝔽₂₉` scans (`f` has roots
+`7,9` mod `29`; `v(t)∈{26k,−2k}`); Mazur via `X₀(13)` stays
+`def Prop`. [`Tate_I29_Inertia.lean`](../../Tate_I29_Inertia.lean),
+[`Ribet_Level32.lean`](../../Ribet_Level32.lean), and
+[`Serre_Large_vs_CM_Small.lean`](../../Serre_Large_vs_CM_Small.lean)
+keep Galois as `def Prop`.
 `LLL_and_DarmonMerel_separate` is the same `e5a95f5`
 equivalence.
 

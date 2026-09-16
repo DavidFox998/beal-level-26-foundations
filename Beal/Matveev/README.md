@@ -108,6 +108,10 @@ Serre open image stay `def Prop`. Do **not** add
 `Beal/Matveev/SerreImage13.lean`.
 Root `MazurIrreducibilityFull.lean`, `TateGalois.lean`, and
 `SerreImageFull.lean` name the four Mathlib gaps as `def Prop`.
+Root `Mazur_X0_13_RationalPoints.lean` inhabits the Fricke
+`j`-map and `𝔽₂₉` scans; Mazur via `X₀(13)` stays `def Prop`.
+Root `Tate_I29_Inertia.lean`, `Ribet_Level32.lean`, and
+`Serre_Large_vs_CM_Small.lean` keep Galois as `def Prop`.
 Do **not** add copies under `Beal/Matveev/`. See root
 `ARCHIVE_4413.md`.
 

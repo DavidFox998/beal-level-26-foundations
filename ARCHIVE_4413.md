@@ -180,6 +180,39 @@ as `def Prop`. No new axiom; `main` stays `6247c63`.
 `darmon_merel_4413_four_gaps` and `no_sol_ge_B0_of_four_gaps`
 stay `def Prop`. The `e5a95f5` LLL iff is re-exported.
 
+## `X₀(13)` Fricke `j`-map (not a Mazur close)
+
+Root `Mazur_X0_13_RationalPoints.lean` records the Fricke /
+Fisher formula
+
+```
+j(t) = (t²+5t+13)(t⁴+7t³+20t²+19t+1)³ / t
+```
+
+(`X₀(13) ≅ ℙ¹`, degree 14). `X₀(13)(ℚ)` is infinite; there is
+no finite list of rational `j`-invariants of 13-isogenies.
+Mazur’s finite list is the **integral** `j` case.
+
+Honest `𝔽₂₉` facts (the pasted scan was wrong):
+
+- `t²+5t+13` has no root mod `29` (disc `≡ 2`, nonresidue)
+- `f(t)` **does** vanish at `t ≡ 7,9 (mod 29)`; `f(0)=1`
+- fourth powers in `𝔽₂₉` are `{0,1,7,16,20,23,24,25}` (not
+  `{0,1,7,20,23,24,25,28}`)
+- displayed `c₄` uses coefficient `1` in `A⁸+A⁴B⁴+B⁸`, not the
+  Fermat-`14` form
+- `v₂₉(j_Frey)=−26k` on `29 ∣ C`, `29 ∤ AB`
+- if `j_Frey = j(t)` then `v₂₉(t) ∈ {26k, −2k}`
+
+Both remaining cusps hit every unit of `𝔽₂₉ˣ` (`13 u⁻¹` at
+`t ∼ 29^{26k}`, `u¹³` at `t ∼ 29^{-2k}` with `gcd(13,28)=1`).
+A `∀ u, u·13⁻¹ ≠ RHS` native_decide cannot close Mazur.
+`mazur_irreducible_13_via_X0_13` stays `def Prop`.
+
+Gaps 2–4 stay `def Prop` in `Tate_I29_Inertia`,
+`Ribet_Level32`, and `Serre_Large_vs_CM_Small`. `48 < 2184` is
+a numeral theorem, not `False` without a Galois isomorphism.
+
 ## What this tree does not claim
 
 - No `sorry`, no `True := trivial`, no fake `False.elim`.
