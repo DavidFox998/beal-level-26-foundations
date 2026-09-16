@@ -138,4 +138,17 @@ stays `def Prop`. `no_sol_ge_B0_of_32_and_928` does not inhabit
 the 928 table. `LLL_still_nogo_after_29` is the same `e5a95f5`
 equivalence.
 
+Root [`Ribet29C_Lowering.lean`](../../Ribet29C_Lowering.lean)
+treats the remaining `29 ∣ C`, `29 ∤ AB` branch. `v₂₉(Δ) =
+26 v₂₉(C)` and `13 ∣ v₂₉(Δ)` are re-exported from
+`Level928Table` (`padicValNat`, not a `v_p := 0` stub).
+Ribet “unramified at 29 ⇒ residual divides 32” stays
+`def Prop` (no new axiom). Residue `(A,B) ≡ (2,3) (mod 7)`
+is on-solution and good at 7, with `a₇ = −4 ≠ 0 = a₇(32a1)`.
+That slice dies **if** traces must match `32a1`. Residue
+`(1,6)` still matches (`a₇ = 0`), so the whole `29 ∣ C`
+branch stays `def Prop`.
+`LLL_nogo_persists_after_Ribet29C` is the same `e5a95f5`
+equivalence; C-scaling is not replaced.
+
 v25 is not minted.

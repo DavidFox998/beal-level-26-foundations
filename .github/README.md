@@ -29,7 +29,9 @@ requests to **`main`**, and on `workflow_dispatch`:
    `l=3,5` match, `p=29` mismatches good reduction;
    `level_32_no_newform_for_Frey_gap3` stays `def Prop`) plus
    `Level928Table` (`29 ∣ ABC` split, displayed residual `928`;
-   `level_928_no_match_bad_29` stays `def Prop`);
+   `level_928_no_match_bad_29` stays `def Prop`) plus
+   `Ribet29C_Lowering` (`v₂₉(Δ)=26 v₂₉(C)`; `a₇=−4` on residue
+   `(2,3)`; `ribet_29C_lowers_to_32` stays `def Prop`);
    full `B ≤ B0` stays `def Prop`
 5. `bash scripts/verify-matveev-beal.sh` — AMS / Math. Comp. referee
    surface: 0 `sorry`, `matveev_gap3_lower` is the B≤10^6 integer-gap

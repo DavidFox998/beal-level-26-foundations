@@ -85,6 +85,10 @@ Root `Level928Table.lean` splits `29 ∣ ABC`: at most one of `A,B,C`;
 `13 ∣ v₂₉(Δ)` when `29 ∣ C`; displayed extra factor `928` when
 `29 ∣ AB`. `level_928_no_match_bad_29` stays `def Prop` (no
 77-row table). Do **not** add `Beal/Matveev/Level928Table.lean`.
+Root `Ribet29C_Lowering.lean` re-exports `v₂₉(Δ)=26 v₂₉(C)` and
+inhabits `a₇=−4 ≠ 0` on residue `(2,3) mod 7`. Ribet-to-32 and
+the full `29 ∣ C` branch stay `def Prop`. Do **not** add
+`Beal/Matveev/Ribet29C_Lowering.lean`.
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /

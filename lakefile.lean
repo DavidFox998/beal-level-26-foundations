@@ -49,8 +49,10 @@ lean_lib «BealMatveevBealV25Rank3» where
     `def Prop`. `Level32Table` is LMFDB `32a1` q-exp by
     `𝔽_p` point counts; `level_32_no_newform` stays `def Prop`.
     `Level928Table` is the `29 ∣ ABC` split and displayed residual
-    `928`; the 77-row table stays `def Prop`. -/
+    `928`; the 77-row table stays `def Prop`. `Ribet29C_Lowering`
+    is `29 ∣ C` plus the `l=7` residue `(2,3)`; Ribet stays
+    `def Prop`. -/
 lean_lib «BealMatveevBealV25B0Search» where
   globs := #[.one `BealMatveevBealV25B0Search, .one `LLLTargetB8, .one `Gap3B0Million,
     .one `LLLTargetB8_C1_lower_bound, .one `DarmonMerelFrey4413, .one `Level32Table,
-    .one `Level928Table]
+    .one `Level928Table, .one `Ribet29C_Lowering]
