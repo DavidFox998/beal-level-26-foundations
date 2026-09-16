@@ -51,8 +51,9 @@ lean_lib «BealMatveevBealV25Rank3» where
     `Level928Table` is the `29 ∣ ABC` split and displayed residual
     `928`; the 77-row table stays `def Prop`. `Ribet29C_Lowering`
     is `29 ∣ C` plus the `l=7` residue `(2,3)`; Ribet stays
-    `def Prop`. -/
+    `def Prop`. `Ribet29C_Residue16` is `l=11` on residue
+    `(1,6)`; that class is mixed at `11` and stays `def Prop`. -/
 lean_lib «BealMatveevBealV25B0Search» where
   globs := #[.one `BealMatveevBealV25B0Search, .one `LLLTargetB8, .one `Gap3B0Million,
     .one `LLLTargetB8_C1_lower_bound, .one `DarmonMerelFrey4413, .one `Level32Table,
-    .one `Level928Table, .one `Ribet29C_Lowering]
+    .one `Level928Table, .one `Ribet29C_Lowering, .one `Ribet29C_Residue16]

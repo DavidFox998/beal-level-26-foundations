@@ -151,4 +151,17 @@ branch stays `def Prop`.
 `LLL_nogo_persists_after_Ribet29C` is the same `e5a95f5`
 equivalence; C-scaling is not replaced.
 
+Root [`Ribet29C_Residue16.lean`](../../Ribet29C_Residue16.lean)
+checks the surviving `l = 7` class `(A,B) ≡ (1,6) (mod 7)` at
+`l = 11`. `32a1` has `a₁₁ = 0`. The representatives `A=1, B=6`
+are not on-solution over `𝔽₁₁` and have `a₁₁ = 0` (they do
+**not** give `−6`). Good on-solution residues mod `11` are
+mixed: `(4,3)` matches, `(2,6)` mismatches (`a₁₁ = −4`).
+CRT lifts of `(1,6) (mod 7)` include both, including a
+`29 ∣ C` witness with `a₁₁ = 0`. So `l = 11` does not kill
+that class. `(6,6) (mod 7)` still matches at `7`.
+`full_29C_eliminated` / `no_sol_ge_B0_29C_of_7_and_11` stay
+`def Prop`. `LLL_nogo_persists_after_Residue16` is the same
+`e5a95f5` equivalence.
+
 v25 is not minted.

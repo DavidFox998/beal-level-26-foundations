@@ -89,6 +89,10 @@ Root `Ribet29C_Lowering.lean` re-exports `v₂₉(Δ)=26 v₂₉(C)` and
 inhabits `a₇=−4 ≠ 0` on residue `(2,3) mod 7`. Ribet-to-32 and
 the full `29 ∣ C` branch stay `def Prop`. Do **not** add
 `Beal/Matveev/Ribet29C_Lowering.lean`.
+Root `Ribet29C_Residue16.lean` checks `l = 11` on residue
+`(1,6) (mod 7)`: `a₁₁(32a1)=0`, the class is mixed at `11`,
+and `full_29C_eliminated` stays `def Prop`. Do **not** add
+`Beal/Matveev/Ribet29C_Residue16.lean`.
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the
 interpolation / LLL / Bugeaud / Wüstholz / Product / ThreeLogs /

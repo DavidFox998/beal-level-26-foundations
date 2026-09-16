@@ -127,6 +127,10 @@ test -f Ribet29C_Lowering.lean
 if test -f Beal/Matveev/Ribet29C_Lowering.lean; then
   fail "do not add Beal/Matveev/Ribet29C_Lowering.lean; .submodules Beal.Matveev would pull it into default"
 fi
+test -f Ribet29C_Residue16.lean
+if test -f Beal/Matveev/Ribet29C_Residue16.lean; then
+  fail "do not add Beal/Matveev/Ribet29C_Residue16.lean; .submodules Beal.Matveev would pull it into default"
+fi
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -659,6 +663,9 @@ if ".one `Level928Table" not in lake:
 if ".one `Ribet29C_Lowering" not in lake:
     print("lakefile.lean missing Ribet29C_Lowering glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
+if ".one `Ribet29C_Residue16" not in lake:
+    print("lakefile.lean missing Ribet29C_Residue16 glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
 if "BealMatveevBealV25B0Search" in default_globs.group(1):
     print("BealMatveevBealV25B0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
@@ -682,6 +689,9 @@ if "Level928Table" in default_globs.group(1):
     sys.exit(1)
 if "Ribet29C_Lowering" in default_globs.group(1):
     print("Ribet29C_Lowering must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Ribet29C_Residue16" in default_globs.group(1):
+    print("Ribet29C_Residue16 must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -3937,6 +3947,59 @@ if "theorem LLL_nogo_persists_after_Ribet29C" not in r29c:
     print("LLL_nogo_persists_after_Ribet29C missing", file=sys.stderr)
     sys.exit(1)
 
+r16 = pathlib.Path("Ribet29C_Residue16.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in r16 or re.search(
+        r"^import Beal\.Matveev\.", r16, re.M):
+    print("Ribet29C_Residue16.lean must not import Beal.Matveev.*", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", r16, re.M) or ":= sorry" in r16 or "by sorry" in r16:
+    print("sorry is not allowed in Ribet29C_Residue16.lean", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in r16:
+    print("True := trivial is not allowed in Ribet29C_Residue16.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^axiom ", r16, re.M):
+    print("do not add axioms in Ribet29C_Residue16.lean; reuse BealTrueV25.darmon_merel_4413_axiom",
+          file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^def count_Fp_Frey\b", r16, re.M) or ":= 0 -- placeholder" in r16:
+    print("do not stub count_Fp_Frey := 0; reuse Level32Table sqCount", file=sys.stderr)
+    sys.exit(1)
+if "frey_ap 11 1 6 = -6" in r16 or "a11_Frey_1_6_mod7" in r16:
+    print("do not claim frey_ap 11 1 6 = -6; the point count is 0 and (1,6) is not on-sol mod 11",
+          file=sys.stderr)
+    sys.exit(1)
+if "theorem curve32a1_ap_11" not in r16:
+    print("curve32a1_ap_11 missing from Ribet29C_Residue16.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem a11_at_1_6_matches_32a1" not in r16:
+    print("a11_at_1_6_matches_32a1 missing; (1,6) matches a11=0", file=sys.stderr)
+    sys.exit(1)
+if "theorem residue_1_6_has_a11_match_witness" not in r16:
+    print("residue_1_6_has_a11_match_witness missing; l=11 does not kill (1,6)",
+          file=sys.stderr)
+    sys.exit(1)
+if "theorem a11_ne_32a1_of_residue_2_6" not in r16:
+    print("a11_ne_32a1_of_residue_2_6 missing from Ribet29C_Residue16.lean", file=sys.stderr)
+    sys.exit(1)
+if "def no_sol_ge_B0_29C_of_7_and_11" not in r16:
+    print("no_sol_ge_B0_29C_of_7_and_11 must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem no_sol_ge_B0_29C_of_7_and_11\b", r16, re.M):
+    print("do not inhabit no_sol_ge_B0_29C_of_7_and_11; (1,6) has a11=0 lifts",
+          file=sys.stderr)
+    sys.exit(1)
+if "def full_29C_eliminated" not in r16:
+    print("full_29C_eliminated must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem full_29C_eliminated\b", r16, re.M):
+    print("do not inhabit full_29C_eliminated; (1,6) and (6,6) survive",
+          file=sys.stderr)
+    sys.exit(1)
+if "theorem LLL_nogo_persists_after_Residue16" not in r16:
+    print("LLL_nogo_persists_after_Residue16 missing", file=sys.stderr)
+    sys.exit(1)
+
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
     print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
@@ -4271,4 +4334,8 @@ print("  level_928_no_match_bad_29 stays def Prop; dim=77 is LMFDB data not a 3-
 print("  Ribet29C_Lowering: v29(Delta)=26 v29(C) via padicValNat; 13|v on 29|C")
 print("  a7=-4 vs 0 on residue (2,3) mod 7; ribet_29C_lowers_to_32 / full 29|C stay def Prop")
 print("  LLL_nogo_persists_after_Ribet29C is the e5a95f5 iff; no new axiom")
+print("  Ribet29C_Residue16: 32a1 a11=0; frey_ap 11 1 6 = 0 matches; (1,6) not on-sol mod 11")
+print("  mixed F_11: a11=0 at (4,3)/(7,3), a11=-4 at (2,6)/(9,6); (1,6) class has both")
+print("  no_sol_ge_B0_29C_of_7_and_11 / full_29C_eliminated stay def Prop; (6,6) still matches a7")
+print("  LLL_nogo_persists_after_Residue16 is the e5a95f5 iff; no new axiom")
 PY
