@@ -55,6 +55,13 @@ The `B ≤ B0` search slice lives in
 ten foldl shards of 100; `∀ B ≤ B0` stays `def Prop`).
 The LLL `|Λ| ≥ B⁻⁸` target lives in root `LLLTargetB8.lean`
 (same Lake target; do **not** add `Beal/Matveev/LLLTargetB8.lean`).
+Root `Gap3B0Million.lean` is the foldl wiring for 10k shards of
+100: if `allShardsTrue`, then no gap-3 solution with `B < B0`.
+`allShardsTrue_eq_true` stays `def Prop`. Inclusive `B ≤ B0`
+still needs `check_B B0`. Do **not** add
+`Beal/Matveev/Gap3Shards/` or `Beal/Matveev/Gap3_B_le_B0.lean`.
+`scripts/gen_gap3_shards.py` refuses those paths; generated
+shards are not committed (`(B+3)¹³ ≈ 10⁷⁸` at `B ≈ 10⁶`).
 Phase-lift lattices on `phase-lll-lift-b8`: old `L` with
 `b1=(1,0)` still has `λ₁=1`. `L'` with `C=10⁴⁸`,
 `b1'=(C, ⌊C log(B+3)⌋)`, `b2'=(0,C)`, `det=C²`, `λ₁=C`.

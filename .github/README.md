@@ -18,7 +18,9 @@ requests to **`main`**, and on `workflow_dispatch`:
    cutoff nogo target; not in the default glob
 4. `lake build BealMatveevBealV25B0Search` — separate `B<1000`
    foldl shards of 100 plus `LLLTargetB8` (`C=10⁴⁸` `L'` and
-   3-dim `L3` with `C₃=10³⁰`, `λ₁=1`; `|Λ|≥B⁻⁸` stays `def Prop`);
+   3-dim `L3` with `C₃=10³⁰`, `λ₁=1`; `|Λ|≥B⁻⁸` stays `def Prop`)
+   and `Gap3B0Million` (10k-shard foldl wiring; `allShardsTrue_eq_true`
+   stays `def Prop`; shards are not `native_decide`'d);
    full `B ≤ B0` stays `def Prop`
 5. `bash scripts/verify-matveev-beal.sh` — AMS / Math. Comp. referee
    surface: 0 `sorry`, `matveev_gap3_lower` is the B≤10^6 integer-gap

@@ -99,6 +99,14 @@ test -f LLLTargetB8.lean
 if test -f Beal/Matveev/LLLTargetB8.lean; then
   fail "do not add Beal/Matveev/LLLTargetB8.lean; .submodules Beal.Matveev would pull it into default"
 fi
+test -f Gap3B0Million.lean
+if test -f Beal/Matveev/Gap3_B_le_B0.lean; then
+  fail "do not add Beal/Matveev/Gap3_B_le_B0.lean; .submodules Beal.Matveev would pull it into default"
+fi
+if test -d Beal/Matveev/Gap3Shards; then
+  fail "do not add Beal/Matveev/Gap3Shards; .submodules Beal.Matveev would pull it into default"
+fi
+test -f scripts/gen_gap3_shards.py
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -613,11 +621,17 @@ if ".one `BealMatveevBealV25B0Search" not in lake:
 if ".one `LLLTargetB8" not in lake:
     print("lakefile.lean missing LLLTargetB8 glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
+if ".one `Gap3B0Million" not in lake:
+    print("lakefile.lean missing Gap3B0Million glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
 if "BealMatveevBealV25B0Search" in default_globs.group(1):
     print("BealMatveevBealV25B0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 if "LLLTargetB8" in default_globs.group(1):
     print("LLLTargetB8 must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Gap3B0Million" in default_globs.group(1):
+    print("Gap3B0Million must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -3584,6 +3598,58 @@ if "theorem v_combo3_euc_ge_four_C" not in b8:
     print("v_combo3_euc_ge_four_C missing from LLLTargetB8.lean", file=sys.stderr)
     sys.exit(1)
 
+g3 = pathlib.Path("Gap3B0Million.lean").read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in g3:
+    print("Gap3B0Million.lean must not import MatveevThm14General", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", g3, re.M) or ":= sorry" in g3 or "by sorry" in g3:
+    print("sorry is not allowed in Gap3B0Million.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*native_decide\b", g3, re.M) or "by native_decide" in g3:
+    print("do not native_decide the million-B foldl in Gap3B0Million.lean", file=sys.stderr)
+    sys.exit(1)
+if "def allShardsTrue" not in g3:
+    print("allShardsTrue missing from Gap3B0Million.lean", file=sys.stderr)
+    sys.exit(1)
+if "def allShardsTrue_eq_true" not in g3:
+    print("allShardsTrue_eq_true must stay def Prop", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem allShardsTrue_eq_true\b", g3, re.M):
+    print("do not inhabit allShardsTrue_eq_true; 10k native_decide shards are not shipped", file=sys.stderr)
+    sys.exit(1)
+if "theorem gap3_B_lt_B0_of_allShardsTrue" not in g3:
+    print("gap3_B_lt_B0_of_allShardsTrue missing from Gap3B0Million.lean", file=sys.stderr)
+    sys.exit(1)
+if "theorem gap3_B_le_B0_of_allShardsTrue" not in g3:
+    print("gap3_B_le_B0_of_allShardsTrue missing from Gap3B0Million.lean", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem gap3_B_le_B0_no_solution\b", g3, re.M):
+    print("do not inhabit gap3_B_le_B0_no_solution from Gap3B0Million.lean", file=sys.stderr)
+    sys.exit(1)
+if pathlib.Path("Gap3Shards").exists() and any(pathlib.Path("Gap3Shards").glob("*.lean")):
+    print("do not commit generated Gap3Shards; (B+3)^13 at B≈1e6 is ~1e78", file=sys.stderr)
+    sys.exit(1)
+gen = pathlib.Path("scripts/gen_gap3_shards.py").read_text(encoding="utf-8")
+if "Beal/Matveev" not in gen or "refuse" not in gen:
+    print("gen_gap3_shards.py must refuse Beal/Matveev output", file=sys.stderr)
+    sys.exit(1)
+import subprocess
+refused = subprocess.run(
+    [sys.executable, "scripts/gen_gap3_shards.py",
+     "--write", "--out", "Beal/Matveev/Gap3Shards"],
+    capture_output=True, text=True)
+if refused.returncode == 0:
+    print("gen_gap3_shards.py --write --out Beal/Matveev/Gap3Shards must fail",
+          file=sys.stderr)
+    sys.exit(1)
+dry = subprocess.run(
+    [sys.executable, "scripts/gen_gap3_shards.py", "--dry-run"],
+    capture_output=True, text=True)
+if dry.returncode != 0 or "10000 shards" not in dry.stdout:
+    print("gen_gap3_shards.py --dry-run should count 10000 shards",
+          file=sys.stderr)
+    sys.exit(1)
+
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
 if "import Beal.Matveev.MatveevThm14General" in interp:
     print("MatveevInterpolation.lean must not import Beal.Matveev.MatveevThm14General", file=sys.stderr)
@@ -3903,6 +3969,8 @@ print("  C_LLL=10^48 L' det C^2 lambda1=C; C_LLL_3=10^30 L3 det C lambda1=1 not 
 print("  C1_LLL_target=8 < typical 30-50; C1'>=9 does not beat 2/B^9")
 print("  v_combo3 length >=4 C_3 not C_3|Lambda|; v_short'_mem_L' stays def Prop")
 print("  no_sol_of_abs_Lambda_ge_B_pow_neg_eight is the implication, not an inhabitant")
+print("  Gap3B0Million: 10k-shard foldl wiring; allShardsTrue_eq_true stays def Prop")
+print("  no committed Gap3Shards; not under Beal/Matveev; B<1000 remains the closed slice")
 print("  check_B_true_no_sol extracts Bool checker; gap3_B_le_B0_no_solution stays def Prop")
 print("  not 100 native_decide shards to 10000; popcount is not a sound reject; v25 not minted")
 PY

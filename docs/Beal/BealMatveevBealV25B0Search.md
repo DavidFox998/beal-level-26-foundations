@@ -85,4 +85,13 @@ are not characterized by popcount. One hundred shards through
   on the Rank-3 target.
 
 Build: `lake build BealMatveevBealV25B0Search`.
+Root [`Gap3B0Million.lean`](../../Gap3B0Million.lean) proves the
+foldl wiring: if all 10k `check_range (i·100) ((i+1)·100)` Bools
+are `true`, then there is no gap-3 solution with `B < B0`.
+`allShardsTrue_eq_true` stays `def Prop`; the generator
+[`scripts/gen_gap3_shards.py`](../../scripts/gen_gap3_shards.py)
+refuses `Beal/Matveev/` (default glob) and does not commit
+`native_decide` of `(B+3)¹³ ≈ 10⁷⁸`. The closed slice stays
+`B < 1000`.
+
 v25 is not minted.

@@ -4,3 +4,5 @@
 *.ilean
 *.trace
 *.sage.py
+# Generated 10k native_decide shards; not an AMS close. Do not commit.
+Gap3Shards/
