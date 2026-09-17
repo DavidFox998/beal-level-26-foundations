@@ -30,8 +30,9 @@ Correct algebraic rank 0 is “`E(ℚ)` is finite”
 (`Nonempty (Fintype (MordellWeilGroup E))`), equivalently
 “every point is torsion” (`MW_rank_zero` already on
 `BSD_MordellWeil`). Both stay `def Prop`. This file does **not**
-construct an `AddSubgroup` of torsion (that would be `sorry`
-computational torsion) and does **not** set `L_*_nonzero := True`.
+construct an `AddSubgroup` of torsion (that would be an
+uninhabited computational subgroup) and does **not** inhabit
+analytic non-vanishing by the unit type.
 
 Inhabited numerals, reused:
 * `L/Ω = 1/3` and `1/7` (`L_over_Omega_*_ne_zero`, `e0b34b2`)
@@ -127,7 +128,7 @@ theorem certified_mwrank_display_zero :
 
 /-- Kato / Kolyvagin: analytic non-vanishing ⇒ `MW_rank_zero_fintype`.
     `L_26a1_ne_zero` is the existing uninhabited name (not
-    `1/3 ≠ 0`, and not `Prop := True`). Uninhabited. -/
+    `1/3 ≠ 0`, and not a unit-type inhabitant). Uninhabited. -/
 def Kolyvagin_L_nonzero_imp_MW_rank_zero : Prop :=
   (L_26a1_ne_zero → MW_rank_zero_26a1_fintype) ∧
     (L_26b1_ne_zero → MW_rank_zero_26b1_fintype)
