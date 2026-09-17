@@ -389,6 +389,18 @@ MW rank 0: affine `Point`s `(4,4)` on `26a1` and `(1,0)` on
 namespace. No new axiom. Status note:
 `docs/X0_26_SECTION_8994d38.md`.
 
+Root without-Wiles skeletons on `BealMatveevBealV25B0Search`
+(`docs/roadmap_without_wiles/README.md`):
+`Tate_Frey_Conductor_29` (displayed `Δ` and `32`/`928`; Tate
+algorithm stays `def Prop`), `Mazur_X0_13_No_Isogeny` (genus-0
+numerals; `X₀(13)(ℚ)` infinite, not `{2 cusps}`),
+`Ribet_Level_Lowering_29_to_32` (`928/29=32` numeral; abstract
+Ribet stays `def Prop`), `Kolyvagin_MW_Rank0_26a1_26b1`
+(`MW_rank_zero_fintype` = `Fintype` of `E(ℚ)`, not
+Subsingleton; Kato/Kolyvagin stay `def Prop`). Pasted
+`*_Skeleton.lean` / `Prop := True` / `WeierstrassCurve.mk` /
+one-repo `Level26/` vendor are refused. Lake git require stays.
+
 ## What this tree does not claim
 
 - No `sorry`, no `True := trivial`, no fake `False.elim`.

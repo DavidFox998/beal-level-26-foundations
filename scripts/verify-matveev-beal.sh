@@ -199,6 +199,30 @@ test -f BSD_MordellWeil.lean
 if test -f Beal/Matveev/BSD_MordellWeil.lean; then
   fail "do not add Beal/Matveev/BSD_MordellWeil.lean; .submodules Beal.Matveev would pull it into default"
 fi
+test -f Tate_Frey_Conductor_29.lean
+if test -f Beal/Matveev/Tate_Frey_Conductor_29.lean; then
+  fail "do not add Beal/Matveev/Tate_Frey_Conductor_29.lean; .submodules Beal.Matveev would pull it into default"
+fi
+test -f Mazur_X0_13_No_Isogeny.lean
+if test -f Beal/Matveev/Mazur_X0_13_No_Isogeny.lean; then
+  fail "do not add Beal/Matveev/Mazur_X0_13_No_Isogeny.lean; .submodules Beal.Matveev would pull it into default"
+fi
+test -f Ribet_Level_Lowering_29_to_32.lean
+if test -f Beal/Matveev/Ribet_Level_Lowering_29_to_32.lean; then
+  fail "do not add Beal/Matveev/Ribet_Level_Lowering_29_to_32.lean; .submodules Beal.Matveev would pull it into default"
+fi
+test -f Kolyvagin_MW_Rank0_26a1_26b1.lean
+if test -f Beal/Matveev/Kolyvagin_MW_Rank0_26a1_26b1.lean; then
+  fail "do not add Beal/Matveev/Kolyvagin_MW_Rank0_26a1_26b1.lean; .submodules Beal.Matveev would pull it into default"
+fi
+test -f docs/roadmap_without_wiles/README.md
+if test -d Level26; then
+  fail "do not vendor Level26/ at repo root; lake git require stays"
+fi
+if test -f MW_Rank_Zero_Fintype_Skeleton.lean || test -f Tate_Frey_Conductor_Skeleton.lean ||
+   test -f Mazur_X0_13_Skeleton.lean || test -f Ribet_Level_Lowering_Skeleton.lean; then
+  fail "do not add pasted *_Skeleton.lean (sorry / True / WeierstrassCurve.mk)"
+fi
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -779,6 +803,24 @@ if ".one `BSD_MordellWeil" not in lake:
 if ".one `J0_26_BSD_26a1_26b1" not in lake:
     print("lakefile.lean missing J0_26_BSD_26a1_26b1 glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
+if ".one `Tate_Frey_Conductor_29" not in lake:
+    print("lakefile.lean missing Tate_Frey_Conductor_29 glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
+if ".one `Mazur_X0_13_No_Isogeny" not in lake:
+    print("lakefile.lean missing Mazur_X0_13_No_Isogeny glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
+if ".one `Ribet_Level_Lowering_29_to_32" not in lake:
+    print("lakefile.lean missing Ribet_Level_Lowering_29_to_32 glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
+if ".one `Kolyvagin_MW_Rank0_26a1_26b1" not in lake:
+    print("lakefile.lean missing Kolyvagin_MW_Rank0_26a1_26b1 glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
+if 'require beal_level_26_foundations from git' not in lake:
+    print("lakefile.lean must keep git require beal_level_26_foundations (no local Level26 vendor)", file=sys.stderr)
+    sys.exit(1)
+if 'from "Level26/BealLevel26Foundations"' in lake:
+    print("do not convert beal_level_26_foundations to a local Level26/ require", file=sys.stderr)
+    sys.exit(1)
 if "BealMatveevBealV25B0Search" in default_globs.group(1):
     print("BealMatveevBealV25B0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
@@ -850,6 +892,18 @@ if "BSD_MordellWeil" in default_globs.group(1):
     sys.exit(1)
 if "J0_26_BSD_26a1_26b1" in default_globs.group(1):
     print("J0_26_BSD_26a1_26b1 must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Tate_Frey_Conductor_29" in default_globs.group(1):
+    print("Tate_Frey_Conductor_29 must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Mazur_X0_13_No_Isogeny" in default_globs.group(1):
+    print("Mazur_X0_13_No_Isogeny must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Ribet_Level_Lowering_29_to_32" in default_globs.group(1):
+    print("Ribet_Level_Lowering_29_to_32 must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Kolyvagin_MW_Rank0_26a1_26b1" in default_globs.group(1):
+    print("Kolyvagin_MW_Rank0_26a1_26b1 must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -4555,6 +4609,84 @@ if re.search(r"^theorem J0_26_rank0\b", bsd_mw, re.M):
 if "Prop := True" in bsd_mw or ":= trivial" in bsd_mw:
     print("FAIL: BSD_MordellWeil must not use True/trivial", file=sys.stderr)
     sys.exit(1)
+check_gap_file("Tate_Frey_Conductor_29.lean",
+    ["Tate_algorithm_at_29", "Frey_Neron_conductor",
+     "Frey_conductor_29_is_Neron"],
+    ["freyWeierstrass_Δ_reexport", "freyWeierstrass_Δ_1_1",
+     "v29_Delta_eq_26_vC_reexport",
+     "displayed_residual_32_of_nmid_AB",
+     "displayed_residual_928_of_dvd_AB",
+     "nine_twenty_eight_div_twenty_nine",
+     "LLL_nogo_persists_after_Tate_Frey_Conductor"])
+tate_cond = pathlib.Path("Tate_Frey_Conductor_29.lean").read_text(encoding="utf-8")
+if "Prop := True" in tate_cond or ":= trivial" in tate_cond:
+    print("FAIL: Tate_Frey_Conductor_29 must not use True/trivial", file=sys.stderr)
+    sys.exit(1)
+if "WeierstrassCurve.mk" in tate_cond:
+    print("Tate_Frey_Conductor_29.lean must not use WeierstrassCurve.mk", file=sys.stderr)
+    sys.exit(1)
+check_gap_file("Mazur_X0_13_No_Isogeny.lean",
+    ["X0_13_Q_infinite", "frey_no_rational_13_isogeny",
+     "Serre_non_Borel_mod13", "mazur_no_Frey_13_isogeny"],
+    ["X0_13_genus_nat_eq", "X0_13_cusp_count_eq",
+     "serre_non_Borel_numerics",
+     "LLL_nogo_persists_after_Mazur_X0_13_No_Isogeny"])
+mazur_no = pathlib.Path("Mazur_X0_13_No_Isogeny.lean").read_text(encoding="utf-8")
+if "Prop := True" in mazur_no or ":= trivial" in mazur_no:
+    print("FAIL: Mazur_X0_13_No_Isogeny must not use True/trivial", file=sys.stderr)
+    sys.exit(1)
+if "literature-false" not in mazur_no and "infinite" not in mazur_no:
+    print("Mazur_X0_13_No_Isogeny.lean must record X0(13)(Q) infinite / {2 cusps} false", file=sys.stderr)
+    sys.exit(1)
+check_gap_file("Ribet_Level_Lowering_29_to_32.lean",
+    ["Ribet_928_to_32", "no_newforms_at_32_mod13",
+     "explicit_a29_mod13"],
+    ["nine_twenty_eight_div_twenty_nine_reexport",
+     "conductor_display_32_of_29_nmid_AB",
+     "conductor_display_928_of_29_dvd_AB",
+     "LLL_nogo_persists_after_Ribet_Level_Lowering"])
+ribet_ll = pathlib.Path("Ribet_Level_Lowering_29_to_32.lean").read_text(encoding="utf-8")
+if "Prop := True" in ribet_ll or ":= trivial" in ribet_ll:
+    print("FAIL: Ribet_Level_Lowering_29_to_32 must not use True/trivial", file=sys.stderr)
+    sys.exit(1)
+check_gap_file("Kolyvagin_MW_Rank0_26a1_26b1.lean",
+    ["MW_rank_zero_fintype", "MW_rank_zero_26a1_fintype",
+     "MW_rank_zero_26b1_fintype",
+     "Kolyvagin_L_nonzero_imp_MW_rank_zero",
+     "TwoDescent_implies_MW_rank_zero_fintype"],
+    ["not_IsRankZero_26a1_reexport", "not_IsRankZero_26b1_reexport",
+     "L_over_Omega_26a1_ne_zero_reexport",
+     "Sel2_card_both_one", "torsion_3_mul_7_eq_21",
+     "LLL_nogo_persists_after_Kolyvagin_MW_Rank0"])
+koly = pathlib.Path("Kolyvagin_MW_Rank0_26a1_26b1.lean").read_text(encoding="utf-8")
+if "import BSD_MordellWeil" not in koly:
+    print("Kolyvagin_MW_Rank0_26a1_26b1.lean must import BSD_MordellWeil", file=sys.stderr)
+    sys.exit(1)
+if "import TwoDescent_26a1_26" not in koly:
+    print("Kolyvagin_MW_Rank0_26a1_26b1.lean must import TwoDescent_26a1_26", file=sys.stderr)
+    sys.exit(1)
+if "Prop := True" in koly or ":= trivial" in koly:
+    print("FAIL: Kolyvagin_MW_Rank0 must not use True/trivial", file=sys.stderr)
+    sys.exit(1)
+if "WeierstrassCurve.mk" in koly:
+    print("Kolyvagin_MW_Rank0_26a1_26b1.lean must not use WeierstrassCurve.mk", file=sys.stderr)
+    sys.exit(1)
+if "Subsingleton" not in koly:
+    print("Kolyvagin_MW_Rank0_26a1_26b1.lean must record IsRankZero as Subsingleton", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem J0_26_rank0\b", koly, re.M):
+    print("do not inhabit J0_26_rank0 in Kolyvagin_MW_Rank0_26a1_26b1.lean", file=sys.stderr)
+    sys.exit(1)
+road = pathlib.Path("docs/roadmap_without_wiles/README.md").read_text(encoding="utf-8")
+if "Tate_Frey_Conductor_29" not in road or "Kolyvagin_MW_Rank0_26a1_26b1" not in road:
+    print("docs/roadmap_without_wiles/README.md must name the four root modules", file=sys.stderr)
+    sys.exit(1)
+if "refused" not in road.lower():
+    print("docs/roadmap_without_wiles/README.md must record the one-repo merge is refused", file=sys.stderr)
+    sys.exit(1)
+if "Does **not** mint v25" not in road and "does **not** mint v25" not in road:
+    print("docs/roadmap_without_wiles/README.md must say it does not mint v25", file=sys.stderr)
+    sys.exit(1)
 arch = pathlib.Path("ARCHIVE_4413.md").read_text(encoding="utf-8")
 if "e5a95f5" not in arch or "953a174" not in arch:
     print("ARCHIVE_4413.md must record e5a95f5 LLL iff and 953a174 barrier", file=sys.stderr)
@@ -4631,6 +4763,12 @@ if "Subsingleton" not in sec:
     sys.exit(1)
 if "namespace TheoremaAureum" in sec:
     print("docs/X0_26_SECTION_8994d38.md must not introduce an external tower namespace", file=sys.stderr)
+    sys.exit(1)
+if "roadmap_without_wiles" not in arch:
+    print("ARCHIVE_4413.md must record docs/roadmap_without_wiles", file=sys.stderr)
+    sys.exit(1)
+if "Tate_Frey_Conductor_29" not in arch or "Kolyvagin_MW_Rank0" not in arch:
+    print("ARCHIVE_4413.md must record the four without-Wiles root modules", file=sys.stderr)
     sys.exit(1)
 
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
@@ -5008,4 +5146,8 @@ print("  TwoDescent_26a1_26: relocated kernel; Sel2_card=1, certified_mwrank dis
 print("  RankZero_from_Selmer is 1=1, not MW; J0_26_rank0 stays def Prop on X0_26; no BealTrueV25/")
 print("  BSD_MordellWeil: Mathlib Point AddCommGroup add_comm; IsRankZero is Subsingleton")
 print("  not_IsRankZero on 26a1/26b1 via (4,4)/(1,0); MW_rank_zero / BSD_rank_statement stay def Prop")
+print("  docs/X0_26_SECTION_8994d38.md: single root lakefile; lake require stays; no Towers/; no v25 mint")
+print("  without Wiles skeletons: Tate_Frey_Conductor_29, Mazur_X0_13_No_Isogeny,")
+print("  Ribet_Level_Lowering_29_to_32, Kolyvagin_MW_Rank0_26a1_26b1 stay def Prop")
+print("  docs/roadmap_without_wiles: X0(13)(Q) infinite; IsRankZero false; no one-repo merge")
 PY

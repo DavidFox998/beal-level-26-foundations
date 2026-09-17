@@ -89,7 +89,16 @@ lean_lib «BealMatveevBealV25Rank3» where
     and constructs `(4,4)`/`(1,0)` as affine `Point`s;
     pasted `IsRankZero` is Subsingleton and is **refuted** on
     both models; `MW_rank_zero` / `BSD_rank_statement` stay
-    `def Prop`. -/
+    `def Prop`.
+    `Tate_Frey_Conductor_29` re-exports displayed `Δ` and the
+    `32`/`928` split; Tate’s algorithm / Néron stay `def Prop`.
+    `Mazur_X0_13_No_Isogeny` inhabits genus-0 / `|SL₂|=2184`
+    numerals; `X₀(13)(ℚ)` infinite / Frey 13-isogeny stay
+    `def Prop` (the `{2 cusps}` paste is not a theorem).
+    `Ribet_Level_Lowering_29_to_32` re-exports `928/29=32`;
+    abstract Ribet / no-newforms stay `def Prop`.
+    `Kolyvagin_MW_Rank0_26a1_26b1` names `Fintype` rank 0
+    (not Subsingleton); Kato/Kolyvagin stay `def Prop`. -/
 lean_lib «BealMatveevBealV25B0Search» where
   globs := #[.one `BealMatveevBealV25B0Search, .one `LLLTargetB8, .one `Gap3B0Million,
     .one `LLLTargetB8_C1_lower_bound, .one `DarmonMerelFrey4413, .one `Level32Table,
@@ -99,4 +108,6 @@ lean_lib «BealMatveevBealV25B0Search» where
     .one `MazurIrreducibilityFull, .one `TateGalois, .one `SerreImageFull,
     .one `Mazur_X0_13_RationalPoints, .one `Tate_I29_Inertia, .one `Ribet_Level32,
     .one `Serre_Large_vs_CM_Small, .one `TwoDescent_26a1_26,
-    .one `X0_26_Full2Torsion, .one `BSD_MordellWeil, .one `J0_26_BSD_26a1_26b1]
+    .one `X0_26_Full2Torsion, .one `BSD_MordellWeil, .one `J0_26_BSD_26a1_26b1,
+    .one `Tate_Frey_Conductor_29, .one `Mazur_X0_13_No_Isogeny,
+    .one `Ribet_Level_Lowering_29_to_32, .one `Kolyvagin_MW_Rank0_26a1_26b1]
