@@ -8,7 +8,8 @@ name: Matveev-Beal CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, phase-darmon-merel-4413]
+    tags: [v0.26-mcom-one-repo-4c28d14]
   pull_request:
     branches: [main]
   workflow_dispatch:
