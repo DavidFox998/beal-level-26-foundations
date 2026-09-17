@@ -84,7 +84,12 @@ lean_lib «BealMatveevBealV25Rank3» where
     `def Prop` on `X0_26_Full2Torsion`.
     `J0_26_BSD_26a1_26b1` inhabits Cremona `26a1`/`26b1`
     discriminants and BSD quotients `1/3`,`1/7`; Kolyvagin
-    rank 0 stays `def Prop`. -/
+    rank 0 stays `def Prop`.
+    `BSD_MordellWeil` re-exports Mathlib `Point` commutativity
+    and constructs `(4,4)`/`(1,0)` as affine `Point`s;
+    pasted `IsRankZero` is Subsingleton and is **refuted** on
+    both models; `MW_rank_zero` / `BSD_rank_statement` stay
+    `def Prop`. -/
 lean_lib «BealMatveevBealV25B0Search» where
   globs := #[.one `BealMatveevBealV25B0Search, .one `LLLTargetB8, .one `Gap3B0Million,
     .one `LLLTargetB8_C1_lower_bound, .one `DarmonMerelFrey4413, .one `Level32Table,
@@ -94,4 +99,4 @@ lean_lib «BealMatveevBealV25B0Search» where
     .one `MazurIrreducibilityFull, .one `TateGalois, .one `SerreImageFull,
     .one `Mazur_X0_13_RationalPoints, .one `Tate_I29_Inertia, .one `Ribet_Level32,
     .one `Serre_Large_vs_CM_Small, .one `TwoDescent_26a1_26,
-    .one `X0_26_Full2Torsion, .one `J0_26_BSD_26a1_26b1]
+    .one `X0_26_Full2Torsion, .one `BSD_MordellWeil, .one `J0_26_BSD_26a1_26b1]

@@ -377,6 +377,17 @@ on `X0_26_Full2Torsion`. No `BealTrueV25/` subdirectory
 (conflicts with root `BealTrueV25.lean`). No Wiles. No
 L-function. No new axiom.
 
+Root `BSD_MordellWeil.lean` re-exports Mathlib’s
+`WeierstrassCurve.Affine.Point` `AddCommGroup` as
+`MordellWeilGroup` and proves `add_comm`. Pasted
+`IsRankZero := Subsingleton` is **only the identity**, not
+MW rank 0: affine `Point`s `(4,4)` on `26a1` and `(1,0)` on
+`26b1` are not `0`, so `¬ IsRankZero` on both models.
+`MW_rank_zero` (“every point is torsion”) and
+`BSD_rank_statement` (analytic rank = algebraic rank) stay
+`def Prop`. Not BSD. Not `J0_26_rank0`. No TheoremaAureum
+namespace. No new axiom.
+
 ## What this tree does not claim
 
 - No `sorry`, no `True := trivial`, no fake `False.elim`.

@@ -13,6 +13,7 @@ Authors: David Fox
 import BealMatveevBealV25B0Search
 import DarmonMerelFrey4413
 import X0_26_Full2Torsion
+import BSD_MordellWeil
 import LLLTargetB8_C1_lower_bound
 
 /-!
@@ -65,6 +66,7 @@ namespace BealMatveevBeal.J0_26_BSD_26a1_26b1
 open BealMatveevBeal.BealMatveevBealV25B0Search
 open BealMatveevBeal.DarmonMerelFrey4413
 open BealMatveevBeal.X0_26_Full2Torsion
+open BealMatveevBeal.BSD_MordellWeil
 open BealMatveevBeal.LLLTargetB8
 open BealMatveevBeal.LLLTargetB8C1LowerBound
 open Nat
@@ -202,6 +204,11 @@ theorem LLL_nogo_persists_after_J0_26_BSD :
 #check Kolyvagin_rank0_of_L_ne_zero
 #check J0_26_isogenous_26a1_times_26b1
 #check J0_26_rank0_via_Kolyvagin
+#check MordellWeilGroup.add_comm
+#check not_IsRankZero_26a1
+#check not_IsRankZero_26b1
+#check MW_rank_zero_26a1
+#check BSD_rank_statement
 #print axioms curve26a1_Δ
 #print axioms L_over_Omega_26a1_eq
 #print axioms LLL_nogo_persists_after_J0_26_BSD

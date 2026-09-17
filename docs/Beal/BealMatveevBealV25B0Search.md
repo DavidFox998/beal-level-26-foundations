@@ -225,6 +225,10 @@ Root [`TwoDescent_26a1_26.lean`](../../TwoDescent_26a1_26.lean)
 relocates the lake-package kernel: `|Sel₂|=1`, Sage
 `certified_mwrank` display `0`, and `1=1 → 0=0` on those
 Nats; Jacobian rank 0 stays `def Prop` on `X0_26`.
+Root [`BSD_MordellWeil.lean`](../../BSD_MordellWeil.lean)
+re-exports Mathlib `Point` commutativity; `IsRankZero` as
+Subsingleton is refuted by `(4,4)`/`(1,0)`; `MW_rank_zero`
+and `BSD_rank_statement` stay `def Prop`.
 `LLL_and_DarmonMerel_separate` is the same `e5a95f5`
 equivalence.
 

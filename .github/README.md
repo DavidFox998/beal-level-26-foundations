@@ -53,6 +53,8 @@ requests to **`main`**, and on `workflow_dispatch`:
    display `0`; `1=1→0=0` is not Jacobian rank 0) plus
    `X0_26_Full2Torsion` (Frey cubic split inhabited; Kenku /
    Mazur via `X₀(26)` stay `def Prop`) plus
+   `BSD_MordellWeil` (Mathlib `Point` `add_comm`;
+   `IsRankZero` as Subsingleton is refuted on `26a1`/`26b1`) plus
    `J0_26_BSD_26a1_26b1` (`26a1`/`26b1` `Δ` and `L/Ω=1/3,1/7`;
    Kolyvagin stays `def Prop`);
    full `B ≤ B0` stays `def Prop`

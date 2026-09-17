@@ -122,8 +122,10 @@ Root `X0_26_Full2Torsion.lean` inhabits the Frey cubic split
 torsion Nats `3`/`7`; Kenku / mwrank / `|J₀(26)(ℚ)|=21` stay
 `def Prop`. Root `TwoDescent_26a1_26.lean` relocates the
 displayed Selmer/mwrank Nats (`1=1 → 0=0` is not Jacobian
-rank 0). Do **not** add copies under `Beal/Matveev/` or
-`BealTrueV25/`.
+rank 0). Root `BSD_MordellWeil.lean` re-exports Mathlib
+`Point` `add_comm`; pasted `IsRankZero` is Subsingleton and
+is refuted on `26a1`/`26b1`. Do **not** add copies under
+`Beal/Matveev/` or `BealTrueV25/`.
 See root `ARCHIVE_4413.md`.
 
 Do **not** import `Beal.Matveev.MatveevThm14General` from the

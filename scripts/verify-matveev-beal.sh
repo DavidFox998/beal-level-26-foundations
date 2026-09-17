@@ -191,6 +191,10 @@ test -f J0_26_BSD_26a1_26b1.lean
 if test -f Beal/Matveev/J0_26_BSD_26a1_26b1.lean; then
   fail "do not add Beal/Matveev/J0_26_BSD_26a1_26b1.lean; .submodules Beal.Matveev would pull it into default"
 fi
+test -f BSD_MordellWeil.lean
+if test -f Beal/Matveev/BSD_MordellWeil.lean; then
+  fail "do not add Beal/Matveev/BSD_MordellWeil.lean; .submodules Beal.Matveev would pull it into default"
+fi
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -765,6 +769,9 @@ if ".one `TwoDescent_26a1_26" not in lake:
 if ".one `X0_26_Full2Torsion" not in lake:
     print("lakefile.lean missing X0_26_Full2Torsion glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
+if ".one `BSD_MordellWeil" not in lake:
+    print("lakefile.lean missing BSD_MordellWeil glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
 if ".one `J0_26_BSD_26a1_26b1" not in lake:
     print("lakefile.lean missing J0_26_BSD_26a1_26b1 glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
@@ -833,6 +840,9 @@ if "TwoDescent_26a1_26" in default_globs.group(1):
     sys.exit(1)
 if "X0_26_Full2Torsion" in default_globs.group(1):
     print("X0_26_Full2Torsion must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "BSD_MordellWeil" in default_globs.group(1):
+    print("BSD_MordellWeil must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 if "J0_26_BSD_26a1_26b1" in default_globs.group(1):
     print("J0_26_BSD_26a1_26b1 must not be in default BealMatveevBeal globs", file=sys.stderr)
@@ -4516,6 +4526,31 @@ check_gap_file("J0_26_BSD_26a1_26b1.lean",
      "curve26b1_point_1_0", "L_over_Omega_26a1_eq",
      "L_over_Omega_26b1_eq", "L_over_Omega_26a1_ne_zero",
      "three_mul_seven", "LLL_nogo_persists_after_J0_26_BSD"])
+j0bsd = pathlib.Path("J0_26_BSD_26a1_26b1.lean").read_text(encoding="utf-8")
+if "import BSD_MordellWeil" not in j0bsd:
+    print("J0_26_BSD_26a1_26b1.lean must import BSD_MordellWeil", file=sys.stderr)
+    sys.exit(1)
+check_gap_file("BSD_MordellWeil.lean",
+    ["IsRankZero", "MW_rank_zero", "MW_rank_zero_26a1",
+     "MW_rank_zero_26b1", "BSD_rank_statement"],
+    ["add_comm", "eq_zero_of_isRankZero",
+     "curve26a1_Q_Δ", "curve26b1_Q_Δ",
+     "point_26a1_4_4_ne_zero", "point_26b1_1_0_ne_zero",
+     "not_IsRankZero_26a1", "not_IsRankZero_26b1",
+     "LLL_nogo_persists_after_BSD_MordellWeil"])
+bsd_mw = pathlib.Path("BSD_MordellWeil.lean").read_text(encoding="utf-8")
+if "TheoremaAureum" in bsd_mw:
+    print("BSD_MordellWeil.lean must not use TheoremaAureum namespace", file=sys.stderr)
+    sys.exit(1)
+if "Subsingleton" not in bsd_mw:
+    print("BSD_MordellWeil.lean must record IsRankZero as Subsingleton", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem J0_26_rank0\b", bsd_mw, re.M):
+    print("do not inhabit J0_26_rank0 in BSD_MordellWeil.lean", file=sys.stderr)
+    sys.exit(1)
+if "Prop := True" in bsd_mw or ":= trivial" in bsd_mw:
+    print("FAIL: BSD_MordellWeil must not use True/trivial", file=sys.stderr)
+    sys.exit(1)
 arch = pathlib.Path("ARCHIVE_4413.md").read_text(encoding="utf-8")
 if "e5a95f5" not in arch or "953a174" not in arch:
     print("ARCHIVE_4413.md must record e5a95f5 LLL iff and 953a174 barrier", file=sys.stderr)
@@ -4573,6 +4608,12 @@ if "TwoDescent" not in arch:
     sys.exit(1)
 if "certified_mwrank" not in arch:
     print("ARCHIVE_4413.md must record Sage certified_mwrank as a displayed Nat", file=sys.stderr)
+    sys.exit(1)
+if "BSD_MordellWeil" not in arch:
+    print("ARCHIVE_4413.md must record BSD_MordellWeil Point add_comm", file=sys.stderr)
+    sys.exit(1)
+if "Subsingleton" not in arch:
+    print("ARCHIVE_4413.md must record IsRankZero as Subsingleton, not MW rank 0", file=sys.stderr)
     sys.exit(1)
 
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
@@ -4948,4 +4989,6 @@ print("  X0_26 mwrank skeleton: |Sel2|=1 and 2^0=1 numerals, tors Nats 3 and 7, 
 print("  J0_26_rank0_via_mwrank / J0_26_Q_tors_21 / mwrank_skeleton_complete stay def Prop")
 print("  TwoDescent_26a1_26: relocated kernel; Sel2_card=1, certified_mwrank display 0, 1=1->0=0")
 print("  RankZero_from_Selmer is 1=1, not MW; J0_26_rank0 stays def Prop on X0_26; no BealTrueV25/")
+print("  BSD_MordellWeil: Mathlib Point AddCommGroup add_comm; IsRankZero is Subsingleton")
+print("  not_IsRankZero on 26a1/26b1 via (4,4)/(1,0); MW_rank_zero / BSD_rank_statement stay def Prop")
 PY
