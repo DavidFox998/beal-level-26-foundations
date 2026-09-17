@@ -214,6 +214,9 @@ of that valuation (`Δ` itself); `Tate_q` / uniformization stay
 `928/29=32`; abstract Ribet / Frey-needs-Wiles stay
 `def Prop`. [`Serre_Large_vs_CM_Small.lean`](../../Serre_Large_vs_CM_Small.lean)
 keeps Galois as `def Prop`.
+Root [`J0_26_BSD_26a1_26b1.lean`](../../J0_26_BSD_26a1_26b1.lean)
+inhabits Cremona `26a1`/`26b1` discriminants and BSD quotients
+`L/Ω = 1/3` and `1/7`; Kolyvagin rank 0 stays `def Prop`.
 Root [`X0_26_Full2Torsion.lean`](../../X0_26_Full2Torsion.lean)
 inhabits the Frey cubic split (`0, A⁴, −B⁴ ∈ ℚ`); Kenku
 emptiness / 26-isogeny glue / Mazur via `X₀(26)` stay

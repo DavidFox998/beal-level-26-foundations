@@ -180,6 +180,10 @@ test -f X0_26_Full2Torsion.lean
 if test -f Beal/Matveev/X0_26_Full2Torsion.lean; then
   fail "do not add Beal/Matveev/X0_26_Full2Torsion.lean; .submodules Beal.Matveev would pull it into default"
 fi
+test -f J0_26_BSD_26a1_26b1.lean
+if test -f Beal/Matveev/J0_26_BSD_26a1_26b1.lean; then
+  fail "do not add Beal/Matveev/J0_26_BSD_26a1_26b1.lean; .submodules Beal.Matveev would pull it into default"
+fi
 
 grep -q 'leanprover/lean4:v4.12.0' lean-toolchain \
   || fail "lean-toolchain is not Lean 4.12.0"
@@ -751,6 +755,9 @@ if ".one `Serre_Large_vs_CM_Small" not in lake:
 if ".one `X0_26_Full2Torsion" not in lake:
     print("lakefile.lean missing X0_26_Full2Torsion glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
+if ".one `J0_26_BSD_26a1_26b1" not in lake:
+    print("lakefile.lean missing J0_26_BSD_26a1_26b1 glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
 if "BealMatveevBealV25B0Search" in default_globs.group(1):
     print("BealMatveevBealV25B0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
@@ -813,6 +820,9 @@ if "Serre_Large_vs_CM_Small" in default_globs.group(1):
     sys.exit(1)
 if "X0_26_Full2Torsion" in default_globs.group(1):
     print("X0_26_Full2Torsion must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "J0_26_BSD_26a1_26b1" in default_globs.group(1):
+    print("J0_26_BSD_26a1_26b1 must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -4435,6 +4445,14 @@ check_gap_file("X0_26_Full2Torsion.lean",
      "X0_26_known_on_curve", "X0_26_poly_natDegree",
      "X0_26_f_zero_ne_forty_nine", "X0_26_genus2",
      "X0_26_weierstrass_points", "X0_26_even_complete_square"])
+check_gap_file("J0_26_BSD_26a1_26b1.lean",
+    ["L_26a1_ne_zero", "L_26b1_ne_zero",
+     "Kolyvagin_rank0_of_L_ne_zero",
+     "J0_26_isogenous_26a1_times_26b1", "J0_26_rank0_via_Kolyvagin"],
+    ["curve26a1_Δ", "curve26b1_Δ", "curve26a1_point_4_4",
+     "curve26b1_point_1_0", "L_over_Omega_26a1_eq",
+     "L_over_Omega_26b1_eq", "L_over_Omega_26a1_ne_zero",
+     "three_mul_seven", "LLL_nogo_persists_after_J0_26_BSD"])
 arch = pathlib.Path("ARCHIVE_4413.md").read_text(encoding="utf-8")
 if "e5a95f5" not in arch or "953a174" not in arch:
     print("ARCHIVE_4413.md must record e5a95f5 LLL iff and 953a174 barrier", file=sys.stderr)
@@ -4477,6 +4495,12 @@ if "288" not in arch:
     sys.exit(1)
 if "928 / 29" not in arch and "928/29" not in arch:
     print("ARCHIVE_4413.md must record 928/29=32 as the displayed residual numeral", file=sys.stderr)
+    sys.exit(1)
+if "1/3" not in arch or "1/7" not in arch:
+    print("ARCHIVE_4413.md must record BSD quotients L/Omega = 1/3 and 1/7 for 26a1/26b1", file=sys.stderr)
+    sys.exit(1)
+if "-17576" not in arch or "-1664" not in arch:
+    print("ARCHIVE_4413.md must record Cremona 26a1/26b1 discriminants", file=sys.stderr)
     sys.exit(1)
 
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
@@ -4846,4 +4870,6 @@ print("  v29(j)=-26k shows j not integral; Kenku emptiness is stronger than a CM
 print("  Tate_I29 Qp: Padic.valuation Delta = 26 v(C); exists Qp unit of that val (Delta itself)")
 print("  truncated j(q)=q^{-1}+744+196884 q; v(j^{-1})=26k=v(Delta); not the Tate parameter")
 print("  Tate_q / uniformization / inertia stay def Prop; no new axiom on BealTrueV25")
+print("  J0_26 BSD: Cremona 26a1 Delta=-17576 L/Omega=1/3; 26b1 Delta=-1664 L/Omega=1/7")
+print("  143a1 template has L(E,1)=0 rank 1, wrong sign; Kolyvagin rank0 stays def Prop")
 PY

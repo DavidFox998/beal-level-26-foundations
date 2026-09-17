@@ -75,7 +75,10 @@ lean_lib «BealMatveevBealV25Rank3» where
     `X0_26_Full2Torsion` inhabits the Frey cubic split
     (`E[2]` roots in `ℚ`), LMFDB `26.42.2.a.1` Weierstrass,
     and González even model `(0,±1)`; Kenku / Chabauty /
-    26-isogeny / Mazur via `X₀(26)` stay `def Prop`. -/
+    26-isogeny / Mazur via `X₀(26)` stay `def Prop`.
+    `J0_26_BSD_26a1_26b1` inhabits Cremona `26a1`/`26b1`
+    discriminants and BSD quotients `1/3`,`1/7`; Kolyvagin
+    rank 0 stays `def Prop`. -/
 lean_lib «BealMatveevBealV25B0Search» where
   globs := #[.one `BealMatveevBealV25B0Search, .one `LLLTargetB8, .one `Gap3B0Million,
     .one `LLLTargetB8_C1_lower_bound, .one `DarmonMerelFrey4413, .one `Level32Table,
@@ -84,4 +87,5 @@ lean_lib «BealMatveevBealV25B0Search» where
     .one `Inertia29Unramified, .one `SerreImage13,
     .one `MazurIrreducibilityFull, .one `TateGalois, .one `SerreImageFull,
     .one `Mazur_X0_13_RationalPoints, .one `Tate_I29_Inertia, .one `Ribet_Level32,
-    .one `Serre_Large_vs_CM_Small, .one `X0_26_Full2Torsion]
+    .one `Serre_Large_vs_CM_Small, .one `X0_26_Full2Torsion,
+    .one `J0_26_BSD_26a1_26b1]

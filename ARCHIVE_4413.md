@@ -329,6 +329,30 @@ Tate parameter of the displayed curve is still missing.
 `Tate_q` / `Tate_uniformization` / `inertia_via_cyclo` stay
 `def Prop`. No new axiom.
 
+## `J₀(26)` BSD quotients (not the 143a1 Kolyvagin template)
+
+The BSD template repos
+`birch-swinnerton-dyer-143a1` and `Birch-and-Swinnerton-Dyer`
+are a **rank-1** curve: `ε = −1` forces `L(E,1) = 0`, and the
+inhabited Heegner / rational point is `(4,6)` / `(2,0)` on
+`y²+y = x³−x²−x−2`. Grep for `Kolyvagin` / `Heegner` / `L(E,1)`
+finds **no** `26a1` / `26b1`. Copying `L(E,1)=0` would be the
+wrong sign for Jacobian rank 0.
+
+Cremona `26a1` (LMFDB `26.a2`, **not** modular-curve
+`26.42.2.a.1`): `[1,0,1,-5,-8]`, `Δ = -17576`, torsion `ℤ/3ℤ`.
+BSD quotient `∏c_p / |tors|² = 3/9 = 1/3 ≠ 0`. Affine point
+`(4,4)` lies on the model (height 0, not a Heegner point).
+
+Cremona `26b1` (LMFDB `26.b2`): `[1,-1,1,-3,3]`, `Δ = -1664`,
+torsion `ℤ/7ℤ`. Quotient `7/49 = 1/7 ≠ 0`. Affine point
+`(1,0)` lies on the model. `3·7 = 21` is the Bruin–Najman
+torsion-order numeral, not `J₀(26)(ℚ) ≅ ℤ/21ℤ`.
+
+`L(E,1)` itself is a period times that rational. Mathlib 4.12
+has no `EllipticLFunction`. Kolyvagin 1988 for analytic rank 0,
+`J₀(26) ∼ 26a1 × 26b1`, and `J0_26_rank0` stay `def Prop`.
+
 ## What this tree does not claim
 
 - No `sorry`, no `True := trivial`, no fake `False.elim`.

@@ -114,6 +114,9 @@ Root `Tate_I29_Inertia.lean` keeps Tate uniformization as
 `def Prop`. Root `Ribet_Level32.lean` inhabits `928/29=32`;
 abstract Ribet / Frey-needs-Wiles stay `def Prop`. Root
 `Serre_Large_vs_CM_Small.lean` keeps Galois as `def Prop`.
+Root `J0_26_BSD_26a1_26b1.lean` inhabits Cremona `26a1`/`26b1`
+`Δ=−17576/−1664` and BSD quotients `1/3`,`1/7`; Kolyvagin
+rank 0 stays `def Prop`.
 Root `X0_26_Full2Torsion.lean` inhabits the Frey cubic split
 (`0, A⁴, −B⁴ ∈ ℚ`); Kenku / 26-isogeny / Mazur via `X₀(26)`
 stay `def Prop`. Do **not** add copies under `Beal/Matveev/`.
