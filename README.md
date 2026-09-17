@@ -529,3 +529,8 @@ Axioms on the real pack: `[propext, Classical.choice, Quot.sound]`.
     now at beal-conjecture/Level26/BealLevel26Foundations}
 }
 ```
+
+See [`docs/X0_26_SECTION_8994d38.md`](docs/X0_26_SECTION_8994d38.md)
+for the `8994d38` `X₀(26)` / TwoDescent / BSD status. That note
+does **not** mint v25 and does **not** drop the
+`beal_level_26_foundations` Lake require.

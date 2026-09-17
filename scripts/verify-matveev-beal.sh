@@ -187,6 +187,10 @@ fi
 if test -d BealTrueV25; then
   fail "do not create BealTrueV25/ subdirectory; conflicts with root BealTrueV25.lean"
 fi
+if test -d Towers; then
+  fail "do not add Towers/; use root BSD_MordellWeil.lean and TwoDescent_26a1_26.lean"
+fi
+test -f docs/X0_26_SECTION_8994d38.md
 test -f J0_26_BSD_26a1_26b1.lean
 if test -f Beal/Matveev/J0_26_BSD_26a1_26b1.lean; then
   fail "do not add Beal/Matveev/J0_26_BSD_26a1_26b1.lean; .submodules Beal.Matveev would pull it into default"
@@ -4614,6 +4618,19 @@ if "BSD_MordellWeil" not in arch:
     sys.exit(1)
 if "Subsingleton" not in arch:
     print("ARCHIVE_4413.md must record IsRankZero as Subsingleton, not MW rank 0", file=sys.stderr)
+    sys.exit(1)
+sec = pathlib.Path("docs/X0_26_SECTION_8994d38.md").read_text(encoding="utf-8")
+if "8994d38" not in sec or "7c19ad0" not in sec:
+    print("docs/X0_26_SECTION_8994d38.md must pin 8994d38 and 7c19ad0", file=sys.stderr)
+    sys.exit(1)
+if "Does **not** mint v25" not in sec and "does **not** mint v25" not in sec:
+    print("docs/X0_26_SECTION_8994d38.md must say it does not mint v25", file=sys.stderr)
+    sys.exit(1)
+if "Subsingleton" not in sec:
+    print("docs/X0_26_SECTION_8994d38.md must record IsRankZero as Subsingleton", file=sys.stderr)
+    sys.exit(1)
+if "namespace TheoremaAureum" in sec:
+    print("docs/X0_26_SECTION_8994d38.md must not introduce an external tower namespace", file=sys.stderr)
     sys.exit(1)
 
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")

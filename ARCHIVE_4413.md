@@ -385,8 +385,9 @@ MW rank 0: affine `Point`s `(4,4)` on `26a1` and `(1,0)` on
 `26b1` are not `0`, so `¬ IsRankZero` on both models.
 `MW_rank_zero` (“every point is torsion”) and
 `BSD_rank_statement` (analytic rank = algebraic rank) stay
-`def Prop`. Not BSD. Not `J0_26_rank0`. No TheoremaAureum
-namespace. No new axiom.
+`def Prop`. Not BSD. Not `J0_26_rank0`. No external-tower
+namespace. No new axiom. Status note:
+`docs/X0_26_SECTION_8994d38.md`.
 
 ## What this tree does not claim
 
