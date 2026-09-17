@@ -4932,7 +4932,8 @@ if "beal-conjecture stays beal-conjecture" not in readme:
 
 cff = pathlib.Path("CITATION.cff").read_text(encoding="utf-8")
 needles = [
-    'title: "Matveev-Beal Level 26: Rank-3 B0/C cutoff nogo"',
+    'title: "Formal Verification of the Level 26 Foundations for Signature (4,4,13): Certified Mordell-Weil Rank Zero for X0(26), Descent, Torsion, and Conductor Data"',
+    "Matveev-Beal Level 26: Rank-3 B0/C cutoff nogo",
     'version: "v24-v24x-final-rank3-b0-div-c-nogo"',
     'doi: "10.5281/zenodo.22379293"',
     'repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"',

@@ -9,16 +9,14 @@ message: >-
   v25.0.0-Beal-44-13-Level-26-Baker-B0-Unconditional-foundations is not
   minted until hGen and hLLL are 0-sorry. Slug remains
   beal-level-26-foundations. C1_floor=143186215390. B0_nat=1000000.
-  MCOM snapshot tag v0.26-mcom-one-repo-4c28d14 vendors
+  MCOM snapshot tag v0.26-mcom-foundations vendors
   beal-conjecture Level26/BealLevel26Foundations at fea0c393 as a
-  local Lake path. Series title stays
-  "Matveev-Beal Level 26: Rank-3 B0/C cutoff nogo".
-  Professional deposit subtitle: Frey Curves with Prime Exponent
-  13 — Foundations Level 26 (X0(26) descent, Mordell-Weil rank,
-  level-lowering numerics). Concept DOI stays
+  local Lake path (base ac82fbd). Prior series title remains
+  Matveev-Beal Level 26: Rank-3 B0/C cutoff nogo.
+  Concept DOI stays
   10.5281/zenodo.22379293. Repository stays
   https://github.com/DavidFox998/beal-level-26-foundations.
-title: "Matveev-Beal Level 26: Rank-3 B0/C cutoff nogo"
+title: "Formal Verification of the Level 26 Foundations for Signature (4,4,13): Certified Mordell-Weil Rank Zero for X0(26), Descent, Torsion, and Conductor Data"
 type: software
 authors:
   - family-names: Fox
@@ -40,7 +38,7 @@ preferred-citation:
   authors:
     - family-names: Fox
       given-names: David
-  title: "Matveev-Beal Level 26: Rank-3 B0/C cutoff nogo"
+  title: "Formal Verification of the Level 26 Foundations for Signature (4,4,13): Certified Mordell-Weil Rank Zero for X0(26), Descent, Torsion, and Conductor Data"
   version: "v24-v24x-final-rank3-b0-div-c-nogo"
   year: 2026
   doi: "10.5281/zenodo.22379293"
