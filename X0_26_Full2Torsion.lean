@@ -77,12 +77,22 @@ The pasted lists `{(0,±7),(1,±1),(3,±3)}` and
 LMFDB odd model; González even model; complete-square
 identity; `(0,±1)` on González and `(0,0),(0,−1)` on
 LMFDB; `f(0) ≠ 49`; genus formula numeral `= 2`;
-Frey `j` is not an integral rational when `29 ∣ C`.
+Frey `j` is not an integral rational when `29 ∣ C`;
+Cremona `26a1`/`26b1` Weierstrass `Δ = -17576`/`-1664`;
+affine points `(4,4)` and `(1,0)`; torsion-order *Nats*
+`3` and `7` (LMFDB data, not `WeierstrassCurve.torsionOrder`);
+displayed `|Sel₂| = 1` with `2⁰ = 1`; `3 · 7 = 21`.
 
 **Uninhabited (`def Prop`):** Galois glue `full2 + 13 ⇒ 26-isogeny`;
 Jacobian rank 0 / Chabauty; Kenku completeness;
-`X₀(26)(ℚ)` equals the known cusps; Mazur via `X₀(26)`.
-No `sorry`, no inhabited `True` stub, no `axiom kenku_*`.
+`X₀(26)(ℚ)` equals the known cusps; Mazur via `X₀(26)`;
+`J0_26_rank0_via_mwrank`; Bruin–Najman `|J₀(26)(ℚ)| = 21`;
+`mwrank_skeleton_complete`. Mathlib 4.12 has no `mwrank`,
+no `SelmerGroup`, no `Jacobian`. PARI `ellrank` / Sage
+`E.rank()` live in `scripts/verify_descent_26.py` and
+`sagemath/j0_26_decomp_foundation.sage`; they are not Lean
+theorems. No `sorry`, no inhabited `True` stub, no
+`axiom kenku_*`.
 
 Does **not** mint v25. `C1_floor = 143186215390`. `B0_nat = 1000000`.
 Tag `v24-v24x-final-rank3-shape-nogo` stays at `c1d173e`.
@@ -423,6 +433,118 @@ def X0_26_Q_eq_known : Prop :=
 def no_cyclic_26_isogeny_Q : Prop :=
   kenku_no_cyclic_26_over_Q
 
+/-! ## Cremona `26a1`/`26b1` 2-descent skeleton (not mwrank) -/
+
+/-- Affine Weierstrass equation over `ℤ`. Mathlib 4.12 has no
+    `WeierstrassCurve.mk` from a coefficient list and no
+    `torsionOrder` field. -/
+def on_weierstrass_int (E : WeierstrassCurve ℤ) (x y : ℤ) : Prop :=
+  y ^ 2 + E.a₁ * x * y + E.a₃ * y =
+    x ^ 3 + E.a₂ * x ^ 2 + E.a₄ * x + E.a₆
+
+/-- Cremona `26a1` = LMFDB `26.a2`: `y² + xy + y = x³ − 5x − 8`.
+    Not elliptic `26.a1` (Cremona `26a2`) and not modular-curve
+    `26.42.2.a.1`. -/
+def curve_26a1_model : WeierstrassCurve ℤ where
+  a₁ := 1
+  a₂ := 0
+  a₃ := 1
+  a₄ := -5
+  a₆ := -8
+
+theorem curve_26a1_model_Δ : curve_26a1_model.Δ = -17576 := by
+  simp [curve_26a1_model, WeierstrassCurve.Δ, WeierstrassCurve.b₂,
+    WeierstrassCurve.b₄, WeierstrassCurve.b₆, WeierstrassCurve.b₈]
+
+/-- LMFDB torsion order as a Nat. Not `E.torsionOrder`. -/
+def tors_26a1 : ℕ := 3
+
+theorem tors_26a1_eq_3 : tors_26a1 = 3 := rfl
+
+theorem curve_26a1_point_4_4 :
+    on_weierstrass_int curve_26a1_model 4 4 := by
+  simp [on_weierstrass_int, curve_26a1_model]
+
+/-- Cremona `26b1` = LMFDB `26.b2`. -/
+def curve_26b1_model : WeierstrassCurve ℤ where
+  a₁ := 1
+  a₂ := -1
+  a₃ := 1
+  a₄ := -3
+  a₆ := 3
+
+theorem curve_26b1_model_Δ : curve_26b1_model.Δ = -1664 := by
+  simp [curve_26b1_model, WeierstrassCurve.Δ, WeierstrassCurve.b₂,
+    WeierstrassCurve.b₄, WeierstrassCurve.b₆, WeierstrassCurve.b₈]
+
+def tors_26b1 : ℕ := 7
+
+theorem tors_26b1_eq_7 : tors_26b1 = 7 := rfl
+
+theorem curve_26b1_point_1_0 :
+    on_weierstrass_int curve_26b1_model 1 0 := by
+  simp [on_weierstrass_int, curve_26b1_model]
+
+/-- PARI `ell2cover` empty and odd torsion ⇒ displayed `|Sel₂| = 1`
+    (`scripts/verify_descent_26.py`, cert `sel2: 1`). Not a
+    Mathlib `SelmerGroup`. The JSON field `torsion: 2` in
+    `certs/pari_x0_26_four_cusps.json` is **not** `|E(ℚ)_tors|`
+    (that is `3` and `7`). -/
+def Selmer_2_card_26a1 : ℕ := 1
+
+def Selmer_2_card_26b1 : ℕ := 1
+
+theorem selmer_2_card_26a1_eq : Selmer_2_card_26a1 = 1 := rfl
+
+theorem selmer_2_card_26b1_eq : Selmer_2_card_26b1 = 1 := rfl
+
+/-- Displayed `𝔽₂`-dimension of that PARI Selmer card.
+    `0` is the exponent in `2⁰ = 1`, not an `mwrank` run. -/
+def Selmer_2_rank_26a1 : ℕ := 0
+
+def Selmer_2_rank_26b1 : ℕ := 0
+
+theorem selmer_2_rank_26a1_eq : Selmer_2_rank_26a1 = 0 := rfl
+
+theorem selmer_2_rank_26b1_eq : Selmer_2_rank_26b1 = 0 := rfl
+
+theorem two_pow_selmer_rank_26a1 :
+    (2 : ℕ) ^ Selmer_2_rank_26a1 = Selmer_2_card_26a1 := by
+  decide
+
+theorem two_pow_selmer_rank_26b1 :
+    (2 : ℕ) ^ Selmer_2_rank_26b1 = Selmer_2_card_26b1 := by
+  decide
+
+theorem three_mul_seven_eq_twenty_one : (3 : ℕ) * 7 = 21 := by
+  decide
+
+theorem tors_product_eq_twenty_one :
+    tors_26a1 * tors_26b1 = 21 := by
+  decide
+
+/-- Sage/PARI `rank() = 0` on both factors would give Jacobian
+    rank `0`. Uninhabited: no `mwrank` in Mathlib 4.12, and the
+    displayed `|Sel₂| = 1` numerals are not a 2-covering. -/
+def J0_26_rank0_via_mwrank : Prop :=
+  Selmer_2_card_26a1 = 1 ∧ Selmer_2_card_26b1 = 1 → J0_26_rank0
+
+/-- Bruin–Najman `|J₀(26)(ℚ)| = 21` (`≅ ℤ/3ℤ × ℤ/7ℤ`). The
+    numeral `3 · 7 = 21` is a theorem; this isomorphism is not. -/
+def J0_26_Q_tors_21 : Prop :=
+  J0_26_rank0
+
+/-- Packaged 2-descent skeleton. Uninhabited. **Not** an axiom. -/
+def mwrank_skeleton_complete : Prop :=
+  J0_26_rank0_via_mwrank ∧ J0_26_Q_tors_21
+
+/-- If the displayed Selmer cards were a 2-descent, rank `0`
+    would follow. Does **not** inhabit `J0_26_rank0`. -/
+theorem J0_26_rank0_of_mwrank_skeleton
+    (h : J0_26_rank0_via_mwrank) :
+    J0_26_rank0 :=
+  h ⟨selmer_2_card_26a1_eq, selmer_2_card_26b1_eq⟩
+
 /-- If glue and Kenku both held, Mazur via `X₀(26)` would hold.
     Does **not** inhabit either hypothesis. -/
 theorem no_reducible_13_of_full2_and_kenku
@@ -471,6 +593,16 @@ theorem LLL_nogo_persists_after_X0_26 :
 #check X0_26_Q_eq_known
 #check no_cyclic_26_isogeny_Q
 #check mazur_irreducible_13_via_X0_26
+#check curve_26a1_model_Δ
+#check curve_26b1_model_Δ
+#check tors_26a1_eq_3
+#check tors_26b1_eq_7
+#check selmer_2_card_26a1_eq
+#check two_pow_selmer_rank_26a1
+#check three_mul_seven_eq_twenty_one
+#check J0_26_rank0_via_mwrank
+#check J0_26_Q_tors_21
+#check mwrank_skeleton_complete
 #print axioms frey_has_full_2_torsion
 #print axioms twenty_six_not_in_kenku_list
 #print axioms X0_26_known_on_curve
@@ -478,6 +610,8 @@ theorem LLL_nogo_persists_after_X0_26 :
 #print axioms X0_26_genus2
 #print axioms X0_26_even_complete_square
 #print axioms frey_j_not_integral_j0
+#print axioms curve_26a1_model_Δ
+#print axioms two_pow_selmer_rank_26a1
 #print axioms LLL_nogo_persists_after_X0_26
 
 end BealMatveevBeal.X0_26_Full2Torsion

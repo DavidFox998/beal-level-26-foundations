@@ -4438,13 +4438,19 @@ check_gap_file("X0_26_Full2Torsion.lean",
      "X0_26_Q_points_cusps_only", "X0_26_Q_points_finite",
      "kenku_no_cyclic_26_over_Q", "kenku_no_cyclic_52_over_Q",
      "mazur_irreducible_13_via_X0_26", "J0_26_rank0",
-     "X0_26_Q_eq_known", "no_cyclic_26_isogeny_Q"],
+     "X0_26_Q_eq_known", "no_cyclic_26_isogeny_Q",
+     "J0_26_rank0_via_mwrank", "J0_26_Q_tors_21",
+     "mwrank_skeleton_complete"],
     ["frey_cubic_eq_prod", "frey_has_full_2_torsion",
      "twenty_six_not_in_kenku_list", "fifty_two_not_in_kenku_list",
      "frey_j_not_integral_j0", "LLL_nogo_persists_after_X0_26",
      "X0_26_known_on_curve", "X0_26_poly_natDegree",
      "X0_26_f_zero_ne_forty_nine", "X0_26_genus2",
-     "X0_26_weierstrass_points", "X0_26_even_complete_square"])
+     "X0_26_weierstrass_points", "X0_26_even_complete_square",
+     "curve_26a1_model_Δ", "curve_26b1_model_Δ",
+     "tors_26a1_eq_3", "tors_26b1_eq_7",
+     "selmer_2_card_26a1_eq", "two_pow_selmer_rank_26a1",
+     "three_mul_seven_eq_twenty_one"])
 check_gap_file("J0_26_BSD_26a1_26b1.lean",
     ["L_26a1_ne_zero", "L_26b1_ne_zero",
      "Kolyvagin_rank0_of_L_ne_zero",
@@ -4501,6 +4507,9 @@ if "1/3" not in arch or "1/7" not in arch:
     sys.exit(1)
 if "-17576" not in arch or "-1664" not in arch:
     print("ARCHIVE_4413.md must record Cremona 26a1/26b1 discriminants", file=sys.stderr)
+    sys.exit(1)
+if "Sel2" not in arch and "|Sel" not in arch:
+    print("ARCHIVE_4413.md must record displayed |Sel2|=1, not a Mathlib Selmer group", file=sys.stderr)
     sys.exit(1)
 
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
@@ -4872,4 +4881,6 @@ print("  truncated j(q)=q^{-1}+744+196884 q; v(j^{-1})=26k=v(Delta); not the Tat
 print("  Tate_q / uniformization / inertia stay def Prop; no new axiom on BealTrueV25")
 print("  J0_26 BSD: Cremona 26a1 Delta=-17576 L/Omega=1/3; 26b1 Delta=-1664 L/Omega=1/7")
 print("  143a1 template has L(E,1)=0 rank 1, wrong sign; Kolyvagin rank0 stays def Prop")
+print("  X0_26 mwrank skeleton: |Sel2|=1 and 2^0=1 numerals, tors Nats 3 and 7, 3*7=21")
+print("  J0_26_rank0_via_mwrank / J0_26_Q_tors_21 / mwrank_skeleton_complete stay def Prop")
 PY

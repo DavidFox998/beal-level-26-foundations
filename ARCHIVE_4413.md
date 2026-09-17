@@ -353,6 +353,17 @@ torsion-order numeral, not `J₀(26)(ℚ) ≅ ℤ/21ℤ`.
 has no `EllipticLFunction`. Kolyvagin 1988 for analytic rank 0,
 `J₀(26) ∼ 26a1 × 26b1`, and `J0_26_rank0` stay `def Prop`.
 
+Root `X0_26_Full2Torsion.lean` now also records the 2-descent
+**skeleton** (scan: no Mathlib `mwrank` / `SelmerGroup`; Sage
+`certified_mwrank = 0` lives in
+`sagemath/j0_26_decomp_foundation.sage`; PARI `|Sel₂|=1` lives
+in `scripts/verify_descent_26.py`). Inhabited: `|Sel₂|=1` with
+`2^0 = 1`, torsion *Nats* `3` and `7` (not a `torsionOrder`
+field, not JSON `torsion: 2`), affine `(4,4)` / `(1,0)`,
+`3·7=21`. `J0_26_rank0_via_mwrank`, Bruin–Najman
+`J0_26_Q_tors_21`, and `mwrank_skeleton_complete` stay
+`def Prop`. No `sorry`.
+
 ## What this tree does not claim
 
 - No `sorry`, no `True := trivial`, no fake `False.elim`.

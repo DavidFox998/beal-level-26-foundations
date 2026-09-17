@@ -74,8 +74,10 @@ lean_lib «BealMatveevBealV25Rank3» where
     `2(12)²=288`; image `≤48` / Frey iso stay `def Prop`.
     `X0_26_Full2Torsion` inhabits the Frey cubic split
     (`E[2]` roots in `ℚ`), LMFDB `26.42.2.a.1` Weierstrass,
-    and González even model `(0,±1)`; Kenku / Chabauty /
-    26-isogeny / Mazur via `X₀(26)` stay `def Prop`.
+    González even model `(0,±1)`, Cremona `26a1`/`26b1`
+    discriminants, displayed `|Sel₂|=1` with `2⁰=1`, and
+    torsion Nats `3`/`7`; Kenku / Chabauty / mwrank /
+    `|J₀(26)(ℚ)|=21` stay `def Prop`.
     `J0_26_BSD_26a1_26b1` inhabits Cremona `26a1`/`26b1`
     discriminants and BSD quotients `1/3`,`1/7`; Kolyvagin
     rank 0 stays `def Prop`. -/

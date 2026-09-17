@@ -218,9 +218,9 @@ Root [`J0_26_BSD_26a1_26b1.lean`](../../J0_26_BSD_26a1_26b1.lean)
 inhabits Cremona `26a1`/`26b1` discriminants and BSD quotients
 `L/Ω = 1/3` and `1/7`; Kolyvagin rank 0 stays `def Prop`.
 Root [`X0_26_Full2Torsion.lean`](../../X0_26_Full2Torsion.lean)
-inhabits the Frey cubic split (`0, A⁴, −B⁴ ∈ ℚ`); Kenku
-emptiness / 26-isogeny glue / Mazur via `X₀(26)` stay
-`def Prop`.
+inhabits the Frey cubic split (`0, A⁴, −B⁴ ∈ ℚ`), displayed
+`|Sel₂|=1` with `2⁰=1`, and torsion Nats `3`/`7`; Kenku /
+mwrank / `|J₀(26)(ℚ)|=21` stay `def Prop`.
 `LLL_and_DarmonMerel_separate` is the same `e5a95f5`
 equivalence.
 
