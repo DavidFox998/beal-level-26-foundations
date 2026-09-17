@@ -7,9 +7,9 @@ Authors: David Fox
   Root module. Separate Lake target `BealMatveevBealV25B0Search`.
   Do **not** add `Beal/Matveev/TwoDescent_26a1_26.lean`:
   `.submodules Beal.Matveev` would pull it into the default glob.
-  Do **not** create `BealTrueV25/TwoDescent_26a1_26.lean`:
+  Do **not** create a TrueV25 subdirectory for this file:
   that path conflicts with root `BealTrueV25.lean` on the default
-  glob, and this target must **not** `import BealTrueV25`.
+  glob, and this target must **not** pull in the TrueV25 module.
   Relocated from the lake package
   `BealLevel26Foundations.Descent.TwoDescent_26a1_26` /
   `Selmer_26` (displayed `|Sel₂| = 1`, not a Selmer group).
@@ -51,10 +51,9 @@ theorem. Not Wiles. Not an L-function.
 **Uninhabited (`def Prop`).** Jacobian rank 0 of `J₀(26)` is
 `X0_26_Full2Torsion.J0_26_rank0` (Kenku alias) and
 `J0_26_rank0_via_mwrank`. This file does **not** inhabit those
-names and does **not** define
-`J0_26_rank0_via_mwrank_inhabited` as `0 = 0 ∧ 0 = 0` under a
-Jacobian title. `mwrank_displays_are_Mathlib_MW` stays
-`def Prop`.
+names and does **not** package the displayed `0 = 0 ∧ 0 = 0`
+pair as a Jacobian-rank title. `mwrank_displays_are_Mathlib_MW`
+stays `def Prop`.
 
 Does **not** mint v25. No `sorry`. No new axiom.
 `main` stays `6247c63`.

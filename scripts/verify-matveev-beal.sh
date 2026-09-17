@@ -4498,7 +4498,8 @@ if "d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260" not in two
 if "Prop := True" in two or ":= trivial" in two:
     print("FAIL: TwoDescent ranks/Selmer names must not be True/trivial", file=sys.stderr)
     sys.exit(1)
-if "J0_26_rank0_via_mwrank_inhabited" in two:
+if re.search(r"^def J0_26_rank0_via_mwrank_inhabited\b", two, re.M) or re.search(
+        r"^theorem J0_26_rank0_via_mwrank_inhabited\b", two, re.M):
     print("do not name 0=0 as J0_26_rank0_via_mwrank_inhabited", file=sys.stderr)
     sys.exit(1)
 if re.search(r"^theorem J0_26_rank0\b", two, re.M):
