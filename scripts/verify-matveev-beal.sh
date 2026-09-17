@@ -4539,8 +4539,8 @@ check_gap_file("BSD_MordellWeil.lean",
      "not_IsRankZero_26a1", "not_IsRankZero_26b1",
      "LLL_nogo_persists_after_BSD_MordellWeil"])
 bsd_mw = pathlib.Path("BSD_MordellWeil.lean").read_text(encoding="utf-8")
-if "TheoremaAureum" in bsd_mw:
-    print("BSD_MordellWeil.lean must not use TheoremaAureum namespace", file=sys.stderr)
+if re.search(r"namespace TheoremaAureum", bsd_mw):
+    print("BSD_MordellWeil.lean must not use an external tower namespace", file=sys.stderr)
     sys.exit(1)
 if "Subsingleton" not in bsd_mw:
     print("BSD_MordellWeil.lean must record IsRankZero as Subsingleton", file=sys.stderr)

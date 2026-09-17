@@ -8,7 +8,7 @@ Authors: David Fox
   Do **not** add `Beal/Matveev/BSD_MordellWeil.lean`:
   `.submodules Beal.Matveev` would pull it into the default glob.
   Do **not** import the TrueV25 module or MatveevThm14General.
-  Not a TheoremaAureum tower; namespace stays `BealMatveevBeal`.
+  Namespace stays `BealMatveevBeal`, not an external tower.
 -/
 import BealMatveevBealV25B0Search
 import LLLTargetB8_C1_lower_bound
@@ -88,6 +88,7 @@ def curve26a1_Q : WeierstrassCurve ℚ where
 theorem curve26a1_Q_Δ : curve26a1_Q.Δ = -17576 := by
   simp [curve26a1_Q, WeierstrassCurve.Δ, WeierstrassCurve.b₂,
     WeierstrassCurve.b₄, WeierstrassCurve.b₆, WeierstrassCurve.b₈]
+  norm_num
 
 theorem curve26a1_Q_equation_4_4 :
     curve26a1_Q.toAffine.Equation (4 : ℚ) 4 := by
@@ -123,12 +124,12 @@ def curve26b1_Q : WeierstrassCurve ℚ where
 theorem curve26b1_Q_Δ : curve26b1_Q.Δ = -1664 := by
   simp [curve26b1_Q, WeierstrassCurve.Δ, WeierstrassCurve.b₂,
     WeierstrassCurve.b₄, WeierstrassCurve.b₆, WeierstrassCurve.b₈]
+  norm_num
 
 theorem curve26b1_Q_equation_1_0 :
     curve26b1_Q.toAffine.Equation (1 : ℚ) 0 := by
   rw [equation_iff]
   simp [curve26b1_Q]
-  norm_num
 
 theorem curve26b1_Q_nonsingular_1_0 :
     curve26b1_Q.toAffine.Nonsingular (1 : ℚ) 0 :=
