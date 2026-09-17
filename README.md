@@ -509,9 +509,10 @@ lake build BealMatveevBealV25Rank3  # separate Rank-3 shape target; not default
 lake build BealMatveevBealV25B0Search  # B<1000 + LLLTargetB8 + Gap3B0Million + C1'≤8 nogo + Frey (4,4,13) + Level32Table + Level928Table + Ribet29C_Lowering + Ribet29C_Residue16 + Ribet29C_Residue16_L23 + MazurIrreducibility13 + Inertia29Unramified + SerreImage13 + MazurIrreducibilityFull + TateGalois + SerreImageFull + Mazur_X0_13_RationalPoints + Tate_I29_Inertia + Ribet_Level32 + Serre_Large_vs_CM_Small + TwoDescent_26a1_26 + X0_26_Full2Torsion + BSD_MordellWeil + J0_26_BSD_26a1_26b1 + Tate_Frey_Conductor_29 + Mazur_X0_13_No_Isogeny + Ribet_Level_Lowering_29_to_32 + Kolyvagin_MW_Rank0_26a1_26b1
 ```
 
-Lake requires the monorepo subdirectory
-`Level26/BealLevel26Foundations` (not the whole `beal_conjecture`
-default `Beal` lib). Import wrappers live under
+Lake requires the local vendor
+`Level26/BealLevel26Foundations` (beal-conjecture @ `fea0c393`
+subdirectory only; not the whole `beal_conjecture` default
+`Beal` lib). Import wrappers live under
 `BealConjecture.Level26.BealLevel26Foundations.*`.
 Axioms on the real pack: `[propext, Classical.choice, Quot.sound]`.
 
@@ -532,8 +533,8 @@ Axioms on the real pack: `[propext, Classical.choice, Quot.sound]`.
 
 See [`docs/X0_26_SECTION_8994d38.md`](docs/X0_26_SECTION_8994d38.md)
 for the `8994d38` `X₀(26)` / TwoDescent / BSD status. That note
-does **not** mint v25 and does **not** drop the
-`beal_level_26_foundations` Lake require.
+does **not** mint v25. The `beal_level_26_foundations` Lake
+require is the local vendor `Level26/BealLevel26Foundations`.
 See [`docs/roadmap_without_wiles/README.md`](docs/roadmap_without_wiles/README.md)
 for the four remaining Darmon–Merel `def Prop` gaps without
 Wiles (Tate conductor at `29`, Mazur via `X₀(13)`, Ribet

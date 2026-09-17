@@ -9,10 +9,11 @@ require mathlib from git
 
 /-- Relocated v24.4.0 package (DOI 10.5281/zenodo.22732209, db7a556).
     Modules are `BealLevel26Foundations.Beal.FullProof.*`.
-    `BealConjecture.Level26.BealLevel26Foundations.*` are local wrappers. -/
-require beal_level_26_foundations from git
-  "https://github.com/DavidFox998/beal-conjecture" @ "main"
-  / "Level26/BealLevel26Foundations"
+    `BealConjecture.Level26.BealLevel26Foundations.*` are local wrappers.
+    Vendored from beal-conjecture @ `fea0c393` subdirectory
+    `Level26/BealLevel26Foundations` (not the full clone).
+    This repo stays foundations-level-26. -/
+require beal_level_26_foundations from "Level26/BealLevel26Foundations"
 
 /-- Re-export wrappers so the requested import path resolves. -/
 lean_lib BealConjecture where

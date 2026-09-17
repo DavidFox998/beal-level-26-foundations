@@ -399,7 +399,9 @@ Ribet stays `def Prop`), `Kolyvagin_MW_Rank0_26a1_26b1`
 (`MW_rank_zero_fintype` = `Fintype` of `E(ℚ)`, not
 Subsingleton; Kato/Kolyvagin stay `def Prop`). Pasted
 `*_Skeleton.lean` / `Prop := True` / `WeierstrassCurve.mk` /
-one-repo `Level26/` vendor are refused. Lake git require stays.
+full-clone `Level26/` `.git` vendor are refused. Lake require is
+the local path `Level26/BealLevel26Foundations` (beal-conjecture
+@ `fea0c393` subdirectory only).
 
 ## What this tree does not claim
 

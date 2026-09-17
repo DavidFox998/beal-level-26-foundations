@@ -216,8 +216,10 @@ if test -f Beal/Matveev/Kolyvagin_MW_Rank0_26a1_26b1.lean; then
   fail "do not add Beal/Matveev/Kolyvagin_MW_Rank0_26a1_26b1.lean; .submodules Beal.Matveev would pull it into default"
 fi
 test -f docs/roadmap_without_wiles/README.md
-if test -d Level26; then
-  fail "do not vendor Level26/ at repo root; lake git require stays"
+test -f Level26/BealLevel26Foundations/lakefile.lean
+test -f Level26/BealLevel26Foundations/VENDOR.md
+if test -d Level26/BealLevel26Foundations/.git; then
+  fail "do not vendor the full beal-conjecture clone including .git"
 fi
 if test -f MW_Rank_Zero_Fintype_Skeleton.lean || test -f Tate_Frey_Conductor_Skeleton.lean ||
    test -f Mazur_X0_13_Skeleton.lean || test -f Ribet_Level_Lowering_Skeleton.lean; then
@@ -815,11 +817,11 @@ if ".one `Ribet_Level_Lowering_29_to_32" not in lake:
 if ".one `Kolyvagin_MW_Rank0_26a1_26b1" not in lake:
     print("lakefile.lean missing Kolyvagin_MW_Rank0_26a1_26b1 glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
-if 'require beal_level_26_foundations from git' not in lake:
-    print("lakefile.lean must keep git require beal_level_26_foundations (no local Level26 vendor)", file=sys.stderr)
+if 'require beal_level_26_foundations from "Level26/BealLevel26Foundations"' not in lake:
+    print("lakefile.lean must require beal_level_26_foundations from local Level26/BealLevel26Foundations", file=sys.stderr)
     sys.exit(1)
-if 'from "Level26/BealLevel26Foundations"' in lake:
-    print("do not convert beal_level_26_foundations to a local Level26/ require", file=sys.stderr)
+if 'require beal_level_26_foundations from git' in lake:
+    print("lakefile.lean must not keep the git require after the local vendor", file=sys.stderr)
     sys.exit(1)
 if "BealMatveevBealV25B0Search" in default_globs.group(1):
     print("BealMatveevBealV25B0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
@@ -5146,8 +5148,9 @@ print("  TwoDescent_26a1_26: relocated kernel; Sel2_card=1, certified_mwrank dis
 print("  RankZero_from_Selmer is 1=1, not MW; J0_26_rank0 stays def Prop on X0_26; no BealTrueV25/")
 print("  BSD_MordellWeil: Mathlib Point AddCommGroup add_comm; IsRankZero is Subsingleton")
 print("  not_IsRankZero on 26a1/26b1 via (4,4)/(1,0); MW_rank_zero / BSD_rank_statement stay def Prop")
-print("  docs/X0_26_SECTION_8994d38.md: single root lakefile; lake require stays; no Towers/; no v25 mint")
+print("  docs/X0_26_SECTION_8994d38.md: single root lakefile; local Level26 vendor; no Towers/; no v25 mint")
 print("  without Wiles skeletons: Tate_Frey_Conductor_29, Mazur_X0_13_No_Isogeny,")
 print("  Ribet_Level_Lowering_29_to_32, Kolyvagin_MW_Rank0_26a1_26b1 stay def Prop")
-print("  docs/roadmap_without_wiles: X0(13)(Q) infinite; IsRankZero false; no one-repo merge")
+print("  docs/roadmap_without_wiles: X0(13)(Q) infinite; IsRankZero false; local Level26 vendor")
+print("  beal-conjecture stays beal-conjecture; this repo stays foundations-level-26")
 PY

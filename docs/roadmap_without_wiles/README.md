@@ -66,25 +66,27 @@ not Subsingleton. `L_*_nonzero : Prop := True` is refused.
 Still `def Prop`: `MW_rank_zero_fintype`, Kato/Kolyvagin
 `L ≠ 0 ⇒ rank 0`, `|Sel₂| = 1 ⇒` finiteness.
 
-## One-repo merge — refused
+## One-repo Lake vendor
 
-This tree is **foundations-level-26**, not a merge *into*
-`beal-conjecture`. The Lake line
+The Lake dependency is now a **local path**
 
 ```
-require beal_level_26_foundations from git
-  "https://github.com/DavidFox998/beal-conjecture" @ "main"
-  / "Level26/BealLevel26Foundations"
+require beal_level_26_foundations from "Level26/BealLevel26Foundations"
 ```
 
-stays. Do **not** `sed` it to a local path, do **not**
-`rm -rf .lake/packages/beal_level_26_foundations`, do **not**
-vendor `Level26/` at the repo root, do **not** `lake update`
-for that purpose, do **not** `git add -A` a paste of the
-dependency. Root `TwoDescent_26a1_26.lean` and
-`BSD_MordellWeil.lean` remain the source of truth.
+copied from beal-conjecture @ `fea0c393` subdirectory
+`Level26/BealLevel26Foundations` only (50M sources; **refused**:
+the 627M full clone, `.git`, `.lake` cache, overwrite of
+`BSD_MordellWeil.lean`, `Towers/`, `BealTrueV25/` directory,
+pasted `*_Skeleton.lean`). This repo stays
+foundations-level-26. Monorepo beal-conjecture stays
+beal-conjecture. The last four theorems stay `def Prop` here.
 
-See [`../X0_26_SECTION_8994d38.md`](../X0_26_SECTION_8994d38.md).
+Root `TwoDescent_26a1_26.lean` and `BSD_MordellWeil.lean`
+remain the source of truth.
+
+See [`../X0_26_SECTION_8994d38.md`](../X0_26_SECTION_8994d38.md)
+and [`../../Level26/BealLevel26Foundations/VENDOR.md`](../../Level26/BealLevel26Foundations/VENDOR.md).
 
 ## Builds
 
