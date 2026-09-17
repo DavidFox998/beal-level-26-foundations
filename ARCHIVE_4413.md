@@ -364,6 +364,19 @@ field, not JSON `torsion: 2`), affine `(4,4)` / `(1,0)`,
 `J0_26_Q_tors_21`, and `mwrank_skeleton_complete` stay
 `def Prop`. No `sorry`.
 
+Root `TwoDescent_26a1_26.lean` relocates the lake-package
+kernel (`BealLevel26Foundations.Descent.TwoDescent_26a1_26`
+/ `Selmer_26`). Inhabited: PARI `|Sel₂|=1` (`Sel2_card_*`),
+Sage `certified_mwrank` *display* `0`, torsion-order Nats
+`3`/`7` (JSON `torsion: 2` is wrong), `2⁰=1`, `3·7=21`,
+and `Sel2_rank0_implies_rank0_*` which is `1=1 → 0=0` on
+those Nats. `RankZero_*_from_Selmer` / `Sha2_*_trivial` are
+`1=1`, not Sha[2] and not Mordell–Weil. Jacobian rank 0
+(`J0_26_rank0`, `J0_26_rank0_via_mwrank`) stays `def Prop`
+on `X0_26_Full2Torsion`. No `BealTrueV25/` subdirectory
+(conflicts with root `BealTrueV25.lean`). No Wiles. No
+L-function. No new axiom.
+
 ## What this tree does not claim
 
 - No `sorry`, no `True := trivial`, no fake `False.elim`.

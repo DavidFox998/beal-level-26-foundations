@@ -78,6 +78,10 @@ lean_lib «BealMatveevBealV25Rank3» where
     discriminants, displayed `|Sel₂|=1` with `2⁰=1`, and
     torsion Nats `3`/`7`; Kenku / Chabauty / mwrank /
     `|J₀(26)(ℚ)|=21` stay `def Prop`.
+    `TwoDescent_26a1_26` relocates the lake-package kernel
+    (displayed `|Sel₂|=1`, Sage `certified_mwrank` Nat `0`,
+    `1=1→0=0` on those Nats); Jacobian rank 0 stays
+    `def Prop` on `X0_26_Full2Torsion`.
     `J0_26_BSD_26a1_26b1` inhabits Cremona `26a1`/`26b1`
     discriminants and BSD quotients `1/3`,`1/7`; Kolyvagin
     rank 0 stays `def Prop`. -/
@@ -89,5 +93,5 @@ lean_lib «BealMatveevBealV25B0Search» where
     .one `Inertia29Unramified, .one `SerreImage13,
     .one `MazurIrreducibilityFull, .one `TateGalois, .one `SerreImageFull,
     .one `Mazur_X0_13_RationalPoints, .one `Tate_I29_Inertia, .one `Ribet_Level32,
-    .one `Serre_Large_vs_CM_Small, .one `X0_26_Full2Torsion,
-    .one `J0_26_BSD_26a1_26b1]
+    .one `Serre_Large_vs_CM_Small, .one `TwoDescent_26a1_26,
+    .one `X0_26_Full2Torsion, .one `J0_26_BSD_26a1_26b1]

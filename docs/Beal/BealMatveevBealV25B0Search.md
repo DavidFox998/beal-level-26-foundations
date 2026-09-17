@@ -221,6 +221,10 @@ Root [`X0_26_Full2Torsion.lean`](../../X0_26_Full2Torsion.lean)
 inhabits the Frey cubic split (`0, A⁴, −B⁴ ∈ ℚ`), displayed
 `|Sel₂|=1` with `2⁰=1`, and torsion Nats `3`/`7`; Kenku /
 mwrank / `|J₀(26)(ℚ)|=21` stay `def Prop`.
+Root [`TwoDescent_26a1_26.lean`](../../TwoDescent_26a1_26.lean)
+relocates the lake-package kernel: `|Sel₂|=1`, Sage
+`certified_mwrank` display `0`, and `1=1 → 0=0` on those
+Nats; Jacobian rank 0 stays `def Prop` on `X0_26`.
 `LLL_and_DarmonMerel_separate` is the same `e5a95f5`
 equivalence.
 

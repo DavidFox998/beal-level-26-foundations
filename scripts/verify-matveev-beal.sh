@@ -180,6 +180,13 @@ test -f X0_26_Full2Torsion.lean
 if test -f Beal/Matveev/X0_26_Full2Torsion.lean; then
   fail "do not add Beal/Matveev/X0_26_Full2Torsion.lean; .submodules Beal.Matveev would pull it into default"
 fi
+test -f TwoDescent_26a1_26.lean
+if test -f Beal/Matveev/TwoDescent_26a1_26.lean; then
+  fail "do not add Beal/Matveev/TwoDescent_26a1_26.lean; .submodules Beal.Matveev would pull it into default"
+fi
+if test -d BealTrueV25; then
+  fail "do not create BealTrueV25/ subdirectory; conflicts with root BealTrueV25.lean"
+fi
 test -f J0_26_BSD_26a1_26b1.lean
 if test -f Beal/Matveev/J0_26_BSD_26a1_26b1.lean; then
   fail "do not add Beal/Matveev/J0_26_BSD_26a1_26b1.lean; .submodules Beal.Matveev would pull it into default"
@@ -752,6 +759,9 @@ if ".one `Ribet_Level32" not in lake:
 if ".one `Serre_Large_vs_CM_Small" not in lake:
     print("lakefile.lean missing Serre_Large_vs_CM_Small glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
+if ".one `TwoDescent_26a1_26" not in lake:
+    print("lakefile.lean missing TwoDescent_26a1_26 glob on BealMatveevBealV25B0Search", file=sys.stderr)
+    sys.exit(1)
 if ".one `X0_26_Full2Torsion" not in lake:
     print("lakefile.lean missing X0_26_Full2Torsion glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
@@ -817,6 +827,9 @@ if "Ribet_Level32" in default_globs.group(1):
     sys.exit(1)
 if "Serre_Large_vs_CM_Small" in default_globs.group(1):
     print("Serre_Large_vs_CM_Small must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "TwoDescent_26a1_26" in default_globs.group(1):
+    print("TwoDescent_26a1_26 must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 if "X0_26_Full2Torsion" in default_globs.group(1):
     print("X0_26_Full2Torsion must not be in default BealMatveevBeal globs", file=sys.stderr)
@@ -4450,7 +4463,50 @@ check_gap_file("X0_26_Full2Torsion.lean",
      "curve_26a1_model_Δ", "curve_26b1_model_Δ",
      "tors_26a1_eq_3", "tors_26b1_eq_7",
      "selmer_2_card_26a1_eq", "two_pow_selmer_rank_26a1",
-     "three_mul_seven_eq_twenty_one"])
+     "three_mul_seven_eq_twenty_one",
+     "selmer_2_card_eq_sel2_card_26a1"])
+x026 = pathlib.Path("X0_26_Full2Torsion.lean").read_text(encoding="utf-8")
+if "import TwoDescent_26a1_26" not in x026:
+    print("X0_26_Full2Torsion.lean must import TwoDescent_26a1_26", file=sys.stderr)
+    sys.exit(1)
+if "import BealTrueV25.TwoDescent" in x026:
+    print("X0_26_Full2Torsion.lean must not import BealTrueV25.TwoDescent", file=sys.stderr)
+    sys.exit(1)
+check_gap_file("TwoDescent_26a1_26.lean",
+    ["Sha2_26a1_trivial", "Sha2_26b1_trivial",
+     "RankZero_26a1_from_Selmer", "RankZero_26b1_from_Selmer",
+     "mwrank_displays_are_Mathlib_MW", "certified_mwrank_both_zero"],
+    ["SelmerBound_26a1_eq", "Sel2_card_26a1_eq",
+     "TorsionOrder_26a1_eq", "TorsionOrder_26b1_eq",
+     "TorsionOrder_26a1_ne_two", "certified_mwrank_26a1_eq",
+     "certified_mwrank_both_zero_holds",
+     "Sel2_rank0_implies_rank0_26a1", "Sel2_rank0_implies_rank0_26b1",
+     "two_pow_sel2_F2_dim_26a1", "torsion_orders_mul_eq_twenty_one",
+     "Sha2_26a1_trivial_is_one_eq_one",
+     "RankZero_26a1_from_Selmer_is_one_eq_one",
+     "LLL_nogo_persists_after_TwoDescent"])
+two = pathlib.Path("TwoDescent_26a1_26.lean").read_text(encoding="utf-8")
+if "Not a Selmer" not in two or "Not a two-descent" not in two:
+    print("TwoDescent_26a1_26.lean honesty comments missing", file=sys.stderr)
+    sys.exit(1)
+if "Not Sha[2] triviality" not in two:
+    print("TwoDescent_26a1_26.lean must say RankZero/Sha names are not Sha[2]", file=sys.stderr)
+    sys.exit(1)
+if "d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260" not in two:
+    print("TwoDescent_26a1_26.lean must cite Descent_26.json SHA-256", file=sys.stderr)
+    sys.exit(1)
+if "Prop := True" in two or ":= trivial" in two:
+    print("FAIL: TwoDescent ranks/Selmer names must not be True/trivial", file=sys.stderr)
+    sys.exit(1)
+if "J0_26_rank0_via_mwrank_inhabited" in two:
+    print("do not name 0=0 as J0_26_rank0_via_mwrank_inhabited", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem J0_26_rank0\b", two, re.M):
+    print("do not inhabit J0_26_rank0 in TwoDescent_26a1_26.lean", file=sys.stderr)
+    sys.exit(1)
+if "import X0_26_Full2Torsion" in two:
+    print("TwoDescent_26a1_26.lean must not import X0_26_Full2Torsion (cycle)", file=sys.stderr)
+    sys.exit(1)
 check_gap_file("J0_26_BSD_26a1_26b1.lean",
     ["L_26a1_ne_zero", "L_26b1_ne_zero",
      "Kolyvagin_rank0_of_L_ne_zero",
@@ -4510,6 +4566,12 @@ if "-17576" not in arch or "-1664" not in arch:
     sys.exit(1)
 if "Sel2" not in arch and "|Sel" not in arch:
     print("ARCHIVE_4413.md must record displayed |Sel2|=1, not a Mathlib Selmer group", file=sys.stderr)
+    sys.exit(1)
+if "TwoDescent" not in arch:
+    print("ARCHIVE_4413.md must record relocated TwoDescent_26a1_26", file=sys.stderr)
+    sys.exit(1)
+if "certified_mwrank" not in arch:
+    print("ARCHIVE_4413.md must record Sage certified_mwrank as a displayed Nat", file=sys.stderr)
     sys.exit(1)
 
 interp = pathlib.Path("MatveevInterpolation.lean").read_text(encoding="utf-8")
@@ -4883,4 +4945,6 @@ print("  J0_26 BSD: Cremona 26a1 Delta=-17576 L/Omega=1/3; 26b1 Delta=-1664 L/Om
 print("  143a1 template has L(E,1)=0 rank 1, wrong sign; Kolyvagin rank0 stays def Prop")
 print("  X0_26 mwrank skeleton: |Sel2|=1 and 2^0=1 numerals, tors Nats 3 and 7, 3*7=21")
 print("  J0_26_rank0_via_mwrank / J0_26_Q_tors_21 / mwrank_skeleton_complete stay def Prop")
+print("  TwoDescent_26a1_26: relocated kernel; Sel2_card=1, certified_mwrank display 0, 1=1->0=0")
+print("  RankZero_from_Selmer is 1=1, not MW; J0_26_rank0 stays def Prop on X0_26; no BealTrueV25/")
 PY

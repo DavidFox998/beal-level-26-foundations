@@ -11,12 +11,15 @@ Authors: David Fox
   `BealTrueV25`. Do **not** add a Kenku / Mazur axiom: the only
   Darmon–Merel axiom remains
   `BealTrueV25.darmon_merel_4413_axiom` on the default target.
+  Displayed 2-descent Nats live in root `TwoDescent_26a1_26`
+  (not `BealTrueV25/TwoDescent_26a1_26`).
 -/
 import BealMatveevBealV25B0Search
 import DarmonMerelFrey4413
 import MazurIrreducibility13
 import Mazur_X0_13_RationalPoints
 import LLLTargetB8_C1_lower_bound
+import TwoDescent_26a1_26
 
 /-!
 # `X₀(26)` via full rational 2-torsion (Momose / Kraus, not `X₀(13)`)
@@ -81,7 +84,10 @@ Frey `j` is not an integral rational when `29 ∣ C`;
 Cremona `26a1`/`26b1` Weierstrass `Δ = -17576`/`-1664`;
 affine points `(4,4)` and `(1,0)`; torsion-order *Nats*
 `3` and `7` (LMFDB data, not `WeierstrassCurve.torsionOrder`);
-displayed `|Sel₂| = 1` with `2⁰ = 1`; `3 · 7 = 21`.
+displayed `|Sel₂| = 1` with `2⁰ = 1`; `3 · 7 = 21`;
+relocated `TwoDescent_26a1_26` numerals (`Sel2_card = 1`,
+Sage `certified_mwrank` display `0`, `1 = 1 → 0 = 0` on
+those Nats, `RankZero_*_from_Selmer` is `1 = 1`).
 
 **Uninhabited (`def Prop`):** Galois glue `full2 + 13 ⇒ 26-isogeny`;
 Jacobian rank 0 / Chabauty; Kenku completeness;
@@ -91,7 +97,8 @@ Jacobian rank 0 / Chabauty; Kenku completeness;
 no `SelmerGroup`, no `Jacobian`. PARI `ellrank` / Sage
 `E.rank()` live in `scripts/verify_descent_26.py` and
 `sagemath/j0_26_decomp_foundation.sage`; they are not Lean
-theorems. No `sorry`, no inhabited `True` stub, no
+theorems. `Sel2_rank0_implies_rank0_*` is `1 = 1 → 0 = 0`,
+not Jacobian rank 0. No `sorry`, no inhabited `True` stub, no
 `axiom kenku_*`.
 
 Does **not** mint v25. `C1_floor = 143186215390`. `B0_nat = 1000000`.
@@ -105,6 +112,7 @@ open BealMatveevBeal.DarmonMerelFrey4413
 open BealMatveevBeal.MazurIrreducibility13
 open BealMatveevBeal.LLLTargetB8
 open BealMatveevBeal.LLLTargetB8C1LowerBound
+open BealMatveevBeal.TwoDescent_26a1_26
 open Nat
 open Polynomial
 
@@ -523,6 +531,18 @@ theorem tors_product_eq_twenty_one :
     tors_26a1 * tors_26b1 = 21 := by
   decide
 
+theorem selmer_2_card_eq_sel2_card_26a1 :
+    Selmer_2_card_26a1 = Sel2_card_26a1 := rfl
+
+theorem selmer_2_card_eq_sel2_card_26b1 :
+    Selmer_2_card_26b1 = Sel2_card_26b1 := rfl
+
+theorem tors_eq_TorsionOrder_26a1 :
+    tors_26a1 = TorsionOrder_26a1 := rfl
+
+theorem tors_eq_TorsionOrder_26b1 :
+    tors_26b1 = TorsionOrder_26b1 := rfl
+
 /-- Sage/PARI `rank() = 0` on both factors would give Jacobian
     rank `0`. Uninhabited: no `mwrank` in Mathlib 4.12, and the
     displayed `|Sel₂| = 1` numerals are not a 2-covering. -/
@@ -603,6 +623,11 @@ theorem LLL_nogo_persists_after_X0_26 :
 #check J0_26_rank0_via_mwrank
 #check J0_26_Q_tors_21
 #check mwrank_skeleton_complete
+#check Sel2_card_26a1_eq
+#check Sel2_rank0_implies_rank0_26a1
+#check certified_mwrank_both_zero_holds
+#check RankZero_26a1_from_Selmer_is_one_eq_one
+#check selmer_2_card_eq_sel2_card_26a1
 #print axioms frey_has_full_2_torsion
 #print axioms twenty_six_not_in_kenku_list
 #print axioms X0_26_known_on_curve

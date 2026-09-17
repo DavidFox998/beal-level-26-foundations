@@ -49,6 +49,8 @@ requests to **`main`**, and on `workflow_dispatch`:
    Tate stays `def Prop`) plus `Ribet_Level32` (`928/29=32`;
    abstract Ribet / Frey-needs-Wiles stay `def Prop`) plus
    `Serre_Large_vs_CM_Small` (Galois stays `def Prop`) plus
+   `TwoDescent_26a1_26` (relocated `|Sel₂|=1` / Sage rank
+   display `0`; `1=1→0=0` is not Jacobian rank 0) plus
    `X0_26_Full2Torsion` (Frey cubic split inhabited; Kenku /
    Mazur via `X₀(26)` stay `def Prop`) plus
    `J0_26_BSD_26a1_26b1` (`26a1`/`26b1` `Δ` and `L/Ω=1/3,1/7`;

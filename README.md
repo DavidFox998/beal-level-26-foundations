@@ -506,7 +506,7 @@ lake update
 lake exe cache get   # optional, uses the mathlib oleans cache
 lake build BealMatveevBeal
 lake build BealMatveevBealV25Rank3  # separate Rank-3 shape target; not default
-lake build BealMatveevBealV25B0Search  # B<1000 + LLLTargetB8 + Gap3B0Million + C1'≤8 nogo + Frey (4,4,13) + Level32Table + Level928Table + Ribet29C_Lowering + Ribet29C_Residue16 + Ribet29C_Residue16_L23 + MazurIrreducibility13 + Inertia29Unramified + SerreImage13 + MazurIrreducibilityFull + TateGalois + SerreImageFull + Mazur_X0_13_RationalPoints + Tate_I29_Inertia + Ribet_Level32 + Serre_Large_vs_CM_Small + X0_26_Full2Torsion + J0_26_BSD_26a1_26b1
+lake build BealMatveevBealV25B0Search  # B<1000 + LLLTargetB8 + Gap3B0Million + C1'≤8 nogo + Frey (4,4,13) + Level32Table + Level928Table + Ribet29C_Lowering + Ribet29C_Residue16 + Ribet29C_Residue16_L23 + MazurIrreducibility13 + Inertia29Unramified + SerreImage13 + MazurIrreducibilityFull + TateGalois + SerreImageFull + Mazur_X0_13_RationalPoints + Tate_I29_Inertia + Ribet_Level32 + Serre_Large_vs_CM_Small + TwoDescent_26a1_26 + X0_26_Full2Torsion + J0_26_BSD_26a1_26b1
 ```
 
 Lake requires the monorepo subdirectory
