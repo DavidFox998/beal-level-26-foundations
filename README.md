@@ -1,16 +1,24 @@
 # foundations-level-26 — Beal Level 26 Matveev-Baker Foundations
 
-## Working branch `tate-v29` (from `phase-darmon-merel-4413` `43735b3`)
+## Four working slices merged into `phase-darmon-merel-4413` (from `43735b3`)
 
-Tate display at `29` for Frey `A⁴+B⁴=C¹³`. Inhabited: Mathlib `Δ = 16 A⁸ B⁸ (A⁴+B⁴)²`, `v₂₉(Δ) = 26 v₂₉(C)` when `29 ∤ AB`, residual `32`/`928`, numeral `928/29 = 32`, `v₂₉(Δ) ≥ 0`. Still `def Prop`: Tate’s algorithm, Néron `N_E`, `Frey_conductor_29_is_Neron`. See [`docs/tate-v29/README.md`](docs/tate-v29/README.md). Do **not** merge to `phase-darmon-merel-4413` yet. beal-conjecture v26 `5e2906b` / badge `5806dad` / DOI `10.5281/zenodo.22832505` stays untouched.
+`tate-v29` `b3348df`, `mazur-x0-13` `146d463`, `ribet-928-32` `b61bec2`, `kolyvagin-fintype` `6e88d94`. Honest slice inhabited; algebraic Tate algorithm / Néron `N_E`, Frey 13-isogeny, abstract Ribet, and `Nonempty (Fintype (E(ℚ)))` stay `def Prop`. beal-conjecture v26 `5e2906b` / badge `5806dad` / DOI `10.5281/zenodo.22832505` stays untouched.
 
-## Working branch `mazur-x0-13` (from `phase-darmon-merel-4413` `43735b3`)
+### `tate-v29`
 
-Mazur via `X₀(13)`. Inhabited: genus Nat `0`, cusp count `2`, `|SL₂(𝔽₁₃)| = 13·12·14 = 2184`, `48 < 2184`, `13 = 2²+3²`, `288/48 = 6`. Does **not** inhabit `X₀(13)(ℚ) = {2 cusps}` (genus 0 ⇒ infinitely many rational points). Still `def Prop`: `X0_13_Q_infinite`, Frey `ρ_{E,13}` irreducible, Serre non-Borel, `mazur_no_Frey_13_isogeny`. See [`docs/mazur-x0-13/README.md`](docs/mazur-x0-13/README.md) and [`docs/roadmap_without_wiles/README.md`](docs/roadmap_without_wiles/README.md). Do **not** merge to `phase-darmon-merel-4413` yet. beal-conjecture v26 `5e2906b` / `5806dad` stays untouched.
+Tate display at `29` for Frey `A⁴+B⁴=C¹³`. Inhabited: Mathlib `Δ = 16 A⁸ B⁸ (A⁴+B⁴)²`, `v₂₉(Δ) = 26 v₂₉(C)` when `29 ∤ AB`, residual `32`/`928`, numeral `928/29 = 32`, `v₂₉(Δ) ≥ 0`. Still `def Prop`: Tate’s algorithm, Néron `N_E`, `Frey_conductor_29_is_Neron`. See [`docs/tate-v29/README.md`](docs/tate-v29/README.md).
 
-## Working branch `ribet-928-32` (from `phase-darmon-merel-4413` `43735b3`)
+### `mazur-x0-13`
 
-Ribet display `928/29=32`. Inhabited: numeral `928/29=32`, `32·29=928`, `928≠32`, `29 ∤ 32`, residual `32` when `29 ∤ AB` and `928` when `29 ∣ AB`. Still `def Prop`: abstract Ribet `Ribet_928_to_32`, `no_newforms_at_32_mod13`, `explicit_a29_mod13`. See [`docs/ribet-928-32/README.md`](docs/ribet-928-32/README.md). Do **not** merge to `phase-darmon-merel-4413` yet. beal-conjecture v26 `5e2906b` / `5806dad` stays untouched.
+Mazur via `X₀(13)`. Inhabited: genus Nat `0`, cusp count `2`, `|SL₂(𝔽₁₃)| = 13·12·14 = 2184`, `48 < 2184`, `13 = 2²+3²`, `288/48 = 6`. Does **not** inhabit `X₀(13)(ℚ) = {2 cusps}` (genus 0 ⇒ infinitely many rational points). Still `def Prop`: `X0_13_Q_infinite`, Frey `ρ_{E,13}` irreducible, Serre non-Borel, `mazur_no_Frey_13_isogeny`. See [`docs/mazur-x0-13/README.md`](docs/mazur-x0-13/README.md) and [`docs/roadmap_without_wiles/README.md`](docs/roadmap_without_wiles/README.md).
+
+### `ribet-928-32`
+
+Ribet display `928/29=32`. Inhabited: numeral `928/29=32`, `32·29=928`, `928≠32`, `29 ∤ 32`, residual `32` when `29 ∤ AB` and `928` when `29 ∣ AB`. Still `def Prop`: abstract Ribet `Ribet_928_to_32`, `no_newforms_at_32_mod13`, `explicit_a29_mod13`. See [`docs/ribet-928-32/README.md`](docs/ribet-928-32/README.md).
+
+### `kolyvagin-fintype`
+
+Kolyvagin display for Cremona `26a1`/`26b1`. Inhabited: `¬IsRankZero` via `(4,4)`/`(1,0)`, `L/Ω = 1/3` and `1/7`, `|Sel₂|=1`, `3·7=21`, `2⁰=1`, Sage `certified_mwrank` display `0`, `Δ = -17576` / `-1664`. Algebraic MW rank 0 as `Nonempty (Fintype (E(ℚ)))` stays `def Prop` (not Subsingleton). Kato/Kolyvagin implication stays `def Prop`. See [`docs/kolyvagin-fintype/README.md`](docs/kolyvagin-fintype/README.md).
 
 [![Matveev-Beal CI](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml/badge.svg)](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml)
 
