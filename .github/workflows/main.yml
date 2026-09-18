@@ -8,7 +8,7 @@ name: Matveev-Beal CI
 
 on:
   push:
-    branches: [main, phase-darmon-merel-4413]
+    branches: [main, phase-darmon-merel-4413, tate-v29, mazur-x0-13, ribet-928-32, kolyvagin-fintype]
     tags: [v0.26-mcom-foundations]
   pull_request:
     branches: [main]
