@@ -1,8 +1,12 @@
 # foundations-level-26 — Beal Level 26 Matveev-Baker Foundations
 
-## Working branch `tate-v29` (from `phase-darmon-merel-4413` `43735b3`)
+## Working branch `final-bridge-honest-43735b3`
 
-Tate display at `29` for Frey `A⁴+B⁴=C¹³`. Inhabited: Mathlib `Δ = 16 A⁸ B⁸ (A⁴+B⁴)²`, `v₂₉(Δ) = 26 v₂₉(C)` when `29 ∤ AB`, residual `32`/`928`, numeral `928/29 = 32`, `v₂₉(Δ) ≥ 0`. Still `def Prop`: Tate’s algorithm, Néron `N_E`, `Frey_conductor_29_is_Neron`. See [`docs/tate-v29/README.md`](docs/tate-v29/README.md). Do **not** merge to `phase-darmon-merel-4413` yet. beal-conjecture v26 `5e2906b` / badge `5806dad` / DOI `10.5281/zenodo.22832505` stays untouched.
+This branch combines the honest Tate-at-29, Mazur `X₀(13)`, Ribet
+`928 → 32`, and Kolyvagin/Mordell--Weil numerical surfaces from baseline
+`43735b3`. Their library-scale conclusions remain explicit uninhabited
+propositions; the final level-`32` bridge is conditional on the Mazur, Tate,
+and Ribet obligations. See the four numerical modules and blocker notes.
 
 [![Matveev-Beal CI](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml/badge.svg)](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml)
 
