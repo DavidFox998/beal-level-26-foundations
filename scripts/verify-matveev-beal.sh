@@ -215,6 +215,13 @@ test -f Kolyvagin_MW_Rank0_26a1_26b1.lean
 if test -f Beal/Matveev/Kolyvagin_MW_Rank0_26a1_26b1.lean; then
   fail "do not add Beal/Matveev/Kolyvagin_MW_Rank0_26a1_26b1.lean; .submodules Beal.Matveev would pull it into default"
 fi
+test -f Level26/HonestB0Search/Kolyvagin_Fintype_Subsingleton_inhabited.lean
+if test -f Beal/Matveev/Kolyvagin_Fintype_Subsingleton_inhabited.lean; then
+  fail "do not add Beal/Matveev/Kolyvagin_Fintype_Subsingleton_inhabited.lean; .submodules Beal.Matveev would pull it into default"
+fi
+test -f Level26/HonestB0Search/docs/Kolyvagin_Fintype_Subsingleton_v28.md
+test -f sagemath/kolyvagin_fintype_subsingleton.sage
+test -f sagemath/certs/kolyvagin_fintype_subsingleton.json
 test -f docs/roadmap_without_wiles/README.md
 test -f Level26/BealLevel26Foundations/lakefile.lean
 test -f Level26/BealLevel26Foundations/VENDOR.md
@@ -817,6 +824,18 @@ if ".one `Ribet_Level_Lowering_29_to_32" not in lake:
 if ".one `Kolyvagin_MW_Rank0_26a1_26b1" not in lake:
     print("lakefile.lean missing Kolyvagin_MW_Rank0_26a1_26b1 glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
+if "lean_lib HonestB0Search" not in lake:
+    print("lakefile.lean missing lean_lib HonestB0Search", file=sys.stderr)
+    sys.exit(1)
+if "lean_lib Level26" not in lake:
+    print("lakefile.lean missing lean_lib Level26", file=sys.stderr)
+    sys.exit(1)
+if ".one `Kolyvagin_Fintype_Subsingleton_inhabited" not in lake:
+    print("lakefile.lean missing Kolyvagin_Fintype_Subsingleton_inhabited glob", file=sys.stderr)
+    sys.exit(1)
+if 'srcDir := "Level26/BealLevel26Foundations' in lake.split("lean_lib Level26", 1)[-1][:400]:
+    print("lean_lib Level26 must not compile the vendor tree", file=sys.stderr)
+    sys.exit(1)
 if 'require beal_level_26_foundations from "Level26/BealLevel26Foundations"' not in lake:
     print("lakefile.lean must require beal_level_26_foundations from local Level26/BealLevel26Foundations", file=sys.stderr)
     sys.exit(1)
@@ -906,6 +925,12 @@ if "Ribet_Level_Lowering_29_to_32" in default_globs.group(1):
     sys.exit(1)
 if "Kolyvagin_MW_Rank0_26a1_26b1" in default_globs.group(1):
     print("Kolyvagin_MW_Rank0_26a1_26b1 must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Kolyvagin_Fintype_Subsingleton_inhabited" in default_globs.group(1):
+    print("Kolyvagin_Fintype_Subsingleton_inhabited must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "HonestB0Search" in default_globs.group(1):
+    print("HonestB0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -4679,6 +4704,102 @@ if "Subsingleton" not in koly:
 if re.search(r"^theorem J0_26_rank0\b", koly, re.M):
     print("do not inhabit J0_26_rank0 in Kolyvagin_MW_Rank0_26a1_26b1.lean", file=sys.stderr)
     sys.exit(1)
+fintype_path = "Level26/HonestB0Search/Kolyvagin_Fintype_Subsingleton_inhabited.lean"
+fintype = pathlib.Path(fintype_path).read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in fintype or re.search(
+        r"^import Beal\.Matveev\.", fintype, re.M):
+    print(f"{fintype_path} must not import Beal.Matveev.*", file=sys.stderr)
+    sys.exit(1)
+if "import BealTrueV25" in fintype:
+    print(f"{fintype_path} must not import BealTrueV25", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", fintype, re.M) or ":= sorry" in fintype or "by sorry" in fintype:
+    print(f"sorry is not allowed in {fintype_path}", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in fintype or "True := by trivial" in fintype or "Prop := True" in fintype:
+    print(f"FAIL: {fintype_path} must not use True/trivial", file=sys.stderr)
+    sys.exit(1)
+if ":= trivial" in fintype:
+    print(f"FAIL: {fintype_path} must not use trivial", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^axiom ", fintype, re.M):
+    print(f"do not add axioms in {fintype_path}", file=sys.stderr)
+    sys.exit(1)
+if "WeierstrassCurve.mk" in fintype:
+    print(f"{fintype_path} must not use WeierstrassCurve.mk", file=sys.stderr)
+    sys.exit(1)
+if "Fintype_of_nonempty_Fintype" not in fintype:
+    print("Fintype_of_nonempty_Fintype missing", file=sys.stderr)
+    sys.exit(1)
+if "Fintype_of_Subsingleton" not in fintype:
+    print("Fintype_of_Subsingleton missing", file=sys.stderr)
+    sys.exit(1)
+if "theorem Kolyvagin_Fintype_Subsingleton_inhabited" not in fintype:
+    print("Kolyvagin_Fintype_Subsingleton_inhabited missing", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^def Kolyvagin_Fintype_Subsingleton_inhabited\b", fintype, re.M):
+    print("Kolyvagin_Fintype_Subsingleton_inhabited must be a theorem, not def Prop", file=sys.stderr)
+    sys.exit(1)
+if "3 · 7" not in fintype and "TorsionOrder_26a1 * TorsionOrder_26b1 = 21" not in fintype:
+    print(f"{fintype_path} must inhabit 3*7=21", file=sys.stderr)
+    sys.exit(1)
+if "Sel2_card_26a1 = 1" not in fintype:
+    print(f"{fintype_path} must inhabit |Sel2|=1", file=sys.stderr)
+    sys.exit(1)
+if "not_IsRankZero" not in fintype:
+    print(f"{fintype_path} must record ¬IsRankZero", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem MW_rank_zero_fintype\b", fintype, re.M) or re.search(
+        r"^theorem MW_rank_zero_26a1_fintype\b", fintype, re.M):
+    print(f"{fintype_path} must not inhabit MW_rank_zero_fintype", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem J0_26_rank0\b", fintype, re.M):
+    print(f"do not inhabit J0_26_rank0 in {fintype_path}", file=sys.stderr)
+    sys.exit(1)
+docs28 = pathlib.Path("Level26/HonestB0Search/docs/Kolyvagin_Fintype_Subsingleton_v28.md").read_text(encoding="utf-8")
+if "Subsingleton" not in docs28 or "Sel" not in docs28:
+    print("Kolyvagin_Fintype_Subsingleton_v28.md must record Subsingleton and Sel2", file=sys.stderr)
+    sys.exit(1)
+if "def Prop" not in docs28:
+    print("Kolyvagin_Fintype_Subsingleton_v28.md must record parent def Props", file=sys.stderr)
+    sys.exit(1)
+sage28 = pathlib.Path("sagemath/kolyvagin_fintype_subsingleton.sage").read_text(encoding="utf-8")
+if "26a1" not in sage28 or "26b1" not in sage28:
+    print("kolyvagin_fintype_subsingleton.sage must name 26a1 and 26b1", file=sys.stderr)
+    sys.exit(1)
+if "def Prop" not in sage28:
+    print("kolyvagin_fintype_subsingleton.sage must record MW_rank_zero_fintype stays def Prop", file=sys.stderr)
+    sys.exit(1)
+cert28 = pathlib.Path("sagemath/certs/kolyvagin_fintype_subsingleton.json").read_text(encoding="utf-8")
+if '"torsion_3_mul_7": 21' not in cert28:
+    print("kolyvagin_fintype_subsingleton.json must pin 3*7=21", file=sys.stderr)
+    sys.exit(1)
+if '"IsRankZero_on_26a1": false' not in cert28:
+    print("kolyvagin_fintype_subsingleton.json must record ¬IsRankZero on 26a1", file=sys.stderr)
+    sys.exit(1)
+ci_main = pathlib.Path(".github/workflows/main.yml").read_text(encoding="utf-8")
+ci_build = pathlib.Path(".github/workflows/build.yml").read_text(encoding="utf-8") if pathlib.Path(".github/workflows/build.yml").exists() else ""
+if "kolyvagin-fintype-subsingleton-v28" in ci_main:
+    print("historical main.yml must not trigger the hours BealMatveevBeal job on kolyvagin-fintype-subsingleton-v28", file=sys.stderr)
+    sys.exit(1)
+if "kolyvagin-fintype-subsingleton-v28" not in ci_build:
+    print("build.yml must trigger on kolyvagin-fintype-subsingleton-v28", file=sys.stderr)
+    sys.exit(1)
+if "lake build HonestB0Search" not in ci_build or "lake build Level26" not in ci_build:
+    print("build.yml must run lake build HonestB0Search and lake build Level26", file=sys.stderr)
+    sys.exit(1)
+if "Kolyvagin_Fintype_Subsingleton_inhabited" not in ci_build:
+    print("build.yml must lake build +Kolyvagin_Fintype_Subsingleton_inhabited", file=sys.stderr)
+    sys.exit(1)
+if "lake build BealMatveevBeal\n" in ci_build or "lake build BealMatveevBealV25" in ci_build:
+    print("build.yml must not lake build historical Beal / Rank3 / B0Search", file=sys.stderr)
+    sys.exit(1)
+if "use-mathlib-cache: true" not in ci_build:
+    print("build.yml must use lean-action mathlib cache", file=sys.stderr)
+    sys.exit(1)
+if "v27-6ccafbf" not in ci_build:
+    print("build.yml must pin .lake cache key to v27-6ccafbf", file=sys.stderr)
+    sys.exit(1)
 road = pathlib.Path("docs/roadmap_without_wiles/README.md").read_text(encoding="utf-8")
 if "Tate_Frey_Conductor_29" not in road or "Kolyvagin_MW_Rank0_26a1_26b1" not in road:
     print("docs/roadmap_without_wiles/README.md must name the four root modules", file=sys.stderr)
@@ -5154,4 +5275,8 @@ print("  without Wiles skeletons: Tate_Frey_Conductor_29, Mazur_X0_13_No_Isogeny
 print("  Ribet_Level_Lowering_29_to_32, Kolyvagin_MW_Rank0_26a1_26b1 stay def Prop")
 print("  docs/roadmap_without_wiles: X0(13)(Q) infinite; IsRankZero false; local Level26 vendor")
 print("  beal-conjecture stays beal-conjecture; this repo stays foundations-level-26")
+print("  v28 HonestB0Search / Level26: Kolyvagin_Fintype_Subsingleton_inhabited")
+print("  Nonempty(Fintype)->Fintype via ofFinite; Subsingleton card 1 on Unit")
+print("  |Sel2|=1 3*7=21 L/Omega 1/3 1/7; ¬IsRankZero on 26a1/26b1; no def Prop")
+print("  MW_rank_zero_fintype / Kato / TwoDescent=>rank0 stay def Prop on parent")
 PY

@@ -1,0 +1,54 @@
+# Incremental HonestB0Search / Level26 CI for
+# kolyvagin-fintype-subsingleton-v28.
+# Does **not** `lake build` the default BealMatveevBeal target
+# (that is the hours-long historical job on main.yml).
+# Stone pin: phase-darmon-merel-4413 @ 51bba93,
+# mathlib v4.12.0 = 809c3fb3b5c8f5d7dace56e200b426187516535a,
+# conjecture v27 badge 6ccafbf.
+name: HonestB0Search incremental
+
+on:
+  push:
+    branches: [kolyvagin-fintype-subsingleton-v28]
+  workflow_dispatch:
+
+concurrency:
+  group: honestb0-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore .lake stone cache
+        id: lake-cache
+        uses: actions/cache@v4
+        with:
+          path: .lake
+          key: lake-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-v27-6ccafbf
+          restore-keys: |
+            lake-
+
+      # cache-lean in lean-action@v1 is `use-github-cache`.
+      # build: false so the action does not `lake build` default BealMatveevBeal.
+      - uses: leanprover/lean-action@v1
+        with:
+          use-mathlib-cache: true
+          use-github-cache: true
+          build: false
+          test: false
+
+      - name: lake exe cache get
+        run: lake exe cache get
+
+      - name: Incremental single file
+        run: lake build +Kolyvagin_Fintype_Subsingleton_inhabited
+
+      - name: lake build HonestB0Search
+        run: lake build HonestB0Search
+
+      - name: lake build Level26
+        run: lake build Level26
