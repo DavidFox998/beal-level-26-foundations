@@ -215,6 +215,13 @@ test -f Kolyvagin_MW_Rank0_26a1_26b1.lean
 if test -f Beal/Matveev/Kolyvagin_MW_Rank0_26a1_26b1.lean; then
   fail "do not add Beal/Matveev/Kolyvagin_MW_Rank0_26a1_26b1.lean; .submodules Beal.Matveev would pull it into default"
 fi
+test -f Level26/HonestB0Search/Tate_Frey_Conductor_29_Neron_inhabited.lean
+if test -f Beal/Matveev/Tate_Frey_Conductor_29_Neron_inhabited.lean; then
+  fail "do not add Beal/Matveev/Tate_Frey_Conductor_29_Neron_inhabited.lean; .submodules Beal.Matveev would pull it into default"
+fi
+test -f Level26/HonestB0Search/docs/Tate_Neron_29_v28.md
+test -f sagemath/tate_nero_29.sage
+test -f sagemath/certs/tate_nero_29.json
 test -f docs/roadmap_without_wiles/README.md
 test -f Level26/BealLevel26Foundations/lakefile.lean
 test -f Level26/BealLevel26Foundations/VENDOR.md
@@ -817,6 +824,18 @@ if ".one `Ribet_Level_Lowering_29_to_32" not in lake:
 if ".one `Kolyvagin_MW_Rank0_26a1_26b1" not in lake:
     print("lakefile.lean missing Kolyvagin_MW_Rank0_26a1_26b1 glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
+if "lean_lib HonestB0Search" not in lake:
+    print("lakefile.lean missing lean_lib HonestB0Search", file=sys.stderr)
+    sys.exit(1)
+if "lean_lib Level26" not in lake:
+    print("lakefile.lean missing lean_lib Level26", file=sys.stderr)
+    sys.exit(1)
+if ".one `Tate_Frey_Conductor_29_Neron_inhabited" not in lake:
+    print("lakefile.lean missing Tate_Frey_Conductor_29_Neron_inhabited glob", file=sys.stderr)
+    sys.exit(1)
+if 'srcDir := "Level26/BealLevel26Foundations' in lake.split("lean_lib Level26", 1)[-1][:400]:
+    print("lean_lib Level26 must not compile the vendor tree", file=sys.stderr)
+    sys.exit(1)
 if 'require beal_level_26_foundations from "Level26/BealLevel26Foundations"' not in lake:
     print("lakefile.lean must require beal_level_26_foundations from local Level26/BealLevel26Foundations", file=sys.stderr)
     sys.exit(1)
@@ -906,6 +925,12 @@ if "Ribet_Level_Lowering_29_to_32" in default_globs.group(1):
     sys.exit(1)
 if "Kolyvagin_MW_Rank0_26a1_26b1" in default_globs.group(1):
     print("Kolyvagin_MW_Rank0_26a1_26b1 must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Tate_Frey_Conductor_29_Neron_inhabited" in default_globs.group(1):
+    print("Tate_Frey_Conductor_29_Neron_inhabited must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "HonestB0Search" in default_globs.group(1):
+    print("HonestB0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -4679,6 +4704,73 @@ if "Subsingleton" not in koly:
 if re.search(r"^theorem J0_26_rank0\b", koly, re.M):
     print("do not inhabit J0_26_rank0 in Kolyvagin_MW_Rank0_26a1_26b1.lean", file=sys.stderr)
     sys.exit(1)
+neron_path = "Level26/HonestB0Search/Tate_Frey_Conductor_29_Neron_inhabited.lean"
+neron = pathlib.Path(neron_path).read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in neron or re.search(
+        r"^import Beal\.Matveev\.", neron, re.M):
+    print(f"{neron_path} must not import Beal.Matveev.*", file=sys.stderr)
+    sys.exit(1)
+if "import BealTrueV25" in neron:
+    print(f"{neron_path} must not import BealTrueV25", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", neron, re.M) or ":= sorry" in neron or "by sorry" in neron:
+    print(f"sorry is not allowed in {neron_path}", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in neron or "True := by trivial" in neron or "Prop := True" in neron:
+    print(f"FAIL: {neron_path} must not use True/trivial", file=sys.stderr)
+    sys.exit(1)
+if ":= trivial" in neron:
+    print(f"FAIL: {neron_path} must not use trivial", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^axiom ", neron, re.M):
+    print(f"do not add axioms in {neron_path}", file=sys.stderr)
+    sys.exit(1)
+if "WeierstrassCurve.mk" in neron:
+    print(f"{neron_path} must not use WeierstrassCurve.mk", file=sys.stderr)
+    sys.exit(1)
+if "theorem Tate_algorithm_at_2_and_29" not in neron:
+    print("Tate_algorithm_at_2_and_29 missing", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^def Tate_algorithm_at_2_and_29\b", neron, re.M):
+    print("Tate_algorithm_at_2_and_29 must be a theorem, not def Prop", file=sys.stderr)
+    sys.exit(1)
+if "^ 5" not in neron and "2^5" not in neron:
+    print(f"{neron_path} must inhabit 2^5", file=sys.stderr)
+    sys.exit(1)
+if "928" not in neron:
+    print(f"{neron_path} must inhabit 928", file=sys.stderr)
+    sys.exit(1)
+if "freyWeierstrass_c₆" not in neron:
+    print(f"{neron_path} must inhabit c6", file=sys.stderr)
+    sys.exit(1)
+docs28 = pathlib.Path("Level26/HonestB0Search/docs/Tate_Neron_29_v28.md").read_text(encoding="utf-8")
+if "928" not in docs28 or "I₀*" not in docs28 and "I0*" not in docs28:
+    print("Tate_Neron_29_v28.md must record 928 and I0*", file=sys.stderr)
+    sys.exit(1)
+if "short" not in docs28.lower() or "different" not in docs28.lower():
+    print("Tate_Neron_29_v28.md must say the short model is a different curve", file=sys.stderr)
+    sys.exit(1)
+sage28 = pathlib.Path("sagemath/tate_nero_29.sage").read_text(encoding="utf-8")
+if "B**4 - A**4" not in sage28 and "B^4 - A^4" not in sage28:
+    print("tate_nero_29.sage must use the displayed Frey model", file=sys.stderr)
+    sys.exit(1)
+if "different" not in sage28.lower() and "Not the Frey" not in sage28:
+    print("tate_nero_29.sage must record the short model is not Frey", file=sys.stderr)
+    sys.exit(1)
+if "928" not in sage28:
+    print("tate_nero_29.sage must mention conductor 928", file=sys.stderr)
+    sys.exit(1)
+cert28 = pathlib.Path("sagemath/certs/tate_nero_29.json").read_text(encoding="utf-8")
+if '"displayed_neron_numeral": 928' not in cert28:
+    print("tate_nero_29.json must pin displayed numeral 928", file=sys.stderr)
+    sys.exit(1)
+ci = pathlib.Path(".github/workflows/main.yml").read_text(encoding="utf-8")
+if "tate-neron-v28" not in ci:
+    print("CI must trigger on tate-neron-v28", file=sys.stderr)
+    sys.exit(1)
+if "lake build HonestB0Search" not in ci or "lake build Level26" not in ci:
+    print("CI must run lake build HonestB0Search and lake build Level26", file=sys.stderr)
+    sys.exit(1)
 road = pathlib.Path("docs/roadmap_without_wiles/README.md").read_text(encoding="utf-8")
 if "Tate_Frey_Conductor_29" not in road or "Kolyvagin_MW_Rank0_26a1_26b1" not in road:
     print("docs/roadmap_without_wiles/README.md must name the four root modules", file=sys.stderr)
@@ -5154,4 +5246,7 @@ print("  without Wiles skeletons: Tate_Frey_Conductor_29, Mazur_X0_13_No_Isogeny
 print("  Ribet_Level_Lowering_29_to_32, Kolyvagin_MW_Rank0_26a1_26b1 stay def Prop")
 print("  docs/roadmap_without_wiles: X0(13)(Q) infinite; IsRankZero false; local Level26 vendor")
 print("  beal-conjecture stays beal-conjecture; this repo stays foundations-level-26")
+print("  v28 HonestB0Search / Level26: Tate_algorithm_at_2_and_29 inhabits c4 c6")
+print("  v2(Delta)=6 I0*, v29(Delta(29,1))=8, numeral 928=2^5*29; no def Prop")
+print("  SAGE tate_nero_29.sage uses Frey [0,B^4-A^4,0,-A^4 B^4,0]; short model is not Frey")
 PY
