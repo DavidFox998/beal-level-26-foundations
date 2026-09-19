@@ -4,6 +4,8 @@ open Lake DSL
 package beal_matveev_beal where
   leanOptions := #[⟨`autoImplicit, false⟩]
 
+-- Stone 51bba93 / v27 6ccafbf: mathlib tag v4.12.0 is
+-- 809c3fb3b5c8f5d7dace56e200b426187516535a. Not @ main.
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4" @ "v4.12.0"
 

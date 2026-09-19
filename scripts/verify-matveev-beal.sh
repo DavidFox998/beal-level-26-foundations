@@ -4764,12 +4764,26 @@ cert28 = pathlib.Path("sagemath/certs/tate_nero_29.json").read_text(encoding="ut
 if '"displayed_neron_numeral": 928' not in cert28:
     print("tate_nero_29.json must pin displayed numeral 928", file=sys.stderr)
     sys.exit(1)
-ci = pathlib.Path(".github/workflows/main.yml").read_text(encoding="utf-8")
-if "tate-neron-v28" not in ci:
-    print("CI must trigger on tate-neron-v28", file=sys.stderr)
+ci_main = pathlib.Path(".github/workflows/main.yml").read_text(encoding="utf-8")
+ci_build = pathlib.Path(".github/workflows/build.yml").read_text(encoding="utf-8") if pathlib.Path(".github/workflows/build.yml").exists() else ""
+ci = ci_main + "\n" + ci_build
+if "tate-neron-v28" in ci_main:
+    print("historical main.yml must not trigger the hours BealMatveevBeal job on tate-neron-v28", file=sys.stderr)
     sys.exit(1)
-if "lake build HonestB0Search" not in ci or "lake build Level26" not in ci:
-    print("CI must run lake build HonestB0Search and lake build Level26", file=sys.stderr)
+if "tate-neron-v28" not in ci_build:
+    print("build.yml must trigger on tate-neron-v28", file=sys.stderr)
+    sys.exit(1)
+if "lake build HonestB0Search" not in ci_build or "lake build Level26" not in ci_build:
+    print("build.yml must run lake build HonestB0Search and lake build Level26", file=sys.stderr)
+    sys.exit(1)
+if "lake build BealMatveevBeal\n" in ci_build or "lake build BealMatveevBealV25" in ci_build:
+    print("build.yml must not lake build historical Beal / Rank3 / B0Search", file=sys.stderr)
+    sys.exit(1)
+if "use-mathlib-cache: true" not in ci_build:
+    print("build.yml must use lean-action mathlib cache", file=sys.stderr)
+    sys.exit(1)
+if "v27-6ccafbf" not in ci_build:
+    print("build.yml must pin .lake cache key to v27-6ccafbf", file=sys.stderr)
     sys.exit(1)
 road = pathlib.Path("docs/roadmap_without_wiles/README.md").read_text(encoding="utf-8")
 if "Tate_Frey_Conductor_29" not in road or "Kolyvagin_MW_Rank0_26a1_26b1" not in road:

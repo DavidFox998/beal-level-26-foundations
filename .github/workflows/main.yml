@@ -8,7 +8,7 @@ name: Matveev-Beal CI
 
 on:
   push:
-    branches: [main, phase-darmon-merel-4413, tate-v29, mazur-x0-13, ribet-928-32, kolyvagin-fintype, tate-neron-v28]
+    branches: [main, phase-darmon-merel-4413, tate-v29, mazur-x0-13, ribet-928-32, kolyvagin-fintype]
     tags: [v0.26-mcom-foundations]
   pull_request:
     branches: [main]
@@ -51,12 +51,6 @@ jobs:
 
       - name: Build BealMatveevBealV25B0Search (separate target)
         run: lake build BealMatveevBealV25B0Search
-
-      - name: Build HonestB0Search (v28 Tate / Néron display)
-        run: lake build HonestB0Search
-
-      - name: Build Level26 (HonestB0Search alias, not vendor)
-        run: lake build Level26
 
       - name: Honest AMS referee surface
         run: bash scripts/verify-matveev-beal.sh
