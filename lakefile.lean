@@ -104,6 +104,12 @@ lean_lib «BealMatveevBealV25Rank3» where
     `Mazur_X0_13_No_Isogeny` inhabits genus-0 / `|SL₂|=2184`
     numerals; `X₀(13)(ℚ)` infinite / Frey 13-isogeny stay
     `def Prop` (the `{2 cusps}` paste is not a theorem).
+    v28 `HonestB0Search` / `Level26` inhabit the displayed
+    cusp Finset `{0,1}` (`card = 2`), `|SL₂|=2184`,
+    `48<2184`, and genus `0` in
+    `Level26/HonestB0Search/Mazur_X0_13_Cusps_Equals_Rationals_inhabited.lean`.
+    Those libs do **not** join this glob (file is not at
+    root) and do **not** compile the vendor tree.
     `Ribet_Level_Lowering_29_to_32` re-exports `928/29=32`;
     abstract Ribet / no-newforms stay `def Prop`.
     `Kolyvagin_MW_Rank0_26a1_26b1` names `Fintype` rank 0
@@ -121,17 +127,19 @@ lean_lib «BealMatveevBealV25B0Search» where
     .one `Tate_Frey_Conductor_29, .one `Mazur_X0_13_No_Isogeny,
     .one `Ribet_Level_Lowering_29_to_32, .one `Kolyvagin_MW_Rank0_26a1_26b1]
 
-/-- v28 Tate / Néron display. `srcDir` is this folder so
-    `lake build HonestB0Search` does not enter
-    `Level26/BealLevel26Foundations` and does not join
+/-- v28 HonestB0Search / Level26 algebraic display. `srcDir`
+    is this folder so `lake build HonestB0Search` does not
+    enter `Level26/BealLevel26Foundations` and does not join
     `.submodules Beal.Matveev`. Imports root B0Search
     modules already on `BealMatveevBealV25B0Search`. -/
 lean_lib HonestB0Search where
   srcDir := "Level26/HonestB0Search"
-  globs := #[.one `Tate_Frey_Conductor_29_Neron_inhabited]
+  globs := #[.one `Tate_Frey_Conductor_29_Neron_inhabited,
+    .one `Mazur_X0_13_Cusps_Equals_Rationals_inhabited]
 
 /-- Alias of `HonestB0Search` so `lake build Level26` is the
     same honest slice, not a vendor FullProof replay. -/
 lean_lib Level26 where
   srcDir := "Level26/HonestB0Search"
-  globs := #[.one `Tate_Frey_Conductor_29_Neron_inhabited]
+  globs := #[.one `Tate_Frey_Conductor_29_Neron_inhabited,
+    .one `Mazur_X0_13_Cusps_Equals_Rationals_inhabited]

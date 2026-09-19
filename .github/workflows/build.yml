@@ -1,4 +1,4 @@
-# Incremental HonestB0Search / Level26 CI for tate-neron-v28.
+# Incremental HonestB0Search / Level26 CI for v28 algebraic props.
 # Does **not** `lake build` the default BealMatveevBeal target
 # (that is the hours-long historical job on main.yml).
 # Stone pin: phase-darmon-merel-4413 @ 51bba93,
@@ -8,7 +8,7 @@ name: HonestB0Search incremental
 
 on:
   push:
-    branches: [tate-neron-v28]
+    branches: [phase-darmon-merel-4413, tate-neron-v28, mazur-cusps-v28]
   workflow_dispatch:
 
 concurrency:
@@ -43,8 +43,11 @@ jobs:
       - name: lake exe cache get
         run: lake exe cache get
 
-      - name: Incremental single file
+      - name: Incremental Tate
         run: lake build +Tate_Frey_Conductor_29_Neron_inhabited
+
+      - name: Incremental Mazur
+        run: lake build +Mazur_X0_13_Cusps_Equals_Rationals_inhabited
 
       - name: lake build HonestB0Search
         run: lake build HonestB0Search

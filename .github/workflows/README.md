@@ -7,14 +7,14 @@ GitHub Actions workflow for
 `lake exe cache get`, `lake build BealMatveevBeal`, and
 `./scripts/verify-matveev-beal.sh` on `main`,
 `phase-darmon-merel-4413`, and the four v27 working
-branches. Not on `tate-neron-v28`.
+branches. Not on the v28 working branches.
 
 [`build.yml`](build.yml) is the v28 incremental job:
 `lean-action@v1` with Mathlib cache, `.lake` cache key
-`lake-…-v27-6ccafbf`, `lake exe cache get`, then
-`lake build +Tate_Frey_Conductor_29_Neron_inhabited`,
-`lake build HonestB0Search`, `lake build Level26`.
-No `lake build` of default `BealMatveevBeal`.
+`lake-…-v27-6ccafbf`, `lake exe cache get`, then the
+HonestB0Search modules, `lake build HonestB0Search`,
+`lake build Level26`. No `lake build` of default
+`BealMatveevBeal`.
 
 This is a Lean 4.12 theorem library, not a web app.
 Concept DOI `10.5281/zenodo.22379293`.
