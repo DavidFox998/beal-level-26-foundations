@@ -4,6 +4,8 @@ open Lake DSL
 package beal_matveev_beal where
   leanOptions := #[⟨`autoImplicit, false⟩]
 
+-- Stone 51bba93 / v27 6ccafbf: mathlib tag v4.12.0 is
+-- 809c3fb3b5c8f5d7dace56e200b426187516535a. Not @ main.
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4" @ "v4.12.0"
 
@@ -98,6 +100,12 @@ lean_lib «BealMatveevBealV25Rank3» where
     `def Prop` (the `{2 cusps}` paste is not a theorem).
     `Ribet_Level_Lowering_29_to_32` re-exports `928/29=32`;
     abstract Ribet / no-newforms stay `def Prop`.
+    v28 `HonestB0Search` / `Level26` inhabit the displayed
+    matching-Finset `card = 0`, Sturm `8`, old level `16`,
+    and `928/29=32` in
+    `Level26/HonestB0Search/Ribet_No_Newforms_At_32_inhabited.lean`.
+    Those libs do **not** join this glob (file is not at
+    root) and do **not** compile the vendor tree.
     `Kolyvagin_MW_Rank0_26a1_26b1` names `Fintype` rank 0
     (not Subsingleton); Kato/Kolyvagin stay `def Prop`. -/
 lean_lib «BealMatveevBealV25B0Search» where
@@ -112,3 +120,18 @@ lean_lib «BealMatveevBealV25B0Search» where
     .one `X0_26_Full2Torsion, .one `BSD_MordellWeil, .one `J0_26_BSD_26a1_26b1,
     .one `Tate_Frey_Conductor_29, .one `Mazur_X0_13_No_Isogeny,
     .one `Ribet_Level_Lowering_29_to_32, .one `Kolyvagin_MW_Rank0_26a1_26b1]
+
+/-- v28 Ribet / level-32 no-newforms display. `srcDir` is this
+    folder so `lake build HonestB0Search` does not enter
+    `Level26/BealLevel26Foundations` and does not join
+    `.submodules Beal.Matveev`. Imports root B0Search
+    modules already on `BealMatveevBealV25B0Search`. -/
+lean_lib HonestB0Search where
+  srcDir := "Level26/HonestB0Search"
+  globs := #[.one `Ribet_No_Newforms_At_32_inhabited]
+
+/-- Alias of `HonestB0Search` so `lake build Level26` is the
+    same honest slice, not a vendor FullProof replay. -/
+lean_lib Level26 where
+  srcDir := "Level26/HonestB0Search"
+  globs := #[.one `Ribet_No_Newforms_At_32_inhabited]

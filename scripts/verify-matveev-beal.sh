@@ -215,6 +215,13 @@ test -f Kolyvagin_MW_Rank0_26a1_26b1.lean
 if test -f Beal/Matveev/Kolyvagin_MW_Rank0_26a1_26b1.lean; then
   fail "do not add Beal/Matveev/Kolyvagin_MW_Rank0_26a1_26b1.lean; .submodules Beal.Matveev would pull it into default"
 fi
+test -f Level26/HonestB0Search/Ribet_No_Newforms_At_32_inhabited.lean
+if test -f Beal/Matveev/Ribet_No_Newforms_At_32_inhabited.lean; then
+  fail "do not add Beal/Matveev/Ribet_No_Newforms_At_32_inhabited.lean; .submodules Beal.Matveev would pull it into default"
+fi
+test -f Level26/HonestB0Search/docs/Ribet_No_Newforms_32_v28.md
+test -f sagemath/ribet_no_newforms_32.sage
+test -f sagemath/certs/ribet_no_newforms_32.json
 test -f docs/roadmap_without_wiles/README.md
 test -f Level26/BealLevel26Foundations/lakefile.lean
 test -f Level26/BealLevel26Foundations/VENDOR.md
@@ -817,6 +824,18 @@ if ".one `Ribet_Level_Lowering_29_to_32" not in lake:
 if ".one `Kolyvagin_MW_Rank0_26a1_26b1" not in lake:
     print("lakefile.lean missing Kolyvagin_MW_Rank0_26a1_26b1 glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
+if "lean_lib HonestB0Search" not in lake:
+    print("lakefile.lean missing lean_lib HonestB0Search", file=sys.stderr)
+    sys.exit(1)
+if "lean_lib Level26" not in lake:
+    print("lakefile.lean missing lean_lib Level26", file=sys.stderr)
+    sys.exit(1)
+if ".one `Ribet_No_Newforms_At_32_inhabited" not in lake:
+    print("lakefile.lean missing Ribet_No_Newforms_At_32_inhabited glob", file=sys.stderr)
+    sys.exit(1)
+if 'srcDir := "Level26/BealLevel26Foundations' in lake.split("lean_lib Level26", 1)[-1][:400]:
+    print("lean_lib Level26 must not compile the vendor tree", file=sys.stderr)
+    sys.exit(1)
 if 'require beal_level_26_foundations from "Level26/BealLevel26Foundations"' not in lake:
     print("lakefile.lean must require beal_level_26_foundations from local Level26/BealLevel26Foundations", file=sys.stderr)
     sys.exit(1)
@@ -906,6 +925,12 @@ if "Ribet_Level_Lowering_29_to_32" in default_globs.group(1):
     sys.exit(1)
 if "Kolyvagin_MW_Rank0_26a1_26b1" in default_globs.group(1):
     print("Kolyvagin_MW_Rank0_26a1_26b1 must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Ribet_No_Newforms_At_32_inhabited" in default_globs.group(1):
+    print("Ribet_No_Newforms_At_32_inhabited must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "HonestB0Search" in default_globs.group(1):
+    print("HonestB0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -4679,6 +4704,107 @@ if "Subsingleton" not in koly:
 if re.search(r"^theorem J0_26_rank0\b", koly, re.M):
     print("do not inhabit J0_26_rank0 in Kolyvagin_MW_Rank0_26a1_26b1.lean", file=sys.stderr)
     sys.exit(1)
+ribet32_path = "Level26/HonestB0Search/Ribet_No_Newforms_At_32_inhabited.lean"
+ribet32 = pathlib.Path(ribet32_path).read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in ribet32 or re.search(
+        r"^import Beal\.Matveev\.", ribet32, re.M):
+    print(f"{ribet32_path} must not import Beal.Matveev.*", file=sys.stderr)
+    sys.exit(1)
+if "import BealTrueV25" in ribet32:
+    print(f"{ribet32_path} must not import BealTrueV25", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", ribet32, re.M) or ":= sorry" in ribet32 or "by sorry" in ribet32:
+    print(f"sorry is not allowed in {ribet32_path}", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in ribet32 or "True := by trivial" in ribet32 or "Prop := True" in ribet32:
+    print(f"FAIL: {ribet32_path} must not use True/trivial", file=sys.stderr)
+    sys.exit(1)
+if ":= trivial" in ribet32:
+    print(f"FAIL: {ribet32_path} must not use trivial", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^axiom ", ribet32, re.M):
+    print(f"do not add axioms in {ribet32_path}", file=sys.stderr)
+    sys.exit(1)
+if "WeierstrassCurve.mk" in ribet32:
+    print(f"{ribet32_path} must not use WeierstrassCurve.mk", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_newforms_at_32" not in ribet32:
+    print("no_newforms_at_32 missing", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^def no_newforms_at_32\b", ribet32, re.M):
+    print("no_newforms_at_32 must be a theorem, not def Prop", file=sys.stderr)
+    sys.exit(1)
+if "928 / 29 = 32" not in ribet32 and "928 / 29 = 32" not in ribet32.replace(" ", ""):
+    if "928 / 29 = 32" not in ribet32:
+        print(f"{ribet32_path} must inhabit 928/29=32", file=sys.stderr)
+        sys.exit(1)
+if "sturm_bound_wt2_level32" not in ribet32:
+    print(f"{ribet32_path} must inhabit the Sturm bound", file=sys.stderr)
+    sys.exit(1)
+if "displayed_old_level" not in ribet32 or "16" not in ribet32:
+    print(f"{ribet32_path} must inhabit old level 16", file=sys.stderr)
+    sys.exit(1)
+if "displayed_frey_matching_newforms" not in ribet32:
+    print(f"{ribet32_path} must inhabit displayed_frey_matching_newforms", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^def no_newforms_at_32_mod13\b", ribet32, re.M) or re.search(
+        r"^theorem no_newforms_at_32_mod13\b", ribet32, re.M):
+    print(f"{ribet32_path} must not inhabit no_newforms_at_32_mod13", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^def Ribet_928_to_32\b", ribet32, re.M) or re.search(
+        r"^theorem Ribet_928_to_32\b", ribet32, re.M):
+    print(f"{ribet32_path} must not inhabit Ribet_928_to_32", file=sys.stderr)
+    sys.exit(1)
+docs28 = pathlib.Path("Level26/HonestB0Search/docs/Ribet_No_Newforms_32_v28.md").read_text(encoding="utf-8")
+if "928" not in docs28 or "32a1" not in docs28:
+    print("Ribet_No_Newforms_32_v28.md must record 928 and 32a1", file=sys.stderr)
+    sys.exit(1)
+if "new_subspace" not in docs28:
+    print("Ribet_No_Newforms_32_v28.md must record the Sage new_subspace paste", file=sys.stderr)
+    sys.exit(1)
+sage28 = pathlib.Path("sagemath/ribet_no_newforms_32.sage").read_text(encoding="utf-8")
+if "CuspForms(32, 2)" not in sage28 and "CuspForms(32,2)" not in sage28:
+    print("ribet_no_newforms_32.sage must call CuspForms(32,2)", file=sys.stderr)
+    sys.exit(1)
+if "new_subspace" not in sage28:
+    print("ribet_no_newforms_32.sage must mention new_subspace", file=sys.stderr)
+    sys.exit(1)
+if "NOT 0" not in sage28 and "not 0" not in sage28.lower():
+    print("ribet_no_newforms_32.sage must record new_subspace dim is not 0", file=sys.stderr)
+    sys.exit(1)
+cert28 = pathlib.Path("sagemath/certs/ribet_no_newforms_32.json").read_text(encoding="utf-8")
+if '"nine_twenty_eight_div_twenty_nine": 32' not in cert28:
+    print("ribet_no_newforms_32.json must pin 928/29=32", file=sys.stderr)
+    sys.exit(1)
+if '"cuspforms_32_2_new_subspace_dimension": 1' not in cert28:
+    print("ribet_no_newforms_32.json must pin Sage new dim 1 (32a1)", file=sys.stderr)
+    sys.exit(1)
+if '"displayed_frey_matching_newform_count": 0' not in cert28:
+    print("ribet_no_newforms_32.json must pin matching count 0", file=sys.stderr)
+    sys.exit(1)
+ci_main = pathlib.Path(".github/workflows/main.yml").read_text(encoding="utf-8")
+ci_build = pathlib.Path(".github/workflows/build.yml").read_text(encoding="utf-8") if pathlib.Path(".github/workflows/build.yml").exists() else ""
+if "ribet-no-newforms-v28" in ci_main:
+    print("historical main.yml must not trigger the hours BealMatveevBeal job on ribet-no-newforms-v28", file=sys.stderr)
+    sys.exit(1)
+if "ribet-no-newforms-v28" not in ci_build:
+    print("build.yml must trigger on ribet-no-newforms-v28", file=sys.stderr)
+    sys.exit(1)
+if "lake build HonestB0Search" not in ci_build or "lake build Level26" not in ci_build:
+    print("build.yml must run lake build HonestB0Search and lake build Level26", file=sys.stderr)
+    sys.exit(1)
+if "Ribet_No_Newforms_At_32_inhabited" not in ci_build:
+    print("build.yml must lake build +Ribet_No_Newforms_At_32_inhabited", file=sys.stderr)
+    sys.exit(1)
+if "lake build BealMatveevBeal\n" in ci_build or "lake build BealMatveevBealV25" in ci_build:
+    print("build.yml must not lake build historical Beal / Rank3 / B0Search", file=sys.stderr)
+    sys.exit(1)
+if "use-mathlib-cache: true" not in ci_build:
+    print("build.yml must use lean-action mathlib cache", file=sys.stderr)
+    sys.exit(1)
+if "v27-6ccafbf" not in ci_build:
+    print("build.yml must pin .lake cache key to v27-6ccafbf", file=sys.stderr)
+    sys.exit(1)
 road = pathlib.Path("docs/roadmap_without_wiles/README.md").read_text(encoding="utf-8")
 if "Tate_Frey_Conductor_29" not in road or "Kolyvagin_MW_Rank0_26a1_26b1" not in road:
     print("docs/roadmap_without_wiles/README.md must name the four root modules", file=sys.stderr)
@@ -5154,4 +5280,8 @@ print("  without Wiles skeletons: Tate_Frey_Conductor_29, Mazur_X0_13_No_Isogeny
 print("  Ribet_Level_Lowering_29_to_32, Kolyvagin_MW_Rank0_26a1_26b1 stay def Prop")
 print("  docs/roadmap_without_wiles: X0(13)(Q) infinite; IsRankZero false; local Level26 vendor")
 print("  beal-conjecture stays beal-conjecture; this repo stays foundations-level-26")
+print("  v28 HonestB0Search / Level26: no_newforms_at_32 inhabits 928/29=32")
+print("  Sturm 8, old level 16, matching Finset card=0; no def Prop")
+print("  CuspForms(32,2).new_subspace dim is LMFDB 1 (32a1); paste 0 is not a theorem")
+print("  parent Ribet_928_to_32 / no_newforms_at_32_mod13 stay def Prop")
 PY
