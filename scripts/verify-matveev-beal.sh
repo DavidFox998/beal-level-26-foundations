@@ -227,6 +227,13 @@ if test -f Beal/Matveev/Mazur_X0_13_Cusps_Equals_Rationals_inhabited.lean; then
   fail "do not add Beal/Matveev/Mazur_X0_13_Cusps_Equals_Rationals_inhabited.lean; .submodules Beal.Matveev would pull it into default"
 fi
 test -f Level26/HonestB0Search/docs/Mazur_Cusps_v28.md
+test -f Level26/HonestB0Search/Ribet_No_Newforms_At_32_inhabited.lean
+if test -f Beal/Matveev/Ribet_No_Newforms_At_32_inhabited.lean; then
+  fail "do not add Beal/Matveev/Ribet_No_Newforms_At_32_inhabited.lean; .submodules Beal.Matveev would pull it into default"
+fi
+test -f Level26/HonestB0Search/docs/Ribet_No_Newforms_32_v28.md
+test -f sagemath/ribet_no_newforms_32.sage
+test -f sagemath/certs/ribet_no_newforms_32.json
 test -f docs/roadmap_without_wiles/README.md
 test -f Level26/BealLevel26Foundations/lakefile.lean
 test -f Level26/BealLevel26Foundations/VENDOR.md
@@ -841,6 +848,9 @@ if ".one `Tate_Frey_Conductor_29_Neron_inhabited" not in lake:
 if ".one `Mazur_X0_13_Cusps_Equals_Rationals_inhabited" not in lake:
     print("lakefile.lean missing Mazur_X0_13_Cusps_Equals_Rationals_inhabited glob", file=sys.stderr)
     sys.exit(1)
+if ".one `Ribet_No_Newforms_At_32_inhabited" not in lake:
+    print("lakefile.lean missing Ribet_No_Newforms_At_32_inhabited glob", file=sys.stderr)
+    sys.exit(1)
 if 'srcDir := "Level26/BealLevel26Foundations' in lake.split("lean_lib Level26", 1)[-1][:400]:
     print("lean_lib Level26 must not compile the vendor tree", file=sys.stderr)
     sys.exit(1)
@@ -939,6 +949,9 @@ if "Tate_Frey_Conductor_29_Neron_inhabited" in default_globs.group(1):
     sys.exit(1)
 if "Mazur_X0_13_Cusps_Equals_Rationals_inhabited" in default_globs.group(1):
     print("Mazur_X0_13_Cusps_Equals_Rationals_inhabited must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Ribet_No_Newforms_At_32_inhabited" in default_globs.group(1):
+    print("Ribet_No_Newforms_At_32_inhabited must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 if "HonestB0Search" in default_globs.group(1):
     print("HonestB0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
@@ -4848,6 +4861,35 @@ if "mazur-cusps-v28" in ci_main:
 if "mazur-cusps-v28" not in ci_build:
     print("build.yml must trigger on mazur-cusps-v28", file=sys.stderr)
     sys.exit(1)
+if "ribet-no-newforms-v28" in ci_main:
+    print("historical main.yml must not trigger the hours BealMatveevBeal job on ribet-no-newforms-v28", file=sys.stderr)
+    sys.exit(1)
+if "ribet-no-newforms-v28" not in ci_build:
+    print("build.yml must trigger on ribet-no-newforms-v28", file=sys.stderr)
+    sys.exit(1)
+if "Ribet_No_Newforms_At_32_inhabited" not in ci_build:
+    print("build.yml must lake build +Ribet_No_Newforms_At_32_inhabited", file=sys.stderr)
+    sys.exit(1)
+ribet32_path = "Level26/HonestB0Search/Ribet_No_Newforms_At_32_inhabited.lean"
+ribet32 = pathlib.Path(ribet32_path).read_text(encoding="utf-8")
+if "import BealTrueV25" in ribet32 or "WeierstrassCurve.mk" in ribet32:
+    print(f"{ribet32_path} must not import BealTrueV25 or use WeierstrassCurve.mk", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", ribet32, re.M) or ":= sorry" in ribet32 or "Prop := True" in ribet32:
+    print(f"sorry / True is not allowed in {ribet32_path}", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_newforms_at_32" not in ribet32:
+    print("no_newforms_at_32 missing", file=sys.stderr)
+    sys.exit(1)
+if "928 / 29 = 32" not in ribet32:
+    print(f"{ribet32_path} must inhabit 928/29=32", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^def no_newforms_at_32_mod13\b", ribet32, re.M):
+    print(f"{ribet32_path} must not inhabit no_newforms_at_32_mod13", file=sys.stderr)
+    sys.exit(1)
+if '"cuspforms_32_2_new_subspace_dimension": 1' not in pathlib.Path("sagemath/certs/ribet_no_newforms_32.json").read_text(encoding="utf-8"):
+    print("ribet_no_newforms_32.json must pin Sage new dim 1", file=sys.stderr)
+    sys.exit(1)
 if "lake build HonestB0Search" not in ci_build or "lake build Level26" not in ci_build:
     print("build.yml must run lake build HonestB0Search and lake build Level26", file=sys.stderr)
     sys.exit(1)
@@ -5346,4 +5388,6 @@ print("  v2(Delta)=6 I0*, v29(Delta(29,1))=8, numeral 928=2^5*29; no def Prop")
 print("  SAGE tate_nero_29.sage uses Frey [0,B^4-A^4,0,-A^4 B^4,0]; short model is not Frey")
 print("  v28 Mazur_X0_13_Cusps_Equals_Rationals_inhabited genus 0 cusps card=2 |SL2|=2184")
 print("  X0(13)(Q)={2 cusps} is literature-false; parent Mazur def Props stay")
+print("  v28 no_newforms_at_32: 928/29=32 Sturm 8 old 16 matching card=0; LMFDB new dim 1")
+print("  parent Ribet_928_to_32 / no_newforms_at_32_mod13 stay def Prop")
 PY

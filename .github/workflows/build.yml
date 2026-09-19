@@ -8,7 +8,7 @@ name: HonestB0Search incremental
 
 on:
   push:
-    branches: [phase-darmon-merel-4413, tate-neron-v28, mazur-cusps-v28]
+    branches: [phase-darmon-merel-4413, tate-neron-v28, mazur-cusps-v28, ribet-no-newforms-v28]
   workflow_dispatch:
 
 concurrency:
@@ -31,8 +31,6 @@ jobs:
           restore-keys: |
             lake-
 
-      # cache-lean in lean-action@v1 is `use-github-cache`.
-      # build: false so the action does not `lake build` default BealMatveevBeal.
       - uses: leanprover/lean-action@v1
         with:
           use-mathlib-cache: true
@@ -48,6 +46,9 @@ jobs:
 
       - name: Incremental Mazur
         run: lake build +Mazur_X0_13_Cusps_Equals_Rationals_inhabited
+
+      - name: Incremental Ribet
+        run: lake build +Ribet_No_Newforms_At_32_inhabited
 
       - name: lake build HonestB0Search
         run: lake build HonestB0Search

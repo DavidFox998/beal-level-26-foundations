@@ -112,6 +112,12 @@ lean_lib «BealMatveevBealV25Rank3» where
     root) and do **not** compile the vendor tree.
     `Ribet_Level_Lowering_29_to_32` re-exports `928/29=32`;
     abstract Ribet / no-newforms stay `def Prop`.
+    v28 `HonestB0Search` / `Level26` inhabit the displayed
+    matching-Finset `card = 0`, Sturm `8`, old level `16`,
+    and `928/29=32` in
+    `Level26/HonestB0Search/Ribet_No_Newforms_At_32_inhabited.lean`.
+    Those libs do **not** join this glob (file is not at
+    root) and do **not** compile the vendor tree.
     `Kolyvagin_MW_Rank0_26a1_26b1` names `Fintype` rank 0
     (not Subsingleton); Kato/Kolyvagin stay `def Prop`. -/
 lean_lib «BealMatveevBealV25B0Search» where
@@ -135,11 +141,13 @@ lean_lib «BealMatveevBealV25B0Search» where
 lean_lib HonestB0Search where
   srcDir := "Level26/HonestB0Search"
   globs := #[.one `Tate_Frey_Conductor_29_Neron_inhabited,
-    .one `Mazur_X0_13_Cusps_Equals_Rationals_inhabited]
+    .one `Mazur_X0_13_Cusps_Equals_Rationals_inhabited,
+    .one `Ribet_No_Newforms_At_32_inhabited]
 
 /-- Alias of `HonestB0Search` so `lake build Level26` is the
     same honest slice, not a vendor FullProof replay. -/
 lean_lib Level26 where
   srcDir := "Level26/HonestB0Search"
   globs := #[.one `Tate_Frey_Conductor_29_Neron_inhabited,
-    .one `Mazur_X0_13_Cusps_Equals_Rationals_inhabited]
+    .one `Mazur_X0_13_Cusps_Equals_Rationals_inhabited,
+    .one `Ribet_No_Newforms_At_32_inhabited]
