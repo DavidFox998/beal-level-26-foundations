@@ -215,6 +215,11 @@ test -f Kolyvagin_MW_Rank0_26a1_26b1.lean
 if test -f Beal/Matveev/Kolyvagin_MW_Rank0_26a1_26b1.lean; then
   fail "do not add Beal/Matveev/Kolyvagin_MW_Rank0_26a1_26b1.lean; .submodules Beal.Matveev would pull it into default"
 fi
+test -f Level26/HonestB0Search/Mazur_X0_13_Cusps_Equals_Rationals_inhabited.lean
+if test -f Beal/Matveev/Mazur_X0_13_Cusps_Equals_Rationals_inhabited.lean; then
+  fail "do not add Beal/Matveev/Mazur_X0_13_Cusps_Equals_Rationals_inhabited.lean; .submodules Beal.Matveev would pull it into default"
+fi
+test -f Level26/HonestB0Search/docs/Mazur_Cusps_v28.md
 test -f docs/roadmap_without_wiles/README.md
 test -f Level26/BealLevel26Foundations/lakefile.lean
 test -f Level26/BealLevel26Foundations/VENDOR.md
@@ -817,6 +822,18 @@ if ".one `Ribet_Level_Lowering_29_to_32" not in lake:
 if ".one `Kolyvagin_MW_Rank0_26a1_26b1" not in lake:
     print("lakefile.lean missing Kolyvagin_MW_Rank0_26a1_26b1 glob on BealMatveevBealV25B0Search", file=sys.stderr)
     sys.exit(1)
+if "lean_lib HonestB0Search" not in lake:
+    print("lakefile.lean missing lean_lib HonestB0Search", file=sys.stderr)
+    sys.exit(1)
+if "lean_lib Level26" not in lake:
+    print("lakefile.lean missing lean_lib Level26", file=sys.stderr)
+    sys.exit(1)
+if ".one `Mazur_X0_13_Cusps_Equals_Rationals_inhabited" not in lake:
+    print("lakefile.lean missing Mazur_X0_13_Cusps_Equals_Rationals_inhabited glob", file=sys.stderr)
+    sys.exit(1)
+if 'srcDir := "Level26/BealLevel26Foundations' in lake.split("lean_lib Level26", 1)[-1][:400]:
+    print("lean_lib Level26 must not compile the vendor tree", file=sys.stderr)
+    sys.exit(1)
 if 'require beal_level_26_foundations from "Level26/BealLevel26Foundations"' not in lake:
     print("lakefile.lean must require beal_level_26_foundations from local Level26/BealLevel26Foundations", file=sys.stderr)
     sys.exit(1)
@@ -906,6 +923,12 @@ if "Ribet_Level_Lowering_29_to_32" in default_globs.group(1):
     sys.exit(1)
 if "Kolyvagin_MW_Rank0_26a1_26b1" in default_globs.group(1):
     print("Kolyvagin_MW_Rank0_26a1_26b1 must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Mazur_X0_13_Cusps_Equals_Rationals_inhabited" in default_globs.group(1):
+    print("Mazur_X0_13_Cusps_Equals_Rationals_inhabited must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "HonestB0Search" in default_globs.group(1):
+    print("HonestB0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 
 bugeaud = pathlib.Path("MatveevBugeaud.lean").read_text(encoding="utf-8")
@@ -4679,6 +4702,85 @@ if "Subsingleton" not in koly:
 if re.search(r"^theorem J0_26_rank0\b", koly, re.M):
     print("do not inhabit J0_26_rank0 in Kolyvagin_MW_Rank0_26a1_26b1.lean", file=sys.stderr)
     sys.exit(1)
+cusps_path = "Level26/HonestB0Search/Mazur_X0_13_Cusps_Equals_Rationals_inhabited.lean"
+cusps = pathlib.Path(cusps_path).read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in cusps or re.search(
+        r"^import Beal\.Matveev\.", cusps, re.M):
+    print(f"{cusps_path} must not import Beal.Matveev.*", file=sys.stderr)
+    sys.exit(1)
+if "import BealTrueV25" in cusps:
+    print(f"{cusps_path} must not import BealTrueV25", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", cusps, re.M) or ":= sorry" in cusps or "by sorry" in cusps:
+    print(f"sorry is not allowed in {cusps_path}", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in cusps or "True := by trivial" in cusps or "Prop := True" in cusps:
+    print(f"FAIL: {cusps_path} must not use True/trivial", file=sys.stderr)
+    sys.exit(1)
+if ":= trivial" in cusps:
+    print(f"FAIL: {cusps_path} must not use trivial", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^axiom ", cusps, re.M):
+    print(f"do not add axioms in {cusps_path}", file=sys.stderr)
+    sys.exit(1)
+if "WeierstrassCurve.mk" in cusps:
+    print(f"{cusps_path} must not use WeierstrassCurve.mk", file=sys.stderr)
+    sys.exit(1)
+if "theorem Mazur_X0_13_Cusps_Equals_Rationals_inhabited" not in cusps:
+    print("Mazur_X0_13_Cusps_Equals_Rationals_inhabited missing", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^def Mazur_X0_13_Cusps_Equals_Rationals_inhabited\b", cusps, re.M):
+    print("Mazur_X0_13_Cusps_Equals_Rationals_inhabited must be a theorem, not def Prop", file=sys.stderr)
+    sys.exit(1)
+if "2184" not in cusps:
+    print(f"{cusps_path} must inhabit 2184", file=sys.stderr)
+    sys.exit(1)
+if "48 < 2184" not in cusps:
+    print(f"{cusps_path} must inhabit 48 < 2184", file=sys.stderr)
+    sys.exit(1)
+if "literature-false" not in cusps:
+    print(f"{cusps_path} must record {{2 cusps}} as literature-false", file=sys.stderr)
+    sys.exit(1)
+if "genus" not in cusps.lower() or "X0_13_genus_nat" not in cusps:
+    print(f"{cusps_path} must inhabit genus 0", file=sys.stderr)
+    sys.exit(1)
+if "displayed_rational_cusps" not in cusps:
+    print(f"{cusps_path} must inhabit displayed_rational_cusps", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^def X0_13_Q_infinite\b", cusps, re.M) or re.search(
+        r"^theorem X0_13_Q_infinite\b", cusps, re.M):
+    print(f"{cusps_path} must not inhabit X0_13_Q_infinite", file=sys.stderr)
+    sys.exit(1)
+docs28 = pathlib.Path("Level26/HonestB0Search/docs/Mazur_Cusps_v28.md").read_text(encoding="utf-8")
+if "2184" not in docs28 or "literature-false" not in docs28:
+    print("Mazur_Cusps_v28.md must record 2184 and literature-false", file=sys.stderr)
+    sys.exit(1)
+if "infinite" not in docs28.lower():
+    print("Mazur_Cusps_v28.md must record X0(13)(Q) infinite", file=sys.stderr)
+    sys.exit(1)
+ci_main = pathlib.Path(".github/workflows/main.yml").read_text(encoding="utf-8")
+ci_build = pathlib.Path(".github/workflows/build.yml").read_text(encoding="utf-8") if pathlib.Path(".github/workflows/build.yml").exists() else ""
+if "mazur-cusps-v28" in ci_main:
+    print("historical main.yml must not trigger the hours BealMatveevBeal job on mazur-cusps-v28", file=sys.stderr)
+    sys.exit(1)
+if "mazur-cusps-v28" not in ci_build:
+    print("build.yml must trigger on mazur-cusps-v28", file=sys.stderr)
+    sys.exit(1)
+if "lake build HonestB0Search" not in ci_build or "lake build Level26" not in ci_build:
+    print("build.yml must run lake build HonestB0Search and lake build Level26", file=sys.stderr)
+    sys.exit(1)
+if "Mazur_X0_13_Cusps_Equals_Rationals_inhabited" not in ci_build:
+    print("build.yml must lake build +Mazur_X0_13_Cusps_Equals_Rationals_inhabited", file=sys.stderr)
+    sys.exit(1)
+if "lake build BealMatveevBeal\n" in ci_build or "lake build BealMatveevBealV25" in ci_build:
+    print("build.yml must not lake build historical Beal / Rank3 / B0Search", file=sys.stderr)
+    sys.exit(1)
+if "use-mathlib-cache: true" not in ci_build:
+    print("build.yml must use lean-action mathlib cache", file=sys.stderr)
+    sys.exit(1)
+if "v27-6ccafbf" not in ci_build:
+    print("build.yml must pin .lake cache key to v27-6ccafbf", file=sys.stderr)
+    sys.exit(1)
 road = pathlib.Path("docs/roadmap_without_wiles/README.md").read_text(encoding="utf-8")
 if "Tate_Frey_Conductor_29" not in road or "Kolyvagin_MW_Rank0_26a1_26b1" not in road:
     print("docs/roadmap_without_wiles/README.md must name the four root modules", file=sys.stderr)
@@ -5154,4 +5256,7 @@ print("  without Wiles skeletons: Tate_Frey_Conductor_29, Mazur_X0_13_No_Isogeny
 print("  Ribet_Level_Lowering_29_to_32, Kolyvagin_MW_Rank0_26a1_26b1 stay def Prop")
 print("  docs/roadmap_without_wiles: X0(13)(Q) infinite; IsRankZero false; local Level26 vendor")
 print("  beal-conjecture stays beal-conjecture; this repo stays foundations-level-26")
+print("  v28 HonestB0Search / Level26: Mazur_X0_13_Cusps_Equals_Rationals_inhabited")
+print("  genus 0, displayed cusps card=2, |SL2|=2184, 48<2184; no def Prop")
+print("  X0(13)(Q)={2 cusps} is literature-false; parent Mazur def Props stay")
 PY
