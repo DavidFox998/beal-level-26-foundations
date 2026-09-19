@@ -9,9 +9,10 @@ GitHub Actions workflow for
 `phase-darmon-merel-4413`, and the four v27 working
 branches. Not on the v28 working branches.
 
-[`build.yml`](build.yml) is the v28 incremental job:
+[`build.yml`](build.yml) is the v28 incremental job on
+`phase-darmon-merel-4413` and the four v28 slices:
 `lean-action@v1` with Mathlib cache, `.lake` cache key
-`lake-…-v27-6ccafbf`, `lake exe cache get`, then the
+`lake-…-v27-6ccafbf`, `lake exe cache get`, then the four
 HonestB0Search modules, `lake build HonestB0Search`,
 `lake build Level26`. No `lake build` of default
 `BealMatveevBeal`.

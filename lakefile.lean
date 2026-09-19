@@ -119,7 +119,14 @@ lean_lib «BealMatveevBealV25Rank3» where
     Those libs do **not** join this glob (file is not at
     root) and do **not** compile the vendor tree.
     `Kolyvagin_MW_Rank0_26a1_26b1` names `Fintype` rank 0
-    (not Subsingleton); Kato/Kolyvagin stay `def Prop`. -/
+    (not Subsingleton); Kato/Kolyvagin stay `def Prop`.
+    v28 `HonestB0Search` / `Level26` inhabit
+    `Nonempty (Fintype α) → Fintype α`, Subsingleton card `1`
+    on `Unit`, `|Sel₂|=1`, `3·7=21`, `L/Ω`, and `¬ IsRankZero`
+    in
+    `Level26/HonestB0Search/Kolyvagin_Fintype_Subsingleton_inhabited.lean`.
+    Those libs do **not** join this glob (file is not at
+    root) and do **not** compile the vendor tree. -/
 lean_lib «BealMatveevBealV25B0Search» where
   globs := #[.one `BealMatveevBealV25B0Search, .one `LLLTargetB8, .one `Gap3B0Million,
     .one `LLLTargetB8_C1_lower_bound, .one `DarmonMerelFrey4413, .one `Level32Table,
@@ -142,7 +149,8 @@ lean_lib HonestB0Search where
   srcDir := "Level26/HonestB0Search"
   globs := #[.one `Tate_Frey_Conductor_29_Neron_inhabited,
     .one `Mazur_X0_13_Cusps_Equals_Rationals_inhabited,
-    .one `Ribet_No_Newforms_At_32_inhabited]
+    .one `Ribet_No_Newforms_At_32_inhabited,
+    .one `Kolyvagin_Fintype_Subsingleton_inhabited]
 
 /-- Alias of `HonestB0Search` so `lake build Level26` is the
     same honest slice, not a vendor FullProof replay. -/
@@ -150,4 +158,5 @@ lean_lib Level26 where
   srcDir := "Level26/HonestB0Search"
   globs := #[.one `Tate_Frey_Conductor_29_Neron_inhabited,
     .one `Mazur_X0_13_Cusps_Equals_Rationals_inhabited,
-    .one `Ribet_No_Newforms_At_32_inhabited]
+    .one `Ribet_No_Newforms_At_32_inhabited,
+    .one `Kolyvagin_Fintype_Subsingleton_inhabited]
