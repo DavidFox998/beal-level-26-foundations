@@ -26,6 +26,7 @@ The ledger version is **v1.4.0** and has been unchanged since tag
 
 | File | Role |
 |---|---|
+| `tate_nero_29.sage` | v28 Frey Tate / Néron witness; writes `certs/tate_nero_29.json` (`928 = 2^5*29`). Short model `[0,-(A^4+B^4),0,0,0]` is a different curve. |
 | `level_26_ledger.json` | 101 coefficients for `26a1` and `26b1`; lists the two certs |
 | `foundations_doi_manifest.json` | v1.4.0 cert-bridge DOI, plus `latest_foundations_release` (now `v4.0.9-fourCusps-forall`; prior published `v4.0.8-geom-forbid`) |
 | `j0_26_decomp_foundation.sage` | Generator for the decomposition cert |
