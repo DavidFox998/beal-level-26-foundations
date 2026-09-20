@@ -150,7 +150,8 @@ lean_lib HonestB0Search where
   globs := #[.one `Tate_Frey_Conductor_29_Neron_inhabited,
     .one `Mazur_X0_13_Cusps_Equals_Rationals_inhabited,
     .one `Ribet_No_Newforms_At_32_inhabited,
-    .one `Kolyvagin_Fintype_Subsingleton_inhabited]
+    .one `Kolyvagin_Fintype_Subsingleton_inhabited,
+    .one `Ribet_Level_Lowering_29_to_32_final]
 
 /-- Alias of `HonestB0Search` so `lake build Level26` is the
     same honest slice, not a vendor FullProof replay. -/
@@ -159,4 +160,5 @@ lean_lib Level26 where
   globs := #[.one `Tate_Frey_Conductor_29_Neron_inhabited,
     .one `Mazur_X0_13_Cusps_Equals_Rationals_inhabited,
     .one `Ribet_No_Newforms_At_32_inhabited,
-    .one `Kolyvagin_Fintype_Subsingleton_inhabited]
+    .one `Kolyvagin_Fintype_Subsingleton_inhabited,
+    .one `Ribet_Level_Lowering_29_to_32_final]

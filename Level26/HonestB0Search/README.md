@@ -1,8 +1,17 @@
-# HonestB0Search (foundations v28)
+# HonestB0Search (foundations v29)
 
 Lake targets `HonestB0Search` and `Level26` compile only this
 folder. They do not enter `Level26/BealLevel26Foundations`
 and do not join `.submodules Beal.Matveev`.
+
+v29 final Ribet slice (this branch):
+
+* Ribet / 928→32 final: `Ribet_Level_Lowering_29_to_32_final.lean`
+  — `928/29=32`, `32·29=928`, `29∤32`, `2⁴=16`, `16∣32`,
+  dim `1` / `0`, Sturm `48` / `8`, matching `∅` card `0`.
+  Honest: LMFDB new dim `1` (`32a1`); Sage
+  `new_subspace().dimension()=0` is not a theorem. Parent
+  defs stay. See `docs/Ribet_No_Newforms_32_v29.md`.
 
 v28 algebraic slices:
 
