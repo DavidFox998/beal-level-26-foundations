@@ -16,6 +16,7 @@ on:
       - ribet-no-newforms-v28
       - kolyvagin-fintype-subsingleton-v28
       - tate-neron-final-v29
+      - mazur-no-isogeny-final-v29
   workflow_dispatch:
 
 concurrency:
@@ -56,6 +57,9 @@ jobs:
 
       - name: Incremental Mazur
         run: lake build +Mazur_X0_13_Cusps_Equals_Rationals_inhabited
+
+      - name: Incremental Mazur final v29
+        run: lake build +Mazur_X0_13_No_Isogeny_final
 
       - name: Incremental Ribet
         run: lake build +Ribet_No_Newforms_At_32_inhabited

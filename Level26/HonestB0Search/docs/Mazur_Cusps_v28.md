@@ -1,5 +1,8 @@
 # Mazur `X₀(13)` cusps display (v28)
 
+v29 final: [`Mazur_Cusps_v29.md`](Mazur_Cusps_v29.md) on
+`mazur-no-isogeny-final-v29`.
+
 Parent slice: `Mazur_X0_13_No_Isogeny_inhabited` on
 `mazur-x0-13` at `146d463`, merged into
 `phase-darmon-merel-4413` at `51bba93`. Second of the

@@ -4,7 +4,7 @@ Lake targets `HonestB0Search` and `Level26` compile only this
 folder. They do not enter `Level26/BealLevel26Foundations`
 and do not join `.submodules Beal.Matveev`.
 
-v29 final Tate slice (this branch):
+v29 final algebraic slices:
 
 * Tate / Néron final: `Tate_Frey_Conductor_29_Neron_final.lean`
   — theorems `Tate_algorithm_at_29` /
@@ -14,6 +14,11 @@ v29 final Tate slice (this branch):
   Néron. Lean 4.12: explicit types, `open Nat Finset
   Classical`, `decide` not `native_decide`. Parent defs
   stay. See `docs/Tate_Neron_29_v29.md`.
+* Mazur / no-isogeny final: `Mazur_X0_13_No_Isogeny_final.lean`
+  — `2184`, `48<2184`, `13=2²+3²`, `288/48=6`, cusp
+  Finset `{0,1}` card `2`. Honest: genus `0` ⇒ infinite;
+  `{2 cusps}=X₀(13)(ℚ)` is literature-false. Parent defs
+  stay. See `docs/Mazur_Cusps_v29.md`.
 
 v28 algebraic slices:
 
