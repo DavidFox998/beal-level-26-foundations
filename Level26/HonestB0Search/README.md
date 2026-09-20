@@ -1,8 +1,17 @@
-# HonestB0Search (foundations v28)
+# HonestB0Search (foundations v29)
 
 Lake targets `HonestB0Search` and `Level26` compile only this
 folder. They do not enter `Level26/BealLevel26Foundations`
 and do not join `.submodules Beal.Matveev`.
+
+v29 final Kolyvagin slice (this branch):
+
+* Kolyvagin / rank-0 final: `Kolyvagin_MW_Rank0_26a1_26b1_final.lean`
+  — `|Sel₂|=1`, `3·7=21`, `L/Ω=1/3` `1/7`, `¬ IsRankZero`,
+  `Nonempty (Fintype) → Finite`, Unit card `1`. Honest:
+  Subsingleton is false on torsion `3`/`7`; parent
+  `MW_rank_zero_fintype` stays `def Prop`. See
+  `docs/Kolyvagin_Rank0_v29.md`.
 
 v28 algebraic slices:
 

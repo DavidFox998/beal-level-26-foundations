@@ -14,6 +14,7 @@ on:
       - mazur-cusps-v28
       - ribet-no-newforms-v28
       - kolyvagin-fintype-subsingleton-v28
+      - kolyvagin-rank0-final-v29
   workflow_dispatch:
 
 concurrency:
@@ -57,6 +58,9 @@ jobs:
 
       - name: Incremental Kolyvagin
         run: lake build +Kolyvagin_Fintype_Subsingleton_inhabited
+
+      - name: Incremental Kolyvagin final v29
+        run: lake build +Kolyvagin_MW_Rank0_26a1_26b1_final
 
       - name: lake build HonestB0Search
         run: lake build HonestB0Search

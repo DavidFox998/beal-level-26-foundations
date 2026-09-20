@@ -241,6 +241,14 @@ fi
 test -f Level26/HonestB0Search/docs/Kolyvagin_Fintype_Subsingleton_v28.md
 test -f sagemath/kolyvagin_fintype_subsingleton.sage
 test -f sagemath/certs/kolyvagin_fintype_subsingleton.json
+test -f Level26/HonestB0Search/Kolyvagin_MW_Rank0_26a1_26b1_final.lean
+if test -f Beal/Matveev/Kolyvagin_MW_Rank0_26a1_26b1_final.lean; then
+  fail "do not add Beal/Matveev/Kolyvagin_MW_Rank0_26a1_26b1_final.lean; .submodules Beal.Matveev would pull it into default"
+fi
+test -f Level26/HonestB0Search/docs/Kolyvagin_Rank0_v29.md
+test -f docs/Kolyvagin_Rank0_v29.md
+test -f sagemath/kolyvagin_rank0_26.sage
+test -f sagemath/certs/kolyvagin_rank0_26.json
 test -f docs/roadmap_without_wiles/README.md
 test -f Level26/BealLevel26Foundations/lakefile.lean
 test -f Level26/BealLevel26Foundations/VENDOR.md
@@ -861,6 +869,9 @@ if ".one `Ribet_No_Newforms_At_32_inhabited" not in lake:
 if ".one `Kolyvagin_Fintype_Subsingleton_inhabited" not in lake:
     print("lakefile.lean missing Kolyvagin_Fintype_Subsingleton_inhabited glob", file=sys.stderr)
     sys.exit(1)
+if ".one `Kolyvagin_MW_Rank0_26a1_26b1_final" not in lake:
+    print("lakefile.lean missing Kolyvagin_MW_Rank0_26a1_26b1_final glob", file=sys.stderr)
+    sys.exit(1)
 if 'srcDir := "Level26/BealLevel26Foundations' in lake.split("lean_lib Level26", 1)[-1][:400]:
     print("lean_lib Level26 must not compile the vendor tree", file=sys.stderr)
     sys.exit(1)
@@ -965,6 +976,9 @@ if "Ribet_No_Newforms_At_32_inhabited" in default_globs.group(1):
     sys.exit(1)
 if "Kolyvagin_Fintype_Subsingleton_inhabited" in default_globs.group(1):
     print("Kolyvagin_Fintype_Subsingleton_inhabited must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Kolyvagin_MW_Rank0_26a1_26b1_final" in default_globs.group(1):
+    print("Kolyvagin_MW_Rank0_26a1_26b1_final must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 if "HonestB0Search" in default_globs.group(1):
     print("HonestB0Search must not be in default BealMatveevBeal globs", file=sys.stderr)
@@ -4994,6 +5008,95 @@ if '"torsion_3_mul_7": 21' not in cert_k:
 if '"IsRankZero_on_26a1": false' not in cert_k:
     print("kolyvagin_fintype_subsingleton.json must record ¬IsRankZero on 26a1", file=sys.stderr)
     sys.exit(1)
+koly_final_path = "Level26/HonestB0Search/Kolyvagin_MW_Rank0_26a1_26b1_final.lean"
+koly_final = pathlib.Path(koly_final_path).read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in koly_final or re.search(
+        r"^import Beal\.Matveev\.", koly_final, re.M):
+    print(f"{koly_final_path} must not import Beal.Matveev.*", file=sys.stderr)
+    sys.exit(1)
+if "import BealTrueV25" in koly_final:
+    print(f"{koly_final_path} must not import BealTrueV25", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", koly_final, re.M) or ":= sorry" in koly_final or "by sorry" in koly_final:
+    print(f"sorry is not allowed in {koly_final_path}", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in koly_final or "Prop := True" in koly_final or ":= trivial" in koly_final:
+    print(f"FAIL: {koly_final_path} must not use True/trivial", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^axiom ", koly_final, re.M):
+    print(f"do not add axioms in {koly_final_path}", file=sys.stderr)
+    sys.exit(1)
+if "WeierstrassCurve.mk" in koly_final:
+    print(f"{koly_final_path} must not use WeierstrassCurve.mk", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^def ", koly_final, re.M):
+    print(f"{koly_final_path} must not introduce def Prop", file=sys.stderr)
+    sys.exit(1)
+if "by native_decide" in koly_final:
+    print("v29 Kolyvagin final must use decide, not native_decide", file=sys.stderr)
+    sys.exit(1)
+if "open Nat Finset Classical" not in koly_final:
+    print(f"{koly_final_path} must open Nat Finset Classical", file=sys.stderr)
+    sys.exit(1)
+if "theorem MW_rank_zero_fintype" not in koly_final:
+    print("MW_rank_zero_fintype must be a theorem in the v29 Kolyvagin final file", file=sys.stderr)
+    sys.exit(1)
+if "theorem TwoDescent_26a1_26" not in koly_final:
+    print("TwoDescent_26a1_26 must be a theorem in the v29 Kolyvagin final file", file=sys.stderr)
+    sys.exit(1)
+if "theorem BSD_MordellWeil" not in koly_final:
+    print("BSD_MordellWeil must be a theorem in the v29 Kolyvagin final file", file=sys.stderr)
+    sys.exit(1)
+if "3 : ℕ) * 7 = 21" not in koly_final and "(3 : ℕ) * 7 = 21" not in koly_final:
+    print(f"{koly_final_path} must inhabit 3*7=21", file=sys.stderr)
+    sys.exit(1)
+if "by decide" not in koly_final:
+    print(f"{koly_final_path} must use decide for numerals", file=sys.stderr)
+    sys.exit(1)
+if "not_IsRankZero" not in koly_final:
+    print(f"{koly_final_path} must record ¬IsRankZero", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^theorem J0_26_rank0\b", koly_final, re.M):
+    print(f"do not inhabit J0_26_rank0 in {koly_final_path}", file=sys.stderr)
+    sys.exit(1)
+if not re.search(r"^def MW_rank_zero_fintype\b", koly, re.M):
+    print("parent Kolyvagin_MW_Rank0_26a1_26b1.lean must keep def MW_rank_zero_fintype", file=sys.stderr)
+    sys.exit(1)
+if not re.search(r"^def Kolyvagin_L_nonzero_imp_MW_rank_zero\b", koly, re.M):
+    print("parent Kolyvagin_MW_Rank0_26a1_26b1.lean must keep def Kolyvagin_L_nonzero_imp_MW_rank_zero", file=sys.stderr)
+    sys.exit(1)
+if not re.search(r"^def TwoDescent_implies_MW_rank_zero_fintype\b", koly, re.M):
+    print("parent Kolyvagin_MW_Rank0_26a1_26b1.lean must keep def TwoDescent_implies_MW_rank_zero_fintype", file=sys.stderr)
+    sys.exit(1)
+bsd_mw = pathlib.Path("BSD_MordellWeil.lean").read_text(encoding="utf-8")
+if not re.search(r"^def MW_rank_zero\b", bsd_mw, re.M):
+    print("parent BSD_MordellWeil.lean must keep def MW_rank_zero", file=sys.stderr)
+    sys.exit(1)
+if '"torsion_3_mul_7": 21' not in pathlib.Path("sagemath/certs/kolyvagin_rank0_26.json").read_text(encoding="utf-8"):
+    print("kolyvagin_rank0_26.json must pin 3*7=21", file=sys.stderr)
+    sys.exit(1)
+if '"IsRankZero_on_26a1": false' not in pathlib.Path("sagemath/certs/kolyvagin_rank0_26.json").read_text(encoding="utf-8"):
+    print("kolyvagin_rank0_26.json must record ¬IsRankZero on 26a1", file=sys.stderr)
+    sys.exit(1)
+docs29k = pathlib.Path("Level26/HonestB0Search/docs/Kolyvagin_Rank0_v29.md").read_text(encoding="utf-8")
+if "Sel2" not in docs29k and "|Sel" not in docs29k:
+    print("Kolyvagin_Rank0_v29.md must record |Sel2|", file=sys.stderr)
+    sys.exit(1)
+if "def Prop" not in docs29k:
+    print("Kolyvagin_Rank0_v29.md must record parent def Props", file=sys.stderr)
+    sys.exit(1)
+if "26a1" not in docs29k or "26b1" not in docs29k:
+    print("Kolyvagin_Rank0_v29.md must name 26a1 and 26b1", file=sys.stderr)
+    sys.exit(1)
+if "kolyvagin-rank0-final-v29" in ci_main:
+    print("historical main.yml must not trigger the hours BealMatveevBeal job on kolyvagin-rank0-final-v29", file=sys.stderr)
+    sys.exit(1)
+if "kolyvagin-rank0-final-v29" not in ci_build:
+    print("build.yml must trigger on kolyvagin-rank0-final-v29", file=sys.stderr)
+    sys.exit(1)
+if "Kolyvagin_MW_Rank0_26a1_26b1_final" not in ci_build:
+    print("build.yml must lake build +Kolyvagin_MW_Rank0_26a1_26b1_final", file=sys.stderr)
+    sys.exit(1)
 if "lake build BealMatveevBeal\n" in ci_build or "lake build BealMatveevBealV25" in ci_build:
     print("build.yml must not lake build historical Beal / Rank3 / B0Search", file=sys.stderr)
     sys.exit(1)
@@ -5489,4 +5592,7 @@ print("  v28 HonestB0Search / Level26: Kolyvagin_Fintype_Subsingleton_inhabited"
 print("  Nonempty(Fintype)->Fintype via ofFinite; Subsingleton card 1 on Unit")
 print("  |Sel2|=1 3*7=21 L/Omega 1/3 1/7; ¬IsRankZero on 26a1/26b1; no def Prop")
 print("  MW_rank_zero_fintype / Kato / TwoDescent=>rank0 stay def Prop on parent")
+print("  v29 Kolyvagin_MW_Rank0_26a1_26b1_final: theorems MW_rank_zero_fintype")
+print("  TwoDescent_26a1_26 BSD_MordellWeil |Sel2|=1 3*7=21 L/Omega 1/3 1/7")
+print("  Nonempty->Finite Unit card 1; parent defs stay; ¬IsRankZero on 26a1/26b1")
 PY
