@@ -1,8 +1,19 @@
-# HonestB0Search (foundations v28)
+# HonestB0Search (foundations v29)
 
 Lake targets `HonestB0Search` and `Level26` compile only this
 folder. They do not enter `Level26/BealLevel26Foundations`
 and do not join `.submodules Beal.Matveev`.
+
+v29 final Tate slice (this branch):
+
+* Tate / Néron final: `Tate_Frey_Conductor_29_Neron_final.lean`
+  — theorems `Tate_algorithm_at_29` /
+  `Frey_Neron_conductor` / `Frey_conductor_29_is_Neron`
+  re-export `Tate_algorithm_at_2_and_29`. Displayed
+  `N_E = 928` is the numeral `2⁵ · 29`, not Mathlib
+  Néron. Lean 4.12: explicit types, `open Nat Finset
+  Classical`, `decide` not `native_decide`. Parent defs
+  stay. See `docs/Tate_Neron_29_v29.md`.
 
 v28 algebraic slices:
 

@@ -13,7 +13,7 @@ DOI `22452680` findable records prior mint `22450737` hook `22379293` `IsVersion
 
 PARI lock: 26a1 Δ `-17576` 26b1 Δ `-1664` `|Sel2|=1` det `M3=2` SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260` image `docs/images/2-descent-level-26-26a1-26b1.webp` ≥300KB.
 
-# sagemath/certs/
+# sagemath/certs/ — v29
 
 The only two SageMath 10.7 JSON archives. **No new cert since v1.3.0 /
 v1.4.0.** Current Foundations tag `v4.2.0-full-chain` does not add a file

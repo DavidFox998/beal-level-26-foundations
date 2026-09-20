@@ -1,4 +1,4 @@
-# Local Lake vendor
+# Local Lake vendor — v29
 
 `BealLevel26Foundations/` is the Lake package formerly required
 from `github.com/DavidFox998/beal-conjecture` @ `main` /

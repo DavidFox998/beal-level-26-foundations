@@ -1,4 +1,4 @@
-# docs/Frey/
+# docs/Frey/ — v29
 
 Frey-curve notes for the historical Level 26 kernel
 (conductor, Tate, modularity of the Frey model of a primitive

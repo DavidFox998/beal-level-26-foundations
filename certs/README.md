@@ -1,4 +1,4 @@
-# certs/ — Size tables for Beal (4,13,13)
+# certs/ — Size tables for Beal (4,13,13) — v29
 
 These files are **decide tables**, not a Beal `∀` proof.
 Track A About mint stays `10.5281/zenodo.22635221`.

@@ -1,4 +1,4 @@
-# docs/assets/
+# docs/assets/ — v29
 
 Release assets for historical About / Opera Numerorum catch-up
 notes. Subfolder `v6.7.0/` holds the v6.7.0 modular-lifting

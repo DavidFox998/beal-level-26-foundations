@@ -1,4 +1,4 @@
-# `kolyvagin-fintype` — `Fintype` rank 0, not Subsingleton
+# `kolyvagin-fintype` — `Fintype` rank 0, not Subsingleton — v29
 
 Working branch of **beal-level-26-foundations**, cut from
 `phase-darmon-merel-4413` at `43735b3`. Not cut from `main`.

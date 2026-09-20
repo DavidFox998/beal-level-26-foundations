@@ -1,4 +1,4 @@
-# BealConjecture/Level26/BealLevel26Foundations/
+# BealConjecture/Level26/BealLevel26Foundations/ — v29
 
 Thin re-export wrappers. Each file imports the corresponding
 module from the Lake dependency

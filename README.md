@@ -1,4 +1,16 @@
-# foundations-level-26 — Beal Level 26 Matveev-Baker Foundations
+# foundations-level-26 — Final Algebraic Props Inhabited (v29)
+
+Concept DOI `10.5281/zenodo.22379293`. Stone pin: Lean
+`v4.12.0`, manifest `c7dbd578…`, mathlib `809c3fb…`
+`inputRev v4.12.0`. Working branch `tate-neron-final-v29`
+gives the three parent *names* `Tate_algorithm_at_29` /
+`Frey_Neron_conductor` / `Frey_conductor_29_is_Neron` as
+**theorems** (displayed `N_E = 928 = 2⁵·29`). Parent file
+keeps those as `def Prop`. Lean 4.12 uses explicit theorem
+types, `open Nat Finset Classical`, and `decide` (not
+`native_decide`). Axioms `[propext]` or
+`[propext, Classical.choice, Quot.sound]`. Vendor
+`db7a556`/`fea0c393` untouched.
 
 ## Four working slices merged into `phase-darmon-merel-4413` (from `43735b3`)
 
@@ -6,7 +18,7 @@
 
 ### `tate-v29`
 
-Tate display at `29` for Frey `A⁴+B⁴=C¹³`. Inhabited: Mathlib `Δ = 16 A⁸ B⁸ (A⁴+B⁴)²`, `v₂₉(Δ) = 26 v₂₉(C)` when `29 ∤ AB`, residual `32`/`928`, numeral `928/29 = 32`, `v₂₉(Δ) ≥ 0`. Still `def Prop`: Tate’s algorithm, Néron `N_E`, `Frey_conductor_29_is_Neron`. See [`docs/tate-v29/README.md`](docs/tate-v29/README.md).
+Tate display at `29` for Frey `A⁴+B⁴=C¹³`. Inhabited: Mathlib `Δ = 16 A⁸ B⁸ (A⁴+B⁴)²`, `v₂₉(Δ) = 26 v₂₉(C)` when `29 ∤ AB`, residual `32`/`928`, numeral `928/29 = 32`, `v₂(Δ)=6` (`I₀*`), `v₂₉(Δ(29,1))=8` (`I₈`). On `tate-neron-final-v29` the three parent *names* are theorems in `Tate_Frey_Conductor_29_Neron_final.lean` (displayed `N_E=928`). Parent `Tate_Frey_Conductor_29.lean` still has those as `def Prop`. See [`docs/tate-v29/README.md`](docs/tate-v29/README.md) and [`Level26/HonestB0Search/docs/Tate_Neron_29_v29.md`](Level26/HonestB0Search/docs/Tate_Neron_29_v29.md).
 
 ### `mazur-x0-13`
 

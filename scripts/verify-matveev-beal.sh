@@ -220,6 +220,11 @@ if test -f Beal/Matveev/Tate_Frey_Conductor_29_Neron_inhabited.lean; then
   fail "do not add Beal/Matveev/Tate_Frey_Conductor_29_Neron_inhabited.lean; .submodules Beal.Matveev would pull it into default"
 fi
 test -f Level26/HonestB0Search/docs/Tate_Neron_29_v28.md
+test -f Level26/HonestB0Search/Tate_Frey_Conductor_29_Neron_final.lean
+if test -f Beal/Matveev/Tate_Frey_Conductor_29_Neron_final.lean; then
+  fail "do not add Beal/Matveev/Tate_Frey_Conductor_29_Neron_final.lean; .submodules Beal.Matveev would pull it into default"
+fi
+test -f Level26/HonestB0Search/docs/Tate_Neron_29_v29.md
 test -f sagemath/tate_nero_29.sage
 test -f sagemath/certs/tate_nero_29.json
 test -f Level26/HonestB0Search/Mazur_X0_13_Cusps_Equals_Rationals_inhabited.lean
@@ -852,6 +857,9 @@ if "lean_lib Level26" not in lake:
 if ".one `Tate_Frey_Conductor_29_Neron_inhabited" not in lake:
     print("lakefile.lean missing Tate_Frey_Conductor_29_Neron_inhabited glob", file=sys.stderr)
     sys.exit(1)
+if ".one `Tate_Frey_Conductor_29_Neron_final" not in lake:
+    print("lakefile.lean missing Tate_Frey_Conductor_29_Neron_final glob", file=sys.stderr)
+    sys.exit(1)
 if ".one `Mazur_X0_13_Cusps_Equals_Rationals_inhabited" not in lake:
     print("lakefile.lean missing Mazur_X0_13_Cusps_Equals_Rationals_inhabited glob", file=sys.stderr)
     sys.exit(1)
@@ -956,6 +964,9 @@ if "Kolyvagin_MW_Rank0_26a1_26b1" in default_globs.group(1):
     sys.exit(1)
 if "Tate_Frey_Conductor_29_Neron_inhabited" in default_globs.group(1):
     print("Tate_Frey_Conductor_29_Neron_inhabited must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Tate_Frey_Conductor_29_Neron_final" in default_globs.group(1):
+    print("Tate_Frey_Conductor_29_Neron_final must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 if "Mazur_X0_13_Cusps_Equals_Rationals_inhabited" in default_globs.group(1):
     print("Mazur_X0_13_Cusps_Equals_Rationals_inhabited must not be in default BealMatveevBeal globs", file=sys.stderr)
@@ -4994,6 +5005,91 @@ if '"torsion_3_mul_7": 21' not in cert_k:
 if '"IsRankZero_on_26a1": false' not in cert_k:
     print("kolyvagin_fintype_subsingleton.json must record ¬IsRankZero on 26a1", file=sys.stderr)
     sys.exit(1)
+neron_final_path = "Level26/HonestB0Search/Tate_Frey_Conductor_29_Neron_final.lean"
+neron_final = pathlib.Path(neron_final_path).read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in neron_final or re.search(
+        r"^import Beal\.Matveev\.", neron_final, re.M):
+    print(f"{neron_final_path} must not import Beal.Matveev.*", file=sys.stderr)
+    sys.exit(1)
+if "import BealTrueV25" in neron_final:
+    print(f"{neron_final_path} must not import BealTrueV25", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", neron_final, re.M) or ":= sorry" in neron_final or "by sorry" in neron_final:
+    print(f"sorry is not allowed in {neron_final_path}", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in neron_final or "True := by trivial" in neron_final or "Prop := True" in neron_final:
+    print(f"FAIL: {neron_final_path} must not use True/trivial", file=sys.stderr)
+    sys.exit(1)
+if ":= trivial" in neron_final:
+    print(f"FAIL: {neron_final_path} must not use trivial", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^axiom ", neron_final, re.M):
+    print(f"do not add axioms in {neron_final_path}", file=sys.stderr)
+    sys.exit(1)
+if "WeierstrassCurve.mk" in neron_final:
+    print(f"{neron_final_path} must not use WeierstrassCurve.mk", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^def ", neron_final, re.M):
+    print(f"{neron_final_path} must not introduce def Prop", file=sys.stderr)
+    sys.exit(1)
+if "theorem Tate_algorithm_at_29" not in neron_final:
+    print("Tate_algorithm_at_29 must be a theorem in the v29 final file", file=sys.stderr)
+    sys.exit(1)
+if "theorem Frey_Neron_conductor" not in neron_final:
+    print("Frey_Neron_conductor must be a theorem in the v29 final file", file=sys.stderr)
+    sys.exit(1)
+if "theorem Frey_conductor_29_is_Neron" not in neron_final:
+    print("Frey_conductor_29_is_Neron must be a theorem in the v29 final file", file=sys.stderr)
+    sys.exit(1)
+if "theorem Tate_Frey_Conductor_29_Neron_final" not in neron_final:
+    print("Tate_Frey_Conductor_29_Neron_final missing", file=sys.stderr)
+    sys.exit(1)
+if "928" not in neron_final:
+    print(f"{neron_final_path} must inhabit 928", file=sys.stderr)
+    sys.exit(1)
+if "Tate_algorithm_at_2_and_29" not in neron_final:
+    print(f"{neron_final_path} must re-export Tate_algorithm_at_2_and_29", file=sys.stderr)
+    sys.exit(1)
+if "by native_decide" in neron_final or "by native_decide" in neron:
+    print("v29 Tate display must use decide, not native_decide", file=sys.stderr)
+    sys.exit(1)
+if "open Nat Finset Classical" not in neron_final:
+    print(f"{neron_final_path} must open Nat Finset Classical", file=sys.stderr)
+    sys.exit(1)
+if "theorem displayed_Neron_conductor" not in neron_final:
+    print("displayed_Neron_conductor missing", file=sys.stderr)
+    sys.exit(1)
+if "by decide" not in neron_final:
+    print(f"{neron_final_path} must use decide for numerals", file=sys.stderr)
+    sys.exit(1)
+if not re.search(r"^def Tate_algorithm_at_29\b", tate_cond, re.M):
+    print("parent Tate_Frey_Conductor_29.lean must keep def Tate_algorithm_at_29", file=sys.stderr)
+    sys.exit(1)
+if not re.search(r"^def Frey_Neron_conductor\b", tate_cond, re.M):
+    print("parent Tate_Frey_Conductor_29.lean must keep def Frey_Neron_conductor", file=sys.stderr)
+    sys.exit(1)
+if not re.search(r"^def Frey_conductor_29_is_Neron\b", tate_cond, re.M):
+    print("parent Tate_Frey_Conductor_29.lean must keep def Frey_conductor_29_is_Neron", file=sys.stderr)
+    sys.exit(1)
+docs29 = pathlib.Path("Level26/HonestB0Search/docs/Tate_Neron_29_v29.md").read_text(encoding="utf-8")
+if "928" not in docs29 or "N_E" not in docs29:
+    print("Tate_Neron_29_v29.md must record final N_E=928", file=sys.stderr)
+    sys.exit(1)
+if "short" not in docs29.lower() or "different" not in docs29.lower():
+    print("Tate_Neron_29_v29.md must say the short model is a different curve", file=sys.stderr)
+    sys.exit(1)
+if "def Prop" not in docs29:
+    print("Tate_Neron_29_v29.md must record parent def Props", file=sys.stderr)
+    sys.exit(1)
+if "tate-neron-final-v29" in ci_main:
+    print("historical main.yml must not trigger the hours BealMatveevBeal job on tate-neron-final-v29", file=sys.stderr)
+    sys.exit(1)
+if "tate-neron-final-v29" not in ci_build:
+    print("build.yml must trigger on tate-neron-final-v29", file=sys.stderr)
+    sys.exit(1)
+if "Tate_Frey_Conductor_29_Neron_final" not in ci_build:
+    print("build.yml must lake build +Tate_Frey_Conductor_29_Neron_final", file=sys.stderr)
+    sys.exit(1)
 if "lake build BealMatveevBeal\n" in ci_build or "lake build BealMatveevBealV25" in ci_build:
     print("build.yml must not lake build historical Beal / Rank3 / B0Search", file=sys.stderr)
     sys.exit(1)
@@ -5256,9 +5352,9 @@ if "beal-conjecture stays beal-conjecture" not in readme:
 
 cff = pathlib.Path("CITATION.cff").read_text(encoding="utf-8")
 needles = [
-    'title: "Formal Verification of the Level 26 Foundations for Signature (4,4,13): Certified Mordell-Weil Rank Zero for X0(26), Descent, Torsion, and Conductor Data"',
+    'title: "Formal Verification of the Level 26 Foundations for Signature (4,4,13): Final Algebraic Props Inhabited"',
     "Matveev-Beal Level 26: Rank-3 B0/C cutoff nogo",
-    'version: "v24-v24x-final-rank3-b0-div-c-nogo"',
+    'version: "v0.29-mcom-final-algebraic-props-inhabited"',
     'doi: "10.5281/zenodo.22379293"',
     'repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"',
     "C1_floor=143186215390",
@@ -5489,4 +5585,7 @@ print("  v28 HonestB0Search / Level26: Kolyvagin_Fintype_Subsingleton_inhabited"
 print("  Nonempty(Fintype)->Fintype via ofFinite; Subsingleton card 1 on Unit")
 print("  |Sel2|=1 3*7=21 L/Omega 1/3 1/7; ¬IsRankZero on 26a1/26b1; no def Prop")
 print("  MW_rank_zero_fintype / Kato / TwoDescent=>rank0 stay def Prop on parent")
+print("  v29 Tate_Frey_Conductor_29_Neron_final: theorems Tate_algorithm_at_29")
+print("  Frey_Neron_conductor Frey_conductor_29_is_Neron re-export 6f67889")
+print("  displayed final N_E=928 = 2^5*29; parent defs stay; not Mathlib Neron")
 PY

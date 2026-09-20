@@ -1,4 +1,4 @@
-# Beal/
+# Beal/ — v29
 
 Lake library sources for the Matveev–Beal complement
 (`BealMatveevBeal`). The default target globs

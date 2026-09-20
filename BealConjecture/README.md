@@ -1,4 +1,4 @@
-# BealConjecture/
+# BealConjecture/ — v29
 
 Local import wrappers so the requested path
 `BealConjecture.Level26.BealLevel26Foundations.*` resolves.

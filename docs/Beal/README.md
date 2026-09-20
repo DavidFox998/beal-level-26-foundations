@@ -1,4 +1,4 @@
-# docs/Beal/
+# docs/Beal/ — v29
 
 Notes for the Matveev–Beal Lean modules in this repository.
 Each file names the root Lean module, the locked numerals

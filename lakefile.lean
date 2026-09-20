@@ -140,17 +140,24 @@ lean_lib «BealMatveevBealV25B0Search» where
     .one `Tate_Frey_Conductor_29, .one `Mazur_X0_13_No_Isogeny,
     .one `Ribet_Level_Lowering_29_to_32, .one `Kolyvagin_MW_Rank0_26a1_26b1]
 
-/-- v28 HonestB0Search / Level26 algebraic display. `srcDir`
-    is this folder so `lake build HonestB0Search` does not
-    enter `Level26/BealLevel26Foundations` and does not join
-    `.submodules Beal.Matveev`. Imports root B0Search
-    modules already on `BealMatveevBealV25B0Search`. -/
+/-- v28/v29 HonestB0Search / Level26 algebraic display.
+    `srcDir` is this folder so `lake build HonestB0Search`
+    does not enter `Level26/BealLevel26Foundations` and
+    does not join `.submodules Beal.Matveev`. Imports root
+    B0Search modules already on
+    `BealMatveevBealV25B0Search`. v29 final Tate names
+    `Tate_algorithm_at_29` / `Frey_Neron_conductor` /
+    `Frey_conductor_29_is_Neron` are theorems in
+    `Tate_Frey_Conductor_29_Neron_final.lean` (displayed
+    numeral `928`); parent `Tate_Frey_Conductor_29.lean`
+    keeps those three as `def Prop`. -/
 lean_lib HonestB0Search where
   srcDir := "Level26/HonestB0Search"
   globs := #[.one `Tate_Frey_Conductor_29_Neron_inhabited,
     .one `Mazur_X0_13_Cusps_Equals_Rationals_inhabited,
     .one `Ribet_No_Newforms_At_32_inhabited,
-    .one `Kolyvagin_Fintype_Subsingleton_inhabited]
+    .one `Kolyvagin_Fintype_Subsingleton_inhabited,
+    .one `Tate_Frey_Conductor_29_Neron_final]
 
 /-- Alias of `HonestB0Search` so `lake build Level26` is the
     same honest slice, not a vendor FullProof replay. -/
@@ -159,4 +166,5 @@ lean_lib Level26 where
   globs := #[.one `Tate_Frey_Conductor_29_Neron_inhabited,
     .one `Mazur_X0_13_Cusps_Equals_Rationals_inhabited,
     .one `Ribet_No_Newforms_At_32_inhabited,
-    .one `Kolyvagin_Fintype_Subsingleton_inhabited]
+    .one `Kolyvagin_Fintype_Subsingleton_inhabited,
+    .one `Tate_Frey_Conductor_29_Neron_final]

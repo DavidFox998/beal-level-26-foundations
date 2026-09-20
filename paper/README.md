@@ -1,3 +1,5 @@
+# MCOM draft — v29
+
 MCOM draft — build with latexmk -pdf mcom-draft.tex
 
 `v10.0.0-paper-B14-Baker-1e6-DOI` archives the math and paper Zenodo DOIs for the v9.4.0 census (62500 / 25 chunks), Baker-conditional `∀ B`, and Tate bound `2^5*rad*13`.

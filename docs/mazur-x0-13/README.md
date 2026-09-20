@@ -1,4 +1,4 @@
-# `mazur-x0-13` — Mazur via `X₀(13)`
+# `mazur-x0-13` — Mazur via `X₀(13)` — v29
 
 Working branch of **beal-level-26-foundations**, cut from
 `phase-darmon-merel-4413` at `43735b3`. Not cut from `main`.

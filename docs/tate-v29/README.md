@@ -1,4 +1,4 @@
-# `tate-v29` — Tate conductor display at `29`
+# `tate-v29` / `tate-neron-final-v29` — final displayed `N_E = 928`
 
 Working branch of **beal-level-26-foundations**, cut from
 `phase-darmon-merel-4413` at `43735b3`. Not cut from `main`

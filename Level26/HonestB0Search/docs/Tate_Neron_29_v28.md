@@ -105,15 +105,15 @@ pins the numerals the Lean already proves.
 
 ## Axioms
 
-`#print axioms Tate_algorithm_at_2_and_29` is the
-`native_decide` triple
+`#print axioms Tate_algorithm_at_2_and_29` on this
+branch is `decide` / algebraic (no `native_decide`):
 
 ```
 [propext, Classical.choice, Quot.sound]
 ```
 
-coming from `Lean.ofReduceBool` on the small instances
-`Δ(1,1)`, `c₄(1,1)`, `c₆(1,1)`, and `¬ 29 ∣ c₄(29,1)`.
+v29 final on `tate-neron-final-v29` replaces the
+`6f67889` `native_decide` / `Lean.ofReduceBool` path.
 No new axiom. `BealTrueV25.darmon_merel_4413_axiom` is not
 imported.
 

@@ -1,7 +1,7 @@
 [![Matveev-Beal CI](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml/badge.svg)](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/main.yml)
 [![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22379293.svg)](https://doi.org/10.5281/zenodo.22379293)
 
-# .github/
+# .github/ — v29
 
 GitHub Actions for
 [DavidFox998/beal-level-26-foundations](https://github.com/DavidFox998/beal-level-26-foundations)
