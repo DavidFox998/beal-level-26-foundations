@@ -19,6 +19,12 @@ v29 final algebraic slices:
   Finset `{0,1}` card `2`. Honest: genus `0` ⇒ infinite;
   `{2 cusps}=X₀(13)(ℚ)` is literature-false. Parent defs
   stay. See `docs/Mazur_Cusps_v29.md`.
+* Ribet / 928→32 final: `Ribet_Level_Lowering_29_to_32_final.lean`
+  — `928/29=32`, `32·29=928`, `29∤32`, `2⁴=16`, `16∣32`,
+  dim `1` / `0`, Sturm `48` / `8`, matching `∅` card `0`.
+  Honest: LMFDB new dim `1` (`32a1`); Sage
+  `new_subspace().dimension()=0` is not a theorem. Parent
+  defs stay. See `docs/Ribet_No_Newforms_32_v29.md`.
 
 v28 algebraic slices:
 

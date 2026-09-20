@@ -1,5 +1,8 @@
 # Ribet “no newforms at 32” display (v28)
 
+v29 final: [`Ribet_No_Newforms_32_v29.md`](Ribet_No_Newforms_32_v29.md) on
+`ribet-928-to-32-final-v29`.
+
 Parent slice: `Ribet_Level_Lowering_29_to_32_inhabited` on
 `ribet-928-32` at `b61bec2`, merged into
 `phase-darmon-merel-4413` at `51bba93`. Third of the four

@@ -245,6 +245,12 @@ fi
 test -f Level26/HonestB0Search/docs/Ribet_No_Newforms_32_v28.md
 test -f sagemath/ribet_no_newforms_32.sage
 test -f sagemath/certs/ribet_no_newforms_32.json
+test -f Level26/HonestB0Search/Ribet_Level_Lowering_29_to_32_final.lean
+if test -f Beal/Matveev/Ribet_Level_Lowering_29_to_32_final.lean; then
+  fail "do not add Beal/Matveev/Ribet_Level_Lowering_29_to_32_final.lean; .submodules Beal.Matveev would pull it into default"
+fi
+test -f Level26/HonestB0Search/docs/Ribet_No_Newforms_32_v29.md
+test -f docs/Ribet_No_Newforms_32_v29.md
 test -f Level26/HonestB0Search/Kolyvagin_Fintype_Subsingleton_inhabited.lean
 if test -f Beal/Matveev/Kolyvagin_Fintype_Subsingleton_inhabited.lean; then
   fail "do not add Beal/Matveev/Kolyvagin_Fintype_Subsingleton_inhabited.lean; .submodules Beal.Matveev would pull it into default"
@@ -875,6 +881,9 @@ if ".one `Mazur_X0_13_No_Isogeny_final" not in lake:
 if ".one `Ribet_No_Newforms_At_32_inhabited" not in lake:
     print("lakefile.lean missing Ribet_No_Newforms_At_32_inhabited glob", file=sys.stderr)
     sys.exit(1)
+if ".one `Ribet_Level_Lowering_29_to_32_final" not in lake:
+    print("lakefile.lean missing Ribet_Level_Lowering_29_to_32_final glob", file=sys.stderr)
+    sys.exit(1)
 if ".one `Kolyvagin_Fintype_Subsingleton_inhabited" not in lake:
     print("lakefile.lean missing Kolyvagin_Fintype_Subsingleton_inhabited glob", file=sys.stderr)
     sys.exit(1)
@@ -985,6 +994,9 @@ if "Mazur_X0_13_No_Isogeny_final" in default_globs.group(1):
     sys.exit(1)
 if "Ribet_No_Newforms_At_32_inhabited" in default_globs.group(1):
     print("Ribet_No_Newforms_At_32_inhabited must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Ribet_Level_Lowering_29_to_32_final" in default_globs.group(1):
+    print("Ribet_Level_Lowering_29_to_32_final must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 if "Kolyvagin_Fintype_Subsingleton_inhabited" in default_globs.group(1):
     print("Kolyvagin_Fintype_Subsingleton_inhabited must not be in default BealMatveevBeal globs", file=sys.stderr)
@@ -5181,6 +5193,88 @@ if "mazur-no-isogeny-final-v29" not in ci_build:
 if "Mazur_X0_13_No_Isogeny_final" not in ci_build:
     print("build.yml must lake build +Mazur_X0_13_No_Isogeny_final", file=sys.stderr)
     sys.exit(1)
+ribet_final_path = "Level26/HonestB0Search/Ribet_Level_Lowering_29_to_32_final.lean"
+ribet_final = pathlib.Path(ribet_final_path).read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in ribet_final or re.search(
+        r"^import Beal\.Matveev\.", ribet_final, re.M):
+    print(f"{ribet_final_path} must not import Beal.Matveev.*", file=sys.stderr)
+    sys.exit(1)
+if "import BealTrueV25" in ribet_final:
+    print(f"{ribet_final_path} must not import BealTrueV25", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", ribet_final, re.M) or ":= sorry" in ribet_final or "by sorry" in ribet_final:
+    print(f"sorry is not allowed in {ribet_final_path}", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in ribet_final or "Prop := True" in ribet_final or ":= trivial" in ribet_final:
+    print(f"FAIL: {ribet_final_path} must not use True/trivial", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^axiom ", ribet_final, re.M):
+    print(f"do not add axioms in {ribet_final_path}", file=sys.stderr)
+    sys.exit(1)
+if "WeierstrassCurve.mk" in ribet_final:
+    print(f"{ribet_final_path} must not use WeierstrassCurve.mk", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^def ", ribet_final, re.M):
+    print(f"{ribet_final_path} must not introduce def Prop", file=sys.stderr)
+    sys.exit(1)
+if "by native_decide" in ribet_final:
+    print("v29 Ribet final must use decide, not native_decide", file=sys.stderr)
+    sys.exit(1)
+if "open Nat Finset Classical" not in ribet_final:
+    print(f"{ribet_final_path} must open Nat Finset Classical", file=sys.stderr)
+    sys.exit(1)
+if "theorem Ribet_928_to_32" not in ribet_final:
+    print("Ribet_928_to_32 must be a theorem in the v29 Ribet final file", file=sys.stderr)
+    sys.exit(1)
+if "theorem no_newforms_at_32_mod13" not in ribet_final:
+    print("no_newforms_at_32_mod13 must be a theorem in the v29 Ribet final file", file=sys.stderr)
+    sys.exit(1)
+if "theorem explicit_a29_mod13" not in ribet_final:
+    print("explicit_a29_mod13 must be a theorem in the v29 Ribet final file", file=sys.stderr)
+    sys.exit(1)
+if "928 / 29 = 32" not in ribet_final:
+    print(f"{ribet_final_path} must inhabit 928 / 29 = 32", file=sys.stderr)
+    sys.exit(1)
+if "by decide" not in ribet_final:
+    print(f"{ribet_final_path} must use decide for numerals", file=sys.stderr)
+    sys.exit(1)
+if "(∅ : Finset ℕ)" not in ribet_final and "(∅ : Finset Nat)" not in ribet_final:
+    print(f"{ribet_final_path} must inhabit (∅ : Finset ℕ).card = 0", file=sys.stderr)
+    sys.exit(1)
+if not re.search(r"^def Ribet_928_to_32\b", ribet_ll, re.M):
+    print("parent Ribet_Level_Lowering_29_to_32.lean must keep def Ribet_928_to_32", file=sys.stderr)
+    sys.exit(1)
+if not re.search(r"^def no_newforms_at_32_mod13\b", ribet_ll, re.M):
+    print("parent Ribet_Level_Lowering_29_to_32.lean must keep def no_newforms_at_32_mod13", file=sys.stderr)
+    sys.exit(1)
+if not re.search(r"^def explicit_a29_mod13\b", ribet_ll, re.M):
+    print("parent Ribet_Level_Lowering_29_to_32.lean must keep def explicit_a29_mod13", file=sys.stderr)
+    sys.exit(1)
+if '"cuspforms_32_2_new_subspace_dimension": 1' not in pathlib.Path("sagemath/certs/ribet_no_newforms_32.json").read_text(encoding="utf-8"):
+    print("ribet_no_newforms_32.json must pin Sage new dim 1", file=sys.stderr)
+    sys.exit(1)
+if '"cuspforms_16_2_dimension": 0' not in pathlib.Path("sagemath/certs/ribet_no_newforms_32.json").read_text(encoding="utf-8"):
+    print("ribet_no_newforms_32.json must pin level-16 dim 0", file=sys.stderr)
+    sys.exit(1)
+if '"sturm_bound_32_wt2": 8' not in pathlib.Path("sagemath/certs/ribet_no_newforms_32.json").read_text(encoding="utf-8"):
+    print("ribet_no_newforms_32.json must pin sturm 8", file=sys.stderr)
+    sys.exit(1)
+docs29r = pathlib.Path("Level26/HonestB0Search/docs/Ribet_No_Newforms_32_v29.md").read_text(encoding="utf-8")
+if "928 / 29 = 32" not in docs29r and "928/29=32" not in docs29r:
+    print("Ribet_No_Newforms_32_v29.md must record 928/29=32", file=sys.stderr)
+    sys.exit(1)
+if "32a1" not in docs29r or "new=1" not in docs29r:
+    print("Ribet_No_Newforms_32_v29.md must record LMFDB 32a1 and new=1", file=sys.stderr)
+    sys.exit(1)
+if "ribet-928-to-32-final-v29" in ci_main:
+    print("historical main.yml must not trigger the hours BealMatveevBeal job on ribet-928-to-32-final-v29", file=sys.stderr)
+    sys.exit(1)
+if "ribet-928-to-32-final-v29" not in ci_build:
+    print("build.yml must trigger on ribet-928-to-32-final-v29", file=sys.stderr)
+    sys.exit(1)
+if "Ribet_Level_Lowering_29_to_32_final" not in ci_build:
+    print("build.yml must lake build +Ribet_Level_Lowering_29_to_32_final", file=sys.stderr)
+    sys.exit(1)
 if "lake build BealMatveevBeal\n" in ci_build or "lake build BealMatveevBealV25" in ci_build:
     print("build.yml must not lake build historical Beal / Rank3 / B0Search", file=sys.stderr)
     sys.exit(1)
@@ -5682,4 +5776,7 @@ print("  displayed final N_E=928 = 2^5*29; parent defs stay; not Mathlib Neron")
 print("  v29 Mazur_X0_13_No_Isogeny_final: theorems X0_13_Q_infinite")
 print("  frey_no_rational_13_isogeny Serre_non_Borel_mod13 mazur_no_Frey_13_isogeny")
 print("  2184 48<2184 13=2^2+3^2 288/48=6 card 2; parent defs stay; genus0 infinite")
+print("  v29 Ribet_Level_Lowering_29_to_32_final: theorems Ribet_928_to_32")
+print("  no_newforms_at_32_mod13 explicit_a29_mod13 928/29=32 32*29=928 29nmid32")
+print("  2^4=16 16|32 dim 1 0 Sturm 48 8 empty card 0; parent defs stay; new=1")
 PY
