@@ -1,9 +1,10 @@
-# Incremental HonestB0Search / Level26 CI for v28 algebraic props.
-# Does **not** `lake build` the default BealMatveevBeal target
-# (that is the hours-long historical job on main.yml).
-# Stone pin: phase-darmon-merel-4413 @ 51bba93,
-# mathlib v4.12.0 = 809c3fb3b5c8f5d7dace56e200b426187516535a,
-# conjecture v27 badge 6ccafbf.
+# Incremental HonestB0Search / Level26 CI for v28/v29
+# algebraic props. Does **not** `lake build` the default
+# BealMatveevBeal target (that is the hours-long historical
+# job on main.yml). Stone pin: phase-darmon-merel-4413 @
+# a93402e, mathlib v4.12.0 =
+# 809c3fb3b5c8f5d7dace56e200b426187516535a, conjecture
+# v27 badge 6ccafbf.
 name: HonestB0Search incremental
 
 on:
@@ -14,6 +15,7 @@ on:
       - mazur-cusps-v28
       - ribet-no-newforms-v28
       - kolyvagin-fintype-subsingleton-v28
+      - tate-neron-final-v29
   workflow_dispatch:
 
 concurrency:
@@ -48,6 +50,9 @@ jobs:
 
       - name: Incremental Tate
         run: lake build +Tate_Frey_Conductor_29_Neron_inhabited
+
+      - name: Incremental Tate final v29
+        run: lake build +Tate_Frey_Conductor_29_Neron_final
 
       - name: Incremental Mazur
         run: lake build +Mazur_X0_13_Cusps_Equals_Rationals_inhabited
