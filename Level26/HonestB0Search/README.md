@@ -1,8 +1,16 @@
-# HonestB0Search (foundations v28)
+# HonestB0Search (foundations v29)
 
 Lake targets `HonestB0Search` and `Level26` compile only this
 folder. They do not enter `Level26/BealLevel26Foundations`
 and do not join `.submodules Beal.Matveev`.
+
+v29 final Mazur slice (this branch):
+
+* Mazur / no-isogeny final: `Mazur_X0_13_No_Isogeny_final.lean`
+  — `2184`, `48<2184`, `13=2²+3²`, `288/48=6`, cusp
+  Finset `{0,1}` card `2`. Honest: genus `0` ⇒ infinite;
+  `{2 cusps}=X₀(13)(ℚ)` is literature-false. Parent defs
+  stay. See `docs/Mazur_Cusps_v29.md`.
 
 v28 algebraic slices:
 

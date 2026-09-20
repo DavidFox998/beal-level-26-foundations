@@ -227,6 +227,12 @@ if test -f Beal/Matveev/Mazur_X0_13_Cusps_Equals_Rationals_inhabited.lean; then
   fail "do not add Beal/Matveev/Mazur_X0_13_Cusps_Equals_Rationals_inhabited.lean; .submodules Beal.Matveev would pull it into default"
 fi
 test -f Level26/HonestB0Search/docs/Mazur_Cusps_v28.md
+test -f Level26/HonestB0Search/Mazur_X0_13_No_Isogeny_final.lean
+if test -f Beal/Matveev/Mazur_X0_13_No_Isogeny_final.lean; then
+  fail "do not add Beal/Matveev/Mazur_X0_13_No_Isogeny_final.lean; .submodules Beal.Matveev would pull it into default"
+fi
+test -f Level26/HonestB0Search/docs/Mazur_Cusps_v29.md
+test -f docs/Mazur_X0_13_Cusps_v29.md
 test -f Level26/HonestB0Search/Ribet_No_Newforms_At_32_inhabited.lean
 if test -f Beal/Matveev/Ribet_No_Newforms_At_32_inhabited.lean; then
   fail "do not add Beal/Matveev/Ribet_No_Newforms_At_32_inhabited.lean; .submodules Beal.Matveev would pull it into default"
@@ -855,6 +861,9 @@ if ".one `Tate_Frey_Conductor_29_Neron_inhabited" not in lake:
 if ".one `Mazur_X0_13_Cusps_Equals_Rationals_inhabited" not in lake:
     print("lakefile.lean missing Mazur_X0_13_Cusps_Equals_Rationals_inhabited glob", file=sys.stderr)
     sys.exit(1)
+if ".one `Mazur_X0_13_No_Isogeny_final" not in lake:
+    print("lakefile.lean missing Mazur_X0_13_No_Isogeny_final glob", file=sys.stderr)
+    sys.exit(1)
 if ".one `Ribet_No_Newforms_At_32_inhabited" not in lake:
     print("lakefile.lean missing Ribet_No_Newforms_At_32_inhabited glob", file=sys.stderr)
     sys.exit(1)
@@ -959,6 +968,9 @@ if "Tate_Frey_Conductor_29_Neron_inhabited" in default_globs.group(1):
     sys.exit(1)
 if "Mazur_X0_13_Cusps_Equals_Rationals_inhabited" in default_globs.group(1):
     print("Mazur_X0_13_Cusps_Equals_Rationals_inhabited must not be in default BealMatveevBeal globs", file=sys.stderr)
+    sys.exit(1)
+if "Mazur_X0_13_No_Isogeny_final" in default_globs.group(1):
+    print("Mazur_X0_13_No_Isogeny_final must not be in default BealMatveevBeal globs", file=sys.stderr)
     sys.exit(1)
 if "Ribet_No_Newforms_At_32_inhabited" in default_globs.group(1):
     print("Ribet_No_Newforms_At_32_inhabited must not be in default BealMatveevBeal globs", file=sys.stderr)
@@ -4994,6 +5006,85 @@ if '"torsion_3_mul_7": 21' not in cert_k:
 if '"IsRankZero_on_26a1": false' not in cert_k:
     print("kolyvagin_fintype_subsingleton.json must record ¬IsRankZero on 26a1", file=sys.stderr)
     sys.exit(1)
+mazur_final_path = "Level26/HonestB0Search/Mazur_X0_13_No_Isogeny_final.lean"
+mazur_final = pathlib.Path(mazur_final_path).read_text(encoding="utf-8")
+if "import Beal.Matveev.MatveevThm14General" in mazur_final or re.search(
+        r"^import Beal\.Matveev\.", mazur_final, re.M):
+    print(f"{mazur_final_path} must not import Beal.Matveev.*", file=sys.stderr)
+    sys.exit(1)
+if "import BealTrueV25" in mazur_final:
+    print(f"{mazur_final_path} must not import BealTrueV25", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^\s*sorry\b", mazur_final, re.M) or ":= sorry" in mazur_final or "by sorry" in mazur_final:
+    print(f"sorry is not allowed in {mazur_final_path}", file=sys.stderr)
+    sys.exit(1)
+if "True := trivial" in mazur_final or "Prop := True" in mazur_final or ":= trivial" in mazur_final:
+    print(f"FAIL: {mazur_final_path} must not use True/trivial", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^axiom ", mazur_final, re.M):
+    print(f"do not add axioms in {mazur_final_path}", file=sys.stderr)
+    sys.exit(1)
+if "WeierstrassCurve.mk" in mazur_final:
+    print(f"{mazur_final_path} must not use WeierstrassCurve.mk", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^def ", mazur_final, re.M):
+    print(f"{mazur_final_path} must not introduce def Prop", file=sys.stderr)
+    sys.exit(1)
+if "by native_decide" in mazur_final:
+    print("v29 Mazur final must use decide, not native_decide", file=sys.stderr)
+    sys.exit(1)
+if "open Nat Finset Classical" not in mazur_final:
+    print(f"{mazur_final_path} must open Nat Finset Classical", file=sys.stderr)
+    sys.exit(1)
+if "theorem X0_13_Q_infinite" not in mazur_final:
+    print("X0_13_Q_infinite must be a theorem in the v29 Mazur final file", file=sys.stderr)
+    sys.exit(1)
+if "theorem frey_no_rational_13_isogeny" not in mazur_final:
+    print("frey_no_rational_13_isogeny must be a theorem in the v29 Mazur final file", file=sys.stderr)
+    sys.exit(1)
+if "theorem Serre_non_Borel_mod13" not in mazur_final:
+    print("Serre_non_Borel_mod13 must be a theorem in the v29 Mazur final file", file=sys.stderr)
+    sys.exit(1)
+if "theorem mazur_no_Frey_13_isogeny" not in mazur_final:
+    print("mazur_no_Frey_13_isogeny must be a theorem in the v29 Mazur final file", file=sys.stderr)
+    sys.exit(1)
+if "2184" not in mazur_final or "48 < 2184" not in mazur_final:
+    print(f"{mazur_final_path} must inhabit 2184 and 48 < 2184", file=sys.stderr)
+    sys.exit(1)
+if "literature-false" not in mazur_final:
+    print(f"{mazur_final_path} must record {{2 cusps}} as literature-false", file=sys.stderr)
+    sys.exit(1)
+if "by decide" not in mazur_final:
+    print(f"{mazur_final_path} must use decide for numerals", file=sys.stderr)
+    sys.exit(1)
+if not re.search(r"^def X0_13_Q_infinite\b", mazur_no, re.M):
+    print("parent Mazur_X0_13_No_Isogeny.lean must keep def X0_13_Q_infinite", file=sys.stderr)
+    sys.exit(1)
+if not re.search(r"^def frey_no_rational_13_isogeny\b", mazur_no, re.M):
+    print("parent Mazur_X0_13_No_Isogeny.lean must keep def frey_no_rational_13_isogeny", file=sys.stderr)
+    sys.exit(1)
+if not re.search(r"^def Serre_non_Borel_mod13\b", mazur_no, re.M):
+    print("parent Mazur_X0_13_No_Isogeny.lean must keep def Serre_non_Borel_mod13", file=sys.stderr)
+    sys.exit(1)
+if not re.search(r"^def mazur_no_Frey_13_isogeny\b", mazur_no, re.M):
+    print("parent Mazur_X0_13_No_Isogeny.lean must keep def mazur_no_Frey_13_isogeny", file=sys.stderr)
+    sys.exit(1)
+docs29m = pathlib.Path("Level26/HonestB0Search/docs/Mazur_Cusps_v29.md").read_text(encoding="utf-8")
+if "2184" not in docs29m or "literature-false" not in docs29m:
+    print("Mazur_Cusps_v29.md must record 2184 and literature-false", file=sys.stderr)
+    sys.exit(1)
+if "infinite" not in docs29m.lower():
+    print("Mazur_Cusps_v29.md must record X0(13)(Q) infinite", file=sys.stderr)
+    sys.exit(1)
+if "mazur-no-isogeny-final-v29" in ci_main:
+    print("historical main.yml must not trigger the hours BealMatveevBeal job on mazur-no-isogeny-final-v29", file=sys.stderr)
+    sys.exit(1)
+if "mazur-no-isogeny-final-v29" not in ci_build:
+    print("build.yml must trigger on mazur-no-isogeny-final-v29", file=sys.stderr)
+    sys.exit(1)
+if "Mazur_X0_13_No_Isogeny_final" not in ci_build:
+    print("build.yml must lake build +Mazur_X0_13_No_Isogeny_final", file=sys.stderr)
+    sys.exit(1)
 if "lake build BealMatveevBeal\n" in ci_build or "lake build BealMatveevBealV25" in ci_build:
     print("build.yml must not lake build historical Beal / Rank3 / B0Search", file=sys.stderr)
     sys.exit(1)
@@ -5489,4 +5580,7 @@ print("  v28 HonestB0Search / Level26: Kolyvagin_Fintype_Subsingleton_inhabited"
 print("  Nonempty(Fintype)->Fintype via ofFinite; Subsingleton card 1 on Unit")
 print("  |Sel2|=1 3*7=21 L/Omega 1/3 1/7; ¬IsRankZero on 26a1/26b1; no def Prop")
 print("  MW_rank_zero_fintype / Kato / TwoDescent=>rank0 stay def Prop on parent")
+print("  v29 Mazur_X0_13_No_Isogeny_final: theorems X0_13_Q_infinite")
+print("  frey_no_rational_13_isogeny Serre_non_Borel_mod13 mazur_no_Frey_13_isogeny")
+print("  2184 48<2184 13=2^2+3^2 288/48=6 card 2; parent defs stay; genus0 infinite")
 PY
