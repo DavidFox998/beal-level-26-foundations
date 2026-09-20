@@ -11,9 +11,10 @@ branches. Not on the v28 working branches.
 
 [`build.yml`](build.yml) is the incremental job on
 `phase-darmon-merel-4413`, the four v28 slices, and
-the v29 final slices (`tate-neron-final-v29`,
+the four v29 final slices (`tate-neron-final-v29`,
 `mazur-no-isogeny-final-v29`,
-`ribet-928-to-32-final-v29`): `lean-action@v1` with
+`ribet-928-to-32-final-v29`,
+`kolyvagin-rank0-final-v29`): `lean-action@v1` with
 Mathlib cache, `.lake` cache key `lake-…-v27-6ccafbf`,
 `lake exe cache get`, then the HonestB0Search modules,
 `lake build HonestB0Search`, `lake build Level26`. No

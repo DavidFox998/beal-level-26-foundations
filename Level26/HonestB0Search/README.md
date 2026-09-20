@@ -25,6 +25,12 @@ v29 final algebraic slices:
   Honest: LMFDB new dim `1` (`32a1`); Sage
   `new_subspace().dimension()=0` is not a theorem. Parent
   defs stay. See `docs/Ribet_No_Newforms_32_v29.md`.
+* Kolyvagin / rank-0 final: `Kolyvagin_MW_Rank0_26a1_26b1_final.lean`
+  — `|Sel₂|=1`, `3·7=21`, `L/Ω=1/3` `1/7`, `¬ IsRankZero`,
+  `Nonempty (Fintype) → Finite`, Unit card `1`. Honest:
+  Subsingleton is false on torsion `3`/`7`; parent
+  `MW_rank_zero_fintype` stays `def Prop`. See
+  `docs/Kolyvagin_Rank0_v29.md`.
 
 v28 algebraic slices:
 

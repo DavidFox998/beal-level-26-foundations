@@ -1,5 +1,8 @@
 # Kolyvagin `Fintype` / Subsingleton display (v28)
 
+v29 final: [`Kolyvagin_Rank0_v29.md`](Kolyvagin_Rank0_v29.md) on
+`kolyvagin-rank0-final-v29`.
+
 Parent slice: `Kolyvagin_MW_Rank0_26a1_26b1_inhabited` on
 `kolyvagin-fintype` at `6e88d94`, merged into
 `phase-darmon-merel-4413` at `51bba93`. Fourth and last of
