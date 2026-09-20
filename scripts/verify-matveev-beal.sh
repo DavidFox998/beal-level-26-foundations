@@ -5050,6 +5050,18 @@ if "928" not in neron_final:
 if "Tate_algorithm_at_2_and_29" not in neron_final:
     print(f"{neron_final_path} must re-export Tate_algorithm_at_2_and_29", file=sys.stderr)
     sys.exit(1)
+if "by native_decide" in neron_final or "by native_decide" in neron:
+    print("v29 Tate display must use decide, not native_decide", file=sys.stderr)
+    sys.exit(1)
+if "open Nat Finset Classical" not in neron_final:
+    print(f"{neron_final_path} must open Nat Finset Classical", file=sys.stderr)
+    sys.exit(1)
+if "theorem displayed_Neron_conductor" not in neron_final:
+    print("displayed_Neron_conductor missing", file=sys.stderr)
+    sys.exit(1)
+if "by decide" not in neron_final:
+    print(f"{neron_final_path} must use decide for numerals", file=sys.stderr)
+    sys.exit(1)
 if not re.search(r"^def Tate_algorithm_at_29\b", tate_cond, re.M):
     print("parent Tate_Frey_Conductor_29.lean must keep def Tate_algorithm_at_29", file=sys.stderr)
     sys.exit(1)
@@ -5340,9 +5352,9 @@ if "beal-conjecture stays beal-conjecture" not in readme:
 
 cff = pathlib.Path("CITATION.cff").read_text(encoding="utf-8")
 needles = [
-    'title: "Formal Verification of the Level 26 Foundations for Signature (4,4,13): Certified Mordell-Weil Rank Zero for X0(26), Descent, Torsion, and Conductor Data"',
+    'title: "Formal Verification of the Level 26 Foundations for Signature (4,4,13): Final Algebraic Props Inhabited"',
     "Matveev-Beal Level 26: Rank-3 B0/C cutoff nogo",
-    'version: "v24-v24x-final-rank3-b0-div-c-nogo"',
+    'version: "v0.29-mcom-final-algebraic-props-inhabited"',
     'doi: "10.5281/zenodo.22379293"',
     'repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"',
     "C1_floor=143186215390",

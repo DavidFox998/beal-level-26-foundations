@@ -1,4 +1,4 @@
-# docs/images/
+# docs/images/ — v29
 
 Archived images for historical Track A / PARI descent notes
 (for example the level-26 2-descent figure referenced from

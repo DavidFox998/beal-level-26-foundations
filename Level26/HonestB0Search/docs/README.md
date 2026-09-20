@@ -1,4 +1,4 @@
-# HonestB0Search docs
+# HonestB0Search docs — v29
 
 * Tate / Néron final (v29): [`Tate_Neron_29_v29.md`](Tate_Neron_29_v29.md)
 * Tate / Néron: [`Tate_Neron_29_v28.md`](Tate_Neron_29_v28.md)

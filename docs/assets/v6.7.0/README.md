@@ -1,4 +1,4 @@
-# docs/assets/v6.7.0/
+# docs/assets/v6.7.0/ — v29
 
 Snapshot assets for the historical v6.7.0 modular-lifting
 iteration. Not part of the current Matveev–Beal default target

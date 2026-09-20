@@ -1,4 +1,4 @@
-# Beal/Matveev/
+# Beal/Matveev/ — v29
 
 LEAN_PATH stubs. Lake puts the relocated kernel's `Beal/` prefix
 first, so sibling `import Beal.Matveev.*` does not resolve to this

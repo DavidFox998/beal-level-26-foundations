@@ -16,12 +16,12 @@ message: >-
   Concept DOI stays
   10.5281/zenodo.22379293. Repository stays
   https://github.com/DavidFox998/beal-level-26-foundations.
-title: "Formal Verification of the Level 26 Foundations for Signature (4,4,13): Certified Mordell-Weil Rank Zero for X0(26), Descent, Torsion, and Conductor Data"
+title: "Formal Verification of the Level 26 Foundations for Signature (4,4,13): Final Algebraic Props Inhabited"
 type: software
 authors:
   - family-names: Fox
     given-names: David
-version: "v24-v24x-final-rank3-b0-div-c-nogo"
+version: "v0.29-mcom-final-algebraic-props-inhabited"
 date-released: "2026-09-16"
 doi: "10.5281/zenodo.22379293"
 identifiers:
@@ -38,8 +38,8 @@ preferred-citation:
   authors:
     - family-names: Fox
       given-names: David
-  title: "Formal Verification of the Level 26 Foundations for Signature (4,4,13): Certified Mordell-Weil Rank Zero for X0(26), Descent, Torsion, and Conductor Data"
-  version: "v24-v24x-final-rank3-b0-div-c-nogo"
+  title: "Formal Verification of the Level 26 Foundations for Signature (4,4,13): Final Algebraic Props Inhabited"
+  version: "v0.29-mcom-final-algebraic-props-inhabited"
   year: 2026
   doi: "10.5281/zenodo.22379293"
   url: "https://doi.org/10.5281/zenodo.22379293"

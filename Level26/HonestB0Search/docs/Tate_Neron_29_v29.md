@@ -94,11 +94,22 @@ No Sage binary is required to compile the Lean.
 
 ## Axioms
 
-`#print axioms Tate_algorithm_at_29` is the
-`native_decide` package
+Lean 4.12 needs explicit theorem types and
+`open Nat Finset Classical`. Numeral equalities use
+`decide`, not `native_decide`, so there is no
+`Lean.ofReduceBool`.
+
+`#print axioms displayed_Neron_conductor` / `final_N_E_eq_928`:
 
 ```
-[propext, Classical.choice, Lean.ofReduceBool, Quot.sound]
+[propext]
+```
+
+`#print axioms Tate_algorithm_at_29` (valuations via
+`padicValNat`):
+
+```
+[propext, Classical.choice, Quot.sound]
 ```
 
 No `sorryAx`. No new axiom.

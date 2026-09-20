@@ -13,7 +13,7 @@ DOI `22452680` findable records prior mint `22450737` hook `22379293` `IsVersion
 
 PARI lock: 26a1 Δ `-17576` 26b1 Δ `-1664` `|Sel2|=1` det `M3=2` SHA `d9d907f6cf29e9a90731184f082d430d33128f0f857e6a8124a1eef0b8e39260` image `docs/images/2-descent-level-26-26a1-26b1.webp` ≥300KB.
 
-# Phase 3
+# Phase 3 — v29
 
 Project board for the scheme-theoretic Jacobian / formal-immersion /
 Chabauty--Coleman work. The Lean track list lives in

@@ -1,4 +1,4 @@
-# `ribet-928-32` — residual `928 / 29 = 32`
+# `ribet-928-32` — residual `928 / 29 = 32` — v29
 
 Working branch of **beal-level-26-foundations**, cut from
 `phase-darmon-merel-4413` at `43735b3`. Not cut from `main`.

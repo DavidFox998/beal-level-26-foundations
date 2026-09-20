@@ -11,6 +11,8 @@ Authors: David Fox
   Do **not** add a Tate / Néron axiom. Do **not** convert
   the parent `def Prop` names on `Tate_Frey_Conductor_29.lean`.
 -/
+import Mathlib.Data.Nat.Prime.Basic
+import Mathlib.Data.Finset.Basic
 import Tate_Frey_Conductor_29
 import Tate_Frey_Conductor_29_Neron_inhabited
 import LLLTargetB8
@@ -57,10 +59,42 @@ namespace BealMatveevBeal.Tate_Frey_Conductor_29_Neron_final
 
 set_option linter.dupNamespace false
 
+open Nat Finset Classical
 open BealMatveevBeal.DarmonMerelFrey4413
 open BealMatveevBeal.Tate_Frey_Conductor_29_Neron_inhabited
 open BealMatveevBeal.BealMatveevBealV25B0Search
 open BealMatveevBeal.LLLTargetB8
+
+/-! ## Explicit Lean 4.12 numeral types — `decide`, not `native_decide` -/
+
+/-- Displayed final conductor numeral. Not Mathlib `N_E`. -/
+theorem displayed_Neron_conductor : (2 : ℕ) ^ 5 * 29 = 928 := by decide
+
+theorem displayed_928_div_29 : 928 / 29 = 32 := by decide
+
+theorem displayed_32_mul_29 : (32 : ℕ) * 29 = 928 := by decide
+
+theorem two_pow_five_eq_32 : (2 : ℕ) ^ 5 = 32 := by decide
+
+theorem twenty_nine_nmid_32 : ¬ 29 ∣ (32 : ℕ) := by decide
+
+theorem displayed_c4_poly : frey_c4 1 1 = 48 :=
+  frey_c4_1_1
+
+theorem displayed_Delta_1_1 : freyDiscNat 1 1 = 64 := by
+  unfold freyDiscNat
+  decide
+
+theorem displayed_v2_I0_star : padicValNat 2 (freyDiscNat 1 1) = 6 :=
+  v2_Delta_1_1
+
+theorem displayed_v29_I8 : padicValNat 29 (freyDiscNat 29 1) = 8 :=
+  v29_Delta_29_1
+
+/-- Displayed residual split `{32, 928}`. Card `2` is a Finset
+    numeral, not two Néron models. -/
+theorem displayed_residual_levels_card :
+    (({32, 928} : Finset ℕ).card) = 2 := by decide
 
 /-- Final displayed Tate algorithm at `29`. Re-export of
     the inhabited `2`/`29` valuation conjunction from
@@ -125,13 +159,17 @@ theorem Tate_Frey_Conductor_29_Neron_final :
 
 /-- Displayed final conductor numeral. Not Mathlib `N_E`. -/
 theorem final_N_E_eq_928 : (2 : ℕ) ^ 5 * 29 = 928 :=
-  Tate_algorithm_at_2_and_29.1
+  displayed_Neron_conductor
 
 theorem LLL_nogo_persists_after_Tate_Neron_v29 :
     LLL_reduces_C1_to_lt_nine ↔
       ∀ {A B : ℕ}, B0_nat ≤ B → A ^ 4 + B ^ 4 ≠ (B + 3) ^ 13 :=
   LLL_nogo_persists_after_Tate_Neron_v28
 
+#check displayed_Neron_conductor
+#check displayed_928_div_29
+#check displayed_Delta_1_1
+#check displayed_residual_levels_card
 #check Tate_algorithm_at_29
 #check Frey_Neron_conductor
 #check Frey_conductor_29_is_Neron
@@ -140,6 +178,7 @@ theorem LLL_nogo_persists_after_Tate_Neron_v29 :
 #check BealMatveevBeal.Tate_Frey_Conductor_29.Tate_algorithm_at_29
 #check BealMatveevBeal.Tate_Frey_Conductor_29.Frey_Neron_conductor
 #check BealMatveevBeal.Tate_Frey_Conductor_29.Frey_conductor_29_is_Neron
+#print axioms displayed_Neron_conductor
 #print axioms Tate_algorithm_at_29
 #print axioms Frey_Neron_conductor
 #print axioms Frey_conductor_29_is_Neron
