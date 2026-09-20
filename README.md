@@ -1,16 +1,26 @@
-# foundations-level-26 — Final Algebraic Props Inhabited (v29)
+# foundations-level-26 — Level 26 Structural Verification (v30)
+
+**v0.30-mcom-structural-verification** — Tate `928=2⁵·29`
+Néron `I₀*` `I₈` `c₄` `Δ` `v₂=6` `v₂₉=8` — Mazur `2184`
+`48<2184` `13=2²+3²` `288/48=6` card `2` genus `0`
+infinite vs `2` — Ribet `928/29=32` `∅` card `0` `full=1`
+`new=1` LMFDB `32a1` — Kolyvagin `|Sel₂|=1` `3·7=21`
+`L/Ω=1/3` `1/7` rank0 `26a1` `26b1`.
 
 Concept DOI `10.5281/zenodo.22379293`. Stone pin: Lean
 `v4.12.0`, manifest `c7dbd578…`, mathlib `809c3fb…`
-`inputRev v4.12.0`. Working branch `tate-neron-final-v29`
-gives the three parent *names* `Tate_algorithm_at_29` /
-`Frey_Neron_conductor` / `Frey_conductor_29_is_Neron` as
-**theorems** (displayed `N_E = 928 = 2⁵·29`). Parent file
-keeps those as `def Prop`. Lean 4.12 uses explicit theorem
-types, `open Nat Finset Classical`, and `decide` (not
-`native_decide`). Axioms `[propext]` or
+`inputRev v4.12.0`. Phase `bc7e93b`. Lean 4.12 uses
+explicit theorem types, `open Nat Finset Classical`, and
+`decide` (not `native_decide`). Axioms `[propext]` or
 `[propext, Classical.choice, Quot.sound]`. Vendor
-`db7a556`/`fea0c393` untouched.
+`db7a556`/`fea0c393` untouched. Parent Tate / Néron /
+Frey 13-isogeny / abstract Ribet / `MW_rank_zero_fintype`
+stay `def Prop` on the parent files.
+
+See [`docs/Tate_Neron_v30.md`](docs/Tate_Neron_v30.md),
+[`docs/Mazur_Cusps_v30.md`](docs/Mazur_Cusps_v30.md),
+[`docs/Ribet_No_Newforms_32_v30.md`](docs/Ribet_No_Newforms_32_v30.md),
+[`docs/Kolyvagin_Rank0_v30.md`](docs/Kolyvagin_Rank0_v30.md).
 
 ## Four working slices merged into `phase-darmon-merel-4413` (from `43735b3`)
 

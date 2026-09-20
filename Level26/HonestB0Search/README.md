@@ -1,10 +1,16 @@
-# HonestB0Search (foundations v29)
+# HonestB0Search (foundations v30)
+
+**v0.30-mcom-structural-verification** — Tate `928=2⁵·29`
+Néron `I₀*` `I₈` — Mazur `2184` `48<2184` card `2` genus
+`0` infinite vs `2` — Ribet `928/29=32` `∅` card `0`
+`full=1` `new=1` LMFDB `32a1` — Kolyvagin `|Sel₂|=1`
+`3·7=21` `L/Ω=1/3` `1/7` rank0 `26a1` `26b1`.
 
 Lake targets `HonestB0Search` and `Level26` compile only this
 folder. They do not enter `Level26/BealLevel26Foundations`
 and do not join `.submodules Beal.Matveev`.
 
-v29 final algebraic slices:
+v30 structural verification of the v29 finals:
 
 * Tate / Néron final: `Tate_Frey_Conductor_29_Neron_final.lean`
   — theorems `Tate_algorithm_at_29` /
@@ -13,24 +19,24 @@ v29 final algebraic slices:
   `N_E = 928` is the numeral `2⁵ · 29`, not Mathlib
   Néron. Lean 4.12: explicit types, `open Nat Finset
   Classical`, `decide` not `native_decide`. Parent defs
-  stay. See `docs/Tate_Neron_29_v29.md`.
+  stay. See `docs/Tate_Neron_v30.md`.
 * Mazur / no-isogeny final: `Mazur_X0_13_No_Isogeny_final.lean`
   — `2184`, `48<2184`, `13=2²+3²`, `288/48=6`, cusp
   Finset `{0,1}` card `2`. Honest: genus `0` ⇒ infinite;
   `{2 cusps}=X₀(13)(ℚ)` is literature-false. Parent defs
-  stay. See `docs/Mazur_Cusps_v29.md`.
+  stay. See `docs/Mazur_Cusps_v30.md`.
 * Ribet / 928→32 final: `Ribet_Level_Lowering_29_to_32_final.lean`
   — `928/29=32`, `32·29=928`, `29∤32`, `2⁴=16`, `16∣32`,
   dim `1` / `0`, Sturm `48` / `8`, matching `∅` card `0`.
   Honest: LMFDB new dim `1` (`32a1`); Sage
   `new_subspace().dimension()=0` is not a theorem. Parent
-  defs stay. See `docs/Ribet_No_Newforms_32_v29.md`.
+  defs stay. See `docs/Ribet_No_Newforms_32_v30.md`.
 * Kolyvagin / rank-0 final: `Kolyvagin_MW_Rank0_26a1_26b1_final.lean`
   — `|Sel₂|=1`, `3·7=21`, `L/Ω=1/3` `1/7`, `¬ IsRankZero`,
   `Nonempty (Fintype) → Finite`, Unit card `1`. Honest:
   Subsingleton is false on torsion `3`/`7`; parent
   `MW_rank_zero_fintype` stays `def Prop`. See
-  `docs/Kolyvagin_Rank0_v29.md`.
+  `docs/Kolyvagin_Rank0_v30.md`.
 
 v28 algebraic slices:
 

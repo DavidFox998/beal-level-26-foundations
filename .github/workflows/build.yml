@@ -19,6 +19,7 @@ on:
       - mazur-no-isogeny-final-v29
       - ribet-928-to-32-final-v29
       - kolyvagin-rank0-final-v29
+      - chore-v30-structural-verification-docs
   workflow_dispatch:
 
 concurrency:
