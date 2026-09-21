@@ -1,12 +1,17 @@
-# MCOM draft — v30
+# Level 26 Structural Verification (draft)
 
-Current: `v0.30-mcom-structural-verification — Level 26 Structural Verification — Tate 928=2⁵·29 Neron I0* I8 c4 Δ v2=6 v29=8 Mazur 2184 48<2184 13=2²+3² 288/48=6 card 2 genus 0 infinite vs 2 Ribet 928/29=32 ∅ card 0 full=1 new=1 LMFDB 32a1 Kolyvagin |Sel2|=1 3·7=21 L/Ω=1/3 1/7 rank0 26a1 26b1`. Concept DOI `10.5281/zenodo.22379293`.
+Mathematics of Computation manuscript draft. Not an arXiv preprint.
 
-MCOM draft — build with latexmk -pdf mcom-draft.tex
+- Title: *Level 26 Structural Verification — Tate, Mazur, Ribet, Kolyvagin Honest Displays in Lean 4.12*
+- Author: David Fox
+- Sources: `main.tex`, section `*.tex`, `references.bib`
+- PDF: [`paper.pdf`](paper.pdf)
 
-`v10.0.0-paper-B14-Baker-1e6-DOI` archives the math and paper Zenodo DOIs for the v9.4.0 census (62500 / 25 chunks), Baker-conditional `∀ B`, and Tate bound `2^5*rad*13`.
+```bash
+cd paper
+latexmk -pdf main.tex
+cp main.pdf paper.pdf
+```
 
-Concept DOI: https://doi.org/10.5281/zenodo.22698257
-Math version DOI (v8.84.0-B14-modq-kill): https://doi.org/10.5281/zenodo.22712897
-Paper version DOI (v8.85.0-paper-B14-full): https://doi.org/10.5281/zenodo.22713047
-Final paper DOI pending mint from `v8.86.0-paper-B14-final-DOI`.
+Version DOI [10.5281/zenodo.22863527](https://doi.org/10.5281/zenodo.22863527).
+Concept DOI [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293).
