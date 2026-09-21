@@ -1,5 +1,38 @@
 # About — Beal Level 26 Foundations
 
+## v0.30 — Structural Verification (Mathematics of Computation)
+
+**mcom, not arXiv.** This is a Mathematics of Computation submission,
+not an arXiv preprint. There is no arXiv badge and no arXiv id.
+
+**GitHub About description.** Level 26 Foundations — Structural
+Verification v0.30 — Tate `928=2⁵·29` Neron `I0*` `I8` `c4` `Δ`
+`v2=6` `v29=8` Mazur `2184` `48<2184` `13=2²+3²` `288/48=6` card2
+genus0 infinite vs2 Ribet `928/29=32` `∅` card0 full1 new1 LMFDB
+`32a1` Kolyvagin `|Sel2|=1` `3·7=21` `L/Ω=1/3` `1/7` rank0 `26a1`
+`26b1` — Lean 4.12 explicit types decide — mcom
+
+**Website.** Concept DOI
+[https://doi.org/10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293)
+— tag
+[v0.30-mcom-structural-verification](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v0.30-mcom-structural-verification).
+Conjecture version DOI
+[10.5281/zenodo.22863527](https://doi.org/10.5281/zenodo.22863527)
+stays on beal-conjecture `ff546da` / `af520d3`.
+
+**Topics.** `lean4` `mathlib` `beal-conjecture` `frey-curve`
+`tate-algorithm` `mazur` `ribet` `kolyvagin` `modular-curves`
+`number-theory` `mcom`
+
+**Pins.** Lean `v4.12.0` — mathlib
+`809c3fb3b5c8f5d7dace56e200b426187516535a` `inputRev v4.12.0` —
+foundations manifest `c7dbd578…` — conjecture manifest `83739542…`
+— vendor `db7a556`/`fea0c393` 0 vs `43735b3` / conjecture
+`b780c9c`/`1a00fbd`. Phase `phase-darmon-merel-4413` stays
+`2b60ccd`. Tags `v0.27` `v0.28` `v0.29` `v0.30` stay live.
+
+The historical About lock below is unchanged.
+
 ## Foundations complement (current HEAD)
 
 `matveev_gap3_lower` is now the **B≤10^6 integer-gap** theorem

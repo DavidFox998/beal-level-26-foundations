@@ -1,5 +1,16 @@
 # foundations-level-26 — Level 26 Structural Verification (v30)
 
+[![Lean v4.12.0](https://img.shields.io/badge/Lean-v4.12.0-purple)](https://github.com/leanprover/lean4/releases/tag/v4.12.0)
+[![mathlib 809c3fb](https://img.shields.io/badge/mathlib-809c3fb-blue)](https://github.com/leanprover-community/mathlib4/commit/809c3fb3b5c8f5d7dace56e200b426187516535a)
+[![Concept DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22379293.svg)](https://doi.org/10.5281/zenodo.22379293)
+[![v30.0.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22863527.svg)](https://doi.org/10.5281/zenodo.22863527)
+[![HonestB0Search incremental](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/build.yml/badge.svg)](https://github.com/DavidFox998/beal-level-26-foundations/actions/workflows/build.yml)
+[![phase incremental 35524223408](https://img.shields.io/badge/foundations%20incremental-35524223408-brightgreen)](https://github.com/DavidFox998/beal-level-26-foundations/actions/runs/35524223408)
+[![conjecture main 35532850099](https://img.shields.io/badge/conjecture%20main-35532850099-brightgreen)](https://github.com/DavidFox998/beal-conjecture/actions/runs/35532850099)
+[![conjecture badge 35541392250](https://img.shields.io/badge/conjecture%20badge-35541392250-brightgreen)](https://github.com/DavidFox998/beal-conjecture/actions/runs/35541392250)
+
+Mathematics of Computation submission — not an arXiv preprint. No arXiv badge.
+
 **v0.30-mcom-structural-verification** — Tate `928=2⁵·29`
 Néron `I₀*` `I₈` `c₄` `Δ` `v₂=6` `v₂₉=8` — Mazur `2184`
 `48<2184` `13=2²+3²` `288/48=6` card `2` genus `0`
@@ -7,9 +18,13 @@ infinite vs `2` — Ribet `928/29=32` `∅` card `0` `full=1`
 `new=1` LMFDB `32a1` — Kolyvagin `|Sel₂|=1` `3·7=21`
 `L/Ω=1/3` `1/7` rank0 `26a1` `26b1`.
 
-Concept DOI `10.5281/zenodo.22379293`. Stone pin: Lean
-`v4.12.0`, manifest `c7dbd578…`, mathlib `809c3fb…`
-`inputRev v4.12.0`. Phase `bc7e93b`. Lean 4.12 uses
+Concept DOI `10.5281/zenodo.22379293`. Version DOI
+`10.5281/zenodo.22863527` on beal-conjecture `ff546da` /
+`af520d3`. Stone pin: Lean `v4.12.0`, foundations manifest
+`c7dbd578…`, conjecture manifest `83739542…`, mathlib
+`809c3fb…` `inputRev v4.12.0`. Vendor `db7a556`/`fea0c393`
+0 vs `43735b3` / conjecture `b780c9c`/`1a00fbd`. Phase
+`2b60ccd`. Lean 4.12 uses
 explicit theorem types, `open Nat Finset Classical`, and
 `decide` (not `native_decide`). Axioms `[propext]` or
 `[propext, Classical.choice, Quot.sound]`. Vendor

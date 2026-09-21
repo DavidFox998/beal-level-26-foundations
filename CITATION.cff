@@ -29,6 +29,9 @@ identifiers:
     value: "10.5281/zenodo.22379293"
     description: Concept DOI (series; GitHub slug beal-level-26-foundations)
   - type: doi
+    value: "10.5281/zenodo.22863527"
+    description: Related beal-conjecture v30.0.0-level-26-structural-verification version DOI
+  - type: doi
     value: "10.5281/zenodo.22732209"
     description: Prior v24.4.0 version DOI until GitHub-Zenodo mints this tag
 repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"
@@ -217,9 +220,20 @@ license: MIT
 keywords:
   - beal-conjecture
   - x0-26
+  - x0-13
   - frey-curve
+  - tate-algorithm
+  - mazur
+  - ribet
+  - kolyvagin
   - ribet-level-lowering
   - lean4
+  - mathlib
+  - modular-curves
+  - number-theory
+  - mcom
+  - 26a1
+  - 26b1
   - pari-gp
   - 2-descent
   - axiom-free
