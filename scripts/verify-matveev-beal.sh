@@ -4702,19 +4702,22 @@ if "import BSD_MordellWeil" not in j0bsd:
     print("J0_26_BSD_26a1_26b1.lean must import BSD_MordellWeil", file=sys.stderr)
     sys.exit(1)
 check_gap_file("BSD_MordellWeil.lean",
-    ["IsRankZero", "MW_rank_zero", "MW_rank_zero_26a1",
+    ["IsSubsingleton", "MW_rank_zero", "MW_rank_zero_26a1",
      "MW_rank_zero_26b1", "BSD_rank_statement"],
-    ["add_comm", "eq_zero_of_isRankZero",
+    ["add_comm", "eq_zero_of_isSubsingleton",
      "curve26a1_Q_Δ", "curve26b1_Q_Δ",
      "point_26a1_4_4_ne_zero", "point_26b1_1_0_ne_zero",
-     "not_IsRankZero_26a1", "not_IsRankZero_26b1",
+     "not_IsSubsingleton_26a1", "not_IsSubsingleton_26b1",
      "LLL_nogo_persists_after_BSD_MordellWeil"])
 bsd_mw = pathlib.Path("BSD_MordellWeil.lean").read_text(encoding="utf-8")
 if re.search(r"namespace TheoremaAureum", bsd_mw):
     print("BSD_MordellWeil.lean must not use an external tower namespace", file=sys.stderr)
     sys.exit(1)
 if "Subsingleton" not in bsd_mw:
-    print("BSD_MordellWeil.lean must record IsRankZero as Subsingleton", file=sys.stderr)
+    print("BSD_MordellWeil.lean must record IsSubsingleton as Subsingleton", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^def IsRankZero\b", bsd_mw, re.M):
+    print("BSD_MordellWeil.lean must not reintroduce def IsRankZero; use IsSubsingleton", file=sys.stderr)
     sys.exit(1)
 if re.search(r"^theorem J0_26_rank0\b", bsd_mw, re.M):
     print("do not inhabit J0_26_rank0 in BSD_MordellWeil.lean", file=sys.stderr)
@@ -4767,7 +4770,7 @@ check_gap_file("Kolyvagin_MW_Rank0_26a1_26b1.lean",
      "MW_rank_zero_26b1_fintype",
      "Kolyvagin_L_nonzero_imp_MW_rank_zero",
      "TwoDescent_implies_MW_rank_zero_fintype"],
-    ["not_IsRankZero_26a1_reexport", "not_IsRankZero_26b1_reexport",
+    ["not_IsSubsingleton_26a1_reexport", "not_IsSubsingleton_26b1_reexport",
      "L_over_Omega_26a1_ne_zero_reexport",
      "Sel2_card_both_one", "torsion_3_mul_7_eq_21",
      "LLL_nogo_persists_after_Kolyvagin_MW_Rank0"])
@@ -4785,7 +4788,7 @@ if "WeierstrassCurve.mk" in koly:
     print("Kolyvagin_MW_Rank0_26a1_26b1.lean must not use WeierstrassCurve.mk", file=sys.stderr)
     sys.exit(1)
 if "Subsingleton" not in koly:
-    print("Kolyvagin_MW_Rank0_26a1_26b1.lean must record IsRankZero as Subsingleton", file=sys.stderr)
+    print("Kolyvagin_MW_Rank0_26a1_26b1.lean must record IsSubsingleton as Subsingleton", file=sys.stderr)
     sys.exit(1)
 if re.search(r"^theorem J0_26_rank0\b", koly, re.M):
     print("do not inhabit J0_26_rank0 in Kolyvagin_MW_Rank0_26a1_26b1.lean", file=sys.stderr)
@@ -5012,8 +5015,8 @@ if "3 · 7" not in fintype and "TorsionOrder_26a1 * TorsionOrder_26b1 = 21" not 
 if "Sel2_card_26a1 = 1" not in fintype:
     print(f"{fintype_path} must inhabit |Sel2|=1", file=sys.stderr)
     sys.exit(1)
-if "not_IsRankZero" not in fintype:
-    print(f"{fintype_path} must record ¬IsRankZero", file=sys.stderr)
+if "not_IsSubsingleton" not in fintype:
+    print(f"{fintype_path} must record \u00acIsSubsingleton", file=sys.stderr)
     sys.exit(1)
 if re.search(r"^theorem MW_rank_zero_fintype\b", fintype, re.M) or re.search(
         r"^theorem MW_rank_zero_26a1_fintype\b", fintype, re.M):
@@ -5070,18 +5073,14 @@ if "WeierstrassCurve.mk" in neron_final:
 if re.search(r"^def ", neron_final, re.M):
     print(f"{neron_final_path} must not introduce def Prop", file=sys.stderr)
     sys.exit(1)
-if "theorem Tate_algorithm_at_29" not in neron_final:
-    print("Tate_algorithm_at_29 must be a theorem in the v29 final file", file=sys.stderr)
+if "theorem displayed_frey_specialization_data_at_2_and_29" not in neron_final:
+    print("displayed_frey_specialization_data_at_2_and_29 must be a theorem in the v31 final file", file=sys.stderr)
     sys.exit(1)
-if "theorem Frey_Neron_conductor" not in neron_final:
-    print("Frey_Neron_conductor must be a theorem in the v29 final file", file=sys.stderr)
-    sys.exit(1)
-if "theorem Frey_conductor_29_is_Neron" not in neron_final:
-    print("Frey_conductor_29_is_Neron must be a theorem in the v29 final file", file=sys.stderr)
-    sys.exit(1)
-if "theorem Tate_Frey_Conductor_29_Neron_final" not in neron_final:
-    print("Tate_Frey_Conductor_29_Neron_final missing", file=sys.stderr)
-    sys.exit(1)
+for _old in ("Tate_algorithm_at_29", "Frey_Neron_conductor",
+             "Frey_conductor_29_is_Neron", "Tate_Frey_Conductor_29_Neron_final"):
+    if re.search(rf"^theorem {_old}\b", neron_final, re.M):
+        print(f"do not re-add misleading alias theorem {_old} in the v31 final file", file=sys.stderr)
+        sys.exit(1)
 if "928" not in neron_final:
     print(f"{neron_final_path} must inhabit 928", file=sys.stderr)
     sys.exit(1)
@@ -5158,18 +5157,15 @@ if "by native_decide" in mazur_final:
 if "open Nat Finset Classical" not in mazur_final:
     print(f"{mazur_final_path} must open Nat Finset Classical", file=sys.stderr)
     sys.exit(1)
-if "theorem X0_13_Q_infinite" not in mazur_final:
-    print("X0_13_Q_infinite must be a theorem in the v29 Mazur final file", file=sys.stderr)
+if "theorem displayed_X0_13_numerical_data" not in mazur_final:
+    print("displayed_X0_13_numerical_data must be a theorem in the v31 Mazur final file", file=sys.stderr)
     sys.exit(1)
-if "theorem frey_no_rational_13_isogeny" not in mazur_final:
-    print("frey_no_rational_13_isogeny must be a theorem in the v29 Mazur final file", file=sys.stderr)
-    sys.exit(1)
-if "theorem Serre_non_Borel_mod13" not in mazur_final:
-    print("Serre_non_Borel_mod13 must be a theorem in the v29 Mazur final file", file=sys.stderr)
-    sys.exit(1)
-if "theorem mazur_no_Frey_13_isogeny" not in mazur_final:
-    print("mazur_no_Frey_13_isogeny must be a theorem in the v29 Mazur final file", file=sys.stderr)
-    sys.exit(1)
+for _old in ("X0_13_Q_infinite", "frey_no_rational_13_isogeny",
+             "Serre_non_Borel_mod13", "mazur_no_Frey_13_isogeny",
+             "Mazur_X0_13_No_Isogeny_final"):
+    if re.search(rf"^theorem {_old}\b", mazur_final, re.M):
+        print(f"do not re-add misleading alias theorem {_old} in the v31 Mazur final file", file=sys.stderr)
+        sys.exit(1)
 if "2184" not in mazur_final or "48 < 2184" not in mazur_final:
     print(f"{mazur_final_path} must inhabit 2184 and 48 < 2184", file=sys.stderr)
     sys.exit(1)
@@ -5237,15 +5233,14 @@ if "by native_decide" in ribet_final:
 if "open Nat Finset Classical" not in ribet_final:
     print(f"{ribet_final_path} must open Nat Finset Classical", file=sys.stderr)
     sys.exit(1)
-if "theorem Ribet_928_to_32" not in ribet_final:
-    print("Ribet_928_to_32 must be a theorem in the v29 Ribet final file", file=sys.stderr)
+if "theorem displayed_level32_arithmetic_and_newspace_data" not in ribet_final:
+    print("displayed_level32_arithmetic_and_newspace_data must be a theorem in the v31 Ribet final file", file=sys.stderr)
     sys.exit(1)
-if "theorem no_newforms_at_32_mod13" not in ribet_final:
-    print("no_newforms_at_32_mod13 must be a theorem in the v29 Ribet final file", file=sys.stderr)
-    sys.exit(1)
-if "theorem explicit_a29_mod13" not in ribet_final:
-    print("explicit_a29_mod13 must be a theorem in the v29 Ribet final file", file=sys.stderr)
-    sys.exit(1)
+for _old in ("Ribet_928_to_32", "no_newforms_at_32_mod13", "explicit_a29_mod13",
+             "Ribet_Level_Lowering_29_to_32_final"):
+    if re.search(rf"^theorem {_old}\b", ribet_final, re.M):
+        print(f"do not re-add misleading alias theorem {_old} in the v31 Ribet final file", file=sys.stderr)
+        sys.exit(1)
 if "928 / 29 = 32" not in ribet_final:
     print(f"{ribet_final_path} must inhabit 928 / 29 = 32", file=sys.stderr)
     sys.exit(1)
@@ -5319,23 +5314,28 @@ if "by native_decide" in koly_final:
 if "open Nat Finset Classical" not in koly_final:
     print(f"{koly_final_path} must open Nat Finset Classical", file=sys.stderr)
     sys.exit(1)
-if "theorem MW_rank_zero_fintype" not in koly_final:
-    print("MW_rank_zero_fintype must be a theorem in the v29 Kolyvagin final file", file=sys.stderr)
+if "theorem displayed_26a1_26b1_certificate_data" not in koly_final:
+    print("displayed_26a1_26b1_certificate_data must be a theorem in the v31 Kolyvagin final file", file=sys.stderr)
     sys.exit(1)
-if "theorem TwoDescent_26a1_26" not in koly_final:
-    print("TwoDescent_26a1_26 must be a theorem in the v29 Kolyvagin final file", file=sys.stderr)
-    sys.exit(1)
-if "theorem BSD_MordellWeil" not in koly_final:
-    print("BSD_MordellWeil must be a theorem in the v29 Kolyvagin final file", file=sys.stderr)
-    sys.exit(1)
+for _old in ("MW_rank_zero_fintype", "TwoDescent_26a1_26", "BSD_MordellWeil",
+             "J0_26_BSD_26a1_26b1", "X0_26_Full2Torsion",
+             "Kolyvagin_L_nonzero_imp_MW_rank_zero",
+             "TwoDescent_implies_MW_rank_zero_fintype",
+             "Kolyvagin_MW_Rank0_26a1_26b1_final"):
+    if re.search(rf"^theorem {_old}\b", koly_final, re.M):
+        print(f"do not re-add misleading alias theorem {_old} in the v31 Kolyvagin final file", file=sys.stderr)
+        sys.exit(1)
 if "3 : ℕ) * 7 = 21" not in koly_final and "(3 : ℕ) * 7 = 21" not in koly_final:
     print(f"{koly_final_path} must inhabit 3*7=21", file=sys.stderr)
     sys.exit(1)
 if "by decide" not in koly_final:
     print(f"{koly_final_path} must use decide for numerals", file=sys.stderr)
     sys.exit(1)
-if "not_IsRankZero" not in koly_final:
-    print(f"{koly_final_path} must record ¬IsRankZero", file=sys.stderr)
+if "not_IsSubsingleton" not in koly_final:
+    print(f"{koly_final_path} must record \u00acIsSubsingleton", file=sys.stderr)
+    sys.exit(1)
+if re.search(r"^(def|theorem) [A-Za-z0-9_.]*IsRankZero", koly_final, re.M):
+    print(f"{koly_final_path} must not reintroduce the IsRankZero name; use IsSubsingleton", file=sys.stderr)
     sys.exit(1)
 if re.search(r"^theorem J0_26_rank0\b", koly_final, re.M):
     print(f"do not inhabit J0_26_rank0 in {koly_final_path}", file=sys.stderr)
