@@ -90,9 +90,9 @@ lean_lib «BealMatveevBealV25Rank3» where
     rank 0 stays `def Prop`.
     `BSD_MordellWeil` re-exports Mathlib `Point` commutativity
     and constructs `(4,4)`/`(1,0)` as affine `Point`s;
-    pasted `IsRankZero` is Subsingleton and is **refuted** on
-    both models; `MW_rank_zero` / `BSD_rank_statement` stay
-    `def Prop`.
+    `IsSubsingleton` (v31 rename from `IsRankZero`) is
+    Subsingleton and is **refuted** on both models;
+    `MW_rank_zero` / `BSD_rank_statement` stay `def Prop`.
     `Tate_Frey_Conductor_29` re-exports displayed `Δ` and the
     `32`/`928` split; Tate’s algorithm / Néron stay `def Prop`.
     v28 `HonestB0Search` / `Level26` inhabit `c₄`/`c₆`,
@@ -122,8 +122,8 @@ lean_lib «BealMatveevBealV25Rank3» where
     (not Subsingleton); Kato/Kolyvagin stay `def Prop`.
     v28 `HonestB0Search` / `Level26` inhabit
     `Nonempty (Fintype α) → Fintype α`, Subsingleton card `1`
-    on `Unit`, `|Sel₂|=1`, `3·7=21`, `L/Ω`, and `¬ IsRankZero`
-    in
+    on `Unit`, `|Sel₂|=1`, `3·7=21`, `L/Ω`, and
+    `¬ IsSubsingleton` in
     `Level26/HonestB0Search/Kolyvagin_Fintype_Subsingleton_inhabited.lean`.
     Those libs do **not** join this glob (file is not at
     root) and do **not** compile the vendor tree. -/
