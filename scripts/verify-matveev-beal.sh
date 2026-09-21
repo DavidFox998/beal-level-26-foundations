@@ -5640,9 +5640,9 @@ if "beal-conjecture stays beal-conjecture" not in readme:
 
 cff = pathlib.Path("CITATION.cff").read_text(encoding="utf-8")
 needles = [
-    'title: "Formal Verification of the Level 26 Foundations for Signature (4,4,13): Final Algebraic Props Inhabited"',
+    'rank0 26a1 26b1 — v31 honest declaration rename',
     "Matveev-Beal Level 26: Rank-3 B0/C cutoff nogo",
-    'version: "v0.29-mcom-final-algebraic-props-inhabited"',
+    'version: "v0.31-mcom-honest-declarations"',
     'doi: "10.5281/zenodo.22379293"',
     'repository-code: "https://github.com/DavidFox998/beal-level-26-foundations"',
     "C1_floor=143186215390",
