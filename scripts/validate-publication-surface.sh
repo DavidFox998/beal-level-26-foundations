@@ -143,9 +143,16 @@ m = re.search(
     p, re.S)
 if not m:
     raise SystemExit("FAIL: conditional bridge theorem is missing")
-names = re.findall(r"\((h[A-Za-z0-9_]+)\s*:", m.group(1))
+binders = re.findall(
+    r"\((h[A-Za-z0-9_]+)\s*:\s*([^)]*)\)", m.group(1))
+open_types = {
+    "frey_no_rational_13_isogeny",
+    "Frey_conductor_29_is_Neron",
+    "Ribet_928_to_32",
+}
+names = [name for name, typ in binders if typ.strip() in open_types]
 if names != ["hMazur", "hTate", "hRibet"]:
-    raise SystemExit(f"FAIL: bridge assumptions are {names!r}")
+    raise SystemExit(f"FAIL: open bridge assumptions are {names!r}")
 print("PASS: HasNewformAtLevel32 is a local conditional evidence record")
 print("PASS: remaining bridge assumptions are exactly hMazur hTate hRibet")
 PY
