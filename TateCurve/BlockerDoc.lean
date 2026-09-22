@@ -25,6 +25,24 @@ This root module records the forward development order:
 The reverse implication is invalid: an assumed conductor or inertia
 conclusion does not construct Tate uniformization.
 
+The displayed expression `q⁻¹ + 744 + 196884q` is only
+`tateJTruncation`. It is not a parameter attached to the Frey curve. The
+missing construction must define the convergent full Tate `j`-series, invert
+it on the `29`-adic open unit disc, build the Weierstrass model of the quotient
+`ℚ_29ˣ / q^ℤ`, and prove the resulting curve is isomorphic to the Frey base
+change.
+
+Likewise, the displayed Kodaira target `I_(26k)` is not Tate's algorithm.
+One must construct an integral minimal model, prove `v₂₉(c₄)=0` in that model,
+run the algorithm, and identify the Néron conductor. Only then may the
+cyclotomic inertia formula be applied to a constructed residual
+representation.
+
+Finally, local theory at `29` cannot prove
+`residualOddEstimate A B ∣ 32`: that expression contains every odd prime
+dividing `A * B`. Removing those primes needs separate global level-lowering
+arguments or a proof that no relevant solution exists.
+
 The numerical theorem below consumes only already-proved facts. It does not
 inhabit `tate_curve_at_29`, `Frey_Neron_conductor`,
 `inertia_at_29_trivial_mod13_full`, or
@@ -65,10 +83,18 @@ theorem displayed_level_928_uses_only_proved {A B : ℕ}
   displayed_level_eq_928 hAB
 
 #check TateParameter
+#check ℚ_29
+#check v_29
 #check Frey_Tate_q_at_29
+#check TateMultiplicativeQuotient
+#check FullTateJSeries
+#check TateUniformizationData
 #check tate_curve_at_29
 #check Frey_Kodaira_at_29
+#check TateAlgorithmAt29
+#check FreyNeronConductorData
 #check Frey_Neron_conductor
+#check ResidualRepresentation13
 #check inertia_at_29_trivial_mod13_full
 #check ribet_unramified_at_29_of_dvd_C
 #check tate_numerical_layer_uses_only_proved
