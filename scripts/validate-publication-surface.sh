@@ -213,7 +213,11 @@ lake build BealMatveevBealV25B0Search
 bash scripts/verify-matveev-beal.sh
 pass "maximal registered root green; verify-matveev-beal: ok"
 
-test -z "$(git grep -n 'sorryAx' -- '*.lean' || true)" || fail "sorryAx found"
+sorry_ax_hits="$(
+  git grep -n 'sorryAx' -- '*.lean' 2>/dev/null |
+    grep -vE 'No `sorryAx`|without `sorryAx`' || true
+)"
+test -z "$sorry_ax_hits" || fail "proof-level sorryAx found"
 pass "referee reports zero proof-level sorry and zero sorryAx"
 
 printf 'INFO: expected registered job range is 5180-5185; bridge roots 5180/5181\n'
