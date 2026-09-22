@@ -111,5 +111,5 @@ lean_lib «BealMatveevBealV25B0Search» where
     .one `Serre_Large_vs_CM_Small, .one `TwoDescent_26a1_26,
     .one `X0_26_Full2Torsion, .one `BSD_MordellWeil, .one `J0_26_BSD_26a1_26b1,
     .one `Tate_Frey_Conductor_29, .one `Tate_Frey_Conductor_29_Numerical,
-    .one `Mazur_X0_13_No_Isogeny,
+    .one `Mazur_X0_13_No_Isogeny, .one `Mazur_X0_13_Numerical,
     .one `Ribet_Level_Lowering_29_to_32, .one `Kolyvagin_MW_Rank0_26a1_26b1]
