@@ -68,7 +68,8 @@ theorem thirteen_dvd_valuation_discriminant_at_29 {A B : ℕ}
     (hBpos : 1 ≤ B)
     (hA : ¬ 29 ∣ A) (hB : ¬ 29 ∣ B) (hC : 29 ∣ B + 3) :
     (13 : ℤ) ∣ Padic.valuation (freyDisc_in_Qp29 A B) :=
-  thirteen_dvd_v29_Delta_reexport hsol hBpos hA hB hC
+  BealMatveevBeal.Tate_I29_Inertia.thirteen_dvd_padic_valuation_Delta
+    hsol hBpos hA hB hC
 
 /-- The displayed branch selector is `32` when `29` divides neither
 `A` nor `B`. This is not a Néron-conductor theorem. -/
