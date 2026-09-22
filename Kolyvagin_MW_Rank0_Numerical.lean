@@ -62,7 +62,8 @@ theorem sel2_cards_both_one_numerical :
 theorem two_pow_sel2_dimensions_one_numerical :
     (2 : ℕ) ^ Sel2_F2_dim_26a1 = 1 ∧
       (2 : ℕ) ^ Sel2_F2_dim_26b1 = 1 :=
-  two_pow_sel2_is_one
+  ⟨two_pow_sel2_F2_dim_26a1.trans sel2_card_26a1_one_numerical,
+    two_pow_sel2_F2_dim_26b1.trans sel2_card_26b1_one_numerical⟩
 
 theorem certified_mwrank_values_zero_numerical :
     certified_mwrank_26a1 = 0 ∧ certified_mwrank_26b1 = 0 :=
@@ -74,11 +75,11 @@ theorem torsion_orders_product_twenty_one_numerical :
 
 theorem curve26a1_discriminant_numerical :
     curve26a1.Δ = -17576 :=
-  curve26a1_Δ_reexport
+  BealMatveevBeal.J0_26_BSD_26a1_26b1.curve26a1_Δ
 
 theorem curve26b1_discriminant_numerical :
     curve26b1.Δ = -1664 :=
-  curve26b1_Δ_reexport
+  BealMatveevBeal.J0_26_BSD_26a1_26b1.curve26b1_Δ
 
 /-- The rational `26a1` point type is not a subsingleton.
 This is compatible with algebraic rank zero and nontrivial torsion. -/
