@@ -9,25 +9,30 @@ import MazurCurve.GaloisRepresentation
 import Mazur_X0_13_Numerical
 
 /-!
-# Mazur-library scaffold boundary at baseline `43735b3`
+# Mazur-library boundary at baseline `43735b3`
 
 The pinned environment proves the displayed numerical data: genus `0`, two
 cusps, `|SL₂(𝔽₁₃)| = 2184`, `13 = 2² + 3²`, the split-Cartan normalizer
 order `288`, `48 < 2184`, and `288 / 48 = 6`.
 
-These facts do not construct `X₀(13)` as a moduli object. In particular,
-genus zero does not say that the two cusps are all rational points:
-`X₀(13)` has infinitely many rational points and a rational Fricke
-parameter.
+The library constructs the honest subgroup
+`C ≤ E(ℚ)[13]` at the level of Mathlib affine points.  It does not construct
+the scheme-theoretic geometric subgroup or a modular curve representing its
+point functor.  Consequently the genus numeral is not rebranded as a genus
+theorem.  Moreover, genus zero does not say that the two cusps are all
+rational points: `X₀(13)` has infinitely many rational points and a rational
+Fricke parameter.
 
 Forward development order:
 
-1. construct the moduli interpretation `(E,C)` with `C ⊂ E[13]`;
-2. connect the explicit Fricke `j`-map to rational cyclic `13`-isogenies;
-3. construct `ρ̄_{E,13}` and its Borel-containment predicate;
-4. prove reducibility iff the Frey `j` lies in the Fricke image;
-5. prove the Frey-specific global exclusion of all rational parameters; and
-6. conclude irreducibility and absence of a rational `13`-isogeny.
+1. promote the point-level `(E,C)` data to a geometric subgroup scheme;
+2. construct a modular curve representing that moduli problem and prove its
+   genus and cusp theorems;
+3. connect the explicit Fricke `j`-map to rational cyclic `13`-isogenies;
+4. construct `ρ̄_{E,13}` as the Galois action on geometric torsion;
+5. identify reducibility with Borel containment and the Fricke image;
+6. prove the Frey-specific global exclusion of all rational parameters; and
+7. conclude irreducibility and absence of a rational `13`-isogeny.
 
 The inequality `48 < 2184` cannot replace steps 3–5: it compares displayed
 cardinals but does not identify either cardinal with the Frey image.
@@ -60,13 +65,20 @@ theorem mazur_core_numerics_use_only_proved :
 
 #check X0_13_Point
 #check X0_13_RationalPoints
+#check torsion13
+#check X0_13_ModuliCurve
+#check X0_13_has_genus_zero
 #check j_of_X0_13
 #check frey_j
+#check FreyReducibleMod13
 #check reducible_13_iff_j_in_image
 #check no_t_gives_Frey_j_when_29_dvd_C
-#check rho_Frey_mod13
+#check Mod13GaloisRepresentation
+#check Mod13GaloisRepresentation.IsBorelContained
+#check FreyMod13Representation
 #check rho_Frey_mod13_irreducible
 #check mazur_irreducible_13_via_X0_13
+#check mazur_inputs_imply_irreducible
 #check mazur_numerical_layer_uses_only_proved
 
 #print axioms mazur_numerical_layer_uses_only_proved
