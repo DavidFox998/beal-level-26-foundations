@@ -133,7 +133,9 @@ if test -f Bridge_43735b3_Honest_Numerical.lean; then
   python3 <<'PY'
 import pathlib, re
 p = pathlib.Path("Bridge_43735b3_Honest_Numerical.lean").read_text()
-if not re.search(r"structure\s+HasNewformAtLevel32\b[^:]*:\s*Prop\s+where", p):
+if not re.search(
+        r"structure\s+HasNewformAtLevel32\b.*?\)\s*:\s*Prop\s+where",
+        p, re.S):
     raise SystemExit("FAIL: HasNewformAtLevel32 is not a local Prop evidence record")
 m = re.search(
     r"theorem\s+has_newform_at_level_32_of_assumptions\b(.*?)"
@@ -179,13 +181,22 @@ fi
 section "axiom surface"
 axiom_log="$(mktemp)"
 for file in "${present_numerical[@]}"; do
-  lake env lean "$file" >>"$axiom_log" 2>&1
+  if ! lake env lean "$file" >>"$axiom_log" 2>&1; then
+    cat "$axiom_log" >&2
+    fail "$file does not compile directly"
+  fi
 done
 if test -f Bridge_43735b3_Honest_Numerical.lean; then
-  lake env lean Bridge_43735b3_Honest_Numerical.lean >>"$axiom_log" 2>&1
+  if ! lake env lean Bridge_43735b3_Honest_Numerical.lean >>"$axiom_log" 2>&1; then
+    cat "$axiom_log" >&2
+    fail "Bridge_43735b3_Honest_Numerical.lean does not compile directly"
+  fi
 fi
 if test -f KolyvaginCurve/BlockerDoc.lean; then
-  lake env lean KolyvaginCurve/BlockerDoc.lean >>"$axiom_log" 2>&1
+  if ! lake env lean KolyvaginCurve/BlockerDoc.lean >>"$axiom_log" 2>&1; then
+    cat "$axiom_log" >&2
+    fail "KolyvaginCurve/BlockerDoc.lean does not compile directly"
+  fi
 fi
 python3 - "$axiom_log" <<'PY'
 import pathlib, re, sys
