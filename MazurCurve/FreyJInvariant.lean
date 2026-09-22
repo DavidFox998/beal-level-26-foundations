@@ -7,35 +7,53 @@ import MazurCurve.X0_13_Moduli
 import MazurIrreducibility13
 
 /-!
-# Frey `j`-invariant and `X₀(13)` image blockers
+# The Frey `j`-invariant and the Fricke-image boundary
 
-The displayed Frey `j`-invariant is already defined as `c₄³/Δ`. What is
-missing is the modular interpretation:
-
-* reducibility of `ρ̄_{E,13}` iff the Frey `j` lies in the Fricke image; and
-* a global exclusion of every rational Fricke parameter compatible with the
-  gap-3 equation and `29 ∣ B+3`.
-
-The local valuation split for a possible parameter does not prove the
-global exclusion.
+The rational functions are concrete.  The missing statements are written
+with all Frey and gap-3 hypotheses explicit; no local valuation alternative
+is promoted to the required global parameter exclusion.
 -/
 
 namespace BealMatveevBeal.MazurCurve
 
-/-- Existing exact rational `j = c₄³/Δ` for the displayed Frey model. -/
+open BealMatveevBeal.DarmonMerelFrey4413
+
+/-- Exact rational `j = c₄³/Δ` of the displayed Frey model. -/
 def frey_j (A B : ℕ) : ℚ :=
-  BealMatveevBeal.MazurIrreducibility13.frey_j A B
+  (frey_c4 A B : ℚ) ^ 3 / (freyDiscNat A B : ℚ)
 
-/-- Missing modular-curve theorem, re-exposed without adding an axiom. -/
+theorem frey_j_eq_existing (A B : ℕ) :
+    frey_j A B = BealMatveevBeal.MazurIrreducibility13.frey_j A B :=
+  rfl
+
+/-- Frey-specific reducibility boundary before the elliptic-curve
+representation has been constructed. -/
+def FreyReducibleMod13 (A B : ℕ) : Prop :=
+  A ^ 4 + B ^ 4 = (B + 3) ^ 13 ∧
+    ¬ BealMatveevBeal.MazurIrreducibility13.rho_Frey_mod13_irreducible
+
+/-- Exact modular-curve theorem required from a construction of the Frey
+mod-`13` representation and the `X₀(13)` moduli interpretation. -/
 def reducible_13_iff_j_in_image : Prop :=
-  BealMatveevBeal.Mazur_X0_13_RationalPoints.reducible_13_iff_j_in_image
+  ∀ A B : ℕ,
+    A ^ 4 + B ^ 4 = (B + 3) ^ 13 →
+      (FreyReducibleMod13 A B ↔
+        ∃ t : ℚ, t ≠ 0 ∧ frey_j A B = j_of_X0_13 t)
 
-/-- Missing Frey-specific global parameter exclusion, re-exposed without
-turning the local `29`-adic alternatives into a false global conclusion. -/
+/-- Frey-specific global parameter exclusion.  This is stronger than the
+proved local alternatives for `v₂₉(t)` and remains uninhabited. -/
 def no_t_gives_Frey_j_when_29_dvd_C : Prop :=
-  BealMatveevBeal.Mazur_X0_13_RationalPoints.no_t_gives_Frey_j_when_29_dvd_C
+  ∀ A B : ℕ, ∀ t : ℚ,
+    A ^ 4 + B ^ 4 = (B + 3) ^ 13 →
+    1 ≤ B →
+    ¬ 29 ∣ A →
+    ¬ 29 ∣ B →
+    29 ∣ B + 3 →
+    t ≠ 0 →
+      frey_j A B ≠ j_of_X0_13 t
 
 #check frey_j
+#check FreyReducibleMod13
 #check reducible_13_iff_j_in_image
 #check no_t_gives_Frey_j_when_29_dvd_C
 
