@@ -19,6 +19,14 @@ explicit.
   target.
 - `BlockerDoc.lean` packages the proved numerical layer and records the
   remaining mathematical boundary.
+- `X0_13FreyJBorel.lean` continues the boundary strictly forward: concrete
+  point-level `X₀(13)` data, the exact Fricke
+  `j=(t²+5t+13)(t⁴+7t³+20t²+19t+1)³/t`, the attached Frey
+  `j=c₄³/Δ`, Borel reducibility through the Fricke image, and only then the
+  Frey-specific absence of a rational cyclic `13`-isogeny.  Its proved
+  numerical surface also retains the preceding Tate `928/29=32` and
+  `32·29=928` identities, but never uses a numerical equality backwards to
+  construct moduli, torsion, a Galois representation, or a Borel theorem.
 
 ## Point-level moduli versus the modular curve
 
