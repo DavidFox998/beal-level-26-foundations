@@ -51,7 +51,7 @@ an inhabitant of the unguarded sketch.
 
 `#print axioms` is
 `[propext, Classical.choice, Quot.sound]` or fewer.
-No `sorryAx`.
+No proof placeholder axiom.
 -/
 
 /-- Same type as `BealForall.beal_forall_from_Is13Case_sketch`.

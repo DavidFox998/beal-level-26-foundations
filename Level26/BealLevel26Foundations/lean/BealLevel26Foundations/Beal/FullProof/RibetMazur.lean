@@ -1836,7 +1836,7 @@ theorem beal_from_ribet_real_fixed
 
 /-- Data witness: each exponent has a prime factor
 `ℓ ≥ 5`.  A Type, not a Prop, so the three primes
-can be used by `ell_of_q` without `sorryAx`. -/
+can be used directly by `ell_of_q`. -/
 structure FreyEllWitness (m n p : Nat) where
   ℓm : Nat
   ℓn : Nat

@@ -6,22 +6,28 @@ Authors: David Fox
 import BSD_MordellWeil
 
 /-!
-# Mordell–Weil finite-generation boundary
+# Mordell--Weil finite-generation boundary
 
-The pinned Mathlib revision supplies the group law on affine nonsingular
-points but not the Mordell–Weil finite-generation theorem for that group.
+The rational-point group used here is exactly the project's affine
+nonsingular point group.  The pinned Mathlib revision supplies its
+commutative group law but not the Mordell--Weil finite-generation theorem.
 -/
 
 namespace BealMatveevBeal.KolyvaginCurve
 
 open BealMatveevBeal.BSD_MordellWeil
 
-/-- A direct finite-generation statement for the project's
-`MordellWeilGroup E`. Uninhabited in the current environment. -/
+/-- The project's formal Mordell--Weil group. -/
+abbrev ProjectMordellWeilGroup {K : Type*} [Field K]
+    (E : WeierstrassCurve K) :=
+  MordellWeilGroup E
+
+/-- Direct finite generation by a finite set of rational points. -/
 def MordellWeil_finitely_generated {K : Type*} [Field K]
     (E : WeierstrassCurve K) : Prop :=
-  ∃ generators : Finset (MordellWeilGroup E),
-    AddSubgroup.closure (↑generators : Set (MordellWeilGroup E)) = ⊤
+  ∃ generators : Finset (ProjectMordellWeilGroup E),
+    AddSubgroup.closure
+      (↑generators : Set (ProjectMordellWeilGroup E)) = ⊤
 
 def MordellWeil_26a1_finitely_generated : Prop :=
   MordellWeil_finitely_generated curve26a1_Q
@@ -29,6 +35,7 @@ def MordellWeil_26a1_finitely_generated : Prop :=
 def MordellWeil_26b1_finitely_generated : Prop :=
   MordellWeil_finitely_generated curve26b1_Q
 
+#check ProjectMordellWeilGroup
 #check MordellWeil_finitely_generated
 #check MordellWeil_26a1_finitely_generated
 #check MordellWeil_26b1_finitely_generated
