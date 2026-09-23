@@ -32,3 +32,24 @@ Removing its assumptions requires Wiles/BCDT modularity, a geometric
 mod-`13` Galois representation with absolute irreducibility, Tate/Néron and
 cyclotomic-inertia theory, mod-`13` unramifiedness, genuine Ribet lowering,
 identification with `32a1`, and complete Kraus bad-reduction elimination.
+
+## Forward closure
+
+`BridgeForward.lean` packages the three assumptions without changing their
+formal status. `Conditional32BridgeData` requires the exact Mazur
+Borel/Fricke and global-exclusion boundaries, the full Tate
+uniformization/Néron/`q^(1/13)`-inertia boundary, and the full residual
+`32a1`/Kraus boundary. Because the newer concrete namespaces and the older
+conditional bridge use distinct proposition names, it also requires three
+explicit typed conversion boundaries; none is silently identified or
+inferred from numerics. The projections
+`frey_no_rational_13_isogeny_forward`,
+`Frey_conductor_29_is_Neron_forward`, and `Ribet_928_to_32_forward` produce
+the old bridge's three hypotheses in that order.
+
+`has_newform_at_level_32_of_assumptions_forward` then applies the existing
+three-assumption theorem and returns `HasNewformAtLevel32Data`.
+`conditional_32_bridge_forward` records both the explicit inputs and the
+result. The discriminant, valuation, level arithmetic, group orders,
+`a₂₉ = -10`, `L/Ω = 1/3, 1/7`, `Sel₂_card = 1`, and `2^dim = 1` remain a
+separate numerical surface and do not construct any of those inputs.

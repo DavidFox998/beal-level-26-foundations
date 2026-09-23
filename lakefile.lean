@@ -132,4 +132,6 @@ lean_lib «BealMatveevBealV25B0Search» where
     .one `KolyvaginCurve.TwoDescent,
     .one `KolyvaginCurve.KolyvaginL_OmegaSel2Fintype,
     .one `KolyvaginCurve.BlockerDoc,
-    .one `Conditional32Newform.Bridge, .one `RequiresTateMazurRibetFor32.Doc]
+    .one `Conditional32Newform.Bridge,
+    .one `Conditional32Newform.BridgeForward,
+    .one `RequiresTateMazurRibetFor32.Doc]
