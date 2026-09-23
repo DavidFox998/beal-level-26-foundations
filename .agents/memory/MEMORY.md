@@ -1,0 +1,1 @@
+- [Lean cache validator rebuilds](lean-cache-validator.md) — cache retrieval can invalidate local Mathlib artifacts; finish literal scans before the canonical full run.
