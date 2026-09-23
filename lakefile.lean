@@ -116,7 +116,7 @@ lean_lib «BealMatveevBealV25B0Search» where
     .one `Kolyvagin_MW_Rank0_26a1_26b1, .one `Kolyvagin_MW_Rank0_Numerical,
     .one `TateCurve.TateParameter, .one `TateCurve.TateUniformization,
     .one `TateCurve.NeronConductor, .one `TateCurve.InertiaRepresentation,
-    .one `TateCurve.BlockerDoc,
+    .one `TateCurve.BlockerDoc, .one `TateCurve.ClosureContinued,
     .one `MazurCurve.X0_13_Moduli, .one `MazurCurve.FreyJInvariant,
     .one `MazurCurve.GaloisRepresentation, .one `MazurCurve.BlockerDoc,
     .one `RibetCurve.Modularity, .one `RibetCurve.GaloisRep,

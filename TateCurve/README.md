@@ -27,6 +27,11 @@ order:
   separate global residual-level target.
 - `BlockerDoc.lean` assembles the proved numerical surface and records the
   exact remaining assumptions.
+- `ClosureContinued.lean` consumes the complete proved numerical surface and
+  records the next forward boundary: full-series inversion, the Tate
+  elliptic curve on `ℚ_29ˣ/q^ℤ`, exact `j`-equalities, `I_(26k)`,
+  Néron `32`/`928`, the cyclotomic `q^(1/13)` inertia formula, and mod-`13`
+  unramifiedness.  It does not inhabit those missing constructions.
 
 ## Honest boundary
 
