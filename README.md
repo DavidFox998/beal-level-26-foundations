@@ -1,5 +1,52 @@
 # foundations-level-26 — Beal Level 26 Matveev-Baker Foundations
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22379293.svg)](https://doi.org/10.5281/zenodo.22379293)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22922473.svg)](https://doi.org/10.5281/zenodo.22922473)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22912430.svg)](https://doi.org/10.5281/zenodo.22912430)
+
+## End-of-proof interface and v25 forward retrofit
+
+The immutable end-of-proof release is
+[`v30.1.7-beal-final-43735b3`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v30.1.7-beal-final-43735b3)
+at commit `995b9c4810869c1ce6531b32080e668c1f5ff233`, tree
+`bce7290beae71b1213de18b52c861050164eb1b1`, annotated tag object
+`4254aac7923b1ac48f33a5359c90c4e1bd242bf3`, GitHub release
+`394412409`, and version DOI
+[10.5281/zenodo.22912430](https://doi.org/10.5281/zenodo.22912430).
+`BealFinal/Main.lean` packages the six-stage
+Tate–Mazur–Ribet–Kolyvagin–Conditional-32–Requires ledger and keeps the
+general Beal common-prime conclusion as explicit `BealFinalData` input.
+
+The post-final retrofit
+[`v25.0.1-forward-43735b3`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v25.0.1-forward-43735b3)
+is commit `385ff85c78c351de83b3fd625a208c9dea003647`, tree
+`4be5f2f8fc9ee3dd31893a6c99e6b22728e2ca6b`, annotated tag object
+`626bbf615e9365a8af4b9f1b290259adee2936fd`, GitHub release `394869393`,
+and version DOI
+[10.5281/zenodo.22922473](https://doi.org/10.5281/zenodo.22922473).
+`BealMatveevBealV25B0Search.Forward` exposes `MatveevBoundData`,
+`Level26SearchData`, `MatveevLevel26ForwardData`, `B0_search_forward`,
+`beal_matveev_level26_forward`, and `v25_numerical_surface_forward`.
+
+The forward numerical surface records
+`Δ = 16A⁸B⁸(A⁴+B⁴)²`, `v₂₉(Δ) = 26v₂₉(B+3)`,
+`13 ∣ v₂₉(Δ)`, `928/29 = 32`, `32*29 = 928`,
+`|SL₂(𝔽₁₃)| = 2184`, `48 < 2184`, `a₂₉ = -10`,
+`L/Ω = 1/3, 1/7`, and `Sel₂_card = 1`. These numerals do not construct
+the remaining mathematical boundaries. The `B < 1000` elimination is proved;
+the exhaustive `B ≤ 10⁶` proposition and general Beal common-prime theorem
+remain explicit inputs.
+
+The clean combined build used 5,215 jobs:
+`BealMatveevBealV25B0Search` at `5148/5215`,
+`BealMatveevBealV25B0Search.Forward` at `5213/5215`, and
+`BealFinal.Main` at `5214/5215`. The three retrofit projections report
+exactly `[propext, Classical.choice, Quot.sound]`. Lean is `v4.12.0`,
+Mathlib is `809c3fb3b5c8f5d7dace56e200b426187516535a`, and the manifest
+SHA-256 is
+`c7dbd5785b52afccc90ba404fef4a8f3ff12b549235698677a495fdc57ee7fc6`.
+No `lake update` or vendoring was used.
+
 ## Integrated Tate–Mazur–Ribet–Kolyvagin methodology
 
 Branch `integrated-43735b3-full-tate-mazur-ribet-kolyvagin-conditional-32`
