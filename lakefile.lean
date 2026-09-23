@@ -137,4 +137,7 @@ lean_lib «BealMatveevBealV25B0Search» where
     .one `RequiresTateMazurRibetFor32.Doc,
     .one `RequiresTateMazurRibetFor32.ForwardDoc,
     .one `BealFinal.Main,
-    .one `BealMatveevBealV25B0Search.Forward]
+    .one `BealMatveevBealV25B0Search.Forward,
+    .one `BealMatveevBealV25B0Search.MaskSound,
+    .one `BealMatveevBealV25B0Search.Chunked10e6,
+    .one `BealMatveevBealV25B0Search.Full10e6]

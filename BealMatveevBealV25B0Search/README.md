@@ -52,3 +52,10 @@ computational evidence**, not a Lean kernel proof. In particular, a hash of
 these checkpoints cannot inhabit `gap3_B_le_B0_no_solution`.
 `Full10e6KernelCert` remains an explicit field. No unconditional Beal result
 or v25.0.2 inhabited-search release is claimed.
+
+`MaskSound.lean` checks ten modular masks using ordinary kernel reduction
+(`by decide`) and proves that any actual solution passes every mask.
+`Chunked10e6.lean` connects a checked 500-value interval to the no-solution
+statement and checks one sample interval. The 2,000 intervals covering
+`B < 10⁶` have **not** all been checked and combined. These modules therefore
+do not inhabit `Full10e6KernelCert`; the external digest is not a proof input.
