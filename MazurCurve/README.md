@@ -45,3 +45,18 @@ Finally, `48 < 2184` compares two proved numerals; it does not identify either
 number with the Frey image.  The local `29`-adic alternatives for a Fricke
 parameter also do not exclude every rational parameter.  The global
 gap-3-compatible exclusion remains a separate, uninhabited proposition.
+
+## Role in the integrated branch
+
+The integrated surface retains the exact finite calculation
+`|SL₂(𝔽₁₃)| = 2184` and the inequality `48 < 2184`.  These facts are useful
+checks on proposed image bounds, but they do not define the Frey curve's
+geometric Galois representation and do not prove that its image has either
+cardinality.  The bridge therefore takes the Frey-specific Mazur conclusion
+`frey_no_rational_13_isogeny` as an explicit hypothesis.
+
+Removing that hypothesis requires a genuine geometric `13`-torsion
+representation, absolute irreducibility, the subgroup-scheme interpretation
+of a rational `13`-isogeny, and the complete `X₀(13)`/Fricke exclusion for the
+displayed Frey family.  Point-level torsion and genus/cusp numerals are not
+substitutes for those constructions.

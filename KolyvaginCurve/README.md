@@ -39,3 +39,18 @@ These facts do not by themselves construct an elliptic-curve `L`-function,
 a real period, a formal Selmer group or exact sequence, a Mordell--Weil
 finite-generation proof, a Kato/Kolyvagin theorem, or a `Fintype` instance
 for either rational-point group.
+
+## Role in the integrated branch
+
+The integrated documentation keeps this line separate from level lowering.
+The displayed normalized values `L/Ω = 1/3` and `1/7` are rational
+nonvanishing calculations, and the displayed `Sel₂_card = 1` is numerical
+data.  They do not supply Wiles/BCDT modularity, Mazur irreducibility,
+Tate/Néron local theory, or Ribet lowering.
+
+Rank zero is also not encoded by `Subsingleton E(ℚ)`: the formal surface
+proves the point groups have nonzero torsion and hence are not subsingletons.
+The intended algebraic statement is finiteness,
+`Nonempty (Fintype E(ℚ))`.  Producing it still requires curve-attached
+`L`-functions and periods, Kato–Kolyvagin input, Mordell–Weil finite
+generation, a constructed Selmer exact sequence, and exact finite witnesses.

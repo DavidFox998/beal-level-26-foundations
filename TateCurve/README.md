@@ -46,3 +46,18 @@ The local statement at `29` also cannot remove all odd factors of
 `residualOddEstimate A B`. That final divisibility requires global
 level-lowering input at every relevant prime or a separate no-solution
 argument.
+
+## Role in the integrated branch
+
+This library supplies the local side of the conditional level-`32` chain.
+Its proved numerical input is the Frey discriminant
+`Δ = 16 A⁸ B⁸ (A⁴+B⁴)²`, together with
+`v₂₉(Δ) = 26 v₂₉(B+3)` and `13 ∣ v₂₉(Δ)` under the stated gap-`3`
+hypotheses.  `Conditional32Newform.Bridge` does not infer a Néron conductor
+from these equalities: it receives `Frey_conductor_29_is_Neron` explicitly.
+
+A complete local contribution still needs the curve-attached Tate parameter,
+the full convergent `j(q)` theory, Tate's algorithm, the Néron model and
+conductor, the geometric mod-`13` representation, its cyclotomic inertia
+formula, and the required unramifiedness statements.  Only after those terms
+exist can the Ribet layer consume this module unconditionally.

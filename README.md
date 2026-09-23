@@ -1,5 +1,48 @@
 # foundations-level-26 — Beal Level 26 Matveev-Baker Foundations
 
+## Integrated Tate–Mazur–Ribet–Kolyvagin methodology
+
+Branch `integrated-43735b3-full-tate-mazur-ribet-kolyvagin-conditional-32`
+combines the four full formal surfaces and the conditional level-`32` bridge
+over baseline `43735b3`.  The dependency order is mathematical rather than
+promotional:
+
+1. the Frey model proves
+   `Δ = 16 A⁸ B⁸ (A⁴ + B⁴)²`;
+2. the local numerical layer proves
+   `v₂₉(Δ) = 26 v₂₉(B+3)` and `13 ∣ v₂₉(Δ)`;
+3. the displayed conductor arithmetic proves `928 / 29 = 32` and
+   `32 * 29 = 928`;
+4. the Mazur surface proves the independent numerals
+   `|SL₂(𝔽₁₃)| = 2184` and `48 < 2184`;
+5. the Kolyvagin surface preserves the displayed normalized values
+   `L/Ω = 1/3` and `1/7`, the displayed `Sel₂_card = 1`, and the distinction
+   between `¬ Subsingleton E(ℚ)` and `Nonempty (Fintype E(ℚ))`; and
+6. `Conditional32Newform.Bridge` combines the proved Frey numerics with
+   explicit Mazur, Tate, and Ribet hypotheses.  Its conclusion is evidence
+   for the conditional chain, not a constructed Mathlib newform.
+
+The modules interact as follows.  `TateCurve` isolates the local
+uniformization, Néron-conductor, and inertia obligations at `29`.
+`MazurCurve` isolates the geometric `X₀(13)` and absolute-irreducibility
+obligations.  `RibetCurve` consumes modularity, irreducibility, local
+conductor, and unramifiedness data to state genuine lowering from `928` to
+`32`, followed by identification and elimination.  `KolyvaginCurve` is a
+separate analytic and Mordell–Weil line: it does not replace any input to
+level lowering.  `RequiresTateMazurRibetFor32.Doc` records this separation and
+the exact remaining foundations.
+
+The formal boundary remains substantial and explicit: Wiles/BCDT modularity
+for the displayed Frey curve; its geometric mod-`13` Galois representation
+and absolute irreducibility; Tate uniformization, Tate's algorithm, a Néron
+model, cyclotomic inertia, and mod-`13` unramifiedness at the required primes;
+genuine Ribet level lowering; identification of the resulting level-`32`
+newform with `32a1`; and a complete Kraus treatment of every bad-reduction
+class.  On the Kolyvagin side, formal elliptic-curve `L`-functions, periods,
+Kato–Kolyvagin implications, Mordell–Weil finite generation, Selmer exact
+sequences, and concrete `Fintype` witnesses remain unavailable at this pin.
+No numerical display is presented as a substitute for these constructions.
+
 ## Working branch `tate-v29` (from `phase-darmon-merel-4413` `43735b3`)
 
 Tate display at `29` for Frey `A⁴+B⁴=C¹³`. Inhabited: Mathlib `Δ = 16 A⁸ B⁸ (A⁴+B⁴)²`, `v₂₉(Δ) = 26 v₂₉(C)` when `29 ∤ AB`, residual `32`/`928`, numeral `928/29 = 32`, `v₂₉(Δ) ≥ 0`. Still `def Prop`: Tate’s algorithm, Néron `N_E`, `Frey_conductor_29_is_Neron`. See [`docs/tate-v29/README.md`](docs/tate-v29/README.md). Do **not** merge to `phase-darmon-merel-4413` yet. beal-conjecture v26 `5e2906b` / badge `5806dad` / DOI `10.5281/zenodo.22832505` stays untouched.

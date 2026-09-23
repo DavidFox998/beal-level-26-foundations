@@ -43,3 +43,20 @@ through the two Mazur inputs, Tate's algorithm and the Néron conductor,
 cyclotomic inertia and unramifiedness at `29`, Ribet's theorem, identification
 with `32a1`, and a complete Kraus elimination including the classes where
 `29` divides `A`, `B`, or `B+3`.
+
+## Role in the integrated branch
+
+This is the global transition layer.  The verified arithmetic
+`928 / 29 = 32` and `32 * 29 = 928` identifies the intended numerical
+transition, while the actual transition remains the explicit proposition
+`Ribet_928_to_32`.  `Conditional32Newform.Bridge` consumes that proposition
+together with the Mazur and Tate boundaries; it does not silently manufacture
+modularity or eigenform data.
+
+An unconditional replacement must attach the geometric residual
+representation to the modular Frey curve, prove absolute irreducibility and
+the local conductor/unramifiedness hypotheses, invoke genuine Ribet lowering,
+construct the level-`32` residual eigenform, identify the unique relevant
+newform with `32a1`, and complete Kraus elimination across every
+bad-reduction class.  The numerical quotient `928/29` proves none of these
+steps by itself.
