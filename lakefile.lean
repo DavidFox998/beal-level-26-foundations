@@ -136,4 +136,5 @@ lean_lib «BealMatveevBealV25B0Search» where
     .one `Conditional32Newform.BridgeForward,
     .one `RequiresTateMazurRibetFor32.Doc,
     .one `RequiresTateMazurRibetFor32.ForwardDoc,
-    .one `BealFinal.Main]
+    .one `BealFinal.Main,
+    .one `BealMatveevBealV25B0Search.Forward]
