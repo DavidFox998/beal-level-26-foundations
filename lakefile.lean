@@ -124,6 +124,7 @@ lean_lib «BealMatveevBealV25B0Search» where
     .one `RibetCurve.Modularity, .one `RibetCurve.GaloisRep,
     .one `RibetCurve.Conductor, .one `RibetCurve.LevelLowering,
     .one `RibetCurve.Newform32, .one `RibetCurve.KrausElimination,
+    .one `RibetCurve.Ribet32a1KrausA29,
     .one `RibetCurve.BlockerDoc,
     .one `KolyvaginCurve.LFunction, .one `KolyvaginCurve.Periods,
     .one `KolyvaginCurve.KatoKolyvagin, .one `KolyvaginCurve.FiniteGeneration,

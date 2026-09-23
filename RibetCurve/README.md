@@ -20,6 +20,13 @@ theorems unavailable in the pinned Lean 4.12 / Mathlib revision.
   complete trace-exclusion target.
 - `KrausElimination.lean` reuses the exact finite-field trace and coefficient
   table and exposes the proved good-reduction mismatch at `29`.
+- `Ribet32a1KrausA29.lean` continues the construction strictly forward:
+  Wiles/BCDT modularity, the attached geometric mod-`13` representation and
+  concrete irreducibility, Tate inertia and local conductor data, the global
+  Néron residual level, identification of the produced level-`32` eigenform
+  with `32a1`, the Kraus mismatch `a₂₉(32a1) = -10`, and finally complete
+  bad-reduction residue elimination. Its numerical surface is independent
+  and is never used backwards to construct any of those inputs.
 - `BlockerDoc.lean` consumes the proved numerical surface and records the
   remaining assumptions in construction order.
 
