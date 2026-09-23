@@ -113,7 +113,7 @@ lean_lib «BealMatveevBealV25B0Search» where
     .one `Tate_Frey_Conductor_29, .one `Tate_Frey_Conductor_29_Numerical,
     .one `Mazur_X0_13_No_Isogeny, .one `Mazur_X0_13_Numerical,
     .one `Ribet_Level_Lowering_29_to_32, .one `Ribet_928_to_32_Numerical,
-    .one `Kolyvagin_MW_Rank0_26a1_26b1,
+    .one `Kolyvagin_MW_Rank0_26a1_26b1, .one `Kolyvagin_MW_Rank0_Numerical,
     .one `TateCurve.TateParameter, .one `TateCurve.TateUniformization,
     .one `TateCurve.NeronConductor, .one `TateCurve.InertiaRepresentation,
     .one `TateCurve.BlockerDoc,
@@ -122,4 +122,8 @@ lean_lib «BealMatveevBealV25B0Search» where
     .one `RibetCurve.Modularity, .one `RibetCurve.GaloisRep,
     .one `RibetCurve.Conductor, .one `RibetCurve.LevelLowering,
     .one `RibetCurve.Newform32, .one `RibetCurve.KrausElimination,
-    .one `RibetCurve.BlockerDoc]
+    .one `RibetCurve.BlockerDoc,
+    .one `KolyvaginCurve.LFunction, .one `KolyvaginCurve.Periods,
+    .one `KolyvaginCurve.KatoKolyvagin, .one `KolyvaginCurve.FiniteGeneration,
+    .one `KolyvaginCurve.SelmerExactSequence, .one `KolyvaginCurve.MordellWeilFintype,
+    .one `KolyvaginCurve.TwoDescent, .one `KolyvaginCurve.BlockerDoc]
