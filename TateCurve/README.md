@@ -32,6 +32,11 @@ order:
   elliptic curve on `ℚ_29ˣ/q^ℤ`, exact `j`-equalities, `I_(26k)`,
   Néron `32`/`928`, the cyclotomic `q^(1/13)` inertia formula, and mod-`13`
   unramifiedness.  It does not inhabit those missing constructions.
+- `Neron32_928InertiaQ13.lean` separates the next forward projections:
+  curve-attached `q` and its exact valuation, Tate-algorithm `I_(26k)`,
+  constructed Néron `32`/`928` identification, cyclotomic action through
+  `q^(1/13)`, and mod-`13` unramifiedness.  Its numerical surface is proved,
+  while the geometric construction boundary remains explicitly uninhabited.
 
 ## Honest boundary
 
