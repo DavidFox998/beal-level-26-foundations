@@ -24,6 +24,14 @@ two-descent proof of Mordell--Weil rank zero.
   `0 → E(ℚ)/2E(ℚ) → Sel₂(E) → Sha(E)[2] → 0`.
 - `TwoDescent.lean` requires an explicit identification between the
   displayed cardinality and the cardinality of a constructed Selmer group.
+- `KolyvaginL_OmegaSel2Fintype.lean` continues strictly forward from
+  curve-attached `L`-functions and periods through Kato--Kolyvagin finite
+  generation, constructed Selmer exact sequences and cardinality
+  identifications, the normalized values `L/Ω = 1/3` and `1/7`,
+  `Sel₂_card = 1`, `2^dim = 1`, and actual `Fintype` witnesses.  It keeps
+  `Nonempty (Fintype E(ℚ))` distinct from the proved
+  `¬Subsingleton E(ℚ)` boundary and never constructs analytic or algebraic
+  data from the numerical displays.
 - `BlockerDoc.lean` consumes the numerical surface and records the remaining
   construction order.
 
