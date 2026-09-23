@@ -1,0 +1,1 @@
+- [Nested Lake caches](nested-lake-caches.md) — path-required Lean packages keep their own cache and build artifacts; the root cache does not satisfy vendor-first imports.
