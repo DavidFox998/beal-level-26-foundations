@@ -11,6 +11,9 @@ cd "$ROOT"
 fail() { echo "verify-matveev-beal: $*" >&2; exit 1; }
 
 test -f lean-toolchain
+test -f scripts/check_gap3_full10e6.py
+test -f certs/gap3_full10e6_checkpoints.json
+python3 scripts/check_gap3_full10e6.py --verify certs/gap3_full10e6_checkpoints.json
 test -f lakefile.lean
 test -f lake-manifest.json
 test -f CITATION.cff

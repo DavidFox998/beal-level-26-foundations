@@ -38,3 +38,17 @@ lake build BealMatveevBealV25B0Search.Forward
 ```
 
 Do not run `lake update`. This module does not vendor another repository.
+
+## Exact external scan through one million
+
+[`Full10e6.lean`](Full10e6.lean) records the explicit typed interface.
+[`check_gap3_full10e6.py`](../scripts/check_gap3_full10e6.py) checks every
+integer `0 ≤ B ≤ 1,000,000` using exact fourth roots and stores 10,000-value
+SHA-256 checkpoints in
+[`gap3_full10e6_checkpoints.json`](../certs/gap3_full10e6_checkpoints.json).
+The verifier replays the range with an independent binary-search fourth root.
+There are no candidate solutions in this range. This is **external
+computational evidence**, not a Lean kernel proof. In particular, a hash of
+these checkpoints cannot inhabit `gap3_B_le_B0_no_solution`.
+`Full10e6KernelCert` remains an explicit field. No unconditional Beal result
+or v25.0.2 inhabited-search release is claimed.
