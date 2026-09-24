@@ -201,6 +201,15 @@ theorem unit_disc_iff_v2_eq_12 (x y z p q r : ℕ)
     q2_val_pow _ (inv_ne_zero hu) 12, q2_val_inv _ hu] at hval
   constructor <;> intro h <;> omega
 
+/-- The displayed Frey model itself has discriminant valuation twelve
+exactly at the four-valuation threshold. -/
+theorem frey_disc_v2_twelve_iff_threshold (x y z p q r : ℕ)
+    (hx : 0 < x ^ p) (hy : 0 < y ^ q) :
+    Padic.valuation ((freyZ2 x y z p q r).Δ : ℚ_[2]) = 12 ↔
+      padicValNat 2 (x ^ p * y ^ q * (x ^ p + y ^ q)) = 4 := by
+  rw [freyZ2_delta_v2 x y z p q r hx hy]
+  constructor <;> intro h <;> omega
+
 /-- For *any* positive powered inputs, among integral scale-2 changes,
 unit discriminant is equivalent to valuation exactly four. This does
 not assert existence of a scale-2 change in any parity class. -/
@@ -212,15 +221,8 @@ theorem high_parity_exactly_four (x y z p q r : ℕ)
     (hscale : Padic.valuation (C.u : ℚ_[2]) = 1) :
     Padic.valuation (M.Δ : ℚ_[2]) = 0 ↔
       padicValNat 2 (x ^ p * y ^ q * (x ^ p + y ^ q)) = 4 := by
-  have hiff := unit_disc_iff_v2_eq_12 x y z p q r hx hy M C hmodel hscale
-  rw [freyZ2_delta_v2 x y z p q r hx hy] at hiff
-  constructor
-  · intro h
-    have hv := hiff.mp h
-    omega
-  · intro h
-    apply hiff.mpr
-    omega
+  exact (unit_disc_iff_v2_eq_12 x y z p q r hx hy M C hmodel hscale).trans
+    (frey_disc_v2_twelve_iff_threshold x y z p q r hx hy)
 
 /-- The three mutually exclusive parity shapes of primitive inputs.
 This is only parity bookkeeping, not a minimal-model classification. -/
@@ -347,6 +349,21 @@ theorem threshold_witnesses_exactly_four :
   · change padicValNat 2 (16 * 57) = 4
     exact v2_sixteen_times_odd 57 (by decide)
 
+/-- Each witness's *raw* discriminant has valuation twelve; the
+separate integral changes above give 225, 289, and 3249 respectively. -/
+theorem threshold_witnesses_raw_delta_v2 :
+    Padic.valuation ((freyZ2 1 15 0 1 1 0).Δ : ℚ_[2]) = 12 ∧
+    Padic.valuation ((freyZ2 16 1 0 1 1 0).Δ : ℚ_[2]) = 12 ∧
+    Padic.valuation ((freyZ2 3 16 0 1 1 0).Δ : ℚ_[2]) = 12 := by
+  constructor
+  · exact (frey_disc_v2_twelve_iff_threshold 1 15 0 1 1 0
+      (by norm_num) (by norm_num)).mpr threshold_witnesses_exactly_four.1
+  constructor
+  · exact (frey_disc_v2_twelve_iff_threshold 16 1 0 1 1 0
+      (by norm_num) (by norm_num)).mpr threshold_witnesses_exactly_four.2.1
+  · exact (frey_disc_v2_twelve_iff_threshold 3 16 0 1 1 0
+      (by norm_num) (by norm_num)).mpr threshold_witnesses_exactly_four.2.2
+
 private theorem threshold_low_1 :
     Padic.valuation ((highZ2 4 1).Δ : ℚ_[2]) < 12 := by
   rw [threshold_deltas.1]
@@ -428,8 +445,10 @@ Nor do they provide a Tate reduction type. -/
 #print axioms high_required_for_positive_scale
 #print axioms unit_delta_after_scale_two_requires_threshold
 #print axioms unit_disc_iff_v2_eq_12
+#print axioms frey_disc_v2_twelve_iff_threshold
 #print axioms high_parity_exactly_four
 #print axioms threshold_witnesses_exactly_four
+#print axioms threshold_witnesses_raw_delta_v2
 #print axioms high_minimal_odd_odd
 #print axioms high_minimal_even_odd
 #print axioms high_minimal_odd_even

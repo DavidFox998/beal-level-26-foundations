@@ -155,6 +155,49 @@ theorem frey_c4_v2_of_base_coprime (x y z p q r : ℕ)
   exact (Nat.coprime_pow_right_iff hq (x ^ p) y).mpr
     ((Nat.coprime_pow_left_iff hp x y).mpr hcop)
 
+/-- The factor multiplying 16 in c₄ is coprime to the three factors
+of the raw discriminant when the two powered inputs are coprime.
+This arithmetic fact alone does not classify reduction at 2. -/
+theorem coprime_c4_factor_uvw (U V : ℕ) (hcop : Nat.Coprime U V) :
+    Nat.Coprime (U ^ 2 + U * V + V ^ 2) (U * V * (U + V)) := by
+  apply Nat.coprime_of_dvd
+  intro d hp hdS hdProd
+  have hbad (hdU : d ∣ U) (hdV : d ∣ V) : False := by
+    have hdg : d ∣ Nat.gcd U V := Nat.dvd_gcd hdU hdV
+    have hg : Nat.gcd U V = 1 := hcop
+    rw [hg] at hdg
+    exact hp.ne_one (Nat.dvd_one.mp hdg)
+  have hV_of_U (hdU : d ∣ U) : d ∣ V := by
+    have hdU2 : d ∣ U ^ 2 := by simpa [pow_two] using dvd_mul_of_dvd_left hdU U
+    have hdUV : d ∣ U * V := dvd_mul_of_dvd_left hdU V
+    have hdS' : d ∣ U ^ 2 + U * V := dvd_add hdU2 hdUV
+    have hdV2 : d ∣ V ^ 2 := by
+      have h := Nat.dvd_sub' hdS hdS'
+      simpa only [Nat.add_sub_cancel_left] using h
+    exact hp.dvd_of_dvd_pow hdV2
+  have hU_of_V (hdV : d ∣ V) : d ∣ U := by
+    have hdV2 : d ∣ V ^ 2 := by simpa [pow_two] using dvd_mul_of_dvd_left hdV V
+    have hdUV : d ∣ U * V := dvd_mul_of_dvd_right hdV U
+    have hdS' : d ∣ U * V + V ^ 2 := dvd_add hdUV hdV2
+    have hdU2 : d ∣ U ^ 2 := by
+      have h := Nat.dvd_sub' hdS hdS'
+      simpa only [Nat.add_assoc, Nat.add_sub_cancel_right] using h
+    exact hp.dvd_of_dvd_pow hdU2
+  rcases hp.dvd_mul.mp hdProd with hdUV | hdW
+  · rcases hp.dvd_mul.mp hdUV with hdU | hdV
+    · exact hbad hdU (hV_of_U hdU)
+    · exact hbad (hU_of_V hdV) hdV
+  · have hdW2 : d ∣ (U + V) ^ 2 := by
+      simpa [pow_two] using dvd_mul_of_dvd_left hdW (U + V)
+    have hid : (U + V) ^ 2 = (U ^ 2 + U * V + V ^ 2) + U * V := by ring
+    have hdSum : d ∣ (U ^ 2 + U * V + V ^ 2) + U * V := hid ▸ hdW2
+    have hdUV : d ∣ U * V := by
+      have h := Nat.dvd_sub' hdSum hdS
+      simpa only [Nat.add_sub_cancel_left] using h
+    rcases hp.dvd_mul.mp hdUV with hdU | hdV
+    · exact hbad hdU (hV_of_U hdU)
+    · exact hbad (hU_of_V hdV) hdV
+
 /-- The displayed model has singular reduction modulo 2;
 this alone cannot determine a Néron conductor. -/
 theorem frey_discriminant_even (x y z p q r : ℕ) :
@@ -179,6 +222,7 @@ N=2^?*rad(x*y*z), can be claimed. -/
 #print axioms threshold_f2_zero_conditional
 #print axioms frey_c4_v2_of_coprime
 #print axioms frey_c4_v2_of_base_coprime
+#print axioms coprime_c4_factor_uvw
 #print axioms frey_discriminant_even
 
 end Beal.General

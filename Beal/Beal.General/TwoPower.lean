@@ -83,10 +83,14 @@ def RequiredNoPrimitive44n : Prop :=
   ∀ (A B C n : ℕ), 0 < A → 0 < B → 0 < C → 3 ≤ n →
     Nat.Coprime A B → A ^ 4 + B ^ 4 = C ^ n → False
 
+/-- The named Darmon–Merel-style obligation, not a supplied theorem.
+An alias keeps the existing `(4,4,n)` statement as the only premise. -/
+def DarmonMerel44n : Prop := RequiredNoPrimitive44n
+
 /-- Exactly the conditional `(4,4,n)` elimination; its Darmon–Merel-
 style hypothesis is not proved by a bounded check. -/
 theorem two_power_conditional
-    (h44 : RequiredNoPrimitive44n)
+    (h44 : DarmonMerel44n)
     (A B C n : ℕ) (hA : 0 < A) (hB : 0 < B) (hC : 0 < C)
     (hn : 3 ≤ n) (hcop : Nat.Coprime A B)
     (hsol : A ^ 4 + B ^ 4 = C ^ n) : False :=
@@ -95,7 +99,7 @@ theorem two_power_conditional
 /-- The `p=4, q=4` branch explicitly requires the unsupplied
 `(4,4,n)` obligation; this is not a proof for arbitrary `q`. -/
 theorem two_power_p4_needs_darmon_merel
-    (h44 : RequiredNoPrimitive44n)
+    (h44 : DarmonMerel44n)
     (x y z n : ℕ) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z)
     (hn : 3 ≤ n) (hcop : Nat.Coprime x y)
     (hsol : x ^ 4 + y ^ 4 = z ^ n) : False :=
@@ -105,7 +109,7 @@ theorem two_power_p4_needs_darmon_merel
 corresponding pure-two-power subcase reduces to it. The hypothesis is
 not supplied here; this proves no unconditional elimination. -/
 theorem two_power_needs_darmon_merel
-    (h44 : RequiredNoPrimitive44n)
+    (h44 : DarmonMerel44n)
     (x y z k n : ℕ) (hk : 2 ≤ k)
     (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) (hn : 3 ≤ n)
     (hcop : Nat.Coprime x y)
@@ -131,6 +135,7 @@ signatures, such as arbitrary q in x^(2^k)+y^q=z^r. The bounded
 
 #print axioms two_power_conditional
 #print axioms two_power_p4_needs_darmon_merel
+#check DarmonMerel44n
 #print axioms beal_exponent_split
 #print axioms odd_prime_exponent_rewrite
 #print axioms branch_separate

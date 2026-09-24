@@ -76,7 +76,7 @@ def TODO_KolyvaginGeneral
 unproved general two-power requirement. The `(4,4,n)` obligation is
 included explicitly, and no inhabitant is constructed here. -/
 def TODO_TwoPower : Prop :=
-  RequiredNoPrimitive44n ∧
+  DarmonMerel44n ∧
     ∀ (x y z k q r : ℕ), 0 < x → 0 < y → 0 < z →
       2 ≤ k → 3 ≤ q → 3 ≤ r → Nat.Coprime x y →
       x ^ (2 ^ k) + y ^ q = z ^ r → False
@@ -92,6 +92,7 @@ asserted or inferred from these declarations. -/
 #check frey_c4_v2_of_coprime
 #check branch_separate
 #check RequiredNoPrimitive44n
+#check DarmonMerel44n
 #check two_power_needs_darmon_merel
 #check TODO_TateGeneral
 #check TODO_MazurX0_l
