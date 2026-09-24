@@ -152,13 +152,183 @@ theorem high_required_for_positive_scale (x y z p q r : ℕ)
   have hnonpositive := frey_low_minimal_Q2 x y z p q r hx hy hsmall M C hmodel
   omega
 
+/-- An integral scale-2 change can have odd discriminant only at
+the exact threshold `v₂(UV(U+V))=4`, not at every valuation ≥4. -/
+theorem unit_delta_after_scale_two_requires_threshold (x y z p q r : ℕ)
+    (hx : 0 < x ^ p) (hy : 0 < y ^ q)
+    (M : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2])
+    (hmodel : ((freyZ2 x y z p q r).map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+      M.map (algebraMap ℤ_[2] ℚ_[2]))
+    (hscale : Padic.valuation (C.u : ℚ_[2]) = 1)
+    (hunit : Padic.valuation (M.Δ : ℚ_[2]) = 0) :
+    padicValNat 2 (x ^ p * y ^ q * (x ^ p + y ^ q)) = 4 := by
+  have hdisc : 16 * (x ^ p) ^ 2 * (y ^ q) ^ 2 *
+      (x ^ p + y ^ q) ^ 2 ≠ 0 := by positivity
+  have hdiscQ : ((freyZ2 x y z p q r).Δ : ℚ_[2]) ≠ 0 := by
+    rw [freyZ2_delta, PadicInt.coe_natCast]
+    exact Nat.cast_ne_zero.mpr hdisc
+  have hu : (C.u : ℚ_[2]) ≠ 0 := Units.ne_zero C.u
+  have hdelta := congrArg WeierstrassCurve.Δ hmodel
+  simp only [WeierstrassCurve.variableChange_Δ, WeierstrassCurve.map_Δ,
+    PadicInt.algebraMap_apply, Units.val_inv_eq_inv_val] at hdelta
+  have hval := congrArg Padic.valuation hdelta
+  rw [Padic.valuation_map_mul (pow_ne_zero 12 (inv_ne_zero hu)) hdiscQ,
+    q2_val_pow _ (inv_ne_zero hu) 12, q2_val_inv _ hu,
+    freyZ2_delta_v2 x y z p q r hx hy] at hval
+  omega
+
+/-- A change with scale two and the translation indicated by `r`. -/
+private noncomputable def highChangeTwo (r : ℚ_[2]) :
+    WeierstrassCurve.VariableChange ℚ_[2] where
+  u := Units.mk0 (2 : ℚ_[2]) (by norm_num)
+  r := r
+  s := 1
+  t := 0
+
+private def highIntegral (a2 a4 : ℤ) : WeierstrassCurve ℤ where
+  a₁ := 1
+  a₂ := a2
+  a₃ := 0
+  a₄ := a4
+  a₆ := 0
+
+private noncomputable def highZ2 (a2 a4 : ℤ) : WeierstrassCurve ℤ_[2] :=
+  (highIntegral a2 a4).map (Int.castRingHom ℤ_[2])
+
+private theorem highChangeTwo_val (r : ℚ_[2]) :
+    Padic.valuation ((highChangeTwo r).u : ℚ_[2]) = 1 := by
+  change Padic.valuation (2 : ℚ_[2]) = 1
+  simpa using (Padic.valuation_p (p := 2))
+
+private theorem cast14 : ((14 : ℤ_[2]) : ℚ_[2]) = 14 := rfl
+private theorem cast4 : ((4 : ℤ_[2]) : ℚ_[2]) = 4 := rfl
+private theorem cast15 : ((15 : ℤ_[2]) : ℚ_[2]) = 15 := rfl
+private theorem cast16 : ((16 : ℤ_[2]) : ℚ_[2]) = 16 := rfl
+private theorem cast48 : ((48 : ℤ_[2]) : ℚ_[2]) = 48 := rfl
+private theorem cast13 : ((13 : ℤ_[2]) : ℚ_[2]) = 13 := rfl
+private theorem cast3 : ((3 : ℤ_[2]) : ℚ_[2]) = 3 := rfl
+
+private theorem threshold_changes :
+    ((freyZ2 1 15 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange
+      (highChangeTwo 1) = (highZ2 4 1).map (algebraMap ℤ_[2] ℚ_[2]) ∧
+    ((freyZ2 16 1 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange
+      (highChangeTwo 0) = (highZ2 (-4) (-1)).map (algebraMap ℤ_[2] ℚ_[2]) ∧
+    ((freyZ2 3 16 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange
+      (highChangeTwo 0) = (highZ2 3 (-3)).map (algebraMap ℤ_[2] ℚ_[2]) := by
+  constructor
+  · ext <;> norm_num [freyZ2, freyWeierstrassGeneral, highChangeTwo,
+      highZ2, highIntegral, WeierstrassCurve.variableChange,
+      WeierstrassCurve.map, PadicInt.algebraMap_apply] <;>
+      norm_num [cast14, cast4, cast15, cast16, cast48, cast13, cast3]
+  constructor
+  · ext <;> norm_num [freyZ2, freyWeierstrassGeneral, highChangeTwo,
+      highZ2, highIntegral, WeierstrassCurve.variableChange,
+      WeierstrassCurve.map, PadicInt.algebraMap_apply] <;>
+      norm_num [cast14, cast4, cast15, cast16, cast48, cast13, cast3]
+  · ext <;> norm_num [freyZ2, freyWeierstrassGeneral, highChangeTwo,
+      highZ2, highIntegral, WeierstrassCurve.variableChange,
+      WeierstrassCurve.map, PadicInt.algebraMap_apply] <;>
+      norm_num [cast14, cast4, cast15, cast16, cast48, cast13, cast3]
+
+private theorem threshold_deltas :
+    (highZ2 4 1).Δ = (225 : ℤ_[2]) ∧
+    (highZ2 (-4) (-1)).Δ = (289 : ℤ_[2]) ∧
+    (highZ2 3 (-3)).Δ = (3249 : ℤ_[2]) := by
+  norm_num [highZ2, highIntegral, WeierstrassCurve.Δ,
+    WeierstrassCurve.b₂, WeierstrassCurve.b₄,
+    WeierstrassCurve.b₆, WeierstrassCurve.b₈, WeierstrassCurve.map]
+
+private theorem odd_delta_low (n : ℕ) (hn : Odd n) :
+    Padic.valuation (n : ℚ_[2]) < 12 := by
+  have hn0 : n ≠ 0 := by
+    have ho := Nat.odd_iff.mp hn
+    omega
+  rw [q2_val_nat n hn0]
+  have hv : padicValNat 2 n = 0 := by
+    apply padicValNat.eq_zero_of_not_dvd
+    intro hd
+    have ho : n % 2 = 1 := Nat.odd_iff.mp hn
+    omega
+  simp [hv]
+
+private theorem threshold_low_1 :
+    Padic.valuation ((highZ2 4 1).Δ : ℚ_[2]) < 12 := by
+  rw [threshold_deltas.1]
+  change Padic.valuation (225 : ℚ_[2]) < 12
+  exact odd_delta_low 225 (by decide)
+
+private theorem threshold_low_2 :
+    Padic.valuation ((highZ2 (-4) (-1)).Δ : ℚ_[2]) < 12 := by
+  rw [threshold_deltas.2.1]
+  change Padic.valuation (289 : ℚ_[2]) < 12
+  exact odd_delta_low 289 (by decide)
+
+private theorem threshold_low_3 :
+    Padic.valuation ((highZ2 3 (-3)).Δ : ℚ_[2]) < 12 := by
+  rw [threshold_deltas.2.2]
+  change Padic.valuation (3249 : ℚ_[2]) < 12
+  exact odd_delta_low 3249 (by decide)
+
+/-- Odd/odd threshold witness only: `(U,V)=(1,15)`.
+This does not quantify over all odd/odd high-valuation inputs. -/
+theorem high_minimal_odd_odd :
+    ((freyZ2 1 15 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange
+      (highChangeTwo 1) = (highZ2 4 1).map (algebraMap ℤ_[2] ℚ_[2]) ∧
+    Padic.valuation ((highChangeTwo 1).u : ℚ_[2]) = 1 ∧
+    (highZ2 4 1).Δ = (225 : ℤ_[2]) ∧
+    ∀ (N : WeierstrassCurve ℤ_[2]) (D : WeierstrassCurve.VariableChange ℚ_[2]),
+      ((highZ2 4 1).map (algebraMap ℤ_[2] ℚ_[2])).variableChange D =
+        N.map (algebraMap ℤ_[2] ℚ_[2]) →
+      Padic.valuation (D.u : ℚ_[2]) ≤ 0 := by
+  refine ⟨threshold_changes.1, highChangeTwo_val 1, threshold_deltas.1, ?_⟩
+  intro N D hmodel
+  apply low_minimality_Q2 (highZ2 4 1) ?_ threshold_low_1 N D hmodel
+  rw [threshold_deltas.1]
+  norm_num
+
+/-- Even/odd threshold witness only: `(U,V)=(16,1)`. -/
+theorem high_minimal_even_odd :
+    ((freyZ2 16 1 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange
+      (highChangeTwo 0) = (highZ2 (-4) (-1)).map (algebraMap ℤ_[2] ℚ_[2]) ∧
+    Padic.valuation ((highChangeTwo 0).u : ℚ_[2]) = 1 ∧
+    (highZ2 (-4) (-1)).Δ = (289 : ℤ_[2]) ∧
+    ∀ (N : WeierstrassCurve ℤ_[2]) (D : WeierstrassCurve.VariableChange ℚ_[2]),
+      ((highZ2 (-4) (-1)).map (algebraMap ℤ_[2] ℚ_[2])).variableChange D =
+        N.map (algebraMap ℤ_[2] ℚ_[2]) →
+      Padic.valuation (D.u : ℚ_[2]) ≤ 0 := by
+  refine ⟨threshold_changes.2.1, highChangeTwo_val 0, threshold_deltas.2.1, ?_⟩
+  intro N D hmodel
+  apply low_minimality_Q2 (highZ2 (-4) (-1)) ?_ threshold_low_2 N D hmodel
+  rw [threshold_deltas.2.1]
+  norm_num
+
+/-- Odd/even threshold witness only: `(U,V)=(3,16)`. -/
+theorem high_minimal_odd_even :
+    ((freyZ2 3 16 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange
+      (highChangeTwo 0) = (highZ2 3 (-3)).map (algebraMap ℤ_[2] ℚ_[2]) ∧
+    Padic.valuation ((highChangeTwo 0).u : ℚ_[2]) = 1 ∧
+    (highZ2 3 (-3)).Δ = (3249 : ℤ_[2]) ∧
+    ∀ (N : WeierstrassCurve ℤ_[2]) (D : WeierstrassCurve.VariableChange ℚ_[2]),
+      ((highZ2 3 (-3)).map (algebraMap ℤ_[2] ℚ_[2])).variableChange D =
+        N.map (algebraMap ℤ_[2] ℚ_[2]) →
+      Padic.valuation (D.u : ℚ_[2]) ≤ 0 := by
+  refine ⟨threshold_changes.2.2, highChangeTwo_val 0, threshold_deltas.2.2, ?_⟩
+  intro N D hmodel
+  apply low_minimality_Q2 (highZ2 3 (-3)) ?_ threshold_low_3 N D hmodel
+  rw [threshold_deltas.2.2]
+  norm_num
+
 /- TODO: Classifying high-valuation minimal models requires checking
-integrality and minimality for each parity/congruence case over Q₂.
-The necessary condition above does not supply a uniform coordinate
-change or a Tate reduction type. -/
+integrality and minimality for each parity *and congruence* case over Q₂.
+These three witnesses do not prove existence for every high input.
+Nor do they provide a Tate reduction type. -/
 
 #print axioms freyZ2_delta_v2
 #print axioms frey_low_minimal_Q2
 #print axioms high_required_for_positive_scale
+#print axioms unit_delta_after_scale_two_requires_threshold
+#print axioms high_minimal_odd_odd
+#print axioms high_minimal_even_odd
+#print axioms high_minimal_odd_even
 
 end Beal.General

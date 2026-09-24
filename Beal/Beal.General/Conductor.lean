@@ -10,6 +10,19 @@ identify a Néron conductor. No conductor formula is asserted here.
 
 namespace Beal.General
 
+/-- Symbols needed to state future Tate-algorithm results. This type is
+only a vocabulary: no curve has been assigned a symbol by this definition. -/
+inductive KodairaType where
+  | I (n : ℕ)
+  | II
+  | III
+  | IV
+  | IStar (n : ℕ)
+  | IVStar
+  | IIIStar
+  | IIStar
+  deriving DecidableEq, Repr
+
 private theorem odd_c4_factor (U V : ℕ) (h : Odd U ∨ Odd V) :
     Odd (U ^ 2 + U * V + V ^ 2) := by
   have hu : U % 2 = 0 ∨ U % 2 = 1 := by omega
@@ -73,6 +86,16 @@ theorem frey_c4_v2_of_coprime (x y z p q r : ℕ)
     · exact Or.inr hoV
   · exact Or.inl hoU
 
+/-- Coprimality of the original bases supplies the powered-input
+c₄ hypothesis, provided both exponents are positive. -/
+theorem frey_c4_v2_of_base_coprime (x y z p q r : ℕ)
+    (hx : 0 < x ^ p) (hy : 0 < y ^ q)
+    (hp : 0 < p) (hq : 0 < q) (hcop : Nat.Coprime x y) :
+    padicValInt 2 (freyWeierstrassGeneral x y z p q r).c₄ = 4 := by
+  apply frey_c4_v2_of_coprime x y z p q r hx hy
+  exact (Nat.coprime_pow_right_iff hq (x ^ p) y).mpr
+    ((Nat.coprime_pow_left_iff hp x y).mpr hcop)
+
 /-- The displayed model has singular reduction modulo 2;
 this alone cannot determine a Néron conductor. -/
 theorem frey_discriminant_even (x y z p q r : ℕ) :
@@ -82,13 +105,17 @@ theorem frey_discriminant_even (x y z p q r : ℕ) :
     ((x : ℤ) ^ p + (y : ℤ) ^ q) ^ 2, ?_⟩
   ring
 
-/- TODO: First determine a minimal integral model at every prime,
-including each high-valuation case at 2. Then formalize the relevant
-Tate-algorithm steps and derive the local conductor exponents. Neither
-the raw v₂(c₄)=4, the discriminant valuation, nor singular reduction
-implies an exponent or N=2^?*rad(x*y*z). No such formula is claimed. -/
+/- TODO: The three parity witnesses in Minimal have odd discriminant
+*after* their particular scale-2 changes. They cannot be assigned
+type I_{2*v₂(W)}: a unit minimal discriminant corresponds to good
+reduction (I₀), not positive-index multiplicative Iₙ. No formal
+Kodaira classifier or Tate-algorithm correctness theorem is provided
+here. In other high-congruence cases, minimal models and types remain
+unknown. Prove these first, at every relevant prime, before local
+conductor exponents or N=2^?*rad(x*y*z). -/
 
 #print axioms frey_c4_v2_of_coprime
+#print axioms frey_c4_v2_of_base_coprime
 #print axioms frey_discriminant_even
 
 end Beal.General

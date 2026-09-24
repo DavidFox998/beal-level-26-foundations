@@ -1,4 +1,5 @@
 import Mathlib.Data.Nat.Prime.Basic
+import Mathlib.Data.Nat.GCD.Basic
 import Mathlib.Tactic.NormNum
 
 /-!
@@ -75,13 +76,44 @@ theorem branch_separate (k : ℕ) (_hk : 2 ≤ k) :
   rintro ⟨ell, hprime, hge, hdiv⟩
   exact two_power_no_odd_prime_factor k ell hprime hge hdiv
 
-/- TODO: A separate, applicable Darmon–Merel-style treatment of
-(4,4,n), with all its hypotheses and exceptional cases, is needed
-before eliminating the pure powers of two, including exponent 4.
-The exponent split and the bounded B ≤ 10⁶ check do not eliminate it. -/
+/-- An *unproved requirement* for the `(4,4,n)` subcase. This
+proposition has no inhabitant constructed in this module and is not
+asserted as a Darmon–Merel theorem. -/
+def RequiredNoPrimitive44n : Prop :=
+  ∀ (A B C n : ℕ), 0 < A → 0 < B → 0 < C → 3 ≤ n →
+    Nat.Coprime A B → A ^ 4 + B ^ 4 = C ^ n → False
+
+/-- With an actual proof of the named `(4,4,n)` requirement, the
+corresponding pure-two-power subcase reduces to it. The hypothesis is
+not supplied here; this proves no unconditional elimination. -/
+theorem two_power_needs_darmon_merel
+    (h44 : RequiredNoPrimitive44n)
+    (x y z k n : ℕ) (hk : 2 ≤ k)
+    (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) (hn : 3 ≤ n)
+    (hcop : Nat.Coprime x y)
+    (hsol : x ^ (2 ^ k) + y ^ 4 = z ^ n) : False := by
+  have hpow : 2 ^ (k - 2) * 4 = 2 ^ k := by
+    have hdiff : k - 2 + 2 = k := by omega
+    calc
+      2 ^ (k - 2) * 4 = 2 ^ (k - 2) * 2 ^ 2 := by norm_num
+      _ = 2 ^ ((k - 2) + 2) := (pow_add _ _ _).symm
+      _ = 2 ^ k := by rw [hdiff]
+  apply h44 (x ^ (2 ^ (k - 2))) y z n
+    (by positivity) hy hz hn
+    ((Nat.coprime_pow_left_iff (by positivity : 0 < 2 ^ (k - 2)) x y).mpr hcop)
+  calc
+    (x ^ (2 ^ (k - 2))) ^ 4 + y ^ 4 = x ^ (2 ^ k) + y ^ 4 := by
+      rw [← pow_mul, hpow]
+    _ = z ^ n := hsol
+
+/- TODO: Supply a real proof with correct hypotheses for the `(4,4,n)`
+requirement if one is available; this does not address other exponent
+signatures, such as arbitrary q in x^(2^k)+y^q=z^r. The bounded
+(4,4,13) check for B ≤ 10⁶ is not the missing proof. -/
 
 #print axioms beal_exponent_split
 #print axioms odd_prime_exponent_rewrite
 #print axioms branch_separate
+#print axioms two_power_needs_darmon_merel
 
 end Beal.General

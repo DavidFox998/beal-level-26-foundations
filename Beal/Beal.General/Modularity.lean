@@ -8,19 +8,22 @@ but neither supplies the six general forward fields or eliminates 2^k.
 
 OPEN PROOF OBLIGATIONS (not axioms, theorems, or certificates):
 
-* General Tate uniformization and local Néron/inertia data, including
-  a proved conductor for the general Frey model.
-* General residual irreducibility/Borel exclusion for relevant odd
-  primes ℓ, with valid modularity and level lowering at the resulting
-  levels. The specialized X₀(13), 29, 928→32 and 32a1 computations
-  do not quantify over ℓ and arbitrary solutions.
-* A valid general replacement for the specialized 32a1 L-value,
-  Selmer and Kolyvagin hypotheses where they are actually needed.
-* An elimination for the separate pure 2^k exponent branch.
-* Proofs of the six general analogues of the
-  `RequiresTateMazurRibetForwardData` fields and the necessary bridge
-  to `BealTheoremData.commonPrime`. The specialized
-  `Conditional32BridgeData`/`HasNewformAtLevel32` is not that bridge.
+* TateGeneral TODO: general Tate uniformization, high-valuation
+  minimal models, Néron/inertia data and an actual conductor formula.
+* MazurX0_l TODO: residual irreducibility and Borel exclusion for all
+  relevant odd primes ℓ, not only the specialized X₀(13) setting.
+* RibetGeneral TODO: modularity and justified level lowering from
+  the general conductor, not only the specialized 928→32 step.
+* KrausGeneral TODO: actual elimination at the resulting general
+  levels; the 32a1 eigenform and a29=-10 comparison are specialized.
+* KolyvaginGeneral TODO: the needed L-value, Selmer and rank inputs
+  under their correct hypotheses, not only the 32a1 data.
+* TwoPowerGeneral TODO: construct the unsupplied `(4,4,n)` requirement
+  where applicable and handle all other 2^k exponent signatures.
+* Construct the six *general* forward fields and a proved bridge to
+  `BealTheoremData.commonPrime`. Neither
+  `RequiresTateMazurRibetForwardData` nor the specialized
+  `Conditional32BridgeData`/`HasNewformAtLevel32` does this.
 
 Absence of these proofs does not establish formal non-entailment.
 There is deliberately no asserted `commonPrime` theorem, no
@@ -33,5 +36,7 @@ namespace Beal.General
 #check frey_low_minimal_Q2
 #check frey_c4_v2_of_coprime
 #check branch_separate
+#check RequiredNoPrimitive44n
+#check two_power_needs_darmon_merel
 
 end Beal.General
