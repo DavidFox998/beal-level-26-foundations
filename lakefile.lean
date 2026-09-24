@@ -140,4 +140,7 @@ lean_lib «BealMatveevBealV25B0Search» where
     .one `BealMatveevBealV25B0Search.Forward,
     .one `BealMatveevBealV25B0Search.MaskSound,
     .one `BealMatveevBealV25B0Search.Chunked10e6,
+    .submodules `BealMatveevBealV25B0Search.Chunks,
+    .submodules `BealMatveevBealV25B0Search.ChunkGroups,
+    .submodules `BealMatveevBealV25B0Search.ChunkBlocks,
     .one `BealMatveevBealV25B0Search.Full10e6]
