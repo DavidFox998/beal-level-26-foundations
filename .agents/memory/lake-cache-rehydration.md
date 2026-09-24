@@ -7,4 +7,4 @@ After an isolated worktree is reattached, Lake may report changed dependency URL
 
 **Why:** This happened during repeat scratch checks; the immediate "unknown module prefix Mathlib" error reflected missing object files, not a proof error or an intentional dependency update.
 
-**How to apply:** Verify the worktree resolves to its own Git root and its manifest is unchanged before a Lean check. If Lake discards the objects, restore the cache for that pinned dependency set before interpreting scratch compiler errors; do not modify tagged source or infer that a full project build succeeded.
+**How to apply:** Verify the worktree resolves to its own Git root and its manifest is unchanged before a Lean check. If Lake discards objects, restore the cache for that pinned dependency set before interpreting scratch compiler errors. If an interrupted dependency clone also removed its source, recover the exact pinned revision before restoring compiled objects; matching cached objects elsewhere can support scratch work, but verify again against the repaired target. Do not modify tagged source or infer that a full project build succeeded.
