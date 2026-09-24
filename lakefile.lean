@@ -19,6 +19,15 @@ require beal_level_26_foundations from "Level26/BealLevel26Foundations"
 lean_lib BealConjecture where
   globs := #[.submodules `BealConjecture]
 
+/-- Non-default general-proof work. These modules contain checked
+    invariant and low-local results, but no general Beal certificate. -/
+lean_lib BealGeneral where
+  globs := #[.one `Beal.«Beal.General».Frey,
+    .one `Beal.«Beal.General».Minimal,
+    .one `Beal.«Beal.General».Conductor,
+    .one `Beal.«Beal.General».TwoPower,
+    .one `Beal.«Beal.General».Modularity]
+
 @[default_target]
 lean_lib «BealMatveevBeal» where
   globs := #[.submodules `Beal.Matveev, .one `MatveevThm14Proof, .one `MatveevLLL,

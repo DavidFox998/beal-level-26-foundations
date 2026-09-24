@@ -3,8 +3,8 @@ name: Proof promotion boundary
 description: Distinguish externally checked algebra from a source-tree general theorem or release.
 ---
 
-Keep checked scratch identities separate from the tagged bounded release. Promote them into a general-proof claim only after the generalized curve, its local obligations, the exponent cases, and the forward inference to the general statement have real Lean proofs without placeholders.
+Keep the tagged bounded release separate from general-proof work. A checked algebraic identity may become an intermediate source theorem when the user explicitly asks, but that is not a general-proof certificate. Promote to a general-proof claim only after the generalized curve, its local obligations, the exponent cases, and the forward inference to the general statement have real Lean proofs without placeholders.
 
-**Why:** The user confirmed that scratch checks of the normalized coprimality and invariant formulas worked, while explicitly keeping them outside the release. An axiom audit of a conditional theorem does not construct its input or establish the parameter-free conclusion.
+**Why:** The user initially kept scratch checks outside the release, then explicitly requested general Frey algebra as a first real, non-release theorem step while continuing to forbid a new release or a general conclusion. An axiom audit of a conditional theorem does not construct its input or establish the parameter-free conclusion.
 
-**How to apply:** When continuing generalization work, report exactly which scratch facts were checked, do not copy them into the bounded checkout without a new request, and do not infer or publish a general theorem from local identities or assumed forward data.
+**How to apply:** Keep the isolated bounded checkout unchanged. Report intermediate kernel-checked results separately from open minimal-model, conductor, exponent, and forward-chain obligations. Do not infer or publish a general theorem from local identities or assumed forward data, and never describe an incomplete module as a certificate.
