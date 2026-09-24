@@ -3,3 +3,4 @@
 - [Git worktree pointer repair](worktree-pointer-repair.md) — verify each worktree's Git root before cleaning; repair missing pointer files if metadata survives.
 - [Historical release badges](historical-release-badges.md) — retain existing README citations when adding a new release; do not standardize old badges.
 - [Proof promotion boundary](proof-promotion-boundary.md) — checked scratch identities stay outside bounded releases until the full general inference chain is proved.
+- [Lake cache rehydration](lake-cache-rehydration.md) — dependency URL drift can discard pinned Mathlib object files without changing the manifest or tracked source.
