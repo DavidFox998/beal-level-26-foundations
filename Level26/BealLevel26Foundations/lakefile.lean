@@ -103,6 +103,8 @@ lean_lib BealLevel26Foundations where
     .one `BealLevel26Foundations.Chain.Level2,
     .one `BealLevel26Foundations.Chain.X0_26_Point,
     .one `BealLevel26Foundations.CoefficientLedger_26,
+    .one `BealLevel26Foundations.FiniteEvidence,
+    .one `BealLevel26Foundations.M3_Explicit,
     .one `BealLevel26Foundations.Real.FreyWeierstrass
   ]
   roots := #[
@@ -188,5 +190,7 @@ lean_lib BealLevel26Foundations where
     `BealLevel26Foundations.Chain.Level2,
     `BealLevel26Foundations.Chain.X0_26_Point,
     `BealLevel26Foundations.CoefficientLedger_26,
+    `BealLevel26Foundations.FiniteEvidence,
+    `BealLevel26Foundations.M3_Explicit,
     `BealLevel26Foundations.Real.FreyWeierstrass
   ]

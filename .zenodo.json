@@ -1,6 +1,7 @@
 {
-  "title": "Kernel-checked bounded gap-3 search for A^4 + B^4 = (B+3)^13 through B = 1,000,000",
-  "description": "Lean 4.12.0 proves that no natural numbers A and B with B <= 1,000,000 satisfy A^4 + B^4 = (B+3)^13. Ten modular masks have kernel-checked soundness proofs; 2,000 separately compiled 500-value certificates cover B < 1,000,000, and the inclusive endpoint is checked separately. The bounded theorem uses only propext, Classical.choice, and Quot.sound. An exact-integer external checkpoint is independent evidence and is not a proof input. This does not prove the general Beal conjecture or discharge the remaining level-26 mathematical hypotheses. Methodology and build instructions: docs/FoundationsIntegratedV25_0_2.md.",
+  "title": "v25.0.3: Buildable finite evidence for the kernel-checked bounded gap-3 search through B = 1,000,000",
+  "version": "v25.0.3-10e6-kernel-checked",
+  "description": "Lean 4.12.0 proves that no natural numbers A and B with B <= 1,000,000 satisfy A^4 + B^4 = (B+3)^13. This release registers the existing nested BealLevel26Foundations.FiniteEvidence and BealLevel26Foundations.M3_Explicit modules as Lake targets without changing their proofs. Ten modular masks have kernel-checked soundness proofs; 2,000 separately compiled 500-value certificates cover B < 1,000,000, and the inclusive endpoint is checked separately. The bounded theorem uses only propext, Classical.choice, and Quot.sound. An exact-integer external checkpoint is independent evidence and is not a proof input. BealFinal.Main still takes conditional mathematical data as input. This does not prove the general Beal conjecture or discharge the remaining level-26 mathematical hypotheses. Methodology and build instructions: docs/FoundationsIntegratedV25_0_2.md.",
   "creators": [
     {
       "name": "Fox, David"
@@ -17,7 +18,7 @@
   "license": "MIT",
   "related_identifiers": [
     {
-      "identifier": "10.5281/zenodo.22922473",
+      "identifier": "10.5281/zenodo.22927972",
       "relation": "isNewVersionOf",
       "scheme": "doi"
     }
