@@ -49,3 +49,19 @@ The clean build reported 7,434 steps, rather than the earlier estimate of
 5,216, because it includes the generated certificate modules.
 `BealFinal.Main` builds, but its general-Beal forward statements still take
 their documented inputs; the bounded theorem does not discharge them.
+
+## Published version
+
+- GitHub release and annotated tag:
+  [`v25.0.2-10e6-kernel-checked`](https://github.com/DavidFox998/beal-level-26-foundations/releases/tag/v25.0.2-10e6-kernel-checked).
+- Version DOI: [10.5281/zenodo.22927972](https://doi.org/10.5281/zenodo.22927972).
+- Previous version: [10.5281/zenodo.22922473](https://doi.org/10.5281/zenodo.22922473).
+  Both are in the same Zenodo version series (concept DOI
+  [10.5281/zenodo.22379293](https://doi.org/10.5281/zenodo.22379293)).
+
+The archived source is the tagged GitHub tree
+`23b76deda5f830fc5412a37df5deda13ce48725d` at commit
+`99ac1f6a459e9f9e1300ea29dcacafc34c471ce3`. The published ZIP has
+SHA-256 `961b24583a6b0b74de2eab501809c13e07e21ee8f3d513cffb629c50c7e05186`
+and contains all 2,000 interval certificates. The version DOI identifies
+only the bounded theorem and its supporting source, not a general-Beal proof.
