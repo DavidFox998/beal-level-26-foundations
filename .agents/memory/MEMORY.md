@@ -1,1 +1,2 @@
 - [Zenodo release metadata](zenodo-release-metadata.md) — GitHub release notes do not determine Zenodo's title and description; check the root deposit metadata before minting.
+- [Lake transitive path packages](lake-transitive-path-packages.md) — verify manifests, module globs and artifact paths when Git roots include nested path packages.
