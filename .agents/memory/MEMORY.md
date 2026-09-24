@@ -2,3 +2,4 @@
 - [Lake transitive path packages](lake-transitive-path-packages.md) — verify manifests, module globs and artifact paths when Git roots include nested path packages.
 - [Git worktree pointer repair](worktree-pointer-repair.md) — verify each worktree's Git root before cleaning; repair missing pointer files if metadata survives.
 - [Historical release badges](historical-release-badges.md) — retain existing README citations when adding a new release; do not standardize old badges.
+- [Proof promotion boundary](proof-promotion-boundary.md) — checked scratch identities stay outside bounded releases until the full general inference chain is proved.
