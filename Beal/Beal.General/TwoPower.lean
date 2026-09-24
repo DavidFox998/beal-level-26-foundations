@@ -83,6 +83,24 @@ def RequiredNoPrimitive44n : Prop :=
   ∀ (A B C n : ℕ), 0 < A → 0 < B → 0 < C → 3 ≤ n →
     Nat.Coprime A B → A ^ 4 + B ^ 4 = C ^ n → False
 
+/-- Exactly the conditional `(4,4,n)` elimination; its Darmon–Merel-
+style hypothesis is not proved by a bounded check. -/
+theorem two_power_conditional
+    (h44 : RequiredNoPrimitive44n)
+    (A B C n : ℕ) (hA : 0 < A) (hB : 0 < B) (hC : 0 < C)
+    (hn : 3 ≤ n) (hcop : Nat.Coprime A B)
+    (hsol : A ^ 4 + B ^ 4 = C ^ n) : False :=
+  h44 A B C n hA hB hC hn hcop hsol
+
+/-- The `p=4, q=4` branch explicitly requires the unsupplied
+`(4,4,n)` obligation; this is not a proof for arbitrary `q`. -/
+theorem two_power_p4_needs_darmon_merel
+    (h44 : RequiredNoPrimitive44n)
+    (x y z n : ℕ) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z)
+    (hn : 3 ≤ n) (hcop : Nat.Coprime x y)
+    (hsol : x ^ 4 + y ^ 4 = z ^ n) : False :=
+  two_power_conditional h44 x y z n hx hy hz hn hcop hsol
+
 /-- With an actual proof of the named `(4,4,n)` requirement, the
 corresponding pure-two-power subcase reduces to it. The hypothesis is
 not supplied here; this proves no unconditional elimination. -/
@@ -106,11 +124,13 @@ theorem two_power_needs_darmon_merel
       rw [← pow_mul, hpow]
     _ = z ^ n := hsol
 
-/- TODO: Supply a real proof with correct hypotheses for the `(4,4,n)`
+/- TODO DarmonMerel44n: Supply a real proof with correct hypotheses for the `(4,4,n)`
 requirement if one is available; this does not address other exponent
 signatures, such as arbitrary q in x^(2^k)+y^q=z^r. The bounded
 (4,4,13) check for B ≤ 10⁶ is not the missing proof. -/
 
+#print axioms two_power_conditional
+#print axioms two_power_p4_needs_darmon_merel
 #print axioms beal_exponent_split
 #print axioms odd_prime_exponent_rewrite
 #print axioms branch_separate

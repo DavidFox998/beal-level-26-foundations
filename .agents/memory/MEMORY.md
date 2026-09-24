@@ -5,3 +5,4 @@
 - [Proof promotion boundary](proof-promotion-boundary.md) — checked scratch identities stay outside bounded releases until the full general inference chain is proved.
 - [Lake cache rehydration](lake-cache-rehydration.md) — dependency URL drift can discard pinned Mathlib object files without changing the manifest or tracked source.
 - [Frey local-at-two boundary](frey-local-two-boundary.md) — small discriminant valuation obstructs rescaling; high-valuation parity cases need congruence analysis.
+- [Concrete p-adic valuations](concrete-padic-valuations.md) — direct numeral normalization can stall; factor powers of the prime and prove the residual factor is coprime.

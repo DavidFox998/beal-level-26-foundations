@@ -23,6 +23,65 @@ inductive KodairaType where
   | IIStar
   deriving DecidableEq, Repr
 
+/-- The unit-discriminant output a future correct Tate classifier must
+prove. No classifier satisfying this requirement is supplied here. -/
+def TateUnitCriterion
+    (typeAtTwo : WeierstrassCurve ℤ_[2] → KodairaType) : Prop :=
+  ∀ M, Padic.valuation (M.Δ : ℚ_[2]) = 0 → typeAtTwo M = KodairaType.I 0
+
+/-- The corresponding good-reduction conductor rule. This is an
+unsupplied requirement on a future actual local conductor exponent. -/
+def ConductorUnitCriterion
+    (f2 : WeierstrassCurve ℤ_[2] → ℕ) : Prop :=
+  ∀ M, Padic.valuation (M.Δ : ℚ_[2]) = 0 → f2 M = 0
+
+/-- Relative to a correct Tate classifier, a unit discriminant
+precludes every positive-index multiplicative symbol. This does not
+construct the classifier or assign any Kodaira symbol to a curve. -/
+theorem I_positive_incompatible_with_unit
+    (typeAtTwo : WeierstrassCurve ℤ_[2] → KodairaType)
+    (hTate : TateUnitCriterion typeAtTwo)
+    (M : WeierstrassCurve ℤ_[2])
+    (hunit : Padic.valuation (M.Δ : ℚ_[2]) = 0)
+    (n : ℕ) (hn : 0 < n) :
+    typeAtTwo M ≠ KodairaType.I n := by
+  have hzero := hTate M hunit
+  intro hpositive
+  rw [hzero] at hpositive
+  cases hpositive
+  omega
+
+/-- A threshold scale-2 change has the good-reduction symbol *if*
+the classifier's unit criterion has been proved. Its existence and
+integrality are premises, not consequences of valuation four. -/
+theorem threshold_type_I0_conditional (x y z p q r : ℕ)
+    (hx : 0 < x ^ p) (hy : 0 < y ^ q)
+    (M : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2])
+    (hmodel : ((freyZ2 x y z p q r).map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+      M.map (algebraMap ℤ_[2] ℚ_[2]))
+    (hscale : Padic.valuation (C.u : ℚ_[2]) = 1)
+    (hthreshold : padicValNat 2 (x ^ p * y ^ q * (x ^ p + y ^ q)) = 4)
+    (typeAtTwo : WeierstrassCurve ℤ_[2] → KodairaType)
+    (hTate : TateUnitCriterion typeAtTwo) :
+    typeAtTwo M = KodairaType.I 0 := by
+  exact hTate M
+    ((high_parity_exactly_four x y z p q r hx hy M C hmodel hscale).mpr hthreshold)
+
+/-- The local conductor exponent is zero *if* its genuine good-reduction
+rule has been supplied. No general `f₂` is constructed by this theorem. -/
+theorem threshold_f2_zero_conditional (x y z p q r : ℕ)
+    (hx : 0 < x ^ p) (hy : 0 < y ^ q)
+    (M : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2])
+    (hmodel : ((freyZ2 x y z p q r).map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+      M.map (algebraMap ℤ_[2] ℚ_[2]))
+    (hscale : Padic.valuation (C.u : ℚ_[2]) = 1)
+    (hthreshold : padicValNat 2 (x ^ p * y ^ q * (x ^ p + y ^ q)) = 4)
+    (f2 : WeierstrassCurve ℤ_[2] → ℕ)
+    (hgood : ConductorUnitCriterion f2) :
+    f2 M = 0 := by
+  exact hgood M
+    ((high_parity_exactly_four x y z p q r hx hy M C hmodel hscale).mpr hthreshold)
+
 private theorem odd_c4_factor (U V : ℕ) (h : Odd U ∨ Odd V) :
     Odd (U ^ 2 + U * V + V ^ 2) := by
   have hu : U % 2 = 0 ∨ U % 2 = 1 := by omega
@@ -105,15 +164,19 @@ theorem frey_discriminant_even (x y z p q r : ℕ) :
     ((x : ℤ) ^ p + (y : ℤ) ^ q) ^ 2, ?_⟩
   ring
 
-/- TODO: The three parity witnesses in Minimal have odd discriminant
+/- TODO tate_classification_general: The three parity witnesses in Minimal have odd discriminant
 *after* their particular scale-2 changes. They cannot be assigned
-type I_{2*v₂(W)}: a unit minimal discriminant corresponds to good
-reduction (I₀), not positive-index multiplicative Iₙ. No formal
-Kodaira classifier or Tate-algorithm correctness theorem is provided
-here. In other high-congruence cases, minimal models and types remain
-unknown. Prove these first, at every relevant prime, before local
-conductor exponents or N=2^?*rad(x*y*z). -/
+type I_{2*v₂(W)} by a correct classifier: its unit-discriminant rule
+would force good reduction (I₀), not positive-index multiplicative Iₙ.
+No actual Kodaira classifier, Tate algorithm, or local conductor
+function and its good-reduction rule is constructed here. In other
+high-congruence cases, minimal models and types remain unknown.
+Prove the full Tate steps before an unconditional f₂, or any formula
+N=2^?*rad(x*y*z), can be claimed. -/
 
+#print axioms I_positive_incompatible_with_unit
+#print axioms threshold_type_I0_conditional
+#print axioms threshold_f2_zero_conditional
 #print axioms frey_c4_v2_of_coprime
 #print axioms frey_c4_v2_of_base_coprime
 #print axioms frey_discriminant_even

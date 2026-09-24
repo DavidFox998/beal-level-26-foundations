@@ -177,6 +177,71 @@ theorem unit_delta_after_scale_two_requires_threshold (x y z p q r : ℕ)
     freyZ2_delta_v2 x y z p q r hx hy] at hval
   omega
 
+/-- The twelfth-power discriminant scaling, with no assumption that the
+changed model has unit discriminant. Integrality is an explicit premise. -/
+theorem unit_disc_iff_v2_eq_12 (x y z p q r : ℕ)
+    (hx : 0 < x ^ p) (hy : 0 < y ^ q)
+    (M : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2])
+    (hmodel : ((freyZ2 x y z p q r).map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+      M.map (algebraMap ℤ_[2] ℚ_[2]))
+    (hscale : Padic.valuation (C.u : ℚ_[2]) = 1) :
+    Padic.valuation (M.Δ : ℚ_[2]) = 0 ↔
+      Padic.valuation ((freyZ2 x y z p q r).Δ : ℚ_[2]) = 12 := by
+  have hdisc : 16 * (x ^ p) ^ 2 * (y ^ q) ^ 2 *
+      (x ^ p + y ^ q) ^ 2 ≠ 0 := by positivity
+  have hdiscQ : ((freyZ2 x y z p q r).Δ : ℚ_[2]) ≠ 0 := by
+    rw [freyZ2_delta, PadicInt.coe_natCast]
+    exact Nat.cast_ne_zero.mpr hdisc
+  have hu : (C.u : ℚ_[2]) ≠ 0 := Units.ne_zero C.u
+  have hdelta := congrArg WeierstrassCurve.Δ hmodel
+  simp only [WeierstrassCurve.variableChange_Δ, WeierstrassCurve.map_Δ,
+    PadicInt.algebraMap_apply, Units.val_inv_eq_inv_val] at hdelta
+  have hval := congrArg Padic.valuation hdelta
+  rw [Padic.valuation_map_mul (pow_ne_zero 12 (inv_ne_zero hu)) hdiscQ,
+    q2_val_pow _ (inv_ne_zero hu) 12, q2_val_inv _ hu] at hval
+  constructor <;> intro h <;> omega
+
+/-- For *any* positive powered inputs, among integral scale-2 changes,
+unit discriminant is equivalent to valuation exactly four. This does
+not assert existence of a scale-2 change in any parity class. -/
+theorem high_parity_exactly_four (x y z p q r : ℕ)
+    (hx : 0 < x ^ p) (hy : 0 < y ^ q)
+    (M : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2])
+    (hmodel : ((freyZ2 x y z p q r).map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+      M.map (algebraMap ℤ_[2] ℚ_[2]))
+    (hscale : Padic.valuation (C.u : ℚ_[2]) = 1) :
+    Padic.valuation (M.Δ : ℚ_[2]) = 0 ↔
+      padicValNat 2 (x ^ p * y ^ q * (x ^ p + y ^ q)) = 4 := by
+  have hiff := unit_disc_iff_v2_eq_12 x y z p q r hx hy M C hmodel hscale
+  rw [freyZ2_delta_v2 x y z p q r hx hy] at hiff
+  constructor
+  · intro h
+    have hv := hiff.mp h
+    omega
+  · intro h
+    apply hiff.mpr
+    omega
+
+/-- The three mutually exclusive parity shapes of primitive inputs.
+This is only parity bookkeeping, not a minimal-model classification. -/
+theorem coprime_parity_cases (U V : ℕ) (hcop : Nat.Coprime U V) :
+    (Odd U ∧ Odd V) ∨ (Even U ∧ Odd V) ∨ (Odd U ∧ Even V) := by
+  rcases Nat.even_or_odd U with hu | hu
+  · rcases Nat.even_or_odd V with hv | hv
+    · exfalso
+      rcases hu with ⟨u, hu⟩
+      rcases hv with ⟨v, hv⟩
+      have h2u : 2 ∣ U := ⟨u, by omega⟩
+      have h2v : 2 ∣ V := ⟨v, by omega⟩
+      have h2g : 2 ∣ Nat.gcd U V := Nat.dvd_gcd h2u h2v
+      have hg : Nat.gcd U V = 1 := hcop
+      rw [hg] at h2g
+      norm_num at h2g
+    · exact Or.inr (Or.inl ⟨hu, hv⟩)
+  · rcases Nat.even_or_odd V with hv | hv
+    · exact Or.inr (Or.inr ⟨hu, hv⟩)
+    · exact Or.inl ⟨hu, hv⟩
+
 /-- A change with scale two and the translation indicated by `r`. -/
 private noncomputable def highChangeTwo (r : ℚ_[2]) :
     WeierstrassCurve.VariableChange ℚ_[2] where
@@ -251,6 +316,37 @@ private theorem odd_delta_low (n : ℕ) (hn : Odd n) :
     omega
   simp [hv]
 
+/-- Computation of the factor 16 against any odd positive factor. -/
+private theorem v2_sixteen_times_odd (n : ℕ) (hn : Odd n) :
+    padicValNat 2 (16 * n) = 4 := by
+  have hn0 : n ≠ 0 := by
+    have ho := Nat.odd_iff.mp hn
+    omega
+  have hv : padicValNat 2 n = 0 := by
+    apply padicValNat.eq_zero_of_not_dvd
+    intro hd
+    have ho : n % 2 = 1 := Nat.odd_iff.mp hn
+    omega
+  have h16 : padicValNat 2 16 = 4 := by
+    change padicValNat 2 (2 ^ 4) = 4
+    rw [padicValNat.pow 4 (by decide : (2 : ℕ) ≠ 0), padicValNat_self]
+  rw [padicValNat.mul (by decide : (16 : ℕ) ≠ 0) hn0, h16, hv]
+
+/-- Three individual witnesses lie at the exact threshold. Their
+parity patterns alone do not imply this for other inputs. -/
+theorem threshold_witnesses_exactly_four :
+    padicValNat 2 (1 * 15 * (1 + 15)) = 4 ∧
+    padicValNat 2 (16 * 1 * (16 + 1)) = 4 ∧
+    padicValNat 2 (3 * 16 * (3 + 16)) = 4 := by
+  constructor
+  · change padicValNat 2 (16 * 15) = 4
+    exact v2_sixteen_times_odd 15 (by decide)
+  constructor
+  · change padicValNat 2 (16 * 17) = 4
+    exact v2_sixteen_times_odd 17 (by decide)
+  · change padicValNat 2 (16 * 57) = 4
+    exact v2_sixteen_times_odd 57 (by decide)
+
 private theorem threshold_low_1 :
     Padic.valuation ((highZ2 4 1).Δ : ℚ_[2]) < 12 := by
   rw [threshold_deltas.1]
@@ -318,15 +414,22 @@ theorem high_minimal_odd_even :
   rw [threshold_deltas.2.2]
   norm_num
 
-/- TODO: Classifying high-valuation minimal models requires checking
+/- TODO high_parity_general: Classifying high-valuation minimal models requires checking
 integrality and minimality for each parity *and congruence* case over Q₂.
-These three witnesses do not prove existence for every high input.
+The equivalence above is conditional on an integral scale-2 change; it
+does not imply that all minimal models require valuation exactly four.
+For valuations above four, a scale-2 changed discriminant remains even
+and further Tate steps are needed. The three witnesses do not prove
+existence for every high input.
 Nor do they provide a Tate reduction type. -/
 
 #print axioms freyZ2_delta_v2
 #print axioms frey_low_minimal_Q2
 #print axioms high_required_for_positive_scale
 #print axioms unit_delta_after_scale_two_requires_threshold
+#print axioms unit_disc_iff_v2_eq_12
+#print axioms high_parity_exactly_four
+#print axioms threshold_witnesses_exactly_four
 #print axioms high_minimal_odd_odd
 #print axioms high_minimal_even_odd
 #print axioms high_minimal_odd_even
