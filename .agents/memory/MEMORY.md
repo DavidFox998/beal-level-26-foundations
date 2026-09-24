@@ -1,0 +1,2 @@
+- [Nested Lake caches](nested-lake-caches.md) — path-required Lean packages keep their own cache and build artifacts; the root cache does not satisfy vendor-first imports.
+- [Kernel finite checks](kernel-finite-checks.md) — small modular certificates reduce in Lean, but aggregating many range decisions in one declaration can exhaust this container.

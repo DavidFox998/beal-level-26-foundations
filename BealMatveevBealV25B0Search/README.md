@@ -47,8 +47,16 @@ integer `0 ≤ B ≤ 1,000,000` using exact fourth roots and stores 10,000-value
 SHA-256 checkpoints in
 [`gap3_full10e6_checkpoints.json`](../certs/gap3_full10e6_checkpoints.json).
 The verifier replays the range with an independent binary-search fourth root.
-There are no candidate solutions in this range. This is **external
-computational evidence**, not a Lean kernel proof. In particular, a hash of
-these checkpoints cannot inhabit `gap3_B_le_B0_no_solution`.
-`Full10e6KernelCert` remains an explicit field. No unconditional Beal result
-or v25.0.2 inhabited-search release is claimed.
+There are no candidate solutions in this range. The external scan is
+independent evidence, not a Lean proof; its hashes are not proof inputs.
+
+`MaskSound.lean` checks ten modular masks using ordinary kernel reduction
+(`by decide`) and proves that any solution passes every mask.
+`Chunked10e6.lean` connects a checked 500-value interval to the no-solution
+statement. `scripts/generate_chunked10e6.py` emits 2,000 separately compiled
+500-value checks in `Chunks/`; `ChunkGroups/` and `ChunkBlocks/` dispatch
+through them without reducing a giant conjunction. `Full10e6.lean` joins the
+intervals and separately checks the inclusive endpoint. Its
+`full10e6_no_solution_forward` proves the bounded equation unconditionally,
+with axioms `[propext, Classical.choice, Quot.sound]`. This does **not** prove
+the general Beal conjecture or the independent level-26 premises.
