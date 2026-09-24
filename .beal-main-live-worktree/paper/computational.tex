@@ -1,0 +1,154 @@
+\section{Static computational certificates and kernel checks}\label{sec:comp}
+
+\paragraph{Zenodo.}
+The durable citation for this software is the \texttt{beal-conjecture}
+concept DOI,
+\href{https://doi.org/10.5281/zenodo.22041831}{10.5281/zenodo.22041831}~\cite{zenodo-concept},
+which always resolves to whichever version is most recently archived
+under it; cite it when the exact version does not matter. This
+revision's own version DOI,
+\href{https://doi.org/10.5281/zenodo.22885060}{10.5281/zenodo.22885060},
+was reserved through Zenodo's deposit API \emph{before} this paragraph
+was written and published only once the source tree --- including this
+sentence --- matched the reservation, so, unlike the two records
+below, it is not one commit behind its own citation. It supersedes
+\href{https://doi.org/10.5281/zenodo.22884873}{10.5281/zenodo.22884873}
+(tag \texttt{v31.0.1-level-26-honest-declarations}, commit
+\texttt{b5c8911}) and
+\href{https://doi.org/10.5281/zenodo.22884682}{10.5281/zenodo.22884682}
+(tag \texttt{v31.0.0-level-26-honest-declarations}, commit
+\texttt{0367d48}), both left live as historical intermediate
+versions, which in turn supersede
+\href{https://doi.org/10.5281/zenodo.22863527}{10.5281/zenodo.22863527}
+(\texttt{v30.0.0-level-26-structural-verification}, GitHub release id
+\texttt{392549396} at \texttt{af520d3}), itself a new version of
+\texttt{22854603} and \texttt{22851334}~\cite{zenodo-v31,zenodo-v30}.
+The \texttt{22863527} snapshot archives the pre-rename Lean numerals
+discussed in Sections~\ref{sec:tate}--\ref{sec:kolyvagin}, not the
+renamed declarations. The separate \texttt{beal-level-26-foundations}
+repository has its own concept DOI,
+\href{https://doi.org/10.5281/zenodo.22379293}{10.5281/zenodo.22379293}~\cite{zenodo-concept-foundations},
+whose v0.31 record is
+\href{https://doi.org/10.5281/zenodo.22884683}{10.5281/zenodo.22884683}.
+The later end-of-proof release
+\texttt{v30.1.7-beal-final-43735b3} is
+\href{https://doi.org/10.5281/zenodo.22912430}{10.5281/zenodo.22912430};
+its post-final v25 forward retrofit is
+\href{https://doi.org/10.5281/zenodo.22922473}{10.5281/zenodo.22922473}.
+These records belong to the foundations concept series, not to
+\texttt{beal-conjecture}'s \texttt{22041831} series.
+The integrated \texttt{beal-conjecture} snapshot is
+\href{https://doi.org/10.5281/zenodo.22923337}{10.5281/zenodo.22923337}
+\cite{zenodo-integrated}, minted from GitHub release
+\texttt{beal-conjecture-v30.1.7-v25.0.1-integrated}. The immutable release
+tag triggers the mint and therefore cannot contain its own resulting DOI;
+the present \texttt{main}-branch revision records it afterward.
+
+\begin{honesty}[Three prior inaccuracies about this Zenodo archival, found and fixed while writing this revision]
+First, an earlier draft of this section cited \texttt{v31}
+identifiers that were Git tags with no corresponding GitHub Release
+object, so Zenodo's GitHub integration --- which archives
+\emph{releases}, not bare tags --- had not minted a version DOI for
+either repository; fixed by publishing \texttt{22884682}.
+Second, every earlier draft of this paper, going back to the first
+v30 draft, stated that \texttt{beal-conjecture} and
+\texttt{beal-level-26-foundations} share one concept DOI,
+\texttt{10.5281/zenodo.22379293}; checking the public Zenodo API
+showed that is false, so \texttt{22041831} is cited above instead.
+Third, the commit fixing the second inaccuracy (\texttt{b5c8911})
+was itself published as \texttt{22884873} \emph{before} that commit
+existed to be archived, since a GitHub-Release-triggered Zenodo
+mint necessarily happens strictly after the triggering commit is
+pushed: no automatically-triggered archive can ever cite its own
+DOI. Repeating that release-then-patch cycle indefinitely would only
+ever produce archives one version behind their own citation, so this
+final version was instead created directly through Zenodo's deposit
+API (\texttt{POST .../actions/newversion} on \texttt{22884873}),
+which reserves a DOI --- \texttt{22885060} --- \emph{before} anything
+is uploaded, giving this paragraph a real, correct number to cite
+prior to publishing. Readers who only need a stable citation should
+still prefer the concept DOI above, which requires no such
+bookkeeping.
+\end{honesty}
+
+\paragraph{Sage and JSON.}
+The Lean displays are paired with static Sage scripts and JSON pins,
+not with a Sage kernel in CI (\texttt{sage\_ran: false} in every
+certificate below):
+\texttt{sagemath/tate\_nero\_29.sage};
+\texttt{sagemath/ribet\_no\_newforms\_32.sage} with
+\texttt{certs/ribet\_no\_newforms\_32.json}
+(\texttt{full=1}, \texttt{new=1}, \texttt{level16=0},
+\texttt{sturm=8});
+\texttt{sagemath/kolyvagin\_rank0\_26.sage} with
+\texttt{certs/kolyvagin\_rank0\_26.json} and
+\texttt{sagemath/kolyvagin\_fintype\_subsingleton.sage} with
+\texttt{certs/kolyvagin\_fintype\_subsingleton.json}.
+LMFDB labels used as pins are \texttt{32a1}, \texttt{26a1}, and
+\texttt{26b1}~\cite{lmfdb}. Lean verifies arithmetic involving the
+values these certificates carry; it does not verify their
+provenance, since no Sage kernel runs in CI.
+
+\begin{honesty}[Certificate schema predates the v31 rename]
+The two Kolyvagin JSON certificates above are immutable per-version
+snapshots, tagged \texttt{kolyvagin-rank0-final-v29} and
+\texttt{kolyvagin-fintype-subsingleton-v28} in their own
+\texttt{version} field. Their field names
+\texttt{IsRankZero\_is\_Subsingleton}, \texttt{IsRankZero\_on\_26a1},
+and \texttt{IsRankZero\_on\_26b1} predate the Lean-side rename of
+\texttt{IsRankZero} to \texttt{IsSubsingleton} described in
+Section~\ref{sec:kolyvagin}; a \texttt{schema\_note} field added to
+each certificate at v31 states this explicitly. The boolean values
+are unaffected by the rename, since \texttt{Subsingleton} itself did
+not change --- only its Lean-side name did.
+\end{honesty}
+
+\paragraph{Repository surface.}
+Folder READMEs are complete outside the vendor tree (difference $0$
+against \texttt{43735b3}). GitHub About texts are $302$ characters
+(foundations, homepage the concept DOI) and $308$ characters
+(conjecture, homepage the version DOI). Topics include
+\texttt{lean4}, \texttt{mathlib}, \texttt{beal-conjecture},
+\texttt{frey-curve}, \texttt{tate-algorithm}, \texttt{mazur},
+\texttt{ribet}, \texttt{kolyvagin}, \texttt{modular-curves},
+\texttt{number-theory}, \texttt{mcom} (conjecture also
+\texttt{x0-13}, \texttt{x0-26}). There is no arXiv badge.
+
+\paragraph{Tags and working branches.}
+Foundations tags \texttt{v0.27}--\texttt{v0.31} stay live; none is
+deleted or force-moved to record this rename. Phase
+\texttt{phase-darmon-merel-4413} carries the rename as an ordinary
+fast-forward: \texttt{2b60ccd} (\texttt{v0.30-mcom-structural-verification})
+$\to$ \texttt{adbdca8} (Lean rename) $\to$ \texttt{b416dc9} (referee-surface
+script updated to check the new names) $\to$ \texttt{05fda4b}
+(\texttt{CITATION.cff}/\texttt{.zenodo.json} bumped to
+\texttt{v0.31-mcom-honest-declarations}, JSON certificate
+\texttt{schema\_note} fields added), tagged
+\texttt{v0.31-mcom-honest-declarations}. Working finals from the v29
+line (\texttt{tate-neron-final-v29} \texttt{11c0ad7},
+\texttt{mazur-no-isogeny-final-v29} \texttt{2f4e16e},
+\texttt{ribet-928-to-32-final-v29} \texttt{5631fd1},
+\texttt{kolyvagin-rank0-final-v29} \texttt{fc8c7a1}) are unchanged;
+they predate the \texttt{\_final.lean} consolidation and are not
+themselves renamed. Conjecture \texttt{main} carries the same rename
+--- \texttt{bac0bf7} (\texttt{v30.0.0-level-26-structural-verification})
+$\to$ \texttt{f32a6ea} (Lean rename plus the paper's first honesty
+revision) $\to$ \texttt{0367d48} (the second honesty revision,
+tagged \texttt{v31.0.0-level-26-honest-declarations} and archived by
+GitHub-triggered Zenodo mint as \texttt{22884682}) $\to$
+\texttt{b5c8911} (a DOI-backfill commit citing \texttt{22884682} and
+correcting the concept-DOI error, tagged
+\texttt{v31.0.1-level-26-honest-declarations} and archived as
+\texttt{22884873}) $\to$ this revision's own commit, which fills in
+the \texttt{22885060} DOI reserved for it above. Unlike its two
+predecessors, this commit's tag,
+\texttt{v31.0.2-level-26-honest-declarations}, deliberately has
+\emph{no} corresponding GitHub Release: creating one would trigger
+another automatic Zenodo mint of a fifth, again-one-commit-behind
+archive. Instead \texttt{22885060} was published directly through
+Zenodo's deposit API against a source tree already containing this
+sentence, which is what makes it, and not \texttt{22884682} or
+\texttt{22884873}, the correct citation for the current state of this
+repository. \texttt{v31.0.0} and \texttt{v31.0.1} stay live as
+historical intermediate tags and Zenodo records; nothing above is
+deleted or force-moved.
