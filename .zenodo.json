@@ -1,25 +1,28 @@
 {
-  "title": "Kernel-checked bounded gap-3 search for A^4 + B^4 = (B+3)^13 through B = 1,000,000",
-  "description": "Lean 4.12.0 proves that no natural numbers A and B with B <= 1,000,000 satisfy A^4 + B^4 = (B+3)^13. Ten modular masks have kernel-checked soundness proofs; 2,000 separately compiled 500-value certificates cover B < 1,000,000, and the inclusive endpoint is checked separately. The bounded theorem uses only propext, Classical.choice, and Quot.sound. An exact-integer external checkpoint is independent evidence and is not a proof input. This does not prove the general Beal conjecture or discharge the remaining level-26 mathematical hypotheses. Methodology and build instructions: docs/FoundationsIntegratedV25_0_2.md.",
+  "title": "Beal Level 26 Foundations v25.0.1: Matveev–Level-26 Forward Interface after the v30.1.7 End-of-Proof Chain",
+  "description": "Post-final v25 forward retrofit for beal-level-26-foundations, tag v25.0.1-forward-43735b3, after the immutable v30.1.7-beal-final-43735b3 end-of-proof release. BealMatveevBealV25B0Search.Forward orders MatveevBoundData (C1_floor=143186215390, B0_nat=1000000), Level26SearchData, the proved B<1000 elimination, and the full B≤10^6 search proposition retained as explicit proof data. The level-26 numerical surface records Delta=16A^8B^8(A^4+B^4)^2, v29(Delta)=26v29(B+3), 13|v29(Delta), 928/29=32, 32*29=928, |SL2(F13)|=2184, 48<2184, a29=-10, L/Omega=1/3 and 1/7, and Sel2_card=1. No numerical identity is used backwards to construct Matveev, Tate, Mazur, Ribet, modularity, exhaustive-search, or general Beal evidence. The full B≤10^6 proposition and the general Beal common-prime theorem remain explicit formal boundaries; this is not an unconditional proof of Beal's conjecture. The three retrofit projections use exactly [propext, Classical.choice, Quot.sound] and introduce no sorry, sorryAx, axiom declaration, native_decide, Lean.ofReduceBool, or := True. Clean cache-restored build: 5,215 jobs; BealMatveevBealV25B0Search at 5148/5215, BealMatveevBealV25B0Search.Forward at 5213/5215, and BealFinal.Main at 5214/5215. Lean v4.12.0; Mathlib 809c3fb3b5c8f5d7dace56e200b426187516535a; manifest SHA-256 c7dbd5785b52afccc90ba404fef4a8f3ff12b549235698677a495fdc57ee7fc6. No lake update and no vendoring. Version DOI 10.5281/zenodo.22922473; foundations concept DOI 10.5281/zenodo.22379293.",
   "creators": [
     {
       "name": "Fox, David"
     }
   ],
   "keywords": [
-    "Lean 4",
-    "formal verification",
-    "kernel-checked",
-    "bounded Diophantine search",
-    "modular certificates",
-    "Beal conjecture"
+    "beal-conjecture",
+    "kraus",
+    "level-26",
+    "frey-curve",
+    "lean4",
+    "baker",
+    "tate",
+    "pari",
+    "matveev",
+    "bugeaud",
+    "lll",
+    "transparent-certs",
+    "X0(26)",
+    "Two-descent",
+    "Mordell-Weil",
+    "level-lowering"
   ],
-  "license": "MIT",
-  "related_identifiers": [
-    {
-      "identifier": "10.5281/zenodo.22922473",
-      "relation": "isNewVersionOf",
-      "scheme": "doi"
-    }
-  ]
+  "license": "MIT"
 }

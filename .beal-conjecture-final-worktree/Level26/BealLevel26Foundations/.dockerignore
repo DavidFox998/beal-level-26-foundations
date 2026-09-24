@@ -1,6 +1,0 @@
-.git
-.lake
-.cache
-**/*.olean
-**/*.ilean
-**/*.trace
