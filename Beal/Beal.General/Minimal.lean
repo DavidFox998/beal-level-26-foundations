@@ -1347,7 +1347,7 @@ theorem candidateUnitScaleChange_val (ε : ℤ_[2]ˣ) (r s t : ℚ_[2]) :
 /-- A later integral change of unit scale preserves the *nonzero*
 discriminant and its Q₂ valuation. The nonzero premise matters:
 `Padic.valuation 0 = 0` in Mathlib. -/
-theorem later_non_scaling_preserves_delta_valuation
+theorem LaterNonScalingTatePreservesNonzeroValuation
     (M : WeierstrassCurve ℤ_[2]) (hM : M.Δ ≠ 0)
     (ε : ℤ_[2]ˣ) (r s t : ℚ_[2]) (N : WeierstrassCurve ℤ_[2])
     (hmodel : (M.map (algebraMap ℤ_[2] ℚ_[2])).variableChange
@@ -1375,7 +1375,7 @@ theorem later_non_scaling_preserves_delta_valuation
 /-- The unit-discriminant branch survives every integral unit-scale
 successor. This proves an algebraic good-reduction certificate and
 minimality, but does not construct a Kodaira classifier or conductor. -/
-theorem later_non_scaling_unit_delta_minimal
+theorem LaterNonScalingTateValZeroUnitDiscMinimal
     (M : WeierstrassCurve ℤ_[2]) (hM : M.Δ ≠ 0)
     (hval : Padic.valuation (M.Δ : ℚ_[2]) = 0)
     (ε : ℤ_[2]ˣ) (r s t : ℚ_[2]) (N : WeierstrassCurve ℤ_[2])
@@ -1388,7 +1388,7 @@ theorem later_non_scaling_unit_delta_minimal
           P.map (algebraMap ℤ_[2] ℚ_[2]) →
         Padic.valuation (D.u : ℚ_[2]) ≤ 0 := by
   obtain ⟨hN, hsame⟩ :=
-    later_non_scaling_preserves_delta_valuation M hM ε r s t N hmodel
+    LaterNonScalingTatePreservesNonzeroValuation M hM ε r s t N hmodel
   have hN' : (N.Δ : ℚ_[2]) ≠ 0 := (PadicInt.coe_ne_zero N.Δ).mpr hN
   have hunit : IsUnit N.Δ := by
     rw [PadicInt.isUnit_iff, PadicInt.norm_def, Padic.norm_eq_pow_val hN',
@@ -1465,7 +1465,7 @@ theorem later_non_scaling_preserves_unit_c4
 successor has nonzero discriminant, the nonvanishing residue `b₂`
 test, and no further positive-scale integral model. No Néron
 conductor exponent or Kodaira type is assigned by these facts. -/
-theorem later_non_scaling_positive_delta_minimal
+theorem LaterNonScalingTatePosValMinimalB2C6Odd
     (M : WeierstrassCurve ℤ_[2]) (hM : M.Δ ≠ 0)
     (hc4 : (M.c₄ : ℚ_[2]) ≠ 0)
     (hc4val : Padic.valuation (M.c₄ : ℚ_[2]) = 0)
@@ -1482,7 +1482,7 @@ theorem later_non_scaling_positive_delta_minimal
           P.map (algebraMap ℤ_[2] ℚ_[2]) →
         Padic.valuation (D.u : ℚ_[2]) ≤ 0 := by
   obtain ⟨hN, hsame⟩ :=
-    later_non_scaling_preserves_delta_valuation M hM ε r s t N hmodel
+    LaterNonScalingTatePreservesNonzeroValuation M hM ε r s t N hmodel
   obtain ⟨hc4Nval, _⟩ :=
     later_non_scaling_preserves_unit_c4 M hc4 hc4val ε r s t N hmodel
   have hu : ((candidateUnitScaleChange ε r s t).u : ℚ_[2]) ≠ 0 :=
@@ -1503,6 +1503,13 @@ theorem later_non_scaling_positive_delta_minimal
     exact hpositive
   · intro P D hnext
     exact c4_unit_prevents_positive_scale N hc4N hc4Nval P D hnext
+
+/- TODO post-v31: Formalize the missing Tate/Kodaira/conductor step from
+the b₂, c₄, c₆, and nonzero Δ valuations and a proved node criterion to
+Kodaira I₀/Iₙ and the actual Néron exponent f₂. Mathlib at the pinned
+revision has no such framework, and the existing foundations tables
+do not supply the theorem. Do not assert I₀/f₂=0 or Iₙ/f₂=1 here
+until that link is proved. -/
 
 private theorem cast14 : ((14 : ℤ_[2]) : ℚ_[2]) = 14 := rfl
 private theorem cast4 : ((4 : ℤ_[2]) : ℚ_[2]) = 4 := rfl
