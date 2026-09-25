@@ -1344,6 +1344,94 @@ theorem candidateUnitScaleChange_val (ε : ℤ_[2]ˣ) (r s t : ℚ_[2]) :
   change Padic.valuation (((ε : ℤ_[2]) : ℚ_[2])) = 0
   omega
 
+/-- A later integral change of unit scale preserves the *nonzero*
+discriminant and its Q₂ valuation. The nonzero premise matters:
+`Padic.valuation 0 = 0` in Mathlib. -/
+theorem later_non_scaling_preserves_delta_valuation
+    (M : WeierstrassCurve ℤ_[2]) (hM : M.Δ ≠ 0)
+    (ε : ℤ_[2]ˣ) (r s t : ℚ_[2]) (N : WeierstrassCurve ℤ_[2])
+    (hmodel : (M.map (algebraMap ℤ_[2] ℚ_[2])).variableChange
+      (candidateUnitScaleChange ε r s t) =
+      N.map (algebraMap ℤ_[2] ℚ_[2])) :
+    N.Δ ≠ 0 ∧
+      Padic.valuation (N.Δ : ℚ_[2]) =
+        Padic.valuation (M.Δ : ℚ_[2]) := by
+  have hM' : (M.Δ : ℚ_[2]) ≠ 0 := (PadicInt.coe_ne_zero M.Δ).mpr hM
+  have hu : ((candidateUnitScaleChange ε r s t).u : ℚ_[2]) ≠ 0 :=
+    Units.ne_zero _
+  have hd := congrArg WeierstrassCurve.Δ hmodel
+  simp only [WeierstrassCurve.variableChange_Δ, WeierstrassCurve.map_Δ,
+    PadicInt.algebraMap_apply, Units.val_inv_eq_inv_val] at hd
+  have hN' : (N.Δ : ℚ_[2]) ≠ 0 := by
+    rw [← hd]
+    exact mul_ne_zero (pow_ne_zero 12 (inv_ne_zero hu)) hM'
+  refine ⟨(PadicInt.coe_ne_zero N.Δ).mp hN', ?_⟩
+  have hv := congrArg Padic.valuation hd
+  rw [Padic.valuation_map_mul (pow_ne_zero 12 (inv_ne_zero hu)) hM',
+    q2_val_pow _ (inv_ne_zero hu) 12, q2_val_inv _ hu,
+    candidateUnitScaleChange_val ε r s t] at hv
+  omega
+
+/-- The unit-discriminant branch survives every integral unit-scale
+successor. This proves an algebraic good-reduction certificate and
+minimality, but does not construct a Kodaira classifier or conductor. -/
+theorem later_non_scaling_unit_delta_minimal
+    (M : WeierstrassCurve ℤ_[2]) (hM : M.Δ ≠ 0)
+    (hval : Padic.valuation (M.Δ : ℚ_[2]) = 0)
+    (ε : ℤ_[2]ˣ) (r s t : ℚ_[2]) (N : WeierstrassCurve ℤ_[2])
+    (hmodel : (M.map (algebraMap ℤ_[2] ℚ_[2])).variableChange
+      (candidateUnitScaleChange ε r s t) =
+      N.map (algebraMap ℤ_[2] ℚ_[2])) :
+    IsUnit N.Δ ∧
+      ∀ (P : WeierstrassCurve ℤ_[2]) (D : WeierstrassCurve.VariableChange ℚ_[2]),
+        (N.map (algebraMap ℤ_[2] ℚ_[2])).variableChange D =
+          P.map (algebraMap ℤ_[2] ℚ_[2]) →
+        Padic.valuation (D.u : ℚ_[2]) ≤ 0 := by
+  obtain ⟨hN, hsame⟩ :=
+    later_non_scaling_preserves_delta_valuation M hM ε r s t N hmodel
+  have hN' : (N.Δ : ℚ_[2]) ≠ 0 := (PadicInt.coe_ne_zero N.Δ).mpr hN
+  have hunit : IsUnit N.Δ := by
+    rw [PadicInt.isUnit_iff, PadicInt.norm_def, Padic.norm_eq_pow_val hN',
+      hsame, hval]
+    norm_num
+  refine ⟨hunit, ?_⟩
+  intro P D hnext
+  apply low_minimality_Q2 N hN ?_ P D hnext
+  rw [hsame, hval]
+  norm_num
+
+/-- At 2, `c₄ ≡ b₂²` in the residue field. A unit `c₄` forces
+the nonvanishing `b₂` test used in the multiplicative branch of
+Tate's algorithm. This is a residue calculation, not a Kodaira label. -/
+theorem b2_mod_two_ne_zero_of_unit_c4
+    (N : WeierstrassCurve ℤ_[2]) (hunit : IsUnit N.c₄) :
+    (PadicInt.toZMod : ℤ_[2] →+* ZMod 2) N.b₂ ≠ 0 := by
+  let φ : ℤ_[2] →+* ZMod 2 := PadicInt.toZMod
+  have hc : φ N.c₄ ≠ 0 := (hunit.map φ).ne_zero
+  intro hb
+  change φ N.b₂ = 0 at hb
+  have h24 : φ (24 : ℤ_[2]) = 0 := by
+    rw [map_ofNat]
+    decide
+  apply hc
+  simp [WeierstrassCurve.c₄, hb, h24]
+
+/-- The same unit-`c₄` condition makes `c₆` nonzero mod 2:
+`c₆ ≡ -b₂³`. This is another invariant check, not a
+conductor-exponent calculation. -/
+theorem c6_mod_two_ne_zero_of_unit_c4
+    (N : WeierstrassCurve ℤ_[2]) (hunit : IsUnit N.c₄) :
+    (PadicInt.toZMod : ℤ_[2] →+* ZMod 2) N.c₆ ≠ 0 := by
+  let φ : ℤ_[2] →+* ZMod 2 := PadicInt.toZMod
+  have hb : φ N.b₂ ≠ 0 := b2_mod_two_ne_zero_of_unit_c4 N hunit
+  have h36 : φ (36 : ℤ_[2]) = 0 := by rw [map_ofNat]; decide
+  have h216 : φ (216 : ℤ_[2]) = 0 := by rw [map_ofNat]; decide
+  have hformula : φ N.c₆ = -(φ N.b₂) ^ 3 := by
+    simp [WeierstrassCurve.c₆, h36, h216]
+  intro hc
+  rw [hformula] at hc
+  exact (pow_ne_zero 3 hb) (neg_eq_zero.mp hc)
+
 /-- Any integral unit-scale successor of a model with unit `c₄` still
 has unit `c₄`, so it admits no further positive-scale integral change.
 This does not exclude unit-scale changes or determine their reduction
@@ -1372,6 +1460,49 @@ theorem later_non_scaling_preserves_unit_c4
     candidateUnitScaleChange_val ε r s t, hc4val] at hv
   have hunit : Padic.valuation (N.c₄ : ℚ_[2]) = 0 := by omega
   exact ⟨hunit, no_second_scale_two_of_unit_c4 N hne hunit⟩
+
+/-- In the positive discriminant-valuation branch, a unit-scale
+successor has nonzero discriminant, the nonvanishing residue `b₂`
+test, and no further positive-scale integral model. No Néron
+conductor exponent or Kodaira type is assigned by these facts. -/
+theorem later_non_scaling_positive_delta_minimal
+    (M : WeierstrassCurve ℤ_[2]) (hM : M.Δ ≠ 0)
+    (hc4 : (M.c₄ : ℚ_[2]) ≠ 0)
+    (hc4val : Padic.valuation (M.c₄ : ℚ_[2]) = 0)
+    (hpositive : 0 < Padic.valuation (M.Δ : ℚ_[2]))
+    (ε : ℤ_[2]ˣ) (r s t : ℚ_[2]) (N : WeierstrassCurve ℤ_[2])
+    (hmodel : (M.map (algebraMap ℤ_[2] ℚ_[2])).variableChange
+      (candidateUnitScaleChange ε r s t) =
+      N.map (algebraMap ℤ_[2] ℚ_[2])) :
+    N.Δ ≠ 0 ∧ 0 < Padic.valuation (N.Δ : ℚ_[2]) ∧
+      (PadicInt.toZMod : ℤ_[2] →+* ZMod 2) N.b₂ ≠ 0 ∧
+      (PadicInt.toZMod : ℤ_[2] →+* ZMod 2) N.c₆ ≠ 0 ∧
+      ∀ (P : WeierstrassCurve ℤ_[2]) (D : WeierstrassCurve.VariableChange ℚ_[2]),
+        (N.map (algebraMap ℤ_[2] ℚ_[2])).variableChange D =
+          P.map (algebraMap ℤ_[2] ℚ_[2]) →
+        Padic.valuation (D.u : ℚ_[2]) ≤ 0 := by
+  obtain ⟨hN, hsame⟩ :=
+    later_non_scaling_preserves_delta_valuation M hM ε r s t N hmodel
+  obtain ⟨hc4Nval, _⟩ :=
+    later_non_scaling_preserves_unit_c4 M hc4 hc4val ε r s t N hmodel
+  have hu : ((candidateUnitScaleChange ε r s t).u : ℚ_[2]) ≠ 0 :=
+    Units.ne_zero _
+  have hc := congrArg WeierstrassCurve.c₄ hmodel
+  simp only [WeierstrassCurve.variableChange_c₄, WeierstrassCurve.map_c₄,
+    PadicInt.algebraMap_apply, Units.val_inv_eq_inv_val] at hc
+  have hc4N : (N.c₄ : ℚ_[2]) ≠ 0 := by
+    rw [← hc]
+    exact mul_ne_zero (pow_ne_zero 4 (inv_ne_zero hu)) hc4
+  have hc4unit : IsUnit N.c₄ := by
+    rw [PadicInt.isUnit_iff, PadicInt.norm_def,
+      Padic.norm_eq_pow_val hc4N, hc4Nval]
+    norm_num
+  refine ⟨hN, ?_, b2_mod_two_ne_zero_of_unit_c4 N hc4unit,
+    c6_mod_two_ne_zero_of_unit_c4 N hc4unit, ?_⟩
+  · rw [hsame]
+    exact hpositive
+  · intro P D hnext
+    exact c4_unit_prevents_positive_scale N hc4N hc4Nval P D hnext
 
 private theorem cast14 : ((14 : ℤ_[2]) : ℚ_[2]) = 14 := rfl
 private theorem cast4 : ((4 : ℤ_[2]) : ℚ_[2]) = 4 := rfl
