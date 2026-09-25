@@ -168,6 +168,35 @@ theorem frey_c4_v2_of_coprime (x y z p q r : ℕ)
     · exact Or.inr hoV
   · exact Or.inl hoU
 
+/-- For positive coprime inputs, the displayed Z₂ model has nonzero
+`c₄` of valuation four. This concerns the displayed model, not yet
+its minimal replacement. -/
+theorem freyZ2_c4_v2_of_coprime (U V : ℕ)
+    (hU : 0 < U) (hV : 0 < V) (hcop : Nat.Coprime U V) :
+    Padic.valuation ((freyZ2 U V 0 1 1 0).c₄ : ℚ_[2]) = 4 ∧
+      ((freyZ2 U V 0 1 1 0).c₄ : ℚ_[2]) ≠ 0 := by
+  have hraw := frey_c4_v2_of_coprime U V 0 1 1 0
+    (by simpa using hU) (by simpa using hV) (by simpa using hcop)
+  have hc4Nat :
+      (freyWeierstrassGeneral U V 0 1 1 0).c₄ =
+        ((16 * (U ^ 2 + U * V + V ^ 2) : ℕ) : ℤ) := by
+    rw [frey_c4]
+    push_cast
+    ring
+  rw [hc4Nat] at hraw
+  have hc4Z2 :
+      (freyZ2 U V 0 1 1 0).c₄ =
+        ((16 * (U ^ 2 + U * V + V ^ 2) : ℕ) : ℤ_[2]) := by
+    rw [freyZ2, WeierstrassCurve.map_c₄, hc4Nat]
+    simp
+  have hn : 16 * (U ^ 2 + U * V + V ^ 2) ≠ 0 := by positivity
+  rw [hc4Z2, PadicInt.coe_natCast]
+  constructor
+  · rw [q2_val_nat _ hn]
+    exact_mod_cast (show padicValNat 2 (16 * (U ^ 2 + U * V + V ^ 2)) = 4 by
+      simpa only [padicValInt, Int.natAbs_ofNat] using hraw)
+  · exact Nat.cast_ne_zero.mpr hn
+
 /-- Coprimality of the original bases supplies the powered-input
 c₄ hypothesis, provided both exponents are positive. -/
 theorem frey_c4_v2_of_base_coprime (x y z p q r : ℕ)
@@ -230,6 +259,52 @@ theorem frey_discriminant_even (x y z p q r : ℕ) :
     ((x : ℤ) ^ p + (y : ℤ) ^ q) ^ 2, ?_⟩
   ring
 
+/- The positive-scale "second step" is not available for the
+coprime first-step models: `c₄` is already a unit, regardless of
+whether their discriminant valuation exceeds twelve. -/
+theorem tate_step_no_second_scale_of_coprime (U V : ℕ)
+    (hU : 0 < U) (hV : 0 < V) (hcop : Nat.Coprime U V)
+    (step : TateScaleTwoStep U V) :
+    ∃ (M : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2]),
+      ((freyZ2 U V 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+        M.map (algebraMap ℤ_[2] ℚ_[2]) ∧
+      Padic.valuation (C.u : ℚ_[2]) = 1 ∧
+      Padic.valuation (M.c₄ : ℚ_[2]) = 0 ∧
+      ¬ SecondScaleTwoAttempt M := by
+  obtain ⟨M, C, hmodel, hscale⟩ := tate_step_integral_model U V step
+  obtain ⟨hrawVal, hrawNe⟩ := freyZ2_c4_v2_of_coprime U V hU hV hcop
+  have hu : (C.u : ℚ_[2]) ≠ 0 := Units.ne_zero C.u
+  have hc := congrArg WeierstrassCurve.c₄ hmodel
+  simp only [WeierstrassCurve.variableChange_c₄, WeierstrassCurve.map_c₄,
+    PadicInt.algebraMap_apply, Units.val_inv_eq_inv_val] at hc
+  have hc4Ne : (M.c₄ : ℚ_[2]) ≠ 0 := by
+    rw [← hc]
+    exact mul_ne_zero (pow_ne_zero 4 (inv_ne_zero hu)) hrawNe
+  have hval :=
+    scale_two_c4_valuation_if_integral (freyZ2 U V 0 1 1 0) M C hrawNe hmodel hscale
+  have hunitVal : Padic.valuation (M.c₄ : ℚ_[2]) = 0 := by omega
+  exact ⟨M, C, hmodel, hscale, hunitVal,
+    no_second_scale_two_of_unit_c4 M hc4Ne hunitVal⟩
+
+/-- Conditional local conductor consequence for a *constructed* model
+at the threshold. A genuine good-reduction conductor rule remains an
+unsupplied premise; no general `f₂` is defined here. -/
+theorem tate_step_threshold_f2_zero_conditional (U V : ℕ)
+    (hU : 0 < U) (hV : 0 < V) (step : TateScaleTwoStep U V)
+    (hthreshold : padicValNat 2 (U * V * (U + V)) = 4)
+    (f2 : WeierstrassCurve ℤ_[2] → ℕ)
+    (hgood : ConductorUnitCriterion f2) :
+    ∃ (M : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2]),
+      ((freyZ2 U V 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+        M.map (algebraMap ℤ_[2] ℚ_[2]) ∧
+      Padic.valuation (C.u : ℚ_[2]) = 1 ∧ f2 M = 0 := by
+  obtain ⟨M, C, hmodel, hscale⟩ := tate_step_integral_model U V step
+  have hunit : Padic.valuation (M.Δ : ℚ_[2]) = 0 :=
+    (high_parity_exactly_four U V 0 1 1 0
+      (by simpa using hU) (by simpa using hV) M C hmodel hscale).mpr
+      (by simpa using hthreshold)
+  exact ⟨M, C, hmodel, hscale, hgood M hunit⟩
+
 /- TODO tate_classification_general: The three parity witnesses in Minimal have odd discriminant
 *after* their particular scale-2 changes. They cannot be assigned
 type I_{2*v₂(W)} by a correct classifier: its unit-discriminant rule
@@ -241,11 +316,20 @@ threshold, but remaining high-congruence cases and reduction types are open.
 Prove the full Tate steps before an unconditional f₂, or any formula
 N=2^?*rad(x*y*z), can be claimed. -/
 
+/- TODO full_tate / f2 / conductor: The unit-discriminant criteria above
+are only necessary interfaces for a future genuine local classifier
+and conductor exponent, not definitions or proofs of either one.
+The coprime first-step models cannot be scaled again positively;
+compute their reduction types on those models instead. -/
+
 #print axioms I_positive_incompatible_with_unit
 #print axioms threshold_type_I0_conditional
 #print axioms threshold_f2_zero_conditional
 #print axioms tate_step_threshold_I0_conditional
 #print axioms frey_c4_v2_of_coprime
+#print axioms freyZ2_c4_v2_of_coprime
+#print axioms tate_step_no_second_scale_of_coprime
+#print axioms tate_step_threshold_f2_zero_conditional
 #print axioms frey_c4_v2_of_base_coprime
 #print axioms coprime_c4_factor_uvw
 #print axioms frey_discriminant_even

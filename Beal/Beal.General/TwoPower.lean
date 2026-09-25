@@ -96,6 +96,15 @@ theorem two_power_conditional
     (hsol : A ^ 4 + B ^ 4 = C ^ n) : False :=
   h44 A B C n hA hB hC hn hcop hsol
 
+/-- Named conditional elimination of the exact `(4,4,n)` signature.
+The `DarmonMerel44n` premise is deliberately not discharged here. -/
+theorem two_power_44n_conditional
+    (h44 : DarmonMerel44n)
+    (A B C n : ℕ) (hA : 0 < A) (hB : 0 < B) (hC : 0 < C)
+    (hn : 3 ≤ n) (hcop : Nat.Coprime A B)
+    (hsol : A ^ 4 + B ^ 4 = C ^ n) : False :=
+  two_power_conditional h44 A B C n hA hB hC hn hcop hsol
+
 /-- The `p=4, q=4` branch explicitly requires the unsupplied
 `(4,4,n)` obligation; this is not a proof for arbitrary `q`. -/
 theorem two_power_p4_needs_darmon_merel
@@ -128,12 +137,14 @@ theorem two_power_needs_darmon_merel
       rw [← pow_mul, hpow]
     _ = z ^ n := hsol
 
-/- TODO DarmonMerel44n: Supply a real proof with correct hypotheses for the `(4,4,n)`
+/- TODO darmon_merel_general / DarmonMerel44n:
+Supply a real proof with correct hypotheses for the `(4,4,n)`
 requirement if one is available; this does not address other exponent
 signatures, such as arbitrary q in x^(2^k)+y^q=z^r. The bounded
 (4,4,13) check for B ≤ 10⁶ is not the missing proof. -/
 
 #print axioms two_power_conditional
+#print axioms two_power_44n_conditional
 #print axioms two_power_p4_needs_darmon_merel
 #check DarmonMerel44n
 #print axioms beal_exponent_split

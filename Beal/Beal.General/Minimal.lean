@@ -71,7 +71,8 @@ private theorem q2_val_coe_rat {q : ℚ} (hq : q ≠ 0) :
     exact hcast.symm
   exact neg_injective ((zpow_inj hp_pos hp_ne).mp (hL.trans hR.symm))
 
-private theorem q2_val_nat (n : ℕ) (hn : n ≠ 0) :
+/-- Valuation of a nonzero natural number embedded in Q₂. -/
+theorem q2_val_nat (n : ℕ) (hn : n ≠ 0) :
     Padic.valuation (n : ℚ_[2]) = (padicValNat 2 n : ℤ) := by
   have hq : (n : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr hn
   have hcast : ((n : ℚ) : ℚ_[2]) = (n : ℚ_[2]) := by simp
@@ -398,6 +399,40 @@ theorem tate_step_odd_odd (U V : ℕ)
             ((V : ℤ) - (U : ℤ)) + 3 * (U : ℤ) ^ 2 := by ring
   · ring
 
+/-- With `16 ∣ U` and `V ≡ 3 (mod 4)`, the `r=0, s=1, t=0`
+first step fails its `a₂` divisibility test. Other changes have
+not been excluded. -/
+theorem tate_step_even_odd_r0_obstructed (U V : ℕ)
+    (hU : 16 ∣ U) (hV : V % 4 = 3) :
+    ¬ ∃ step : TateScaleTwoStep U V, step.r = 0 := by
+  rintro ⟨step, hr⟩
+  obtain ⟨u, hu⟩ := hU
+  have ha := step.a₂_condition
+  rw [hr] at ha
+  omega
+
+/-- With `16 ∣ V` and `U ≡ 1 (mod 4)`, the same `r=0`
+first step cannot be integral. This is not an all-change obstruction. -/
+theorem tate_step_odd_even_r0_obstructed (U V : ℕ)
+    (hU : U % 4 = 1) (hV : 16 ∣ V) :
+    ¬ ∃ step : TateScaleTwoStep U V, step.r = 0 := by
+  rintro ⟨step, hr⟩
+  obtain ⟨v, hv⟩ := hV
+  have ha := step.a₂_condition
+  rw [hr] at ha
+  omega
+
+/-- With `16 ∣ U+V` and `U ≡ 3 (mod 4)`, translation by `r=U`
+fails the `a₂` test. A different first-step choice remains open. -/
+theorem tate_step_odd_odd_rU_obstructed (U V : ℕ)
+    (hU : U % 4 = 3) (hW : 16 ∣ U + V) :
+    ¬ ∃ step : TateScaleTwoStep U V, step.r = (U : ℤ) := by
+  rintro ⟨step, hr⟩
+  obtain ⟨w, hw⟩ := hW
+  have ha := step.a₂_condition
+  rw [hr] at ha
+  omega
+
 private theorem highChangeTwo_val (r : ℚ_[2]) :
     Padic.valuation ((highChangeTwo r).u : ℚ_[2]) = 1 := by
   change Padic.valuation (2 : ℚ_[2]) = 1
@@ -521,6 +556,114 @@ theorem tate_step_above_threshold_nonunit (U V : ℕ)
   refine ⟨M, C, hmodel, hscale, ?_⟩
   intro hunit
   have hthreshold := hiff.mp hunit
+  omega
+
+/-- An integral model with nonzero `c₄` of valuation zero cannot be
+scaled positively to another integral model: `c₄` scales by `u⁻⁴`.
+Unlike the discriminant obstruction, this applies at *every*
+positive discriminant valuation. -/
+theorem c4_unit_prevents_positive_scale
+    (M : WeierstrassCurve ℤ_[2])
+    (hc4 : (M.c₄ : ℚ_[2]) ≠ 0)
+    (hc4val : Padic.valuation (M.c₄ : ℚ_[2]) = 0)
+    (N : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2])
+    (hmodel : (M.map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+      N.map (algebraMap ℤ_[2] ℚ_[2])) :
+    Padic.valuation (C.u : ℚ_[2]) ≤ 0 := by
+  have hu : (C.u : ℚ_[2]) ≠ 0 := Units.ne_zero C.u
+  have hc := congrArg WeierstrassCurve.c₄ hmodel
+  simp only [WeierstrassCurve.variableChange_c₄, WeierstrassCurve.map_c₄,
+    PadicInt.algebraMap_apply, Units.val_inv_eq_inv_val] at hc
+  have hval := congrArg Padic.valuation hc
+  rw [Padic.valuation_map_mul (pow_ne_zero 4 (inv_ne_zero hu)) hc4,
+    q2_val_pow _ (inv_ne_zero hu) 4, q2_val_inv _ hu, hc4val] at hval
+  have hnonneg : 0 ≤ Padic.valuation (N.c₄ : ℚ_[2]) :=
+    PadicInt.valuation_nonneg N.c₄
+  omega
+
+/-- Any hypothetical *integral* scale-2 change would lower the
+valuation of `c₄` by four. When the starting valuation is zero,
+this contradicts integrality of the target. -/
+theorem scale_two_c4_valuation_if_integral
+    (M N : WeierstrassCurve ℤ_[2])
+    (C : WeierstrassCurve.VariableChange ℚ_[2])
+    (hc4 : (M.c₄ : ℚ_[2]) ≠ 0)
+    (hmodel : (M.map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+      N.map (algebraMap ℤ_[2] ℚ_[2]))
+    (hscale : Padic.valuation (C.u : ℚ_[2]) = 1) :
+    Padic.valuation (N.c₄ : ℚ_[2]) =
+      Padic.valuation (M.c₄ : ℚ_[2]) - 4 := by
+  have hu : (C.u : ℚ_[2]) ≠ 0 := Units.ne_zero C.u
+  have hc := congrArg WeierstrassCurve.c₄ hmodel
+  simp only [WeierstrassCurve.variableChange_c₄, WeierstrassCurve.map_c₄,
+    PadicInt.algebraMap_apply, Units.val_inv_eq_inv_val] at hc
+  have hval := congrArg Padic.valuation hc
+  rw [Padic.valuation_map_mul (pow_ne_zero 4 (inv_ne_zero hu)) hc4,
+    q2_val_pow _ (inv_ne_zero hu) 4, q2_val_inv _ hu, hscale] at hval
+  omega
+
+/-- A *hypothetical* second scale-2 change would lower the
+discriminant valuation by twelve. This is only a scaling law:
+no second integral model is constructed here. -/
+theorem second_scale_two_delta_if_integral
+    (M N : WeierstrassCurve ℤ_[2])
+    (C : WeierstrassCurve.VariableChange ℚ_[2])
+    (hM : (M.Δ : ℚ_[2]) ≠ 0)
+    (hmodel : (M.map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+      N.map (algebraMap ℤ_[2] ℚ_[2]))
+    (hscale : Padic.valuation (C.u : ℚ_[2]) = 1) :
+    Padic.valuation (N.Δ : ℚ_[2]) =
+      Padic.valuation (M.Δ : ℚ_[2]) - 12 := by
+  have hu : (C.u : ℚ_[2]) ≠ 0 := Units.ne_zero C.u
+  have hd := congrArg WeierstrassCurve.Δ hmodel
+  simp only [WeierstrassCurve.variableChange_Δ, WeierstrassCurve.map_Δ,
+    PadicInt.algebraMap_apply, Units.val_inv_eq_inv_val] at hd
+  have hval := congrArg Padic.valuation hd
+  rw [Padic.valuation_map_mul (pow_ne_zero 12 (inv_ne_zero hu)) hM,
+    q2_val_pow _ (inv_ne_zero hu) 12, q2_val_inv _ hu, hscale] at hval
+  omega
+
+/-- Exact valuation *if* an additional scale-2 change of the constructed
+first-step model is integral. This does not assert that such a change
+exists; it is impossible in the coprime subfamilies (see Conductor). -/
+theorem tate_step_second_delta_if_integral (U V : ℕ)
+    (hU : 0 < U) (hV : 0 < V) (step : TateScaleTwoStep U V)
+    (N : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2])
+    (hmodel : ((highZ2 step.a₂ step.a₄).map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+      N.map (algebraMap ℤ_[2] ℚ_[2]))
+    (hscale : Padic.valuation (C.u : ℚ_[2]) = 1) :
+    Padic.valuation (N.Δ : ℚ_[2]) =
+      2 * ((padicValNat 2 (U * V * (U + V)) : ℤ) - 4) - 12 := by
+  have hdisc : 16 * U ^ 2 * V ^ 2 * (U + V) ^ 2 ≠ 0 := by positivity
+  have hraw : ((freyZ2 U V 0 1 1 0).Δ : ℚ_[2]) ≠ 0 := by
+    rw [freyZ2_delta, PadicInt.coe_natCast]
+    exact Nat.cast_ne_zero.mpr (by simpa only [pow_one] using hdisc)
+  have hu : ((highChangeTwo (step.r : ℚ_[2])).u : ℚ_[2]) ≠ 0 := Units.ne_zero _
+  have hd := congrArg WeierstrassCurve.Δ (tate_scale_two_step_model U V step)
+  simp only [WeierstrassCurve.variableChange_Δ, WeierstrassCurve.map_Δ,
+    PadicInt.algebraMap_apply, Units.val_inv_eq_inv_val] at hd
+  have hM : ((highZ2 step.a₂ step.a₄).Δ : ℚ_[2]) ≠ 0 := by
+    rw [← hd]
+    exact mul_ne_zero (pow_ne_zero 12 (inv_ne_zero hu)) hraw
+  rw [second_scale_two_delta_if_integral _ N C hM hmodel hscale,
+    tate_step_delta_valuation U V hU hV step]
+
+/-- The next positive-scale change is an explicit proposition, not
+a placeholder value or an automatically available Tate step. -/
+def SecondScaleTwoAttempt (M : WeierstrassCurve ℤ_[2]) : Prop :=
+  ∃ (N : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2]),
+    (M.map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+      N.map (algebraMap ℤ_[2] ℚ_[2]) ∧
+    Padic.valuation (C.u : ℚ_[2]) = 1
+
+/-- A unit `c₄` rules out the second scale-2 attempt altogether. -/
+theorem no_second_scale_two_of_unit_c4
+    (M : WeierstrassCurve ℤ_[2])
+    (hc4 : (M.c₄ : ℚ_[2]) ≠ 0)
+    (hc4val : Padic.valuation (M.c₄ : ℚ_[2]) = 0) :
+    ¬ SecondScaleTwoAttempt M := by
+  rintro ⟨N, C, hmodel, hscale⟩
+  have hbound := c4_unit_prevents_positive_scale M hc4 hc4val N C hmodel
   omega
 
 private theorem cast14 : ((14 : ℤ_[2]) : ℚ_[2]) = 14 := rfl
@@ -687,13 +830,15 @@ theorem high_minimal_odd_even :
   rw [threshold_deltas.2.2]
   norm_num
 
-/- TODO high_parity_general: The three first-step constructors cover
-infinite congruence subfamilies, not every coprime high-valuation pair.
-Complete the remaining residue classes and all admissible changes.
-At valuation four these subfamilies have unit, minimal models; above
-four their first-step models are nonunit and require further Tate steps
-to classify. Neither the three original witnesses nor these first-step
-certificates assign a Kodaira type to all high inputs. -/
+/- TODO remaining_residue_classes / high_parity_general:
+The three opposite-residue lemmas rule out only the indicated
+translations with s=1,t=0; they do not exclude other first changes.
+Classify all admissible changes and remaining parity/congruence
+families. Above valuation four the existing first-step models have
+nonunit discriminant. For coprime inputs their c₄ is a unit, so
+*another positive-scale integral change is impossible*; what remains
+is the reduction-type Tate calculation on that minimal model, not a
+second division of its discriminant by 2¹². -/
 
 #print axioms freyZ2_delta_v2
 #print axioms frey_low_minimal_Q2
@@ -706,10 +851,18 @@ certificates assign a Kodaira type to all high inputs. -/
 #print axioms tate_step_even_odd
 #print axioms tate_step_odd_even
 #print axioms tate_step_odd_odd
+#print axioms tate_step_even_odd_r0_obstructed
+#print axioms tate_step_odd_even_r0_obstructed
+#print axioms tate_step_odd_odd_rU_obstructed
 #print axioms tate_step_delta_valuation
 #print axioms tate_step_threshold_unit
 #print axioms tate_step_threshold_minimal
 #print axioms tate_step_above_threshold_nonunit
+#print axioms c4_unit_prevents_positive_scale
+#print axioms scale_two_c4_valuation_if_integral
+#print axioms second_scale_two_delta_if_integral
+#print axioms tate_step_second_delta_if_integral
+#print axioms no_second_scale_two_of_unit_c4
 #print axioms threshold_witnesses_exactly_four
 #print axioms threshold_witnesses_raw_delta_v2
 #print axioms high_minimal_odd_odd
