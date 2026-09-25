@@ -1,0 +1,190 @@
+import Beal.«Beal.General».Minimal
+
+/-!
+Explicit residue-characteristic-two smoothness and node tests for
+unit-scale successors. These check the affine equation, its two
+partials, and the quadratic tangent cone. They do not implement
+Tate's algorithm or assign a Kodaira type or Néron conductor exponent.
+-/
+
+namespace Beal.General
+
+/-- The affine Weierstrass equation over the residue field. -/
+def reducedEquation (W : WeierstrassCurve (ZMod 2)) (x y : ZMod 2) : ZMod 2 :=
+  y ^ 2 + W.a₁ * x * y + W.a₃ * y -
+    (x ^ 3 + W.a₂ * x ^ 2 + W.a₄ * x + W.a₆)
+
+/-- Its formal partial derivative with respect to `x`. -/
+def reducedDx (W : WeierstrassCurve (ZMod 2)) (x y : ZMod 2) : ZMod 2 :=
+  W.a₁ * y - (3 * x ^ 2 + 2 * W.a₂ * x + W.a₄)
+
+/-- Its formal partial derivative with respect to `y`. -/
+def reducedDy (W : WeierstrassCurve (ZMod 2)) (x y : ZMod 2) : ZMod 2 :=
+  2 * y + W.a₁ * x + W.a₃
+
+/-- The degree-two part after translating a point of the affine equation
+to the origin. Its slope quadratic has linear coefficient `W.a₁`;
+in characteristic two, nonzero `W.a₁` makes its tangent directions
+distinct over an algebraic closure. -/
+def reducedTangentCone (W : WeierstrassCurve (ZMod 2))
+    (x u v : ZMod 2) : ZMod 2 :=
+  v ^ 2 + W.a₁ * u * v - (3 * x + W.a₂) * u ^ 2
+
+/-- The expansion certifies that `reducedTangentCone` is the actual
+quadratic part of the translated Weierstrass equation. -/
+theorem reducedEquation_shift (W : WeierstrassCurve (ZMod 2))
+    (x y u v : ZMod 2) :
+    reducedEquation W (x + u) (y + v) =
+      reducedEquation W x y + reducedDx W x y * u + reducedDy W x y * v +
+      reducedTangentCone W x u v - u ^ 3 := by
+  simp only [reducedEquation, reducedDx, reducedDy, reducedTangentCone]
+  ring
+
+/-- A singular point whose translated quadratic term has nonzero
+mixed coefficient: the explicit characteristic-two node test. -/
+def ReducedNodalPoint (W : WeierstrassCurve (ZMod 2)) (x y : ZMod 2) : Prop :=
+  reducedEquation W x y = 0 ∧
+    reducedDx W x y = 0 ∧
+    reducedDy W x y = 0 ∧
+    W.a₁ ≠ 0
+
+/-- Nonzero `b₂` and zero discriminant give the singular point
+`(a₃, a₃² + a₄)` in characteristic two. The mixed coefficient of
+the actual tangent cone is nonzero, so this is a node, not a cusp. -/
+theorem reduced_nodal_point_of_delta_zero_b2_ne_zero
+    (W : WeierstrassCurve (ZMod 2))
+    (hΔ : W.Δ = 0) (hb : W.b₂ ≠ 0) :
+    ReducedNodalPoint W W.a₃ (W.a₃ ^ 2 + W.a₄) := by
+  have hcases (z : ZMod 2) : z = 0 ∨ z = 1 := by
+    fin_cases z <;> simp
+  have htwo : (2 : ZMod 2) = 0 := by decide
+  have hfour : (4 : ZMod 2) = 0 := by decide
+  have ha : W.a₁ = 1 := by
+    rcases hcases W.a₁ with hzero | hone
+    · have : W.b₂ = 0 := by simp [WeierstrassCurve.b₂, hzero, hfour]
+      exact (hb this).elim
+    · exact hone
+  have hthree : (3 : ZMod 2) = 1 := by decide
+  have hid : W.Δ = reducedEquation W W.a₃ (W.a₃ ^ 2 + W.a₄) := by
+    rcases hcases W.a₂ with h2 | h2 <;>
+      rcases hcases W.a₃ with h3 | h3 <;>
+      rcases hcases W.a₄ with h4 | h4 <;>
+      rcases hcases W.a₆ with h6 | h6
+    all_goals
+      simp only [WeierstrassCurve.Δ, WeierstrassCurve.b₂,
+        WeierstrassCurve.b₄, WeierstrassCurve.b₆,
+        WeierstrassCurve.b₈, reducedEquation, ha, h2, h3, h4, h6]
+      decide
+  refine ⟨?_, ?_, ?_, ?_⟩
+  · rw [← hid]
+    exact hΔ
+  · simp [reducedDx, ha, htwo, hthree]
+  · simp only [reducedDy, ha, htwo, zero_mul, zero_add, one_mul]
+    calc W.a₃ + W.a₃ = (2 : ZMod 2) * W.a₃ := by ring
+      _ = 0 := by rw [htwo]; ring
+  · rw [ha]
+    exact one_ne_zero
+
+/-- A nonzero reduced discriminant rules out every simultaneous zero
+of the affine equation and both formal partials. The finite residue
+field calculation makes this smoothness test independent of an
+unavailable geometric Tate-algorithm API. -/
+theorem reduced_no_singular_point_of_delta_ne_zero
+    (W : WeierstrassCurve (ZMod 2))
+    (hΔ : W.Δ ≠ 0) (x y : ZMod 2) :
+    ¬(reducedEquation W x y = 0 ∧
+      reducedDx W x y = 0 ∧ reducedDy W x y = 0) := by
+  have hcases (z : ZMod 2) : z = 0 ∨ z = 1 := by
+    fin_cases z <;> simp
+  rcases hcases W.a₁ with h1 | h1 <;>
+    rcases hcases W.a₂ with h2 | h2 <;>
+    rcases hcases W.a₃ with h3 | h3 <;>
+    rcases hcases W.a₄ with h4 | h4 <;>
+    rcases hcases W.a₆ with h6 | h6 <;>
+    rcases hcases x with hx | hx <;>
+    rcases hcases y with hy | hy
+  all_goals
+    simp only [WeierstrassCurve.Δ, WeierstrassCurve.b₂,
+      WeierstrassCurve.b₄, WeierstrassCurve.b₆,
+      WeierstrassCurve.b₈, reducedEquation, reducedDx, reducedDy,
+      h1, h2, h3, h4, h6, hx, hy] at *
+    first
+    | exact (hΔ (by decide)).elim
+    | decide
+
+/-- A unit-discriminant successor has smooth affine reduction. This
+does not yet assert Kodaira `I₀` or an actual Néron conductor exponent. -/
+theorem LaterNonScalingTateValZeroHasSmoothReduction
+    (M : WeierstrassCurve ℤ_[2]) (hM : M.Δ ≠ 0)
+    (hval : Padic.valuation (M.Δ : ℚ_[2]) = 0)
+    (ε : ℤ_[2]ˣ) (r s t : ℚ_[2]) (N : WeierstrassCurve ℤ_[2])
+    (hmodel : (M.map (algebraMap ℤ_[2] ℚ_[2])).variableChange
+      (candidateUnitScaleChange ε r s t) =
+      N.map (algebraMap ℤ_[2] ℚ_[2])) :
+    ∀ x y : ZMod 2,
+      ¬(reducedEquation (N.map PadicInt.toZMod) x y = 0 ∧
+        reducedDx (N.map PadicInt.toZMod) x y = 0 ∧
+        reducedDy (N.map PadicInt.toZMod) x y = 0) := by
+  obtain ⟨hunit, _⟩ :=
+    LaterNonScalingTateValZeroUnitDiscMinimal M hM hval ε r s t N hmodel
+  have hred : (N.map PadicInt.toZMod).Δ ≠ 0 := by
+    rw [WeierstrassCurve.map_Δ]
+    exact (hunit.map PadicInt.toZMod).ne_zero
+  exact reduced_no_singular_point_of_delta_ne_zero
+    (N.map PadicInt.toZMod) hred
+
+/-- Positive discriminant valuation of a nonzero integral
+discriminant forces its image in the residue field to vanish. -/
+theorem positive_delta_reduces_zero (N : WeierstrassCurve ℤ_[2])
+    (hne : N.Δ ≠ 0) (hpositive : 0 < Padic.valuation (N.Δ : ℚ_[2])) :
+    (PadicInt.toZMod : ℤ_[2] →+* ZMod 2) N.Δ = 0 := by
+  have hN : (N.Δ : ℚ_[2]) ≠ 0 := (PadicInt.coe_ne_zero N.Δ).mpr hne
+  have hnonunit : ¬IsUnit N.Δ := by
+    intro h
+    have hnorm : ‖(N.Δ : ℚ_[2])‖ = 1 := by
+      simpa only [PadicInt.norm_def] using (PadicInt.isUnit_iff.mp h)
+    have hpow : (2 : ℝ) ^ (-Padic.valuation (N.Δ : ℚ_[2])) =
+        (2 : ℝ) ^ (0 : ℤ) := by
+      calc
+        _ = ‖(N.Δ : ℚ_[2])‖ := (Padic.norm_eq_pow_val hN).symm
+        _ = 1 := hnorm
+        _ = (2 : ℝ) ^ (0 : ℤ) := by norm_num
+    have hv := (zpow_strictMono (show (1 : ℝ) < 2 by norm_num)).injective hpow
+    omega
+  have hmem : N.Δ ∈ LocalRing.maximalIdeal ℤ_[2] := by
+    simpa only [LocalRing.mem_maximalIdeal, mem_nonunits_iff] using hnonunit
+  have hker : N.Δ ∈ RingHom.ker (PadicInt.toZMod : ℤ_[2] →+* ZMod 2) := by
+    rw [PadicInt.ker_toZMod]
+    exact hmem
+  exact RingHom.mem_ker.mp hker
+
+/-- Every positive-discriminant-valuation, unit-`c₄` successor in
+the proved branch has a nodal reduced affine Weierstrass equation.
+No type `Iₙ` or exponent `f₂=1` is inferred here. -/
+theorem LaterNonScalingTatePosValHasNodalReduction
+    (M : WeierstrassCurve ℤ_[2]) (hM : M.Δ ≠ 0)
+    (hc4 : (M.c₄ : ℚ_[2]) ≠ 0)
+    (hc4val : Padic.valuation (M.c₄ : ℚ_[2]) = 0)
+    (hpositive : 0 < Padic.valuation (M.Δ : ℚ_[2]))
+    (ε : ℤ_[2]ˣ) (r s t : ℚ_[2]) (N : WeierstrassCurve ℤ_[2])
+    (hmodel : (M.map (algebraMap ℤ_[2] ℚ_[2])).variableChange
+      (candidateUnitScaleChange ε r s t) =
+      N.map (algebraMap ℤ_[2] ℚ_[2])) :
+    ∃ x y : ZMod 2, ReducedNodalPoint (N.map PadicInt.toZMod) x y := by
+  obtain ⟨hN, hNpos, hb, _, _⟩ :=
+    LaterNonScalingTatePosValMinimalB2C6Odd
+      M hM hc4 hc4val hpositive ε r s t N hmodel
+  have hred : (N.map PadicInt.toZMod).Δ = 0 := by
+    rw [WeierstrassCurve.map_Δ]
+    exact positive_delta_reduces_zero N hN hNpos
+  have hb' : (N.map PadicInt.toZMod).b₂ ≠ 0 := by
+    simpa only [WeierstrassCurve.map_b₂] using hb
+  exact ⟨_, _, reduced_nodal_point_of_delta_zero_b2_ne_zero
+    (N.map PadicInt.toZMod) hred hb'⟩
+
+/- TODO post-v31: To deduce a true Kodaira Iₙ classification and
+Néron conductor exponent 1, prove the minimal-model Tate/Néron
+node-to-fibre/conductor theorem. The node test above is necessary
+geometry, not that theorem. -/
+
+end Beal.General
