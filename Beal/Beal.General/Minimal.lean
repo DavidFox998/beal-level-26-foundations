@@ -253,6 +253,24 @@ private noncomputable def highChangeTwo (r : ℚ_[2]) :
   s := 1
   t := 0
 
+/-- A candidate first change with fixed scale two but unrestricted
+Q₂ translation and shear parameters. No integrality is asserted. -/
+noncomputable def candidateScaleTwoChange (r s t : ℚ_[2]) :
+    WeierstrassCurve.VariableChange ℚ_[2] where
+  u := Units.mk0 (2 : ℚ_[2]) (by norm_num)
+  r := r
+  s := s
+  t := t
+
+/-- The remaining first-change search at fixed scale `u=2`.
+It permits other translations, shears, and target Z₂ models; its
+existence is not inferred from a discriminant valuation. -/
+def FirstScaleTwoSearch (U V : ℕ) : Prop :=
+  ∃ (r s t : ℚ_[2]) (M : WeierstrassCurve ℤ_[2]),
+    ((freyZ2 U V 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange
+      (candidateScaleTwoChange r s t) =
+        M.map (algebraMap ℤ_[2] ℚ_[2])
+
 private def highIntegral (a2 a4 : ℤ) : WeierstrassCurve ℤ where
   a₁ := 1
   a₂ := a2
@@ -330,6 +348,13 @@ theorem tate_scale_two_step_model (U V : ℕ) (step : TateScaleTwoStep U V) :
     rw [show (step.r : ℚ_[2]) * (-((U : ℚ_[2]) * (V : ℚ_[2]))) +
       step.r ^ 2 * ((V : ℚ_[2]) - (U : ℚ_[2])) + step.r ^ 3 = 0 from hcQ]
     ring
+
+/-- Every proved restricted first step supplies a witness to the
+broader scale-2 search. The converse is not claimed. -/
+theorem tate_step_in_first_scale_two_search (U V : ℕ)
+    (step : TateScaleTwoStep U V) : FirstScaleTwoSearch U V :=
+  ⟨(step.r : ℚ_[2]), 1, 0, highZ2 step.a₂ step.a₄,
+    tate_scale_two_step_model U V step⟩
 
 /-- An even/odd subfamily passes the actual scale-2 coefficient test:
 the even input is divisible by 16 and the odd one is 1 modulo 4. -/
@@ -432,6 +457,68 @@ theorem tate_step_odd_odd_rU_obstructed (U V : ℕ)
   have ha := step.a₂_condition
   rw [hr] at ha
   omega
+
+/-- Because this restricted first step has `a₆=0`, its integral
+translation can only be a root of `r(r-U)(r+V)`. This does not
+restrict the general Q₂ search with nonzero transformed `a₆`. -/
+theorem tate_step_translation_roots (U V : ℕ) (step : TateScaleTwoStep U V) :
+    step.r = 0 ∨ step.r = (U : ℤ) ∨ step.r = -(V : ℤ) := by
+  have hpoly : step.r * (step.r - (U : ℤ)) * (step.r + (V : ℤ)) = 0 := by
+    calc
+      _ = step.r * (-((U : ℤ) * (V : ℤ))) +
+          step.r ^ 2 * ((V : ℤ) - (U : ℤ)) + step.r ^ 3 := by ring
+      _ = 0 := step.a₆_condition
+  rcases mul_eq_zero.mp hpoly with hleft | hright
+  · rcases mul_eq_zero.mp hleft with h0 | hU
+    · exact Or.inl h0
+    · exact Or.inr (Or.inl (sub_eq_zero.mp hU))
+  · exact Or.inr (Or.inr (by omega))
+
+/-- Three opposite residue cases not covered by the restricted
+constructors. This is not a complete partition of all inputs. -/
+def RemainingResidueClass (U V : ℕ) : Prop :=
+  (16 ∣ U ∧ V % 4 = 3) ∨
+  (U % 4 = 1 ∧ 16 ∣ V) ∨
+  (U % 4 = 3 ∧ 16 ∣ U + V)
+
+/-- In the opposite residue classes, *none* of the three possible
+integer translations passes this particular `s=1,t=0,a₆=0`
+coefficient test. The broader `FirstScaleTwoSearch` remains open. -/
+theorem remaining_residue_classes_open (U V : ℕ)
+    (h : RemainingResidueClass U V) :
+    ¬ Nonempty (TateScaleTwoStep U V) := by
+  rintro ⟨step⟩
+  rcases tate_step_translation_roots U V step with hr | hr | hr
+  · rcases h with ⟨hU, hV⟩ | ⟨hU, hV⟩ | ⟨hU, hV⟩
+    · exact tate_step_even_odd_r0_obstructed U V hU hV ⟨step, hr⟩
+    · exact tate_step_odd_even_r0_obstructed U V hU hV ⟨step, hr⟩
+    · obtain ⟨w, hw⟩ := hV
+      have ha := step.a₂_condition
+      rw [hr] at ha
+      omega
+  · rcases h with ⟨hU, hV⟩ | ⟨hU, hV⟩ | ⟨hU, hV⟩
+    · obtain ⟨u, hu⟩ := hU
+      have ha := step.a₂_condition
+      rw [hr] at ha
+      omega
+    · obtain ⟨v, hv⟩ := hV
+      have ha := step.a₂_condition
+      rw [hr] at ha
+      omega
+    · exact tate_step_odd_odd_rU_obstructed U V hU hV ⟨step, hr⟩
+  · rcases h with ⟨hU, hV⟩ | ⟨hU, hV⟩ | ⟨hU, hV⟩
+    · obtain ⟨u, hu⟩ := hU
+      have ha := step.a₂_condition
+      rw [hr] at ha
+      omega
+    · obtain ⟨v, hv⟩ := hV
+      have ha := step.a₂_condition
+      rw [hr] at ha
+      omega
+    · obtain ⟨w, hw⟩ := hV
+      have ha := step.a₂_condition
+      rw [hr] at ha
+      omega
 
 private theorem highChangeTwo_val (r : ℚ_[2]) :
     Padic.valuation ((highChangeTwo r).u : ℚ_[2]) = 1 := by
@@ -830,15 +917,18 @@ theorem high_minimal_odd_even :
   rw [threshold_deltas.2.2]
   norm_num
 
-/- TODO remaining_residue_classes / high_parity_general:
-The three opposite-residue lemmas rule out only the indicated
-translations with s=1,t=0; they do not exclude other first changes.
-Classify all admissible changes and remaining parity/congruence
-families. Above valuation four the existing first-step models have
-nonunit discriminant. For coprime inputs their c₄ is a unit, so
-*another positive-scale integral change is impossible*; what remains
-is the reduction-type Tate calculation on that minimal model, not a
-second division of its discriminant by 2¹². -/
+/- TODO first_change_residue_classes / high_parity_general:
+The opposite residue cases have no TateScaleTwoStep at all: its
+a₆=0 forces r=0,U,-V, and all three fail the a₂ test there.
+Determine FirstScaleTwoSearch using other coefficients, or rule
+it out, and handle further congruence cases. Neither outcome
+follows from the restricted obstruction alone.
+
+TODO second_step_alternative: Above valuation four a successful
+first-step model has nonunit discriminant. For coprime inputs its
+c₄ is a unit, forbidding another positive-scale integral change.
+The subsequent non-scaling Tate tests and reduction type still
+need proof; do not divide its discriminant by 2¹² again. -/
 
 #print axioms freyZ2_delta_v2
 #print axioms frey_low_minimal_Q2
@@ -848,12 +938,15 @@ second division of its discriminant by 2¹². -/
 #print axioms frey_disc_v2_twelve_iff_threshold
 #print axioms high_parity_exactly_four
 #print axioms tate_scale_two_step_model
+#print axioms tate_step_in_first_scale_two_search
 #print axioms tate_step_even_odd
 #print axioms tate_step_odd_even
 #print axioms tate_step_odd_odd
 #print axioms tate_step_even_odd_r0_obstructed
 #print axioms tate_step_odd_even_r0_obstructed
 #print axioms tate_step_odd_odd_rU_obstructed
+#print axioms tate_step_translation_roots
+#print axioms remaining_residue_classes_open
 #print axioms tate_step_delta_valuation
 #print axioms tate_step_threshold_unit
 #print axioms tate_step_threshold_minimal
