@@ -8,14 +8,16 @@ import Mathlib.Tactic.Ring
 
 /-!
 The low-valuation local minimality obstruction for the general Frey model.
-The higher-valuation case is not classified here: the discriminant being
-divisible by 2¹² is a necessary condition for a scale-2 change, not
-sufficient evidence that such a change is integral or minimal.
+For positive coprime inputs, the fixed-scale-two integrality search is
+classified by residue conditions below. This does not classify changes
+at other scales, later non-scaling Tate steps, or local conductor data;
+discriminant divisibility alone never establishes integrality.
 -/
 
 namespace Beal.General
 
-private theorem q2_val_pow (x : ℚ_[2]) (hx : x ≠ 0) (n : ℕ) :
+/-- Valuation of a nonzero Q₂ power. -/
+theorem q2_val_pow (x : ℚ_[2]) (hx : x ≠ 0) (n : ℕ) :
     Padic.valuation (x ^ n) = (n : ℤ) * Padic.valuation x := by
   induction n with
   | zero => simp
@@ -24,7 +26,8 @@ private theorem q2_val_pow (x : ℚ_[2]) (hx : x ≠ 0) (n : ℕ) :
     push_cast
     ring
 
-private theorem q2_val_inv (x : ℚ_[2]) (hx : x ≠ 0) :
+/-- Valuation of a nonzero Q₂ inverse. -/
+theorem q2_val_inv (x : ℚ_[2]) (hx : x ≠ 0) :
     Padic.valuation x⁻¹ = -Padic.valuation x := by
   have h := Padic.valuation_map_mul (inv_ne_zero hx) hx
   rw [inv_mul_cancel₀ hx, Padic.valuation_one] at h
@@ -881,6 +884,117 @@ theorem mod16_remaining (U V : ℕ) (hcase : RemainingResidueClass U V) :
     scale_two_conditions_integral_numerators U V r s t M h
   exact mod16_remaining_integral U V hcase R M.a₁ M.a₃ M.a₂ M.a₆ h2 h6
 
+/-- Modulo sixteen, if at least one input is odd, divisibility of
+`U*V*(U+V)` by sixteen must come from one of its three factors. -/
+private theorem mod16_primitive_product : ∀ u v : ZMod 16,
+    ((ZMod.cast u : ZMod 2) = 1 ∨ (ZMod.cast v : ZMod 2) = 1) →
+    u * v * (u + v) = 0 → u = 0 ∨ v = 0 ∨ u + v = 0 := by decide
+
+private theorem high_product_dvd_one_factor (U V : ℕ)
+    (hpar : U % 2 = 1 ∨ V % 2 = 1)
+    (hdiv : 16 ∣ U * V * (U + V)) :
+    16 ∣ U ∨ 16 ∣ V ∨ 16 ∣ U + V := by
+  have h2 (n : ℕ) (hn : n % 2 = 1) :
+      (ZMod.cast (n : ZMod 16) : ZMod 2) = 1 := by
+    rw [ZMod.cast_natCast (by decide : 2 ∣ 16)]
+    calc
+      (n : ZMod 2) = ((n % 2 : ℕ) : ZMod 2) := by simp
+      _ = 1 := by rw [hn]; norm_num
+  have hp : (U : ZMod 16) * (V : ZMod 16) *
+      ((U : ZMod 16) + (V : ZMod 16)) = 0 := by
+    have hh : ((U * V * (U + V) : ℕ) : ZMod 16) = 0 :=
+      (ZMod.natCast_zmod_eq_zero_iff_dvd (U * V * (U + V)) 16).2 hdiv
+    simpa only [Nat.cast_mul, Nat.cast_add] using hh
+  rcases mod16_primitive_product (U : ZMod 16) (V : ZMod 16)
+    (hpar.elim (fun h => Or.inl (h2 U h)) (fun h => Or.inr (h2 V h))) hp
+    with hU | hV | hW
+  · exact Or.inl ((ZMod.natCast_zmod_eq_zero_iff_dvd U 16).1 hU)
+  · exact Or.inr (Or.inl ((ZMod.natCast_zmod_eq_zero_iff_dvd V 16).1 hV))
+  · exact Or.inr (Or.inr ((ZMod.natCast_zmod_eq_zero_iff_dvd (U + V) 16).1
+      (by simpa using hW)))
+
+/-- Once one high-valuation factor is known, a positive-scale-two
+change for coprime inputs exists exactly in the three constructive
+residue families; the opposite families fail even with general Q₂
+translation, shears, and target coefficients. -/
+theorem first_scale_two_high_residue_iff (U V : ℕ) (hcop : Nat.Coprime U V)
+    (hhigh : 16 ∣ U ∨ 16 ∣ V ∨ 16 ∣ U + V) :
+    FirstScaleTwoSearch U V ↔
+      (16 ∣ U ∧ V % 4 = 1) ∨
+      (U % 4 = 3 ∧ 16 ∣ V) ∨
+      (U % 4 = 1 ∧ 16 ∣ U + V) := by
+  have hpar : U % 2 = 1 ∨ V % 2 = 1 := by
+    rcases coprime_parity_cases U V hcop with ⟨hu, _⟩ | ⟨_, hv⟩ | ⟨hu, _⟩
+    · exact Or.inl (Nat.odd_iff.mp hu)
+    · exact Or.inr (Nat.odd_iff.mp hv)
+    · exact Or.inl (Nat.odd_iff.mp hu)
+  constructor
+  · intro hsearch
+    rcases hhigh with hU | hV | hW
+    · have hUeven : U % 2 = 0 := by rcases hU with ⟨u, rfl⟩; omega
+      have hVmod : V % 4 = 1 ∨ V % 4 = 3 := by omega
+      rcases hVmod with hV1 | hV3
+      · exact Or.inl ⟨hU, hV1⟩
+      · exact False.elim (mod16_remaining U V (Or.inl ⟨hU, hV3⟩) hsearch)
+    · have hVeven : V % 2 = 0 := by rcases hV with ⟨v, rfl⟩; omega
+      have hUmod : U % 4 = 1 ∨ U % 4 = 3 := by omega
+      rcases hUmod with hU1 | hU3
+      · exact False.elim (mod16_remaining U V (Or.inr (Or.inl ⟨hU1, hV⟩))
+          hsearch)
+      · exact Or.inr (Or.inl ⟨hU3, hV⟩)
+    · have hUmod : U % 4 = 1 ∨ U % 4 = 3 := by
+        rcases hpar with hu | hv <;> omega
+      rcases hUmod with hU1 | hU3
+      · exact Or.inr (Or.inr ⟨hU1, hW⟩)
+      · exact False.elim (mod16_remaining U V (Or.inr (Or.inr ⟨hU3, hW⟩))
+          hsearch)
+  · rintro (⟨hU, hV⟩ | ⟨hU, hV⟩ | ⟨hU, hW⟩)
+    · obtain ⟨step⟩ := tate_step_even_odd U V hU hV
+      exact tate_step_in_first_scale_two_search U V step
+    · obtain ⟨step⟩ := tate_step_odd_even U V hU hV
+      exact tate_step_in_first_scale_two_search U V step
+    · obtain ⟨step⟩ := tate_step_odd_odd U V hU hW
+      exact tate_step_in_first_scale_two_search U V step
+
+/-- Exact fixed-`u=2` existence criterion for positive coprime inputs.
+Necessity uses the discriminant valuation and finite mod-16
+obstructions; sufficiency uses explicit integral first changes.
+No statement about arbitrary positive scales or Tate types follows. -/
+theorem first_scale_two_coprime_iff (U V : ℕ) (hU : 0 < U) (hV : 0 < V)
+    (hcop : Nat.Coprime U V) :
+    FirstScaleTwoSearch U V ↔
+      (16 ∣ U ∧ V % 4 = 1) ∨
+      (U % 4 = 3 ∧ 16 ∣ V) ∨
+      (U % 4 = 1 ∧ 16 ∣ U + V) := by
+  have hpar : U % 2 = 1 ∨ V % 2 = 1 := by
+    rcases coprime_parity_cases U V hcop with ⟨hu, _⟩ | ⟨_, hv⟩ | ⟨hu, _⟩
+    · exact Or.inl (Nat.odd_iff.mp hu)
+    · exact Or.inr (Nat.odd_iff.mp hv)
+    · exact Or.inl (Nat.odd_iff.mp hu)
+  constructor
+  · intro hsearch
+    obtain ⟨r, s, t, M, hmodel⟩ := hsearch
+    have hval : 4 ≤ padicValNat 2 (U * V * (U + V)) := by
+      have hh := high_required_for_positive_scale U V 0 1 1 0 (by simpa) (by simpa)
+        M (candidateScaleTwoChange r s t) hmodel
+        (by rw [candidateScaleTwoChange_val]; omega)
+      simpa only [pow_one] using hh
+    have hdiv : 16 ∣ U * V * (U + V) := by
+      have hd : 2 ^ 4 ∣ U * V * (U + V) :=
+        (padicValNat_dvd_iff 4 (U * V * (U + V))).2 (Or.inr hval)
+      norm_num at hd ⊢
+      exact hd
+    have hhigh := high_product_dvd_one_factor U V hpar hdiv
+    exact (first_scale_two_high_residue_iff U V hcop hhigh).mp
+      ⟨r, s, t, M, hmodel⟩
+  · intro hgood
+    have hhigh : 16 ∣ U ∨ 16 ∣ V ∨ 16 ∣ U + V := by
+      rcases hgood with ⟨hU, _⟩ | ⟨_, hV⟩ | ⟨_, hW⟩
+      · exact Or.inl hU
+      · exact Or.inr (Or.inl hV)
+      · exact Or.inr (Or.inr hW)
+    exact (first_scale_two_high_residue_iff U V hcop hhigh).mpr hgood
+
 private theorem highChangeTwo_val (r : ℚ_[2]) :
     Padic.valuation ((highChangeTwo r).u : ℚ_[2]) = 1 := by
   change Padic.valuation (2 : ℚ_[2]) = 1
@@ -1279,21 +1393,18 @@ theorem high_minimal_odd_even :
   norm_num
 
 /- TODO first_change_residue_classes / high_parity_general:
-The opposite residue cases have no TateScaleTwoStep at all: its
-a₆=0 forces r=0,U,-V, and all three fail the a₂ test there.
- The independent mod-16 proof also excludes the unrestricted
- FirstScaleTwoSearch with fixed u=2 there. Classify further
- high-congruence cases and other possible first-change scales;
- neither follows from this fixed-scale obstruction.
+ For positive coprime inputs the fixed-u=2 search is now completely
+ classified: the three constructive families and the three mod-16
+ obstructions cover every case where valuation allows this scale.
+ The c₄ bound in Conductor excludes positive scale valuations above
+ one, but valuation-one changes can still have a unit factor in their
+ scale. Normalize those changes or classify them directly, and carry
+ out later non-scaling Tate tests; neither follows here.
 
-TODO first_change_search: The integral-translation bridge and
-mod-16 test close the fixed-u=2 search for these three opposite
-residue patterns, including odd shear. Do not extrapolate this
-to all powered inputs or a complete first-change classifier.
-
-TODO mod64_remaining: For further high-congruence cases not covered
-above, retain the `t²` contribution modulo 64 and incorporate `a₄`.
-The opposite cases need no mod-64 test: mod 16 already excludes them.
+TODO mod64_remaining: A mod-64 `a₆` test retaining `t²`, and the
+`a₄` equation, may be useful for nonprimitive inputs or future
+change parameterizations. They are not a gap in the classified
+positive coprime fixed-u=2 search and do not prove a Tate symbol.
 
 TODO later_non_scaling_Tate / second_step_alternative: Above valuation four a successful
 first-step model has nonunit discriminant. For coprime inputs its
@@ -1327,6 +1438,8 @@ need proof; do not divide its discriminant by 2¹² again. -/
 #print axioms mod4_remaining_search
 #print axioms mod16_remaining_integral
 #print axioms mod16_remaining
+#print axioms first_scale_two_high_residue_iff
+#print axioms first_scale_two_coprime_iff
 #print axioms tate_step_delta_valuation
 #print axioms tate_step_threshold_unit
 #print axioms tate_step_threshold_minimal

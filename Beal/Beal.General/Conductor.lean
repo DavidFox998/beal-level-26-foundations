@@ -250,6 +250,27 @@ theorem coprime_c4_factor_uvw (U V : ℕ) (hcop : Nat.Coprime U V) :
     · exact hbad hdU (hV_of_U hdU)
     · exact hbad (hU_of_V hdV) hdV
 
+/-- For positive coprime inputs, an arbitrary Q₂ change leading to an
+integral model cannot have scale valuation greater than one. This
+uses `v₂(c₄)=4`; it does not normalize a valuation-one change to the
+fixed scale `u=2` or supply a Tate classification. -/
+theorem frey_integral_change_scale_le_one (U V : ℕ)
+    (hU : 0 < U) (hV : 0 < V) (hcop : Nat.Coprime U V)
+    (M : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2])
+    (hmodel : ((freyZ2 U V 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+      M.map (algebraMap ℤ_[2] ℚ_[2])) :
+    Padic.valuation (C.u : ℚ_[2]) ≤ 1 := by
+  obtain ⟨hval, hne⟩ := freyZ2_c4_v2_of_coprime U V hU hV hcop
+  have hu : (C.u : ℚ_[2]) ≠ 0 := Units.ne_zero C.u
+  have hc := congrArg WeierstrassCurve.c₄ hmodel
+  simp only [WeierstrassCurve.variableChange_c₄, WeierstrassCurve.map_c₄,
+    PadicInt.algebraMap_apply, Units.val_inv_eq_inv_val] at hc
+  have hv := congrArg Padic.valuation hc
+  rw [Padic.valuation_map_mul (pow_ne_zero 4 (inv_ne_zero hu)) hne,
+    q2_val_pow _ (inv_ne_zero hu) 4, q2_val_inv _ hu, hval] at hv
+  have hn : 0 ≤ Padic.valuation (M.c₄ : ℚ_[2]) := PadicInt.valuation_nonneg M.c₄
+  omega
+
 /-- The displayed model has singular reduction modulo 2;
 this alone cannot determine a Néron conductor. -/
 theorem frey_discriminant_even (x y z p q r : ℕ) :
@@ -323,6 +344,7 @@ The coprime first-step models cannot be scaled again positively;
 compute their reduction types on those models instead. -/
 
 #print axioms I_positive_incompatible_with_unit
+#print axioms frey_integral_change_scale_le_one
 #print axioms threshold_type_I0_conditional
 #print axioms threshold_f2_zero_conditional
 #print axioms tate_step_threshold_I0_conditional
