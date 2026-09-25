@@ -4,6 +4,6 @@
 - [Historical release badges](historical-release-badges.md) — retain existing README citations when adding a new release; do not standardize old badges.
 - [Proof promotion boundary](proof-promotion-boundary.md) — checked scratch identities stay outside bounded releases until the full general inference chain is proved.
 - [Lake cache rehydration](lake-cache-rehydration.md) — lost Mathlib objects or Git metadata can mislead checks despite a pinned manifest.
-- [Frey local-at-two boundary](frey-local-two-boundary.md) — small discriminant valuation obstructs rescaling; high-valuation parity cases need congruence analysis.
+- [Frey local-at-two boundary](frey-local-two-boundary.md) — rescaling needs congruence analysis; unit c₄ does not imply I₀ or conductor exponent zero.
 - [Concrete p-adic valuations](concrete-padic-valuations.md) — direct numeral normalization can stall; factor powers of the prime and prove the residual factor is coprime.
 - [Finite residue proofs](finite-residue-proofs.md) — split constrained cases before exhaustive Lean decisions; a monolithic check can time out in the full module.
