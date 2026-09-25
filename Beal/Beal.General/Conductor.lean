@@ -322,6 +322,36 @@ theorem tate_step_no_second_scale_of_coprime (U V : ℕ)
   exact ⟨M, C, hmodel, hscale, hunitVal,
     no_second_scale_two_of_unit_c4 M hc4Ne hunitVal⟩
 
+/-- For any positive coprime valuation-one first step, an integral
+unit-scale successor also cannot admit another positive-scale integral
+change. This includes the threshold, but makes no claim about
+non-scaling Tate tests or a Kodaira type. -/
+theorem first_step_unit_successor_no_second_scale_of_coprime (U V : ℕ)
+    (hU : 0 < U) (hV : 0 < V) (hcop : Nat.Coprime U V)
+    (M : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2])
+    (hfirst : ((freyZ2 U V 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange
+      C = M.map (algebraMap ℤ_[2] ℚ_[2]))
+    (hscale : Padic.valuation (C.u : ℚ_[2]) = 1)
+    (ε : ℤ_[2]ˣ) (r s t : ℚ_[2]) (N : WeierstrassCurve ℤ_[2])
+    (hlater : (M.map (algebraMap ℤ_[2] ℚ_[2])).variableChange
+      (candidateUnitScaleChange ε r s t) =
+      N.map (algebraMap ℤ_[2] ℚ_[2])) :
+    ¬ SecondScaleTwoAttempt N := by
+  obtain ⟨hrawVal, hrawNe⟩ := freyZ2_c4_v2_of_coprime U V hU hV hcop
+  have hu : (C.u : ℚ_[2]) ≠ 0 := Units.ne_zero _
+  have hc := congrArg WeierstrassCurve.c₄ hfirst
+  simp only [WeierstrassCurve.variableChange_c₄, WeierstrassCurve.map_c₄,
+    PadicInt.algebraMap_apply, Units.val_inv_eq_inv_val] at hc
+  have hne : (M.c₄ : ℚ_[2]) ≠ 0 := by
+    rw [← hc]
+    exact mul_ne_zero (pow_ne_zero 4 (inv_ne_zero hu)) hrawNe
+  have hv := scale_two_c4_valuation_if_integral
+    (freyZ2 U V 0 1 1 0) M C hrawNe hfirst hscale
+  have hunit : Padic.valuation (M.c₄ : ℚ_[2]) = 0 := by
+    omega
+  exact (later_non_scaling_preserves_unit_c4
+    M hne hunit ε r s t N hlater).2
+
 /-- Conditional local conductor consequence for a *constructed* model
 at the threshold. A genuine good-reduction conductor rule remains an
 unsupplied premise; no general `f₂` is defined here. -/
@@ -369,6 +399,7 @@ compute their reduction types on those models instead. -/
 #print axioms frey_c4_v2_of_coprime
 #print axioms freyZ2_c4_v2_of_coprime
 #print axioms tate_step_no_second_scale_of_coprime
+#print axioms first_step_unit_successor_no_second_scale_of_coprime
 #print axioms tate_step_threshold_f2_zero_conditional
 #print axioms frey_c4_v2_of_base_coprime
 #print axioms coprime_c4_factor_uvw

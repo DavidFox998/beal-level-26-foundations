@@ -14,3 +14,9 @@ After an isolated worktree is reattached, Lake may report changed dependency URL
 **Why:** An environment check appeared to report an unrelated Mathlib revision although the manifest retained its exact pin and the missing metadata explained the misleading Git result.
 
 **How to apply:** Check for dependency Git metadata before interpreting `git -C` output. If absent, report the manifest pin as a pin, not as a verified checkout HEAD; restore the compiled cache and run the library checks before assessing proofs.
+
+**Cache completion pitfall:** `lake exe cache get` can report “No files to download” and successfully unpack cached objects while a subsequent full `lake build` still spends a long time compiling missing Mathlib modules. A timeout partway through that build is not a proof failure or a passing baseline.
+
+**Why:** After cache rehydration, the baseline required several incremental build attempts before the full library completed; stopping at the first timeout would have obscured whether the environment check actually passed.
+
+**How to apply:** Require the explicit successful full-build result before editing proofs when the baseline is a prerequisite. If output shows Mathlib compilation progressing without errors, allow the incremental build to complete, then check the exact final exit status; do not substitute cache-get success for build success.

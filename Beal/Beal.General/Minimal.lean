@@ -1311,6 +1311,68 @@ theorem no_second_scale_two_of_unit_c4
   have hbound := c4_unit_prevents_positive_scale M hc4 hc4val N C hmodel
   omega
 
+/-- A later unit-scale change. Its translation and shears are Q₂-valued;
+only the target, not those parameters, is required to be integral. -/
+noncomputable def candidateUnitScaleChange (ε : ℤ_[2]ˣ) (r s t : ℚ_[2]) :
+    WeierstrassCurve.VariableChange ℚ_[2] :=
+  ⟨Units.map (algebraMap ℤ_[2] ℚ_[2]) ε, r, s, t⟩
+
+/-- Search over later non-scaling integral changes. This is a search for
+integral models, not a Tate classification or a claim of further
+reduction: even the identity change is an admissible witness. -/
+def LaterNonScalingTateSearch (M : WeierstrassCurve ℤ_[2]) : Prop :=
+  ∃ (ε : ℤ_[2]ˣ) (r s t : ℚ_[2]) (N : WeierstrassCurve ℤ_[2]),
+    (M.map (algebraMap ℤ_[2] ℚ_[2])).variableChange
+      (candidateUnitScaleChange ε r s t) =
+      N.map (algebraMap ℤ_[2] ℚ_[2])
+
+/-- A Z₂-unit scale has Q₂ valuation zero. -/
+theorem candidateUnitScaleChange_val (ε : ℤ_[2]ˣ) (r s t : ℚ_[2]) :
+    Padic.valuation ((candidateUnitScaleChange ε r s t).u : ℚ_[2]) = 0 := by
+  have hne : (((ε : ℤ_[2]) : ℚ_[2])) ≠ 0 :=
+    (PadicInt.coe_ne_zero (ε : ℤ_[2])).mpr (Units.ne_zero ε)
+  have hnorm : ‖(((ε : ℤ_[2]) : ℚ_[2]))‖ = (1 : ℝ) := by
+    exact PadicInt.norm_units ε
+  have hpow : (2 : ℝ) ^ (-Padic.valuation (((ε : ℤ_[2]) : ℚ_[2]))) =
+      (2 : ℝ) ^ (0 : ℤ) := by
+    calc
+      _ = ‖(((ε : ℤ_[2]) : ℚ_[2]))‖ := (Padic.norm_eq_pow_val hne).symm
+      _ = 1 := hnorm
+      _ = (2 : ℝ) ^ (0 : ℤ) := by norm_num
+  have hv : -Padic.valuation (((ε : ℤ_[2]) : ℚ_[2])) = (0 : ℤ) :=
+    (zpow_strictMono (show (1 : ℝ) < 2 by norm_num)).injective hpow
+  change Padic.valuation (((ε : ℤ_[2]) : ℚ_[2])) = 0
+  omega
+
+/-- Any integral unit-scale successor of a model with unit `c₄` still
+has unit `c₄`, so it admits no further positive-scale integral change.
+This does not exclude unit-scale changes or determine their reduction
+types, even at a unit-discriminant threshold. -/
+theorem later_non_scaling_preserves_unit_c4
+    (M : WeierstrassCurve ℤ_[2])
+    (hc4 : (M.c₄ : ℚ_[2]) ≠ 0)
+    (hc4val : Padic.valuation (M.c₄ : ℚ_[2]) = 0)
+    (ε : ℤ_[2]ˣ) (r s t : ℚ_[2]) (N : WeierstrassCurve ℤ_[2])
+    (hmodel : (M.map (algebraMap ℤ_[2] ℚ_[2])).variableChange
+      (candidateUnitScaleChange ε r s t) =
+      N.map (algebraMap ℤ_[2] ℚ_[2])) :
+    Padic.valuation (N.c₄ : ℚ_[2]) = 0 ∧
+      ¬ SecondScaleTwoAttempt N := by
+  have hu : ((candidateUnitScaleChange ε r s t).u : ℚ_[2]) ≠ 0 :=
+    Units.ne_zero _
+  have hc := congrArg WeierstrassCurve.c₄ hmodel
+  simp only [WeierstrassCurve.variableChange_c₄, WeierstrassCurve.map_c₄,
+    PadicInt.algebraMap_apply, Units.val_inv_eq_inv_val] at hc
+  have hne : (N.c₄ : ℚ_[2]) ≠ 0 := by
+    rw [← hc]
+    exact mul_ne_zero (pow_ne_zero 4 (inv_ne_zero hu)) hc4
+  have hv := congrArg Padic.valuation hc
+  rw [Padic.valuation_map_mul (pow_ne_zero 4 (inv_ne_zero hu)) hc4,
+    q2_val_pow _ (inv_ne_zero hu) 4, q2_val_inv _ hu,
+    candidateUnitScaleChange_val ε r s t, hc4val] at hv
+  have hunit : Padic.valuation (N.c₄ : ℚ_[2]) = 0 := by omega
+  exact ⟨hunit, no_second_scale_two_of_unit_c4 N hne hunit⟩
+
 private theorem cast14 : ((14 : ℤ_[2]) : ℚ_[2]) = 14 := rfl
 private theorem cast4 : ((4 : ℤ_[2]) : ℚ_[2]) = 4 := rfl
 private theorem cast15 : ((15 : ℤ_[2]) : ℚ_[2]) = 15 := rfl
@@ -1492,9 +1554,10 @@ positive coprime fixed-u=2 search and do not prove a Tate symbol.
 
 TODO later_non_scaling_Tate / second_step_alternative: Above valuation four a successful
 first-step model has nonunit discriminant. For coprime inputs its
-c₄ is a unit, forbidding another positive-scale integral change.
-The subsequent non-scaling Tate tests and reduction type still
-need proof; do not divide its discriminant by 2¹² again. -/
+c₄ is a unit; `later_non_scaling_preserves_unit_c4` keeps it a unit
+under any integral unit-scale successor and forbids a subsequent
+positive-scale change. The actual non-scaling Tate tests and reduction
+type still need proof; do not divide its discriminant by 2¹² again. -/
 
 #print axioms freyZ2_delta_v2
 #print axioms frey_low_minimal_Q2
@@ -1535,6 +1598,8 @@ need proof; do not divide its discriminant by 2¹² again. -/
 #print axioms second_scale_two_delta_if_integral
 #print axioms tate_step_second_delta_if_integral
 #print axioms no_second_scale_two_of_unit_c4
+#print axioms candidateUnitScaleChange_val
+#print axioms later_non_scaling_preserves_unit_c4
 #print axioms threshold_witnesses_exactly_four
 #print axioms threshold_witnesses_raw_delta_v2
 #print axioms high_minimal_odd_odd
