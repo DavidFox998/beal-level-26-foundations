@@ -1,5 +1,6 @@
 import Beal.«Beal.General».Frey
 import Mathlib.NumberTheory.Padics.PadicIntegers
+import Mathlib.NumberTheory.Padics.RingHoms
 import Mathlib.AlgebraicGeometry.EllipticCurve.VariableChange
 import Mathlib.Tactic.LinearCombination
 import Mathlib.Tactic.NormNum
@@ -329,6 +330,96 @@ theorem first_scale_two_search_coefficient_conditions (U V : ℕ)
       WeierstrassCurve.variableChange, WeierstrassCurve.map,
       PadicInt.algebraMap_apply] using h6
 
+/-- Three is a unit in the 2-adic integers. -/
+private theorem unit_three_z2 : IsUnit (3 : ℤ_[2]) := by
+  apply PadicInt.isUnit_iff.mpr
+  apply le_antisymm (PadicInt.norm_le_one _)
+  apply not_lt.mp
+  change ¬ ‖((3 : ℤ) : ℤ_[2])‖ < 1
+  rw [PadicInt.norm_intCast_eq_padic_norm, padicNormE.norm_int_lt_one_iff_dvd]
+  norm_num
+
+/-- The integral `a₁` and `a₂` of any target force the allegedly
+unrestricted Q₂ translation to lie in Z₂: its coefficient is the unit
+three. No restriction on the target's `a₆` is used. -/
+theorem scale_two_conditions_integral_translation (U V : ℕ)
+    (r s t : ℚ_[2]) (M : WeierstrassCurve ℤ_[2])
+    (h : ScaleTwoCoefficientConditions U V r s t M) :
+    ∃ R : ℤ_[2], r = (R : ℚ_[2]) := by
+  obtain ⟨b, hb⟩ : (3 : ℤ_[2]) ∣ 1 := isUnit_iff_dvd_one.mp unit_three_z2
+  let A : ℤ_[2] := 4 * M.a₂ - (V : ℤ_[2]) + (U : ℤ_[2]) + M.a₁ ^ 2
+  have h2Q : (V : ℚ_[2]) - (U : ℚ_[2]) + 3 * r - s ^ 2 =
+      4 * (M.a₂ : ℚ_[2]) := by
+    have hraw := h.a₂
+    have hf : (4 : ℚ_[2]) * (2 : ℚ_[2])⁻¹ ^ 2 = 1 := by norm_num
+    calc
+      _ = (4 * (2 : ℚ_[2])⁻¹ ^ 2) *
+            ((V : ℚ_[2]) - (U : ℚ_[2]) + 3 * r - s ^ 2) := by rw [hf, one_mul]
+      _ = 4 * ((2 : ℚ_[2])⁻¹ ^ 2 *
+            ((V : ℚ_[2]) - (U : ℚ_[2]) + 3 * r - s ^ 2)) := by ring
+      _ = 4 * (M.a₂ : ℚ_[2]) := by rw [hraw]
+  have heq : (3 : ℚ_[2]) * r = (A : ℚ_[2]) := by
+    change (3 : ℚ_[2]) * r = 4 * (M.a₂ : ℚ_[2]) - (V : ℚ_[2]) +
+      (U : ℚ_[2]) + (M.a₁ : ℚ_[2]) ^ 2
+    rw [h.a₁] at h2Q
+    linear_combination h2Q
+  have hunitQ : (3 : ℚ_[2]) * (b : ℚ_[2]) = 1 := by
+    have hh := congrArg (fun z : ℤ_[2] => (z : ℚ_[2])) hb.symm
+    simpa only [PadicInt.coe_mul, PadicInt.coe_natCast, map_one] using hh
+  refine ⟨b * A, ?_⟩
+  calc
+    r = (b : ℚ_[2]) * ((3 : ℚ_[2]) * r) := by
+      rw [← mul_assoc, mul_comm (b : ℚ_[2]) 3, hunitQ, one_mul]
+    _ = (b : ℚ_[2]) * (A : ℚ_[2]) := by rw [heq]
+    _ = ((b * A : ℤ_[2]) : ℚ_[2]) := rfl
+
+/-- Clear the `a₂` and `a₆` denominators for any genuine Q₂
+coefficient witness. The `t²` term is retained, and `a₆` need not
+vanish. These are equalities in Z₂, not a finite-search heuristic. -/
+theorem scale_two_conditions_integral_numerators (U V : ℕ)
+    (r s t : ℚ_[2]) (M : WeierstrassCurve ℤ_[2])
+    (h : ScaleTwoCoefficientConditions U V r s t M) :
+    ∃ R : ℤ_[2], r = (R : ℚ_[2]) ∧
+      ((V : ℤ_[2]) - (U : ℤ_[2]) + 3 * R - M.a₁ ^ 2 = 4 * M.a₂) ∧
+      (R * (-((U : ℤ_[2]) * (V : ℤ_[2]))) +
+        R ^ 2 * ((V : ℤ_[2]) - (U : ℤ_[2])) + R ^ 3 -
+          (4 * M.a₃) ^ 2 = 64 * M.a₆) := by
+  obtain ⟨R, hr⟩ := scale_two_conditions_integral_translation U V r s t M h
+  have h2Q : (V : ℚ_[2]) - (U : ℚ_[2]) + 3 * r - s ^ 2 =
+      4 * (M.a₂ : ℚ_[2]) := by
+    have hraw := h.a₂
+    have hf : (4 : ℚ_[2]) * (2 : ℚ_[2])⁻¹ ^ 2 = 1 := by norm_num
+    calc
+      _ = (4 * (2 : ℚ_[2])⁻¹ ^ 2) *
+            ((V : ℚ_[2]) - (U : ℚ_[2]) + 3 * r - s ^ 2) := by rw [hf, one_mul]
+      _ = 4 * ((2 : ℚ_[2])⁻¹ ^ 2 *
+            ((V : ℚ_[2]) - (U : ℚ_[2]) + 3 * r - s ^ 2)) := by ring
+      _ = 4 * (M.a₂ : ℚ_[2]) := by rw [hraw]
+  have h6Q : r * (-((U : ℚ_[2]) * (V : ℚ_[2]))) +
+      r ^ 2 * ((V : ℚ_[2]) - (U : ℚ_[2])) + r ^ 3 - t ^ 2 =
+      64 * (M.a₆ : ℚ_[2]) := by
+    have hraw := h.a₆
+    have hf : (64 : ℚ_[2]) * (2 : ℚ_[2])⁻¹ ^ 6 = 1 := by norm_num
+    calc
+      _ = (64 * (2 : ℚ_[2])⁻¹ ^ 6) *
+            (r * (-((U : ℚ_[2]) * (V : ℚ_[2]))) +
+              r ^ 2 * ((V : ℚ_[2]) - (U : ℚ_[2])) + r ^ 3 - t ^ 2) := by
+                rw [hf, one_mul]
+      _ = 64 * ((2 : ℚ_[2])⁻¹ ^ 6 *
+            (r * (-((U : ℚ_[2]) * (V : ℚ_[2]))) +
+              r ^ 2 * ((V : ℚ_[2]) - (U : ℚ_[2])) + r ^ 3 - t ^ 2)) := by ring
+      _ = 64 * (M.a₆ : ℚ_[2]) := by rw [hraw]
+  refine ⟨R, hr, ?_, ?_⟩
+  · apply Subtype.coe_injective
+    change (V : ℚ_[2]) - (U : ℚ_[2]) + 3 * (R : ℚ_[2]) -
+      (M.a₁ : ℚ_[2]) ^ 2 = 4 * (M.a₂ : ℚ_[2])
+    simpa only [hr, h.a₁] using h2Q
+  · apply Subtype.coe_injective
+    change (R : ℚ_[2]) * (-((U : ℚ_[2]) * (V : ℚ_[2]))) +
+      (R : ℚ_[2]) ^ 2 * ((V : ℚ_[2]) - (U : ℚ_[2])) +
+      (R : ℚ_[2]) ^ 3 - (4 * (M.a₃ : ℚ_[2])) ^ 2 = 64 * (M.a₆ : ℚ_[2])
+    simpa only [hr, h.a₃] using h6Q
+
 private def highIntegral (a2 a4 : ℤ) : WeierstrassCurve ℤ where
   a₁ := 1
   a₂ := a2
@@ -590,6 +681,86 @@ theorem existence_search_open (U V : ℕ)
           ScaleTwoCoefficientConditions U V r s t M) :=
   ⟨remaining_residue_classes_open U V hcase,
     first_scale_two_search_coefficient_conditions U V⟩
+
+/-- The finite mod-four calculation used below. In each opposite
+residue pattern, the `a₂` and `a₆` tests together exclude even shear.
+This calculation is over `ZMod 4`, not a claim about arbitrary Q₂
+parameters. -/
+private theorem mod4_remaining_residues :
+    ∀ (u v r s : ZMod 4),
+      ((u = 0 ∧ v = 3) ∨ (u = 1 ∧ v = 0) ∨ (u = 3 ∧ u + v = 0)) →
+      (v - u + 3 * r - s ^ 2 = 0) →
+      (r * (-(u * v)) + r ^ 2 * (v - u) + r ^ 3 = 0) →
+      (s = 1 ∨ s = 3) := by decide
+
+/-- A mod-four obstruction for *integral* candidate parameters:
+the shear must be odd in every opposite residue pattern. Both the
+`a₂` and `a₆` integrality equations are needed. The separate
+integrality bridge above permits applying it to the Q₂ search. -/
+theorem mod4_remaining (U V : ℕ) (hcase : RemainingResidueClass U V)
+    (r s t a₂ a₆ : ℤ_[2])
+    (h2 : (V : ℤ_[2]) - (U : ℤ_[2]) + 3 * r - s ^ 2 = 4 * a₂)
+    (h6 : r * (-((U : ℤ_[2]) * (V : ℤ_[2]))) +
+      r ^ 2 * ((V : ℤ_[2]) - (U : ℤ_[2])) + r ^ 3 - (4 * t) ^ 2 = 64 * a₆) :
+    PadicInt.toZModPow 2 s = 1 ∨ PadicInt.toZModPow 2 s = 3 := by
+  let f : ℤ_[2] →+* ZMod 4 := PadicInt.toZModPow 2
+  have hc : ((U : ZMod 4) = 0 ∧ (V : ZMod 4) = 3) ∨
+      ((U : ZMod 4) = 1 ∧ (V : ZMod 4) = 0) ∨
+      ((U : ZMod 4) = 3 ∧ (U : ZMod 4) + (V : ZMod 4) = 0) := by
+    rcases hcase with ⟨hU, hV⟩ | ⟨hU, hV⟩ | ⟨hU, hW⟩
+    · left
+      constructor
+      · exact (ZMod.natCast_zmod_eq_zero_iff_dvd U 4).2
+          (dvd_trans (by norm_num : 4 ∣ 16) hU)
+      · calc
+          (V : ZMod 4) = ((V % 4 : ℕ) : ZMod 4) := by simp
+          _ = 3 := by rw [hV]; norm_num
+    · right; left
+      constructor
+      · calc
+          (U : ZMod 4) = ((U % 4 : ℕ) : ZMod 4) := by simp
+          _ = 1 := by rw [hU]; norm_num
+      · exact (ZMod.natCast_zmod_eq_zero_iff_dvd V 4).2
+          (dvd_trans (by norm_num : 4 ∣ 16) hV)
+    · right; right
+      constructor
+      · calc
+          (U : ZMod 4) = ((U % 4 : ℕ) : ZMod 4) := by simp
+          _ = 3 := by rw [hU]; norm_num
+      · have hw : ((U + V : ℕ) : ZMod 4) = 0 :=
+          (ZMod.natCast_zmod_eq_zero_iff_dvd (U + V) 4).2
+            (dvd_trans (by norm_num : 4 ∣ 16) hW)
+        simpa using hw
+  have hh2 : (V : ZMod 4) - (U : ZMod 4) + 3 * f r - (f s) ^ 2 = 0 := by
+    have h := congrArg f h2
+    simpa only [map_add, map_sub, map_mul, map_pow, map_natCast, map_ofNat,
+      show (4 : ZMod 4) = 0 by decide, zero_mul] using h
+  have hh6 : f r * (-((U : ZMod 4) * (V : ZMod 4))) +
+      (f r) ^ 2 * ((V : ZMod 4) - (U : ZMod 4)) + (f r) ^ 3 = 0 := by
+    have h := congrArg f h6
+    simpa only [map_add, map_sub, map_mul, map_pow, map_natCast, map_neg, map_ofNat,
+      show (4 : ZMod 4) = 0 by decide, show (64 : ZMod 4) = 0 by decide,
+      zero_mul, zero_pow (by norm_num : (2 : ℕ) ≠ 0), sub_zero] using h
+  have hn := mod4_remaining_residues (f (U : ℤ_[2])) (f (V : ℤ_[2])) (f r) (f s)
+  have hcastU : f (U : ℤ_[2]) = (U : ZMod 4) := by simp [f]
+  have hcastV : f (V : ℤ_[2]) = (V : ZMod 4) := by simp [f]
+  exact hn (by simpa only [hcastU, hcastV] using hc)
+    (by simpa only [hcastU, hcastV] using hh2)
+    (by simpa only [hcastU, hcastV] using hh6)
+
+/-- Even with unrestricted Q₂ translation, shears and nonzero target
+`a₆`, any scale-two integral target in an opposite residue class has
+odd `a₁` modulo four. This rules out the even-shear subcase but not
+the whole first-change search. -/
+theorem mod4_remaining_search (U V : ℕ)
+    (hcase : RemainingResidueClass U V) (hsearch : FirstScaleTwoSearch U V) :
+    ∃ M : WeierstrassCurve ℤ_[2],
+      PadicInt.toZModPow 2 M.a₁ = 1 ∨ PadicInt.toZModPow 2 M.a₁ = 3 := by
+  obtain ⟨r, s, t, M, h⟩ :=
+    first_scale_two_search_coefficient_conditions U V hsearch
+  obtain ⟨R, _, h2, h6⟩ :=
+    scale_two_conditions_integral_numerators U V r s t M h
+  exact ⟨M, mod4_remaining U V hcase R M.a₁ M.a₃ M.a₂ M.a₆ h2 h6⟩
 
 private theorem highChangeTwo_val (r : ℚ_[2]) :
     Padic.valuation ((highChangeTwo r).u : ℚ_[2]) = 1 := by
@@ -995,9 +1166,19 @@ Determine FirstScaleTwoSearch using other coefficients, or rule
 it out, and handle further congruence cases. Neither outcome
 follows from the restricted obstruction alone.
 
-TODO first_change_search: Extract mod-4, mod-16, and mod-64
-consequences of ScaleTwoCoefficientConditions in the opposite
-residue classes; a finite search is not a proof over Q₂.
+TODO first_change_search: The unrestricted Q₂ candidate has integral
+translation, and its target has odd a₁ in these opposite residue
+classes. This eliminates even shear only; existence and impossibility
+of FirstScaleTwoSearch with odd shear remain open.
+
+TODO mod16_remaining: With odd shear, use `a₂` to restrict the
+translation modulo 4, then test the full `a₆` numerator modulo 16.
+Use the proved integrality bridge, not a finite check of rational
+integer representatives, to transfer the obstruction to Q₂.
+
+TODO mod64_remaining: Retain the `t²` contribution modulo 64,
+and incorporate the `a₄` equation. Prove any remaining obstructions
+over Z₂; the search is not settled by the restricted `a₆=0` form.
 
 TODO later_non_scaling_Tate / second_step_alternative: Above valuation four a successful
 first-step model has nonunit discriminant. For coprime inputs its
@@ -1015,6 +1196,8 @@ need proof; do not divide its discriminant by 2¹² again. -/
 #print axioms tate_scale_two_step_model
 #print axioms candidateScaleTwoChange_val
 #print axioms first_scale_two_search_coefficient_conditions
+#print axioms scale_two_conditions_integral_translation
+#print axioms scale_two_conditions_integral_numerators
 #print axioms tate_step_in_first_scale_two_search
 #print axioms tate_step_even_odd
 #print axioms tate_step_odd_even
@@ -1025,6 +1208,8 @@ need proof; do not divide its discriminant by 2¹² again. -/
 #print axioms tate_step_translation_roots
 #print axioms remaining_residue_classes_open
 #print axioms existence_search_open
+#print axioms mod4_remaining
+#print axioms mod4_remaining_search
 #print axioms tate_step_delta_valuation
 #print axioms tate_step_threshold_unit
 #print axioms tate_step_threshold_minimal
