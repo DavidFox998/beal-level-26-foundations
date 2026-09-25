@@ -632,7 +632,8 @@ def RemainingResidueClass (U V : ℕ) : Prop :=
 
 /-- In the opposite residue classes, *none* of the three possible
 integer translations passes this particular `s=1,t=0,a₆=0`
-coefficient test. The broader `FirstScaleTwoSearch` remains open. -/
+coefficient test. A separate mod-16 obstruction below also rules
+out the broader fixed-scale search. -/
 theorem remaining_residue_classes_open (U V : ℕ)
     (h : RemainingResidueClass U V) :
     ¬ Nonempty (TateScaleTwoStep U V) := by
@@ -669,10 +670,9 @@ theorem remaining_residue_classes_open (U V : ℕ)
       rw [hr] at ha
       omega
 
-/-- For these residue cases the old restricted constructor is
-impossible. Any solution of the broader Q₂ search must instead
-satisfy the unrestricted coefficient equations above. This theorem
-does *not* decide whether such a solution exists. -/
+/-- An intermediate necessary-condition statement for the opposite
+classes, retained for reuse. The stronger mod-16 obstruction below
+rules out the broader Q₂ search in these cases. -/
 theorem existence_search_open (U V : ℕ)
     (hcase : RemainingResidueClass U V) :
     ¬ Nonempty (TateScaleTwoStep U V) ∧
@@ -748,10 +748,10 @@ theorem mod4_remaining (U V : ℕ) (hcase : RemainingResidueClass U V)
     (by simpa only [hcastU, hcastV] using hh2)
     (by simpa only [hcastU, hcastV] using hh6)
 
-/-- Even with unrestricted Q₂ translation, shears and nonzero target
-`a₆`, any scale-two integral target in an opposite residue class has
-odd `a₁` modulo four. This rules out the even-shear subcase but not
-the whole first-change search. -/
+/-- Mod four alone: even with unrestricted Q₂ translation, shears and
+nonzero target `a₆`, a scale-two integral target in an opposite
+residue class would have odd `a₁`. Mod sixteen rules out the remaining
+odd-shear subcase below. -/
 theorem mod4_remaining_search (U V : ℕ)
     (hcase : RemainingResidueClass U V) (hsearch : FirstScaleTwoSearch U V) :
     ∃ M : WeierstrassCurve ℤ_[2],
@@ -761,6 +761,125 @@ theorem mod4_remaining_search (U V : ℕ)
   obtain ⟨R, _, h2, h6⟩ :=
     scale_two_conditions_integral_numerators U V r s t M h
   exact ⟨M, mod4_remaining U V hcase R M.a₁ M.a₃ M.a₂ M.a₆ h2 h6⟩
+
+/-- Finite residue calculation at mod sixteen. The first equation is
+the `a₂` integrality condition modulo four. The second is the full
+`a₆` numerator modulo sixteen, where the square of a multiple of
+four vanishes. No root condition or vanishing target `a₆` is assumed. -/
+private theorem mod16_even_odd : ∀ (v r s : ZMod 16),
+    (ZMod.cast v : ZMod 4) = 3 →
+    (ZMod.cast (v - 0 + 3 * r - s ^ 2) : ZMod 4) = 0 →
+    r * (-(0 * v)) + r ^ 2 * (v - 0) + r ^ 3 = 0 → False := by decide
+
+private theorem mod16_odd_even : ∀ (u r s : ZMod 16),
+    (ZMod.cast u : ZMod 4) = 1 →
+    (ZMod.cast (0 - u + 3 * r - s ^ 2) : ZMod 4) = 0 →
+    r * (-(u * 0)) + r ^ 2 * (0 - u) + r ^ 3 = 0 → False := by decide
+
+private theorem mod16_odd_odd : ∀ (u r s : ZMod 16),
+    (ZMod.cast u : ZMod 4) = 3 →
+    (ZMod.cast ((-u) - u + 3 * r - s ^ 2) : ZMod 4) = 0 →
+    r * (-(u * (-u))) + r ^ 2 * ((-u) - u) + r ^ 3 = 0 → False := by decide
+
+private theorem mod16_residue_obstruction : ∀ (u v r s : ZMod 16),
+    ((u = 0 ∧ (ZMod.cast v : ZMod 4) = 3) ∨
+      ((ZMod.cast u : ZMod 4) = 1 ∧ v = 0) ∨
+      ((ZMod.cast u : ZMod 4) = 3 ∧ u + v = 0)) →
+    ((ZMod.cast (v - u + 3 * r - s ^ 2) : ZMod 4) = 0) →
+    (r * (-(u * v)) + r ^ 2 * (v - u) + r ^ 3 = 0) →
+    False := by
+  intro u v r s hc h2 h6
+  rcases hc with ⟨rfl, hv⟩ | ⟨hu, rfl⟩ | ⟨hu, hsum⟩
+  · exact mod16_even_odd v r s hv h2 h6
+  · exact mod16_odd_even u r s hu h2 h6
+  · have hv : v = -u := by linear_combination hsum
+    subst v
+    exact mod16_odd_odd u r s hu h2 h6
+
+/-- The mod-sixteen obstruction over Z₂ for all three opposite
+residue patterns. The target `a₆` and shear `t` are unrestricted
+except for the integrality equations of a genuine scale-two change. -/
+theorem mod16_remaining_integral (U V : ℕ) (hcase : RemainingResidueClass U V)
+    (r s t a₂ a₆ : ℤ_[2])
+    (h2 : (V : ℤ_[2]) - (U : ℤ_[2]) + 3 * r - s ^ 2 = 4 * a₂)
+    (h6 : r * (-((U : ℤ_[2]) * (V : ℤ_[2]))) +
+      r ^ 2 * ((V : ℤ_[2]) - (U : ℤ_[2])) + r ^ 3 - (4 * t) ^ 2 = 64 * a₆) :
+    False := by
+  let f : ℤ_[2] →+* ZMod 16 := PadicInt.toZModPow 4
+  have hc : ((f (U : ℤ_[2]) = 0 ∧ (ZMod.cast (f (V : ℤ_[2])) : ZMod 4) = 3) ∨
+      ((ZMod.cast (f (U : ℤ_[2])) : ZMod 4) = 1 ∧ f (V : ℤ_[2]) = 0) ∨
+      ((ZMod.cast (f (U : ℤ_[2])) : ZMod 4) = 3 ∧
+        f (U : ℤ_[2]) + f (V : ℤ_[2]) = 0)) := by
+    have hU : f (U : ℤ_[2]) = (U : ZMod 16) := by simp [f]
+    have hV : f (V : ℤ_[2]) = (V : ZMod 16) := by simp [f]
+    rw [hU, hV]
+    rcases hcase with ⟨hU16, hV4⟩ | ⟨hU4, hV16⟩ | ⟨hU4, hW16⟩
+    · left
+      constructor
+      · exact (ZMod.natCast_zmod_eq_zero_iff_dvd U 16).2 hU16
+      · simpa only [ZMod.cast_natCast (by decide : 4 ∣ 16) V] using
+          (show (V : ZMod 4) = 3 from by
+            calc
+              (V : ZMod 4) = ((V % 4 : ℕ) : ZMod 4) := by simp
+              _ = 3 := by rw [hV4]; norm_num)
+    · right; left
+      constructor
+      · simpa only [ZMod.cast_natCast (by decide : 4 ∣ 16) U] using
+          (show (U : ZMod 4) = 1 from by
+            calc
+              (U : ZMod 4) = ((U % 4 : ℕ) : ZMod 4) := by simp
+              _ = 1 := by rw [hU4]; norm_num)
+      · exact (ZMod.natCast_zmod_eq_zero_iff_dvd V 16).2 hV16
+    · right; right
+      constructor
+      · simpa only [ZMod.cast_natCast (by decide : 4 ∣ 16) U] using
+          (show (U : ZMod 4) = 3 from by
+            calc
+              (U : ZMod 4) = ((U % 4 : ℕ) : ZMod 4) := by simp
+              _ = 3 := by rw [hU4]; norm_num)
+      · have hw : ((U + V : ℕ) : ZMod 16) = 0 :=
+          (ZMod.natCast_zmod_eq_zero_iff_dvd (U + V) 16).2 hW16
+        simpa using hw
+  have h2f : f (V : ℤ_[2]) - f (U : ℤ_[2]) + 3 * f r - (f s) ^ 2 =
+      4 * f a₂ := by
+    have h := congrArg f h2
+    simpa only [map_add, map_sub, map_mul, map_pow, map_natCast, map_ofNat] using h
+  have h2z : (ZMod.cast (f (V : ℤ_[2]) - f (U : ℤ_[2]) +
+      3 * f r - (f s) ^ 2) : ZMod 4) = 0 := by
+    rw [h2f]
+    calc
+      (ZMod.cast (4 * f a₂) : ZMod 4) =
+          (ZMod.cast (4 : ZMod 16) : ZMod 4) * ZMod.cast (f a₂) :=
+            ZMod.cast_mul (R := ZMod 4) (by decide : 4 ∣ 16) (4 : ZMod 16) (f a₂)
+      _ = 0 := by rw [show (ZMod.cast (4 : ZMod 16) : ZMod 4) = 0 by decide, zero_mul]
+  have h6f : f r * (-((f (U : ℤ_[2])) * (f (V : ℤ_[2])))) +
+      (f r) ^ 2 * (f (V : ℤ_[2]) - f (U : ℤ_[2])) + (f r) ^ 3 -
+        (4 * f t) ^ 2 = 64 * f a₆ := by
+    have h := congrArg f h6
+    simpa only [map_add, map_sub, map_mul, map_pow, map_natCast, map_neg,
+      map_ofNat] using h
+  have h6z : f r * (-((f (U : ℤ_[2])) * (f (V : ℤ_[2])))) +
+      (f r) ^ 2 * (f (V : ℤ_[2]) - f (U : ℤ_[2])) + (f r) ^ 3 = 0 := by
+    have ht : (4 * f t : ZMod 16) ^ 2 = 0 := by
+      calc
+        _ = (16 : ZMod 16) * (f t) ^ 2 := by ring
+        _ = 0 := by rw [show (16 : ZMod 16) = 0 by decide, zero_mul]
+    simpa only [ht, sub_zero, show (64 : ZMod 16) = 0 by decide, zero_mul] using h6f
+  exact mod16_residue_obstruction (f (U : ℤ_[2])) (f (V : ℤ_[2])) (f r) (f s)
+    hc h2z h6z
+
+/-- The opposite residue classes admit no fixed-scale-two integral
+first change, even with arbitrary Q₂ translation and shears and an
+unrestricted integral target. This does not classify other scales,
+other high-congruence inputs, or any later Tate reduction type. -/
+theorem mod16_remaining (U V : ℕ) (hcase : RemainingResidueClass U V) :
+    ¬ FirstScaleTwoSearch U V := by
+  intro hsearch
+  obtain ⟨r, s, t, M, h⟩ :=
+    first_scale_two_search_coefficient_conditions U V hsearch
+  obtain ⟨R, _, h2, h6⟩ :=
+    scale_two_conditions_integral_numerators U V r s t M h
+  exact mod16_remaining_integral U V hcase R M.a₁ M.a₃ M.a₂ M.a₆ h2 h6
 
 private theorem highChangeTwo_val (r : ℚ_[2]) :
     Padic.valuation ((highChangeTwo r).u : ℚ_[2]) = 1 := by
@@ -1162,23 +1281,19 @@ theorem high_minimal_odd_even :
 /- TODO first_change_residue_classes / high_parity_general:
 The opposite residue cases have no TateScaleTwoStep at all: its
 a₆=0 forces r=0,U,-V, and all three fail the a₂ test there.
-Determine FirstScaleTwoSearch using other coefficients, or rule
-it out, and handle further congruence cases. Neither outcome
-follows from the restricted obstruction alone.
+ The independent mod-16 proof also excludes the unrestricted
+ FirstScaleTwoSearch with fixed u=2 there. Classify further
+ high-congruence cases and other possible first-change scales;
+ neither follows from this fixed-scale obstruction.
 
-TODO first_change_search: The unrestricted Q₂ candidate has integral
-translation, and its target has odd a₁ in these opposite residue
-classes. This eliminates even shear only; existence and impossibility
-of FirstScaleTwoSearch with odd shear remain open.
+TODO first_change_search: The integral-translation bridge and
+mod-16 test close the fixed-u=2 search for these three opposite
+residue patterns, including odd shear. Do not extrapolate this
+to all powered inputs or a complete first-change classifier.
 
-TODO mod16_remaining: With odd shear, use `a₂` to restrict the
-translation modulo 4, then test the full `a₆` numerator modulo 16.
-Use the proved integrality bridge, not a finite check of rational
-integer representatives, to transfer the obstruction to Q₂.
-
-TODO mod64_remaining: Retain the `t²` contribution modulo 64,
-and incorporate the `a₄` equation. Prove any remaining obstructions
-over Z₂; the search is not settled by the restricted `a₆=0` form.
+TODO mod64_remaining: For further high-congruence cases not covered
+above, retain the `t²` contribution modulo 64 and incorporate `a₄`.
+The opposite cases need no mod-64 test: mod 16 already excludes them.
 
 TODO later_non_scaling_Tate / second_step_alternative: Above valuation four a successful
 first-step model has nonunit discriminant. For coprime inputs its
@@ -1210,6 +1325,8 @@ need proof; do not divide its discriminant by 2¹² again. -/
 #print axioms existence_search_open
 #print axioms mod4_remaining
 #print axioms mod4_remaining_search
+#print axioms mod16_remaining_integral
+#print axioms mod16_remaining
 #print axioms tate_step_delta_valuation
 #print axioms tate_step_threshold_unit
 #print axioms tate_step_threshold_minimal

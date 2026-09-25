@@ -6,3 +6,4 @@
 - [Lake cache rehydration](lake-cache-rehydration.md) — dependency URL drift can discard pinned Mathlib object files without changing the manifest or tracked source.
 - [Frey local-at-two boundary](frey-local-two-boundary.md) — small discriminant valuation obstructs rescaling; high-valuation parity cases need congruence analysis.
 - [Concrete p-adic valuations](concrete-padic-valuations.md) — direct numeral normalization can stall; factor powers of the prime and prove the residual factor is coprime.
+- [Finite residue proofs](finite-residue-proofs.md) — split constrained cases before exhaustive Lean decisions; a monolithic check can time out in the full module.
