@@ -14,3 +14,9 @@ An accepted GitHub release webhook does not guarantee that a public Zenodo versi
 **Why:** A release webhook returned an accepted response but no new deposit appeared after a substantial wait. The concept already contained two records for the prior tag, and blindly creating or publishing a cloned draft would have preserved the wrong source archive.
 
 **How to apply:** Confirm the current latest record, inspect for an existing draft or newly published version, validate the draft's version, concept DOI, related identifier, and uploaded archive checksum, then publish once and verify the public record.
+
+The concept's newest record by publication date is not necessarily its highest semantic version or the appropriate name for the next release. A retrospective bounded release can be published after a numerically higher release; an absent intermediate tag is not permission to create one.
+
+**Why:** A later-published bounded retrofit carried an earlier version number than an existing higher-numbered release. Treating Zenodo's chronological latest pointer as the version sequence would misname a future deposit.
+
+**How to apply:** Before a future mint, check where the intended predecessor release actually lives, whether an intermediate version exists, and the proposed deposit's metadata and archive. Keep the API's latest deposition requirement separate from the semantic-version decision.

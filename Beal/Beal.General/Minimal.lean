@@ -262,10 +262,266 @@ private def highIntegral (a2 a4 : ℤ) : WeierstrassCurve ℤ where
 private noncomputable def highZ2 (a2 a4 : ℤ) : WeierstrassCurve ℤ_[2] :=
   (highIntegral a2 a4).map (Int.castRingHom ℤ_[2])
 
+/-- One concrete first Tate-algorithm integrality test for the Frey
+family: scale `u=2`, shear `s=1`, `t=0`, and an integral translation
+`r`. The equalities are exactly the divisibility tests for the new
+`a₂`, `a₄`, and `a₆=0`. This is neither a Kodaira classifier nor an
+assertion that every high-valuation pair passes this test. -/
+structure TateScaleTwoStep (U V : ℕ) where
+  r : ℤ
+  a₂ : ℤ
+  a₄ : ℤ
+  a₂_condition : 4 * a₂ = (V : ℤ) - (U : ℤ) + 3 * r - 1
+  a₄_condition :
+    16 * a₄ = -(U : ℤ) * (V : ℤ) +
+      2 * r * ((V : ℤ) - (U : ℤ)) + 3 * r ^ 2
+  a₆_condition :
+    r * (-((U : ℤ) * (V : ℤ))) +
+      r ^ 2 * ((V : ℤ) - (U : ℤ)) + r ^ 3 = 0
+
+/-- A successful coefficient test really gives a Z₂-integral
+scale-2 model of the curve with powered inputs `U,V`. -/
+theorem tate_scale_two_step_model (U V : ℕ) (step : TateScaleTwoStep U V) :
+    ((freyZ2 U V 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange
+      (highChangeTwo (step.r : ℚ_[2])) =
+        (highZ2 step.a₂ step.a₄).map (algebraMap ℤ_[2] ℚ_[2]) := by
+  have haQ : (4 : ℚ_[2]) * (step.a₂ : ℚ_[2]) =
+      (V : ℚ_[2]) - (U : ℚ_[2]) + 3 * step.r - 1 := by
+    exact_mod_cast step.a₂_condition
+  have hbQ : (16 : ℚ_[2]) * (step.a₄ : ℚ_[2]) =
+      -((U : ℚ_[2]) * (V : ℚ_[2])) +
+        2 * step.r * ((V : ℚ_[2]) - (U : ℚ_[2])) + 3 * step.r ^ 2 := by
+    have h := congrArg (fun t : ℤ => (t : ℚ_[2])) step.a₄_condition
+    simpa only [Int.cast_mul, Int.cast_neg, Int.cast_add, Int.cast_sub,
+      Int.cast_pow, Int.cast_natCast, Int.cast_ofNat, Nat.cast_mul, neg_mul] using h
+  have hcQ : (step.r : ℚ_[2]) * (-((U : ℚ_[2]) * (V : ℚ_[2]))) +
+      step.r ^ 2 * ((V : ℚ_[2]) - (U : ℚ_[2])) + step.r ^ 3 = 0 := by
+    have h := congrArg (fun t : ℤ => (t : ℚ_[2])) step.a₆_condition
+    simpa only [Int.cast_mul, Int.cast_neg, Int.cast_add, Int.cast_sub,
+      Int.cast_pow, Int.cast_natCast, Int.cast_ofNat, Nat.cast_mul, neg_mul] using h
+  ext <;> simp only [freyZ2, freyWeierstrassGeneral, highChangeTwo, highZ2, highIntegral,
+    WeierstrassCurve.variableChange, WeierstrassCurve.map,
+    PadicInt.algebraMap_apply, Units.val_inv_eq_inv_val, Units.val_mk0,
+    map_zero, map_one, pow_one, mul_zero, zero_mul, add_zero, zero_add,
+    sub_zero, one_mul, mul_one, map_sub, map_neg, map_mul, map_natCast,
+    map_intCast, PadicInt.coe_sub, PadicInt.coe_neg, PadicInt.coe_mul,
+    PadicInt.coe_natCast, PadicInt.coe_intCast, one_pow, zero_pow (by norm_num : (2:ℕ) ≠ 0)]
+  case a₁ => norm_num
+  case a₂ =>
+    rw [← haQ]
+    calc
+      (2 : ℚ_[2])⁻¹ ^ 2 * (4 * (step.a₂ : ℚ_[2])) =
+          (4 : ℚ_[2])⁻¹ * (4 * step.a₂) := by
+        rw [inv_pow]
+        norm_num
+      _ = step.a₂ := by
+        rw [← mul_assoc, inv_mul_cancel₀ (by norm_num : (4 : ℚ_[2]) ≠ 0), one_mul]
+  case a₄ =>
+    rw [← hbQ]
+    calc
+      (2 : ℚ_[2])⁻¹ ^ 4 * (16 * (step.a₄ : ℚ_[2])) =
+          (16 : ℚ_[2])⁻¹ * (16 * step.a₄) := by
+        rw [inv_pow]
+        norm_num
+      _ = step.a₄ := by
+        rw [← mul_assoc, inv_mul_cancel₀ (by norm_num : (16 : ℚ_[2]) ≠ 0), one_mul]
+  case a₆ =>
+    rw [show (step.r : ℚ_[2]) * (-((U : ℚ_[2]) * (V : ℚ_[2]))) +
+      step.r ^ 2 * ((V : ℚ_[2]) - (U : ℚ_[2])) + step.r ^ 3 = 0 from hcQ]
+    ring
+
+/-- An even/odd subfamily passes the actual scale-2 coefficient test:
+the even input is divisible by 16 and the odd one is 1 modulo 4. -/
+theorem tate_step_even_odd (U V : ℕ) (hU : 16 ∣ U) (hV : V % 4 = 1) :
+    Nonempty (TateScaleTwoStep U V) := by
+  obtain ⟨v, hv⟩ : ∃ v : ℕ, V = 4 * v + 1 := ⟨V / 4, by omega⟩
+  rcases hU with ⟨u, rfl⟩
+  rw [hv]
+  refine ⟨{
+    r := 0
+    a₂ := (v : ℤ) - 4 * (u : ℤ)
+    a₄ := -((u : ℤ) * (4 * (v : ℤ) + 1))
+    a₂_condition := ?_
+    a₄_condition := ?_
+    a₆_condition := ?_
+  }⟩
+  · push_cast
+    ring
+  · push_cast
+    ring
+  · ring
+
+/-- An odd/even subfamily passes the same coefficient test when
+the odd input is 3 modulo 4 and the even input is divisible by 16. -/
+theorem tate_step_odd_even (U V : ℕ) (hU : U % 4 = 3) (hV : 16 ∣ V) :
+    Nonempty (TateScaleTwoStep U V) := by
+  obtain ⟨u, hu⟩ : ∃ u : ℕ, U = 4 * u + 3 := ⟨U / 4, by omega⟩
+  rcases hV with ⟨v, rfl⟩
+  rw [hu]
+  refine ⟨{
+    r := 0
+    a₂ := 4 * (v : ℤ) - (u : ℤ) - 1
+    a₄ := -((4 * (u : ℤ) + 3) * (v : ℤ))
+    a₂_condition := ?_
+    a₄_condition := ?_
+    a₆_condition := ?_
+  }⟩
+  · push_cast
+    ring
+  · push_cast
+    ring
+  · ring
+
+/-- An odd/odd subfamily passes the coefficient test when their sum
+is divisible by 16 and `U` is 1 modulo 4. Translation by `U`
+rather than zero is essential for this particular test. -/
+theorem tate_step_odd_odd (U V : ℕ)
+    (hU : U % 4 = 1) (hW : 16 ∣ U + V) :
+    Nonempty (TateScaleTwoStep U V) := by
+  obtain ⟨u, hu⟩ : ∃ u : ℕ, U = 4 * u + 1 := ⟨U / 4, by omega⟩
+  obtain ⟨w, hw⟩ := hW
+  have hUZ : (U : ℤ) = 4 * (u : ℤ) + 1 := by exact_mod_cast hu
+  have hWZ : (U : ℤ) + (V : ℤ) = 16 * (w : ℤ) := by exact_mod_cast hw
+  refine ⟨{
+    r := (U : ℤ)
+    a₂ := 4 * (w : ℤ) + (u : ℤ)
+    a₄ := (U : ℤ) * (w : ℤ)
+    a₂_condition := ?_
+    a₄_condition := ?_
+    a₆_condition := ?_
+  }⟩
+  · omega
+  · calc
+      16 * ((U : ℤ) * (w : ℤ)) = (U : ℤ) * (16 * (w : ℤ)) := by ring
+      _ = (U : ℤ) * ((U : ℤ) + (V : ℤ)) := by rw [← hWZ]
+      _ = -(U : ℤ) * (V : ℤ) + 2 * (U : ℤ) *
+            ((V : ℤ) - (U : ℤ)) + 3 * (U : ℤ) ^ 2 := by ring
+  · ring
+
 private theorem highChangeTwo_val (r : ℚ_[2]) :
     Padic.valuation ((highChangeTwo r).u : ℚ_[2]) = 1 := by
   change Padic.valuation (2 : ℚ_[2]) = 1
   simpa using (Padic.valuation_p (p := 2))
+
+/-- A successful first Tate step supplies an actual integral
+scale-2 model. It does not by itself classify the reduction type. -/
+theorem tate_step_integral_model (U V : ℕ) (step : TateScaleTwoStep U V) :
+    ∃ (M : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2]),
+      ((freyZ2 U V 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+        M.map (algebraMap ℤ_[2] ℚ_[2]) ∧
+      Padic.valuation (C.u : ℚ_[2]) = 1 :=
+  ⟨highZ2 step.a₂ step.a₄, highChangeTwo (step.r : ℚ_[2]),
+    tate_scale_two_step_model U V step, highChangeTwo_val _⟩
+
+/-- Exact discriminant valuation after a successful scale-2 step.
+This is invariant arithmetic, not a Kodaira-type classification. -/
+theorem tate_step_delta_valuation (U V : ℕ)
+    (hU : 0 < U) (hV : 0 < V) (step : TateScaleTwoStep U V) :
+    Padic.valuation ((highZ2 step.a₂ step.a₄).Δ : ℚ_[2]) =
+      2 * ((padicValNat 2 (U * V * (U + V)) : ℤ) - 4) := by
+  have hdisc : 16 * U ^ 2 * V ^ 2 * (U + V) ^ 2 ≠ 0 := by positivity
+  have hraw : ((freyZ2 U V 0 1 1 0).Δ : ℚ_[2]) ≠ 0 := by
+    rw [freyZ2_delta, PadicInt.coe_natCast]
+    exact Nat.cast_ne_zero.mpr (by simpa only [pow_one] using hdisc)
+  have hu : ((highChangeTwo (step.r : ℚ_[2])).u : ℚ_[2]) ≠ 0 := Units.ne_zero _
+  have hdelta := congrArg WeierstrassCurve.Δ (tate_scale_two_step_model U V step)
+  simp only [WeierstrassCurve.variableChange_Δ, WeierstrassCurve.map_Δ,
+    PadicInt.algebraMap_apply, Units.val_inv_eq_inv_val] at hdelta
+  have hval := congrArg Padic.valuation hdelta
+  rw [Padic.valuation_map_mul (pow_ne_zero 12 (inv_ne_zero hu)) hraw,
+    q2_val_pow _ (inv_ne_zero hu) 12, q2_val_inv _ hu,
+    highChangeTwo_val, freyZ2_delta_v2 U V 0 1 1 0
+      (by simpa using hU) (by simpa using hV)] at hval
+  simp only [pow_one] at hval
+  omega
+
+/-- In any of the congruence subfamilies above, the constructed
+integral model has unit discriminant exactly at the valuation-four
+threshold. No existence assertion is made for other residue classes. -/
+theorem tate_step_unit_iff_threshold (U V : ℕ)
+    (hU : 0 < U) (hV : 0 < V) (step : TateScaleTwoStep U V) :
+    ∃ (M : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2]),
+      ((freyZ2 U V 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+        M.map (algebraMap ℤ_[2] ℚ_[2]) ∧
+      Padic.valuation (C.u : ℚ_[2]) = 1 ∧
+      (Padic.valuation (M.Δ : ℚ_[2]) = 0 ↔
+        padicValNat 2 (U * V * (U + V)) = 4) := by
+  obtain ⟨M, C, hmodel, hscale⟩ := tate_step_integral_model U V step
+  refine ⟨M, C, hmodel, hscale, ?_⟩
+  simpa using high_parity_exactly_four U V 0 1 1 0
+    (by simpa using hU) (by simpa using hV) M C hmodel hscale
+
+/-- At the exact threshold, any successful first step supplies a
+model whose discriminant is a unit in Z₂. This is the algebraic
+good-reduction certificate, not a completed Tate classifier. -/
+theorem tate_step_threshold_unit (U V : ℕ)
+    (hU : 0 < U) (hV : 0 < V) (step : TateScaleTwoStep U V)
+    (hthreshold : padicValNat 2 (U * V * (U + V)) = 4) :
+    ∃ (M : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2]),
+      ((freyZ2 U V 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+        M.map (algebraMap ℤ_[2] ℚ_[2]) ∧
+      Padic.valuation (C.u : ℚ_[2]) = 1 ∧ IsUnit M.Δ := by
+  obtain ⟨M, C, hmodel, hscale, hiff⟩ :=
+    tate_step_unit_iff_threshold U V hU hV step
+  have hunitVal : Padic.valuation (M.Δ : ℚ_[2]) = 0 := hiff.mpr hthreshold
+  have hdisc : 16 * U ^ 2 * V ^ 2 * (U + V) ^ 2 ≠ 0 := by positivity
+  have hraw : ((freyZ2 U V 0 1 1 0).Δ : ℚ_[2]) ≠ 0 := by
+    rw [freyZ2_delta, PadicInt.coe_natCast]
+    exact Nat.cast_ne_zero.mpr (by simpa only [pow_one] using hdisc)
+  have hu : (C.u : ℚ_[2]) ≠ 0 := Units.ne_zero C.u
+  have hdelta := congrArg WeierstrassCurve.Δ hmodel
+  simp only [WeierstrassCurve.variableChange_Δ, WeierstrassCurve.map_Δ,
+    PadicInt.algebraMap_apply, Units.val_inv_eq_inv_val] at hdelta
+  have hM : (M.Δ : ℚ_[2]) ≠ 0 := by
+    rw [← hdelta]
+    exact mul_ne_zero (pow_ne_zero 12 (inv_ne_zero hu)) hraw
+  refine ⟨M, C, hmodel, hscale, ?_⟩
+  rw [PadicInt.isUnit_iff, PadicInt.norm_def, Padic.norm_eq_pow_val hM, hunitVal]
+  norm_num
+
+/-- In the three congruence subfamilies, a successful step at the
+exact threshold also gives a Q₂-minimal integral model: a further
+positive-scale change would make its unit discriminant nonintegral. -/
+theorem tate_step_threshold_minimal (U V : ℕ)
+    (hU : 0 < U) (hV : 0 < V) (step : TateScaleTwoStep U V)
+    (hthreshold : padicValNat 2 (U * V * (U + V)) = 4) :
+    ∃ (M : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2]),
+      ((freyZ2 U V 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+        M.map (algebraMap ℤ_[2] ℚ_[2]) ∧
+      Padic.valuation (C.u : ℚ_[2]) = 1 ∧ IsUnit M.Δ ∧
+      ∀ (N : WeierstrassCurve ℤ_[2]) (D : WeierstrassCurve.VariableChange ℚ_[2]),
+        (M.map (algebraMap ℤ_[2] ℚ_[2])).variableChange D =
+          N.map (algebraMap ℤ_[2] ℚ_[2]) →
+        Padic.valuation (D.u : ℚ_[2]) ≤ 0 := by
+  obtain ⟨M, C, hmodel, hscale, hunit⟩ :=
+    tate_step_threshold_unit U V hU hV step hthreshold
+  have hval : Padic.valuation (M.Δ : ℚ_[2]) = 0 :=
+    (high_parity_exactly_four U V 0 1 1 0
+      (by simpa using hU) (by simpa using hV) M C hmodel hscale).mpr
+      (by simpa using hthreshold)
+  refine ⟨M, C, hmodel, hscale, hunit, ?_⟩
+  intro N D hnext
+  apply low_minimality_Q2 M hunit.ne_zero ?_ N D hnext
+  rw [hval]
+  norm_num
+
+/-- When valuation exceeds four, the integral first-step model, if
+constructed, cannot have unit discriminant. Its further reduction
+type still requires Tate-algorithm work. -/
+theorem tate_step_above_threshold_nonunit (U V : ℕ)
+    (hU : 0 < U) (hV : 0 < V) (step : TateScaleTwoStep U V)
+    (hhigh : 4 < padicValNat 2 (U * V * (U + V))) :
+    ∃ (M : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2]),
+      ((freyZ2 U V 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+        M.map (algebraMap ℤ_[2] ℚ_[2]) ∧
+      Padic.valuation (C.u : ℚ_[2]) = 1 ∧
+      Padic.valuation (M.Δ : ℚ_[2]) ≠ 0 := by
+  obtain ⟨M, C, hmodel, hscale, hiff⟩ :=
+    tate_step_unit_iff_threshold U V hU hV step
+  refine ⟨M, C, hmodel, hscale, ?_⟩
+  intro hunit
+  have hthreshold := hiff.mp hunit
+  omega
 
 private theorem cast14 : ((14 : ℤ_[2]) : ℚ_[2]) = 14 := rfl
 private theorem cast4 : ((4 : ℤ_[2]) : ℚ_[2]) = 4 := rfl
@@ -431,14 +687,13 @@ theorem high_minimal_odd_even :
   rw [threshold_deltas.2.2]
   norm_num
 
-/- TODO high_parity_general: Classifying high-valuation minimal models requires checking
-integrality and minimality for each parity *and congruence* case over Q₂.
-The equivalence above is conditional on an integral scale-2 change; it
-does not imply that all minimal models require valuation exactly four.
-For valuations above four, a scale-2 changed discriminant remains even
-and further Tate steps are needed. The three witnesses do not prove
-existence for every high input.
-Nor do they provide a Tate reduction type. -/
+/- TODO high_parity_general: The three first-step constructors cover
+infinite congruence subfamilies, not every coprime high-valuation pair.
+Complete the remaining residue classes and all admissible changes.
+At valuation four these subfamilies have unit, minimal models; above
+four their first-step models are nonunit and require further Tate steps
+to classify. Neither the three original witnesses nor these first-step
+certificates assign a Kodaira type to all high inputs. -/
 
 #print axioms freyZ2_delta_v2
 #print axioms frey_low_minimal_Q2
@@ -447,6 +702,14 @@ Nor do they provide a Tate reduction type. -/
 #print axioms unit_disc_iff_v2_eq_12
 #print axioms frey_disc_v2_twelve_iff_threshold
 #print axioms high_parity_exactly_four
+#print axioms tate_scale_two_step_model
+#print axioms tate_step_even_odd
+#print axioms tate_step_odd_even
+#print axioms tate_step_odd_odd
+#print axioms tate_step_delta_valuation
+#print axioms tate_step_threshold_unit
+#print axioms tate_step_threshold_minimal
+#print axioms tate_step_above_threshold_nonunit
 #print axioms threshold_witnesses_exactly_four
 #print axioms threshold_witnesses_raw_delta_v2
 #print axioms high_minimal_odd_odd

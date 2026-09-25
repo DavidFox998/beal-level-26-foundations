@@ -82,6 +82,29 @@ theorem threshold_f2_zero_conditional (x y z p q r : ℕ)
   exact hgood M
     ((high_parity_exactly_four x y z p q r hx hy M C hmodel hscale).mpr hthreshold)
 
+/-- An actual successful first-step certificate removes the model-
+existence premise at valuation four. The Kodaira conclusion still
+requires a genuine classifier satisfying its unit-discriminant rule. -/
+theorem tate_step_threshold_I0_conditional (U V : ℕ)
+    (hU : 0 < U) (hV : 0 < V) (step : TateScaleTwoStep U V)
+    (hthreshold : padicValNat 2 (U * V * (U + V)) = 4)
+    (typeAtTwo : WeierstrassCurve ℤ_[2] → KodairaType)
+    (hTate : TateUnitCriterion typeAtTwo) :
+    ∃ (M : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2]),
+      ((freyZ2 U V 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+        M.map (algebraMap ℤ_[2] ℚ_[2]) ∧
+      Padic.valuation (C.u : ℚ_[2]) = 1 ∧
+      typeAtTwo M = KodairaType.I 0 ∧
+      ∀ n : ℕ, 0 < n → typeAtTwo M ≠ KodairaType.I n := by
+  obtain ⟨M, C, hmodel, hscale⟩ := tate_step_integral_model U V step
+  have hunit : Padic.valuation (M.Δ : ℚ_[2]) = 0 :=
+    (high_parity_exactly_four U V 0 1 1 0
+      (by simpa using hU) (by simpa using hV) M C hmodel hscale).mpr
+      (by simpa using hthreshold)
+  refine ⟨M, C, hmodel, hscale, hTate M hunit, ?_⟩
+  intro n hn
+  exact I_positive_incompatible_with_unit typeAtTwo hTate M hunit n hn
+
 private theorem odd_c4_factor (U V : ℕ) (h : Odd U ∨ Odd V) :
     Odd (U ^ 2 + U * V + V ^ 2) := by
   have hu : U % 2 = 0 ∨ U % 2 = 1 := by omega
@@ -211,15 +234,17 @@ theorem frey_discriminant_even (x y z p q r : ℕ) :
 *after* their particular scale-2 changes. They cannot be assigned
 type I_{2*v₂(W)} by a correct classifier: its unit-discriminant rule
 would force good reduction (I₀), not positive-index multiplicative Iₙ.
-No actual Kodaira classifier, Tate algorithm, or local conductor
-function and its good-reduction rule is constructed here. In other
-high-congruence cases, minimal models and types remain unknown.
+No actual Kodaira classifier, full Tate algorithm, or local conductor
+function and its good-reduction rule is constructed here. The three
+infinite first-step subfamilies in Minimal have unit models at the exact
+threshold, but remaining high-congruence cases and reduction types are open.
 Prove the full Tate steps before an unconditional f₂, or any formula
 N=2^?*rad(x*y*z), can be claimed. -/
 
 #print axioms I_positive_incompatible_with_unit
 #print axioms threshold_type_I0_conditional
 #print axioms threshold_f2_zero_conditional
+#print axioms tate_step_threshold_I0_conditional
 #print axioms frey_c4_v2_of_coprime
 #print axioms frey_c4_v2_of_base_coprime
 #print axioms coprime_c4_factor_uvw
