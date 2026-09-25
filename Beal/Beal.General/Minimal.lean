@@ -9,9 +9,11 @@ import Mathlib.Tactic.Ring
 /-!
 The low-valuation local minimality obstruction for the general Frey model.
 For positive coprime inputs, the fixed-scale-two integrality search is
-classified by residue conditions below. This does not classify changes
-at other scales, later non-scaling Tate steps, or local conductor data;
-discriminant divisibility alone never establishes integrality.
+classified by residue conditions below. Together with the c₄ bound in
+Conductor, unit-factor normalization reduces any positive-scale
+integrality change to this fixed-scale search. Later non-scaling Tate
+steps and local conductor data remain open; discriminant divisibility
+alone never establishes integrality.
 -/
 
 namespace Beal.General
@@ -272,6 +274,74 @@ theorem candidateScaleTwoChange_val (r s t : ℚ_[2]) :
   change Padic.valuation (2 : ℚ_[2]) = 1
   simpa using (Padic.valuation_p (p := 2))
 
+/-- Precise unit-factor normalization statement. A valuation-one
+change to a Z₂-integral model has scale `2ε` for a Z₂ unit `ε`,
+and the same Q₂ translation and shears can be used at exact scale
+two after changing the integral target by a unit-only change. -/
+def UnitScaleNormalization (E : WeierstrassCurve ℤ_[2]) : Prop :=
+  ∀ (M : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2]),
+    (E.map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+      M.map (algebraMap ℤ_[2] ℚ_[2]) →
+    Padic.valuation (C.u : ℚ_[2]) = 1 →
+    ∃ ε : ℤ_[2]ˣ, (C.u : ℚ_[2]) = 2 * ((ε : ℤ_[2]) : ℚ_[2]) ∧
+      ∃ N : WeierstrassCurve ℤ_[2],
+        (E.map (algebraMap ℤ_[2] ℚ_[2])).variableChange
+          (candidateScaleTwoChange C.r C.s C.t) =
+          N.map (algebraMap ℤ_[2] ℚ_[2])
+
+/-- Unit factors in valuation-one Q₂ changes can be absorbed into
+an integral target model. This is a coordinate normalization, not a
+Tate algorithm or a statement about the target reduction type. -/
+theorem unit_scale_normalization (E : WeierstrassCurve ℤ_[2]) :
+    UnitScaleNormalization E := by
+  intro M C hmodel huval
+  let q : ℚ_[2] := (C.u : ℚ_[2]) * (2 : ℚ_[2])⁻¹
+  have htwo : (2 : ℚ_[2]) ≠ 0 := by norm_num
+  have hu : (C.u : ℚ_[2]) ≠ 0 := Units.ne_zero C.u
+  have hq : q ≠ 0 := mul_ne_zero hu (inv_ne_zero htwo)
+  have hqv : Padic.valuation q = 0 := by
+    dsimp [q]
+    rw [Padic.valuation_map_mul hu (inv_ne_zero htwo), q2_val_inv _ htwo,
+      huval, show Padic.valuation (2 : ℚ_[2]) = 1 by
+        simpa using (Padic.valuation_p (p := 2))]
+    norm_num
+  have hnorm : ‖q‖ = 1 := by
+    rw [Padic.norm_eq_pow_val hq, hqv]
+    norm_num
+  let ε : ℤ_[2]ˣ := PadicInt.mkUnits hnorm
+  have hε : ((ε : ℤ_[2]) : ℚ_[2]) = q := PadicInt.mkUnits_eq hnorm
+  let D : WeierstrassCurve.VariableChange ℤ_[2] := ⟨ε⁻¹, 0, 0, 0⟩
+  have hchange : (D.map (algebraMap ℤ_[2] ℚ_[2])).comp C =
+      candidateScaleTwoChange C.r C.s C.t := by
+    ext
+    · change (((Units.map (algebraMap ℤ_[2] ℚ_[2]) (ε⁻¹) : ℚ_[2]ˣ) : ℚ_[2]) *
+        (C.u : ℚ_[2])) = (2 : ℚ_[2])
+      simp only [map_inv, Units.val_inv_eq_inv_val, Units.coe_map,
+        PadicInt.algebraMap_apply]
+      change (((ε : ℤ_[2]) : ℚ_[2])⁻¹ * (C.u : ℚ_[2]) = 2)
+      rw [hε]
+      dsimp [q]
+      field_simp [hu, htwo]
+    · simp [D, WeierstrassCurve.VariableChange.comp, candidateScaleTwoChange]
+    · simp [D, WeierstrassCurve.VariableChange.comp, candidateScaleTwoChange]
+    · simp [D, WeierstrassCurve.VariableChange.comp, candidateScaleTwoChange]
+  refine ⟨ε, ?_, M.variableChange D, ?_⟩
+  · rw [hε]
+    dsimp [q]
+    field_simp [htwo]
+  · calc
+      (E.map (algebraMap ℤ_[2] ℚ_[2])).variableChange
+        (candidateScaleTwoChange C.r C.s C.t) =
+        (E.map (algebraMap ℤ_[2] ℚ_[2])).variableChange
+          ((D.map (algebraMap ℤ_[2] ℚ_[2])).comp C) := by rw [hchange]
+      _ = ((E.map (algebraMap ℤ_[2] ℚ_[2])).variableChange C).variableChange
+          (D.map (algebraMap ℤ_[2] ℚ_[2])) := by
+            rw [WeierstrassCurve.variableChange_comp]
+      _ = (M.map (algebraMap ℤ_[2] ℚ_[2])).variableChange
+          (D.map (algebraMap ℤ_[2] ℚ_[2])) := by rw [hmodel]
+      _ = (M.variableChange D).map (algebraMap ℤ_[2] ℚ_[2]) := by
+        rw [WeierstrassCurve.map_variableChange]
+
 /-- The remaining first-change search at fixed scale `u=2`.
 It permits other translations, shears, and target Z₂ models; its
 existence is not inferred from a discriminant valuation. -/
@@ -280,6 +350,19 @@ def FirstScaleTwoSearch (U V : ℕ) : Prop :=
     ((freyZ2 U V 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange
       (candidateScaleTwoChange r s t) =
         M.map (algebraMap ℤ_[2] ℚ_[2])
+
+/-- Any valuation-one integral change of the Frey model supplies a
+fixed-`u=2` search witness, even if its original scale had a unit
+factor. The resulting integral model may differ from the original. -/
+theorem val_one_first_scale_two_search (U V : ℕ)
+    (M : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2])
+    (hmodel : ((freyZ2 U V 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+      M.map (algebraMap ℤ_[2] ℚ_[2]))
+    (hval : Padic.valuation (C.u : ℚ_[2]) = 1) :
+    FirstScaleTwoSearch U V := by
+  obtain ⟨_, _, N, hnormalized⟩ :=
+    unit_scale_normalization (freyZ2 U V 0 1 1 0) M C hmodel hval
+  exact ⟨C.r, C.s, C.t, N, hnormalized⟩
 
 /-- Necessary coefficient equations for a general scale-2 candidate.
 Unlike `TateScaleTwoStep`, the translation and shears are arbitrary
@@ -1397,11 +1480,12 @@ theorem high_minimal_odd_even :
  classified: the three constructive families and the three mod-16
  obstructions cover every case where valuation allows this scale.
  The c₄ bound in Conductor excludes positive scale valuations above
- one, but valuation-one changes can still have a unit factor in their
- scale. Normalize those changes or classify them directly, and carry
- out later non-scaling Tate tests; neither follows here.
+ one; `unit_scale_normalization` also absorbs any unit factor at
+ valuation one into an integral target. This resolves the scale
+ normalization question, but not later non-scaling Tate tests or a
+ classification of reduction types.
 
-TODO mod64_remaining: A mod-64 `a₆` test retaining `t²`, and the
+TODO mod64_high_congruence: A mod-64 `a₆` test retaining `t²`, and the
 `a₄` equation, may be useful for nonprimitive inputs or future
 change parameterizations. They are not a gap in the classified
 positive coprime fixed-u=2 search and do not prove a Tate symbol.
@@ -1421,6 +1505,8 @@ need proof; do not divide its discriminant by 2¹² again. -/
 #print axioms high_parity_exactly_four
 #print axioms tate_scale_two_step_model
 #print axioms candidateScaleTwoChange_val
+#print axioms unit_scale_normalization
+#print axioms val_one_first_scale_two_search
 #print axioms first_scale_two_search_coefficient_conditions
 #print axioms scale_two_conditions_integral_translation
 #print axioms scale_two_conditions_integral_numerators

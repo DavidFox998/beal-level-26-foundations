@@ -252,8 +252,8 @@ theorem coprime_c4_factor_uvw (U V : ℕ) (hcop : Nat.Coprime U V) :
 
 /-- For positive coprime inputs, an arbitrary Q₂ change leading to an
 integral model cannot have scale valuation greater than one. This
-uses `v₂(c₄)=4`; it does not normalize a valuation-one change to the
-fixed scale `u=2` or supply a Tate classification. -/
+uses `v₂(c₄)=4`; by itself it does not normalize a valuation-one
+change or supply a Tate classification. -/
 theorem frey_integral_change_scale_le_one (U V : ℕ)
     (hU : 0 < U) (hV : 0 < V) (hcop : Nat.Coprime U V)
     (M : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2])
@@ -270,6 +270,21 @@ theorem frey_integral_change_scale_le_one (U V : ℕ)
     q2_val_pow _ (inv_ne_zero hu) 4, q2_val_inv _ hu, hval] at hv
   have hn : 0 ≤ Padic.valuation (M.c₄ : ℚ_[2]) := PadicInt.valuation_nonneg M.c₄
   omega
+
+/-- Under positive coprime inputs, every positive-scale Q₂ change to
+an integral target yields a fixed-scale-two integral target. The
+normalized target can differ by a Z₂-unit change, and this says
+nothing about later non-scaling Tate tests or conductor exponents. -/
+theorem frey_positive_scale_normalizes_to_two (U V : ℕ)
+    (hU : 0 < U) (hV : 0 < V) (hcop : Nat.Coprime U V)
+    (M : WeierstrassCurve ℤ_[2]) (C : WeierstrassCurve.VariableChange ℚ_[2])
+    (hmodel : ((freyZ2 U V 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange C =
+      M.map (algebraMap ℤ_[2] ℚ_[2]))
+    (hpositive : 0 < Padic.valuation (C.u : ℚ_[2])) :
+    FirstScaleTwoSearch U V := by
+  have hle := frey_integral_change_scale_le_one U V hU hV hcop M C hmodel
+  have hval : Padic.valuation (C.u : ℚ_[2]) = 1 := by omega
+  exact val_one_first_scale_two_search U V M C hmodel hval
 
 /-- The displayed model has singular reduction modulo 2;
 this alone cannot determine a Néron conductor. -/
@@ -333,7 +348,9 @@ would force good reduction (I₀), not positive-index multiplicative Iₙ.
 No actual Kodaira classifier, full Tate algorithm, or local conductor
 function and its good-reduction rule is constructed here. The three
 infinite first-step subfamilies in Minimal have unit models at the exact
-threshold, but remaining high-congruence cases and reduction types are open.
+ threshold. Positive coprime positive-scale integrality now reduces to
+ the classified fixed-scale search, but the non-scaling Tate tests and
+ reduction types remain open.
 Prove the full Tate steps before an unconditional f₂, or any formula
 N=2^?*rad(x*y*z), can be claimed. -/
 
@@ -345,6 +362,7 @@ compute their reduction types on those models instead. -/
 
 #print axioms I_positive_incompatible_with_unit
 #print axioms frey_integral_change_scale_le_one
+#print axioms frey_positive_scale_normalizes_to_two
 #print axioms threshold_type_I0_conditional
 #print axioms threshold_f2_zero_conditional
 #print axioms tate_step_threshold_I0_conditional
