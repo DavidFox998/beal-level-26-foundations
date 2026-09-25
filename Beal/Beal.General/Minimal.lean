@@ -262,6 +262,12 @@ noncomputable def candidateScaleTwoChange (r s t : ℚ_[2]) :
   s := s
   t := t
 
+/-- Every candidate in this search has positive scale valuation one. -/
+theorem candidateScaleTwoChange_val (r s t : ℚ_[2]) :
+    Padic.valuation ((candidateScaleTwoChange r s t).u : ℚ_[2]) = 1 := by
+  change Padic.valuation (2 : ℚ_[2]) = 1
+  simpa using (Padic.valuation_p (p := 2))
+
 /-- The remaining first-change search at fixed scale `u=2`.
 It permits other translations, shears, and target Z₂ models; its
 existence is not inferred from a discriminant valuation. -/
@@ -270,6 +276,58 @@ def FirstScaleTwoSearch (U V : ℕ) : Prop :=
     ((freyZ2 U V 0 1 1 0).map (algebraMap ℤ_[2] ℚ_[2])).variableChange
       (candidateScaleTwoChange r s t) =
         M.map (algebraMap ℤ_[2] ℚ_[2])
+
+/-- Necessary coefficient equations for a general scale-2 candidate.
+Unlike `TateScaleTwoStep`, the translation and shears are arbitrary
+Q₂ elements, and no transformed coefficient is forced to be zero. -/
+structure ScaleTwoCoefficientConditions (U V : ℕ) (r s t : ℚ_[2])
+    (M : WeierstrassCurve ℤ_[2]) : Prop where
+  a₁ : s = (M.a₁ : ℚ_[2])
+  a₃ : t = 4 * (M.a₃ : ℚ_[2])
+  a₂ : (2 : ℚ_[2])⁻¹ ^ 2 *
+      ((V : ℚ_[2]) - (U : ℚ_[2]) + 3 * r - s ^ 2) = (M.a₂ : ℚ_[2])
+  a₄ : (2 : ℚ_[2])⁻¹ ^ 4 *
+      (-((U : ℚ_[2]) * (V : ℚ_[2])) + 2 * r * ((V : ℚ_[2]) - (U : ℚ_[2])) +
+        3 * r ^ 2 - 2 * s * t) = (M.a₄ : ℚ_[2])
+  a₆ : (2 : ℚ_[2])⁻¹ ^ 6 *
+      (r * (-((U : ℚ_[2]) * (V : ℚ_[2]))) +
+        r ^ 2 * ((V : ℚ_[2]) - (U : ℚ_[2])) + r ^ 3 - t ^ 2) =
+      (M.a₆ : ℚ_[2])
+
+/-- Any integral target in the unrestricted fixed-scale search must
+satisfy all five explicit coefficient conditions. No converse or
+existence in the opposite residue classes is asserted. -/
+theorem first_scale_two_search_coefficient_conditions (U V : ℕ)
+    (h : FirstScaleTwoSearch U V) :
+    ∃ (r s t : ℚ_[2]) (M : WeierstrassCurve ℤ_[2]),
+      ScaleTwoCoefficientConditions U V r s t M := by
+  obtain ⟨r, s, t, M, hmodel⟩ := h
+  refine ⟨r, s, t, M, ⟨?_, ?_, ?_, ?_, ?_⟩⟩
+  · have h1 := congrArg WeierstrassCurve.a₁ hmodel
+    simpa [freyZ2, freyWeierstrassGeneral, candidateScaleTwoChange,
+      WeierstrassCurve.variableChange, WeierstrassCurve.map,
+      PadicInt.algebraMap_apply] using h1
+  · have h3 := congrArg WeierstrassCurve.a₃ hmodel
+    simp [freyZ2, freyWeierstrassGeneral, candidateScaleTwoChange,
+      WeierstrassCurve.variableChange, WeierstrassCurve.map,
+      PadicInt.algebraMap_apply] at h3
+    have hfactor : (4 : ℚ_[2]) * (2 ^ 3 : ℚ_[2])⁻¹ * 2 = 1 := by norm_num
+    calc
+      t = ((4 : ℚ_[2]) * (2 ^ 3 : ℚ_[2])⁻¹ * 2) * t := by rw [hfactor, one_mul]
+      _ = 4 * ((2 ^ 3 : ℚ_[2])⁻¹ * (2 * t)) := by ring
+      _ = 4 * (M.a₃ : ℚ_[2]) := by rw [h3]
+  · have h2 := congrArg WeierstrassCurve.a₂ hmodel
+    simpa [freyZ2, freyWeierstrassGeneral, candidateScaleTwoChange,
+      WeierstrassCurve.variableChange, WeierstrassCurve.map,
+      PadicInt.algebraMap_apply] using h2
+  · have h4 := congrArg WeierstrassCurve.a₄ hmodel
+    simpa [freyZ2, freyWeierstrassGeneral, candidateScaleTwoChange,
+      WeierstrassCurve.variableChange, WeierstrassCurve.map,
+      PadicInt.algebraMap_apply] using h4
+  · have h6 := congrArg WeierstrassCurve.a₆ hmodel
+    simpa [freyZ2, freyWeierstrassGeneral, candidateScaleTwoChange,
+      WeierstrassCurve.variableChange, WeierstrassCurve.map,
+      PadicInt.algebraMap_apply] using h6
 
 private def highIntegral (a2 a4 : ℤ) : WeierstrassCurve ℤ where
   a₁ := 1
@@ -519,6 +577,19 @@ theorem remaining_residue_classes_open (U V : ℕ)
       have ha := step.a₂_condition
       rw [hr] at ha
       omega
+
+/-- For these residue cases the old restricted constructor is
+impossible. Any solution of the broader Q₂ search must instead
+satisfy the unrestricted coefficient equations above. This theorem
+does *not* decide whether such a solution exists. -/
+theorem existence_search_open (U V : ℕ)
+    (hcase : RemainingResidueClass U V) :
+    ¬ Nonempty (TateScaleTwoStep U V) ∧
+      (FirstScaleTwoSearch U V →
+        ∃ (r s t : ℚ_[2]) (M : WeierstrassCurve ℤ_[2]),
+          ScaleTwoCoefficientConditions U V r s t M) :=
+  ⟨remaining_residue_classes_open U V hcase,
+    first_scale_two_search_coefficient_conditions U V⟩
 
 private theorem highChangeTwo_val (r : ℚ_[2]) :
     Padic.valuation ((highChangeTwo r).u : ℚ_[2]) = 1 := by
@@ -924,7 +995,11 @@ Determine FirstScaleTwoSearch using other coefficients, or rule
 it out, and handle further congruence cases. Neither outcome
 follows from the restricted obstruction alone.
 
-TODO second_step_alternative: Above valuation four a successful
+TODO first_change_search: Extract mod-4, mod-16, and mod-64
+consequences of ScaleTwoCoefficientConditions in the opposite
+residue classes; a finite search is not a proof over Q₂.
+
+TODO later_non_scaling_Tate / second_step_alternative: Above valuation four a successful
 first-step model has nonunit discriminant. For coprime inputs its
 c₄ is a unit, forbidding another positive-scale integral change.
 The subsequent non-scaling Tate tests and reduction type still
@@ -938,6 +1013,8 @@ need proof; do not divide its discriminant by 2¹² again. -/
 #print axioms frey_disc_v2_twelve_iff_threshold
 #print axioms high_parity_exactly_four
 #print axioms tate_scale_two_step_model
+#print axioms candidateScaleTwoChange_val
+#print axioms first_scale_two_search_coefficient_conditions
 #print axioms tate_step_in_first_scale_two_search
 #print axioms tate_step_even_odd
 #print axioms tate_step_odd_even
@@ -947,6 +1024,7 @@ need proof; do not divide its discriminant by 2¹² again. -/
 #print axioms tate_step_odd_odd_rU_obstructed
 #print axioms tate_step_translation_roots
 #print axioms remaining_residue_classes_open
+#print axioms existence_search_open
 #print axioms tate_step_delta_valuation
 #print axioms tate_step_threshold_unit
 #print axioms tate_step_threshold_minimal
